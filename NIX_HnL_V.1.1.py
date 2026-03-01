@@ -87,6 +87,27 @@ def is_primary_prkg_column(col_name: str) -> bool:
     return s.startswith("\u041f\u0420\u041a\u0413") or s.upper().startswith("PRKG")
 
 
+def shift_signal_non_cyclic(y: np.ndarray, shift_samples: int) -> np.ndarray:
+    """
+    Сдвиг сигнала по времени без циклического "заворота":
+    +shift_samples -> вправо (позже), -shift_samples -> влево (раньше).
+    Освободившиеся края заполняются NaN.
+    """
+    y = np.asarray(y, dtype=float)
+    n = y.size
+    if n == 0 or shift_samples == 0:
+        return y.copy()
+    out = np.full(n, np.nan, dtype=float)
+    if abs(shift_samples) >= n:
+        return out
+    if shift_samples > 0:
+        out[shift_samples:] = y[:-shift_samples]
+    else:
+        s = -shift_samples
+        out[:-s] = y[s:]
+    return out
+
+
 # ----------------------------
 # Main GUI
 # ----------------------------
@@ -182,6 +203,14 @@ class MainWindow(QMainWindow):
         time_l.addWidget(self.end_time)
         sel_form.addRow(time_row)
 
+        self.first_layer_shift_ms_spin = QDoubleSpinBox()
+        self.first_layer_shift_ms_spin.setRange(-250.0, 250.0)
+        self.first_layer_shift_ms_spin.setDecimals(0)
+        self.first_layer_shift_ms_spin.setSingleStep(1.0)
+        self.first_layer_shift_ms_spin.setValue(0.0)
+        self.first_layer_shift_ms_spin.valueChanged.connect(self.recompute_and_redraw)
+        sel_form.addRow("Сдвиг j по времени (мс):", self.first_layer_shift_ms_spin)
+
         # Ползунок k: 0..2 шаг 0.01 => int 0..200
         self.k_slider = QSlider(Qt.Horizontal)
         self.k_slider.setRange(0, 200)
@@ -235,6 +264,8 @@ class MainWindow(QMainWindow):
             "  ptp: M = (max(y_i)-min(y_i)) / (max(y_j)-min(y_j))\n"
             "  L2:  M = ||y_i||_2 / ||y_j||_2\n"
             "  Отключено: M = 1\n"
+            "Сдвиг j (мс): сдвиг первого слоя по времени,\n"
+            "применяется к M, Filtered и кривой y_j.\n"
             "Тогда Filtered = y_i - k*y_j."
         )
         legend_label.setWordWrap(True)
@@ -377,6 +408,10 @@ class MainWindow(QMainWindow):
             return None
         return sidx, eidx
 
+    def _get_first_layer_shift_samples(self) -> int:
+        shift_ms = float(self.first_layer_shift_ms_spin.value())
+        return int(round(shift_ms * self.fs / 1000.0))
+
     def recompute_and_redraw(self):
         """
         Полный пересчёт: извлечение сигналов на окне, вычисление M, построение графика.
@@ -397,7 +432,10 @@ class MainWindow(QMainWindow):
             return
 
         yi = self.df[i_col].iloc[sidx:eidx].astype(float).to_numpy()
-        yj = self.df[j_col].iloc[sidx:eidx].astype(float).to_numpy()
+        yj_raw = self.df[j_col].iloc[sidx:eidx].astype(float).to_numpy()
+        shift_samples = self._get_first_layer_shift_samples()
+        yj = shift_signal_non_cyclic(yj_raw, shift_samples)
+        shift_ms = float(self.first_layer_shift_ms_spin.value())
         win_start = sidx / float(self.fs)
         win_end = eidx / float(self.fs)
 
@@ -407,7 +445,8 @@ class MainWindow(QMainWindow):
             M = 1.0
             self.norm_details_label.setText(
                 f"Норма: отключена на [{win_start:.2f}, {win_end:.2f}] c. "
-                f"M = 1.000000, поэтому Filtered = y_i - k*y_j."
+                f"M = 1.000000, поэтому Filtered = y_i - k*y_j. "
+                f"Сдвиг j: {shift_ms:+.0f} мс."
             )
         else:
             ni = compute_norm(yi, norm_kind)
@@ -415,7 +454,8 @@ class MainWindow(QMainWindow):
             if not np.isfinite(ni) or not np.isfinite(nj) or nj == 0.0:
                 self.norm_details_label.setText(
                     f"Норма на [{win_start:.2f}, {win_end:.2f}] c не вычислена: "
-                    "некорректные значения или ||y_j|| = 0."
+                    "некорректные значения или ||y_j|| = 0. "
+                    f"Сдвиг j: {shift_ms:+.0f} мс."
                 )
                 self.write_log("Невозможно вычислить M: некорректная норма или ||y_j|| = 0.")
                 return
@@ -426,7 +466,8 @@ class MainWindow(QMainWindow):
                 formula = "M = ||y_i||_2 / ||y_j||_2"
             self.norm_details_label.setText(
                 f"Норма на [{win_start:.2f}, {win_end:.2f}] c: {formula}; "
-                f"ni={ni:.6g}, nj={nj:.6g}, M={M:.6g}."
+                f"ni={ni:.6g}, nj={nj:.6g}, M={M:.6g}. "
+                f"Сдвиг j: {shift_ms:+.0f} мс."
             )
         k = self.get_k()
         ycorr = yi - k * M * yj
@@ -449,6 +490,7 @@ class MainWindow(QMainWindow):
             "j_col": j_col,
             "ecg_col": ecg_col,
             "norm_kind": norm_kind,
+            "j_shift_ms": shift_ms,
         }
 
         self.draw_plot()
@@ -474,11 +516,13 @@ class MainWindow(QMainWindow):
         if idx is None:
             return
         sidx, eidx = idx
-        yj = self.df[j_col].iloc[sidx:eidx].astype(float).to_numpy()
+        yj_raw = self.df[j_col].iloc[sidx:eidx].astype(float).to_numpy()
+        yj = shift_signal_non_cyclic(yj_raw, self._get_first_layer_shift_samples())
 
         ycorr = yi - k * M * yj
         self._cache["yj"] = yj
         self._cache["ycorr"] = ycorr
+        self._cache["j_shift_ms"] = float(self.first_layer_shift_ms_spin.value())
 
         self.draw_plot()
 
@@ -496,6 +540,7 @@ class MainWindow(QMainWindow):
         j_col = self._cache["j_col"]
         M = self._cache["M"]
         k = self.get_k()
+        j_shift_ms = float(self._cache.get("j_shift_ms", 0.0))
 
         self.fig.clear()
         ax = self.fig.add_subplot(111)
@@ -519,7 +564,7 @@ class MainWindow(QMainWindow):
             ax.plot(t, ecg, label=f"ECG: {self._cache['ecg_col']}",
                     color="#ff7f0e", linewidth=1.8)
 
-        ax.plot(t, yj, label=f"First layer y_j(t): {j_col}",
+        ax.plot(t, yj, label=f"First layer y_j(t): {j_col} (shift {j_shift_ms:+.0f} ms)",
                 color="#1f77b4", linewidth=1.8)
         ax.plot(t, yi, label=f"Precordial y_i(t): {i_col}",
                 color="#d62728", linewidth=1.8)
