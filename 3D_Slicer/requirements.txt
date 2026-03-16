@@ -1,0 +1,8 @@
+TotalSegmentator>=2.0.5
+SimpleITK>=2.3.0
+nibabel>=5.0.0
+pydicom>=2.4.0
+numpy>=1.24.0
+scipy>=1.10.0
+pandas>=2.0.0
+scikit-image>=0.21.0
