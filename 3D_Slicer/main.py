@@ -41,6 +41,7 @@ STEPS = {
     "postprocess": "03_postprocess.py",
     "qc":          "04_qc.py",
     "export":      "05_export_comsol.py",
+    "visualize":   "06_visualize_qc.py",
 }
 
 
