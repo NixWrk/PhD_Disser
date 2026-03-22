@@ -69,18 +69,38 @@ def load_config() -> dict:
         return json.load(f)
 
 
-def load_individual_masks(seg_dir: Path) -> dict[str, np.ndarray]:
+def load_individual_masks(
+    auto_dir: Path, corrected_dir: Path | None = None
+) -> tuple[dict[str, np.ndarray], dict[str, str]]:
     """
-    Загружает отдельные маски TotalSegmentator из папки (если multilabel нет).
-    Возвращает dict: имя_файла → бинарный массив.
+    Загружает маски TotalSegmentator из auto_dir.
+    Если corrected_dir задан и содержит файл с таким же именем — берёт corrected.
+    Возвращает: (masks_dict, sources_dict) где sources_dict: имя → 'auto'|'corrected'.
     """
-    masks = {}
-    for f in sorted(seg_dir.glob("*.nii.gz")):
+    masks: dict[str, np.ndarray] = {}
+    sources: dict[str, str] = {}
+
+    for f in sorted(auto_dir.glob("*.nii.gz")):
         if f.name == "multilabel.nii.gz":
             continue
+        stem = f.stem  # убирает .gz, нужно ещё убрать .nii
+        if stem.endswith(".nii"):
+            stem = stem[:-4]
+
+        # Проверить наличие корректированной версии
+        if corrected_dir is not None:
+            corrected_file = corrected_dir / f.name
+            if corrected_file.exists():
+                img = nib.load(str(corrected_file))
+                masks[stem] = img.get_fdata().astype(np.uint8)
+                sources[stem] = "corrected"
+                continue
+
         img = nib.load(str(f))
-        masks[f.stem] = img.get_fdata().astype(np.uint8)
-    return masks
+        masks[stem] = img.get_fdata().astype(np.uint8)
+        sources[stem] = "auto"
+
+    return masks, sources
 
 
 def group_by_name(masks: dict[str, np.ndarray], config: dict) -> dict[str, np.ndarray]:
@@ -187,7 +207,8 @@ def apply_priority_rule(
 
 def process_patient(patient_id: str, cfg: dict) -> Path:
     """Полный постпроцессинг одного пациента."""
-    seg_dir = ROOT / cfg["paths"]["seg_auto"] / patient_id
+    auto_dir = ROOT / cfg["paths"]["seg_auto"] / patient_id
+    corrected_dir = ROOT / cfg["paths"]["seg_corrected"] / patient_id
     prep_path = ROOT / cfg["paths"]["preprocessed"] / f"{patient_id}.nii.gz"
     out_dir = ROOT / cfg["paths"]["seg_final"]
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -197,16 +218,34 @@ def process_patient(patient_id: str, cfg: dict) -> Path:
     ct_data = ct_img.get_fdata()
     spacing = ct_img.header.get_zooms()[:3]
 
-    # Загрузить маски TotalSegmentator
-    log.info("Загружаю маски из %s", seg_dir)
-    individual_masks = load_individual_masks(seg_dir)
+    # Загрузить маски TotalSegmentator (с подстановкой ручных коррекций)
+    corr_dir_arg = corrected_dir if corrected_dir.exists() else None
+    log.info("Загружаю маски из %s", auto_dir)
+    if corr_dir_arg:
+        log.info("Проверяю ручные коррекции в %s", corrected_dir)
+
+    individual_masks, sources = load_individual_masks(auto_dir, corr_dir_arg)
+
+    n_corrected = sum(1 for s in sources.values() if s == "corrected")
+    if n_corrected:
+        corrected_names = [k for k, v in sources.items() if v == "corrected"]
+        log.info("Использовано ручных коррекций: %d (%s)", n_corrected, ", ".join(corrected_names))
+    else:
+        log.info("Ручных коррекций не найдено — используются только авто-маски")
 
     if not individual_masks:
-        raise FileNotFoundError(f"Нет масок в {seg_dir}")
+        raise FileNotFoundError(f"Нет масок в {auto_dir}")
 
     # Группировать по тканям
     log.info("Группировка по тканям:")
     tissue_masks = group_by_name(individual_masks, cfg)
+
+    # Сохранить источники масок в лог (для аудита)
+    log_dir = ROOT / cfg["paths"]["logs"]
+    log_dir.mkdir(parents=True, exist_ok=True)
+    sources_log_path = log_dir / f"mask_sources_{patient_id}.json"
+    with open(sources_log_path, "w", encoding="utf-8") as f:
+        json.dump({"patient": patient_id, "sources": sources}, f, indent=2, ensure_ascii=False)
 
     # Маска тела
     body_threshold = cfg["hu_presets"]["body_mask_threshold"]
