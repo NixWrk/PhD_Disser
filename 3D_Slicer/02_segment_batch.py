@@ -19,14 +19,28 @@ import time
 from datetime import datetime
 from pathlib import Path
 
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s [%(levelname)s] %(message)s",
-    datefmt="%H:%M:%S",
-)
-log = logging.getLogger(__name__)
-
 ROOT = Path(__file__).resolve().parent
+
+
+def setup_logging(script_name: str) -> logging.Logger:
+    log_dir = ROOT / "data" / "logs"
+    log_dir.mkdir(parents=True, exist_ok=True)
+    ts = datetime.now().strftime("%Y%m%d_%H%M%S")
+    log_file = log_dir / f"{script_name}_{ts}.log"
+
+    fmt = "%(asctime)s [%(levelname)s] %(message)s"
+    datefmt = "%H:%M:%S"
+    handlers = [
+        logging.StreamHandler(),
+        logging.FileHandler(log_file, encoding="utf-8"),
+    ]
+    logging.basicConfig(level=logging.INFO, format=fmt, datefmt=datefmt, handlers=handlers)
+    logger = logging.getLogger(__name__)
+    logger.info("Лог записывается в: %s", log_file)
+    return logger
+
+
+log = setup_logging("02_segment")
 
 
 def load_config() -> dict:
