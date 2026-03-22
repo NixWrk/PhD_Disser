@@ -21,7 +21,10 @@
         "totalsegmentator_task": "total",
         "use_fast_mode": false,
         "device": "gpu",
-        "multilabel_output": true
+        "multilabel_output": true,
+        "max_retries": 1,
+        "timeout_seconds": 3600,
+        "fallback_to_cpu_on_oom": true
     },
 
     "hu_presets": {

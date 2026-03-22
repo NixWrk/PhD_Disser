@@ -48,6 +48,43 @@ def load_config() -> dict:
         return json.load(f)
 
 
+OOM_SIGNATURES = [
+    "out of memory",
+    "cuda out of memory",
+    "runtimeerror: cuda",
+    "outofmemoryerror",
+    "cudamemoryerror",
+]
+
+
+def is_oom_error(stderr: str) -> bool:
+    """Определяет, является ли ошибка нехваткой видеопамяти."""
+    text = stderr.lower()
+    return any(sig in text for sig in OOM_SIGNATURES)
+
+
+def build_totalseg_cmd(
+    input_path: Path,
+    output_dir: Path,
+    task: str,
+    fast: bool,
+    device: str,
+    multilabel: bool,
+) -> list[str]:
+    cmd = [
+        sys.executable, "-m", "totalsegmentator",
+        "-i", str(input_path),
+        "-o", str(output_dir),
+        "--task", task,
+    ]
+    if fast:
+        cmd.append("--fast")
+    cmd.extend(["--device", device])
+    if multilabel:
+        cmd.extend(["--ml", "--statistics"])
+    return cmd
+
+
 def run_totalsegmentator(
     input_path: Path,
     output_dir: Path,
@@ -55,58 +92,117 @@ def run_totalsegmentator(
     fast: bool = False,
     device: str = "gpu",
     multilabel: bool = True,
+    max_retries: int = 1,
+    timeout_seconds: int = 3600,
+    fallback_to_cpu: bool = True,
 ) -> dict:
-    """Запускает TotalSegmentator CLI и возвращает метаданные запуска."""
+    """
+    Запускает TotalSegmentator CLI с поддержкой retry и fallback на CPU при OOM.
+
+    При OOM-ошибке на GPU автоматически повторяет на CPU (если fallback_to_cpu=True).
+    При других ошибках — повторяет max_retries раз.
+    """
     output_dir.mkdir(parents=True, exist_ok=True)
+    patient_id = input_path.stem.replace(".nii", "")
 
-    cmd = [
-        sys.executable, "-m", "totalsegmentator",
-        "-i", str(input_path),
-        "-o", str(output_dir),
-        "--task", task,
-    ]
+    attempts = []
+    current_device = device
 
-    if fast:
-        cmd.append("--fast")
+    # Попытки: оригинальный device + fallback на CPU
+    devices_to_try = [current_device]
+    if fallback_to_cpu and current_device == "gpu":
+        devices_to_try.append("cpu")
 
-    if device == "gpu":
-        cmd.extend(["--device", "gpu"])
-    else:
-        cmd.extend(["--device", "cpu"])
+    final_result = None
+    for attempt_device in devices_to_try:
+        for retry in range(max_retries + 1):
+            attempt_num = len(attempts) + 1
+            cmd = build_totalseg_cmd(
+                input_path, output_dir, task, fast, attempt_device, multilabel
+            )
 
-    if multilabel:
-        ml_path = output_dir / "multilabel.nii.gz"
-        cmd.extend(["--ml", "--statistics"])
+            label = f"попытка {attempt_num}, device={attempt_device}"
+            if retry > 0:
+                label += f", retry {retry}"
+            log.info("TotalSegmentator: %s — %s", patient_id, label)
+            log.info("CMD: %s", " ".join(cmd))
 
-    start = time.time()
-    log.info("Запуск: %s", " ".join(cmd))
+            start = time.time()
+            try:
+                result = subprocess.run(
+                    cmd,
+                    capture_output=True,
+                    text=True,
+                    encoding="utf-8",
+                    errors="replace",
+                    timeout=timeout_seconds,
+                )
+            except subprocess.TimeoutExpired:
+                elapsed = time.time() - start
+                log.error(
+                    "ТАЙМАУТ после %.0f сек (лимит: %d сек)",
+                    elapsed, timeout_seconds,
+                )
+                attempts.append({
+                    "attempt": attempt_num, "device": attempt_device,
+                    "error": "timeout", "elapsed_seconds": round(elapsed, 1),
+                })
+                continue
 
-    result = subprocess.run(
-        cmd,
-        capture_output=True,
-        text=True,
-        encoding="utf-8",
-        errors="replace",
-    )
+            elapsed = time.time() - start
+            rc = result.returncode
 
-    elapsed = time.time() - start
+            attempt_info = {
+                "attempt": attempt_num,
+                "device": attempt_device,
+                "return_code": rc,
+                "elapsed_seconds": round(elapsed, 1),
+            }
+
+            if rc == 0:
+                log.info("Успешно за %.1f сек (device=%s)", elapsed, attempt_device)
+                attempts.append(attempt_info)
+                final_result = result
+                current_device = attempt_device
+                break
+            else:
+                stderr_tail = result.stderr[-800:]
+                log.error("ОШИБКА (код %d):\n%s", rc, stderr_tail)
+                attempt_info["error"] = stderr_tail
+                attempts.append(attempt_info)
+
+                if is_oom_error(result.stderr) and attempt_device == "gpu" and fallback_to_cpu:
+                    log.warning(
+                        "Обнаружена нехватка GPU-памяти — переключаю на CPU"
+                    )
+                    break  # выйти из retry-цикла, перейти к CPU в devices_to_try
+        else:
+            # retry-цикл завершился без break → все попытки провалились на этом device
+            continue
+
+        if final_result is not None:
+            break  # успех — выйти из devices_to_try
 
     run_info = {
-        "patient": input_path.stem.replace(".nii", ""),
+        "patient": patient_id,
         "timestamp": datetime.now().isoformat(),
         "task": task,
         "fast_mode": fast,
-        "device": device,
-        "elapsed_seconds": round(elapsed, 1),
-        "return_code": result.returncode,
+        "device_used": current_device,
+        "elapsed_seconds": attempts[-1]["elapsed_seconds"] if attempts else 0,
+        "return_code": final_result.returncode if final_result else -1,
         "totalseg_version": get_totalseg_version(),
+        "attempts": attempts,
     }
 
-    if result.returncode != 0:
-        log.error("TotalSegmentator ОШИБКА (код %d):\n%s", result.returncode, result.stderr[-500:])
-        run_info["error"] = result.stderr[-500:]
+    if final_result is None or final_result.returncode != 0:
+        log.error(
+            "TotalSegmentator не завершился успешно после %d попыток",
+            len(attempts),
+        )
+        run_info["success"] = False
     else:
-        log.info("Готово за %.1f сек: %s", elapsed, input_path.stem)
+        run_info["success"] = True
 
     return run_info
 
@@ -175,11 +271,18 @@ def main():
             continue
 
         run_info = run_totalsegmentator(
-            nii_path, out_dir, task=task, fast=fast, device=device, multilabel=multilabel,
+            nii_path, out_dir,
+            task=task,
+            fast=fast,
+            device=device,
+            multilabel=multilabel,
+            max_retries=seg_cfg.get("max_retries", 1),
+            timeout_seconds=seg_cfg.get("timeout_seconds", 3600),
+            fallback_to_cpu=seg_cfg.get("fallback_to_cpu_on_oom", True),
         )
         save_run_log(log_dir, run_info)
 
-        status = "OK" if run_info["return_code"] == 0 else "FAIL"
+        status = "OK" if run_info.get("success") else "FAIL"
         results.append((status, patient_id))
 
     log.info("=== Итого ===")
