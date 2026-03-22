@@ -21,14 +21,28 @@ import nibabel as nib
 import numpy as np
 from scipy import ndimage
 
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s [%(levelname)s] %(message)s",
-    datefmt="%H:%M:%S",
-)
-log = logging.getLogger(__name__)
-
 ROOT = Path(__file__).resolve().parent
+
+
+def setup_logging(script_name: str) -> logging.Logger:
+    log_dir = ROOT / "data" / "logs"
+    log_dir.mkdir(parents=True, exist_ok=True)
+    ts = datetime.now().strftime("%Y%m%d_%H%M%S")
+    log_file = log_dir / f"{script_name}_{ts}.log"
+
+    fmt = "%(asctime)s [%(levelname)s] %(message)s"
+    datefmt = "%H:%M:%S"
+    handlers = [
+        logging.StreamHandler(),
+        logging.FileHandler(log_file, encoding="utf-8"),
+    ]
+    logging.basicConfig(level=logging.INFO, format=fmt, datefmt=datefmt, handlers=handlers)
+    logger = logging.getLogger(__name__)
+    logger.info("Лог записывается в: %s", log_file)
+    return logger
+
+
+log = setup_logging("04_qc")
 
 
 def load_config() -> dict:
@@ -115,7 +129,9 @@ def check_coverage(labelmap: np.ndarray, body_threshold: int = 1) -> dict:
     }
 
 
-def check_boundary_smoothness(labelmap: np.ndarray, labels: dict) -> list[dict]:
+def check_boundary_smoothness(
+    labelmap: np.ndarray, labels: dict, boundary_ratio_threshold: float
+) -> list[dict]:
     """
     Простая проверка: считает долю граничных вокселей для каждой ткани.
     Высокая доля может указывать на «рваные» границы.
@@ -134,8 +150,7 @@ def check_boundary_smoothness(labelmap: np.ndarray, labels: dict) -> list[dict]:
         boundary = binary.astype(int) - eroded.astype(int)
         boundary_ratio = float(boundary.sum()) / float(total)
 
-        # Если > 60% вокселей — граничные, ткань слишком «тонкая» или фрагментированная
-        if boundary_ratio > 0.6 and tissue_name != "skin":
+        if boundary_ratio > boundary_ratio_threshold and tissue_name != "skin":
             issues.append({
                 "type": "thin_or_rough",
                 "tissue": tissue_name,
@@ -185,7 +200,9 @@ def qc_patient(patient_id: str, cfg: dict) -> dict:
         })
 
     # 5. Границы
-    issues += check_boundary_smoothness(labelmap, labels)
+    issues += check_boundary_smoothness(
+        labelmap, labels, qc_cfg["boundary_ratio_threshold"]
+    )
 
     # Итоговый статус
     has_errors = any(i["severity"] == "error" for i in issues)

@@ -29,7 +29,8 @@
         "lung":        {"min": -1000, "max": -500},
         "soft_tissue": {"min": -100,  "max": 300},
         "fat":         {"min": -200,  "max": -50},
-        "skin_body":   {"min": -500,  "max": 2000}
+        "skin_body":   {"min": -500,  "max": 2000},
+        "body_mask_threshold": -500
     },
 
     "tissue_labels": {
@@ -86,7 +87,8 @@
             "skin":              {"min": 500,  "max": 5000}
         },
         "max_islands_per_tissue": 3,
-        "min_coverage_ratio": 0.98
+        "min_coverage_ratio": 0.98,
+        "boundary_ratio_threshold": 0.6
     },
 
     "skin_generation": {

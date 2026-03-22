@@ -26,14 +26,29 @@ import nibabel as nib
 import numpy as np
 from scipy import ndimage
 
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s [%(levelname)s] %(message)s",
-    datefmt="%H:%M:%S",
-)
-log = logging.getLogger(__name__)
-
 ROOT = Path(__file__).resolve().parent
+
+
+def setup_logging(script_name: str) -> logging.Logger:
+    log_dir = ROOT / "data" / "logs"
+    log_dir.mkdir(parents=True, exist_ok=True)
+    from datetime import datetime
+    ts = datetime.now().strftime("%Y%m%d_%H%M%S")
+    log_file = log_dir / f"{script_name}_{ts}.log"
+
+    fmt = "%(asctime)s [%(levelname)s] %(message)s"
+    datefmt = "%H:%M:%S"
+    handlers = [
+        logging.StreamHandler(),
+        logging.FileHandler(log_file, encoding="utf-8"),
+    ]
+    logging.basicConfig(level=logging.INFO, format=fmt, datefmt=datefmt, handlers=handlers)
+    logger = logging.getLogger(__name__)
+    logger.info("Лог записывается в: %s", log_file)
+    return logger
+
+
+log = setup_logging("03_postprocess")
 
 # TotalSegmentator v2 label indices (multilabel.nii.gz)
 # Полный справочник: https://github.com/wasserth/TotalSegmentator#class-details
@@ -194,7 +209,8 @@ def process_patient(patient_id: str, cfg: dict) -> Path:
     tissue_masks = group_by_name(individual_masks, cfg)
 
     # Маска тела
-    body_mask = generate_body_mask(ct_data)
+    body_threshold = cfg["hu_presets"]["body_mask_threshold"]
+    body_mask = generate_body_mask(ct_data, threshold=body_threshold)
 
     # Кожа
     skin_cfg = cfg["skin_generation"]
