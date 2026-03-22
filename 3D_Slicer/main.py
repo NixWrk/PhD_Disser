@@ -40,6 +40,7 @@ STEPS = {
     "segment":     "02_segment_batch.py",
     "postprocess": "03_postprocess.py",
     "qc":          "04_qc.py",
+    "export":      "05_export_comsol.py",
 }
 
 
@@ -85,12 +86,13 @@ def main():
     group.add_argument(
         "--step",
         choices=list(STEPS.keys()),
-        help="Запустить один шаг",
+        help="Запустить один шаг: preprocess | segment | postprocess | qc | export",
     )
 
     parser.add_argument("--patient", type=str, default=None, help="ID одного пациента")
     parser.add_argument("--fast", action="store_true", help="Быстрый режим TotalSegmentator")
     parser.add_argument("--cpu", action="store_true", help="Принудительно CPU")
+    parser.add_argument("--mhd", action="store_true", help="Экспорт в MHD/RAW вместо NRRD")
 
     args = parser.parse_args()
 
@@ -104,6 +106,8 @@ def main():
                 extra.append("--fast")
             if args.cpu:
                 extra.append("--cpu")
+        if step_name == "export" and args.mhd:
+            extra.append("--mhd")
         return extra
 
     if args.all:
