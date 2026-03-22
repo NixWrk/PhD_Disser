@@ -247,6 +247,8 @@ def main():
                         help="Конвертировать все подходящие серии")
     parser.add_argument("--min-slices", type=int, default=50,
                         help="Минимум слайсов (по умолчанию 50)")
+    parser.add_argument("--json", action="store_true",
+                        help="Вывести список серий как JSON (для GUI)")
     parser.add_argument("--use-headers", action="store_true",
                         help="Группировать по DICOM-заголовкам (медленно)")
     args = parser.parse_args()
@@ -277,16 +279,30 @@ def main():
 
     # --list
     if args.list:
-        hdr = "{:>6}  {:>7}  {:<40}  {:<12}  {:<8}  {}".format(
-            "Series", "Slices", "Description", "Size", "SlThk", "Mod")
-        print(hdr)
-        print("-" * 95)
-        for snum in sorted(all_info.keys(), key=lambda x: int(x) if x.isdigit() else 99999):
-            info = all_info[snum]
-            size = "{}x{}".format(info.get("rows", "?"), info.get("columns", "?"))
-            print("{:>6}  {:>7}  {:<40}  {:<12}  {:<8}  {}".format(
-                snum, info["n_slices"], info["series_description"][:40],
-                size, info["slice_thickness"][:8], info["modality"]))
+        if args.json:
+            import json as _json
+            out = []
+            for snum in sorted(all_info.keys(), key=lambda x: int(x) if x.isdigit() else 99999):
+                info = all_info[snum]
+                out.append({
+                    "series": snum,
+                    "n_slices": info["n_slices"],
+                    "description": info["series_description"],
+                    "modality": info["modality"],
+                    "slice_thickness": info["slice_thickness"],
+                })
+            print(_json.dumps(out, ensure_ascii=False))
+        else:
+            hdr = "{:>6}  {:>7}  {:<40}  {:<12}  {:<8}  {}".format(
+                "Series", "Slices", "Description", "Size", "SlThk", "Mod")
+            print(hdr)
+            print("-" * 95)
+            for snum in sorted(all_info.keys(), key=lambda x: int(x) if x.isdigit() else 99999):
+                info = all_info[snum]
+                size = "{}x{}".format(info.get("rows", "?"), info.get("columns", "?"))
+                print("{:>6}  {:>7}  {:<40}  {:<12}  {:<8}  {}".format(
+                    snum, info["n_slices"], info["series_description"][:40],
+                    size, info["slice_thickness"][:8], info["modality"]))
         return
 
     # Выбор серий
