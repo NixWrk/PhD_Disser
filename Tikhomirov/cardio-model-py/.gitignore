@@ -1,34 +1,39 @@
 # Python
 __pycache__/
 *.py[cod]
-*$py.class
+*.pyo
+*.pyd
 *.so
-.Python
-build/
-dist/
-*.egg-info/
-.eggs/
 *.egg
-pip-wheel-metadata/
+*.egg-info/
+dist/
+build/
+.eggs/
+.cache/
 
-# Venv
+# Virtual environments
 .venv/
 venv/
 env/
 
-# Test / coverage
+# Testing / coverage
 .pytest_cache/
 .coverage
-.coverage.*
 htmlcov/
 .tox/
-.mypy_cache/
-.ruff_cache/
 
 # Jupyter
 .ipynb_checkpoints/
+*.ipynb~
 
-# IDE
+# Type stubs
+.mypy_cache/
+.dmypy.json
+
+# Ruff
+.ruff_cache/
+
+# Editors
 .idea/
 .vscode/
 *.swp
@@ -37,3 +42,4 @@ htmlcov/
 # OS
 .DS_Store
 Thumbs.db
+desktop.ini

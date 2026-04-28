@@ -1,0 +1,66 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cardio-model-py"
+version = "0.0.1"
+description = "Python port of WolframMath-master: радиоимпедансная кардиография совмещённая с МРТ (модели, finders, объём, систола)."
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+    { name = "Tikhomirov / Kardio_respiratory_dudes" },
+]
+license = { text = "Proprietary" }
+keywords = ["cardio", "impedance", "rheography", "mri", "stroke-volume"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Medical Science Apps.",
+    "Private :: Do Not Upload",
+]
+dependencies = [
+    "numpy>=1.24",
+    "scipy>=1.10",
+    "matplotlib>=3.7",
+    "shapely>=2.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+    "ruff>=0.5",
+    "mypy>=1.10",
+    "jupyter>=1.0",
+]
+
+[project.urls]
+"WolframMath-source" = "../WolframMath-master"
+"Sibling-RFFI-port" = "../cardio-stl-repair"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = ["-ra", "--strict-markers"]
+markers = [
+    "no_reference: тест без эталонного значения из Mathematica (проверка самосогласованности)",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP", "B", "C4", "RUF"]
+ignore = ["E501"]  # line length handled by formatter
+
+[tool.mypy]
+python_version = "3.10"
+strict = false
+ignore_missing_imports = true
