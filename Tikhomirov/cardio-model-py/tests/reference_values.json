@@ -1,0 +1,152 @@
+{
+  "_meta": {
+    "source": "WolframMath-master — Mathematica 14.3 (Wolfram Engine)",
+    "generated": "2026-04-29",
+    "note": "Статические данные — из .m файлов. Вычисленные — wolframscript gen_reference.m"
+  },
+
+  "patients": {
+    "Ivan": {
+      "radial_dZRad":   [0.057, 0.110, 0.130, 0.067, 0.115],
+      "radial_zBase":   [35, 33, 33, 30, 42],
+      "radial_flDZ":    0.045,
+      "radial_flBase":  35,
+      "param_a":  [0.04, 0.04, 0.05, 0.05, 0.04],
+      "param_b":  [0.02, 0.02, 0.025, 0.025, 0.02],
+      "param_R":  [0.051, 0.040, 0.042, 0.042, 0.041],
+      "param_h":  [0.03, 0.019, 0.022, 0.021, 0.03],
+      "param_x":  [0, 0, 0, 0, 0],
+      "param_y":  [0.047, 0.026, 0.035, 0.048, 0.025],
+      "param_hFat":   [0.0],
+      "param_flSize": [0.06, 0.03],
+      "contour_shape": [7, 2],
+      "contour_first": [-33, -8],
+      "contour": [[-33,-8],[-32,-24],[11,-51],[58,-37],[63,-11],[36,27],[27,29]]
+    },
+    "Alex": {
+      "radial_dZRad":   [0.072, 0.063, 0.054, 0.042, 0.069],
+      "radial_zBase":   [95, 83, 73, 70, 108],
+      "radial_flDZ":    0.125,
+      "radial_flBase":  64,
+      "param_a":  [0.04, 0.04, 0.05, 0.05, 0.04],
+      "param_b":  [0.02, 0.02, 0.025, 0.025, 0.02],
+      "param_R":  [0.055, 0.050, 0.042, 0.050, 0.055],
+      "param_h":  [0.037, 0.037, 0.037, 0.037, 0.037],
+      "param_x":  [0, 0, 0, 0, 0],
+      "param_y":  [0.015, 0.045, 0.040, 0.050, 0.055],
+      "param_hFat":   [0.013],
+      "param_flSize": [0.06, 0.03],
+      "contour_shape": [7, 2],
+      "contour_first": [-39, 12],
+      "contour": [[-39,12],[-40,-10],[-16,-63],[42,-63],[65,-40],[42,10],[35,13]]
+    },
+    "Artem": {
+      "radial_dZRad":   [0.040, 0.055, 0.110, 0.083, 0.076],
+      "radial_zBase":   [70, 67, 58, 67, 76],
+      "radial_flDZ":    0.1,
+      "radial_flBase":  79,
+      "param_a":  [0.04, 0.04, 0.05, 0.05, 0.04],
+      "param_b":  [0.02, 0.02, 0.025, 0.025, 0.02],
+      "param_R":  [0.037, 0.032, 0.047, 0.039, 0.037],
+      "param_h":  [0.031, 0.025, 0.024, 0.025, 0.030],
+      "param_x":  [0, 0, 0, 0, 0],
+      "param_y":  [0.027, 0.040, 0.015, 0.039, 0.027],
+      "param_hFat":   [0.007],
+      "param_flSize": [0.06, 0.03],
+      "contour_shape": [7, 2],
+      "contour_first": [-39, -22],
+      "contour": [[-39,-22],[-37,-27],[12,-47],[67,-42],[76,-11],[41,29],[31,32]]
+    }
+  },
+
+  "mri": {
+    "Ivan":  {"valve_move": 5, "r_by_volume": 50,
+              "contour_with_atrial_shape": [11, 2],
+              "atrial_points": [[11,32],[-11,24],[-30,7]]},
+    "Alex":  {"valve_move": 5, "r_by_volume": 50,
+              "contour_with_atrial_shape": [11, 2],
+              "atrial_points": [[20,17],[-5,20],[-22,17]]},
+    "Artem": {"valve_move": 5, "r_by_volume": 50,
+              "contour_with_atrial_shape": [11, 2],
+              "atrial_points": [[-2,35],[-31,32],[-38,0]]}
+  },
+
+  "imp": {
+    "artem_radial_array_shape":     [25, 6],
+    "artem_radial_array_fix_shape": [25, 6],
+    "artem_sphere_moving_shape":    [25, 4],
+    "artem_sphere_moving_row0":     [1.0, -0.6, 0.4, -1.2]
+  },
+
+  "moves": {
+    "Ivan":  {"shape": [5, 10]},
+    "Alex":  {"shape": [5, 10]},
+    "Artem": {"shape": [5, 9]}
+  },
+
+  "computed": {
+    "_note": "Round[x, 0.0001] применяется внутри RadEvalMethod1/2 (как в оригинале)",
+    "wl_version": "14.3.0 for Microsoft Windows (64-bit) (July 31, 2025)",
+
+    "rad_eval_method1": {
+      "Ivan":  [3.7e-3, 2.2e-3, 2.1e-3, 1.4e-3, 3.7e-3],
+      "Alex":  [1.2e-3, 1.5e-3, 7.0e-4, 7.0e-4, 1.3e-3],
+      "Artem": [5.0e-4, 5.0e-4, 7.0e-4, 5.0e-4, 9.0e-4]
+    },
+
+    "rad_eval_method2": {
+      "Ivan":  [7.8e-3, 3.4e-3, 2.9e-3, 2.4e-3, 5.8e-3],
+      "Alex":  [4.2e-3, 5.8e-3, 2.7e-3, 3.2e-3, 4.9e-3],
+      "Artem": [2.7e-3, 2.0e-3, 1.4e-3, 1.2e-3, 2.6e-3]
+    },
+
+    "find_dr_sphere": {
+      "_note": "ro1=0 → авто-поиск FindRoSphere; результат совпадает с RadEvalMethod1",
+      "Ivan":  [3.7e-3, 2.2e-3, 2.1e-3, 1.4e-3, 3.7e-3],
+      "Alex":  [1.2e-3, 1.5e-3, 7.0e-4, 7.0e-4, 1.3e-3],
+      "Artem": [5.0e-4, 5.0e-4, 7.0e-4, 5.0e-4, 9.0e-4]
+    },
+
+    "volume_by_contour_step3": {
+      "Ivan":  485.0,
+      "Alex":  604.0,
+      "Artem": 622.0
+    },
+
+    "sv_by_contour_and_5move": {
+      "_note": "SVbyContourAnd5Move использует HeartEdgeMove5point (последний столбец .txt, с инверсией знака)",
+      "Ivan":  -216.0,
+      "Alex":  -135.5,
+      "Artem": -105.0
+    },
+
+    "sphere_model": {
+      "_note": "SphereModel[1.35, 0.7, a, b, R, h, 0, y] — Легандр n=0..100",
+      "Artem_ch1": 14.136799737003274,
+      "Artem_ch2": 14.090216033236121,
+      "Artem_ch3": 10.985905980632044,
+      "Ivan_ch1":  14.101534373444968
+    },
+
+    "eq_sphere_nm": {
+      "_note": "EqSphNMCenterRadius — Nelder-Mead, стохастичен; допуск ±0.5",
+      "Ivan":  {"center": [14.930167863633205, -12.027515343734555], "radius": 45.81244579196302},
+      "Alex":  {"center": [8.047374165111094,  -24.036555557679733], "radius": 51.402166896111055},
+      "Artem": {"center": [17.59846222645261,  -11.616882071494242], "radius": 51.28536239057654}
+    },
+
+    "heart_edge_move5": {
+      "_note": "-Map[Last, HeartEdgeMoving[person]] — последний столбец .txt с инверсией",
+      "Ivan":  [-7.2,  -15.93, -14.2,  -12.25, -13.68],
+      "Alex":  [-1.7,  -7.0,   -7.0,   -9.0,   -18.0],
+      "Artem": [0.0,   -9.0,   -15.0,  -9.6,   -5.0]
+    },
+
+    "kubic_interpol_length": {
+      "_note": "KubicInterpol[contour7, n=30] → 7-1=6 интервалов × 31 точка = 186",
+      "Ivan":  186,
+      "Alex":  186,
+      "Artem": 186
+    }
+  }
+}
