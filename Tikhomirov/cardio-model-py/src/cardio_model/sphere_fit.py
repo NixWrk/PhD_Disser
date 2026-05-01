@@ -221,6 +221,7 @@ _EQUAL_SPHERE_METHODS = {
     "Use_Contour_Verb",
     "Use_Contour_Radius_Verb",
     "Use_Contour_Center_Verb",
+    "Use_Contour_MassCenter_Verb",
 }
 
 
