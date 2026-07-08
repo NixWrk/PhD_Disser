@@ -5,3 +5,4 @@ results/
 results_summary.csv
 *.mph
 *.step
+!homogeneous_electrode_study/*.mph

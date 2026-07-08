@@ -1,0 +1,6 @@
+scenario,ZTT_ohm,VR_V,VL_V,notes
+old_domain_electrodes,104.25842876101895,177.4398154701198,73.18138670910086,"Old STEP electrode domains kept as metal electrodes"
+window_body_top_faces,108.82046558950856,230.53618432667528,121.71571873716672,"Boundary Terminal/Ground and boundary voltage windows on body-top faces"
+point_arm_top,111.02236531457422,54.960729321898675,-56.06163599267555,"Point current source/sink and point voltage probes on top of arm cylinders"
+smallpads_body_top,109.09859633049928,312.5905417262532,203.49194539575393,"Visible metal pad electrodes, mode=body_top"
+smallpads_arm_top,111.02306250455507,398.8146903964653,287.79162789191025,"Visible metal pad electrodes, mode=arm_top"

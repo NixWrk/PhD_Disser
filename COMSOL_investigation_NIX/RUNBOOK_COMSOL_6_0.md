@@ -52,6 +52,75 @@ Copy-Item -LiteralPath 'D:\Git_Code\Kardio_respiratory_dudes\Калмыков\CO
 
 Важно: запуск без `MODE` раньше давал NPE/неудобное поведение. Всегда указывать режим.
 
+## Экспорт картинок
+
+Текущее правило: каждый новый расчет должен сохранять не только числа и `.mph`,
+но и проверочные PNG. Минимальный набор:
+
+- geometry view;
+- material selections;
+- Terminal/Ground или point source/sink;
+- voltage averaging selections;
+- отдельный кадр, где видны электроды или выбранные электродные сущности.
+
+Для текущей постановки без нового расчета используется:
+
+```text
+java/comsol_export_visualization_6_0.java
+```
+
+Готовые PNG лежат в:
+
+```text
+visualization/
+```
+
+## Однородная серия с электродами
+
+Файл:
+
+```text
+java/comsol_homogeneous_electrode_study_6_0.java
+```
+
+Смысл: все домены модели задаются как мягкая ткань `rho_soft = 4.728[ohm*m]`,
+кроме явных металлических электродов/пэдов. Серия считает несколько вариантов
+электродов и для каждого варианта экспортирует `.mph`, CSV-строку и PNG.
+
+Компиляция:
+
+```powershell
+Copy-Item -LiteralPath 'D:\Git_Code\Kardio_respiratory_dudes\Калмыков\COMSOL_investigation_NIX\java\comsol_homogeneous_electrode_study_6_0.java' -Destination 'C:\tmp\comsol_homogeneous_electrode_study_6_0.java' -Force
+
+& 'C:\PC\COMSOL.Multiphysics.6.0.318.Win.Linux.macOS-SSQ\Installed_comsol\COMSOL60\Multiphysics\bin\win64\comsolcompile.exe' `
+  -jdkroot 'C:\PC\COMSOL.Multiphysics.6.0.318.Win.Linux.macOS-SSQ\Installed_comsol\COMSOL60\Multiphysics\java\win64\jre' `
+  'C:\tmp\comsol_homogeneous_electrode_study_6_0.java'
+```
+
+Запуск:
+
+```powershell
+& 'C:\PC\COMSOL.Multiphysics.6.0.318.Win.Linux.macOS-SSQ\Installed_comsol\COMSOL60\Multiphysics\bin\win64\comsolbatch.exe' `
+  -prefsdir 'C:\tmp\comsol_prefs_allfiles' `
+  -inputfile 'C:\tmp\comsol_homogeneous_electrode_study_6_0.class' `
+  -batchlog 'C:\tmp\comsol_homogeneous_electrode_study_6_0.log' `
+  -autosave off `
+  -recoverydir 'C:\tmp'
+```
+
+Итоговая папка:
+
+```text
+homogeneous_electrode_study/
+```
+
+Начать просмотр удобно с:
+
+```text
+homogeneous_electrode_study/electrode_layout_contact_sheet.png
+homogeneous_electrode_study/homogeneous_electrode_summary.csv
+```
+
 ## Основные режимы
 
 - `point` - точечные источники/измерения; последний вариант перенесен на верх цилиндра руки (`y=-50 мм`, `z=208 мм`).
