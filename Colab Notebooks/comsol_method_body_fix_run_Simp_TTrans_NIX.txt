@@ -1,0 +1,77 @@
+// Paste this into a COMSOL 6.2 Method with Simp_TTrans_NIX.mph already open.
+// It avoids ModelUtil.load(), so Java file-read security does not block it.
+
+// Experimental TRKG channel-1 targets for 90nik.csv, breath-hold inhale.
+model.param().set("Z1_target", "12.703[ohm]");
+model.param().set("Z2_target", "12.626[ohm]");
+model.param().set("dZ_target", "Z2_target-Z1_target");
+
+// Nik solution-cloud resistivities: rho1 is soft tissue, rho2 is lung.
+model.param().set("rho1_soft", "6.84[ohm*m]");
+model.param().set("rho2_lung", "10.36[ohm*m]");
+model.param().set("roMuscle", "rho1_soft");
+model.param().set("roLung", "rho2_lung");
+model.param().set("I", "1[A]");
+
+// Fixed-center heart sphere parameterization.
+model.param().set("Rh0", "52.5[mm]");
+model.param().set("yh0", "78[mm]-Rh0");
+model.param().set("Rh", "Rh0-delRh");
+model.param().set("Rb", "Rh-10[mm]");
+model.param().set("yh", "yh0+delY");
+
+// The inspected file had domain 12 in both current terminals.
+model.component("comp1").physics("ec").feature("term1").selection().set(new int[] {11});
+model.component("comp1").physics("ec").feature("term2").selection().set(new int[] {1});
+
+model.component("comp1").variable("var1").set("ZTT", "abs(ElR-ElL)/I");
+
+// Stage 1: estimate baseline radius R0 from Z1 with delRh = 0.
+model.param().set("delRh", "0[mm]");
+model.study("std2").feature("param1").active(true);
+model.study("std2").feature("param1").set("sweeptype", "filled");
+model.study("std2").feature("param1").set("pname", new String[] {"Rh0"});
+model.study("std2").feature("param1").set("plistarr", new String[] {"range(40,1,65)"});
+model.study("std2").feature("param1").set("punit", new String[] {"mm"});
+model.study("std2").run();
+
+model.result().numerical("gev1").set("expr", new String[] {
+    "ZTT",
+    "ZTT-Z1_target",
+    "abs(ZTT-Z1_target)"
+});
+model.result().numerical("gev1").set("unit", new String[] {"ohm", "ohm", "ohm"});
+model.result().numerical("gev1").set("descr", new String[] {
+    "ZTT",
+    "ZTT minus TRKG systole-start target",
+    "absolute start-target error"
+});
+model.result().numerical("gev1").set("table", "tbl3");
+model.result().table("tbl3").clearTableData();
+model.result().numerical("gev1").setResult();
+model.result().table("tbl3").save("C:\\tmp\\Simp_TTrans_NIX_R0_calibration.csv");
+
+// Stage 2: set Rh0 to the best row from the R0 table, then run this block.
+// Replace 52.5[mm] below after reading C:\tmp\Simp_TTrans_NIX_R0_calibration.csv.
+model.param().set("Rh0", "52.5[mm]");
+model.study("std2").feature("param1").set("pname", new String[] {"delRh"});
+model.study("std2").feature("param1").set("plistarr", new String[] {"range(-5,0.25,10)"});
+model.study("std2").feature("param1").set("punit", new String[] {"mm"});
+model.study("std2").run();
+
+model.result().numerical("gev1").set("expr", new String[] {
+    "ZTT",
+    "ZTT-Z2_target",
+    "abs(ZTT-Z2_target)"
+});
+model.result().numerical("gev1").set("unit", new String[] {"ohm", "ohm", "ohm"});
+model.result().numerical("gev1").set("descr", new String[] {
+    "ZTT",
+    "ZTT minus TRKG systole-end target",
+    "absolute end-target error"
+});
+model.result().table("tbl3").clearTableData();
+model.result().numerical("gev1").setResult();
+model.result().table("tbl3").save("C:\\tmp\\Simp_TTrans_NIX_delRh_sweep.csv");
+
+model.save("C:\\tmp\\Simp_TTrans_NIX_fixed_6_2.mph");

@@ -1,0 +1,25 @@
+# Heavy local anatomy inputs
+*.stl
+*.glb
+*.obj
+*.ply
+*.spj
+*.vol
+*.msh
+*.mphtxt
+
+# Generated outputs and caches
+output/
+__pycache__/
+*.mat
+*.log
+
+# Downloaded data/tools
+itis_database_v5/
+itis_database_v5.zip
+
+# MATLAB/editor noise
+*.asv
+*.m~
+.DS_Store
+Thumbs.db

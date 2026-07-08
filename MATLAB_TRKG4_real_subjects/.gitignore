@@ -1,0 +1,12 @@
+output/*
+!output/.gitkeep
+
+# Real subject data are large and/or private. Keep local copies here,
+# but commit only small examples and documentation.
+data/*/stl/*.stl
+data/*/stl/*.STL
+data/*/signal/*.csv
+data/*/signal/*.CSV
+
+*.asv
+*.m~
