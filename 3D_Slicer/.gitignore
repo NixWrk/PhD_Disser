@@ -1,0 +1,8 @@
+.venv/
+__pycache__/
+*.pyc
+data/preprocessed/
+data/segmentations/
+data/logs/
+data/comsol_ready/
+.claude/

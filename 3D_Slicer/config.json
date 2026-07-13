@@ -1,0 +1,101 @@
+{
+    "paths": {
+        "raw_dicom": "Z:/02 Big_data/3D/NIX/CT_10_12_25_RNCH_NIX_DICOM",
+        "preprocessed": "data/preprocessed",
+        "seg_auto": "data/segmentations/auto",
+        "seg_corrected": "data/segmentations/corrected",
+        "seg_final": "data/segmentations/final_labelmap",
+        "logs": "data/logs",
+        "comsol_ready": "data/comsol_ready"
+    },
+
+    "dicom_layout": "flat",
+
+    "preprocess": {
+        "target_spacing_mm": [1.5, 1.5, 1.5],
+        "target_orientation": "LPS",
+        "output_format": ".nii.gz"
+    },
+
+    "segmentation": {
+        "totalsegmentator_task": "total",
+        "use_fast_mode": false,
+        "device": "gpu",
+        "multilabel_output": true,
+        "max_retries": 1,
+        "timeout_seconds": 3600,
+        "fallback_to_cpu_on_oom": true
+    },
+
+    "hu_presets": {
+        "bone":        {"min": 300,   "max": 3000},
+        "lung":        {"min": -1000, "max": -500},
+        "soft_tissue": {"min": -100,  "max": 300},
+        "fat":         {"min": -200,  "max": -50},
+        "skin_body":   {"min": -500,  "max": 2000},
+        "body_mask_threshold": -500
+    },
+
+    "tissue_labels": {
+        "1": "bone",
+        "2": "lung",
+        "3": "heart",
+        "4": "muscle",
+        "5": "fat_subcutaneous",
+        "6": "skin",
+        "7": "other"
+    },
+
+    "priority_order": [
+        "bone",
+        "lung",
+        "heart",
+        "muscle",
+        "fat_subcutaneous",
+        "skin",
+        "other"
+    ],
+
+    "totalseg_to_tissue_map": {
+        "bone": [
+            "vertebrae_*", "rib_*", "hip_*", "sacrum", "sternum",
+            "clavicula_*", "scapula_*", "humerus_*", "femur_*",
+            "skull", "costal_cartilages"
+        ],
+        "lung": [
+            "lung_upper_lobe_left", "lung_lower_lobe_left",
+            "lung_upper_lobe_right", "lung_middle_lobe_right", "lung_lower_lobe_right"
+        ],
+        "heart": [
+            "heart", "heart_myocardium", "heart_atrium_left", "heart_atrium_right",
+            "heart_ventricle_left", "heart_ventricle_right",
+            "aorta", "pulmonary_vein", "superior_vena_cava", "inferior_vena_cava"
+        ],
+        "muscle": [
+            "autochthon_*", "iliopsoas_*", "gluteus_*",
+            "skeletal_muscle"
+        ],
+        "fat_subcutaneous": [
+            "subcutaneous_fat"
+        ]
+    },
+
+    "qc": {
+        "expected_volumes_ml": {
+            "bone":              {"min": 500,  "max": 5000},
+            "lung":              {"min": 2000, "max": 8000},
+            "heart":             {"min": 400,  "max": 1200},
+            "muscle":            {"min": 5000, "max": 30000},
+            "fat_subcutaneous":  {"min": 2000, "max": 40000},
+            "skin":              {"min": 500,  "max": 5000}
+        },
+        "max_islands_per_tissue": 3,
+        "min_coverage_ratio": 0.98,
+        "boundary_ratio_threshold": 0.6
+    },
+
+    "skin_generation": {
+        "thickness_mm": 3.0,
+        "method": "erosion"
+    }
+}
