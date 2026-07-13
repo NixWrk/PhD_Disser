@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "project_id": "3c6b0b58-4e5b-4bf6-b973-faa5dcb35fb6",
+  "project_name": "Кандидатская Калмыков",
+  "publish_branch": "Калмыков",
+  "research_root": "research",
+  "generated_dir": "research/generated",
+  "html_dir": "research/generated/html",
+  "archive_base": "Z:\\01 Project\\00 ORG\\Кандидатская Калмыков",
+  "archive_root": "Z:\\01 Project\\00 ORG\\Кандидатская Калмыков\\Репозиторий\\Калмыков",
+  "archive_confidentiality": "internal_restricted",
+  "notebook_roots": [
+    "Colab Notebooks"
+  ],
+  "mirror_extensions": [
+    ".md",
+    ".html"
+  ],
+  "exclude_directories": [
+    ".git",
+    ".venv",
+    "venv",
+    "__pycache__",
+    ".ipynb_checkpoints",
+    ".research-report-tmp",
+    "build",
+    "dist"
+  ],
+  "export_notebooks": true,
+  "require_clean_worktree_for_publish": true,
+  "archive_removed_managed_files": true,
+  "lock_stale_minutes": 180
+}

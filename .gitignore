@@ -5,3 +5,6 @@ build*/
 dist*/
 __pycache__/
 *.pyc
+
+# Generated research reports and notebook exports
+research/generated/

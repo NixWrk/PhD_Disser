@@ -8,6 +8,10 @@
 │   ├── NIX_HnL_V.1.1.py  # Основной скрипт
 │   └── GUI.py            # GUI-оболочка
 ├── 3D_Slicer/            # Проект: сегментация КТ → COMSOL
+├── Colab Notebooks/      # Расчёты и правила научного описания
+├── research/             # Первичные исследовательские карточки и шаблоны
+├── research-report.json  # Настройки сборки отчётности и зеркала
+├── tools/                # Автоматическая проверка, сборка и публикация
 └── Old_code/             # Архив старых версий
 ```
 
@@ -26,3 +30,16 @@ cd HnL
 pip install PySide6 matplotlib numpy pandas
 python NIX_HnL_V.1.1.py
 ```
+
+## Исследовательская отчётность
+
+Правила, две истории работы, протоколы экспериментов и путь к тексту диссертации описаны в [правилах](Colab%20Notebooks/ПРАВИЛА_ОПИСАНИЯ_РАСЧЁТОВ.md). Первичные карточки и шаблоны находятся в [research](research/README.md).
+
+```powershell
+python tools/research_report.py validate
+python tools/research_report.py build
+python tools/research_report.py export-html
+python tools/research_report.py sync --dry-run
+```
+
+Команда `update` объединяет все четыре операции и при чистой рабочей копии обновляет проверяемое зеркало на `Z:`.
