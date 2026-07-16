@@ -8,23 +8,30 @@
     "study_instance_uid",
     "modality",
     "file_count",
+    "frame_count",
     "duplicate_sop_count"
   ],
   "properties": {
     "series_instance_uid": {"type": "string", "minLength": 1},
     "study_instance_uid": {"type": "string", "minLength": 1},
     "modality": {"type": "string"},
+    "sop_class_uid": {"type": "string"},
     "series_number": {"type": ["integer", "null"]},
     "series_description": {"type": ["string", "null"]},
     "protocol_name": {"type": ["string", "null"]},
     "patient_position": {"type": ["string", "null"]},
     "file_count": {"type": "integer", "minimum": 1},
+    "frame_count": {"type": "integer", "minimum": 1},
+    "enhanced_multiframe": {"type": "boolean"},
     "duplicate_sop_count": {"type": "integer", "minimum": 0},
+    "geometry_variant_count": {"type": "integer", "minimum": 1},
     "rows": {"type": ["integer", "null"]},
     "columns": {"type": ["integer", "null"]},
     "pixel_spacing_x_mm": {"type": ["number", "null"]},
     "pixel_spacing_y_mm": {"type": ["number", "null"]},
+    "pixel_spacing_source": {"type": ["string", "null"]},
     "slice_thickness_mm": {"type": ["number", "null"]},
+    "slice_thickness_source": {"type": ["string", "null"]},
     "manufacturer": {"type": ["string", "null"]},
     "scanner_model": {"type": ["string", "null"]},
     "convolution_kernel": {"type": ["string", "null"]},
@@ -33,4 +40,3 @@
     "scan_status": {"type": "string"}
   }
 }
-

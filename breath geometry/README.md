@@ -19,6 +19,7 @@
 - [Мастер-план исследования и разработки](research_and_implementation_plan.md)
 - [Окружение и внешние инструменты](docs/ENVIRONMENT.md)
 - [Политика данных и псевдонимизации](docs/DATA_PRIVACY.md)
+- [Предварительный статус инвентаризации КТ](docs/DATA_INVENTORY_STATUS.md)
 
 ## Быстрый старт на Windows
 
@@ -34,6 +35,7 @@ powershell -ExecutionPolicy Bypass -File tools/install_dcm2niix.ps1
 ## Первый безопасный DICOM-скан
 
 Scanner читает только заголовки DICOM, не загружает pixel data и не экспортирует PatientName, PatientID, дату рождения или accession number.
+Поддерживаются как классические однофайловые срезы, так и Enhanced Multi-frame CT с геометрией в Shared Functional Groups.
 
 ~~~powershell
 .\.venv\Scripts\breathgeom.exe manifest scan --config configs/paths.local.yaml --output data/interim/manifest.local.csv --max-files 10000

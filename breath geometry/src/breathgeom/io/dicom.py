@@ -11,6 +11,7 @@ import pydicom
 from pydicom.errors import InvalidDicomError
 
 SAFE_TAGS = [
+    "SOPClassUID",
     "StudyInstanceUID",
     "SeriesInstanceUID",
     "SOPInstanceUID",
@@ -22,7 +23,12 @@ SAFE_TAGS = [
     "Rows",
     "Columns",
     "PixelSpacing",
+    "ImagerPixelSpacing",
+    "NominalScannedPixelSpacing",
     "SliceThickness",
+    "SpacingBetweenSlices",
+    "NumberOfFrames",
+    "SharedFunctionalGroupsSequence",
     "Manufacturer",
     "ManufacturerModelName",
     "ConvolutionKernel",
@@ -42,6 +48,7 @@ ARCHIVE_SUFFIXES = {".rar", ".zip", ".7z", ".tar", ".gz"}
 
 @dataclass(frozen=True)
 class DicomHeader:
+    sop_class_uid: str
     study_instance_uid: str
     series_instance_uid: str
     sop_instance_uid: str
@@ -59,6 +66,9 @@ class DicomHeader:
     scanner_model: str | None
     convolution_kernel: str | None
     kvp: float | None
+    number_of_frames: int
+    pixel_spacing_source: str | None
+    slice_thickness_source: str | None
 
 
 @dataclass(frozen=True)
@@ -66,17 +76,23 @@ class SeriesManifestRow:
     series_instance_uid: str
     study_instance_uid: str
     modality: str
+    sop_class_uid: str
     series_number: int | None
     series_description: str | None
     protocol_name: str | None
     patient_position: str | None
     file_count: int
+    frame_count: int
+    enhanced_multiframe: bool
     duplicate_sop_count: int
+    geometry_variant_count: int
     rows: int | None
     columns: int | None
     pixel_spacing_x_mm: float | None
     pixel_spacing_y_mm: float | None
+    pixel_spacing_source: str | None
     slice_thickness_mm: float | None
+    slice_thickness_source: str | None
     manufacturer: str | None
     scanner_model: str | None
     convolution_kernel: str | None
@@ -110,6 +126,40 @@ def _optional_float(value: Any) -> float | None:
         return None
 
 
+def _functional_pixel_measures(dataset: pydicom.dataset.Dataset) -> Any:
+    shared = dataset.get("SharedFunctionalGroupsSequence")
+    if not shared:
+        return None
+    pixel_measures = shared[0].get("PixelMeasuresSequence")
+    if not pixel_measures:
+        return None
+    return pixel_measures[0]
+
+
+def _pixel_spacing(dataset: pydicom.dataset.Dataset) -> tuple[Any, str | None]:
+    for keyword in ("PixelSpacing", "ImagerPixelSpacing", "NominalScannedPixelSpacing"):
+        value = dataset.get(keyword)
+        if value is not None:
+            return value, keyword
+    measures = _functional_pixel_measures(dataset)
+    if measures is not None and measures.get("PixelSpacing") is not None:
+        return measures.get("PixelSpacing"), "SharedFunctionalGroupsSequence.PixelMeasuresSequence"
+    return None, None
+
+
+def _slice_thickness(dataset: pydicom.dataset.Dataset) -> tuple[float | None, str | None]:
+    for keyword in ("SliceThickness", "SpacingBetweenSlices"):
+        value = _optional_float(dataset.get(keyword))
+        if value is not None:
+            return value, keyword
+    measures = _functional_pixel_measures(dataset)
+    if measures is not None:
+        value = _optional_float(measures.get("SliceThickness"))
+        if value is not None:
+            return value, "SharedFunctionalGroupsSequence.PixelMeasuresSequence"
+    return None, None
+
+
 def read_dicom_header(path: Path) -> DicomHeader | None:
     try:
         dataset = pydicom.dcmread(
@@ -127,14 +177,16 @@ def read_dicom_header(path: Path) -> DicomHeader | None:
     if not study_uid or not series_uid or not sop_uid:
         return None
 
-    pixel_spacing = dataset.get("PixelSpacing")
+    pixel_spacing, pixel_spacing_source = _pixel_spacing(dataset)
     spacing_x: float | None = None
     spacing_y: float | None = None
     if pixel_spacing is not None and len(pixel_spacing) >= 2:
         spacing_y = _optional_float(pixel_spacing[0])
         spacing_x = _optional_float(pixel_spacing[1])
+    slice_thickness, slice_thickness_source = _slice_thickness(dataset)
 
     return DicomHeader(
+        sop_class_uid=_optional_text(dataset.get("SOPClassUID")) or "",
         study_instance_uid=study_uid,
         series_instance_uid=series_uid,
         sop_instance_uid=sop_uid,
@@ -147,11 +199,14 @@ def read_dicom_header(path: Path) -> DicomHeader | None:
         columns=_optional_int(dataset.get("Columns")),
         pixel_spacing_x_mm=spacing_x,
         pixel_spacing_y_mm=spacing_y,
-        slice_thickness_mm=_optional_float(dataset.get("SliceThickness")),
+        slice_thickness_mm=slice_thickness,
         manufacturer=_optional_text(dataset.get("Manufacturer")),
         scanner_model=_optional_text(dataset.get("ManufacturerModelName")),
         convolution_kernel=_optional_text(dataset.get("ConvolutionKernel")),
         kvp=_optional_float(dataset.get("KVP")),
+        number_of_frames=_optional_int(dataset.get("NumberOfFrames")) or 1,
+        pixel_spacing_source=pixel_spacing_source,
+        slice_thickness_source=slice_thickness_source,
     )
 
 
@@ -178,22 +233,38 @@ def scan_dicom_series(root: Path, max_files: int | None = None) -> list[SeriesMa
         first = headers[0]
         sop_uids = [header.sop_instance_uid for header in headers]
         duplicate_count = len(sop_uids) - len(set(sop_uids))
+        geometry_variants = {
+            (
+                header.rows,
+                header.columns,
+                header.pixel_spacing_x_mm,
+                header.pixel_spacing_y_mm,
+                header.slice_thickness_mm,
+            )
+            for header in headers
+        }
         rows.append(
             SeriesManifestRow(
                 series_instance_uid=series_uid,
                 study_instance_uid=first.study_instance_uid,
                 modality=first.modality,
+                sop_class_uid=first.sop_class_uid,
                 series_number=first.series_number,
                 series_description=first.series_description,
                 protocol_name=first.protocol_name,
                 patient_position=first.patient_position,
                 file_count=len(headers),
+                frame_count=sum(header.number_of_frames for header in headers),
+                enhanced_multiframe=any(header.number_of_frames > 1 for header in headers),
                 duplicate_sop_count=duplicate_count,
+                geometry_variant_count=len(geometry_variants),
                 rows=first.rows,
                 columns=first.columns,
                 pixel_spacing_x_mm=first.pixel_spacing_x_mm,
                 pixel_spacing_y_mm=first.pixel_spacing_y_mm,
+                pixel_spacing_source=first.pixel_spacing_source,
                 slice_thickness_mm=first.slice_thickness_mm,
+                slice_thickness_source=first.slice_thickness_source,
                 manufacturer=first.manufacturer,
                 scanner_model=first.scanner_model,
                 convolution_kernel=first.convolution_kernel,
