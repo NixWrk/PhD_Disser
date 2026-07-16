@@ -1,0 +1,23 @@
+dataset_id: breath_geometry_v1
+primary_target_phase: exhale_max
+optional_phase: exhale_quiet
+subjects:
+  - subject_id: P01
+    cohort: paired
+    expected_phases: [inhale_deep, exhale_max]
+  - subject_id: P02
+    cohort: paired
+    expected_phases: [inhale_deep, exhale_max]
+  - subject_id: P03
+    cohort: paired
+    expected_phases: [inhale_deep, exhale_max]
+  - subject_id: U01
+    cohort: unpaired
+    expected_phases: [inhale_deep]
+  - subject_id: U02
+    cohort: unpaired
+    expected_phases: [inhale_deep]
+  - subject_id: U03
+    cohort: unpaired
+    expected_phases: [inhale_deep]
+

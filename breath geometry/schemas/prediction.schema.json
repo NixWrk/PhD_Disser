@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Breath Geometry Prediction Metadata",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "run_id",
+    "model_id",
+    "mode",
+    "subject_id",
+    "scenario",
+    "allowed_inputs",
+    "uses_test_exhale"
+  ],
+  "properties": {
+    "run_id": {"type": "string"},
+    "model_id": {"type": "string"},
+    "model_version": {"type": "string"},
+    "mode": {"enum": ["P0", "P0V", "P1", "P2", "R", "C"]},
+    "subject_id": {"type": "string"},
+    "scenario": {"enum": ["shallow", "central", "deep", "oracle", "reference"]},
+    "allowed_inputs": {"type": "array", "items": {"type": "string"}},
+    "uses_test_exhale": {"type": "boolean"},
+    "target_volume_ml": {"type": ["number", "null"]},
+    "achieved_volume_ml": {"type": ["number", "null"]},
+    "git_commit": {"type": ["string", "null"]},
+    "input_checksums": {"type": "object"}
+  }
+}
+

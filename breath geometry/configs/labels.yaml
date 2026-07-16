@@ -1,0 +1,17 @@
+labels:
+  body:
+    id: 1
+    required: true
+  lung_left:
+    id: 2
+    required: true
+  lung_right:
+    id: 3
+    required: true
+  heart:
+    id: 4
+    required: true
+  skeleton_all:
+    id: 5
+    required: true
+

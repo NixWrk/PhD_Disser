@@ -1,0 +1,59 @@
+# Local agent/runtime metadata
+.agents/
+
+# Python environments and caches
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+build/
+dist/
+*.egg-info/
+
+# Local configuration and secrets
+.env
+configs/paths.local.yaml
+private/
+*.local.csv
+*.local.json
+*.local.yaml
+
+# Medical and derived data: never commit
+data/raw/
+data/interim/
+data/processed/
+data/predictions/
+results/
+outputs/
+*.dcm
+*.dicom
+*.nii
+*.nii.gz
+*.nrrd
+*.mha
+*.mhd
+*.stl
+*.vtp
+*.vtk
+*.ply
+*.msh
+*.feb
+*.rar
+*.7z
+*.zip
+
+# Locally installed third-party tools
+tools/bin/
+tools/cache/
+
+# Logs and editor files
+*.log
+.idea/
+.vscode/
+Thumbs.db
+Desktop.ini
+

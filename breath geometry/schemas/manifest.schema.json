@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Breath Geometry DICOM Series Manifest Row",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "series_instance_uid",
+    "study_instance_uid",
+    "modality",
+    "file_count",
+    "duplicate_sop_count"
+  ],
+  "properties": {
+    "series_instance_uid": {"type": "string", "minLength": 1},
+    "study_instance_uid": {"type": "string", "minLength": 1},
+    "modality": {"type": "string"},
+    "series_number": {"type": ["integer", "null"]},
+    "series_description": {"type": ["string", "null"]},
+    "protocol_name": {"type": ["string", "null"]},
+    "patient_position": {"type": ["string", "null"]},
+    "file_count": {"type": "integer", "minimum": 1},
+    "duplicate_sop_count": {"type": "integer", "minimum": 0},
+    "rows": {"type": ["integer", "null"]},
+    "columns": {"type": ["integer", "null"]},
+    "pixel_spacing_x_mm": {"type": ["number", "null"]},
+    "pixel_spacing_y_mm": {"type": ["number", "null"]},
+    "slice_thickness_mm": {"type": ["number", "null"]},
+    "manufacturer": {"type": ["string", "null"]},
+    "scanner_model": {"type": ["string", "null"]},
+    "convolution_kernel": {"type": ["string", "null"]},
+    "kvp": {"type": ["number", "null"]},
+    "source_root": {"type": "string"},
+    "scan_status": {"type": "string"}
+  }
+}
+

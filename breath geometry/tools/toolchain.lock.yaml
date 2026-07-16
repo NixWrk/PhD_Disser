@@ -1,0 +1,10 @@
+dcm2niix:
+  version: "v1.0.20260416"
+  archive: "dcm2niix_win.zip"
+  url: "https://github.com/rordenlab/dcm2niix/releases/download/v1.0.20260416/dcm2niix_win.zip"
+  sha256: "969bca4fc41d5f82658acef9d0ed9cbfbd4114ec8e8668906910241fcbb2c048"
+gmsh:
+  expected_major_minor: "4.15"
+python:
+  expected_major_minor: "3.11"
+
