@@ -21,6 +21,7 @@
 - [Политика данных и псевдонимизации](docs/DATA_PRIVACY.md)
 - [Предварительный статус инвентаризации КТ](docs/DATA_INVENTORY_STATUS.md)
 - [План ближайшей реализации](docs/NEXT_STEPS.md)
+- [Открытые КТ-датасеты](docs/OPEN_DATASETS.md)
 
 ## Быстрый старт на Windows
 
