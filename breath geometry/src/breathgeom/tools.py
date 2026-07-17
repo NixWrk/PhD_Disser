@@ -1,10 +1,13 @@
 from __future__ import annotations
 
+import re
 import shutil
 import subprocess
 import sys
 from dataclasses import dataclass
 from pathlib import Path
+
+VERSION_PATTERN = re.compile(r"\d+\.\d+(?:\.\d+)*")
 
 
 @dataclass(frozen=True)
@@ -14,7 +17,22 @@ class ToolStatus:
     version: str | None
 
 
-def _first_output_line(command: list[str]) -> str | None:
+def select_version_line(output: str) -> str | None:
+    """Pick the version line from tool output.
+
+    Tools may print advisory lines before the version: dcm2niix leads with a pigz
+    hint, so taking the first line reports a warning instead of a version.
+    """
+    lines = [line.strip() for line in output.splitlines() if line.strip()]
+    if not lines:
+        return None
+    for line in lines:
+        if VERSION_PATTERN.search(line):
+            return line
+    return lines[0]
+
+
+def _tool_version(command: list[str]) -> str | None:
     try:
         completed = subprocess.run(
             command,
@@ -25,15 +43,14 @@ def _first_output_line(command: list[str]) -> str | None:
         )
     except (OSError, subprocess.TimeoutExpired):
         return None
-    combined = (completed.stdout + "\n" + completed.stderr).strip()
-    return combined.splitlines()[0] if combined else None
+    return select_version_line(completed.stdout + "\n" + completed.stderr)
 
 
 def find_tool(name: str, version_args: list[str]) -> ToolStatus:
     path = shutil.which(name)
     if path is None:
         return ToolStatus(name=name, path=None, version=None)
-    return ToolStatus(name=name, path=path, version=_first_output_line([path, *version_args]))
+    return ToolStatus(name=name, path=path, version=_tool_version([path, *version_args]))
 
 
 def collect_tool_status(repo_root: Path | None = None) -> list[ToolStatus]:
@@ -51,6 +68,6 @@ def collect_tool_status(repo_root: Path | None = None) -> list[ToolStatus]:
             statuses[1] = ToolStatus(
                 name="dcm2niix",
                 path=str(local_dcm2niix),
-                version=_first_output_line([str(local_dcm2niix), "--version"]),
+                version=_tool_version([str(local_dcm2niix), "--version"]),
             )
     return statuses
