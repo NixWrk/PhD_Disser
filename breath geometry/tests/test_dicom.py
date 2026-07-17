@@ -1,15 +1,75 @@
+import json
 from pathlib import Path
 
 import pydicom
+import pytest
 from pydicom.dataset import Dataset, FileDataset, FileMetaDataset
 from pydicom.sequence import Sequence
-from pydicom.uid import CTImageStorage, ExplicitVRLittleEndian, generate_uid
+from pydicom.uid import (
+    CTImageStorage,
+    EnhancedCTImageStorage,
+    ExplicitVRLittleEndian,
+    generate_uid,
+)
 
 from breathgeom.io.dicom import (
     FORBIDDEN_IDENTITY_FIELDS,
     SeriesManifestRow,
     scan_dicom_series,
+    slice_normal,
 )
+
+ENHANCED_CT_STORAGE = EnhancedCTImageStorage
+
+
+def _write_enhanced_ct(
+    path: Path,
+    series_uid: str,
+    z_positions: list[float],
+    slice_thickness: float = 0.5,
+) -> None:
+    """Enhanced multi-frame CT whose geometry lives only in functional groups."""
+    file_meta = FileMetaDataset()
+    file_meta.MediaStorageSOPClassUID = ENHANCED_CT_STORAGE
+    file_meta.MediaStorageSOPInstanceUID = generate_uid()
+    file_meta.TransferSyntaxUID = ExplicitVRLittleEndian
+
+    dataset = FileDataset(path, {}, file_meta=file_meta, preamble=b"\0" * 128)
+    dataset.SOPClassUID = ENHANCED_CT_STORAGE
+    dataset.SOPInstanceUID = file_meta.MediaStorageSOPInstanceUID
+    dataset.StudyInstanceUID = "1.2.826.0.1.3680043.8.498.10"
+    dataset.SeriesInstanceUID = series_uid
+    dataset.Modality = "CT"
+    dataset.PatientName = "PRIVATE^PERSON"
+    dataset.PatientID = "DO-NOT-EXPORT"
+    dataset.Rows = 512
+    dataset.Columns = 512
+    dataset.NumberOfFrames = len(z_positions)
+
+    measures = Dataset()
+    measures.PixelSpacing = [0.473, 0.473]
+    measures.SliceThickness = slice_thickness
+    shared = Dataset()
+    shared.PixelMeasuresSequence = Sequence([measures])
+    dataset.SharedFunctionalGroupsSequence = Sequence([shared])
+
+    frames = []
+    for index, z in enumerate(z_positions, start=1):
+        position = Dataset()
+        position.ImagePositionPatient = [-84.1381, -112.8881, z]
+        orientation = Dataset()
+        orientation.ImageOrientationPatient = [1.0, 0.0, 0.0, 0.0, 1.0, 0.0]
+        content = Dataset()
+        content.StackID = "1"
+        content.InStackPositionNumber = index
+        content.TemporalPositionIndex = 1
+        frame = Dataset()
+        frame.PlanePositionSequence = Sequence([position])
+        frame.PlaneOrientationSequence = Sequence([orientation])
+        frame.FrameContentSequence = Sequence([content])
+        frames.append(frame)
+    dataset.PerFrameFunctionalGroupsSequence = Sequence(frames)
+    dataset.save_as(path, enforce_file_format=True)
 
 
 def _write_test_dicom(path: Path, series_uid: str, instance_number: int) -> None:
@@ -79,3 +139,100 @@ def test_scanner_reads_enhanced_ct_pixel_measures(tmp_path: Path) -> None:
     assert rows[0].pixel_spacing_y_mm == 0.473
     assert rows[0].slice_thickness_mm == 0.5
     assert rows[0].pixel_spacing_source == ("SharedFunctionalGroupsSequence.PixelMeasuresSequence")
+
+
+def test_schema_matches_manifest_row() -> None:
+    """The published schema must not drift from the row actually written to CSV."""
+    schema_path = Path(__file__).resolve().parents[1] / "schemas" / "manifest.schema.json"
+    schema = json.loads(schema_path.read_text(encoding="utf-8"))
+
+    assert set(schema["properties"]) == set(SeriesManifestRow.__dataclass_fields__)
+    assert set(schema["required"]) <= set(SeriesManifestRow.__dataclass_fields__)
+
+
+def test_slice_normal_of_axial_orientation() -> None:
+    normal = slice_normal((1.0, 0.0, 0.0, 0.0, 1.0, 0.0))
+
+    assert list(normal) == [0.0, 0.0, 1.0]
+
+
+def test_spacing_comes_from_positions_not_slice_thickness(tmp_path: Path) -> None:
+    """Overlapping reconstruction: 0.5 mm slices reconstructed every 0.25 mm."""
+    z_positions = [-707.50, -707.75, -708.00, -708.25, -708.50]
+    _write_enhanced_ct(tmp_path / "overlapped", "1.2.826.0.1.3680043.8.498.11", z_positions)
+
+    rows = scan_dicom_series(tmp_path)
+
+    assert len(rows) == 1
+    row = rows[0]
+    assert row.slice_thickness_mm == 0.5
+    assert row.spacing_z_mm == pytest.approx(0.25)
+    assert row.spacing_z_uniform is True
+    assert row.slice_count == 5
+    assert row.coverage_z_mm == pytest.approx(1.0)
+    assert row.gap_count == 0
+    assert row.spacing_z_source == "PerFrameFunctionalGroupsSequence.PlanePositionSequence"
+    assert row.image_orientation_patient == "1\\0\\0\\0\\1\\0"
+
+
+def test_frames_are_ordered_by_physical_position(tmp_path: Path) -> None:
+    """Storage order must not drive slice ordering; only physical position may."""
+    shuffled = [-708.25, -707.50, -708.50, -708.00, -707.75]
+    _write_enhanced_ct(tmp_path / "shuffled", "1.2.826.0.1.3680043.8.498.12", shuffled)
+
+    rows = scan_dicom_series(tmp_path)
+
+    assert rows[0].spacing_z_mm == pytest.approx(0.25)
+    assert rows[0].spacing_z_uniform is True
+    assert rows[0].coverage_z_mm == pytest.approx(1.0)
+
+
+def test_missing_slice_is_reported_as_gap(tmp_path: Path) -> None:
+    z_positions = [0.0, -0.25, -0.5, -1.0, -1.25]
+    _write_enhanced_ct(tmp_path / "gapped", "1.2.826.0.1.3680043.8.498.13", z_positions)
+
+    rows = scan_dicom_series(tmp_path)
+
+    assert rows[0].spacing_z_mm == pytest.approx(0.25)
+    assert rows[0].gap_count == 1
+    assert rows[0].spacing_z_uniform is False
+    assert rows[0].spacing_z_max_deviation_mm == pytest.approx(0.25)
+
+
+def test_duplicate_position_is_counted(tmp_path: Path) -> None:
+    z_positions = [0.0, -0.25, -0.25, -0.5]
+    _write_enhanced_ct(tmp_path / "duplicated", "1.2.826.0.1.3680043.8.498.14", z_positions)
+
+    rows = scan_dicom_series(tmp_path)
+
+    assert rows[0].duplicate_position_count == 1
+    assert rows[0].slice_count == 3
+    assert rows[0].spacing_z_mm == pytest.approx(0.25)
+
+
+def test_series_geometry_spans_several_files(tmp_path: Path) -> None:
+    """A series is split across containers; geometry must aggregate over all of them."""
+    series_uid = "1.2.826.0.1.3680043.8.498.15"
+    _write_enhanced_ct(tmp_path / "part_a", series_uid, [0.0, -0.25, -0.5])
+    _write_enhanced_ct(tmp_path / "part_b", series_uid, [-0.75, -1.0, -1.25])
+
+    rows = scan_dicom_series(tmp_path)
+
+    assert len(rows) == 1
+    assert rows[0].file_count == 2
+    assert rows[0].frame_count == 6
+    assert rows[0].slice_count == 6
+    assert rows[0].spacing_z_mm == pytest.approx(0.25)
+    assert rows[0].spacing_z_uniform is True
+    assert rows[0].gap_count == 0
+    assert rows[0].coverage_z_mm == pytest.approx(1.25)
+
+
+def test_slice_without_position_has_no_slice_geometry(tmp_path: Path) -> None:
+    path = tmp_path / "no_position"
+    _write_test_dicom(path, "1.2.826.0.1.3680043.8.498.16", 1)
+
+    rows = scan_dicom_series(tmp_path)
+
+    assert rows[0].spacing_z_mm is None
+    assert rows[0].gap_count is None
