@@ -5,11 +5,15 @@ from pathlib import Path
 import pytest
 
 from breathgeom.io.datasets import (
+    ACCESS_NOTE_NAME,
+    ACCESS_STEPS_RU,
     Dataset,
     DatasetFile,
     fetch_dataset,
     file_digest,
     load_registry,
+    owner_action_datasets,
+    prepare_dataset_dir,
     verify_file,
     write_provenance,
 )
@@ -112,6 +116,52 @@ def test_file_digest_matches_hashlib(tmp_path: Path) -> None:
     target.write_bytes(payload)
 
     assert file_digest(target, "sha256") == hashlib.sha256(payload).hexdigest()
+
+
+def test_owner_action_covers_every_non_direct_dataset() -> None:
+    registry = load_registry(REGISTRY)
+    gated = owner_action_datasets(registry)
+
+    assert {dataset.id for dataset in gated} == {
+        dataset.id for dataset in registry.datasets if dataset.access != "direct"
+    }
+    assert all(not dataset.unattended for dataset in gated)
+
+
+def test_prepare_creates_folder_with_actionable_note(tmp_path: Path) -> None:
+    dataset = _direct_dataset(
+        id="gated_demo",
+        access="request",
+        url="https://example.invalid/form",
+        license="Free for research after the request form.",
+        files=[],
+    )
+
+    target = prepare_dataset_dir(tmp_path, dataset)
+    note = (target / ACCESS_NOTE_NAME).read_text(encoding="utf-8")
+
+    assert target.is_dir()
+    assert target.name == "gated_demo"
+    assert "https://example.invalid/form" in note
+    assert "Free for research after the request form." in note
+    assert "форму запроса" in note
+
+
+def test_prepare_is_idempotent_and_keeps_downloaded_files(tmp_path: Path) -> None:
+    """Re-running preparation must never disturb data the owner already placed."""
+    dataset = _direct_dataset(id="gated_demo", access="dua", files=[])
+    target = prepare_dataset_dir(tmp_path, dataset)
+    payload = target / "already_downloaded.zip"
+    payload.write_bytes(b"owner data")
+
+    prepare_dataset_dir(tmp_path, dataset)
+
+    assert payload.read_bytes() == b"owner data"
+
+
+def test_every_access_level_has_russian_instructions() -> None:
+    for dataset in owner_action_datasets(load_registry(REGISTRY)):
+        assert dataset.access in ACCESS_STEPS_RU, dataset.access
 
 
 def test_provenance_records_source_and_licence(tmp_path: Path) -> None:

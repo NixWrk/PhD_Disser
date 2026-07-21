@@ -9,10 +9,13 @@ from rich.table import Table
 
 from breathgeom.config import load_paths_config, validate_project
 from breathgeom.io.datasets import (
+    ACCESS_NOTE_NAME,
     dataset_dir,
     fetch_dataset,
     load_registry,
     manual_instructions,
+    owner_action_datasets,
+    prepare_dataset_dir,
     write_provenance,
 )
 from breathgeom.io.dicom import scan_dicom_series, write_manifest_csv
@@ -132,6 +135,32 @@ def data_list(
         "Only [bold]direct[/bold] datasets are fetched by code. "
         "The rest need the owner to accept terms or file a request."
     )
+
+
+@data_app.command("prepare")
+def data_prepare(
+    registry: Annotated[
+        Path,
+        typer.Option(exists=True, dir_okay=False, readable=True),
+    ] = Path("configs/open_datasets.yaml"),
+    config: Annotated[
+        Path,
+        typer.Option(exists=True, dir_okay=False, readable=True),
+    ] = Path("configs/paths.local.yaml"),
+) -> None:
+    """Create folders for datasets only the project owner can unlock."""
+    open_data_root = _open_data_root(config)
+    datasets = owner_action_datasets(load_registry(registry))
+
+    table = Table(title=f"Folders for owner-gated datasets ({open_data_root})")
+    table.add_column("id")
+    table.add_column("access")
+    table.add_column("folder")
+    for dataset in datasets:
+        target = prepare_dataset_dir(open_data_root, dataset)
+        table.add_row(dataset.id, dataset.access, target.name)
+    console.print(table)
+    console.print(f"Each folder carries {ACCESS_NOTE_NAME} with the exact steps and licence.")
 
 
 @data_app.command("fetch")

@@ -218,3 +218,94 @@ def manual_instructions(dataset: Dataset) -> str:
         "application": "File a formal application with institutional approval.",
     }
     return steps.get(dataset.access, "Follow the provider instructions.")
+
+
+#: Russian wording of each barrier, written into the folder the owner will open.
+ACCESS_STEPS_RU: dict[str, str] = {
+    "share": (
+        "Открыть ссылку-папку в браузере и скачать содержимое в эту папку. "
+        "Регистрация не нужна, но прямого файла нет, поэтому автоматически код не качает."
+    ),
+    "registration": (
+        "Зарегистрироваться на платформе, принять условия challenge, затем скачать в эту папку."
+    ),
+    "request": (
+        "Заполнить форму запроса. Поставщик присылает доступ (обычно пароль к Dropbox). "
+        "Скачать в эту папку."
+    ),
+    "dua": (
+        "Подписать ограничительное лицензионное соглашение и отправить его поставщику. "
+        "После подтверждения скачать в эту папку."
+    ),
+    "tcia_public": (
+        "Принять условия использования TCIA и забрать коллекцию клиентом NBIA в эту папку. "
+        "Обязательна ссылка на DOI при публикации."
+    ),
+    "application": (
+        "Подать официальную заявку с институциональным одобрением. "
+        "Процедура длительная, начинать только при готовности её пройти."
+    ),
+}
+
+ACCESS_NOTE_NAME = "ACCESS.md"
+
+
+def owner_action_datasets(registry: DatasetRegistry) -> list[Dataset]:
+    """Datasets that only a person can unlock, in registry order."""
+    return [dataset for dataset in registry.datasets if not dataset.unattended]
+
+
+def access_note(dataset: Dataset) -> str:
+    """Self-contained note placed in the dataset folder for the project owner."""
+    lines = [
+        f"# {dataset.title}",
+        "",
+        f"Идентификатор в реестре: `{dataset.id}`",
+        f"Уровень доступа: `{dataset.access}`",
+        f"Назначение: {dataset.purpose}",
+        f"Тип данных: {dataset.pairs}",
+        "",
+        "## Что это даёт",
+        "",
+        dataset.content.strip(),
+        "",
+        "## Что нужно сделать",
+        "",
+        ACCESS_STEPS_RU.get(dataset.access, "Следовать инструкции поставщика."),
+        "",
+        f"Источник: {dataset.url}",
+    ]
+    if dataset.reference:
+        lines.append(f"Описание и код: {dataset.reference}")
+    lines += [
+        "",
+        "## Лицензия",
+        "",
+        dataset.license.strip(),
+    ]
+    if dataset.aggregates:
+        lines += [
+            "",
+            "## Агрегирует",
+            "",
+            ", ".join(dataset.aggregates),
+        ]
+    if dataset.notes:
+        lines += ["", "## Замечания", "", dataset.notes.strip()]
+    lines += [
+        "",
+        "## Куда класть файлы",
+        "",
+        "В эту папку. После этого `breathgeom data list` покажет датасет как present.",
+        "Данные не коммитятся в Git и не смешиваются с приватным каталогом пациентов.",
+        "",
+    ]
+    return "\n".join(lines)
+
+
+def prepare_dataset_dir(open_data_root: Path, dataset: Dataset) -> Path:
+    """Create the folder for a gated dataset and describe how to fill it."""
+    target = dataset_dir(open_data_root, dataset)
+    target.mkdir(parents=True, exist_ok=True)
+    (target / ACCESS_NOTE_NAME).write_text(access_note(dataset), encoding="utf-8")
+    return target
