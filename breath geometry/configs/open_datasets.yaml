@@ -1,0 +1,167 @@
+# Registry of open CT datasets used for model validation and thickness assessment.
+#
+# All facts here were verified against the source on 2026-07-17. Binary data never
+# enters Git; it is downloaded into open_data_root from configs/paths.local.yaml.
+#
+# access levels:
+#   direct       - single file URL, code may fetch it unattended
+#   share        - web share folder, needs a browser or a share client
+#   registration - account plus acceptance of challenge terms by the project owner
+#   request      - email or web form request, credentials returned by the provider
+#   dua          - signed restricted licence agreement returned to the provider
+#   tcia_public  - public TCIA collection, usage policy and attribution apply
+#   application  - formal application with institutional approval
+#
+# Anything other than "direct" is completed by the project owner. Research code
+# does not accept licences, terms or data use agreements on someone's behalf.
+
+datasets:
+  - id: lung250m4b
+    title: Lung250M-4B
+    purpose: motion_validation
+    content: >-
+      248 inspiration/expiration lung CT from 124 patients, with vessel
+      segmentations, image-derived keypoint correspondences and manual landmarks
+      for validation.
+    pairs: inspiration_expiration
+    access: share
+    url: https://cloud.imi.uni-luebeck.de/s/s64fqbPpXNexBPP
+    reference: https://github.com/multimodallearning/Lung250M-4B
+    license: >-
+      Mixed. CC-BY subsets are directly usable; the COPDgene and EMPIRE10
+      subsets require separate access and extra preprocessing.
+    aggregates: [EMPIRE10, TCIA-NLST, TCIA-NSCLC, L2R-LungCT, TCIA-Ventilation, DIR-LAB-COPDgene]
+    notes: >-
+      Largest openly reachable inspiration/expiration collection and the main
+      complement to the FOV-cropped local cardiac CTA. Size not published.
+
+  - id: dirlab_copdgene
+    title: DIR-Lab COPDgene
+    purpose: motion_validation
+    content: >-
+      10 breath-hold image pairs, full thorax, quarter-dose normal expiration and
+      full-dose maximum inspiration, 7298 expert landmark pairs in total
+      (447-1172 per case).
+    pairs: inspiration_expiration
+    access: request
+    url: https://med.emory.edu/departments/radiation-oncology/research-laboratories/deformable-image-registration/downloads-and-reference-data/copdgene.html
+    license: Free for research after the request form; files served via Dropbox.
+    notes: >-
+      Reference standard for registration TRE. Landmarks make it the primary
+      objective check for any motion model.
+
+  - id: dirlab_4dct
+    title: DIR-Lab 4DCT
+    purpose: motion_validation
+    content: 10 4DCT cases, phases T00-T50, 300 expert landmarks per case.
+    pairs: four_dimensional
+    access: request
+    url: https://med.emory.edu/departments/radiation-oncology/research-laboratories/deformable-image-registration/downloads-and-reference-data/4dct.html
+    license: Free for research after the request form.
+
+  - id: popi
+    title: POPI-model
+    purpose: motion_validation
+    content: >-
+      10 respiratory phases of a breathing thorax with 40 landmarks per frame;
+      additional 4DCT images with 100 landmarks on the full inhale and exhale
+      frames.
+    pairs: four_dimensional
+    access: share
+    url: https://www.creatis.insa-lyon.fr/rio/popi-model
+    reference: https://github.com/open-vv/popi-model
+    license: Free for research, cite the POPI-model publication.
+    notes: Small and quick to obtain; good first end-to-end rehearsal of the pipeline.
+
+  - id: learn2reg_lungct
+    title: Learn2Reg, task LungCT
+    purpose: motion_validation
+    content: >-
+      20 training and 10 test inspiration/expiration pairs, affinely
+      pre-registered to 192x192x208, with lung masks and keypoints.
+    pairs: inspiration_expiration
+    access: registration
+    url: https://learn2reg.grand-challenge.org/
+    license: Challenge terms accepted on the platform by the project owner.
+    notes: >-
+      Fields of view of the two scans differ substantially and the expiration
+      lung is not fully visible, which mirrors the local cropping problem.
+
+  - id: tcia_4d_lung
+    title: TCIA 4D-Lung
+    purpose: motion_validation
+    content: >-
+      Locally advanced NSCLC patients, 4DCT with 10 respiratory phases per
+      acquisition, 3 mm slices, plus cone beam CT.
+    pairs: four_dimensional
+    access: tcia_public
+    url: https://www.cancerimagingarchive.net/collection/4d-lung/
+    license: TCIA data usage policy, attribution with DOI required.
+    notes: Retrieved with the NBIA client rather than a plain file URL.
+
+  - id: totalsegmentator_v2
+    title: TotalSegmentator dataset v2
+    purpose: muscle_thickness
+    content: >-
+      1228 CT images with segmentations of 117 anatomical structures, including
+      muscles; native, without contrast constraints of the local cardiac CTA.
+    pairs: none
+    access: direct
+    url: https://zenodo.org/records/8367088
+    license: CC-BY-4.0
+    files:
+      - name: Totalsegmentator_dataset_v2.zip
+        url: https://zenodo.org/api/records/8367088/files/Totalsegmentator_dataset_v2.zip/content
+        size_bytes: 23590000000
+        checksum: md5:fd65f71cf3ef78c67a3740909ecef674
+
+  - id: totalsegmentator_v1
+    title: TotalSegmentator dataset v1
+    purpose: muscle_thickness
+    content: 1204 CT images with 104 structures, including 10 muscles.
+    pairs: none
+    access: direct
+    url: https://zenodo.org/record/6802614
+    license: CC-BY-4.0
+    files:
+      - name: Totalsegmentator_dataset.zip
+        url: https://zenodo.org/api/records/6802614/files/Totalsegmentator_dataset.zip/content
+        size_bytes: 28400000000
+        checksum: md5:f0fbb3f91d9d99f2169863545f577b30
+    notes: Superseded by v2; fetch only if the v1 label set is specifically needed.
+
+  - id: saros
+    title: SAROS
+    purpose: muscle_thickness
+    content: >-
+      900 CT of 882 patients with 13 body region labels including muscle and
+      subcutaneous tissue, annotated on every fifth axial slice.
+    pairs: none
+    access: dua
+    url: https://www.cancerimagingarchive.net/analysis-result/saros/
+    reference: https://github.com/UMEssen/saros-dataset
+    license: >-
+      TCIA Restricted License Agreement, signed and returned to
+      help@cancerimagingarchive.net before access.
+    notes: >-
+      Muscle and subcutaneous tissue labels make this the reference for
+      separating muscle from fat, which contrast-enhanced local CTA cannot support.
+
+  - id: copdgene_full
+    title: COPDGene, full archive
+    purpose: motion_validation
+    content: Thousands of inspiration/expiration chest CT.
+    pairs: inspiration_expiration
+    access: application
+    url: https://www.ncbi.nlm.nih.gov/gap/
+    license: Controlled access via dbGaP, data use agreement and institutional approval.
+    notes: Only if the owner is prepared to run the full application process.
+
+  - id: nlst_full
+    title: NLST, full archive
+    purpose: motion_validation
+    content: Low dose screening chest CT.
+    pairs: none
+    access: application
+    url: https://cdas.cancer.gov/nlst/
+    license: Application through CDAS with a signed agreement.

@@ -13,6 +13,8 @@ class PathsConfig(BaseModel):
     workspace_data_root: Path = Path("data")
     tool_root: Path = Path("tools/bin")
     read_only_source: bool = True
+    # Open datasets live outside the repo and outside the private patient source.
+    open_data_root: Path | None = None
 
 
 class ProjectValidation(BaseModel):
