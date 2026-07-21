@@ -79,6 +79,10 @@ def manifest_scan(
         int | None,
         typer.Option(min=1, help="Optional preliminary cap while extraction is still running."),
     ] = None,
+    checksums: Annotated[
+        bool,
+        typer.Option(help="Compute SHA-256 per file; slower, required for the frozen manifest."),
+    ] = False,
 ) -> None:
     paths = load_paths_config(config)
     if not paths.read_only_source:
@@ -87,7 +91,7 @@ def manifest_scan(
     if not paths.source_root.exists():
         console.print("[red]Source root is unavailable.[/red]")
         raise typer.Exit(code=2)
-    rows = scan_dicom_series(paths.source_root, max_files=max_files)
+    rows = scan_dicom_series(paths.source_root, max_files=max_files, checksums=checksums)
     write_manifest_csv(rows, output)
     console.print(f"Wrote {len(rows)} de-identified series rows to {output}")
 

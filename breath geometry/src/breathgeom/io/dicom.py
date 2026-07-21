@@ -1,9 +1,11 @@
 from __future__ import annotations
 
 import csv
+import hashlib
 from collections import defaultdict
 from collections.abc import Iterable
 from dataclasses import asdict, dataclass
+from datetime import datetime
 from pathlib import Path
 from typing import Any
 
@@ -59,6 +61,9 @@ POSITION_TOLERANCE_MM = 1e-3
 SPACING_TOLERANCE_MM = 0.01
 # A step wider than this multiple of the median step is treated as a missing slice.
 GAP_FACTOR = 1.5
+# Series more than this far apart in time belong to different breath-holds.
+BREATH_HOLD_GAP_S = 30.0
+CHECKSUM_CHUNK_BYTES = 1024 * 1024
 
 FloatArray = npt.NDArray[np.float64]
 
@@ -117,6 +122,11 @@ class DicomHeader:
     number_of_frames: int
     pixel_spacing_source: str | None
     slice_thickness_source: str | None
+    contrast_administered: str | None
+    reconstruction_diameter_mm: float | None
+    frame_type: str | None
+    acquisition_datetime: datetime | None
+    path: Path
     geometry: FrameGeometry
 
 
@@ -155,6 +165,12 @@ class SeriesManifestRow:
     orientation_variant_count: int | None
     stack_count: int | None
     temporal_position_count: int | None
+    contrast_administered: str | None
+    reconstruction_diameter_mm: float | None
+    frame_type: str | None
+    acquisition_index: int | None
+    acquisition_offset_s: float | None
+    source_checksum: str | None
     manufacturer: str | None
     scanner_model: str | None
     convolution_kernel: str | None
@@ -221,6 +237,59 @@ def _slice_thickness(dataset: pydicom.dataset.Dataset) -> tuple[float | None, st
         if value is not None:
             return value, f"{SHARED_GROUPS}.PixelMeasuresSequence"
     return None, None
+
+
+def _shared_sub(dataset: pydicom.dataset.Dataset, group: str, key: str) -> Any:
+    """Read one attribute out of a Shared Functional Groups sub-sequence."""
+    item = _first_item(_first_item(dataset, SHARED_GROUPS), group)
+    return item.get(key) if item is not None else None
+
+
+def _frame_type(dataset: pydicom.dataset.Dataset) -> str | None:
+    """Image flavour, e.g. CARDIAC_CTA versus CARDIAC_PHASE."""
+    value = _shared_sub(dataset, "CTImageFrameTypeSequence", "FrameType")
+    if value is None:
+        value = dataset.get("ImageType")
+    if value is None:
+        return None
+    if isinstance(value, str):
+        return value
+    return "\\".join(str(part) for part in value)
+
+
+def _acquisition_datetime(dataset: pydicom.dataset.Dataset) -> datetime | None:
+    """Acquisition instant of the first frame, used only to separate breath-holds.
+
+    The absolute value never reaches the manifest: dates tied to a person are
+    treated as identifying, so only offsets within a study are exported.
+    """
+    per_frame = dataset.get(PER_FRAME_GROUPS)
+    content = _first_item(per_frame[0], "FrameContentSequence") if per_frame else None
+    if content is None:
+        return None
+    raw = _optional_text(content.get("FrameAcquisitionDateTime"))
+    if raw is None or len(raw) < 14:
+        return None
+    try:
+        return datetime.strptime(raw[:14], "%Y%m%d%H%M%S")
+    except ValueError:
+        return None
+
+
+def file_sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as stream:
+        while chunk := stream.read(CHECKSUM_CHUNK_BYTES):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def series_checksum(digests: list[str]) -> str:
+    """Order-independent digest of a series, built from its per-file digests."""
+    combined = hashlib.sha256()
+    for digest in sorted(digests):
+        combined.update(digest.encode("ascii"))
+    return combined.hexdigest()
 
 
 def _position_from_group(group: Any) -> tuple[float, float, float] | None:
@@ -472,6 +541,15 @@ def read_dicom_header(path: Path) -> DicomHeader | None:
         number_of_frames=_optional_int(dataset.get("NumberOfFrames")) or 1,
         pixel_spacing_source=pixel_spacing_source,
         slice_thickness_source=slice_thickness_source,
+        contrast_administered=_optional_text(
+            _shared_sub(dataset, "ContrastBolusUsageSequence", "ContrastBolusAgentAdministered")
+        ),
+        reconstruction_diameter_mm=_optional_float(
+            _shared_sub(dataset, "CTReconstructionSequence", "ReconstructionDiameter")
+        ),
+        frame_type=_frame_type(dataset),
+        acquisition_datetime=_acquisition_datetime(dataset),
+        path=path,
         geometry=_frame_geometry(dataset),
     )
 
@@ -487,12 +565,46 @@ def iter_candidate_files(root: Path, max_files: int | None = None) -> Iterable[P
             return
 
 
-def scan_dicom_series(root: Path, max_files: int | None = None) -> list[SeriesManifestRow]:
+def breath_hold_index(
+    acquisitions: list[datetime],
+    moment: datetime | None,
+) -> tuple[int | None, float | None]:
+    """Place one series among the breath-holds of its study.
+
+    Series acquired within seconds of each other are reconstructions of the same
+    held breath; a gap of minutes means the person breathed and was scanned again.
+    Only the offset from the first acquisition is returned, never the instant itself.
+    """
+    if moment is None or not acquisitions:
+        return None, None
+    ordered = sorted(acquisitions)
+    starts = [ordered[0]]
+    for candidate in ordered[1:]:
+        if (candidate - starts[-1]).total_seconds() > BREATH_HOLD_GAP_S:
+            starts.append(candidate)
+    index = 0
+    for position, start in enumerate(starts):
+        if moment >= start:
+            index = position
+    return index, (moment - ordered[0]).total_seconds()
+
+
+def scan_dicom_series(
+    root: Path,
+    max_files: int | None = None,
+    checksums: bool = False,
+) -> list[SeriesManifestRow]:
     grouped: dict[str, list[DicomHeader]] = defaultdict(list)
     for path in iter_candidate_files(root, max_files=max_files):
         header = read_dicom_header(path)
         if header is not None:
             grouped[header.series_instance_uid].append(header)
+
+    study_acquisitions: dict[str, list[datetime]] = defaultdict(list)
+    for headers in grouped.values():
+        for header in headers:
+            if header.acquisition_datetime is not None:
+                study_acquisitions[header.study_instance_uid].append(header.acquisition_datetime)
 
     rows: list[SeriesManifestRow] = []
     for series_uid, headers in sorted(grouped.items()):
@@ -510,6 +622,13 @@ def scan_dicom_series(root: Path, max_files: int | None = None) -> list[SeriesMa
             for header in headers
         }
         geometry = summarize_geometry(headers)
+        acquisition_index, acquisition_offset = breath_hold_index(
+            study_acquisitions.get(first.study_instance_uid, []),
+            first.acquisition_datetime,
+        )
+        checksum: str | None = None
+        if checksums:
+            checksum = series_checksum([file_sha256(header.path) for header in headers])
         rows.append(
             SeriesManifestRow(
                 series_instance_uid=series_uid,
@@ -545,6 +664,12 @@ def scan_dicom_series(root: Path, max_files: int | None = None) -> list[SeriesMa
                 orientation_variant_count=geometry.orientation_variant_count,
                 stack_count=geometry.stack_count,
                 temporal_position_count=geometry.temporal_position_count,
+                contrast_administered=first.contrast_administered,
+                reconstruction_diameter_mm=first.reconstruction_diameter_mm,
+                frame_type=first.frame_type,
+                acquisition_index=acquisition_index,
+                acquisition_offset_s=acquisition_offset,
+                source_checksum=checksum,
                 manufacturer=first.manufacturer,
                 scanner_model=first.scanner_model,
                 convolution_kernel=first.convolution_kernel,
