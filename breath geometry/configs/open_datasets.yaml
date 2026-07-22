@@ -71,7 +71,10 @@ datasets:
     url: https://www.creatis.insa-lyon.fr/rio/popi-model
     reference: https://github.com/open-vv/popi-model
     license: Free for research, cite the POPI-model publication.
-    notes: Small and quick to obtain; good first end-to-end rehearsal of the pipeline.
+    notes: >-
+      Careful: the obvious "popi-model-master.zip" from GitHub is only the web page
+      (images, README, PDFs) and contains no CT and no landmarks. The 4DCT volumes
+      are downloaded from the CREATIS page itself.
 
   - id: learn2reg_lungct
     title: Learn2Reg, task LungCT
@@ -97,7 +100,10 @@ datasets:
     access: tcia_public
     url: https://www.cancerimagingarchive.net/collection/4d-lung/
     license: TCIA data usage policy, attribution with DOI required.
-    notes: Retrieved with the NBIA client rather than a plain file URL.
+    notes: >-
+      Retrieved with the NBIA client rather than a plain file URL. The .tcia file
+      offered by the site is only a manifest listing series UIDs; the images are
+      pulled by feeding that manifest to the NBIA Data Retriever.
 
   - id: totalsegmentator_v2
     title: TotalSegmentator dataset v2
@@ -146,6 +152,9 @@ datasets:
     notes: >-
       Muscle and subcutaneous tissue labels make this the reference for
       separating muscle from fat, which contrast-enhanced local CTA cannot support.
+      Careful: the NIfTI archive holds segmentations only. The matching CT images
+      live in other TCIA collections and are fetched separately, see the
+      download script in the reference repository.
 
   - id: copdgene_full
     title: COPDGene, full archive
