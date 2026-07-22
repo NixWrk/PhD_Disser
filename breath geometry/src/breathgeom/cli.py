@@ -12,6 +12,7 @@ from breathgeom.io.datasets import (
     ACCESS_NOTE_NAME,
     dataset_dir,
     fetch_dataset,
+    has_payload,
     load_registry,
     manual_instructions,
     owner_action_datasets,
@@ -126,8 +127,7 @@ def data_list(
     table.add_column("access")
     table.add_column("local")
     for dataset in load_registry(registry).datasets:
-        target = dataset_dir(open_data_root, dataset)
-        present = "present" if target.exists() and any(target.iterdir()) else "-"
+        present = "present" if has_payload(open_data_root, dataset) else "-"
         access = dataset.access if dataset.unattended else f"{dataset.access} (owner)"
         table.add_row(dataset.id, dataset.purpose, dataset.pairs, access, present)
     console.print(table)

@@ -11,6 +11,7 @@ from breathgeom.io.datasets import (
     DatasetFile,
     fetch_dataset,
     file_digest,
+    has_payload,
     load_registry,
     owner_action_datasets,
     prepare_dataset_dir,
@@ -157,6 +158,28 @@ def test_prepare_is_idempotent_and_keeps_downloaded_files(tmp_path: Path) -> Non
     prepare_dataset_dir(tmp_path, dataset)
 
     assert payload.read_bytes() == b"owner data"
+
+
+def test_prepared_folder_alone_is_not_reported_as_present(tmp_path: Path) -> None:
+    """An instruction note must never make an empty dataset look downloaded."""
+    dataset = _direct_dataset(id="gated_demo", access="share", files=[])
+    prepare_dataset_dir(tmp_path, dataset)
+
+    assert has_payload(tmp_path, dataset) is False
+
+    (tmp_path / "gated_demo" / "scans.zip").write_bytes(b"real data")
+    assert has_payload(tmp_path, dataset) is True
+
+
+def test_provenance_alone_is_not_payload(tmp_path: Path) -> None:
+    dataset = _direct_dataset()
+    write_provenance(tmp_path / dataset.id, dataset, [])
+
+    assert has_payload(tmp_path, dataset) is False
+
+
+def test_missing_folder_has_no_payload(tmp_path: Path) -> None:
+    assert has_payload(tmp_path, _direct_dataset()) is False
 
 
 def test_every_access_level_has_russian_instructions() -> None:

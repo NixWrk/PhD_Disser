@@ -303,6 +303,18 @@ def access_note(dataset: Dataset) -> str:
     return "\n".join(lines)
 
 
+#: Files this project writes itself; they never count as downloaded payload.
+METADATA_NAMES: frozenset[str] = frozenset({ACCESS_NOTE_NAME, PROVENANCE_NAME})
+
+
+def has_payload(open_data_root: Path, dataset: Dataset) -> bool:
+    """Whether real data is present, ignoring notes and provenance we wrote."""
+    target = dataset_dir(open_data_root, dataset)
+    if not target.is_dir():
+        return False
+    return any(item.name not in METADATA_NAMES for item in target.iterdir())
+
+
 def prepare_dataset_dir(open_data_root: Path, dataset: Dataset) -> Path:
     """Create the folder for a gated dataset and describe how to fill it."""
     target = dataset_dir(open_data_root, dataset)
