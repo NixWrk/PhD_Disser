@@ -46,6 +46,22 @@ class Side(StrEnum):
     LEFT = "left"
 
 
+class Reduction(StrEnum):
+    """How the per-slice distribution of skin-to-lung distances is collapsed.
+
+    The distance transform already gives the shortest path to the lung for
+    *every* skin pixel in the sector; the question is what to do with that
+    vector. ``MIN`` answers "how close does the lung ever come to the skin",
+    which is a biased-low order statistic: its bias depends on how many
+    candidates there are and on the local curvature, and both change between
+    inhale and exhale. ``MEDIAN`` answers "how thick is the wall across the
+    sector", which is what an extended electrode array actually senses.
+    """
+
+    MIN = "min"
+    MEDIAN = "median"
+
+
 @dataclass(frozen=True)
 class WallParams:
     """Tunables of the measurement, all in physical units where applicable."""
@@ -68,6 +84,11 @@ class WallParams:
     min_sector_px: int = 20
     # Step used to sample tissue composition along the measured ray.
     composition_step_mm: float = 0.25
+    # How the sector's distance distribution becomes one number per slice.
+    # MIN is the default only because it is the closer of the two to the h of
+    # the two-layer impedance model; neither is a validated estimator, and the
+    # two disagree on the sign of the inhale-to-exhale change.
+    reduction: Reduction = Reduction.MIN
 
 
 @dataclass(frozen=True)
@@ -348,7 +369,13 @@ def _measure_slice(
     candidate_rows = skin_rows[sector]
     candidate_columns = skin_columns[sector]
     reach = distance[candidate_rows, candidate_columns]
-    best = int(np.argmin(reach))
+    if params.reduction is Reduction.MIN:
+        best = int(np.argmin(reach))
+    else:
+        # The candidate sitting closest to the median: a real ray, so the
+        # composition below is sampled along an actual path through tissue
+        # rather than along a synthetic average that crosses nothing.
+        best = int(np.argmin(np.abs(reach - np.median(reach))))
     start_r, start_c = int(candidate_rows[best]), int(candidate_columns[best])
     end_r = int(nearest[0, start_r, start_c])
     end_c = int(nearest[1, start_r, start_c])

@@ -7,6 +7,7 @@ import pytest
 
 from breathgeom.measure.wall import (
     AIR_HU,
+    Reduction,
     Side,
     WallParams,
     load_ras,
@@ -130,3 +131,46 @@ def test_untruncated_phantom_reports_no_fov_contact() -> None:
 
     assert result.truncated_ray_count == 0
     assert result.fov_contact_fraction == 0.0
+
+
+def curved_torso() -> IntArray:
+    """Elliptical body with a round lung: real chests are not slabs."""
+    volume = np.full((ROWS, COLUMNS, SLICES), -1000, dtype=np.int16)
+    rows, columns = np.mgrid[0:ROWS, 0:COLUMNS]
+    body = ((rows - 80) / 62.0) ** 2 + ((columns - 80) / 48.0) ** 2 <= 1.0
+    lung = (rows - 95) ** 2 + (columns - 80) ** 2 <= 28**2
+    volume[np.repeat(body[:, :, None], SLICES, axis=2)] = MUSCLE_HU_FILL
+    volume[np.repeat(lung[:, :, None], SLICES, axis=2)] = AIR_HU - 500
+    return volume
+
+
+def test_median_reduction_runs_above_min_on_a_curved_wall() -> None:
+    """The two reductions do not measure the same quantity.
+
+    Over a wide angular sector the rays near its edges reach a curved lung
+    obliquely, so the median runs well above the perpendicular thickness that
+    the minimum reports. Neither is wrong in itself; comparing across them is.
+    """
+    volume = curved_torso()
+    common = {"min_lung_area_mm2": 200.0, "min_lung_component_px": 50}
+    smallest = measure_wall(volume, SPACING, side=Side.RIGHT,
+                            params=WallParams(reduction=Reduction.MIN, **common))
+    typical = measure_wall(volume, SPACING, side=Side.RIGHT,
+                           params=WallParams(reduction=Reduction.MEDIAN, **common))
+
+    assert smallest.rays and typical.rays
+    low = float(np.median(smallest.thickness_mm))
+    high = float(np.median(typical.thickness_mm))
+    assert high > low
+
+    # On a flat wall with a parallel lung every ray is perpendicular, so the
+    # two collapse onto the same number. The gap is created by curvature, and
+    # on real anatomy it reaches a factor of two.
+    flat = torso()
+    flat_min = measure_wall(flat, SPACING, side=Side.RIGHT,
+                            params=WallParams(reduction=Reduction.MIN, **common))
+    flat_median = measure_wall(flat, SPACING, side=Side.RIGHT,
+                               params=WallParams(reduction=Reduction.MEDIAN, **common))
+    assert float(np.median(flat_median.thickness_mm)) == pytest.approx(
+        float(np.median(flat_min.thickness_mm)), abs=0.5
+    )
