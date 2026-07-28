@@ -199,7 +199,7 @@ def lung_mask(
     return mask
 
 
-def _fov_ring(shape: tuple[int, int], params: WallParams) -> BoolArray:
+def fov_ring(shape: tuple[int, int], params: WallParams) -> BoolArray:
     """Outer band of the reconstruction circle inscribed in the slice."""
     rows, columns = shape
     grid_r, grid_c = np.mgrid[0:rows, 0:columns]
@@ -281,7 +281,7 @@ def measure_wall(
     sx, sy, sz = spacing
     in_plane = (sx, sy)
     slice_count = volume_ras.shape[2]
-    ring = _fov_ring((volume_ras.shape[0], volume_ras.shape[1]), params)
+    ring = fov_ring((volume_ras.shape[0], volume_ras.shape[1]), params)
     pixel_area_mm2 = sx * sy
 
     bodies: dict[int, BoolArray] = {}
