@@ -189,11 +189,18 @@ def measure_shell(
     spacing: tuple[float, float, float],
     side: Side = Side.RIGHT,
     params: ShellParams | None = None,
+    band: tuple[int, int] | None = None,
 ) -> Shell:
     """Read the skin-to-lung depth over the lateral surface of one lung.
 
     ``volume_ras`` must be in RAS+: axis 0 to the patient's right, axis 1
     anterior, axis 2 to the head. Slices are taken along axis 2.
+
+    ``band`` fixes the measured slice range instead of deriving it from the lung
+    base. Comparing two phases requires it: the base rises with the diaphragm,
+    so a belt referred to it lands on different ribs in the two phases, and that
+    displacement tracks the depth of the exhalation exactly as the sought effect
+    does. Only volumes already brought to a common frame may share a band.
     """
     params = params or ShellParams()
     sx, sy, sz = spacing
@@ -226,12 +233,16 @@ def measure_shell(
     if not lungs:
         return Shell(side, (), 0, 0, 0, None, None, contact)
 
-    base = min(lungs)
-    band = [i for i in sorted(lungs) if base <= i <= base + int(params.band_height_mm / sz)]
+    if band is None:
+        base = min(lungs)
+        first, last = base, base + int(params.band_height_mm / sz)
+    else:
+        first, last = band
+    belt = [i for i in sorted(lungs) if first <= i <= last]
 
     samples: list[ShellSample] = []
     seen = 0
-    for index in band:
+    for index in belt:
         slice_hu = volume_ras[:, :, index]
         body, lung = bodies[index], lungs[index]
 
@@ -283,11 +294,11 @@ def measure_shell(
     return Shell(
         side=side,
         samples=tuple(samples),
-        slices_used=len(band),
+        slices_used=len(belt),
         surface_voxels_seen=seen,
         surface_voxels_kept=len(samples),
-        band_first_slice=band[0] if band else None,
-        band_last_slice=band[-1] if band else None,
+        band_first_slice=belt[0] if belt else None,
+        band_last_slice=belt[-1] if belt else None,
         fov_contact_fraction=contact,
     )
 
