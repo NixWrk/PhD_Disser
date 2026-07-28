@@ -57,3 +57,6 @@ tools/cache/
 Thumbs.db
 Desktop.ini
 
+
+# Jupyter
+notebooks/.ipynb_checkpoints/

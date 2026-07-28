@@ -39,6 +39,10 @@ RAW_OUTSIDE = -1500
 AIR_PEAK_TOLERANCE_HU = 60.0
 # Nothing in a CT is less dense than air, so only noise may sit below -1100 HU.
 IMPLAUSIBLE_FRACTION = 0.02
+# Dense enough to be vertebra or rib rather than calcified soft tissue.
+SPINE_HU = 300
+# Fewer bone voxels than this in a slice is speckle, not a vertebra.
+MIN_BONE_PX = 50
 BODY_HU = -300
 AIR_HU = -400
 # Below this the recovered right/left asymmetry is too small to decide on.
@@ -87,6 +91,8 @@ class OrientationReport:
     superior_is_high_index: bool
     caudal_air_excess: float
     diaphragm_sharpness_ratio: float
+    posterior_is_high_row: bool
+    spine_offset_px: float
     air_peak_hu: float
 
     @property
@@ -156,31 +162,49 @@ def _infer_orientation(
     outside: BoolArray,
     air_peak: float,
 ) -> OrientationReport:
-    """Recover left/right and head/foot from anatomy, in a (slice, row, column) stack.
+    """Recover the anatomical meaning of all three axes of a (slice, row, column) stack.
 
-    Right/left: the heart sits left of the midline, so the right lung holds more
-    air. Summed over the whole lung rather than one slice, which is what makes
-    the sign stable.
+    Which array axis is which is not a free choice. In an axial DICOM the first
+    in-plane index runs along the *column* direction cosine, so it is the
+    anteroposterior axis, and the second runs left-right. Reading them the other
+    way round makes "the lung with the larger row centroid" a statement about
+    depth rather than side, and it silently selects nonsense.
 
-    Head/foot uses two independent cues that must agree: the caudal half of the
-    lung holds more air than the cranial half, and the diaphragm truncates the
-    lung abruptly while the apex tapers away gradually.
+    Front/back: the spine is the densest structure and it lies posterior.
+    Right/left: the heart displaces the left lung, so the right side holds more
+    air, summed over the whole stack rather than one slice.
+    Head/foot: two cues that must agree — the caudal half of the lung holds more
+    air, and the diaphragm truncates it abruptly while the apex tapers away.
     """
     slices = hu.shape[0]
     air_per_slice = np.zeros(slices, dtype=np.int64)
     low_air = high_air = 0
+    bone_rows: list[float] = []
+    body_rows: list[float] = []
     for index in range(slices):
         body = _body_of(hu[index], ~outside[index])
         if body is None:
             continue
         air = body & (hu[index] < AIR_HU)
         air_per_slice[index] = int(air.sum())
-        half = air.shape[0] // 2
-        low_air += int(air[:half].sum())
-        high_air += int(air[half:].sum())
+        # Columns are the left-right axis, so the side split happens on axis 1.
+        rows, columns = np.where(air)
+        if columns.size:
+            occupied = np.flatnonzero(body.any(axis=0))
+            midline = 0.5 * (float(occupied[0]) + float(occupied[-1]))
+            low_air += int((columns < midline).sum())
+            high_air += int((columns >= midline).sum())
+        bone = body & (hu[index] > SPINE_HU)
+        if int(bone.sum()) > MIN_BONE_PX:
+            bone_rows.append(float(np.where(bone)[0].mean()))
+            spanned = np.flatnonzero(body.any(axis=1))
+            body_rows.append(0.5 * (float(spanned[0]) + float(spanned[-1])))
 
     total_air = low_air + high_air
     asymmetry = (high_air - low_air) / total_air if total_air else 0.0
+    if not bone_rows:
+        raise ValueError("No bone found: the anteroposterior axis cannot be oriented")
+    spine_offset = float(np.mean(bone_rows) - np.mean(body_rows))
 
     if air_per_slice.max() == 0:
         raise ValueError("No aerated lung found: orientation cannot be recovered")
@@ -209,6 +233,8 @@ def _infer_orientation(
         superior_is_high_index=caudal_excess > 0,
         caudal_air_excess=caudal_excess,
         diaphragm_sharpness_ratio=sharpness,
+        posterior_is_high_row=spine_offset > 0,
+        spine_offset_px=spine_offset,
         air_peak_hu=air_peak,
     )
 
@@ -245,12 +271,15 @@ def load_copdgene(
     hu[outside] = -1024  # outside the field is air, not something denser than bone
     report = orientation or _infer_orientation(hu, outside, air_peak)
 
-    # (slice, row, column) -> (row=LR, column=AP, slice=SI) then fix directions
-    volume = np.transpose(hu, (1, 2, 0))
+    # (slice, row=AP, column=LR) -> (LR, AP, SI), then point every axis the way
+    # RAS+ requires: right, anterior, superior.
+    volume = np.transpose(hu, (2, 1, 0))
     if not report.right_is_high_index:
         volume = volume[::-1, :, :]
+    if report.posterior_is_high_row:
+        volume = volume[:, ::-1, :]
     if not report.superior_is_high_index:
         volume = volume[:, :, ::-1]
 
-    spacing = (geometry.spacing_y_mm, geometry.spacing_x_mm, geometry.spacing_z_mm)
+    spacing = (geometry.spacing_x_mm, geometry.spacing_y_mm, geometry.spacing_z_mm)
     return np.ascontiguousarray(volume, dtype=np.int16), spacing, report
