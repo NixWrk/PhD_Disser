@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import csv
+from dataclasses import asdict
 from pathlib import Path
 from typing import Annotated
 
@@ -20,6 +22,7 @@ from breathgeom.io.datasets import (
     write_provenance,
 )
 from breathgeom.io.dicom import scan_dicom_series, write_manifest_csv
+from breathgeom.measure.wall import Side, WallRay, load_ras, measure_wall
 from breathgeom.tools import collect_tool_status
 
 app = typer.Typer(help="Breath Geometry research CLI.")
@@ -27,10 +30,12 @@ project_app = typer.Typer(help="Project validation commands.")
 manifest_app = typer.Typer(help="Read-only de-identified DICOM inventory.")
 tools_app = typer.Typer(help="External tool status.")
 data_app = typer.Typer(help="Open datasets for validation and thickness assessment.")
+measure_app = typer.Typer(help="Geometric measurements on converted volumes.")
 app.add_typer(project_app, name="project")
 app.add_typer(manifest_app, name="manifest")
 app.add_typer(tools_app, name="tools")
 app.add_typer(data_app, name="data")
+app.add_typer(measure_app, name="measure")
 console = Console()
 
 
@@ -198,6 +203,67 @@ def data_fetch(
     console.print(f"Provenance written to {provenance}")
     if not all(result["verified"] for result in results):
         raise typer.Exit(code=1)
+
+
+@measure_app.command("wall")
+def measure_wall_command(
+    volume: Annotated[
+        Path,
+        typer.Argument(exists=True, dir_okay=False, readable=True, help="NIfTI CT volume."),
+    ],
+    side: Annotated[Side, typer.Option(help="Which lateral chest wall to measure.")] = Side.RIGHT,
+    csv_out: Annotated[
+        Path | None,
+        typer.Option("--csv", help="Write one row per measured slice."),
+    ] = None,
+) -> None:
+    """Soft-tissue thickness under a lateral electrode array, from skin to lung."""
+    array, spacing = load_ras(volume)
+    result = measure_wall(array, spacing, side=side)
+
+    table = Table(title=f"Chest wall, {side.value} side ({volume.name})")
+    table.add_column("Quantity")
+    table.add_column("p10", justify="right")
+    table.add_column("median", justify="right")
+    table.add_column("p90", justify="right")
+    for name, values in (
+        ("thickness, mm", result.thickness_mm),
+        ("fat, mm", result.fat_mm),
+        ("muscle, mm", result.muscle_mm),
+    ):
+        low, mid, high = result.percentiles(values)
+        table.add_row(name, f"{low:.1f}", f"{mid:.1f}", f"{high:.1f}")
+    console.print(table)
+
+    if result.lung_extent_mm is None:
+        console.print("[red]No aerated lung found in this volume.[/red]")
+        raise typer.Exit(code=2)
+    console.print(
+        f"rays {len(result.rays)} | lower-part slices {result.slices_in_lower_part} "
+        f"| skipped for small lung {result.slices_skipped_small_lung} "
+        f"| lung extent {result.lung_extent_mm:.0f} mm"
+    )
+    if result.fov_contact_fraction is not None:
+        console.print(
+            f"body touches the reconstruction circle in "
+            f"{100 * result.fov_contact_fraction:.0f}% of slices; "
+            f"{result.truncated_ray_count} of {len(result.rays)} rays sit on such slices"
+        )
+    if result.truncated_ray_count:
+        console.print(
+            "[yellow]WARNING:[/yellow] some rays lie on slices whose body is cut by the "
+            "reconstruction circle; the outer boundary there is not the skin."
+        )
+
+    if csv_out is not None:
+        csv_out.parent.mkdir(parents=True, exist_ok=True)
+        fieldnames = list(WallRay.__dataclass_fields__)
+        with csv_out.open("w", encoding="utf-8-sig", newline="") as stream:
+            writer = csv.DictWriter(stream, fieldnames=fieldnames)
+            writer.writeheader()
+            for ray in result.rays:
+                writer.writerow(asdict(ray))
+        console.print(f"Wrote {len(result.rays)} rays to {csv_out}")
 
 
 if __name__ == "__main__":

@@ -61,3 +61,8 @@ python_version = "3.11"
 strict = true
 warn_unused_ignores = true
 
+# scipy publishes no type information; ndimage results are narrowed at each use site.
+[[tool.mypy.overrides]]
+module = ["scipy.*"]
+ignore_missing_imports = true
+
