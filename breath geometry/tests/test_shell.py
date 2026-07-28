@@ -20,6 +20,9 @@ LEFT_WALL_MM = (LEFT_LUNG_CENTRE[0] - LEFT_LUNG_RADIUS) - (BODY_CENTRE[0] - BODY
 LUNG_RADIUS = RIGHT_LUNG_RADIUS
 MUSCLE_HU_FILL = 50
 FAT_HU_FILL = -100
+SPINE_HU_FILL = 600
+# The midline comes from the spine; a phantom without one is not a thorax.
+SPINE_ROWS, SPINE_COLUMNS = (74, 86), (36, 48)
 PARAMS = ShellParams(min_lung_area_mm2=200.0, min_lung_component_px=50, band_height_mm=1e6)
 
 
@@ -40,6 +43,7 @@ def torso(fat_band_mm: int = 0) -> IntArray:
     )
     volume[np.repeat(body[:, :, None], SLICES, axis=2)] = MUSCLE_HU_FILL
     volume[np.repeat((right | left)[:, :, None], SLICES, axis=2)] = AIR_HU - 500
+    volume[SPINE_ROWS[0]:SPINE_ROWS[1], SPINE_COLUMNS[0]:SPINE_COLUMNS[1], :] = SPINE_HU_FILL
     if fat_band_mm:
         skin_band = body & ~(
             ((rows - BODY_CENTRE[0]) / (BODY_RX - fat_band_mm)) ** 2
@@ -101,7 +105,8 @@ def test_band_height_limits_the_slices_used() -> None:
 
 
 def test_volume_without_lung_reports_nothing() -> None:
-    solid = np.full((60, 60, 20), MUSCLE_HU_FILL, dtype=np.int16)
+    solid = np.full((ROWS, COLUMNS, SLICES), MUSCLE_HU_FILL, dtype=np.int16)
+    solid[SPINE_ROWS[0]:SPINE_ROWS[1], SPINE_COLUMNS[0]:SPINE_COLUMNS[1], :] = SPINE_HU_FILL
 
     result = measure_shell(solid, SPACING, params=PARAMS)
 

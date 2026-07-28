@@ -35,6 +35,7 @@ from breathgeom.measure.wall import (
     MUSCLE_HU,
     Side,
     WallParams,
+    anatomical_midline,
     body_mask,
     fov_ring,
     lung_mask,
@@ -203,6 +204,7 @@ def measure_shell(
         min_body_area_px=params.min_body_area_px,
     )
     ring = fov_ring((volume_ras.shape[0], volume_ras.shape[1]), mask_params)
+    midline = anatomical_midline(volume_ras, mask_params)
     outward = 1.0 if side is Side.RIGHT else -1.0
 
     bodies: dict[int, BoolArray] = {}
@@ -215,7 +217,7 @@ def measure_shell(
             continue
         bodies[index] = body
         touching += int(bool((body & ring).any()))
-        lung = lung_mask(slice_hu, body, side, mask_params)
+        lung = lung_mask(slice_hu, body, side, mask_params, midline)
         if lung is None or float(lung.sum()) * pixel_area_mm2 < params.min_lung_area_mm2:
             continue
         lungs[index] = lung

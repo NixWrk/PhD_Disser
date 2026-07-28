@@ -31,6 +31,10 @@ BODY_COLUMNS = (40, 120)
 LUNG_COLUMNS = (50, 110)
 MUSCLE_HU_FILL = 50  # inside the muscle window
 FAT_HU_FILL = -100  # inside the fat window
+SPINE_HU_FILL = 600
+# The midline is taken from the spine, so a phantom without one is not a
+# thorax as far as the measurement is concerned.
+SPINE_ROWS, SPINE_COLUMNS = (72, 88), (41, 49)
 
 
 def torso(fat_band_mm: int = 0) -> IntArray:
@@ -46,6 +50,7 @@ def torso(fat_band_mm: int = 0) -> IntArray:
     c0, c1 = BODY_COLUMNS
     lc0, lc1 = LUNG_COLUMNS
     volume[r0:r1, c0:c1, :] = MUSCLE_HU_FILL
+    volume[SPINE_ROWS[0]:SPINE_ROWS[1], SPINE_COLUMNS[0]:SPINE_COLUMNS[1], :] = SPINE_HU_FILL
 
     right_face = r1 - 1
     left_face = r0
@@ -107,13 +112,22 @@ def test_small_lung_slices_are_skipped() -> None:
 
 
 def test_volume_without_lung_reports_nothing() -> None:
-    solid = np.full((60, 60, 20), MUSCLE_HU_FILL, dtype=np.int16)
+    solid = np.full((ROWS, COLUMNS, SLICES), MUSCLE_HU_FILL, dtype=np.int16)
+    solid[SPINE_ROWS[0]:SPINE_ROWS[1], SPINE_COLUMNS[0]:SPINE_COLUMNS[1], :] = SPINE_HU_FILL
 
     result = measure_wall(solid, SPACING, params=PARAMS)
 
     assert result.rays == ()
     assert result.lung_extent_mm is None
     assert result.lung_slice_first is None
+
+
+def test_volume_without_a_spine_is_rejected() -> None:
+    """The midline has no anchor without bone, so the side cannot be decided."""
+    boneless = np.full((ROWS, COLUMNS, SLICES), MUSCLE_HU_FILL, dtype=np.int16)
+
+    with pytest.raises(ValueError, match="midline cannot be located"):
+        measure_wall(boneless, SPACING, params=PARAMS)
 
 
 def test_composition_splits_fat_and_muscle() -> None:
@@ -141,6 +155,7 @@ def curved_torso() -> IntArray:
     lung = (rows - 95) ** 2 + (columns - 80) ** 2 <= 28**2
     volume[np.repeat(body[:, :, None], SLICES, axis=2)] = MUSCLE_HU_FILL
     volume[np.repeat(lung[:, :, None], SLICES, axis=2)] = AIR_HU - 500
+    volume[SPINE_ROWS[0]:SPINE_ROWS[1], SPINE_COLUMNS[0]:SPINE_COLUMNS[1], :] = SPINE_HU_FILL
     return volume
 
 

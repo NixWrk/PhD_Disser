@@ -34,6 +34,8 @@ BoolArray = npt.NDArray[np.bool_]
 BODY_HU = -300
 # Everything below this inside the body is aerated lung.
 AIR_HU = -400
+# Dense enough to be vertebra rather than calcified soft tissue.
+SPINE_HU = 300
 # Standard body-composition windows. Valid on native scans only.
 FAT_HU = (-190, -30)
 MUSCLE_HU = (-29, 150)
@@ -82,6 +84,8 @@ class WallParams:
     fov_margin_px: float = 2.0
     # A sector holding fewer skin voxels than this is too small to trust.
     min_sector_px: int = 20
+    # Fewer bone voxels than this in a slice is speckle, not a vertebra.
+    min_bone_px: int = 50
     # Step used to sample tissue composition along the measured ray.
     composition_step_mm: float = 0.25
     # How the sector's distance distribution becomes one number per slice.
@@ -173,29 +177,66 @@ def body_mask(slice_hu: IntArray, params: WallParams) -> BoolArray | None:
     return filled
 
 
+def anatomical_midline(volume_ras: IntArray, params: WallParams) -> float:
+    """Left-right index of the vertebral column, in a RAS+ volume.
+
+    The spine is the one landmark that is both dense and reliably central, so it
+    beats the body centroid, which arms and asymmetric fat pull sideways. Taken
+    as a median over slices, it is stable enough to cut the mediastinum with.
+    """
+    columns: list[float] = []
+    for index in range(volume_ras.shape[2]):
+        slice_hu = volume_ras[:, :, index]
+        body = body_mask(slice_hu, params)
+        if body is None:
+            continue
+        anterior = np.where(body.any(axis=0))[0]
+        # In RAS+ axis 1 points anterior, so the spine sits in the low half.
+        posterior_limit = 0.5 * (float(anterior[0]) + float(anterior[-1]))
+        bone = body & (slice_hu > SPINE_HU)
+        bone[:, int(posterior_limit):] = False
+        if int(bone.sum()) < params.min_bone_px:
+            continue
+        columns.append(float(np.where(bone)[0].mean()))
+    if not columns:
+        raise ValueError("No vertebral bone found: the midline cannot be located")
+    return float(np.median(columns))
+
+
 def lung_mask(
     slice_hu: IntArray,
     body: BoolArray,
     side: Side,
     params: WallParams,
+    midline: float | None = None,
 ) -> BoolArray | None:
     """Aerated lung on one side of the midline, in a RAS+ slice.
 
-    Axis 0 of a RAS+ volume increases towards the patient's right, so the right
-    lung is the aerated component with the *largest* row centroid.
+    The side is decided by the midline, not by connected components. Lungs never
+    cross the mediastinum, but they do touch across it — in front of the heart
+    and around the carina — and a component-based rule then returns both of them
+    as one, which is anatomically impossible and silently doubles the mask. It
+    also lets a small gas pocket outrank a whole lung whenever the pocket
+    happens to sit further to the side.
+
+    ``midline`` comes from :func:`anatomical_midline`; without it the body
+    centroid stands in, which is weaker but still beats picking by component.
     """
+    if midline is None:
+        occupied = np.where(body.any(axis=1))[0]
+        midline = 0.5 * (float(occupied[0]) + float(occupied[-1]))
+
     air = ndimage.binary_opening(body & (slice_hu < AIR_HU), np.ones((3, 3), dtype=bool))
+    rows = np.arange(air.shape[0], dtype=np.float64)[:, None]
+    air &= (rows > midline) if side is Side.RIGHT else (rows < midline)
+
     labels, count = ndimage.label(air)
     if count == 0:
         return None
     sizes = ndimage.sum(air, labels, range(1, count + 1))
-    keep = [index + 1 for index in range(count) if sizes[index] > params.min_lung_component_px]
-    if not keep:
+    if float(np.max(sizes)) <= params.min_lung_component_px:
         return None
-    centres = ndimage.center_of_mass(air, labels, keep)
-    rows = [float(np.atleast_1d(centre)[0]) for centre in centres]
-    chosen = keep[int(np.argmax(rows) if side is Side.RIGHT else np.argmin(rows))]
-    mask: BoolArray = np.asarray(labels == chosen, dtype=bool)
+    mask: BoolArray = np.asarray(labels == (int(np.argmax(sizes)) + 1), dtype=bool)
     return mask
 
 
@@ -283,6 +324,9 @@ def measure_wall(
     slice_count = volume_ras.shape[2]
     ring = fov_ring((volume_ras.shape[0], volume_ras.shape[1]), params)
     pixel_area_mm2 = sx * sy
+    # One midline for the whole volume: it is an anatomical fact about the
+    # person, not something to re-decide on every slice.
+    midline = anatomical_midline(volume_ras, params)
 
     bodies: dict[int, BoolArray] = {}
     lungs: dict[int, BoolArray] = {}
@@ -295,7 +339,7 @@ def measure_wall(
             continue
         bodies[index] = body
         touching += int(bool((body & ring).any()))
-        lung = lung_mask(slice_hu, body, side, params)
+        lung = lung_mask(slice_hu, body, side, params, midline)
         if lung is None:
             continue
         lungs[index] = lung
