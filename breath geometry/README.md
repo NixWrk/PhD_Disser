@@ -9,8 +9,10 @@
 
 ## Текущий статус
 
-Сейчас реализованы ingest/QC-компоненты и исследовательские измерения. Надёжной модели
-перехода вдох→выдох и подтверждённой оценки изменения мышцы/жира пока нет.
+Сейчас реализованы воспроизводимый реестр пар, landmark-gated registration benchmark и
+полнообъёмные skin-to-lung профили без электродного фильтра. Классический elastix baseline
+на `copd1` улучшает соответствие, но не проходит gate; подтверждённой оценки изменения
+мышцы/жира и модели перехода вдох→выдох пока нет.
 
 Начинать чтение следует здесь:
 
@@ -31,6 +33,7 @@
 ~~~powershell
 powershell -ExecutionPolicy Bypass -File tools/bootstrap.ps1 -WithGeometry
 powershell -ExecutionPolicy Bypass -File tools/install_dcm2niix.ps1
+.\.venv\Scripts\python.exe -m pip install -e ".[registration]"
 Copy-Item configs/paths.local.example.yaml configs/paths.local.yaml
 .\.venv\Scripts\breathgeom.exe tools status
 .\.venv\Scripts\breathgeom.exe project validate --config configs/paths.local.yaml
@@ -49,8 +52,19 @@ Copy-Item configs/paths.local.example.yaml configs/paths.local.yaml
   --dirlab-root "E:\КТ папка\dirlab_copdgene" `
   --lungct-root "E:\КТ папка\learn2reg_lungct" --checksums
 .\.venv\Scripts\breathgeom.exe manifest scan --config configs/paths.local.yaml --output data/interim/manifest.local.csv
+.\.venv\Scripts\breathgeom.exe registration benchmark `
+  --manifest data/interim/respiratory_pairs.local.csv `
+  --dataset dirlab_copdgene --subject copd1
+.\.venv\Scripts\breathgeom.exe profiles extract-pair `
+  --manifest data/interim/respiratory_pairs.local.csv `
+  --dataset dirlab_copdgene --subject copd1
 .\.venv\Scripts\breathgeom.exe measure wall data/interim/ct.nii.gz --side right --csv data/interim/wall.csv
 ~~~
+
+`registration benchmark` сохраняет поле только для случая, прошедшего все QC-gates.
+`profiles extract-pair` всегда может сохранить раздельные однофазные профили, но создаёт
+paired deltas только при наличии прошедшего gate поля. Разность независимых однофазных
+медиан не считается дыхательным эффектом.
 
 `measure wall` — разведочная skin-to-lung метрика, а не финальная оценка ткани под
 электродами. Ограничения и точные определения описаны в

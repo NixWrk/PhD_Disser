@@ -1,14 +1,23 @@
 from __future__ import annotations
 
 import csv
+import json
+import subprocess
 from dataclasses import asdict
 from pathlib import Path
-from typing import Annotated
+from typing import Annotated, cast
 
+import numpy as np
 import typer
 from rich.console import Console
 from rich.table import Table
 
+from breathgeom.benchmark import (
+    load_pair_data,
+    run_registration_benchmark,
+    write_benchmark_csv,
+    write_benchmark_run,
+)
 from breathgeom.config import load_paths_config, validate_project
 from breathgeom.io.datasets import (
     ACCESS_NOTE_NAME,
@@ -27,8 +36,16 @@ from breathgeom.io.pairs import (
     add_source_checksums,
     inventory_copdgene_pairs,
     inventory_lungct_pairs,
+    read_pair_manifest,
     write_pair_manifest,
 )
+from breathgeom.measure.profiles import (
+    extract_whole_body_profiles,
+    pair_whole_body_profiles,
+    summarize_profiles,
+    write_profiles_csv,
+)
+from breathgeom.measure.wall import IntArray as WallIntArray
 from breathgeom.measure.wall import Side, WallRay, load_ras, measure_wall
 from breathgeom.tools import collect_tool_status
 
@@ -38,11 +55,15 @@ manifest_app = typer.Typer(help="Read-only de-identified DICOM inventory.")
 tools_app = typer.Typer(help="External tool status.")
 data_app = typer.Typer(help="Open datasets for validation and thickness assessment.")
 measure_app = typer.Typer(help="Geometric measurements on converted volumes.")
+registration_app = typer.Typer(help="Paired respiratory registration and QC.")
+profiles_app = typer.Typer(help="Whole-body skin-to-lung tissue profiles.")
 app.add_typer(project_app, name="project")
 app.add_typer(manifest_app, name="manifest")
 app.add_typer(tools_app, name="tools")
 app.add_typer(data_app, name="data")
 app.add_typer(measure_app, name="measure")
+app.add_typer(registration_app, name="registration")
+app.add_typer(profiles_app, name="profiles")
 console = Console()
 
 
@@ -320,6 +341,188 @@ def pairs_manifest(
     console.print(f"Wrote {count} subject rows to {output}")
     if not all(row.complete for row in rows):
         console.print("[yellow]WARNING:[/yellow] incomplete pairs remain; inspect missing column.")
+
+
+@registration_app.command("benchmark")
+def registration_benchmark(
+    manifest: Annotated[
+        Path,
+        typer.Option(exists=True, dir_okay=False, readable=True),
+    ] = Path("data/interim/respiratory_pairs.local.csv"),
+    output: Annotated[Path, typer.Option()] = Path("results/registration"),
+    dataset: Annotated[str | None, typer.Option()] = None,
+    subject: Annotated[str | None, typer.Option()] = None,
+    max_cases: Annotated[int | None, typer.Option(min=1)] = None,
+    save_fields: Annotated[
+        bool,
+        typer.Option(help="Save dense fixed-expiration to moving-inspiration fields."),
+    ] = False,
+    force: Annotated[
+        bool,
+        typer.Option(help="Replace an existing subject QC artifact."),
+    ] = False,
+) -> None:
+    """Run subject-level elastix registration with independent QC gates."""
+    selected = [
+        row
+        for row in read_pair_manifest(manifest)
+        if row.complete
+        and (dataset is None or row.dataset_id == dataset)
+        and (subject is None or row.subject_id == subject)
+    ]
+    if max_cases is not None:
+        selected = selected[:max_cases]
+    if not selected:
+        console.print("[red]No complete respiratory pairs matched the selection.[/red]")
+        raise typer.Exit(code=2)
+
+    code_version = subprocess.run(
+        ["git", "rev-parse", "HEAD"],
+        cwd=_repo_root(),
+        check=True,
+        capture_output=True,
+        text=True,
+    ).stdout.strip()
+    records = []
+    failures: list[str] = []
+    for index, pair in enumerate(selected, start=1):
+        stem = f"{pair.dataset_id}__{pair.subject_id}"
+        json_path = output / f"{stem}.json"
+        if json_path.exists() and not force:
+            console.print(f"[{index}/{len(selected)}] skip existing {stem}")
+            continue
+        console.print(f"[{index}/{len(selected)}] register {stem}")
+        try:
+            data = load_pair_data(pair)
+            run = run_registration_benchmark(data)
+            written_json, field_path = write_benchmark_run(
+                output,
+                run,
+                pair_manifest=manifest,
+                code_version=code_version,
+                save_field=save_fields and run.record.gate_pass,
+            )
+        except Exception as error:  # batch must report one failure without hiding later cases
+            failures.append(f"{stem}: {type(error).__name__}: {error}")
+            console.print(f"[red]FAILED[/red] {failures[-1]}")
+            continue
+        records.append(run.record)
+        gate = "[green]PASS[/green]" if run.record.gate_pass else "[red]FAIL[/red]"
+        tre = run.record.expert_tre_after_mean_mm
+        tre_text = "no expert landmarks" if tre is None else f"expert TRE {tre:.2f} mm"
+        console.print(
+            f"{gate} {tre_text}; lung Dice {run.record.lung_dice_after:.3f}; "
+            f"Jac<=0 {run.record.nonpositive_jacobian_fraction:.3g}; {written_json}"
+        )
+        if field_path is not None:
+            console.print(f"field {field_path}")
+
+    if records:
+        summary = output / "benchmark.csv"
+        write_benchmark_csv(summary, records)
+        console.print(f"Wrote {len(records)} subject rows to {summary}")
+    if failures:
+        console.print(f"[red]{len(failures)} registration failures.[/red]")
+        raise typer.Exit(code=1)
+
+
+@profiles_app.command("extract-pair")
+def profiles_extract_pair(
+    dataset: Annotated[str, typer.Option()],
+    subject: Annotated[str, typer.Option()],
+    manifest: Annotated[
+        Path,
+        typer.Option(exists=True, dir_okay=False, readable=True),
+    ] = Path("data/interim/respiratory_pairs.local.csv"),
+    registration_dir: Annotated[Path, typer.Option()] = Path("results/registration"),
+    output: Annotated[Path, typer.Option()] = Path("results/profiles"),
+) -> None:
+    """Extract full-surface phase profiles and pair them only after registration QC."""
+    matches = [
+        row
+        for row in read_pair_manifest(manifest)
+        if row.dataset_id == dataset and row.subject_id == subject and row.complete
+    ]
+    if len(matches) != 1:
+        console.print(f"[red]Expected one complete pair, found {len(matches)}.[/red]")
+        raise typer.Exit(code=2)
+    pair = matches[0]
+    data = load_pair_data(pair)
+    fixed = extract_whole_body_profiles(
+        cast(WallIntArray, data.fixed_ras),
+        data.spacing,
+        data.fixed_body_mask,
+        data.fixed_lung_mask,
+    )
+    moving = extract_whole_body_profiles(
+        cast(WallIntArray, data.moving_ras),
+        data.spacing,
+        data.moving_body_mask,
+        data.moving_lung_mask,
+    )
+    output.mkdir(parents=True, exist_ok=True)
+    stem = f"{dataset}__{subject}"
+    fixed_path = output / f"{stem}__fixed-{pair.fixed_phase}.csv"
+    moving_path = output / f"{stem}__moving-{pair.moving_phase}.csv"
+    write_profiles_csv(fixed_path, fixed)
+    write_profiles_csv(moving_path, moving)
+
+    registration_path = registration_dir / f"{stem}.json"
+    paired_status = "blocked_no_registration_qc"
+    paired_path: Path | None = None
+    if registration_path.is_file():
+        registration = json.loads(registration_path.read_text(encoding="utf-8"))
+        record = registration["record"]
+        field_name = registration["provenance"].get("field_file")
+        if record["gate_pass"] and field_name:
+            field_artifact = np.load(registration_dir / field_name)
+            displacement = field_artifact["displacement_mm"]
+            _, _, paired = pair_whole_body_profiles(
+                cast(WallIntArray, data.fixed_ras),
+                cast(WallIntArray, data.moving_ras),
+                data.spacing,
+                data.fixed_body_mask,
+                data.moving_body_mask,
+                data.fixed_lung_mask,
+                data.moving_lung_mask,
+                displacement,
+                registration_gate_pass=True,
+            )
+            paired_path = output / f"{stem}__paired-deltas.csv"
+            write_profiles_csv(paired_path, paired)
+            paired_status = "available_gate_passed"
+        elif not record["gate_pass"]:
+            paired_status = "blocked_registration_gate"
+        else:
+            paired_status = "blocked_missing_dense_field"
+
+    summary = {
+        "dataset_id": dataset,
+        "subject_id": subject,
+        "coordinate_basis": fixed.coordinate_basis,
+        "coverage": fixed.coverage,
+        "outer_body_scope": pair.outer_body_scope,
+        "fixed_phase": pair.fixed_phase,
+        "moving_phase": pair.moving_phase,
+        "fixed": asdict(summarize_profiles(fixed)),
+        "moving": asdict(summarize_profiles(moving)),
+        "paired_status": paired_status,
+        "paired_file": paired_path.name if paired_path is not None else None,
+        "warning": (
+            "Fixed and moving summaries use independently sampled surfaces; "
+            "their difference is not a paired respiratory effect."
+        ),
+    }
+    summary_path = output / f"{stem}__summary.json"
+    summary_path.write_text(
+        json.dumps(summary, ensure_ascii=False, indent=2, allow_nan=False),
+        encoding="utf-8",
+    )
+    console.print(
+        f"fixed {fixed.valid_count}/{len(fixed.profiles)} valid -> {fixed_path}\n"
+        f"moving {moving.valid_count}/{len(moving.profiles)} valid -> {moving_path}\n"
+        f"paired status: {paired_status}\nsummary -> {summary_path}"
+    )
 
 
 @measure_app.command("wall")
