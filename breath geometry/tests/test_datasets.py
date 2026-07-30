@@ -49,7 +49,7 @@ def test_registry_loads_and_ids_are_unique() -> None:
 
     ids = [dataset.id for dataset in registry.datasets]
     assert len(ids) == len(set(ids))
-    assert registry.get("lung250m4b").pairs == "inspiration_expiration"
+    assert registry.get("lung250m4b").pairs == "mixed_respiratory_and_longitudinal"
 
 
 def test_only_direct_datasets_are_unattended() -> None:

@@ -22,6 +22,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from pathlib import Path
+from zipfile import BadZipFile, ZipFile
 
 import numpy as np
 import numpy.typing as npt
@@ -75,6 +76,86 @@ DIRLAB_COPDGENE: dict[str, CaseGeometry] = {
     "copd9": CaseGeometry(512, 512, 116, 0.664, 0.664, 2.5),
     "copd10": CaseGeometry(512, 512, 135, 0.742, 0.742, 2.5),
 }
+
+COPDGENE_REQUIRED_SUFFIXES = (
+    "_iBHCT.img",
+    "_eBHCT.img",
+    "_300_iBH_xyz_r1.txt",
+    "_300_eBH_xyz_r1.txt",
+)
+
+
+@dataclass(frozen=True)
+class COPDgeneCaseInventory:
+    """Availability of one COPDgene case without reading image pixel data."""
+
+    case_id: str
+    archive_path: Path | None
+    archive_complete: bool
+    extracted_dir: Path | None
+    inhale_image: Path | None
+    exhale_image: Path | None
+    inhale_landmarks: Path | None
+    exhale_landmarks: Path | None
+
+    @property
+    def extracted_complete(self) -> bool:
+        return all(
+            path is not None
+            for path in (
+                self.inhale_image,
+                self.exhale_image,
+                self.inhale_landmarks,
+                self.exhale_landmarks,
+            )
+        )
+
+
+def _case_number(case_id: str) -> int:
+    return int(case_id.removeprefix("copd"))
+
+
+def _archive_has_case(archive: Path, case_id: str) -> bool:
+    try:
+        with ZipFile(archive) as stream:
+            names = [Path(name).name for name in stream.namelist() if not name.endswith("/")]
+    except (BadZipFile, OSError):
+        return False
+    return all(f"{case_id}{suffix}" in names for suffix in COPDGENE_REQUIRED_SUFFIXES)
+
+
+def _find_case_dir(root: Path, case_id: str) -> Path | None:
+    candidates = (root / "extracted" / case_id, root / case_id)
+    return next((path for path in candidates if path.is_dir()), None)
+
+
+def _existing(path: Path | None, name: str) -> Path | None:
+    if path is None:
+        return None
+    candidate = path / name
+    return candidate if candidate.is_file() else None
+
+
+def inventory_copdgene(root: Path) -> tuple[COPDgeneCaseInventory, ...]:
+    """Inventory all ten COPDgene cases in archives and extracted folders."""
+    rows: list[COPDgeneCaseInventory] = []
+    for case_id in sorted(DIRLAB_COPDGENE, key=_case_number):
+        archive_candidate = root / f"{case_id}.zip"
+        archive = archive_candidate if archive_candidate.is_file() else None
+        folder = _find_case_dir(root, case_id)
+        rows.append(
+            COPDgeneCaseInventory(
+                case_id=case_id,
+                archive_path=archive,
+                archive_complete=bool(archive and _archive_has_case(archive, case_id)),
+                extracted_dir=folder,
+                inhale_image=_existing(folder, f"{case_id}_iBHCT.img"),
+                exhale_image=_existing(folder, f"{case_id}_eBHCT.img"),
+                inhale_landmarks=_existing(folder, f"{case_id}_300_iBH_xyz_r1.txt"),
+                exhale_landmarks=_existing(folder, f"{case_id}_300_eBH_xyz_r1.txt"),
+            )
+        )
+    return tuple(rows)
 
 
 @dataclass(frozen=True)
@@ -283,3 +364,14 @@ def load_copdgene(
 
     spacing = (geometry.spacing_x_mm, geometry.spacing_y_mm, geometry.spacing_z_mm)
     return np.ascontiguousarray(volume, dtype=np.int16), spacing, report
+
+
+__all__ = [
+    "COPDGENE_REQUIRED_SUFFIXES",
+    "DIRLAB_COPDGENE",
+    "COPDgeneCaseInventory",
+    "CaseGeometry",
+    "OrientationReport",
+    "inventory_copdgene",
+    "load_copdgene",
+]

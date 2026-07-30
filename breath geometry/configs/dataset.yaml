@@ -1,23 +1,39 @@
-dataset_id: breath_geometry_v1
-primary_target_phase: exhale_max
-optional_phase: exhale_quiet
-subjects:
-  - subject_id: P01
-    cohort: paired
-    expected_phases: [inhale_deep, exhale_max]
-  - subject_id: P02
-    cohort: paired
-    expected_phases: [inhale_deep, exhale_max]
-  - subject_id: P03
-    cohort: paired
-    expected_phases: [inhale_deep, exhale_max]
-  - subject_id: U01
-    cohort: unpaired
-    expected_phases: [inhale_deep]
-  - subject_id: U02
-    cohort: unpaired
-    expected_phases: [inhale_deep]
-  - subject_id: U03
-    cohort: unpaired
-    expected_phases: [inhale_deep]
+schema_version: 2
+dataset_id: breath_geometry
+status: inventory_required
 
+# Subject identities and source paths belong in an ignored local manifest. The
+# former P01-P03/U01-U03 split was an unverified design assumption and is no
+# longer encoded as data truth.
+subject_manifest: data/interim/subjects.local.csv
+
+target:
+  input_phase: inhale_deep
+  output: expiration_scenario_ensemble
+  primary_evaluation: impedance_delta_z
+
+cohorts:
+  volunteer_ct:
+    expected_count: 3
+    available_phases: [inhale_deep]
+    role: final_application
+    auxiliary_signal: impedance_breathing_trace
+  old_cardiac_cta:
+    unique_subject_count: 5
+    studies: 9
+    role: partial_phase_and_ingest_qc
+    limitations: [cropped_body, partial_lung, contrast, cardiac_protocol]
+  dirlab_copdgene:
+    expected_count: 10
+    available_phases: [inhale_max, expiration_normal]
+    role: registration_landmark_benchmark
+    population: copd_smokers
+  learn2reg_lungct:
+    expected_count: 30
+    available_phases: [inhale, exhale]
+    role: lung_motion_benchmark
+    limitations: [cropped_outer_body]
+
+excluded_from_respiratory_training:
+  - dataset: nlst2023
+    reason: longitudinal_baseline_followup_not_inhale_exhale

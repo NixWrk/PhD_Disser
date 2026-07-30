@@ -1,81 +1,86 @@
 # Breath Geometry
 
-Исследовательский конвейер для построения индивидуальной анатомии максимального выдоха по КТ глубокого вдоха.
+Исследовательский конвейер для оценки изменения грудной клетки и лёгких между вдохом и
+выдохом и для построения ансамбля возможных геометрий выдоха по одной КТ вдоха.
 
-## Статус
+Проект связан с четырёхэлектродными TRKG-моделями из соседнего
+`MATLAB_TRKG4_real_subjects`. Итоговая цель — оценивать не только геометрическую ошибку в
+миллиметрах, но и её влияние на вычисленный импеданс.
 
-Проект находится на этапе Gate 0–1:
+## Текущий статус
 
-- исследовательский протокол зафиксирован;
-- создан независимый Git-репозиторий;
-- готовится воспроизводимое Python-окружение;
-- архивы старых КТ извлекаются во внешнем read-only каталоге;
-- медицинские данные и идентификаторы людей не коммитятся.
+Сейчас реализованы ingest/QC-компоненты и исследовательские измерения. Надёжной модели
+перехода вдох→выдох и подтверждённой оценки изменения мышцы/жира пока нет.
 
-## Документация
+Начинать чтение следует здесь:
 
-- [Научный отчёт: цели, обзор, открытые данные, осуществимость](docs/RESEARCH_REPORT.md)
-- [Литературный обзор](literature_review_inspiration_to_expiration.md)
-- [Протокол benchmark](benchmark_protocol_inspiration_expiration.md)
-- [Мастер-план исследования и разработки](research_and_implementation_plan.md)
-- [Окружение и внешние инструменты](docs/ENVIRONMENT.md)
-- [Политика данных и псевдонимизации](docs/DATA_PRIVACY.md)
-- [Предварительный статус инвентаризации КТ](docs/DATA_INVENTORY_STATUS.md)
-- [План ближайшей реализации](docs/NEXT_STEPS.md)
-- [Открытые КТ-датасеты](docs/OPEN_DATASETS.md)
+1. [Текущий подтверждённый статус](docs/PROJECT_STATUS.md)
+2. [Определения измеряемых величин](docs/MEASUREMENT_MODEL.md)
+3. [Порядок реализации и gate-критерии](docs/ROADMAP.md)
+4. [Аудит текущего notebook](docs/NOTEBOOK_AUDIT.md)
+5. [Правила данных и приватности](docs/DATA_PRIVACY.md)
+
+Большие документы [RESEARCH_REPORT.md](docs/RESEARCH_REPORT.md),
+[research_and_implementation_plan.md](research_and_implementation_plan.md) и
+[benchmark_protocol_inspiration_expiration.md](benchmark_protocol_inspiration_expiration.md)
+сохраняются как журнал исследования. Они содержат как полезные наблюдения, так и устаревшие
+или отозванные результаты; текущие решения берутся из документов выше.
 
 ## Быстрый старт на Windows
 
 ~~~powershell
 powershell -ExecutionPolicy Bypass -File tools/bootstrap.ps1 -WithGeometry
 powershell -ExecutionPolicy Bypass -File tools/install_dcm2niix.ps1
+Copy-Item configs/paths.local.example.yaml configs/paths.local.yaml
 .\.venv\Scripts\breathgeom.exe tools status
 .\.venv\Scripts\breathgeom.exe project validate --config configs/paths.local.yaml
 ~~~
 
-Локальный файл configs/paths.local.yaml создаётся из примера и исключён из Git.
+`configs/paths.local.yaml` содержит реальные пути, исключён из Git и не должен включать
+персональные данные в публикуемые outputs.
 
-## Первый безопасный DICOM-скан
-
-Scanner читает только заголовки DICOM, не загружает pixel data и не экспортирует PatientName, PatientID, дату рождения или accession number.
-Поддерживаются как классические однофайловые срезы, так и Enhanced Multi-frame CT с геометрией в Shared Functional Groups.
+## Доступные команды
 
 ~~~powershell
-.\.venv\Scripts\breathgeom.exe manifest scan --config configs/paths.local.yaml --output data/interim/manifest.local.csv --max-files 10000
-~~~
-
-Пока распаковка продолжается, такой результат считается предварительным. Финальный manifest строится только после стабилизации состава файлов.
-
-## Осмотр пар вдох/выдох
-
-Три ошибки подряд прошли ruff, mypy и весь набор тестов и были видны только глазами, поэтому
-осмотр — обязательный шаг перед любым числом, а не иллюстрация.
-
-~~~powershell
-.\.venv\Scripts\python.exe -m jupyter lab notebooks/01_inhale_exhale_inspection.ipynb
-~~~
-
-[notebooks/01_inhale_exhale_inspection.ipynb](notebooks/01_inhale_exhale_inspection.ipynb)
-проверяет оси по позвонку, гладкость сечений, компоненты маски и совмещение, а затем
-показывает смещение границ и компартментов. Вращаемые модели дополнительно сохраняются в
-`notebooks/figures/*.html` и открываются любым браузером: JupyterLab и VS Code не исполняют
-скрипты в HTML-выводе, поэтому одного встроенного рисунка недостаточно.
-
-## Толщина стенки под электродной решёткой
-
-Кратчайший путь кожа → лёгкое в боковом секторе — это `h` двуслойной импедансной модели. Том приводится к RAS+ перед измерением, поэтому зеркальный переворот не может пройти незамеченным.
-
-~~~powershell
+.\.venv\Scripts\breathgeom.exe --help
+.\.venv\Scripts\breathgeom.exe data list
+.\.venv\Scripts\breathgeom.exe data dirlab-inventory "E:\КТ папка\dirlab_copdgene"
+.\.venv\Scripts\breathgeom.exe manifest scan --config configs/paths.local.yaml --output data/interim/manifest.local.csv
 .\.venv\Scripts\breathgeom.exe measure wall data/interim/ct.nii.gz --side right --csv data/interim/wall.csv
 ~~~
 
-Разделение жир/мышца по HU достоверно только на нативных сериях: контраст сдвигает мышечное окно.
+`measure wall` — разведочная skin-to-lung метрика, а не финальная оценка ткани под
+электродами. Ограничения и точные определения описаны в
+[MEASUREMENT_MODEL.md](docs/MEASUREMENT_MODEL.md).
 
-## Главные правила
+## Notebook
 
-1. Обучение моделей в проекте не проводится: только inference готовых моделей и их валидация. Если обучение необходимо, оно оформляется отдельной задачей и выполняется на открытых данных, а не на этих шести людях.
-2. Исходные DICOM неизменяемы.
-3. В Git нет DICOM, STL, NIfTI и архивов. Идентифицирующие сведения в тексте допускаются, пока репозиторий однопользовательский и без remote — условия и порядок обратного перехода в [DATA_PRIVACY.md](docs/DATA_PRIVACY.md).
-4. Маски в пространстве КТ являются основным анатомическим представлением; STL — производный формат.
-5. Все преобразования имеют явно заданные source/target space и единицы миллиметров.
-6. Выдох тестового человека недоступен P0/P0V prediction-коду.
+[01_inhale_exhale_inspection.ipynb](notebooks/01_inhale_exhale_inspection.ipynb) служит
+визуальным QC одного случая DIR-Lab. Он не является воспроизводимым benchmark и не должен
+быть источником итоговых чисел. Подробная оценка — в
+[NOTEBOOK_AUDIT.md](docs/NOTEBOOK_AUDIT.md).
+
+## Проверки
+
+~~~powershell
+.\.venv\Scripts\python.exe -m pytest
+.\.venv\Scripts\python.exe -m ruff check .
+.\.venv\Scripts\python.exe -m mypy src
+~~~
+
+Зелёные unit-тесты подтверждают программные инварианты, но не заменяют landmark TRE,
+проверку регистрации, сегментации и внешнюю физиологическую валидацию.
+
+## Ключевые правила
+
+- исходные DICOM неизменяемы и не попадают в Git;
+- основное анатомическое представление — маски/поля в физическом пространстве КТ, STL
+  является производным;
+- source/target space, LPS/RAS и единицы всегда записываются явно;
+- respiratory, 4DCT и longitudinal данные не смешиваются;
+- импедансная дыхательная кривая не считается кривой объёма без калибровки;
+- одна КТ вдоха даёт ансамбль возможных выдохов, а не единственное доказанное состояние;
+- научный результат должен воспроизводиться batch-командой и иметь provenance/QC.
+
+Полные инструкции для разработчиков и автоматизированных агентов находятся в
+[AGENTS.md](AGENTS.md).

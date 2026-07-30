@@ -50,7 +50,21 @@ def test_walks_end_on_the_rib() -> None:
     """A walk that never met bone did not find the inner boundary of the wall."""
     result = measure_layers(torso(), SPACING, side=Side.RIGHT, params=PARAMS)
 
-    assert result.bone_fraction > 0.9
+    assert result.bone_fraction == pytest.approx(1.0)
+
+
+def test_walk_without_a_rib_is_not_a_layer_measurement() -> None:
+    phantom = torso()
+    face = BODY_ROWS[1] - 1
+    muscle_end = face - FAT_MM - MUSCLE_MM
+    phantom[muscle_end - 3:muscle_end + 1, BODY_COLUMNS[0]:BODY_COLUMNS[1], :] = (
+        MUSCLE_HU_FILL
+    )
+
+    no_rib_params = LayerParams(max_walk_mm=30.0, sector_half_angle_deg=5.0)
+    result = measure_layers(phantom, SPACING, side=Side.RIGHT, params=no_rib_params)
+
+    assert not result.samples
 
 
 def test_thicker_fat_is_seen_as_thicker() -> None:

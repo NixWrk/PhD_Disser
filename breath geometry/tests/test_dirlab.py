@@ -1,13 +1,16 @@
 from pathlib import Path
+from zipfile import ZipFile
 
 import numpy as np
 import numpy.typing as npt
 import pytest
 
 from breathgeom.io.dirlab import (
+    COPDGENE_REQUIRED_SUFFIXES,
     HU_OFFSET,
     RAW_OUTSIDE,
     CaseGeometry,
+    inventory_copdgene,
     load_copdgene,
 )
 
@@ -75,6 +78,27 @@ def write(tmp_path: Path, raw: IntArray, name: str = "case.img") -> Path:
     path = tmp_path / name
     raw.tofile(path)
     return path
+
+
+def test_inventory_distinguishes_archived_and_extracted_cases(tmp_path: Path) -> None:
+    with ZipFile(tmp_path / "copd1.zip", "w") as archive:
+        for suffix in COPDGENE_REQUIRED_SUFFIXES:
+            archive.writestr(f"nested/copd1{suffix}", b"test")
+
+    extracted = tmp_path / "extracted" / "copd2"
+    extracted.mkdir(parents=True)
+    for suffix in COPDGENE_REQUIRED_SUFFIXES:
+        (extracted / f"copd2{suffix}").touch()
+
+    rows = {row.case_id: row for row in inventory_copdgene(tmp_path)}
+
+    assert len(rows) == 10
+    assert rows["copd1"].archive_complete
+    assert not rows["copd1"].extracted_complete
+    assert rows["copd2"].extracted_complete
+    assert not rows["copd2"].archive_complete
+    assert not rows["copd10"].archive_complete
+    assert not rows["copd10"].extracted_complete
 
 
 @pytest.mark.parametrize("right_high", [True, False])

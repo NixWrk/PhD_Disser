@@ -1,6 +1,6 @@
 # Registry of open CT datasets used for model validation and thickness assessment.
 #
-# All facts here were verified against the source on 2026-07-17. Binary data never
+# Facts were last critically revised on 2026-07-30. Binary data never
 # enters Git; it is downloaded into open_data_root from configs/paths.local.yaml.
 #
 # access levels:
@@ -20,10 +20,11 @@ datasets:
     title: Lung250M-4B
     purpose: motion_validation
     content: >-
-      248 inspiration/expiration lung CT from 124 patients, with vessel
-      segmentations, image-derived keypoint correspondences and manual landmarks
-      for validation.
-    pairs: inspiration_expiration
+      248 lung CT from 124 patients. The aggregate mixes breath-hold
+      inspiration/expiration, extreme 4DCT phases and longitudinal
+      baseline/follow-up scans; it provides vessel segmentations,
+      image-derived keypoint correspondences and manual validation landmarks.
+    pairs: mixed_respiratory_and_longitudinal
     access: share
     url: https://cloud.imi.uni-luebeck.de/s/s64fqbPpXNexBPP
     reference: https://github.com/multimodallearning/Lung250M-4B
@@ -32,8 +33,10 @@ datasets:
       subsets require separate access and extra preprocessing.
     aggregates: [EMPIRE10, TCIA-NLST, TCIA-NSCLC, L2R-LungCT, TCIA-Ventilation, DIR-LAB-COPDgene]
     notes: >-
-      Largest openly reachable inspiration/expiration collection and the main
-      complement to the FOV-cropped local cardiac CTA. Size not published.
+      Stratify by source before analysis. TCIA-NLST has no prescribed breathing
+      state and must not be labelled as ground-truth inspiration/expiration.
+      Preprocessed images are cropped around the lung and cannot validate the
+      outer chest wall.
 
   - id: dirlab_copdgene
     title: DIR-Lab COPDgene

@@ -60,3 +60,4 @@ Desktop.ini
 
 # Jupyter
 notebooks/.ipynb_checkpoints/
+notebooks/figures/*.html

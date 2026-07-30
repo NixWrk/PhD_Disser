@@ -15,9 +15,12 @@ to the size of that column.
 import numpy as np
 import numpy.typing as npt
 import pytest
+import SimpleITK as sitk
 
 from breathgeom.measure.align import (
+    MIN_ACCEPTABLE_COLUMN_DICE,
     MIN_MASKED_VOXELS_PER_LEVEL,
+    AlignmentReport,
     _column_mask,
     _dice,
     pyramid_factors,
@@ -36,6 +39,62 @@ SPINE_ROWS, SPINE_COLUMNS = (42, 54), (22, 32)
 # they rotate with every breath, and that is the motion under study.
 RIB_ROWS, RIB_COLUMNS = (12, 20), (24, 34)
 PARAMS = WallParams()
+
+
+def alignment_report(
+    *, before: float = 0.2, after: float = 0.8,
+) -> AlignmentReport:
+    return AlignmentReport(
+        translation_mm=(0.0, 0.0, 0.0),
+        rotation_deg=(11.0, 17.0, 23.0),
+        centre_mm=(0.0, 0.0, 0.0),
+        metric=0.0,
+        column_dice_before=before,
+        column_dice_after=after,
+        column_voxels_fixed=1,
+        column_voxels_moving=1,
+    )
+
+
+def test_report_rotation_matches_simpleitk_default_order() -> None:
+    report = alignment_report()
+    transform = sitk.Euler3DTransform()
+    transform.SetRotation(*(np.radians(value) for value in report.rotation_deg))
+    expected = np.asarray(transform.GetMatrix()).reshape(3, 3)
+
+    assert transform.GetComputeZYX() is False
+    assert report.rotation_matrix() == pytest.approx(expected)
+
+
+def test_to_fixed_matches_inverse_simpleitk_transform() -> None:
+    report = AlignmentReport(
+        translation_mm=(4.0, -2.0, 7.0),
+        rotation_deg=(11.0, 17.0, 23.0),
+        centre_mm=(30.0, 40.0, 50.0),
+        metric=0.0,
+        column_dice_before=0.2,
+        column_dice_after=0.8,
+        column_voxels_fixed=1,
+        column_voxels_moving=1,
+    )
+    transform = sitk.Euler3DTransform()
+    transform.SetCenter(report.centre_mm)
+    transform.SetRotation(*(np.radians(value) for value in report.rotation_deg))
+    transform.SetTranslation(report.translation_mm)
+    moving_points = np.array([[5.0, 6.0, 7.0], [60.0, 70.0, 80.0]])
+    expected = np.array(
+        [transform.GetInverse().TransformPoint(point) for point in moving_points]
+    )
+
+    assert report.to_fixed(moving_points) == pytest.approx(expected)
+
+
+def test_acceptable_alignment_requires_absolute_overlap() -> None:
+    assert alignment_report(after=MIN_ACCEPTABLE_COLUMN_DICE).acceptable
+    assert alignment_report(before=0.2, after=MIN_ACCEPTABLE_COLUMN_DICE - 0.01).improved
+    assert not alignment_report(
+        before=0.2, after=MIN_ACCEPTABLE_COLUMN_DICE - 0.01
+    ).acceptable
 
 
 def torso(with_ribs: bool = True) -> IntArray:

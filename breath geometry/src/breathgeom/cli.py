@@ -22,6 +22,7 @@ from breathgeom.io.datasets import (
     write_provenance,
 )
 from breathgeom.io.dicom import scan_dicom_series, write_manifest_csv
+from breathgeom.io.dirlab import inventory_copdgene
 from breathgeom.measure.wall import Side, WallRay, load_ras, measure_wall
 from breathgeom.tools import collect_tool_status
 
@@ -203,6 +204,70 @@ def data_fetch(
     console.print(f"Provenance written to {provenance}")
     if not all(result["verified"] for result in results):
         raise typer.Exit(code=1)
+
+
+@data_app.command("dirlab-inventory")
+def dirlab_inventory(
+    root: Annotated[
+        Path,
+        typer.Argument(exists=True, file_okay=False, readable=True),
+    ],
+    csv_out: Annotated[
+        Path | None,
+        typer.Option("--csv", help="Optional de-identified inventory CSV."),
+    ] = None,
+) -> None:
+    """Check all COPDgene archives and extracted files without reading CT pixels."""
+    rows = inventory_copdgene(root)
+    table = Table(title=f"DIR-Lab COPDgene ({root})")
+    table.add_column("case")
+    table.add_column("archive")
+    table.add_column("archive contents")
+    table.add_column("extracted")
+    for row in rows:
+        table.add_row(
+            row.case_id,
+            "yes" if row.archive_path else "-",
+            "complete" if row.archive_complete else "-",
+            "complete" if row.extracted_complete else "-",
+        )
+    console.print(table)
+    complete_archives = sum(row.archive_complete for row in rows)
+    complete_extracted = sum(row.extracted_complete for row in rows)
+    console.print(
+        f"complete archives {complete_archives}/{len(rows)} | "
+        f"complete extracted cases {complete_extracted}/{len(rows)}"
+    )
+
+    if csv_out is not None:
+        csv_out.parent.mkdir(parents=True, exist_ok=True)
+        fieldnames = [
+            "case_id",
+            "archive_present",
+            "archive_complete",
+            "extracted_complete",
+            "inhale_image_present",
+            "exhale_image_present",
+            "inhale_landmarks_present",
+            "exhale_landmarks_present",
+        ]
+        with csv_out.open("w", encoding="utf-8-sig", newline="") as stream:
+            writer = csv.DictWriter(stream, fieldnames=fieldnames)
+            writer.writeheader()
+            for row in rows:
+                writer.writerow(
+                    {
+                        "case_id": row.case_id,
+                        "archive_present": row.archive_path is not None,
+                        "archive_complete": row.archive_complete,
+                        "extracted_complete": row.extracted_complete,
+                        "inhale_image_present": row.inhale_image is not None,
+                        "exhale_image_present": row.exhale_image is not None,
+                        "inhale_landmarks_present": row.inhale_landmarks is not None,
+                        "exhale_landmarks_present": row.exhale_landmarks is not None,
+                    }
+                )
+        console.print(f"Wrote {len(rows)} case rows to {csv_out}")
 
 
 @measure_app.command("wall")

@@ -1,4 +1,4 @@
-"""Thickness of the fat and muscle layers of the chest wall.
+"""Exploratory over-rib thickness of fat and muscle in the chest wall.
 
 This answers a different question from :mod:`breathgeom.measure.shell`, and a
 better-posed one. That module reports how deep the lung lies under the skin,
@@ -7,10 +7,10 @@ lung, and the lung is the thing that moves. Its inner boundary is set by a
 Hounsfield threshold whose position shifts as the lung densifies, and at exhale
 the lung retreats out of any fixed measurement belt altogether.
 
-The layers themselves need none of that. Subcutaneous fat starts at the skin;
-muscle follows it; both end at the rib cage. Skin and bone are the two most
-stable landmarks in the thorax, so a layer measured between them does not
-inherit the lung's motion, its threshold, or its retreat.
+This module deliberately measures only walks that actually reach bone. It is
+therefore an *over-rib* diagnostic, not the full skin-to-lung profile needed by
+the bioimpedance model. Intercostal walks and current paths that continue behind
+a rib require a separate tissue-profile measurement.
 
 Each layer is read along the inward normal, taken as the gradient of the
 distance-to-outside field: the shortest way out of the body is perpendicular to
@@ -120,10 +120,10 @@ class Layers:
 
     @property
     def bone_fraction(self) -> float:
-        """Share of walks that ended on a rib rather than running out of budget.
+        """Share of retained walks that ended on a rib.
 
-        A low value means the walks were not bounded by the rib cage, so what
-        they measured is not the wall.
+        Valid output from this module has fraction 1.0. The property remains in
+        the result as a runtime invariant and for backwards-compatible QC.
         """
         if not self.samples:
             return float("nan")
@@ -174,7 +174,7 @@ def measure_layers(
     band: tuple[int, int] | None = None,
     origin: tuple[float, float] | None = None,
 ) -> Layers:
-    """Walk inward from the skin and measure the fat and muscle layers.
+    """Walk inward from the skin and measure fat and muscle above a rib.
 
     ``volume_ras`` must be RAS+. ``band`` fixes the slice range; two phases may
     only share one after being brought to a common frame.
@@ -266,8 +266,12 @@ def measure_layers(
                 values = values[: air[0]]
             labels = _classify(values)
             bone_at = np.flatnonzero(labels == 3)
-            if bone_at.size:
-                labels = labels[: bone_at[0]]
+            # Without a detected rib there is no defined inner boundary for
+            # this measurement. Keeping such a walk silently turns liver,
+            # intercostal space or the walk budget into a fictitious endpoint.
+            if not bone_at.size:
+                continue
+            labels = labels[: bone_at[0]]
 
             fat = _runs(labels, 1, bridge) * params.step_mm
             after = int(fat / params.step_mm)
@@ -280,7 +284,7 @@ def measure_layers(
                     angle_deg=float(angle[position]),
                     fat_mm=fat if fat >= minimum else 0.0,
                     muscle_mm=muscle if muscle >= minimum else 0.0,
-                    reached_bone=bool(bone_at.size),
+                    reached_bone=True,
                     fov_truncated=truncated,
                 )
             )

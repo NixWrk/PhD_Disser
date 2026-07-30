@@ -43,6 +43,10 @@ COLUMN_HALF_WIDTH_MM = 45.0
 # A pyramid level is only useful while enough masked voxels survive its
 # downsampling; below this the joint histogram empties and the metric fails.
 MIN_MASKED_VOXELS_PER_LEVEL = 500
+# Registration is a prerequisite for phase comparison, not a cosmetic step.
+# Below this overlap the result may still be numerically better than the initial
+# pose while remaining too poor to support local wall measurements.
+MIN_ACCEPTABLE_COLUMN_DICE = 0.70
 
 
 @dataclass(frozen=True)
@@ -63,12 +67,16 @@ class AlignmentReport:
         return float(np.linalg.norm(self.translation_mm))
 
     def rotation_matrix(self) -> FloatArray:
-        """Euler rotation in the same X-Y-Z order SimpleITK composes it."""
+        """Euler rotation in SimpleITK's default ``ComputeZYX=False`` order."""
         ax, ay, az = (np.radians(angle) for angle in self.rotation_deg)
         rx = np.array([[1, 0, 0], [0, np.cos(ax), -np.sin(ax)], [0, np.sin(ax), np.cos(ax)]])
         ry = np.array([[np.cos(ay), 0, np.sin(ay)], [0, 1, 0], [-np.sin(ay), 0, np.cos(ay)]])
         rz = np.array([[np.cos(az), -np.sin(az), 0], [np.sin(az), np.cos(az), 0], [0, 0, 1]])
-        matrix: FloatArray = rz @ ry @ rx
+        # Euler3DTransform uses Z-X-Y composition unless ComputeZYX is enabled.
+        # Keep this in lockstep with the transform used by ``rigid_align``:
+        # landmark validation is otherwise evaluated with a different rotation
+        # from the image resampling itself.
+        matrix: FloatArray = rz @ rx @ ry
         return matrix
 
     def to_fixed(self, points_mm: FloatArray) -> FloatArray:
@@ -97,6 +105,11 @@ class AlignmentReport:
         now does. The latter is the claim being relied upon downstream.
         """
         return self.column_dice_after > self.column_dice_before
+
+    @property
+    def acceptable(self) -> bool:
+        """Whether the rigid fit is good enough for local phase comparison."""
+        return self.improved and self.column_dice_after >= MIN_ACCEPTABLE_COLUMN_DICE
 
 
 def _to_sitk(volume_ras: IntArray, spacing: tuple[float, float, float]) -> sitk.Image:
