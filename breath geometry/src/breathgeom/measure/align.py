@@ -51,6 +51,7 @@ class AlignmentReport:
 
     translation_mm: tuple[float, float, float]
     rotation_deg: tuple[float, float, float]
+    centre_mm: tuple[float, float, float]
     metric: float
     column_dice_before: float
     column_dice_after: float
@@ -60,6 +61,31 @@ class AlignmentReport:
     @property
     def shift_mm(self) -> float:
         return float(np.linalg.norm(self.translation_mm))
+
+    def rotation_matrix(self) -> FloatArray:
+        """Euler rotation in the same X-Y-Z order SimpleITK composes it."""
+        ax, ay, az = (np.radians(angle) for angle in self.rotation_deg)
+        rx = np.array([[1, 0, 0], [0, np.cos(ax), -np.sin(ax)], [0, np.sin(ax), np.cos(ax)]])
+        ry = np.array([[np.cos(ay), 0, np.sin(ay)], [0, 1, 0], [-np.sin(ay), 0, np.cos(ay)]])
+        rz = np.array([[np.cos(az), -np.sin(az), 0], [np.sin(az), np.cos(az), 0], [0, 0, 1]])
+        matrix: FloatArray = rz @ ry @ rx
+        return matrix
+
+    def to_fixed(self, points_mm: FloatArray) -> FloatArray:
+        """Carry points from the moving frame into the fixed one.
+
+        Resampling uses the transform the other way round — for every point of
+        the fixed image it asks where to sample the moving one — so bringing
+        moving-frame landmarks over requires the inverse. Getting the direction
+        wrong roughly doubles the apparent error instead of removing it, which is
+        why this is a named method rather than an inline matrix multiply.
+        """
+        centre = np.asarray(self.centre_mm, dtype=np.float64)
+        shift = np.asarray(self.translation_mm, dtype=np.float64)
+        rotation = self.rotation_matrix()
+        moved = np.asarray(points_mm, dtype=np.float64) - centre - shift
+        result: FloatArray = moved @ rotation + centre
+        return result
 
     @property
     def improved(self) -> bool:
@@ -216,6 +242,7 @@ def rigid_align(
             float(np.degrees(euler.GetAngleY())),
             float(np.degrees(euler.GetAngleZ())),
         ),
+        centre_mm=tuple(float(value) for value in euler.GetCenter()),  # type: ignore[arg-type]
         metric=float(method.GetMetricValue()),
         column_dice_before=_dice(fixed_column, moving_column),
         column_dice_after=_dice(fixed_column, moved_column_array),
