@@ -22,6 +22,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Literal
 from zipfile import BadZipFile, ZipFile
 
 import numpy as np
@@ -30,6 +31,7 @@ from scipy import ndimage
 
 IntArray = npt.NDArray[np.int16]
 BoolArray = npt.NDArray[np.bool_]
+FloatArray = npt.NDArray[np.float64]
 
 # Stored value minus this is Hounsfield units.
 HU_OFFSET = 1024
@@ -336,15 +338,29 @@ def load_copdgene(
     same anatomy to both phases; inferring it separately per phase can silently
     mirror or invert one of them relative to the other.
     """
-    geometry = geometry or DIRLAB_COPDGENE[case_id]
     raw = np.fromfile(path, dtype=np.int16)
+    return _decode_copdgene(
+        raw, case_id, geometry=geometry, orientation=orientation, source_name=path.name
+    )
+
+
+def _decode_copdgene(
+    raw: IntArray,
+    case_id: str,
+    geometry: CaseGeometry | None = None,
+    orientation: OrientationReport | None = None,
+    source_name: str | None = None,
+) -> tuple[IntArray, tuple[float, float, float], OrientationReport]:
+    """Decode raw COPDgene voxels supplied by a file or an archive member."""
+    geometry = geometry or DIRLAB_COPDGENE[case_id]
+    source_name = source_name or case_id
     voxels_per_slice = geometry.rows * geometry.columns
     if raw.size % voxels_per_slice:
-        raise ValueError(f"{path.name}: {raw.size} voxels is not a whole number of slices")
+        raise ValueError(f"{source_name}: {raw.size} voxels is not a whole number of slices")
     slices = raw.size // voxels_per_slice
     if slices != geometry.slices:
         raise ValueError(
-            f"{path.name}: file holds {slices} slices, published table says {geometry.slices}"
+            f"{source_name}: file holds {slices} slices, published table says {geometry.slices}"
         )
 
     stack = raw.reshape(slices, geometry.rows, geometry.columns)
@@ -366,6 +382,64 @@ def load_copdgene(
     return np.ascontiguousarray(volume, dtype=np.int16), spacing, report
 
 
+def _read_locator(locator: str) -> bytes:
+    if not locator.startswith("zip://"):
+        return Path(locator).read_bytes()
+    archive_text, separator, member = locator.removeprefix("zip://").partition("!/")
+    if not separator or not archive_text or not member:
+        raise ValueError(f"Malformed ZIP locator: {locator}")
+    with ZipFile(Path(archive_text)) as archive:
+        return archive.read(member)
+
+
+def load_copdgene_locator(
+    locator: str,
+    case_id: str,
+    geometry: CaseGeometry | None = None,
+    orientation: OrientationReport | None = None,
+) -> tuple[IntArray, tuple[float, float, float], OrientationReport]:
+    """Read a COPDgene image from an extracted path or ``zip://...!/member``."""
+    if not locator.startswith("zip://"):
+        return load_copdgene(
+            Path(locator), case_id, geometry=geometry, orientation=orientation
+        )
+    raw = np.frombuffer(_read_locator(locator), dtype=np.int16).copy()
+    return _decode_copdgene(
+        raw, case_id, geometry=geometry, orientation=orientation, source_name=locator
+    )
+
+
+def load_copdgene_landmarks(
+    locator: str,
+    case_id: str,
+    orientation: OrientationReport,
+    *,
+    indexing: Literal["one_based", "zero_based"] = "one_based",
+    geometry: CaseGeometry | None = None,
+) -> FloatArray:
+    """Read DIR-Lab ``x y z`` landmarks and convert them to RAS+ millimetres."""
+    geometry = geometry or DIRLAB_COPDGENE[case_id]
+    text = _read_locator(locator).decode("ascii")
+    points = np.loadtxt(text.splitlines(), dtype=np.float64)
+    if points.ndim != 2 or points.shape[1] != 3:
+        raise ValueError(f"{case_id}: expected an N x 3 landmark table")
+    if indexing == "one_based":
+        points -= 1.0
+
+    if not orientation.right_is_high_index:
+        points[:, 0] = geometry.columns - 1 - points[:, 0]
+    if orientation.posterior_is_high_row:
+        points[:, 1] = geometry.rows - 1 - points[:, 1]
+    if not orientation.superior_is_high_index:
+        points[:, 2] = geometry.slices - 1 - points[:, 2]
+    spacing = np.array(
+        [geometry.spacing_x_mm, geometry.spacing_y_mm, geometry.spacing_z_mm],
+        dtype=np.float64,
+    )
+    converted: FloatArray = points * spacing
+    return converted
+
+
 __all__ = [
     "COPDGENE_REQUIRED_SUFFIXES",
     "DIRLAB_COPDGENE",
@@ -374,4 +448,6 @@ __all__ = [
     "OrientationReport",
     "inventory_copdgene",
     "load_copdgene",
+    "load_copdgene_landmarks",
+    "load_copdgene_locator",
 ]

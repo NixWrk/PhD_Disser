@@ -22,6 +22,9 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+registration = [
+  "itk-elastix>=0.25.3,<0.26",
+]
 geometry = [
   "meshio>=5.3,<6",
   "scikit-image>=0.24,<1",
@@ -67,8 +70,16 @@ warn_unused_ignores = true
 module = ["scipy.*", "SimpleITK.*"]
 ignore_missing_imports = true
 
+[[tool.mypy.overrides]]
+module = ["itk.*"]
+ignore_missing_imports = true
+
 # SimpleITK ships no annotations; its results are narrowed at each use site.
 [[tool.mypy.overrides]]
-module = ["breathgeom.measure.align"]
+module = [
+  "breathgeom.measure.align",
+  "breathgeom.measure.elastix_registration",
+  "breathgeom.measure.registration",
+]
 disallow_untyped_calls = false
 

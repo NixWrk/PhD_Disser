@@ -12,6 +12,8 @@ from breathgeom.io.dirlab import (
     CaseGeometry,
     inventory_copdgene,
     load_copdgene,
+    load_copdgene_landmarks,
+    load_copdgene_locator,
 )
 
 IntArray = npt.NDArray[np.int16]
@@ -174,3 +176,29 @@ def test_shared_orientation_is_applied_verbatim(tmp_path: Path) -> None:
 
     assert reused is anchor
     assert inferred.right_is_high_index is not anchor.right_is_high_index
+
+
+def test_zip_locators_read_image_and_landmarks(tmp_path: Path) -> None:
+    raw = phantom(True, True, True)
+    points = "1 1 1\n64 64 40\n"
+    archive_path = tmp_path / "phantom.zip"
+    with ZipFile(archive_path, "w") as archive:
+        archive.writestr("phantom.img", raw.tobytes())
+        archive.writestr("points.txt", points)
+    image_locator = f"zip://{archive_path.as_posix()}!/phantom.img"
+    point_locator = f"zip://{archive_path.as_posix()}!/points.txt"
+
+    volume, spacing, orientation = load_copdgene_locator(
+        image_locator, "phantom", geometry=GEOMETRY
+    )
+    landmarks = load_copdgene_landmarks(
+        point_locator,
+        "phantom",
+        orientation,
+        geometry=GEOMETRY,
+    )
+
+    assert volume.shape == (64, 64, 40)
+    assert spacing == (1.0, 1.0, 2.5)
+    assert landmarks[0].tolist() == [0.0, 63.0, 0.0]
+    assert landmarks[1].tolist() == [63.0, 0.0, 97.5]
