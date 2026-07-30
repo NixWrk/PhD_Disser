@@ -6,6 +6,7 @@ status: inventory_required
 # former P01-P03/U01-U03 split was an unverified design assumption and is no
 # longer encoded as data truth.
 subject_manifest: data/interim/subjects.local.csv
+respiratory_pair_manifest: data/interim/respiratory_pairs.local.csv
 
 target:
   input_phase: inhale_deep

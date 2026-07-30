@@ -23,6 +23,12 @@ from breathgeom.io.datasets import (
 )
 from breathgeom.io.dicom import scan_dicom_series, write_manifest_csv
 from breathgeom.io.dirlab import inventory_copdgene
+from breathgeom.io.pairs import (
+    add_source_checksums,
+    inventory_copdgene_pairs,
+    inventory_lungct_pairs,
+    write_pair_manifest,
+)
 from breathgeom.measure.wall import Side, WallRay, load_ras, measure_wall
 from breathgeom.tools import collect_tool_status
 
@@ -268,6 +274,52 @@ def dirlab_inventory(
                     }
                 )
         console.print(f"Wrote {len(rows)} case rows to {csv_out}")
+
+
+@data_app.command("pairs-manifest")
+def pairs_manifest(
+    dirlab_root: Annotated[
+        Path,
+        typer.Option("--dirlab-root", exists=True, file_okay=False, readable=True),
+    ],
+    lungct_root: Annotated[
+        Path,
+        typer.Option("--lungct-root", exists=True, file_okay=False, readable=True),
+    ],
+    output: Annotated[
+        Path,
+        typer.Option("--output", help="De-identified subject-level CSV."),
+    ] = Path("data/interim/respiratory_pairs.local.csv"),
+    checksums: Annotated[
+        bool,
+        typer.Option(help="SHA-256 source archives for a frozen manifest."),
+    ] = False,
+) -> None:
+    """Inventory all available COPDgene and LungCT respiratory pairs."""
+    rows = inventory_copdgene_pairs(dirlab_root) + inventory_lungct_pairs(lungct_root)
+    if checksums:
+        rows = add_source_checksums(rows)
+    count = write_pair_manifest(output, rows)
+
+    table = Table(title="Respiratory pair inventory")
+    table.add_column("dataset")
+    table.add_column("cases", justify="right")
+    table.add_column("complete", justify="right")
+    table.add_column("expert", justify="right")
+    table.add_column("keypoints", justify="right")
+    for dataset_id in sorted({row.dataset_id for row in rows}):
+        group = [row for row in rows if row.dataset_id == dataset_id]
+        table.add_row(
+            dataset_id,
+            str(len(group)),
+            str(sum(row.complete for row in group)),
+            str(sum(row.has_expert_landmarks for row in group)),
+            str(sum(row.has_keypoints for row in group)),
+        )
+    console.print(table)
+    console.print(f"Wrote {count} subject rows to {output}")
+    if not all(row.complete for row in rows):
+        console.print("[yellow]WARNING:[/yellow] incomplete pairs remain; inspect missing column.")
 
 
 @measure_app.command("wall")

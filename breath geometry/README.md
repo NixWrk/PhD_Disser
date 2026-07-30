@@ -45,6 +45,9 @@ Copy-Item configs/paths.local.example.yaml configs/paths.local.yaml
 .\.venv\Scripts\breathgeom.exe --help
 .\.venv\Scripts\breathgeom.exe data list
 .\.venv\Scripts\breathgeom.exe data dirlab-inventory "E:\КТ папка\dirlab_copdgene"
+.\.venv\Scripts\breathgeom.exe data pairs-manifest `
+  --dirlab-root "E:\КТ папка\dirlab_copdgene" `
+  --lungct-root "E:\КТ папка\learn2reg_lungct" --checksums
 .\.venv\Scripts\breathgeom.exe manifest scan --config configs/paths.local.yaml --output data/interim/manifest.local.csv
 .\.venv\Scripts\breathgeom.exe measure wall data/interim/ct.nii.gz --side right --csv data/interim/wall.csv
 ~~~

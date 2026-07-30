@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/breathgeom/respiratory_pair.schema.json",
+  "title": "Respiratory CT pair manifest row",
+  "type": "object",
+  "required": [
+    "dataset_id",
+    "subject_id",
+    "protocol_class",
+    "fixed_phase",
+    "moving_phase",
+    "fixed_image",
+    "moving_image",
+    "outer_body_scope",
+    "complete"
+  ],
+  "properties": {
+    "dataset_id": {"type": "string", "minLength": 1},
+    "subject_id": {"type": "string", "minLength": 1},
+    "split": {"type": "string"},
+    "protocol_class": {"const": "breath_hold_inspiration_expiration"},
+    "population": {"type": "string"},
+    "fixed_phase": {"type": "string"},
+    "moving_phase": {"type": "string"},
+    "fixed_image": {"type": "string"},
+    "moving_image": {"type": "string"},
+    "fixed_mask": {"type": "string"},
+    "moving_mask": {"type": "string"},
+    "fixed_expert_landmarks": {"type": "string"},
+    "moving_expert_landmarks": {"type": "string"},
+    "fixed_keypoints": {"type": "string"},
+    "moving_keypoints": {"type": "string"},
+    "outer_body_scope": {
+      "enum": ["full_thorax_candidate", "cropped_registration_fov"]
+    },
+    "source_archive": {"type": "string"},
+    "source_sha256": {"type": "string", "pattern": "^$|^[0-9a-f]{64}$"},
+    "complete": {"type": "boolean"},
+    "missing": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": false
+}
