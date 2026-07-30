@@ -58,11 +58,11 @@ class RespiratoryPair:
         return row
 
 
-def _zip_members(path: Path) -> dict[str, int]:
+def _zip_members(path: Path) -> dict[str, str]:
     try:
         with ZipFile(path) as archive:
             return {
-                Path(info.filename).name: info.file_size
+                Path(info.filename).name: info.filename
                 for info in archive.infolist()
                 if not info.is_dir()
             }
@@ -77,7 +77,7 @@ def _zip_uri(archive: Path, member: str) -> str:
 def _copdgene_locator(
     extracted: Path | None,
     archive: Path | None,
-    members: dict[str, int],
+    members: dict[str, str],
     name: str,
 ) -> str:
     if extracted is not None:
@@ -85,7 +85,7 @@ def _copdgene_locator(
         if candidate.is_file():
             return str(candidate.resolve())
     if archive is not None and name in members:
-        return _zip_uri(archive, name)
+        return _zip_uri(archive, members[name])
     return ""
 
 

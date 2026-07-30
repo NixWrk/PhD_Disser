@@ -21,6 +21,7 @@ def test_copdgene_inventory_uses_zip_members_without_extraction(tmp_path: Path) 
     assert len(rows) == 10
     assert rows[0].complete
     assert rows[0].fixed_image.startswith("zip://")
+    assert rows[0].fixed_image.endswith("!/nested/copd1_eBHCT.img")
     assert rows[0].has_expert_landmarks
     assert not rows[1].complete
 
