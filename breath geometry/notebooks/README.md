@@ -15,3 +15,24 @@ Notebook в этом каталоге — интерактивный QC/отчё
 
 Текущий notebook `01_inhale_exhale_inspection.ipynb` — исторический прототип для `copd1`.
 Его подробный аудит находится в `../docs/NOTEBOOK_AUDIT.md`.
+
+## Отчётные notebooks
+
+- `02_registration_benchmark.ipynb` читает subject-level batch-таблицы регистрации,
+  показывает expert TRE, геометрические метрики, причины провала gate и provenance;
+- `03_whole_body_profiles.ipynb` показывает QC лучей по всей поверхности лёгких,
+  независимые распределения полной толщины, жира, мышц и кости, региональные таблицы
+  и пространственную карту;
+- outputs этих двух notebooks коммитятся как удобное представление результатов, но
+  источником чисел остаются воспроизводимые артефакты в `results/`;
+- после обновления batch-артефактов оба notebooks нужно выполнить заново и проверить,
+  что в них нет локальных путей и медицинских идентификаторов.
+
+Выполнение из корня репозитория:
+
+~~~powershell
+.\.venv\Scripts\jupyter.exe nbconvert --to notebook --execute --inplace `
+  notebooks/02_registration_benchmark.ipynb `
+  notebooks/03_whole_body_profiles.ipynb `
+  --ExecutePreprocessor.timeout=300
+~~~
