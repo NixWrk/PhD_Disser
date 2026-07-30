@@ -19,8 +19,9 @@
 1. [Текущий подтверждённый статус](docs/PROJECT_STATUS.md)
 2. [Определения измеряемых величин](docs/MEASUREMENT_MODEL.md)
 3. [Порядок реализации и gate-критерии](docs/ROADMAP.md)
-4. [Аудит текущего notebook](docs/NOTEBOOK_AUDIT.md)
-5. [Правила данных и приватности](docs/DATA_PRIVACY.md)
+4. [Результат парного registration benchmark](docs/REGISTRATION_BENCHMARK.md)
+5. [Аудит текущего notebook](docs/NOTEBOOK_AUDIT.md)
+6. [Правила данных и приватности](docs/DATA_PRIVACY.md)
 
 Большие документы [RESEARCH_REPORT.md](docs/RESEARCH_REPORT.md),
 [research_and_implementation_plan.md](research_and_implementation_plan.md) и
