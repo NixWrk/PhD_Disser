@@ -62,7 +62,8 @@ class LayerParams:
     # Single stray voxels inside a layer must not end it: partial volume puts
     # occasional muscle-valued voxels inside fat and vice versa.
     bridge_mm: float = 1.0
-    # Half-width of the lateral sector the wall is sampled over.
+    # Half-width of the sampled sector. At 180 the whole circumference is taken,
+    # which is what angular binning of the wall needs.
     sector_half_angle_deg: float = 35.0
     min_body_area_px: int = 500
     fov_margin_px: float = 2.0
@@ -73,6 +74,7 @@ class LayerSample:
     """One inward walk from a skin voxel."""
 
     slice_index: int
+    angle_deg: float
     fat_mm: float
     muscle_mm: float
     reached_bone: bool
@@ -111,6 +113,10 @@ class Layers:
     @property
     def soft_mm(self) -> FloatArray:
         return self._values("soft_mm")
+
+    @property
+    def angle_deg(self) -> FloatArray:
+        return self._values("angle_deg")
 
     @property
     def bone_fraction(self) -> float:
@@ -166,11 +172,18 @@ def measure_layers(
     side: Side = Side.RIGHT,
     params: LayerParams | None = None,
     band: tuple[int, int] | None = None,
+    origin: tuple[float, float] | None = None,
 ) -> Layers:
     """Walk inward from the skin and measure the fat and muscle layers.
 
     ``volume_ras`` must be RAS+. ``band`` fixes the slice range; two phases may
     only share one after being brought to a common frame.
+
+    ``origin`` fixes the point angles are measured from. Comparing two phases
+    by angular sector requires it: the body centroid shifts by more than ten
+    millimetres between inhale and exhale, so a sector defined per phase names a
+    different piece of wall in each. One origin, taken from either phase, keeps
+    the sectors meaning the same thing.
     """
     params = params or LayerParams()
     sx, sy, sz = spacing
@@ -213,13 +226,16 @@ def measure_layers(
         if rows.size == 0:
             continue
 
-        centre = ndimage.center_of_mass(body)
+        centre = origin if origin is not None else ndimage.center_of_mass(body)
         angle = np.degrees(np.arctan2(columns - centre[1], rows - centre[0]))
-        if side is Side.RIGHT:
-            sector = np.abs(angle) < params.sector_half_angle_deg
+        if params.sector_half_angle_deg >= 180.0:
+            sector = np.ones(rows.shape, dtype=bool)
         else:
-            sector = np.abs(np.abs(angle) - 180.0) < params.sector_half_angle_deg
-        sector &= (outward * (rows - midline)) > 0
+            if side is Side.RIGHT:
+                sector = np.abs(angle) < params.sector_half_angle_deg
+            else:
+                sector = np.abs(np.abs(angle) - 180.0) < params.sector_half_angle_deg
+            sector &= (outward * (rows - midline)) > 0
 
         for position in np.flatnonzero(sector):
             row, column = int(rows[position]), int(columns[position])
@@ -261,6 +277,7 @@ def measure_layers(
             samples.append(
                 LayerSample(
                     slice_index=index,
+                    angle_deg=float(angle[position]),
                     fat_mm=fat if fat >= minimum else 0.0,
                     muscle_mm=muscle if muscle >= minimum else 0.0,
                     reached_bone=bool(bone_at.size),
