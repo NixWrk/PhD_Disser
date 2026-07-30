@@ -6,6 +6,7 @@ from breathgeom.io.pairs import (
     add_source_checksums,
     inventory_copdgene_pairs,
     inventory_lungct_pairs,
+    read_pair_manifest,
     write_pair_manifest,
 )
 
@@ -63,3 +64,6 @@ def test_manifest_has_archive_checksum_and_serialized_missing(tmp_path: Path) ->
     text = output.read_text(encoding="utf-8-sig")
     assert rows[0].source_sha256 in text
     assert "fixed_image;moving_image" in text
+
+    restored = read_pair_manifest(output)
+    assert restored == rows

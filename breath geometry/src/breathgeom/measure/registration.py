@@ -90,6 +90,7 @@ class DeformableResult:
     jacobian_p01: float
     nonpositive_jacobian_fraction: float
     metric: float
+    elapsed_s: float = float("nan")
 
 
 def _to_sitk(
@@ -442,6 +443,83 @@ def warp_mask(
     return _from_sitk_bool(warped)
 
 
+def warp_image(
+    moving_ras: IntArray,
+    displacement_mm: VectorArray,
+    spacing: tuple[float, float, float],
+) -> npt.NDArray[np.int16]:
+    """Resample a moving CT through a fixed-to-moving displacement field."""
+    if displacement_mm.shape != moving_ras.shape + (3,):
+        raise ValueError("displacement field and moving image grids do not match")
+    reference = _to_sitk(
+        np.zeros(moving_ras.shape, dtype=np.int16), spacing, sitk.sitkInt16
+    )
+    source = _to_sitk(moving_ras, spacing, sitk.sitkInt16)
+    field = sitk.GetImageFromArray(
+        displacement_mm.transpose(2, 1, 0, 3).astype(np.float64)
+    )
+    field.SetSpacing(spacing)
+    transform = sitk.DisplacementFieldTransform(field)
+    warped = sitk.Resample(
+        source,
+        reference,
+        transform,
+        sitk.sitkLinear,
+        -1024,
+        sitk.sitkInt16,
+    )
+    return _from_sitk_int(warped)
+
+
+def compose_displacements(
+    base_fixed_to_moving_mm: VectorArray,
+    residual_fixed_to_intermediate_mm: VectorArray,
+    spacing: tuple[float, float, float],
+) -> VectorArray:
+    """Compose ``base(residual(x))`` fields on one zero-origin physical grid.
+
+    If ``base`` maps fixed coordinates into the original moving image and the
+    residual maps fixed coordinates into an intermediate image already warped
+    by ``base``, the combined displacement is
+    ``residual(x) + base(x + residual(x))``.
+    """
+    if base_fixed_to_moving_mm.shape != residual_fixed_to_intermediate_mm.shape:
+        raise ValueError("displacement fields must share one grid")
+    if base_fixed_to_moving_mm.ndim != 4 or base_fixed_to_moving_mm.shape[3] != 3:
+        raise ValueError("displacement fields must have shape X x Y x Z x 3")
+    shape = base_fixed_to_moving_mm.shape[:3]
+    x_grid, y_grid = np.meshgrid(
+        np.arange(shape[0], dtype=np.float64),
+        np.arange(shape[1], dtype=np.float64),
+        indexing="ij",
+    )
+    combined = np.empty_like(base_fixed_to_moving_mm, dtype=np.float32)
+    spacing_array = np.asarray(spacing, dtype=np.float64)
+    for z_index in range(shape[2]):
+        residual = residual_fixed_to_intermediate_mm[:, :, z_index].astype(np.float64)
+        coordinates = np.stack(
+            (
+                x_grid + residual[..., 0] / spacing_array[0],
+                y_grid + residual[..., 1] / spacing_array[1],
+                np.full(shape[:2], z_index, dtype=np.float64)
+                + residual[..., 2] / spacing_array[2],
+            )
+        )
+        for component in range(3):
+            sampled = ndimage.map_coordinates(
+                base_fixed_to_moving_mm[..., component],
+                coordinates,
+                order=1,
+                mode="constant",
+                cval=0.0,
+                prefilter=False,
+            )
+            combined[:, :, z_index, component] = (
+                residual[..., component] + sampled
+            ).astype(np.float32)
+    return np.ascontiguousarray(combined)
+
+
 __all__ = [
     "BSplineParams",
     "DeformableResult",
@@ -449,8 +527,10 @@ __all__ = [
     "RegistrationParams",
     "landmark_tre",
     "mask_metrics",
+    "compose_displacements",
     "register_diffeomorphic",
     "register_bspline",
     "transform_points",
     "warp_mask",
+    "warp_image",
 ]

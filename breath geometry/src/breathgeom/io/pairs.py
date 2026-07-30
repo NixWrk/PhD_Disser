@@ -251,11 +251,33 @@ def write_pair_manifest(path: Path, rows: Iterable[RespiratoryPair]) -> int:
     return len(materialized)
 
 
+def read_pair_manifest(path: Path) -> tuple[RespiratoryPair, ...]:
+    """Read a manifest produced by :func:`write_pair_manifest`."""
+    with path.open("r", encoding="utf-8-sig", newline="") as stream:
+        reader = csv.DictReader(stream)
+        expected = set(RespiratoryPair.__dataclass_fields__)
+        actual = set(reader.fieldnames or ())
+        if actual != expected:
+            missing = sorted(expected - actual)
+            extra = sorted(actual - expected)
+            raise ValueError(f"pair manifest schema mismatch; missing={missing}, extra={extra}")
+        rows = []
+        for raw in reader:
+            values: dict[str, object] = dict(raw)
+            values["complete"] = raw["complete"].strip().lower() in {"true", "1", "yes"}
+            values["missing"] = tuple(
+                item for item in raw["missing"].split(";") if item
+            )
+            rows.append(RespiratoryPair(**values))  # type: ignore[arg-type]
+    return tuple(rows)
+
+
 __all__ = [
     "RespiratoryPair",
     "add_source_checksums",
     "inventory_copdgene_pairs",
     "inventory_lungct_pairs",
+    "read_pair_manifest",
     "sha256_file",
     "write_pair_manifest",
 ]

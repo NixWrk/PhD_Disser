@@ -15,13 +15,18 @@ from __future__ import annotations
 
 import time
 from dataclasses import dataclass
-from typing import Any
+from typing import Any, cast
 
 import numpy as np
 import numpy.typing as npt
 import SimpleITK as sitk
 
-from breathgeom.measure.registration import DeformableResult, warp_mask
+from breathgeom.measure.registration import (
+    DeformableResult,
+    compose_displacements,
+    warp_image,
+    warp_mask,
+)
 from breathgeom.measure.wall import IntArray
 
 BoolArray = npt.NDArray[np.bool_]
@@ -39,6 +44,8 @@ class ElastixParams:
     final_grid_spacing_mm: float = 24.0
     bending_energy_weight: float = 0.1
     random_seed: int = 20260730
+    log_to_console: bool = False
+    use_registration_masks: bool = False
 
     def __post_init__(self) -> None:
         allowed = {"rigid", "affine", "bspline"}
@@ -87,10 +94,25 @@ def _parameter_object(params: ElastixParams) -> Any:
         parameter_map["NumberOfSpatialSamples"] = (str(params.spatial_samples),)
         parameter_map["DefaultPixelValue"] = ("-1024",)
         parameter_map["RandomSeed"] = (str(params.random_seed),)
+        if params.use_registration_masks:
+            parameter_map["ImageSampler"] = ("RandomSparseMask",)
+            parameter_map["ErodeFixedMask"] = ("false",)
+            parameter_map["ErodeMovingMask"] = ("false",)
         parameter_map["WriteResultImage"] = ("true",)
+        if stage == "rigid" and params.use_registration_masks:
+            parameter_map["AutomaticTransformInitialization"] = ("true",)
+            parameter_map["AutomaticTransformInitializationMethod"] = (
+                "GeometricalCenter",
+            )
         if stage == "bspline":
             parameter_map["FinalGridSpacingInPhysicalUnits"] = (
                 f"{params.final_grid_spacing_mm:g}",
+            )
+            # One isotropic scale per resolution.  Keeping the four-level
+            # default when a smoke test requests fewer levels is invalid.
+            parameter_map["GridSpacingSchedule"] = tuple(
+                f"{2 ** ((params.number_of_resolutions - level - 1) / 2):g}"
+                for level in range(params.number_of_resolutions)
             )
             parameter_map["Metric0Weight"] = ("1.0",)
             parameter_map["Metric1Weight"] = (f"{params.bending_energy_weight:g}",)
@@ -135,14 +157,16 @@ def register_elastix(
     moving_mask_image = _to_itk(moving_mask.astype(np.uint8), spacing)
 
     started = time.perf_counter()
+    registration_kwargs: dict[str, Any] = {
+        "parameter_object": _parameter_object(params),
+        "log_to_console": params.log_to_console,
+        "log_to_file": False,
+    }
+    if params.use_registration_masks:
+        registration_kwargs["fixed_mask"] = fixed_mask_image
+        registration_kwargs["moving_mask"] = moving_mask_image
     registered, transform_parameters = itk.elastix_registration_method(
-        fixed,
-        moving,
-        fixed_mask=fixed_mask_image,
-        moving_mask=moving_mask_image,
-        parameter_object=_parameter_object(params),
-        log_to_console=False,
-        log_to_file=False,
+        fixed, moving, **registration_kwargs
     )
     elapsed = time.perf_counter() - started
     displacement = _dense_field(moving, transform_parameters)
@@ -169,11 +193,64 @@ def register_elastix(
         jacobian_min=float(np.min(jacobian)),
         jacobian_p01=float(np.percentile(jacobian, 1)),
         nonpositive_jacobian_fraction=float(np.mean(jacobian <= 0.0)),
-        # The existing result slot is retained for API compatibility; elapsed
-        # time is more useful here because elastix does not expose one final
-        # scalar across its chained stages.
-        metric=float(elapsed),
+        # Elastix does not expose one final scalar across its chained stages.
+        metric=float("nan"),
+        elapsed_s=float(elapsed),
     )
 
 
-__all__ = ["ElastixParams", "register_elastix"]
+def register_elastix_residual(
+    fixed_ras: IntArray,
+    moving_ras: IntArray,
+    spacing: tuple[float, float, float],
+    fixed_mask: BoolArray,
+    moving_mask: BoolArray,
+    base_fixed_to_moving_mm: VectorArray,
+    *,
+    params: ElastixParams | None = None,
+) -> DeformableResult:
+    """Refine an existing global field with a lung-masked residual B-spline."""
+    params = params or ElastixParams(
+        stages=("bspline",),
+        iterations=(256,),
+        final_grid_spacing_mm=12.0,
+        bending_energy_weight=0.05,
+        use_registration_masks=True,
+    )
+    if params.stages != ("bspline",) or not params.use_registration_masks:
+        raise ValueError("residual refinement requires one mask-focused bspline stage")
+
+    intermediate = warp_image(moving_ras, base_fixed_to_moving_mm, spacing)
+    intermediate_mask = warp_mask(moving_mask, base_fixed_to_moving_mm, spacing)
+    residual = register_elastix(
+        fixed_ras,
+        cast(IntArray, intermediate),
+        spacing,
+        fixed_mask,
+        intermediate_mask,
+        params=params,
+    )
+    combined = compose_displacements(
+        base_fixed_to_moving_mm, residual.displacement_mm, spacing
+    )
+    field_image = sitk.GetImageFromArray(
+        combined.transpose(2, 1, 0, 3).astype(np.float64)
+    )
+    field_image.SetSpacing(spacing)
+    jacobian = sitk.GetArrayFromImage(
+        sitk.DisplacementFieldJacobianDeterminant(field_image)
+    )
+    return DeformableResult(
+        warped_moving=warp_image(moving_ras, combined, spacing),
+        warped_moving_mask=warp_mask(moving_mask, combined, spacing),
+        displacement_mm=combined,
+        rigid_report=None,
+        jacobian_min=float(np.min(jacobian)),
+        jacobian_p01=float(np.percentile(jacobian, 1)),
+        nonpositive_jacobian_fraction=float(np.mean(jacobian <= 0.0)),
+        metric=float("nan"),
+        elapsed_s=residual.elapsed_s,
+    )
+
+
+__all__ = ["ElastixParams", "register_elastix", "register_elastix_residual"]

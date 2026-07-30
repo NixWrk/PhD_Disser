@@ -5,6 +5,7 @@ import pytest
 from breathgeom.measure.registration import (
     BSplineParams,
     RegistrationParams,
+    compose_displacements,
     landmark_tre,
     mask_metrics,
     register_bspline,
@@ -81,6 +82,19 @@ def test_warp_mask_uses_fixed_to_moving_field_direction() -> None:
 
     assert warped[2, 5, 5]
     assert int(warped.sum()) == 1
+
+
+def test_displacement_composition_samples_base_at_residual_position() -> None:
+    base = np.zeros((10, 10, 10, 3), dtype=np.float32)
+    residual = np.zeros_like(base)
+    # A varying base distinguishes true composition from naive addition.
+    base[..., 0] = np.arange(10, dtype=np.float32)[:, None, None]
+    residual[..., 0] = 2.0
+
+    combined = compose_displacements(base, residual, (1.0, 1.0, 1.0))
+
+    # At x=3: residual 2 plus base sampled at x=5 gives 7 mm.
+    assert combined[3, 5, 5, 0] == pytest.approx(7.0)
 
 
 def test_bspline_registration_improves_shifted_blob() -> None:
