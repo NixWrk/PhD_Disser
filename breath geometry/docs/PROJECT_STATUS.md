@@ -139,6 +139,7 @@
    normal-contact constraint внутри совместной оптимизации и отдельное улучшение
    correspondence для `LungCT_0005`. Перед реализацией новая спецификация и challenge
    снова замораживаются.
+   Design и аудит готовых реализаций находятся в `SLIDING_S12_JOINT_DESIGN.md`.
 2. Зафиксировать численные пороги Gate 1B на независимых body/bone annotations и
    segmentation-repeatability; до этого его состояние `NOT VALIDATED`.
 3. Надёжная сегментация лёгких, тела, рёбер и тканей в исходном FOV.

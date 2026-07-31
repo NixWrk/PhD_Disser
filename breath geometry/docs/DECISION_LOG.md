@@ -683,3 +683,30 @@ challenge и заново обработать 6/6 development subjects.
 **Инженерный нюанс.** Первая попытка batch остановилась до записи manifest из-за
 невозможности вывести `≤` в Windows `cp1251`. После замены только служебной строки на
 ASCII и commit `a582258` полный batch завершён; научные параметры не менялись.
+
+## D-030. Следующий design target — joint piecewise-SVF, TubeTK только comparator
+
+**Литература.** Schmidt-Richberg/Pace разделяют normal и tangential regularization у
+sliding boundary; Risser формулирует piecewise-diffeomorphic LDDMM/LogDemons. Это
+соответствует нашему screen: topology-safe lung field разрушается именно последующей
+contact-поправкой.
+
+**Аудит environment.** Готовых ANTs/NiftyReg/Plastimatch executables нет.
+ITKTubeTK 1.4.2 содержит C++ anisotropic registration function/base filter, но старый
+специализированный sliding filter отсутствует в текущем дереве/закомментирован в tests и
+не перечислен в Python wrapping. Его displacement-PDE/SSD также не гарантирует zero
+folding. PyTorch/ConvexAdam доступны изолированно на GTX 1070.
+
+**Решение.** Основной design target J1 — два региональных stationary velocity field,
+отдельное экспоненцирование, MIND data terms, intra-region regularization и normal-contact
+constraint внутри joint optimization. Tangential jump не штрафуется. TubeTK может быть
+восстановлен позднее только как anisotropic non-diffeomorphic comparator.
+
+**Критический нюанс.** Равенство normal displacement на fixed surface может быть
+недостаточно при большой криволинейной деформации. До выбора loss нужно сравнить
+fixed-normal и symmetric/advected-surface formulations на known synthetic truth с
+gap/collision QC.
+
+**Порядок.** Сначала численные SVF invariants, затем piecewise representation gate,
+только потом synthetic joint optimizer и отдельная работа над `LungCT_0005`. Параметры
+real S1.2 не замораживать до этих этапов.

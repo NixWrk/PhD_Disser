@@ -146,6 +146,8 @@ Gate 4: модель выигрывает у B2 больше измерител�
 11. **Текущий шаг:** спроектировать совместную topology-preserving multi-region
     параметризацию: отдельные lung/body transforms, нормальный contact constraint,
     разрешённый tangential discontinuity и сохранение локального correspondence.
+    Выбран design target joint piecewise-SVF; сначала реализовать его численные
+    scaling-and-squaring/round-trip/Jacobian invariants, затем новый representation gate.
     Отдельно улучшить initial registration для `LungCT_0005`.
 12. После выбора класса заморозить новую synthetic challenge и полноценную S1.2
     спецификацию; затем запустить все шесть development subjects с нуля, включая

@@ -33,8 +33,9 @@ multipattern synthetic gate 4/4, включая заранее не запуск
 6. [Журнал решений, проблем и переходов](docs/DECISION_LOG.md)
 7. [Спецификация sliding registration S1](docs/SLIDING_REGISTRATION_S1.md)
 8. [Результат S1.2 heuristic screen](docs/SLIDING_S12_HEURISTIC_SCREEN.md)
-9. [Аудит текущего notebook](docs/NOTEBOOK_AUDIT.md)
-10. [Правила данных и приватности](docs/DATA_PRIVACY.md)
+9. [Design joint piecewise-SVF S1.2](docs/SLIDING_S12_JOINT_DESIGN.md)
+10. [Аудит текущего notebook](docs/NOTEBOOK_AUDIT.md)
+11. [Правила данных и приватности](docs/DATA_PRIVACY.md)
 
 Большие документы [RESEARCH_REPORT.md](docs/RESEARCH_REPORT.md),
 [research_and_implementation_plan.md](research_and_implementation_plan.md) и
