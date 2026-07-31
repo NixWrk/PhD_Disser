@@ -19,9 +19,12 @@ elastix baseline не проходит gate. Locked ConvexAdam улучшил ex
 multipattern synthetic gate 4/4, включая заранее не запускавшийся longitudinal case.
 Но real-development S1.1 дал `0/6`. Следующий frozen screen показал, что Gaussian repair
 убирает folding до contact, а одношаговый normal coupling снова его создаёт (`0/5` для
-обоих coupled-вариантов). Следующий этап — совместная topology-preserving multi-region
-регистрация и затем независимый Gate 1L/1B; до них подтверждённой оценки изменения
-мышцы/жира и модели перехода вдох→выдох нет.
+обоих coupled-вариантов). Численная основа следующего joint piecewise-SVF прошла
+замороженный J1.0 gate: 4/4 аналитических cases, 8/8 региональных строк, folding 0,
+худший endpoint p95 0.000305 мм. Это не регистрация КТ. Текущий этап — J1.1
+representation gate на криволинейном interface, затем synthetic joint optimizer и
+независимый Gate 1L/1B; до них подтверждённой оценки изменения мышцы/жира и модели
+перехода вдох→выдох нет.
 
 Начинать чтение следует здесь:
 
@@ -34,8 +37,9 @@ multipattern synthetic gate 4/4, включая заранее не запуск
 7. [Спецификация sliding registration S1](docs/SLIDING_REGISTRATION_S1.md)
 8. [Результат S1.2 heuristic screen](docs/SLIDING_S12_HEURISTIC_SCREEN.md)
 9. [Design joint piecewise-SVF S1.2](docs/SLIDING_S12_JOINT_DESIGN.md)
-10. [Аудит текущего notebook](docs/NOTEBOOK_AUDIT.md)
-11. [Правила данных и приватности](docs/DATA_PRIVACY.md)
+10. [Численный gate piecewise-SVF J1.0](docs/PIECEWISE_SVF_J10_NUMERIC_GATE.md)
+11. [Аудит текущего notebook](docs/NOTEBOOK_AUDIT.md)
+12. [Правила данных и приватности](docs/DATA_PRIVACY.md)
 
 Большие документы [RESEARCH_REPORT.md](docs/RESEARCH_REPORT.md),
 [research_and_implementation_plan.md](research_and_implementation_plan.md) и
@@ -79,6 +83,7 @@ Copy-Item configs/paths.local.example.yaml configs/paths.local.yaml
 .\.venv\Scripts\breathgeom.exe registration sliding-real-development
 .\.venv\Scripts\breathgeom.exe registration sliding-real-diagnose
 .\.venv\Scripts\breathgeom.exe registration sliding-s12-heuristic-screen
+.\.venv\Scripts\breathgeom.exe registration piecewise-svf-j10-numeric
 .\.venv\Scripts\breathgeom.exe profiles extract-pair `
   --manifest data/interim/respiratory_pairs.local.csv `
   --dataset dirlab_copdgene --subject copd1
@@ -108,8 +113,9 @@ paired deltas только при наличии прошедшего gate по�
 `06_sliding_s1_synthetic_benchmark.ipynb`, synthetic S1.1 PASS — в
 `07_sliding_s11_synthetic_benchmark.ipynb`, а real-development S1.1 FAIL —
 в `08_sliding_s11_real_development.ipynb`. Отказ простого S1.2 repair/coupling класса
-показан в `09_sliding_s12_heuristic_screen.ipynb`. Числа batch-анализов всё равно
-берутся из `results/`.
+показан в `09_sliding_s12_heuristic_screen.ipynb`; численный J1.0 piecewise-SVF —
+в `10_piecewise_svf_j10_numeric_gate.ipynb`. Числа batch-анализов всё равно берутся
+из `results/`.
 Подробная оценка первого notebook — в [NOTEBOOK_AUDIT.md](docs/NOTEBOOK_AUDIT.md).
 
 ## Проверки

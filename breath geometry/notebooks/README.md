@@ -41,9 +41,12 @@ Notebook в этом каталоге — интерактивный QC/отчё
 - `09_sliding_s12_heuristic_screen.ipynb` читает frozen post-hoc model-class screen,
   раздельно показывает correspondence/topology/contact и обосновывает отказ от
   `Gaussian repair + algebraic normal coupling`; expert landmarks не использует;
-- outputs этих восьми notebooks коммитятся как удобное представление результатов, но
+- `10_piecewise_svf_j10_numeric_gate.ipynb` проверяет checksums frozen analytic batch,
+  показывает endpoint/round-trip/Jacobian относительно заранее заданных порогов,
+  planar normal/slip invariant и влияние численной границы FOV; КТ не читает;
+- outputs этих девяти notebooks коммитятся как удобное представление результатов, но
   источником чисел остаются воспроизводимые артефакты в `results/`;
-- после обновления batch-артефактов все восемь notebooks нужно выполнить заново и проверить,
+- после обновления batch-артефактов все девять notebooks нужно выполнить заново и проверить,
   что в них нет локальных путей и медицинских идентификаторов.
 
 Bootstrap регистрирует ядро `breathgeom` из `.venv`. Выполнение одного отчёта из корня

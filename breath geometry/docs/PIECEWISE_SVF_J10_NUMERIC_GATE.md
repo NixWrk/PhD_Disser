@@ -76,3 +76,18 @@ Batch должен сохранить в `results/piecewise_svf_j10_numeric_gate
 Notebook читает эти артефакты и проверяет checksum. Единственный допустимый переход после
 PASS — J1.1 representation gate. При FAIL сначала исправляется численное представление;
 image optimizer запускать нельзя.
+
+## Выполненный batch
+
+Batch выполнен на commit `d665a236d81ccc06338f10e1d0711c99e890f91c`.
+Checksum config, summary, четырёх `.npz` и четырёх case JSON независимо совпали с
+manifest.
+
+- 4/4 cases и 8/8 региональных строк — PASS;
+- худший endpoint p95: `0.000305 мм` (`opposed_axial_rotation`, lung);
+- худший round-trip p95: `0.000610 мм` (тот же case);
+- `J≤0`: 0 во всех строках;
+- planar normal mismatch: `0 мм`;
+- planar tangential slip: truth `4 мм`, observed `4 мм`.
+
+Выполненный отчёт: `notebooks/10_piecewise_svf_j10_numeric_gate.ipynb`.

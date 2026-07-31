@@ -171,6 +171,11 @@ DART/другие anatomy-aware networks могут улучшить `LungCT_000
 Критерий выхода: synthetic smooth transforms имеют `J>0`, ожидаемый endpoint и
 round-trip в пределах численной погрешности.
 
+Статус: выполнено на замороженном `piecewise-svf-j1.0-numeric-v1`. Четыре
+аналитических cases и обе региональные строки каждого case прошли gate; folding нет,
+худшие endpoint p95 `0.000305 мм` и round-trip p95 `0.000610 мм`. Это переводит работу
+к J1.1, но не подтверждает contact на кривой поверхности или image correspondence.
+
 ### J1.1. Piecewise representation gate
 
 На known lung/body velocities:

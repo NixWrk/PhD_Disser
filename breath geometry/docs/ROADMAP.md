@@ -143,12 +143,14 @@ Gate 4: модель выигрывает у B2 больше измерител�
     сохранённых non-expert fields. Gaussian repair без coupling дал topology 5/5,
     contact 0/5; оба algebraic normal coupling дали contact 5/5, topology 0/5 и общий
     `0/5`. Подбор `sigma/scale/taper` прекращён.
-11. **Текущий шаг:** спроектировать совместную topology-preserving multi-region
-    параметризацию: отдельные lung/body transforms, нормальный contact constraint,
-    разрешённый tangential discontinuity и сохранение локального correspondence.
-    Выбран design target joint piecewise-SVF; сначала реализовать его численные
-    scaling-and-squaring/round-trip/Jacobian invariants, затем новый representation gate.
-    Отдельно улучшить initial registration для `LungCT_0005`.
+11. **J1.0 выполнен, текущий шаг J1.1:** выбран joint piecewise-SVF с отдельными
+    lung/body transforms, normal-contact constraint, разрешённым tangential
+    discontinuity и сохранением локального correspondence. Замороженный численный gate
+    scaling-and-squaring/round-trip/Jacobian прошёл 4/4 cases и 8/8 региональных строк,
+    folding отсутствует. Теперь до image optimizer заморозить и выполнить representation
+    gate на криволинейном interface: normal contact, заданный slip, gap/collision,
+    surface coverage и отрицательные контроли. Отдельно улучшить initial registration
+    для `LungCT_0005`.
 12. После выбора класса заморозить новую synthetic challenge и полноценную S1.2
     спецификацию; затем запустить все шесть development subjects с нуля, включая
     `LungCT_0029`.

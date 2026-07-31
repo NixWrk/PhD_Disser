@@ -97,12 +97,19 @@
   contact 0/5; узкий и широкий algebraic normal coupling дали contact 5/5, topology 0/5
   и общий `0/5`. Класс отвергнут; `LungCT_0005` дополнительно требует улучшения исходного
   correspondence. Выполненный отчёт — `09_sliding_s12_heuristic_screen.ipynb`.
+- Реализована и замороженным batch проверена численная основа joint piecewise-SVF:
+  отдельные lung/body stationary velocity fields, scaling-and-squaring в миллиметрах,
+  аналитические zero/translation/affine/rotation cases, round-trip и региональный
+  Jacobian. J1.0 прошёл 4/4 cases и 8/8 региональных строк без folding; худшие endpoint
+  p95 `0.000305 мм` и round-trip p95 `0.000610 мм` при заранее заданном лимите `0.02 мм`.
+  Planar case сохранил normal mismatch `0 мм` и tangential slip `4 мм`. Выполненный
+  отчёт — `10_piecewise_svf_j10_numeric_gate.ipynb`.
 - 3D-профили по всей сегментированной поверхности лёгких без электродного фильтра. Каждый
   путь раскладывается на жир/мышцу/кость/прочее; пути через лёгкое и обрезанный FOV
   отбраковываются. Парные дельты программно запрещены при провале registration gate.
 - Пороговые маски тела/лёгких, skin-to-lung shell, over-rib fat/muscle diagnostic и жёсткое
   совмещение по позвоночнику.
-- Исторический интерактивный notebook для `copd1` и восемь выполненных notebook-отчётов,
+- Исторический интерактивный notebook для `copd1` и девять выполненных notebook-отчётов,
   включая locked ConvexAdam benchmark, synthetic sliding/S1 benchmarks и явные QC-verdict.
 - Автотесты, `ruff` и strict `mypy`.
 
@@ -128,6 +135,9 @@
   synthetic gate v2.1 провален в deep anisotropic case (общий PASS 2/3).
 - Synthetic PASS S1.1 не является Gate 1L/1B. Real-development дал `0/6 PASS`, поэтому
   S1.1 отвергнут до expert benchmark; человеческие парные карты остаются запрещены.
+- J1.0 PASS проверяет только численное интегрирование известных velocity fields. Он не
+  проверяет криволинейный pleural contact, gap/collision, image correspondence или
+  оптимизацию по КТ и поэтому также не открывает Gate 1L/1B.
 
 ## Главные технические долги
 
@@ -137,8 +147,10 @@
    correspondence QC. Простой Gaussian/algebraic класс уже отвергнут frozen screen.
    Текущий design target — отдельные topology-preserving lung/body transformations с
    normal-contact constraint внутри совместной оптимизации и отдельное улучшение
-   correspondence для `LungCT_0005`. Перед реализацией новая спецификация и challenge
-   снова замораживаются.
+   correspondence для `LungCT_0005`. Численный J1.0 пройден; текущий шаг J1.1 —
+   заранее замороженный representation gate на криволинейном interface с
+   gap/collision, surface coverage и отрицательными контролями. До его PASS image
+   optimizer не реализуется.
    Design и аудит готовых реализаций находятся в `SLIDING_S12_JOINT_DESIGN.md`.
 2. Зафиксировать численные пороги Gate 1B на независимых body/bone annotations и
    segmentation-repeatability; до этого его состояние `NOT VALIDATED`.

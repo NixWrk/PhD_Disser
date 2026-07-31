@@ -710,3 +710,34 @@ gap/collision QC.
 **Порядок.** Сначала численные SVF invariants, затем piecewise representation gate,
 только потом synthetic joint optimizer и отдельная работа над `LungCT_0005`. Параметры
 real S1.2 не замораживать до этих этапов.
+
+## D-031. J1.0 numeric PASS не является sliding-registration PASS
+
+**Frozen результат.** До официального batch были зафиксированы
+`configs/piecewise_svf_j10_numeric_gate_v1.json` и пороги. На commit `d665a23`
+аналитические zero, planar translation, diagonal affine и opposed rotation прошли
+4/4 cases и 8/8 региональных строк. Худшие endpoint p95 `0.000305 мм` и round-trip p95
+`0.000610 мм` значительно ниже лимита `0.02 мм`; folding отсутствует. Planar case
+сохранил normal mismatch `0 мм` и tangential slip `4 мм`. Все checksum batch
+подтверждены.
+
+**Проблема и нюанс.** Constant-zero extension при scaling-and-squaring превращает
+постоянный перенос в ложную деформацию на границе массива. Nearest extension сохраняет
+перенос, но affine/rotation около края всё равно обращаются к искусственно продолженному
+полю. Поэтому boundary condition записано явно, а аналитический gate заранее ограничен
+interior domain с отступом 8 вокселей. Это не наблюдение анатомии вне CT FOV.
+
+**Решение.** Считать J1.0 закрытым и перейти к J1.1. Не начинать image optimizer, пока
+отдельный заранее замороженный representation gate не проверит криволинейный interface,
+normal contact, заданный tangential slip, gap/collision, surface coverage и отрицательные
+контроли global smoothing/post-hoc projection.
+
+**Причина ограничения вывода.** J1.0 экспоненцирует уже известные velocity fields. Он не
+решает обратную задачу по двум КТ, не проверяет correspondence и не моделирует контакт на
+реальной плевре. Поэтому PASS не открывает Gate 1L/1B и не разрешает карты изменения
+формы или толщины.
+
+**Инженерный нюанс.** Первый вызов notebook-скрипта был остановлен Windows
+ExecutionPolicy до выполнения ячеек. Штатный запуск с локальным
+`powershell -ExecutionPolicy Bypass` завершил 5/5 code cells без ошибок; научные
+параметры не менялись.
