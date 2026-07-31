@@ -92,6 +92,14 @@ class SyntheticS1Record:
     torch_version: str
     convexadam_version: str
     device: str
+    tangential_model_applied: bool
+    tangential_mode_names: tuple[str, ...]
+    tangential_coefficients_mm: tuple[float, ...]
+    tangential_objective_initial: float
+    tangential_objective_final: float
+    tangential_valid_voxel_count: int
+    tangential_function_evaluations: int
+    tangential_optimizer_success: bool
     gate_pass: bool
     gate_reasons: tuple[str, ...]
 
@@ -99,6 +107,12 @@ class SyntheticS1Record:
         values = asdict(self)
         values["shape"] = "x".join(str(value) for value in self.shape)
         values["spacing_mm"] = "x".join(str(value) for value in self.spacing_mm)
+        values["tangential_mode_names"] = ";".join(
+            self.tangential_mode_names
+        )
+        values["tangential_coefficients_mm"] = ";".join(
+            f"{value:.9g}" for value in self.tangential_coefficients_mm
+        )
         values["gate_reasons"] = ";".join(self.gate_reasons)
         return cast(dict[str, str | float | bool], values)
 
@@ -201,6 +215,14 @@ def evaluate_synthetic_s1_fields(
     torch_version: str = "",
     convexadam_version: str = "",
     device: str = "",
+    tangential_model_applied: bool = False,
+    tangential_mode_names: tuple[str, ...] = (),
+    tangential_coefficients_mm: tuple[float, ...] = (),
+    tangential_objective_initial: float = float("nan"),
+    tangential_objective_final: float = float("nan"),
+    tangential_valid_voxel_count: int = 0,
+    tangential_function_evaluations: int = 0,
+    tangential_optimizer_success: bool = True,
 ) -> SyntheticS1Record:
     """Evaluate fields without exposing them to the registration candidate."""
     gate = gate or SyntheticS1Gate()
@@ -300,6 +322,14 @@ def evaluate_synthetic_s1_fields(
         torch_version=torch_version,
         convexadam_version=convexadam_version,
         device=device,
+        tangential_model_applied=tangential_model_applied,
+        tangential_mode_names=tangential_mode_names,
+        tangential_coefficients_mm=tangential_coefficients_mm,
+        tangential_objective_initial=tangential_objective_initial,
+        tangential_objective_final=tangential_objective_final,
+        tangential_valid_voxel_count=tangential_valid_voxel_count,
+        tangential_function_evaluations=tangential_function_evaluations,
+        tangential_optimizer_success=tangential_optimizer_success,
         gate_pass=not reasons,
         gate_reasons=tuple(reasons),
     )
@@ -347,6 +377,26 @@ def run_synthetic_s1_suite(
             torch_version=result.lung_runtime.torch_version,
             convexadam_version=result.lung_runtime.convexadam_version,
             device=result.lung_runtime.device,
+            tangential_model_applied=result.tangential_model_applied,
+            tangential_mode_names=result.tangential_mode_names,
+            tangential_coefficients_mm=(
+                result.tangential_coefficients_mm
+            ),
+            tangential_objective_initial=(
+                result.tangential_objective_initial
+            ),
+            tangential_objective_final=(
+                result.tangential_objective_final
+            ),
+            tangential_valid_voxel_count=(
+                result.tangential_valid_voxel_count
+            ),
+            tangential_function_evaluations=(
+                result.tangential_function_evaluations
+            ),
+            tangential_optimizer_success=(
+                result.tangential_optimizer_success
+            ),
         )
         runs.append(SyntheticS1Run(record=record, pair=pair, result=result))
     return tuple(runs)
@@ -402,6 +452,22 @@ def write_synthetic_s1_suite(
             estimated_body_displacement_mm=run.result.body_displacement_mm,
             raw_lung_displacement_mm=run.result.raw_lung_displacement_mm,
             raw_body_displacement_mm=run.result.raw_body_displacement_mm,
+            initial_lung_displacement_mm=(
+                run.result.initial_lung_displacement_mm
+            ),
+            tangential_mode_names=np.asarray(
+                run.result.tangential_mode_names
+            ),
+            tangential_coefficients_mm=np.asarray(
+                run.result.tangential_coefficients_mm,
+                dtype=np.float64,
+            ),
+            tangential_objective_initial=np.asarray(
+                run.result.tangential_objective_initial,
+            ),
+            tangential_objective_final=np.asarray(
+                run.result.tangential_objective_final,
+            ),
             spacing_mm=np.asarray(run.pair.spacing_mm),
             transform_direction=np.asarray(run.record.transform_direction),
         )
