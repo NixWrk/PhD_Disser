@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import csv
+import hashlib
 import json
 import subprocess
 from dataclasses import asdict
@@ -52,11 +53,17 @@ from breathgeom.measure.sliding_registration import load_sliding_s1_params
 from breathgeom.measure.wall import IntArray as WallIntArray
 from breathgeom.measure.wall import Side, WallRay, load_ras, measure_wall
 from breathgeom.real_s1 import (
+    DEVELOPMENT_FIELD_DIR,
     load_real_development_pair,
     load_real_s1_protocol,
     run_real_s1_pair,
     select_real_development_pairs,
     write_real_s1_batch,
+)
+from breathgeom.real_s1_diagnostics import (
+    RealS1VariantRecord,
+    diagnose_real_s1_fields,
+    write_real_s1_diagnostics,
 )
 from breathgeom.synthetic_s1 import (
     load_sliding_suite,
@@ -704,6 +711,102 @@ def registration_sliding_real_development(
             "[red]Expert Gate 1L remains blocked; see subject reasons and failures.[/red]"
         )
         raise typer.Exit(code=1)
+
+
+@registration_app.command("sliding-real-diagnose")
+def registration_sliding_real_diagnose(
+    batch: Annotated[
+        Path,
+        typer.Option(exists=True, file_okay=False, readable=True),
+    ] = Path("results/sliding_s11_real_development_v1"),
+    pair_manifest: Annotated[
+        Path,
+        typer.Option(exists=True, dir_okay=False, readable=True),
+    ] = Path("data/interim/respiratory_pairs.local.csv"),
+    params: Annotated[
+        Path,
+        typer.Option(exists=True, dir_okay=False, readable=True),
+    ] = Path("configs/sliding_s1_v1.json"),
+    gate: Annotated[
+        Path,
+        typer.Option(exists=True, dir_okay=False, readable=True),
+    ] = Path("configs/sliding_s11_real_development_gate.json"),
+    output: Annotated[Path, typer.Option()] = Path(
+        "results/sliding_s11_real_development_v1_diagnostics"
+    ),
+) -> None:
+    """Decompose a failed real S1.1 batch without expert landmarks."""
+    batch_manifest_path = batch / "manifest.json"
+    if not batch_manifest_path.is_file():
+        console.print(f"[red]Missing batch manifest: {batch_manifest_path}[/red]")
+        raise typer.Exit(code=2)
+    batch_manifest = json.loads(batch_manifest_path.read_text(encoding="utf-8"))
+    if (
+        batch_manifest.get("artifact_type")
+        != "real_s1_preexpert_development_batch"
+        or batch_manifest.get("selection", {}).get("expert_landmarks_used") is not False
+        or batch_manifest.get("measurement_eligible") is not False
+    ):
+        console.print("[red]Input is not a non-expert real S1 development batch.[/red]")
+        raise typer.Exit(code=2)
+
+    protocol = load_real_s1_protocol(gate)
+    s1_params = load_sliding_s1_params(params)
+    selected = select_real_development_pairs(
+        read_pair_manifest(pair_manifest),
+        protocol,
+    )
+    expected_hashes = batch_manifest.get("field_sha256", {})
+    if not isinstance(expected_hashes, dict):
+        console.print("[red]Batch field_sha256 must be an object.[/red]")
+        raise typer.Exit(code=2)
+
+    records: list[RealS1VariantRecord] = []
+    failures: list[str] = []
+    for pair in selected:
+        relative = (
+            f"{DEVELOPMENT_FIELD_DIR}/"
+            f"{pair.dataset_id}__{pair.subject_id}.npz"
+        )
+        field_path = batch / relative
+        expected_sha = expected_hashes.get(relative)
+        if not field_path.is_file() or not isinstance(expected_sha, str):
+            failures.append(f"{pair.subject_id}: no completed field in failed batch")
+            continue
+        actual_sha = hashlib.sha256(field_path.read_bytes()).hexdigest().upper()
+        if actual_sha != expected_sha:
+            failures.append(f"{pair.subject_id}: field checksum mismatch")
+            continue
+        console.print(f"diagnose {pair.subject_id}")
+        try:
+            data = load_real_development_pair(pair)
+            records.extend(
+                diagnose_real_s1_fields(
+                    data,
+                    field_path,
+                    fov_boundary_margin_mm=protocol.fov_boundary_margin_mm,
+                    normal_smoothing_mm=s1_params.normal_smoothing_mm,
+                )
+            )
+        except Exception as error:
+            failures.append(
+                f"{pair.subject_id}: {type(error).__name__}: {error}"
+            )
+
+    written = write_real_s1_diagnostics(
+        tuple(records),
+        output,
+        failures=tuple(failures),
+        input_batch_manifest_path=batch_manifest_path,
+        gate_config_path=gate,
+        repo_root=_repo_root(),
+    )
+    console.print(
+        f"Wrote {len(records)} variant rows for "
+        f"{len({record.subject_id for record in records})} subjects: {written}"
+    )
+    for failure in failures:
+        console.print(f"[yellow]diagnostic omission[/yellow] {failure}")
 
 
 @profiles_app.command("extract-pair")

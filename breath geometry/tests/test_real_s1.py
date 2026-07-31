@@ -15,6 +15,7 @@ from breathgeom.real_s1 import (
     load_real_s1_protocol,
     select_real_development_pairs,
 )
+from breathgeom.real_s1_diagnostics import evaluate_lung_field_variant
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
@@ -189,3 +190,19 @@ def test_real_evaluator_rejects_tangent_coefficient_near_bound() -> None:
 
     assert not record.gate_pass
     assert "tangential_coefficient_bound" in record.gate_reasons
+
+
+def test_failure_diagnostic_evaluates_stored_field_without_experts() -> None:
+    data, result = _development_data_and_result()
+
+    record = evaluate_lung_field_variant(
+        data,
+        result.initial_lung_displacement_mm,
+        variant="initial_convexadam",
+        fov_boundary_margin_mm=5.0,
+    )
+
+    assert record.variant == "initial_convexadam"
+    assert record.keypoint_tre_mean_mm == 0.0
+    assert record.lung_fov_dice == 1.0
+    assert record.lung_nonpositive_jacobian_fraction == 0.0
