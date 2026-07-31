@@ -103,6 +103,16 @@ class JacobianMetrics:
 
 
 @dataclass(frozen=True)
+class RoundTripMetrics:
+    """Residual of forward followed by inverse displacement in millimetres."""
+
+    voxel_count: int
+    mean_mm: float
+    p95_mm: float
+    maximum_mm: float
+
+
+@dataclass(frozen=True)
 class DeformableResult:
     """Moving phase resampled into fixed space and its fixed-to-moving DVF."""
 
@@ -696,6 +706,66 @@ def compose_displacements(
     return np.ascontiguousarray(combined)
 
 
+def invert_displacement(
+    forward_mm: VectorArray,
+    spacing: tuple[float, float, float],
+    *,
+    maximum_iterations: int = 100,
+    maximum_error_tolerance_mm: float = 0.01,
+    mean_error_tolerance_mm: float = 0.001,
+) -> VectorArray:
+    """Numerically invert a same-grid physical displacement field.
+
+    If ``forward_mm`` maps fixed coordinates to moving coordinates, the
+    returned field maps moving coordinates back to fixed coordinates.
+    """
+    if forward_mm.ndim != 4 or forward_mm.shape[-1] != 3:
+        raise ValueError("forward_mm must have shape X x Y x Z x 3")
+    if len(spacing) != 3 or any(value <= 0 for value in spacing):
+        raise ValueError("spacing must contain three positive values")
+    if maximum_iterations <= 0:
+        raise ValueError("maximum_iterations must be positive")
+    if maximum_error_tolerance_mm <= 0 or mean_error_tolerance_mm <= 0:
+        raise ValueError("inversion tolerances must be positive")
+
+    field = sitk.GetImageFromArray(
+        forward_mm.transpose(2, 1, 0, 3).astype(np.float64)
+    )
+    field.SetSpacing(spacing)
+    inverse = sitk.InvertDisplacementField(
+        field,
+        maximumNumberOfIterations=maximum_iterations,
+        maxErrorToleranceThreshold=maximum_error_tolerance_mm,
+        meanErrorToleranceThreshold=mean_error_tolerance_mm,
+        enforceBoundaryCondition=False,
+    )
+    return _from_sitk_vector(inverse)
+
+
+def displacement_round_trip_metrics(
+    forward_mm: VectorArray,
+    inverse_mm: VectorArray,
+    spacing: tuple[float, float, float],
+    *,
+    valid_domain: BoolArray,
+) -> RoundTripMetrics:
+    """Measure ``forward(x) + inverse(x + forward(x))`` on an explicit domain."""
+    if forward_mm.shape != inverse_mm.shape:
+        raise ValueError("forward and inverse fields must share one grid")
+    if forward_mm.shape[:-1] != valid_domain.shape:
+        raise ValueError("valid_domain must match the displacement grid")
+    if not np.any(valid_domain):
+        raise ValueError("valid_domain is empty")
+    residual = compose_displacements(inverse_mm, forward_mm, spacing)
+    error = np.linalg.norm(residual, axis=-1)[valid_domain]
+    return RoundTripMetrics(
+        voxel_count=len(error),
+        mean_mm=float(np.mean(error)),
+        p95_mm=float(np.percentile(error, 95)),
+        maximum_mm=float(np.max(error)),
+    )
+
+
 __all__ = [
     "BSplineParams",
     "DeformableResult",
@@ -703,8 +773,11 @@ __all__ = [
     "JacobianMetrics",
     "MaskMetrics",
     "RegistrationParams",
+    "RoundTripMetrics",
     "acquisition_fov_mask",
+    "displacement_round_trip_metrics",
     "fov_aware_mask_metrics",
+    "invert_displacement",
     "jacobian_metrics",
     "landmark_tre",
     "mask_metrics",

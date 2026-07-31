@@ -13,8 +13,15 @@ from typing import cast
 
 import numpy as np
 import numpy.typing as npt
+from scipy import ndimage
 
-from breathgeom.measure.registration import jacobian_metrics
+from breathgeom.measure.registration import (
+    invert_displacement,
+    jacobian_metrics,
+    warp_image,
+    warp_mask,
+)
+from breathgeom.measure.wall import IntArray as WallIntArray
 
 BoolArray = npt.NDArray[np.bool_]
 FloatArray = npt.NDArray[np.float64]
@@ -87,6 +94,29 @@ class SlidingPhantom:
     body_radii_mm: tuple[float, float, float]
     coordinate_basis: str = "local-zero-origin-RAS+_mm"
     transform_direction: str = "fixed-expiration_to_moving-inspiration"
+
+
+@dataclass(frozen=True)
+class SlidingPhantomPair:
+    """Synthetic expiration/inspiration pair with hidden regional transforms."""
+
+    phantom: SlidingPhantom
+    fixed_image: IntArray
+    moving_image: IntArray
+    fixed_lung_mask: BoolArray
+    moving_lung_mask: BoolArray
+    fixed_body_mask: BoolArray
+    moving_body_mask: BoolArray
+    lung_moving_to_fixed_mm: VectorArray
+    body_moving_to_fixed_mm: VectorArray
+
+    @property
+    def spacing_mm(self) -> tuple[float, float, float]:
+        return self.phantom.spacing_mm
+
+    @property
+    def transform_direction(self) -> str:
+        return self.phantom.transform_direction
 
 
 @dataclass(frozen=True)
@@ -235,6 +265,81 @@ def make_sliding_phantom(
     )
 
 
+def _nearest_field_extension(
+    field_mm: VectorArray,
+    valid_domain: BoolArray,
+) -> VectorArray:
+    """Extend a regional field for numerical inversion only."""
+    nearest = ndimage.distance_transform_edt(
+        ~valid_domain,
+        return_distances=False,
+        return_indices=True,
+    )
+    extended = field_mm[tuple(nearest)]
+    return np.ascontiguousarray(extended.astype(np.float32))
+
+
+def make_sliding_phantom_pair(
+    params: SlidingPhantomParams | None = None,
+) -> SlidingPhantomPair:
+    """Generate phase images without exposing truth to a registration candidate.
+
+    The analytical fields map fixed expiration coordinates to moving
+    inspiration coordinates.  They are inverted only to synthesize the moving
+    phase.  A candidate later receives the phase images and masks, not either
+    field.
+    """
+    phantom = make_sliding_phantom(params)
+    lung_inverse = invert_displacement(
+        phantom.lung_displacement_mm,
+        phantom.spacing_mm,
+    )
+    body_extension = _nearest_field_extension(
+        phantom.body_displacement_mm,
+        phantom.body_mask,
+    )
+    body_inverse = invert_displacement(
+        body_extension,
+        phantom.spacing_mm,
+    )
+    moving_lung = warp_mask(
+        phantom.lung_mask,
+        lung_inverse,
+        phantom.spacing_mm,
+    )
+    moving_body = warp_mask(
+        phantom.body_mask,
+        body_inverse,
+        phantom.spacing_mm,
+    )
+    lung_values = warp_image(
+        cast(WallIntArray, phantom.image),
+        lung_inverse,
+        phantom.spacing_mm,
+    )
+    body_values = warp_image(
+        cast(WallIntArray, phantom.image),
+        body_inverse,
+        phantom.spacing_mm,
+    )
+    moving = np.full(phantom.image.shape, -1000, dtype=np.int16)
+    moving_wall = moving_body & ~moving_lung
+    moving[moving_wall] = body_values[moving_wall]
+    moving[moving_lung] = lung_values[moving_lung]
+
+    return SlidingPhantomPair(
+        phantom=phantom,
+        fixed_image=phantom.image,
+        moving_image=np.ascontiguousarray(moving),
+        fixed_lung_mask=phantom.lung_mask,
+        moving_lung_mask=np.ascontiguousarray(moving_lung),
+        fixed_body_mask=phantom.body_mask,
+        moving_body_mask=np.ascontiguousarray(moving_body),
+        lung_moving_to_fixed_mm=lung_inverse,
+        body_moving_to_fixed_mm=body_inverse,
+    )
+
+
 def evaluate_sliding_interface(
     phantom: SlidingPhantom,
     *,
@@ -333,8 +438,10 @@ __all__ = [
     "RegionFieldError",
     "SlidingInterfaceMetrics",
     "SlidingPhantom",
+    "SlidingPhantomPair",
     "SlidingPhantomParams",
     "evaluate_sliding_interface",
     "make_sliding_phantom",
+    "make_sliding_phantom_pair",
     "region_field_error",
 ]

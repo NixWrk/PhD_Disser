@@ -7,7 +7,9 @@ from breathgeom.measure.registration import (
     RegistrationParams,
     acquisition_fov_mask,
     compose_displacements,
+    displacement_round_trip_metrics,
     fov_aware_mask_metrics,
+    invert_displacement,
     jacobian_metrics,
     landmark_tre,
     mask_metrics,
@@ -169,6 +171,24 @@ def test_displacement_composition_samples_base_at_residual_position() -> None:
 
     # At x=3: residual 2 plus base sampled at x=5 gives 7 mm.
     assert combined[3, 5, 5, 0] == pytest.approx(7.0)
+
+
+def test_displacement_inversion_round_trip_for_translation() -> None:
+    forward = np.zeros((24, 24, 24, 3), dtype=np.float32)
+    forward[..., 0] = 2.0
+    inverse = invert_displacement(forward, (1.0, 1.0, 1.0))
+    interior = np.zeros(forward.shape[:-1], dtype=bool)
+    interior[4:-4, 4:-4, 4:-4] = True
+
+    metrics = displacement_round_trip_metrics(
+        forward,
+        inverse,
+        (1.0, 1.0, 1.0),
+        valid_domain=interior,
+    )
+
+    assert np.mean(inverse[interior], axis=0) == pytest.approx((-2.0, 0.0, 0.0))
+    assert metrics.p95_mm < 1e-6
 
 
 def test_bspline_registration_improves_shifted_blob() -> None:

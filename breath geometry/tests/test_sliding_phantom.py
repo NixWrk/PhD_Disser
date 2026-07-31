@@ -1,10 +1,16 @@
 import numpy as np
 import pytest
 
+from breathgeom.measure.registration import (
+    displacement_round_trip_metrics,
+    mask_metrics,
+    warp_mask,
+)
 from breathgeom.measure.sliding_phantom import (
     SlidingPhantomParams,
     evaluate_sliding_interface,
     make_sliding_phantom,
+    make_sliding_phantom_pair,
     region_field_error,
 )
 
@@ -74,3 +80,53 @@ def test_sliding_phantom_rejects_lung_outside_body() -> None:
             lung_radii_mm=(20.0, 20.0, 20.0),
             body_radii_mm=(19.0, 25.0, 25.0),
         )
+
+
+def test_sliding_pair_synthesis_preserves_hidden_transform_direction() -> None:
+    pair = make_sliding_phantom_pair()
+    phantom = pair.phantom
+    body_wall = phantom.body_mask & ~phantom.lung_mask
+    lung_round_trip = displacement_round_trip_metrics(
+        phantom.lung_displacement_mm,
+        pair.lung_moving_to_fixed_mm,
+        pair.spacing_mm,
+        valid_domain=phantom.lung_mask,
+    )
+    body_round_trip = displacement_round_trip_metrics(
+        phantom.body_displacement_mm,
+        pair.body_moving_to_fixed_mm,
+        pair.spacing_mm,
+        valid_domain=body_wall,
+    )
+
+    assert pair.transform_direction == "fixed-expiration_to_moving-inspiration"
+    assert lung_round_trip.p95_mm < max(pair.spacing_mm)
+    assert body_round_trip.p95_mm < max(pair.spacing_mm)
+    assert int(pair.moving_lung_mask.sum()) > int(pair.fixed_lung_mask.sum())
+
+
+def test_sliding_pair_masks_warp_back_to_fixed_phase() -> None:
+    pair = make_sliding_phantom_pair()
+    lung_warped = warp_mask(
+        pair.moving_lung_mask,
+        pair.phantom.lung_displacement_mm,
+        pair.spacing_mm,
+    )
+    body_warped = warp_mask(
+        pair.moving_body_mask,
+        pair.phantom.body_displacement_mm,
+        pair.spacing_mm,
+    )
+    lung_metrics = mask_metrics(
+        pair.fixed_lung_mask,
+        lung_warped,
+        pair.spacing_mm,
+    )
+    body_metrics = mask_metrics(
+        pair.fixed_body_mask,
+        body_warped,
+        pair.spacing_mm,
+    )
+
+    assert lung_metrics.dice > 0.99
+    assert body_metrics.dice > 0.93
