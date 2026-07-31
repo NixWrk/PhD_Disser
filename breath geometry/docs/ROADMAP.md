@@ -156,8 +156,11 @@ Gate 4: модель выигрывает у B2 больше измерител�
     (`0.753–0.848 мм`, coverage `92.2–94.9%`). Optimizer/challenge не запускались.
     Finer-grid v3 exact-truth preflight с теми же радиусами, motion, textures, search и
     порогами прошёл 3/3 (`0.640–0.719 мм`, coverage `97.3–98.3%`). Все checksum
-    совпали; optimizer/challenge не запускались. Теперь разрешён ровно frozen 3×3
-    development optimizer search; held-out остаётся закрытым до candidate freeze.
+    совпали. Frozen 3×3 development search затем дал `0/9`: contact/topology прошли,
+    но estimated tangential slip составил лишь `0.003–0.007 мм` при truth
+    `1.327–2.998 мм`; candidate не выбран. Held-out остаётся закрытым. Следующий шаг —
+    отдельный identifiability/data-term screen на известных motion modes до новой
+    algorithm version, а не добавление weights в просмотренный search.
 12. После возобновлённого J1.2 отдельно улучшить initial correspondence для
     `LungCT_0005`, затем
     заморозить полноценную S1.2 спецификацию и запустить все шесть development subjects

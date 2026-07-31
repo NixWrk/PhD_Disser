@@ -34,6 +34,9 @@ p95 `0.753–0.848 мм`, coverage `92.2–94.9%`. Optimizer и challenge сно
 raster p95 `0.640–0.719 мм`, coverage `97.3–98.3%`. Теперь разрешён только frozen
 development search 3×3; held-out challenge и Gate 1L/1B остаются закрыты. До них
 нет подтверждённой оценки изменения мышцы/жира и модели перехода вдох→выдох.
+Frozen search выполнен и дал `0/9 PASS`: contact/topology сохранены, но estimated
+tangential slip только `0.003–0.007 мм` при truth `1.327–2.998 мм`. Candidate не
+выбран, held-out остаётся закрытым.
 
 Начинать чтение следует здесь:
 
@@ -132,8 +135,9 @@ paired deltas только при наличии прошедшего gate по�
 в `11_piecewise_svf_j11_representation_gate.ipynb`, блокирующий J1.2 truth preflight —
 в `12_piecewise_svf_j12_truth_preflight.ipynb`, а отдельный continuous/raster preflight
 contact-valid v2 — в `13_piecewise_svf_j12_contact_preflight_v2.ipynb`. Finer-grid v3
-PASS показан в `14_piecewise_svf_j12_contact_preflight_v3.ipynb`. Числа batch-анализов
-всё равно берутся из `results/`.
+PASS показан в `14_piecewise_svf_j12_contact_preflight_v3.ipynb`, development FAIL —
+в `15_piecewise_svf_j12_contact_development_v3.ipynb`. Числа batch-анализов всё равно
+берутся из `results/`.
 Подробная оценка первого notebook — в [NOTEBOOK_AUDIT.md](docs/NOTEBOOK_AUDIT.md).
 
 ## Проверки

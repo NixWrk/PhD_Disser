@@ -215,7 +215,10 @@ advected-surface distance/coverage и signed gap/collision. Равенство �
 несовместимых конечных поверхностей. Contact-valid v2 исправил непрерывную геометрию
 (analytic contact 3/3), но coarse binary grids провалили frozen raster gate 0/3.
 Следующий разрешённый шаг — finer-grid exact-truth preflight без изменения motion и
-порогов. До его PASS optimizer запрещён.
+порогов. Этот preflight прошёл 3/3, после чего frozen `torch-v0` search дал `0/9`.
+Optimizer сохранил contact/topology, но оценил interregional slip почти нулём. Класс
+`torch-v0` отвергнут до challenge; следующий design должен сначала доказать
+identifiability tangential motion по image term на известных modes.
 
 Hidden truth используется только оценщиком. Подбор loss weights разрешён только на
 development synthetic cases; отдельный новый pattern остаётся закрытым до freeze.

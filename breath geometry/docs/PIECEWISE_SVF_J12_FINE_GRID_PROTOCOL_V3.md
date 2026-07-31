@@ -63,3 +63,23 @@ Suite/search/summary и три diagnostic checksum совпали.
 Preflight разрешает следующий шаг — frozen 3×3 development optimizer search. Он не
 является результатом регистрации и не разрешает открывать held-out challenge.
 Отчёт: `notebooks/14_piecewise_svf_j12_contact_preflight_v3.ipynb`.
+
+## Выполненный development search
+
+Search выполнен на commit `fcfeb1cbadf60a51903564348954e65344a5c812`.
+Все 21 checksum suite/search/summary/fields/records совпали.
+
+- общий результат: `0/9 PASS`;
+- variant pass counts: `balanced=0/3`, `contact_strong=0/3`,
+  `smooth_strong=0/3`;
+- contact p95: `0.454–0.530 мм`, coverage `0.984–0.997`;
+- folding: 0, topology rollback: 0;
+- truth tangential slip: `1.327–2.998 мм`;
+- estimated tangential slip: `0.003–0.007 мм`;
+- `selected_variant=null`, `candidate_freeze_allowed=false`;
+- `challenge_loaded=false`.
+
+Таким образом, `torch-v0` сохраняет конечную поверхность и topology, но сходится к
+near-glued regional correspondence. Усиление contact weight не восстанавливает slip.
+V3 получает development FAIL; challenge открывать запрещено. Отчёт:
+`notebooks/15_piecewise_svf_j12_contact_development_v3.ipynb`.

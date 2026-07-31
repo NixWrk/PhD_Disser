@@ -56,9 +56,12 @@ Notebook в этом каталоге — интерактивный QC/отчё
 - `14_piecewise_svf_j12_contact_preflight_v3.ipynb` показывает, что finer grid при
   неизменных motion/gates проходит exact-truth 3/3 и разрешает только development
   optimizer search; challenge не загружает;
-- outputs этих тринадцати notebooks коммитятся как удобное представление результатов, но
+- `15_piecewise_svf_j12_contact_development_v3.ipynb` показывает frozen search
+  `FAIL 0/9`: contact/topology проходят, но estimated tangential slip коллапсирует
+  почти к нулю; candidate отсутствует, challenge закрыт;
+- outputs этих четырнадцати notebooks коммитятся как удобное представление результатов, но
   источником чисел остаются воспроизводимые артефакты в `results/`;
-- после обновления batch-артефактов все тринадцать notebooks нужно выполнить заново и
+- после обновления batch-артефактов все четырнадцать notebooks нужно выполнить заново и
   проверить,
   что в них нет локальных путей и медицинских идентификаторов.
 

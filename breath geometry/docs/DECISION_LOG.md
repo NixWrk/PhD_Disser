@@ -876,3 +876,30 @@ variant не проходит 3/3, `torch-v0` получает development FAIL 
 **Граница разрешения.** `optimizer_started=false` в preflight является ожидаемым:
 preflight только открыл следующий этап. Held-out v3 остаётся закрытым до отдельного
 commit единственного выбранного candidate.
+
+## D-038. `torch-v0` отвергнут: contact без tangential correspondence
+
+**Frozen результат.** Development search на commit `fcfeb1c` дал `0/9`; все variants
+имеют `0/3`. Surface p95 `0.454–0.530 мм`, coverage `98.4–99.7%`, folding и topology
+rollback отсутствуют. Но при truth slip `1.327–2.998 мм` estimated slip составил лишь
+`0.003–0.007 мм`. В более глубоких cases дополнительно нарушены endpoint p95.
+
+**Интерпретация.** Advected-surface loss правильно удерживает общую границу как
+множество, но не определяет касательное соответствие материальных точек. Текущий
+MIND/data term и smooth low-resolution SVF не извлекли региональный counter-rotation
+или twist из synthetic textures; увеличение contact weight ожидаемо не помогло.
+Objective уменьшился без topology rejection, поэтому это не авария оптимизатора, а
+допустимый для его loss near-glued минимум.
+
+**Решение.** `selected_variant=null`, challenge остаётся закрытым. Запрещено добавлять
+новые weights/iterations в просмотренный search. Следующая версия начинается с
+identifiability screen: сравнить data objective у truth, glued и normal-only fields,
+проверить знак warp/direction и чувствительность descriptor к известным tangential
+modes. Только после этого выбирать новый image term/parameterization.
+
+**Операционный нюанс.** Первый CLI был запущен с коротким shell timeout, который оставил
+orphan subprocess; повторный managed запуск некоторое время выполнялся параллельно.
+После завершения активных Python processes не осталось, а suite/search/summary,
+9 field и 9 record hashes совпали с итоговым manifest (`21/21`). Поля и verdict
+принимаются; runtime/elapsed не используются для сравнительного вывода из-за возможной
+конкуренции за GPU.

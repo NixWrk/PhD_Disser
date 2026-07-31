@@ -138,12 +138,19 @@
   `97.3–98.3%`; analytic p95 не хуже `0.000643 мм`, folding нет. Все checksum совпали,
   `optimizer_started=false`, held-out v3 после freeze не загружался. Разрешён frozen
   development search 3×3. Отчёт — `14_piecewise_svf_j12_contact_preflight_v3.ipynb`.
+- Frozen J1.2 `torch-v0` development search выполнен на commit `fcfeb1c` и провален
+  `0/9`; variant pass counts `0/3` у всех трёх. Advected contact p95
+  `0.454–0.530 мм`, coverage `98.4–99.7%`, folding нет, но optimizer восстановил
+  tangential slip только `0.003–0.007 мм` при truth `1.327–2.998 мм`. В deep cases
+  дополнительно провалены lung/body endpoint p95. `selected_variant=null`,
+  `candidate_freeze_allowed=false`, held-out не загружался. Все 21 checksum совпали.
+  Отчёт — `15_piecewise_svf_j12_contact_development_v3.ipynb`.
 - 3D-профили по всей сегментированной поверхности лёгких без электродного фильтра. Каждый
   путь раскладывается на жир/мышцу/кость/прочее; пути через лёгкое и обрезанный FOV
   отбраковываются. Парные дельты программно запрещены при провале registration gate.
 - Пороговые маски тела/лёгких, skin-to-lung shell, over-rib fat/muscle diagnostic и жёсткое
   совмещение по позвоночнику.
-- Исторический интерактивный notebook для `copd1` и тринадцать выполненных
+- Исторический интерактивный notebook для `copd1` и четырнадцать выполненных
   notebook-отчётов,
   включая locked ConvexAdam benchmark, synthetic sliding/S1 benchmarks и явные QC-verdict.
 - Автотесты, `ruff` и strict `mypy`.
@@ -190,9 +197,11 @@
    основной contact-критерий отвергнут. Runner J1.2 реализован, но старый phantom
    провалил exact-truth preflight. Contact-valid v2 доказал корректность continuous
    generator, но провалил raster gate из-за сеток 1.10–1.25 мм. Finer-grid v3
-   exact-truth preflight при неизменных физических параметрах и gates прошёл 3/3.
-   Текущий шаг — выполнить ровно frozen 3×3 development optimizer search. Held-out
-   challenge остаётся закрытым до отдельного candidate freeze.
+   exact-truth preflight при неизменных физических параметрах и gates прошёл 3/3, но
+   frozen development search дал 0/9: near-glued поля проходят contact/topology и теряют
+   почти весь tangential slip. `torch-v0` отвергнут, held-out остаётся закрытым. Текущий
+   шаг — проверить identifiability/data term на известных motion modes до определения
+   новой архитектуры J1.2; скрытый подбор новых weights запрещён.
    Design и аудит готовых реализаций находятся в `SLIDING_S12_JOINT_DESIGN.md`.
 2. Зафиксировать численные пороги Gate 1B на независимых body/bone annotations и
    segmentation-repeatability; до этого его состояние `NOT VALIDATED`.
