@@ -82,6 +82,23 @@ def test_sliding_phantom_rejects_lung_outside_body() -> None:
         )
 
 
+def test_sliding_phantom_texture_is_seeded_and_fields_are_seed_invariant() -> None:
+    first = make_sliding_phantom(SlidingPhantomParams(texture_seed=11))
+    repeated = make_sliding_phantom(SlidingPhantomParams(texture_seed=11))
+    changed = make_sliding_phantom(SlidingPhantomParams(texture_seed=12))
+
+    assert np.array_equal(first.image, repeated.image)
+    assert not np.array_equal(first.image, changed.image)
+    assert np.array_equal(
+        first.lung_displacement_mm,
+        changed.lung_displacement_mm,
+    )
+    assert np.array_equal(
+        first.body_displacement_mm,
+        changed.body_displacement_mm,
+    )
+
+
 def test_sliding_pair_synthesis_preserves_hidden_transform_direction() -> None:
     pair = make_sliding_phantom_pair()
     phantom = pair.phantom

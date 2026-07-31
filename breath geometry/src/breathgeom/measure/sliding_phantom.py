@@ -41,6 +41,10 @@ class SlidingPhantomParams:
     tangential_slip_mm: float = 4.0
     interface_band_mm: float = 1.0
     jacobian_margin_mm: float = 2.0
+    texture_seed: int = 20260731
+    texture_correlation_mm: float = 1.2
+    lung_texture_std_hu: float = 20.0
+    body_texture_std_hu: float = 6.0
 
     def __post_init__(self) -> None:
         if any(value < 16 for value in self.shape):
@@ -72,6 +76,10 @@ class SlidingPhantomParams:
             raise ValueError("motion amplitudes must be non-negative")
         if self.interface_band_mm <= 0 or self.jacobian_margin_mm <= 0:
             raise ValueError("validation margins must be positive")
+        if self.texture_correlation_mm <= 0:
+            raise ValueError("texture correlation length must be positive")
+        if self.lung_texture_std_hu < 0 or self.body_texture_std_hu < 0:
+            raise ValueError("texture amplitudes must be non-negative")
 
 
 @dataclass(frozen=True)
@@ -240,11 +248,37 @@ def make_sliding_phantom(
         + 9.0 * np.cos(coordinates[..., 1] / 4.5)
         + 7.0 * np.sin(coordinates[..., 2] / 5.5)
     )
+    random = np.random.default_rng(params.texture_seed).normal(size=params.shape)
+    correlation_voxels = tuple(
+        params.texture_correlation_mm / value for value in params.spacing_mm
+    )
+    correlated = ndimage.gaussian_filter(
+        random,
+        sigma=correlation_voxels,
+        mode="reflect",
+    )
+    correlated -= float(np.mean(correlated))
+    correlated_std = float(np.std(correlated))
+    if correlated_std <= np.finfo(np.float64).eps:
+        raise ValueError("phantom texture has zero variance")
+    correlated /= correlated_std
     image_float = np.full(params.shape, -1000.0, dtype=np.float64)
-    image_float[body_mask] = 35.0 + texture[body_mask]
+    image_float[body_mask] = (
+        35.0
+        + texture[body_mask]
+        + params.body_texture_std_hu * correlated[body_mask]
+    )
     fat_shell = body_mask & (body_level >= 0.82)
-    image_float[fat_shell] = -100.0 + 0.5 * texture[fat_shell]
-    image_float[lung_mask] = -820.0 + 1.5 * texture[lung_mask]
+    image_float[fat_shell] = (
+        -100.0
+        + 0.5 * texture[fat_shell]
+        + params.body_texture_std_hu * correlated[fat_shell]
+    )
+    image_float[lung_mask] = (
+        -820.0
+        + 1.5 * texture[lung_mask]
+        + params.lung_texture_std_hu * correlated[lung_mask]
+    )
     image = np.rint(image_float).astype(np.int16)
 
     return SlidingPhantom(
