@@ -18,3 +18,4 @@ def test_registration_help_lists_frozen_synthetic_gate() -> None:
 
     assert result.exit_code == 0
     assert "sliding-synthetic" in result.stdout
+    assert "sliding-real-development" in result.stdout

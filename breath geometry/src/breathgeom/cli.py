@@ -51,6 +51,13 @@ from breathgeom.measure.profiles import (
 from breathgeom.measure.sliding_registration import load_sliding_s1_params
 from breathgeom.measure.wall import IntArray as WallIntArray
 from breathgeom.measure.wall import Side, WallRay, load_ras, measure_wall
+from breathgeom.real_s1 import (
+    load_real_development_pair,
+    load_real_s1_protocol,
+    run_real_s1_pair,
+    select_real_development_pairs,
+    write_real_s1_batch,
+)
 from breathgeom.synthetic_s1 import (
     load_sliding_suite,
     run_synthetic_s1_suite,
@@ -587,6 +594,116 @@ def registration_sliding_synthetic(
         f"Overall: {sum(run.record.gate_pass for run in runs)}/{len(runs)} PASS; "
         f"artifacts: {manifest}"
     )
+
+
+@registration_app.command("sliding-real-development")
+def registration_sliding_real_development(
+    manifest: Annotated[
+        Path,
+        typer.Option(exists=True, dir_okay=False, readable=True),
+    ] = Path("data/interim/respiratory_pairs.local.csv"),
+    params: Annotated[
+        Path,
+        typer.Option(exists=True, dir_okay=False, readable=True),
+    ] = Path("configs/sliding_s1_v1.json"),
+    gate: Annotated[
+        Path,
+        typer.Option(exists=True, dir_okay=False, readable=True),
+    ] = Path("configs/sliding_s11_real_development_gate.json"),
+    output: Annotated[Path, typer.Option()] = Path(
+        "results/sliding_s11_real_development_v1"
+    ),
+    registration_python: Annotated[
+        Path,
+        typer.Option(help="Python executable in the isolated ConvexAdam environment."),
+    ] = Path(".venv-registration/Scripts/python.exe"),
+    temporary_root: Annotated[
+        Path | None,
+        typer.Option(help="Optional writable directory for temporary ConvexAdam arrays."),
+    ] = None,
+    force: Annotated[
+        bool,
+        typer.Option(help="Replace matching subject artifacts in an existing batch."),
+    ] = False,
+) -> None:
+    """Run the frozen real-pair QC without loading expert landmarks."""
+    if not registration_python.is_file():
+        console.print(
+            f"[red]Registration Python does not exist: {registration_python}[/red]"
+        )
+        raise typer.Exit(code=2)
+    existing_manifest = output / "manifest.json"
+    if existing_manifest.exists() and not force:
+        console.print(
+            f"[red]Batch already exists: {existing_manifest}. Use --force to rerun.[/red]"
+        )
+        raise typer.Exit(code=2)
+
+    protocol = load_real_s1_protocol(gate)
+    s1_params = load_sliding_s1_params(params)
+    selected = select_real_development_pairs(
+        read_pair_manifest(manifest),
+        protocol,
+    )
+    output.mkdir(parents=True, exist_ok=True)
+    temporary = temporary_root or output / ".tmp"
+    temporary.mkdir(parents=True, exist_ok=True)
+
+    runs = []
+    failures: list[str] = []
+    for index, pair in enumerate(selected, start=1):
+        label = f"{pair.dataset_id}/{pair.subject_id}"
+        console.print(f"[{index}/{len(selected)}] S1.1 real development: {label}")
+        try:
+            data = load_real_development_pair(pair)
+            run = run_real_s1_pair(
+                data,
+                params=s1_params,
+                protocol=protocol,
+                registration_python=registration_python.resolve(),
+                repo_root=_repo_root(),
+                temporary_root=temporary,
+            )
+        except Exception as error:  # preserve later subject diagnostics in a batch
+            failure = f"{label}: {type(error).__name__}: {error}"
+            failures.append(failure)
+            console.print(f"[red]ERROR[/red] {failure}")
+            continue
+        runs.append(run)
+        record = run.record
+        status = "[green]PASS[/green]" if record.gate_pass else "[red]FAIL[/red]"
+        console.print(
+            f"{status} lung Dice {record.lung_fov_dice_after:.3f}; "
+            f"surface p95 {record.lung_fov_surface_p95_after_mm:.2f} mm; "
+            f"keypoint mean {record.keypoint_tre_after_mean_mm:.2f} mm; "
+            f"reasons {';'.join(record.gate_reasons) or '-'}"
+        )
+
+    written_manifest = write_real_s1_batch(
+        tuple(runs),
+        output,
+        failures=tuple(failures),
+        pair_manifest_path=manifest,
+        s1_config_path=params,
+        gate_config_path=gate,
+        protocol=protocol,
+        repo_root=_repo_root(),
+    )
+    pass_count = sum(run.record.gate_pass for run in runs)
+    all_pass = (
+        not failures
+        and len(runs) == len(selected)
+        and pass_count == len(selected)
+    )
+    console.print(
+        f"Overall pre-expert gate: {pass_count}/{len(selected)} PASS; "
+        f"artifacts: {written_manifest}"
+    )
+    if not all_pass:
+        console.print(
+            "[red]Expert Gate 1L remains blocked; see subject reasons and failures.[/red]"
+        )
+        raise typer.Exit(code=1)
 
 
 @profiles_app.command("extract-pair")
