@@ -351,7 +351,18 @@ def load_joint_svf_search(path: Path) -> JointSVFSearch:
         expected={"required", "tie_break_1", "tie_break_2", "tie_break_3"},
         label="selection_rule",
     )
-    if selection["required"] != "all three development cases pass every gate":
+    required_selection_by_version = {
+        "piecewise-svf-j1.2-development-search-v1": (
+            "all three development cases pass every gate"
+        ),
+        "piecewise-svf-j1.2-contact-development-search-v2": (
+            "all three contact-valid development cases pass every gate"
+        ),
+    }
+    expected_selection = required_selection_by_version.get(str(top["search_version"]))
+    if expected_selection is None:
+        raise ValueError("unsupported J1.2 search version")
+    if selection["required"] != expected_selection:
         raise ValueError("unexpected development selection rule")
     challenge = _strict_object(
         top["challenge_policy"],

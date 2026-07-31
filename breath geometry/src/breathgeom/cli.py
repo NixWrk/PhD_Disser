@@ -43,6 +43,7 @@ from breathgeom.io.pairs import (
     read_pair_manifest,
     write_pair_manifest,
 )
+from breathgeom.measure.contact_svf_phantom import load_contact_svf_suite
 from breathgeom.measure.convexadam_registration import ConvexAdamParams
 from breathgeom.measure.joint_svf_registration import load_joint_svf_search
 from breathgeom.measure.profiles import (
@@ -88,6 +89,10 @@ from breathgeom.synthetic_j12 import (
     run_j12_development,
     write_j12_development_batch,
     write_j12_truth_preflight,
+)
+from breathgeom.synthetic_j12_contact import (
+    evaluate_contact_truth_preflight,
+    write_contact_truth_preflight,
 )
 from breathgeom.synthetic_s1 import (
     load_sliding_suite,
@@ -784,6 +789,65 @@ def registration_piecewise_svf_j12_preflight(
     console.print(
         f"Truth preflight: {sum(record.truth_gate_pass for record in records)}/"
         f"{len(records)} PASS; optimizer started: false; artifacts: {manifest}"
+    )
+
+
+@registration_app.command("piecewise-svf-j12-contact-preflight")
+def registration_piecewise_svf_j12_contact_preflight(
+    suite: Annotated[
+        Path,
+        typer.Option(exists=True, dir_okay=False, readable=True),
+    ] = Path("configs/piecewise_svf_j12_contact_development_suite_v2.json"),
+    search: Annotated[
+        Path,
+        typer.Option(exists=True, dir_okay=False, readable=True),
+    ] = Path("configs/piecewise_svf_j12_contact_development_search_v2.json"),
+    output: Annotated[Path, typer.Option()] = Path(
+        "results/piecewise_svf_j12_contact_truth_preflight_v2"
+    ),
+) -> None:
+    """Check contact-valid hidden truth before any CUDA optimizer process."""
+    development_suite = load_contact_svf_suite(suite)
+    frozen_search = load_joint_svf_search(search)
+    runs = evaluate_contact_truth_preflight(
+        development_suite,
+        frozen_search,
+    )
+    manifest = write_contact_truth_preflight(
+        runs,
+        output,
+        suite_path=suite,
+        search_path=search,
+        search=frozen_search,
+        repo_root=_repo_root(),
+    )
+    table = Table(title="J1.2 contact-valid exact-truth preflight")
+    table.add_column("case")
+    table.add_column("truth gate")
+    table.add_column("analytic p95", justify="right")
+    table.add_column("raster p95", justify="right")
+    table.add_column("raster coverage", justify="right")
+    table.add_column("round-trip lung/body", justify="right")
+    table.add_column("reasons")
+    for run in runs:
+        record = run.record
+        table.add_row(
+            record.case_id,
+            "[green]PASS[/green]" if record.truth_gate_pass else "[red]FAIL[/red]",
+            f"{record.analytic_abs_distance_p95_max_mm:.6f}",
+            f"{record.raster_abs_distance_p95_max_mm:.3f}",
+            f"{record.raster_surface_coverage_min:.3f}",
+            (
+                f"{record.lung_round_trip_p95_mm:.4f}/"
+                f"{record.body_round_trip_p95_mm:.4f}"
+            ),
+            ";".join(record.gate_reasons) or "-",
+        )
+    console.print(table)
+    console.print(
+        f"Truth preflight: "
+        f"{sum(run.record.truth_gate_pass for run in runs)}/{len(runs)} PASS; "
+        f"optimizer started: false; challenge loaded: false; artifacts: {manifest}"
     )
 
 

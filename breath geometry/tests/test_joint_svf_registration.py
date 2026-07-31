@@ -71,3 +71,16 @@ def test_joint_adapter_rejects_mismatched_grids_before_external_run(
             python_executable=tmp_path / "missing.exe",
             repo_root=REPO_ROOT,
         )
+
+
+def test_contact_v2_search_uses_its_versioned_selection_rule() -> None:
+    search = load_joint_svf_search(
+        REPO_ROOT / "configs/piecewise_svf_j12_contact_development_search_v2.json"
+    )
+
+    assert search.search_version == "piecewise-svf-j1.2-contact-development-search-v2"
+    assert len(search.variants) == 3
+    assert (
+        search.challenge_suite_path
+        == "configs/piecewise_svf_j12_contact_challenge_suite_v2.json"
+    )
