@@ -53,9 +53,12 @@ Notebook в этом каталоге — интерактивный QC/отчё
 - `13_piecewise_svf_j12_contact_preflight_v2.ipynb` разделяет PASS непрерывного
   contact и FAIL растровой eligibility на сетках 1.10–1.25 мм; optimizer и challenge
   не запускает;
-- outputs этих двенадцати notebooks коммитятся как удобное представление результатов, но
+- `14_piecewise_svf_j12_contact_preflight_v3.ipynb` показывает, что finer grid при
+  неизменных motion/gates проходит exact-truth 3/3 и разрешает только development
+  optimizer search; challenge не загружает;
+- outputs этих тринадцати notebooks коммитятся как удобное представление результатов, но
   источником чисел остаются воспроизводимые артефакты в `results/`;
-- после обновления batch-артефактов все двенадцать notebooks нужно выполнить заново и
+- после обновления batch-артефактов все тринадцать notebooks нужно выполнить заново и
   проверить,
   что в них нет локальных путей и медицинских идентификаторов.
 

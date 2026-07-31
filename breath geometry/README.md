@@ -30,9 +30,10 @@ images. CUDA foundation прошла identity smoke, но старый synthetic
 запускались. Contact-valid v2 доказал непрерывный общий contact с худшим analytic p95
 `0.000643 мм`, но его сетки `1.10–1.25 мм` провалили frozen raster gate 0/3:
 p95 `0.753–0.848 мм`, coverage `92.2–94.9%`. Optimizer и challenge снова не
-запускались. Следующий протокол должен изменить только разрешение synthetic grid,
-сохранив геометрию, motion и пороги. Gate 1L/1B остаются закрыты; до них
-подтверждённой оценки изменения мышцы/жира и модели перехода вдох→выдох нет.
+запускались. Это исправлено только разрешением grid в v3: exact truth прошла 3/3,
+raster p95 `0.640–0.719 мм`, coverage `97.3–98.3%`. Теперь разрешён только frozen
+development search 3×3; held-out challenge и Gate 1L/1B остаются закрыты. До них
+нет подтверждённой оценки изменения мышцы/жира и модели перехода вдох→выдох.
 
 Начинать чтение следует здесь:
 
@@ -130,8 +131,9 @@ paired deltas только при наличии прошедшего gate по�
 в `10_piecewise_svf_j10_numeric_gate.ipynb`, curved representation J1.1 —
 в `11_piecewise_svf_j11_representation_gate.ipynb`, блокирующий J1.2 truth preflight —
 в `12_piecewise_svf_j12_truth_preflight.ipynb`, а отдельный continuous/raster preflight
-contact-valid v2 — в `13_piecewise_svf_j12_contact_preflight_v2.ipynb`. Числа
-batch-анализов всё равно берутся из `results/`.
+contact-valid v2 — в `13_piecewise_svf_j12_contact_preflight_v2.ipynb`. Finer-grid v3
+PASS показан в `14_piecewise_svf_j12_contact_preflight_v3.ipynb`. Числа batch-анализов
+всё равно берутся из `results/`.
 Подробная оценка первого notebook — в [NOTEBOOK_AUDIT.md](docs/NOTEBOOK_AUDIT.md).
 
 ## Проверки

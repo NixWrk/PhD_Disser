@@ -861,3 +861,18 @@ batch.
 **Предохранитель.** Held-out v3 после этого freeze не загружается. Сначала exact-truth
 development должен пройти 3/3 с checksummed batch. До PASS optimizer остаётся
 запрещён.
+
+## D-037. Finer-grid v3 допускает development optimizer, но не challenge
+
+**Frozen результат.** На commit `9b5f237` exact truth прошла 3/3. Raster p95
+`0.640–0.719 мм`, coverage `97.3–98.3%`; analytic p95 не хуже `0.000643 мм`,
+round-trip не хуже `0.001677 мм`, folding отсутствует. Все checksum совпали.
+
+**Решение.** Разрешён ровно search из трёх frozen variants на трёх development cases.
+Новые weights/iterations после просмотра результата добавлять нельзя. Если ни один
+variant не проходит 3/3, `torch-v0` получает development FAIL и следующий алгоритм
+оформляется новой версией.
+
+**Граница разрешения.** `optimizer_started=false` в preflight является ожидаемым:
+preflight только открыл следующий этап. Held-out v3 остаётся закрытым до отдельного
+commit единственного выбранного candidate.

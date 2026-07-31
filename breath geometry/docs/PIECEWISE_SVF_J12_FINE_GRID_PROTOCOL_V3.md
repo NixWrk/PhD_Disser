@@ -46,3 +46,20 @@ Held-out v3 создаётся и синтаксически проверяет�
 
 V3 preflight проверяет пригодность synthetic representation, а не регистрацию человека и
 не single-CT модель выдоха.
+
+## Выполненный exact-truth результат
+
+Batch выполнен на commit `9b5f2378fdc4c4668a55e953e37b3e1e4d7845fa`.
+Suite/search/summary и три diagnostic checksum совпали.
+
+- exact truth: 3/3 PASS;
+- analytic surface p95: `0.000124–0.000643 мм`, coverage 1.0;
+- raster surface p95: `0.640–0.719 мм`;
+- raster coverage: `0.973–0.983`;
+- round-trip p95 не хуже `0.001677 мм`;
+- folding: 0;
+- `optimizer_started=false`, `challenge_loaded=false`.
+
+Preflight разрешает следующий шаг — frozen 3×3 development optimizer search. Он не
+является результатом регистрации и не разрешает открывать held-out challenge.
+Отчёт: `notebooks/14_piecewise_svf_j12_contact_preflight_v3.ipynb`.

@@ -132,16 +132,18 @@
   Причина — бинарная поверхность на сетках `1.10–1.25 мм` не поддерживает заданный
   submillimeter gate. `optimizer_started=false`, challenge не загружался. Отчёт —
   `13_piecewise_svf_j12_contact_preflight_v2.ipynb`.
-- До следующего запуска заморожен v3 finer-grid protocol: относительно v2 меняются
-  только shape/spacing до примерно 1 мм; радиусы, deformation truth, textures, search
-  variants и gates неизменны. Exact-truth batch v3 ещё не выполнен, held-out v3 после
-  freeze не загружался.
+- V3 finer-grid exact-truth preflight прошёл 3/3 на commit `9b5f237`. Относительно v2
+  изменены только shape/spacing до примерно 1 мм; радиусы, deformation truth, textures,
+  search variants и gates неизменны. Raster p95 `0.640–0.719 мм`, coverage
+  `97.3–98.3%`; analytic p95 не хуже `0.000643 мм`, folding нет. Все checksum совпали,
+  `optimizer_started=false`, held-out v3 после freeze не загружался. Разрешён frozen
+  development search 3×3. Отчёт — `14_piecewise_svf_j12_contact_preflight_v3.ipynb`.
 - 3D-профили по всей сегментированной поверхности лёгких без электродного фильтра. Каждый
   путь раскладывается на жир/мышцу/кость/прочее; пути через лёгкое и обрезанный FOV
   отбраковываются. Парные дельты программно запрещены при провале registration gate.
 - Пороговые маски тела/лёгких, skin-to-lung shell, over-rib fat/muscle diagnostic и жёсткое
   совмещение по позвоночнику.
-- Исторический интерактивный notebook для `copd1` и двенадцать выполненных
+- Исторический интерактивный notebook для `copd1` и тринадцать выполненных
   notebook-отчётов,
   включая locked ConvexAdam benchmark, synthetic sliding/S1 benchmarks и явные QC-verdict.
 - Автотесты, `ruff` и strict `mypy`.
@@ -187,10 +189,10 @@
    correspondence для `LungCT_0005`. J1.0 и J1.1 пройдены; fixed-normal equality как
    основной contact-критерий отвергнут. Runner J1.2 реализован, но старый phantom
    провалил exact-truth preflight. Contact-valid v2 доказал корректность continuous
-   generator, но провалил raster gate из-за сеток 1.10–1.25 мм. Текущий шаг — заморозить
-   finer-grid protocol с теми же физическими радиусами, motion и порогами, затем повторить
-   independent exact-truth preflight. Только после полного PASS разрешается search
-   optimizer.
+   generator, но провалил raster gate из-за сеток 1.10–1.25 мм. Finer-grid v3
+   exact-truth preflight при неизменных физических параметрах и gates прошёл 3/3.
+   Текущий шаг — выполнить ровно frozen 3×3 development optimizer search. Held-out
+   challenge остаётся закрытым до отдельного candidate freeze.
    Design и аудит готовых реализаций находятся в `SLIDING_S12_JOINT_DESIGN.md`.
 2. Зафиксировать численные пороги Gate 1B на независимых body/bone annotations и
    segmentation-repeatability; до этого его состояние `NOT VALIDATED`.
