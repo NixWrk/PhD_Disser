@@ -1,0 +1,60 @@
+{
+  "screen_version": "s1.2-heuristic-screen-v1",
+  "input_artifact_type": "real_s1_preexpert_development_batch",
+  "input_usage": "real_development_diagnostic_ONLY",
+  "input_s1_version": "s1.1",
+  "expected_completed_subject_ids": [
+    "LungCT_0004",
+    "LungCT_0005",
+    "LungCT_0008",
+    "LungCT_0015",
+    "LungCT_0022"
+  ],
+  "expected_missing_subject_ids": [
+    "LungCT_0029"
+  ],
+  "expert_landmarks_used": false,
+  "measurement_eligible": false,
+  "variants": [
+    {
+      "name": "raw_initial_uncoupled",
+      "lung_smoothing_sigma_mm": 0.0,
+      "lung_scale": 1.0,
+      "couple_normal": false,
+      "normal_smoothing_mm": 2.0,
+      "contact_core_mm": 1.5,
+      "contact_taper_mm": 3.0,
+      "shared_normal_source": "body"
+    },
+    {
+      "name": "gaussian3_scale0.9_uncoupled",
+      "lung_smoothing_sigma_mm": 3.0,
+      "lung_scale": 0.9,
+      "couple_normal": false,
+      "normal_smoothing_mm": 2.0,
+      "contact_core_mm": 1.5,
+      "contact_taper_mm": 3.0,
+      "shared_normal_source": "body"
+    },
+    {
+      "name": "gaussian3_scale0.9_narrow_body_normal",
+      "lung_smoothing_sigma_mm": 3.0,
+      "lung_scale": 0.9,
+      "couple_normal": true,
+      "normal_smoothing_mm": 2.0,
+      "contact_core_mm": 1.5,
+      "contact_taper_mm": 3.0,
+      "shared_normal_source": "body"
+    },
+    {
+      "name": "gaussian3_scale0.9_wide_symmetric_normal",
+      "lung_smoothing_sigma_mm": 3.0,
+      "lung_scale": 0.9,
+      "couple_normal": true,
+      "normal_smoothing_mm": 4.0,
+      "contact_core_mm": 1.5,
+      "contact_taper_mm": 20.0,
+      "shared_normal_source": "mean"
+    }
+  ]
+}
