@@ -23,9 +23,11 @@ Notebook в этом каталоге — интерактивный QC/отчё
 - `03_whole_body_profiles.ipynb` показывает QC лучей по всей поверхности лёгких,
   независимые распределения полной толщины, жира, мышц и кости, региональные таблицы
   и пространственную карту;
-- outputs этих двух notebooks коммитятся как удобное представление результатов, но
+- `04_convexadam_registration_benchmark.ipynb` показывает blind development selection,
+  locked сравнение с Elastix, матрицу gate, региональный TRE и provenance;
+- outputs этих трёх notebooks коммитятся как удобное представление результатов, но
   источником чисел остаются воспроизводимые артефакты в `results/`;
-- после обновления batch-артефактов оба notebooks нужно выполнить заново и проверить,
+- после обновления batch-артефактов все три notebooks нужно выполнить заново и проверить,
   что в них нет локальных путей и медицинских идентификаторов.
 
 Выполнение из корня репозитория:
@@ -34,5 +36,6 @@ Notebook в этом каталоге — интерактивный QC/отчё
 .\.venv\Scripts\jupyter.exe nbconvert --to notebook --execute --inplace `
   notebooks/02_registration_benchmark.ipynb `
   notebooks/03_whole_body_profiles.ipynb `
+  notebooks/04_convexadam_registration_benchmark.ipynb `
   --ExecutePreprocessor.timeout=300
 ~~~

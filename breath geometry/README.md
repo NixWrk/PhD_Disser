@@ -11,8 +11,9 @@
 
 Сейчас реализованы воспроизводимый реестр пар, FOV-aware landmark-gated registration
 benchmark и полнообъёмные skin-to-lung профили без электродного фильтра. Классический
-elastix baseline не проходит gate; ConvexAdam подключён как изолированный следующий
-кандидат. Подтверждённой оценки изменения мышцы/жира и модели перехода вдох→выдох пока нет.
+elastix baseline не проходит gate. Locked ConvexAdam улучшил expert TRE у 13/13 случаев,
+но также прошёл полный gate у 0/13, поэтому парные карты толщины остаются заблокированы.
+Подтверждённой оценки изменения мышцы/жира и модели перехода вдох→выдох пока нет.
 
 Начинать чтение следует здесь:
 
@@ -84,7 +85,9 @@ paired deltas только при наличии прошедшего gate по�
 
 `01_inhale_exhale_inspection.ipynb` служит историческим визуальным QC одного случая.
 Выполненные batch-отчёты находятся в `02_registration_benchmark.ipynb` и
-`03_whole_body_profiles.ipynb`; их исходные числа всё равно берутся из `results/`.
+`03_whole_body_profiles.ipynb`; locked ConvexAdam разобран в
+`04_convexadam_registration_benchmark.ipynb`. Их исходные числа всё равно берутся из
+`results/`.
 Подробная оценка первого notebook — в [NOTEBOOK_AUDIT.md](docs/NOTEBOOK_AUDIT.md).
 
 ## Проверки

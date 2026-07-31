@@ -44,6 +44,39 @@ FOV-aware lung Dice/surface p95 и body/FOV Jacobian. Скрипт заверш�
 
 ## Locked evaluation
 
-Locked evaluation выполняется после коммита этого документа на 10 COPDgene и трёх
-LungCT с expert landmarks. Expert points используются только в `evaluate_registration`
-после построения поля и не передаются ConvexAdam.
+Locked evaluation выполнен кодом
+`9cc725e9e809e1bccdd638f8c99ca762cbb44939` на 10 COPDgene и трёх LungCT с expert
+landmarks. Во всех 13 JSON сохранены один parameter set, ConvexAdam 0.2.0 и
+PyTorch 2.5.1+cu118. Expert points использовались только в `evaluate_registration`
+после построения поля и не передавались ConvexAdam.
+
+| Выборка | n | Gate PASS | Медиана Elastix mean TRE, мм | Медиана ConvexAdam mean TRE, мм | Диапазон ConvexAdam, мм | Медиана FOV Dice | Медиана FOV surface p95, мм |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| DIR-Lab COPDgene | 10 | 0 | 16.96 | 9.12 | 2.78–13.08 | 0.855 | 12.78 |
+| LungCT expert subset | 3 | 0 | 4.52 | 2.06 | 2.02–3.59 | 0.910 | 8.35 |
+| Все | 13 | 0 | 14.83 | 6.50 | 2.02–13.08 | 0.868 | 10.08 |
+
+ConvexAdam уменьшил mean TRE относительно frozen Elastix у 13/13 субъектов. Это
+существенное относительное улучшение, но не прохождение абсолютного QC:
+
+- `expert_tre_mean`: 13/13;
+- `lung_surface_p95_fov`: 13/13;
+- `expert_tre_p95`: 12/13;
+- `lung_dice_fov`: 9/13;
+- `folding_body_fov`: 3/13.
+
+Медианы регионального mean TRE на COPDgene: нижняя 13.69 мм, средняя 8.40 мм, верхняя
+2.46 мм; на LungCT: 2.23, 2.15 и 1.48 мм соответственно. Следующий кандидат должен
+адресовать диафрагмальные/нижние отделы и плевральное скольжение. Эту конфигурацию нельзя
+донастраивать по раскрытым expert cases.
+
+Batch-артефакты:
+
+- `results/registration/convexadam_locked/dirlab/benchmark.csv`,
+  SHA-256 `7B9F691B0BAD96B9634AF9949EB95F56CAA3C9F812ED7F89909E826DC7AC0C58`;
+- `results/registration/convexadam_locked/lungct/benchmark.csv`,
+  SHA-256 `98784CAB90464A76D85279322C1F626852DA5CB3F182E944DB053C205254A403`.
+
+Выполненный отчёт: `notebooks/04_convexadam_registration_benchmark.ipynb`. Поскольку
+Gate 1 пройден у 0/13, разрешённых dense fields не сохранено и парные карты формы/толщины
+не строятся.
