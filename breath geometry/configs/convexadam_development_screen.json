@@ -1,0 +1,23 @@
+[
+  {
+    "name": "smooth5_lambda3",
+    "parameters": {
+      "selected_smooth": 5,
+      "lambda_weight": 3.0
+    }
+  },
+  {
+    "name": "smooth7_lambda2",
+    "parameters": {
+      "selected_smooth": 7,
+      "lambda_weight": 2.0
+    }
+  },
+  {
+    "name": "smooth9_lambda2",
+    "parameters": {
+      "selected_smooth": 9,
+      "lambda_weight": 2.0
+    }
+  }
+]

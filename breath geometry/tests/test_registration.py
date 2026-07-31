@@ -8,6 +8,7 @@ from breathgeom.measure.registration import (
     acquisition_fov_mask,
     compose_displacements,
     fov_aware_mask_metrics,
+    jacobian_metrics,
     landmark_tre,
     mask_metrics,
     register_bspline,
@@ -94,6 +95,23 @@ def test_fov_aware_surface_retains_real_mismatch_inside_common_fov() -> None:
 
     assert aware.dice < 1.0
     assert aware.surface_p95_mm > 0
+
+
+def test_jacobian_metrics_ignore_folding_outside_anatomical_domain() -> None:
+    field = np.zeros((16, 16, 16, 3), dtype=np.float32)
+    field[:3, ..., 0] = -4.0 * np.arange(3, dtype=np.float32)[:, None, None]
+    body_domain = np.zeros(field.shape[:3], dtype=bool)
+    body_domain[5:12, 3:13, 3:13] = True
+
+    metrics = jacobian_metrics(
+        field,
+        (1.0, 1.0, 1.0),
+        valid_domain=body_domain,
+    )
+
+    assert metrics.minimum == pytest.approx(1.0)
+    assert metrics.p01 == pytest.approx(1.0)
+    assert metrics.nonpositive_fraction == 0.0
 
 
 def test_diffeomorphic_registration_improves_shifted_blob() -> None:

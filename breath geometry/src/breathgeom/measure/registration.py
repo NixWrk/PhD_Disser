@@ -93,6 +93,16 @@ class FOVAwareMaskMetrics:
 
 
 @dataclass(frozen=True)
+class JacobianMetrics:
+    """Jacobian determinant summary on an explicit evaluation domain."""
+
+    minimum: float
+    p01: float
+    nonpositive_fraction: float
+    voxel_count: int
+
+
+@dataclass(frozen=True)
 class DeformableResult:
     """Moving phase resampled into fixed space and its fixed-to-moving DVF."""
 
@@ -514,6 +524,35 @@ def fov_aware_mask_metrics(
     )
 
 
+def jacobian_metrics(
+    displacement_mm: VectorArray,
+    spacing: tuple[float, float, float],
+    *,
+    valid_domain: BoolArray,
+) -> JacobianMetrics:
+    """Evaluate physical field invertibility only where anatomy is observable."""
+    if displacement_mm.ndim != 4 or displacement_mm.shape[-1] != 3:
+        raise ValueError("displacement_mm must have shape X x Y x Z x 3")
+    if displacement_mm.shape[:3] != valid_domain.shape:
+        raise ValueError("displacement field and valid_domain grids do not match")
+    if not valid_domain.any():
+        raise ValueError("Jacobian evaluation domain is empty")
+    field = sitk.GetImageFromArray(
+        displacement_mm.transpose(2, 1, 0, 3).astype(np.float64)
+    )
+    field.SetSpacing(spacing)
+    determinant = sitk.GetArrayFromImage(
+        sitk.DisplacementFieldJacobianDeterminant(field)
+    ).transpose(2, 1, 0)
+    values = determinant[valid_domain]
+    return JacobianMetrics(
+        minimum=float(np.min(values)),
+        p01=float(np.percentile(values, 1)),
+        nonpositive_fraction=float(np.mean(values <= 0.0)),
+        voxel_count=int(len(values)),
+    )
+
+
 def transform_points(
     points_mm: FloatArray,
     displacement_mm: VectorArray,
@@ -661,10 +700,12 @@ __all__ = [
     "BSplineParams",
     "DeformableResult",
     "FOVAwareMaskMetrics",
+    "JacobianMetrics",
     "MaskMetrics",
     "RegistrationParams",
     "acquisition_fov_mask",
     "fov_aware_mask_metrics",
+    "jacobian_metrics",
     "landmark_tre",
     "mask_metrics",
     "compose_displacements",

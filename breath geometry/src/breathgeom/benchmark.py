@@ -24,11 +24,16 @@ from breathgeom.io.dirlab import (
     load_copdgene_locator,
 )
 from breathgeom.io.pairs import RespiratoryPair
+from breathgeom.measure.convexadam_registration import (
+    ConvexAdamParams,
+    register_convexadam,
+)
 from breathgeom.measure.elastix_registration import ElastixParams, register_elastix
 from breathgeom.measure.registration import (
     DeformableResult,
     acquisition_fov_mask,
     fov_aware_mask_metrics,
+    jacobian_metrics,
     landmark_tre,
     mask_metrics,
     warp_mask,
@@ -115,6 +120,10 @@ class RegistrationRecord:
     jacobian_min: float
     jacobian_p01: float
     nonpositive_jacobian_fraction: float
+    body_fov_jacobian_min: float
+    body_fov_jacobian_p01: float
+    body_fov_nonpositive_jacobian_fraction: float
+    body_fov_jacobian_voxel_count: int
     gate_pass: bool
     gate_reasons: tuple[str, ...]
 
@@ -128,9 +137,10 @@ class RegistrationRecord:
 class BenchmarkRun:
     record: RegistrationRecord
     result: DeformableResult
-    params: ElastixParams
+    params: object
     spacing: tuple[float, float, float]
     gate: RegistrationGate = RegistrationGate()
+    runtime: dict[str, object] | None = None
 
 
 def _same_grid(
@@ -329,6 +339,11 @@ def evaluate_registration(
     body_before = mask_metrics(data.fixed_body_mask, data.moving_body_mask, data.spacing)
     warped_body = warp_mask(data.moving_body_mask, result.displacement_mm, data.spacing)
     body_after = mask_metrics(data.fixed_body_mask, warped_body, data.spacing)
+    body_fov_jacobian = jacobian_metrics(
+        result.displacement_mm,
+        data.spacing,
+        valid_domain=np.logical_and(data.fixed_body_mask, common_fov_after),
+    )
     expert = _tre_summary(
         data.fixed_expert_points_mm,
         data.moving_expert_points_mm,
@@ -364,10 +379,13 @@ def evaluate_registration(
         or lung_fov_after.surface_p95_mm > gate.lung_surface_p95_max_mm
     ):
         reasons.append("lung_surface_p95_fov")
-    if result.jacobian_p01 < gate.jacobian_p01_min:
-        reasons.append("jacobian_p01")
-    if result.nonpositive_jacobian_fraction > gate.nonpositive_jacobian_fraction_max:
-        reasons.append("folding")
+    if body_fov_jacobian.p01 < gate.jacobian_p01_min:
+        reasons.append("jacobian_p01_body_fov")
+    if (
+        body_fov_jacobian.nonpositive_fraction
+        > gate.nonpositive_jacobian_fraction_max
+    ):
+        reasons.append("folding_body_fov")
 
     return RegistrationRecord(
         dataset_id=data.pair.dataset_id,
@@ -408,6 +426,12 @@ def evaluate_registration(
         jacobian_min=result.jacobian_min,
         jacobian_p01=result.jacobian_p01,
         nonpositive_jacobian_fraction=result.nonpositive_jacobian_fraction,
+        body_fov_jacobian_min=body_fov_jacobian.minimum,
+        body_fov_jacobian_p01=body_fov_jacobian.p01,
+        body_fov_nonpositive_jacobian_fraction=(
+            body_fov_jacobian.nonpositive_fraction
+        ),
+        body_fov_jacobian_voxel_count=body_fov_jacobian.voxel_count,
         gate_pass=not reasons,
         gate_reasons=tuple(reasons),
     )
@@ -440,6 +464,44 @@ def run_registration_benchmark(
         params=params,
         spacing=data.spacing,
         gate=gate,
+    )
+
+
+def run_convexadam_benchmark(
+    data: PairData,
+    *,
+    python_executable: Path,
+    repo_root: Path,
+    params: ConvexAdamParams | None = None,
+    gate: RegistrationGate | None = None,
+    temporary_root: Path | None = None,
+) -> BenchmarkRun:
+    """Run isolated ConvexAdam and evaluate it without exposing landmarks."""
+    params = params or ConvexAdamParams()
+    gate = gate or RegistrationGate()
+    result, runtime = register_convexadam(
+        cast(WallIntArray, data.fixed_ras),
+        cast(WallIntArray, data.moving_ras),
+        data.spacing,
+        data.fixed_lung_mask,
+        data.moving_lung_mask,
+        python_executable=python_executable,
+        repo_root=repo_root,
+        params=params,
+        temporary_root=temporary_root,
+    )
+    return BenchmarkRun(
+        record=evaluate_registration(
+            data,
+            result,
+            gate=gate,
+            method="convexadam-0.2.0-mind",
+        ),
+        result=result,
+        params=params,
+        spacing=data.spacing,
+        gate=gate,
+        runtime=cast(dict[str, object], asdict(runtime)),
     )
 
 
@@ -477,8 +539,9 @@ def write_benchmark_run(
     json_path = output_dir / f"{stem}.json"
     payload: dict[str, Any] = {
         "record": asdict(run.record),
-        "parameters": asdict(run.params),
+        "parameters": asdict(cast(Any, run.params)),
         "gate": asdict(run.gate),
+        "runtime": run.runtime,
         "provenance": {
             "pair_manifest_sha256": _sha256(pair_manifest),
             "code_version": code_version,
@@ -511,6 +574,7 @@ __all__ = [
     "RegistrationRecord",
     "evaluate_registration",
     "load_pair_data",
+    "run_convexadam_benchmark",
     "run_registration_benchmark",
     "write_benchmark_csv",
     "write_benchmark_run",

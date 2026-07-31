@@ -14,6 +14,7 @@ from rich.table import Table
 
 from breathgeom.benchmark import (
     load_pair_data,
+    run_convexadam_benchmark,
     run_registration_benchmark,
     write_benchmark_csv,
     write_benchmark_run,
@@ -39,6 +40,7 @@ from breathgeom.io.pairs import (
     read_pair_manifest,
     write_pair_manifest,
 )
+from breathgeom.measure.convexadam_registration import ConvexAdamParams
 from breathgeom.measure.profiles import (
     extract_whole_body_profiles,
     pair_whole_body_profiles,
@@ -361,8 +363,46 @@ def registration_benchmark(
         bool,
         typer.Option(help="Replace an existing subject QC artifact."),
     ] = False,
+    method: Annotated[
+        str,
+        typer.Option(help="Registration method: elastix or convexadam."),
+    ] = "elastix",
+    params: Annotated[
+        Path | None,
+        typer.Option(
+            exists=True,
+            dir_okay=False,
+            readable=True,
+            help="Optional JSON parameters for the selected method.",
+        ),
+    ] = None,
+    registration_python: Annotated[
+        Path,
+        typer.Option(help="Python executable in the isolated registration environment."),
+    ] = Path(".venv-registration/Scripts/python.exe"),
+    temporary_root: Annotated[
+        Path | None,
+        typer.Option(help="Optional local directory for temporary ConvexAdam arrays."),
+    ] = None,
 ) -> None:
-    """Run subject-level elastix registration with independent QC gates."""
+    """Run subject-level registration with independent QC gates."""
+    if method not in {"elastix", "convexadam"}:
+        console.print("[red]Method must be elastix or convexadam.[/red]")
+        raise typer.Exit(code=2)
+    convexadam_params: ConvexAdamParams | None = None
+    if method == "convexadam":
+        if not registration_python.is_file():
+            console.print(
+                f"[red]Registration Python does not exist: {registration_python}[/red]"
+            )
+            raise typer.Exit(code=2)
+        values = {} if params is None else json.loads(params.read_text(encoding="utf-8"))
+        convexadam_params = ConvexAdamParams(**values)
+    elif params is not None:
+        console.print(
+            "[red]JSON parameter files are currently supported for ConvexAdam only.[/red]"
+        )
+        raise typer.Exit(code=2)
     selected = [
         row
         for row in read_pair_manifest(manifest)
@@ -394,7 +434,16 @@ def registration_benchmark(
         console.print(f"[{index}/{len(selected)}] register {stem}")
         try:
             data = load_pair_data(pair)
-            run = run_registration_benchmark(data)
+            if method == "convexadam":
+                run = run_convexadam_benchmark(
+                    data,
+                    python_executable=registration_python.resolve(),
+                    repo_root=_repo_root(),
+                    params=convexadam_params,
+                    temporary_root=temporary_root,
+                )
+            else:
+                run = run_registration_benchmark(data)
             written_json, field_path = write_benchmark_run(
                 output,
                 run,
@@ -411,7 +460,7 @@ def registration_benchmark(
         tre = run.record.expert_tre_after_mean_mm
         tre_text = "no expert landmarks" if tre is None else f"expert TRE {tre:.2f} mm"
         console.print(
-            f"{gate} {tre_text}; lung Dice {run.record.lung_dice_after:.3f}; "
+            f"{gate} {tre_text}; FOV lung Dice {run.record.lung_fov_dice_after:.3f}; "
             f"Jac<=0 {run.record.nonpositive_jacobian_fraction:.3g}; {written_json}"
         )
         if field_path is not None:

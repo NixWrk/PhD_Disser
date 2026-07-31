@@ -9,10 +9,10 @@
 
 ## Текущий статус
 
-Сейчас реализованы воспроизводимый реестр пар, landmark-gated registration benchmark и
-полнообъёмные skin-to-lung профили без электродного фильтра. Классический elastix baseline
-на `copd1` улучшает соответствие, но не проходит gate; подтверждённой оценки изменения
-мышцы/жира и модели перехода вдох→выдох пока нет.
+Сейчас реализованы воспроизводимый реестр пар, FOV-aware landmark-gated registration
+benchmark и полнообъёмные skin-to-lung профили без электродного фильтра. Классический
+elastix baseline не проходит gate; ConvexAdam подключён как изолированный следующий
+кандидат. Подтверждённой оценки изменения мышцы/жира и модели перехода вдох→выдох пока нет.
 
 Начинать чтение следует здесь:
 
@@ -35,6 +35,7 @@
 powershell -ExecutionPolicy Bypass -File tools/bootstrap.ps1 -WithGeometry
 powershell -ExecutionPolicy Bypass -File tools/install_dcm2niix.ps1
 .\.venv\Scripts\python.exe -m pip install -e ".[registration]"
+powershell -ExecutionPolicy Bypass -File tools/setup_registration_env.ps1
 Copy-Item configs/paths.local.example.yaml configs/paths.local.yaml
 .\.venv\Scripts\breathgeom.exe tools status
 .\.venv\Scripts\breathgeom.exe project validate --config configs/paths.local.yaml
@@ -56,13 +57,20 @@ Copy-Item configs/paths.local.example.yaml configs/paths.local.yaml
 .\.venv\Scripts\breathgeom.exe registration benchmark `
   --manifest data/interim/respiratory_pairs.local.csv `
   --dataset dirlab_copdgene --subject copd1
+.\.venv\Scripts\breathgeom.exe registration benchmark `
+  --manifest data/interim/respiratory_pairs.local.csv `
+  --dataset learn2reg_lungct --subject LungCT_0001 `
+  --method convexadam `
+  --registration-python .venv-registration/Scripts/python.exe
 .\.venv\Scripts\breathgeom.exe profiles extract-pair `
   --manifest data/interim/respiratory_pairs.local.csv `
   --dataset dirlab_copdgene --subject copd1
 .\.venv\Scripts\breathgeom.exe measure wall data/interim/ct.nii.gz --side right --csv data/interim/wall.csv
 ~~~
 
-`registration benchmark` сохраняет поле только для случая, прошедшего все QC-gates.
+PyTorch/ConvexAdam устанавливаются отдельно в `.venv-registration`: основная среда
+тестов и анализа не зависит от CUDA. `registration benchmark` сохраняет поле только для
+случая, прошедшего все QC-gates.
 `profiles extract-pair` всегда может сохранить раздельные однофазные профили, но создаёт
 paired deltas только при наличии прошедшего gate поля. Разность независимых однофазных
 медиан не считается дыхательным эффектом.
@@ -73,10 +81,10 @@ paired deltas только при наличии прошедшего gate по�
 
 ## Notebook
 
-[01_inhale_exhale_inspection.ipynb](notebooks/01_inhale_exhale_inspection.ipynb) служит
-визуальным QC одного случая DIR-Lab. Он не является воспроизводимым benchmark и не должен
-быть источником итоговых чисел. Подробная оценка — в
-[NOTEBOOK_AUDIT.md](docs/NOTEBOOK_AUDIT.md).
+`01_inhale_exhale_inspection.ipynb` служит историческим визуальным QC одного случая.
+Выполненные batch-отчёты находятся в `02_registration_benchmark.ipynb` и
+`03_whole_body_profiles.ipynb`; их исходные числа всё равно берутся из `results/`.
+Подробная оценка первого notebook — в [NOTEBOOK_AUDIT.md](docs/NOTEBOOK_AUDIT.md).
 
 ## Проверки
 

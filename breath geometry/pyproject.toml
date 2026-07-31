@@ -78,6 +78,7 @@ ignore_missing_imports = true
 [[tool.mypy.overrides]]
 module = [
   "breathgeom.measure.align",
+  "breathgeom.measure.convexadam_registration",
   "breathgeom.measure.elastix_registration",
   "breathgeom.measure.registration",
 ]

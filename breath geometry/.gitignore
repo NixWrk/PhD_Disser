@@ -3,6 +3,7 @@
 
 # Python environments and caches
 .venv/
+.venv-registration/
 __pycache__/
 *.py[cod]
 .pytest_cache/
