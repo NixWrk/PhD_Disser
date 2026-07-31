@@ -2,8 +2,11 @@ import json
 from pathlib import Path
 
 import numpy as np
+import pytest
 
 from breathgeom.benchmark import (
+    QUARANTINE_DIR_NAME,
+    QUARANTINE_MARKER_NAME,
     BenchmarkRun,
     PairData,
     evaluate_registration,
@@ -117,8 +120,56 @@ def test_field_artifact_records_direction_and_physical_spacing(tmp_path: Path) -
     artifact = np.load(field_path)
     assert artifact["spacing_mm"].tolist() == [1.0, 2.0, 3.0]
     assert str(artifact["direction"]) == "fixed-expiration_to_moving-inspiration"
+    assert str(artifact["usage"]) == "measurement_gate_passed"
+    assert bool(artifact["gate_pass"])
     payload = json.loads(json_path.read_text(encoding="utf-8"))
     assert payload["provenance"]["surface_metric"] == "common-fov-safe-surface-v1"
+    assert payload["provenance"]["field_disposition"] == "measurement_gate_passed"
+    assert payload["provenance"]["field_sha256"]
     assert payload["gate"]["fov_boundary_margin_mm"] == 5.0
     loaded = read_benchmark_record(json_path)
     assert loaded == benchmark.record
+
+
+def test_failed_field_is_quarantined_and_cannot_be_saved_for_measurement(
+    tmp_path: Path,
+) -> None:
+    pair_manifest = tmp_path / "pairs.csv"
+    write_pair_manifest(pair_manifest, [pair()])
+    blocked = BenchmarkRun(
+        evaluate_registration(data(with_experts=False), result()),
+        result(),
+        ElastixParams(),
+        (1.0, 1.0, 1.0),
+    )
+    output = tmp_path / "results"
+
+    with pytest.raises(ValueError, match="cannot be saved as a measurement"):
+        write_benchmark_run(
+            output,
+            blocked,
+            pair_manifest=pair_manifest,
+            code_version="test-sha",
+            save_field=True,
+        )
+
+    json_path, field_path = write_benchmark_run(
+        output,
+        blocked,
+        pair_manifest=pair_manifest,
+        code_version="test-sha",
+        save_failed_field=True,
+    )
+
+    assert field_path is not None
+    assert field_path.parent.name == QUARANTINE_DIR_NAME
+    assert (field_path.parent / QUARANTINE_MARKER_NAME).is_file()
+    artifact = np.load(field_path)
+    assert str(artifact["usage"]) == "diagnostic_failed_qc"
+    assert not bool(artifact["gate_pass"])
+    assert artifact["gate_reasons"].tolist() == ["no_independent_expert_landmarks"]
+    payload = json.loads(json_path.read_text(encoding="utf-8"))
+    assert payload["provenance"]["field_disposition"] == "diagnostic_failed_qc"
+    assert payload["provenance"]["field_file"].startswith(
+        f"{QUARANTINE_DIR_NAME}/"
+    )

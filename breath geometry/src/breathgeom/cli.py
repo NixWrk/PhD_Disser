@@ -360,6 +360,15 @@ def registration_benchmark(
         bool,
         typer.Option(help="Save dense fixed-expiration to moving-inspiration fields."),
     ] = False,
+    save_failed_fields: Annotated[
+        bool,
+        typer.Option(
+            help=(
+                "Save failed fields only in diagnostic quarantine; they remain blocked "
+                "from measurements."
+            )
+        ),
+    ] = False,
     force: Annotated[
         bool,
         typer.Option(help="Replace an existing subject QC artifact."),
@@ -431,15 +440,29 @@ def registration_benchmark(
         json_path = output / f"{stem}.json"
         if json_path.exists() and not force:
             try:
-                records.append(read_benchmark_record(json_path))
+                existing_record = read_benchmark_record(json_path)
+                existing_payload = json.loads(json_path.read_text(encoding="utf-8"))
             except (OSError, ValueError, json.JSONDecodeError) as error:
                 failures.append(f"{stem}: existing artifact cannot be read: {error}")
                 console.print(f"[red]FAILED[/red] {failures[-1]}")
                 continue
-            console.print(
-                f"[{index}/{len(selected)}] reuse existing {stem} in batch summary"
+            field_name = existing_payload["provenance"].get("field_file")
+            field_present = bool(
+                field_name and (output / str(field_name)).is_file()
             )
-            continue
+            requested_field_missing = (
+                (save_fields and existing_record.gate_pass)
+                or (save_failed_fields and not existing_record.gate_pass)
+            ) and not field_present
+            if not requested_field_missing:
+                records.append(existing_record)
+                console.print(
+                    f"[{index}/{len(selected)}] reuse existing {stem} in batch summary"
+                )
+                continue
+            console.print(
+                f"[{index}/{len(selected)}] rerun {stem} to create requested field artifact"
+            )
         console.print(f"[{index}/{len(selected)}] register {stem}")
         try:
             data = load_pair_data(pair)
@@ -459,6 +482,7 @@ def registration_benchmark(
                 pair_manifest=manifest,
                 code_version=code_version,
                 save_field=save_fields and run.record.gate_pass,
+                save_failed_field=save_failed_fields and not run.record.gate_pass,
             )
         except Exception as error:  # batch must report one failure without hiding later cases
             failures.append(f"{stem}: {type(error).__name__}: {error}")
@@ -474,7 +498,8 @@ def registration_benchmark(
             f"{run.record.body_fov_nonpositive_jacobian_fraction:.3g}; {written_json}"
         )
         if field_path is not None:
-            console.print(f"field {field_path}")
+            label = "measurement field" if run.record.gate_pass else "diagnostic quarantine"
+            console.print(f"{label}: {field_path}")
 
     if records:
         summary = output / "benchmark.csv"
@@ -532,9 +557,21 @@ def profiles_extract_pair(
     if registration_path.is_file():
         registration = json.loads(registration_path.read_text(encoding="utf-8"))
         record = registration["record"]
-        field_name = registration["provenance"].get("field_file")
-        if record["gate_pass"] and field_name:
-            field_artifact = np.load(registration_dir / field_name)
+        provenance = registration["provenance"]
+        field_name = provenance.get("field_file")
+        field_disposition = provenance.get(
+            "field_disposition",
+            "measurement_gate_passed" if record["gate_pass"] and field_name else "none",
+        )
+        if (
+            record["gate_pass"]
+            and field_name
+            and field_disposition == "measurement_gate_passed"
+        ):
+            relative_field = Path(field_name)
+            if relative_field.is_absolute() or ".." in relative_field.parts:
+                raise ValueError("registration field path must stay inside registration_dir")
+            field_artifact = np.load(registration_dir / relative_field)
             displacement = field_artifact["displacement_mm"]
             _, _, paired = pair_whole_body_profiles(
                 cast(WallIntArray, data.fixed_ras),
@@ -552,6 +589,8 @@ def profiles_extract_pair(
             paired_status = "available_gate_passed"
         elif not record["gate_pass"]:
             paired_status = "blocked_registration_gate"
+        elif field_disposition != "measurement_gate_passed":
+            paired_status = "blocked_unapproved_field_disposition"
         else:
             paired_status = "blocked_missing_dense_field"
 

@@ -45,6 +45,8 @@ from breathgeom.measure.wall import load_ras
 BoolArray = npt.NDArray[np.bool_]
 FloatArray = npt.NDArray[np.float64]
 CTArray = npt.NDArray[np.int16]
+QUARANTINE_DIR_NAME = "quarantine_NOT_FOR_MEASUREMENT"
+QUARANTINE_MARKER_NAME = "NOT_FOR_MEASUREMENT.txt"
 
 
 @dataclass(frozen=True)
@@ -513,6 +515,28 @@ def _sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
+def _write_field_artifact(
+    path: Path,
+    run: BenchmarkRun,
+    *,
+    code_version: str,
+    usage: str,
+) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    np.savez_compressed(
+        path,
+        displacement_mm=run.result.displacement_mm,
+        grid_shape=np.asarray(run.result.displacement_mm.shape[:3], dtype=np.int32),
+        spacing_mm=np.asarray(run.spacing, dtype=np.float64),
+        direction=np.asarray("fixed-expiration_to_moving-inspiration"),
+        coordinate_basis=np.asarray("local-zero-origin-RAS+_mm"),
+        usage=np.asarray(usage),
+        gate_pass=np.asarray(run.record.gate_pass),
+        gate_reasons=np.asarray(run.record.gate_reasons, dtype=np.str_),
+        code_version=np.asarray(code_version),
+    )
+
+
 def write_benchmark_run(
     output_dir: Path,
     run: BenchmarkRun,
@@ -520,20 +544,45 @@ def write_benchmark_run(
     pair_manifest: Path,
     code_version: str,
     save_field: bool = False,
+    save_failed_field: bool = False,
 ) -> tuple[Path, Path | None]:
     """Write de-identified QC and optionally the dense field outside Git."""
+    if save_field and save_failed_field:
+        raise ValueError("measurement and quarantine field requests are mutually exclusive")
+    if save_field and not run.record.gate_pass:
+        raise ValueError("failed registration cannot be saved as a measurement field")
+    if save_failed_field and run.record.gate_pass:
+        raise ValueError("passed registration cannot be saved in failed-field quarantine")
+
     output_dir.mkdir(parents=True, exist_ok=True)
     stem = f"{run.record.dataset_id}__{run.record.subject_id}"
     field_path: Path | None = None
+    field_disposition = "none"
     if save_field:
         field_path = output_dir / f"{stem}.field.npz"
-        np.savez_compressed(
+        field_disposition = "measurement_gate_passed"
+        _write_field_artifact(
             field_path,
-            displacement_mm=run.result.displacement_mm,
-            grid_shape=np.asarray(run.result.displacement_mm.shape[:3], dtype=np.int32),
-            spacing_mm=np.asarray(run.spacing, dtype=np.float64),
-            direction=np.asarray("fixed-expiration_to_moving-inspiration"),
-            coordinate_basis=np.asarray("local-zero-origin-RAS+_mm"),
+            run,
+            code_version=code_version,
+            usage=field_disposition,
+        )
+    elif save_failed_field:
+        quarantine_dir = output_dir / QUARANTINE_DIR_NAME
+        quarantine_dir.mkdir(parents=True, exist_ok=True)
+        marker = quarantine_dir / QUARANTINE_MARKER_NAME
+        marker.write_text(
+            "Diagnostic registration fields in this directory failed independent QC.\n"
+            "They must not be used for paired measurements, model training, or FEM.\n",
+            encoding="utf-8",
+        )
+        field_path = quarantine_dir / f"{stem}.field.npz"
+        field_disposition = "diagnostic_failed_qc"
+        _write_field_artifact(
+            field_path,
+            run,
+            code_version=code_version,
+            usage=field_disposition,
         )
 
     json_path = output_dir / f"{stem}.json"
@@ -545,7 +594,13 @@ def write_benchmark_run(
         "provenance": {
             "pair_manifest_sha256": _sha256(pair_manifest),
             "code_version": code_version,
-            "field_file": field_path.name if field_path is not None else None,
+            "field_file": (
+                field_path.relative_to(output_dir).as_posix()
+                if field_path is not None
+                else None
+            ),
+            "field_sha256": _sha256(field_path) if field_path is not None else None,
+            "field_disposition": field_disposition,
             "surface_metric": "common-fov-safe-surface-v1",
         },
     }
@@ -594,6 +649,8 @@ def read_benchmark_record(path: Path) -> RegistrationRecord:
 __all__ = [
     "BenchmarkRun",
     "PairData",
+    "QUARANTINE_DIR_NAME",
+    "QUARANTINE_MARKER_NAME",
     "RegistrationGate",
     "RegistrationRecord",
     "evaluate_registration",

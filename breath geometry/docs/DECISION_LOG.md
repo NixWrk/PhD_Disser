@@ -88,13 +88,14 @@ development-выборке без expert landmarks, она считается о
 
 ## D-006. Failed fields нужны для диагностики, но должны быть изолированы
 
-**Наблюдение.** Batch-команда сейчас сохраняет dense field только при PASS; для locked
-ConvexAdam сохранено 0 полей. Это предотвращает случайное использование плохой регистрации,
-но затрудняет локализацию folding и ошибок границы.
+**Наблюдение.** Изначально batch-команда сохраняла dense field только при PASS; для locked
+ConvexAdam было сохранено 0 полей. Это предотвращало случайное использование плохой
+регистрации, но затрудняло локализацию folding и ошибок границы.
 
-**Решение.** До разработки S1 добавить явный диагностический режим, сохраняющий failed
-fields в отдельный локальный quarantine-каталог с маркировкой `NOT_FOR_MEASUREMENT`.
-Обычный pipeline и profile pairing не должны читать этот каталог.
+**Решение.** Реализован флаг `--save-failed-fields`: failed fields сохраняются в отдельный
+локальный `quarantine_NOT_FOR_MEASUREMENT` с marker-файлом, `gate_pass=false`, причинами
+отказа, checksum и disposition `diagnostic_failed_qc`. Обычный pipeline принимает только
+disposition `measurement_gate_passed` и не читает quarantine.
 
 **Причина.** Для улучшения алгоритма поле надо визуально и численно исследовать, не снимая
 защиту научного pipeline.

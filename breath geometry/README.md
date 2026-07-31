@@ -74,6 +74,8 @@ Copy-Item configs/paths.local.example.yaml configs/paths.local.yaml
 PyTorch/ConvexAdam устанавливаются отдельно в `.venv-registration`: основная среда
 тестов и анализа не зависит от CUDA. `registration benchmark` сохраняет поле только для
 случая, прошедшего все QC-gates.
+Флаг `--save-failed-fields` сохраняет проваленное поле только в локальный
+`quarantine_NOT_FOR_MEASUREMENT`; profile/measurement pipeline такие поля не принимает.
 `profiles extract-pair` всегда может сохранить раздельные однофазные профили, но создаёт
 paired deltas только при наличии прошедшего gate поля. Разность независимых однофазных
 медиан не считается дыхательным эффектом.
