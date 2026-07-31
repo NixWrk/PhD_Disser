@@ -22,8 +22,9 @@ elastix baseline не проходит gate. Locked ConvexAdam улучшил ex
 3. [Порядок реализации и gate-критерии](docs/ROADMAP.md)
 4. [Результат парного registration benchmark](docs/REGISTRATION_BENCHMARK.md)
 5. [Выбор и locked benchmark ConvexAdam](docs/CONVEXADAM_BENCHMARK.md)
-6. [Аудит текущего notebook](docs/NOTEBOOK_AUDIT.md)
-7. [Правила данных и приватности](docs/DATA_PRIVACY.md)
+6. [Журнал решений, проблем и переходов](docs/DECISION_LOG.md)
+7. [Аудит текущего notebook](docs/NOTEBOOK_AUDIT.md)
+8. [Правила данных и приватности](docs/DATA_PRIVACY.md)
 
 Большие документы [RESEARCH_REPORT.md](docs/RESEARCH_REPORT.md),
 [research_and_implementation_plan.md](research_and_implementation_plan.md) и
