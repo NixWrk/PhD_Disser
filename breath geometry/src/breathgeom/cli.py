@@ -797,13 +797,13 @@ def registration_piecewise_svf_j12_contact_preflight(
     suite: Annotated[
         Path,
         typer.Option(exists=True, dir_okay=False, readable=True),
-    ] = Path("configs/piecewise_svf_j12_contact_development_suite_v2.json"),
+    ] = Path("configs/piecewise_svf_j12_contact_development_suite_v3.json"),
     search: Annotated[
         Path,
         typer.Option(exists=True, dir_okay=False, readable=True),
-    ] = Path("configs/piecewise_svf_j12_contact_development_search_v2.json"),
+    ] = Path("configs/piecewise_svf_j12_contact_development_search_v3.json"),
     output: Annotated[Path, typer.Option()] = Path(
-        "results/piecewise_svf_j12_contact_truth_preflight_v2"
+        "results/piecewise_svf_j12_contact_truth_preflight_v3"
     ),
 ) -> None:
     """Check contact-valid hidden truth before any CUDA optimizer process."""

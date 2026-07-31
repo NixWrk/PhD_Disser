@@ -84,3 +84,19 @@ def test_contact_v2_search_uses_its_versioned_selection_rule() -> None:
         search.challenge_suite_path
         == "configs/piecewise_svf_j12_contact_challenge_suite_v2.json"
     )
+
+
+def test_contact_v3_search_uses_same_frozen_selection_rule() -> None:
+    search = load_joint_svf_search(
+        REPO_ROOT / "configs/piecewise_svf_j12_contact_development_search_v3.json"
+    )
+
+    assert (
+        search.search_version
+        == "piecewise-svf-j1.2-contact-development-search-v3-fine-grid"
+    )
+    assert len(search.variants) == 3
+    assert (
+        search.challenge_suite_path
+        == "configs/piecewise_svf_j12_contact_challenge_suite_v3.json"
+    )

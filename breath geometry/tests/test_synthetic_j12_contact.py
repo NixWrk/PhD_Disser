@@ -16,6 +16,12 @@ SUITE_PATH = (
 SEARCH_PATH = (
     REPO_ROOT / "configs/piecewise_svf_j12_contact_development_search_v2.json"
 )
+FINE_SUITE_PATH = (
+    REPO_ROOT / "configs/piecewise_svf_j12_contact_development_suite_v3.json"
+)
+FINE_SEARCH_PATH = (
+    REPO_ROOT / "configs/piecewise_svf_j12_contact_development_search_v3.json"
+)
 
 
 def sha256(path: Path) -> str:
@@ -65,3 +71,18 @@ def test_contact_truth_writer_hashes_summary_and_diagnostics(tmp_path: Path) -> 
     assert len(manifest["diagnostic_sha256"]) == 3
     for name, expected in manifest["diagnostic_sha256"].items():
         assert sha256(tmp_path / name) == expected
+
+
+def test_frozen_v3_fine_grid_truth_passes_without_gate_changes() -> None:
+    suite = load_contact_svf_suite(FINE_SUITE_PATH)
+    search = load_joint_svf_search(FINE_SEARCH_PATH)
+
+    runs = evaluate_contact_truth_preflight(suite, search)
+
+    assert len(runs) == 3
+    assert all(run.record.truth_gate_pass for run in runs)
+    assert all(run.record.analytic_abs_distance_p95_max_mm <= 0.05 for run in runs)
+    assert all(run.record.analytic_surface_coverage_min >= 0.99 for run in runs)
+    assert all(run.record.raster_abs_distance_p95_max_mm <= 0.75 for run in runs)
+    assert all(run.record.raster_surface_coverage_min >= 0.95 for run in runs)
+    assert all(not run.record.gate_reasons for run in runs)

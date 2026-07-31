@@ -358,6 +358,9 @@ def load_joint_svf_search(path: Path) -> JointSVFSearch:
         "piecewise-svf-j1.2-contact-development-search-v2": (
             "all three contact-valid development cases pass every gate"
         ),
+        "piecewise-svf-j1.2-contact-development-search-v3-fine-grid": (
+            "all three contact-valid development cases pass every gate"
+        ),
     }
     expected_selection = required_selection_by_version.get(str(top["search_version"]))
     if expected_selection is None:
