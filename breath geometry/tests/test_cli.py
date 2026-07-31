@@ -11,3 +11,10 @@ def test_tools_status_command() -> None:
     assert result.exit_code == 0
     assert "python" in result.stdout
     assert "dcm2niix" in result.stdout
+
+
+def test_registration_help_lists_frozen_synthetic_gate() -> None:
+    result = runner.invoke(app, ["registration", "--help"])
+
+    assert result.exit_code == 0
+    assert "sliding-synthetic" in result.stdout

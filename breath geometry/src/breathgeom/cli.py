@@ -48,8 +48,14 @@ from breathgeom.measure.profiles import (
     summarize_profiles,
     write_profiles_csv,
 )
+from breathgeom.measure.sliding_registration import load_sliding_s1_params
 from breathgeom.measure.wall import IntArray as WallIntArray
 from breathgeom.measure.wall import Side, WallRay, load_ras, measure_wall
+from breathgeom.synthetic_s1 import (
+    load_sliding_suite,
+    run_synthetic_s1_suite,
+    write_synthetic_s1_suite,
+)
 from breathgeom.tools import collect_tool_status
 
 app = typer.Typer(help="Breath Geometry research CLI.")
@@ -508,6 +514,77 @@ def registration_benchmark(
     if failures:
         console.print(f"[red]{len(failures)} registration failures.[/red]")
         raise typer.Exit(code=1)
+
+
+@registration_app.command("sliding-synthetic")
+def registration_sliding_synthetic(
+    suite: Annotated[
+        Path,
+        typer.Option(exists=True, dir_okay=False, readable=True),
+    ] = Path("configs/sliding_phantom_suite_v1.json"),
+    params: Annotated[
+        Path,
+        typer.Option(exists=True, dir_okay=False, readable=True),
+    ] = Path("configs/sliding_s1_v0.json"),
+    output: Annotated[Path, typer.Option()] = Path("results/sliding_s1_v0"),
+    registration_python: Annotated[
+        Path,
+        typer.Option(help="Python executable in the isolated ConvexAdam environment."),
+    ] = Path(".venv-registration/Scripts/python.exe"),
+    temporary_root: Annotated[
+        Path | None,
+        typer.Option(help="Optional writable directory for temporary ConvexAdam arrays."),
+    ] = None,
+) -> None:
+    """Run the frozen multi-region synthetic suite before any real-pair benchmark."""
+    if not registration_python.is_file():
+        console.print(
+            f"[red]Registration Python does not exist: {registration_python}[/red]"
+        )
+        raise typer.Exit(code=2)
+    frozen_suite = load_sliding_suite(suite)
+    s1_params = load_sliding_s1_params(params)
+    output.mkdir(parents=True, exist_ok=True)
+    temporary = temporary_root or output / ".tmp"
+    temporary.mkdir(parents=True, exist_ok=True)
+    runs = run_synthetic_s1_suite(
+        frozen_suite,
+        s1_params,
+        registration_python=registration_python.resolve(),
+        repo_root=_repo_root(),
+        temporary_root=temporary,
+    )
+    manifest = write_synthetic_s1_suite(
+        runs,
+        output,
+        suite_path=suite,
+        s1_config_path=params,
+        repo_root=_repo_root(),
+    )
+    table = Table(title=f"Synthetic sliding gate: {s1_params.version}")
+    table.add_column("case")
+    table.add_column("gate")
+    table.add_column("lung p95", justify="right")
+    table.add_column("body p95", justify="right")
+    table.add_column("normal p95", justify="right")
+    table.add_column("slip", justify="right")
+    table.add_column("reasons")
+    for run in runs:
+        record = run.record
+        table.add_row(
+            record.case_id,
+            "[green]PASS[/green]" if record.gate_pass else "[red]FAIL[/red]",
+            f"{record.lung_field_p95_mm:.3f}",
+            f"{record.body_field_p95_mm:.3f}",
+            f"{record.normal_mismatch_p95_mm:.3f}",
+            f"{record.tangential_slip_median_mm:.3f}",
+            ";".join(record.gate_reasons) or "-",
+        )
+    console.print(table)
+    console.print(
+        f"Overall: {sum(run.record.gate_pass for run in runs)}/{len(runs)} PASS; "
+        f"artifacts: {manifest}"
+    )
 
 
 @profiles_app.command("extract-pair")
