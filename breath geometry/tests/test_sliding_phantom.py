@@ -36,6 +36,17 @@ def test_sliding_metrics_detect_wrong_body_normal_motion() -> None:
     assert metrics.tangential_slip_median_mm == pytest.approx(4.0, abs=0.05)
 
 
+def test_sliding_metrics_detect_artificially_glued_interface() -> None:
+    phantom = make_sliding_phantom()
+    metrics = evaluate_sliding_interface(
+        phantom,
+        body_displacement_mm=phantom.lung_displacement_mm,
+    )
+
+    assert metrics.normal_mismatch_p95_mm < 1e-6
+    assert metrics.tangential_slip_median_mm == pytest.approx(0.0, abs=1e-6)
+
+
 def test_region_field_error_uses_physical_vector_components() -> None:
     phantom = make_sliding_phantom(
         SlidingPhantomParams(

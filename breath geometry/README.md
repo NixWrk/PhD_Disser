@@ -23,8 +23,9 @@ elastix baseline не проходит gate. Locked ConvexAdam улучшил ex
 4. [Результат парного registration benchmark](docs/REGISTRATION_BENCHMARK.md)
 5. [Выбор и locked benchmark ConvexAdam](docs/CONVEXADAM_BENCHMARK.md)
 6. [Журнал решений, проблем и переходов](docs/DECISION_LOG.md)
-7. [Аудит текущего notebook](docs/NOTEBOOK_AUDIT.md)
-8. [Правила данных и приватности](docs/DATA_PRIVACY.md)
+7. [Спецификация sliding registration S1](docs/SLIDING_REGISTRATION_S1.md)
+8. [Аудит текущего notebook](docs/NOTEBOOK_AUDIT.md)
+9. [Правила данных и приватности](docs/DATA_PRIVACY.md)
 
 Большие документы [RESEARCH_REPORT.md](docs/RESEARCH_REPORT.md),
 [research_and_implementation_plan.md](research_and_implementation_plan.md) и
@@ -89,8 +90,9 @@ paired deltas только при наличии прошедшего gate по�
 `01_inhale_exhale_inspection.ipynb` служит историческим визуальным QC одного случая.
 Выполненные batch-отчёты находятся в `02_registration_benchmark.ipynb` и
 `03_whole_body_profiles.ipynb`; locked ConvexAdam разобран в
-`04_convexadam_registration_benchmark.ipynb`. Их исходные числа всё равно берутся из
-`results/`.
+`04_convexadam_registration_benchmark.ipynb`. Multi-region representation и synthetic
+контроли показаны в `05_sliding_phantom.ipynb`. Числа реальных batch-анализов всё равно
+берутся из `results/`.
 Подробная оценка первого notebook — в [NOTEBOOK_AUDIT.md](docs/NOTEBOOK_AUDIT.md).
 
 ## Проверки
