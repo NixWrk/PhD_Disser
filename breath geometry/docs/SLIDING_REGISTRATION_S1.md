@@ -129,3 +129,19 @@ segmentation-repeatability и отдельным body/bone annotations на да
 - Gate 1L + Gate 1B PASS: можно строить соответствующие парные карты полной толщины
   `кожа→лёгкое` и её тканевых компонентов.
 - Только после появления таких проверенных пар можно обучать single-CT ensemble model.
+
+## Frozen результат S1.0
+
+Batch-команда `breathgeom registration sliding-synthetic` выполнена на
+`sliding-phantom-v2.0`; отчёт находится в
+`notebooks/06_sliding_s1_synthetic_benchmark.ipynb`.
+
+- `shallow_1mm`: PASS;
+- `nominal_1mm`: FAIL, lung p95 1.587 мм при лимите 1.5 мм;
+- `deep_anisotropic`: FAIL, lung p95 4.138 мм при лимите 2.25 мм и median slip
+  4.002 мм при truth 6 мм;
+- body endpoint, normal contact и regional topology прошли во всех случаях; folding нет.
+
+Итог 1/3 означает общий algorithmic FAIL. S1.0 не запускается на 13-case real regression
+set и не используется для карт. Следующая итерация имеет новое имя S1.1; параметры и
+пороги S1.0 не изменяются задним числом.

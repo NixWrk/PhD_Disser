@@ -122,10 +122,12 @@ Gate 4: модель выигрывает у B2 больше измерител�
    два отрицательных контроля. Результат находится в `05_sliding_phantom.ipynb`.
 3. **Выполнено:** до expert test зафиксирована спецификация S1 и algorithmic synthetic
    gate в `SLIDING_REGISTRATION_S1.md`. Это ещё не является реализацией S1.
-4. **В работе:** генератор скрытой двухфазной synthetic пары и round-trip QC реализованы.
-   Далее реализовать S1 и вслепую восстановить поля из изображений минимум для трёх frozen
-   вариантов. Не подставлять известное поле или inverse как результат алгоритма.
-5. После synthetic PASS выбирать параметры S1 только на случаях без expert landmarks.
+4. **S1.0 завершён с FAIL:** hidden-field batch suite выполнен на трёх frozen вариантах,
+   PASS у 1/3. Стенка, normal contact и topology прошли; nominal/deep провалили lung field,
+   deep дополнительно потерял около 2 мм tangential slip. Real-pair benchmark не запускать.
+5. Реализовать новый S1.1 с более сильным внутренним feature correspondence/анатомическим
+   prior. После полного synthetic PASS выбирать дальнейшие параметры только на случаях
+   без expert landmarks.
    Те же 13 expert cases
    использовать как frozen regression set; для итоговой внешней оценки отложить новый
    нераскрытый landmark-набор.

@@ -28,9 +28,12 @@ Notebook в этом каталоге — интерактивный QC/отчё
 - `05_sliding_phantom.ipynb` проверяет multi-region представление плеврального скольжения,
   региональный Jacobian и два отрицательных контроля; это representation gate, а не
   benchmark алгоритма регистрации;
-- outputs этих четырёх notebooks коммитятся как удобное представление результатов, но
+- `06_sliding_s1_synthetic_benchmark.ipynb` читает frozen batch-артефакты S1.0,
+  проверяет checksums, показывает gate matrix и spatial error maps; текущий verdict
+  `FAIL (1/3)`;
+- outputs этих пяти notebooks коммитятся как удобное представление результатов, но
   источником чисел остаются воспроизводимые артефакты в `results/`;
-- после обновления batch-артефактов все четыре notebooks нужно выполнить заново и проверить,
+- после обновления batch-артефактов все пять notebooks нужно выполнить заново и проверить,
   что в них нет локальных путей и медицинских идентификаторов.
 
 Bootstrap регистрирует ядро `breathgeom` из `.venv`. Выполнение одного отчёта из корня
@@ -38,7 +41,7 @@ Bootstrap регистрирует ядро `breathgeom` из `.venv`. Выпо�
 
 ~~~powershell
 powershell -ExecutionPolicy Bypass -File tools/execute_notebook.ps1 `
-  -Notebook notebooks/05_sliding_phantom.ipynb
+  -Notebook notebooks/06_sliding_s1_synthetic_benchmark.ipynb
 ~~~
 
 Скрипт намеренно вызывает `nbconvert` через Python из `.venv` и явно выбирает kernel.

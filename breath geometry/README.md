@@ -13,7 +13,10 @@
 benchmark и полнообъёмные skin-to-lung профили без электродного фильтра. Классический
 elastix baseline не проходит gate. Locked ConvexAdam улучшил expert TRE у 13/13 случаев,
 но также прошёл полный gate у 0/13, поэтому парные карты толщины остаются заблокированы.
-Подтверждённой оценки изменения мышцы/жира и модели перехода вдох→выдох пока нет.
+Piecewise S1.0 прошёл frozen synthetic gate только у 1/3 вариантов: стенка, normal contact
+и topology устойчивы, но плотное поле лёгкого провалено. Поэтому real-pair перезапуск S1.0
+не выполнялся. Подтверждённой оценки изменения мышцы/жира и модели перехода вдох→выдох
+пока нет.
 
 Начинать чтение следует здесь:
 
@@ -91,8 +94,9 @@ paired deltas только при наличии прошедшего gate по�
 Выполненные batch-отчёты находятся в `02_registration_benchmark.ipynb` и
 `03_whole_body_profiles.ipynb`; locked ConvexAdam разобран в
 `04_convexadam_registration_benchmark.ipynb`. Multi-region representation и synthetic
-контроли показаны в `05_sliding_phantom.ipynb`. Числа реальных batch-анализов всё равно
-берутся из `results/`.
+контроли показаны в `05_sliding_phantom.ipynb`; frozen S1.0 FAIL — в
+`06_sliding_s1_synthetic_benchmark.ipynb`. Числа batch-анализов всё равно берутся из
+`results/`.
 Подробная оценка первого notebook — в [NOTEBOOK_AUDIT.md](docs/NOTEBOOK_AUDIT.md).
 
 ## Проверки

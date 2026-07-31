@@ -74,13 +74,19 @@
   инверсия. S1 будет получать только изображения/маски; региональные поля и их inverse
   остаются у оценщика. Round-trip p95 составляет 0.057 мм для лёгкого и 0.027 мм для
   стенки на базовом phantom.
+- Piecewise-кандидат S1.0: masked ConvexAdam для лёгкого, Demons для стенки и normal-only
+  pleural coupling. Frozen batch suite из трёх вариантов имеет manifest/checksums и
+  выполненный `06_sliding_s1_synthetic_benchmark.ipynb`. Полный gate прошёл 1/3:
+  shallow PASS; nominal провален по lung p95 1.587 > 1.5 мм; deep anisotropic — по lung
+  p95 4.138 > 2.25 мм и slip 4.002 вместо 6 мм. Body/contact/topology прошли во всех
+  вариантах, folding нет.
 - 3D-профили по всей сегментированной поверхности лёгких без электродного фильтра. Каждый
   путь раскладывается на жир/мышцу/кость/прочее; пути через лёгкое и обрезанный FOV
   отбраковываются. Парные дельты программно запрещены при провале registration gate.
 - Пороговые маски тела/лёгких, skin-to-lung shell, over-rib fat/muscle diagnostic и жёсткое
   совмещение по позвоночнику.
-- Исторический интерактивный notebook для `copd1` и четыре выполненных notebook-отчёта,
-  включая locked ConvexAdam benchmark, synthetic sliding benchmark и явные QC-verdict.
+- Исторический интерактивный notebook для `copd1` и пять выполненных notebook-отчётов,
+  включая locked ConvexAdam benchmark, synthetic sliding/S1 benchmarks и явные QC-verdict.
 - Автотесты, `ruff` и strict `mypy`.
 
 ## Что пока не является результатом
@@ -100,13 +106,15 @@
 - Использование 209/210 NLST2023 пар как вдох–выдох.
 - Индивидуальная STL выдоха для NIX/GEORG/YAROSLAV.
 - Прохождение synthetic representation gate не означает, что регистрация умеет
-  восстанавливать скрытое поле из двух изображений: S1 algorithmic gate ещё не запускался.
+  восстанавливать скрытое поле из двух изображений.
+- S1.0 не разрешён для real-pair regression или измерений: algorithmic synthetic gate
+  провален у 2/3 вариантов.
 
 ## Главные технические долги
 
-1. Реализовать заранее специфицированный в `SLIDING_REGISTRATION_S1.md` кандидат S1 и
-   восстановить им неизвестные поля на frozen synthetic suite. Expert 13-case test не
-   использовать для подбора параметров.
+1. Разработать новый versioned S1.1, улучшающий внутреннее tangential поле лёгкого на
+   nominal/deep synthetic случаях, не ухудшая прошедшие body/contact/topology критерии.
+   S1.0 не донастраивать; expert 13-case test не использовать.
 2. Зафиксировать численные пороги Gate 1B на независимых body/bone annotations и
    segmentation-repeatability; до этого его состояние `NOT VALIDATED`.
 3. Надёжная сегментация лёгких, тела, рёбер и тканей в исходном FOV.
