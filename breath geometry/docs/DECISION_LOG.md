@@ -741,3 +741,31 @@ normal contact, заданный tangential slip, gap/collision, surface coverag
 ExecutionPolicy до выполнения ячеек. Штатный запуск с локальным
 `powershell -ExecutionPolicy Bypass` завершил 5/5 code cells без ошибок; научные
 параметры не менялись.
+
+## D-032. Contact оценивается на advected surface, не по fixed-normal equality
+
+**Frozen результат.** J1.1 выполнен на commit `21d04f1`: positive 2/2 PASS,
+negative controls 2/2 распознаны, все checksum совпали. Counter-rotation и
+longitudinal twist сохранили target/interregional coverage 1.0, заданный slip и
+нулевой folding.
+
+**Критическое наблюдение.** У валидного counter-rotation fixed-normal mismatch p95 на
+исходной поверхности равен `0.209 мм`, хотя обе конечные поверхности совпадают. У
+одношагового Euler displacement, спроецированного в касательную плоскость исходной
+поверхности, fixed-normal p95 равен `5.4e-8 мм`, topology положительна и slip близок к
+truth, но `39.8%` точек выходят наружу target surface, а coverage падает до `20.4%`.
+
+**Вывод.** Равенство pointwise normal displacement на fixed curved surface не является:
+
+- необходимым условием конечного contact — материальные точки могут скользить и менять
+  нормальную проекцию, сохраняя совпадение поверхностей как множеств;
+- достаточным условием — касательный линейный шаг уходит с кривой поверхности.
+
+**Решение.** В J1.2 основной contact loss и gate строятся на advected surfaces:
+symmetric surface distance/coverage плюс signed gap/collision. Fixed-normal term может
+использоваться только как слабая локальная регуляризация на малых updates. Он не может
+самостоятельно пропустить поле.
+
+**Следствие.** Разрешён переход к joint optimizer только на synthetic images. Hidden
+truth остаётся у evaluator; positive/negative representation cases не используются для
+подгонки по результату. Реальные LungCT и expert Gate 1L пока не запускаются.

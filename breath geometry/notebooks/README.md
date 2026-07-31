@@ -44,9 +44,12 @@ Notebook в этом каталоге — интерактивный QC/отчё
 - `10_piecewise_svf_j10_numeric_gate.ipynb` проверяет checksums frozen analytic batch,
   показывает endpoint/round-trip/Jacobian относительно заранее заданных порогов,
   planar normal/slip invariant и влияние численной границы FOV; КТ не читает;
-- outputs этих девяти notebooks коммитятся как удобное представление результатов, но
+- `11_piecewise_svf_j11_representation_gate.ipynb` показывает curved-interface
+  contact/slip, signed gap/collision maps и различие fixed-normal screen с конечным
+  advected contact; КТ и expert landmarks не читает;
+- outputs этих десяти notebooks коммитятся как удобное представление результатов, но
   источником чисел остаются воспроизводимые артефакты в `results/`;
-- после обновления batch-артефактов все девять notebooks нужно выполнить заново и проверить,
+- после обновления batch-артефактов все десять notebooks нужно выполнить заново и проверить,
   что в них нет локальных путей и медицинских идентификаторов.
 
 Bootstrap регистрирует ядро `breathgeom` из `.venv`. Выполнение одного отчёта из корня

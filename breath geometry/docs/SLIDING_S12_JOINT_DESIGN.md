@@ -188,6 +188,14 @@ round-trip в пределах численной погрешности.
 
 Критерии и challenge замораживаются до optimizer.
 
+Статус: выполнено на `piecewise-svf-j1.1-representation-v1`. Положительные
+counter-rotation/twist прошли 2/2, отрицательные контроли распознаны 2/2. Валидный
+counter-rotation имел fixed-normal p95 `0.209 мм` при полном advected contact; post-hoc
+Euler control имел fixed-normal p95 `5.4e-8 мм`, но collision `39.8%`. Поэтому
+fixed-normal equality отвергнута как основной loss/gate. J1.2 должен оптимизировать
+contact по advected surfaces; fixed-normal term допустим только как локальная слабая
+регуляризация, не как доказательство контакта.
+
 ### J1.2. Joint optimizer только на synthetic
 
 В `.venv-registration`:
@@ -197,6 +205,10 @@ round-trip в пределах численной погрешности.
 - region-internal regularization;
 - differentiable normal/interface loss;
 - line-search/update rejection по topology.
+
+После J1.1 `normal/interface loss` уточнён: основной критерий — symmetric
+advected-surface distance/coverage и signed gap/collision. Равенство нормальных
+компонент на fixed surface не может быть единственным contact term.
 
 Hidden truth используется только оценщиком. Подбор loss weights разрешён только на
 development synthetic cases; отдельный новый pattern остаётся закрытым до freeze.

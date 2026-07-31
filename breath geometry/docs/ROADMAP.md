@@ -143,17 +143,18 @@ Gate 4: модель выигрывает у B2 больше измерител�
     сохранённых non-expert fields. Gaussian repair без coupling дал topology 5/5,
     contact 0/5; оба algebraic normal coupling дали contact 5/5, topology 0/5 и общий
     `0/5`. Подбор `sigma/scale/taper` прекращён.
-11. **J1.0 выполнен, текущий шаг J1.1:** выбран joint piecewise-SVF с отдельными
+11. **J1.0 и J1.1 выполнены, текущий шаг J1.2:** выбран joint piecewise-SVF с отдельными
     lung/body transforms, normal-contact constraint, разрешённым tangential
     discontinuity и сохранением локального correspondence. Замороженный численный gate
     scaling-and-squaring/round-trip/Jacobian прошёл 4/4 cases и 8/8 региональных строк,
-    folding отсутствует. Теперь до image optimizer заморозить и выполнить representation
-    gate на криволинейном interface: normal contact, заданный slip, gap/collision,
-    surface coverage и отрицательные контроли. Отдельно улучшить initial registration
-    для `LungCT_0005`.
-12. После выбора класса заморозить новую synthetic challenge и полноценную S1.2
-    спецификацию; затем запустить все шесть development subjects с нуля, включая
-    `LungCT_0029`.
+    folding отсутствует. Curved representation gate прошёл positive 2/2 и controls 2/2;
+    он показал, что fixed-normal equality не является критерием конечного контакта.
+    Теперь до реальных КТ заморозить synthetic image-development/hidden-challenge split
+    и реализовать joint optimizer с advected-surface loss, intra-region regularization
+    и topology update rejection.
+12. После J1.2 отдельно улучшить initial correspondence для `LungCT_0005`, затем
+    заморозить полноценную S1.2 спецификацию и запустить все шесть development subjects
+    с нуля, включая `LungCT_0029`.
 13. Зафиксировать численные пороги Gate 1B: наружный контур, устойчивые костные ориентиры,
    segmentation repeatability и валидность профилей в общем FOV. До этого 1B имеет статус
    `NOT VALIDATED`.

@@ -106,3 +106,23 @@ J1.1 PASS требует:
 
 Только после этого разрешено перейти к J1.2 — joint optimizer на synthetic images.
 Даже J1.1 PASS не открывает Gate 1L/1B и не разрешает парные карты тканей.
+
+## Выполненный batch
+
+Batch выполнен на commit `21d04f19b67b2ee2967f05b552c9c2b67b119289`.
+Checksum config, summary, четырёх `.npz` и четырёх case JSON совпали с manifest.
+
+- positive cases: 2/2 PASS, folding 0, target/interregional coverage 1.0;
+- negative controls: 2/2 распознаны по frozen signatures;
+- counter-rotation: endpoint p95 lung `0.001020 мм`, slip error `0.000118 мм`,
+  fixed-normal mismatch p95 `0.209 мм`, но полный contact PASS;
+- longitudinal twist: endpoint p95 не выше `0.000222 мм`, slip error
+  `0.000105 мм`, полный contact PASS;
+- global glued control: contact/topology PASS, observed slip `0` при truth
+  `3.7838 мм`;
+- post-hoc fixed-normal Euler control: fixed-normal p95 `5.4e-8 мм`, folding 0,
+  но target p95 `0.352 мм`, coverage `0.204` и collision fraction `0.398`.
+
+Итог: fixed-normal equality не является ни достаточной, ни необходимой проверкой
+конечного контакта на кривой поверхности. Выполненный отчёт:
+`notebooks/11_piecewise_svf_j11_representation_gate.ipynb`.

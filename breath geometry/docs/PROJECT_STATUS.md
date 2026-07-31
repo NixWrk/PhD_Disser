@@ -104,12 +104,21 @@
   p95 `0.000305 мм` и round-trip p95 `0.000610 мм` при заранее заданном лимите `0.02 мм`.
   Planar case сохранил normal mismatch `0 мм` и tangential slip `4 мм`. Выполненный
   отчёт — `10_piecewise_svf_j10_numeric_gate.ipynb`.
+- J1.1 curved-interface representation gate прошёл: 2/2 положительных cases и 2/2
+  заранее заданных отрицательных контроля. Counter-rotation и longitudinal twist
+  сохранили contact, coverage 1.0, slip и нулевой folding. Global glued control сохранил
+  contact/topology, но потерял slip. Post-hoc fixed-normal Euler control имел
+  fixed-normal p95 `5.4e-8 мм` и нулевой folding, но collision fraction `39.8%` и
+  target coverage `20.4%`. При этом валидный counter-rotation имел fixed-normal p95
+  `0.209 мм`. Следовательно, fixed-surface normal equality не является ни достаточным,
+  ни необходимым критерием конечного contact. Отчёт —
+  `11_piecewise_svf_j11_representation_gate.ipynb`.
 - 3D-профили по всей сегментированной поверхности лёгких без электродного фильтра. Каждый
   путь раскладывается на жир/мышцу/кость/прочее; пути через лёгкое и обрезанный FOV
   отбраковываются. Парные дельты программно запрещены при провале registration gate.
 - Пороговые маски тела/лёгких, skin-to-lung shell, over-rib fat/muscle diagnostic и жёсткое
   совмещение по позвоночнику.
-- Исторический интерактивный notebook для `copd1` и девять выполненных notebook-отчётов,
+- Исторический интерактивный notebook для `copd1` и десять выполненных notebook-отчётов,
   включая locked ConvexAdam benchmark, synthetic sliding/S1 benchmarks и явные QC-verdict.
 - Автотесты, `ruff` и strict `mypy`.
 
@@ -138,6 +147,8 @@
 - J1.0 PASS проверяет только численное интегрирование известных velocity fields. Он не
   проверяет криволинейный pleural contact, gap/collision, image correspondence или
   оптимизацию по КТ и поэтому также не открывает Gate 1L/1B.
+- J1.1 PASS подтверждает только выразимость и evaluator при известных полях. Поля ещё не
+  восстановлены из synthetic или реальных изображений; Gate 1L/1B и карты тканей закрыты.
 
 ## Главные технические долги
 
@@ -147,10 +158,11 @@
    correspondence QC. Простой Gaussian/algebraic класс уже отвергнут frozen screen.
    Текущий design target — отдельные topology-preserving lung/body transformations с
    normal-contact constraint внутри совместной оптимизации и отдельное улучшение
-   correspondence для `LungCT_0005`. Численный J1.0 пройден; текущий шаг J1.1 —
-   заранее замороженный representation gate на криволинейном interface с
-   gap/collision, surface coverage и отрицательными контролями. До его PASS image
-   optimizer не реализуется.
+   correspondence для `LungCT_0005`. J1.0 и J1.1 пройдены; fixed-normal equality как
+   основной contact-критерий отвергнут. Текущий шаг J1.2 — заранее специфицировать и
+   реализовать joint optimizer только на synthetic images с advected-surface
+   signed-distance/coverage loss и отклонением updates при folding. Hidden truth
+   используется только evaluator.
    Design и аудит готовых реализаций находятся в `SLIDING_S12_JOINT_DESIGN.md`.
 2. Зафиксировать численные пороги Gate 1B на независимых body/bone annotations и
    segmentation-repeatability; до этого его состояние `NOT VALIDATED`.
