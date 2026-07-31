@@ -5,7 +5,9 @@ import pytest
 from breathgeom.measure.registration import (
     BSplineParams,
     RegistrationParams,
+    acquisition_fov_mask,
     compose_displacements,
+    fov_aware_mask_metrics,
     landmark_tre,
     mask_metrics,
     register_bspline,
@@ -38,6 +40,60 @@ def test_mask_metrics_are_physical_and_symmetric() -> None:
     assert forward == reverse
     assert forward.dice < 1.0
     assert forward.surface_p95_mm == pytest.approx(np.sqrt(8.0))
+
+
+def test_acquisition_fov_uses_body_supported_axial_slab() -> None:
+    body = np.zeros((12, 10, 14), dtype=bool)
+    body[2:10, 1:9, 4:11] = True
+
+    fov = acquisition_fov_mask(body)
+
+    assert not fov[:, :, 3].any()
+    assert fov[:, :, 4:11].all()
+    assert not fov[:, :, 11].any()
+
+
+def test_fov_aware_surface_ignores_artificial_crop_plane() -> None:
+    first = np.zeros((24, 24, 24), dtype=bool)
+    first[5:19, 5:19, 4:20] = True
+    second = first.copy()
+    second[:, :, :9] = False
+    common_fov = np.zeros_like(first)
+    common_fov[:, :, 9:] = True
+
+    legacy = mask_metrics(first, second, (1.0, 1.0, 1.0))
+    aware = fov_aware_mask_metrics(
+        first,
+        second,
+        (1.0, 1.0, 1.0),
+        valid_domain=common_fov,
+        boundary_margin_mm=2.0,
+    )
+
+    assert legacy.surface_p95_mm > 0
+    assert aware.dice == pytest.approx(1.0)
+    assert aware.surface_p95_mm == pytest.approx(0.0)
+    assert 0 < aware.first_surface_coverage < 1
+    assert 0 < aware.second_surface_coverage < 1
+
+
+def test_fov_aware_surface_retains_real_mismatch_inside_common_fov() -> None:
+    first = np.zeros((24, 24, 24), dtype=bool)
+    second = np.zeros_like(first)
+    first[7:15, 7:15, 7:15] = True
+    second[9:17, 7:15, 7:15] = True
+    common_fov = np.ones_like(first)
+
+    aware = fov_aware_mask_metrics(
+        first,
+        second,
+        (1.0, 1.0, 1.0),
+        valid_domain=common_fov,
+        boundary_margin_mm=2.0,
+    )
+
+    assert aware.dice < 1.0
+    assert aware.surface_p95_mm > 0
 
 
 def test_diffeomorphic_registration_improves_shifted_blob() -> None:

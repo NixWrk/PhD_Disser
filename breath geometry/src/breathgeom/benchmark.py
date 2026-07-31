@@ -27,6 +27,8 @@ from breathgeom.io.pairs import RespiratoryPair
 from breathgeom.measure.elastix_registration import ElastixParams, register_elastix
 from breathgeom.measure.registration import (
     DeformableResult,
+    acquisition_fov_mask,
+    fov_aware_mask_metrics,
     landmark_tre,
     mask_metrics,
     warp_mask,
@@ -68,6 +70,7 @@ class RegistrationGate:
     lung_surface_p95_max_mm: float = 5.0
     jacobian_p01_min: float = 0.10
     nonpositive_jacobian_fraction_max: float = 0.0
+    fov_boundary_margin_mm: float = 5.0
 
 
 @dataclass(frozen=True)
@@ -84,6 +87,13 @@ class RegistrationRecord:
     lung_dice_after: float
     lung_surface_p95_before_mm: float
     lung_surface_p95_after_mm: float
+    lung_fov_dice_before: float
+    lung_fov_dice_after: float
+    lung_fov_surface_p95_before_mm: float
+    lung_fov_surface_p95_after_mm: float
+    lung_fov_fixed_surface_coverage_after: float
+    lung_fov_moving_surface_coverage_after: float
+    common_fov_fraction_after: float
     body_dice_before: float
     body_dice_after: float
     body_surface_p95_before_mm: float
@@ -93,6 +103,12 @@ class RegistrationRecord:
     expert_tre_after_mean_mm: float | None
     expert_tre_after_median_mm: float | None
     expert_tre_after_p95_mm: float | None
+    expert_inferior_count: int
+    expert_inferior_tre_after_mean_mm: float | None
+    expert_middle_count: int
+    expert_middle_tre_after_mean_mm: float | None
+    expert_superior_count: int
+    expert_superior_tre_after_mean_mm: float | None
     keypoint_count: int
     keypoint_tre_before_mean_mm: float | None
     keypoint_tre_after_mean_mm: float | None
@@ -114,6 +130,7 @@ class BenchmarkRun:
     result: DeformableResult
     params: ElastixParams
     spacing: tuple[float, float, float]
+    gate: RegistrationGate = RegistrationGate()
 
 
 def _same_grid(
@@ -246,6 +263,39 @@ def _tre_summary(
     )
 
 
+def _regional_tre_summary(
+    fixed: FloatArray | None,
+    moving: FloatArray | None,
+    result: DeformableResult,
+    spacing: tuple[float, float, float],
+    fixed_lung_mask: BoolArray,
+) -> tuple[int, float | None, int, float | None, int, float | None]:
+    if fixed is None or moving is None:
+        return 0, None, 0, None, 0, None
+    lung_indices = np.argwhere(fixed_lung_mask)
+    if len(lung_indices) == 0:
+        raise ValueError("cannot define landmark regions from an empty lung mask")
+    inferior = float(lung_indices[:, 2].min() * spacing[2])
+    superior = float(lung_indices[:, 2].max() * spacing[2])
+    first_cut = inferior + (superior - inferior) / 3.0
+    second_cut = inferior + 2.0 * (superior - inferior) / 3.0
+    errors = landmark_tre(fixed, moving, result.displacement_mm, spacing)
+    z_values = fixed[:, 2]
+    selectors = (
+        z_values < first_cut,
+        np.logical_and(z_values >= first_cut, z_values < second_cut),
+        z_values >= second_cut,
+    )
+    values: list[int | float | None] = []
+    for selector in selectors:
+        count = int(selector.sum())
+        values.extend((count, float(np.mean(errors[selector])) if count else None))
+    return cast(
+        tuple[int, float | None, int, float | None, int, float | None],
+        tuple(values),
+    )
+
+
 def evaluate_registration(
     data: PairData,
     result: DeformableResult,
@@ -257,6 +307,25 @@ def evaluate_registration(
     gate = gate or RegistrationGate()
     lung_before = mask_metrics(data.fixed_lung_mask, data.moving_lung_mask, data.spacing)
     lung_after = mask_metrics(data.fixed_lung_mask, result.warped_moving_mask, data.spacing)
+    fixed_fov = acquisition_fov_mask(data.fixed_body_mask)
+    moving_fov = acquisition_fov_mask(data.moving_body_mask)
+    common_fov_before = np.logical_and(fixed_fov, moving_fov)
+    warped_moving_fov = warp_mask(moving_fov, result.displacement_mm, data.spacing)
+    common_fov_after = np.logical_and(fixed_fov, warped_moving_fov)
+    lung_fov_before = fov_aware_mask_metrics(
+        data.fixed_lung_mask,
+        data.moving_lung_mask,
+        data.spacing,
+        valid_domain=common_fov_before,
+        boundary_margin_mm=gate.fov_boundary_margin_mm,
+    )
+    lung_fov_after = fov_aware_mask_metrics(
+        data.fixed_lung_mask,
+        result.warped_moving_mask,
+        data.spacing,
+        valid_domain=common_fov_after,
+        boundary_margin_mm=gate.fov_boundary_margin_mm,
+    )
     body_before = mask_metrics(data.fixed_body_mask, data.moving_body_mask, data.spacing)
     warped_body = warp_mask(data.moving_body_mask, result.displacement_mm, data.spacing)
     body_after = mask_metrics(data.fixed_body_mask, warped_body, data.spacing)
@@ -265,6 +334,13 @@ def evaluate_registration(
         data.moving_expert_points_mm,
         result,
         data.spacing,
+    )
+    expert_regions = _regional_tre_summary(
+        data.fixed_expert_points_mm,
+        data.moving_expert_points_mm,
+        result,
+        data.spacing,
+        data.fixed_lung_mask,
     )
     keypoint = _tre_summary(
         data.fixed_keypoints_mm,
@@ -281,10 +357,13 @@ def evaluate_registration(
             reasons.append("expert_tre_mean")
         if expert[4] is None or expert[4] > gate.expert_tre_p95_max_mm:
             reasons.append("expert_tre_p95")
-    if lung_after.dice < gate.lung_dice_min:
-        reasons.append("lung_dice")
-    if lung_after.surface_p95_mm > gate.lung_surface_p95_max_mm:
-        reasons.append("lung_surface_p95")
+    if lung_fov_after.dice < gate.lung_dice_min:
+        reasons.append("lung_dice_fov")
+    if (
+        not np.isfinite(lung_fov_after.surface_p95_mm)
+        or lung_fov_after.surface_p95_mm > gate.lung_surface_p95_max_mm
+    ):
+        reasons.append("lung_surface_p95_fov")
     if result.jacobian_p01 < gate.jacobian_p01_min:
         reasons.append("jacobian_p01")
     if result.nonpositive_jacobian_fraction > gate.nonpositive_jacobian_fraction_max:
@@ -301,6 +380,13 @@ def evaluate_registration(
         lung_dice_after=lung_after.dice,
         lung_surface_p95_before_mm=lung_before.surface_p95_mm,
         lung_surface_p95_after_mm=lung_after.surface_p95_mm,
+        lung_fov_dice_before=lung_fov_before.dice,
+        lung_fov_dice_after=lung_fov_after.dice,
+        lung_fov_surface_p95_before_mm=lung_fov_before.surface_p95_mm,
+        lung_fov_surface_p95_after_mm=lung_fov_after.surface_p95_mm,
+        lung_fov_fixed_surface_coverage_after=lung_fov_after.first_surface_coverage,
+        lung_fov_moving_surface_coverage_after=lung_fov_after.second_surface_coverage,
+        common_fov_fraction_after=lung_fov_after.valid_voxel_fraction,
         body_dice_before=body_before.dice,
         body_dice_after=body_after.dice,
         body_surface_p95_before_mm=body_before.surface_p95_mm,
@@ -310,6 +396,12 @@ def evaluate_registration(
         expert_tre_after_mean_mm=expert[2],
         expert_tre_after_median_mm=expert[3],
         expert_tre_after_p95_mm=expert[4],
+        expert_inferior_count=expert_regions[0],
+        expert_inferior_tre_after_mean_mm=expert_regions[1],
+        expert_middle_count=expert_regions[2],
+        expert_middle_tre_after_mean_mm=expert_regions[3],
+        expert_superior_count=expert_regions[4],
+        expert_superior_tre_after_mean_mm=expert_regions[5],
         keypoint_count=keypoint[0],
         keypoint_tre_before_mean_mm=keypoint[1],
         keypoint_tre_after_mean_mm=keypoint[2],
@@ -328,6 +420,7 @@ def run_registration_benchmark(
     gate: RegistrationGate | None = None,
 ) -> BenchmarkRun:
     params = params or ElastixParams()
+    gate = gate or RegistrationGate()
     result = register_elastix(
         cast(WallIntArray, data.fixed_ras),
         cast(WallIntArray, data.moving_ras),
@@ -346,6 +439,7 @@ def run_registration_benchmark(
         result=result,
         params=params,
         spacing=data.spacing,
+        gate=gate,
     )
 
 
@@ -384,10 +478,12 @@ def write_benchmark_run(
     payload: dict[str, Any] = {
         "record": asdict(run.record),
         "parameters": asdict(run.params),
+        "gate": asdict(run.gate),
         "provenance": {
             "pair_manifest_sha256": _sha256(pair_manifest),
             "code_version": code_version,
             "field_file": field_path.name if field_path is not None else None,
+            "surface_metric": "common-fov-safe-surface-v1",
         },
     }
     json_path.write_text(

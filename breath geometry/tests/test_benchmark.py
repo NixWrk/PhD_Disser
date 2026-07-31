@@ -1,3 +1,4 @@
+import json
 from pathlib import Path
 
 import numpy as np
@@ -83,6 +84,13 @@ def test_expert_landmarks_can_pass_but_absence_cannot() -> None:
     assert passed.gate_pass
     assert not blocked.gate_pass
     assert blocked.gate_reasons == ("no_independent_expert_landmarks",)
+    assert passed.lung_fov_surface_p95_after_mm == 0.0
+    region_count = (
+        passed.expert_inferior_count
+        + passed.expert_middle_count
+        + passed.expert_superior_count
+    )
+    assert region_count == 2
 
 
 def test_field_artifact_records_direction_and_physical_spacing(tmp_path: Path) -> None:
@@ -108,3 +116,6 @@ def test_field_artifact_records_direction_and_physical_spacing(tmp_path: Path) -
     artifact = np.load(field_path)
     assert artifact["spacing_mm"].tolist() == [1.0, 2.0, 3.0]
     assert str(artifact["direction"]) == "fixed-expiration_to_moving-inspiration"
+    payload = json.loads(json_path.read_text(encoding="utf-8"))
+    assert payload["provenance"]["surface_metric"] == "common-fov-safe-surface-v1"
+    assert payload["gate"]["fov_boundary_margin_mm"] == 5.0

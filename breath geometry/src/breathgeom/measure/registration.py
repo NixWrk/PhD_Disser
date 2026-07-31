@@ -79,6 +79,20 @@ class MaskMetrics:
 
 
 @dataclass(frozen=True)
+class FOVAwareMaskMetrics:
+    """Mask agreement restricted to anatomy observable in both acquisitions."""
+
+    dice: float
+    surface_mean_mm: float
+    surface_p95_mm: float
+    valid_voxel_fraction: float
+    first_surface_coverage: float
+    second_surface_coverage: float
+    first_surface_count: int
+    second_surface_count: int
+
+
+@dataclass(frozen=True)
 class DeformableResult:
     """Moving phase resampled into fixed space and its fixed-to-moving DVF."""
 
@@ -377,6 +391,129 @@ def mask_metrics(first: BoolArray, second: BoolArray, spacing: tuple[float, ...]
     )
 
 
+def acquisition_fov_mask(
+    body_mask: BoolArray,
+    *,
+    axis: int = 2,
+    minimum_slice_fraction: float = 0.01,
+) -> BoolArray:
+    """Infer the acquired axial slab from non-empty body-mask slices.
+
+    Learn2Reg volumes share a padded array grid even when one acquisition
+    covers only part of the thorax.  A full-one array would therefore
+    incorrectly mark padding as observed anatomy.  The body support provides
+    a conservative, image-derived acquisition slab without looking at
+    registration landmarks.
+    """
+    if body_mask.ndim != 3:
+        raise ValueError("body_mask must be three-dimensional")
+    if axis not in (0, 1, 2):
+        raise ValueError("axis must be 0, 1 or 2")
+    if not 0.0 <= minimum_slice_fraction < 1.0:
+        raise ValueError("minimum_slice_fraction must lie in [0, 1)")
+
+    reduce_axes = tuple(index for index in range(3) if index != axis)
+    counts = np.asarray(body_mask.sum(axis=reduce_axes), dtype=np.int64)
+    maximum = int(counts.max(initial=0))
+    if maximum == 0:
+        raise ValueError("cannot infer acquisition FOV from an empty body mask")
+    threshold = max(1, int(np.ceil(maximum * minimum_slice_fraction)))
+    active = np.flatnonzero(counts >= threshold)
+    if active.size == 0:
+        raise ValueError("no body slices satisfy the acquisition FOV threshold")
+
+    selector = [slice(None), slice(None), slice(None)]
+    selector[axis] = slice(int(active[0]), int(active[-1]) + 1)
+    result = np.zeros(body_mask.shape, dtype=bool)
+    result[tuple(selector)] = True
+    return np.ascontiguousarray(result)
+
+
+def _safe_fov_domain(
+    valid_domain: BoolArray,
+    spacing: tuple[float, float, float],
+    boundary_margin_mm: float,
+) -> BoolArray:
+    if boundary_margin_mm < 0:
+        raise ValueError("boundary_margin_mm must be non-negative")
+    safe = np.asarray(valid_domain, dtype=bool).copy()
+    for axis in range(3):
+        lower: list[slice | int] = [slice(None), slice(None), slice(None)]
+        upper: list[slice | int] = [slice(None), slice(None), slice(None)]
+        lower[axis] = 0
+        upper[axis] = -1
+        safe[tuple(lower)] = False
+        safe[tuple(upper)] = False
+    if boundary_margin_mm == 0:
+        return np.ascontiguousarray(safe)
+    distance_to_boundary = ndimage.distance_transform_edt(safe, sampling=spacing)
+    return np.ascontiguousarray(distance_to_boundary > boundary_margin_mm)
+
+
+def fov_aware_mask_metrics(
+    first: BoolArray,
+    second: BoolArray,
+    spacing: tuple[float, float, float],
+    *,
+    valid_domain: BoolArray,
+    boundary_margin_mm: float = 5.0,
+) -> FOVAwareMaskMetrics:
+    """Dice and surface distance inside a shared observable physical domain.
+
+    Surfaces close to either acquisition boundary are excluded so that a
+    padded or truncated scan does not create a false anatomical surface.
+    Coverage is reported explicitly; an empty observable surface returns NaN
+    distances and must fail a downstream gate.
+    """
+    if first.shape != second.shape or first.shape != valid_domain.shape:
+        raise ValueError("masks and valid_domain must share one voxel grid")
+    if len(spacing) != 3 or any(value <= 0 for value in spacing):
+        raise ValueError("spacing must contain three positive values")
+
+    domain = np.asarray(valid_domain, dtype=bool)
+    first_observed = np.logical_and(first, domain)
+    second_observed = np.logical_and(second, domain)
+    total = int(first_observed.sum()) + int(second_observed.sum())
+    dice = (
+        0.0
+        if total == 0
+        else 2.0 * float(np.logical_and(first_observed, second_observed).sum()) / total
+    )
+
+    first_surface_all = binary_surface(first)
+    second_surface_all = binary_surface(second)
+    safe_domain = _safe_fov_domain(domain, spacing, boundary_margin_mm)
+    first_surface = np.logical_and(first_surface_all, safe_domain)
+    second_surface = np.logical_and(second_surface_all, safe_domain)
+    first_total = int(first_surface_all.sum())
+    second_total = int(second_surface_all.sum())
+    first_count = int(first_surface.sum())
+    second_count = int(second_surface.sum())
+    first_coverage = 0.0 if first_total == 0 else first_count / first_total
+    second_coverage = 0.0 if second_total == 0 else second_count / second_total
+
+    if first_count == 0 or second_count == 0:
+        mean = float("nan")
+        p95 = float("nan")
+    else:
+        to_first = ndimage.distance_transform_edt(~first_surface, sampling=spacing)
+        to_second = ndimage.distance_transform_edt(~second_surface, sampling=spacing)
+        distances = np.concatenate((to_second[first_surface], to_first[second_surface]))
+        mean = float(np.mean(distances))
+        p95 = float(np.percentile(distances, 95))
+
+    return FOVAwareMaskMetrics(
+        dice=dice,
+        surface_mean_mm=mean,
+        surface_p95_mm=p95,
+        valid_voxel_fraction=float(domain.mean()),
+        first_surface_coverage=float(first_coverage),
+        second_surface_coverage=float(second_coverage),
+        first_surface_count=first_count,
+        second_surface_count=second_count,
+    )
+
+
 def transform_points(
     points_mm: FloatArray,
     displacement_mm: VectorArray,
@@ -523,8 +660,11 @@ def compose_displacements(
 __all__ = [
     "BSplineParams",
     "DeformableResult",
+    "FOVAwareMaskMetrics",
     "MaskMetrics",
     "RegistrationParams",
+    "acquisition_fov_mask",
+    "fov_aware_mask_metrics",
     "landmark_tre",
     "mask_metrics",
     "compose_displacements",
