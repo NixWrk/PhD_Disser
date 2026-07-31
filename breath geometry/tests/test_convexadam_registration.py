@@ -1,3 +1,6 @@
+import json
+from pathlib import Path
+
 import numpy as np
 import pytest
 
@@ -12,6 +15,19 @@ from breathgeom.measure.convexadam_registration import (
 def test_convexadam_parameters_reject_invalid_dtype() -> None:
     with pytest.raises(ValueError, match="dtype"):
         ConvexAdamParams(dtype="float64")
+
+
+def test_locked_configuration_matches_parameter_schema() -> None:
+    root = Path(__file__).resolve().parents[1]
+    values = json.loads(
+        (root / "configs/convexadam_locked.json").read_text(encoding="utf-8")
+    )
+
+    parameters = ConvexAdamParams(**values)
+
+    assert parameters.selected_smooth == 7
+    assert parameters.lambda_weight == 2.0
+    assert parameters.use_mask
 
 
 def test_preprocessing_grid_never_upsamples_and_preserves_extent() -> None:

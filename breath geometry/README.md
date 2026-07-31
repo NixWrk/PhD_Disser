@@ -20,8 +20,9 @@ elastix baseline не проходит gate; ConvexAdam подключён ка�
 2. [Определения измеряемых величин](docs/MEASUREMENT_MODEL.md)
 3. [Порядок реализации и gate-критерии](docs/ROADMAP.md)
 4. [Результат парного registration benchmark](docs/REGISTRATION_BENCHMARK.md)
-5. [Аудит текущего notebook](docs/NOTEBOOK_AUDIT.md)
-6. [Правила данных и приватности](docs/DATA_PRIVACY.md)
+5. [Выбор и locked benchmark ConvexAdam](docs/CONVEXADAM_BENCHMARK.md)
+6. [Аудит текущего notebook](docs/NOTEBOOK_AUDIT.md)
+7. [Правила данных и приватности](docs/DATA_PRIVACY.md)
 
 Большие документы [RESEARCH_REPORT.md](docs/RESEARCH_REPORT.md),
 [research_and_implementation_plan.md](research_and_implementation_plan.md) и
@@ -60,7 +61,7 @@ Copy-Item configs/paths.local.example.yaml configs/paths.local.yaml
 .\.venv\Scripts\breathgeom.exe registration benchmark `
   --manifest data/interim/respiratory_pairs.local.csv `
   --dataset learn2reg_lungct --subject LungCT_0001 `
-  --method convexadam `
+  --method convexadam --params configs/convexadam_locked.json `
   --registration-python .venv-registration/Scripts/python.exe
 .\.venv\Scripts\breathgeom.exe profiles extract-pair `
   --manifest data/interim/respiratory_pairs.local.csv `
