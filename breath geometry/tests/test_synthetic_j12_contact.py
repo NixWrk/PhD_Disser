@@ -2,10 +2,13 @@ import hashlib
 import json
 from pathlib import Path
 
+import pytest
+
 from breathgeom.measure.contact_svf_phantom import load_contact_svf_suite
 from breathgeom.measure.joint_svf_registration import load_joint_svf_search
 from breathgeom.synthetic_j12_contact import (
     evaluate_contact_truth_preflight,
+    run_contact_j12_development,
     write_contact_truth_preflight,
 )
 
@@ -86,3 +89,19 @@ def test_frozen_v3_fine_grid_truth_passes_without_gate_changes() -> None:
     assert all(run.record.raster_abs_distance_p95_max_mm <= 0.75 for run in runs)
     assert all(run.record.raster_surface_coverage_min >= 0.95 for run in runs)
     assert all(not run.record.gate_reasons for run in runs)
+
+
+def test_v2_contact_development_refuses_runner_before_missing_python(
+    tmp_path: Path,
+) -> None:
+    suite = load_contact_svf_suite(SUITE_PATH)
+    search = load_joint_svf_search(SEARCH_PATH)
+
+    with pytest.raises(ValueError, match="suite truth fails preflight"):
+        run_contact_j12_development(
+            suite,
+            search,
+            registration_python=tmp_path / "missing.exe",
+            repo_root=REPO_ROOT,
+            temporary_root=tmp_path,
+        )

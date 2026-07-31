@@ -19,15 +19,21 @@ from breathgeom.measure.contact_svf_phantom import (
     make_contact_svf_phantom_pair,
     sample_fixed_interface_points,
 )
-from breathgeom.measure.joint_svf_registration import JointSVFSearch
+from breathgeom.measure.joint_svf_registration import (
+    JointSVFSearch,
+    register_joint_piecewise_svf,
+)
 from breathgeom.measure.registration import (
     displacement_round_trip_metrics,
     transform_points,
 )
 from breathgeom.measure.sliding_phantom import evaluate_sliding_interface
+from breathgeom.measure.wall import IntArray as WallIntArray
 from breathgeom.synthetic_j12 import (
     AdvectedSurfaceMetrics,
+    J12DevelopmentRun,
     evaluate_advected_surface_fields,
+    evaluate_j12_development,
 )
 
 
@@ -370,10 +376,68 @@ def write_contact_truth_preflight(
     return manifest_path
 
 
+def run_contact_j12_development(
+    suite: ContactSVFSuite,
+    search: JointSVFSearch,
+    *,
+    registration_python: Path,
+    repo_root: Path,
+    temporary_root: Path,
+) -> tuple[J12DevelopmentRun, ...]:
+    """Run the frozen finite search only after contact truth passes every gate."""
+    preflight = evaluate_contact_truth_preflight(suite, search)
+    failures = [run.record for run in preflight if not run.record.truth_gate_pass]
+    if failures:
+        details = ", ".join(
+            f"{record.case_id}:{';'.join(record.gate_reasons)}"
+            for record in failures
+        )
+        raise ValueError(
+            "contact J1.2 suite truth fails preflight; "
+            f"optimizer is blocked ({details})"
+        )
+    runs: list[J12DevelopmentRun] = []
+    for weights in search.variants:
+        for case in suite.cases:
+            generated = make_contact_svf_phantom_pair(case.params)
+            pair = generated.pair
+            result = register_joint_piecewise_svf(
+                cast(WallIntArray, pair.fixed_image),
+                cast(WallIntArray, pair.moving_image),
+                pair.fixed_lung_mask,
+                pair.moving_lung_mask,
+                pair.fixed_body_mask,
+                pair.moving_body_mask,
+                pair.spacing_mm,
+                search=search,
+                weights=weights,
+                python_executable=registration_python,
+                repo_root=repo_root,
+                temporary_root=temporary_root,
+            )
+            record = evaluate_j12_development(
+                suite_version=suite.suite_version,
+                case_id=case.case_id,
+                search=search,
+                weights=weights,
+                pair=pair,
+                result=result,
+            )
+            runs.append(
+                J12DevelopmentRun(
+                    pair=pair,
+                    result=result,
+                    record=record,
+                )
+            )
+    return tuple(runs)
+
+
 __all__ = [
     "ContactTruthGate",
     "ContactTruthPreflightRecord",
     "ContactTruthPreflightRun",
     "evaluate_contact_truth_preflight",
+    "run_contact_j12_development",
     "write_contact_truth_preflight",
 ]
