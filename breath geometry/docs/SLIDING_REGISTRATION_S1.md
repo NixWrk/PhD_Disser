@@ -61,6 +61,10 @@ S1.0 состоит из следующих стадий:
 LungCT без expert landmarks. До первого просмотра 13-case expert regression результата
 они фиксируются в versioned config.
 
+Текущая реализация S1.0 зафиксирована в `configs/sliding_s1_v0.json`: masked ConvexAdam
+для лёгкого, Diffeomorphic Demons для стенки и coupling к сглаженной normal маски лёгкого
+без штрафа тангенциальной компоненты. Это кандидат на synthetic gate, а не прошедшее поле.
+
 ## Synthetic gate до реальных пар
 
 `notebooks/05_sliding_phantom.ipynb` проверяет, что выбранное multi-region представление и
@@ -125,4 +129,3 @@ segmentation-repeatability и отдельным body/bone annotations на да
 - Gate 1L + Gate 1B PASS: можно строить соответствующие парные карты полной толщины
   `кожа→лёгкое` и её тканевых компонентов.
 - Только после появления таких проверенных пар можно обучать single-CT ensemble model.
-

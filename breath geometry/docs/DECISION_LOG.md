@@ -318,3 +318,36 @@ representation notebook должен быть выполнен заново, а 
 
 **Пересмотр.** После появления vessel-tree phantom или проверенной генеративной модели CT,
 не использующей test-пары.
+
+## D-019. S1.0 фиксируется до frozen synthetic suite
+
+**Наблюдение.** На nominal phantom v2 раздельный Demons дал body p95 EPE 0.78 мм, но
+восстановил median slip только около 1 мм из 4. Dense TV-L1 либо терял slip, либо при
+усилении data term давал p95 EPE 2.5–4.4 мм и folding. Раздельный ConvexAdam сохранял
+3.2–3.8 мм slip и положительный Jacobian, но raw normal mismatch p95 составлял около
+1.3 мм.
+
+**Решение.** Кандидат S1.0:
+
+- masked ConvexAdam для `u_lung`;
+- masked Diffeomorphic Demons для `u_body`;
+- normal из Gaussian-smoothed signed distance fixed lung mask;
+- в интерфейсной полосе normal лёгкого приравнивается normal стенки, tangential components
+  не смешиваются;
+- параметры находятся в `configs/sliding_s1_v0.json`.
+
+Synthetic-only поиск `lambda_weight` в диапазоне 0.25–2.0 дал минимум nominal lung p95
+около 1.58 мм при 0.55–0.65; зафиксировано 0.60. Grid/disp/Adam параметры выбраны до
+frozen suite. Expert landmarks не просматривались.
+
+**Причина.** Normal-only coupling снижает nominal normal mismatch p95 примерно с 1.26 до
+0.07 мм и сохраняет slip, тогда как глобальная регуляризация связывала бы касательные
+компоненты. Стенка уже проходит synthetic endpoint threshold; оставшийся риск находится в
+плотном поле лёгкого.
+
+**Ограничение.** Nominal lung p95 около 1.58 мм всё ещё выше порога 1.5 voxel. Поэтому
+S1.0 ожидаемо может получить общий FAIL на frozen suite; это не основание ослаблять
+предзаданный порог и не разрешает real-pair maps.
+
+**Пересмотр.** Только как новый versioned S1.1 после frozen S1.0 report, без донастройки
+S1.0 и без использования 13 expert cases.
