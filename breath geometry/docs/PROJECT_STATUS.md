@@ -77,8 +77,10 @@
 - Piecewise-кандидат S1.0: masked ConvexAdam для лёгкого, Demons для стенки и normal-only
   pleural coupling. Исторический frozen batch на `sliding-phantom-v2.0` прошёл 1/3, но
   разбор ошибки выявил осевую сингулярность заданного азимутального движения. Старый suite
-  и отчёт сохранены воспроизводимыми, однако их verdict superseded. Исправленный
-  `sliding-phantom-v2.1-axis-safe` зафиксирован; неизменённый S1.0 ещё требуется повторить.
+  и отчёт сохранены воспроизводимыми, однако их verdict superseded. На исправленном
+  `sliding-phantom-v2.1-axis-safe` неизменённый S1.0 прошёл 2/3: shallow и nominal PASS;
+  deep anisotropic — lung p95 3.706 > 2.25 мм и slip 3.213 вместо 6 мм. Body/contact/
+  topology прошли во всех вариантах, folding нет.
 - 3D-профили по всей сегментированной поверхности лёгких без электродного фильтра. Каждый
   путь раскладывается на жир/мышцу/кость/прочее; пути через лёгкое и обрезанный FOV
   отбраковываются. Парные дельты программно запрещены при провале registration gate.
@@ -106,14 +108,13 @@
 - Индивидуальная STL выдоха для NIX/GEORG/YAROSLAV.
 - Прохождение synthetic representation gate не означает, что регистрация умеет
   восстанавливать скрытое поле из двух изображений.
-- S1.0 не разрешён для real-pair regression или измерений: результат v2.0 superseded из-за
-  дефекта ground truth, а исправленный algorithmic synthetic gate v2.1 ещё не выполнен.
+- S1.0 не разрешён для real-pair regression или измерений: исправленный algorithmic
+  synthetic gate v2.1 провален в deep anisotropic case (общий PASS 2/3).
 
 ## Главные технические долги
 
-1. Повторить representation gate и неизменённый S1.0 на
-   `sliding-phantom-v2.1-axis-safe`. До результата не продолжать S1.1 и не использовать
-   expert 13-case test.
+1. Специфицировать и реализовать versioned S1.1 для большого внутреннего тангенциального
+   движения. Заморозить его до batch-прогона; expert 13-case test не использовать.
 2. Зафиксировать численные пороги Gate 1B на независимых body/bone annotations и
    segmentation-repeatability; до этого его состояние `NOT VALIDATED`.
 3. Надёжная сегментация лёгких, тела, рёбер и тканей в исходном FOV.

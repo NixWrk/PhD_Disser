@@ -147,7 +147,13 @@ Batch-команда `breathgeom registration sliding-synthetic` выполне�
 направление не определено, хотя амплитуда остаётся почти полной. D-021 поэтому помечает
 этот verdict как superseded. Старый suite и отчёт сохранены воспроизводимыми.
 
-Текущий gate — повтор неизменённого S1.0 на
-`sliding-phantom-v2.1-axis-safe`, где тангенциальное поле непрерывно затухает к оси.
-До его завершения S1.0 не запускается на 13-case real regression set и не используется
-для карт.
+Повтор неизменённого S1.0 на `sliding-phantom-v2.1-axis-safe` завершён:
+
+- `shallow_1mm`: PASS, lung p95 1.065 мм;
+- `nominal_1mm`: PASS, lung p95 1.296 мм;
+- `deep_anisotropic`: FAIL, lung p95 3.706 мм при лимите 2.25 мм и slip 3.213 мм
+  при truth 6 мм.
+
+Итог — algorithmic FAIL (2/3). Body/contact/topology прошли во всех случаях. S1.0 не
+запускается на 13-case real regression set и не используется для карт. Следующий кандидат
+должен иметь новую версию S1.1 и замороженную спецификацию до batch-прогона.

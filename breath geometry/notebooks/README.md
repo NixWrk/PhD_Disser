@@ -28,7 +28,8 @@ Notebook в этом каталоге — интерактивный QC/отчё
 - `05_sliding_phantom.ipynb` проверяет multi-region представление плеврального скольжения,
   региональный Jacobian и два отрицательных контроля; это representation gate, а не
   benchmark алгоритма регистрации;
-- `06_sliding_s1_synthetic_benchmark.ipynb` читает frozen batch-артефакты S1.0,
+- `06_sliding_s1_synthetic_benchmark.ipynb` читает axis-safe v2.1 frozen
+  batch-артефакты S1.0,
   проверяет checksums, показывает gate matrix и spatial error maps; текущий verdict
   `FAIL (1/3)`;
 - outputs этих пяти notebooks коммитятся как удобное представление результатов, но
