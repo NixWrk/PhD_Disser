@@ -1,0 +1,68 @@
+{
+  "map_version": "wall-spatial-map-w2",
+  "question": "at what angular and axial resolution is a per-bin soft-tissue map supported by the data",
+  "dataset_id": "dirlab_copdgene",
+  "subject_id": "copd1",
+  "phases": [
+    "fixed",
+    "moving"
+  ],
+  "cross_phase_comparison": {
+    "performed": false,
+    "reason": "the delta map needs rib-anchored correspondence from Gate 1B; W2 only measures within-phase spatial stability"
+  },
+  "measurand": {
+    "name": "soft_tissue_mm",
+    "definition": "fat_mm + muscle_mm + other_mm along the lung-to-skin path",
+    "reason": "D-044 merged fat and muscle into one tissue; separate components stay diagnostic"
+  },
+  "frame": {
+    "kind": "spine-anchored-cylindrical",
+    "anchor_point": "skin endpoint of the profile",
+    "radial_origin": "per-slice centroid of the filled body mask",
+    "angle_zero": "anterior direction, RAS+ axis 1",
+    "angle_sign": "counter-clockwise viewed from superior",
+    "axial_coordinate": "z of the skin endpoint, normalised to the baseline lung extent",
+    "reason": "binning by the dominant axis of the lung-to-skin vector is not an anatomical frame and produced bins with sigma up to 36.94 mm; see D-045"
+  },
+  "sampling_density_variants_mm": [
+    8.0,
+    4.0,
+    2.5
+  ],
+  "map_resolution_variants": [
+    {"angular_sectors": 12, "axial_levels": 4},
+    {"angular_sectors": 24, "axial_levels": 8},
+    {"angular_sectors": 36, "axial_levels": 12}
+  ],
+  "per_bin_noise": {
+    "primary": "bootstrap standard error of the per-bin median, 400 resamples, seed 20260731",
+    "statistic": "p95 across occupied bins of the bootstrap standard error",
+    "confirmation": "actual per-bin median shift under the five W1 perturbation families, run only at the selected configuration",
+    "reason": "the W1 spatial spread was already bounded by median sampling error, so the bootstrap is the primary estimator and the perturbation run is the check that nothing systematic hides under it"
+  },
+  "occupancy": {
+    "min_profiles_per_bin": 30,
+    "min_occupied_fraction": 0.9,
+    "reason": "a bin below the minimum cannot support a median and is reported as unresolved rather than plotted"
+  },
+  "decision_thresholds": {
+    "feasible_max_mm": 1.0,
+    "marginal_max_mm": 2.5,
+    "target_resolvable_effect_mm": 3.0,
+    "inherited_from": "wall-measurement-uncertainty-budget-w1"
+  },
+  "selection_rule": {
+    "selected": "the finest map resolution, at the coarsest sampling density that supports it, whose p95 per-bin noise is <= feasible_max_mm AND whose occupied fraction is >= min_occupied_fraction, in both phases",
+    "resolution_order": "36x12 finer than 24x8 finer than 12x4",
+    "density_order": "8.0 coarser than 4.0 coarser than 2.5",
+    "no_selection": "if no configuration qualifies, report the best marginal one and select nothing",
+    "frozen": "resolutions, densities, thresholds and this rule are fixed before computing; no configuration may be added after seeing the numbers"
+  },
+  "out_of_scope": [
+    "any comparison between inspiration and expiration",
+    "any delta map, which stays blocked until Gate 1B",
+    "changing the Gate 2 validity domain, which is a separate frozen change",
+    "reporting separate fat and muscle as a result"
+  ]
+}
