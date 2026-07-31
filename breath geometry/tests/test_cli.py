@@ -23,3 +23,5 @@ def test_registration_help_lists_frozen_synthetic_gate() -> None:
     assert "sliding-s12-heuristic-screen" in result.stdout
     assert "piecewise-svf-j10-numeric" in result.stdout
     assert "piecewise-svf-j11-representation" in result.stdout
+    assert "piecewise-svf-j12-development" in result.stdout
+    assert "piecewise-svf-j12-preflight" in result.stdout

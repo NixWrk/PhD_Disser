@@ -44,6 +44,7 @@ from breathgeom.io.pairs import (
     write_pair_manifest,
 )
 from breathgeom.measure.convexadam_registration import ConvexAdamParams
+from breathgeom.measure.joint_svf_registration import load_joint_svf_search
 from breathgeom.measure.profiles import (
     extract_whole_body_profiles,
     pair_whole_body_profiles,
@@ -81,6 +82,12 @@ from breathgeom.synthetic_j11 import (
     load_j11_config,
     run_j11_gate,
     write_j11_gate,
+)
+from breathgeom.synthetic_j12 import (
+    evaluate_j12_truth_preflight,
+    run_j12_development,
+    write_j12_development_batch,
+    write_j12_truth_preflight,
 )
 from breathgeom.synthetic_s1 import (
     load_sliding_suite,
@@ -648,6 +655,135 @@ def registration_piecewise_svf_j11_representation(
         f"Expected signatures: "
         f"{sum(run.record.expected_signature_pass for run in runs)}/{len(runs)} PASS; "
         f"artifacts: {manifest}"
+    )
+
+
+@registration_app.command("piecewise-svf-j12-development")
+def registration_piecewise_svf_j12_development(
+    suite: Annotated[
+        Path,
+        typer.Option(exists=True, dir_okay=False, readable=True),
+    ] = Path("configs/piecewise_svf_j12_development_suite_v1.json"),
+    search: Annotated[
+        Path,
+        typer.Option(exists=True, dir_okay=False, readable=True),
+    ] = Path("configs/piecewise_svf_j12_development_search_v1.json"),
+    output: Annotated[Path, typer.Option()] = Path(
+        "results/piecewise_svf_j12_development_v1"
+    ),
+    registration_python: Annotated[
+        Path,
+        typer.Option(help="Python executable in the isolated CUDA environment."),
+    ] = Path(".venv-registration/Scripts/python.exe"),
+    temporary_root: Annotated[
+        Path | None,
+        typer.Option(help="Optional writable directory for runner arrays."),
+    ] = None,
+) -> None:
+    """Run only the frozen 3 x 3 J1.2 development search; never open challenge."""
+    if not registration_python.is_file():
+        console.print(
+            f"[red]Registration Python does not exist: {registration_python}[/red]"
+        )
+        raise typer.Exit(code=2)
+    development_suite = load_sliding_suite(suite)
+    frozen_search = load_joint_svf_search(search)
+    output.mkdir(parents=True, exist_ok=True)
+    temporary = temporary_root or output / ".tmp"
+    temporary.mkdir(parents=True, exist_ok=True)
+    console.print(
+        f"Running {len(frozen_search.variants)} variants x "
+        f"{len(development_suite.cases)} development cases; challenge loaded: false"
+    )
+    runs = run_j12_development(
+        development_suite,
+        frozen_search,
+        registration_python=registration_python.resolve(),
+        repo_root=_repo_root(),
+        temporary_root=temporary,
+    )
+    manifest = write_j12_development_batch(
+        runs,
+        output,
+        suite_path=suite,
+        search_path=search,
+        search=frozen_search,
+        repo_root=_repo_root(),
+    )
+    table = Table(title=f"J1.2 development: {frozen_search.search_version}")
+    table.add_column("variant")
+    table.add_column("case")
+    table.add_column("gate")
+    table.add_column("lung p95", justify="right")
+    table.add_column("surface p95", justify="right")
+    table.add_column("slip error", justify="right")
+    table.add_column("J lung/body", justify="right")
+    table.add_column("reasons")
+    for run in runs:
+        record = run.record
+        table.add_row(
+            record.variant_id,
+            record.case_id,
+            "[green]PASS[/green]" if record.gate_pass else "[red]FAIL[/red]",
+            f"{record.lung_field_p95_mm:.3f}",
+            f"{record.advected_target_surface_p95_max_mm:.3f}",
+            f"{record.tangential_slip_error_mm:.3f}",
+            f"{record.lung_jacobian_p01:.2f}/{record.body_jacobian_p01:.2f}",
+            ";".join(record.gate_reasons) or "-",
+        )
+    console.print(table)
+    console.print(f"Development artifacts: {manifest}")
+
+
+@registration_app.command("piecewise-svf-j12-preflight")
+def registration_piecewise_svf_j12_preflight(
+    suite: Annotated[
+        Path,
+        typer.Option(exists=True, dir_okay=False, readable=True),
+    ] = Path("configs/piecewise_svf_j12_development_suite_v1.json"),
+    search: Annotated[
+        Path,
+        typer.Option(exists=True, dir_okay=False, readable=True),
+    ] = Path("configs/piecewise_svf_j12_development_search_v1.json"),
+    output: Annotated[Path, typer.Option()] = Path(
+        "results/piecewise_svf_j12_truth_preflight_v1"
+    ),
+) -> None:
+    """Check generator truth against J1.2 contact gates before starting CUDA."""
+    development_suite = load_sliding_suite(suite)
+    frozen_search = load_joint_svf_search(search)
+    records = evaluate_j12_truth_preflight(
+        development_suite,
+        frozen_search,
+    )
+    manifest = write_j12_truth_preflight(
+        records,
+        output,
+        suite_path=suite,
+        search_path=search,
+        search=frozen_search,
+        repo_root=_repo_root(),
+    )
+    table = Table(title="J1.2 exact-truth preflight")
+    table.add_column("case")
+    table.add_column("truth gate")
+    table.add_column("surface p95", justify="right")
+    table.add_column("coverage", justify="right")
+    table.add_column("gap/collision", justify="right")
+    table.add_column("reasons")
+    for record in records:
+        table.add_row(
+            record.case_id,
+            "[green]PASS[/green]" if record.truth_gate_pass else "[red]FAIL[/red]",
+            f"{record.abs_distance_p95_max_mm:.3f}",
+            f"{record.coverage_min:.3f}",
+            f"{record.gap_fraction:.3f}/{record.collision_fraction:.3f}",
+            ";".join(record.gate_reasons) or "-",
+        )
+    console.print(table)
+    console.print(
+        f"Truth preflight: {sum(record.truth_gate_pass for record in records)}/"
+        f"{len(records)} PASS; optimizer started: false; artifacts: {manifest}"
     )
 
 
