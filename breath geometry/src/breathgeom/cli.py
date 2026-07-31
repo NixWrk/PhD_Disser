@@ -95,6 +95,11 @@ from breathgeom.synthetic_j12_contact import (
     run_contact_j12_development,
     write_contact_truth_preflight,
 )
+from breathgeom.synthetic_j12_identifiability import (
+    load_identifiability_screen,
+    run_identifiability_screen,
+    write_identifiability_screen,
+)
 from breathgeom.synthetic_s1 import (
     load_sliding_suite,
     run_synthetic_s1_suite,
@@ -930,6 +935,78 @@ def registration_piecewise_svf_j12_contact_development(
         )
     console.print(table)
     console.print(f"Development artifacts: {manifest}")
+
+
+@registration_app.command("piecewise-svf-j12-identifiability")
+def registration_piecewise_svf_j12_identifiability(
+    screen_config: Annotated[
+        Path,
+        typer.Option(exists=True, dir_okay=False, readable=True),
+    ] = Path("configs/piecewise_svf_j12_identifiability_screen_v1.json"),
+    output: Annotated[Path, typer.Option()] = Path(
+        "results/piecewise_svf_j12_identifiability_v1"
+    ),
+    registration_python: Annotated[
+        Path,
+        typer.Option(help="Python executable in the isolated CUDA environment."),
+    ] = Path(".venv-registration/Scripts/python.exe"),
+    temporary_root: Annotated[
+        Path | None,
+        typer.Option(help="Optional writable directory for diagnostic arrays."),
+    ] = None,
+) -> None:
+    """Diagnose direction, descriptor and tangential identifiability on development."""
+    if not registration_python.is_file():
+        console.print(
+            f"[red]Registration Python does not exist: {registration_python}[/red]"
+        )
+        raise typer.Exit(code=2)
+    screen = load_identifiability_screen(screen_config)
+    suite_path = _repo_root() / screen.suite_path
+    if not suite_path.is_file():
+        console.print(f"[red]Development suite does not exist: {suite_path}[/red]")
+        raise typer.Exit(code=2)
+    suite = load_contact_svf_suite(suite_path)
+    output.mkdir(parents=True, exist_ok=True)
+    temporary = temporary_root or output / ".tmp"
+    temporary.mkdir(parents=True, exist_ok=True)
+    run = run_identifiability_screen(
+        screen,
+        suite,
+        registration_python=registration_python.resolve(),
+        repo_root=_repo_root(),
+        temporary_root=temporary,
+    )
+    manifest = write_identifiability_screen(
+        run,
+        output,
+        screen=screen,
+        screen_path=screen_config,
+        suite_path=suite_path,
+        repo_root=_repo_root(),
+    )
+    table = Table(title=f"J1.2 data-term identifiability: {screen.screen_version}")
+    table.add_column("case")
+    table.add_column("direction")
+    table.add_column("MIND slip")
+    table.add_column("intensity slip")
+    table.add_column("estimated improves")
+    table.add_column("truth/glued MIND", justify="right")
+    table.add_column("truth/glued intensity", justify="right")
+    table.add_column("classification")
+    for decision in run.decisions:
+        table.add_row(
+            decision.case_id,
+            "PASS" if decision.warp_direction_pass else "FAIL",
+            "YES" if decision.mind_slip_identifiable else "NO",
+            "YES" if decision.intensity_slip_identifiable else "NO",
+            "YES" if decision.optimizer_reduced_data_term else "NO",
+            f"{decision.truth_to_glued_mind_ratio_max:.3f}",
+            f"{decision.truth_to_glued_intensity_ratio_max:.3f}",
+            decision.classification,
+        )
+    console.print(table)
+    console.print(f"Identifiability artifacts: {manifest}; challenge loaded: false")
 
 
 @registration_app.command("sliding-synthetic")
