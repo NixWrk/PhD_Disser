@@ -43,6 +43,14 @@ Counter-rotation различим MIND, но optimizer его не достиг�
 различимы interior intensity, но не MIND при frozen ratio `0.8`. Следующая версия
 должна одновременно исключить boundary bias и усилить tangential correspondence.
 
+Параллельно открыт трек грудной стенки, который не ждёт J1.2. У добровольцев есть
+только вдох, `OLD` и LungCT обрезают наружную стенку, поэтому единственный источник с
+парой фаз и стенкой в FOV — 10 COPDgene. Gate 1 при этом оценивает лёгкое, а Gate 1B
+порогов не имеет вовсе. Перед работой над соответствием стенки заморожен W1 — бюджет
+неопределённости внутри одной фазы, без регистрации и сравнения фаз. Он решает, различим
+ли эффект в принципе. Разбор Gate 2 показал, что провал `51%/53%` вызван знаменателем:
+40% отбраковки — точки плевры, для которых прямой путь наружу бессмыслен по построению.
+
 Начинать чтение следует здесь:
 
 1. [Текущий подтверждённый статус](docs/PROJECT_STATUS.md)
@@ -60,8 +68,9 @@ Counter-rotation различим MIND, но optimizer его не достиг�
 13. [Контактно-согласованный протокол J1.2 v2](docs/PIECEWISE_SVF_J12_CONTACT_PROTOCOL_V2.md)
 14. [Finer-grid протокол J1.2 v3](docs/PIECEWISE_SVF_J12_FINE_GRID_PROTOCOL_V3.md)
 15. [Identifiability screen J1.2](docs/PIECEWISE_SVF_J12_IDENTIFIABILITY_SCREEN.md)
-16. [Аудит текущего notebook](docs/NOTEBOOK_AUDIT.md)
-17. [Правила данных и приватности](docs/DATA_PRIVACY.md)
+16. [Бюджет неопределённости профиля стенки W1](docs/WALL_MEASUREMENT_UNCERTAINTY_W1.md)
+17. [Аудит текущего notebook](docs/NOTEBOOK_AUDIT.md)
+18. [Правила данных и приватности](docs/DATA_PRIVACY.md)
 
 Большие документы [RESEARCH_REPORT.md](docs/RESEARCH_REPORT.md),
 [research_and_implementation_plan.md](research_and_implementation_plan.md) и

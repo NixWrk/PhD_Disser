@@ -1,0 +1,94 @@
+{
+  "budget_version": "wall-measurement-uncertainty-budget-w1",
+  "question": "noise floor of the skin-to-lung profile measurand under pipeline choices that must not change anatomy",
+  "dataset_id": "dirlab_copdgene",
+  "subject_id": "copd1",
+  "phases": [
+    "fixed",
+    "moving"
+  ],
+  "cross_phase_comparison": {
+    "performed": false,
+    "reason": "paired deltas stay blocked by Gate 1; W1 measures dispersion inside one phase only"
+  },
+  "baseline_parameters": {
+    "body_hu": -300,
+    "air_hu": -400,
+    "fat_hu": [-190, -30],
+    "muscle_hu": [-29, 150],
+    "bone_lower_hu": 151.0,
+    "surface_spacing_mm": 8.0,
+    "line_step_mm": 0.75
+  },
+  "perturbation_families": {
+    "body_threshold": {
+      "affects": "skin boundary, therefore thickness",
+      "parameter": "body_hu",
+      "variants": [-325, -300, -275]
+    },
+    "lung_threshold": {
+      "affects": "pleural boundary, therefore thickness",
+      "parameter": "air_hu",
+      "variants": [-425, -400, -375]
+    },
+    "tissue_window": {
+      "affects": "fat/muscle partition only, not total thickness",
+      "parameter": "fat_upper_hu and muscle_lower_hu",
+      "variants": [[-40, -39], [-30, -29], [-20, -19]]
+    },
+    "surface_sampling": {
+      "affects": "which pleural points enter the aggregate",
+      "parameter": "sampling bin-grid origin offset as a fraction of surface_spacing_mm",
+      "variants": [0.0, 0.3333333333333333, 0.6666666666666666]
+    },
+    "grid_jitter": {
+      "affects": "placement of anatomy relative to the voxel grid",
+      "parameter": "sub-voxel shift in voxels, applied through a shared order-1 resampler",
+      "variants": [[0.0, 0.0, 0.0], [0.5, 0.5, 0.0], [0.0, 0.0, 0.5]],
+      "reference": "own zero-shift variant, so interpolation blur is common to the family",
+      "interpretation": "lower bound on discretisation noise; it does not reproduce repositioning or scanner noise"
+    }
+  },
+  "measurands": [
+    "median_thickness_mm",
+    "median_soft_tissue_mm",
+    "median_fat_mm",
+    "median_muscle_mm",
+    "valid_fraction"
+  ],
+  "aggregation": {
+    "family_half_range": "(max - min) / 2 across the variants of one family",
+    "combined_half_range": "square root of the sum of squared family half-ranges",
+    "family_independence_assumption": "families are treated as independent; correlated families would make this an underestimate",
+    "phase_reduction": "the worse of the two phases decides"
+  },
+  "spatial_budget": {
+    "bins": "existing six-direction region crossed with three axial thirds of the lung extent",
+    "statistic": "p95 of the absolute change of the per-bin median thickness across the variants of one family",
+    "status": "provisional",
+    "reason": "the reportable 3D map needs the rib-anchored frame of Gate 1B, which does not exist yet"
+  },
+  "decision_thresholds": {
+    "feasible_max_mm": 1.0,
+    "marginal_max_mm": 2.5,
+    "target_resolvable_effect_mm": 3.0
+  },
+  "threshold_justification": {
+    "marginal_max_mm": "2.5 mm is the z-spacing of DIR-Lab COPDgene, the only dataset that keeps the chest wall inside the FOV; a noise floor above one slice thickness means the reported number is dominated by pipeline choices",
+    "feasible_max_mm": "1.0 mm keeps at least a 3:1 margin against the provisional target effect",
+    "target_resolvable_effect_mm": "planning anchor for the order of magnitude only; it is NOT a measured respiratory effect and must not be reported as one"
+  },
+  "decision_rule": {
+    "feasible": "combined half-range <= feasible_max_mm",
+    "marginal": "combined half-range <= marginal_max_mm",
+    "infeasible": "combined half-range > marginal_max_mm",
+    "separate_fat_muscle_allowed": "fat and muscle each reach feasible or marginal under the same thresholds",
+    "combined_soft_tissue_only": "median_soft_tissue_mm reaches feasible or marginal while fat or muscle does not"
+  },
+  "out_of_scope": [
+    "any comparison between inspiration and expiration",
+    "any paired delta or respiratory effect",
+    "opening Gate 1B or Gate 2",
+    "any change to the frozen J1.2 protocols"
+  ]
+}
