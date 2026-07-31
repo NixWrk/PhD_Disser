@@ -162,6 +162,14 @@ def load_sliding_suite(path: Path) -> SlidingSuite:
         if unknown:
             raise ValueError(f"{case_id}: unknown phantom params {sorted(unknown)}")
         params_values = cast(dict[str, Any], params_payload).copy()
+        # Phantom v2.0 predates the explicit ramp-mode field.  Preserve its
+        # historical axis-singular truth so the committed config checksum and
+        # superseded S1.0 report remain reproducible.
+        if (
+            suite_version == "sliding-phantom-v2.0"
+            and "tangential_ramp_mode" not in params_values
+        ):
+            params_values["tangential_ramp_mode"] = "ellipsoidal_v1"
         params_values["shape"] = _tuple_values(params_values, "shape", 3, int)
         for key in ("spacing_mm", "lung_radii_mm", "body_radii_mm"):
             params_values[key] = _tuple_values(params_values, key, 3, float)

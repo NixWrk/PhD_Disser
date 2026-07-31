@@ -18,6 +18,24 @@ def test_frozen_sliding_suite_has_three_unique_variants() -> None:
     assert len(suite.cases) == 3
     assert len({case.case_id for case in suite.cases}) == 3
     assert suite.cases[-1].params.spacing_mm == (1.25, 1.25, 1.5)
+    assert all(
+        case.params.tangential_ramp_mode == "ellipsoidal_v1"
+        for case in suite.cases
+    )
+
+
+def test_axis_safe_sliding_suite_has_three_unique_variants() -> None:
+    suite = load_sliding_suite(
+        REPO_ROOT / "configs/sliding_phantom_suite_v2.json"
+    )
+
+    assert suite.suite_version == "sliding-phantom-v2.1-axis-safe"
+    assert len(suite.cases) == 3
+    assert len({case.case_id for case in suite.cases}) == 3
+    assert all(
+        case.params.tangential_ramp_mode == "cylindrical_axis_safe"
+        for case in suite.cases
+    )
 
 
 def test_exact_hidden_fields_pass_algorithmic_synthetic_gate() -> None:

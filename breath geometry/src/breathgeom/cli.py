@@ -521,12 +521,14 @@ def registration_sliding_synthetic(
     suite: Annotated[
         Path,
         typer.Option(exists=True, dir_okay=False, readable=True),
-    ] = Path("configs/sliding_phantom_suite_v1.json"),
+    ] = Path("configs/sliding_phantom_suite_v2.json"),
     params: Annotated[
         Path,
         typer.Option(exists=True, dir_okay=False, readable=True),
     ] = Path("configs/sliding_s1_v0.json"),
-    output: Annotated[Path, typer.Option()] = Path("results/sliding_s1_v0"),
+    output: Annotated[Path, typer.Option()] = Path(
+        "results/sliding_s1_v0_phantom_v21"
+    ),
     registration_python: Annotated[
         Path,
         typer.Option(help="Python executable in the isolated ConvexAdam environment."),

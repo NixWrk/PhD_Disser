@@ -130,7 +130,7 @@ segmentation-repeatability и отдельным body/bone annotations на да
   `кожа→лёгкое` и её тканевых компонентов.
 - Только после появления таких проверенных пар можно обучать single-CT ensemble model.
 
-## Frozen результат S1.0
+## Исторический frozen результат S1.0
 
 Batch-команда `breathgeom registration sliding-synthetic` выполнена на
 `sliding-phantom-v2.0`; отчёт находится в
@@ -142,6 +142,12 @@ Batch-команда `breathgeom registration sliding-synthetic` выполне�
   4.002 мм при truth 6 мм;
 - body endpoint, normal contact и regional topology прошли во всех случаях; folding нет.
 
-Итог 1/3 означает общий algorithmic FAIL. S1.0 не запускается на 13-case real regression
-set и не используется для карт. Следующая итерация имеет новое имя S1.1; параметры и
-пороги S1.0 не изменяются задним числом.
+Итог 1/3 первоначально означал общий algorithmic FAIL. Однако последующая локализация
+ошибок выявила осевую сингулярность азимутального ground truth phantom v2.0: около полюсов
+направление не определено, хотя амплитуда остаётся почти полной. D-021 поэтому помечает
+этот verdict как superseded. Старый suite и отчёт сохранены воспроизводимыми.
+
+Текущий gate — повтор неизменённого S1.0 на
+`sliding-phantom-v2.1-axis-safe`, где тангенциальное поле непрерывно затухает к оси.
+До его завершения S1.0 не запускается на 13-case real regression set и не используется
+для карт.

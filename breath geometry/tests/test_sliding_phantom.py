@@ -30,6 +30,82 @@ def test_sliding_phantom_preserves_normal_contact_and_tangential_slip() -> None:
     assert metrics.body_nonpositive_jacobian_fraction == 0.0
 
 
+def test_tangential_field_vanishes_smoothly_towards_rotation_axis() -> None:
+    params = SlidingPhantomParams()
+    phantom = make_sliding_phantom(params)
+    indices = np.indices(phantom.image.shape, dtype=np.float64)
+    centre = (np.asarray(phantom.image.shape, dtype=np.float64) - 1.0) / 2.0
+    coordinates = np.moveaxis(indices, 0, -1)
+    coordinates = (
+        coordinates - centre
+    ) * np.asarray(phantom.spacing_mm, dtype=np.float64)
+    cylindrical_level = np.sqrt(
+        np.square(coordinates[..., 0] / phantom.lung_radii_mm[0])
+        + np.square(coordinates[..., 1] / phantom.lung_radii_mm[1])
+    )
+    tangential_component = np.linalg.norm(
+        phantom.lung_displacement_mm
+        - np.sum(
+            phantom.lung_displacement_mm * phantom.interface_normal,
+            axis=-1,
+        )[..., None]
+        * phantom.interface_normal,
+        axis=-1,
+    )
+    near_axis = phantom.lung_mask & (cylindrical_level < 0.1)
+
+    assert np.any(near_axis)
+    expected_upper_bound = (
+        params.tangential_slip_mm
+        * 0.1
+        / params.tangential_full_slip_radius_fraction
+    )
+    assert (
+        float(np.max(tangential_component[near_axis]))
+        <= expected_upper_bound + 1e-6
+    )
+
+
+def test_historical_tangential_ramp_remains_reproducible() -> None:
+    historical = make_sliding_phantom(
+        SlidingPhantomParams(tangential_ramp_mode="ellipsoidal_v1")
+    )
+    axis_safe = make_sliding_phantom()
+
+    assert not np.array_equal(
+        historical.lung_displacement_mm,
+        axis_safe.lung_displacement_mm,
+    )
+    assert float(np.max(historical.tangential_ramp)) == pytest.approx(1.0)
+    assert float(np.max(axis_safe.tangential_ramp)) == pytest.approx(1.0)
+    near_axis = axis_safe.lung_mask & (axis_safe.tangential_ramp < 0.1)
+    historical_tangent = np.linalg.norm(
+        historical.lung_displacement_mm
+        - np.sum(
+            historical.lung_displacement_mm * historical.interface_normal,
+            axis=-1,
+        )[..., None]
+        * historical.interface_normal,
+        axis=-1,
+    )
+    axis_safe_tangent = np.linalg.norm(
+        axis_safe.lung_displacement_mm
+        - np.sum(
+            axis_safe.lung_displacement_mm * axis_safe.interface_normal,
+            axis=-1,
+        )[..., None]
+        * axis_safe.interface_normal,
+        axis=-1,
+    )
+    assert float(np.max(historical_tangent[near_axis])) > 3.5
+    assert float(np.max(axis_safe_tangent[near_axis])) < 0.4
+
+
+def test_sliding_phantom_rejects_unknown_tangential_ramp() -> None:
+    with pytest.raises(ValueError, match="ramp mode"):
+        SlidingPhantomParams(tangential_ramp_mode="unknown")
+
+
 def test_sliding_metrics_detect_wrong_body_normal_motion() -> None:
     phantom = make_sliding_phantom()
     zero_body = np.zeros_like(phantom.body_displacement_mm)
