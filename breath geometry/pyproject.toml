@@ -35,6 +35,11 @@ visualization = [
   "pyvista>=0.45,<1",
   "vtk>=9.3,<10",
 ]
+notebook = [
+  "ipykernel>=6.29,<8",
+  "matplotlib>=3.9,<4",
+  "nbconvert>=7.16,<8",
+]
 dev = [
   "mypy>=1.14,<2",
   "pytest>=8.3,<9",

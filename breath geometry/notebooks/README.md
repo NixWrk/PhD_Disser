@@ -25,17 +25,22 @@ Notebook в этом каталоге — интерактивный QC/отчё
   и пространственную карту;
 - `04_convexadam_registration_benchmark.ipynb` показывает blind development selection,
   locked сравнение с Elastix, матрицу gate, региональный TRE и provenance;
-- outputs этих трёх notebooks коммитятся как удобное представление результатов, но
+- `05_sliding_phantom.ipynb` проверяет multi-region представление плеврального скольжения,
+  региональный Jacobian и два отрицательных контроля; это representation gate, а не
+  benchmark алгоритма регистрации;
+- outputs этих четырёх notebooks коммитятся как удобное представление результатов, но
   источником чисел остаются воспроизводимые артефакты в `results/`;
-- после обновления batch-артефактов все три notebooks нужно выполнить заново и проверить,
+- после обновления batch-артефактов все четыре notebooks нужно выполнить заново и проверить,
   что в них нет локальных путей и медицинских идентификаторов.
 
-Выполнение из корня репозитория:
+Bootstrap регистрирует ядро `breathgeom` из `.venv`. Выполнение одного отчёта из корня
+репозитория:
 
 ~~~powershell
-.\.venv\Scripts\jupyter.exe nbconvert --to notebook --execute --inplace `
-  notebooks/02_registration_benchmark.ipynb `
-  notebooks/03_whole_body_profiles.ipynb `
-  notebooks/04_convexadam_registration_benchmark.ipynb `
-  --ExecutePreprocessor.timeout=300
+powershell -ExecutionPolicy Bypass -File tools/execute_notebook.ps1 `
+  -Notebook notebooks/05_sliding_phantom.ipynb
 ~~~
+
+Скрипт намеренно вызывает `nbconvert` через Python из `.venv` и явно выбирает kernel.
+Запуск `jupyter.exe` без проверки kernel запрещён: на машине разработчика он может найти
+команду и ядро из другой установки Python.

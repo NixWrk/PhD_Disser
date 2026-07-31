@@ -1,6 +1,7 @@
 param(
     [string]$Python = "python",
     [switch]$WithGeometry,
+    [switch]$SkipPackagingUpgrade,
     [int]$PipTimeoutSeconds = 30
 )
 
@@ -19,21 +20,36 @@ $PipNetworkArgs = @(
     "--retries", "2"
 )
 
-& $VenvPython -m pip install @PipNetworkArgs --upgrade pip setuptools wheel
-if ($LASTEXITCODE -ne 0) {
-    throw "Unable to upgrade the local packaging toolchain"
+if (-not $SkipPackagingUpgrade) {
+    & $VenvPython -m pip install @PipNetworkArgs --upgrade pip setuptools wheel
+    if ($LASTEXITCODE -ne 0) {
+        throw "Unable to upgrade the local packaging toolchain"
+    }
+}
+
+$ProjectInstallArgs = @()
+if ($SkipPackagingUpgrade) {
+    $ProjectInstallArgs = @("--no-build-isolation", "--no-index")
 }
 
 if ($WithGeometry) {
-    & $VenvPython -m pip install @PipNetworkArgs -e ($RepoRoot + "[geometry,dev]")
+    & $VenvPython -m pip install @PipNetworkArgs @ProjectInstallArgs `
+        -e ($RepoRoot + "[geometry,notebook,dev]")
 } else {
-    & $VenvPython -m pip install @PipNetworkArgs -e ($RepoRoot + "[dev]")
+    & $VenvPython -m pip install @PipNetworkArgs @ProjectInstallArgs `
+        -e ($RepoRoot + "[notebook,dev]")
 }
 if ($LASTEXITCODE -ne 0) {
     throw "Unable to install the project dependencies into .venv"
 }
 
-& $VenvPython -m pip freeze --all |
+& $VenvPython -m ipykernel install --sys-prefix --name breathgeom `
+    --display-name "Breath Geometry (.venv)"
+if ($LASTEXITCODE -ne 0) {
+    throw "Unable to register the local Jupyter kernel"
+}
+
+& $VenvPython -m pip freeze --all --exclude-editable |
     Set-Content -Encoding utf8 -LiteralPath (Join-Path $RepoRoot "requirements.lock.txt")
 
 & $VenvPython -m pytest $RepoRoot
