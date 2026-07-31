@@ -584,3 +584,41 @@ FAIL возвращает работу к новой версии S1.2 без п
 
 **Пересмотр.** После появления единой валидированной 3D body segmentation. До этого
 исходная threshold mask и добавленная lung-closure должны сохраняться раздельно в QC.
+
+## D-027. S1.1 провалил real development; expert Gate 1L остаётся закрыт
+
+**Frozen результат.** Первый S1.1 real-development batch выполнен на commit `ea8113b`,
+после отдельной фиксации выборки и порогов. Результат `0/6 PASS`: пять завершённых
+случаев нарушили keypoint и lung-topology gates, а `LungCT_0029` остановлен защитой
+`tangential optimizer worsened its frozen objective`. Expert landmarks не загружались.
+
+У пяти полей lung Dice лежит в диапазоне 0.894–0.954, но доля `J≤0` составляет
+2.06–15.12%, а mean image-derived keypoint TRE — 4.60–18.21 мм. Это прямой пример,
+почему совпадение масок не доказывает корректность correspondence field.
+
+**Failure diagnosis.** Отдельный batch на commit `1af5927` сравнил сохранённый initial
+ConvexAdam, его normal projection и final S1.1. Медианы по пяти субъектам:
+
+- initial: keypoint mean 1.70 мм, `J≤0` 0.19%, Jacobian p01 0.24;
+- normal projection: 10.09 мм, `J≤0` 3.26%, p01 −0.85;
+- final S1.1: 7.64 мм, `J≤0` 3.94%, p01 −1.16.
+
+**Решение.** S1.1 не запускать на 13 expert cases, не использовать для карт формы,
+толщины, обучения single-CT модели или FEM. Следующий кандидат получает версию S1.2 и
+сначала заново проходит frozen synthetic и real-development gates.
+
+**Причина.** Главное неверное допущение S1.1 — замена всей локальной tangential residual
+шестью глобальными гладкими модами. Реальное correspondence уже содержится в исходной
+tangential component; её удаление создаёт основную ошибку и folding. Six-mode objective
+может улучшаться одновременно с ухудшением keypoints/topology.
+
+**Требования к S1.2.**
+
+- сохранить локальную tangential residual или доказать эквивалентное представление;
+- обеспечить topology до и после normal-only pleural coupling;
+- проверять initial, coupled и final fields раздельно;
+- не выбирать вариант только по CT objective или mask Dice;
+- до новой заморозки исправить потоковую запись batch и записывать полный wall-clock.
+
+**Пересмотр.** Только новый S1.2 после synthetic и 6/6 real-development PASS. Текущий
+S1.1 report и его diagnostic fields не переписывать.

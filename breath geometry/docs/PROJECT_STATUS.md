@@ -85,12 +85,19 @@
   коэффициентами по high-pass CT. Multipattern suite v3 прошёл 4/4, включая заранее
   зафиксированный `deep_longitudinal`: lung p95 1.359 мм, slip 5.055 при truth 5.537 мм,
   folding нет. Выполненный отчёт — `07_sliding_s11_synthetic_benchmark.ipynb`.
+- Frozen real-development S1.1 провален: `0/6 PASS`. Пять завершённых LungCT нарушили
+  keypoint/topology gates, у всех есть lung folding; `LungCT_0029` остановлен, потому что
+  Powell ухудшил frozen objective. Post-hoc batch без expert landmarks локализовал
+  основной отказ на переходе `initial ConvexAdam → normal projection`: медиана mean
+  keypoint TRE `1.70→10.09 мм`, доля `J≤0` `0.19%→3.26%`; итоговые six modes дали
+  `7.64 мм` и `3.94%`. Выполненный отчёт —
+  `08_sliding_s11_real_development.ipynb`.
 - 3D-профили по всей сегментированной поверхности лёгких без электродного фильтра. Каждый
   путь раскладывается на жир/мышцу/кость/прочее; пути через лёгкое и обрезанный FOV
   отбраковываются. Парные дельты программно запрещены при провале registration gate.
 - Пороговые маски тела/лёгких, skin-to-lung shell, over-rib fat/muscle diagnostic и жёсткое
   совмещение по позвоночнику.
-- Исторический интерактивный notebook для `copd1` и пять выполненных notebook-отчётов,
+- Исторический интерактивный notebook для `copd1` и семь выполненных notebook-отчётов,
   включая locked ConvexAdam benchmark, synthetic sliding/S1 benchmarks и явные QC-verdict.
 - Автотесты, `ruff` и strict `mypy`.
 
@@ -114,17 +121,16 @@
   восстанавливать скрытое поле из двух изображений.
 - S1.0 не разрешён для real-pair regression или измерений: исправленный algorithmic
   synthetic gate v2.1 провален в deep anisotropic case (общий PASS 2/3).
-- Synthetic PASS S1.1 не является Gate 1L/1B: real development и independent expert
-  landmarks ещё не выполнены, поэтому человеческие парные карты остаются запрещены.
+- Synthetic PASS S1.1 не является Gate 1L/1B. Real-development дал `0/6 PASS`, поэтому
+  S1.1 отвергнут до expert benchmark; человеческие парные карты остаются запрещены.
 
 ## Главные технические долги
 
-1. Выполнить S1.1 batch на development real pairs без expert landmarks. Выборка, пороги,
-   disposition и правило перехода уже заморожены до запуска в
-   `SLIDING_S11_REAL_DEVELOPMENT.md` и
-   `configs/sliding_s11_real_development_gate.json`. Preflight выявил несовместимость
-   supplied lung и threshold-body masks; D-026 исправляет только registration-container,
-   не изменяя wall region или исходные маски.
+1. Спроектировать S1.2 на development/synthetic данных, не открывая expert landmarks.
+   Он должен сохранять локальную tangential residual исходного поля, обеспечивать
+   topology до и после pleural coupling и не использовать mask Dice как замену
+   correspondence QC. Перед реализацией новая спецификация и challenge снова
+   замораживаются.
 2. Зафиксировать численные пороги Gate 1B на независимых body/bone annotations и
    segmentation-repeatability; до этого его состояние `NOT VALIDATED`.
 3. Надёжная сегментация лёгких, тела, рёбер и тканей в исходном FOV.

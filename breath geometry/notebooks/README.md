@@ -35,9 +35,12 @@ Notebook в этом каталоге — интерактивный QC/отчё
 - `07_sliding_s11_synthetic_benchmark.ipynb` читает multipattern v3 frozen
   batch-артефакты S1.1, показывает modal coefficients, comparison с исходным ConvexAdam,
   spatial QC и synthetic verdict `PASS (4/4)`;
-- outputs этих шести notebooks коммитятся как удобное представление результатов, но
+- `08_sliding_s11_real_development.ipynb` читает frozen real-development и отдельный
+  post-hoc failure-diagnosis batch, показывает gate `FAIL (0/6)`, topology/keypoint
+  отказ, modal coefficients и spatial QC; expert landmarks не использует;
+- outputs этих семи notebooks коммитятся как удобное представление результатов, но
   источником чисел остаются воспроизводимые артефакты в `results/`;
-- после обновления batch-артефактов все шесть notebooks нужно выполнить заново и проверить,
+- после обновления batch-артефактов все семь notebooks нужно выполнить заново и проверить,
   что в них нет локальных путей и медицинских идентификаторов.
 
 Bootstrap регистрирует ядро `breathgeom` из `.venv`. Выполнение одного отчёта из корня

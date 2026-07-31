@@ -71,6 +71,8 @@ Copy-Item configs/paths.local.example.yaml configs/paths.local.yaml
   --dataset learn2reg_lungct --subject LungCT_0001 `
   --method convexadam --params configs/convexadam_locked.json `
   --registration-python .venv-registration/Scripts/python.exe
+.\.venv\Scripts\breathgeom.exe registration sliding-real-development
+.\.venv\Scripts\breathgeom.exe registration sliding-real-diagnose
 .\.venv\Scripts\breathgeom.exe profiles extract-pair `
   --manifest data/interim/respiratory_pairs.local.csv `
   --dataset dirlab_copdgene --subject copd1
@@ -97,7 +99,9 @@ paired deltas только при наличии прошедшего gate по�
 `03_whole_body_profiles.ipynb`; locked ConvexAdam разобран в
 `04_convexadam_registration_benchmark.ipynb`. Multi-region representation и synthetic
 контроли показаны в `05_sliding_phantom.ipynb`; frozen S1.0 FAIL — в
-`06_sliding_s1_synthetic_benchmark.ipynb`. Числа batch-анализов всё равно берутся из
+`06_sliding_s1_synthetic_benchmark.ipynb`, synthetic S1.1 PASS — в
+`07_sliding_s11_synthetic_benchmark.ipynb`, а real-development S1.1 FAIL —
+в `08_sliding_s11_real_development.ipynb`. Числа batch-анализов всё равно берутся из
 `results/`.
 Подробная оценка первого notebook — в [NOTEBOOK_AUDIT.md](docs/NOTEBOOK_AUDIT.md).
 

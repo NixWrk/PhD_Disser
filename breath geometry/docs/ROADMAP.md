@@ -132,16 +132,18 @@ Gate 4: модель выигрывает у B2 больше измерител�
    suite v3 добавляет не запускавшийся ранее longitudinal pattern.
 7. **Выполнено:** frozen S1.1 реализован и прошёл multipattern suite v3 у 4/4, включая
    заранее не запускавшийся longitudinal challenge. Параметры S1.1 больше не менять.
-8. **Текущий шаг:** S1.1 batch на development real pairs без expert landmarks.
-   Computational/FOV/mask/keypoint/objective/coefficient/topology QC, точная выборка и
-   disposition уже зафиксированы до запуска в
-   `configs/sliding_s11_real_development_gate.json`; expert coordinates не открывались.
-   Выявленный `lung ⊄ threshold_body` устраняется только контрактным union по D-026,
-   оставляя оптимизируемый wall region неизменным.
-   Те же 13 expert cases
-   использовать как frozen regression set; для итоговой внешней оценки отложить новый
-   нераскрытый landmark-набор.
-9. Зафиксировать численные пороги Gate 1B: наружный контур, устойчивые костные ориентиры,
+8. **Выполнено, FAIL:** S1.1 batch на шести development real pairs без expert landmarks
+   дал `0/6 PASS`; пять полей имеют lung folding и провал keypoint gates, шестой optimizer
+   не завершил frozen objective. Expert Gate 1L не открывался.
+9. **Выполнено, failure diagnosis:** на пяти полях переход от initial ConvexAdam к
+   normal projection увеличил медиану mean image-derived keypoint TRE `1.70→10.09 мм` и
+   folding `0.19%→3.26%`; final six-mode S1.1 дал `7.64 мм` и `3.94%`. Mask Dice при
+   этом часто улучшался, поэтому mask agreement не заменяет correspondence/topology.
+10. **Текущий шаг:** определить S1.2 на development/synthetic данных. Сохранять локальную
+    tangential residual, ввести topology-preserving repair/parameterization и проверить
+    normal-only coupling отдельно. До новой frozen спецификации не запускать 13 expert
+    cases и не строить парные карты.
+11. Зафиксировать численные пороги Gate 1B: наружный контур, устойчивые костные ориентиры,
    segmentation repeatability и валидность профилей в общем FOV. До этого 1B имеет статус
    `NOT VALIDATED`.
 10. Параллельно улучшить outer-pleura/FOV QC профилей до заранее заданного покрытия, но не
