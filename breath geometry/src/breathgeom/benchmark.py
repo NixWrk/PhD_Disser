@@ -11,7 +11,7 @@ from __future__ import annotations
 import csv
 import hashlib
 import json
-from dataclasses import asdict, dataclass
+from dataclasses import asdict, dataclass, fields
 from pathlib import Path
 from typing import Any, cast
 
@@ -567,6 +567,30 @@ def write_benchmark_csv(path: Path, records: list[RegistrationRecord]) -> None:
         writer.writerows(record.csv_row() for record in records)
 
 
+def read_benchmark_record(path: Path) -> RegistrationRecord:
+    """Load one subject record so an interrupted batch can be resumed safely."""
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    values = payload.get("record")
+    if not isinstance(values, dict):
+        raise ValueError(f"{path}: missing record object")
+    expected = {field.name for field in fields(RegistrationRecord)}
+    actual = set(values)
+    if actual != expected:
+        missing = sorted(expected - actual)
+        extra = sorted(actual - expected)
+        raise ValueError(
+            f"{path}: incompatible registration record; "
+            f"missing={missing}, extra={extra}"
+        )
+    reasons = values.get("gate_reasons")
+    if not isinstance(reasons, list) or not all(
+        isinstance(reason, str) for reason in reasons
+    ):
+        raise ValueError(f"{path}: gate_reasons must be a string list")
+    values["gate_reasons"] = tuple(reasons)
+    return RegistrationRecord(**values)
+
+
 __all__ = [
     "BenchmarkRun",
     "PairData",
@@ -574,6 +598,7 @@ __all__ = [
     "RegistrationRecord",
     "evaluate_registration",
     "load_pair_data",
+    "read_benchmark_record",
     "run_convexadam_benchmark",
     "run_registration_benchmark",
     "write_benchmark_csv",

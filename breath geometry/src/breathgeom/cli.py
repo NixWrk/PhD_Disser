@@ -14,6 +14,7 @@ from rich.table import Table
 
 from breathgeom.benchmark import (
     load_pair_data,
+    read_benchmark_record,
     run_convexadam_benchmark,
     run_registration_benchmark,
     write_benchmark_csv,
@@ -429,7 +430,15 @@ def registration_benchmark(
         stem = f"{pair.dataset_id}__{pair.subject_id}"
         json_path = output / f"{stem}.json"
         if json_path.exists() and not force:
-            console.print(f"[{index}/{len(selected)}] skip existing {stem}")
+            try:
+                records.append(read_benchmark_record(json_path))
+            except (OSError, ValueError, json.JSONDecodeError) as error:
+                failures.append(f"{stem}: existing artifact cannot be read: {error}")
+                console.print(f"[red]FAILED[/red] {failures[-1]}")
+                continue
+            console.print(
+                f"[{index}/{len(selected)}] reuse existing {stem} in batch summary"
+            )
             continue
         console.print(f"[{index}/{len(selected)}] register {stem}")
         try:
@@ -461,7 +470,8 @@ def registration_benchmark(
         tre_text = "no expert landmarks" if tre is None else f"expert TRE {tre:.2f} mm"
         console.print(
             f"{gate} {tre_text}; FOV lung Dice {run.record.lung_fov_dice_after:.3f}; "
-            f"Jac<=0 {run.record.nonpositive_jacobian_fraction:.3g}; {written_json}"
+            "body/FOV Jac<=0 "
+            f"{run.record.body_fov_nonpositive_jacobian_fraction:.3g}; {written_json}"
         )
         if field_path is not None:
             console.print(f"field {field_path}")

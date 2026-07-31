@@ -7,6 +7,7 @@ from breathgeom.benchmark import (
     BenchmarkRun,
     PairData,
     evaluate_registration,
+    read_benchmark_record,
     write_benchmark_run,
 )
 from breathgeom.io.pairs import RespiratoryPair, write_pair_manifest
@@ -119,3 +120,5 @@ def test_field_artifact_records_direction_and_physical_spacing(tmp_path: Path) -
     payload = json.loads(json_path.read_text(encoding="utf-8"))
     assert payload["provenance"]["surface_metric"] == "common-fov-safe-surface-v1"
     assert payload["gate"]["fov_boundary_margin_mm"] == 5.0
+    loaded = read_benchmark_record(json_path)
+    assert loaded == benchmark.record
