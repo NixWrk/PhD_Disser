@@ -38,9 +38,12 @@ Notebook в этом каталоге — интерактивный QC/отчё
 - `08_sliding_s11_real_development.ipynb` читает frozen real-development и отдельный
   post-hoc failure-diagnosis batch, показывает gate `FAIL (0/6)`, topology/keypoint
   отказ, modal coefficients и spatial QC; expert landmarks не использует;
-- outputs этих семи notebooks коммитятся как удобное представление результатов, но
+- `09_sliding_s12_heuristic_screen.ipynb` читает frozen post-hoc model-class screen,
+  раздельно показывает correspondence/topology/contact и обосновывает отказ от
+  `Gaussian repair + algebraic normal coupling`; expert landmarks не использует;
+- outputs этих восьми notebooks коммитятся как удобное представление результатов, но
   источником чисел остаются воспроизводимые артефакты в `results/`;
-- после обновления batch-артефактов все семь notebooks нужно выполнить заново и проверить,
+- после обновления batch-артефактов все восемь notebooks нужно выполнить заново и проверить,
   что в них нет локальных путей и медицинских идентификаторов.
 
 Bootstrap регистрирует ядро `breathgeom` из `.venv`. Выполнение одного отчёта из корня

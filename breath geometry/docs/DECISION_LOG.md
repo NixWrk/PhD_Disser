@@ -650,3 +650,36 @@ challenge до доступа к expert landmarks.
 `H_L Калмыков Изменение анатомии во время дыхания` и уже известных элементов
 Al-Mayah/Amelon; semantic extension не установлено. Это записывается как ограничение
 доступа, а не как отрицательный литературный результат.
+
+## D-029. Gaussian repair работает до contact; algebraic coupling отвергнут
+
+**Frozen результат.** `sliding_s12_heuristic_screen_v1` выполнен на commit `a582258`:
+пять subjects, 20 строк, input checksums подтверждены, expert landmarks не использованы.
+Gaussian `σ=3 мм`, scale `0.9` без coupling дал lung topology PASS 5/5, но contact
+PASS 0/5. Узкий body-normal и широкий symmetric-normal coupling дали contact PASS 5/5,
+но topology PASS 0/5 и общий `0/5`.
+
+У wide symmetric варианта folding остался в lung field у всех пяти и появился в body
+field у всех пяти. Это не численная случайность, которую можно округлить: доля `J≤0`
+должна быть строго нулевой. `LungCT_0005` дополнительно провалил surface/keypoint p95
+уже в topology-safe uncoupled варианте.
+
+**Решение.** Закрыть класс post-hoc Gaussian smoothing/scaling с одношаговым
+algebraic normal coupling. Не продолжать подбор `sigma/scale/taper` на тех же пяти
+subjects. Следующий класс — отдельные topology-preserving lung/body transformations с
+normal-contact constraint внутри совместной оптимизации и разрешённым tangential
+discontinuity. Улучшение базового correspondence для `LungCT_0005` является отдельной
+обязательной задачей.
+
+**Причина.** Screen локализовал структурный конфликт: локальная фильтрация способна убрать
+folding, а algebraic contact enforcement повторно его создаёт. Последовательная цепочка
+не гарантирует принадлежность финального поля допустимому классу, даже если каждый
+скалярный endpoint по отдельности улучшается.
+
+**Ограничение.** Screen не содержит `LungCT_0029`, не является новым S1.2 и не открывает
+Gate 1L. Joint-кандидат должен быть специфицирован до запуска, пройти новую synthetic
+challenge и заново обработать 6/6 development subjects.
+
+**Инженерный нюанс.** Первая попытка batch остановилась до записи manifest из-за
+невозможности вывести `≤` в Windows `cp1251`. После замены только служебной строки на
+ASCII и commit `a582258` полный batch завершён; научные параметры не менялись.

@@ -95,3 +95,67 @@ S1.2 только если один coupled-вариант проходит вс
 Ключевое ограничение из локального обзора остаётся прежним: единое гладкое поле
 размазывает плевральное/междолевое скольжение, а контакт должен ограничивать нормальную
 компоненту без искусственного подавления локальной тангенциальной кинематики.
+
+## Выполненный результат
+
+Batch выполнен на code version
+`a582258dd8f06a880a79d261e134f582e60d54e9`:
+
+- screen config SHA-256:
+  `03750C0B671DEF38712ECEC5AC41453D5FA92EA3BD62B78503E1B3193D919EF4`;
+- прежний real-development gate SHA-256:
+  `66E916CB11494E844BCD5C95CAA7EECF9DEA36E68939A7970A35B89FA0D607F4`;
+- пять subjects, 20 subject/variant rows, ошибок batch нет;
+- полный wall-clock `194.4 с`;
+- все checksums summary, input manifest, config и пяти input fields повторно проверены;
+- отчёт: `notebooks/09_sliding_s12_heuristic_screen.ipynb`.
+
+Раздельные counts:
+
+| variant | correspondence | topology | contact | все критерии |
+|---|---:|---:|---:|---:|
+| raw initial, uncoupled | 2/5 | 0/5 | 0/5 | 0/5 |
+| Gaussian 3 мм × 0.9, uncoupled | 2/5 | 5/5 | 0/5 | 0/5 |
+| repaired + narrow body-normal | 2/5 | 0/5 | 5/5 | 0/5 |
+| repaired + wide symmetric-normal | 2/5 | 0/5 | 5/5 | 0/5 |
+
+Медианы по пяти subjects:
+
+| variant | keypoint mean, мм | lung surface p95, мм | lung J p01 | lung J≤0 | normal mismatch p95, мм |
+|---|---:|---:|---:|---:|---:|
+| raw initial, uncoupled | 1.70 | 5.25 | 0.24 | 0.194% | 6.90 |
+| Gaussian 3 мм × 0.9, uncoupled | 2.57 | 5.42 | 0.61 | 0% | 6.51 |
+| repaired + narrow body-normal | 2.62 | 5.13 | 0.38 | 0.841% | <0.001 |
+| repaired + wide symmetric-normal | 2.78 | 6.10 | 0.44 | 0.068% | <0.001 |
+
+Wide symmetric coupling дополнительно создаёт body folding у всех 5/5 subjects
+(медиана `J≤0` около 0.043%). Малые доли folding не округляются до нуля: frozen gate
+требует строгое отсутствие `J≤0`.
+
+`LungCT_0005` остаётся отдельным correspondence failure уже у topology-safe uncoupled
+repair: lung surface p95 `7.32 мм`, keypoint p95 `14.78 мм`. Следовательно, новый
+contact formulation не исправит этот случай без улучшения исходной image registration.
+
+## Решение
+
+Класс `Gaussian repair + algebraic normal coupling` отвергнут: ни один coupled-вариант
+не прошёл хотя бы один subject по всем критериям, итог `0/5`. Дальнейший post-hoc подбор
+`sigma/scale/taper` прекращается. Следующий S1.2-кандидат должен:
+
+- представлять lung и body отдельными topology-preserving преобразованиями;
+- сохранять полную локальную tangential residual;
+- вводить normal-contact constraint внутри совместной оптимизации, а не изменять готовое
+  displacement field одношаговой алгебраической поправкой;
+- отдельно улучшить image-derived correspondence для `LungCT_0005`;
+- заново пройти synthetic challenge и все шесть real-development subjects, включая
+  отсутствующий здесь `LungCT_0029`.
+
+Screen не открывает expert Gate 1L и не разрешает парные карты.
+
+## Инженерный нюанс первого запуска
+
+Первый запуск остановился после расчёта `LungCT_0004`, потому что Windows console с
+кодировкой `cp1251` не смогла вывести символ `≤` в строке прогресса. Manifest и summary
+ещё не были созданы, поэтому частичный запуск не использован. Служебная строка заменена
+на ASCII `J<=0`, исправление зафиксировано commit `a582258`; вычисления, config и пороги
+не менялись. Повторный запуск завершился целиком.

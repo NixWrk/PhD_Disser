@@ -92,12 +92,17 @@
   keypoint TRE `1.70→10.09 мм`, доля `J≤0` `0.19%→3.26%`; итоговые six modes дали
   `7.64 мм` и `3.94%`. Выполненный отчёт —
   `08_sliding_s11_real_development.ipynb`.
+- Frozen S1.2 heuristic model-class screen выполнен на пяти сохранённых non-expert
+  fields. Gaussian repair `σ=3 мм`, scale `0.9` дал topology PASS 5/5 без coupling, но
+  contact 0/5; узкий и широкий algebraic normal coupling дали contact 5/5, topology 0/5
+  и общий `0/5`. Класс отвергнут; `LungCT_0005` дополнительно требует улучшения исходного
+  correspondence. Выполненный отчёт — `09_sliding_s12_heuristic_screen.ipynb`.
 - 3D-профили по всей сегментированной поверхности лёгких без электродного фильтра. Каждый
   путь раскладывается на жир/мышцу/кость/прочее; пути через лёгкое и обрезанный FOV
   отбраковываются. Парные дельты программно запрещены при провале registration gate.
 - Пороговые маски тела/лёгких, skin-to-lung shell, over-rib fat/muscle diagnostic и жёсткое
   совмещение по позвоночнику.
-- Исторический интерактивный notebook для `copd1` и семь выполненных notebook-отчётов,
+- Исторический интерактивный notebook для `copd1` и восемь выполненных notebook-отчётов,
   включая locked ConvexAdam benchmark, synthetic sliding/S1 benchmarks и явные QC-verdict.
 - Автотесты, `ruff` и strict `mypy`.
 
@@ -129,10 +134,11 @@
 1. Спроектировать S1.2 на development/synthetic данных, не открывая expert landmarks.
    Он должен сохранять локальную tangential residual исходного поля, обеспечивать
    topology до и после pleural coupling и не использовать mask Dice как замену
-   correspondence QC. Первый model-class screen простых Gaussian repair и algebraic
-   normal coupling заморожен в `SLIDING_S12_HEURISTIC_SCREEN.md`; он должен быть выполнен
-   batch-режимом до выбора новой параметризации. Перед полноценной реализацией S1.2 новая
-   спецификация и challenge снова замораживаются.
+   correspondence QC. Простой Gaussian/algebraic класс уже отвергнут frozen screen.
+   Текущий design target — отдельные topology-preserving lung/body transformations с
+   normal-contact constraint внутри совместной оптимизации и отдельное улучшение
+   correspondence для `LungCT_0005`. Перед реализацией новая спецификация и challenge
+   снова замораживаются.
 2. Зафиксировать численные пороги Gate 1B на независимых body/bone annotations и
    segmentation-repeatability; до этого его состояние `NOT VALIDATED`.
 3. Надёжная сегментация лёгких, тела, рёбер и тканей в исходном FOV.
