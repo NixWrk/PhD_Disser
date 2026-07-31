@@ -506,3 +506,39 @@ independent landmarks Gate 1L; residual-weight 0 будет отдельным �
 
 **Пересмотр.** Только новой версией S1.2 и новым config; параметры S1.1 после первого
 batch v3 не менять.
+
+## D-024. Frozen S1.1 прошёл multipattern synthetic gate 4/4
+
+**Наблюдение.** Первый batch S1.1 выполнен после коммитов frozen suite/config и
+реализации. Manifest фиксирует code version `8a400e4`, suite SHA-256
+`DA7E5E1713A78944E1533EE1BA187520BB41AF881C5B3EF93E236B7362D63BD5` и S1.1 config
+SHA-256 `1B1DED32AEDB38F02A279B78ECF4FABCE91B20F55C290457D32196D485C85DEA`.
+
+- `shallow_1mm`: PASS, lung/body p95 0.773/0.745 мм, slip 1.975 при truth 2.000 мм;
+- `nominal_1mm`: PASS, lung/body p95 0.687/0.810 мм, slip 4.117 при truth 4.000 мм;
+- `deep_anisotropic`: PASS, lung/body p95 1.247/1.165 мм, slip 5.951 при truth 6.000 мм;
+- ранее не запускавшийся `deep_longitudinal`: PASS, lung/body p95 1.359/1.086 мм,
+  slip 5.055 при truth 5.537 мм.
+
+Normal contact и regional topology прошли 4/4, folding нет. High-pass objective снизилась
+во всех случаях. В трёх azimuthal случаях доминирует `rotation_z` с коэффициентами
+4.075/1.972/6.100 мм; в новом longitudinal — `projected_z=5.520 мм`, остальные
+коэффициенты малы. Это проверяет, что fitter выбрал тип движения по изображениям, а не по
+case label.
+
+**Решение.** Зафиксировать общий verdict `PASS (4/4)` для algorithmic synthetic gate.
+Параметры S1.1 больше не менять. Разрешить запуск на development real pairs без expert
+landmarks для проверки вычислительной устойчивости, сегментаций, FOV и image objective.
+
+**Что это не разрешает.** Не строить карты формы/толщины и не считать S1.1 прошедшим
+Gate 1L/1B. Перед просмотром frozen 13 expert cases нужно выполнить development batch,
+зафиксировать real-data QC disposition и убедиться, что low-rank fit не выбирает
+предельные/нестабильные коэффициенты.
+
+**Нюанс.** Исходный ConvexAdam p95 на `deep_longitudinal` равен 2.247 мм, то есть почти
+совпадает с endpoint limit 2.25 мм; новый case особенно проверяет правильность выбранной
+моды и slip, а не только грубое обнаружение движения. Он остаётся synthetic и не является
+внешней слепой клинической валидацией.
+
+**Пересмотр.** Только после development real-data failure или Gate 1L как новая версия
+S1.2. Текущий S1.1 и synthetic report не переписывать.

@@ -31,10 +31,13 @@ Notebook в этом каталоге — интерактивный QC/отчё
 - `06_sliding_s1_synthetic_benchmark.ipynb` читает axis-safe v2.1 frozen
   batch-артефакты S1.0,
   проверяет checksums, показывает gate matrix и spatial error maps; текущий verdict
-  `FAIL (1/3)`;
-- outputs этих пяти notebooks коммитятся как удобное представление результатов, но
+  `FAIL (2/3)`;
+- `07_sliding_s11_synthetic_benchmark.ipynb` читает multipattern v3 frozen
+  batch-артефакты S1.1, показывает modal coefficients, comparison с исходным ConvexAdam,
+  spatial QC и synthetic verdict `PASS (4/4)`;
+- outputs этих шести notebooks коммитятся как удобное представление результатов, но
   источником чисел остаются воспроизводимые артефакты в `results/`;
-- после обновления batch-артефактов все пять notebooks нужно выполнить заново и проверить,
+- после обновления batch-артефактов все шесть notebooks нужно выполнить заново и проверить,
   что в них нет локальных путей и медицинских идентификаторов.
 
 Bootstrap регистрирует ядро `breathgeom` из `.venv`. Выполнение одного отчёта из корня

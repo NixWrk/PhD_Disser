@@ -81,6 +81,10 @@
   `sliding-phantom-v2.1-axis-safe` неизменённый S1.0 прошёл 2/3: shallow и nominal PASS;
   deep anisotropic — lung p95 3.706 > 2.25 мм и slip 3.213 вместо 6 мм. Body/contact/
   topology прошли во всех вариантах, folding нет.
+- Frozen S1.1: raw ConvexAdam normal + six-mode mask-derived tangential model с
+  коэффициентами по high-pass CT. Multipattern suite v3 прошёл 4/4, включая заранее
+  зафиксированный `deep_longitudinal`: lung p95 1.359 мм, slip 5.055 при truth 5.537 мм,
+  folding нет. Выполненный отчёт — `07_sliding_s11_synthetic_benchmark.ipynb`.
 - 3D-профили по всей сегментированной поверхности лёгких без электродного фильтра. Каждый
   путь раскладывается на жир/мышцу/кость/прочее; пути через лёгкое и обрезанный FOV
   отбраковываются. Парные дельты программно запрещены при провале registration gate.
@@ -110,12 +114,14 @@
   восстанавливать скрытое поле из двух изображений.
 - S1.0 не разрешён для real-pair regression или измерений: исправленный algorithmic
   synthetic gate v2.1 провален в deep anisotropic case (общий PASS 2/3).
+- Synthetic PASS S1.1 не является Gate 1L/1B: real development и independent expert
+  landmarks ещё не выполнены, поэтому человеческие парные карты остаются запрещены.
 
 ## Главные технические долги
 
-1. Реализовать уже замороженный S1.1: raw ConvexAdam normal + шесть mask-derived
-   tangential modes, коэффициенты по high-pass CT. Suite v3 с новым непросмотренным
-   longitudinal challenge и config зафиксированы; expert 13-case test не использовать.
+1. Выполнить S1.1 batch на development real pairs без expert landmarks. Проверить FOV,
+   сегментации, objective, coefficients, topology и отсутствие попадания в bounds; затем
+   заморозить real-data QC до однократного 13-case expert Gate 1L.
 2. Зафиксировать численные пороги Gate 1B на независимых body/bone annotations и
    segmentation-repeatability; до этого его состояние `NOT VALIDATED`.
 3. Надёжная сегментация лёгких, тела, рёбер и тканей в исходном FOV.

@@ -157,3 +157,7 @@ Batch-команда `breathgeom registration sliding-synthetic` выполне�
 Итог — algorithmic FAIL (2/3). Body/contact/topology прошли во всех случаях. S1.0 не
 запускается на 13-case real regression set и не используется для карт. Следующий кандидат
 должен иметь новую версию S1.1 и замороженную спецификацию до batch-прогона.
+
+S1.1 впоследствии прошёл отдельный frozen multipattern synthetic gate 4/4. Его
+спецификация и ограничения находятся в `SLIDING_REGISTRATION_S11.md`; synthetic PASS
+разрешает development real pairs, но не заменяет Gate 1L/1B.

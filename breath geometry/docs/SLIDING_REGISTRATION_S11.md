@@ -80,3 +80,18 @@ contact, slip, topology и round-trip gates. Порог не меняется: �
   слепой выборкой.
 - Подбор архитектуры видел axis-safe azimuthal v2.1; поэтому его случаи development, а не
   независимая итоговая валидация.
+
+## Frozen результат
+
+Первый batch на suite v3 выполнен code version `8a400e4` без изменения config:
+
+- nominal/shallow/deep azimuthal: PASS с lung p95 0.687/0.773/1.247 мм;
+- новый deep longitudinal: PASS, lung p95 1.359 мм, slip 5.055 при truth 5.537 мм;
+- body/contact/topology: PASS 4/4, folding нет.
+
+Итог algorithmic synthetic gate — PASS 4/4. Отчёт с checksums, coefficient table,
+исходным ConvexAdam сравнением и spatial diagnostics находится в
+`notebooks/07_sliding_s11_synthetic_benchmark.ipynb`.
+
+Следующий разрешённый этап — development real pairs без expert landmarks. Gate 1L/1B и
+карты человека этим результатом не пройдены.

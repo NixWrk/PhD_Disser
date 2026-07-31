@@ -15,8 +15,10 @@ elastix baseline не проходит gate. Locked ConvexAdam улучшил ex
 но также прошёл полный gate у 0/13, поэтому парные карты толщины остаются заблокированы.
 Исторический S1.0 batch на phantom v2.0 superseded из-за осевой сингулярности ground truth.
 На исправленном axis-safe v2.1 S1.0 прошёл 2/3: shallow и nominal PASS, deep anisotropic
-провален по dense lung field и slip. Поэтому real-pair перезапуск S1.0 не выполнялся.
-Подтверждённой оценки изменения мышцы/жира и модели перехода вдох→выдох пока нет.
+провален по dense lung field и slip. Новый frozen S1.1 с low-rank tangential model прошёл
+multipattern synthetic gate 4/4, включая заранее не запускавшийся longitudinal case.
+Следующий этап — development real pairs и затем независимый Gate 1L/1B; до них
+подтверждённой оценки изменения мышцы/жира и модели перехода вдох→выдох нет.
 
 Начинать чтение следует здесь:
 
