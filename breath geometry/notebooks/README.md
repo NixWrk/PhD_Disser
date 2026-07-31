@@ -62,9 +62,12 @@ Notebook в этом каталоге — интерактивный QC/отчё
 - `16_piecewise_svf_j12_identifiability_screen.ipynb` сравнивает truth/glued/zero/
   inverse/estimated data terms и локализует boundary bias, MIND descriptor failure
   для twist/shallow и optimization failure для counter-rotation;
-- outputs этих пятнадцати notebooks коммитятся как удобное представление результатов, но
+- `17_wall_measurement_uncertainty_w1.ipynb` показывает шумовой пол профиля стенки под
+  пятью семействами возмущений конвейера внутри одной фазы, структурную проверку
+  инварианта `tissue_window` и заранее заданный verdict; фазы в нём не сравниваются;
+- outputs этих шестнадцати notebooks коммитятся как удобное представление результатов, но
   источником чисел остаются воспроизводимые артефакты в `results/`;
-- после обновления batch-артефактов все пятнадцать notebooks нужно выполнить заново и
+- после обновления batch-артефактов все шестнадцать notebooks нужно выполнить заново и
   проверить,
   что в них нет локальных путей и медицинских идентификаторов.
 
