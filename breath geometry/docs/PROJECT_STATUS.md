@@ -145,6 +145,11 @@
   дополнительно провалены lung/body endpoint p95. `selected_variant=null`,
   `candidate_freeze_allowed=false`, held-out не загружался. Все 21 checksum совпали.
   Отчёт — `15_piecewise_svf_j12_contact_development_v3.ipynb`.
+- До следующего вычисления заморожен development-only identifiability screen:
+  truth/estimated/glued/scale-only/zero/inverse fields сравниваются одним и тем же
+  MIND и intensity objective на lung/body full/interior masks. Decision threshold
+  ratio `0.8` должен отделить ошибку descriptor, optimizer/parameterization,
+  generator observability или transform direction. Challenge не участвует.
 - 3D-профили по всей сегментированной поверхности лёгких без электродного фильтра. Каждый
   путь раскладывается на жир/мышцу/кость/прочее; пути через лёгкое и обрезанный FOV
   отбраковываются. Парные дельты программно запрещены при провале registration gate.

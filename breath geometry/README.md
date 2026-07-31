@@ -53,8 +53,10 @@ tangential slip только `0.003–0.007 мм` при truth `1.327–2.998 м
 11. [Curved representation gate J1.1](docs/PIECEWISE_SVF_J11_REPRESENTATION_GATE.md)
 12. [Протокол J1.2 synthetic development](docs/PIECEWISE_SVF_J12_DEVELOPMENT_PROTOCOL.md)
 13. [Контактно-согласованный протокол J1.2 v2](docs/PIECEWISE_SVF_J12_CONTACT_PROTOCOL_V2.md)
-14. [Аудит текущего notebook](docs/NOTEBOOK_AUDIT.md)
-15. [Правила данных и приватности](docs/DATA_PRIVACY.md)
+14. [Finer-grid протокол J1.2 v3](docs/PIECEWISE_SVF_J12_FINE_GRID_PROTOCOL_V3.md)
+15. [Identifiability screen J1.2](docs/PIECEWISE_SVF_J12_IDENTIFIABILITY_SCREEN.md)
+16. [Аудит текущего notebook](docs/NOTEBOOK_AUDIT.md)
+17. [Правила данных и приватности](docs/DATA_PRIVACY.md)
 
 Большие документы [RESEARCH_REPORT.md](docs/RESEARCH_REPORT.md),
 [research_and_implementation_plan.md](research_and_implementation_plan.md) и

@@ -903,3 +903,17 @@ orphan subprocess; повторный managed запуск некоторое в
 9 field и 9 record hashes совпали с итоговым manifest (`21/21`). Поля и verdict
 принимаются; runtime/elapsed не используются для сравнительного вывода из-за возможной
 конкуренции за GPU.
+
+## D-039. До новой architecture замораживается data-term identifiability screen
+
+**Решение до вычисления.** Зафиксированы шесть candidates: truth, balanced estimate,
+mean-velocity glued, common-scale-only, zero и inverse-truth. Для каждого отдельно
+сравниваются MIND/intensity losses в lung/body на full и eroded masks.
+
+**Порог.** Truth считается различимой только при loss ratio `≤0.8` к wrong-direction,
+zero или glued control. Порог и классификация descriptor/optimizer/generator/direction
+записаны до запуска.
+
+**Причина.** Добавлять weights к проваленному search нельзя, пока неизвестно, содержит ли
+его objective градиент, отличающий правильный tangential correspondence от near-glued
+решения. Screen использует только development и не загружает held-out.

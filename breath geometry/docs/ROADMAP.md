@@ -161,6 +161,9 @@ Gate 4: модель выигрывает у B2 больше измерител�
     `1.327–2.998 мм`; candidate не выбран. Held-out остаётся закрытым. Следующий шаг —
     отдельный identifiability/data-term screen на известных motion modes до новой
     algorithm version, а не добавление weights в просмотренный search.
+    Screen truth/estimated/glued/scale-only/zero/inverse и ratio threshold `0.8`
+    заморожены до вычисления; текущий шаг — реализовать exact runner-convention
+    evaluator и выполнить checksummed development batch.
 12. После возобновлённого J1.2 отдельно улучшить initial correspondence для
     `LungCT_0005`, затем
     заморозить полноценную S1.2 спецификацию и запустить все шесть development subjects
