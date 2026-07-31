@@ -74,6 +74,14 @@ from breathgeom.real_s12_screen import (
     screen_real_s1_fields,
     write_s12_heuristic_screen,
 )
+from breathgeom.spatial_map_w2 import (
+    BinStatistic,
+    MapEvaluation,
+    decide_map,
+    evaluate_phase_map,
+    load_spatial_map_config,
+    write_spatial_map,
+)
 from breathgeom.synthetic_j10 import (
     load_j10_config,
     run_j10_gate,
@@ -1626,6 +1634,88 @@ def measure_uncertainty_budget_w1(
         f"separate fat/muscle allowed: {verdict.separate_fat_muscle_allowed}\n"
         f"manifest -> {manifest_path}"
     )
+
+
+@measure_app.command("spatial-map-w2")
+def measure_spatial_map_w2(
+    config: Annotated[
+        Path,
+        typer.Option(exists=True, dir_okay=False, readable=True),
+    ] = Path("configs/wall_spatial_map_w2.json"),
+    manifest: Annotated[
+        Path,
+        typer.Option(exists=True, dir_okay=False, readable=True),
+    ] = Path("data/interim/respiratory_pairs.local.csv"),
+    output: Annotated[Path, typer.Option()] = Path("results/wall_spatial_map_w2"),
+) -> None:
+    """Scan sampling density against map resolution; no phase comparison."""
+    map_config = load_spatial_map_config(config)
+    matches = [
+        row
+        for row in read_pair_manifest(manifest)
+        if row.dataset_id == map_config.dataset_id
+        and row.subject_id == map_config.subject_id
+        and row.complete
+    ]
+    if len(matches) != 1:
+        console.print(f"[red]Expected one complete pair, found {len(matches)}.[/red]")
+        raise typer.Exit(code=2)
+    data = load_pair_data(matches[0])
+    volumes = {
+        "fixed": cast(WallIntArray, data.fixed_ras),
+        "moving": cast(WallIntArray, data.moving_ras),
+    }
+
+    evaluations: list[MapEvaluation] = []
+    bins: dict[tuple[str, float, str], tuple[BinStatistic, ...]] = {}
+    for phase in map_config.phases:
+        if phase not in volumes:
+            console.print(f"[red]Unknown phase {phase}.[/red]")
+            raise typer.Exit(code=2)
+        console.print(f"scanning {phase} ...")
+        phase_evaluations, phase_bins = evaluate_phase_map(
+            volumes[phase], data.spacing, map_config, phase
+        )
+        evaluations.extend(phase_evaluations)
+        for (density, resolution), entries in phase_bins.items():
+            bins[(phase, density, resolution)] = entries
+
+    verdict = decide_map(tuple(evaluations), map_config)
+    manifest_path = write_spatial_map(
+        output, config, map_config, tuple(evaluations), bins, verdict
+    )
+
+    table = Table(title=f"W2 scan {map_config.subject_id}: p95 per-bin noise, mm")
+    table.add_column("phase")
+    table.add_column("density mm")
+    table.add_column("resolution")
+    table.add_column("occupied")
+    table.add_column("median n")
+    table.add_column("p95 noise")
+    table.add_column("qualifies")
+    for item in evaluations:
+        table.add_row(
+            item.phase,
+            f"{item.sampling_density_mm:g}",
+            item.resolution,
+            f"{item.occupied_fraction:.2f}",
+            f"{item.median_bin_count:.0f}",
+            f"{item.p95_bootstrap_se_mm:.3f}",
+            "yes" if item.qualifies else "no",
+        )
+    console.print(table)
+    if verdict.selection_made:
+        console.print(
+            f"selected: density {verdict.selected_density_mm} mm, "
+            f"resolution {verdict.selected_resolution}, "
+            f"p95 noise {verdict.selected_p95_noise_mm:.3f} mm"
+        )
+    else:
+        console.print(
+            f"[yellow]no configuration qualified; best p95 noise "
+            f"{verdict.best_p95_noise_mm:.3f} mm[/yellow]"
+        )
+    console.print(f"manifest -> {manifest_path}")
 
 
 @measure_app.command("wall")

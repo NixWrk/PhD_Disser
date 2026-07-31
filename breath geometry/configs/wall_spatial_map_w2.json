@@ -36,7 +36,9 @@
     {"angular_sectors": 36, "axial_levels": 12}
   ],
   "per_bin_noise": {
-    "primary": "bootstrap standard error of the per-bin median, 400 resamples, seed 20260731",
+    "primary": "bootstrap standard error of the per-bin median",
+    "bootstrap_resamples": 400,
+    "bootstrap_seed": 20260731,
     "statistic": "p95 across occupied bins of the bootstrap standard error",
     "confirmation": "actual per-bin median shift under the five W1 perturbation families, run only at the selected configuration",
     "reason": "the W1 spatial spread was already bounded by median sampling error, so the bootstrap is the primary estimator and the perturbation run is the check that nothing systematic hides under it"
