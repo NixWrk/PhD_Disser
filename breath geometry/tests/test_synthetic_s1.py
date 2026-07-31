@@ -38,6 +38,20 @@ def test_axis_safe_sliding_suite_has_three_unique_variants() -> None:
     )
 
 
+def test_multipattern_suite_adds_unseen_longitudinal_challenge() -> None:
+    suite = load_sliding_suite(
+        REPO_ROOT / "configs/sliding_phantom_suite_v3.json"
+    )
+
+    assert suite.suite_version == "sliding-phantom-v3.0-multipattern"
+    assert len(suite.cases) == 4
+    assert suite.cases[-1].case_id == "deep_longitudinal"
+    assert (
+        suite.cases[-1].params.tangential_pattern
+        == "longitudinal_projection"
+    )
+
+
 def test_exact_hidden_fields_pass_algorithmic_synthetic_gate() -> None:
     suite = load_sliding_suite(
         REPO_ROOT / "configs/sliding_phantom_suite_v1.json"

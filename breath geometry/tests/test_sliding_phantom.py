@@ -106,6 +106,29 @@ def test_sliding_phantom_rejects_unknown_tangential_ramp() -> None:
         SlidingPhantomParams(tangential_ramp_mode="unknown")
 
 
+def test_longitudinal_pattern_is_smooth_and_tangential() -> None:
+    phantom = make_sliding_phantom(
+        SlidingPhantomParams(tangential_pattern="longitudinal_projection")
+    )
+    metrics = evaluate_sliding_interface(phantom)
+    normal_projection = np.sum(
+        phantom.interface_tangent * phantom.interface_normal,
+        axis=-1,
+    )
+
+    assert np.all(np.isfinite(phantom.lung_displacement_mm))
+    assert float(np.max(np.abs(normal_projection))) < 1e-6
+    assert metrics.tangential_slip_median_mm > 2.0
+    assert metrics.tangential_slip_median_mm < 4.0
+    assert metrics.normal_mismatch_p95_mm < 1e-6
+    assert metrics.lung_nonpositive_jacobian_fraction == 0.0
+
+
+def test_sliding_phantom_rejects_unknown_tangential_pattern() -> None:
+    with pytest.raises(ValueError, match="pattern"):
+        SlidingPhantomParams(tangential_pattern="unknown")
+
+
 def test_sliding_metrics_detect_wrong_body_normal_motion() -> None:
     phantom = make_sliding_phantom()
     zero_body = np.zeros_like(phantom.body_displacement_mm)

@@ -460,3 +460,49 @@ DataFrame с индексом case_id. Batch-verdict и CSV от этого не
 
 **Пересмотр.** Только как новый frozen S1.1 на v2.1 и дополнительном независимом гладком
 паттерне. 13 expert cases до synthetic PASS не просматривать.
+
+## D-023. S1.1 фиксируется как low-rank tangential model до нового challenge
+
+**Development-наблюдения.** На раскрытом `deep_anisotropic` выполнены ограниченные
+post-hoc пробы без expert landmarks:
+
+- sweep `lambda_weight`, `grid_sp` и inverse consistency ConvexAdam: лучший lung p95
+  3.367 мм, gate не пройден;
+- lung Demons/B-spline: p95 4.43–7.67 мм;
+- исходный и residual 3D optical flow: p95 2.90–28.37 мм, часть режимов создаёт folding;
+- signed-distance shape pre-registration + residual ConvexAdam: p95 4.07–6.59 мм,
+  часть режимов создаёт folding;
+- абсолютная mask-derived axis-twist tangent mode с коэффициентом, выбранным по high-pass
+  CT в эрозированном core: p95 1.123 мм, slip 6.107 мм, folding 0.
+
+Последнее число показывает проверяемый механизм, но не является результатом: мод
+разрабатывался после просмотра azimuthal truth и оценён на том же case.
+
+**Решение.** Зафиксировать S1.1 как `raw ConvexAdam normal + six-mode tangential model +
+unchanged body/contact` согласно `SLIDING_REGISTRATION_S11.md` и
+`configs/sliding_s1_v1.json`. Не переносить неудачные dense/residual варианты.
+
+До реализации добавить в phantom отдельный гладкий `longitudinal_projection` и frozen
+suite `sliding-phantom-v3.0-multipattern` с новым case `deep_longitudinal`. Его truth
+median slip равен 5.537 мм, regional folding отсутствует, inverse round-trip p95
+0.099 мм. Алгоритмическая оценка этого case до фиксации S1.1 запрещена и не выполнялась.
+
+**Причина.** S1.0 normal/body части уже проходят; замена всего регистратора увеличивает
+риск и в тестах не помогает. Низкоранговая tangent model адресует конкретно потерю
+крупномасштабного скольжения, остаётся идентифицируемой по CT objective и имеет явное
+ограничение применимости.
+
+**Frozen параметры.**
+
+- suite SHA-256:
+  `DA7E5E1713A78944E1533EE1BA187520BB41AF881C5B3EF93E236B7362D63BD5`;
+- S1.1 config SHA-256:
+  `1B1DED32AEDB38F02A279B78ECF4FABCE91B20F55C290457D32196D485C85DEA`;
+- прежние gate thresholds без изменения; требуется общий PASS 4/4.
+
+**Ограничение.** Даже 4/4 не разрешает карты человека: шесть мод — сильный prior, который
+может не описывать локальную деформацию настоящего лёгкого. После synthetic gate нужны
+independent landmarks Gate 1L; residual-weight 0 будет отдельным предметом проверки.
+
+**Пересмотр.** Только новой версией S1.2 и новым config; параметры S1.1 после первого
+batch v3 не менять.

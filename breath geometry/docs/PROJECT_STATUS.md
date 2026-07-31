@@ -113,8 +113,9 @@
 
 ## Главные технические долги
 
-1. Специфицировать и реализовать versioned S1.1 для большого внутреннего тангенциального
-   движения. Заморозить его до batch-прогона; expert 13-case test не использовать.
+1. Реализовать уже замороженный S1.1: raw ConvexAdam normal + шесть mask-derived
+   tangential modes, коэффициенты по high-pass CT. Suite v3 с новым непросмотренным
+   longitudinal challenge и config зафиксированы; expert 13-case test не использовать.
 2. Зафиксировать численные пороги Gate 1B на независимых body/bone annotations и
    segmentation-repeatability; до этого его состояние `NOT VALIDATED`.
 3. Надёжная сегментация лёгких, тела, рёбер и тканей в исходном FOV.

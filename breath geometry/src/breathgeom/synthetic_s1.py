@@ -234,9 +234,11 @@ def evaluate_synthetic_s1_fields(
             else raw_body_displacement_mm
         ),
     )
+    truth_metrics = evaluate_sliding_interface(phantom)
     endpoint_limit = gate.endpoint_p95_voxels_max * max(pair.spacing_mm)
     slip_error = abs(
-        metrics.tangential_slip_median_mm - case.params.tangential_slip_mm
+        metrics.tangential_slip_median_mm
+        - truth_metrics.tangential_slip_median_mm
     )
     reasons: list[str] = []
     if transform_direction != pair.transform_direction:
@@ -272,7 +274,7 @@ def evaluate_synthetic_s1_fields(
         shape=case.params.shape,
         spacing_mm=case.params.spacing_mm,
         normal_motion_truth_mm=case.params.normal_motion_mm,
-        tangential_slip_truth_mm=case.params.tangential_slip_mm,
+        tangential_slip_truth_mm=truth_metrics.tangential_slip_median_mm,
         endpoint_p95_limit_mm=endpoint_limit,
         lung_field_mean_mm=lung_error.mean_mm,
         lung_field_p95_mm=lung_error.p95_mm,

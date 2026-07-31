@@ -39,6 +39,7 @@ class SlidingPhantomParams:
     body_radii_mm: tuple[float, float, float] = (31.0, 29.0, 33.0)
     normal_motion_mm: float = 3.0
     tangential_slip_mm: float = 4.0
+    tangential_pattern: str = "azimuthal"
     tangential_ramp_mode: str = "cylindrical_axis_safe"
     tangential_full_slip_radius_fraction: float = 0.75
     interface_band_mm: float = 1.0
@@ -76,6 +77,8 @@ class SlidingPhantomParams:
             raise ValueError("body ellipsoid must fit inside the phantom grid")
         if self.normal_motion_mm < 0 or self.tangential_slip_mm < 0:
             raise ValueError("motion amplitudes must be non-negative")
+        if self.tangential_pattern not in {"azimuthal", "longitudinal_projection"}:
+            raise ValueError("unknown tangential pattern")
         if self.tangential_ramp_mode not in {
             "ellipsoidal_v1",
             "cylindrical_axis_safe",
@@ -235,29 +238,46 @@ def make_sliding_phantom(
     lung_mask = lung_level <= 1.0
     body_mask = body_level <= 1.0
     normal = _ellipsoid_normal(coordinates, params.lung_radii_mm)
-    tangent = _azimuthal_tangent(coordinates, normal)
-
     # The normal amplitude is constant throughout a narrow two-sided interface
     # band.  It decays only deeper into the body wall.  Lung motion ramps from
     # zero at the centre to avoid an orientation singularity.
     lung_ramp = np.clip(lung_level / 0.75, 0.0, 1.0)
-    if params.tangential_ramp_mode == "ellipsoidal_v1":
-        # Historical phantom v2.0 behaviour.  This is retained only so that
-        # the superseded S1.0 report remains exactly reproducible.
-        tangential_ramp = lung_ramp
+    if params.tangential_pattern == "longitudinal_projection":
+        longitudinal = np.zeros_like(coordinates)
+        longitudinal[..., 2] = 1.0
+        projected = longitudinal - (
+            np.sum(longitudinal * normal, axis=-1, keepdims=True) * normal
+        )
+        projected_norm = np.linalg.norm(projected, axis=-1, keepdims=True)
+        tangent = np.divide(
+            projected,
+            projected_norm,
+            out=np.zeros_like(projected),
+            where=projected_norm > np.finfo(np.float64).eps,
+        )
+        # Keep the unnormalised projection amplitude.  It is smooth and
+        # naturally vanishes where the superior direction is normal to the
+        # pleura, unlike a normalised tangent at those poles.
+        tangential_ramp = lung_ramp * projected_norm[..., 0]
     else:
-        # An azimuthal unit tangent is undefined on its rotation axis.  Scaling
-        # by cylindrical distance makes the resulting vector field continuous
-        # at that axis, including at the superior and inferior poles.
-        cylindrical_level = np.sqrt(
-            np.square(coordinates[..., 0] / params.lung_radii_mm[0])
-            + np.square(coordinates[..., 1] / params.lung_radii_mm[1])
-        )
-        tangential_ramp = np.clip(
-            cylindrical_level / params.tangential_full_slip_radius_fraction,
-            0.0,
-            1.0,
-        )
+        tangent = _azimuthal_tangent(coordinates, normal)
+        if params.tangential_ramp_mode == "ellipsoidal_v1":
+            # Historical phantom v2.0 behaviour.  This is retained only so that
+            # the superseded S1.0 report remains exactly reproducible.
+            tangential_ramp = lung_ramp
+        else:
+            # An azimuthal unit tangent is undefined on its rotation axis.
+            # Scaling by cylindrical distance makes the resulting vector field
+            # continuous there, including at the superior/inferior poles.
+            cylindrical_level = np.sqrt(
+                np.square(coordinates[..., 0] / params.lung_radii_mm[0])
+                + np.square(coordinates[..., 1] / params.lung_radii_mm[1])
+            )
+            tangential_ramp = np.clip(
+                cylindrical_level / params.tangential_full_slip_radius_fraction,
+                0.0,
+                1.0,
+            )
     interface_hold = params.interface_band_mm / min(params.lung_radii_mm) + 0.02
     body_excess = np.maximum(lung_level - 1.0 - interface_hold, 0.0)
     body_normal_amplitude = params.normal_motion_mm * np.exp(-body_excess / 0.8)
