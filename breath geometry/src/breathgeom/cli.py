@@ -921,7 +921,7 @@ def registration_sliding_s12_heuristic_screen(
                 console.print(
                     f"  {record.variant}: {verdict}; "
                     f"keypoint {record.keypoint_tre_mean_mm:.2f} mm; "
-                    f"lung J≤0 {100 * record.lung_nonpositive_jacobian_fraction:.3f}%; "
+                    f"lung J<=0 {100 * record.lung_nonpositive_jacobian_fraction:.3f}%; "
                     f"normal {record.interface_normal_mismatch_p95_mm:.2f} mm"
                 )
         except Exception as error:
