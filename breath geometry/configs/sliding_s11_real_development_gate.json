@@ -1,0 +1,36 @@
+{
+  "gate_version": "s1.1-real-development-v1",
+  "dataset_id": "learn2reg_lungct",
+  "subject_ids": [
+    "LungCT_0004",
+    "LungCT_0005",
+    "LungCT_0008",
+    "LungCT_0015",
+    "LungCT_0022",
+    "LungCT_0029"
+  ],
+  "expected_s1_version": "s1.1",
+  "expected_transform_direction": "fixed-expiration_to_moving-inspiration",
+  "require_all_subjects": true,
+  "require_absent_expert_landmarks": true,
+  "require_image_derived_keypoints": true,
+  "fov_boundary_margin_mm": 5.0,
+  "thresholds": {
+    "lung_fov_dice_min": 0.9,
+    "lung_fov_surface_p95_max_mm": 5.0,
+    "lung_surface_coverage_min": 0.5,
+    "common_fov_fraction_min": 0.45,
+    "keypoint_tre_after_mean_max_mm": 4.0,
+    "keypoint_tre_after_p95_max_mm": 10.0,
+    "keypoint_tre_improvement_fraction_min": 0.5,
+    "lung_jacobian_p01_min": 0.1,
+    "body_jacobian_p01_min": 0.1,
+    "nonpositive_jacobian_fraction_max": 0.0,
+    "interface_normal_mismatch_p95_max_mm": 1.0,
+    "coefficient_abs_fraction_max": 0.95,
+    "tangential_objective_relative_improvement_min": 0.001,
+    "lung_displacement_p99_max_mm": 60.0,
+    "body_displacement_p99_max_mm": 60.0,
+    "interface_core_voxel_count_min": 1000
+  }
+}

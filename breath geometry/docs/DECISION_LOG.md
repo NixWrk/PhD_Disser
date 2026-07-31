@@ -542,3 +542,45 @@ Gate 1L/1B. Перед просмотром frozen 13 expert cases нужно в
 
 **Пересмотр.** Только после development real-data failure или Gate 1L как новая версия
 S1.2. Текущий S1.1 и synthetic report не переписывать.
+
+## D-025. Real-development gate фиксируется до первого запуска S1.1
+
+**Решение.** До запуска S1.1 на настоящих парах зафиксированы выборка из шести LungCT,
+численные пороги и правила перехода в
+`SLIDING_S11_REAL_DEVELOPMENT.md` и
+`configs/sliding_s11_real_development_gate.json`. Expert landmarks в этой выборке должны
+отсутствовать; image-derived keypoints разрешены только как development-диагностика.
+
+PASS требует 6/6 случаев без вычислительных ошибок, mask/FOV и keypoint критериев,
+отсутствия folding в обоих региональных полях, устойчивого contact invariant, улучшения
+image objective и непопадания tangent coefficients в bounds. Независимо от PASS все
+поля имеют disposition `real_development_diagnostic_ONLY` и не могут использоваться для
+измерений.
+
+**Причина.** Настройка порогов после просмотра S1.1 результата превратила бы development
+batch в post-hoc демонстрацию. В то же время synthetic PASS недостаточен для открытия
+expert test: на реальных изображениях надо сначала исключить вычислительные, FOV,
+масочные и low-rank-bound отказы.
+
+**Правило перехода.** Только 6/6 PASS разрешает однократный frozen 13-case Gate 1L. Любой
+FAIL возвращает работу к новой версии S1.2 без просмотра expert coordinates.
+
+## D-026. Registration-body замыкается supplied lung mask, но wall region не меняется
+
+**Наблюдение.** Preflight шести development LungCT показал `lung ⊄ threshold_body` во
+всех случаях: вне посрезовой threshold-body mask лежит 0.5–10.0% supplied lung voxels.
+Неизменённый S1.1 поэтому остановился бы на корректном контрактном invariant ещё до
+регистрации.
+
+**Решение.** В S1.1 передавать
+`registration_body = threshold_body ∪ supplied_lung`, но FOV и диагностическую внешнюю
+поверхность считать по неизменённой threshold-body mask. Оптимизируемая стенка не
+меняется, поскольку `(threshold_body ∪ lung) \ lung = threshold_body \ lung`.
+
+**Причина.** Threshold-body и supplied lung mask построены разными алгоритмами; при
+обрезке или разрыве крупнейшего threshold-компонента их строгая вложенность не
+гарантирована. Union исправляет только контракт контейнера и не выдаётся за улучшенную
+сегментацию тела.
+
+**Пересмотр.** После появления единой валидированной 3D body segmentation. До этого
+исходная threshold mask и добавленная lung-closure должны сохраняться раздельно в QC.

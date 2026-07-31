@@ -132,9 +132,12 @@ Gate 4: модель выигрывает у B2 больше измерител�
    suite v3 добавляет не запускавшийся ранее longitudinal pattern.
 7. **Выполнено:** frozen S1.1 реализован и прошёл multipattern suite v3 у 4/4, включая
    заранее не запускавшийся longitudinal challenge. Параметры S1.1 больше не менять.
-8. **Текущий шаг:** S1.1 batch на development real pairs без expert landmarks. До
-   просмотра 13-case frozen landmarks зафиксировать computational/FOV/mask/objective/
-   coefficient/topology QC и правила failure disposition.
+8. **Текущий шаг:** S1.1 batch на development real pairs без expert landmarks.
+   Computational/FOV/mask/keypoint/objective/coefficient/topology QC, точная выборка и
+   disposition уже зафиксированы до запуска в
+   `configs/sliding_s11_real_development_gate.json`; expert coordinates не открывались.
+   Выявленный `lung ⊄ threshold_body` устраняется только контрактным union по D-026,
+   оставляя оптимизируемый wall region неизменным.
    Те же 13 expert cases
    использовать как frozen regression set; для итоговой внешней оценки отложить новый
    нераскрытый landmark-набор.

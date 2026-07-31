@@ -119,9 +119,12 @@
 
 ## Главные технические долги
 
-1. Выполнить S1.1 batch на development real pairs без expert landmarks. Проверить FOV,
-   сегментации, objective, coefficients, topology и отсутствие попадания в bounds; затем
-   заморозить real-data QC до однократного 13-case expert Gate 1L.
+1. Выполнить S1.1 batch на development real pairs без expert landmarks. Выборка, пороги,
+   disposition и правило перехода уже заморожены до запуска в
+   `SLIDING_S11_REAL_DEVELOPMENT.md` и
+   `configs/sliding_s11_real_development_gate.json`. Preflight выявил несовместимость
+   supplied lung и threshold-body masks; D-026 исправляет только registration-container,
+   не изменяя wall region или исходные маски.
 2. Зафиксировать численные пороги Gate 1B на независимых body/bone annotations и
    segmentation-repeatability; до этого его состояние `NOT VALIDATED`.
 3. Надёжная сегментация лёгких, тела, рёбер и тканей в исходном FOV.
