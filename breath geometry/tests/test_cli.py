@@ -21,3 +21,4 @@ def test_registration_help_lists_frozen_synthetic_gate() -> None:
     assert "sliding-real-development" in result.stdout
     assert "sliding-real-diagnose" in result.stdout
     assert "sliding-s12-heuristic-screen" in result.stdout
+    assert "piecewise-svf-j10-numeric" in result.stdout

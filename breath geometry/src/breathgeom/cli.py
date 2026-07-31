@@ -72,6 +72,11 @@ from breathgeom.real_s12_screen import (
     screen_real_s1_fields,
     write_s12_heuristic_screen,
 )
+from breathgeom.synthetic_j10 import (
+    load_j10_config,
+    run_j10_gate,
+    write_j10_gate,
+)
 from breathgeom.synthetic_s1 import (
     load_sliding_suite,
     run_synthetic_s1_suite,
@@ -535,6 +540,53 @@ def registration_benchmark(
     if failures:
         console.print(f"[red]{len(failures)} registration failures.[/red]")
         raise typer.Exit(code=1)
+
+
+@registration_app.command("piecewise-svf-j10-numeric")
+def registration_piecewise_svf_j10_numeric(
+    config: Annotated[
+        Path,
+        typer.Option(exists=True, dir_okay=False, readable=True),
+    ] = Path("configs/piecewise_svf_j10_numeric_gate_v1.json"),
+    output: Annotated[Path, typer.Option()] = Path(
+        "results/piecewise_svf_j10_numeric_gate_v1"
+    ),
+) -> None:
+    """Run the frozen analytic gate for the piecewise-SVF numerical foundation."""
+    frozen = load_j10_config(config)
+    runs = run_j10_gate(frozen)
+    manifest = write_j10_gate(
+        runs,
+        output,
+        config=frozen,
+        config_path=config,
+        repo_root=_repo_root(),
+    )
+    table = Table(title=f"Piecewise-SVF numeric gate: {frozen.protocol_version}")
+    table.add_column("case")
+    table.add_column("region")
+    table.add_column("gate")
+    table.add_column("endpoint p95", justify="right")
+    table.add_column("round-trip p95", justify="right")
+    table.add_column("J p01", justify="right")
+    table.add_column("reasons")
+    for run in runs:
+        for record in run.records:
+            table.add_row(
+                record.case_id,
+                record.region,
+                "[green]PASS[/green]" if record.gate_pass else "[red]FAIL[/red]",
+                f"{record.endpoint_p95_mm:.6f}",
+                f"{record.round_trip_p95_mm:.6f}",
+                f"{record.jacobian_p01:.6f}",
+                ";".join(record.gate_reasons) or "-",
+            )
+    console.print(table)
+    records = [record for run in runs for record in run.records]
+    console.print(
+        f"Overall: {sum(record.gate_pass for record in records)}/{len(records)} PASS; "
+        f"artifacts: {manifest}"
+    )
 
 
 @registration_app.command("sliding-synthetic")
