@@ -93,6 +93,12 @@ class WallParams:
     # the two-layer impedance model; neither is a validated estimator, and the
     # two disagree on the sign of the inhale-to-exhale change.
     reduction: Reduction = Reduction.MIN
+    # Tissue/air split that places the skin, and the aerated-lung split that
+    # places the pleura. Both were module constants; they are parameters so the
+    # uncertainty budget can move them without editing the measurement. The
+    # defaults reproduce the previous behaviour exactly.
+    body_hu: float = BODY_HU
+    air_hu: float = AIR_HU
 
 
 @dataclass(frozen=True)
@@ -165,7 +171,7 @@ def body_mask(slice_hu: IntArray, params: WallParams) -> BoolArray | None:
 
     Returns None when the slice holds no plausible body cross-section.
     """
-    closed = ndimage.binary_closing(slice_hu > BODY_HU, np.ones((5, 5), dtype=bool))
+    closed = ndimage.binary_closing(slice_hu > params.body_hu, np.ones((5, 5), dtype=bool))
     labels, count = ndimage.label(closed)
     if count == 0:
         return None
@@ -226,7 +232,7 @@ def lung_mask(
         occupied = np.where(body.any(axis=1))[0]
         midline = 0.5 * (float(occupied[0]) + float(occupied[-1]))
 
-    air = ndimage.binary_opening(body & (slice_hu < AIR_HU), np.ones((3, 3), dtype=bool))
+    air = ndimage.binary_opening(body & (slice_hu < params.air_hu), np.ones((3, 3), dtype=bool))
     rows = np.arange(air.shape[0], dtype=np.float64)[:, None]
     air &= (rows > midline) if side is Side.RIGHT else (rows < midline)
 

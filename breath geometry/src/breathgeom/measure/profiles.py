@@ -39,6 +39,15 @@ class ProfileParams:
     mapped_surface_tolerance_mm: float = 6.0
     fov_margin_mm: float = 2.0
     bone_lower_hu: float = 151.0
+    # Tissue classification windows, previously taken straight from module
+    # constants. They are parameters so the uncertainty budget can move the
+    # fat/muscle boundary; the defaults reproduce the previous behaviour.
+    fat_hu: tuple[float, float] = FAT_HU
+    muscle_hu: tuple[float, float] = MUSCLE_HU
+    # Origin of the surface binning grid, as a fraction of surface_spacing_mm.
+    # Shifting it selects a different set of pleural points on the same
+    # anatomy, which is what the sampling term of the budget perturbs.
+    sampling_offset_fraction: float = 0.0
 
     def __post_init__(self) -> None:
         positive = (
@@ -56,6 +65,12 @@ class ProfileParams:
             raise ValueError("max_thickness_mm must exceed min_thickness_mm")
         if self.fov_margin_mm < 0:
             raise ValueError("fov_margin_mm cannot be negative")
+        if self.fat_hu[0] >= self.fat_hu[1] or self.muscle_hu[0] >= self.muscle_hu[1]:
+            raise ValueError("tissue windows must be ordered low to high")
+        if self.fat_hu[1] >= self.muscle_hu[1]:
+            raise ValueError("the fat window must sit below the muscle window")
+        if not 0.0 <= self.sampling_offset_fraction < 1.0:
+            raise ValueError("sampling_offset_fraction must lie in [0, 1)")
 
 
 @dataclass(frozen=True)
@@ -166,11 +181,14 @@ def _region(vector_mm: FloatArray) -> str:
 
 
 def _surface_indices(lung_mask: BoolArray, spacing: tuple[float, float, float],
-                     surface_spacing_mm: float) -> npt.NDArray[np.int64]:
+                     surface_spacing_mm: float,
+                     offset_fraction: float = 0.0) -> npt.NDArray[np.int64]:
     indices = np.argwhere(binary_surface(lung_mask)).astype(np.int64)
     if not len(indices):
         return indices
-    points_mm = indices * np.asarray(spacing)
+    # The offset moves the bin lattice, not the anatomy, so a different but
+    # equally valid set of pleural points is selected on the same surface.
+    points_mm = indices * np.asarray(spacing) + offset_fraction * surface_spacing_mm
     bins = np.floor(points_mm / surface_spacing_mm).astype(np.int64)
     _, inverse = np.unique(bins, axis=0, return_inverse=True)
     bin_centres = (bins + 0.5) * surface_spacing_mm
@@ -287,8 +305,8 @@ def _measure_one(
         mode="nearest",
         prefilter=False,
     )
-    fat = (hu >= FAT_HU[0]) & (hu <= FAT_HU[1])
-    muscle = (hu >= MUSCLE_HU[0]) & (hu <= MUSCLE_HU[1])
+    fat = (hu >= params.fat_hu[0]) & (hu <= params.fat_hu[1])
+    muscle = (hu >= params.muscle_hu[0]) & (hu <= params.muscle_hu[1])
     bone = hu >= params.bone_lower_hu
     other = ~(fat | muscle | bone)
     counts = np.asarray([fat.sum(), muscle.sum(), bone.sum(), other.sum()], dtype=np.float64)
@@ -376,7 +394,9 @@ def extract_whole_body_profiles(
 ) -> ProfileSet:
     """Uniformly sample profiles over the full segmented lung surface."""
     params = params or ProfileParams()
-    indices = _surface_indices(lung_mask, spacing, params.surface_spacing_mm)
+    indices = _surface_indices(
+        lung_mask, spacing, params.surface_spacing_mm, params.sampling_offset_fraction
+    )
     if volume_ras.shape != body_mask.shape or body_mask.shape != lung_mask.shape:
         raise ValueError("volume, body and lung masks must share one grid")
     volume_hu = np.asarray(volume_ras, dtype=np.float32)

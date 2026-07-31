@@ -106,6 +106,14 @@ from breathgeom.synthetic_s1 import (
     write_synthetic_s1_suite,
 )
 from breathgeom.tools import collect_tool_status
+from breathgeom.uncertainty_w1 import (
+    MEASURANDS,
+    PhaseBudget,
+    decide,
+    evaluate_phase,
+    load_budget_config,
+    write_budget,
+)
 
 app = typer.Typer(help="Breath Geometry research CLI.")
 project_app = typer.Typer(help="Project validation commands.")
@@ -1555,6 +1563,68 @@ def profiles_extract_pair(
         f"fixed {fixed.valid_count}/{len(fixed.profiles)} valid -> {fixed_path}\n"
         f"moving {moving.valid_count}/{len(moving.profiles)} valid -> {moving_path}\n"
         f"paired status: {paired_status}\nsummary -> {summary_path}"
+    )
+
+
+@measure_app.command("uncertainty-budget-w1")
+def measure_uncertainty_budget_w1(
+    config: Annotated[
+        Path,
+        typer.Option(exists=True, dir_okay=False, readable=True),
+    ] = Path("configs/measurement_uncertainty_budget_w1.json"),
+    manifest: Annotated[
+        Path,
+        typer.Option(exists=True, dir_okay=False, readable=True),
+    ] = Path("data/interim/respiratory_pairs.local.csv"),
+    output: Annotated[Path, typer.Option()] = Path("results/measurement_uncertainty_budget_w1"),
+) -> None:
+    """Measure the wall-profile noise floor inside each phase; no phase comparison."""
+    budget_config = load_budget_config(config)
+    matches = [
+        row
+        for row in read_pair_manifest(manifest)
+        if row.dataset_id == budget_config.dataset_id
+        and row.subject_id == budget_config.subject_id
+        and row.complete
+    ]
+    if len(matches) != 1:
+        console.print(f"[red]Expected one complete pair, found {len(matches)}.[/red]")
+        raise typer.Exit(code=2)
+    data = load_pair_data(matches[0])
+    volumes = {
+        "fixed": cast(WallIntArray, data.fixed_ras),
+        "moving": cast(WallIntArray, data.moving_ras),
+    }
+
+    budgets: list[PhaseBudget] = []
+    for phase in budget_config.phases:
+        if phase not in volumes:
+            console.print(f"[red]Unknown phase {phase}.[/red]")
+            raise typer.Exit(code=2)
+        console.print(f"evaluating {phase} ...")
+        budgets.append(
+            evaluate_phase(volumes[phase], data.spacing, budget_config, phase)
+        )
+
+    verdict = decide(tuple(budgets), budget_config)
+    manifest_path = write_budget(output, config, budget_config, tuple(budgets), verdict)
+
+    table = Table(title=f"W1 budget {budget_config.subject_id}: combined half-range")
+    table.add_column("measurand")
+    for budget in budgets:
+        table.add_column(budget.phase)
+    for measurand in MEASURANDS:
+        table.add_row(
+            measurand,
+            *(f"{budget.combined(measurand):.4f}" for budget in budgets),
+        )
+    console.print(table)
+    console.print(
+        f"deciding phase: {verdict.deciding_phase}\n"
+        f"thickness: {verdict.thickness_classification}\n"
+        f"fat: {verdict.fat_classification}  muscle: {verdict.muscle_classification}\n"
+        f"separate fat/muscle allowed: {verdict.separate_fat_muscle_allowed}\n"
+        f"manifest -> {manifest_path}"
     )
 
 
