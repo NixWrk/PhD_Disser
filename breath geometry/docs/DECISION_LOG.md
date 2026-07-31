@@ -917,3 +917,28 @@ zero или glued control. Порог и классификация descriptor/o
 **Причина.** Добавлять weights к проваленному search нельзя, пока неизвестно, содержит ли
 его objective градиент, отличающий правильный tangential correspondence от near-glued
 решения. Screen использует только development и не загружает held-out.
+
+## D-040. Direction верен; primary screen сработал на boundary bias
+
+**Frozen результат.** Primary decision дал `direction_failure 3/3`, поскольку требовал
+ratio `≤0.8` одновременно для full-region MIND и intensity. Все checksum совпали,
+challenge не загружался.
+
+**Локализация заранее записанной interior metric.** На eroded masks truth/zero
+intensity ratio равен `0.086–0.266` и truth/inverse `0.022–0.104`: fixed→moving
+направление верно. На full masks truth/zero intensity становится `7.76–61.90` из-за
+sampling через independently rasterized lung boundary и partial-volume. Поэтому
+primary label сохраняется как frozen output, но не интерпретируется как смена знака
+transform.
+
+**Разделение причин.** Counter-rotation различим MIND относительно glued
+(`0.744 full`, `0.631 interior`), однако optimizer оставил near-zero slip — это
+optimizer/parameterization failure. Twist и shallow различимы interior intensity
+(`0.746`, `0.789`), но не MIND (`0.840–0.934`) при frozen пороге — descriptor
+failure/weak tangential signal. Для shallow balanced estimate даже хуже zero по full
+MIND (`1.463`).
+
+**Решение.** В новую architecture разрешено переносить только обоснованные изменения:
+validity/erosion или robust weighting у interface, tangentially sensitive data term и
+для MIND-identifiable modes улучшенную initialization/parameterization. Held-out
+остаётся закрытым; параметры новой версии должны быть заморожены до её development run.

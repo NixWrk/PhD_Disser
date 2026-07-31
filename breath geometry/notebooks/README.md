@@ -59,9 +59,12 @@ Notebook в этом каталоге — интерактивный QC/отчё
 - `15_piecewise_svf_j12_contact_development_v3.ipynb` показывает frozen search
   `FAIL 0/9`: contact/topology проходят, но estimated tangential slip коллапсирует
   почти к нулю; candidate отсутствует, challenge закрыт;
-- outputs этих четырнадцати notebooks коммитятся как удобное представление результатов, но
+- `16_piecewise_svf_j12_identifiability_screen.ipynb` сравнивает truth/glued/zero/
+  inverse/estimated data terms и локализует boundary bias, MIND descriptor failure
+  для twist/shallow и optimization failure для counter-rotation;
+- outputs этих пятнадцати notebooks коммитятся как удобное представление результатов, но
   источником чисел остаются воспроизводимые артефакты в `results/`;
-- после обновления batch-артефактов все четырнадцать notebooks нужно выполнить заново и
+- после обновления batch-артефактов все пятнадцать notebooks нужно выполнить заново и
   проверить,
   что в них нет локальных путей и медицинских идентификаторов.
 

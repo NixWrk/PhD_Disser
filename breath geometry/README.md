@@ -37,6 +37,11 @@ development search 3×3; held-out challenge и Gate 1L/1B остаются за�
 Frozen search выполнен и дал `0/9 PASS`: contact/topology сохранены, но estimated
 tangential slip только `0.003–0.007 мм` при truth `1.327–2.998 мм`. Candidate не
 выбран, held-out остаётся закрытым.
+Identifiability screen локализовал причины: full intensity objective испорчен boundary
+partial-volume, хотя на eroded interior correct direction восстанавливается у 3/3.
+Counter-rotation различим MIND, но optimizer его не достигает; twist и shallow
+различимы interior intensity, но не MIND при frozen ratio `0.8`. Следующая версия
+должна одновременно исключить boundary bias и усилить tangential correspondence.
 
 Начинать чтение следует здесь:
 
@@ -138,7 +143,8 @@ paired deltas только при наличии прошедшего gate по�
 в `12_piecewise_svf_j12_truth_preflight.ipynb`, а отдельный continuous/raster preflight
 contact-valid v2 — в `13_piecewise_svf_j12_contact_preflight_v2.ipynb`. Finer-grid v3
 PASS показан в `14_piecewise_svf_j12_contact_preflight_v3.ipynb`, development FAIL —
-в `15_piecewise_svf_j12_contact_development_v3.ipynb`. Числа batch-анализов всё равно
+в `15_piecewise_svf_j12_contact_development_v3.ipynb`, identifiability screen —
+в `16_piecewise_svf_j12_identifiability_screen.ipynb`. Числа batch-анализов всё равно
 берутся из `results/`.
 Подробная оценка первого notebook — в [NOTEBOOK_AUDIT.md](docs/NOTEBOOK_AUDIT.md).
 

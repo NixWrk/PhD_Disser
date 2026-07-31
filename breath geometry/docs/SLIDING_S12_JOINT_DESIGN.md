@@ -218,7 +218,10 @@ advected-surface distance/coverage и signed gap/collision. Равенство �
 порогов. Этот preflight прошёл 3/3, после чего frozen `torch-v0` search дал `0/9`.
 Optimizer сохранил contact/topology, но оценил interregional slip почти нулём. Класс
 `torch-v0` отвергнут до challenge; следующий design должен сначала доказать
-identifiability tangential motion по image term на известных modes.
+identifiability tangential motion по image term на известных modes. Выполненный screen
+показал full-intensity boundary bias, MIND-identifiable counter-rotation, но
+MIND-неразличимые twist/shallow. Следующая architecture должна использовать
+interior-valid data mask и отдельный tangentially sensitive term/initialization.
 
 Hidden truth используется только оценщиком. Подбор loss weights разрешён только на
 development synthetic cases; отдельный новый pattern остаётся закрытым до freeze.

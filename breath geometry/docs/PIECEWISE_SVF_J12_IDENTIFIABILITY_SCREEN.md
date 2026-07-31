@@ -63,3 +63,37 @@ Interior нужен для локализации boundary/partial-volume эфф
 
 Screen диагностический: он не открывает challenge и не разрешает анатомические
 измерения. Его результат определяет, что именно можно менять в новой algorithm version.
+
+## Выполненный результат
+
+Batch выполнен на commit `ced7ee89d7c9bb9282ad8058a2d30ba1f9cdf7e3`;
+screen/suite/development-manifest/runner/summary/decisions и три runtime checksum
+совпали. Challenge не загружался.
+
+Frozen primary rule, как и было записано, использовал full-region MIND и intensity:
+
+- `direction_failure`: 3/3;
+- counter-rotation truth/glued: MIND `0.744`, intensity `0.844`;
+- twist: MIND `0.894`, intensity `0.914`;
+- shallow: MIND `0.934`, intensity `1.062`.
+
+Predeclared interior diagnostic объяснил primary failure:
+
+- truth/zero intensity после erosion `0.086–0.266`, то есть correct fixed→moving
+  direction лучше zero у всех cases;
+- full-region truth/zero intensity `7.76–61.90`: ошибка сосредоточена на independently
+  rasterized moving boundary/partial-volume, а не в знаке transform;
+- interior truth/glued intensity: counter `0.586`, twist `0.746`, shallow `0.789`;
+- interior truth/glued MIND: counter `0.631`, twist `0.840`, shallow `0.903`.
+
+Следствие:
+
+- counter-rotation наблюдаем MIND, но `torch-v0` остаётся near-glued:
+  optimizer/parameterization failure;
+- twist и shallow наблюдаемы interior intensity, но не MIND при ratio `0.8`:
+  descriptor failure/слабый tangential signal;
+- full intensity нельзя добавлять как loss без validity mask у interface.
+
+Новая версия должна заранее определить interior-valid/robust boundary mask и
+tangentially sensitive data term либо initialization. Отчёт:
+`notebooks/16_piecewise_svf_j12_identifiability_screen.ipynb`.

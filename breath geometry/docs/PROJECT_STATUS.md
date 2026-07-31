@@ -150,12 +150,21 @@
   MIND и intensity objective на lung/body full/interior masks. Decision threshold
   ratio `0.8` должен отделить ошибку descriptor, optimizer/parameterization,
   generator observability или transform direction. Challenge не участвует.
+- Identifiability screen выполнен на commit `ced7ee8`, все checksum совпали. Frozen
+  primary rule дал `direction_failure 3/3`, но predeclared interior diagnostic показал,
+  что transform direction верен: truth/zero intensity ratio `0.086–0.266` после erosion,
+  тогда как full-region ratio ошибочно `7.76–61.90` из-за boundary partial-volume.
+  Counter-rotation различим MIND (`truth/glued=0.744`), поэтому его FAIL относится к
+  optimizer/parameterization. Twist и shallow не различимы MIND (`0.894`, `0.934`),
+  хотя interior intensity различает их (`0.746`, `0.789`): descriptor failure/слабый
+  tangential signal. Challenge не загружался. Отчёт —
+  `16_piecewise_svf_j12_identifiability_screen.ipynb`.
 - 3D-профили по всей сегментированной поверхности лёгких без электродного фильтра. Каждый
   путь раскладывается на жир/мышцу/кость/прочее; пути через лёгкое и обрезанный FOV
   отбраковываются. Парные дельты программно запрещены при провале registration gate.
 - Пороговые маски тела/лёгких, skin-to-lung shell, over-rib fat/muscle diagnostic и жёсткое
   совмещение по позвоночнику.
-- Исторический интерактивный notebook для `copd1` и четырнадцать выполненных
+- Исторический интерактивный notebook для `copd1` и пятнадцать выполненных
   notebook-отчётов,
   включая locked ConvexAdam benchmark, synthetic sliding/S1 benchmarks и явные QC-verdict.
 - Автотесты, `ruff` и strict `mypy`.
@@ -205,8 +214,10 @@
    exact-truth preflight при неизменных физических параметрах и gates прошёл 3/3, но
    frozen development search дал 0/9: near-glued поля проходят contact/topology и теряют
    почти весь tangential slip. `torch-v0` отвергнут, held-out остаётся закрытым. Текущий
-   шаг — проверить identifiability/data term на известных motion modes до определения
-   новой архитектуры J1.2; скрытый подбор новых weights запрещён.
+   Identifiability screen локализовал full-region boundary bias, MIND descriptor failure
+   для twist/shallow и optimizer/parameterization failure для counter-rotation. Текущий
+   шаг — заморозить новую architecture с interior-valid data mask и явной tangential
+   correspondence/initialization; скрытый подбор новых weights запрещён.
    Design и аудит готовых реализаций находятся в `SLIDING_S12_JOINT_DESIGN.md`.
 2. Зафиксировать численные пороги Gate 1B на независимых body/bone annotations и
    segmentation-repeatability; до этого его состояние `NOT VALIDATED`.
