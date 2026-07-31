@@ -124,6 +124,12 @@
   `optimizer_started=false`, challenge не загружался. Причина — generator соединял
   регионы только fixed-normal equality и сам не гарантировал общий advected interface.
   Отчёт — `12_piecewise_svf_j12_truth_preflight.ipynb`.
+- До реализации заморожен контактно-согласованный protocol v2: три development cases,
+  два неисполняемых held-out cases, конечный search из трёх вариантов и неизменённые
+  полевые пороги. Оба regional SVF получают общие осесимметричные log-scales и разные
+  вращение/закрутку, поэтому по построению отображают fixed interface в одно множество,
+  сохраняя касательный скачок. Код генератора и exact-truth batch ещё не реализованы;
+  challenge не загружался.
 - 3D-профили по всей сегментированной поверхности лёгких без электродного фильтра. Каждый
   путь раскладывается на жир/мышцу/кость/прочее; пути через лёгкое и обрезанный FOV
   отбраковываются. Парные дельты программно запрещены при провале registration gate.
@@ -174,10 +180,10 @@
    normal-contact constraint внутри совместной оптимизации и отдельное улучшение
    correspondence для `LungCT_0005`. J1.0 и J1.1 пройдены; fixed-normal equality как
    основной contact-критерий отвергнут. Runner J1.2 реализован, но старый phantom
-   провалил exact-truth preflight. Текущий шаг — построить новый contact-valid generator,
-   где обе региональные SVF по построению переводят fixed interface в одну advected
-   surface при различном tangential motion. Только после его exact-truth PASS заново
-   замораживаются development/challenge suites и разрешается search optimizer.
+   провалил exact-truth preflight. Contact-valid v2 suites/search и критерии уже
+   заморожены. Текущий шаг — реализовать generator, где обе региональные SVF по
+   построению переводят fixed interface в одну advected surface при различном tangential
+   motion. Только после independent exact-truth PASS разрешается search optimizer.
    Design и аудит готовых реализаций находятся в `SLIDING_S12_JOINT_DESIGN.md`.
 2. Зафиксировать численные пороги Gate 1B на независимых body/bone annotations и
    segmentation-repeatability; до этого его состояние `NOT VALIDATED`.

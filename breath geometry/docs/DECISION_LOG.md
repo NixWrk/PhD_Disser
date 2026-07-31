@@ -799,3 +799,29 @@ optimizer.
 initial-objective stop `1e-8`; повторный identity smoke вернул ровно нулевое поле,
 Jacobian 1, peak allocation около 77 MB. Это технический инвариант, не регистрационный
 результат.
+
+## D-034. J1.2 v2 строит общий contact как инвариант потока
+
+**Решение до реализации.** Зафиксированы
+`piecewise_svf_j12_contact_{development,challenge}_suite_v2.json`,
+`piecewise_svf_j12_contact_development_search_v2.json` и
+`PIECEWISE_SVF_J12_CONTACT_PROTOCOL_V2.md`. Параметры development, held-out cases,
+три weight variants и пороги записаны до получения чисел нового генератора и до любого
+optimizer run.
+
+**Конструкция.** Fixed interface — осесимметричный эллипсоид. Оба региональных SVF имеют
+одинаковые log-scales `(a, a, c)`, но разные постоянные вращения или Z-зависимые
+закрутки вокруг оси симметрии. Масштабирование задаёт общую конечную поверхность, а
+разность углов — скачок касательного соответствия. Таким образом contact обеспечивается
+как равенство advected surfaces, а не равенство проекций двух Euler displacement на
+нормаль исходной поверхности.
+
+**Предохранитель.** До CUDA development новый generator должен независимо пройти
+analytic contact, raster contact, round-trip, Jacobian/folding и ненулевой-slip gates.
+При любом FAIL optimizer не запускается. Challenge cases запрещено генерировать или
+оценивать до отдельного коммита выбранного candidate.
+
+**Ограничение вывода.** Даже synthetic development/challenge PASS докажет только
+работоспособность класса алгоритма на контролируемых изображениях. Переход к реальным
+парным картам требует J1.3 и Gate 1L/1B; single-CT прогноз выдоха остаётся последующим
+этапом.

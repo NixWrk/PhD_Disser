@@ -27,9 +27,10 @@ multipattern synthetic gate 4/4, включая заранее не запуск
 Это всё ещё не регистрация КТ. Текущий этап — J1.2 joint optimizer только на synthetic
 images. CUDA foundation прошла identity smoke, но старый synthetic generator был
 остановлен exact-truth preflight: 0/3 по advected contact, optimizer и challenge не
-запускались. Поэтому сначала нужен новый contact-valid generator, затем независимый
-Gate 1L/1B; до них подтверждённой оценки изменения мышцы/жира и модели перехода
-вдох→выдох нет.
+запускались. Contact-valid development/challenge/search v2 и критерии теперь заморожены
+до реализации генератора; следующий разрешённый запуск — только independent exact-truth
+preflight v2. Gate 1L/1B остаются закрыты; до них подтверждённой оценки изменения
+мышцы/жира и модели перехода вдох→выдох нет.
 
 Начинать чтение следует здесь:
 
@@ -45,8 +46,9 @@ Gate 1L/1B; до них подтверждённой оценки изменен
 10. [Численный gate piecewise-SVF J1.0](docs/PIECEWISE_SVF_J10_NUMERIC_GATE.md)
 11. [Curved representation gate J1.1](docs/PIECEWISE_SVF_J11_REPRESENTATION_GATE.md)
 12. [Протокол J1.2 synthetic development](docs/PIECEWISE_SVF_J12_DEVELOPMENT_PROTOCOL.md)
-13. [Аудит текущего notebook](docs/NOTEBOOK_AUDIT.md)
-14. [Правила данных и приватности](docs/DATA_PRIVACY.md)
+13. [Контактно-согласованный протокол J1.2 v2](docs/PIECEWISE_SVF_J12_CONTACT_PROTOCOL_V2.md)
+14. [Аудит текущего notebook](docs/NOTEBOOK_AUDIT.md)
+15. [Правила данных и приватности](docs/DATA_PRIVACY.md)
 
 Большие документы [RESEARCH_REPORT.md](docs/RESEARCH_REPORT.md),
 [research_and_implementation_plan.md](research_and_implementation_plan.md) и

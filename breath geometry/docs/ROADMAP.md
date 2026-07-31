@@ -151,9 +151,10 @@ Gate 4: модель выигрывает у B2 больше измерител�
     он показал, что fixed-normal equality не является критерием конечного контакта.
     CUDA runner с advected-surface loss и topology rejection реализован и прошёл identity
     smoke. Однако exact truth старого phantom провалил новый contact gate 0/3, поэтому
-    optimizer search не запускался. Текущий шаг — заменить generator на contact-valid
-    regional SVF, пройти exact-truth preflight и только затем заново заморозить
-    development/held-out split.
+    optimizer search не запускался. Contact-valid development/held-out split, конечный
+    search и preflight gates v2 уже заморожены до реализации. Текущий шаг — реализовать
+    generator из regional SVF с общей advected surface и пройти exact-truth preflight;
+    только после PASS разрешён optimizer search.
 12. После возобновлённого J1.2 отдельно улучшить initial correspondence для
     `LungCT_0005`, затем
     заморозить полноценную S1.2 спецификацию и запустить все шесть development subjects
