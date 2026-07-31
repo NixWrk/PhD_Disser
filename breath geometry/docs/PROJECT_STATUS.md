@@ -132,6 +132,10 @@
   Причина — бинарная поверхность на сетках `1.10–1.25 мм` не поддерживает заданный
   submillimeter gate. `optimizer_started=false`, challenge не загружался. Отчёт —
   `13_piecewise_svf_j12_contact_preflight_v2.ipynb`.
+- До следующего запуска заморожен v3 finer-grid protocol: относительно v2 меняются
+  только shape/spacing до примерно 1 мм; радиусы, deformation truth, textures, search
+  variants и gates неизменны. Exact-truth batch v3 ещё не выполнен, held-out v3 после
+  freeze не загружался.
 - 3D-профили по всей сегментированной поверхности лёгких без электродного фильтра. Каждый
   путь раскладывается на жир/мышцу/кость/прочее; пути через лёгкое и обрезанный FOV
   отбраковываются. Парные дельты программно запрещены при провале registration gate.

@@ -154,8 +154,9 @@ Gate 4: модель выигрывает у B2 больше измерител�
     optimizer search не запускался. Contact-valid v2 generator прошёл analytic contact
     3/3, но его сетки 1.10–1.25 мм провалили неизменённый raster gate 0/3
     (`0.753–0.848 мм`, coverage `92.2–94.9%`). Optimizer/challenge не запускались.
-    Текущий шаг — отдельный finer-grid protocol с теми же радиусами, motion и порогами,
-    затем новый exact-truth preflight; только после полного PASS разрешён search.
+    Finer-grid v3 protocol с теми же радиусами, motion, textures, search и порогами
+    заморожен до запуска. Текущий шаг — exact-truth preflight v3; только после полного
+    PASS разрешён search.
 12. После возобновлённого J1.2 отдельно улучшить initial correspondence для
     `LungCT_0005`, затем
     заморозить полноценную S1.2 спецификацию и запустить все шесть development subjects

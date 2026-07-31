@@ -848,3 +848,16 @@ post-hoc исправлением: p95 ухудшился до `1.14–1.26 мм
 на сетках около 1 мм дал raster p95 `0.640–0.719 мм` и coverage `97.3–98.3%`; это
 только основание для freeze, а не результат, пока нет отдельного committed config и
 batch.
+
+## D-036. V3 меняет только разрешение synthetic grid
+
+**Freeze до запуска.** Созданы development/search/challenge v3 и отдельный protocol.
+Относительно v2 изменены только `shape` и `spacing_mm`; вся физическая геометрия,
+движения, texture parameters, три search variants и gates сохранены буквально.
+
+**Причина.** Это устраняет выявленную D-035 несовместимость между spacing больше 1 мм и
+физическим raster gate `0.75 мм`, не ослабляя criterion и не меняя задачу optimizer.
+
+**Предохранитель.** Held-out v3 после этого freeze не загружается. Сначала exact-truth
+development должен пройти 3/3 с checksummed batch. До PASS optimizer остаётся
+запрещён.
