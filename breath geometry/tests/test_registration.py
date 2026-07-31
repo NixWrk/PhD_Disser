@@ -8,6 +8,7 @@ from breathgeom.measure.registration import (
     acquisition_fov_mask,
     compose_displacements,
     displacement_round_trip_metrics,
+    exponentiate_stationary_velocity,
     fov_aware_mask_metrics,
     invert_displacement,
     jacobian_metrics,
@@ -171,6 +172,52 @@ def test_displacement_composition_samples_base_at_residual_position() -> None:
 
     # At x=3: residual 2 plus base sampled at x=5 gives 7 mm.
     assert combined[3, 5, 5, 0] == pytest.approx(7.0)
+
+
+def test_stationary_velocity_exponential_preserves_translation_at_boundary() -> None:
+    velocity = np.zeros((18, 16, 14, 3), dtype=np.float32)
+    velocity[..., 0] = 2.0
+    velocity[..., 1] = -1.0
+
+    displacement = exponentiate_stationary_velocity(
+        velocity,
+        (1.0, 1.5, 2.0),
+        squaring_steps=7,
+    )
+
+    assert displacement == pytest.approx(velocity, abs=1e-6)
+
+
+def test_stationary_velocity_exponential_matches_diagonal_linear_flow() -> None:
+    shape = (32, 20, 18)
+    velocity = np.zeros(shape + (3,), dtype=np.float32)
+    rate = 0.025
+    velocity[..., 0] = rate * np.arange(shape[0], dtype=np.float32)[:, None, None]
+    steps = 8
+
+    displacement = exponentiate_stationary_velocity(
+        velocity,
+        (1.0, 1.0, 1.0),
+        squaring_steps=steps,
+    )
+
+    discrete_scale = (1.0 + rate / 2**steps) ** (2**steps) - 1.0
+    expected = discrete_scale * np.arange(shape[0], dtype=np.float64)
+    assert displacement[2:-2, 8, 8, 0] == pytest.approx(
+        expected[2:-2],
+        abs=2e-4,
+    )
+    domain = np.zeros(shape, dtype=bool)
+    # Positive expansion samples beyond the high-x FOV during later squarings.
+    # Keep that explicit boundary-condition band out of the analytic invariant.
+    domain[2:-4, 2:-2, 2:-2] = True
+    topology = jacobian_metrics(
+        displacement,
+        (1.0, 1.0, 1.0),
+        valid_domain=domain,
+    )
+    assert topology.nonpositive_fraction == 0.0
+    assert topology.p01 == pytest.approx(1.0 + discrete_scale, abs=2e-4)
 
 
 def test_displacement_inversion_round_trip_for_translation() -> None:

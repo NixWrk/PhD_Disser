@@ -9,6 +9,7 @@ than through visual plausibility or intensity similarity alone.
 from __future__ import annotations
 
 from dataclasses import dataclass
+from typing import Literal
 
 import numpy as np
 import numpy.typing as npt
@@ -661,6 +662,8 @@ def compose_displacements(
     base_fixed_to_moving_mm: VectorArray,
     residual_fixed_to_intermediate_mm: VectorArray,
     spacing: tuple[float, float, float],
+    *,
+    outside_mode: Literal["zero", "nearest"] = "zero",
 ) -> VectorArray:
     """Compose ``base(residual(x))`` fields on one zero-origin physical grid.
 
@@ -673,6 +676,8 @@ def compose_displacements(
         raise ValueError("displacement fields must share one grid")
     if base_fixed_to_moving_mm.ndim != 4 or base_fixed_to_moving_mm.shape[3] != 3:
         raise ValueError("displacement fields must have shape X x Y x Z x 3")
+    if outside_mode not in {"zero", "nearest"}:
+        raise ValueError("outside_mode must be 'zero' or 'nearest'")
     shape = base_fixed_to_moving_mm.shape[:3]
     x_grid, y_grid = np.meshgrid(
         np.arange(shape[0], dtype=np.float64),
@@ -696,7 +701,7 @@ def compose_displacements(
                 base_fixed_to_moving_mm[..., component],
                 coordinates,
                 order=1,
-                mode="constant",
+                mode="constant" if outside_mode == "zero" else "nearest",
                 cval=0.0,
                 prefilter=False,
             )
@@ -704,6 +709,47 @@ def compose_displacements(
                 residual[..., component] + sampled
             ).astype(np.float32)
     return np.ascontiguousarray(combined)
+
+
+def exponentiate_stationary_velocity(
+    velocity_mm: VectorArray,
+    spacing: tuple[float, float, float],
+    *,
+    squaring_steps: int = 8,
+    outside_mode: Literal["zero", "nearest"] = "nearest",
+) -> VectorArray:
+    """Integrate a stationary physical velocity with scaling-and-squaring.
+
+    ``velocity_mm`` is a fixed-grid vector field in millimetres per unit flow
+    time.  The returned displacement represents ``exp(velocity)`` in the same
+    fixed-to-moving convention used by the rest of this module.
+
+    A nearest-value extension is the default for exponentiation so a constant
+    translation remains constant at the array boundary.  This is an explicit
+    numerical boundary condition, not evidence that anatomy outside the CT FOV
+    was observed.
+    """
+    if velocity_mm.ndim != 4 or velocity_mm.shape[-1] != 3:
+        raise ValueError("velocity_mm must have shape X x Y x Z x 3")
+    if len(spacing) != 3 or any(value <= 0 for value in spacing):
+        raise ValueError("spacing must contain three positive values")
+    if squaring_steps < 0:
+        raise ValueError("squaring_steps must be non-negative")
+    if outside_mode not in {"zero", "nearest"}:
+        raise ValueError("outside_mode must be 'zero' or 'nearest'")
+    if not np.all(np.isfinite(velocity_mm)):
+        raise ValueError("velocity_mm must contain only finite values")
+    displacement = np.ascontiguousarray(
+        (velocity_mm / float(2**squaring_steps)).astype(np.float32)
+    )
+    for _ in range(squaring_steps):
+        displacement = compose_displacements(
+            displacement,
+            displacement,
+            spacing,
+            outside_mode=outside_mode,
+        )
+    return displacement
 
 
 def invert_displacement(
@@ -776,6 +822,7 @@ __all__ = [
     "RoundTripMetrics",
     "acquisition_fov_mask",
     "displacement_round_trip_metrics",
+    "exponentiate_stationary_velocity",
     "fov_aware_mask_metrics",
     "invert_displacement",
     "jacobian_metrics",
