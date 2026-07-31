@@ -4,6 +4,7 @@ import csv
 import hashlib
 import json
 import subprocess
+import time
 from dataclasses import asdict
 from pathlib import Path
 from typing import Annotated, cast
@@ -64,6 +65,12 @@ from breathgeom.real_s1_diagnostics import (
     RealS1VariantRecord,
     diagnose_real_s1_fields,
     write_real_s1_diagnostics,
+)
+from breathgeom.real_s12_screen import (
+    S12HeuristicRecord,
+    load_s12_heuristic_screen,
+    screen_real_s1_fields,
+    write_s12_heuristic_screen,
 )
 from breathgeom.synthetic_s1 import (
     load_sliding_suite,
@@ -807,6 +814,163 @@ def registration_sliding_real_diagnose(
     )
     for failure in failures:
         console.print(f"[yellow]diagnostic omission[/yellow] {failure}")
+
+
+@registration_app.command("sliding-s12-heuristic-screen")
+def registration_sliding_s12_heuristic_screen(
+    batch: Annotated[
+        Path,
+        typer.Option(exists=True, file_okay=False, readable=True),
+    ] = Path("results/sliding_s11_real_development_v1"),
+    pair_manifest: Annotated[
+        Path,
+        typer.Option(exists=True, dir_okay=False, readable=True),
+    ] = Path("data/interim/respiratory_pairs.local.csv"),
+    gate: Annotated[
+        Path,
+        typer.Option(exists=True, dir_okay=False, readable=True),
+    ] = Path("configs/sliding_s11_real_development_gate.json"),
+    screen_config: Annotated[
+        Path,
+        typer.Option(exists=True, dir_okay=False, readable=True),
+    ] = Path("configs/sliding_s12_heuristic_screen_v1.json"),
+    output: Annotated[Path, typer.Option()] = Path(
+        "results/sliding_s12_heuristic_screen_v1"
+    ),
+) -> None:
+    """Screen simple S1.2 repair classes on quarantined non-expert fields."""
+    started = time.perf_counter()
+    batch_manifest_path = batch / "manifest.json"
+    if not batch_manifest_path.is_file():
+        console.print(f"[red]Missing batch manifest: {batch_manifest_path}[/red]")
+        raise typer.Exit(code=2)
+    batch_manifest = json.loads(batch_manifest_path.read_text(encoding="utf-8"))
+    screen = load_s12_heuristic_screen(screen_config)
+    protocol = load_real_s1_protocol(gate)
+    if (
+        batch_manifest.get("artifact_type") != screen.input_artifact_type
+        or batch_manifest.get("usage") != screen.input_usage
+        or batch_manifest.get("s1_version") != screen.input_s1_version
+        or batch_manifest.get("measurement_eligible") is not False
+        or batch_manifest.get("selection", {}).get("expert_landmarks_used") is not False
+    ):
+        console.print("[red]Input batch does not match the frozen S1.2 screen.[/red]")
+        raise typer.Exit(code=2)
+    protocol_subjects = set(protocol.subject_ids)
+    screen_subjects = set(screen.expected_completed_subject_ids) | set(
+        screen.expected_missing_subject_ids
+    )
+    if protocol_subjects != screen_subjects:
+        console.print("[red]Screen subjects do not partition the frozen protocol.[/red]")
+        raise typer.Exit(code=2)
+    if tuple(batch_manifest.get("selection", {}).get("subject_ids", ())) != (
+        protocol.subject_ids
+    ):
+        console.print("[red]Input batch selection differs from the frozen protocol.[/red]")
+        raise typer.Exit(code=2)
+    expected_hashes = batch_manifest.get("field_sha256", {})
+    if not isinstance(expected_hashes, dict):
+        console.print("[red]Batch field_sha256 must be an object.[/red]")
+        raise typer.Exit(code=2)
+
+    all_selected = select_real_development_pairs(
+        read_pair_manifest(pair_manifest),
+        protocol,
+    )
+    pair_by_subject = {pair.subject_id: pair for pair in all_selected}
+    records: list[S12HeuristicRecord] = []
+    failures: list[str] = []
+    verified_hashes: dict[str, str] = {}
+    for index, subject_id in enumerate(
+        screen.expected_completed_subject_ids,
+        start=1,
+    ):
+        relative = (
+            f"{DEVELOPMENT_FIELD_DIR}/"
+            f"{protocol.dataset_id}__{subject_id}.npz"
+        )
+        field_path = batch / relative
+        expected_sha = expected_hashes.get(relative)
+        if not field_path.is_file() or not isinstance(expected_sha, str):
+            failures.append(f"{subject_id}: required input field is missing")
+            continue
+        actual_sha = hashlib.sha256(field_path.read_bytes()).hexdigest().upper()
+        if actual_sha != expected_sha:
+            failures.append(f"{subject_id}: input field checksum mismatch")
+            continue
+        verified_hashes[relative] = actual_sha
+        console.print(
+            f"[{index}/{len(screen.expected_completed_subject_ids)}] "
+            f"S1.2 heuristic screen: {subject_id}"
+        )
+        try:
+            data = load_real_development_pair(pair_by_subject[subject_id])
+            subject_records = screen_real_s1_fields(
+                data,
+                field_path,
+                screen=screen,
+                protocol=protocol,
+            )
+            records.extend(subject_records)
+            for record in subject_records:
+                verdict = (
+                    "[green]criteria PASS[/green]"
+                    if record.screen_criteria_pass
+                    else "[red]criteria FAIL[/red]"
+                )
+                console.print(
+                    f"  {record.variant}: {verdict}; "
+                    f"keypoint {record.keypoint_tre_mean_mm:.2f} mm; "
+                    f"lung J≤0 {100 * record.lung_nonpositive_jacobian_fraction:.3f}%; "
+                    f"normal {record.interface_normal_mismatch_p95_mm:.2f} mm"
+                )
+        except Exception as error:
+            failures.append(f"{subject_id}: {type(error).__name__}: {error}")
+
+    expected_missing = set(screen.expected_missing_subject_ids)
+    present_missing = {
+        Path(relative).stem.split("__")[-1]
+        for relative in expected_hashes
+        if Path(relative).stem.split("__")[-1] in expected_missing
+    }
+    if present_missing:
+        failures.append(
+            "expected-missing subjects unexpectedly have fields: "
+            + ",".join(sorted(present_missing))
+        )
+    written = write_s12_heuristic_screen(
+        tuple(records),
+        output,
+        failures=tuple(failures),
+        input_batch_manifest_path=batch_manifest_path,
+        input_field_sha256=verified_hashes,
+        screen_config_path=screen_config,
+        gate_config_path=gate,
+        screen=screen,
+        repo_root=_repo_root(),
+        batch_elapsed_s=time.perf_counter() - started,
+    )
+    coupled_pass = {
+        variant.name: sum(
+            record.screen_criteria_pass
+            for record in records
+            if record.variant == variant.name
+        )
+        for variant in screen.variants
+        if variant.couple_normal
+    }
+    table = Table(title="S1.2 heuristic model-class screen")
+    table.add_column("coupled variant")
+    table.add_column("criteria PASS", justify="right")
+    for variant, pass_count in coupled_pass.items():
+        table.add_row(
+            variant,
+            f"{pass_count}/{len(screen.expected_completed_subject_ids)}",
+        )
+    console.print(table)
+    console.print(f"Artifacts: {written}")
+    for failure in failures:
+        console.print(f"[yellow]screen failure[/yellow] {failure}")
 
 
 @profiles_app.command("extract-pair")
