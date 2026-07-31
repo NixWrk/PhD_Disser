@@ -769,3 +769,33 @@ symmetric surface distance/coverage плюс signed gap/collision. Fixed-normal 
 **Следствие.** Разрешён переход к joint optimizer только на synthetic images. Hidden
 truth остаётся у evaluator; positive/negative representation cases не используются для
 подгонки по результату. Реальные LungCT и expert Gate 1L пока не запускаются.
+
+## D-033. Старый sliding phantom отвергнут как J1.2 truth до запуска optimizer
+
+**Предохранитель.** Перед CUDA development добавлен exact-truth preflight: если
+generator не проходит тот же advected-surface gate собственными скрытыми полями,
+optimizer не запускается. Это отделяет ошибку ground truth от ошибки обратной задачи.
+
+**Frozen результат.** На commit `2b4c721` все три development case старого generator
+провалили preflight. Body-surface p95 составил `1.073`, `1.217`, `0.834 мм` при лимите
+`0.75 мм`; coverage `0.862`, `0.758`, `0.895` при минимуме `0.95`. Batch manifest
+фиксирует `optimizer_started=false`, `challenge_loaded=false`; checksums совпали.
+
+**Причина.** `SlidingPhantom` создавал moving lung mask через inverse lung field.
+Body field имел ту же normal component в fixed interface band, но не обязан был
+отображать этот interface в ту же конечную кривую поверхность. J1.1 уже доказал, что
+fixed-normal equality для этого недостаточна. Новый evaluator лишь обнаружил это
+противоречие в прежнем ground truth.
+
+**Решение.** Не ослаблять p95/coverage thresholds и не запускать три weight variants.
+Development/challenge v1 помечаются superseded до optimizer. Сначала нужен новый
+generator из двух региональных SVF с общей analytic advected surface и независимым
+tangential motion. Его exact fields обязаны пройти preflight до image synthesis и
+optimizer.
+
+**Инженерная проблема, найденная раньше preflight.** Первый CUDA identity smoke создал
+ложное движение `0.187 мм`: initial objective была практически нулевой, но Adam усиливал
+субвоксельный signed-distance gradient. Добавлены contact dead-band `0.05 мм` и
+initial-objective stop `1e-8`; повторный identity smoke вернул ровно нулевое поле,
+Jacobian 1, peak allocation около 77 MB. Это технический инвариант, не регистрационный
+результат.

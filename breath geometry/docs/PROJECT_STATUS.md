@@ -113,12 +113,24 @@
   `0.209 мм`. Следовательно, fixed-surface normal equality не является ни достаточным,
   ни необходимым критерием конечного contact. Отчёт —
   `11_piecewise_svf_j11_representation_gate.ipynb`.
+- Реализована foundation внешнего CUDA runner J1.2: два low-resolution SVF,
+  differentiable scaling-and-squaring, MIND, advected-surface loss, smoothness,
+  Jacobian barrier и topology update rejection. No-truth input schema покрыта тестами;
+  identity smoke после исправления initial-Adam drift вернул нулевое поле, Jacobian 1,
+  peak GPU memory около 77 MB.
+- J1.2 development suite v1 **заблокирован до optimizer**: обязательный exact-truth
+  preflight дал 0/3. У точных полей старого phantom body-surface p95
+  `0.835–1.217 мм` при лимите `0.75 мм`, coverage `75.8–89.5%` при минимуме `95%`.
+  `optimizer_started=false`, challenge не загружался. Причина — generator соединял
+  регионы только fixed-normal equality и сам не гарантировал общий advected interface.
+  Отчёт — `12_piecewise_svf_j12_truth_preflight.ipynb`.
 - 3D-профили по всей сегментированной поверхности лёгких без электродного фильтра. Каждый
   путь раскладывается на жир/мышцу/кость/прочее; пути через лёгкое и обрезанный FOV
   отбраковываются. Парные дельты программно запрещены при провале registration gate.
 - Пороговые маски тела/лёгких, skin-to-lung shell, over-rib fat/muscle diagnostic и жёсткое
   совмещение по позвоночнику.
-- Исторический интерактивный notebook для `copd1` и десять выполненных notebook-отчётов,
+- Исторический интерактивный notebook для `copd1` и одиннадцать выполненных
+  notebook-отчётов,
   включая locked ConvexAdam benchmark, synthetic sliding/S1 benchmarks и явные QC-verdict.
 - Автотесты, `ruff` и strict `mypy`.
 
@@ -149,6 +161,8 @@
   оптимизацию по КТ и поэтому также не открывает Gate 1L/1B.
 - J1.1 PASS подтверждает только выразимость и evaluator при известных полях. Поля ещё не
   восстановлены из synthetic или реальных изображений; Gate 1L/1B и карты тканей закрыты.
+- J1.2 `torch-v0` ещё не имеет development результата: preflight остановил запуск до
+  optimizer. Технический identity smoke не является регистрационным benchmark.
 
 ## Главные технические долги
 
@@ -159,10 +173,11 @@
    Текущий design target — отдельные topology-preserving lung/body transformations с
    normal-contact constraint внутри совместной оптимизации и отдельное улучшение
    correspondence для `LungCT_0005`. J1.0 и J1.1 пройдены; fixed-normal equality как
-   основной contact-критерий отвергнут. Текущий шаг J1.2 — заранее специфицировать и
-   реализовать joint optimizer только на synthetic images с advected-surface
-   signed-distance/coverage loss и отклонением updates при folding. Hidden truth
-   используется только evaluator.
+   основной contact-критерий отвергнут. Runner J1.2 реализован, но старый phantom
+   провалил exact-truth preflight. Текущий шаг — построить новый contact-valid generator,
+   где обе региональные SVF по построению переводят fixed interface в одну advected
+   surface при различном tangential motion. Только после его exact-truth PASS заново
+   замораживаются development/challenge suites и разрешается search optimizer.
    Design и аудит готовых реализаций находятся в `SLIDING_S12_JOINT_DESIGN.md`.
 2. Зафиксировать численные пороги Gate 1B на независимых body/bone annotations и
    segmentation-repeatability; до этого его состояние `NOT VALIDATED`.

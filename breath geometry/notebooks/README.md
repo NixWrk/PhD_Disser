@@ -47,9 +47,13 @@ Notebook в этом каталоге — интерактивный QC/отчё
 - `11_piecewise_svf_j11_representation_gate.ipynb` показывает curved-interface
   contact/slip, signed gap/collision maps и различие fixed-normal screen с конечным
   advected contact; КТ и expert landmarks не читает;
-- outputs этих десяти notebooks коммитятся как удобное представление результатов, но
+- `12_piecewise_svf_j12_truth_preflight.ipynb` показывает, почему exact fields старого
+  phantom не проходят новый advected-contact gate 0/3 и блокируют optimizer до замены
+  generator; challenge не загружает;
+- outputs этих одиннадцати notebooks коммитятся как удобное представление результатов, но
   источником чисел остаются воспроизводимые артефакты в `results/`;
-- после обновления batch-артефактов все десять notebooks нужно выполнить заново и проверить,
+- после обновления batch-артефактов все одиннадцать notebooks нужно выполнить заново и
+  проверить,
   что в них нет локальных путей и медицинских идентификаторов.
 
 Bootstrap регистрирует ядро `breathgeom` из `.venv`. Выполнение одного отчёта из корня

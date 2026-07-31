@@ -25,8 +25,11 @@ multipattern synthetic gate 4/4, включая заранее не запуск
 и controls 2/2. Он показал, что почти нулевая fixed-normal ошибка может сопровождаться
 39.8% collision, а валидный конечный contact — ненулевой fixed-normal разностью.
 Это всё ещё не регистрация КТ. Текущий этап — J1.2 joint optimizer только на synthetic
-images, затем независимый Gate 1L/1B; до них подтверждённой оценки изменения мышцы/жира
-и модели перехода вдох→выдох нет.
+images. CUDA foundation прошла identity smoke, но старый synthetic generator был
+остановлен exact-truth preflight: 0/3 по advected contact, optimizer и challenge не
+запускались. Поэтому сначала нужен новый contact-valid generator, затем независимый
+Gate 1L/1B; до них подтверждённой оценки изменения мышцы/жира и модели перехода
+вдох→выдох нет.
 
 Начинать чтение следует здесь:
 
@@ -41,8 +44,9 @@ images, затем независимый Gate 1L/1B; до них подтвер
 9. [Design joint piecewise-SVF S1.2](docs/SLIDING_S12_JOINT_DESIGN.md)
 10. [Численный gate piecewise-SVF J1.0](docs/PIECEWISE_SVF_J10_NUMERIC_GATE.md)
 11. [Curved representation gate J1.1](docs/PIECEWISE_SVF_J11_REPRESENTATION_GATE.md)
-12. [Аудит текущего notebook](docs/NOTEBOOK_AUDIT.md)
-13. [Правила данных и приватности](docs/DATA_PRIVACY.md)
+12. [Протокол J1.2 synthetic development](docs/PIECEWISE_SVF_J12_DEVELOPMENT_PROTOCOL.md)
+13. [Аудит текущего notebook](docs/NOTEBOOK_AUDIT.md)
+14. [Правила данных и приватности](docs/DATA_PRIVACY.md)
 
 Большие документы [RESEARCH_REPORT.md](docs/RESEARCH_REPORT.md),
 [research_and_implementation_plan.md](research_and_implementation_plan.md) и
@@ -88,6 +92,7 @@ Copy-Item configs/paths.local.example.yaml configs/paths.local.yaml
 .\.venv\Scripts\breathgeom.exe registration sliding-s12-heuristic-screen
 .\.venv\Scripts\breathgeom.exe registration piecewise-svf-j10-numeric
 .\.venv\Scripts\breathgeom.exe registration piecewise-svf-j11-representation
+.\.venv\Scripts\breathgeom.exe registration piecewise-svf-j12-preflight
 .\.venv\Scripts\breathgeom.exe profiles extract-pair `
   --manifest data/interim/respiratory_pairs.local.csv `
   --dataset dirlab_copdgene --subject copd1
@@ -119,8 +124,9 @@ paired deltas только при наличии прошедшего gate по�
 в `08_sliding_s11_real_development.ipynb`. Отказ простого S1.2 repair/coupling класса
 показан в `09_sliding_s12_heuristic_screen.ipynb`; численный J1.0 piecewise-SVF —
 в `10_piecewise_svf_j10_numeric_gate.ipynb`, curved representation J1.1 —
-в `11_piecewise_svf_j11_representation_gate.ipynb`. Числа batch-анализов всё равно
-берутся из `results/`.
+в `11_piecewise_svf_j11_representation_gate.ipynb`, блокирующий J1.2 truth preflight —
+в `12_piecewise_svf_j12_truth_preflight.ipynb`. Числа batch-анализов всё равно берутся
+из `results/`.
 Подробная оценка первого notebook — в [NOTEBOOK_AUDIT.md](docs/NOTEBOOK_AUDIT.md).
 
 ## Проверки

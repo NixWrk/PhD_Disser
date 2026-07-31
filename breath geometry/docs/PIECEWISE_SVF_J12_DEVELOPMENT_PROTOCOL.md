@@ -97,3 +97,25 @@ surface p95, затем peak GPU memory.
 5. После challenge PASS перейти к J1.3 initial correspondence на `LungCT_0005`.
 
 До пунктов 4–5 Gate 1L/1B и парные карты формы/толщины остаются закрыты.
+
+## Результат обязательного exact-truth preflight
+
+После реализации independent evaluator, но **до первого development optimizer run**,
+старый phantom проверен собственными точными полями. Batch выполнен на commit
+`2b4c721d445d4a736d51950fdbd450f1e7e11ee6`; suite/search/summary checksums совпали.
+
+- exact truth: 0/3 PASS;
+- body advected-surface p95: `1.073`, `1.217`, `0.834 мм` при лимите `0.75 мм`;
+- coverage: `0.862`, `0.758`, `0.895` при требовании `0.95`;
+- `optimizer_started=false`;
+- `challenge_loaded=false`.
+
+Причина: прежний `SlidingPhantom` синтезировал moving lung через lung inverse field, а
+body truth связывал с lung только равенством normal component на fixed interface.
+После J1.1 это больше не является допустимой contact truth.
+
+Development/challenge suites v1 и search v1 поэтому superseded **до использования
+optimizer**. Пороги не ослабляются. Следующий protocol должен сначала ввести generator
+из региональных SVF, которые отображают interface в одну и ту же конечную поверхность,
+и доказать exact-truth PASS. Отчёт:
+`notebooks/12_piecewise_svf_j12_truth_preflight.ipynb`.

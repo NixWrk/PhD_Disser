@@ -210,6 +210,12 @@ contact по advected surfaces; fixed-normal term допустим только 
 advected-surface distance/coverage и signed gap/collision. Равенство нормальных
 компонент на fixed surface не может быть единственным contact term.
 
+Статус foundation: внешний CUDA runner реализован и прошёл identity smoke. Development
+не начат: exact fields прежнего `SlidingPhantom` провалили обязательный advected-surface
+preflight 0/3. Generator использовал fixed-normal coupling и не создавал одну общую
+конечную поверхность для обоих регионов. До нового contact-valid generator optimizer
+запрещён.
+
 Hidden truth используется только оценщиком. Подбор loss weights разрешён только на
 development synthetic cases; отдельный новый pattern остаётся закрытым до freeze.
 
