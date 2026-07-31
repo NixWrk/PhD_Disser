@@ -97,3 +97,25 @@ Challenge-конфиг хранится в Git ради checksum, но его ca
 Даже успешный synthetic challenge не разрешает парные измерения у людей. Он
 разрешает только переход к J1.3 — независимой проверке correspondences на
 реальной размеченной паре.
+
+## Выполненный результат v2
+
+Batch выполнен на commit `84fcbb536a1dc2e7389f57c99e8b3263a5599a71`;
+suite/search/summary и три diagnostic checksum совпали.
+
+- analytic contact: 3/3 PASS, худший p95 `0.000643 мм`, coverage `1.0`;
+- round-trip p95: `0.000146–0.001674 мм`;
+- tangential slip median: `1.339–3.053 мм`;
+- folding: `0`;
+- raster contact: 0/3 PASS, p95 `0.753–0.848 мм`, coverage `0.922–0.949`;
+- `optimizer_started=false`, `challenge_loaded=false`.
+
+Следовательно, конструкция regional SVF исправляет ошибку ground truth v1, но frozen
+сетки `1.10–1.25 мм` недостаточны для raster gate `0.75 мм / 95%`. Попытка заменить
+boundary-voxel evaluator на face-centred two-sided EDT ухудшила p95 до
+`1.14–1.26 мм`: независимые ошибки растеризации fixed/target поверхностей сложились.
+Метрика и пороги поэтому не были заменены после просмотра чисел.
+
+V2 получает статус **superseded before optimizer**. Следующая версия может изменить
+только grid shape/spacing, сохранив физические радиусы, motion, textures, search и gate.
+Отчёт: `notebooks/13_piecewise_svf_j12_contact_preflight_v2.ipynb`.

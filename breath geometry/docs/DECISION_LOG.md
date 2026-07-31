@@ -825,3 +825,26 @@ analytic contact, raster contact, round-trip, Jacobian/folding и ненулев
 работоспособность класса алгоритма на контролируемых изображениях. Переход к реальным
 парным картам требует J1.3 и Gate 1L/1B; single-CT прогноз выдоха остаётся последующим
 этапом.
+
+## D-035. Contact-valid v2 остановлен из-за raster resolution, не из-за SVF
+
+**Frozen результат.** Exact-truth batch на commit `84fcbb5` дал analytic contact 3/3:
+худший p95 `0.000643 мм`, coverage `1.0`, round-trip не хуже `0.001674 мм`, folding
+нет, медианный slip `1.339–3.053 мм`. Тем самым конструктивный инвариант D-034
+подтверждён численно.
+
+**Блокирующий результат.** На binary grids с spacing `1.10–1.25 мм` raster p95 составил
+`0.753–0.848 мм`, coverage `92.2–94.9%`; frozen limits `0.75 мм / 95%` провалены 0/3.
+Manifest фиксирует `optimizer_started=false`, `challenge_loaded=false`.
+
+**Отклонённая попытка.** Face-centred transition points с two-sided EDT не стали
+post-hoc исправлением: p95 ухудшился до `1.14–1.26 мм`, потому что независимо
+растрированные fixed и target поверхности несут складывающуюся ошибку квантования.
+Старый evaluator и пороги сохранены.
+
+**Решение.** V2 superseded до optimizer. Разрешён новый protocol version, меняющий
+только shape/spacing synthetic grid. Физические радиусы, log-scales, региональные
+угловые motion, textures, search variants и gates должны остаться прежними. Prototype
+на сетках около 1 мм дал raster p95 `0.640–0.719 мм` и coverage `97.3–98.3%`; это
+только основание для freeze, а не результат, пока нет отдельного committed config и
+batch.

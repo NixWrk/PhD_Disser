@@ -211,10 +211,11 @@ advected-surface distance/coverage и signed gap/collision. Равенство �
 компонент на fixed surface не может быть единственным contact term.
 
 Статус foundation: внешний CUDA runner реализован и прошёл identity smoke. Development
-не начат: exact fields прежнего `SlidingPhantom` провалили обязательный advected-surface
-preflight 0/3. Generator использовал fixed-normal coupling и не создавал одну общую
-конечную поверхность для обоих регионов. До нового contact-valid generator optimizer
-запрещён.
+не начат. Exact fields прежнего `SlidingPhantom` провалили contact preflight 0/3 из-за
+несовместимых конечных поверхностей. Contact-valid v2 исправил непрерывную геометрию
+(analytic contact 3/3), но coarse binary grids провалили frozen raster gate 0/3.
+Следующий разрешённый шаг — finer-grid exact-truth preflight без изменения motion и
+порогов. До его PASS optimizer запрещён.
 
 Hidden truth используется только оценщиком. Подбор loss weights разрешён только на
 development synthetic cases; отдельный новый pattern остаётся закрытым до freeze.

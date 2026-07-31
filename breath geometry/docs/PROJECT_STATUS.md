@@ -124,18 +124,20 @@
   `optimizer_started=false`, challenge не загружался. Причина — generator соединял
   регионы только fixed-normal equality и сам не гарантировал общий advected interface.
   Отчёт — `12_piecewise_svf_j12_truth_preflight.ipynb`.
-- До реализации заморожен контактно-согласованный protocol v2: три development cases,
-  два неисполняемых held-out cases, конечный search из трёх вариантов и неизменённые
-  полевые пороги. Оба regional SVF получают общие осесимметричные log-scales и разные
-  вращение/закрутку, поэтому по построению отображают fixed interface в одно множество,
-  сохраняя касательный скачок. Код генератора и exact-truth batch ещё не реализованы;
-  challenge не загружался.
+- Contact-valid protocol v2 реализован и остановлен preflight до optimizer. Оба regional
+  SVF получают общие осесимметричные log-scales и разные вращение/закрутку: continuous
+  contact прошёл 3/3, худший analytic p95 `0.000643 мм`, coverage 1.0, round-trip p95
+  не хуже `0.001674 мм`, folding нет. Но frozen raster gate провален 0/3: p95
+  `0.753–0.848 мм` при лимите `0.75 мм`, coverage `92.2–94.9%` при минимуме `95%`.
+  Причина — бинарная поверхность на сетках `1.10–1.25 мм` не поддерживает заданный
+  submillimeter gate. `optimizer_started=false`, challenge не загружался. Отчёт —
+  `13_piecewise_svf_j12_contact_preflight_v2.ipynb`.
 - 3D-профили по всей сегментированной поверхности лёгких без электродного фильтра. Каждый
   путь раскладывается на жир/мышцу/кость/прочее; пути через лёгкое и обрезанный FOV
   отбраковываются. Парные дельты программно запрещены при провале registration gate.
 - Пороговые маски тела/лёгких, skin-to-lung shell, over-rib fat/muscle diagnostic и жёсткое
   совмещение по позвоночнику.
-- Исторический интерактивный notebook для `copd1` и одиннадцать выполненных
+- Исторический интерактивный notebook для `copd1` и двенадцать выполненных
   notebook-отчётов,
   включая locked ConvexAdam benchmark, synthetic sliding/S1 benchmarks и явные QC-verdict.
 - Автотесты, `ruff` и strict `mypy`.
@@ -180,10 +182,11 @@
    normal-contact constraint внутри совместной оптимизации и отдельное улучшение
    correspondence для `LungCT_0005`. J1.0 и J1.1 пройдены; fixed-normal equality как
    основной contact-критерий отвергнут. Runner J1.2 реализован, но старый phantom
-   провалил exact-truth preflight. Contact-valid v2 suites/search и критерии уже
-   заморожены. Текущий шаг — реализовать generator, где обе региональные SVF по
-   построению переводят fixed interface в одну advected surface при различном tangential
-   motion. Только после independent exact-truth PASS разрешается search optimizer.
+   провалил exact-truth preflight. Contact-valid v2 доказал корректность continuous
+   generator, но провалил raster gate из-за сеток 1.10–1.25 мм. Текущий шаг — заморозить
+   finer-grid protocol с теми же физическими радиусами, motion и порогами, затем повторить
+   independent exact-truth preflight. Только после полного PASS разрешается search
+   optimizer.
    Design и аудит готовых реализаций находятся в `SLIDING_S12_JOINT_DESIGN.md`.
 2. Зафиксировать численные пороги Gate 1B на независимых body/bone annotations и
    segmentation-repeatability; до этого его состояние `NOT VALIDATED`.
