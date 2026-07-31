@@ -77,6 +77,11 @@ from breathgeom.synthetic_j10 import (
     run_j10_gate,
     write_j10_gate,
 )
+from breathgeom.synthetic_j11 import (
+    load_j11_config,
+    run_j11_gate,
+    write_j11_gate,
+)
 from breathgeom.synthetic_s1 import (
     load_sliding_suite,
     run_synthetic_s1_suite,
@@ -585,6 +590,63 @@ def registration_piecewise_svf_j10_numeric(
     records = [record for run in runs for record in run.records]
     console.print(
         f"Overall: {sum(record.gate_pass for record in records)}/{len(records)} PASS; "
+        f"artifacts: {manifest}"
+    )
+
+
+@registration_app.command("piecewise-svf-j11-representation")
+def registration_piecewise_svf_j11_representation(
+    config: Annotated[
+        Path,
+        typer.Option(exists=True, dir_okay=False, readable=True),
+    ] = Path("configs/piecewise_svf_j11_representation_gate_v1.json"),
+    output: Annotated[Path, typer.Option()] = Path(
+        "results/piecewise_svf_j11_representation_gate_v1"
+    ),
+) -> None:
+    """Run the frozen curved-interface gate and its signed negative controls."""
+    frozen = load_j11_config(config)
+    runs = run_j11_gate(frozen)
+    manifest = write_j11_gate(
+        runs,
+        output,
+        config=frozen,
+        config_path=config,
+        repo_root=_repo_root(),
+    )
+    table = Table(title=f"Piecewise-SVF representation: {frozen.protocol_version}")
+    table.add_column("case")
+    table.add_column("role")
+    table.add_column("candidate")
+    table.add_column("signature")
+    table.add_column("contact")
+    table.add_column("slip error", justify="right")
+    table.add_column("gap/collision", justify="right")
+    table.add_column("reasons")
+    for run in runs:
+        record = run.record
+        table.add_row(
+            record.case_id,
+            record.role,
+            (
+                "[green]PASS[/green]"
+                if record.candidate_full_gate_pass
+                else "[red]FAIL[/red]"
+            ),
+            (
+                "[green]PASS[/green]"
+                if record.expected_signature_pass
+                else "[red]FAIL[/red]"
+            ),
+            "PASS" if record.contact_pass else "FAIL",
+            f"{record.tangential_slip_error_mm:.6f}",
+            f"{record.gap_fraction:.3f}/{record.collision_fraction:.3f}",
+            ";".join(record.candidate_gate_reasons) or "-",
+        )
+    console.print(table)
+    console.print(
+        f"Expected signatures: "
+        f"{sum(run.record.expected_signature_pass for run in runs)}/{len(runs)} PASS; "
         f"artifacts: {manifest}"
     )
 
