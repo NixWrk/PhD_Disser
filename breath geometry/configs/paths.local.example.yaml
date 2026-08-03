@@ -1,0 +1,9 @@
+# Copy this file to paths.local.yaml and edit locally.
+# paths.local.yaml is ignored by Git.
+source_root: "Z:/path/to/extracted/ct"
+workspace_data_root: "data"
+tool_root: "tools/bin"
+read_only_source: true
+# Open datasets: outside the repo and outside the private patient source.
+open_data_root: "E:/path/to/open_ct"
+

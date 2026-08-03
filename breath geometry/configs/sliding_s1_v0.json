@@ -1,0 +1,28 @@
+{
+  "version": "s1.0",
+  "lung_convexadam": {
+    "mind_r": 1,
+    "mind_d": 2,
+    "lambda_weight": 0.6,
+    "grid_sp": 3,
+    "disp_hw": 6,
+    "selected_niter": 100,
+    "selected_smooth": 0,
+    "grid_sp_adam": 1,
+    "inverse_consistency": true,
+    "use_mask": true,
+    "maximum_dimension": 208,
+    "dtype": "float16"
+  },
+  "body_demons": {
+    "level_spacing_mm": [6.0, 3.0],
+    "iterations": [40, 30],
+    "displacement_smoothing_sigma": 1.5,
+    "update_smoothing_sigma": 1.0,
+    "maximum_update_step_mm": 2.0
+  },
+  "normal_smoothing_mm": 2.0,
+  "contact_core_mm": 1.5,
+  "contact_taper_mm": 3.0,
+  "shared_normal_source": "body"
+}

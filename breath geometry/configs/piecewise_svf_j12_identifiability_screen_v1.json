@@ -1,0 +1,53 @@
+{
+  "screen_version": "piecewise-svf-j1.2-identifiability-screen-v1",
+  "suite_path": "configs/piecewise_svf_j12_contact_development_suite_v3.json",
+  "development_batch_manifest_path": "results/piecewise_svf_j12_contact_development_v3/manifest.json",
+  "runner_version": "joint-svf-data-identifiability-v1",
+  "device": "cuda",
+  "dtype": "float32",
+  "descriptor": {
+    "kind": "MINDSSC",
+    "radius": 1,
+    "dilation": 2,
+    "source": "convexAdam.convex_adam_utils.MINDSSC"
+  },
+  "evaluation_masks": {
+    "primary": "full_fixed_region",
+    "diagnostic": "fixed_region_eroded_2_voxels",
+    "body_region": "fixed_body_minus_fixed_lung"
+  },
+  "candidates": [
+    "truth",
+    "estimated_balanced",
+    "glued_mean_velocity",
+    "common_scale_only",
+    "zero",
+    "inverse_truth"
+  ],
+  "metrics": [
+    "mind_mse_full",
+    "mind_mse_interior",
+    "intensity_mse_full",
+    "intensity_mse_interior"
+  ],
+  "decision_thresholds": {
+    "truth_to_wrong_direction_ratio_max": 0.8,
+    "truth_to_zero_ratio_max": 0.8,
+    "truth_to_glued_ratio_max": 0.8,
+    "estimated_to_zero_ratio_max": 0.8
+  },
+  "decision_rule": {
+    "warp_direction_pass": "truth MIND and intensity are both <= ratio limit versus inverse_truth and zero in both regions",
+    "mind_slip_identifiable": "truth MIND is <= ratio limit versus glued_mean_velocity in both regions",
+    "intensity_slip_identifiable": "truth intensity is <= ratio limit versus glued_mean_velocity in both regions",
+    "optimizer_reduced_data_term": "estimated_balanced MIND is <= ratio limit versus zero in both regions",
+    "descriptor_failure": "intensity slip is identifiable but MIND slip is not",
+    "optimizer_or_parameterization_failure": "MIND slip is identifiable but estimated field remains near-glued",
+    "generator_observability_failure": "intensity slip is not identifiable",
+    "direction_failure": "warp direction does not pass"
+  },
+  "challenge_policy": {
+    "loaded": false,
+    "reason": "screen uses development images and committed development fields only"
+  }
+}

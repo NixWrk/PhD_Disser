@@ -1,0 +1,91 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "breath-geometry"
+version = "0.1.0"
+description = "Research pipeline for subject-specific inspiration-to-expiration geometry"
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+dependencies = [
+  "nibabel>=5.2,<6",
+  "numpy>=2.0,<3",
+  "pandas>=2.2,<4",
+  "pydicom>=3.0,<4",
+  "pydantic>=2.10,<3",
+  "PyYAML>=6.0,<7",
+  "rich>=13.7,<15",
+  "scipy>=1.13,<2",
+  "SimpleITK>=2.4,<3",
+  "typer>=0.16,<1",
+]
+
+[project.optional-dependencies]
+registration = [
+  "itk-elastix>=0.25.3,<0.26",
+]
+geometry = [
+  "meshio>=5.3,<6",
+  "scikit-image>=0.24,<1",
+  "trimesh>=4.5,<5",
+]
+visualization = [
+  "fast-simplification>=0.1,<1",
+  "pyvista>=0.45,<1",
+  "vtk>=9.3,<10",
+]
+notebook = [
+  "ipykernel>=6.29,<8",
+  "matplotlib>=3.9,<4",
+  "nbconvert>=7.16,<8",
+]
+dev = [
+  "mypy>=1.14,<2",
+  "pytest>=8.3,<9",
+  "pytest-cov>=6,<8",
+  "ruff>=0.9,<1",
+  "types-PyYAML>=6.0,<7",
+]
+
+[project.scripts]
+breathgeom = "breathgeom.cli:app"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+addopts = "-ra --strict-markers"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+warn_unused_ignores = true
+
+# scipy publishes no type information; ndimage results are narrowed at each use site.
+[[tool.mypy.overrides]]
+module = ["scipy.*", "SimpleITK.*"]
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = ["itk.*"]
+ignore_missing_imports = true
+
+# SimpleITK ships no annotations; its results are narrowed at each use site.
+[[tool.mypy.overrides]]
+module = [
+  "breathgeom.measure.align",
+  "breathgeom.measure.convexadam_registration",
+  "breathgeom.measure.elastix_registration",
+  "breathgeom.measure.registration",
+]
+disallow_untyped_calls = false
+

@@ -1,0 +1,14 @@
+{
+  "mind_r": 1,
+  "mind_d": 2,
+  "lambda_weight": 2.0,
+  "grid_sp": 6,
+  "disp_hw": 4,
+  "selected_niter": 80,
+  "selected_smooth": 7,
+  "grid_sp_adam": 2,
+  "inverse_consistency": true,
+  "use_mask": true,
+  "maximum_dimension": 208,
+  "dtype": "float16"
+}

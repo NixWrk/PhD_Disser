@@ -1,0 +1,72 @@
+{
+  "protocol_version": "piecewise-svf-j1.0-numeric-v1",
+  "transform_direction": "fixed-expiration_to_moving-inspiration",
+  "coordinate_system": "array_xyz_physical_mm_zero_origin",
+  "field_units": "mm_per_unit_flow_time",
+  "shape": [
+    48,
+    44,
+    40
+  ],
+  "spacing_mm": [
+    1.25,
+    1.5,
+    2.0
+  ],
+  "squaring_steps": 8,
+  "outside_mode": "nearest",
+  "evaluation_margin_voxels": [
+    8,
+    8,
+    8
+  ],
+  "cases": [
+    {
+      "case_id": "zero",
+      "kind": "zero"
+    },
+    {
+      "case_id": "planar_sliding_translation",
+      "kind": "planar_sliding_translation",
+      "interface_normal_axis": 0,
+      "lung_velocity_mm": [
+        1.25,
+        3.0,
+        -0.5
+      ],
+      "body_velocity_mm": [
+        1.25,
+        -1.0,
+        -0.5
+      ]
+    },
+    {
+      "case_id": "diagonal_affine",
+      "kind": "diagonal_affine",
+      "lung_rates": [
+        0.02,
+        -0.012,
+        0.008
+      ],
+      "body_rates": [
+        -0.015,
+        0.01,
+        0.005
+      ]
+    },
+    {
+      "case_id": "opposed_axial_rotation",
+      "kind": "opposed_axial_rotation",
+      "lung_angle_rad": 0.08,
+      "body_angle_rad": -0.05
+    }
+  ],
+  "thresholds": {
+    "endpoint_p95_max_mm": 0.02,
+    "round_trip_p95_max_mm": 0.02,
+    "jacobian_abs_error_max": 0.005,
+    "nonpositive_jacobian_fraction_max": 0.0,
+    "normal_mismatch_p95_max_mm": 0.001,
+    "tangential_slip_error_max_mm": 0.001
+  }
+}

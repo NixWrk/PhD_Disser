@@ -1,0 +1,65 @@
+{
+  "suite_version": "sliding-phantom-v2.1-axis-safe",
+  "cases": [
+    {
+      "case_id": "nominal_1mm",
+      "description": "Nominal deep inspiration with isotropic 1 mm voxels.",
+      "params": {
+        "shape": [72, 72, 72],
+        "spacing_mm": [1.0, 1.0, 1.0],
+        "lung_radii_mm": [16.0, 16.0, 22.0],
+        "body_radii_mm": [31.0, 29.0, 33.0],
+        "normal_motion_mm": 3.0,
+        "tangential_slip_mm": 4.0,
+        "tangential_ramp_mode": "cylindrical_axis_safe",
+        "tangential_full_slip_radius_fraction": 0.75,
+        "interface_band_mm": 1.0,
+        "jacobian_margin_mm": 2.0,
+        "texture_seed": 20260731,
+        "texture_correlation_mm": 1.2,
+        "lung_texture_std_hu": 20.0,
+        "body_texture_std_hu": 6.0
+      }
+    },
+    {
+      "case_id": "shallow_1mm",
+      "description": "Shallow motion with an independent deterministic texture.",
+      "params": {
+        "shape": [72, 72, 72],
+        "spacing_mm": [1.0, 1.0, 1.0],
+        "lung_radii_mm": [16.0, 16.0, 22.0],
+        "body_radii_mm": [31.0, 29.0, 33.0],
+        "normal_motion_mm": 1.5,
+        "tangential_slip_mm": 2.0,
+        "tangential_ramp_mode": "cylindrical_axis_safe",
+        "tangential_full_slip_radius_fraction": 0.75,
+        "interface_band_mm": 1.0,
+        "jacobian_margin_mm": 2.0,
+        "texture_seed": 20260732,
+        "texture_correlation_mm": 1.2,
+        "lung_texture_std_hu": 20.0,
+        "body_texture_std_hu": 6.0
+      }
+    },
+    {
+      "case_id": "deep_anisotropic",
+      "description": "Larger motion on an anisotropic CT-like grid.",
+      "params": {
+        "shape": [64, 64, 56],
+        "spacing_mm": [1.25, 1.25, 1.5],
+        "lung_radii_mm": [15.0, 14.0, 20.0],
+        "body_radii_mm": [30.0, 28.0, 34.0],
+        "normal_motion_mm": 4.5,
+        "tangential_slip_mm": 6.0,
+        "tangential_ramp_mode": "cylindrical_axis_safe",
+        "tangential_full_slip_radius_fraction": 0.75,
+        "interface_band_mm": 1.5,
+        "jacobian_margin_mm": 3.0,
+        "texture_seed": 20260733,
+        "texture_correlation_mm": 1.5,
+        "lung_texture_std_hu": 25.0,
+        "body_texture_std_hu": 8.0
+      }
+    }
+  ]
+}

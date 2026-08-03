@@ -1,0 +1,52 @@
+{
+  "suite_version": "piecewise-svf-j1.2-contact-heldout-v3-fine-grid",
+  "generator_version": "contact-svf-phantom-v1",
+  "transform_direction": "fixed-expiration_to_moving-inspiration",
+  "coordinate_basis": "local-zero-origin-RAS+_mm",
+  "cases": [
+    {
+      "case_id": "challenge_contact_oblique_counter_rotation",
+      "description": "V2 held-out anatomy and motion on a finer grid; do not execute before candidate freeze.",
+      "params": {
+        "shape": [84, 84, 88],
+        "spacing_mm": [0.9, 0.9, 0.95],
+        "lung_radii_mm": [15.8, 15.8, 21.5],
+        "body_radii_mm": [31.0, 31.0, 34.0],
+        "motion_kind": "axisymmetric_affine_rotation",
+        "common_log_scales": [0.045, 0.045, 0.09],
+        "lung_motion_rad": 0.18,
+        "body_motion_rad": -0.055,
+        "squaring_steps": 8,
+        "outside_mode": "nearest",
+        "interface_band_mm": 1.4,
+        "jacobian_margin_mm": 2.8,
+        "texture_seed": 20260831,
+        "texture_correlation_mm": 1.45,
+        "lung_texture_std_hu": 18.0,
+        "body_texture_std_hu": 5.0
+      }
+    },
+    {
+      "case_id": "challenge_contact_low_texture_twist",
+      "description": "V2 held-out anatomy and motion on a finer grid; do not execute before candidate freeze.",
+      "params": {
+        "shape": [80, 84, 88],
+        "spacing_mm": [0.96, 0.9, 0.985],
+        "lung_radii_mm": [15.0, 15.0, 21.0],
+        "body_radii_mm": [31.0, 31.0, 34.5],
+        "motion_kind": "axisymmetric_longitudinal_twist",
+        "common_log_scales": [0.028, 0.028, 0.07],
+        "lung_motion_rad": 0.13,
+        "body_motion_rad": -0.09,
+        "squaring_steps": 8,
+        "outside_mode": "nearest",
+        "interface_band_mm": 1.45,
+        "jacobian_margin_mm": 3.0,
+        "texture_seed": 20260832,
+        "texture_correlation_mm": 2.1,
+        "lung_texture_std_hu": 12.0,
+        "body_texture_std_hu": 4.0
+      }
+    }
+  ]
+}

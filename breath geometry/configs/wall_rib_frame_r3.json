@@ -1,0 +1,82 @@
+{
+  "frame_version": "wall-rib-frame-r3",
+  "question": "does a rib-indexed material frame survive its own consistency gates once partially imaged ribs and fragments are handled",
+  "dataset_id": "dirlab_copdgene",
+  "subjects": [
+    "copd1",
+    "copd2",
+    "copd3",
+    "copd4",
+    "copd5",
+    "copd6",
+    "copd7",
+    "copd8",
+    "copd9",
+    "copd10"
+  ],
+  "phases": [
+    "fixed",
+    "moving"
+  ],
+  "supersedes": "wall-rib-frame-r2",
+  "changes_from_r1": [
+    {
+      "id": "C1",
+      "change": "merge fragments of one rib before indexing",
+      "measured_failure": "copd5 reported 12 ribs on the left at expiration against 10 on the right and 9/9 at inspiration; that many ribs cannot be in the field, so one rib had broken into components"
+    },
+    {
+      "id": "C2",
+      "change": "discard ribs touching the first or last slice as partially imaged",
+      "measured_failure": "copd1, copd3, copd4, copd7 and copd9 differed by exactly one rib and always with more at inspiration, so a rib enters the field as the chest expands"
+    },
+    {
+      "id": "C3",
+      "change": "pair sides and phases by ordinal from a common anchor rib rather than by absolute height",
+      "measured_failure": "copd10 showed 8 left against 6 right and a left-right spread of 47.5 mm, which is shifted pairing rather than real asymmetry"
+    }
+  ],
+  "rib_identification": {
+    "bone_hu_min": 200,
+    "midline_slab_half_width_mm": 35.0,
+    "min_component_voxels": 400,
+    "max_fill_fraction": 0.02,
+    "fragment_merge_gap_fraction": 0.4,
+    "drop_ribs_touching_volume_edge": false,
+    "reason": "fragment merging is kept as harmless; edge handling moves to a single window computed as the intersection of the fully imaged rib span of both phases and applied to both, so the rule cannot itself depend on which phase is being processed",
+    "common_axial_window": true
+  },
+  "anchor": {
+    "rule": "the topmost surviving rib of each phase is index 0",
+    "agreement_max_gap_fraction": 0.5,
+    "reason": "ribs are spaced about 20-25 mm apart while measured material displacement reaches 12-42 mm axially, so matching by position alone can be off by a whole rib. If the two phases disagree on the anchor by more than half a rib spacing the match is ambiguous and the preflight must say so instead of guessing"
+  },
+  "rib_preflight_gates": {
+    "ribs_per_side_min": 8,
+    "ribs_per_side_max": 12,
+    "count_must_match_between_phases": true,
+    "max_gap_over_median_gap": 1.6,
+    "left_right_z_tolerance_mm": 15.0,
+    "anchor_must_agree": true,
+    "reason": "every R1 threshold carries over unchanged; softening a gate because it failed would destroy the point of having it. The anchor gate is added, not relaxed"
+  },
+  "preflight_policy": {
+    "delta_blocked_until_preflight_passes": true
+  },
+  "out_of_scope": [
+    "changing any R1 or R2 gate threshold",
+    "producing a delta map before the preflight passes",
+    "a fourth attempt if R3 fails on anchor_ambiguous"
+  ],
+  "changes_from_r2": [
+    {
+      "id": "C4",
+      "change": "one common axial window from the intersection of both phases, applied identically, replaces per-phase edge dropping",
+      "measured_failure": "R2 dropped ribs per phase and so was itself phase dependent: at inspiration the expanded chest brings more ribs against the volume boundary, so copd1 lost 11 ribs and went from a one-rib disagreement to 8/8 against 5/5. Passing rate fell from 1/10 to 0/10"
+    }
+  ],
+  "external_evidence": {
+    "intercostal_width_is_not_a_respiratory_invariant": "Huang 2024 measured a significant main effect of respiration on intercostal width, F[1,58]=75.27 p<0.001, wider at inspiration, while Cala 1998 found no change during tidal breathing parasternally. Rib spacing therefore changes with breathing and differently by region, so anchor_ambiguous is expected physics rather than a segmentation defect",
+    "consequence": "R3 is the last attempt. If it fails predominantly on anchor_ambiguous the rib material frame is declared unavailable on this cohort at 2.5 mm slice spacing, and that negative result is the deliverable of the rib branch"
+  }
+}

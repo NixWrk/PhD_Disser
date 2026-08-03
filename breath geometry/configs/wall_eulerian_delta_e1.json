@@ -1,0 +1,45 @@
+{
+  "map_version": "wall-eulerian-delta-e1",
+  "question": "what does the delta-h map look like in a spine-anchored frame, knowing it carries the frame artifact",
+  "dataset_id": "dirlab_copdgene",
+  "subjects": [
+    "copd1", "copd2", "copd3", "copd4", "copd5",
+    "copd6", "copd7", "copd8", "copd9", "copd10"
+  ],
+  "status": "diagnostic",
+  "not_a_validated_effect": "this map is Eulerian by construction. The expert landmarks measured tissue displacement of 11.3-30.2 mm median with an axial fraction of 0.24-0.89, and the measured spatial gradient of h is 0.09-0.12 mm/mm median with p90 0.29, so this map contains a frame artifact estimated at 1.4 mm typical and up to 12 mm in steep zones. It is the comparison arm for the rib frame, not the deliverable",
+  "measurand": {
+    "name": "soft_tissue_mm",
+    "definition": "fat_mm + muscle_mm + other_mm along the lung-to-skin path",
+    "reason": "D-044 merged fat and muscle into one tissue"
+  },
+  "frame": {
+    "kind": "eulerian",
+    "shared_grid": "DIR-Lab COPDgene phases are loaded onto one identical grid, so absolute coordinates are directly comparable and no rigid alignment is applied",
+    "radial_origin": "per-slice centroid of the fixed-phase filled body mask, reused unchanged for both phases",
+    "angle_zero": "anterior direction, RAS+ axis 1",
+    "axial_coordinate": "z of the skin point normalised to the fixed-phase vertebral column extent",
+    "reason": "one single frame is applied to both phases; that is what makes the comparison Eulerian, and using the spine rather than the lung avoids normalising to a landmark that breathing itself moves"
+  },
+  "sampling_density_mm": 2.5,
+  "map_resolution": {"angular_sectors": 24, "axial_levels": 8},
+  "occupancy": {
+    "min_profiles_per_bin": 30,
+    "bins_reported": "only bins that clear the minimum in BOTH phases",
+    "reason": "a delta needs both sides; a bin resolved in one phase only is not a delta"
+  },
+  "per_bin_uncertainty": {
+    "method": "bootstrap standard error of each phase median, combined in quadrature",
+    "bootstrap_resamples": 400,
+    "bootstrap_seed": 20260731
+  },
+  "reporting_rule": {
+    "resolved_bin": "absolute delta-h exceeds twice its combined bootstrap uncertainty",
+    "reason": "bins that do not clear their own uncertainty carry no zone information and are shown as unresolved rather than coloured"
+  },
+  "out_of_scope": [
+    "calling this a validated respiratory effect",
+    "using it to choose electrode placement before the rib frame confirms or refutes it",
+    "reporting separate fat and muscle"
+  ]
+}

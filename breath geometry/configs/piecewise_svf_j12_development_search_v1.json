@@ -1,0 +1,94 @@
+{
+  "search_version": "piecewise-svf-j1.2-development-search-v1",
+  "runner_version": "joint-piecewise-svf-torch-v0",
+  "input_policy": {
+    "optimizer_receives": [
+      "fixed_image",
+      "moving_image",
+      "fixed_lung_mask",
+      "moving_lung_mask",
+      "fixed_body_mask",
+      "moving_body_mask",
+      "spacing_mm"
+    ],
+    "optimizer_forbidden": [
+      "case_id",
+      "motion_pattern",
+      "generator_parameters",
+      "truth_displacement",
+      "expert_landmarks",
+      "gate_metrics"
+    ]
+  },
+  "runtime": {
+    "device": "cuda",
+    "dtype": "float32",
+    "maximum_peak_gpu_memory_bytes": 7516192768
+  },
+  "integrator": {
+    "squaring_steps": 7,
+    "outside_mode": "border",
+    "control_stride_voxels": 4
+  },
+  "descriptor": {
+    "kind": "MINDSSC",
+    "radius": 1,
+    "dilation": 2,
+    "source": "convexAdam.convex_adam_utils.MINDSSC"
+  },
+  "optimizer": {
+    "kind": "Adam",
+    "iterations": 120,
+    "learning_rate": 0.03,
+    "surface_points_max": 2048,
+    "topology_check_every": 5,
+    "minimum_accepted_jacobian": 0.05,
+    "maximum_rejected_updates": 12
+  },
+  "variants": [
+    {
+      "variant_id": "balanced",
+      "lung_data_weight": 1.0,
+      "body_data_weight": 1.0,
+      "advected_surface_weight": 2.0,
+      "velocity_smoothness_weight": 0.1,
+      "jacobian_penalty_weight": 1.0
+    },
+    {
+      "variant_id": "contact_strong",
+      "lung_data_weight": 1.0,
+      "body_data_weight": 1.0,
+      "advected_surface_weight": 5.0,
+      "velocity_smoothness_weight": 0.1,
+      "jacobian_penalty_weight": 1.0
+    },
+    {
+      "variant_id": "smooth_strong",
+      "lung_data_weight": 1.0,
+      "body_data_weight": 1.0,
+      "advected_surface_weight": 2.0,
+      "velocity_smoothness_weight": 0.5,
+      "jacobian_penalty_weight": 1.0
+    }
+  ],
+  "development_gate": {
+    "endpoint_p95_voxels_max": 1.5,
+    "normal_mismatch_p95_max_mm": 0.75,
+    "tangential_slip_error_max_mm": 1.0,
+    "jacobian_p01_min": 0.2,
+    "nonpositive_jacobian_fraction_max": 0.0,
+    "advected_target_surface_p95_max_mm": 0.75,
+    "advected_surface_coverage_min": 0.95
+  },
+  "selection_rule": {
+    "required": "all three development cases pass every gate",
+    "tie_break_1": "lowest median lung endpoint p95 across development cases",
+    "tie_break_2": "lowest median advected target-surface p95",
+    "tie_break_3": "lowest peak GPU memory"
+  },
+  "challenge_policy": {
+    "suite_path": "configs/piecewise_svf_j12_challenge_suite_v1.json",
+    "do_not_load_or_execute_until": "exact candidate config and code commit are frozen",
+    "required_result": "2/2 challenge cases pass without parameter changes"
+  }
+}
