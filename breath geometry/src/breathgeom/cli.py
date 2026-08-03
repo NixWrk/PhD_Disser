@@ -89,6 +89,14 @@ from breathgeom.rib_frame_r1 import (
     load_rib_frame_config,
     write_preflight,
 )
+from breathgeom.rib_frame_r2 import (
+    PhaseRibsR2,
+    PreflightR2,
+    detect_ribs_r2,
+    evaluate_preflight_r2,
+    load_rib_config_r2,
+    write_preflight_r2,
+)
 from breathgeom.spatial_map_w2 import (
     BinStatistic,
     MapEvaluation,
@@ -1647,6 +1655,83 @@ def measure_uncertainty_budget_w1(
         f"thickness: {verdict.thickness_classification}\n"
         f"fat: {verdict.fat_classification}  muscle: {verdict.muscle_classification}\n"
         f"separate fat/muscle allowed: {verdict.separate_fat_muscle_allowed}\n"
+        f"manifest -> {manifest_path}"
+    )
+
+
+@measure_app.command("rib-preflight-r2")
+def measure_rib_preflight_r2(
+    config: Annotated[
+        Path,
+        typer.Option(exists=True, dir_okay=False, readable=True),
+    ] = Path("configs/wall_rib_frame_r2.json"),
+    manifest: Annotated[
+        Path,
+        typer.Option(exists=True, dir_okay=False, readable=True),
+    ] = Path("data/interim/respiratory_pairs.local.csv"),
+    output: Annotated[Path, typer.Option()] = Path("results/wall_rib_frame_r2"),
+) -> None:
+    """Rib preflight with fragment merging, edge dropping and an anchor gate."""
+    frame_config = load_rib_config_r2(config)
+    rows = {
+        row.subject_id: row
+        for row in read_pair_manifest(manifest)
+        if row.dataset_id == frame_config.dataset_id and row.complete
+    }
+    phases: list[PhaseRibsR2] = []
+    verdicts: list[PreflightR2] = []
+    for subject in frame_config.subjects:
+        if subject not in rows:
+            console.print(f"[red]{subject} is not a complete pair.[/red]")
+            raise typer.Exit(code=2)
+        data = load_pair_data(rows[subject])
+        volumes = {
+            "fixed": cast(WallIntArray, data.fixed_ras),
+            "moving": cast(WallIntArray, data.moving_ras),
+        }
+        found = tuple(
+            detect_ribs_r2(
+                volumes[phase],
+                data.spacing,
+                frame_config.params,
+                subject_id=subject,
+                phase=phase,
+            )
+            for phase in frame_config.phases
+        )
+        phases.extend(found)
+        verdict = evaluate_preflight_r2(found, frame_config.gates)
+        verdicts.append(verdict)
+        console.print(
+            f"{subject}: {'PASS' if verdict.passes else 'FAIL'} {verdict.failure_reasons}"
+        )
+
+    manifest_path = write_preflight_r2(
+        output, config, frame_config, tuple(phases), tuple(verdicts)
+    )
+    table = Table(title="R2 rib preflight")
+    for column in ("subject", "L/R fixed", "L/R moving", "edge", "merged", "anchor dz", "verdict"):
+        table.add_column(column)
+    for verdict in verdicts:
+        shown = [item for item in phases if item.subject_id == verdict.subject_id]
+        anchor_gap = (
+            abs(shown[0].left_anchor_z_mm - shown[1].left_anchor_z_mm)
+            if len(shown) > 1
+            else float("nan")
+        )
+        table.add_row(
+            verdict.subject_id,
+            f"{shown[0].left_count}/{shown[0].right_count}",
+            f"{shown[1].left_count}/{shown[1].right_count}" if len(shown) > 1 else "-",
+            str(sum(item.dropped_at_edge for item in shown)),
+            str(sum(item.merged_fragments for item in shown)),
+            f"{anchor_gap:.1f}",
+            "PASS" if verdict.passes else verdict.failure_reasons,
+        )
+    console.print(table)
+    passed = sum(item.passes for item in verdicts)
+    console.print(
+        f"preflight passed {passed}/{len(verdicts)}; delta map produced: False\n"
         f"manifest -> {manifest_path}"
     )
 
