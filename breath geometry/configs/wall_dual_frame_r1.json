@@ -1,0 +1,74 @@
+{
+  "frame_version": "wall-dual-frame-r1",
+  "question": "does a rib-indexed material frame exist, and how much does the delta-h map depend on choosing it over a spine-anchored one",
+  "dataset_id": "dirlab_copdgene",
+  "subjects": ["copd1"],
+  "phases": ["fixed", "moving"],
+  "measurand": {
+    "name": "soft_tissue_mm",
+    "definition": "fat_mm + muscle_mm + other_mm along the lung-to-skin path",
+    "reason": "D-044 merged fat and muscle into one tissue"
+  },
+  "frames": {
+    "rib": {
+      "kind": "lagrangian",
+      "axial_coordinate": "rib index plus fractional position to the next rib",
+      "circumferential_coordinate": "arc length along the rib from its vertebral end, normalised by that rib's total arc length",
+      "reason": "rib identity is preserved by anatomy and arc length along bone is invariant under rotation and bending, so the pair is a material coordinate that follows the tissue an electrode is glued to"
+    },
+    "spine": {
+      "kind": "eulerian",
+      "axial_coordinate": "z of the skin point relative to the vertebral column extent",
+      "circumferential_coordinate": "angle around the per-slice body centroid, zero at anterior",
+      "reason": "the frame W2 already used; kept as the explicit comparison arm because the difference between the two maps measures the frame dependence directly"
+    }
+  },
+  "rib_identification": {
+    "bone_hu_min": 200,
+    "midline_slab_half_width_mm": 35.0,
+    "min_component_voxels": 400,
+    "min_elongation": 3.0,
+    "reason": "cutting a midline slab separates the costovertebral junctions so the fused bone component breaks into individual ribs; elongation rejects scapula and clavicle"
+  },
+  "rib_preflight_gates": {
+    "ribs_per_side_min": 8,
+    "ribs_per_side_max": 12,
+    "count_must_match_between_phases": true,
+    "max_gap_over_median_gap": 1.6,
+    "left_right_z_tolerance_mm": 15.0,
+    "arc_length_phase_difference_max_fraction": 0.10,
+    "reason": "a miscount shifts the whole map and produces a plausible but wrong delta; each gate breaks under a different miscount mode, and the arc-length gate directly tests the bone-does-not-stretch premise the circumferential coordinate relies on"
+  },
+  "preflight_policy": {
+    "delta_blocked_until_preflight_passes": true,
+    "reason": "same rule as the J1.2 truth preflight: no delta map is produced while the frame is unvalidated"
+  },
+  "map_resolution": {
+    "circumferential_bins": 24,
+    "axial_bins_rib": "one per detected rib interspace",
+    "axial_bins_spine": 8,
+    "min_profiles_per_bin": 30
+  },
+  "comparison": {
+    "primary": "per-bin difference between the rib-frame and spine-frame delta-h maps",
+    "statistic": "median and p90 of the absolute difference across bins occupied in both frames",
+    "interpretation": "this difference is the frame-dependence term, previously only estimated as gradient times displacement"
+  },
+  "falsification_test": {
+    "kind": "rib index shifted by plus and minus one",
+    "rule": "if shifting the rib index changes the delta-h map by less than the delta-h signal itself, the method does not discriminate a correct frame from a wrong one and the result is not reportable",
+    "statistic": "ratio of the median absolute change under the shift to the median absolute delta-h",
+    "min_discrimination_ratio": 1.0
+  },
+  "decision_thresholds": {
+    "feasible_max_mm": 1.0,
+    "marginal_max_mm": 2.5,
+    "target_resolvable_effect_mm": 3.0,
+    "inherited_from": "wall-measurement-uncertainty-budget-w1"
+  },
+  "out_of_scope": [
+    "any claim that delta-h is a validated respiratory effect before Gate 1B thresholds are frozen",
+    "reporting separate fat and muscle",
+    "changing the Gate 2 validity domain, which stays a separate frozen change"
+  ]
+}
