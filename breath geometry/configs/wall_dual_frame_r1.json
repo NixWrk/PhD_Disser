@@ -2,7 +2,27 @@
   "frame_version": "wall-dual-frame-r1",
   "question": "does a rib-indexed material frame exist, and how much does the delta-h map depend on choosing it over a spine-anchored one",
   "dataset_id": "dirlab_copdgene",
-  "subjects": ["copd1"],
+  "subjects": [
+    "copd1", "copd2", "copd3", "copd4", "copd5",
+    "copd6", "copd7", "copd8", "copd9", "copd10"
+  ],
+  "amendments": [
+    {
+      "id": "A1",
+      "field": "rib_identification shape discriminator",
+      "was": "min_elongation 3.0 on the bounding-box extent ratio",
+      "now": "max_fill_fraction 0.02",
+      "reason": "measured on copd1: a rib is a thin curved arc whose bounding box is nearly cubic, so real ribs scored 1.2-2.6 and only 2 of 31 components survived. Fill fraction separates cleanly, ribs at 0.005-0.013 against scapulae at 0.034. The stated intent, rejecting scapula and clavicle, is unchanged",
+      "threshold_chosen_on": "copd1, then verified unchanged on the other nine"
+    },
+    {
+      "id": "A2",
+      "field": "subjects",
+      "was": "copd1 only",
+      "now": "all ten COPDgene subjects",
+      "reason": "D-048 established the reader loads every case straight from the zip archives, so restricting to copd1 was a config choice. Broadening makes the preflight harder, not easier, and removes copd1 as the sole evidence for the fill threshold"
+    }
+  ],
   "phases": ["fixed", "moving"],
   "measurand": {
     "name": "soft_tissue_mm",
@@ -27,8 +47,8 @@
     "bone_hu_min": 200,
     "midline_slab_half_width_mm": 35.0,
     "min_component_voxels": 400,
-    "min_elongation": 3.0,
-    "reason": "cutting a midline slab separates the costovertebral junctions so the fused bone component breaks into individual ribs; elongation rejects scapula and clavicle"
+    "max_fill_fraction": 0.02,
+    "reason": "cutting a midline slab separates the costovertebral junctions so the fused bone component breaks into individual ribs; a rib is a thin curved arc that fills very little of its bounding box, which rejects scapula and clavicle. See amendment A1"
   },
   "rib_preflight_gates": {
     "ribs_per_side_min": 8,
