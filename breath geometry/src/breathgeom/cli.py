@@ -23,6 +23,13 @@ from breathgeom.benchmark import (
     write_benchmark_run,
 )
 from breathgeom.config import load_paths_config, validate_project
+from breathgeom.eulerian_delta_e1 import (
+    DeltaBin,
+    SubjectDelta,
+    compute_delta,
+    load_eulerian_config,
+    write_eulerian_delta,
+)
 from breathgeom.io.datasets import (
     ACCESS_NOTE_NAME,
     dataset_dir,
@@ -1640,6 +1647,67 @@ def measure_uncertainty_budget_w1(
         f"thickness: {verdict.thickness_classification}\n"
         f"fat: {verdict.fat_classification}  muscle: {verdict.muscle_classification}\n"
         f"separate fat/muscle allowed: {verdict.separate_fat_muscle_allowed}\n"
+        f"manifest -> {manifest_path}"
+    )
+
+
+@measure_app.command("eulerian-delta-e1")
+def measure_eulerian_delta_e1(
+    config: Annotated[
+        Path,
+        typer.Option(exists=True, dir_okay=False, readable=True),
+    ] = Path("configs/wall_eulerian_delta_e1.json"),
+    manifest: Annotated[
+        Path,
+        typer.Option(exists=True, dir_okay=False, readable=True),
+    ] = Path("data/interim/respiratory_pairs.local.csv"),
+    output: Annotated[Path, typer.Option()] = Path("results/wall_eulerian_delta_e1"),
+) -> None:
+    """Spine-anchored delta-h map. Diagnostic: it carries a known frame artifact."""
+    delta_config = load_eulerian_config(config)
+    rows = {
+        row.subject_id: row
+        for row in read_pair_manifest(manifest)
+        if row.dataset_id == delta_config.dataset_id and row.complete
+    }
+    summaries: list[SubjectDelta] = []
+    bins: list[DeltaBin] = []
+    for subject in delta_config.subjects:
+        if subject not in rows:
+            console.print(f"[red]{subject} is not a complete pair.[/red]")
+            raise typer.Exit(code=2)
+        data = load_pair_data(rows[subject])
+        console.print(f"delta for {subject} ...")
+        summary, subject_bins = compute_delta(
+            cast(WallIntArray, data.fixed_ras),
+            cast(WallIntArray, data.moving_ras),
+            data.spacing,
+            delta_config,
+            subject,
+        )
+        summaries.append(summary)
+        bins.extend(subject_bins)
+
+    manifest_path = write_eulerian_delta(
+        output, config, delta_config, tuple(summaries), tuple(bins)
+    )
+    table = Table(title="E1 spine-anchored delta-h (DIAGNOSTIC, carries frame artifact)")
+    for column in ("subject", "bins", "resolved", "|delta| med", "|delta| p90", "range", "sigma"):
+        table.add_column(column)
+    for item in summaries:
+        table.add_row(
+            item.subject_id,
+            str(item.bins_in_both_phases),
+            f"{item.resolved_bins} ({item.resolved_fraction:.0%})",
+            f"{item.median_abs_delta_mm:.2f}",
+            f"{item.p90_abs_delta_mm:.2f}",
+            f"{item.min_delta_mm:.1f}..{item.max_delta_mm:.1f}",
+            f"{item.median_uncertainty_mm:.2f}",
+        )
+    console.print(table)
+    console.print(
+        "[yellow]Diagnostic only: this map is Eulerian and carries an artifact of "
+        "roughly 1.4 mm typical, up to 12 mm in steep zones.[/yellow]\n"
         f"manifest -> {manifest_path}"
     )
 
