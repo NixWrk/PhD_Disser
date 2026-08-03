@@ -810,7 +810,7 @@ DIR-Lab даёт для каждого случая и которые до си�
 
 ## 4. Литературный обзор
 
-Основа — коллекция Zotero `HV6A6BTH` (12 работ), разобранная в [literature_review_inspiration_to_expiration.md](../literature_review_inspiration_to_expiration.md), плюс современные дополнения. Ниже — что из этого отвечает на какой вопрос.
+Основа — коллекция Zotero `HV6A6BTH` (12 работ), разобранная в [literature_review_inspiration_to_expiration.md](archive/literature_review_inspiration_to_expiration.md), плюс современные дополнения. Ниже — что из этого отвечает на какой вопрос.
 
 ### 4.1. Форма и толщина мягких тканей — литература молчит
 
@@ -962,4 +962,4 @@ Baselines B0–B3 обязательны до FEM. Затем контактно
 
 ## 9. Источники
 
-Литература коллекции Zotero `HV6A6BTH` и современные дополнения перечислены в [literature_review_inspiration_to_expiration.md §9–10](../literature_review_inspiration_to_expiration.md). Внутренние документы проекта: [research_and_implementation_plan.md](../research_and_implementation_plan.md), [benchmark_protocol_inspiration_expiration.md](../benchmark_protocol_inspiration_expiration.md), [OPEN_DATASETS.md](OPEN_DATASETS.md), [DATA_INVENTORY_STATUS.md](DATA_INVENTORY_STATUS.md). Смежные проекты: `MATLAB_TRKG4_real_subjects` (прямая и обратная задача TRKG4 на реальной геометрии), `Colab Notebooks` (двуслойная модель, чувствительность, сверка с КТ).
+Литература коллекции Zotero `HV6A6BTH` и современные дополнения перечислены в [literature_review_inspiration_to_expiration.md §9–10](archive/literature_review_inspiration_to_expiration.md). Внутренние документы проекта: [research_and_implementation_plan.md](archive/research_and_implementation_plan.md), [benchmark_protocol_inspiration_expiration.md](archive/benchmark_protocol_inspiration_expiration.md), [OPEN_DATASETS.md](OPEN_DATASETS.md), [DATA_INVENTORY_STATUS.md](DATA_INVENTORY_STATUS.md). Смежные проекты: `MATLAB_TRKG4_real_subjects` (прямая и обратная задача TRKG4 на реальной геометрии), `Colab Notebooks` (двуслойная модель, чувствительность, сверка с КТ).

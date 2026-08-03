@@ -5,8 +5,8 @@
 1. Текущий подтверждённый статус находится в `docs/PROJECT_STATUS.md`.
 2. Определения измеряемых величин находятся в `docs/MEASUREMENT_MODEL.md`.
 3. Очередь реализации и критерии выхода находятся в `docs/ROADMAP.md`.
-4. `docs/RESEARCH_REPORT.md`, `research_and_implementation_plan.md`,
-   `benchmark_protocol_inspiration_expiration.md` и выполненные notebook outputs — журнал
+4. `docs/RESEARCH_REPORT.md`, `docs/archive/research_and_implementation_plan.md`,
+   `docs/archive/benchmark_protocol_inspiration_expiration.md` и выполненные notebook outputs — журнал
    исследования. Они могут содержать опровергнутые или устаревшие результаты.
 5. Причины решений, выявленные ограничения и условия их пересмотра записываются в
    `docs/DECISION_LOG.md`. Этот журнал объясняет переходы, но не заменяет канонические

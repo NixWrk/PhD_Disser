@@ -7,113 +7,73 @@
 `MATLAB_TRKG4_real_subjects`. Итоговая цель — оценивать не только геометрическую ошибку в
 миллиметрах, но и её влияние на вычисленный импеданс.
 
-## Текущий статус
+---
 
-Сейчас реализованы воспроизводимый реестр пар, FOV-aware landmark-gated registration
-benchmark и полнообъёмные skin-to-lung профили без электродного фильтра. Классический
-elastix baseline не проходит gate. Locked ConvexAdam улучшил expert TRE у 13/13 случаев,
-но также прошёл полный gate у 0/13, поэтому парные карты толщины остаются заблокированы.
-Исторический S1.0 batch на phantom v2.0 superseded из-за осевой сингулярности ground truth.
-На исправленном axis-safe v2.1 S1.0 прошёл 2/3: shallow и nominal PASS, deep anisotropic
-провален по dense lung field и slip. Новый frozen S1.1 с low-rank tangential model прошёл
-multipattern synthetic gate 4/4, включая заранее не запускавшийся longitudinal case.
-Но real-development S1.1 дал `0/6`. Следующий frozen screen показал, что Gaussian repair
-убирает folding до contact, а одношаговый normal coupling снова его создаёт (`0/5` для
-обоих coupled-вариантов). Численная основа следующего joint piecewise-SVF прошла
-замороженный J1.0 gate: 4/4 аналитических cases, 8/8 региональных строк, folding 0,
-худший endpoint p95 0.000305 мм. J1.1 curved representation также прошёл: positive 2/2
-и controls 2/2. Он показал, что почти нулевая fixed-normal ошибка может сопровождаться
-39.8% collision, а валидный конечный contact — ненулевой fixed-normal разностью.
-Это всё ещё не регистрация КТ. Текущий этап — J1.2 joint optimizer только на synthetic
-images. CUDA foundation прошла identity smoke, но старый synthetic generator был
-остановлен exact-truth preflight: 0/3 по advected contact, optimizer и challenge не
-запускались. Contact-valid v2 доказал непрерывный общий contact с худшим analytic p95
-`0.000643 мм`, но его сетки `1.10–1.25 мм` провалили frozen raster gate 0/3:
-p95 `0.753–0.848 мм`, coverage `92.2–94.9%`. Optimizer и challenge снова не
-запускались. Это исправлено только разрешением grid в v3: exact truth прошла 3/3,
-raster p95 `0.640–0.719 мм`, coverage `97.3–98.3%`. Теперь разрешён только frozen
-development search 3×3; held-out challenge и Gate 1L/1B остаются закрыты. До них
-нет подтверждённой оценки изменения мышцы/жира и модели перехода вдох→выдох.
-Frozen search выполнен и дал `0/9 PASS`: contact/topology сохранены, но estimated
-tangential slip только `0.003–0.007 мм` при truth `1.327–2.998 мм`. Candidate не
-выбран, held-out остаётся закрытым.
-Identifiability screen локализовал причины: full intensity objective испорчен boundary
-partial-volume, хотя на eroded interior correct direction восстанавливается у 3/3.
-Counter-rotation различим MIND, но optimizer его не достигает; twist и shallow
-различимы interior intensity, но не MIND при frozen ratio `0.8`. Следующая версия
-должна одновременно исключить boundary bias и усилить tangential correspondence.
+## Текущий статус коротко
 
-Параллельно открыт трек грудной стенки, который не ждёт J1.2. У добровольцев есть
-только вдох, `OLD` и LungCT обрезают наружную стенку, поэтому единственный источник с
-парой фаз и стенкой в FOV — 10 COPDgene. Gate 1 при этом оценивает лёгкое, а Gate 1B
-порогов не имеет вовсе. Перед работой над соответствием стенки заморожен и выполнен
-W1 — бюджет неопределённости внутри одной фазы, без регистрации и сравнения фаз. Полная
-толщина `0.211 мм` и мягкие ткани вместе `0.186 мм` прошли как `feasible`: одно число по
-субъекту измеримо с запасом около 14:1. Жир `1.029 мм` и мышца `1.104 мм` — `marginal`,
-причём почти весь их бюджет создаёт одно HU-окно, поэтому раздельные ткани упираются в
-сегментацию, а не в регистрацию. Пространственный p95 `2.626 мм` одного порядка с
-ожидаемым эффектом при текущем разбиении. По этим числам жир и мышца объединены в одну
-суммарную мягкую ткань, а отчётной формой результата назначено распределение `Δh` по
-телу, а не медиана: именно распределение показывает зоны, благоприятные и
-неблагоприятные для электродов. Разбор пространственного шума показал, что `2.626 мм` —
-выборочная ошибка медианы в анатомически неоднородных бинах, а не предел измерителя: там,
-где бин однороден, ошибка составляет `0.17 мм`. Скан W2 в spine-anchored цилиндрической
-системе координат дал `no selection`: ближайшая конфигурация `24×8` при `2.5 мм`
-промахнулась узко — `1.030`/`1.096 мм` против порога `1.0` и занятость `0.85`/`0.92`
-против `0.9`. При этом карта устойчива на `93–94%` площади при медиане шума бина
-`0.412 мм`, а медианы бинов охватывают `15.3–74.5 мм`, то есть зоны различаются на два
-порядка сильнее шума. Пустые бины сосредоточены в подмышке и костодиафрагмальном синусе
-и частично структурно недостижимы, поэтому следующим шагом идёт переопределение домена
-Gate 2, а не наращивание плотности. Отдельно проверено, что сдвиг ткани между фазами
-реален: по 300 экспертным landmarks DIR-Lab полное смещение составляет `11.3–30.2 мм` по
-медиане, осевая доля от `0.24` до `0.89` по субъектам. Поэтому якорь карты должен
-двигаться вместе с тканью, и была заморожена рёберная система координат. Три её версии
-дали `1/10`, `0/10` и `0/10`, причём в последней `anchor_ambiguous` сработал у 7 из 10.
-Заранее записанное условие остановки выполнено: рёберная материальная система координат
-недоступна на COPDgene при шаге `2.5 мм`. Позвоночная карта построена для всех десяти
-субъектов, но она эйлерова и содержит артефакт того же порядка, что искомый эффект.
-Итоговая формулировка: метод состоятелен как измеритель распределения `h` внутри одной
-фазы и несостоятелен как измеритель лагранжевой `Δh` на парах задержек дыхания при таком
-шаге среза; сводка — [WALL_TRACK_SUMMARY.md](docs/WALL_TRACK_SUMMARY.md). Разбор Gate 2
-показал,
-что провал `51%/53%` вызван знаменателем: 40% отбраковки — точки плевры, для которых
-прямой путь наружу бессмыслен по построению.
+| Трек | Состояние | Ключевой итог |
+|---|---|---|
+| Реестр данных и пар | **работает** | 40/40 полных пар, protocol/FOV/phase labels, checksum |
+| Профили кожа→лёгкое | **работает** | шум `0.19 мм` на субъект, `0.41 мм` на бин |
+| Карта `h` внутри фазы | **работает** | устойчива на `93–94%` площади, зоны различимы |
+| Регистрация лёгких | **не проходит gate** | elastix и ConvexAdam `0/13`, S1.0–S1.2 и J1.2 отвергнуты |
+| Лагранжева карта `Δh` | **закрыта отрицательно** | рёберная система координат недоступна, `R1/R2/R3 = 1/0/0 из 10` |
+| Эйлерова карта `Δh` | построена, **не интерпретируема** | содержит артефакт `1.4–12 мм` при эффекте того же порядка |
+| Ансамбль выдоха для добровольцев | не начат | заблокирован отсутствием подтверждённого соответствия |
 
-Начинать чтение следует здесь:
+**Главный вывод на сегодня.** Метод состоятелен как измеритель распределения толщины
+мягких тканей по всей поверхности тела **внутри одной фазы** и несостоятелен как
+измеритель её изменения между фазами на парах задержек дыхания с шагом среза `2.5 мм`.
+Развёрнуто — [docs/WALL_TRACK_SUMMARY.md](docs/WALL_TRACK_SUMMARY.md).
 
-1. [Текущий подтверждённый статус](docs/PROJECT_STATUS.md)
-2. [Определения измеряемых величин](docs/MEASUREMENT_MODEL.md)
-3. [Порядок реализации и gate-критерии](docs/ROADMAP.md)
-4. [Результат парного registration benchmark](docs/REGISTRATION_BENCHMARK.md)
-5. [Выбор и locked benchmark ConvexAdam](docs/CONVEXADAM_BENCHMARK.md)
-6. [Журнал решений, проблем и переходов](docs/DECISION_LOG.md)
-7. [Спецификация sliding registration S1](docs/SLIDING_REGISTRATION_S1.md)
-8. [Результат S1.2 heuristic screen](docs/SLIDING_S12_HEURISTIC_SCREEN.md)
-9. [Design joint piecewise-SVF S1.2](docs/SLIDING_S12_JOINT_DESIGN.md)
-10. [Численный gate piecewise-SVF J1.0](docs/PIECEWISE_SVF_J10_NUMERIC_GATE.md)
-11. [Curved representation gate J1.1](docs/PIECEWISE_SVF_J11_REPRESENTATION_GATE.md)
-12. [Протокол J1.2 synthetic development](docs/PIECEWISE_SVF_J12_DEVELOPMENT_PROTOCOL.md)
-13. [Контактно-согласованный протокол J1.2 v2](docs/PIECEWISE_SVF_J12_CONTACT_PROTOCOL_V2.md)
-14. [Finer-grid протокол J1.2 v3](docs/PIECEWISE_SVF_J12_FINE_GRID_PROTOCOL_V3.md)
-15. [Identifiability screen J1.2](docs/PIECEWISE_SVF_J12_IDENTIFIABILITY_SCREEN.md)
-16. [Бюджет неопределённости профиля стенки W1](docs/WALL_MEASUREMENT_UNCERTAINTY_W1.md)
-17. [Разрешение 3D-карты мягких тканей W2](docs/WALL_SPATIAL_MAP_W2.md)
-18. [Итог трека грудной стенки](docs/WALL_TRACK_SUMMARY.md)
-19. [Рёберная и позвоночная системы координат R1](docs/WALL_DUAL_FRAME_R1.md)
-20. [Рёберная система координат R2](docs/WALL_RIB_FRAME_R2.md)
-21. [Рёберная система координат R3 и закрытие ветви](docs/WALL_RIB_FRAME_R3.md)
-22. [Позвоночная карта Δh E1](docs/WALL_EULERIAN_DELTA_E1.md)
-23. [Литобзор УЗИ межрёберных мышц](docs/LITERATURE_ULTRASOUND_WALL.md)
-24. [Аудит текущего notebook](docs/NOTEBOOK_AUDIT.md)
-25. [Правила данных и приватности](docs/DATA_PRIVACY.md)
+Причина не в реализации: сдвиг ткани между фазами `12–42 мм` по осевой компоненте при
+межрёберном шаге `20–25 мм` делает рёберную индексацию неоднозначной, и это подтверждается
+независимо опубликованными УЗ-данными о значимом изменении ширины межрёберного промежутка
+при дыхании.
 
-Большие документы [RESEARCH_REPORT.md](docs/RESEARCH_REPORT.md),
-[research_and_implementation_plan.md](research_and_implementation_plan.md) и
-[benchmark_protocol_inspiration_expiration.md](benchmark_protocol_inspiration_expiration.md)
-сохраняются как журнал исследования. Они содержат как полезные наблюдения, так и устаревшие
-или отозванные результаты; текущие решения берутся из документов выше.
+---
 
-## Быстрый старт на Windows
+## С чего начать чтение
+
+1. [docs/PROJECT_STATUS.md](docs/PROJECT_STATUS.md) — что подтверждено и что результатом
+   **не** является;
+2. [docs/MEASUREMENT_MODEL.md](docs/MEASUREMENT_MODEL.md) — что именно измеряется;
+3. [docs/WALL_TRACK_SUMMARY.md](docs/WALL_TRACK_SUMMARY.md) — итог основного трека;
+4. [docs/README.md](docs/README.md) — полный указатель документации по группам;
+5. [AGENTS.md](AGENTS.md) — правила работы с репозиторием.
+
+---
+
+## Структура репозитория
+
+~~~text
+.
+├── src/breathgeom/        переиспользуемая логика; всё, что можно протестировать
+│   ├── io/                чтение DICOM, DIR-Lab, реестры открытых данных, pair-manifest
+│   ├── domain/            физические пространства, LPS/RAS
+│   ├── measure/           маски, профили, регистрация, phantom-генераторы
+│   ├── uncertainty_w1.py  бюджет неопределённости профиля
+│   ├── spatial_map_w2.py  цилиндрическая система координат и разрешение карты
+│   ├── rib_frame_r1..r3.py рёберная индексация и её preflight
+│   ├── eulerian_delta_e1.py позвоночная карта Δh
+│   └── cli.py             единая точка входа `breathgeom`
+├── tests/                 инварианты и gate-логика, 218 тестов
+├── configs/               замороженные протоколы, по одному JSON на этап
+├── schemas/               схемы артефактов
+├── notebooks/             отчёты над batch-артефактами, не место реализации
+├── docs/                  канонический статус, протоколы, журнал
+│   └── archive/           ранние мастер-план, литобзор и протокол сравнения
+├── tools/                 bootstrap, установка внешних инструментов, запуск notebook
+├── data/                  локальные манифесты, **не коммитится**
+└── results/               batch-артефакты, **не коммитится**
+~~~
+
+Правило разделения: логика живёт в `src/breathgeom` и покрыта тестами, параметры этапа —
+в `configs/`, числа — в `results/`, а notebook только читает артефакт и показывает его.
+
+---
+
+## Установка на Windows
 
 ~~~powershell
 powershell -ExecutionPolicy Bypass -File tools/bootstrap.ps1 -WithGeometry
@@ -125,19 +85,29 @@ Copy-Item configs/paths.local.example.yaml configs/paths.local.yaml
 .\.venv\Scripts\breathgeom.exe project validate --config configs/paths.local.yaml
 ~~~
 
-`configs/paths.local.yaml` содержит реальные пути, исключён из Git и не должен включать
-персональные данные в публикуемые outputs.
+`configs/paths.local.yaml` содержит реальные пути, исключён из Git и не должен попадать в
+публикуемые outputs. PyTorch и ConvexAdam ставятся отдельно в `.venv-registration`, чтобы
+основная среда тестов не зависела от CUDA.
 
-## Доступные команды
+---
+
+## Команды
+
+### Данные и реестр
 
 ~~~powershell
-.\.venv\Scripts\breathgeom.exe --help
 .\.venv\Scripts\breathgeom.exe data list
 .\.venv\Scripts\breathgeom.exe data dirlab-inventory "E:\КТ папка\dirlab_copdgene"
 .\.venv\Scripts\breathgeom.exe data pairs-manifest `
   --dirlab-root "E:\КТ папка\dirlab_copdgene" `
   --lungct-root "E:\КТ папка\learn2reg_lungct" --checksums
-.\.venv\Scripts\breathgeom.exe manifest scan --config configs/paths.local.yaml --output data/interim/manifest.local.csv
+.\.venv\Scripts\breathgeom.exe manifest scan --config configs/paths.local.yaml `
+  --output data/interim/manifest.local.csv
+~~~
+
+### Регистрация и её QC
+
+~~~powershell
 .\.venv\Scripts\breathgeom.exe registration benchmark `
   --manifest data/interim/respiratory_pairs.local.csv `
   --dataset dirlab_copdgene --subject copd1
@@ -146,55 +116,41 @@ Copy-Item configs/paths.local.example.yaml configs/paths.local.yaml
   --dataset learn2reg_lungct --subject LungCT_0001 `
   --method convexadam --params configs/convexadam_locked.json `
   --registration-python .venv-registration/Scripts/python.exe
+~~~
+
+### Sliding и piecewise-SVF
+
+~~~powershell
 .\.venv\Scripts\breathgeom.exe registration sliding-real-development
-.\.venv\Scripts\breathgeom.exe registration sliding-real-diagnose
 .\.venv\Scripts\breathgeom.exe registration sliding-s12-heuristic-screen
 .\.venv\Scripts\breathgeom.exe registration piecewise-svf-j10-numeric
 .\.venv\Scripts\breathgeom.exe registration piecewise-svf-j11-representation
 .\.venv\Scripts\breathgeom.exe registration piecewise-svf-j12-preflight
+~~~
+
+### Трек грудной стенки
+
+~~~powershell
 .\.venv\Scripts\breathgeom.exe measure uncertainty-budget-w1
 .\.venv\Scripts\breathgeom.exe measure spatial-map-w2
+.\.venv\Scripts\breathgeom.exe measure rib-preflight-r1
+.\.venv\Scripts\breathgeom.exe measure rib-preflight-r3
+.\.venv\Scripts\breathgeom.exe measure eulerian-delta-e1
 .\.venv\Scripts\breathgeom.exe profiles extract-pair `
   --manifest data/interim/respiratory_pairs.local.csv `
   --dataset dirlab_copdgene --subject copd1
-.\.venv\Scripts\breathgeom.exe measure wall data/interim/ct.nii.gz --side right --csv data/interim/wall.csv
+.\.venv\Scripts\breathgeom.exe measure wall data/interim/ct.nii.gz --side right
 ~~~
 
-PyTorch/ConvexAdam устанавливаются отдельно в `.venv-registration`: основная среда
-тестов и анализа не зависит от CUDA. `registration benchmark` сохраняет поле только для
-случая, прошедшего все QC-gates.
-Флаг `--save-failed-fields` сохраняет проваленное поле только в локальный
-`quarantine_NOT_FOR_MEASUREMENT`; profile/measurement pipeline такие поля не принимает.
-`profiles extract-pair` всегда может сохранить раздельные однофазные профили, но создаёт
-paired deltas только при наличии прошедшего gate поля. Разность независимых однофазных
-медиан не считается дыхательным эффектом.
+`registration benchmark` сохраняет поле только для случая, прошедшего все QC-gates. Флаг
+`--save-failed-fields` кладёт проваленное поле в локальный
+`quarantine_NOT_FOR_MEASUREMENT`, и profile-конвейер такие поля не принимает.
+`profiles extract-pair` всегда может выдать раздельные однофазные профили, но создаёт
+парные дельты только при наличии прошедшего gate поля.
 
-`measure wall` — разведочная skin-to-lung метрика, а не финальная оценка ткани под
-электродами. Ограничения и точные определения описаны в
-[MEASUREMENT_MODEL.md](docs/MEASUREMENT_MODEL.md).
+---
 
-## Notebook
-
-`01_inhale_exhale_inspection.ipynb` служит историческим визуальным QC одного случая.
-Выполненные batch-отчёты находятся в `02_registration_benchmark.ipynb` и
-`03_whole_body_profiles.ipynb`; locked ConvexAdam разобран в
-`04_convexadam_registration_benchmark.ipynb`. Multi-region representation и synthetic
-контроли показаны в `05_sliding_phantom.ipynb`; frozen S1.0 FAIL — в
-`06_sliding_s1_synthetic_benchmark.ipynb`, synthetic S1.1 PASS — в
-`07_sliding_s11_synthetic_benchmark.ipynb`, а real-development S1.1 FAIL —
-в `08_sliding_s11_real_development.ipynb`. Отказ простого S1.2 repair/coupling класса
-показан в `09_sliding_s12_heuristic_screen.ipynb`; численный J1.0 piecewise-SVF —
-в `10_piecewise_svf_j10_numeric_gate.ipynb`, curved representation J1.1 —
-в `11_piecewise_svf_j11_representation_gate.ipynb`, блокирующий J1.2 truth preflight —
-в `12_piecewise_svf_j12_truth_preflight.ipynb`, а отдельный continuous/raster preflight
-contact-valid v2 — в `13_piecewise_svf_j12_contact_preflight_v2.ipynb`. Finer-grid v3
-PASS показан в `14_piecewise_svf_j12_contact_preflight_v3.ipynb`, development FAIL —
-в `15_piecewise_svf_j12_contact_development_v3.ipynb`, identifiability screen —
-в `16_piecewise_svf_j12_identifiability_screen.ipynb`. Числа batch-анализов всё равно
-берутся из `results/`.
-Подробная оценка первого notebook — в [NOTEBOOK_AUDIT.md](docs/NOTEBOOK_AUDIT.md).
-
-## Проверки
+## Проверки перед завершением изменения
 
 ~~~powershell
 .\.venv\Scripts\python.exe -m pytest
@@ -202,19 +158,32 @@ PASS показан в `14_piecewise_svf_j12_contact_preflight_v3.ipynb`, develo
 .\.venv\Scripts\python.exe -m mypy src
 ~~~
 
-Зелёные unit-тесты подтверждают программные инварианты, но не заменяют landmark TRE,
-проверку регистрации, сегментации и внешнюю физиологическую валидацию.
+Зелёные тесты подтверждают программные инварианты, но не заменяют landmark TRE, проверку
+регистрации, сегментации и внешнюю физиологическую валидацию.
+
+---
+
+## Notebooks
+
+Восемнадцать отчётов над batch-артефактами. Числа всегда берутся из `results/`, а не из
+notebook. Подробности и порядок запуска — [notebooks/README.md](notebooks/README.md).
+
+`01_inhale_exhale_inspection.ipynb` — исторический прототип для `copd1`, не
+перезапускается; его разбор в [docs/NOTEBOOK_AUDIT.md](docs/NOTEBOOK_AUDIT.md).
+
+---
 
 ## Ключевые правила
 
 - исходные DICOM неизменяемы и не попадают в Git;
-- основное анатомическое представление — маски/поля в физическом пространстве КТ, STL
+- основное анатомическое представление — маски и поля в физическом пространстве КТ, STL
   является производным;
 - source/target space, LPS/RAS и единицы всегда записываются явно;
 - respiratory, 4DCT и longitudinal данные не смешиваются;
-- импедансная дыхательная кривая не считается кривой объёма без калибровки;
+- импедансная кривая не считается кривой объёма без калибровки;
 - одна КТ вдоха даёт ансамбль возможных выдохов, а не единственное доказанное состояние;
-- научный результат должен воспроизводиться batch-командой и иметь provenance/QC.
+- параметры этапа замораживаются **до** вычисления; смягчение порога после просмотра
+  чисел запрещено;
+- научный результат должен воспроизводиться batch-командой и иметь provenance и QC.
 
-Полные инструкции для разработчиков и автоматизированных агентов находятся в
-[AGENTS.md](AGENTS.md).
+Полные инструкции для разработчиков и автоматизированных агентов — [AGENTS.md](AGENTS.md).
