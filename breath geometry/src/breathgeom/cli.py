@@ -92,10 +92,16 @@ from breathgeom.rib_frame_r1 import (
 from breathgeom.rib_frame_r2 import (
     PhaseRibsR2,
     PreflightR2,
+    RibConfigR2,
     detect_ribs_r2,
     evaluate_preflight_r2,
     load_rib_config_r2,
     write_preflight_r2,
+)
+from breathgeom.rib_frame_r3 import (
+    evaluate_subject_r3,
+    load_rib_config_r3,
+    relaxed_for_diagnosis,
 )
 from breathgeom.spatial_map_w2 import (
     BinStatistic,
@@ -1656,6 +1662,75 @@ def measure_uncertainty_budget_w1(
         f"fat: {verdict.fat_classification}  muscle: {verdict.muscle_classification}\n"
         f"separate fat/muscle allowed: {verdict.separate_fat_muscle_allowed}\n"
         f"manifest -> {manifest_path}"
+    )
+
+
+@measure_app.command("rib-preflight-r3")
+def measure_rib_preflight_r3(
+    config: Annotated[
+        Path,
+        typer.Option(exists=True, dir_okay=False, readable=True),
+    ] = Path("configs/wall_rib_frame_r3.json"),
+    manifest: Annotated[
+        Path,
+        typer.Option(exists=True, dir_okay=False, readable=True),
+    ] = Path("data/interim/respiratory_pairs.local.csv"),
+    output: Annotated[Path, typer.Option()] = Path("results/wall_rib_frame_r3"),
+) -> None:
+    """Last rib attempt: one shared axial window; gates unchanged."""
+    frame_config = load_rib_config_r3(config)
+    rows = {
+        row.subject_id: row
+        for row in read_pair_manifest(manifest)
+        if row.dataset_id == frame_config.dataset_id and row.complete
+    }
+    phases: list[PhaseRibsR2] = []
+    verdicts: list[PreflightR2] = []
+    relaxed: list[PreflightR2] = []
+    for subject in frame_config.subjects:
+        data = load_pair_data(rows[subject])
+        volumes = {
+            "fixed": cast(WallIntArray, data.fixed_ras),
+            "moving": cast(WallIntArray, data.moving_ras),
+        }
+        found, verdict = evaluate_subject_r3(
+            volumes, data.spacing, frame_config, subject
+        )
+        phases.extend(found)
+        verdicts.append(verdict)
+        relaxed.append(evaluate_preflight_r2(found, relaxed_for_diagnosis(frame_config.gates)))
+        console.print(
+            f"{subject}: {'PASS' if verdict.passes else 'FAIL'} {verdict.failure_reasons}"
+        )
+
+    manifest_path = write_preflight_r2(
+        output, config, cast(RibConfigR2, frame_config), tuple(phases), tuple(verdicts)
+    )
+    table = Table(title="R3 rib preflight (shared axial window)")
+    for column in ("subject", "L/R fixed", "L/R moving", "anchor dz", "verdict"):
+        table.add_column(column)
+    for verdict in verdicts:
+        shown = [item for item in phases if item.subject_id == verdict.subject_id]
+        gap = (
+            abs(shown[0].left_anchor_z_mm - shown[1].left_anchor_z_mm)
+            if len(shown) > 1
+            else float("nan")
+        )
+        table.add_row(
+            verdict.subject_id,
+            f"{shown[0].left_count}/{shown[0].right_count}",
+            f"{shown[1].left_count}/{shown[1].right_count}" if len(shown) > 1 else "-",
+            f"{gap:.1f}",
+            "PASS" if verdict.passes else verdict.failure_reasons,
+        )
+    console.print(table)
+    strict = sum(item.passes for item in verdicts)
+    console.print(
+        f"preflight passed {strict}/{len(verdicts)}; "
+        f"with count-match off (diagnosis only) {sum(i.passes for i in relaxed)}"
+        f"/{len(relaxed)}\n"
+        f"anchor_ambiguous: {sum('anchor_ambiguous' in i.failure_reasons for i in verdicts)}"
+        f"/{len(verdicts)}\nmanifest -> {manifest_path}"
     )
 
 
