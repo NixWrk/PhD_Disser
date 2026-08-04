@@ -17,6 +17,7 @@ print_file_info(cfg.body_stl);
 
 fprintf('\nTissue surfaces:\n');
 missing_required = {};
+missing_optional = {};
 for k = 1:numel(cfg.tissues)
     tissue = cfg.tissues(k);
     is_required = any(strcmp(tissue.name, cfg.required_tissues));
@@ -25,7 +26,8 @@ for k = 1:numel(cfg.tissues)
             fprintf('  %-12s MISSING REQUIRED\n', tissue.name);
             missing_required{end+1} = tissue.name; %#ok<AGROW>
         else
-            fprintf('  %-12s missing optional\n', tissue.name);
+            fprintf('  %-12s missing optional -> stays background\n', tissue.name);
+            missing_optional{end+1} = tissue.name; %#ok<AGROW>
         end
         continue;
     end
@@ -41,6 +43,17 @@ end
 
 if ~isempty(missing_required)
     error('Missing required tissue STL files: %s', strjoin(missing_required, ', '));
+end
+
+% Optional does not mean harmless. An absent mask leaves that volume at the
+% background conductivity, which changes the computed impedance. Say so once,
+% here, so that the result is never read as if every declared tissue had been
+% assigned.
+if ~isempty(missing_optional)
+    fprintf(['\nNOTE: %s declared but not assigned; those volumes keep the ', ...
+        '%s conductivity. Any statement that the model assigns them is ', ...
+        'wrong for this run.\n'], strjoin(missing_optional, ', '), ...
+        cfg.background.name);
 end
 
 fprintf('\nSTL input check passed.\n');

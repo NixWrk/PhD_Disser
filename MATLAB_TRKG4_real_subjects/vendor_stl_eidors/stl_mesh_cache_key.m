@@ -9,4 +9,12 @@ key.body_datenum = info.datenum;
 key.mesher = lower(cfg.mesher);
 key.mesh_fineness = cfg.mesh_fineness;
 key.gmsh_mesh_size = cfg.gmsh_mesh_size;
+if isfield(cfg, 'prebuilt_mesh_file') && isfile(cfg.prebuilt_mesh_file)
+    mesh_info = dir(cfg.prebuilt_mesh_file);
+    key.prebuilt_mesh_file = char(cfg.prebuilt_mesh_file);
+    key.prebuilt_mesh_bytes = mesh_info.bytes;
+    key.prebuilt_mesh_datenum = mesh_info.datenum;
+else
+    key.prebuilt_mesh_file = '';
+end
 end

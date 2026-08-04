@@ -15,7 +15,15 @@ for k = 1:numel(cfg.tissues)
     end
 
     if ~isfile(tissue.file)
-        fprintf('Skipping missing tissue STL: %s (%s)\n', tissue.name, tissue.file);
+        % A missing mask is not a neutral event: the volume keeps the
+        % background conductivity, so an absent blood or bone mask silently
+        % shifts the computed impedance. Print it as a warning so it survives
+        % in a log and is visible in a long console, and let the caller see
+        % which tissues were really applied through tissue_names.
+        warning('trkg4:missingTissueStl', ...
+            ['Tissue %s is enabled but its STL is missing:\n  %s\n', ...
+             'Its volume keeps the %s background conductivity.'], ...
+            tissue.name, tissue.file, cfg.background.name);
         continue;
     end
 
