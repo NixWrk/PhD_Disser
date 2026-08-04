@@ -1,0 +1,10 @@
+General.Terminal=1;
+Merge "J:\NIX\WRK\Code\Kardio_respiratory_dudes\Калмыков\MATLAB_TRKG4_real_subjects\data\nik\stl\body_solid.stl";
+Surface Loop(1) = {1};
+Volume(2) = {1};
+Physical Volume(3) = {2};
+Mesh.MeshSizeMax = 25.000000;
+Mesh.Algorithm3D=4;
+Mesh.OptimizeNetgen=1;
+Mesh 3;
+OptimizeMesh "Gmsh";
