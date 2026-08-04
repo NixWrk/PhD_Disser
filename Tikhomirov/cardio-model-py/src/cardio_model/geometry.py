@@ -11,6 +11,8 @@
 
 from __future__ import annotations
 
+import math
+
 import numpy as np
 
 __all__ = [
@@ -275,7 +277,7 @@ def get_l_point(
 
 def list_of_parallel_sections(
     after_cubic: np.ndarray,
-    step: int = 3,
+    step: float = 3.0,
 ) -> list[np.ndarray]:
     """Список хорд контура на сетке сдвигов.
 
@@ -286,15 +288,28 @@ def list_of_parallel_sections(
     Parameters
     ----------
     after_cubic : (N, 2) float — кубически интерполированный контур.
-    step        : int           — шаг сдвига (default 3).
+    step        : float         — положительный шаг сдвига (default 3).
 
     Returns
     -------
     list[np.ndarray (2, 2)] — только непустые хорды.
     """
+    step = float(step)
+    if not math.isfinite(step) or step <= 0.0:
+        raise ValueError("step must be a finite positive number")
+
+    # Wolfram Table[{i, 1, 101, step}] допускает вещественный step.
+    # Количество полных шагов вычисляем отдельно, чтобы:
+    #   * включить 101, если шаг точно укладывается в интервал;
+    #   * не добавить точку > 101 для шага, который интервал не делит;
+    #   * не накапливать ошибку повторным сложением float.
+    span = 101.0 - 1.0
+    last_index = math.floor(math.nextafter(span / step, math.inf))
+
     sections = []
-    for shift in range(1, 102, step):   # {i, 1, 101, step}
-        pt = get_l_point(after_cubic, float(shift))
+    for index in range(last_index + 1):
+        shift = 1.0 + index * step
+        pt = get_l_point(after_cubic, shift)
         if pt is not None:
             sections.append(pt)
     return sections

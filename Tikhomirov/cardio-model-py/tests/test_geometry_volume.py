@@ -14,19 +14,17 @@ from pathlib import Path
 import numpy as np
 import pytest
 
+from cardio_model.data.moves import edge_move_5pt
+from cardio_model.data.patients import get_contour
 from cardio_model.geometry import (
     get_coord_after_move,
     kubic_interpol,
-    list_of_parallel_sections,
 )
 from cardio_model.volume import (
     cut_konus_circle_volume,
     sv_by_contour_and_5move,
     volume_by_contour,
-    volume_by_section,
 )
-from cardio_model.data.patients import get_contour
-from cardio_model.data.moves import edge_move_5pt
 
 _REF_PATH = Path(__file__).parent / "reference_values.json"
 with _REF_PATH.open(encoding="utf-8") as _fh:
@@ -141,10 +139,8 @@ class TestVolumeByContour:
         """volume_by_contour совпадает с Wolfram VolumeByContour[..., 3]."""
         contour = get_contour(name)
         vol = volume_by_contour(contour, h_step=3.0)
-        # Wolfram использует Round[..., 1] — допуск ±0.5 мл
-        assert abs(vol - expected) <= 0.5, (
-            f"{name}: got {vol}, expected {expected}"
-        )
+        # Wolfram Round[x, 1] квантует до целого миллилитра.
+        assert vol == expected, f"{name}: got {vol}, expected {expected}"
 
     def test_positive(self) -> None:
         assert volume_by_contour(get_contour("Ivan")) > 0
@@ -166,10 +162,7 @@ class TestSVbyContourAnd5Move:
         contour = get_contour(name)
         move5   = edge_move_5pt(name)
         sv = sv_by_contour_and_5move(contour, move5)
-        # Допуск ±0.5 мл (как и для volume_by_contour)
-        assert abs(sv - expected) <= 0.5, (
-            f"{name}: got {sv}, expected {expected}"
-        )
+        assert sv == expected, f"{name}: got {sv}, expected {expected}"
 
     @pytest.mark.parametrize("name", ["Ivan", "Alex", "Artem"])
     def test_negative_with_inverted_move(self, name: str) -> None:

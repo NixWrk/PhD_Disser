@@ -19,7 +19,9 @@
     "hFat"    : list[float]  — толщина жира (1 значение)
     "flSize"  : list[float]  — [a_fl, b_fl]
 
-Все методы применяют ``np.round(result, 4)`` (порт ``Round[x, 0.0001]``).
+Method1 и Method2 округляют возвращаемый результат до 0.0001 м.
+Method4 округляет до 0.0001 м только найденное ``dr``, а затем без
+дополнительного округления преобразует его с учётом смещения центра.
 """
 
 from __future__ import annotations
@@ -116,16 +118,18 @@ def rad_eval_method4(obj: dict, param: dict, dxdy: np.ndarray) -> np.ndarray:
     Важно: в оригинале x и y перестановлены — ``dxdy[[i,2]]/1000`` идёт в dx,
     ``dxdy[[i,1]]/1000`` в dy (Mathematica 1-based: col2 → dx, col1 → dy).
 
-    После нахождения dr: result[i] = R[i] - sqrt((R[i]-dr[i])^2 - (dx[i])^2) - dy[i].
+    Найденное ``dr`` округляется до 0.0001 м, после чего:
+    ``result[i] = R[i] - sqrt((R[i]-dr[i])^2 - dx[i]^2) - dy[i]``.
 
-    Возвращает np.ndarray[5] с точностью 4 знака.
+    Итоговый ``result`` не округляется повторно: именно так устроен
+    ``RadEvalMethod4`` в Wolfram.
     """
     dro1 = find_ro_one(
         float(obj["flDZ"]),
         float(param["flSize"][0]),
         float(param["flSize"][1]),
     )
-    dr = np.array([
+    dr = np.round(np.array([
         find_dr_sphere_fl_dxdy(
             float(obj["zBase"][i]), float(obj["dZRad"][i]),
             # сначала col2 (dy_local), потом col1 (dx_local) — как в оригинале
@@ -137,12 +141,12 @@ def rad_eval_method4(obj: dict, param: dict, dxdy: np.ndarray) -> np.ndarray:
             float(param["x"][i]), float(param["y"][i]),
         )
         for i in range(5)
-    ])
+    ]), 4)
     R_arr = np.array([float(param["R"][i]) for i in range(5)])
     dx_arr = np.array([float(dxdy[i, 1]) / 1000.0 for i in range(5)])
     dy_arr = np.array([float(dxdy[i, 0]) / 1000.0 for i in range(5)])
     result = R_arr - np.sqrt((R_arr - dr) ** 2 - dx_arr ** 2) - dy_arr
-    return np.round(result, 4)
+    return result
 
 
 # ---------------------------------------------------------------------------

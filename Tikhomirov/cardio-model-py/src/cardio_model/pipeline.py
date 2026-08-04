@@ -24,12 +24,12 @@ from __future__ import annotations
 
 import numpy as np
 
+from cardio_model.data.moves import edge_move_5pt
 from cardio_model.data.mri import (
-    VALVE_MOVE,
     R_BY_MRI_BY_VOLUME,
+    VALVE_MOVE,
     get_contour_with_atrial,
 )
-from cardio_model.data.moves import edge_move_5pt
 from cardio_model.data.patients import get_contour, get_param, get_radial
 from cardio_model.radial import rad_eval_method1, rad_eval_method2, rad_eval_method4
 from cardio_model.sistole import sistole_contour
@@ -91,9 +91,9 @@ def dxdy_find(
 
     cos_angle = np.clip(np.dot(p1, p2) / (n1 * n2), -1.0, 1.0)
     angle = float(abs(np.arccos(cos_angle)))
-    l = n2
+    length = n2
 
-    return np.array([-l * np.cos(angle), l * np.sin(angle)])
+    return np.array([-length * np.cos(angle), length * np.sin(angle)])
 
 
 # ---------------------------------------------------------------------------
@@ -229,7 +229,9 @@ def radial_evaluation(
     center_move = equal_sphere_move_modelling(name, sistole_method, eq_sphere_method)
     dxdy = h_contour_dxdy_for_each_channel(name, center_move)
 
-    # Шаг 3: радиальное смещение (мм → через Round[..., 4] внутри rad_eval_*)
+    # Шаг 3: радиальное смещение.
+    # Method1/2 возвращают Round[..., 0.0001]; Method4 округляет только
+    # промежуточное dr, а геометрически скорректированный результат — нет.
     model_param = get_param(name)
     exp_data    = get_radial(name)
 

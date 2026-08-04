@@ -1,4 +1,4 @@
-"""Расчёт объёма по контуру: усечённый конус (Симпсон), SV.
+"""Расчёт объёма по контуру: последовательность усечённых конусов, SV.
 
 Порт ``Kernel/core/VolumeCalc.m`` (вычислительная часть).
 
@@ -64,7 +64,12 @@ def volume_by_section(
 
     Returns
     -------
-    float — объём в мл (Round[Total/1000, 1]).
+    float — объём в мл, округлённый до целого миллилитра.
+
+    Notes
+    -----
+    В Wolfram ``Round[x, 1]`` означает округление к ближайшему числу,
+    кратному 1, а не один десятичный знак, как ``round(x, 1)`` в Python.
     """
     # Длины хорд
     lengths = np.array([
@@ -76,7 +81,8 @@ def volume_by_section(
         cut_konus_circle_volume(h, lengths[i], lengths[i + 1])
         for i in range(len(lengths) - 1)
     ]
-    return round(float(np.sum(volumes)) / 1000.0, 1)
+    volume_ml = float(np.sum(volumes)) / 1000.0
+    return float(round(volume_ml))
 
 
 # ---------------------------------------------------------------------------
@@ -104,7 +110,7 @@ def volume_by_contour(points: np.ndarray, h_step: float = 3.0) -> float:
     float — объём в мл.
     """
     interp = kubic_interpol(points)
-    sections = list_of_parallel_sections(interp, step=int(h_step))
+    sections = list_of_parallel_sections(interp, step=h_step)
     return volume_by_section(sections, h_step)
 
 

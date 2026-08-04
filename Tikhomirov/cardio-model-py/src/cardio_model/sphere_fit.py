@@ -18,7 +18,7 @@
 from __future__ import annotations
 
 import numpy as np
-from scipy.optimize import minimize, Bounds
+from scipy.optimize import Bounds, minimize
 from shapely.geometry import Polygon
 
 __all__ = [
@@ -141,9 +141,11 @@ def eq_sph_nm_center_radius(
     x0 = np.array([cx, cy, r0])
 
     bounds = Bounds([-40.0, -60.0, 20.0], [40.0, 40.0, 60.0])
+    x0 = np.clip(x0, bounds.lb, bounds.ub)
     res = minimize(
         objective, x0,
         method="Nelder-Mead",
+        bounds=bounds,
         options={"xatol": 1e-6, "fatol": 1e-6, "maxiter": 50_000},
     )
     return np.array([res.x[0], res.x[1]]), float(res.x[2])

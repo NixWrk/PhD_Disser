@@ -9,12 +9,13 @@
     finders     — FindRoOne, FindRSphere, FindDRSphere*
     radial      — RadEvalMethod1..4
     geometry    — KubicInterpol, GetCoordAfterMove, sections
-    volume      — VolumeBySection, VolumeByContour, SVfinder
+    volume      — VolumeBySection, VolumeByContour, SVbyContourAnd5Move
     sphere_fit  — EqualSphere (Nelder-Mead подгонка)
     sistole     — SistoleContour, ValveConturMove
     pipeline    — EqualSphereMoveModelling, RadialEvaluation, TotalModelling
-    dsp         — FirFilter, GetR, MyDeriv, MyIntegrate
-    importers   — Reo32, Comsol
+    dsp         — заглушка будущего порта DspLib
+    plotting    — заглушка визуализации
+    importers   — заглушки будущего импорта Reo32 и Comsol
     data        — пациентские данные (Ivan, Alex, Artem)
 """
 
