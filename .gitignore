@@ -8,3 +8,6 @@ __pycache__/
 
 # Generated research reports and notebook exports
 research/generated/
+
+# Jupyter autosaves: duplicates of the notebook next to the notebook
+.ipynb_checkpoints/
