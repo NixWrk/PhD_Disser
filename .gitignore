@@ -11,3 +11,7 @@ research/generated/
 
 # Jupyter autosaves: duplicates of the notebook next to the notebook
 .ipynb_checkpoints/
+
+# Локальное виртуальное окружение Python (ранее ошибочно хранилось в репозитории)
+venv/
+.venv/

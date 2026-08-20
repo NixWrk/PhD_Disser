@@ -1,5 +1,5 @@
 General.Terminal=1;
-Merge "J:\NIX\WRK\Code\Kardio_respiratory_dudes\Калмыков\MATLAB_TRKG4_real_subjects\data\nik\stl\body_solid_v2_volume_fill.stl";
+Merge "J:\NIX\WRK\Code\Kalmykov_PhD\MATLAB_TRKG4_real_subjects\data\nik\stl\body_solid_v2_volume_fill.stl";
 Surface Loop(1) = {1};
 Volume(2) = {1};
 Physical Volume(3) = {2};
