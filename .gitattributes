@@ -1,0 +1,29 @@
+# Окончания строк задаются репозиторием, а не настройкой core.autocrlf
+# на конкретной машине. В индексе всегда LF, в рабочем дереве тоже LF.
+# Те же правила уже действуют в "breath geometry/.gitattributes".
+* text=auto eol=lf
+
+# Батники Windows чувствительны к окончаниям строк
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Бинарные форматы: ни нормализации, ни попыток показать diff
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.pdf binary
+*.mph binary
+*.mat binary
+*.sqlite binary
+*.vsidx binary
+*.wsuo binary
+*.stl binary
+*.step binary
+*.stp binary
+*.dcm binary
+*.nii binary
+*.nii.gz binary
+*.rar binary
+*.7z binary
+*.zip binary
