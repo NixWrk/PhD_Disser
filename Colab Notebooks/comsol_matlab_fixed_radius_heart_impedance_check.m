@@ -22,7 +22,18 @@ OUT_CSV = 'C:\tmp\TTrans_NIX_matlab_fixed_radius_heart_impedance.csv';
 
 COMSOL_MLI = ['C:\PC\COMSOL.Multiphysics.6.0.318.Win.Linux.macOS-SSQ\', ...
     'Installed_comsol\COMSOL60\Multiphysics\mli'];
-PARAM_DIR = 'D:\Git_Code\Kardio_respiratory_dudes\Калмыков\Colab Notebooks\params';
+% Resolve the repository root from this script's own location, so the path
+% stays valid on any machine and after the checkout has been moved.
+REPO_ROOT = fileparts(mfilename('fullpath'));
+while exist(fullfile(REPO_ROOT, '.git'), 'dir') ~= 7
+    PARENT_DIR = fileparts(REPO_ROOT);
+    if strcmp(PARENT_DIR, REPO_ROOT)
+        error('comsol_check:noRepoRoot', ...
+            'Repository root (.git) not found above %s', mfilename('fullpath'));
+    end
+    REPO_ROOT = PARENT_DIR;
+end
+PARAM_DIR = fullfile(REPO_ROOT, 'Colab Notebooks', 'params');
 
 SUBJECT = 'РќРёРє';   % static.json/ct.json are currently mojibake-encoded in this checkout.
 

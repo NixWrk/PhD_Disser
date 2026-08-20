@@ -17,7 +17,7 @@ C:\tmp\comsol_prefs_allfiles
 Из корня репозитория:
 
 ```powershell
-Copy-Item -LiteralPath 'D:\Git_Code\Kardio_respiratory_dudes\Калмыков\COMSOL_investigation_NIX\java\comsol_clean_TTrans_NIX_radius_sweep_6_0.java' -Destination 'C:\tmp\comsol_clean_TTrans_NIX_radius_sweep_6_0.java' -Force
+Copy-Item -LiteralPath '.\COMSOL_investigation_NIX\java\comsol_clean_TTrans_NIX_radius_sweep_6_0.java' -Destination 'C:\tmp\comsol_clean_TTrans_NIX_radius_sweep_6_0.java' -Force
 
 & 'C:\PC\COMSOL.Multiphysics.6.0.318.Win.Linux.macOS-SSQ\Installed_comsol\COMSOL60\Multiphysics\bin\win64\comsolcompile.exe' `
   -jdkroot 'C:\PC\COMSOL.Multiphysics.6.0.318.Win.Linux.macOS-SSQ\Installed_comsol\COMSOL60\Multiphysics\java\win64\jre' `
@@ -30,10 +30,11 @@ Copy-Item -LiteralPath 'D:\Git_Code\Kardio_respiratory_dudes\Калмыков\CO
 C:\tmp\TTrans_for_NIX.step
 ```
 
-Если нужно восстановить из репозитория:
+Каталог `geometry/` не отслеживается (см. `COMSOL_investigation_NIX/.gitignore`),
+STEP в репозитории нет - файл надо положить туда самому, после чего:
 
 ```powershell
-Copy-Item -LiteralPath 'D:\Git_Code\Kardio_respiratory_dudes\Калмыков\COMSOL_investigation_NIX\geometry\TTrans_for_NIX.step' -Destination 'C:\tmp\TTrans_for_NIX.step' -Force
+Copy-Item -LiteralPath '.\COMSOL_investigation_NIX\geometry\TTrans_for_NIX.step' -Destination 'C:\tmp\TTrans_for_NIX.step' -Force
 ```
 
 ## Запуск batch
@@ -90,7 +91,7 @@ java/comsol_homogeneous_electrode_study_6_0.java
 Компиляция:
 
 ```powershell
-Copy-Item -LiteralPath 'D:\Git_Code\Kardio_respiratory_dudes\Калмыков\COMSOL_investigation_NIX\java\comsol_homogeneous_electrode_study_6_0.java' -Destination 'C:\tmp\comsol_homogeneous_electrode_study_6_0.java' -Force
+Copy-Item -LiteralPath '.\COMSOL_investigation_NIX\java\comsol_homogeneous_electrode_study_6_0.java' -Destination 'C:\tmp\comsol_homogeneous_electrode_study_6_0.java' -Force
 
 & 'C:\PC\COMSOL.Multiphysics.6.0.318.Win.Linux.macOS-SSQ\Installed_comsol\COMSOL60\Multiphysics\bin\win64\comsolcompile.exe' `
   -jdkroot 'C:\PC\COMSOL.Multiphysics.6.0.318.Win.Linux.macOS-SSQ\Installed_comsol\COMSOL60\Multiphysics\java\win64\jre' `
