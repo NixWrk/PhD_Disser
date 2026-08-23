@@ -1,0 +1,6 @@
+# Local downloads, browser profiles, OCR intermediates, and staged PDFs
+.pdf_staging/
+.evidence_work/
+
+# Office lock files
+~$*.docx

@@ -19,3 +19,8 @@ venv/
 # Local Git recovery and session metadata
 .git-recovery/
 .openscience/session.txt
+
+# Local rebuilt corpora contain machine-specific paths and derived snapshots
+Colab Notebooks_rebuilt/
+Colab Notebooks_rebuilt_snapshots/
+Colab Notebooks_rebuilt_staging_*/
