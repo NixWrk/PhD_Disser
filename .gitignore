@@ -1,4 +1,4 @@
-﻿# Ignore local build artifacts
+# Ignore local build artifacts
 *.exe
 *.spec
 build*/
@@ -15,3 +15,7 @@ research/generated/
 # Локальное виртуальное окружение Python (ранее ошибочно хранилось в репозитории)
 venv/
 .venv/
+
+# Local Git recovery and session metadata
+.git-recovery/
+.openscience/session.txt
