@@ -1,0 +1,115 @@
+Да. Для такого обзора я бы использовал международный термин **impedance cardiography (ICG) — импедансная кардиография**, включая **thoracic electrical bioimpedance (TEB)** и более поздний вариант **electrical cardiometry / electrical velocimetry (EC/EV)**. Термин *реокардиография* встречается, но в современной индексируемой литературе значительно реже; ICG/TEB даст существенно более полную выборку. ([PubMed][1])
+
+Важное разграничение: ICG в первую очередь предназначена для оценки **ударного объёма (SV)** и производного от него **сердечного выброса (CO)**. Оценка **фракции выброса левого желудочка (LVEF)** по ICG существенно менее стандартизована и имеет противоречивую валидацию. Поэтому литературу по LVEF я вынес в отдельную группу. ([PubMed][2])
+
+Под «хорошими» ниже понимаю статьи, полезные для научного обзора: фундаментальные методические работы, обзоры и метаанализы, а также исследования сравнения методов с термодилюцией, эхокардиографией, методом Фика или МРТ. Я намеренно включил и работы с отрицательными результатами: современный метаанализ EC показал среднюю процентную ошибку около 48% у взрослых и 42% в педиатрии, поэтому вопрос точности метода действительно остаётся предметом дискуссии. ([PubMed][3])
+
+1. **[Методика, ★] Kubicek W.G. et al. — Development and evaluation of an impedance cardiac output system.** *Aerospace Medicine*, 1966;37:1208–1212. Исходная работа по импедансной оценке CO/SV. [PubMed](https://pubmed.ncbi.nlm.nih.gov/5339656/?utm_source=chatgpt.com)
+
+2. **[Методика, ★] Bernstein D.P. — A new stroke volume equation for thoracic electrical bioimpedance: theory and rationale.** *Critical Care Medicine*, 1986;14:904–909. Ключевая формула Sramek–Bernstein/модификация модели объёмного проводника. [DOI](https://doi.org/10.1097/00003246-198610000-00017?utm_source=chatgpt.com)
+
+3. **[Методика, ★] Sherwood A. et al. — Methodological guidelines for impedance cardiography.** *Psychophysiology*, 1990;27:1–23. Очень полезна для электродов, обработки сигнала, PEP, LVET и SV. [DOI](https://doi.org/10.1111/j.1469-8986.1990.tb02171.x?utm_source=chatgpt.com)
+
+4. **[Обзор, ★] Fuller H.D. — The validity of cardiac output measurement by thoracic impedance: a meta-analysis.** *Clinical and Investigative Medicine*, 1992;15:103–112. Один из ранних метаанализов валидации ICG. [PubMed](https://pubmed.ncbi.nlm.nih.gov/1534291/?utm_source=chatgpt.com)
+
+5. **[LVEF/методика, ★] Fuller H.D. — Evaluation of left ventricular function by impedance cardiography: a review.** *Progress in Cardiovascular Diseases*, 1994;36:267–273. Особенно важна для раздела о связи PEP/LVET и EF. [DOI](https://doi.org/10.1016/S0033-0620%2805%2980035-0?utm_source=chatgpt.com)
+
+6. **[Обзор] Jensen L., Yakimets J., Teo K.K. — A review of impedance cardiography.** *Heart & Lung*, 1995;24:183–193. Обзор воспроизводимости и валидности ICG. [DOI](https://doi.org/10.1016/S0147-9563%2805%2980036-6?utm_source=chatgpt.com)
+
+7. **[Теория, ★] Osypka M.J., Bernstein D.P. — Electrophysiologic principles and theory of stroke volume determination by thoracic electrical bioimpedance.** *AACN Clinical Issues*, 1999;10:385–399. Электрофизическая основа возникновения импедансного сигнала. [DOI](https://doi.org/10.1097/00044067-199908000-00008?utm_source=chatgpt.com)
+
+8. **[Обзор, ★] Newman D.G., Callister R. — The non-invasive assessment of stroke volume and cardiac output by impedance cardiography: a review.** *Aviation, Space, and Environmental Medicine*, 1999;70:780–789. Хорошее изложение физики, формул и ограничений. [PubMed](https://pubmed.ncbi.nlm.nih.gov/10447052/?utm_source=chatgpt.com)
+
+9. **[Методология валидации, ★] Critchley L.A., Critchley J.A. — A meta-analysis of studies using bias and precision statistics to compare cardiac output measurement techniques.** *Journal of Clinical Monitoring and Computing*, 1999;15:85–91. Основополагающая работа по критериям Bland–Altman и процентной ошибке CO-мониторов. [DOI](https://doi.org/10.1023/A:1009982611386?utm_source=chatgpt.com)
+
+10. **[Формула SV, ★] Bernstein D.P., Lemmens H.J. — Stroke volume equation for impedance cardiography.** *Medical & Biological Engineering & Computing*, 2005;43:443–450. Сравнение нескольких уравнений SV с термодилюцией. [DOI](https://doi.org/10.1007/BF02344724?utm_source=chatgpt.com)
+
+11. **[Обзор] Cotter G. et al. — Impedance cardiography revisited.** *Physiological Measurement*, 2006;27:817–827. Критический разбор физической модели и точности ICG. [DOI](https://doi.org/10.1088/0967-3334/27/9/005?utm_source=chatgpt.com)
+
+12. **[Обзор/реокардиография] Sodolski T., Kutarski A. — Impedance cardiography: A valuable method of evaluating haemodynamic parameters.** *Cardiology Journal*, 2007;14:115–126. Полезна тем, что прямо связывает ICG с терминами thoracic bioimpedance и rheocardiography. [PubMed](https://pubmed.ncbi.nlm.nih.gov/18651447/?utm_source=chatgpt.com)
+
+13. **[Систематический обзор, ★] Sanders M., Servaas S., Slagt C. — Accuracy and precision of non-invasive cardiac output monitoring by electrical cardiometry: a systematic review and meta-analysis.** *Journal of Clinical Monitoring and Computing*, 2020;34:433–460. Основная современная отправная точка: 24 исследования EC, взрослые и дети. [DOI](https://doi.org/10.1007/s10877-019-00330-y?utm_source=chatgpt.com)
+
+14. **[Валидация] Boer P. et al. — Measurement of cardiac output by impedance cardiography under various conditions.** *American Journal of Physiology*, 1979;237:H491–H496. ICG против термодилюции, в том числе оценка изменений CO. [DOI](https://doi.org/10.1152/ajpheart.1979.237.4.H491?utm_source=chatgpt.com)
+
+15. **[Валидация] Goldstein D.S. et al. — Clinical evaluation of impedance cardiography.** *Clinical Physiology*, 1986;6:235–251. Абсолютные значения и изменения CO против термодилюции. [DOI](https://doi.org/10.1111/j.1475-097X.1986.tb00622.x?utm_source=chatgpt.com)
+
+16. **[Валидация] Smith S.A. et al. — Automated non-invasive measurement of cardiac output: comparison of electrical bioimpedance and carbon dioxide rebreathing techniques.** *British Heart Journal*, 1988;59:292–298. Сравнение ICG с методом повторного дыхания CO₂/непрямым Фиком. [DOI](https://doi.org/10.1136/hrt.59.3.292?utm_source=chatgpt.com)
+
+17. **[Валидация] Pickett B.R., Buell J.C. — Validity of cardiac output measurement by computer-averaged impedance cardiography, and comparison with simultaneous thermodilution determinations.** *American Journal of Cardiology*, 1992;69:1354–1358. [DOI](https://doi.org/10.1016/0002-9149%2892%2991235-V?utm_source=chatgpt.com)
+
+18. **[SV/LVEF, ★] Thomas S.H. — Impedance cardiography using the Sramek–Bernstein method: accuracy and variability at rest and during exercise.** *British Journal of Clinical Pharmacology*, 1992;34:467–476. Одновременно рассматриваются SV, PEP/VET и связь с LVEF. [PubMed](https://pubmed.ncbi.nlm.nih.gov/1493078/?utm_source=chatgpt.com)
+
+19. **[Валидация] Spiering W. et al. — Comparison of impedance cardiography and dye dilution method for measuring cardiac output.** *Heart*, 1998;79:437–441. Важная отрицательная валидационная работа. [DOI](https://doi.org/10.1136/hrt.79.5.437?utm_source=chatgpt.com)
+
+20. **[Валидация при нагрузке] Charloux A. et al. — A new impedance cardiograph device for the non-invasive evaluation of cardiac output at rest and during exercise: comparison with the “direct” Fick method.** *European Journal of Applied Physiology*, 2000;82:313–320. [DOI](https://doi.org/10.1007/s004210000226?utm_source=chatgpt.com)
+
+21. **[ICG против термодилюции] Van De Water J.M. et al. — Impedance cardiography: the next vital sign technology?** *Chest*, 2003;123:2028–2033. Сравнение разных поколений уравнений ICG. [DOI](https://doi.org/10.1378/chest.123.6.2028?utm_source=chatgpt.com)
+
+22. **[Нагрузка] Scherhag A. et al. — Comparison of impedance cardiography and thermodilution-derived measurements of stroke volume and cardiac output at rest and during exercise testing.** *Cardiovascular Drugs and Therapy*, 2005;19:141–147. [DOI](https://doi.org/10.1007/s10557-005-1048-0?utm_source=chatgpt.com)
+
+23. **[Electrical velocimetry] Schmidt C. et al. — Comparison of electrical velocimetry and transoesophageal Doppler echocardiography for measuring stroke volume and cardiac output.** *British Journal of Anaesthesia*, 2005;95:603–610. [DOI](https://doi.org/10.1093/bja/aei224?utm_source=chatgpt.com)
+
+24. **[Electrical velocimetry] Heringlake M. et al. — Lack of agreement between thermodilution and electrical velocimetry cardiac output measurements.** *Intensive Care Medicine*, 2007;33:2168–2172. Важна как отрицательная валидация. [DOI](https://doi.org/10.1007/s00134-007-0828-3?utm_source=chatgpt.com)
+
+25. **[Electrical velocimetry] Zoremba N. et al. — Comparison of electrical velocimetry and thermodilution techniques for the measurement of cardiac output.** *Acta Anaesthesiologica Scandinavica*, 2007;51:1314–1319. [DOI](https://doi.org/10.1111/j.1399-6576.2007.01445.x?utm_source=chatgpt.com)
+
+26. **[Кардиохирургия] Mekis D. et al. — Cardiac output measurements with electrical velocimetry in patients undergoing CABG surgery: a comparison with intermittent thermodilution.** *European Journal of Anaesthesiology*, 2008;25:237–242. [DOI](https://doi.org/10.1017/S0265021507002669?utm_source=chatgpt.com)
+
+27. **[Критические состояния] Raue W. et al. — Comparison of electrical velocimetry and transthoracic thermodilution technique for cardiac output assessment in critically ill patients.** *European Journal of Anaesthesiology*, 2009;26:1067–1071. [DOI](https://doi.org/10.1097/EJA.0b013e32832bfd94?utm_source=chatgpt.com)
+
+28. **[Сердечная недостаточность/лёгочная гипертензия] Petter H. et al. — Measurement of cardiac output with non-invasive Aesculon impedance versus thermodilution.** *Clinical Physiology and Functional Imaging*, 2011;31:39–47. [DOI](https://doi.org/10.1111/j.1475-097X.2010.00977.x?utm_source=chatgpt.com)
+
+29. **[Electrical velocimetry] Trinkmann F. et al. — A comparative evaluation of electrical velocimetry and inert gas rebreathing for the non-invasive assessment of cardiac output.** *Clinical Research in Cardiology*, 2011;100:935–943. [DOI](https://doi.org/10.1007/s00392-011-0329-9?utm_source=chatgpt.com)
+
+30. **[МРТ, ★] Villacorta Junior H. et al. — Transthoracic impedance compared to magnetic resonance imaging in the assessment of cardiac output.** *Arquivos Brasileiros de Cardiologia*, 2012;99:1149–1155. Особенно полезна из-за референса на CMR. [DOI](https://doi.org/10.1590/S0066-782X2012005000104?utm_source=chatgpt.com)
+
+31. **[Термодилюция] Cox P.B.W. et al. — Accuracy, precision, and trending ability of electrical cardiometry cardiac index versus continuous pulmonary artery thermodilution method: a prospective observational study.** *BioMed Research International*, 2017;2017:2635151. [DOI](https://doi.org/10.1155/2017/2635151?utm_source=chatgpt.com)
+
+32. **[Трансплантация печени] Wang D.J. et al. — Non-invasive cardiac output measurement with electrical velocimetry in patients undergoing liver transplantation: comparison of an invasive method with pulmonary thermodilution.** *BMC Anesthesiology*, 2018;18:138. [DOI](https://doi.org/10.1186/s12871-018-0600-y?utm_source=chatgpt.com)
+
+33. **[SV/CO, беременность] Feng S.M., Liu J. — Electrical velocimetry has limited accuracy and precision and moderate trending ability compared with transthoracic echocardiography for cardiac output measurement during cesarean delivery.** *Medicine*, 2020;99:e21914. Включает отдельный анализ SV и CO. [DOI](https://doi.org/10.1097/MD.0000000000021914?utm_source=chatgpt.com)
+
+34. **[Современная валидация, ★] Greiwe G. et al. — Electrical cardiometry for non-invasive cardiac output monitoring: a method comparison study in patients after coronary artery bypass graft surgery.** *Journal of Clinical Monitoring and Computing*, 2025;39:371–376, online 2024. Современное сравнение с pulmonary artery thermodilution; также анализ трендов. [DOI](https://doi.org/10.1007/s10877-024-01246-y?utm_source=chatgpt.com)
+
+35. **[Педиатрия] Norozi K. et al. — Electrical velocimetry for measuring cardiac output in children with congenital heart disease.** *British Journal of Anaesthesia*, 2008;100:88–94. [DOI](https://doi.org/10.1093/bja/aem320?utm_source=chatgpt.com)
+
+36. **[Педиатрия] Tomaske M. et al. — Cardiac output measurement in children: comparison of Aesculon cardiac output monitor and thermodilution.** *British Journal of Anaesthesia*, 2008;100:517–520. [DOI](https://doi.org/10.1093/bja/aen024?utm_source=chatgpt.com)
+
+37. **[Новорождённые, ★] Noori S. et al. — Continuous non-invasive cardiac output measurements in the neonate by electrical velocimetry: a comparison with echocardiography.** *Archives of Disease in Childhood — Fetal and Neonatal Edition*, 2012;97:F340–F343. [DOI](https://doi.org/10.1136/fetalneonatal-2011-301090?utm_source=chatgpt.com)
+
+38. **[Младенцы после кардиохирургии] Grollmuss O. et al. — Electrical velocimetry as a tool for measuring cardiac output in small infants after heart surgery.** *Intensive Care Medicine*, 2012;38:1032–1039. [DOI](https://doi.org/10.1007/s00134-012-2530-3?utm_source=chatgpt.com)
+
+39. **[Педиатрическая ОИТ] Blohm M.E. et al. — Impedance cardiography (electrical velocimetry) and transthoracic echocardiography for non-invasive cardiac output monitoring in pediatric intensive care patients.** *Critical Care*, 2014;18:603. [DOI](https://doi.org/10.1186/s13054-014-0603-0?utm_source=chatgpt.com)
+
+40. **[Недоношенные] Boet A. et al. — Stroke volume and cardiac output evaluation by electrical cardiometry: accuracy and reference nomograms in hemodynamically stable preterm neonates.** *Journal of Perinatology*, 2016;36:748–752. Особенно полезна именно для SV. [DOI](https://doi.org/10.1038/jp.2016.65?utm_source=chatgpt.com)
+
+41. **[PDA/недоношенные] Hsu K.H. et al. — Electrical cardiometry to monitor cardiac output in preterm infants with patent ductus arteriosus: a comparison with echocardiography.** *Neonatology*, 2017;112:231–237. [DOI](https://doi.org/10.1159/000475774?utm_source=chatgpt.com)
+
+42. **[Врождённые пороки] Narula J. et al. — Electrical Cardiometry: A Reliable Solution to Cardiac Output Estimation in Children With Structural Heart Disease.** *Journal of Cardiothoracic and Vascular Anesthesia*, 2017;31:912–917. [DOI](https://doi.org/10.1053/j.jvca.2016.12.009?utm_source=chatgpt.com)
+
+43. **[Педиатрия/эхо] Altamirano-Diaz L. et al. — Non-invasive measurement of cardiac output in children with repaired coarctation of the aorta using electrical cardiometry compared to transthoracic Doppler echocardiography.** *Physiological Measurement*, 2018;39:055003. [DOI](https://doi.org/10.1088/1361-6579/aac02b?utm_source=chatgpt.com)
+
+44. **[LVEF, ★] Miles D.S. et al. — Impedance cardiography fails to measure accurately left ventricular ejection fraction.** *Critical Care Medicine*, 1990;18:221–228. Обязательна для критического раздела: показывает отсутствие приемлемого соответствия ICG-LVEF с радионуклидной оценкой. [DOI](https://doi.org/10.1097/00003246-199002000-00019?utm_source=chatgpt.com)
+
+45. **[LVEF] Bowling L.S. et al. — Lack of agreement between measurement of ejection fraction by impedance cardiography versus radionuclide ventriculography.** *Critical Care Medicine*, 1993;21:1523–1527. Ещё одна важная отрицательная работа. [DOI](https://doi.org/10.1097/00003246-199310000-00021?utm_source=chatgpt.com)
+
+46. **[LVEF, ★] van der Meer N.J. et al. — Does impedance cardiography reliably estimate left ventricular ejection fraction?** *Journal of Clinical Monitoring*, 1996;12:5–9. Сопоставляет несколько способов вычисления EF по ICG с радионуклидной вентрикулографией. [DOI](https://doi.org/10.1007/BF02025304?utm_source=chatgpt.com)
+
+47. **[LVEF/динамика] Parrott C.W. et al. — Comparison of changes in ejection fraction to changes in impedance cardiography cardiac index and systolic time ratio.** *Congestive Heart Failure*, 2004;10(Suppl 2):11–13. Полезна для идеи мониторинга не абсолютной EF, а изменений функции. [DOI](https://doi.org/10.1111/j.1527-5299.2004.03407.x?utm_source=chatgpt.com)
+
+48. **[LVEF/STR, ★] Thompson B. et al. — Systolic time ratio by impedance cardiography to distinguish preserved vs impaired left ventricular systolic function in heart failure.** *Congestive Heart Failure*, 2008;14:261–265. Рассматривает STR как суррогатный показатель сниженной EF. [DOI](https://doi.org/10.1111/j.1751-7133.2008.00001.x?utm_source=chatgpt.com)
+
+49. **[LVEF/эхокардиография, ★] Kaszuba E. et al. — Comparing impedance cardiography and echocardiography in the assessment of reduced left ventricular systolic function.** *BMC Research Notes*, 2013;6:114. Хорошая работа для обсуждения того, почему отдельные временные параметры ICG коррелируют с EF, но не позволяют считать методы взаимозаменяемыми. [DOI](https://doi.org/10.1186/1756-0500-6-114?utm_source=chatgpt.com)
+
+50. **[LVEF/нагрузка] Thomas S.H., Crowther A. — Impedance cardiography during exercise in patients with coronary heart disease.** *European Heart Journal*, 1993;14:150–159. Связывает параметры ICG при нагрузке с коронарной патологией и ангиографически определённой LVEF. [DOI](https://doi.org/10.1093/eurheartj/14.2.150?utm_source=chatgpt.com)
+
+Для **небольшого** литературного обзора все 50 читать одинаково подробно не требуется. Рациональное ядро — статьи **1–5, 7–13, 18, 23–25, 30, 34, 37, 44–49**. Из них можно построить обзор примерно в такой логике: **физический принцип → алгоритмы расчёта SV → валидация SV/CO → факторы ошибки → electrical cardiometry как развитие ICG → возможность и ограничения оценки LVEF**.
+
+Наиболее важный вывод для постановки темы: корректнее назвать предмет обзора не «оценка ударного объёма и фракции выброса реографией», а, например, **«Методы неинвазивного мониторинга центральной гемодинамики на основе трансторакального биоимпеданса: оценка ударного объёма, сердечного выброса и показателей систолической функции»**. Такое название не создаёт предположения, что EF является стандартным прямым выходным параметром ICG. Современный метаанализ также показывает, что для абсолютного CO EC пока нельзя считать взаимозаменяемой с термодилюцией или TTE, хотя мониторинг изменений остаётся отдельным потенциально полезным применением. ([PubMed][3])
+
+Если требуется, следующим сообщением я могу **из этих 50 выбрать 20 наиболее сильных именно для вашего обзора и для каждой дать 3–5 предложений: что измеряли, какой был референсный метод, размер выборки, основные цифры точности и какой вывод стоит перенести в обзор**.
+
+[1]: https://pubmed.ncbi.nlm.nih.gov/18651447/?utm_source=chatgpt.com "Impedance cardiography: A valuable method of evaluating haemodynamic parameters - PubMed"
+[2]: https://pubmed.ncbi.nlm.nih.gov/8284433/?utm_source=chatgpt.com "Evaluation of left ventricular function by impedance cardiography: a review."
+[3]: https://pubmed.ncbi.nlm.nih.gov/31175501/ "Accuracy and precision of non-invasive cardiac output monitoring by electrical cardiometry: a systematic review and meta-analysis - PubMed"

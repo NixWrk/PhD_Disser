@@ -1,0 +1,1327 @@
+{
+  "schema_version": "1.0",
+  "bundle_id": "HL-ICG-REVIEW-2026-08-22",
+  "task": {
+    "mode": "literature_review",
+    "request": "Подготовить тематический литературный обзор методов мониторинга гемодинамики с фокусом на импедансную кардиографию и месте прекардиального электроимпедансного картирования.",
+    "input_scope": [
+      "Kubicek_1966_TV2CRANX",
+      "Boer_1979_VK3PCFJV",
+      "BERNSTEIN_1986_WX77UXWE",
+      "Goldstein_1986_FQM7ZRAS",
+      "Smith_1988_U3TUKU8E",
+      "Sherwood_Chair_1990_N5ZN33ZD",
+      "MILES_1990_MCVHV3JZ",
+      "Thomas_1992_2QCNIHMN",
+      "Fuller_1992_CF4I8SVI",
+      "Pickett_1992_8JKRBJB7",
+      "BOWLING_1993_SXQNFSU4",
+      "THOMAS_1993_4VZBDFRD",
+      "Fuller_1994_CANN65Q2",
+      "Jensen_1995_9W4HCNS3",
+      "Meer_1996_BC68E8GK",
+      "Spiering_1998_RB87XMRW",
+      "Newman_1999_BDQQ667F",
+      "Critchley_1999_BX485JVA",
+      "Osypka_1999_SPZQA7R4",
+      "Charloux_2000_Z7ZBPV7W",
+      "Van_De_Water_2003_CAGGEQ25",
+      "Parrott_2004_PEZ8IDN2",
+      "Schmidt_2005_HX3WCFV7",
+      "Scherhag_2005_ISW2MKUD",
+      "Bernstein_2005_TU2SHRHJ",
+      "Cotter_2006_76EN9Q6A",
+      "Sodolski_2007_2EAQ37CN",
+      "Zoremba_2007_Q3TSQIRI",
+      "Heringlake_2007_G48PVZ2K",
+      "Norozi_2008_EDX22DP4",
+      "Meki_2008_TFWNH3VK",
+      "Tomaske_2008_PF2NDTSA",
+      "Thompson_2008_NFFHGJVW",
+      "Raue_2009_ZBX2KXIA",
+      "Petter_2010_2EW8XB4B",
+      "Trinkmann_2011_WBJWHA2M",
+      "Villacorta_Junior_2012_JIW45UH5",
+      "Grollmuss_2012_HQVE683T",
+      "Noori_2012_KISTS8R8",
+      "Kaszuba_2013_4A4BBND3",
+      "Cecconi_2014_QTSV7XNJ",
+      "Blohm_2014_SS84XB5Z",
+      "Jozwiak_2015_NK8R3ZWI",
+      "Boet_2016_4NACTMC5",
+      "Cox_2017_QHKPBERQ",
+      "Hsu_2017_CWDA42JG",
+      "Narula_2017_WABWSWPT",
+      "Wang_2018_KINHB88N",
+      "Altamirano_Diaz_2018_9NHAZ7IC",
+      "Chong_2018_BUCR9UBG",
+      "Bein_2019_2PSQNEHA",
+      "Sanders_2019_8JWJRAVJ",
+      "Feng_2020_TTBLNRTL",
+      "McDonagh_2021_IAEHUPF7",
+      "de_Keijzer_2021_RGRIR2DG",
+      "Savarese_2022_KRUICEIX",
+      "Mensah_2023_W6SE58XU",
+      "Greiwe_2024_GGUPHZI9",
+      "Monnet_2025_ZNJC9Q47"
+    ],
+    "language": "ru",
+    "audience": "исследователь/диссертационный совет"
+  },
+  "sources": [
+    {
+      "source_id": "Kubicek_1966_TV2CRANX",
+      "title": "Development and evaluation of an impedance cardiac output system",
+      "content_hash": "sha256:e7bd8b118f652cf1c8094b20823d1fb5ebf6cf5c2c6302517a4eaf2160900256",
+      "representation": "pdf",
+      "local_ref": "zotero:TV2CRANX/attachment:ENP26WZP",
+      "version": "pdf-extracted-2026-08-22"
+    },
+    {
+      "source_id": "Boer_1979_VK3PCFJV",
+      "title": "Measurement of cardiac output by impedance cardiography under various conditions",
+      "content_hash": "sha256:92b932477bc0c4f7dbcca410cf6f6a20c0bf197ddeca3409b7d470fb5eddcb4a",
+      "representation": "pdf",
+      "local_ref": "zotero:VK3PCFJV/attachment:QK6PRIXC",
+      "version": "pdf-extracted-2026-08-22"
+    },
+    {
+      "source_id": "BERNSTEIN_1986_WX77UXWE",
+      "title": "A new stroke volume equation for thoracic electrical bioimpedance",
+      "content_hash": "sha256:4bdde49279378f6938780eef50e34050fb41001d6425a735f99eb79ece5ada1e",
+      "representation": "pdf",
+      "local_ref": "zotero:WX77UXWE/attachment:ARYFVBPG",
+      "version": "pdf-extracted-2026-08-22"
+    },
+    {
+      "source_id": "Goldstein_1986_FQM7ZRAS",
+      "title": "Clinical evaluation of impedance cardiography",
+      "content_hash": "sha256:41bd989dec70cb6aa2487ef32f1b423d347b879df85a1023c08f6e79f60fdabc",
+      "representation": "pdf",
+      "local_ref": "zotero:FQM7ZRAS/attachment:XWJPSPLQ",
+      "version": "pdf-extracted-2026-08-22"
+    },
+    {
+      "source_id": "Smith_1988_U3TUKU8E",
+      "title": "Automated non-invasive measurement of cardiac output: comparison of electrical bioimpedance and carbon dioxide rebreathing techniques.",
+      "content_hash": "sha256:f27696c42288aac6294dd547dd13f440699841d0fe6ac0de256c829821ad81e4",
+      "representation": "pdf",
+      "local_ref": "zotero:U3TUKU8E/attachment:Z3YHF6V7",
+      "version": "pdf-extracted-2026-08-22"
+    },
+    {
+      "source_id": "Sherwood_Chair_1990_N5ZN33ZD",
+      "title": "Methodological Guidelines for Impedance Cardiography",
+      "content_hash": "sha256:b06b7c07917a5183fe0a9f3a94055971fd9853206538985f93548d7d26482641",
+      "representation": "pdf",
+      "local_ref": "zotero:N5ZN33ZD/attachment:TURLQNBN",
+      "version": "pdf-extracted-2026-08-22"
+    },
+    {
+      "source_id": "MILES_1990_MCVHV3JZ",
+      "title": "Impedance cardiography fails to measure accurately left ventricular ejection fraction",
+      "content_hash": "sha256:7b76232404f9c2f2948f967d72623267dadb7a30344922036a379ec13e49ad88",
+      "representation": "pdf",
+      "local_ref": "zotero:MCVHV3JZ/attachment:66RRA9YG",
+      "version": "pdf-extracted-2026-08-22"
+    },
+    {
+      "source_id": "Thomas_1992_2QCNIHMN",
+      "title": "Impedance cardiography using the Sramek–Bernstein method: accuracy and variability at rest and during exercise",
+      "content_hash": "sha256:eceb9e63f778683ac097fb1d07e6c8748e18abfed8b80cd8e573e31785176872",
+      "representation": "pdf",
+      "local_ref": "zotero:2QCNIHMN/attachment:LVV5XU6S",
+      "version": "pdf-extracted-2026-08-22"
+    },
+    {
+      "source_id": "Fuller_1992_CF4I8SVI",
+      "title": "The validity of cardiac output measurement by thoracic impedance: a meta-analysis",
+      "content_hash": null,
+      "representation": "text",
+      "local_ref": "zotero:CF4I8SVI",
+      "version": "zotero-local-2026-08-22"
+    },
+    {
+      "source_id": "Pickett_1992_8JKRBJB7",
+      "title": "Validity of cardiac output measurement by computer-averaged impedance cardiography, and comparison with simultaneous thermodilution determinations",
+      "content_hash": "sha256:b17a21d11455d99d203797a9d65db280d51dd59c8e0d6704c63e097fb3757696",
+      "representation": "pdf",
+      "local_ref": "zotero:8JKRBJB7/attachment:RDPKET59",
+      "version": "pdf-extracted-2026-08-22"
+    },
+    {
+      "source_id": "BOWLING_1993_SXQNFSU4",
+      "title": "Lack of agreement between measurement of ejection fraction by impedance cardiography versus radionuclide ventriculography",
+      "content_hash": "sha256:4259c3eb429c67888859ef2bd26031e75be726569164f517995ea6f98b3b33b7",
+      "representation": "pdf",
+      "local_ref": "zotero:SXQNFSU4/attachment:NN9XDQGW",
+      "version": "pdf-extracted-2026-08-22"
+    },
+    {
+      "source_id": "THOMAS_1993_4VZBDFRD",
+      "title": "Impedance cardiography during exercise in patients with coronary heart disease",
+      "content_hash": "sha256:b592d7a92b2df14f93c184d5cc435097c3fa2fd44a974bf63d73a830151b7ce6",
+      "representation": "pdf",
+      "local_ref": "zotero:4VZBDFRD/attachment:JLLL6U8Z",
+      "version": "pdf-extracted-2026-08-22"
+    },
+    {
+      "source_id": "Fuller_1994_CANN65Q2",
+      "title": "Evaluation of left ventricular function by impedance cardiography: A review",
+      "content_hash": "sha256:94ac1f019b1c0d88f10b30a4f04c40042fd349b13ead2731fd48487bcdeadf46",
+      "representation": "pdf",
+      "local_ref": "zotero:CANN65Q2/attachment:STLJ5ZWD",
+      "version": "pdf-extracted-2026-08-22"
+    },
+    {
+      "source_id": "Jensen_1995_9W4HCNS3",
+      "title": "A review of impedance cardiography",
+      "content_hash": "sha256:0ce0076e84b2ead664ac084a8d9d2a35f7031806cc71ffde71410056c6051093",
+      "representation": "pdf",
+      "local_ref": "zotero:9W4HCNS3/attachment:LEL4DZAC",
+      "version": "pdf-extracted-2026-08-22"
+    },
+    {
+      "source_id": "Meer_1996_BC68E8GK",
+      "title": "Does impedance cardiography reliably estimate left ventricular ejection fraction?",
+      "content_hash": "sha256:3f606107c806e250f8457a9a69bef0ae2d4a9937346214a2fcfd338978b312de",
+      "representation": "pdf",
+      "local_ref": "zotero:BC68E8GK/attachment:36A9W4U7",
+      "version": "pdf-extracted-2026-08-22"
+    },
+    {
+      "source_id": "Spiering_1998_RB87XMRW",
+      "title": "Comparison of impedance cardiography and dye dilution method for measuring cardiac output",
+      "content_hash": "sha256:c137027a94ebfa95d2a93dad5c600c0a021a65960f9ac68136d55a23e93d6858",
+      "representation": "pdf",
+      "local_ref": "zotero:RB87XMRW/attachment:QHT6TY8N",
+      "version": "pdf-extracted-2026-08-22"
+    },
+    {
+      "source_id": "Newman_1999_BDQQ667F",
+      "title": "The non-invasive assessment of stroke volume and cardiac output by impedance cardiography: a review",
+      "content_hash": null,
+      "representation": "text",
+      "local_ref": "zotero:BDQQ667F",
+      "version": "zotero-local-2026-08-22"
+    },
+    {
+      "source_id": "Critchley_1999_BX485JVA",
+      "title": "A Meta-Analysis of Studies Using Bias and Precision Statistics to Compare Cardiac Output Measurement Techniques",
+      "content_hash": "sha256:9b59c8308d0c7ab6fa3f99effe325357ff202b3f2455cd6e74a5f8dfcf75d6da",
+      "representation": "pdf",
+      "local_ref": "zotero:BX485JVA/attachment:37D7RBIA",
+      "version": "pdf-extracted-2026-08-22"
+    },
+    {
+      "source_id": "Osypka_1999_SPZQA7R4",
+      "title": "Electrophysiologic Principles and Theory of Stroke Volume Determination by Thoracic Electrical Bioimpedance",
+      "content_hash": "sha256:f2c02bea771f975704655f283e0a681686b74173e60344d6ec29ae34753904bf",
+      "representation": "pdf",
+      "local_ref": "zotero:SPZQA7R4/attachment:N4R2NQ3A",
+      "version": "pdf-extracted-2026-08-22"
+    },
+    {
+      "source_id": "Charloux_2000_Z7ZBPV7W",
+      "title": "A new impedance cardiograph device for the non-invasive evaluation of cardiac output at rest and during exercise: comparison with the \"direct\" Fick method",
+      "content_hash": "sha256:1a0d604d7d9142e518133ecdbf355f5e0ed7be1f72d87e9a1f76e5252e602463",
+      "representation": "pdf",
+      "local_ref": "zotero:Z7ZBPV7W/attachment:EIWPWK5V",
+      "version": "pdf-extracted-2026-08-22"
+    },
+    {
+      "source_id": "Van_De_Water_2003_CAGGEQ25",
+      "title": "Impedance Cardiographya",
+      "content_hash": "sha256:94fc74299ebbb50064f37c711ee206c68b54ed35c2937b3617f3154bcad393d0",
+      "representation": "pdf",
+      "local_ref": "zotero:CAGGEQ25/attachment:2KWH7WJY",
+      "version": "pdf-extracted-2026-08-22"
+    },
+    {
+      "source_id": "Parrott_2004_PEZ8IDN2",
+      "title": "Comparison of Changes in Ejection Fraction to Changes in Impedance Cardiography Cardiac Index and Systolic Time Ratio",
+      "content_hash": "sha256:ed8ebd680901067be54d4ba2953b51640e86c7bf426131e952fd65ee6efbc75d",
+      "representation": "pdf",
+      "local_ref": "zotero:PEZ8IDN2/attachment:PTLJ67JX",
+      "version": "pdf-extracted-2026-08-22"
+    },
+    {
+      "source_id": "Schmidt_2005_HX3WCFV7",
+      "title": "Comparison of electrical velocimetry and transoesophageal Doppler echocardiography for measuring stroke volume and cardiac output † †Declaration of interest. This study was supported by Osypka Medical GmbH, Berlin, Germany.",
+      "content_hash": "sha256:9560578bbeddb30238fc545390982dabda75ecc8552e645c3a80fb95f684881b",
+      "representation": "pdf",
+      "local_ref": "zotero:HX3WCFV7/attachment:828LJFMN",
+      "version": "pdf-extracted-2026-08-22"
+    },
+    {
+      "source_id": "Scherhag_2005_ISW2MKUD",
+      "title": "Comparison of Impedance Cardiography and Thermodilution-Derived Measurements of Stroke Volume and Cardiac Output at Rest and During Exercise Testing",
+      "content_hash": "sha256:e736b76db326e107146646af65451ccefdf729999ddc0610c2d96c7e7d21d744",
+      "representation": "pdf",
+      "local_ref": "zotero:ISW2MKUD/attachment:54NVUTEX",
+      "version": "pdf-extracted-2026-08-22"
+    },
+    {
+      "source_id": "Bernstein_2005_TU2SHRHJ",
+      "title": "Stroke volume equation for impedance cardiography",
+      "content_hash": "sha256:eaf1559f6782a9ecf7e4a17cb241a8f1d53bdb132c0da17f352f7346d143a43b",
+      "representation": "pdf",
+      "local_ref": "zotero:TU2SHRHJ/attachment:5QIKPLLB",
+      "version": "pdf-extracted-2026-08-22"
+    },
+    {
+      "source_id": "Cotter_2006_76EN9Q6A",
+      "title": "Impedance cardiography revisited",
+      "content_hash": "sha256:22a402612e2cb783d199ac035ce0493c4b2126b8bfc7cab7f71506b9f8283c81",
+      "representation": "pdf",
+      "local_ref": "zotero:76EN9Q6A/attachment:I3RJHC4F",
+      "version": "pdf-extracted-2026-08-22"
+    },
+    {
+      "source_id": "Sodolski_2007_2EAQ37CN",
+      "title": "Impedance cardiography: A valuable method of evaluating haemodynamic parameters",
+      "content_hash": null,
+      "representation": "text",
+      "local_ref": "zotero:2EAQ37CN",
+      "version": "zotero-local-2026-08-22"
+    },
+    {
+      "source_id": "Zoremba_2007_Q3TSQIRI",
+      "title": "Comparison of electrical velocimetry and thermodilution techniques for the measurement of cardiac output",
+      "content_hash": "sha256:e187253ec6f2a17e3ac915ae88410733fde4e5329a11bb72794674547e588d54",
+      "representation": "pdf",
+      "local_ref": "zotero:Q3TSQIRI/attachment:KWGC3XLK",
+      "version": "pdf-extracted-2026-08-22"
+    },
+    {
+      "source_id": "Heringlake_2007_G48PVZ2K",
+      "title": "Lack of agreement between thermodilution and electrical velocimetry cardiac output measurements",
+      "content_hash": "sha256:bd3e43cf12ac4f58243bea8f532db63a94cf24b268661ae6ecd6279bdfbcd012",
+      "representation": "pdf",
+      "local_ref": "zotero:G48PVZ2K/attachment:SE8ZUZYI",
+      "version": "pdf-extracted-2026-08-22"
+    },
+    {
+      "source_id": "Norozi_2008_EDX22DP4",
+      "title": "Electrical velocimetry for measuring cardiac output in children with congenital heart disease",
+      "content_hash": "sha256:a63c25f2891a9697f93db157d6af4d3f8b7b81de2785ee023f8dd2a0448d27ca",
+      "representation": "pdf",
+      "local_ref": "zotero:EDX22DP4/attachment:L8PUH66H",
+      "version": "pdf-extracted-2026-08-22"
+    },
+    {
+      "source_id": "Meki_2008_TFWNH3VK",
+      "title": "Cardiac output measurements with electrical velocimetry in patients undergoing CABG surgery",
+      "content_hash": "sha256:9217f17d39ad6685cdb7d0af15746b5099c7759da3471af414de90966ebe95ef",
+      "representation": "pdf",
+      "local_ref": "zotero:TFWNH3VK/attachment:Z46FDNZ7",
+      "version": "pdf-extracted-2026-08-22"
+    },
+    {
+      "source_id": "Tomaske_2008_PF2NDTSA",
+      "title": "Cardiac output measurement in children: comparison of Aesculon® cardiac output monitor and thermodilution",
+      "content_hash": "sha256:48f850be27b4031870378ea4491bfc7a15dc5811a796d2810c972034cb4beb9e",
+      "representation": "pdf",
+      "local_ref": "zotero:PF2NDTSA/attachment:5Z5XXXPE",
+      "version": "pdf-extracted-2026-08-22"
+    },
+    {
+      "source_id": "Thompson_2008_NFFHGJVW",
+      "title": "Systolic Time Ratio by Impedance Cardiography to Distinguish Preserved vs Impaired Left Ventricular Systolic Function in Heart Failure",
+      "content_hash": "sha256:a36463b96743bb9451e2917f19dbf90a69548c64e5e1547ace060da5f71adc93",
+      "representation": "pdf",
+      "local_ref": "zotero:NFFHGJVW/attachment:XNRCGALE",
+      "version": "pdf-extracted-2026-08-22"
+    },
+    {
+      "source_id": "Raue_2009_ZBX2KXIA",
+      "title": "Comparison of electrical velocimetry and transthoracic thermodilution technique for cardiac output assessment in critically ill patients",
+      "content_hash": "sha256:07accd1920df180c11e8f3069d78a256d7375549bbd99242804bff045efdf761",
+      "representation": "pdf",
+      "local_ref": "zotero:ZBX2KXIA/attachment:Q4SJ98GX",
+      "version": "pdf-extracted-2026-08-22"
+    },
+    {
+      "source_id": "Petter_2010_2EW8XB4B",
+      "title": "Measurement of cardiac output with non-invasive Aesculon® impedance versus thermodilution",
+      "content_hash": "sha256:224eb69375cd72befc808b8f5ba7812dc1feb33cd558cc131798b77e5bdca513",
+      "representation": "pdf",
+      "local_ref": "zotero:2EW8XB4B/attachment:W3GFP6WF",
+      "version": "pdf-extracted-2026-08-22"
+    },
+    {
+      "source_id": "Trinkmann_2011_WBJWHA2M",
+      "title": "A comparative evaluation of electrical velocimetry and inert gas rebreathing for the non-invasive assessment of cardiac output",
+      "content_hash": "sha256:e5ad82ddbe881b13c6336c435e54d44379f95f65e6d8552ca2459efe384c7cc1",
+      "representation": "pdf",
+      "local_ref": "zotero:WBJWHA2M/attachment:S9VRM87H",
+      "version": "pdf-extracted-2026-08-22"
+    },
+    {
+      "source_id": "Villacorta_Junior_2012_JIW45UH5",
+      "title": "Bioimpedância transtorácica comparada à ressonância magnética na avaliação do débito cardíaco",
+      "content_hash": "sha256:8c47b05ba66c355aa3336dab94e51737e047c354c981bf82380d83ca21fefd75",
+      "representation": "pdf",
+      "local_ref": "zotero:JIW45UH5/attachment:4W6D8AVV",
+      "version": "pdf-extracted-2026-08-22"
+    },
+    {
+      "source_id": "Grollmuss_2012_HQVE683T",
+      "title": "Electrical velocimetry as a tool for measuring cardiac output in small infants after heart surgery",
+      "content_hash": "sha256:7bfb6555b2ffeedd6da965918dda3afba0d6e02cd903819f773c1c71656bb0a1",
+      "representation": "pdf",
+      "local_ref": "zotero:HQVE683T/attachment:578EFR9J",
+      "version": "pdf-extracted-2026-08-22"
+    },
+    {
+      "source_id": "Noori_2012_KISTS8R8",
+      "title": "Continuous non-invasive cardiac output measurements in the neonate by electrical velocimetry: a comparison with echocardiography",
+      "content_hash": "sha256:897dac259b97288ff89ca05b1eaf97c3d1e0f31dbad1b6c7b17502b90297e842",
+      "representation": "pdf",
+      "local_ref": "zotero:KISTS8R8/attachment:NP5DX7XB",
+      "version": "pdf-extracted-2026-08-22"
+    },
+    {
+      "source_id": "Kaszuba_2013_4A4BBND3",
+      "title": "Comparing impedance cardiography and echocardiography in the assessment of reduced left ventricular systolic function",
+      "content_hash": "sha256:bbb5ed0809afcd58e5d9a651aad0a6b3581552fb97c980da079974ccb511f7f6",
+      "representation": "pdf",
+      "local_ref": "zotero:4A4BBND3/attachment:F44UXYYE",
+      "version": "pdf-extracted-2026-08-22"
+    },
+    {
+      "source_id": "Cecconi_2014_QTSV7XNJ",
+      "title": "Consensus on circulatory shock and hemodynamic monitoring. Task force of the European Society of Intensive Care Medicine",
+      "content_hash": "sha256:244ea7cf72cad2bf2b59d44bcf90adc14c88b51de9be8557b68e1afde27d04fd",
+      "representation": "pdf",
+      "local_ref": "zotero:QTSV7XNJ/attachment:G2ZQLHD7",
+      "version": "pdf-extracted-2026-08-22"
+    },
+    {
+      "source_id": "Blohm_2014_SS84XB5Z",
+      "title": "Impedance cardiography (electrical velocimetry) and transthoracic echocardiography for non-invasive cardiac output monitoring in pediatric intensive care patients: a prospective single-center observational study",
+      "content_hash": "sha256:644d33f7b6e5758f4b476234ee6a98ca10e51626a13f96a80d42dbb018fd3d34",
+      "representation": "pdf",
+      "local_ref": "zotero:SS84XB5Z/attachment:YB7LEI2X",
+      "version": "pdf-extracted-2026-08-22"
+    },
+    {
+      "source_id": "Jozwiak_2015_NK8R3ZWI",
+      "title": "Monitoring",
+      "content_hash": "sha256:c17d25cef010e53251e302e2e677c266b2db9f48218693a817349ccf1dae66a4",
+      "representation": "pdf",
+      "local_ref": "zotero:NK8R3ZWI/attachment:URKPNIRK",
+      "version": "pdf-extracted-2026-08-22"
+    },
+    {
+      "source_id": "Boet_2016_4NACTMC5",
+      "title": "Stroke volume and cardiac output evaluation by electrical cardiometry: accuracy and reference nomograms in hemodynamically stable preterm neonates",
+      "content_hash": "sha256:34630ba717fe6ddd52a0788e96390011e00acc3230375e33f91808c423496b2c",
+      "representation": "pdf",
+      "local_ref": "zotero:4NACTMC5/attachment:DX6B27BC",
+      "version": "pdf-extracted-2026-08-22"
+    },
+    {
+      "source_id": "Cox_2017_QHKPBERQ",
+      "title": "Accuracy, Precision, and Trending Ability of Electrical Cardiometry Cardiac Index versus Continuous Pulmonary Artery Thermodilution Method: A Prospective, Observational Study",
+      "content_hash": "sha256:167000ea2061099a515eee8d9925679c96d06d469dbfdfe8acdd2886c16a9f84",
+      "representation": "pdf",
+      "local_ref": "zotero:QHKPBERQ/attachment:9QVICYXN",
+      "version": "pdf-extracted-2026-08-22"
+    },
+    {
+      "source_id": "Hsu_2017_CWDA42JG",
+      "title": "Electrical Cardiometry to Monitor Cardiac Output in Preterm Infants with Patent Ductus Arteriosus: A Comparison with Echocardiography",
+      "content_hash": "sha256:7f0fdce3fd48619217ec1e4cd16beced709f2224e4a79b7fb275e4ba6121e22e",
+      "representation": "pdf",
+      "local_ref": "zotero:CWDA42JG/attachment:45RZ8URD",
+      "version": "pdf-extracted-2026-08-22"
+    },
+    {
+      "source_id": "Narula_2017_WABWSWPT",
+      "title": "Electrical Cardiometry: A Reliable Solution to Cardiac Output Estimation in Children With Structural Heart Disease",
+      "content_hash": "sha256:33a4db3b0e9b5eec2054844c644d272b3cf1a03f4782e3f623ecf202823b027f",
+      "representation": "pdf",
+      "local_ref": "zotero:WABWSWPT/attachment:G5J6ZNTR",
+      "version": "pdf-extracted-2026-08-22"
+    },
+    {
+      "source_id": "Wang_2018_KINHB88N",
+      "title": "Non-invasive cardiac output measurement with electrical velocimetry in patients undergoing liver transplantation: comparison of an invasive method with pulmonary thermodilution",
+      "content_hash": "sha256:d324d07a349329291f63f05fb53054d17d1e2a9e7e5040fa18dd5021566eec94",
+      "representation": "pdf",
+      "local_ref": "zotero:KINHB88N/attachment:FN2HNIQQ",
+      "version": "pdf-extracted-2026-08-22"
+    },
+    {
+      "source_id": "Altamirano_Diaz_2018_9NHAZ7IC",
+      "title": "Non-invasive measurement of cardiac output in children with repaired coarctation of the aorta using electrical cardiometry compared to transthoracic Doppler echocardiography",
+      "content_hash": "sha256:2958ef1ad05d5a915ec39ba4c52b16a94c83b23d5d16e7fafa4a8387c1cd1c9e",
+      "representation": "pdf",
+      "local_ref": "zotero:9NHAZ7IC/attachment:I9ZSDREH",
+      "version": "pdf-extracted-2026-08-22"
+    },
+    {
+      "source_id": "Chong_2018_BUCR9UBG",
+      "title": "Does goal-directed haemodynamic and fluid therapy improve peri-operative outcomes?",
+      "content_hash": "sha256:0256e013464da96417822e6fbca04b8491f635f920764b4582f2f954d65e0544",
+      "representation": "pdf",
+      "local_ref": "zotero:BUCR9UBG/attachment:8RXEWGDX",
+      "version": "pdf-extracted-2026-08-22"
+    },
+    {
+      "source_id": "Bein_2019_2PSQNEHA",
+      "title": "Best practice &amp; research clinical anaesthesiology: Advances in haemodynamic monitoring for the perioperative patient",
+      "content_hash": "sha256:8b1eff689904e6eb35ce586a6c5b0db96dd55ec08f4077004c61aaa929217554",
+      "representation": "pdf",
+      "local_ref": "zotero:2PSQNEHA/attachment:R4AZK7FJ",
+      "version": "pdf-extracted-2026-08-22"
+    },
+    {
+      "source_id": "Sanders_2019_8JWJRAVJ",
+      "title": "Accuracy and precision of non-invasive cardiac output monitoring by electrical cardiometry: a systematic review and meta-analysis",
+      "content_hash": "sha256:85e8f701550f6ecbaf44b7c57e83d3574ca196c939923fa4b308d989d64acb99",
+      "representation": "pdf",
+      "local_ref": "zotero:8JWJRAVJ/attachment:HMM2NRCW",
+      "version": "pdf-extracted-2026-08-22"
+    },
+    {
+      "source_id": "Feng_2020_TTBLNRTL",
+      "title": "Electrical velocimetry has limited accuracy and precision and moderate trending ability compared with transthoracic echocardiography for cardiac output measurement during cesarean delivery",
+      "content_hash": "sha256:8f00f9c5630fbd9c46490fafb957b3c8ec6ec60d06a5c35481606686c360ccbc",
+      "representation": "pdf",
+      "local_ref": "zotero:TTBLNRTL/attachment:5NZE3V5L",
+      "version": "pdf-extracted-2026-08-22"
+    },
+    {
+      "source_id": "McDonagh_2021_IAEHUPF7",
+      "title": "2021 ESC Guidelines for the diagnosis and treatment of acute and chronic heart failure",
+      "content_hash": "sha256:322859344a36a677292f4c3eeeb82c6289c85e57f4ace002b4e84a56b4ae2f68",
+      "representation": "pdf",
+      "local_ref": "zotero:IAEHUPF7/attachment:GZPJVVEI",
+      "version": "pdf-extracted-2026-08-22"
+    },
+    {
+      "source_id": "de_Keijzer_2021_RGRIR2DG",
+      "title": "Perioperative Hemodynamic Monitoring",
+      "content_hash": "sha256:b81cf08310b509e92905f27391c93cdc6ade666df9458b0c1f10a50418a2dec8",
+      "representation": "pdf",
+      "local_ref": "zotero:RGRIR2DG/attachment:W6VUIPK7",
+      "version": "pdf-extracted-2026-08-22"
+    },
+    {
+      "source_id": "Savarese_2022_KRUICEIX",
+      "title": "Global burden of heart failure: a comprehensive and updated review of epidemiology",
+      "content_hash": null,
+      "representation": "text",
+      "local_ref": "zotero:KRUICEIX",
+      "version": "zotero-local-2026-08-22"
+    },
+    {
+      "source_id": "Mensah_2023_W6SE58XU",
+      "title": "Global Burden of Cardiovascular Diseases and Risks, 1990-2022",
+      "content_hash": "sha256:8243b2e64315864ff21fa1d3967aad476621de5a089918e29038740becbfaf89",
+      "representation": "pdf",
+      "local_ref": "zotero:W6SE58XU/attachment:MXDTL6BV",
+      "version": "pdf-extracted-2026-08-22"
+    },
+    {
+      "source_id": "Greiwe_2024_GGUPHZI9",
+      "title": "Electrical cardiometry for non-invasive cardiac output monitoring: a method comparison study in patients after coronary artery bypass graft surgery",
+      "content_hash": "sha256:03d3a17fee55fdfb52c25254776a86205ca38c7b7df364fa146dfbffe81481b2",
+      "representation": "pdf",
+      "local_ref": "zotero:GGUPHZI9/attachment:TEZVFREL",
+      "version": "pdf-extracted-2026-08-22"
+    },
+    {
+      "source_id": "Monnet_2025_ZNJC9Q47",
+      "title": "ESICM guidelines on circulatory shock and hemodynamic monitoring 2025",
+      "content_hash": "sha256:7e75f9cc89b7bd76df4e74473ac85d43f857df702adb44ccb5cf146ca12bb9f0",
+      "representation": "pdf",
+      "local_ref": "zotero:ZNJC9Q47/attachment:FCQ5GK95",
+      "version": "pdf-extracted-2026-08-22"
+    }
+  ],
+  "evidence": [
+    {
+      "evidence_id": "EV-001",
+      "source_id": "Mensah_2023_W6SE58XU",
+      "locator": "PDF p. 2",
+      "claim": "Глобальное бремя ССЗ остается высоким и неоднородным; возраст-стандартизованная смертность в 2022 г. варьировала от 73,6 до 432,3 на 100 000.",
+      "support_type": "context",
+      "fragment": null,
+      "value": [
+        73.6,
+        432.3
+      ],
+      "unit": "на 100 000",
+      "study_context": "оценки GBD, 2022",
+      "limitations": "Модельные глобальные оценки.",
+      "verification_status": "verified"
+    },
+    {
+      "evidence_id": "EV-002",
+      "source_id": "Savarese_2022_KRUICEIX",
+      "locator": "Zotero metadata abstract",
+      "claim": "Сердечной недостаточностью во всем мире страдают более 64 млн человек.",
+      "support_type": "context",
+      "fragment": null,
+      "value": 64,
+      "unit": "млн человек",
+      "study_context": "глобальный эпидемиологический обзор",
+      "limitations": "Полный текст отсутствует; проверена аннотация.",
+      "verification_status": "verified"
+    },
+    {
+      "evidence_id": "EV-003",
+      "source_id": "McDonagh_2021_IAEHUPF7",
+      "locator": "PDF p. 15, Table 3",
+      "claim": "ESC определяет HFrEF при LVEF ≤40%, HFmrEF при 41–49% и HFpEF при ≥50% с дополнительными объективными признаками.",
+      "support_type": "direct",
+      "fragment": null,
+      "value": [
+        40,
+        49,
+        50
+      ],
+      "unit": "% LVEF",
+      "study_context": "рекомендации ESC по СН",
+      "limitations": "Классификация не валидирует ИКГ.",
+      "verification_status": "verified"
+    },
+    {
+      "evidence_id": "EV-004",
+      "source_id": "Monnet_2025_ZNJC9Q47",
+      "locator": "PDF p. 1",
+      "claim": "CO и/или SV следует мониторировать у пациентов с шоком, не отвечающих на начальную терапию.",
+      "support_type": "direct",
+      "fragment": null,
+      "value": null,
+      "unit": null,
+      "study_context": "циркуляторный шок",
+      "limitations": "Не задан конкретный прибор.",
+      "verification_status": "verified"
+    },
+    {
+      "evidence_id": "EV-005",
+      "source_id": "Monnet_2025_ZNJC9Q47",
+      "locator": "PDF p. 1",
+      "claim": "Эхокардиография рекомендована как первая линия визуализации для установления типа шока.",
+      "support_type": "direct",
+      "fragment": null,
+      "value": null,
+      "unit": null,
+      "study_context": "циркуляторный шок",
+      "limitations": "Не относится к постоянному мониторингу каждого пациента.",
+      "verification_status": "verified"
+    },
+    {
+      "evidence_id": "EV-006",
+      "source_id": "Cecconi_2014_QTSV7XNJ",
+      "locator": "PDF pp. 4, 9",
+      "claim": "Менее инвазивные устройства должны быть валидированы в конкретном контексте; рутинный PAC не рекомендуется.",
+      "support_type": "direct",
+      "fragment": null,
+      "value": null,
+      "unit": null,
+      "study_context": "консенсус по шоку",
+      "limitations": "Консенсус экспертов 2014 г.",
+      "verification_status": "verified"
+    },
+    {
+      "evidence_id": "EV-007",
+      "source_id": "de_Keijzer_2021_RGRIR2DG",
+      "locator": "PDF pp. 5–6",
+      "claim": "CO равен SV×HR; методы включают термодилюцию, pulse contour, volume clamp, биоимпеданс, биореактанс и pulse transit time.",
+      "support_type": "method",
+      "fragment": null,
+      "value": null,
+      "unit": null,
+      "study_context": "периоперационный мониторинг",
+      "limitations": "Нарративный обзор.",
+      "verification_status": "verified"
+    },
+    {
+      "evidence_id": "EV-008",
+      "source_id": "Chong_2018_BUCR9UBG",
+      "locator": "PDF p. 1",
+      "claim": "В 95 РКИ (11 659 пациентов) современные алгоритмы goal-directed therapy ассоциировались со снижением смертности OR 0,66, но уверенность доказательств была низкой/очень низкой.",
+      "support_type": "context",
+      "fragment": null,
+      "value": 0.66,
+      "unit": "OR",
+      "study_context": "периоперационная GDT",
+      "limitations": "Гетерогенные алгоритмы; эффект нельзя приписать одному монитору.",
+      "verification_status": "verified"
+    },
+    {
+      "evidence_id": "EV-009",
+      "source_id": "Kubicek_1966_TV2CRANX",
+      "locator": "PDF p. 13",
+      "claim": "Ранняя формула использует максимум dZ/dt и время изгнания для расчета ударного объема.",
+      "support_type": "method",
+      "fragment": null,
+      "value": null,
+      "unit": null,
+      "study_context": "техническая разработка ИКГ",
+      "limitations": "Технический отчет связан с журнальной публикацией, но не идентичен ей.",
+      "verification_status": "verified"
+    },
+    {
+      "evidence_id": "EV-010",
+      "source_id": "Kubicek_1966_TV2CRANX",
+      "locator": "PDF p. 4",
+      "claim": "Авторы считали метод более пригодным для отношений и относительных изменений CO, чем для безошибочных абсолютных значений.",
+      "support_type": "limitation",
+      "fragment": null,
+      "value": null,
+      "unit": null,
+      "study_context": "ранняя ИКГ",
+      "limitations": "Предварительное раннее заключение.",
+      "verification_status": "verified"
+    },
+    {
+      "evidence_id": "EV-011",
+      "source_id": "BERNSTEIN_1986_WX77UXWE",
+      "locator": "PDF pp. 1, 3",
+      "claim": "Уравнение моделирует грудную клетку усеченным конусом; кубическая зависимость от длины усиливает малые антропометрические ошибки до 20–30% ошибки SV.",
+      "support_type": "method",
+      "fragment": null,
+      "value": [
+        20,
+        30
+      ],
+      "unit": "% SV",
+      "study_context": "уравнение ИКГ",
+      "limitations": "Модельные допущения.",
+      "verification_status": "verified"
+    },
+    {
+      "evidence_id": "EV-012",
+      "source_id": "Bernstein_2005_TU2SHRHJ",
+      "locator": "PDF pp. 1, 6",
+      "claim": "В 106 кардиохирургических пациентах новое уравнение давало средний CO 6,06 л/мин против 5,97 л/мин термодилюцией и превосходило старые формулы.",
+      "support_type": "direct",
+      "fragment": null,
+      "value": [
+        6.06,
+        5.97
+      ],
+      "unit": "л/мин",
+      "study_context": "кардиохирургия",
+      "limitations": "Один алгоритм и клинический контекст; TD имеет собственную ошибку.",
+      "verification_status": "verified"
+    },
+    {
+      "evidence_id": "EV-013",
+      "source_id": "Sherwood_Chair_1990_N5ZN33ZD",
+      "locator": "Zotero metadata abstract; PDF p. 3",
+      "claim": "Недостаточная стандартизация аппаратуры, электродов и обработки затрудняет сопоставление исследований ИКГ.",
+      "support_type": "method",
+      "fragment": null,
+      "value": null,
+      "unit": null,
+      "study_context": "методические рекомендации",
+      "limitations": "Документ 1990 г.",
+      "verification_status": "verified"
+    },
+    {
+      "evidence_id": "EV-014",
+      "source_id": "Critchley_1999_BX485JVA",
+      "locator": "PDF pp. 1, 4–5",
+      "claim": "Сводные пределы согласия для биоимпеданса соответствовали ±37%; предложен ориентир ±30%, но он зависит от ошибок обоих методов и дизайна.",
+      "support_type": "method",
+      "fragment": null,
+      "value": [
+        37,
+        30
+      ],
+      "unit": "%",
+      "study_context": "метаанализ методов CO",
+      "limitations": "Порог не является универсальным законом.",
+      "verification_status": "verified"
+    },
+    {
+      "evidence_id": "EV-015",
+      "source_id": "Sanders_2019_8JWJRAVJ",
+      "locator": "PDF pp. 1, 7, 10",
+      "claim": "Метаанализ дал MPE 48% у взрослых и 42% у детей при высокой гетерогенности I² 93% и 86%.",
+      "support_type": "direct",
+      "fragment": null,
+      "value": [
+        48,
+        42,
+        93,
+        86
+      ],
+      "unit": "%",
+      "study_context": "24 исследования электрической кардиометрии",
+      "limitations": "Сильная клиническая и методическая гетерогенность.",
+      "verification_status": "verified"
+    },
+    {
+      "evidence_id": "EV-016",
+      "source_id": "Boer_1979_VK3PCFJV",
+      "locator": "Zotero metadata abstract",
+      "claim": "Корреляция ИКГ с референтом была r=0,61 для абсолютного CO и r=0,84 для относительных изменений.",
+      "support_type": "direct",
+      "fragment": null,
+      "value": [
+        0.61,
+        0.84
+      ],
+      "unit": "r",
+      "study_context": "физиологические условия",
+      "limitations": "Корреляция не оценивает согласие.",
+      "verification_status": "verified"
+    },
+    {
+      "evidence_id": "EV-017",
+      "source_id": "Spiering_1998_RB87XMRW",
+      "locator": "PDF p. 1",
+      "claim": "У 5 здоровых мужчин bias был −2,9 л/мин, LoA −9,0…3,2 л/мин; изменения CO не совпадали.",
+      "support_type": "contrary",
+      "fragment": null,
+      "value": [
+        -2.9,
+        -9.0,
+        3.2
+      ],
+      "unit": "л/мин",
+      "study_context": "35 пар измерений",
+      "limitations": "Крайне малая выборка.",
+      "verification_status": "verified"
+    },
+    {
+      "evidence_id": "EV-018",
+      "source_id": "Zoremba_2007_Q3TSQIRI",
+      "locator": "Zotero metadata abstract",
+      "claim": "У 50 критически больных PE электрической велосиметрии против двух вариантов термодилюции составляла около 26%.",
+      "support_type": "direct",
+      "fragment": null,
+      "value": 26,
+      "unit": "%",
+      "study_context": "критически больные",
+      "limitations": "Конкретные устройство и референты.",
+      "verification_status": "verified"
+    },
+    {
+      "evidence_id": "EV-019",
+      "source_id": "Cox_2017_QHKPBERQ",
+      "locator": "PDF p. 1",
+      "claim": "У 50 кардиохирургических пациентов PE превышала 30% во всех точках, trending был слабым.",
+      "support_type": "contrary",
+      "fragment": null,
+      "value": 30,
+      "unit": "%",
+      "study_context": "кардиохирургия",
+      "limitations": "ASA III–IV.",
+      "verification_status": "verified"
+    },
+    {
+      "evidence_id": "EV-020",
+      "source_id": "Greiwe_2024_GGUPHZI9",
+      "locator": "PDF p. 1",
+      "claim": "После CABG PE составляла 47% (95% ДИ 37–56), concordance trending — 48%.",
+      "support_type": "contrary",
+      "fragment": null,
+      "value": [
+        47,
+        37,
+        56,
+        48
+      ],
+      "unit": "%",
+      "study_context": "41 пациент, 157 пар",
+      "limitations": "Один центр и послеоперационный контекст.",
+      "verification_status": "verified"
+    },
+    {
+      "evidence_id": "EV-021",
+      "source_id": "Feng_2020_TTBLNRTL",
+      "locator": "PDF p. 1",
+      "claim": "При кесаревом сечении PE была 62% для CO и 60% для SV, но concordance trending — 85% и 82%.",
+      "support_type": "direct",
+      "fragment": null,
+      "value": [
+        62,
+        60,
+        85,
+        82
+      ],
+      "unit": "%",
+      "study_context": "20 рожениц, 124 пары",
+      "limitations": "Малая специфическая выборка.",
+      "verification_status": "verified"
+    },
+    {
+      "evidence_id": "EV-022",
+      "source_id": "Noori_2012_KISTS8R8",
+      "locator": "Zotero metadata abstract",
+      "claim": "У 20 новорожденных bias был −4 мл/мин при precision 234 мл/мин; относительная точность ограничена.",
+      "support_type": "direct",
+      "fragment": null,
+      "value": [
+        -4,
+        234
+      ],
+      "unit": "мл/мин",
+      "study_context": "115 пар",
+      "limitations": "Эхокардиография также имеет ошибку.",
+      "verification_status": "verified"
+    },
+    {
+      "evidence_id": "EV-023",
+      "source_id": "Blohm_2014_SS84XB5Z",
+      "locator": "Zotero metadata abstract",
+      "claim": "В PICU общая MPE была 26,16%, у недоношенных — 46,27%; вентиляция и масса влияли на согласие.",
+      "support_type": "direct",
+      "fragment": null,
+      "value": [
+        26.16,
+        46.27
+      ],
+      "unit": "%",
+      "study_context": "72 ребенка",
+      "limitations": "Неоднородность подгрупп.",
+      "verification_status": "verified"
+    },
+    {
+      "evidence_id": "EV-024",
+      "source_id": "Hsu_2017_CWDA42JG",
+      "locator": "Zotero metadata abstract",
+      "claim": "У недоношенных с PDA PE была 28,6%; высокие CO и высокочастотная вентиляция требовали осторожности.",
+      "support_type": "direct",
+      "fragment": null,
+      "value": 28.6,
+      "unit": "%",
+      "study_context": "36 детей, 105 пар",
+      "limitations": "Узкая популяция.",
+      "verification_status": "verified"
+    },
+    {
+      "evidence_id": "EV-025",
+      "source_id": "Altamirano_Diaz_2018_9NHAZ7IC",
+      "locator": "Zotero metadata abstract",
+      "claim": "После коррекции коарктации PE была 44,2% в объединенной выборке против 28,1% в контроле; результат зависел от LVOT.",
+      "support_type": "direct",
+      "fragment": null,
+      "value": [
+        44.2,
+        28.1
+      ],
+      "unit": "%",
+      "study_context": "55 детей",
+      "limitations": "Референт зависит от измерения LVOT.",
+      "verification_status": "verified"
+    },
+    {
+      "evidence_id": "EV-026",
+      "source_id": "MILES_1990_MCVHV3JZ",
+      "locator": "PDF p. 1",
+      "claim": "Корреляция ИКГ-LVEF составляла от −0,17 до 0,16 и не отражала локальную сократимость.",
+      "support_type": "direct",
+      "fragment": null,
+      "value": [
+        -0.17,
+        0.16
+      ],
+      "unit": "r",
+      "study_context": "95 пациентов и здоровый контроль",
+      "limitations": "Ранний алгоритм.",
+      "verification_status": "verified"
+    },
+    {
+      "evidence_id": "EV-027",
+      "source_id": "BOWLING_1993_SXQNFSU4",
+      "locator": "PDF p. 1",
+      "claim": "При r²=0,55 bias LVEF составлял −8,85 п.п., LoA −23,2…5,5 п.п.; взаимозаменяемости не было.",
+      "support_type": "direct",
+      "fragment": null,
+      "value": [
+        -8.85,
+        -23.2,
+        5.5
+      ],
+      "unit": "процентные пункты",
+      "study_context": "20 взрослых",
+      "limitations": "Малая выборка.",
+      "verification_status": "verified"
+    },
+    {
+      "evidence_id": "EV-028",
+      "source_id": "Meer_1996_BC68E8GK",
+      "locator": "PDF pp. 1, 4",
+      "claim": "Корреляция расчетной LVEF с референтом менялась от r=0,29 до r=0,75 в зависимости от формулы.",
+      "support_type": "direct",
+      "fragment": null,
+      "value": [
+        0.29,
+        0.75
+      ],
+      "unit": "r",
+      "study_context": "24 пациента",
+      "limitations": "Согласие не оценено.",
+      "verification_status": "verified"
+    },
+    {
+      "evidence_id": "EV-029",
+      "source_id": "Parrott_2004_PEZ8IDN2",
+      "locator": "Zotero metadata abstract",
+      "claim": "У 13 пациентов изменения CI и STR коррелировали с изменениями LVEF r=0,85 и −0,73.",
+      "support_type": "direct",
+      "fragment": null,
+      "value": [
+        0.85,
+        -0.73
+      ],
+      "unit": "r",
+      "study_context": "ретроспективное исследование",
+      "limitations": "Очень малая выборка и интервалы между измерениями.",
+      "verification_status": "verified"
+    },
+    {
+      "evidence_id": "EV-030",
+      "source_id": "Thompson_2008_NFFHGJVW",
+      "locator": "Zotero metadata abstract",
+      "claim": "STR для выявления сниженной LVEF дал AUC 0,86, чувствительность 93% и специфичность 85% при выбранных порогах.",
+      "support_type": "direct",
+      "fragment": null,
+      "value": [
+        0.86,
+        93,
+        85
+      ],
+      "unit": "AUC и %",
+      "study_context": "52 пациента с ХСН",
+      "limitations": "Ретроспективно; порог требует внешней валидации.",
+      "verification_status": "verified"
+    },
+    {
+      "evidence_id": "EV-031",
+      "source_id": "Kaszuba_2013_4A4BBND3",
+      "locator": "PDF p. 1",
+      "claim": "PEP, LVET и STR были связаны с LVEF, но авторы сочли данных недостаточно для внедрения в практику.",
+      "support_type": "limitation",
+      "fragment": null,
+      "value": null,
+      "unit": null,
+      "study_context": "36 амбулаторных пациентов с СН",
+      "limitations": "Малая выборка.",
+      "verification_status": "verified"
+    },
+    {
+      "evidence_id": "EV-032",
+      "source_id": "Fuller_1994_CANN65Q2",
+      "locator": "PDF pp. 1, 4",
+      "claim": "C/Tz не имело устойчивой теоретической или эмпирической валидности как показатель функции ЛЖ.",
+      "support_type": "direct",
+      "fragment": null,
+      "value": null,
+      "unit": null,
+      "study_context": "критический обзор",
+      "limitations": "Ранние алгоритмы.",
+      "verification_status": "verified"
+    }
+  ],
+  "results": [],
+  "claims": [
+    {
+      "claim_id": "CL-001",
+      "text": "Сердечно-сосудистые заболевания и сердечная недостаточность имеют широкую распространенность и связаны с высокой смертностью.",
+      "output_section": "Введение",
+      "claim_type": "synthesis",
+      "certainty": "direct",
+      "evidence_ids": [
+        "EV-001",
+        "EV-002"
+      ],
+      "result_ids": [],
+      "status": "supported",
+      "disposition": "keep",
+      "boundary": null,
+      "causal_basis": null
+    },
+    {
+      "claim_id": "CL-002",
+      "text": "При классификации сердечной недостаточности используется LVEF, но для HFpEF необходимы дополнительные объективные признаки.",
+      "output_section": "Введение",
+      "claim_type": "factual",
+      "certainty": "direct",
+      "evidence_ids": [
+        "EV-003"
+      ],
+      "result_ids": [],
+      "status": "supported",
+      "disposition": "keep",
+      "boundary": null,
+      "causal_basis": null
+    },
+    {
+      "claim_id": "CL-003",
+      "text": "При шоке без ответа на начальную терапию рекомендуется контролировать CO и/или SV; для определения типа шока методом визуализации первой линии служит эхокардиография.",
+      "output_section": "Введение",
+      "claim_type": "synthesis",
+      "certainty": "direct",
+      "evidence_ids": [
+        "EV-004",
+        "EV-005"
+      ],
+      "result_ids": [],
+      "status": "supported",
+      "disposition": "keep",
+      "boundary": null,
+      "causal_basis": null
+    },
+    {
+      "claim_id": "CL-004",
+      "text": "При выборе монитора необходимо учитывать его инвазивность и результаты валидации в предполагаемых условиях применения.",
+      "output_section": "Методы мониторинга",
+      "claim_type": "synthesis",
+      "certainty": "direct",
+      "evidence_ids": [
+        "EV-006",
+        "EV-007"
+      ],
+      "result_ids": [],
+      "status": "supported",
+      "disposition": "keep",
+      "boundary": null,
+      "causal_basis": null
+    },
+    {
+      "claim_id": "CL-005",
+      "text": "Связь целенаправленной гемодинамической терапии с клиническими исходами характеризует всю последовательность «измерение — решение — лечение».",
+      "output_section": "Методы мониторинга",
+      "claim_type": "interpretive",
+      "certainty": "inferred",
+      "evidence_ids": [
+        "EV-008"
+      ],
+      "result_ids": [],
+      "status": "bounded",
+      "disposition": "keep_with_boundary",
+      "boundary": "Вывод ограничен периоперационными РКИ с различающимися алгоритмами и низкой или очень низкой степенью уверенности в доказательствах.",
+      "causal_basis": null
+    },
+    {
+      "claim_id": "CL-006",
+      "text": "Классическая ИКГ рассчитывает SV по изменениям трансторакального импеданса и их производной во время изгнания крови.",
+      "output_section": "Физические основы",
+      "claim_type": "method",
+      "certainty": "direct",
+      "evidence_ids": [
+        "EV-009"
+      ],
+      "result_ids": [],
+      "status": "supported",
+      "disposition": "keep",
+      "boundary": null,
+      "causal_basis": null
+    },
+    {
+      "claim_id": "CL-007",
+      "text": "Абсолютный SV зависит от геометрической модели и антропометрических данных.",
+      "output_section": "Физические основы",
+      "claim_type": "synthesis",
+      "certainty": "direct",
+      "evidence_ids": [
+        "EV-011",
+        "EV-012"
+      ],
+      "result_ids": [],
+      "status": "supported",
+      "disposition": "keep",
+      "boundary": null,
+      "causal_basis": null
+    },
+    {
+      "claim_id": "CL-008",
+      "text": "Стандартизация электродов, возбуждения и обработки необходима для воспроизводимости результатов ИКГ.",
+      "output_section": "Физические основы",
+      "claim_type": "method",
+      "certainty": "direct",
+      "evidence_ids": [
+        "EV-013"
+      ],
+      "result_ids": [],
+      "status": "supported",
+      "disposition": "keep",
+      "boundary": null,
+      "causal_basis": null
+    },
+    {
+      "claim_id": "CL-009",
+      "text": "Корреляция не подтверждает согласие и взаимозаменяемость методов.",
+      "output_section": "Точность и согласие",
+      "claim_type": "method",
+      "certainty": "direct",
+      "evidence_ids": [
+        "EV-014",
+        "EV-016",
+        "EV-027"
+      ],
+      "result_ids": [],
+      "status": "supported",
+      "disposition": "keep",
+      "boundary": null,
+      "causal_basis": null
+    },
+    {
+      "claim_id": "CL-010",
+      "text": "Значение MPE около 30 % можно использовать только как ориентир, зависящий от условий сравнения.",
+      "output_section": "Точность и согласие",
+      "claim_type": "method",
+      "certainty": "inferred",
+      "evidence_ids": [
+        "EV-014"
+      ],
+      "result_ids": [],
+      "status": "bounded",
+      "disposition": "keep_with_boundary",
+      "boundary": "Интерпретация ориентира зависит от погрешности обоих методов, учета повторных измерений, диапазона CO и клинической задачи.",
+      "causal_basis": null
+    },
+    {
+      "claim_id": "CL-011",
+      "text": "Результаты не подтверждают замену референтных методов электрической кардиометрией при определении абсолютного CO во всех клинических группах.",
+      "output_section": "Сравнительная точность",
+      "claim_type": "synthesis",
+      "certainty": "direct",
+      "evidence_ids": [
+        "EV-015",
+        "EV-017",
+        "EV-019",
+        "EV-020",
+        "EV-021"
+      ],
+      "result_ids": [],
+      "status": "supported",
+      "disposition": "keep",
+      "boundary": null,
+      "causal_basis": null
+    },
+    {
+      "claim_id": "CL-012",
+      "text": "Оценки точности ИКГ расходятся между клиническими группами.",
+      "output_section": "Сравнительная точность",
+      "claim_type": "synthesis",
+      "certainty": "conflicted",
+      "evidence_ids": [
+        "EV-018",
+        "EV-019",
+        "EV-020",
+        "EV-021"
+      ],
+      "result_ids": [],
+      "status": "conflicted",
+      "disposition": "disclose_conflict",
+      "boundary": null,
+      "causal_basis": null
+    },
+    {
+      "claim_id": "CL-013",
+      "text": "В отдельных условиях изменения CO и SV воспроизводятся лучше, чем их абсолютные значения.",
+      "output_section": "Оценка динамики",
+      "claim_type": "synthesis",
+      "certainty": "inferred",
+      "evidence_ids": [
+        "EV-010",
+        "EV-016",
+        "EV-021"
+      ],
+      "result_ids": [],
+      "status": "bounded",
+      "disposition": "keep_with_boundary",
+      "boundary": "Способность отражать изменения показана не во всех клинических группах и не подтверждает точности абсолютного CO.",
+      "causal_basis": null
+    },
+    {
+      "claim_id": "CL-014",
+      "text": "У детей согласие различалось в зависимости от массы тела, режима вентиляции и анатомических особенностей.",
+      "output_section": "Педиатрия",
+      "claim_type": "synthesis",
+      "certainty": "conflicted",
+      "evidence_ids": [
+        "EV-022",
+        "EV-023",
+        "EV-024",
+        "EV-025"
+      ],
+      "result_ids": [],
+      "status": "conflicted",
+      "disposition": "disclose_conflict",
+      "boundary": null,
+      "causal_basis": null
+    },
+    {
+      "claim_id": "CL-015",
+      "text": "Прямой расчет LVEF по ранним формулам ИКГ не обеспечивал приемлемого согласия с радионуклидными методами.",
+      "output_section": "Функция ЛЖ",
+      "claim_type": "synthesis",
+      "certainty": "direct",
+      "evidence_ids": [
+        "EV-026",
+        "EV-027",
+        "EV-032"
+      ],
+      "result_ids": [],
+      "status": "supported",
+      "disposition": "keep",
+      "boundary": null,
+      "causal_basis": null
+    },
+    {
+      "claim_id": "CL-016",
+      "text": "STR и другие временные показатели могут служить лишь косвенными признаками систолической функции.",
+      "output_section": "Функция ЛЖ",
+      "claim_type": "synthesis",
+      "certainty": "inferred",
+      "evidence_ids": [
+        "EV-029",
+        "EV-030",
+        "EV-031"
+      ],
+      "result_ids": [],
+      "status": "bounded",
+      "disposition": "keep_with_boundary",
+      "boundary": "Данные получены преимущественно в малых ретроспективных или одноцентровых выборках; применимость за их пределами не установлена.",
+      "causal_basis": null
+    },
+    {
+      "claim_id": "CL-017",
+      "text": "Выбранное уравнение влияет на расчетные значения LVEF и SV.",
+      "output_section": "Функция ЛЖ",
+      "claim_type": "synthesis",
+      "certainty": "direct",
+      "evidence_ids": [
+        "EV-011",
+        "EV-012",
+        "EV-028"
+      ],
+      "result_ids": [],
+      "status": "supported",
+      "disposition": "keep",
+      "boundary": null,
+      "causal_basis": null
+    },
+    {
+      "claim_id": "CL-018",
+      "text": "В заданном массиве публикаций нет прямой валидации многоканального прекардиального картирования.",
+      "output_section": "Исследовательский пробел",
+      "claim_type": "limitation",
+      "certainty": "direct",
+      "evidence_ids": [
+        "EV-009",
+        "EV-011",
+        "EV-013",
+        "EV-015"
+      ],
+      "result_ids": [],
+      "status": "bounded",
+      "disposition": "keep_with_boundary",
+      "boundary": "Вывод относится только к заданному массиву источников и не означает отсутствия таких исследований во всей литературе.",
+      "causal_basis": null
+    }
+  ]
+}
