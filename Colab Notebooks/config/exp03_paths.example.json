@@ -23,7 +23,11 @@
         1
       ],
       "respiration_column": "base_1_ohm",
-      "mode_sequence": []
+      "mode_sequence": [],
+      "annotation_targets": [
+        "breathing",
+        "ecg"
+      ]
     },
     {
       "record_id": "exp03_side_only",
@@ -34,7 +38,11 @@
         2
       ],
       "respiration_column": "base_2_ohm",
-      "mode_sequence": []
+      "mode_sequence": [],
+      "annotation_targets": [
+        "breathing",
+        "ecg"
+      ]
     },
     {
       "record_id": "exp03_switch_test",
@@ -46,7 +54,10 @@
         2
       ],
       "respiration_column": "base_1_ohm",
-      "mode_sequence": []
+      "mode_sequence": [],
+      "annotation_targets": [
+        "ecg"
+      ]
     },
     {
       "record_id": "exp03_both_breathing",
@@ -58,7 +69,32 @@
         2
       ],
       "respiration_column": "base_1_ohm",
-      "mode_sequence": []
+      "mode_sequence": [],
+      "annotation_targets": [
+        "breathing",
+        "ecg"
+      ]
     }
-  ]
+  ],
+  "subject_id": "exp03_nik",
+  "breathing_segmentation": {
+    "window_s": 1.0,
+    "min_duration_s": 4.0,
+    "quiet_quantile": 20.0,
+    "quiet_multiplier": 2.0,
+    "quiet_floor_channel_units": 0.06
+  },
+  "ecg_detection": {
+    "low_hz": 5.0,
+    "high_hz": 15.0,
+    "filter_order": 2,
+    "min_rr_s": 0.33,
+    "peak_height_z": 2.0,
+    "peak_prominence_z": 1.5,
+    "refine_half_window_s": 0.05,
+    "qtc_s": 0.4,
+    "q_lead_s": 0.04,
+    "min_rr_for_qt_s": 0.3,
+    "default_rr_s": 0.8
+  }
 }
