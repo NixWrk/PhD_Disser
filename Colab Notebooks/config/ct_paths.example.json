@@ -1,12 +1,39 @@
 {
   "derived_root": "<external-derived-data-root>",
+  "dicom_qc": {
+    "orientation_tolerance": 0.0001,
+    "pixel_spacing_tolerance_mm": 0.001,
+    "slice_spacing_tolerance_mm": 0.05,
+    "duplicate_position_tolerance_mm": 0.01
+  },
   "subjects": [
     {
-      "subject_id": "ct_subject_01",
-      "dicom_dir": "<external-dicom-directory>",
-      "series_description": "<dicom-series-description>",
-      "h_mm": null,
-      "rho2_impedance_ohm_m": null
+      "subject_id": "exp02_nik",
+      "dicom_dir": "<external-dicom-directory-nik>",
+      "recursive": true,
+      "selected_series": {
+        "series_instance_uid": null,
+        "series_number": null,
+        "series_description": "<exact-dicom-series-description>"
+      },
+      "breathing_state": "inhale_breath_hold",
+      "breathing_state_source": "<primary-protocol-or-imaging-report>",
+      "contrast_status": "unknown",
+      "contrast_status_source": "<primary-protocol-or-imaging-report>"
+    },
+    {
+      "subject_id": "exp02_georg",
+      "dicom_dir": "<external-dicom-directory-georg>",
+      "recursive": true,
+      "selected_series": {
+        "series_instance_uid": null,
+        "series_number": null,
+        "series_description": "<exact-dicom-series-description>"
+      },
+      "breathing_state": "inhale_breath_hold",
+      "breathing_state_source": "<primary-protocol-or-imaging-report>",
+      "contrast_status": "unknown",
+      "contrast_status_source": "<primary-protocol-or-imaging-report>"
     }
   ]
 }
