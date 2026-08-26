@@ -8,7 +8,7 @@
   },
   "subjects": [
     {
-      "subject_id": "exp02_nik",
+      "subject_id": "nik",
       "dicom_dir": "<external-dicom-directory-nik>",
       "recursive": true,
       "selected_series": {
@@ -19,10 +19,68 @@
       "breathing_state": "inhale_breath_hold",
       "breathing_state_source": "<primary-protocol-or-imaging-report>",
       "contrast_status": "unknown",
-      "contrast_status_source": "<primary-protocol-or-imaging-report>"
+      "contrast_status_source": "<primary-protocol-or-imaging-report>",
+      "registration": {
+        "frame_name": "<inobitec-stl-export-frame>",
+        "frame_units": "mm",
+        "dicom_lps_to_export_4x4": null,
+        "transform_source": "<documented-registration-procedure>",
+        "transform_residual_mm": null,
+        "segmentation_boundary_uncertainty_mm": null,
+        "required_mask_roles": [
+          "body_surface",
+          "lungs"
+        ],
+        "manual_masks": [
+          {
+            "role": "body_surface",
+            "path": "<external-manual-body-stl>",
+            "format": "stl",
+            "segmentation_method": "manual",
+            "source_application": "Inobitec",
+            "source_application_version": "<version>"
+          },
+          {
+            "role": "lungs",
+            "path": "<external-manual-lungs-stl>",
+            "format": "stl",
+            "segmentation_method": "manual",
+            "source_application": "Inobitec",
+            "source_application_version": "<version>"
+          }
+        ],
+        "montages": [
+          {
+            "montage_id": "exp02_mgtu_side",
+            "experiment_id": "exp02",
+            "instrument_id": "mgtu_rheocardiomonitor",
+            "electrode_centres_csv": "<external-exp02-electrodes-csv>",
+            "uncertainty": {
+              "manual_placement_mm": null,
+              "coordinate_export_mm": null,
+              "surface_projection_mm": null
+            },
+            "reference_geometry_source_type": null,
+            "reference_geometry_source_reference": "<primary-source-or-protocol>"
+          },
+          {
+            "montage_id": "exp03_rnch_side",
+            "experiment_id": "exp03",
+            "instrument_id": "rnch_rheocardiomonitor",
+            "electrode_centres_csv": "<external-exp03-electrodes-csv>",
+            "uncertainty": {
+              "manual_placement_mm": null,
+              "coordinate_export_mm": null,
+              "surface_projection_mm": null
+            },
+            "reference_geometry_source_type": null,
+            "reference_geometry_source_reference": "<primary-source-or-protocol>"
+          }
+        ]
+      }
     },
     {
-      "subject_id": "exp02_georg",
+      "subject_id": "georg",
       "dicom_dir": "<external-dicom-directory-georg>",
       "recursive": true,
       "selected_series": {
@@ -33,7 +91,55 @@
       "breathing_state": "inhale_breath_hold",
       "breathing_state_source": "<primary-protocol-or-imaging-report>",
       "contrast_status": "unknown",
-      "contrast_status_source": "<primary-protocol-or-imaging-report>"
+      "contrast_status_source": "<primary-protocol-or-imaging-report>",
+      "registration": {
+        "frame_name": "<inobitec-stl-export-frame>",
+        "frame_units": "mm",
+        "dicom_lps_to_export_4x4": null,
+        "transform_source": "<documented-registration-procedure>",
+        "transform_residual_mm": null,
+        "segmentation_boundary_uncertainty_mm": null,
+        "required_mask_roles": [
+          "body_surface",
+          "lungs"
+        ],
+        "manual_masks": [
+          {
+            "role": "body_surface",
+            "path": "<external-manual-body-stl>",
+            "format": "stl",
+            "segmentation_method": "manual",
+            "source_application": "Inobitec",
+            "source_application_version": "<version>"
+          },
+          {
+            "role": "lungs",
+            "path": "<external-manual-lungs-stl>",
+            "format": "stl",
+            "segmentation_method": "manual",
+            "source_application": "Inobitec",
+            "source_application_version": "<version>"
+          }
+        ],
+        "montages": [
+          {
+            "montage_id": "exp02_mgtu_side",
+            "experiment_id": "exp02",
+            "instrument_id": "mgtu_rheocardiomonitor",
+            "electrode_centres_csv": "<external-exp02-electrodes-csv>",
+            "uncertainty": {
+              "manual_placement_mm": null,
+              "coordinate_export_mm": null,
+              "surface_projection_mm": null
+            },
+            "reference_geometry_source_type": null,
+            "reference_geometry_source_reference": "<primary-source-or-protocol>"
+          }
+        ]
+      }
     }
-  ]
+  ],
+  "registration_qc": {
+    "orthonormal_tolerance": 0.0001
+  }
 }
