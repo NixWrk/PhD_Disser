@@ -1,0 +1,16 @@
+{
+  "data_root": "<external-exp02-data-root>",
+  "derived_root": "<external-derived-data-root>",
+  "legacy_timestamps_dir": "<external-legacy-timestamps-directory>",
+  "legacy_params_dir": "<external-legacy-params-directory>",
+  "subjects": [
+    {
+      "subject_id": "exp02_subject_01",
+      "legacy_subject_key": "<legacy-sidecar-key>",
+      "data_subdir": "<external-subdirectory>",
+      "filename_suffix": "<recording-suffix>",
+      "h_mm": null,
+      "sizes_mm": []
+    }
+  ]
+}

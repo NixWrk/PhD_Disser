@@ -1,0 +1,12 @@
+{
+  "derived_root": "<external-derived-data-root>",
+  "subjects": [
+    {
+      "subject_id": "ct_subject_01",
+      "dicom_dir": "<external-dicom-directory>",
+      "series_description": "<dicom-series-description>",
+      "h_mm": null,
+      "rho2_impedance_ohm_m": null
+    }
+  ]
+}

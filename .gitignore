@@ -24,3 +24,9 @@ venv/
 Colab Notebooks_rebuilt/
 Colab Notebooks_rebuilt_snapshots/
 Colab Notebooks_rebuilt_staging_*/
+
+# Machine-local paths to external medical and physiological data
+Colab Notebooks/config/*.local.json
+
+# Local unsanitized provenance snapshots
+Colab Notebooks/archive/private/
