@@ -3,14 +3,61 @@
   "derived_root": "<external-derived-data-root>",
   "legacy_timestamps_dir": "<external-legacy-timestamps-directory>",
   "legacy_params_dir": "<external-legacy-params-directory>",
+  "expected_independent_record_count": 19,
+  "breathing_segmentation": {
+    "window_s": 1.0,
+    "min_hold_s": 4.0,
+    "quiet_quantile": 20.0,
+    "quiet_multiplier": 2.0,
+    "quiet_floor_ohm": 0.06
+  },
   "subjects": [
     {
-      "subject_id": "exp02_subject_01",
-      "legacy_subject_key": "<legacy-sidecar-key>",
-      "data_subdir": "<external-subdirectory>",
-      "filename_suffix": "<recording-suffix>",
+      "subject_id": "exp02_nik",
+      "report_label": "Ник",
+      "legacy_subject_key": "<legacy-sidecar-key-nik>",
+      "data_subdir": "<external-subdirectory-nik>",
+      "filename_suffix": "<recording-suffix-nik>",
       "h_mm": null,
-      "sizes_mm": []
+      "sizes_mm": [
+        50,
+        60,
+        70,
+        80,
+        90,
+        110,
+        120,
+        130,
+        140
+      ],
+      "excluded_recordings": [
+        {
+          "size_mm": 100,
+          "duplicate_of_size_mm": 90,
+          "reason": "byte_identical_late_copy"
+        }
+      ]
+    },
+    {
+      "subject_id": "exp02_georg",
+      "report_label": "Георг",
+      "legacy_subject_key": "<legacy-sidecar-key-georg>",
+      "data_subdir": "<external-subdirectory-georg>",
+      "filename_suffix": "<recording-suffix-georg>",
+      "h_mm": null,
+      "sizes_mm": [
+        50,
+        60,
+        70,
+        80,
+        90,
+        100,
+        110,
+        120,
+        130,
+        140
+      ],
+      "excluded_recordings": []
     }
   ]
 }
