@@ -44,7 +44,29 @@
         }
       ],
       "h_source": null,
-      "h_status": "not_supplied"
+      "h_status": "not_supplied",
+      "classified_additional_recordings": [
+        {
+          "record_id": "<additional-protocol-record-id-nik>",
+          "relative_path": "<relative-path-inside-subject-directory>",
+          "role": "full_breathing_protocol_side_size_unknown",
+          "expected_active_channels": [
+            1,
+            2
+          ],
+          "configuration_id": "<configuration-id-full-breathing-protocol>",
+          "montage_id": "<provisional-or-accepted-ttrkg-montage-id>",
+          "side_montage_id": "<side-montage-id-size-unknown>",
+          "side_size_mm": null,
+          "mode_sequence": [
+            "спокойное_дыхание",
+            "задержка_на_вдохе",
+            "усиленное_дыхание",
+            "задержка_на_выдохе"
+          ],
+          "protocol_status": "confirmed_by_author"
+        }
+      ]
     },
     {
       "subject_id": "exp02_georg",
@@ -67,7 +89,29 @@
       ],
       "excluded_recordings": [],
       "h_source": null,
-      "h_status": "not_supplied"
+      "h_status": "not_supplied",
+      "classified_additional_recordings": [
+        {
+          "record_id": "<additional-protocol-record-id-georg>",
+          "relative_path": "<relative-path-inside-subject-directory>",
+          "role": "full_breathing_protocol_side_size_unknown",
+          "expected_active_channels": [
+            1,
+            2
+          ],
+          "configuration_id": "<configuration-id-full-breathing-protocol>",
+          "montage_id": "<provisional-or-accepted-ttrkg-montage-id>",
+          "side_montage_id": "<side-montage-id-size-unknown>",
+          "side_size_mm": null,
+          "mode_sequence": [
+            "спокойное_дыхание",
+            "задержка_на_вдохе",
+            "усиленное_дыхание",
+            "задержка_на_выдохе"
+          ],
+          "protocol_status": "confirmed_by_author"
+        }
+      ]
     }
   ],
   "ecg_detection": {

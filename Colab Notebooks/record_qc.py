@@ -286,6 +286,49 @@ def build_exp02_candidate_manifest(config_path: str | Path) -> tuple[Path, dict]
                 )
             )
 
+        for additional in subject.get("classified_additional_recordings", []):
+            additional_path = (directory / additional["relative_path"]).resolve()
+            additional_path.relative_to(directory)
+            if not additional_path.is_file():
+                raise FileNotFoundError(additional_path)
+            digest = sha256_file(additional_path)
+            if digest in configured_hashes:
+                raise ValueError(
+                    f"Дополнительная запись уже описана в наборе: {additional['record_id']}"
+                )
+            configured_hashes.add(digest)
+            file_qc, _ = _file_qc(
+                additional_path,
+                EXP02_COLUMNS,
+                {1: "BASE_1_Ω", 2: "BASE_2_Ω"},
+                threshold,
+                min_duration,
+            )
+            expected = list(additional["expected_active_channels"])
+            status = (
+                "classified_protocol_record_not_included_side_size_unknown"
+                if file_qc["actual_active_channels"] == expected
+                else "classified_protocol_record_active_channel_mismatch_not_included"
+            )
+            records.append(
+                _candidate_record(
+                    record_id=additional["record_id"],
+                    subject_id=subject_id,
+                    path=additional_path,
+                    data_root=data_root,
+                    expected_active_channels=expected,
+                    file_qc=file_qc,
+                    include=False,
+                    qc_status=status,
+                    configuration_id=additional["configuration_id"],
+                    montage_id=additional["montage_id"],
+                    side_montage_id=additional.get("side_montage_id"),
+                    side_size_mm=additional.get("side_size_mm"),
+                    role=additional["role"],
+                    copies_in_allowed_root=len(by_hash[digest]),
+                )
+            )
+
         unclassified_count = 0
         for index, (digest, paths) in enumerate(
             sorted(
@@ -329,18 +372,21 @@ def build_exp02_candidate_manifest(config_path: str | Path) -> tuple[Path, dict]
         }
 
     expected_count = int(config["expected_independent_record_count"])
+    manual_review_requirements = [
+        "confirm_two_volunteer_sessions_and_size_order_against_primary_protocol",
+        "confirm_ttrkg_and_side_montage_labels",
+        "confirm_actual_active_channels_from_plots",
+        "confirm_100mm_duplicate_exclusion_for_exp02_nik",
+        "confirm_side_size_and_montage_of_classified_protocol_records",
+    ]
+    if any(item["unclassified_unique_records"] for item in inventory_summary.values()):
+        manual_review_requirements.append("classify_unlisted_unique_exports")
     manifest = {
         **_manifest_header("exp02", config_path),
-        "selection_rule": "explicit_subject_size_series_with_declared_duplicate_exclusion",
+        "selection_rule": "explicit_size_series_plus_classified_protocol_records",
         "records": records,
         "inventory": inventory_summary,
-        "manual_review_requirements": [
-            "confirm_two_volunteer_sessions_and_size_order_against_primary_protocol",
-            "confirm_ttrkg_and_side_montage_labels",
-            "confirm_actual_active_channels_from_plots",
-            "confirm_100mm_duplicate_exclusion_for_exp02_nik",
-            "classify_unlisted_unique_exports",
-        ],
+        "manual_review_requirements": manual_review_requirements,
     }
     _validate_candidate_manifest(manifest, expected_count)
     output = derived_root / "exp02" / "qc" / "10.01_record_manifest.candidate.json"
@@ -458,7 +504,7 @@ def build_exp03_candidate_manifest(config_path: str | Path) -> tuple[Path, dict]
         },
         "manual_review_requirements": [
             "confirm_four_time_labels_against_primary_protocol",
-            "classify_three_unlisted_unique_records",
+            "confirm_purpose_of_three_additional_channel1_only_records",
             "confirm_channel_switch_states_from_plot",
             "confirm_montage_labels_and_electrode_geometry",
         ],
