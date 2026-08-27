@@ -460,7 +460,7 @@ def build_exp03_candidate_manifest(config_path: str | Path) -> tuple[Path, dict]
             "confirm_four_time_labels_against_primary_protocol",
             "classify_three_unlisted_unique_records",
             "confirm_channel_switch_states_from_plot",
-            "confirm_montage_labels_and_side_array_size",
+            "confirm_montage_labels_and_electrode_geometry",
         ],
     }
     _validate_candidate_manifest(manifest, len(config["recordings"]))

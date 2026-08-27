@@ -25,20 +25,20 @@
       "side_channel_2_only": {
         "configuration_id": "<configuration-id>",
         "montage_id": "<disconnected-ttrkg-montage-id>",
-        "side_montage_id": "<side-montage-id>",
-        "side_size_mm": null
+        "side_montage_id": "<side-montage-id-140mm>",
+        "side_size_mm": 140
       },
       "channel_switch_test": {
         "configuration_id": "<configuration-id>",
         "montage_id": "<ttrkg-montage-id>",
-        "side_montage_id": "<side-montage-id>",
-        "side_size_mm": null
+        "side_montage_id": "<side-montage-id-140mm>",
+        "side_size_mm": 140
       },
       "both_channels_breathing": {
         "configuration_id": "<configuration-id>",
         "montage_id": "<ttrkg-montage-id>",
-        "side_montage_id": "<side-montage-id>",
-        "side_size_mm": null
+        "side_montage_id": "<side-montage-id-140mm>",
+        "side_size_mm": 140
       }
     }
   },
