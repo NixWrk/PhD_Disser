@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Accepted experiment record manifest",
+  "title": "Experiment record manifest",
   "type": "object",
   "additionalProperties": true,
   "required": [
@@ -10,7 +10,11 @@
   ],
   "properties": {
     "status": {
-      "const": "accepted"
+      "enum": [
+        "pending_manual_review",
+        "accepted",
+        "rejected"
+      ]
     },
     "experiment_id": {
       "enum": [

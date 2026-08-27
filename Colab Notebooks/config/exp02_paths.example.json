@@ -4,6 +4,12 @@
   "legacy_timestamps_dir": "<external-legacy-timestamps-directory>",
   "legacy_params_dir": "<external-legacy-params-directory>",
   "expected_independent_record_count": 19,
+  "record_qc": {
+    "active_channel_threshold_ohm": "<positive-qc-threshold>",
+    "minimum_active_duration_s": 4.0,
+    "ttrkg_montage_id": "<provisional-or-accepted-ttrkg-montage-id>",
+    "side_montage_id_template": "<side-montage-id-template-with-{size_mm}>"
+  },
   "breathing_segmentation": {
     "window_s": 1.0,
     "min_hold_s": 4.0,

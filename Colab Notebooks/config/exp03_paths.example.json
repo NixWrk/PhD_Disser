@@ -13,6 +13,35 @@
     "<qs-2-column>"
   ],
   "active_channel_threshold_ohm": "<positive-qc-threshold>",
+  "record_qc": {
+    "minimum_active_duration_s": 4.0,
+    "roles": {
+      "ttrkg_channel_1_only": {
+        "configuration_id": "<configuration-id>",
+        "montage_id": "<ttrkg-montage-id>",
+        "side_montage_id": null,
+        "side_size_mm": null
+      },
+      "side_channel_2_only": {
+        "configuration_id": "<configuration-id>",
+        "montage_id": "<disconnected-ttrkg-montage-id>",
+        "side_montage_id": "<side-montage-id>",
+        "side_size_mm": null
+      },
+      "channel_switch_test": {
+        "configuration_id": "<configuration-id>",
+        "montage_id": "<ttrkg-montage-id>",
+        "side_montage_id": "<side-montage-id>",
+        "side_size_mm": null
+      },
+      "both_channels_breathing": {
+        "configuration_id": "<configuration-id>",
+        "montage_id": "<ttrkg-montage-id>",
+        "side_montage_id": "<side-montage-id>",
+        "side_size_mm": null
+      }
+    }
+  },
   "recordings": [
     {
       "record_id": "exp03_ttrkg_only",
