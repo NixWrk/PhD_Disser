@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Chamber volume estimation contract",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "status",
+    "experiment_id",
+    "device",
+    "subject_id",
+    "record_id",
+    "configuration_id",
+    "montage_id",
+    "chamber_id",
+    "volume_unit",
+    "input_signal",
+    "residual_artifact_sha256",
+    "identifiability_artifact_sha256",
+    "volume_operator",
+    "phase_operator",
+    "uncertainty_model"
+  ],
+  "properties": {
+    "status": {
+      "enum": [
+        "accepted_development_volume_operator",
+        "validated_volume_operator"
+      ]
+    },
+    "chamber_id": {
+      "enum": [
+        "LV",
+        "RV"
+      ]
+    },
+    "volume_unit": {
+      "const": "mL"
+    },
+    "input_signal": {
+      "type": "object",
+      "required": [
+        "name",
+        "unit",
+        "normalization",
+        "time_grid_field"
+      ],
+      "properties": {
+        "name": {
+          "const": "candidate_residual_fractional"
+        },
+        "unit": {
+          "const": "1"
+        },
+        "normalization": {
+          "const": "delta_Z_over_Z0"
+        },
+        "time_grid_field": {
+          "const": "time_from_r_corrected_s"
+        }
+      }
+    },
+    "residual_artifact_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-fA-F]{64}$"
+    },
+    "identifiability_artifact_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-fA-F]{64}$"
+    },
+    "volume_operator": {
+      "type": "object",
+      "required": [
+        "operator_id",
+        "implementation_sha256",
+        "parameter_names",
+        "parameter_units",
+        "applicability"
+      ]
+    },
+    "phase_operator": {
+      "type": "object",
+      "required": [
+        "operator_id",
+        "status",
+        "ed_definition",
+        "es_definition",
+        "implementation_sha256"
+      ]
+    },
+    "uncertainty_model": {
+      "type": "object",
+      "required": [
+        "status",
+        "components",
+        "covariance_output"
+      ]
+    }
+  }
+}

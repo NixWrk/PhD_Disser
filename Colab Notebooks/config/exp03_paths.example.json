@@ -96,5 +96,58 @@
     "q_lead_s": 0.04,
     "min_rr_for_qt_s": 0.3,
     "default_rr_s": 0.8
+  },
+  "ttrkg_analysis": {
+    "signal_column": "rheo_1_mohm",
+    "base_column": "base_1_ohm",
+    "unit_scale_to_ohm": 0.001,
+    "sign": null,
+    "gain": null,
+    "pulse_calibration_status": "not_calibrated",
+    "pulse_operator_status": "unknown_RHEO_1_semantics",
+    "base_sign": null,
+    "base_gain": null,
+    "base_offset_ohm": null,
+    "base_calibration_status": "not_calibrated",
+    "pre_s": 0.15,
+    "post_s": 0.7,
+    "grid_step_s": 0.005,
+    "baseline_s": [
+      -0.12,
+      -0.02
+    ],
+    "hold_margin_s": 0.5,
+    "timing_calibration_status": "not_measured",
+    "group_delay_s": null,
+    "montage_id": null
+  },
+  "channel_switch_analysis": {
+    "annotation_status": "not_annotated",
+    "state_sidecar": null
+  },
+  "fem_analysis": {
+    "status": "not_supplied",
+    "operator_index_manifest": null
+  },
+  "transfer_analysis": {
+    "source_experiment": "exp02",
+    "same_subject_required": true,
+    "cross_session_status": "not_accepted",
+    "uncertainty_status": "not_supplied",
+    "source_subject_id": "exp02_nik",
+    "target_subject_id": "exp03_nik",
+    "uncertainty_manifest": null
+  },
+  "source_identifiability": {
+    "status": "not_supplied",
+    "operator_manifest": null
+  },
+  "record_manifest": {
+    "status": "not_supplied",
+    "path": null
+  },
+  "residual_analysis": {
+    "uncertainty_status": "not_supplied",
+    "uncertainty_manifest": null
   }
 }

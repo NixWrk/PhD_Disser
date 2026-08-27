@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "External validation preregistration",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "status",
+    "frozen_at",
+    "protocol_sha256",
+    "reference_method",
+    "synchronization",
+    "target_population",
+    "sample_size",
+    "primary_endpoint",
+    "success_thresholds",
+    "repeated_measure_model",
+    "reference_error_budget",
+    "missing_data_and_exclusions",
+    "frozen_method_versions",
+    "privacy"
+  ],
+  "properties": {
+    "status": {
+      "const": "frozen_before_reference_analysis"
+    },
+    "frozen_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "protocol_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-fA-F]{64}$"
+    },
+    "reference_method": {
+      "type": "object"
+    },
+    "synchronization": {
+      "type": "object"
+    },
+    "target_population": {
+      "type": "object"
+    },
+    "sample_size": {
+      "type": "object"
+    },
+    "primary_endpoint": {
+      "type": "object"
+    },
+    "success_thresholds": {
+      "type": "object"
+    },
+    "repeated_measure_model": {
+      "type": "object"
+    },
+    "reference_error_budget": {
+      "type": "object"
+    },
+    "missing_data_and_exclusions": {
+      "type": "object"
+    },
+    "frozen_method_versions": {
+      "type": "object"
+    },
+    "privacy": {
+      "type": "object"
+    }
+  }
+}

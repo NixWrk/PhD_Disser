@@ -104,5 +104,45 @@
     "clip_tolerance_input_units": null,
     "timing_calibration_status": "not_measured",
     "group_delay_s": null
+  },
+  "ttrkg_analysis": {
+    "signal_column": "RHEO_1_mΩ",
+    "base_column": "BASE_1_Ω",
+    "unit_scale_to_ohm": 0.001,
+    "sign": null,
+    "gain": null,
+    "pulse_calibration_status": "not_calibrated",
+    "pulse_operator_status": "unknown_RHEO_1_semantics",
+    "base_sign": null,
+    "base_gain": null,
+    "base_offset_ohm": null,
+    "base_calibration_status": "not_calibrated",
+    "pre_s": 0.15,
+    "post_s": 0.7,
+    "grid_step_s": 0.005,
+    "baseline_s": [
+      -0.12,
+      -0.02
+    ],
+    "hold_margin_s": 0.5,
+    "timing_calibration_status": "not_measured",
+    "group_delay_s": null,
+    "montage_id": null
+  },
+  "fem_analysis": {
+    "status": "not_supplied",
+    "operator_index_manifest": null
+  },
+  "source_identifiability": {
+    "status": "not_supplied",
+    "operator_manifest": null
+  },
+  "record_manifest": {
+    "status": "not_supplied",
+    "path": null
+  },
+  "residual_analysis": {
+    "uncertainty_status": "not_supplied",
+    "uncertainty_manifest": null
   }
 }

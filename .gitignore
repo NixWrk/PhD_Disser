@@ -30,3 +30,7 @@ Colab Notebooks/config/*.local.json
 
 # Local unsanitized provenance snapshots
 Colab Notebooks/archive/private/
+
+# Subject-linked historical derived data stay local; canonical artifacts use external derived_root
+Colab Notebooks/timestamps/*.json
+Colab Notebooks/params/*.json

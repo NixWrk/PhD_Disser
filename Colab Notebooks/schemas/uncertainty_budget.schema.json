@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TTRKG residual uncertainty budget",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "status",
+    "experiment_id",
+    "measured_artifact_sha256",
+    "predicted_artifact_sha256",
+    "entries"
+  ],
+  "properties": {
+    "status": {
+      "const": "accepted"
+    },
+    "experiment_id": {
+      "enum": [
+        "exp02",
+        "exp03"
+      ]
+    },
+    "measured_artifact_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-fA-F]{64}$"
+    },
+    "predicted_artifact_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-fA-F]{64}$"
+    },
+    "entries": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": [
+          "experiment_id",
+          "subject_id",
+          "record_id",
+          "configuration_id",
+          "montage_id",
+          "side_montage_id",
+          "side_size_mm",
+          "channel_state",
+          "mode",
+          "time_from_r_corrected_s",
+          "measured_variance_fractional",
+          "predicted_variance_fractional",
+          "cross_covariance_fractional"
+        ],
+        "properties": {
+          "time_from_r_corrected_s": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "number"
+            }
+          },
+          "measured_variance_fractional": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "number",
+              "minimum": 0
+            }
+          },
+          "predicted_variance_fractional": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "number",
+              "minimum": 0
+            }
+          },
+          "cross_covariance_fractional": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    }
+  }
+}

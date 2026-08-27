@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FEM operator index",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "status",
+    "experiment_id",
+    "entries"
+  ],
+  "properties": {
+    "status": {
+      "const": "accepted"
+    },
+    "experiment_id": {
+      "enum": [
+        "exp02",
+        "exp03"
+      ]
+    },
+    "entries": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": [
+          "experiment_id",
+          "subject_id",
+          "record_id",
+          "configuration_id",
+          "montage_id",
+          "side_montage_id",
+          "side_size_mm",
+          "channel_state",
+          "mode",
+          "operator_manifest"
+        ],
+        "properties": {
+          "operator_manifest": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  }
+}

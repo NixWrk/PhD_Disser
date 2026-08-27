@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Accepted experiment record manifest",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "status",
+    "experiment_id",
+    "records"
+  ],
+  "properties": {
+    "status": {
+      "const": "accepted"
+    },
+    "experiment_id": {
+      "enum": [
+        "exp02",
+        "exp03"
+      ]
+    },
+    "records": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": [
+          "record_id",
+          "subject_id",
+          "relative_path",
+          "input_sha256",
+          "actual_active_channels",
+          "include",
+          "qc_status",
+          "configuration_id",
+          "montage_id",
+          "side_montage_id",
+          "side_size_mm"
+        ],
+        "properties": {
+          "record_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "subject_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "relative_path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "input_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-fA-F]{64}$"
+          },
+          "actual_active_channels": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "enum": [
+                1,
+                2
+              ]
+            },
+            "uniqueItems": true
+          },
+          "include": {
+            "type": "boolean"
+          },
+          "qc_status": {
+            "type": "string"
+          },
+          "configuration_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "montage_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "side_montage_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "side_size_mm": {
+            "type": [
+              "number",
+              "null"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

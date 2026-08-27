@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Source target estimability operator",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "status",
+    "experiment_id",
+    "device",
+    "parameterization_id",
+    "parameter_names",
+    "parameter_units",
+    "parameter_scales",
+    "jacobian",
+    "measurement_covariance",
+    "measurement_covariance_status",
+    "measurement_configurations",
+    "source_fem_artifact_sha256",
+    "acceptance",
+    "experimental_state"
+  ],
+  "properties": {
+    "status": {
+      "const": "accepted_design_operator"
+    },
+    "experiment_id": {
+      "enum": [
+        "exp02",
+        "exp03"
+      ]
+    },
+    "device": {
+      "type": "string",
+      "minLength": 1
+    },
+    "parameterization_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "parameter_names": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "parameter_units": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "parameter_scales": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "number",
+        "exclusiveMinimum": 0
+      }
+    },
+    "jacobian": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "type": "number"
+        }
+      }
+    },
+    "measurement_covariance": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "type": "number"
+        }
+      }
+    },
+    "measurement_covariance_status": {
+      "const": "accepted_design_covariance"
+    },
+    "source_fem_artifact_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-fA-F]{64}$"
+    },
+    "measurement_configurations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": [
+          "row_id",
+          "experiment_id",
+          "subject_id",
+          "record_id",
+          "configuration_id",
+          "montage_id",
+          "side_montage_id",
+          "side_size_mm",
+          "channel_state",
+          "mode",
+          "frequency_hz",
+          "fem_operator_manifest_sha256"
+        ]
+      }
+    },
+    "acceptance": {
+      "type": "object",
+      "required": [
+        "relative_rank_tolerance",
+        "target_parameter",
+        "target_nullspace_tolerance",
+        "max_nonzero_subspace_condition",
+        "max_conditional_target_std"
+      ]
+    },
+    "experimental_state": {
+      "type": "object",
+      "required": [
+        "simultaneous_configurations",
+        "repeatability_status",
+        "measurement_covariance_scope"
+      ]
+    }
+  }
+}

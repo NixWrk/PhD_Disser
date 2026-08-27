@@ -1,0 +1,126 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Complete FEM sensitivity operator",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "status",
+    "experiment_id",
+    "subject_id",
+    "record_id",
+    "configuration_id",
+    "montage_id",
+    "side_montage_id",
+    "side_size_mm",
+    "channel_state",
+    "mode",
+    "frequency_hz",
+    "respiratory_state",
+    "geometry",
+    "electrode_coordinates_sha256",
+    "material_properties_sha256",
+    "solver",
+    "mesh_convergence",
+    "base_impedance_check",
+    "complete_regional_partition",
+    "region_names",
+    "fractional_sensitivities"
+  ],
+  "properties": {
+    "status": {
+      "const": "accepted"
+    },
+    "frequency_hz": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "respiratory_state": {
+      "type": "string",
+      "minLength": 1
+    },
+    "complete_regional_partition": {
+      "const": true
+    },
+    "region_names": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "fractional_sensitivities": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "number"
+      }
+    },
+    "geometry": {
+      "type": "object",
+      "required": [
+        "segmentation_method",
+        "geometry_sha256"
+      ],
+      "properties": {
+        "segmentation_method": {
+          "const": "manual_Inobitec"
+        },
+        "geometry_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-fA-F]{64}$"
+        }
+      }
+    },
+    "electrode_coordinates_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-fA-F]{64}$"
+    },
+    "material_properties_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-fA-F]{64}$"
+    },
+    "solver": {
+      "type": "object",
+      "required": [
+        "name",
+        "version",
+        "model_sha256"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "model_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-fA-F]{64}$"
+        }
+      }
+    },
+    "mesh_convergence": {
+      "type": "object",
+      "required": [
+        "status"
+      ],
+      "properties": {
+        "status": {
+          "const": "accepted"
+        }
+      }
+    },
+    "base_impedance_check": {
+      "type": "object",
+      "required": [
+        "status"
+      ],
+      "properties": {
+        "status": {
+          "const": "accepted"
+        }
+      }
+    }
+  }
+}
