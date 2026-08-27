@@ -36,7 +36,9 @@
           "duplicate_of_size_mm": 90,
           "reason": "byte_identical_late_copy"
         }
-      ]
+      ],
+      "h_source": null,
+      "h_status": "not_supplied"
     },
     {
       "subject_id": "exp02_georg",
@@ -57,7 +59,9 @@
         130,
         140
       ],
-      "excluded_recordings": []
+      "excluded_recordings": [],
+      "h_source": null,
+      "h_status": "not_supplied"
     }
   ],
   "ecg_detection": {
@@ -72,5 +76,33 @@
     "q_lead_s": 0.04,
     "min_rr_for_qt_s": 0.3,
     "default_rr_s": 0.8
+  },
+  "static_analysis": {
+    "base_column": "BASE_2_Ω",
+    "observation_kind": "not_confirmed",
+    "calibration_status": "not_calibrated",
+    "sign": null,
+    "gain": null,
+    "offset_ohm": null
+  },
+  "pulse_analysis": {
+    "signal_column": "RHEO_2_mΩ",
+    "unit_scale_to_ohm": 0.001,
+    "sign": null,
+    "gain": null,
+    "calibration_status": "not_calibrated",
+    "operator_status": "unknown_RHEO_2_semantics",
+    "pre_s": 0.15,
+    "post_s": 0.7,
+    "grid_step_s": 0.005,
+    "baseline_s": [
+      -0.12,
+      -0.02
+    ],
+    "hold_margin_s": 0.5,
+    "clip_levels_input_units": null,
+    "clip_tolerance_input_units": null,
+    "timing_calibration_status": "not_measured",
+    "group_delay_s": null
   }
 }
