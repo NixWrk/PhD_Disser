@@ -1,0 +1,14 @@
+gmsh==4.15.2
+numpy==2.4.3
+numpy-stl==4.0.0
+pandas==2.3.3
+scipy==1.17.1
+pymeshlab==2025.7.post1
+pymeshfix==0.18.1
+pyvista==0.46.4
+vtk==9.5.2
+nbformat>=5.10,<6
+matplotlib>=3.9,<4
+ipython>=8,<10
+plotly>=6,<7
+pydicom>=3,<4

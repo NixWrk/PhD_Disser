@@ -15,6 +15,7 @@ if nargin < 3 || isempty(compute_jacobian)
 end
 
 cfg = trkg4_config('nik');
+trkg4_prepare_runtime(cfg);
 root = cfg.project_root;
 result_tag = 'v5_1mm_local2mm';
 shared_file = fullfile(root, 'output', 'nik_trkg4_arms_full_v3.mat');

@@ -1,6 +1,7 @@
 function [fmdl, electrode_centres_xyz, timings, electrode_diagnostics] = trkg4_build_eidors_model_from_stl(cfg)
 %TRKG4_BUILD_EIDORS_MODEL_FROM_STL Mesh body STL and attach 4 electrodes.
 
+trkg4_prepare_runtime(cfg);
 timings = struct();
 % Declared up front so the output has a defined type if the function is
 % interrupted before the electrodes are attached.

@@ -26,7 +26,7 @@ for k = 1:numel(cfg.tissues)
             fprintf('  %-12s MISSING REQUIRED\n', tissue.name);
             missing_required{end+1} = tissue.name; %#ok<AGROW>
         else
-            fprintf('  %-12s missing optional -> stays background\n', tissue.name);
+            fprintf('  %-12s missing optional -> no separate assignment\n', tissue.name);
             missing_optional{end+1} = tissue.name; %#ok<AGROW>
         end
         continue;
@@ -45,14 +45,15 @@ if ~isempty(missing_required)
     error('Missing required tissue STL files: %s', strjoin(missing_required, ', '));
 end
 
-% Optional does not mean harmless. An absent mask leaves that volume at the
-% background conductivity, which changes the computed impedance. Say so once,
-% here, so that the result is never read as if every declared tissue had been
-% assigned.
+% Optional does not mean harmless. An absent mask is not assigned as a
+% separate class: an element retains its previous tissue-mask assignment or,
+% when no earlier mask contains it, the background. Say so explicitly so the
+% result is never read as if every declared tissue had been resolved.
 if ~isempty(missing_optional)
-    fprintf(['\nNOTE: %s declared but not assigned; those volumes keep the ', ...
-        '%s conductivity. Any statement that the model assigns them is ', ...
-        'wrong for this run.\n'], strjoin(missing_optional, ', '), ...
+    fprintf(['\nNOTE: %s is not assigned as a separate tissue class. ', ...
+        'Affected elements retain an earlier tissue-mask assignment or ', ...
+        'the %s background. Do not claim that this class was resolved ', ...
+        'separately in this run.\n'], strjoin(missing_optional, ', '), ...
         cfg.background.name);
 end
 

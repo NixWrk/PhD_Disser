@@ -8,6 +8,7 @@ if nargin < 1 || isempty(top_count), top_count = 100; end
 if nargin < 2 || isempty(local_radius_mm), local_radius_mm = 0; end
 if nargin < 3 || isempty(local_phi_step_deg), local_phi_step_deg = 1; end
 cfg = trkg4_config('nik');
+trkg4_prepare_runtime(cfg);
 root = cfg.project_root;
 result_tag = 'v5_1mm_local2mm';
 shared = load(fullfile(root, 'output', 'nik_trkg4_arms_full_v5_1mm_local2mm.mat'), ...

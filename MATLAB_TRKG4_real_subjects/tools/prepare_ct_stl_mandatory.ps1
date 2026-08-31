@@ -1,9 +1,20 @@
 param(
-    [string]$Blender = 'E:\hard_Programms\blender\4_2_1\blender.exe',
+    [string]$Blender = $env:BLENDER_EXE,
     [string]$Subject = 'nik'
 )
 
 $ErrorActionPreference = 'Stop'
+if ([string]::IsNullOrWhiteSpace($Blender)) {
+    $blenderCommand = Get-Command blender -ErrorAction SilentlyContinue
+    if ($null -eq $blenderCommand) {
+        throw 'Blender not found. Set BLENDER_EXE or pass -Blender explicitly.'
+    }
+    $Blender = $blenderCommand.Source
+}
+if (-not (Test-Path -LiteralPath $Blender)) {
+    throw "Blender executable not found: $Blender"
+}
+
 $root = Split-Path -Parent $PSScriptRoot
 $stl = Join-Path $root "data\$Subject\stl"
 $output = Join-Path $root 'output'

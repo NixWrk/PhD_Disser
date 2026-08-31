@@ -10,6 +10,7 @@ if nargin < 2 || isempty(phi_step_deg), phi_step_deg = 1; end
 if nargin < 3 || isempty(top_count), top_count = 250; end
 
 cfg = trkg4_config('nik');
+trkg4_prepare_runtime(cfg);
 root = cfg.project_root;
 shared_file = fullfile(root, 'output', 'nik_trkg4_arms_full_v5_1mm_local2mm.mat');
 shared = load(shared_file, 'fmdl_mesh_units', 'elem_sigma', ...

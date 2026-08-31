@@ -10,9 +10,7 @@ cfg = trkg4_apply_overrides(cfg, varargin{:});
 
 addpath(cfg.src_dir);
 addpath(cfg.vendor_dir);
-if ~isempty(cfg.eidors_startup)
-    run(cfg.eidors_startup);
-end
+trkg4_prepare_runtime(cfg);
 
 validate_stl_inputs(cfg);
 

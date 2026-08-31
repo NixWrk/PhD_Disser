@@ -18,7 +18,8 @@ cfg.subject = trkg4_get_subject(subjects, subject_id);
 cfg.input_mode = 'real_ct_stl_trkg4';
 cfg.frequency_hz = 50e3;
 cfg.itis_database = 'ITIS Tissue Properties Database V5.0';
-cfg.eidors_startup = '';
+cfg.eidors_startup = getenv('EIDORS_STARTUP');
+cfg.gmsh_executable = getenv('GMSH_EXE');
 
 % CT STL files are expected in millimetres. Tissue classification and
 % electrode patch selection use mm; the FEM solve is scaled to metres.
@@ -104,7 +105,8 @@ cfg.prebuilt_mesh_file = fullfile(cfg.project_root, 'output', ...
 cfg.rho_cloud.soft_ohm_m = 4.728174786010649;
 cfg.rho_cloud.lungs_ohm_m = 17.4067;
 cfg.rho_cloud.lungs_inhale_ohm_m = 17.73503700425868;
-cfg.rho_cloud.source = 'Nik solution clouds / COMSOL investigation notes';
+cfg.rho_cloud.source = ...
+    'Nik solution clouds / historical MATLAB-Python model calculations';
 
 sigma_soft = 1 / cfg.rho_cloud.soft_ohm_m;
 sigma_lung = 1 / cfg.rho_cloud.lungs_ohm_m;
@@ -120,6 +122,8 @@ cfg.required_tissues = {'lungs', 'heart', 'bones'};
 cfg.tissues = struct('name', {}, 'file', {}, 'itis_name', {}, 'sigma', {}, 'enabled', {});
 cfg.tissues(end + 1) = local_tissue_entry('lungs', cfg.subject.stl.lungs, ...
     'own_solution_cloud', sigma_lung, true);
+% Nik has a whole-heart mask, not separate myocardium and blood masks.
+% Assigning Heart Muscle conductivity to the full mask is a modelling assumption.
 cfg.tissues(end + 1) = local_tissue_entry('heart', cfg.subject.stl.heart, ...
     'Heart Muscle', sigma_heart, true);
 cfg.tissues(end + 1) = local_tissue_entry('bones', cfg.subject.stl.bones, ...

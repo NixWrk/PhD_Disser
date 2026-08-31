@@ -123,6 +123,7 @@ $$
 code(r"""
 from pathlib import Path
 import json
+import os
 import warnings
 
 import numpy as np
@@ -160,11 +161,15 @@ if not (ROOT / 'output').is_dir():
     ROOT = ROOT.parent
 OUT = ROOT / 'output'
 STL = ROOT / 'data' / 'nik' / 'stl'
-DICOM_DIR = Path(r'Z:\02 Big_data\3D\NIX\CT_10_12_25_RNCH_NIX_DICOM')
+dicom_env = os.environ.get('KALMYKOV_DICOM_DIR', '').strip()
+DICOM_DIR = Path(dicom_env) if dicom_env else None
 
 result_tag = 'v5_1mm_local2mm'
-baseline_summary = pd.read_csv(OUT / 'nik_trkg4_inverse_inhale_fit_summary.csv').iloc[0]
-baseline_comparison = pd.read_csv(OUT / 'nik_trkg4_inverse_inhale_comparison.csv')
+baseline_summary_file = OUT / 'nik_trkg4_inverse_inhale_fit_summary.csv'
+baseline_comparison_file = OUT / 'nik_trkg4_inverse_inhale_comparison.csv'
+baseline_available = baseline_summary_file.is_file() and baseline_comparison_file.is_file()
+baseline_summary = pd.read_csv(baseline_summary_file).iloc[0] if baseline_available else None
+baseline_comparison = pd.read_csv(baseline_comparison_file) if baseline_available else None
 summary = pd.read_csv(OUT / f'nik_trkg4_inverse_inhale_fit_summary_{result_tag}.csv').iloc[0]
 comparison = pd.read_csv(OUT / f'nik_trkg4_inverse_inhale_comparison_{result_tag}.csv')
 depth = pd.read_csv(OUT / f'nik_trkg4_inverse_inhale_depth_curve_{result_tag}.csv')
@@ -180,6 +185,10 @@ fast_cem = pd.read_csv(OUT / f'nik_trkg4_fast_cem_refine_{result_tag}.csv')
 
 print(f'Проект: {ROOT}')
 print(f'FEM: {int(summary.mesh_nodes):,} узлов, {int(summary.mesh_tetrahedra):,} тетраэдров')
+print(f'DICOM: {DICOM_DIR}' if DICOM_DIR is not None else
+      'DICOM: не задан; визуализация HU будет пропущена')
+print('Историческая сетка v4: доступна' if baseline_available else
+      'Историческая сетка v4: файлы отсутствуют, сравнение будет пропущено')
 """)
 
 md(r"""
@@ -191,50 +200,71 @@ md(r"""
 """)
 
 code(r"""
-dicom_files = list(DICOM_DIR.glob('*CT_NA.2.*.dcm'))
-if not dicom_files:
-    raise FileNotFoundError(f'DICOM series 2 not found: {DICOM_DIR}')
+def load_dicom_series(dicom_dir):
+    if dicom_dir is None:
+        return None
+    dicom_files = list(dicom_dir.glob('*CT_NA.2.*.dcm'))
+    if not dicom_files:
+        return None
 
-headers = []
-for path in dicom_files:
-    ds = pydicom.dcmread(str(path), stop_before_pixels=True)
-    headers.append((path, ds))
+    headers = []
+    for path in dicom_files:
+        ds = pydicom.dcmread(str(path), stop_before_pixels=True)
+        headers.append((path, ds))
 
-iop = np.asarray(headers[0][1].ImageOrientationPatient, float)
-direction_columns = iop[:3]       # patient direction for increasing image column
-direction_rows = iop[3:]          # patient direction for increasing image row
-direction_slices = np.cross(direction_columns, direction_rows)
-headers.sort(key=lambda item: np.dot(np.asarray(item[1].ImagePositionPatient, float), direction_slices))
+    iop = np.asarray(headers[0][1].ImageOrientationPatient, float)
+    direction_columns = iop[:3]
+    direction_rows = iop[3:]
+    direction_slices = np.cross(direction_columns, direction_rows)
+    headers.sort(key=lambda item: np.dot(
+        np.asarray(item[1].ImagePositionPatient, float), direction_slices))
 
-first = headers[0][1]
-rows, columns = int(first.Rows), int(first.Columns)
-pixel_spacing = np.asarray(first.PixelSpacing, float)
-volume_hu = np.empty((len(headers), rows, columns), dtype=np.float32)
-slice_coordinates = np.empty(len(headers))
+    first = headers[0][1]
+    rows, columns = int(first.Rows), int(first.Columns)
+    pixel_spacing = np.asarray(first.PixelSpacing, float)
+    volume_hu = np.empty((len(headers), rows, columns), dtype=np.float32)
+    slice_coordinates = np.empty(len(headers))
 
-for index, (path, header) in enumerate(headers):
-    ds = pydicom.dcmread(str(path))
-    volume_hu[index] = ds.pixel_array.astype(np.float32) * float(ds.RescaleSlope) + float(ds.RescaleIntercept)
-    slice_coordinates[index] = np.dot(np.asarray(ds.ImagePositionPatient, float), direction_slices)
+    for index, (path, header) in enumerate(headers):
+        ds = pydicom.dcmread(str(path))
+        volume_hu[index] = (ds.pixel_array.astype(np.float32) *
+                            float(ds.RescaleSlope) + float(ds.RescaleIntercept))
+        slice_coordinates[index] = np.dot(
+            np.asarray(ds.ImagePositionPatient, float), direction_slices)
 
-origin = np.asarray(headers[0][1].ImagePositionPatient, float)
-row_coordinates = np.dot(origin, direction_rows) + np.arange(rows) * pixel_spacing[0]
-column_coordinates = np.dot(origin, direction_columns) + np.arange(columns) * pixel_spacing[1]
-hu_interpolator = RegularGridInterpolator(
-    (slice_coordinates, row_coordinates, column_coordinates),
-    volume_hu, bounds_error=False, fill_value=np.nan
-)
+    origin = np.asarray(headers[0][1].ImagePositionPatient, float)
+    row_coordinates = np.dot(origin, direction_rows) + np.arange(rows) * pixel_spacing[0]
+    column_coordinates = (np.dot(origin, direction_columns) +
+                          np.arange(columns) * pixel_spacing[1])
+    hu_interpolator = RegularGridInterpolator(
+        (slice_coordinates, row_coordinates, column_coordinates),
+        volume_hu, bounds_error=False, fill_value=np.nan
+    )
+    info = pd.DataFrame({
+        'параметр': ['SeriesDescription', 'число срезов', 'матрица', 'pixel spacing, мм',
+                     'шаг по z, мм', 'диапазон z, мм', 'HU slope/intercept'],
+        'значение': [str(first.SeriesDescription), len(headers), f'{rows}×{columns}',
+                     f'{pixel_spacing[0]:.6f} × {pixel_spacing[1]:.6f}',
+                     f'{np.median(np.diff(slice_coordinates)):.6f}',
+                     f'{slice_coordinates.min():.3f} … {slice_coordinates.max():.3f}',
+                     f'{float(first.RescaleSlope):g} / {float(first.RescaleIntercept):g}']
+    })
+    return (hu_interpolator, direction_slices, direction_rows,
+            direction_columns, column_coordinates, info)
 
-dicom_info = pd.DataFrame({
-    'параметр': ['SeriesDescription', 'число срезов', 'матрица', 'pixel spacing, мм',
-                 'шаг по z, мм', 'диапазон z, мм', 'HU slope/intercept'],
-    'значение': [str(first.SeriesDescription), len(headers), f'{rows}×{columns}',
-                 f'{pixel_spacing[0]:.6f} × {pixel_spacing[1]:.6f}',
-                 f'{np.median(np.diff(slice_coordinates)):.6f}',
-                 f'{slice_coordinates.min():.3f} … {slice_coordinates.max():.3f}',
-                 f'{float(first.RescaleSlope):g} / {float(first.RescaleIntercept):g}']
-})
-display(dicom_info)
+dicom_series = load_dicom_series(DICOM_DIR)
+if dicom_series is None:
+    hu_interpolator = None
+    direction_slices = direction_rows = direction_columns = None
+    column_coordinates = None
+    display(Markdown(
+        '**DICOM не загружен.** Задайте `KALMYKOV_DICOM_DIR` для HU-фона. '
+        'Расчёт по STL/FEM и геометрический срез продолжаются без него.'
+    ))
+else:
+    (hu_interpolator, direction_slices, direction_rows,
+     direction_columns, column_coordinates, dicom_info) = dicom_series
+    display(dicom_info)
 """)
 
 code(r"""
@@ -400,11 +430,20 @@ body_bounds = pd.DataFrame({
     'максимум, мм': body_max,
     'полный размер, мм': body_span,
 })
-extent_check = pd.DataFrame({
-    'объект': ['наружная FEM-оболочка', 'поле DICOM по x', 'все электроды по x'],
-    'минимум x, мм': [body_min[0], column_coordinates.min(), electrodes.patch_centroid_x_mm.min()],
-    'максимум x, мм': [body_max[0], column_coordinates.max(), electrodes.patch_centroid_x_mm.max()],
-})
+extent_rows = [
+    {'объект': 'наружная FEM-оболочка',
+     'минимум x, мм': body_min[0], 'максимум x, мм': body_max[0]},
+    {'объект': 'все электроды по x',
+     'минимум x, мм': electrodes.patch_centroid_x_mm.min(),
+     'максимум x, мм': electrodes.patch_centroid_x_mm.max()},
+]
+if column_coordinates is not None:
+    extent_rows.insert(1, {
+        'объект': 'поле DICOM по x',
+        'минимум x, мм': column_coordinates.min(),
+        'максимум x, мм': column_coordinates.max(),
+    })
+extent_check = pd.DataFrame(extent_rows)
 display(body_topology)
 display(body_bounds)
 display(extent_check)
@@ -789,12 +828,15 @@ s_grid = np.linspace(-95, 95, 381)
 d_grid = np.linspace(-20, 135, 311)
 S, D = np.meshgrid(s_grid, d_grid)
 points = centre + S[..., None] * axis + D[..., None] * inward
-queries = np.column_stack((
-    points.reshape(-1, 3) @ direction_slices,
-    points.reshape(-1, 3) @ direction_rows,
-    points.reshape(-1, 3) @ direction_columns,
-))
-oblique_hu = hu_interpolator(queries).reshape(D.shape)
+if hu_interpolator is None:
+    oblique_hu = None
+else:
+    queries = np.column_stack((
+        points.reshape(-1, 3) @ direction_slices,
+        points.reshape(-1, 3) @ direction_rows,
+        points.reshape(-1, 3) @ direction_columns,
+    ))
+    oblique_hu = hu_interpolator(queries).reshape(D.shape)
 
 section_segments = {
     key: plane_segments(value, centre, plane_normal, axis, inward)
@@ -830,10 +872,14 @@ for index, s_value in enumerate(s_profile):
 h_plane = lung_profile - skin_profile
 
 fig, ax = plt.subplots(figsize=(13, 8))
-image = ax.imshow(
-    oblique_hu, extent=[s_grid.min(), s_grid.max(), d_grid.min(), d_grid.max()],
-    origin='lower', cmap='gray', vmin=-1000, vmax=450, aspect='equal'
-)
+if oblique_hu is not None:
+    image = ax.imshow(
+        oblique_hu, extent=[s_grid.min(), s_grid.max(), d_grid.min(), d_grid.max()],
+        origin='lower', cmap='gray', vmin=-1000, vmax=450, aspect='equal'
+    )
+else:
+    image = None
+    ax.set_facecolor('#1d2730')
 colors = {'body': 'yellow', 'lungs': '#00e5ff', 'heart': '#ff334f', 'bones': 'white'}
 labels = {'body': 'кожа', 'lungs': 'лёгкие v3', 'heart': 'сердце', 'bones': 'кости'}
 for key in ('body', 'lungs', 'heart', 'bones'):
@@ -869,14 +915,17 @@ for s_mark in (-60, -30, 0, 30, 60):
 
 ax.axhline(0, color='magenta', ls=':', lw=1, label='центр/касательная кожи')
 ax.set(xlabel='$s$ вдоль сборки, мм', ylabel='$d$ внутрь, мм',
-       title='Косой DICOM-срез в плоскости общей оси электродов')
+       title=('Косой DICOM-срез в плоскости общей оси электродов'
+              if oblique_hu is not None else
+              'STL-контуры в плоскости общей оси электродов (без DICOM)'))
 ax.set_xlim(-95, 95)
 ax.set_ylim(135, -20)  # skin at the top, depth increases downwards
 ct_legend = ax.legend(loc='lower right', ncol=2, facecolor='#111820',
                       edgecolor='white', framealpha=0.88)
 for text_item in ct_legend.get_texts():
     text_item.set_color('white')
-fig.colorbar(image, ax=ax, label='HU', shrink=0.8)
+if image is not None:
+    fig.colorbar(image, ax=ax, label='HU', shrink=0.8)
 fig.tight_layout()
 
 electrode_plane_table = pd.DataFrame({
@@ -1392,12 +1441,17 @@ ax.set(title=f'Обычная модель использует одно h=h_c={
 
 # Row 2: real CT geometry in the selected plane.
 ax = axes[1, 0]
-ax.imshow(oblique_hu, extent=[s_grid.min(), s_grid.max(), d_grid.min(), d_grid.max()],
-          origin='lower', cmap='gray', vmin=-1000, vmax=450, aspect='equal')
+if oblique_hu is not None:
+    ax.imshow(oblique_hu,
+              extent=[s_grid.min(), s_grid.max(), d_grid.min(), d_grid.max()],
+              origin='lower', cmap='gray', vmin=-1000, vmax=450, aspect='equal')
+else:
+    ax.set_facecolor('#1d2730')
 ax.add_collection(LineCollection(section_segments['body'], colors='yellow', linewidths=1.4))
 ax.add_collection(LineCollection(section_segments['lungs'], colors='#00e5ff', linewidths=1.5))
-ax.set(title='Реальная: DICOM + CT/STL-контуры', xlabel='s, мм', ylabel='d, мм',
-       xlim=(-82, 82), ylim=(75, -15))
+ax.set(title=('Реальная: DICOM + CT/STL-контуры' if oblique_hu is not None else
+              'Реальная: CT/STL-контуры без DICOM'),
+       xlabel='s, мм', ylabel='d, мм', xlim=(-82, 82), ylim=(75, -15))
 
 ax = axes[1, 1]
 ax.plot(s_profile, skin_profile, color='saddlebrown', lw=2.5, label='$d_{skin}(s)$')
@@ -1940,43 +1994,61 @@ md(r"""
 """)
 
 code(r"""
-mesh_comparison = pd.DataFrame({
-    'версия': ['v4: 2 мм / local 5 мм', 'v5: 1 мм / local 2 мм'],
-    'узлы': [int(baseline_summary.mesh_nodes), int(summary.mesh_nodes)],
-    'тетраэдры': [int(baseline_summary.mesh_tetrahedra), int(summary.mesh_tetrahedra)],
-    'объём FEM, л': [18.973231, 20.170763],
-    'медианный шаг поверхности, мм': [2.556, 1.520],
-    'RMSE Z, Ом': [baseline_summary.rms_residual_ohm, summary.rms_residual_ohm],
-})
-
-parameter_comparison = pd.DataFrame({
-    'параметр': ['rho_1, Ом·м', 'rho_2, Ом·м', 'u, мм', 'v, мм',
-                 'phi, град', 'h центра, мм', 'наклон, Ом/мм'],
-    'v4': [baseline_summary.rho_soft_ohm_m, baseline_summary.rho_lungs_ohm_m,
-           baseline_summary.centre_u_mm, baseline_summary.centre_v_mm,
-           baseline_summary.phi_deg, baseline_summary.h_centre_mm,
-           baseline_summary.fem_slope_ohm_per_mm],
-    'v5': [summary.rho_soft_ohm_m, summary.rho_lungs_ohm_m,
-           summary.centre_u_mm, summary.centre_v_mm,
-           summary.phi_deg, summary.h_centre_mm,
-           summary.fem_slope_ohm_per_mm],
-})
-display(mesh_comparison)
-display(parameter_comparison)
+if baseline_available:
+    mesh_comparison = pd.DataFrame({
+        'версия': ['v4: 2 мм / local 5 мм', 'v5: 1 мм / local 2 мм'],
+        'узлы': [int(baseline_summary.mesh_nodes), int(summary.mesh_nodes)],
+        'тетраэдры': [int(baseline_summary.mesh_tetrahedra), int(summary.mesh_tetrahedra)],
+        'объём FEM, л': [18.973231, 20.170763],
+        'медианный шаг поверхности, мм': [2.556, 1.520],
+        'RMSE Z, Ом': [baseline_summary.rms_residual_ohm, summary.rms_residual_ohm],
+    })
+    parameter_comparison = pd.DataFrame({
+        'параметр': ['rho_1, Ом·м', 'rho_2, Ом·м', 'u, мм', 'v, мм',
+                     'phi, град', 'h центра, мм', 'наклон, Ом/мм'],
+        'v4': [baseline_summary.rho_soft_ohm_m, baseline_summary.rho_lungs_ohm_m,
+               baseline_summary.centre_u_mm, baseline_summary.centre_v_mm,
+               baseline_summary.phi_deg, baseline_summary.h_centre_mm,
+               baseline_summary.fem_slope_ohm_per_mm],
+        'v5': [summary.rho_soft_ohm_m, summary.rho_lungs_ohm_m,
+               summary.centre_u_mm, summary.centre_v_mm,
+               summary.phi_deg, summary.h_centre_mm,
+               summary.fem_slope_ohm_per_mm],
+    })
+    display(mesh_comparison)
+    display(parameter_comparison)
+else:
+    display(Markdown(
+        '**Сравнение с исторической сеткой v4 пропущено:** два старых CSV отсутствуют. '
+        'Это не мешает отчёту по текущему расчёту v5.'
+    ))
+    display(pd.DataFrame({
+        'версия': ['v5: 1 мм / local 2 мм'],
+        'узлы': [int(summary.mesh_nodes)],
+        'тетраэдры': [int(summary.mesh_tetrahedra)],
+        'RMSE Z, Ом': [summary.rms_residual_ohm],
+    }))
 
 fig, axes = plt.subplots(1, 2, figsize=(15, 5.5), constrained_layout=True)
 axes[0].plot(comparison.L_mm, comparison.Z_experiment_ohm, 'ko-', lw=2,
              label='эксперимент')
-axes[0].plot(baseline_comparison.L_mm, baseline_comparison.Z_FEM_ohm, 's--',
-             label='v4, старая сетка')
+if baseline_available:
+    axes[0].plot(baseline_comparison.L_mm, baseline_comparison.Z_FEM_ohm, 's--',
+                 label='v4, старая сетка')
 axes[0].plot(comparison.L_mm, comparison.Z_FEM_ohm, 'o-', lw=2,
              label='v5, полный CEM')
-axes[0].set(title='Эксперимент и две FEM-сетки', xlabel='L, мм', ylabel='Z, Ом')
+axes[0].set(title=('Эксперимент и две FEM-сетки' if baseline_available else
+                   'Эксперимент и текущая FEM-сетка'),
+            xlabel='L, мм', ylabel='Z, Ом')
 axes[0].legend()
 
 x = np.arange(len(comparison))
-axes[1].bar(x - 0.18, baseline_comparison.residual_ohm, width=0.36, label='v4')
-axes[1].bar(x + 0.18, comparison.residual_ohm, width=0.36, label='v5')
+if baseline_available:
+    axes[1].bar(x - 0.18, baseline_comparison.residual_ohm,
+                width=0.36, label='v4')
+    axes[1].bar(x + 0.18, comparison.residual_ohm, width=0.36, label='v5')
+else:
+    axes[1].bar(x, comparison.residual_ohm, width=0.5, label='v5')
 axes[1].axhline(0, color='black', lw=0.8)
 axes[1].set_xticks(x, comparison.L_mm.astype(int))
 axes[1].set(title='Остатки Z_FEM − Z_exp', xlabel='L, мм', ylabel='ошибка, Ом')

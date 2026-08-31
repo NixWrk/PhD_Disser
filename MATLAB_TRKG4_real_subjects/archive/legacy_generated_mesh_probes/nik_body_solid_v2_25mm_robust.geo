@@ -1,0 +1,10 @@
+General.Terminal = 1;
+Merge "J:/tmp/trkg4_body_solid_v2.stl";
+Surface Loop(1) = {1};
+Volume(1) = {1};
+Physical Volume(1) = {1};
+Mesh.MeshSizeMax = 25;
+Mesh.Algorithm3D = 1;
+Mesh.Optimize = 0;
+Mesh.OptimizeNetgen = 0;
+Mesh.MshFileVersion = 2.2;
