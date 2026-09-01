@@ -1,0 +1,7 @@
+TotalSegmentator==1.5.7
+setuptools==80.9.0
+
+# Install the CUDA build separately from the official PyTorch index:
+# uv pip install --python .venv/Scripts/python.exe --reinstall torch==2.10.0 \
+#   --index-url https://download.pytorch.org/whl/cu128
+

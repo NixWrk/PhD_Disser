@@ -1,0 +1,11 @@
+{
+  "source_root": "<LOCAL_3D_DATA_ROOT>",
+  "derived_root": "<LOCAL_DERIVED_ROOT>",
+  "subjects": {
+    "adam": {
+      "session": "<SESSION_FOLDER>",
+      "series_folder": "<CT/DICOM/SERIES_FOLDER>"
+    }
+  }
+}
+

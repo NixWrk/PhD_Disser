@@ -1,0 +1,7 @@
+.venv*/
+config.local.json
+derived/
+*.log
+__pycache__/
+.pytest_cache/
+

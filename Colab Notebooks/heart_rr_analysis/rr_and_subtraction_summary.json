@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-09-01T06:36:42.806587+00:00",
+  "dicom_phase_field": "NominalPercentageOfCardiacPhase",
+  "phase_interpretation_status": "raw_dicom_nominal_percentage_unverified_for_values_above_100",
+  "supporting_cardiac_timing_fields_present": false,
+  "ecg_context": "schematic_periodic_not_measured",
+  "subjects": [
+    {
+      "subject": "adam",
+      "phase_count": 12,
+      "rr_percent_range": [
+        12.0,
+        117.0
+      ],
+      "chambers": {
+        "heart_atrium_left": {
+          "label_ru": "Левое предсердие",
+          "minimum_ml": 40.43186813210764,
+          "maximum_ml": 86.50645485365105,
+          "range_ml": 46.07458672154341
+        },
+        "heart_ventricle_left": {
+          "label_ru": "Левый желудочек",
+          "minimum_ml": 102.08486249830575,
+          "maximum_ml": 157.34092056155413,
+          "range_ml": 55.256058063248375
+        },
+        "heart_atrium_right": {
+          "label_ru": "Правое предсердие",
+          "minimum_ml": 61.422082335837906,
+          "maximum_ml": 111.34567749169837,
+          "range_ml": 49.92359515586046
+        },
+        "heart_ventricle_right": {
+          "label_ru": "Правый желудочек",
+          "minimum_ml": 128.7363044956991,
+          "maximum_ml": 217.29741045357548,
+          "range_ml": 88.56110595787638
+        }
+      },
+      "blood_outside_whole_heart_ml": {
+        "minimum": 10.607197807185731,
+        "maximum": 13.017924581546124
+      }
+    },
+    {
+      "subject": "nix",
+      "phase_count": 12,
+      "rr_percent_range": [
+        14.0,
+        121.0
+      ],
+      "chambers": {
+        "heart_atrium_left": {
+          "label_ru": "Левое предсердие",
+          "minimum_ml": 34.60083679199218,
+          "maximum_ml": 90.10967361450194,
+          "range_ml": 55.508836822509764
+        },
+        "heart_ventricle_left": {
+          "label_ru": "Левый желудочек",
+          "minimum_ml": 89.73818099975584,
+          "maximum_ml": 153.70158889770505,
+          "range_ml": 63.96340789794921
+        },
+        "heart_atrium_right": {
+          "label_ru": "Правое предсердие",
+          "minimum_ml": 44.54357650756835,
+          "maximum_ml": 116.05663757324217,
+          "range_ml": 71.51306106567381
+        },
+        "heart_ventricle_right": {
+          "label_ru": "Правый желудочек",
+          "minimum_ml": 126.16863723754881,
+          "maximum_ml": 236.8477909851074,
+          "range_ml": 110.67915374755859
+        }
+      },
+      "blood_outside_whole_heart_ml": {
+        "minimum": 8.24830841064453,
+        "maximum": 12.716477966308592
+      }
+    },
+    {
+      "subject": "georg",
+      "phase_count": 15,
+      "rr_percent_range": [
+        23.0,
+        164.0
+      ],
+      "chambers": {
+        "heart_atrium_left": {
+          "label_ru": "Левое предсердие",
+          "minimum_ml": 65.4303197138463,
+          "maximum_ml": 108.85878263382845,
+          "range_ml": 43.42846291998215
+        },
+        "heart_ventricle_left": {
+          "label_ru": "Левый желудочек",
+          "minimum_ml": 108.59650308927583,
+          "maximum_ml": 157.9338924150977,
+          "range_ml": 49.33738932582186
+        },
+        "heart_atrium_right": {
+          "label_ru": "Правое предсердие",
+          "minimum_ml": 95.96245002825816,
+          "maximum_ml": 130.54068998328356,
+          "range_ml": 34.578239955025396
+        },
+        "heart_ventricle_right": {
+          "label_ru": "Правый желудочек",
+          "minimum_ml": 129.53857672344918,
+          "maximum_ml": 190.27985957978913,
+          "range_ml": 60.74128285633995
+        }
+      },
+      "blood_outside_whole_heart_ml": {
+        "minimum": 8.447060331713708,
+        "maximum": 10.118170763170498
+      }
+    }
+  ],
+  "status": "automatic_segmentation_pending_manual_review"
+}
