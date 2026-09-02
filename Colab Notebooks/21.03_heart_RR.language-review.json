@@ -1,0 +1,51 @@
+{
+  "schema_version": 2,
+  "reviewed_on": "2026-09-02",
+  "language": "ru",
+  "scope": "Читательские материалы ноутбука 21.03: DICOM-кардиосинхронизация, коротко-длинная пара Georg, межцикловая периодическая модель и ограничения сегментации",
+  "policy": {
+    "skill": "russian-scientific-prose",
+    "checks": [
+      "language.ru.hash-bound-final-review",
+      "language.ru.encoding",
+      "language.ru.natural-prose",
+      "language.ru.intro-variation",
+      "language.ru.reader-facing-clarity",
+      "language.ru.formula-where"
+    ]
+  },
+  "artifacts": [
+    {
+      "path": "Colab Notebooks/21.03_Вычитание_крови_и_объёмы_камер_RR.ipynb",
+      "sha256": "6a2f987f9e38e155291923c5057d98ec9ee81a09bb8aff07b341e43c4c289075"
+    },
+    {
+      "path": "Colab Notebooks/21.03_Вычитание_крови_и_объёмы_камер_RR.html",
+      "sha256": "8d318bfcc62767d011505943c41f883e592f2b23e6c3248f79033732c5643b00"
+    }
+  ],
+  "review": {
+    "status": "passed",
+    "findings": [],
+    "attestations": {
+      "full_text_read_sequentially_after_last_byte_change": true,
+      "scientific_headings_checked": true,
+      "terminology_and_scope_checked": true,
+      "claims_evidence_interpretation_limits_separated": true,
+      "formula_where_clauses_checked": true,
+      "subject_level_dicom_table_checked": true,
+      "georg_short_long_fact_hypothesis_separation_checked": true,
+      "periodic_cycle_model_and_non_ci_status_checked": true,
+      "interactive_graph_text_checked": true,
+      "ecg_captions_and_limits_checked": true,
+      "pixel_exact_crop_verified": true,
+      "literature_links_checked": true,
+      "reader_html_python_source_absent": true
+    },
+    "language_status": "passed",
+    "technical_status": "validated_separately",
+    "computational_status": "validated_separately",
+    "scientific_status": "exploratory_pending_manual_and_ecg_validation",
+    "release_readiness": "not_assessed"
+  }
+}
