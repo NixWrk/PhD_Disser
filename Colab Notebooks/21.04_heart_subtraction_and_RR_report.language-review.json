@@ -1,10 +1,10 @@
 {
   "status": "language_review_passed",
   "language": "ru",
-  "reviewed_at": "2026-09-02",
+  "reviewed_at": "2026-09-03",
   "artifact": {
     "path": "Colab Notebooks/21.04_heart_subtraction_and_RR_report.md",
-    "sha256": "7167bd3d1561ba732e201832a8c670cfe78ab89309a3e988bf558e90f89a232a"
+    "sha256": "9ef373306b0f62728587baeef03661089feded3325589bc01a0da5c8ad2dff05"
   },
   "checks": {
     "language.ru.hash-bound-final-review": "passed",
@@ -22,6 +22,8 @@
     "validation_scope_not_strengthened": true,
     "subject_level_dicom_fields_checked": true,
     "georg_short_long_alternatives_and_working_protocol_checked": true,
+    "georg_two_panel_ms_axis_and_secondary_percent_checked": true,
+    "heart_rate_labels_checked": true,
     "periodic_model_formula_parameters_and_limits_checked": true,
     "phase_validation_and_negative_result_checked": true,
     "ecg_crop_method_and_limits_checked": true,

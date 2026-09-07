@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "created_at": "2026-09-02T09:11:27.104813+00:00",
+  "created_at": "2026-09-07T12:28:58.785663+00:00",
   "dicom_phase_field": "NominalPercentageOfCardiacPhase",
   "phase_interpretation_status": "multicycle_coordinate_supported_by_ge_rpeak_timestamps_for_all_subjects_and_ecg_report_for_adam_nix",
   "supporting_cardiac_timing_fields_present": true,
@@ -19,9 +19,12 @@
   "rejected_cycle_merge_subjects": [
     "georg"
   ],
+  "volume_plot_coordinate": "milliseconds; local R-R percentage is retained as a secondary point label",
+  "adam_nix_volume_plot": "continuous milliseconds from the first R marker; separate within-interval PCHIP segments",
+  "georg_volume_plot": "two independent panels in milliseconds after each R trigger; no cross-interval interpolation or uniform percentage alignment",
   "normalized_cycle_definition": "provisional composite only for cycles passing the 10 percent heart-rate consistency gate; all observations remain visible",
   "closure_method": "accepted composites: two-harmonic periodic ridge model; equality at 0 and 100 percent follows from the Fourier basis",
-  "interpolation_method": "accepted composites: periodic two-harmonic ridge model with shrunken cycle contrasts on a 1 percent grid; rejected merge: separate PCHIP within each cycle's observed phase range without extrapolation",
+  "interpolation_method": "display: separate PCHIP within each observed trigger interval in milliseconds; secondary Adam/Nix numeric composite: periodic two-harmonic ridge model with shrunken cycle contrasts on a 1 percent grid",
   "cycle_variation_model": "cycle-specific additive contrasts with sum-to-zero interpretation; ridge penalties are fixed descriptive regularization, not inferred uncertainty",
   "phase_annotation_status": "empirical volume-direction bands for accepted Adam/Nix composite only; no valve-event phase labels; disabled for Georg",
   "phase_bands": [

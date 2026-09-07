@@ -20,6 +20,8 @@ from plotly.io import to_html
 from plotly.subplots import make_subplots
 from scipy.interpolate import PchipInterpolator
 from skimage import measure
+from cardiac_volume_time_plots import build_volume_figure_ms
+from cardiac_synchronized_view import build_synchronized_cardiac_figure
 
 
 CHAMBERS = (
@@ -46,7 +48,10 @@ class SurfaceStyle:
 
 SURFACES = (
     SurfaceStyle("heart_minus_blood", "Производная остаточная маска", "#B9A27A", 0.42),
-    SurfaceStyle("blood_pool", "Кровь четырёх камер", "#D7263D", 0.72),
+    SurfaceStyle("heart_atrium_left", "Кровь: левое предсердие", "#3A86FF", 1.0),
+    SurfaceStyle("heart_ventricle_left", "Кровь: левый желудочек", "#0057B8", 1.0),
+    SurfaceStyle("heart_atrium_right", "Кровь: правое предсердие", "#FF8C42", 1.0),
+    SurfaceStyle("heart_ventricle_right", "Кровь: правый желудочек", "#D62828", 1.0),
     SurfaceStyle("myocardium", "Миокард ЛЖ и перегородки", "#F4A261", 0.72),
 )
 
@@ -82,12 +87,26 @@ TotalSegmentator 2.18.0 запускался в независимых зада�
 `Not for Diagnostic ECG use`; они не содержат калиброванных цифровых отсчётов.
 У Georg отчёт ECG Report не найден.
 
+Для каждого испытуемого 3D-маски, схематическая кривая P–QRS–T и графики
+объёмов объединены в одном интерактивном представлении. Выбор фазы одним
+ползунком одновременно обновляет геометрию и выделяет соответствующую точку
+каждой камеры. Кривая P–QRS–T служит только ориентиром внутри R–R и не является
+индивидуальной ЭКГ. Точное сопоставление КТ-фаз с электрическими и
+механическими фазами сердца составляет отдельный этап проверки.
+
 ## Объединение соседних сердечных циклов
 
-Исходная шкала DICOM всегда доступна на графике. Значения выше 100% относятся к
-следующему R–R-интервалу. Для Adam и Nix объединение предварительно разрешено,
-поскольку относительное различие медианной ЧСС соседних циклов не превышает
-рабочий порог 10%. Этот порог методический и ещё не валидирован физиологически.
+Основной график использует время в миллисекундах. Для Adam и Nix оно отсчитано
+от первой R-метки и показано непрерывно через границу соседних интервалов; в
+скобках у каждой точки указан процент соответствующего R–R. Для Georg короткий
+и длинный интервалы показаны на двух отдельных панелях, каждая со своей шкалой
+миллисекунд после R-триггера. Одинаковый процент двух разных R–R не считается
+одинаковой механической фазой.
+
+Для Adam и Nix объединение в отдельной численной модели предварительно
+разрешено, поскольку относительное различие медианной ЧСС соседних циклов не
+превышает рабочий порог 10%. Этот порог методический и ещё не валидирован
+физиологически.
 
 Средняя кривая построена периодической моделью Фурье с двумя гармониками.
 Модель допускает отдельную аддитивную поправку для каждого записанного цикла;
@@ -177,6 +196,18 @@ SCIENTIFIC_CONTEXT_HTML = """
 расшифрованы без документации производителя. <code>RpeakTimeStamps</code>
 являются метками синхроимпульсов реконструкции, а не цифровой ЭКГ.
 <code>WaveformSequence</code> отсутствует.</p>
+<p>Основные графики объёмов построены по времени в миллисекундах. Процент
+соответствующего R–R указан в скобках у каждой измеренной точки. Для Adam и Nix
+сохранена непрерывная временная ось от первой R-метки, но интерполяция
+выполнена отдельно внутри каждого интервала. Для Georg короткий и длинный
+интервалы вынесены на две панели с независимыми шкалами времени после
+R-триггера.</p>
+<p>Для каждого испытуемого 3D-маски, схематическая кривая P–QRS–T и кривые
+объёмов объединены в одном интерактивном представлении. Один ползунок
+одновременно меняет 3D-фазу и выделяет соответствующую точку каждой камеры на
+графике. Кривая P–QRS–T является временным ориентиром внутри R–R и не заменяет
+индивидуальную ЭКГ. Точное сопоставление электрических, клапанных и объёмных
+событий требует отдельной проверки.</p>
 <p>Для Adam и Nix соседние циклы проходят предварительный порог различия ЧСС
 10%. Их общая кривая получена периодической моделью Фурье с двумя гармониками
 и регуляризованными аддитивными поправками на цикл. Равенство 0=100% задаётся
@@ -631,7 +662,7 @@ def subtraction_figure(subject: str, phases: list[dict]) -> go.Figure:
     ys: list[float] = []
     zs: list[float] = []
     for meshes in all_meshes:
-        for mesh in meshes[:2]:
+        for mesh in meshes:
             xs.extend(mesh["x"]); ys.extend(mesh["y"]); zs.extend(mesh["z"])
     figure = go.Figure(
         data=[trace(mesh, style, True) for mesh, style in zip(all_meshes[0], SURFACES)],
@@ -1165,23 +1196,30 @@ def volume_figure_with_scale_toggle(
     return figure
 
 
-def html_page(subtractions: list[str], volumes: list[str]) -> str:
+def html_page(subject_sections: list[str], metadata_tables: list[str]) -> str:
     cards = [SCIENTIFIC_CONTEXT_HTML]
-    for fragment in subtractions:
-        cards.append(f'<section class="card">{fragment}</section>')
     cards.append(
-        "<h2>Объёмы четырёх камер и кардиоцикл</h2>"
+        "<h2>Исходные данные кардиосинхронизации</h2>"
         "<p>Для Adam и Nix встроены общий вид обезличенной растровой полосы GE "
         "ECG Report и точный фрагмент выделенного сканером интервала; для Georg "
-        "такой отчёт не найден. Схема P–QRS–T на графике не является измеренной "
-        "ЭКГ. Вторая строка построена по <code>AvgHeartRateForImage</code>, а R–R "
-        "рассчитаны по <code>RpeakTimeStamps (0049,100C)</code>.</p>"
-        "<p>Кнопки переключают исходную координату DICOM и нормированный цикл. "
-        "Для Adam и Nix толстая линия — периодическая двухгармоническая "
-        "модель с L2-регуляризацией с регуляризованной поправкой на различие соседних "
-        "циклов. Она описывает среднюю форму и не является доверительным интервалом. "
-        "Для Georg участки с R–R 491 и 1159 мс оставлены раздельно; PCHIP построен "
-        "только внутри наблюдаемых участков без экстраполяции.</p>"
+        "такой отчёт не найден. R–R рассчитаны по "
+        "<code>RpeakTimeStamps (0049,100C)</code>.</p>"
+    )
+    cards.extend(metadata_tables)
+    cards.append(
+        "<h2>Синхронные представления по испытуемым</h2>"
+        "<p>В каждом блоке один ползунок управляет 3D-геометрией, положением точки "
+        "на схематической P–QRS–T и выделением текущих объёмов четырёх камер. "
+        "Схема ЭКГ не является индивидуальным зарегистрированным сигналом. "
+        "Для Georg короткий и длинный R–R сохраняются на отдельных панелях.</p>"
+        "<p>Основная горизонтальная ось показывает время в миллисекундах, а процент "
+        "соответствующего R–R указан в скобках. Для Adam и Nix время отсчитано "
+        "непрерывно от первой R-метки; PCHIP строится отдельно внутри каждого "
+        "наблюдаемого интервала и не соединяет соседние сокращения. Для Georg "
+        "короткий интервал 491 мс и длинный интервал 1159 мс показаны на двух "
+        "панелях с собственными шкалами времени после R. ЧСС указана в заголовках "
+        "и интерактивных подсказках. Серым отмечены части R–R, для которых фазы "
+        "не реконструированы.</p>"
         '<p>Субъектная сводка DICOM: <a href="heart_rr_analysis/cardiac_dicom_metadata_by_subject.csv">'
         'cardiac_dicom_metadata_by_subject.csv</a>. Отдельные R–R: '
         '<a href="heart_rr_analysis/cardiac_gating_source_data.csv">cardiac_gating_source_data.csv</a>. '
@@ -1190,9 +1228,9 @@ def html_page(subtractions: list[str], volumes: list[str]) -> str:
         '<a href="heart_rr_analysis/chamber_volume_changes_closed_cycle.csv">шаг 1%</a> и '
         '<a href="heart_rr_analysis/chamber_volume_changes_closed_cycle_summary.csv">сводка</a>.</p>'
     )
-    for fragment in volumes:
+    for fragment in subject_sections:
         cards.append(f'<section class="card">{fragment}</section>')
-    return """<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Вычитание крови и объёмы камер</title><style>body{margin:0;background:#eef1f5;color:#1f2937;font-family:system-ui,-apple-system,'Segoe UI',sans-serif}main{max-width:1500px;margin:auto;padding:24px}.card{background:#fff;border-radius:14px;box-shadow:0 3px 16px #0001;margin:0 0 24px;padding:8px}h1,h2{margin-top:0}.warn{background:#fff4d6;border-left:5px solid #e0a100;padding:12px 16px;margin-bottom:20px}.ecg-strip{margin:16px 24px 8px}.ecg-strip.zoom{border-top:1px solid #d1d5db;padding-top:14px}.ecg-strip img{display:block;width:100%;height:auto;background:#fff}.ecg-strip figcaption{font-size:13px;color:#4b5563;margin-top:6px}.ecg-strip.missing{background:#f3f4f6;padding:12px;border-radius:8px}</style></head><body><main><h1>Вычитание крови из сердца и объёмы камер по R–R</h1><div class="warn">Разность «всё сердце − кровь» является геометрическим остатком двух независимых моделей, а не проверенной маской полного миокарда.</div>""" + "\n".join(cards) + "</main></body></html>"
+    return """<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Вычитание крови и объёмы камер</title><style>body{margin:0;background:#eef1f5;color:#1f2937;font-family:system-ui,-apple-system,'Segoe UI',sans-serif}main{max-width:1500px;margin:auto;padding:24px}.card{background:#fff;border-radius:14px;box-shadow:0 3px 16px #0001;margin:0 0 24px;padding:16px}h1,h2{margin-top:0}.warn{background:#fff4d6;border-left:5px solid #e0a100;padding:12px 16px;margin-bottom:20px}.sync-frame{display:block;width:100%;border:0}.ecg-strip{margin:16px 24px 8px}.ecg-strip.zoom{border-top:1px solid #d1d5db;padding-top:14px}.ecg-strip img{display:block;width:100%;height:auto;background:#fff}.ecg-strip figcaption{font-size:13px;color:#4b5563;margin-top:6px}.ecg-strip.missing{background:#f3f4f6;padding:12px;border-radius:8px}</style></head><body><main><h1>Вычитание крови из сердца и объёмы камер по R–R</h1><div class="warn">Разность «всё сердце − кровь» является геометрическим остатком двух независимых моделей, а не проверенной маской полного миокарда.</div>""" + "\n".join(cards) + "</main></body></html>"
 
 
 def main() -> int:
@@ -1317,14 +1355,16 @@ def main() -> int:
             save_mask(remainder, whole_image, phase_output / "heart_minus_blood.nii.gz")
             save_mask(blood_outside, whole_image, phase_output / "blood_outside_whole_heart.nii.gz")
             chambers_ml = {}
+            chamber_meshes = []
             for key, _, _ in CHAMBERS:
                 chamber_image = nib.load(str(raw_dir / f"{key}.nii.gz"))
                 if not same_grid(whole_image, chamber_image):
                     raise RuntimeError(f"Grid mismatch: {subject}/{phase_id}/{key}")
                 chamber = np.asanyarray(chamber_image.dataobj) > 0
                 chambers_ml[key] = volume_ml(chamber, chamber_image.affine)
+                chamber_meshes.append(surface(chamber & whole, whole_image.affine))
             del chamber
-            surface_meshes = [surface(remainder, whole_image.affine), surface(blood, whole_image.affine), surface(myocardium, whole_image.affine)]
+            surface_meshes = [surface(remainder, whole_image.affine), *chamber_meshes, surface(myocardium, whole_image.affine)]
             rr_interval_ms = float(
                 cycle_parameter.get("rr_interval_ms")
                 or cycle_parameter["derived_rr_interval_ms"]
@@ -1340,6 +1380,9 @@ def main() -> int:
                 ),
                 "rpeak_start_s": cycle_parameter.get("rpeak_start_s", ""),
                 "rpeak_end_s": cycle_parameter.get("rpeak_end_s", ""),
+                "time_after_cycle_r_ms": float(
+                    timing_row["phase_percent_within_cycle"] / 100.0 * rr_interval_ms
+                ),
                 "derived_time_from_R0_ms": float(timing_row["derived_time_from_R0_ms"]),
                 "temporal_resolution_ms": 1000.0 * float(timing_row["GETemporalResolutionSeconds"]["median"]),
                 "temporal_center_view_angle_degrees": float(timing_row["TemporalCenterViewAngle"]["median"]),
@@ -1388,10 +1431,15 @@ def main() -> int:
                         "status": "measured_automatic_segmentation_pending_manual_review",
                     })
                     previous = value
-        sub_figure = subtraction_figure(subject, phases)
-        vol_figure = volume_figure_with_scale_toggle(
-            subject, phases, ecg_evidence, profiles, merge_assessment, timing
+        sub_figure = build_synchronized_cardiac_figure(
+            subject,
+            phases,
+            SURFACES,
+            CHAMBERS,
+            within_cycle_profile,
+            schematic_ecg,
         )
+        vol_figure = build_volume_figure_ms(subject, phases, CHAMBERS, within_cycle_profile)
         subtraction_figures.append((subject, sub_figure))
         volume_figures.append((subject, vol_figure, profiles, merge_assessment))
         sub_figure.write_html(output_dir / f"{subject}_heart_minus_blood_4d.html", include_plotlyjs=True, full_html=True, auto_play=False, config=config)
@@ -1533,9 +1581,12 @@ def main() -> int:
         },
         "closed_cycle_subjects": [item["subject"] for item in summaries if item["cycle_merge_assessment"]["allowed"]],
         "rejected_cycle_merge_subjects": [item["subject"] for item in summaries if not item["cycle_merge_assessment"]["allowed"]],
+        "volume_plot_coordinate": "milliseconds; local R-R percentage is retained as a secondary point label",
+        "adam_nix_volume_plot": "continuous milliseconds from the first R marker; separate within-interval PCHIP segments",
+        "georg_volume_plot": "two independent panels in milliseconds after each R trigger; no cross-interval interpolation or uniform percentage alignment",
         "normalized_cycle_definition": "provisional composite only for cycles passing the 10 percent heart-rate consistency gate; all observations remain visible",
         "closure_method": "accepted composites: two-harmonic periodic ridge model; equality at 0 and 100 percent follows from the Fourier basis",
-        "interpolation_method": "accepted composites: periodic two-harmonic ridge model with shrunken cycle contrasts on a 1 percent grid; rejected merge: separate PCHIP within each cycle's observed phase range without extrapolation",
+        "interpolation_method": "display: separate PCHIP within each observed trigger interval in milliseconds; secondary Adam/Nix numeric composite: periodic two-harmonic ridge model with shrunken cycle contrasts on a 1 percent grid",
         "cycle_variation_model": "cycle-specific additive contrasts with sum-to-zero interpretation; ridge penalties are fixed descriptive regularization, not inferred uncertainty",
         "phase_annotation_status": "empirical volume-direction bands for accepted Adam/Nix composite only; no valve-event phase labels; disabled for Georg",
         "phase_bands": [
@@ -1561,19 +1612,24 @@ def main() -> int:
     }
     (output_dir / "rr_and_subtraction_summary.json").write_text(json.dumps(summary_payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
-    fragments_sub = [to_html(fig, full_html=False, include_plotlyjs=("inline" if i == 0 else False), auto_play=False, config=config) for i, (_, fig) in enumerate(subtraction_figures)]
-    fragments_vol = [subject_dicom_table_html(subject_dicom_rows), gating_source_table_html(gating_source_rows)] + [
-        ecg_strip_html(
+    subject_sections = []
+    for subject, _ in subtraction_figures:
+        frame_height = 1260 if subject == "georg" else 940
+        trace_fragment = ecg_strip_html(
             subject,
             ecg_trace_paths.get(subject),
             ecg_window_paths.get(subject),
             ecg_evidence_by_subject.get(subject),
-        ) +
-        to_html(fig, full_html=False, include_plotlyjs=False, config=config)
-        for subject, fig, _, _ in volume_figures
-    ]
+        )
+        subject_sections.append(
+            f"<h2>{subject.upper()}: 3D-маски, схема ЭКГ и объёмы камер</h2>"
+            f'<iframe class="sync-frame" src="heart_rr_analysis/{subject}_heart_minus_blood_4d.html" '
+            f'height="{frame_height}" loading="lazy"></iframe>'
+            + trace_fragment
+        )
+    metadata_tables = [subject_dicom_table_html(subject_dicom_rows), gating_source_table_html(gating_source_rows)]
     combined = output_dir.parent / "21.03_Вычитание_крови_и_объёмы_камер_RR.html"
-    combined.write_text(html_page(fragments_sub, fragments_vol), encoding="utf-8")
+    combined.write_text(html_page(subject_sections, metadata_tables), encoding="utf-8")
 
     notebook = nbformat.v4.new_notebook(metadata={"language_info": {"name": "python"}, "kernelspec": {"name": "python3", "display_name": "Python 3", "language": "python"}})
     notebook.cells.append(nbformat.v4.new_markdown_cell(NOTEBOOK_CONTEXT_MD))
@@ -1598,18 +1654,30 @@ def main() -> int:
         "паузой, лишний либо пропущенный R-триггер или ECG-edit. До получения цифровой "
         "ЭКГ и журнала редактирования оба участка анализируются раздельно. При "
         "отсутствии дополнительных данных Georg не включается в композитные фазовые "
-        "оценки; варианты «только длинный участок» и «абсолютное время после R» "
-        "допустимы лишь как анализ чувствительности. Литературные основания: "
+        "оценки. Временные графики короткого и длинного интервалов показаны на "
+        "отдельных панелях в миллисекундах после R; проценты оставлены в скобках "
+        "как вторичная координата. Литературные основания: "
         "[Matsutani et al., 2008](https://pubmed.ncbi.nlm.nih.gov/18577814/) и "
         "[Kondo et al., 2014](https://pubmed.ncbi.nlm.nih.gov/24582039/)."
     ))
     for subject, _ in subtraction_figures:
-        iframe = f'<iframe src="heart_rr_analysis/{subject}_heart_minus_blood_4d.html" width="100%" height="800" style="border:0"></iframe>'
-        notebook.cells.append(nbformat.v4.new_markdown_cell(f"## {subject.upper()}: сопоставление геометрических масок"))
-        notebook.cells.append(nbformat.v4.new_code_cell(source="# Интерактивная 4D-модель загружается из соседнего автономного HTML.", outputs=[nbformat.v4.new_output("display_data", data={"text/html": iframe}, metadata={})]))
-    for index, (subject, figure, _, merge_assessment) in enumerate(volume_figures):
-        fragment = to_html(figure, full_html=False, include_plotlyjs=("inline" if index == 0 else False), config=config)
-        notebook.cells.append(nbformat.v4.new_markdown_cell(f"## {subject.upper()}: динамика объёмов камер"))
+        frame_height = 1260 if subject == "georg" else 940
+        iframe = (
+            f'<iframe src="heart_rr_analysis/{subject}_heart_minus_blood_4d.html" '
+            f'width="100%" height="{frame_height}" style="border:0"></iframe>'
+        )
+        notebook.cells.append(nbformat.v4.new_markdown_cell(
+            f"## {subject.upper()}: синхронное представление 3D-масок, ЭКГ и объёмов"
+        ))
+        notebook.cells.append(nbformat.v4.new_code_cell(
+            source=(
+                "# Один ползунок одновременно меняет 3D-фазу и выделяет "
+                "соответствующие точки на схеме ЭКГ и графиках объёма."
+            ),
+            outputs=[nbformat.v4.new_output(
+                "display_data", data={"text/html": iframe}, metadata={}
+            )],
+        ))
         trace_path = ecg_trace_paths.get(subject)
         if trace_path is not None:
             trace_fragment = ecg_strip_html(
@@ -1626,18 +1694,6 @@ def main() -> int:
             notebook.cells.append(nbformat.v4.new_markdown_cell(
                 f"**{subject.upper()}:** отчёт GE ECG Report в доступных КТ-данных не найден."
             ))
-        if merge_assessment["allowed"]:
-            profile_description = (
-                "# Точки — исходные объёмы масок; линия — периодическая двухгармоническая модель с L2-регуляризацией и поправкой на различие соседних циклов."
-            )
-        else:
-            profile_description = (
-                "# Циклы показаны раздельно; интерполяция PCHIP ограничена наблюдаемыми фазами каждого цикла без экстраполяции."
-            )
-        notebook.cells.append(nbformat.v4.new_code_cell(
-            source=profile_description,
-            outputs=[nbformat.v4.new_output("display_data", data={"text/html": fragment}, metadata={})],
-        ))
     notebook.cells.append(nbformat.v4.new_markdown_cell(
         "## Расчётные изменения объёмов по фазам\n\n"
         "Изменения между фактически реконструированными фазами каждого отдельного "

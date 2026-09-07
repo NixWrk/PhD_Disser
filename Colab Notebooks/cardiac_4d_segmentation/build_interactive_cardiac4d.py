@@ -36,7 +36,7 @@ class Structure:
 
 STRUCTURES = (
     Structure("whole_heart", "Всё сердце", "#B7BDC8", 0.20, 5),
-    Structure("blood_pool", "Кровь в полостях", "#D7263D", 0.72, 5),
+    Structure("blood_pool", "Кровь в полостях", "#D7263D", 1.0, 5),
     Structure("myocardium", "Миокард", "#F4A261", 0.62, 5),
 )
 
