@@ -34,3 +34,7 @@ Colab Notebooks/archive/private/
 # Subject-linked historical derived data stay local; canonical artifacts use external derived_root
 Colab Notebooks/timestamps/*.json
 Colab Notebooks/params/*.json
+
+# Full local scientific report contains individual CT/FEM geometry.
+/Colab Notebooks/20.10_КТ_FEM_локализация_боковых_матриц_МГТУ.ipynb
+/Colab Notebooks/20.10_КТ_FEM_локализация_боковых_матриц_МГТУ.html
