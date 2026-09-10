@@ -109,7 +109,9 @@ def main():
     for block in soup.find_all('pre'):
         if block.get_text(strip=True).startswith('<matplotlib.legend.Legend at '):
             block.decompose()
-    html = str(soup)
+    # Keep generated reader exports free of trailing whitespace, including
+    # whitespace emitted by embedded plotting-library scripts.
+    html = "\n".join(line.rstrip(" \t") for line in str(soup).split("\n"))
     html_path.write_text(html, encoding='utf-8')
     assert not soup.select('.jp-CodeCell .jp-InputArea'), 'Code leaked into reader HTML'
     markdown = '\n\n'.join(c.source for c in notebook.cells if c.cell_type == 'markdown')

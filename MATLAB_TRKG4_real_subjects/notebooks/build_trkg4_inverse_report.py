@@ -3955,6 +3955,6 @@ nb["metadata"] = {
     "kernelspec": {"display_name": "Python 3", "language": "python", "name": "python3"},
     "language_info": {"name": "python", "version": "3"},
 }
-nb['metadata']['kalmykov_corpus'] = {'id': '20.10', 'status': 'numerical_candidate_not_validated', 'canonical_owner': 'Colab Notebooks', 'experiment': 2, 'outputs_in_git': False}
+nb['metadata']['kalmykov_corpus'] = {'id': '20.10', 'status': 'numerical_candidate_not_validated', 'canonical_owner': 'Colab Notebooks', 'experiment': 2, 'outputs_in_git': True, 'storage_authorization': 'author_explicit_request_2026-09-10_full_ipynb_and_html'}
 TARGET.write_text(nbf.writes(nb), encoding="utf-8")
 print(TARGET)
