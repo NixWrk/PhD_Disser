@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "subject_id": "<SUBJECT_PSEUDONYM>",
+  "analysis_plan_locked_before_review": false,
+  "geometry_mm_confirmed": false,
+  "review_priority_thresholds": {
+    "outside_total_fraction_alert": 0.05,
+    "adjacent_relative_change_alert": 0.25,
+    "components_alert": 1
+  },
+  "phases": [
+    {
+      "phase_id": "phase_00",
+      "ct_path": "<LOCAL_DERIVED_ROOT>/<SUBJECT_PSEUDONYM>/phases/phase_00.nii.gz",
+      "chamber_masks": {
+        "left_atrium_blood": "<LOCAL_DERIVED_ROOT>/<SUBJECT_PSEUDONYM>/automatic_masks_v2/phase_00/heartchambers_highres/heart_atrium_left.nii.gz",
+        "left_ventricle_blood": "<LOCAL_DERIVED_ROOT>/<SUBJECT_PSEUDONYM>/automatic_masks_v2/phase_00/heartchambers_highres/heart_ventricle_left.nii.gz",
+        "right_atrium_blood": "<LOCAL_DERIVED_ROOT>/<SUBJECT_PSEUDONYM>/automatic_masks_v2/phase_00/heartchambers_highres/heart_atrium_right.nii.gz",
+        "right_ventricle_blood": "<LOCAL_DERIVED_ROOT>/<SUBJECT_PSEUDONYM>/automatic_masks_v2/phase_00/heartchambers_highres/heart_ventricle_right.nii.gz"
+      },
+      "total_heart_path": "<LOCAL_DERIVED_ROOT>/<SUBJECT_PSEUDONYM>/automatic_masks_v2/phase_00/total_heart/heart.nii.gz"
+    }
+  ]
+}

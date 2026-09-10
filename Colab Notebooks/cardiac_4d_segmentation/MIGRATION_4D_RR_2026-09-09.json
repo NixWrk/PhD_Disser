@@ -1,0 +1,378 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-09",
+  "status": "complete",
+  "scope": "physical consolidation of the existing 4D/RR branch; no scientific recomputation",
+  "path_base": "Colab Notebooks",
+  "canonical_directory": "cardiac_4d_segmentation",
+  "moves": [
+    {
+      "old": "20.05_4D_КТ_сегментация_сердца.md",
+      "new": "cardiac_4d_segmentation/20.05_4D_КТ_сегментация_сердца.md",
+      "kind": "file"
+    },
+    {
+      "old": "20.06_4D_КТ_сегментация_v2_полное_сердце.md",
+      "new": "cardiac_4d_segmentation/20.06_4D_КТ_сегментация_v2_полное_сердце.md",
+      "kind": "file"
+    },
+    {
+      "old": "20.07_Статическая_КТ_полная_сегментация_TotalSegmentator.md",
+      "new": "cardiac_4d_segmentation/20.07_Статическая_КТ_полная_сегментация_TotalSegmentator.md",
+      "kind": "file"
+    },
+    {
+      "old": "21.00_Карта_4D_сердца_и_RR.md",
+      "new": "cardiac_4d_segmentation/21.00_Карта_4D_сердца_и_RR.md",
+      "kind": "file"
+    },
+    {
+      "old": "21.01_4D_сердце_интерактивно.html",
+      "new": "cardiac_4d_segmentation/21.01_4D_сердце_интерактивно.html",
+      "kind": "file"
+    },
+    {
+      "old": "21.01_4D_сердце_интерактивно.ipynb",
+      "new": "cardiac_4d_segmentation/21.01_4D_сердце_интерактивно.ipynb",
+      "kind": "file"
+    },
+    {
+      "old": "21.02_Интерактивная_4D_визуализация_и_анатомия_TotalSegmentator.md",
+      "new": "cardiac_4d_segmentation/21.02_Интерактивная_4D_визуализация_и_анатомия_TotalSegmentator.md",
+      "kind": "file"
+    },
+    {
+      "old": "21.03_heart_RR.language-review.json",
+      "new": "cardiac_4d_segmentation/21.03_heart_RR.language-review.json",
+      "kind": "file"
+    },
+    {
+      "old": "21.03_Вычитание_крови_и_объёмы_камер_RR.html",
+      "new": "cardiac_4d_segmentation/21.03_Вычитание_крови_и_объёмы_камер_RR.html",
+      "kind": "file"
+    },
+    {
+      "old": "21.03_Вычитание_крови_и_объёмы_камер_RR.ipynb",
+      "new": "cardiac_4d_segmentation/21.03_Вычитание_крови_и_объёмы_камер_RR.ipynb",
+      "kind": "file"
+    },
+    {
+      "old": "21.04_heart_subtraction_and_RR_report.language-review.json",
+      "new": "cardiac_4d_segmentation/21.04_heart_subtraction_and_RR_report.language-review.json",
+      "kind": "file"
+    },
+    {
+      "old": "21.04_heart_subtraction_and_RR_report.md",
+      "new": "cardiac_4d_segmentation/21.04_heart_subtraction_and_RR_report.md",
+      "kind": "file"
+    },
+    {
+      "old": "21.05_series21_language_review.json",
+      "new": "cardiac_4d_segmentation/21.05_series21_language_review.json",
+      "kind": "file"
+    },
+    {
+      "old": "21.05_Валидация_анатомической_сегментации_сердца_4D_КТ.md",
+      "new": "cardiac_4d_segmentation/21.05_Валидация_анатомической_сегментации_сердца_4D_КТ.md",
+      "kind": "file"
+    },
+    {
+      "old": "21.06_Точная_сегментация_крови_четырёх_камер_4D_КТ.md",
+      "new": "cardiac_4d_segmentation/21.06_Точная_сегментация_крови_четырёх_камер_4D_КТ.md",
+      "kind": "file"
+    },
+    {
+      "old": "21.07_Бенчмарк_автоматизированной_сегментации_крови_4D_КТ.md",
+      "new": "cardiac_4d_segmentation/21.07_Бенчмарк_автоматизированной_сегментации_крови_4D_КТ.md",
+      "kind": "file"
+    },
+    {
+      "old": "4D_сердце_интерактивно",
+      "new": "cardiac_4d_segmentation/4D_сердце_интерактивно",
+      "kind": "directory"
+    },
+    {
+      "old": "heart_rr_analysis",
+      "new": "cardiac_4d_segmentation/heart_rr_analysis",
+      "kind": "directory"
+    }
+  ],
+  "files": [
+    {
+      "old": "20.05_4D_КТ_сегментация_сердца.md",
+      "new": "cardiac_4d_segmentation/20.05_4D_КТ_сегментация_сердца.md",
+      "bytes": 12284,
+      "sha256_before": "754a10de90ea9ddd7fe43565d65111da0c74edb0b6215b803d886461b54ee834"
+    },
+    {
+      "old": "20.06_4D_КТ_сегментация_v2_полное_сердце.md",
+      "new": "cardiac_4d_segmentation/20.06_4D_КТ_сегментация_v2_полное_сердце.md",
+      "bytes": 9773,
+      "sha256_before": "fa42dc45e2203e4476dfd7ad682422dbe8ab65e98210223079960aa712ed6c9a"
+    },
+    {
+      "old": "20.07_Статическая_КТ_полная_сегментация_TotalSegmentator.md",
+      "new": "cardiac_4d_segmentation/20.07_Статическая_КТ_полная_сегментация_TotalSegmentator.md",
+      "bytes": 12201,
+      "sha256_before": "c8a991a8226ec969d4626918da516abe4e93bb52af0970fe407f1dbf7e132673"
+    },
+    {
+      "old": "21.00_Карта_4D_сердца_и_RR.md",
+      "new": "cardiac_4d_segmentation/21.00_Карта_4D_сердца_и_RR.md",
+      "bytes": 17508,
+      "sha256_before": "e4dfa30310ba2e5071f78921e4d2c576e65c0ec217b6abf72781f125e68769db"
+    },
+    {
+      "old": "21.01_4D_сердце_интерактивно.html",
+      "new": "cardiac_4d_segmentation/21.01_4D_сердце_интерактивно.html",
+      "bytes": 61806822,
+      "sha256_before": "40a554c6882e73e354ab3d7eab075cff4134be23f569c4f32adcc328564ea1a1"
+    },
+    {
+      "old": "21.01_4D_сердце_интерактивно.ipynb",
+      "new": "cardiac_4d_segmentation/21.01_4D_сердце_интерактивно.ipynb",
+      "bytes": 61966016,
+      "sha256_before": "b439cc2592ab91141f9f8a814e45a7431359a00ff6acc19b82ec9eb144ac1987"
+    },
+    {
+      "old": "21.02_Интерактивная_4D_визуализация_и_анатомия_TotalSegmentator.md",
+      "new": "cardiac_4d_segmentation/21.02_Интерактивная_4D_визуализация_и_анатомия_TotalSegmentator.md",
+      "bytes": 7961,
+      "sha256_before": "56c79a0fadac7e25a864010a86ad1b6b9258c54685b312080c58db38b66c5206"
+    },
+    {
+      "old": "21.03_heart_RR.language-review.json",
+      "new": "cardiac_4d_segmentation/21.03_heart_RR.language-review.json",
+      "bytes": 2830,
+      "sha256_before": "46dc8872e11a9fccd97733dc374a381bb8a8179f55b4a6e4416e4ad56e1fca3a"
+    },
+    {
+      "old": "21.03_Вычитание_крови_и_объёмы_камер_RR.html",
+      "new": "cardiac_4d_segmentation/21.03_Вычитание_крови_и_объёмы_камер_RR.html",
+      "bytes": 120126,
+      "sha256_before": "534928e60db5ec5eb3a23539b7c735146c4df1d21684d422ec38fdc334c5eeed"
+    },
+    {
+      "old": "21.03_Вычитание_крови_и_объёмы_камер_RR.ipynb",
+      "new": "cardiac_4d_segmentation/21.03_Вычитание_крови_и_объёмы_камер_RR.ipynb",
+      "bytes": 134155,
+      "sha256_before": "0767965c34220104faf7061d0eee1217b0a5658ad19637834f41fabfa3ab3e50"
+    },
+    {
+      "old": "21.04_heart_subtraction_and_RR_report.language-review.json",
+      "new": "cardiac_4d_segmentation/21.04_heart_subtraction_and_RR_report.language-review.json",
+      "bytes": 1398,
+      "sha256_before": "143378d0cf9b373c9a1ca8263887caf893a49f708f2346f49cc94f3fe6ca2db4"
+    },
+    {
+      "old": "21.04_heart_subtraction_and_RR_report.md",
+      "new": "cardiac_4d_segmentation/21.04_heart_subtraction_and_RR_report.md",
+      "bytes": 46156,
+      "sha256_before": "246254fbfeb836d41ed502936a97b5154232903bd952d5a32485161f4a2c9f1d"
+    },
+    {
+      "old": "21.05_series21_language_review.json",
+      "new": "cardiac_4d_segmentation/21.05_series21_language_review.json",
+      "bytes": 2843,
+      "sha256_before": "420c11f25ff0112a7277938eec6d73bafa3a6b2456bb800c07a48835e0fd75bf"
+    },
+    {
+      "old": "21.05_Валидация_анатомической_сегментации_сердца_4D_КТ.md",
+      "new": "cardiac_4d_segmentation/21.05_Валидация_анатомической_сегментации_сердца_4D_КТ.md",
+      "bytes": 38338,
+      "sha256_before": "2d3d934dab4ff24c61ded5ad6eeb63d13c7185806275a359961d639e9f27ea65"
+    },
+    {
+      "old": "21.06_Точная_сегментация_крови_четырёх_камер_4D_КТ.md",
+      "new": "cardiac_4d_segmentation/21.06_Точная_сегментация_крови_четырёх_камер_4D_КТ.md",
+      "bytes": 21488,
+      "sha256_before": "023843450612ac808917dcf81786a5cb4d0dc1b617d860b45e3ee2fb01b382a3"
+    },
+    {
+      "old": "21.07_Бенчмарк_автоматизированной_сегментации_крови_4D_КТ.md",
+      "new": "cardiac_4d_segmentation/21.07_Бенчмарк_автоматизированной_сегментации_крови_4D_КТ.md",
+      "bytes": 23874,
+      "sha256_before": "2e13c90bb0d8824e30c895dee8f89c2ef3df140faef8011ef23238df83b6e0e5"
+    },
+    {
+      "old": "4D_сердце_интерактивно/adam_cardiac_4d.html",
+      "new": "cardiac_4d_segmentation/4D_сердце_интерактивно/adam_cardiac_4d.html",
+      "bytes": 25103841,
+      "sha256_before": "35b5e0b93e9c84ae1b0708edfbadeedfd9084110f9bd14f5abc3ec00ea82db4c"
+    },
+    {
+      "old": "4D_сердце_интерактивно/anatomy_products_qc.csv",
+      "new": "cardiac_4d_segmentation/4D_сердце_интерактивно/anatomy_products_qc.csv",
+      "bytes": 1247,
+      "sha256_before": "10d0ac5594856f0f22fa3ec1f01b176cb9e0d68167d19391dca24b5b55cd0d84"
+    },
+    {
+      "old": "4D_сердце_интерактивно/anatomy_qc_summary.json",
+      "new": "cardiac_4d_segmentation/4D_сердце_интерактивно/anatomy_qc_summary.json",
+      "bytes": 1144,
+      "sha256_before": "878eeead8999443c01cab4e8e3bccc1fa4dba96986641f2adcc6c819c91aa113"
+    },
+    {
+      "old": "4D_сердце_интерактивно/anatomy_subjects_qc.csv",
+      "new": "cardiac_4d_segmentation/4D_сердце_интерактивно/anatomy_subjects_qc.csv",
+      "bytes": 402,
+      "sha256_before": "765c2ee8748f3c4d7175cfc0ef4c87fe324d41e3c29e97dd5052b2b0ce863cdd"
+    },
+    {
+      "old": "4D_сердце_интерактивно/georg_cardiac_4d.html",
+      "new": "cardiac_4d_segmentation/4D_сердце_интерактивно/georg_cardiac_4d.html",
+      "bytes": 30781013,
+      "sha256_before": "a74ebfa9dcb878141d9d7b471bc9272ce18c4b3ab18d27f9e789c39a1ee34efb"
+    },
+    {
+      "old": "4D_сердце_интерактивно/manifest.json",
+      "new": "cardiac_4d_segmentation/4D_сердце_интерактивно/manifest.json",
+      "bytes": 4425,
+      "sha256_before": "60e5c1ea1e561f6afe1afc7c12748ea6dac090ed2ef0425b53f2d76989130a7e"
+    },
+    {
+      "old": "4D_сердце_интерактивно/nix_cardiac_4d.html",
+      "new": "cardiac_4d_segmentation/4D_сердце_интерактивно/nix_cardiac_4d.html",
+      "bytes": 14228298,
+      "sha256_before": "4a707a0a990eb741121a2d5b4ac88531b1694ecb0cec2e0dd4c7664e7c270b03"
+    },
+    {
+      "old": "4D_сердце_интерактивно/README.md",
+      "new": "cardiac_4d_segmentation/4D_сердце_интерактивно/README.md",
+      "bytes": 1536,
+      "sha256_before": "4ebb3d2b4ccf5dfefbd736515366b26bc3ae3601123c0d1c16bbb05361e28230"
+    },
+    {
+      "old": "heart_rr_analysis/adam_chamber_volumes_rr.html",
+      "new": "cardiac_4d_segmentation/heart_rr_analysis/adam_chamber_volumes_rr.html",
+      "bytes": 4914521,
+      "sha256_before": "a79514a621a558c0ae7bad76874aa03cff8acaa6a8bd45333c09391ae9bffb26"
+    },
+    {
+      "old": "heart_rr_analysis/adam_heart_minus_blood_4d.html",
+      "new": "cardiac_4d_segmentation/heart_rr_analysis/adam_heart_minus_blood_4d.html",
+      "bytes": 19828768,
+      "sha256_before": "252c1acda1e484b37150f5ace55e2a6ed4e43e9485cc62b46e2cd7c6477b8795"
+    },
+    {
+      "old": "heart_rr_analysis/cardiac_dicom_metadata_by_subject.csv",
+      "new": "cardiac_4d_segmentation/heart_rr_analysis/cardiac_dicom_metadata_by_subject.csv",
+      "bytes": 2264,
+      "sha256_before": "3ccc3626ca6bb3793b045fe868c86ac12e2010d23a2ce6da320df7084094496a"
+    },
+    {
+      "old": "heart_rr_analysis/cardiac_gating_source_data.csv",
+      "new": "cardiac_4d_segmentation/heart_rr_analysis/cardiac_gating_source_data.csv",
+      "bytes": 2116,
+      "sha256_before": "6f4325d738cc6aee194d419be0a497b2fff2baf2407ceed6fb06cb6f3f33b234"
+    },
+    {
+      "old": "heart_rr_analysis/chamber_volume_changes_closed_cycle.csv",
+      "new": "cardiac_4d_segmentation/heart_rr_analysis/chamber_volume_changes_closed_cycle.csv",
+      "bytes": 269369,
+      "sha256_before": "0db688c32e84739db84bcc02aeeda0f14f0092bfb89bb2aafc5a15ab98d90cdf"
+    },
+    {
+      "old": "heart_rr_analysis/chamber_volume_changes_closed_cycle_summary.csv",
+      "new": "cardiac_4d_segmentation/heart_rr_analysis/chamber_volume_changes_closed_cycle_summary.csv",
+      "bytes": 3746,
+      "sha256_before": "6b4a64c0448b44d34a0f12153f9131635b58e0d4e02453c390451bc5b8c5de50"
+    },
+    {
+      "old": "heart_rr_analysis/chamber_volume_changes_measured_cycles.csv",
+      "new": "cardiac_4d_segmentation/heart_rr_analysis/chamber_volume_changes_measured_cycles.csv",
+      "bytes": 37032,
+      "sha256_before": "cd534a04bc288894c693cb2c6b82a80ee49b3b38868f3f102c3a3c136fc83785"
+    },
+    {
+      "old": "heart_rr_analysis/chamber_volumes_by_rr.csv",
+      "new": "cardiac_4d_segmentation/heart_rr_analysis/chamber_volumes_by_rr.csv",
+      "bytes": 12589,
+      "sha256_before": "01b3d836c43b8accb95013bca3b961aa25dfdadc1ff2f3edca7c11ae35168ba8"
+    },
+    {
+      "old": "heart_rr_analysis/ecg_traces/adam_series307_ecg_gating_strip.png",
+      "new": "cardiac_4d_segmentation/heart_rr_analysis/ecg_traces/adam_series307_ecg_gating_strip.png",
+      "bytes": 26843,
+      "sha256_before": "5f320730017eea5f3d7c3921d303f8f93c2b5389c74f9f95a953f85c957cc52d"
+    },
+    {
+      "old": "heart_rr_analysis/ecg_traces/adam_series307_ecg_scan_window.png",
+      "new": "cardiac_4d_segmentation/heart_rr_analysis/ecg_traces/adam_series307_ecg_scan_window.png",
+      "bytes": 9314,
+      "sha256_before": "eab6488a60174dfcaa819b5101a6a0c3dbedeb8389b1c550dc7cda3e0b25291e"
+    },
+    {
+      "old": "heart_rr_analysis/ecg_traces/manifest.json",
+      "new": "cardiac_4d_segmentation/heart_rr_analysis/ecg_traces/manifest.json",
+      "bytes": 2281,
+      "sha256_before": "0d69ec2d237a0d7a907ced8eb98cef7c356c8531c4a16fd31d39cc51ebf6f039"
+    },
+    {
+      "old": "heart_rr_analysis/ecg_traces/nix_series307_ecg_gating_strip.png",
+      "new": "cardiac_4d_segmentation/heart_rr_analysis/ecg_traces/nix_series307_ecg_gating_strip.png",
+      "bytes": 31443,
+      "sha256_before": "25dfd621ae49522e9c3da223477eff1e548f44562eaa711ae19750785f682f95"
+    },
+    {
+      "old": "heart_rr_analysis/ecg_traces/nix_series307_ecg_scan_window.png",
+      "new": "cardiac_4d_segmentation/heart_rr_analysis/ecg_traces/nix_series307_ecg_scan_window.png",
+      "bytes": 8750,
+      "sha256_before": "d5b31a068a9155dd2096690d810cbd7d1a505688b71b94fdb4d4e01a7e0dacda"
+    },
+    {
+      "old": "heart_rr_analysis/georg_chamber_volumes_rr.html",
+      "new": "cardiac_4d_segmentation/heart_rr_analysis/georg_chamber_volumes_rr.html",
+      "bytes": 4929903,
+      "sha256_before": "c00a628fa7f4cb3b8bf106240d1ac16d27fda49f478c3ce7aa872c7c1767b76c"
+    },
+    {
+      "old": "heart_rr_analysis/georg_heart_minus_blood_4d.html",
+      "new": "cardiac_4d_segmentation/heart_rr_analysis/georg_heart_minus_blood_4d.html",
+      "bytes": 23620498,
+      "sha256_before": "f0d8c1b199d6b040428c08e190146c0305c0e59350ddef884fab1c2053b3ab18"
+    },
+    {
+      "old": "heart_rr_analysis/nix_chamber_volumes_rr.html",
+      "new": "cardiac_4d_segmentation/heart_rr_analysis/nix_chamber_volumes_rr.html",
+      "bytes": 4916239,
+      "sha256_before": "9130e33eba98ac4b3bff15e0d5ce96d6d9a5e39dca030151163d775e394d8203"
+    },
+    {
+      "old": "heart_rr_analysis/nix_heart_minus_blood_4d.html",
+      "new": "cardiac_4d_segmentation/heart_rr_analysis/nix_heart_minus_blood_4d.html",
+      "bytes": 11836349,
+      "sha256_before": "bcf54cc96b70cc98ae40cd3e42bc98a12fcbb84bb3d133f9a4c6c9907f362c4b"
+    },
+    {
+      "old": "heart_rr_analysis/README.md",
+      "new": "cardiac_4d_segmentation/heart_rr_analysis/README.md",
+      "bytes": 2998,
+      "sha256_before": "5f735c0a8701d4a67d4fae31deb9238d75d8839529099eae6a7f013342432e5f"
+    },
+    {
+      "old": "heart_rr_analysis/rr_and_subtraction_summary.json",
+      "new": "cardiac_4d_segmentation/heart_rr_analysis/rr_and_subtraction_summary.json",
+      "bytes": 26958,
+      "sha256_before": "c4fa1028bd29b9aeadcc4ad667191f1363c9ea24ad92ec604b1f1551477e61d7"
+    }
+  ],
+  "unchanged_locations": [
+    "cardiac_4d_segmentation code, tests, virtual environments and model caches",
+    "external source DICOM and derived NIfTI/STL"
+  ],
+  "historical_sidecars": "Language-review sidecars and frozen audit snapshots retain their original paths/hashes as historical evidence; use this manifest to resolve relocation.",
+  "byte_identical_immediately_after_move": true,
+  "verification": {
+    "moved_file_count": 43,
+    "byte_identical_immediately_after_move": true,
+    "notebooks_html_csv_png_json_unchanged_after_link_updates": true,
+    "local_links_checked": 68,
+    "broken_local_links": 0,
+    "notebook_schema_and_iframe_targets": "passed",
+    "generator_imports_and_default_paths_from_unrelated_cwd": "passed_stopped_before_calculation",
+    "scientific_recomputation": false,
+    "source_transcript_copied": false,
+    "git_index_modified": false
+  }
+}

@@ -1,7 +1,11 @@
 .venv*/
+.nninteractive-models/
+pilot_blood_segmentation_manifest.local.json
 config.local.json
 derived/
 *.log
 __pycache__/
 .pytest_cache/
 
+# Local anatomical review and derived ventricular estimates
+heart_rr_analysis/function_analysis/

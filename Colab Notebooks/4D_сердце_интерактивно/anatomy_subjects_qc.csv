@@ -1,4 +1,0 @@
-﻿subject,raw_mask_count,product_count,muscle_fraction_of_body_fov,fat_fraction_of_body_fov,status
-adam,72,5,0.09902833317614956,0.08409175541902843,file_and_geometry_qc_passed_pending_manual_review
-nix,72,5,0.219023381913244,0.12497928691920582,file_and_geometry_qc_passed_pending_manual_review
-georg,72,5,0.03955530841571037,0.15975013084094247,file_and_geometry_qc_passed_pending_manual_review

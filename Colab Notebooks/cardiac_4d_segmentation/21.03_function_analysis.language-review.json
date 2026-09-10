@@ -1,0 +1,63 @@
+{
+  "schema_version": 2,
+  "created_at": "2026-09-10T10:20:14.477152+00:00",
+  "reviewer": "Codex final model semantic review",
+  "status": "reviewed_scientific_notebook_reference_indexing",
+  "release_ready": false,
+  "skill": "russian-scientific-prose",
+  "genre_profile": "structure.scientific-notebook",
+  "policy_sources": [
+    "C:/Users/ELVIS_NIX/.codex/skills/russian-scientific-prose/SKILL.md",
+    "C:/Users/ELVIS_NIX/.codex/skills/russian-scientific-prose/policy/structures/scientific-notebook.yaml",
+    "C:/Users/ELVIS_NIX/.codex/skills/russian-scientific-prose/policy/genres/notebook.yaml"
+  ],
+  "scope": "Последовательная модельная вычитка всего окончательного статического читательского текста 21.03 после последней сборки: основная постановка, определения, таблицы, подписи, новый раздел индексации, обсуждение, выводы и приложения А–Б. Дополнительно прочитаны заголовки, оси, аннотации, легенды и шаблоны подсказок шести основных интерактивных графиков. Внешние страницы КТ и встроенные внешние 3D-просмотры не редактировались и не входят в инвентарь этой языковой вычитки.",
+  "language_review": {
+    "status": "passed_for_declared_scope",
+    "reader_text_characters": 71366,
+    "final_full_text_model_review": true,
+    "after_last_reader_change": true,
+    "checks": [
+      "scientific_headings",
+      "definitions_and_units",
+      "formula_punctuation_and_where",
+      "anthropometry_provenance",
+      "conditional_estimates_vs_reference_intervals",
+      "age_sex_selection_not_multiplicative_correction",
+      "CT_CMR_and_papillary_convention_limits",
+      "scientific_conclusions_consistent_with_evidence",
+      "idiomatic_Russian",
+      "appendix_historical_status"
+    ],
+    "open_language_findings": []
+  },
+  "technical_status": "passed",
+  "computational_status": "new_indexing_verified_prior_results_preserved",
+  "scientific_status": "exploratory_hypothesis_not_validated",
+  "new_numeric_tests_passed": 17,
+  "no_recalculation_check": "Presentation-only build succeeded with geometry, ventricular estimation, joint calculation and boundary-render functions replaced by raising stubs. New BSA indices were computed separately.",
+  "data_preservation": "31 existing numeric/image files match the pre-edit SHA256 baseline. Source masks were not recalculated or modified.",
+  "unresolved_scientific_questions": [
+    "independent_segmentation_accuracy",
+    "mechanical_phase_acceptance",
+    "SV_EF_accuracy",
+    "anthropometry_and_age_at_CT",
+    "CT_CMR_contour_equivalence"
+  ],
+  "previous_review_archive": "../archive/private/21.03_before_reference_indexing_20260910/21.03_function_analysis.language-review.json",
+  "artifact_sha256": {
+    "21.03_Вычитание_крови_и_объёмы_камер_RR.ipynb": "d15ba0988f676e5e086c8896908ce399208ab22c9dea0ec9158e5e1dbb2339cb",
+    "21.03_Вычитание_крови_и_объёмы_камер_RR.html": "c53233da6c7f9908c0484ce74ae0a5bf9cd1454e1ba76845c1cf35f944e97337"
+  },
+  "full_text_sha256": {
+    "notebook_full_text.txt": "2a0a7e2e094b5d3cf9e3627611b9ab2e159fb200a8b4a07a2b6d5c883072083e",
+    "plot_labels.json": "527efa668215d9125cc817154d70bf3ab660d6c7ff32032eb2b06b17ebb1da2b"
+  },
+  "technical_qa_sha256": "f6fd90a2e98ae0ff34e8d3a3064718c5a06154fa7139763e836565e12ba72e88",
+  "visually_reviewed_screenshots": {
+    "indexing_results.png": "664f76337c206318fc412ba6fb5ca98983c50688f14b0084fea2dad101287a32",
+    "indexing_formulas.png": "fbc8feb445dda67f5576c938dbe29036d4b38ddf845f1502765fe3c5be5c7408",
+    "indexing_limits.png": "e97ba0af179eb370988d6b6cfb17bb7e88a70117025ac24c1f3a7ec28d91a878"
+  },
+  "reference_indexing_manifest_sha256": "1ca9d367f7c302b282c2de7ea8eee175287833f00c7529b4227d09154a1b54c2"
+}

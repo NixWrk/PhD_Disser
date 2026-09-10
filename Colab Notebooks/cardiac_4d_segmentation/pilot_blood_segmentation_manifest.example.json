@@ -1,0 +1,205 @@
+{
+  "schema_version": 1,
+  "analysis_plan_id": "pilot_blood_segmentation_12_phase_v1",
+  "analysis_plan_locked_before_evaluation": true,
+  "surface_tolerance_locked_before_evaluation": true,
+  "surface_tolerance_mm": 2.0,
+  "geometry_mm_confirmed": false,
+  "geometry_confirmation_sources": [
+    "<EXTERNAL_DATA_ROOT>/<subject>/phases/conversion_manifest.json"
+  ],
+  "required_phase_count": 12,
+  "phase_selection": {
+    "locked_before_evaluation": true,
+    "phase_ids": [
+      "phase_00", "phase_03", "phase_06", "phase_09",
+      "phase_00", "phase_03", "phase_06", "phase_09",
+      "phase_00", "phase_04", "phase_08", "phase_12"
+    ]
+  },
+  "raw_source": {
+    "software_name": "TotalSegmentator",
+    "software_version": "<record exact version from segmentation manifest>",
+    "model_or_method": "heartchambers_highres",
+    "source_family": "automatic_masks_v2"
+  },
+  "conservative_cleanup": {
+    "connectivity": 26,
+    "small_component_threshold_mm3": 50.0,
+    "minimum_distance_mm": 1.0,
+    "operation": "remove-only; no additions, morphology, hole filling, clipping, overlap arbitration, or temporal smoothing"
+  },
+  "nninteractive": {
+    "enabled": false,
+    "model_dir": ".nninteractive-models/models/nnInteractive_v1.0",
+    "model_id": "nnInteractive_v1.0",
+    "software_version": "2.5.1",
+    "device": "cuda",
+    "use_torch_compile": false
+  },
+  "bootstrap": {
+    "iterations": 2000,
+    "seed": 20260902,
+    "confidence_level": 0.95
+  },
+  "qc_png": false,
+  "inference_scope": "pilot_descriptive_only",
+  "phases": [
+    {
+      "subject_id": "adam",
+      "phase_id": "phase_00",
+      "ct_path": "<EXTERNAL_DATA_ROOT>/adam/phases/phase_00.nii.gz",
+      "raw_masks": {
+        "left_atrium_blood": "<EXTERNAL_DATA_ROOT>/adam/automatic_masks_v2/phase_00/heartchambers_highres/heart_atrium_left.nii.gz",
+        "left_ventricle_blood": "<EXTERNAL_DATA_ROOT>/adam/automatic_masks_v2/phase_00/heartchambers_highres/heart_ventricle_left.nii.gz",
+        "right_atrium_blood": "<EXTERNAL_DATA_ROOT>/adam/automatic_masks_v2/phase_00/heartchambers_highres/heart_atrium_right.nii.gz",
+        "right_ventricle_blood": "<EXTERNAL_DATA_ROOT>/adam/automatic_masks_v2/phase_00/heartchambers_highres/heart_ventricle_right.nii.gz"
+      },
+      "total_heart_path": "<EXTERNAL_DATA_ROOT>/adam/automatic_masks_v2/phase_00/total_heart/heart.nii.gz",
+      "manual_reference": null
+    },
+    {
+      "subject_id": "adam",
+      "phase_id": "phase_03",
+      "ct_path": "<EXTERNAL_DATA_ROOT>/adam/phases/phase_03.nii.gz",
+      "raw_masks": {
+        "left_atrium_blood": "<EXTERNAL_DATA_ROOT>/adam/automatic_masks_v2/phase_03/heartchambers_highres/heart_atrium_left.nii.gz",
+        "left_ventricle_blood": "<EXTERNAL_DATA_ROOT>/adam/automatic_masks_v2/phase_03/heartchambers_highres/heart_ventricle_left.nii.gz",
+        "right_atrium_blood": "<EXTERNAL_DATA_ROOT>/adam/automatic_masks_v2/phase_03/heartchambers_highres/heart_atrium_right.nii.gz",
+        "right_ventricle_blood": "<EXTERNAL_DATA_ROOT>/adam/automatic_masks_v2/phase_03/heartchambers_highres/heart_ventricle_right.nii.gz"
+      },
+      "total_heart_path": "<EXTERNAL_DATA_ROOT>/adam/automatic_masks_v2/phase_03/total_heart/heart.nii.gz",
+      "manual_reference": null
+    },
+    {
+      "subject_id": "adam",
+      "phase_id": "phase_06",
+      "ct_path": "<EXTERNAL_DATA_ROOT>/adam/phases/phase_06.nii.gz",
+      "raw_masks": {
+        "left_atrium_blood": "<EXTERNAL_DATA_ROOT>/adam/automatic_masks_v2/phase_06/heartchambers_highres/heart_atrium_left.nii.gz",
+        "left_ventricle_blood": "<EXTERNAL_DATA_ROOT>/adam/automatic_masks_v2/phase_06/heartchambers_highres/heart_ventricle_left.nii.gz",
+        "right_atrium_blood": "<EXTERNAL_DATA_ROOT>/adam/automatic_masks_v2/phase_06/heartchambers_highres/heart_atrium_right.nii.gz",
+        "right_ventricle_blood": "<EXTERNAL_DATA_ROOT>/adam/automatic_masks_v2/phase_06/heartchambers_highres/heart_ventricle_right.nii.gz"
+      },
+      "total_heart_path": "<EXTERNAL_DATA_ROOT>/adam/automatic_masks_v2/phase_06/total_heart/heart.nii.gz",
+      "manual_reference": null
+    },
+    {
+      "subject_id": "adam",
+      "phase_id": "phase_09",
+      "ct_path": "<EXTERNAL_DATA_ROOT>/adam/phases/phase_09.nii.gz",
+      "raw_masks": {
+        "left_atrium_blood": "<EXTERNAL_DATA_ROOT>/adam/automatic_masks_v2/phase_09/heartchambers_highres/heart_atrium_left.nii.gz",
+        "left_ventricle_blood": "<EXTERNAL_DATA_ROOT>/adam/automatic_masks_v2/phase_09/heartchambers_highres/heart_ventricle_left.nii.gz",
+        "right_atrium_blood": "<EXTERNAL_DATA_ROOT>/adam/automatic_masks_v2/phase_09/heartchambers_highres/heart_atrium_right.nii.gz",
+        "right_ventricle_blood": "<EXTERNAL_DATA_ROOT>/adam/automatic_masks_v2/phase_09/heartchambers_highres/heart_ventricle_right.nii.gz"
+      },
+      "total_heart_path": "<EXTERNAL_DATA_ROOT>/adam/automatic_masks_v2/phase_09/total_heart/heart.nii.gz",
+      "manual_reference": null
+    },
+    {
+      "subject_id": "nix",
+      "phase_id": "phase_00",
+      "ct_path": "<EXTERNAL_DATA_ROOT>/nix/phases/phase_00.nii.gz",
+      "raw_masks": {
+        "left_atrium_blood": "<EXTERNAL_DATA_ROOT>/nix/automatic_masks_v2/phase_00/heartchambers_highres/heart_atrium_left.nii.gz",
+        "left_ventricle_blood": "<EXTERNAL_DATA_ROOT>/nix/automatic_masks_v2/phase_00/heartchambers_highres/heart_ventricle_left.nii.gz",
+        "right_atrium_blood": "<EXTERNAL_DATA_ROOT>/nix/automatic_masks_v2/phase_00/heartchambers_highres/heart_atrium_right.nii.gz",
+        "right_ventricle_blood": "<EXTERNAL_DATA_ROOT>/nix/automatic_masks_v2/phase_00/heartchambers_highres/heart_ventricle_right.nii.gz"
+      },
+      "total_heart_path": "<EXTERNAL_DATA_ROOT>/nix/automatic_masks_v2/phase_00/total_heart/heart.nii.gz",
+      "manual_reference": null
+    },
+    {
+      "subject_id": "nix",
+      "phase_id": "phase_03",
+      "ct_path": "<EXTERNAL_DATA_ROOT>/nix/phases/phase_03.nii.gz",
+      "raw_masks": {
+        "left_atrium_blood": "<EXTERNAL_DATA_ROOT>/nix/automatic_masks_v2/phase_03/heartchambers_highres/heart_atrium_left.nii.gz",
+        "left_ventricle_blood": "<EXTERNAL_DATA_ROOT>/nix/automatic_masks_v2/phase_03/heartchambers_highres/heart_ventricle_left.nii.gz",
+        "right_atrium_blood": "<EXTERNAL_DATA_ROOT>/nix/automatic_masks_v2/phase_03/heartchambers_highres/heart_atrium_right.nii.gz",
+        "right_ventricle_blood": "<EXTERNAL_DATA_ROOT>/nix/automatic_masks_v2/phase_03/heartchambers_highres/heart_ventricle_right.nii.gz"
+      },
+      "total_heart_path": "<EXTERNAL_DATA_ROOT>/nix/automatic_masks_v2/phase_03/total_heart/heart.nii.gz",
+      "manual_reference": null
+    },
+    {
+      "subject_id": "nix",
+      "phase_id": "phase_06",
+      "ct_path": "<EXTERNAL_DATA_ROOT>/nix/phases/phase_06.nii.gz",
+      "raw_masks": {
+        "left_atrium_blood": "<EXTERNAL_DATA_ROOT>/nix/automatic_masks_v2/phase_06/heartchambers_highres/heart_atrium_left.nii.gz",
+        "left_ventricle_blood": "<EXTERNAL_DATA_ROOT>/nix/automatic_masks_v2/phase_06/heartchambers_highres/heart_ventricle_left.nii.gz",
+        "right_atrium_blood": "<EXTERNAL_DATA_ROOT>/nix/automatic_masks_v2/phase_06/heartchambers_highres/heart_atrium_right.nii.gz",
+        "right_ventricle_blood": "<EXTERNAL_DATA_ROOT>/nix/automatic_masks_v2/phase_06/heartchambers_highres/heart_ventricle_right.nii.gz"
+      },
+      "total_heart_path": "<EXTERNAL_DATA_ROOT>/nix/automatic_masks_v2/phase_06/total_heart/heart.nii.gz",
+      "manual_reference": null
+    },
+    {
+      "subject_id": "nix",
+      "phase_id": "phase_09",
+      "ct_path": "<EXTERNAL_DATA_ROOT>/nix/phases/phase_09.nii.gz",
+      "raw_masks": {
+        "left_atrium_blood": "<EXTERNAL_DATA_ROOT>/nix/automatic_masks_v2/phase_09/heartchambers_highres/heart_atrium_left.nii.gz",
+        "left_ventricle_blood": "<EXTERNAL_DATA_ROOT>/nix/automatic_masks_v2/phase_09/heartchambers_highres/heart_ventricle_left.nii.gz",
+        "right_atrium_blood": "<EXTERNAL_DATA_ROOT>/nix/automatic_masks_v2/phase_09/heartchambers_highres/heart_atrium_right.nii.gz",
+        "right_ventricle_blood": "<EXTERNAL_DATA_ROOT>/nix/automatic_masks_v2/phase_09/heartchambers_highres/heart_ventricle_right.nii.gz"
+      },
+      "total_heart_path": "<EXTERNAL_DATA_ROOT>/nix/automatic_masks_v2/phase_09/total_heart/heart.nii.gz",
+      "manual_reference": null
+    },
+    {
+      "subject_id": "georg",
+      "phase_id": "phase_00",
+      "ct_path": "<EXTERNAL_DATA_ROOT>/georg/phases/phase_00.nii.gz",
+      "raw_masks": {
+        "left_atrium_blood": "<EXTERNAL_DATA_ROOT>/georg/automatic_masks_v2/phase_00/heartchambers_highres/heart_atrium_left.nii.gz",
+        "left_ventricle_blood": "<EXTERNAL_DATA_ROOT>/georg/automatic_masks_v2/phase_00/heartchambers_highres/heart_ventricle_left.nii.gz",
+        "right_atrium_blood": "<EXTERNAL_DATA_ROOT>/georg/automatic_masks_v2/phase_00/heartchambers_highres/heart_atrium_right.nii.gz",
+        "right_ventricle_blood": "<EXTERNAL_DATA_ROOT>/georg/automatic_masks_v2/phase_00/heartchambers_highres/heart_ventricle_right.nii.gz"
+      },
+      "total_heart_path": "<EXTERNAL_DATA_ROOT>/georg/automatic_masks_v2/phase_00/total_heart/heart.nii.gz",
+      "manual_reference": null
+    },
+    {
+      "subject_id": "georg",
+      "phase_id": "phase_04",
+      "ct_path": "<EXTERNAL_DATA_ROOT>/georg/phases/phase_04.nii.gz",
+      "raw_masks": {
+        "left_atrium_blood": "<EXTERNAL_DATA_ROOT>/georg/automatic_masks_v2/phase_04/heartchambers_highres/heart_atrium_left.nii.gz",
+        "left_ventricle_blood": "<EXTERNAL_DATA_ROOT>/georg/automatic_masks_v2/phase_04/heartchambers_highres/heart_ventricle_left.nii.gz",
+        "right_atrium_blood": "<EXTERNAL_DATA_ROOT>/georg/automatic_masks_v2/phase_04/heartchambers_highres/heart_atrium_right.nii.gz",
+        "right_ventricle_blood": "<EXTERNAL_DATA_ROOT>/georg/automatic_masks_v2/phase_04/heartchambers_highres/heart_ventricle_right.nii.gz"
+      },
+      "total_heart_path": "<EXTERNAL_DATA_ROOT>/georg/automatic_masks_v2/phase_04/total_heart/heart.nii.gz",
+      "manual_reference": null
+    },
+    {
+      "subject_id": "georg",
+      "phase_id": "phase_08",
+      "ct_path": "<EXTERNAL_DATA_ROOT>/georg/phases/phase_08.nii.gz",
+      "raw_masks": {
+        "left_atrium_blood": "<EXTERNAL_DATA_ROOT>/georg/automatic_masks_v2/phase_08/heartchambers_highres/heart_atrium_left.nii.gz",
+        "left_ventricle_blood": "<EXTERNAL_DATA_ROOT>/georg/automatic_masks_v2/phase_08/heartchambers_highres/heart_ventricle_left.nii.gz",
+        "right_atrium_blood": "<EXTERNAL_DATA_ROOT>/georg/automatic_masks_v2/phase_08/heartchambers_highres/heart_atrium_right.nii.gz",
+        "right_ventricle_blood": "<EXTERNAL_DATA_ROOT>/georg/automatic_masks_v2/phase_08/heartchambers_highres/heart_ventricle_right.nii.gz"
+      },
+      "total_heart_path": "<EXTERNAL_DATA_ROOT>/georg/automatic_masks_v2/phase_08/total_heart/heart.nii.gz",
+      "manual_reference": null
+    },
+    {
+      "subject_id": "georg",
+      "phase_id": "phase_12",
+      "ct_path": "<EXTERNAL_DATA_ROOT>/georg/phases/phase_12.nii.gz",
+      "raw_masks": {
+        "left_atrium_blood": "<EXTERNAL_DATA_ROOT>/georg/automatic_masks_v2/phase_12/heartchambers_highres/heart_atrium_left.nii.gz",
+        "left_ventricle_blood": "<EXTERNAL_DATA_ROOT>/georg/automatic_masks_v2/phase_12/heartchambers_highres/heart_ventricle_left.nii.gz",
+        "right_atrium_blood": "<EXTERNAL_DATA_ROOT>/georg/automatic_masks_v2/phase_12/heartchambers_highres/heart_atrium_right.nii.gz",
+        "right_ventricle_blood": "<EXTERNAL_DATA_ROOT>/georg/automatic_masks_v2/phase_12/heartchambers_highres/heart_ventricle_right.nii.gz"
+      },
+      "total_heart_path": "<EXTERNAL_DATA_ROOT>/georg/automatic_masks_v2/phase_12/total_heart/heart.nii.gz",
+      "manual_reference": null
+    }
+  ]
+}

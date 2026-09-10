@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-08-31T18:03:06.678897+00:00",
+  "subjects": [
+    {
+      "subject": "adam",
+      "raw_mask_count": 72,
+      "product_count": 5,
+      "muscle_fraction_of_body_fov": 0.09902833317614956,
+      "fat_fraction_of_body_fov": 0.08409175541902843,
+      "status": "file_and_geometry_qc_passed_pending_manual_review"
+    },
+    {
+      "subject": "nix",
+      "raw_mask_count": 72,
+      "product_count": 5,
+      "muscle_fraction_of_body_fov": 0.219023381913244,
+      "fat_fraction_of_body_fov": 0.12497928691920582,
+      "status": "file_and_geometry_qc_passed_pending_manual_review"
+    },
+    {
+      "subject": "georg",
+      "raw_mask_count": 72,
+      "product_count": 5,
+      "muscle_fraction_of_body_fov": 0.03955530841571037,
+      "fat_fraction_of_body_fov": 0.15975013084094247,
+      "status": "file_and_geometry_qc_passed_pending_manual_review"
+    }
+  ],
+  "product_rows": 15,
+  "failures": [],
+  "status": "file_and_geometry_qc_passed_pending_manual_review",
+  "interpretation_limit": "File and geometry QC does not establish anatomical accuracy."
+}

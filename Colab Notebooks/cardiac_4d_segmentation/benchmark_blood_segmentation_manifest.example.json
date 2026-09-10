@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "analysis_plan_locked_before_evaluation": false,
+  "surface_tolerance_mm": 2.0,
+  "surface_tolerance_locked_before_evaluation": false,
+  "inference_scope": "pilot_descriptive_only",
+  "geometry_mm_confirmed": false,
+  "boundary_hu_qc": false,
+  "bootstrap": {
+    "iterations": 2000,
+    "seed": 20260902,
+    "confidence_level": 0.95
+  },
+  "samples": [
+    {
+      "sample_id": "<SUBJECT_PSEUDONYM>_phase_00_left_atrium_blood",
+      "subject_id": "<SUBJECT_PSEUDONYM>",
+      "phase_id": "phase_00",
+      "structure": "left_atrium_blood",
+      "ct_path": "<LOCAL_DERIVED_ROOT>/<SUBJECT_PSEUDONYM>/phases/phase_00.nii.gz",
+      "total_heart_path": "<LOCAL_DERIVED_ROOT>/<SUBJECT_PSEUDONYM>/automatic_masks_v2/phase_00/total_heart/heart.nii.gz",
+      "candidates": [
+        {
+          "candidate_id": "raw_totalsegmentator_left_atrium",
+          "candidate_set_id": "raw_totalsegmentator",
+          "path": "<LOCAL_DERIVED_ROOT>/<SUBJECT_PSEUDONYM>/automatic_masks_v2/phase_00/heartchambers_highres/heart_atrium_left.nii.gz",
+          "method_category": "raw_automatic",
+          "software_name": "TotalSegmentator",
+          "software_version": "2.18.0",
+          "model_or_method": "heartchambers_highres",
+          "provenance_manifest_path": "<LOCAL_DERIVED_ROOT>/<SUBJECT_PSEUDONYM>/automatic_masks_v2/<EXACT_MANIFEST>.json",
+          "independent_from_reference": true
+        },
+        {
+          "candidate_id": "assisted_left_atrium",
+          "candidate_set_id": "assisted_slicer",
+          "path": "<EXTERNAL_DERIVED_ROOT>/<SUBJECT_PSEUDONYM>/blood_review/phase_00/assisted_left_atrium_blood.nii.gz",
+          "method_category": "assisted",
+          "software_name": "3D Slicer Segment Editor",
+          "software_version": "<VERSION>",
+          "model_or_method": "manual_or_interactive_correction",
+          "independent_from_reference": true,
+          "manual_interaction_time_s": null,
+          "manual_clicks": null
+        },
+        {
+          "candidate_id": "alternative_left_atrium",
+          "candidate_set_id": "alternative_algorithm",
+          "path": "<EXTERNAL_DERIVED_ROOT>/<SUBJECT_PSEUDONYM>/alternative/phase_00/left_atrium_blood.nii.gz",
+          "method_category": "alternative_algorithm",
+          "software_name": "<ALTERNATIVE_TOOL>",
+          "software_version": "<VERSION>",
+          "model_or_method": "<MODEL_OR_METHOD>",
+          "independent_from_reference": true
+        }
+      ],
+      "manual_reference": {
+        "reference_id": "inobitec_blinded_<SUBJECT_PSEUDONYM>_phase_00_left_atrium",
+        "path": "<MANUAL_REFERENCE_ROOT>/<SUBJECT_PSEUDONYM>/phase_00/left_atrium_blood.nii.gz",
+        "reference_kind": "manual_inobitec",
+        "expert_id": "<EXPERT_ID>",
+        "session_id": "<SESSION_ID>",
+        "independent_from_candidates": true,
+        "blinded_to_candidates": true
+      }
+    }
+  ]
+}

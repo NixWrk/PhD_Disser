@@ -63,14 +63,18 @@ NOTEBOOK_CONTEXT_MD = """# Проверка автоматической сег�
 ## Задача и происхождение масок
 
 Ноутбук проверяет динамику формы сердца и объёмов четырёх камер на 39 фазах
-контрастной 4D-КТ Adam, Nix и Georg. Ручная сегментация Inobitec остаётся
+4D-КТ Adam, Nix и Georg. По уточнению автора от 10.09.2026 нормальная
+различимость крови и миокарда есть только у Georg благодаря остаточному
+контрасту; для Adam и Nix она не подтверждена. Ручная сегментация Inobitec остаётся
 каноническим анатомическим референсом проекта, но в этот расчёт ещё не включена.
 
 TotalSegmentator 2.18.0 запускался в независимых задачах `total/heart` и
 `heartchambers_highres`. Маска крови — объединение четырёх камер без аорты и
 лёгочной артерии. Геометрическая разность «всё сердце минус кровь» не является
-валидированной маской полного миокарда. Класс `heart_myocardium` охватывает
-преимущественно миокард ЛЖ и межжелудочковую перегородку.
+валидированной маской полного миокарда. В текущих масках класс `heart_myocardium` визуально соответствует преимущественно
+области ЛЖ и перегородки; это наблюдение, а не подтверждённое описание
+обучающей разметки. Объёмы и поверхности камер используют исходные маски
+без пересечения с маской всего сердца.
 
 ## Что непосредственно получено из DICOM
 
@@ -1197,7 +1201,10 @@ def volume_figure_with_scale_toggle(
 
 
 def html_page(subject_sections: list[str], metadata_tables: list[str]) -> str:
-    cards = [SCIENTIFIC_CONTEXT_HTML]
+    cards = [
+        '<p><a href="21.00_Карта_4D_сердца_и_RR.md">21.00 — карта серии и пересборка</a> · <a href="21.01_4D_сердце_интерактивно.html">21.01 — обзор 4D</a></p>',
+        SCIENTIFIC_CONTEXT_HTML,
+    ]
     cards.append(
         "<h2>Исходные данные кардиосинхронизации</h2>"
         "<p>Для Adam и Nix встроены общий вид обезличенной растровой полосы GE "
@@ -1235,10 +1242,11 @@ def html_page(subject_sections: list[str], metadata_tables: list[str]) -> str:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    project_root = Path.cwd().resolve()
+    workflow_root = Path(__file__).resolve().parent
+    project_root = workflow_root.parent.parent
     data_root = project_root.parent / "Bitrix" / "ЭИТЛ" / "02 Big_data" / "3D" / "_DERIVED_CARDIAC4D"
     parser.add_argument("--derived-root", default=str(data_root))
-    parser.add_argument("--output-dir", default=str(project_root / "Colab Notebooks" / "heart_rr_analysis"))
+    parser.add_argument("--output-dir", default=str(workflow_root / "heart_rr_analysis"))
     parser.add_argument(
         "--cardiac-metadata-summary",
         default=str(data_root / "_cohort_qc_v2" / "cardiac_phase_metadata_summary.json"),
@@ -1362,7 +1370,7 @@ def main() -> int:
                     raise RuntimeError(f"Grid mismatch: {subject}/{phase_id}/{key}")
                 chamber = np.asanyarray(chamber_image.dataobj) > 0
                 chambers_ml[key] = volume_ml(chamber, chamber_image.affine)
-                chamber_meshes.append(surface(chamber & whole, whole_image.affine))
+                chamber_meshes.append(surface(chamber, chamber_image.affine))
             del chamber
             surface_meshes = [surface(remainder, whole_image.affine), *chamber_meshes, surface(myocardium, whole_image.affine)]
             rr_interval_ms = float(
@@ -1632,7 +1640,10 @@ def main() -> int:
     combined.write_text(html_page(subject_sections, metadata_tables), encoding="utf-8")
 
     notebook = nbformat.v4.new_notebook(metadata={"language_info": {"name": "python"}, "kernelspec": {"name": "python3", "display_name": "Python 3", "language": "python"}})
-    notebook.cells.append(nbformat.v4.new_markdown_cell(NOTEBOOK_CONTEXT_MD))
+    notebook.cells.append(nbformat.v4.new_markdown_cell(
+        "[21.00 — карта серии и пересборка](21.00_Карта_4D_сердца_и_RR.md) · [21.01 — обзор 4D](21.01_4D_сердце_интерактивно.ipynb)\n\n"
+        + NOTEBOOK_CONTEXT_MD
+    ))
     notebook.cells.append(nbformat.v4.new_markdown_cell(
         "## Исходные данные кардиосинхронизации\n\n"
         "В первой таблице собраны субъектные поля DICOM, включая исходные фазы, "
@@ -1745,6 +1756,8 @@ def main() -> int:
         outputs=[nbformat.v4.new_output("display_data", data={"text/html": summary_table_html}, metadata={})],
     ))
     nbformat.write(notebook, output_dir.parent / "21.03_Вычитание_крови_и_объёмы_камер_RR.ipynb")
+    from build_cardiac_function_report import refresh_function_report
+    refresh_function_report(derived_root, output_dir, args.subjects)
     print(json.dumps({"subjects": [item[0] for item in subtraction_figures], "rows": len(all_rows), "combined_html": combined.name}, ensure_ascii=False), flush=True)
     return 0
 

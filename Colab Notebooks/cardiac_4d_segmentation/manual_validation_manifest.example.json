@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "study_status": "method_development_not_clinically_validated",
+  "inference_scope": "pilot_descriptive_only",
+  "analysis_plan_locked_before_evaluation": false,
+  "surface_tolerance_mm": 2.0,
+  "surface_tolerance_locked_before_evaluation": false,
+  "surface_tolerance_rationale": "EXAMPLE ONLY: replace with a prospectively accepted anatomical and resolution-based rationale before setting both lock fields to true.",
+  "bootstrap": {
+    "cluster_unit": "subject_id",
+    "estimand": "mean_of_subject_means",
+    "iterations": 10000,
+    "seed": 20260902,
+    "confidence_level": 0.95
+  },
+  "samples": [
+    {
+      "sample_id": "subject_alias_phase_00_whole_heart",
+      "subject_id": "subject_alias",
+      "phase_id": "phase_00",
+      "structure": "whole_heart",
+      "structure_definition_version": "cardiac_manual_protocol_v1",
+      "candidates": [
+        {
+          "candidate_id": "totalseg_2.18.0_total_heart_raw",
+          "path": "<LOCAL_DERIVED_ROOT>/subject_alias/automatic_masks_v2/phase_00/total_heart/heart.nii.gz",
+          "source_kind": "totalsegmentator_total_heart_raw",
+          "software_name": "TotalSegmentator",
+          "software_version": "2.18.0",
+          "model_task": "total",
+          "model_class": "heart",
+          "postprocessing": "none",
+          "label_value": 1
+        }
+      ],
+      "manual_annotations": [
+        {
+          "annotation_id": "expert_a_session_1",
+          "path": "<LOCAL_MANUAL_MASK_ROOT>/subject_alias/phase_00/whole_heart_expert_a_session_1.nii.gz",
+          "expert_id": "expert_a",
+          "session_id": "session_1",
+          "mask_version": "v1",
+          "source_project_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "annotation_mode": "manual_inobitec",
+          "independent_from_candidate": true,
+          "blinded_to_candidate_during_initial_annotation": true,
+          "label_value": 1
+        }
+      ],
+      "primary_reference": {
+        "method": "single",
+        "annotation_id": "expert_a_session_1"
+      }
+    }
+  ]
+}

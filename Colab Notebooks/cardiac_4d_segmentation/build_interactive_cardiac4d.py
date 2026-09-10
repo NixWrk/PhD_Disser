@@ -187,6 +187,7 @@ body{{margin:0;background:#eef1f5;color:#1f2937;font-family:system-ui,-apple-sys
 main{{max-width:1500px;margin:auto;padding:24px}}h1{{font-size:24px;margin:0 0 8px}}p{{margin:0 0 18px}}
 .card{{background:white;border-radius:14px;box-shadow:0 3px 16px #0001;margin:0 0 24px;padding:8px}}
 </style></head><body><main><h1>{title}</h1>
+<p><a href="21.00_Карта_4D_сердца_и_RR.md">21.00 — карта серии и пересборка</a> · <a href="21.03_Вычитание_крови_и_объёмы_камер_RR.html">21.03 — камеры и R–R</a></p>
 <p>Три структуры переключаются в легенде; сердечная фаза выбирается ползунком или кнопкой воспроизведения.</p>
 {cards}</main></body></html>"""
 
@@ -194,7 +195,10 @@ main{{max-width:1500px;margin:auto;padding:24px}}h1{{font-size:24px;margin:0 0 8
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--products-root", required=True, help="Root containing <subject>/products_v2")
-    parser.add_argument("--output-dir", required=True)
+    parser.add_argument(
+        "--output-dir",
+        default=str(Path(__file__).resolve().parent / "4D_сердце_интерактивно"),
+    )
     parser.add_argument("--subjects", nargs="+", default=["adam", "nix", "georg"])
     args = parser.parse_args()
 
@@ -221,6 +225,7 @@ def main() -> int:
     notebook = nbformat.v4.new_notebook(
         metadata={"language_info": {"name": "python"}, "kernelspec": {"name": "python3", "display_name": "Python 3", "language": "python"}},
         cells=[nbformat.v4.new_markdown_cell(
+            "[21.00 — карта серии и пересборка](21.00_Карта_4D_сердца_и_RR.md) · [21.03 — камеры и R–R](21.03_Вычитание_крови_и_объёмы_камер_RR.ipynb)\n\n"
             "# Интерактивная динамика сердца по 4D КТ\n\n"
             "Каждый график вращается мышью. Фазы переключаются ползунком или кнопкой ▶. "
             "Структуры выключаются кликом по легенде. Это автоматические исследовательские маски, не прошедшие ручную экспертную верификацию."
