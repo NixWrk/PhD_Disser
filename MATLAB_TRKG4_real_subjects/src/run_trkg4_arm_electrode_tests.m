@@ -15,11 +15,14 @@ addParameter(p, 'SubjectId', 'nik', @(x) ischar(x) || isstring(x));
 addParameter(p, 'InnerDistancesMm', [20 40], @local_positive_vector);
 addParameter(p, 'OuterDistancesMm', [80 100], @local_positive_vector);
 addParameter(p, 'ElectrodeKinds', ["point_disc_5mm", ...
-    "circumferential_ring", "cross_section_equivalent"]);
+    "circumferential_ring", "wide_cuff_equivalent_area", ...
+    "outer_planes_inner_rings"]);
 addParameter(p, 'DiscDiameterMm', 5, @local_positive_scalar);
 addParameter(p, 'RingWidthMm', 5, @local_positive_scalar);
 addParameter(p, 'PrebuiltMeshFile', '', ...
     @(x) ischar(x) || isstring(x));
+addParameter(p, 'OutputSubdirectory', 'output', ...
+    @(x) (ischar(x) || isstring(x)) && strlength(string(x)) > 0);
 addParameter(p, 'MeshTargetSizeMm', [], ...
     @(x) isempty(x) || local_positive_scalar(x));
 addParameter(p, 'ReciprocityRelativeTolerance', 1e-8, @local_positive_scalar);
@@ -87,20 +90,35 @@ for inner_mm = inner_values
 
             fmdl_mm = fmdl_template_mm;
             build_timer = tic;
-            [fmdl_mm.electrode, patch_diagnostics] = ...
-                trkg4_build_arm_electrodes(fmdl_mm, spec, cfg.z_contact);
+            elem_sigma_case = elem_sigma;
+            if spec.kind == "outer_planes_inner_rings"
+                [fmdl_mm, patch_diagnostics, keep_elements] = ...
+                    trkg4_build_mixed_arm_electrodes( ...
+                    fmdl_mm, spec, cfg.z_contact, cfg);
+                elem_sigma_case = elem_sigma(keep_elements);
+            else
+                [fmdl_mm.electrode, patch_diagnostics] = ...
+                    trkg4_build_arm_electrodes( ...
+                    fmdl_mm, spec, cfg.z_contact);
+            end
+            if ~ismember('contact_geometry', patch_diagnostics.Properties.VariableNames)
+                patch_diagnostics.contact_geometry = repmat(spec.kind, height(patch_diagnostics), 1);
+            end
             [fmdl_mm.stimulation, fmdl_mm.meas_select] = ...
                 trkg4_make_reciprocity_stimulation(cfg);
             build_seconds = toc(build_timer);
 
             fmdl = trkg4_scale_fmdl_to_si(fmdl_mm, cfg);
             img = mk_image(fmdl, 1);
-            img.elem_data = elem_sigma;
+            img.elem_data = elem_sigma_case;
             img.name = sprintf('%s arm-electrode test %s', ...
                 cfg.subject.id, spec.kind);
 
             solve_timer = tic;
+            lastwarn('');
             voltage = fwd_solve(img);
+            [solver_warning_message, solver_warning_id] = lastwarn;
+            solver_warning_observed = ~isempty(solver_warning_message);
             solve_seconds = toc(solve_timer);
             transfer = voltage.meas(:) / cfg.current_ampere;
             if numel(transfer) ~= 2
@@ -121,8 +139,8 @@ for inner_mm = inner_values
                 inner_mm, outer_mm, spec.kind);
             rows(case_index) = local_result_row(scenario_id, spec, ...
                 z_direct, z_reciprocal, absolute_error, relative_error, ...
-                absolute_error <= tolerance, build_seconds, solve_seconds, ...
-                cfg);
+                absolute_error <= tolerance, solver_warning_observed, ...
+                string(solver_warning_id), build_seconds, solve_seconds, cfg);
 
             patch_diagnostics.scenario_id = repmat(string(scenario_id), ...
                 height(patch_diagnostics), 1);
@@ -143,7 +161,7 @@ end
 summary = struct2table(rows);
 summary = local_add_geometry_comparison(summary, opt.SimilarityFactorLimit);
 
-out_dir = fullfile(root, 'output');
+out_dir = fullfile(root, char(opt.OutputSubdirectory));
 if ~exist(out_dir, 'dir')
     mkdir(out_dir);
 end
@@ -166,7 +184,8 @@ timings = struct('mesh', mesh_timings, ...
     'total_seconds', toc(total_timer));
 save(mat_file, 'summary', 'diagnostics_all', 'timings', ...
     'tissue_id', 'tissue_names', 'tissue_counts', '-v7.3');
-local_write_contract(contract_file, cfg, opt, summary, timings);
+local_write_contract(contract_file, cfg, opt, summary, timings, ...
+    tissue_names, tissue_counts, diagnostics_all);
 local_save_figure(summary, figure_file, opt);
 
 fprintf('\nSaved summary: %s\n', summary_file);
@@ -191,6 +210,8 @@ row = struct( ...
     'reciprocity_absolute_error_ohm', NaN, ...
     'reciprocity_relative_error', NaN, ...
     'reciprocity_pass', false, ...
+    'solver_warning_observed', false, ...
+    'solver_warning_id', "", ...
     'position_clearance_pass', false, ...
     'nominal_contact_area_mean_mm2', NaN, ...
     'frequency_hz', NaN, ...
@@ -200,7 +221,8 @@ row = struct( ...
 end
 
 function row = local_result_row(scenario_id, spec, z_direct, z_reciprocal, ...
-    absolute_error, relative_error, reciprocity_pass, build_seconds, ...
+    absolute_error, relative_error, reciprocity_pass, ...
+    solver_warning_observed, solver_warning_id, build_seconds, ...
     solve_seconds, cfg)
 row = local_empty_row();
 row.scenario_id = string(scenario_id);
@@ -217,6 +239,8 @@ row.Z_reciprocal_abs_ohm = abs(z_reciprocal);
 row.reciprocity_absolute_error_ohm = absolute_error;
 row.reciprocity_relative_error = relative_error;
 row.reciprocity_pass = reciprocity_pass;
+row.solver_warning_observed = solver_warning_observed;
+row.solver_warning_id = solver_warning_id;
 row.position_clearance_pass = spec.pass_clearance;
 row.nominal_contact_area_mean_mm2 = mean(spec.nominal_area_mm2);
 row.frequency_hz = cfg.frequency_hz;
@@ -261,7 +285,8 @@ summary.within_screening_factor_of_point_disc = within_factor;
 summary.similarity_factor_limit = repmat(factor_limit, n, 1);
 end
 
-function local_write_contract(filename, cfg, opt, summary, timings)
+function local_write_contract(filename, cfg, opt, summary, timings, ...
+    tissue_names, tissue_counts, diagnostics_all)
 contract = struct();
 contract.status = 'model_test_not_experimental_validation';
 contract.subject_id = cfg.subject.id;
@@ -280,13 +305,68 @@ contract.point_model = sprintf('surface disc, diameter %.6g mm', ...
 contract.ring_model = sprintf([ ...
     'circumferential cuff, inner diameter equals local arm diameter, ', ...
     'axial width %.6g mm'], opt.RingWidthMm);
-contract.large_model = [ ...
+wide_spec = trkg4_arm_montage_spec(cfg, "wide_cuff_equivalent_area", ...
+    opt.InnerDistancesMm(1), opt.OuterDistancesMm(1), ...
+    'DiscDiameterMm', opt.DiscDiameterMm, ...
+    'RingWidthMm', opt.RingWidthMm);
+contract.wide_cuff_model = [ ...
     'circumferential cuff whose surface contact area equals ', ...
     'pi*R^2; not an internal cross-section electrode'];
+contract.wide_cuff_nominal_width_mm = ...
+    unique(wide_spec.axial_width_mm)';
+contract.mixed_montage_model = 'outer planes I+/I-; inner circumferential 5 mm cuffs V+/V-';
+contract.cross_section_plane_model = [ ...
+    'ideal zero-thickness internal cross-sectional surface; ', ...
+    'represented by shared mesh faces without removing tissue elements; ', ...
+    'mesh-conforming surface is slightly jagged and is not attachable'];
+contract.cross_section_plane_nominal_thickness_mm = 0;
+plane_rows = diagnostics_all.electrode_kind == "outer_planes_inner_rings" & ...
+    ismember(diagnostics_all.label, ["I_plus", "I_minus"]);
+if any(plane_rows)
+    plane_span_mm = diagnostics_all.patch_x_max_mm(plane_rows) - ...
+        diagnostics_all.patch_x_min_mm(plane_rows);
+    contract.cross_section_plane_realised_x_span_mm_range = ...
+        [min(plane_span_mm), max(plane_span_mm)];
+    plane_area_ratio = diagnostics_all.area_ratio(plane_rows);
+    contract.cross_section_plane_area_ratio_range = ...
+        [min(plane_area_ratio), max(plane_area_ratio)];
+    plane_projected_ratio = ...
+        diagnostics_all.projected_cross_section_area_ratio(plane_rows);
+    contract.cross_section_plane_projected_area_ratio_range = ...
+        [min(plane_projected_ratio), max(plane_projected_ratio)];
+end
 contract.mesh_file = cfg.prebuilt_mesh_file;
 contract.frequency_hz = cfg.frequency_hz;
 contract.contact_impedance_ohm_m2 = cfg.z_contact;
+contract.current_ampere = cfg.current_ampere;
+contract.complex_permittivity_used = false;
+available_tissues = strings(0, 1);
+for tissue_index = 1:numel(cfg.tissues)
+    tissue = cfg.tissues(tissue_index);
+    if tissue.enabled && isfile(tissue.file)
+        available_tissues(end + 1, 1) = string(tissue.name); %#ok<AGROW>
+    end
+end
+if isempty(available_tissues)
+    contract.model_domain = [ ...
+        'full body volume with soft-tissue background and no separately ', ...
+        'assigned tissue STL masks'];
+else
+    contract.model_domain = sprintf([ ...
+        'full body volume with soft-tissue background and separately ', ...
+        'assigned available STL masks: %s'], ...
+        strjoin(available_tissues, ', '));
+end
+contract.tissue_assignment_method = [ ...
+    'tetrahedron-centroid classification by closed STL masks; ', ...
+    'a missing optional mask retains the previous/background class'];
+contract.tissues = local_tissue_contract(cfg, tissue_names, tissue_counts);
 contract.all_reciprocity_pass = all(summary.reciprocity_pass);
+contract.solver_warning_observed = any(summary.solver_warning_observed);
+contract.solver_warning_ids = unique( ...
+    summary.solver_warning_id(summary.solver_warning_id ~= ""));
+contract.solver_warning_requires_numerical_review = ...
+    contract.solver_warning_observed;
 contract.timings = timings;
 
 fid = fopen(filename, 'w');
@@ -296,6 +376,39 @@ if fid < 0
 end
 cleanup = onCleanup(@() fclose(fid));
 fwrite(fid, jsonencode(contract, 'PrettyPrint', true), 'char');
+end
+
+function records = local_tissue_contract(cfg, tissue_names, tissue_counts)
+template = struct('name', '', 'sigma_s_per_m', NaN, ...
+    'rho_ohm_m', NaN, 'source', '', 'mask_available', false, ...
+    'assigned_elements', 0);
+records = repmat(template, numel(cfg.tissues) + 1, 1);
+records(1).name = cfg.background.name;
+records(1).sigma_s_per_m = cfg.background.sigma;
+records(1).rho_ohm_m = 1 / cfg.background.sigma;
+records(1).source = cfg.rho_cloud.source;
+records(1).mask_available = true;
+records(1).assigned_elements = local_assigned_count( ...
+    cfg.background.name, tissue_names, tissue_counts);
+for k = 1:numel(cfg.tissues)
+    tissue = cfg.tissues(k);
+    records(k + 1).name = tissue.name;
+    records(k + 1).sigma_s_per_m = tissue.sigma;
+    records(k + 1).rho_ohm_m = 1 / tissue.sigma;
+    records(k + 1).source = tissue.itis_name;
+    records(k + 1).mask_available = isfile(tissue.file);
+    records(k + 1).assigned_elements = local_assigned_count( ...
+        tissue.name, tissue_names, tissue_counts);
+end
+end
+
+function count = local_assigned_count(name, tissue_names, tissue_counts)
+index = find(strcmp(tissue_names, name), 1);
+if isempty(index)
+    count = 0;
+else
+    count = tissue_counts(index);
+end
 end
 
 function local_save_figure(summary, filename, opt)

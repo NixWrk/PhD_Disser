@@ -1,0 +1,37 @@
+{
+  "status": "language_review_passed",
+  "language": "ru",
+  "reviewed_at": "2026-09-01",
+  "artifacts": [
+    {
+      "path": "docs/ARM_PARAMETER_MESH_ACCEPTANCE.md",
+      "sha256": "e0f121ba8a125c0833f313154536652037d46f31288dba9e41dc206c29638834"
+    },
+    {
+      "path": "README.md",
+      "sha256": "975ae82cd56a68f0fe5b38abd9632783cd00f9becb5d44da2b940cc7abcc7b9d"
+    },
+    {
+      "path": "docs/PIPELINE_FOR_NOTEBOOKS.md",
+      "sha256": "5c31d26e3c8bff7a40e3e89bf0d02797ac16f5c730284b5abd1b5471320e6fa7"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "9803ae3a2c4b0f36a0548f8ce2eee05889a9c7e3cb457c0cf44b5e00b68f16a0"
+    }
+  ],
+  "checks": {
+    "language.ru.hash-bound-final-review": "passed",
+    "language.ru.encoding": "passed_utf8",
+    "language.ru.natural-prose": "passed",
+    "language.ru.intro-variation": "passed",
+    "language.ru.reader-facing-clarity": "passed",
+    "language.ru.formula-where": "not_applicable_no_display_formulas"
+  },
+  "attestation": {
+    "full_text_read_sequentially_after_last_byte_change": true,
+    "scientific_claims_aligned_with_recorded_evidence": true,
+    "validation_scope_not_strengthened": true,
+    "open_language_findings": 0
+  }
+}

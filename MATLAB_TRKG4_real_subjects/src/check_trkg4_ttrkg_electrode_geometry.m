@@ -107,14 +107,34 @@ if ~isfile(report_file)
 end
 
 records = jsondecode(fileread(report_file));
-body_index = find(strcmp({records.name}, 'body'), 1);
-if isempty(body_index) || ~isfield(records(body_index), 'arm_extension')
+if isstruct(records) && isscalar(records) && isfield(records, 'arm_extension')
+    body_record = records;
+elseif iscell(records)
+    body_index = find(cellfun(@(record) ...
+        isstruct(record) && isfield(record, 'name') && ...
+        strcmp(record.name, 'body'), records), 1);
+    if isempty(body_index)
+        body_record = struct();
+    else
+        body_record = records{body_index};
+    end
+elseif isstruct(records) && isfield(records, 'name')
+    body_index = find(strcmp({records.name}, 'body'), 1);
+    if isempty(body_index)
+        body_record = struct();
+    else
+        body_record = records(body_index);
+    end
+else
+    body_record = struct();
+end
+if ~isfield(body_record, 'arm_extension')
     warning('trkg4:missingArmGeometry', ...
         'No arm-extension geometry in the STL preparation report.');
     return;
 end
 
-arms = records(body_index).arm_extension;
+arms = body_record.arm_extension;
 margin_mm = cfg.electrode_patch_radius_mm + cfg.mesh_target_size_mm;
 n = height(table_in);
 distance_to_outer_cap_mm = nan(n, 1);

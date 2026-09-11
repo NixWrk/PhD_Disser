@@ -1,4 +1,4 @@
-function report = check_trkg4_patch_overlap_v5(shared_file, geometry_file)
+function report = check_trkg4_patch_overlap_v5(shared_file, geometry_file, result_tag)
 %CHECK_TRKG4_PATCH_OVERLAP_V5 Verify CEM patch separation across grid sizes.
 %
 % What this checks, and why it is written the way it is.
@@ -29,14 +29,20 @@ function report = check_trkg4_patch_overlap_v5(shared_file, geometry_file)
 
 cfg = trkg4_config('nik');
 root = cfg.project_root;
+if nargin < 3 || strlength(string(result_tag)) == 0
+    result_tag = 'auditfix_20260908';
+end
+if isempty(regexp(char(result_tag), '^[A-Za-z0-9_-]+$', 'once'))
+    error('trkg4:invalidInverseResultTag', 'Invalid result tag.');
+end
 
 if nargin < 1 || isempty(shared_file)
     shared_file = fullfile(root, 'output', ...
-        'nik_trkg4_arms_full_v5_1mm_local2mm.mat');
+        'nik_trkg4_right_rib_050mm_full_v5_1mm_local2mm.mat');
 end
 if nargin < 2 || isempty(geometry_file)
     geometry_file = fullfile(root, 'output', ...
-        'nik_trkg4_inverse_inhale_electrodes_v5_1mm_local2mm.csv');
+        sprintf('nik_trkg4_inverse_inhale_electrodes_%s.csv', result_tag));
 end
 if ~isfile(shared_file)
     error('trkg4:missingSharedResult', ...
@@ -101,8 +107,17 @@ report = cell2table(rows, 'VariableNames', {'L_mm', 'electrode_1', ...
     'shared_nodes', 'shared_faces', 'nodes_1', 'nodes_2'});
 
 filename = fullfile(root, 'output', ...
-    'nik_trkg4_patch_separation_v5_1mm_local2mm.csv');
+    sprintf('nik_trkg4_patch_overlap_%s.csv', result_tag));
+provenance = struct('result_tag', char(result_tag), ...
+    'geometry_sha256', trkg4_file_sha256(geometry_file), ...
+    'shared_mesh_sha256', trkg4_file_sha256(shared_file), ...
+    'status', 'disjointness_check_not_contact_shape_validation');
 writetable(report, filename);
+fid = fopen([filename '.json'], 'w', 'n', 'UTF-8');
+if fid < 0, error('trkg4:resultWriteFailed', 'Cannot write patch provenance.'); end
+cleanup = onCleanup(@() fclose(fid));
+fprintf(fid, '%s', jsonencode(provenance, 'PrettyPrint', true));
+clear cleanup
 
 fprintf('\nPatch separation by grid size (smallest gap per size):\n');
 for size_index = 1:numel(sizes)

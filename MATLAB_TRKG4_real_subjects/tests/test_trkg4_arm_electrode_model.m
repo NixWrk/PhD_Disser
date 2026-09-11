@@ -46,7 +46,7 @@ end
 function testDefaultGridClearsCapsAndJoins(test_case)
 cfg = test_case.TestData.cfg;
 kinds = ["point_disc_5mm", "circumferential_ring", ...
-    "cross_section_equivalent"];
+    "wide_cuff_equivalent_area", "outer_planes_inner_rings"];
 for inner_mm = [20 40]
     for outer_mm = [80 100]
         for kind = kinds
@@ -60,15 +60,32 @@ for inner_mm = [20 40]
 end
 end
 
-function testCrossSectionEquivalentArea(test_case)
+function testWideCuffEquivalentArea(test_case)
 cfg = test_case.TestData.cfg;
 spec = trkg4_arm_montage_spec( ...
-    cfg, 'cross_section_equivalent', 20, 80);
+    cfg, 'wide_cuff_equivalent_area', 20, 80);
 
 verifyEqual(test_case, spec.nominal_area_mm2, ...
     pi * spec.arm_radius_mm.^2, 'RelTol', 1e-12);
 verifyEqual(test_case, spec.axial_width_mm, ...
     spec.arm_radius_mm / 2, 'RelTol', 1e-12);
+end
+
+function testHistoricalCrossSectionAliasMeansWideCuff(test_case)
+cfg = test_case.TestData.cfg;
+spec = trkg4_arm_montage_spec( ...
+    cfg, 'cross_section_equivalent', 20, 80);
+verifyEqual(test_case, spec.kind, "wide_cuff_equivalent_area");
+end
+
+function testMixedMontageUsesOnlyOuterPlanes(test_case)
+cfg=test_case.TestData.cfg;
+spec=trkg4_arm_montage_spec(cfg,'outer_planes_inner_rings',20,80);
+verifyEqual(test_case,spec.axial_width_mm,[0;5;5;0]);
+verifyEqual(test_case,spec.nominal_area_mm2([1 4]),pi*spec.arm_radius_mm([1 4]).^2);
+verifyEqual(test_case,spec.nominal_area_mm2([2 3]),2*pi*spec.arm_radius_mm([2 3])*5);
+verifyEqual(test_case,spec.centres_xyz_mm(2,3),spec.arm_geometry.right.center_z+spec.arm_geometry.right.radius);
+verifyError(test_case,@() trkg4_arm_montage_spec(cfg,'cross_section_plane',20,80),'trkg4:retiredFourPlaneMontage');
 end
 
 function testRingMatchesArmDiameterAndHasFiveMillimetreWidth(test_case)

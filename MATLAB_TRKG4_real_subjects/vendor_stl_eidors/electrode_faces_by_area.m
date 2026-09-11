@@ -99,12 +99,13 @@ for j = 1:n_electrodes
     % by it and carries no node already spent on an earlier electrode.  Both
     % conditions are static within one electrode, so they are evaluated once
     % and never rechecked while growing.
-    eligible_face = (face_owner == j) & ~any(used_nodes(faces), 2);
+    eligible_face = (face_owner == j) & ~any(reshape(used_nodes(faces), size(faces)), 2);
 
     owned = find(face_owner == j);
     [~, order] = sort(face_dist(owned, j));
     face_order = owned(order);
-    seed_position = find(~any(used_nodes(faces(face_order, :)), 2), 1);
+    seed_position = find(~any(reshape(used_nodes(faces(face_order, :)), ...
+        numel(face_order), size(faces, 2)), 2), 1);
     if isempty(seed_position)
         error('electrode_faces_by_area:noSeed', ...
             ['No free boundary seed for electrode %d. Every face of its ', ...

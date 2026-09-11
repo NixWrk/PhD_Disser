@@ -60,14 +60,28 @@ switch kind
         description = strjoin([ ...
             "Circumferential cuff whose inner diameter equals ", ...
             "the model arm diameter; axial width is 5 mm"], "");
-    case {"cross_section_equivalent", "area_equivalent_cuff", "large"}
-        kind = "cross_section_equivalent";
+    case {"wide_cuff_equivalent_area", "cross_section_equivalent", ...
+            "area_equivalent_cuff", "large"}
+        kind = "wide_cuff_equivalent_area";
         % Surface area 2*pi*R*w equals cross-section area pi*R^2.
         axial_width_mm = radii / 2;
         contact_inner_diameter_mm = 2 * radii;
         nominal_area_mm2 = pi .* radii.^2;
         description = strjoin(["Wide circumferential cuff with contact area equal ", ...
             "to the arm cross-section area; not an internal cut plane"], "");
+    case "outer_planes_inner_rings"
+        axial_width_mm = repmat(p.Results.RingWidthMm, 4, 1);
+        axial_width_mm([1 4]) = 0;
+        contact_inner_diameter_mm = 2 * radii;
+        nominal_area_mm2 = 2 * pi .* radii .* axial_width_mm;
+        nominal_area_mm2([1 4]) = pi * radii([1 4]).^2;
+        description = "Outer internal current planes; inner circumferential voltage cuffs";
+        centres(1, 2:3) = [arms.right.center_y, arms.right.center_z];
+        centres(4, 2:3) = [arms.left.center_y, arms.left.center_z];
+    case {"cross_section_plane", "ideal_cross_section_plane", "plane"}
+        error('trkg4:retiredFourPlaneMontage', ...
+            ['The four-plane montage was rejected by the author on 2026-09-08. ', ...
+             'Use outer_planes_inner_rings: outer planes and inner 5 mm cuffs.']);
     otherwise
         error('trkg4:unknownArmElectrodeKind', ...
             'Unknown arm electrode kind: %s', electrode_kind);
@@ -119,6 +133,8 @@ spec.arm_radius_mm = radii;
 spec.axial_width_mm = axial_width_mm;
 spec.contact_inner_diameter_mm = contact_inner_diameter_mm;
 spec.nominal_area_mm2 = nominal_area_mm2;
+spec.cross_section_area_per_face_mm2 = pi .* radii.^2;
+spec.is_internal_plane = kind == "outer_planes_inner_rings";
 spec.mesh_target_size_mm = cfg.mesh_target_size_mm;
 spec.position_table = position_table;
 spec.pass_clearance = all(pass_clearance);
@@ -134,7 +150,9 @@ if ~isfile(report_file)
 end
 
 records = jsondecode(fileread(report_file));
-if iscell(records)
+if isstruct(records) && isscalar(records) && isfield(records, 'arm_extension')
+    body_record = records;
+elseif iscell(records)
     body_index = find(cellfun(@(record) ...
         isstruct(record) && isfield(record, 'name') && ...
         strcmp(record.name, 'body'), records), 1);
@@ -143,13 +161,15 @@ if iscell(records)
     else
         body_record = records{body_index};
     end
-else
+elseif isstruct(records) && isfield(records, 'name')
     body_index = find(strcmp({records.name}, 'body'), 1);
     if isempty(body_index)
         body_record = struct();
     else
         body_record = records(body_index);
     end
+else
+    body_record = struct();
 end
 if ~isfield(body_record, 'arm_extension')
     error('trkg4:missingArmGeometry', ...
