@@ -1,5 +1,21 @@
-output/*
+output/**
+!output/
+!output/**/
 !output/.gitkeep
+
+# Keep authored code, notebooks, and HTML reports, including report history.
+!output/**/*.html
+!output/**/*.m
+!output/**/*.py
+!output/**/*.ipynb
+
+# Vendored solver environments and generated caches are reproducible dependencies.
+output/**/python_solver_deps/
+output/**/site-packages/
+output/**/.venv*/
+output/**/venv/
+output/**/__pycache__/
+output/**/.ipynb_checkpoints/
 
 # Real subject data are large and/or private. Keep local copies here,
 # but commit only small examples and documentation.
@@ -7,6 +23,10 @@ data/*/stl/*.stl
 data/*/stl/*.STL
 data/*/signal/*.csv
 data/*/signal/*.CSV
+data/*/electrodes/*.csv
+data/*/electrodes/*.CSV
+data/*/electrodes/*.json
+data/*/source_manifest.json
 
 *.asv
 *.m~

@@ -11,7 +11,8 @@ cfg = trkg4_config('nik');
 trkg4_prepare_runtime(cfg);
 root = cfg.project_root;
 result_tag = 'v5_1mm_local2mm';
-shared = load(fullfile(root, 'output', 'nik_trkg4_arms_full_v5_1mm_local2mm.mat'), ...
+shared = load(fullfile(root, 'output', ...
+    'nik_trkg4_right_rib_050mm_full_v5_1mm_local2mm.mat'), ...
     'fmdl_mesh_units', 'elem_sigma', 'tissue_id', 'tissue_names');
 fmdl_mm = shared.fmdl_mesh_units;
 fmdl_si = trkg4_scale_fmdl_to_si(fmdl_mm, cfg);
@@ -46,15 +47,20 @@ candidates(end + 1, :) = {fit.centre_u_mm(1), fit.centre_v_mm(1), ...
 [~, unique_rows] = unique(candidates(:, 1:3), 'rows', 'stable');
 candidates = candidates(unique_rows, :);
 
-[sizes_mm, measured_z] = local_load_inhale_data(root);
+[sizes_mm, measured_z] = trkg4_load_nik_inhale_data(root);
 experimental_line = robustfit(sizes_mm, measured_z);
 experimental_slope = experimental_line(2);
 pose = local_build_pose_context(fmdl_mm, root, cfg.subject.stl.lungs);
 n_pose = height(candidates);
+requested_pose_count = n_pose;
+valid_pose = true(n_pose, 1);
 n_size = numel(sizes_mm);
 patch_faces = cell(n_pose, n_size, 4);
 h_centre = zeros(n_pose, 1);
 patch_context = [];
+qc_cfg = cfg;
+qc_cfg.electrode_diagnostics_verbose = false;
+qc_cfg.electrode_diagnostics_file = '';
 
 tic_geometry = tic;
 for pose_index = 1:n_pose
@@ -62,28 +68,85 @@ for pose_index = 1:n_pose
         candidates.centre_v_mm(pose_index), candidates.phi_deg(pose_index));
     h_centre(pose_index) = state.h_centre_mm;
     for size_index = 1:n_size
-        centres = local_grid_centres(pose, state, sizes_mm(size_index));
+        [centres, ~] = local_grid_centres(pose, state, sizes_mm(size_index));
         % Same builder as the forward and inverse models. It used to be
         % electrode_faces_by_area_fast, which picked faces by a different
         % rule and sized the patch on the picked faces instead of the induced
         % ones - so this scan optimised a slightly different electrode
         % geometry from the one being refined. The induced faces now come
         % straight out of the builder instead of being rebuilt here.
-        [~, induced_faces, patch_context] = electrode_faces_by_area( ...
-            fmdl_mm, centres, cfg.electrode_area, cfg.z_contact, patch_context);
+        try
+            [electrodes, induced_faces, patch_context] = electrode_faces_by_area( ...
+                fmdl_mm, centres, cfg.electrode_area, cfg.z_contact, patch_context);
+        catch exception
+            expected_geometry_failure = ...
+                any(strcmp(exception.identifier, { ...
+                'electrode_faces_by_area:noSeed', ...
+                'electrode_faces_by_area:patchTooSmall'})) || ...
+                strcmp(exception.identifier, 'trkg4:electrodeDiagnostics');
+            if expected_geometry_failure
+                valid_pose(pose_index) = false;
+                fprintf(['CEM geometry QC rejected candidate %d (u=%.3f, ', ...
+                    'v=%.3f, phi=%.3f): %s\n'], pose_index, ...
+                    candidates.centre_u_mm(pose_index), ...
+                    candidates.centre_v_mm(pose_index), ...
+                    candidates.phi_deg(pose_index), exception.message);
+                break
+            end
+            rethrow(exception);
+        end
+        try
+            fmdl_qc = fmdl_mm;
+            fmdl_qc.electrode = electrodes;
+            trkg4_electrode_diagnostics(fmdl_qc, centres, ...
+                cfg.electrode_order, qc_cfg, centres, induced_faces);
+        catch exception
+            if strcmp(exception.identifier, 'trkg4:electrodeDiagnostics')
+                valid_pose(pose_index) = false;
+                fprintf(['CEM geometry QC rejected candidate %d (u=%.3f, ', ...
+                    'v=%.3f, phi=%.3f): %s\n'], pose_index, ...
+                    candidates.centre_u_mm(pose_index), ...
+                    candidates.centre_v_mm(pose_index), ...
+                    candidates.phi_deg(pose_index), exception.message);
+                break
+            end
+            rethrow(exception);
+        end
         for electrode_index = 1:4
             patch_faces{pose_index, size_index, electrode_index} = ...
                 induced_faces{electrode_index};
         end
     end
 end
+rejected_geometry_count = sum(~valid_pose);
+if ~all(valid_pose)
+    candidates = candidates(valid_pose, :);
+    patch_faces = patch_faces(valid_pose, :, :);
+    h_centre = h_centre(valid_pose);
+    n_pose = height(candidates);
+end
+if ~any(candidates.is_validation)
+    error('trkg4:invalidCemValidationGeometry', ...
+        'The full-EIDORS validation pose was rejected by electrode geometry QC.');
+end
+fprintf('CEM geometry QC: accepted %d of %d poses; rejected %d.\n', ...
+    n_pose, requested_pose_count, rejected_geometry_count);
 geometry_seconds = toc(tic_geometry);
 
 all_patch_faces = unique(vertcat(patch_faces{:}));
 candidate_nodes = unique(reshape(fmdl_mm.boundary(all_patch_faces, :), [], 1));
 candidate_nodes(candidate_nodes == fmdl_si.gnd_node) = [];
-[green, factor_seconds, solve_seconds] = local_bulk_green( ...
-    fmdl_si, elem_sigma, candidate_nodes);
+cache_file = fullfile(root, 'output', ...
+    'nik_trkg4_fast_cem_green_cache_v5_1mm_local2mm.mat');
+cache_settings = struct( ...
+    'mode', 'cem_lowrank_bulk_green', ...
+    'result_tag', result_tag, ...
+    'decomposition', 'chol', ...
+    'green_storage_class', 'single', ...
+    'block_size', 64, ...
+    'contact_impedance_ohm_m2', cfg.z_contact);
+[green, factor_seconds, solve_seconds, cache_reused] = local_bulk_green( ...
+    fmdl_si, elem_sigma, candidate_nodes, cache_file, cache_settings);
 global_to_green = zeros(size(fmdl_mm.nodes, 1), 1);
 global_to_green(candidate_nodes) = 1:numel(candidate_nodes);
 
@@ -134,20 +197,21 @@ output_file = fullfile(root, 'output', ...
 writetable(output, output_file);
 
 summary = table(top_count, local_radius_mm, local_phi_step_deg, ...
-    n_pose, numel(candidate_nodes), ...
+    requested_pose_count, rejected_geometry_count, n_pose, numel(candidate_nodes), ...
     geometry_seconds, factor_seconds, solve_seconds, local_seconds, ...
-    validation_curve_rmse, ...
+    validation_curve_rmse, cache_reused, ...
     'VariableNames', {'PEM_top_count', 'local_radius_mm', ...
-    'local_phi_step_deg', 'evaluated_pose_count', ...
+    'local_phi_step_deg', 'requested_pose_count', ...
+    'rejected_geometry_count', 'evaluated_pose_count', ...
     'patch_node_count', 'geometry_seconds', 'factor_seconds', ...
     'green_solve_seconds', 'local_CEM_seconds', ...
-    'validation_curve_RMSE_ohm'});
+    'validation_curve_RMSE_ohm', 'cache_reused'});
 summary_file = fullfile(root, 'output', ...
     sprintf('nik_trkg4_fast_cem_refine_summary_%s.csv', result_tag));
 writetable(summary, summary_file);
 
 result = struct('candidates', output, 'summary', summary, ...
-    'output_file', output_file, 'summary_file', summary_file);
+    'output_file', output_file, 'summary_file', summary_file, 'cache_file', cache_file);
 fprintf('Fast low-rank CEM refinement saved: %s\n', output_file);
 fprintf('Validation against full EIDORS curve: RMSE %.9g Ohm.\n', ...
     validation_curve_rmse);
@@ -197,8 +261,47 @@ electrode_voltage = schur \ [1; 0; 0; -1];
 z = electrode_voltage(2) - electrode_voltage(3);
 end
 
-function [green, factor_seconds, solve_seconds] = local_bulk_green( ...
-    fmdl_si, elem_sigma, candidate_nodes)
+function [green, factor_seconds, solve_seconds, reused] = local_bulk_green( ...
+    fmdl_si, elem_sigma, candidate_nodes, cache_file, cache_settings)
+factor_seconds = 0;
+solve_seconds = 0;
+reused = false;
+cache_schema = 'trkg4_grounded_green_cache_v2';
+cache_fingerprint = local_green_cache_fingerprint( ...
+    fmdl_si, elem_sigma, candidate_nodes, cache_settings);
+
+if isfile(cache_file)
+    variables = whos('-file', cache_file);
+    variable_names = {variables.name};
+    required = {'green', 'candidate_nodes', ...
+        'cache_fingerprint', 'cache_schema'};
+    if ~all(ismember(required, variable_names))
+        fprintf(['Green cache ignored (legacy cache has no complete ', ...
+            'fingerprint); rebuilding: %s\n'], cache_file);
+    else
+        try
+            cached = load(cache_file, required{:});
+            cache_matches = isequal(cached.cache_schema, cache_schema) && ...
+                isequal(cached.cache_fingerprint, cache_fingerprint) && ...
+                isequal(double(cached.candidate_nodes(:)), ...
+                double(candidate_nodes(:))) && ...
+                isnumeric(cached.green) && ...
+                isequal(size(cached.green), ...
+                [numel(candidate_nodes), numel(candidate_nodes)]);
+            if cache_matches
+                green = cached.green;
+                reused = true;
+                return;
+            end
+            fprintf(['Green cache ignored (physical-input fingerprint ', ...
+                'mismatch); rebuilding: %s\n'], cache_file);
+        catch exception
+            fprintf(['Green cache ignored (could not validate it: %s); ', ...
+                'rebuilding: %s\n'], exception.message, cache_file);
+        end
+    end
+end
+
 model = fmdl_si;
 model.electrode = struct([]);
 model.stimulation = struct([]);
@@ -210,14 +313,17 @@ keep(ground) = [];
 reduced_index = zeros(size(system.E, 1), 1);
 reduced_index(keep) = 1:numel(keep);
 candidate_reduced = reduced_index(candidate_nodes);
+
 tic_factor = tic;
 factor = decomposition(system.E(keep, keep), 'chol');
 factor_seconds = toc(tic_factor);
+
 n = numel(candidate_nodes);
 green = zeros(n, n, 'single');
+block_size = 64;
 tic_solve = tic;
-for first = 1:64:n
-    last = min(first + 63, n);
+for first = 1:block_size:n
+    last = min(first + block_size - 1, n);
     columns = first:last;
     rhs = sparse(candidate_reduced(columns), 1:numel(columns), 1, ...
         numel(keep), numel(columns));
@@ -225,15 +331,24 @@ for first = 1:64:n
     green(:, columns) = single(full(voltage(candidate_reduced, :)));
 end
 solve_seconds = toc(tic_solve);
+
+cache_schema = 'trkg4_grounded_green_cache_v2';
+save(cache_file, 'green', 'candidate_nodes', ...
+    'cache_fingerprint', 'cache_schema', '-v7.3');
 end
 
+function fingerprint = local_green_cache_fingerprint( ...
+    fmdl_si, elem_sigma, candidate_nodes, cache_settings)
+fingerprint = trkg4_green_fingerprint( ...
+    fmdl_si, elem_sigma, candidate_nodes, cache_settings);
+end
 function pose = local_build_pose_context(fmdl, root, lung_file)
 reference = readtable(fullfile(root, 'data', 'nik', 'electrodes', ...
     'electrodes_4_right_rib_140mm_xyz_mm.csv'));
 reference_centres = [reference.x_mm, reference.y_mm, reference.z_mm];
 boundary_nodes = unique(fmdl.boundary(:));
 boundary_xyz = fmdl.nodes(boundary_nodes, :);
-node_normals = local_boundary_node_normals(fmdl);
+[node_normals, ~] = trkg4_boundary_normals(fmdl);
 face_ids = repmat((1:size(fmdl.boundary, 1))', 3, 1);
 vertex_faces = accumarray(fmdl.boundary(:), face_ids, ...
     [size(fmdl.nodes, 1), 1], @(x) {x}, {[]});
@@ -262,12 +377,12 @@ state = struct('centre_xyz_mm', centre, 'axis_unit_xyz', axis / norm(axis), ...
     'h_centre_mm', h);
 end
 
-function centres = local_grid_centres(pose, state, L)
+function [centres, requested] = local_grid_centres(pose, state, L)
 offset = [-L/2; -L/4; L/4; L/2];
-raw = state.centre_xyz_mm + offset .* state.axis_unit_xyz;
+requested = state.centre_xyz_mm + offset .* state.axis_unit_xyz;
 centres = zeros(4, 3);
 for k = 1:4
-    centres(k, :) = local_project_to_skin(pose, raw(k, :));
+    centres(k, :) = local_project_to_skin(pose, requested(k, :));
 end
 end
 
@@ -313,30 +428,4 @@ if va<=0 && (d4-d3)>=0 && (d5-d6)>=0
 end
 denom=1/(va+vb+vc); v=vb*denom; w=vc*denom;
 bary=[1-v-w,v,w]; q=bary(1)*a+bary(2)*b+bary(3)*c;
-end
-
-function normals = local_boundary_node_normals(fmdl)
-faces=fmdl.boundary; nodes=fmdl.nodes;
-p1=nodes(faces(:,1),:); p2=nodes(faces(:,2),:); p3=nodes(faces(:,3),:);
-fn=cross(p2-p1,p3-p1,2); fc=(p1+p2+p3)/3; centre=mean(nodes,1);
-flip=dot(fn,fc-centre,2)<0; fn(flip,:)=-fn(flip,:);
-normals=zeros(size(nodes));
-for d=1:3
-    normals(:,d)=accumarray(faces(:),repmat(fn(:,d),3,1), ...
-        [size(nodes,1),1],@sum,0);
-end
-lengths=vecnorm(normals,2,2); valid=lengths>0;
-normals(valid,:)=normals(valid,:)./lengths(valid);
-end
-
-function [sizes, z] = local_load_inhale_data(root)
-files=dir(fullfile(root,'..','Colab Notebooks','timestamps','*nik.json'));
-sizes=[]; z=[];
-for k=1:numel(files)
-    record=jsondecode(fileread(fullfile(files(k).folder,files(k).name)));
-    if record.size_mm==90, continue; end
-    holds=struct2cell(record.hold_levels);
-    sizes(end+1,1)=record.size_mm; z(end+1,1)=holds{1}; %#ok<AGROW>
-end
-[sizes,order]=sort(sizes); z=z(order);
 end

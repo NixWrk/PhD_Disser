@@ -627,13 +627,13 @@ button { min-height: 36px; padding: 7px 12px; border: 1px solid #9aa0a6; border-
 button[aria-pressed="true"] { border-color: #1a73e8; background: #e8f0fe; }
 button:disabled { cursor: not-allowed; opacity: .55; }
 .instruction, #status { margin: 6px 0; }
-#status { min-height: 1.4em; }
+#status { min-height: 1.4em; position: sticky; top: 0; z-index: 20; background: #fff; padding: 8px 0; }
 #status.error { color: #b3261e; }
 #surface-landmark-picker-plot { width: 100%; min-height: 680px; }
 .montage-controls { max-width: 1120px; margin: 12px 0; padding: 12px; border: 1px solid #d8dee8; border-radius: 6px; background: #f8fafc; }
 .distance-fields { display: flex; flex-wrap: wrap; gap: 12px; align-items: end; margin: 8px 0; }
 .distance-field { display: grid; gap: 4px; min-width: 230px; }
-.distance-field input { min-height: 32px; padding: 3px 6px; border: 1px solid #9aa0a6; border-radius: 4px; font: inherit; }
+.distance-field select, .distance-field input { min-height: 32px; padding: 3px 6px; border: 1px solid #9aa0a6; border-radius: 4px; font: inherit; }
 #symmetry-result { margin: 8px 0 4px; }
 .layer-controls { display: grid; grid-template-columns: repeat(auto-fit, minmax(245px, 1fr)); gap: 8px 14px; max-width: 1120px; margin: 10px 0; padding: 10px 12px; background: #f5f7fa; border: 1px solid #d8dee8; border-radius: 6px; }
 .layer-row { display: grid; grid-template-columns: auto 1fr 3.5em; align-items: center; gap: 8px; }
@@ -670,6 +670,164 @@ _SCRIPT_TEMPLATE = r"""
   const symmetryResult = document.getElementById("symmetry-result");
   const explicitPanel = document.getElementById("explicit-controls");
   const symmetricPanel = document.getElementById("symmetric-controls");
+
+
+  let pairSurface = null;
+  let activePair = "I";
+  let positiveSide = null;
+  let hoverPair = null;
+  let previewBusy = false;
+  let previewPending = false;
+  let dragging = false;
+  let suppressClickAfterDrag = false;
+  let mouseDownAt = null;
+  let pendingClickPoint = null;
+  let pressedPair = null;
+  let pointCommittedInGesture = false;
+  const pairPanel = document.getElementById("paired-controls");
+  const pairAxisInput = document.getElementById("pair-plane-axis");
+  const pairOffsetInput = document.getElementById("pair-plane-offset");
+  const pairHint = document.getElementById("pair-preview-status");
+
+  function numericArray(value) {
+    if (Array.isArray(value) || ArrayBuffer.isView(value)) return Array.from(value);
+    const types = { f8: Float64Array, f4: Float32Array, i4: Int32Array,
+      u4: Uint32Array, i2: Int16Array, u2: Uint16Array, i1: Int8Array, u1: Uint8Array };
+    const Type = value && types[value.dtype];
+    if (!Type || !value.bdata) throw Error("Не удалось прочитать координаты поверхности.");
+    return Array.from(new Type(Uint8Array.from(atob(value.bdata), c => c.charCodeAt(0)).buffer));
+  }
+  function ensurePairSurface() {
+    if (pairSurface) return pairSurface;
+    const trace = graph.data[traceIndex("layer_body")];
+    const xyz = [trace.x, trace.y, trace.z].map(numericArray);
+    const ijk = [trace.i, trace.j, trace.k].map(numericArray);
+    pairSurface = SurfacePairGeometry.createSurface(
+      xyz[0].map((_, i) => xyz.map(a => a[i])),
+      ijk[0].map((_, i) => ijk.map(a => a[i])));
+    const axis = Number(pairAxisInput.value);
+    pairOffsetInput.value = ((pairSurface.bounds[axis][0] + pairSurface.bounds[axis][1]) / 2).toFixed(3);
+    return pairSurface;
+  }
+  function selectPair(pair) {
+    activePair = pair;
+    hoverPair = null;
+    paintPairPreview();
+    document.querySelectorAll("[data-pair]").forEach(button => {
+      button.setAttribute("aria-pressed", String(button.dataset.pair === pair));
+    });
+    pairHint.textContent = pair ? "Наведите указатель на тело: появятся две будущие позиции." : "Обе пары заданы. Можно скачать JSON или выбрать пару для изменения.";
+    setStatus(pair === "I" ? "Щелчок 1: выберите пару токовых электродов I+ / I−."
+      : pair === "V" ? "Щелчок 2: выберите пару измерительных электродов V+ / V−."
+      : "Четыре электрода заданы двумя щелчками. Укажите имя варианта и скачайте JSON.", false);
+  }
+  async function paintPairPreview() {
+    previewPending = true;
+    if (previewBusy) return;
+    previewBusy = true;
+    try {
+      while (previewPending) {
+        previewPending = false;
+        const candidate = state.mode === "mirrored_pairs" ? hoverPair : null;
+        const annotations = [];
+        function annotate(name, point, preview) {
+          const color = preview ? (name.endsWith("_plus") ? "#008f65" : "#008fb3") : "#9c2f35";
+          annotations.push({
+            x: point[0], y: point[1], z: point[2],
+            text: (preview ? "○ " : "● ") + name.replace("_plus", "+").replace("_minus", "−"),
+            showarrow: true, arrowhead: 2, arrowsize: 1.2, arrowwidth: 2, arrowcolor: color,
+            ax: name.endsWith("_plus") ? -25 : 25, ay: -30,
+            bgcolor: "rgba(255,255,255,0.95)", bordercolor: color, borderwidth: 2, borderpad: 3,
+            font: { color, size: 15 }, captureevents: false
+          });
+        }
+        if (state.mode === "mirrored_pairs") {
+          for (const name of electrodeOrder) {
+            const point = state.preliminaryCenters && state.preliminaryCenters[name];
+            if (point && !(candidate && candidate.names.includes(name))) annotate(name, point, false);
+          }
+          if (candidate) candidate.names.forEach((name, i) => annotate(name, candidate.points[i], true));
+        }
+        // Scene annotations are projected by Plotly and stay visible on the far side.
+        // They do not intercept the pointer or require redrawing the surface meshes.
+        await Plotly.relayout(graph, { "scene.annotations": annotations });
+      }
+    } catch (error) {
+      setStatus("Не удалось обновить подсветку пары: " + error.message, true);
+    } finally { previewBusy = false; }
+  }
+  function clearPairHover() {
+    if (!hoverPair) return;
+    hoverPair = null;
+    paintPairPreview();
+  }
+  function candidatePair(xyz) {
+    const surface = ensurePairSurface();
+    if (!pairOffsetInput.value.trim() || !activePair) return null;
+    const pair = surface.pair(xyz, Number(pairAxisInput.value), Number(pairOffsetInput.value));
+    if (!pair) return null;
+    const orderMatches = positiveSide === null || pair.side === positiveSide;
+    return { points: orderMatches ? [pair.selected, pair.opposite] : [pair.opposite, pair.selected],
+      names: [activePair + "_plus", activePair + "_minus"], side: pair.side,
+      projectionMm: pair.projectionMm };
+  }
+  function previewPairAt(xyz) {
+    if (state.mode !== "mirrored_pairs" || !activePair || dragging || !layerIsVisible("body")) return;
+    const key = activePair + ":" + xyz.join(",");
+    if (hoverPair && hoverPair.sourceKey === key) return;
+    const previous = hoverPair;
+    hoverPair = candidatePair(xyz);
+    if (hoverPair) hoverPair.sourceKey = key;
+    if (hoverPair || previous) paintPairPreview();
+    pairHint.textContent = hoverPair
+      ? hoverPair.names.join(" / ") + ": " + hoverPair.points.map(formatPoint).join(" ↔ ") +
+        ". Смещение ответной точки от зеркальной: " + hoverPair.projectionMm.toFixed(2) + " мм."
+      : "Выберите точку по одну сторону плоскости; обе позиции должны лежать на теле.";
+  }
+  function commitPair(xyz, selectedCandidate) {
+    if (!activePair || dragging || !layerIsVisible("body")) return;
+    // Freeze the pair that was displayed when the pointer was pressed.
+    const candidate = selectedCandidate || candidatePair(xyz);
+    if (!candidate) {
+      setStatus("Здесь нельзя построить пару. Проверьте положение плоскости и выберите точку дальше от неё.", true);
+      return;
+    }
+    const others = state.preliminaryCenters || {};
+    for (const name of electrodeOrder.filter(name => !candidate.names.includes(name))) {
+      if (others[name] && candidate.points.some(p => Math.hypot(...p.map((x, i) => x - others[name][i])) < 1e-6)) {
+        setStatus("Центры разных электродов совпадают. Выберите другое положение пары.", true);
+        return;
+      }
+    }
+    if (positiveSide === null) positiveSide = candidate.side;
+    if (!state.preliminaryCenters) state.preliminaryCenters = {};
+    candidate.names.forEach((name, i) => {
+      state.preliminaryCenters[name] = candidate.points[i].map(x => Number(x.toFixed(6)));
+    });
+    renderPreliminaryCenters();
+    renderPointLists();
+    const next = ["I", "V"].find(pair => !state.preliminaryCenters[pair + "_plus"]);
+    selectPair(next || null);
+  }
+  function resetPairs() {
+    positiveSide = null;
+    clearPreliminaryCenters();
+    selectPair("I");
+    renderPointLists();
+  }
+  document.getElementById("mode-paired").addEventListener("click", () => {
+    setPlacementMode("mirrored_pairs").catch(error => setStatus(error.message, true));
+  });
+  document.querySelectorAll("[data-pair]").forEach(button => {
+    button.addEventListener("click", () => selectPair(button.dataset.pair));
+  });
+  document.getElementById("clear-pairs").addEventListener("click", resetPairs);
+  pairAxisInput.addEventListener("change", () => {
+    const surface = ensurePairSurface(), axis = Number(pairAxisInput.value);
+    pairOffsetInput.value = ((surface.bounds[axis][0] + surface.bounds[axis][1]) / 2).toFixed(3);
+    resetPairs();
+  });
+  pairOffsetInput.addEventListener("input", resetPairs);
 
   function traceIndex(meta) {
     if (!graph || !graph.data) return -1;
@@ -712,12 +870,12 @@ _SCRIPT_TEMPLATE = r"""
       });
     const guidesReady = state.right.length >= minimumGuidePoints &&
       state.left.length >= minimumGuidePoints;
-    const ready = state.mode === "explicit_points"
+    const ready = state.mode !== "symmetric_paths"
       ? centresReady
       : guidesReady && centresReady && state.symmetry !== null;
     downloadButton.disabled = !ready;
     if (!ready && !status.classList.contains("error")) {
-      if (state.mode === "explicit_points") {
+      if (state.mode !== "symmetric_paths") {
         const selected = state.preliminaryCenters
           ? Object.keys(state.preliminaryCenters).length : 0;
         setStatus("Выберите четыре центра электродов на внешней поверхности: " + selected + " из 4.", false);
@@ -818,7 +976,7 @@ _SCRIPT_TEMPLATE = r"""
         x: [coordinates.map(function (point) { return point[0]; })],
         y: [coordinates.map(function (point) { return point[1]; })],
         z: [coordinates.map(function (point) { return point[2]; })],
-        text: [resolvedNames]
+        text: [state.mode === "mirrored_pairs" ? [] : resolvedNames]
       }, [index]);
     }
   }
@@ -831,20 +989,30 @@ _SCRIPT_TEMPLATE = r"""
   }
   async function setPlacementMode(mode) {
     state.mode = mode;
+    positiveSide = null;
+    clearPairHover();
     state.right = [];
     state.left = [];
     state.explicitHistory = [];
     clearPreliminaryCenters();
     await updateGuideTrace("right");
     await updateGuideTrace("left");
+    const bodyIndex = traceIndex("layer_body");
+    if (bodyIndex >= 0) await Plotly.restyle(graph, {
+      hoverinfo: mode === "mirrored_pairs" ? "none" : "all",
+      hovertemplate: mode === "mirrored_pairs" ? null : "x=%{x:.3f} мм<br>y=%{y:.3f} мм<br>z=%{z:.3f} мм<extra>поверхность тела</extra>"
+    }, [bodyIndex]);
+    pairPanel.hidden = mode !== "mirrored_pairs";
+    document.getElementById("mode-paired").setAttribute("aria-pressed", String(mode === "mirrored_pairs"));
     explicitPanel.hidden = mode !== "explicit_points";
     symmetricPanel.hidden = mode !== "symmetric_paths";
     document.getElementById("mode-explicit").setAttribute("aria-pressed", String(mode === "explicit_points"));
     document.getElementById("mode-symmetric").setAttribute("aria-pressed", String(mode === "symmetric_paths"));
     document.getElementById("path-summary").hidden = mode !== "symmetric_paths";
-    if (mode === "explicit_points") setActiveElectrode("I_plus");
-    else setActiveSide("right");
     renderPointLists();
+    if (mode === "mirrored_pairs") { ensurePairSurface(); selectPair("I"); }
+    else if (mode === "explicit_points") setActiveElectrode("I_plus");
+    else setActiveSide("right");
   }
   function nextMissingElectrode() {
     if (!state.preliminaryCenters) return electrodeOrder[0];
@@ -897,7 +1065,7 @@ _SCRIPT_TEMPLATE = r"""
     const source = point.data.meta === "surface_pick_proxy" && point.customdata && point.customdata.length === 3
       ? point.customdata
       : [point.x, point.y, point.z];
-    const xyz = [Number(source[0]), Number(source[1]), Number(source[2])];
+    const xyz = [source[0], source[1], source[2]];
     return xyz.every(validNumber) ? xyz : null;
   }
   async function addPoint(point) {
@@ -906,6 +1074,7 @@ _SCRIPT_TEMPLATE = r"""
       setStatus("Выберите точку на внешней поверхности тела, а не на внутренней структуре.", true);
       return;
     }
+    if (state.mode === "mirrored_pairs") { commitPair(xyz); return; }
     const rounded = xyz.map(function (value) { return Number(value.toFixed(6)); });
     if (state.mode === "explicit_points") {
       if (!state.preliminaryCenters) state.preliminaryCenters = {};
@@ -960,7 +1129,7 @@ _SCRIPT_TEMPLATE = r"""
       schema: "trkg4_ttrkg_surface_v3",
       modality: "TTRKG",
       montage: "four_electrode_surface",
-      placement_mode: state.mode,
+      placement_mode: symmetric ? "symmetric_paths" : "explicit_points",
       coordinate_system: "surface_path_v1",
       units: "mm",
       source_basename: sourceBasename,
@@ -1053,6 +1222,7 @@ _SCRIPT_TEMPLATE = r"""
     return !["bones", "lungs", "heart"].some(layerIsVisible);
   }
   function setLayerStates(states) {
+    clearPairHover();
     const indices = [];
     const visibility = [];
     const opacity = [];
@@ -1138,10 +1308,66 @@ _SCRIPT_TEMPLATE = r"""
       { key: "heart", visible: true, opacity: 1.0 }
     ]);
   });
+  function acceptPointClick(point) {
+    if (clickBusy || pointCommittedInGesture) return;
+    pointCommittedInGesture = true;
+    clickBusy = true;
+    setStatus("Добавление точки…", false);
+    window.requestAnimationFrame(function () {
+      addPoint(point).catch(function (error) {
+        setStatus("Не удалось добавить точку: " + error.message, true);
+      }).finally(function () { clickBusy = false; });
+    });
+  }
   function bindPlotlyClick(attempt) {
     if (graph && typeof graph.on === "function") {
+      graph.on("plotly_hover", function (event) {
+        const point = event && event.points && event.points.find(p =>
+          p.data && (p.data.meta === "layer_body" || p.data.meta === "surface_pick_proxy"));
+        const xyz = pointFromClick(point);
+        if (xyz) previewPairAt(xyz);
+        else if (!previewBusy) clearPairHover();
+      });
+      graph.on("plotly_unhover", function () {
+        if (!previewBusy) clearPairHover();
+      });
+      graph.addEventListener("pointerdown", event => {
+        mouseDownAt = [event.clientX, event.clientY]; dragging = false; suppressClickAfterDrag = false;
+        pendingClickPoint = null; pointCommittedInGesture = false;
+        pressedPair = state.mode === "mirrored_pairs" && !previewBusy &&
+          event.target.tagName === "CANVAS" ? hoverPair : null;
+      }, true);
+      graph.addEventListener("pointermove", event => {
+        if (mouseDownAt && Math.hypot(event.clientX - mouseDownAt[0], event.clientY - mouseDownAt[1]) > 4) {
+          dragging = true; suppressClickAfterDrag = true; clearPairHover();
+        }
+      }, true);
+      window.addEventListener("pointerup", event => {
+        if (mouseDownAt && Math.hypot(event.clientX - mouseDownAt[0], event.clientY - mouseDownAt[1]) > 4) suppressClickAfterDrag = true;
+        mouseDownAt = null;
+        dragging = false;
+        const pair = pressedPair;
+        pressedPair = null;
+        if (state.mode === "mirrored_pairs") {
+          if (pair && !suppressClickAfterDrag) {
+            pointCommittedInGesture = true;
+            commitPair(null, pair);
+          }
+          pendingClickPoint = null;
+          return;
+        }
+        // Some Plotly versions emit plotly_click on press, before a drag is known.
+        const point = pendingClickPoint;
+        pendingClickPoint = null;
+        if (point && !suppressClickAfterDrag && !pointCommittedInGesture) acceptPointClick(point);
+      }, true);
+      graph.addEventListener("pointerleave", clearPairHover);
+      graph.on("plotly_relayout", function (changes) {
+        if (Object.keys(changes).some(key => key.includes("camera") || key === "width" || key === "height")) clearPairHover();
+      });
       graph.on("plotly_click", function (event) {
-        if (clickBusy || !event || !event.points || !event.points.length) return;
+        if (state.mode === "mirrored_pairs") return;
+        if (clickBusy || dragging || suppressClickAfterDrag || !event || !event.points || !event.points.length) return;
         const point = event.points.find(function (candidate) {
           return candidate.data && (candidate.data.meta === "surface_pick_proxy" || candidate.data.meta === "layer_body");
         });
@@ -1149,13 +1375,8 @@ _SCRIPT_TEMPLATE = r"""
           setStatus("Щёлкните по внешней поверхности тела. Внутренние слои служат только ориентирами.", true);
           return;
         }
-        clickBusy = true;
-        setStatus("Добавление точки…", false);
-        window.requestAnimationFrame(function () {
-          addPoint(point).catch(function (error) {
-            setStatus("Не удалось добавить точку: " + error.message, true);
-          }).finally(function () { clickBusy = false; });
-        });
+        if (mouseDownAt) { pendingClickPoint = point; return; }
+        if (!pointCommittedInGesture) acceptPointClick(point);
       });
       return;
     }
@@ -1231,7 +1452,7 @@ def render_picker_html(body: DisplayLayer, references: list[DisplayLayer]) -> st
         raise RuntimeError("Plotly не вернул идентификатор графика")
     graph_id = match.group(1)
     basename = Path(body.source_basename).name
-    script = (
+    script = Path(__file__).with_name("surface_pair_geometry.js").read_text(encoding="utf-8-sig") + (
         _SCRIPT_TEMPLATE
         .replace("__GRAPH_ID__", _json_script_literal(graph_id))
         .replace("__SOURCE_BASENAME__", _json_script_literal(basename))
@@ -1241,7 +1462,7 @@ def render_picker_html(body: DisplayLayer, references: list[DisplayLayer]) -> st
         "modality": MODALITY,
         "montage": MONTAGE,
         "default_placement_mode": PLACEMENT_EXPLICIT,
-        "placement_modes": [PLACEMENT_EXPLICIT, PLACEMENT_SYMMETRIC],
+        "placement_modes": [PLACEMENT_EXPLICIT, "mirrored_pairs", PLACEMENT_SYMMETRIC],
         "coordinate_system": COORDINATE_SYSTEM,
         "symmetry": _symmetry_contract(),
         "electrode_order": list(ELECTRODE_ORDER),
@@ -1265,10 +1486,10 @@ def render_picker_html(body: DisplayLayer, references: list[DisplayLayer]) -> st
         f"<style>{_STYLE}</style>\n</head>\n<body>\n"
         "<h1>Инструмент монтажа электродов ТТРКГ</h1>\n"
         '<p class="warning"><strong>Внимание:</strong> это инструмент монтажа электродов ТТРКГ. '
-        "Центры могут быть заданы на любом участке внешней поверхности тела. Два поверхностных пути "
-        "для сторон I+/V+ и I-/V- задаются независимо. Режим «Расставить симметрично» "
-        "использует равные расстояния вдоль этих путей, не отражает XYZ и не является "
-        "анатомической валидацией. Точные центры пересчитываются MATLAB по поверхности.</p>\n"
+        "Центры выбираются на внешней поверхности тела. Режим «Симметрично — 2 щелчка» "
+        "создаёт зеркальную пару с проекцией на поверхность. Режим «Симметричные пути» "
+        "использует равные расстояния по двум направляющим. Это геометрические способы выбора; "
+        "они не являются анатомической валидацией. Точные центры пересчитываются MATLAB по поверхности.</p>\n"
         '<p class="instruction">Поверхность тела по умолчанию непрозрачна. '
         "Чтобы увидеть внутренние структуры, уменьшите её непрозрачность или "
         "временно отключите слой. Легенда также позволяет скрывать слои.</p>\n"
@@ -1282,8 +1503,20 @@ def render_picker_html(body: DisplayLayer, references: list[DisplayLayer]) -> st
         '<div class="toolbar" aria-label="Способ задания координат">\n'
         '<span>Размещение:</span>\n'
         '<button id="mode-explicit" type="button" aria-pressed="true">Четыре точки</button>\n'
+        '<button id="mode-paired" type="button" aria-pressed="false">Симметрично — 2 щелчка</button>\n'
         '<button id="mode-symmetric" type="button" aria-pressed="false">Симметричные пути</button>\n'
         '</div>\n'
+        '<section id="paired-controls" class="montage-controls" aria-labelledby="paired-heading" hidden>\n'
+        '<h2 id="paired-heading">Симметричная расстановка: два щелчка</h2>\n'
+        '<p>Наведите указатель на поверхность: подсветятся выбранная и ответная позиции. Первый щелчок ставит I+/I−, второй — V+/V−. Перетаскивание мыши вращает модель.</p>\n'
+        '<div class="toolbar"><button type="button" data-pair="I" aria-pressed="true">1 · Токовая пара I+/I−</button><button type="button" data-pair="V" aria-pressed="false">2 · Измерительная пара V+/V−</button><button id="clear-pairs" type="button">Очистить обе пары</button></div>\n'
+        '<p id="pair-preview-status" aria-live="off">Наведите указатель на тело.</p>\n'
+        '<details><summary>Плоскость симметрии</summary>\n'
+        '<div class="distance-fields"><label class="distance-field">Нормаль к плоскости<select id="pair-plane-axis"><option value="0">X (левая / правая стороны)</option><option value="1">Y</option><option value="2">Z</option></select></label>\n'
+        '<label class="distance-field">Координата плоскости, мм<input id="pair-plane-offset" type="number" step="0.1" value="0"></label></div>\n'
+        '<p>Начальная плоскость проходит посередине габаритов тела по X. Её можно уточнить. Это геометрическое приближение; ответная точка проецируется на поверхность. Изменение плоскости очищает обе пары.</p></details>\n'
+        '<p>В JSON сохраняются все четыре выбранных центра. Их назначение и последующая проверка в MATLAB остаются прежними.</p>\n'
+        '</section>\n'
         '<section id="explicit-controls" class="montage-controls" aria-labelledby="explicit-heading">\n'
         '<h2 id="explicit-heading">Свободное размещение на поверхности</h2>\n'
         '<p class="instruction">Последовательно выберите центры I+, V+, V- и I- на любом участке внешней поверхности тела. '
@@ -1329,12 +1562,13 @@ def render_picker_html(body: DisplayLayer, references: list[DisplayLayer]) -> st
         '<input id="montage-id" type="text" value="ttrkg_001" maxlength="64" pattern="[a-z][a-z0-9_-]{0,63}" spellcheck="false" autocomplete="off" aria-describedby="montage-id-help">\n'
         '<p id="montage-id-help">Например: ttrkg_001, ttrkg_002, ttrkg_003. Для каждого варианта используйте отдельное имя файла.</p>\n'
         '<button id="download-json" type="button" disabled>Скачать JSON</button>\n'
-        '<details id="multiple-montages-help" open><summary>Как сохранить несколько вариантов для сравнения</summary>\n'
+        '<details id="multiple-montages-help"><summary>Как сохранить несколько вариантов для сравнения</summary>\n'
         '<ol><li>В режиме «Четыре точки» задайте I+, V+, V− и I−. I — токовые электроды, V — измерительные. Один вариант содержит всю четвёрку.</li>\n'
         '<li>Укажите имя ttrkg_001, нажмите «Скачать JSON» и проверьте, что браузер сохранил ttrkg_001.json.</li>\n'
         '<li>Для следующего варианта выберите кнопку нужного электрода и новую точку. Остальные три сохранятся. Для полностью новой расстановки нажмите «Очистить четыре точки».</li>\n'
         '<li>Замените имя на ttrkg_002 и снова скачайте JSON. Повторите для всех вариантов; каждый файл содержит полную расстановку, даже если изменена только одна точка.</li>\n'
         '<li>Соберите выбранные JSON в одну папку и передайте их список для расчёта. Отдельно укажите форму и размер контактов и какие параметры одинаковы у всех вариантов.</li></ol>\n'
+        '<p>В режиме «Симметрично — 2 щелчка» сначала наведите указатель для просмотра пары, затем щёлкните: первый щелчок задаёт I+/I−, второй — V+/V−. Скачайте JSON под отдельным именем.</p>\n'
         '<p>В режиме «Симметричные пути» после изменения расстояний снова нажмите «Расставить симметрично», затем скачайте вариант под новым именем.</p>\n'
         '<p><strong>Что будет дальше:</strong> координаты привязываются к расчётной поверхности, строятся и проверяются контактные площадки EIDORS, после чего каждый принятый вариант добавляется отдельным монтажом в исследование чувствительности. Автоматического запуска расчётов из этого HTML пока нет.</p>\n'
         '<p>Перезагрузка страницы удаляет текущую несохранённую расстановку. Импорт ранее скачанного JSON в этот интерфейс пока не реализован.</p></details>\n'
@@ -1420,7 +1654,7 @@ def build_picker_html(
         "modality": MODALITY,
         "montage": MONTAGE,
         "default_placement_mode": PLACEMENT_EXPLICIT,
-        "placement_modes": [PLACEMENT_EXPLICIT, PLACEMENT_SYMMETRIC],
+        "placement_modes": [PLACEMENT_EXPLICIT, "mirrored_pairs", PLACEMENT_SYMMETRIC],
         "coordinate_system": COORDINATE_SYSTEM,
         "units": UNITS,
         "symmetry": _symmetry_contract(),

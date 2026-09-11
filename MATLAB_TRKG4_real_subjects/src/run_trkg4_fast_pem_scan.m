@@ -12,14 +12,16 @@ if nargin < 3 || isempty(top_count), top_count = 250; end
 cfg = trkg4_config('nik');
 trkg4_prepare_runtime(cfg);
 root = cfg.project_root;
-shared_file = fullfile(root, 'output', 'nik_trkg4_arms_full_v5_1mm_local2mm.mat');
+shared_file = fullfile(root, 'output', ...
+    'nik_trkg4_right_rib_050mm_full_v5_1mm_local2mm.mat');
 shared = load(shared_file, 'fmdl_mesh_units', 'elem_sigma', ...
     'tissue_id', 'tissue_names');
 fmdl_mm = shared.fmdl_mesh_units;
 fmdl_si = trkg4_scale_fmdl_to_si(fmdl_mm, cfg);
 
-fit = readtable(fullfile(root, 'output', ...
-    'nik_trkg4_inverse_inhale_fit_summary.csv'));
+result_tag = 'v5_1mm_local2mm';
+fit = readtable(fullfile(root, 'output', sprintf( ...
+    'nik_trkg4_inverse_inhale_fit_summary_%s.csv', result_tag)));
 rho_soft = fit.rho_soft_ohm_m(1);
 rho_lung = fit.rho_lungs_ohm_m(1);
 elem_sigma = shared.elem_sigma;
@@ -28,14 +30,14 @@ lung_id = find(strcmp(shared.tissue_names, 'lungs'), 1);
 elem_sigma(shared.tissue_id == soft_id) = 1 / rho_soft;
 elem_sigma(shared.tissue_id == lung_id) = 1 / rho_lung;
 
-[sizes_mm, measured_z] = local_load_inhale_data(root);
+[sizes_mm, measured_z] = trkg4_load_nik_inhale_data(root);
 experimental_slope = robustfit(sizes_mm, measured_z);
 experimental_slope = experimental_slope(2);
 
 boundary_nodes = unique(fmdl_mm.boundary(:));
 boundary_xyz = fmdl_mm.nodes(boundary_nodes, :);
-node_normals = local_boundary_node_normals(fmdl_mm);
-[c0, n0, u0, v0] = local_reference_frame(root, fmdl_mm, ...
+[node_normals, ~] = trkg4_boundary_normals(fmdl_mm);
+[c0, ~, u0, v0] = local_reference_frame(root, fmdl_mm, ...
     boundary_nodes, boundary_xyz, node_normals);
 
 % All requested 1-mm tangent-plane coordinates are retained, but raw grid
@@ -121,7 +123,8 @@ electrode_global_by_pose = reshape( ...
 % Affine PEM->CEM correction from previously evaluated poses having exactly
 % the same material parameters. This corrects the systematic point-vs-area
 % electrode scale, while the validation table exposes the remaining error.
-history = readtable(fullfile(root, 'output', 'nik_trkg4_inverse_inhale_history.csv'));
+history = readtable(fullfile(root, 'output', sprintf( ...
+    'nik_trkg4_inverse_inhale_history_%s.csv', result_tag)));
 same_rho = abs(history.rho_soft_ohm_m - rho_soft) < 1e-9 & ...
     abs(history.rho_lungs_ohm_m - rho_lung) < 1e-9;
 validation_history = history(same_rho, :);
@@ -139,16 +142,34 @@ end
 candidate_global_nodes = unique(double([electrode_global_by_pose(:); ...
     validation_electrode_global(:)]));
 candidate_global_nodes(candidate_global_nodes == fmdl_si.gnd_node) = [];
-cache_file = fullfile(root, 'output', 'nik_trkg4_fast_pem_green_cache_v5_1mm_local2mm.mat');
-cache_key = sprintf('n%d_e%d_rho%.9g_%.9g_step%.6g_phi%.6g_phi20', ...
-    size(fmdl_mm.nodes, 1), size(fmdl_mm.elems, 1), ...
-    rho_soft, rho_lung, coordinate_step_mm, phi_step_deg);
+cache_file = fullfile(root, 'output', ...
+    'nik_trkg4_fast_pem_green_cache_v5_1mm_local2mm.mat');
+cache_settings = struct( ...
+    'mode', 'pem_point_transfer', ...
+    'result_tag', result_tag, ...
+    'coordinate_step_mm', coordinate_step_mm, ...
+    'phi_step_deg', phi_step_deg, ...
+    'decomposition', 'chol', ...
+    'green_storage_class', 'single', ...
+    'block_size', 64, ...
+    'contact_impedance_ohm_m2', cfg.z_contact);
 [green, cache_reused, factor_seconds, solve_seconds] = local_green_matrix( ...
-    fmdl_si, elem_sigma, candidate_global_nodes, cache_file, cache_key);
+    fmdl_si, elem_sigma, candidate_global_nodes, cache_file, cache_settings);
+% The reduced FEM Green matrix omits the arbitrary gauge node. A point
+% electrode may still coincide with it, so represent that node by an
+% explicit zero-potential row and column instead of producing index zero.
+green_with_ground = zeros(size(green) + 1, 'like', green);
+green_with_ground(2:end, 2:end) = green;
+green = green_with_ground;
 global_to_candidate = zeros(size(fmdl_mm.nodes, 1), 1, 'uint32');
-global_to_candidate(candidate_global_nodes) = uint32(1:numel(candidate_global_nodes));
+global_to_candidate(fmdl_si.gnd_node) = 1;
+global_to_candidate(candidate_global_nodes) = uint32(2:numel(candidate_global_nodes) + 1);
 
 electrode_local = double(global_to_candidate(double(electrode_global_by_pose)));
+if any(electrode_local(:) == 0)
+    error('trkg4:pemNodeMappingIncomplete', ...
+        'At least one PEM electrode node is absent from the Green mapping.');
+end
 z_pem = zeros(n_pose, n_size);
 green_size = size(green);
 for size_index = 1:n_size
@@ -245,54 +266,6 @@ fprintf('PEM/CEM validation RMSE %.4f Ohm, correlation %.5f.\n', ...
     validation_rmse, validation_correlation);
 end
 
-function [green, reused, factor_seconds, solve_seconds] = local_green_matrix( ...
-    fmdl_si, elem_sigma, candidate_nodes, cache_file, cache_key)
-reused = false;
-factor_seconds = 0;
-solve_seconds = 0;
-if isfile(cache_file)
-    cached = load(cache_file, 'green', 'candidate_nodes', 'cache_key');
-    if isfield(cached, 'cache_key') && strcmp(cached.cache_key, cache_key) && ...
-            isequal(cached.candidate_nodes, candidate_nodes)
-        green = cached.green;
-        reused = true;
-        return;
-    end
-end
-
-model = fmdl_si;
-model.electrode = struct([]);
-model.stimulation = struct([]);
-img = mk_image(model, elem_sigma);
-system = calc_system_mat(img);
-ground = model.gnd_node;
-keep_nodes = (1:size(system.E, 1))';
-keep_nodes(ground) = [];
-reduced_index = zeros(size(system.E, 1), 1);
-reduced_index(keep_nodes) = 1:numel(keep_nodes);
-candidate_reduced = reduced_index(candidate_nodes);
-
-tic_factor = tic;
-factor = decomposition(system.E(keep_nodes, keep_nodes), 'chol');
-factor_seconds = toc(tic_factor);
-
-n_candidate = numel(candidate_nodes);
-green = zeros(n_candidate, n_candidate, 'single');
-block_size = 64;
-tic_solve = tic;
-for first = 1:block_size:n_candidate
-    last = min(first + block_size - 1, n_candidate);
-    columns = first:last;
-    rhs = sparse(candidate_reduced(columns), 1:numel(columns), 1, ...
-        numel(keep_nodes), numel(columns));
-    voltage = factor \ rhs;
-    green(:, columns) = single(full(voltage(candidate_reduced, :)));
-end
-solve_seconds = toc(tic_solve);
-candidate_nodes = candidate_nodes; %#ok<NASGU>
-save(cache_file, 'green', 'candidate_nodes', 'cache_key', '-v7.3');
-end
-
 function z = local_evaluate_pose(u, v, phi, sizes, c0, u0, v0, ...
     boundary_nodes, boundary_xyz, node_normals, node_map, green)
 electrode_global = local_pose_electrode_nodes(u, v, phi, sizes, ...
@@ -344,40 +317,84 @@ u0 = u0 / norm(u0);
 v0 = cross(n0, u0);
 v0 = v0 / norm(v0);
 end
+function [green, reused, factor_seconds, solve_seconds] = local_green_matrix( ...
+    fmdl_si, elem_sigma, candidate_nodes, cache_file, cache_settings)
+reused = false;
+factor_seconds = 0;
+solve_seconds = 0;
+cache_schema = 'trkg4_grounded_green_cache_v2';
+cache_fingerprint = local_green_cache_fingerprint( ...
+    fmdl_si, elem_sigma, candidate_nodes, cache_settings);
 
-function normals = local_boundary_node_normals(fmdl)
-faces = fmdl.boundary;
-nodes = fmdl.nodes;
-p1 = nodes(faces(:, 1), :);
-p2 = nodes(faces(:, 2), :);
-p3 = nodes(faces(:, 3), :);
-face_normals = cross(p2 - p1, p3 - p1, 2);
-face_centres = (p1 + p2 + p3) / 3;
-body_centre = mean(nodes, 1);
-flip = dot(face_normals, face_centres - body_centre, 2) < 0;
-face_normals(flip, :) = -face_normals(flip, :);
-normals = zeros(size(nodes));
-for d = 1:3
-    normals(:, d) = accumarray(faces(:), repmat(face_normals(:, d), 3, 1), ...
-        [size(nodes, 1), 1], @sum, 0);
-end
-lengths = vecnorm(normals, 2, 2);
-valid = lengths > 0;
-normals(valid, :) = normals(valid, :) ./ lengths(valid);
+if isfile(cache_file)
+    variables = whos('-file', cache_file);
+    variable_names = {variables.name};
+    required = {'green', 'candidate_nodes', ...
+        'cache_fingerprint', 'cache_schema'};
+    if ~all(ismember(required, variable_names))
+        fprintf(['Green cache ignored (legacy cache has no complete ', ...
+            'fingerprint); rebuilding: %s\n'], cache_file);
+    else
+        try
+            cached = load(cache_file, required{:});
+            cache_matches = isequal(cached.cache_schema, cache_schema) && ...
+                isequal(cached.cache_fingerprint, cache_fingerprint) && ...
+                isequal(double(cached.candidate_nodes(:)), ...
+                double(candidate_nodes(:))) && ...
+                isnumeric(cached.green) && ...
+                isequal(size(cached.green), ...
+                [numel(candidate_nodes), numel(candidate_nodes)]);
+            if cache_matches
+                green = cached.green;
+                reused = true;
+                return;
+            end
+            fprintf(['Green cache ignored (physical-input fingerprint ', ...
+                'mismatch); rebuilding: %s\n'], cache_file);
+        catch exception
+            fprintf(['Green cache ignored (could not validate it: %s); ', ...
+                'rebuilding: %s\n'], exception.message, cache_file);
+        end
+    end
 end
 
-function [sizes, z_inhale] = local_load_inhale_data(root)
-timestamp_dir = fullfile(root, '..', 'Colab Notebooks', 'timestamps');
-files = dir(fullfile(timestamp_dir, '*nik.json'));
-sizes = zeros(0, 1);
-z_inhale = zeros(0, 1);
-for k = 1:numel(files)
-    record = jsondecode(fileread(fullfile(files(k).folder, files(k).name)));
-    if record.size_mm == 90, continue; end
-    hold_values = struct2cell(record.hold_levels);
-    sizes(end + 1, 1) = record.size_mm; %#ok<AGROW>
-    z_inhale(end + 1, 1) = hold_values{1}; %#ok<AGROW>
+model = fmdl_si;
+model.electrode = struct([]);
+model.stimulation = struct([]);
+img = mk_image(model, elem_sigma);
+system = calc_system_mat(img);
+ground = model.gnd_node;
+keep_nodes = (1:size(system.E, 1))';
+keep_nodes(ground) = [];
+reduced_index = zeros(size(system.E, 1), 1);
+reduced_index(keep_nodes) = 1:numel(keep_nodes);
+candidate_reduced = reduced_index(candidate_nodes);
+
+tic_factor = tic;
+factor = decomposition(system.E(keep_nodes, keep_nodes), 'chol');
+factor_seconds = toc(tic_factor);
+
+n_candidate = numel(candidate_nodes);
+green = zeros(n_candidate, n_candidate, 'single');
+block_size = 64;
+tic_solve = tic;
+for first = 1:block_size:n_candidate
+    last = min(first + block_size - 1, n_candidate);
+    columns = first:last;
+    rhs = sparse(candidate_reduced(columns), 1:numel(columns), 1, ...
+        numel(keep_nodes), numel(columns));
+    voltage = factor \ rhs;
+    green(:, columns) = single(full(voltage(candidate_reduced, :)));
 end
-[sizes, order] = sort(sizes);
-z_inhale = z_inhale(order);
+solve_seconds = toc(tic_solve);
+
+cache_schema = 'trkg4_grounded_green_cache_v2';
+save(cache_file, 'green', 'candidate_nodes', ...
+    'cache_fingerprint', 'cache_schema', '-v7.3');
+end
+
+function fingerprint = local_green_cache_fingerprint( ...
+    fmdl_si, elem_sigma, candidate_nodes, cache_settings)
+fingerprint = trkg4_green_fingerprint( ...
+    fmdl_si, elem_sigma, candidate_nodes, cache_settings);
 end

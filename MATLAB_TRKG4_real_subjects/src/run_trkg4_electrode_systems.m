@@ -1,5 +1,5 @@
 function results = run_trkg4_electrode_systems()
-%RUN_TRKG4_ELECTRODE_SYSTEMS Compare arm and right-rib electrode systems.
+%RUN_TRKG4_ELECTRODE_SYSTEMS Compare accepted right-rib electrode systems.
 % The volume mesh and tissue assignment are built once and shared by every
 % electrode configuration, so differences in Z are caused by placement only.
 
@@ -7,8 +7,6 @@ base_cfg = trkg4_config('nik');
 root = base_cfg.project_root;
 
 systems = struct('id', {}, 'display_name', {}, 'electrodes_file', {});
-systems(end + 1) = local_system('arms', 'Arms', fullfile(root, 'data', 'nik', ...
-    'electrodes', 'electrodes_4_arms_xyz_mm.csv'));
 systems(end + 1) = local_system('right_rib_050mm', 'Right rib, 50 mm span', ...
     fullfile(root, 'data', 'nik', 'electrodes', ...
     'electrodes_4_right_rib_050mm_xyz_mm.csv'));

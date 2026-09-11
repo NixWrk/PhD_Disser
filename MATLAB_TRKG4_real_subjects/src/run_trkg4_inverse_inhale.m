@@ -1,8 +1,16 @@
-function result = run_trkg4_inverse_inhale(max_evaluations, initial_points, compute_jacobian)
+function result = run_trkg4_inverse_inhale(max_evaluations, initial_points, ...
+    compute_jacobian, data_selection, result_tag, patch_builder_mode, ...
+    evaluation_only)
 %RUN_TRKG4_INVERSE_INHALE Fit CT-FEM to the multi-grid inhale experiment.
 % All rigid grids share one skin centre and one nominal surface axis. The
 % fitted pose determines the non-constant skin-to-lung depth in the CT
 % geometry; h is therefore a derived curve, not a second flat-layer input.
+% Optional data_selection/result_tag/patch_builder_mode arguments support
+% non-destructive ablations. The production patch builder is "disjoint";
+% "legacy" reproduces the earliest independent-face-growth semantics;
+% "legacy_fast" reconstructs the later node-disjoint fast implementation.
+% evaluation_only returns after one objective evaluation and is used by the
+% restartable batch driver to bound MATLAB memory use on the full v5 mesh.
 
 if nargin < 1 || isempty(max_evaluations)
     max_evaluations = 30;
@@ -13,20 +21,47 @@ end
 if nargin < 3 || isempty(compute_jacobian)
     compute_jacobian = true;
 end
+if nargin < 4 || strlength(string(data_selection)) == 0
+    data_selection = "manifest";
+end
+if nargin < 5 || strlength(string(result_tag)) == 0
+    result_tag = "auditfix_20260908";
+end
+if nargin < 6 || strlength(string(patch_builder_mode)) == 0
+    patch_builder_mode = "disjoint";
+end
+if nargin < 7 || isempty(evaluation_only)
+    evaluation_only = false;
+end
+data_selection = string(data_selection);
+result_tag = string(result_tag);
+patch_builder_mode = lower(string(patch_builder_mode));
+if ~any(patch_builder_mode == ["disjoint", "legacy", "legacy_fast"])
+    error('trkg4:invalidPatchBuilderMode', ...
+        ['Patch builder mode must be "disjoint", "legacy", or ', ...
+         '"legacy_fast".']);
+end
+if patch_builder_mode == "legacy" && result_tag == "v5_1mm_local2mm"
+    result_tag = "v5_1mm_local2mm_legacy_patch";
+end
+if patch_builder_mode == "legacy_fast" && result_tag == "v5_1mm_local2mm"
+    result_tag = "v5_1mm_local2mm_legacy_fast_patch";
+end
+if isempty(regexp(result_tag, '^[A-Za-z0-9_-]+$', 'once'))
+    error('trkg4:invalidInverseResultTag', ...
+        'Result tag must contain only letters, digits, underscores, or hyphens.');
+end
 
 cfg = trkg4_config('nik');
 trkg4_prepare_runtime(cfg);
 root = cfg.project_root;
-result_tag = 'v5_1mm_local2mm';
-shared_file = fullfile(root, 'output', 'nik_trkg4_arms_full_v3.mat');
-refined_shared_file = fullfile(root, 'output', ...
-    'nik_trkg4_arms_full_v5_1mm_local2mm.mat');
-if isfile(refined_shared_file)
-    shared_file = refined_shared_file;
-end
+shared_file = fullfile(root, 'output', ...
+    'nik_trkg4_right_rib_050mm_full_v5_1mm_local2mm.mat');
 if ~isfile(shared_file)
     error('Shared FEM result is missing: %s', shared_file);
 end
+
+model_identity = trkg4_inverse_identity(cfg, data_selection, patch_builder_mode);
 
 shared = load(shared_file, 'fmdl_mesh_units', 'elem_sigma', ...
     'tissue_id', 'tissue_names');
@@ -37,7 +72,8 @@ fmdl_si = trkg4_scale_fmdl_to_si(fmdl_mm, cfg);
 [fmdl_si.stimulation, fmdl_si.meas_select] = ...
     trkg4_make_4electrode_stimulation(cfg);
 
-[sizes_mm, measured_z_ohm, source_files] = local_load_inhale_data(root);
+[sizes_mm, measured_z_ohm, source_files] = ...
+    trkg4_load_nik_inhale_data(root, data_selection);
 reference_centres = local_load_reference_grid(root);
 pose = local_build_pose_context(fmdl_mm, reference_centres, ...
     cfg.subject.stl.lungs);
@@ -55,7 +91,15 @@ experimental_slope = experimental_line(2);
 x0 = [cfg.rho_cloud.soft_ohm_m, cfg.rho_cloud.lungs_ohm_m, 0, 0, 0];
 lb = [2.0, 10.0, -120, -120, -20];
 ub = [10.0, 32.0, 120, 120, 20];
-if max_evaluations == 0 && ~isempty(initial_points)
+validateattributes(max_evaluations, {'numeric'}, ...
+    {'scalar', 'real', 'finite', 'integer', 'nonnegative'});
+if ~isempty(initial_points)
+    validateattributes(initial_points, {'numeric'}, ...
+        {'2d', 'ncols', 5, 'real', 'finite'});
+    if any(initial_points < lb | initial_points > ub, 'all')
+        error('trkg4:initialPointsOutsideBounds', ...
+            'Initial points must satisfy the declared material and pose bounds.');
+    end
     x0 = initial_points(1, :);
 end
 
@@ -63,12 +107,17 @@ history_matrix = zeros(0, 9 + numel(sizes_mm));
 history_file = fullfile(root, 'output', ...
     sprintf('nik_trkg4_inverse_inhale_history_%s.csv', result_tag));
 eval_count = 0;
+best_sampled_objective = inf;
+best_sampled_x = x0;
+best_sampled_evaluation = NaN;
 
     function objective_value = objective(x)
+        evaluation_cache_cleanup = ...
+            onCleanup(@() eidors_cache('clear_all'));
         eval_count = eval_count + 1;
         [predicted_z, pose_state] = local_forward_curve(x, sizes_mm, ...
             fmdl_mm, fmdl_si, pose, cfg, shared.elem_sigma, ...
-            shared.tissue_id, soft_id, lung_id);
+            shared.tissue_id, soft_id, lung_id, patch_builder_mode);
 
         residual = predicted_z - measured_z_ohm;
         huber_delta_ohm = 5;
@@ -91,6 +140,11 @@ eval_count = 0;
         rho_lung_prior = ((x(2) - cfg.rho_cloud.lungs_ohm_m) / 6)^2;
         objective_value = mean(huber) + 0.20 * slope_span_error^2 + ...
             depth_prior + depth_range_penalty + 0.25 * rho_lung_prior;
+        if isfinite(objective_value) && objective_value < best_sampled_objective
+            best_sampled_objective = objective_value;
+            best_sampled_x = x;
+            best_sampled_evaluation = eval_count;
+        end
 
         history_matrix(end + 1, :) = [eval_count, x, objective_value, ...
             predicted_slope, pose_state.h_centre_mm, predicted_z(:)'];
@@ -102,52 +156,114 @@ eval_count = 0;
             x(5), pose_state.h_centre_mm, predicted_slope);
     end
 
-initial_objective = objective(x0);
-if max_evaluations > 0
-    opts = optimoptions('surrogateopt', ...
-        'MaxFunctionEvaluations', max_evaluations, ...
-        'Display', 'iter', ...
-        'UseParallel', false, ...
-        'PlotFcn', []);
-    if ~isempty(initial_points)
-        opts.InitialPoints = initial_points;
-        opts.MinSurrogatePoints = max(12, size(initial_points, 1) + 5);
+if evaluation_only
+    evaluation_status = "evaluated";
+    failure_code = "";
+    try
+        initial_objective = objective(x0);
+    catch exception
+        if ~local_is_geometry_failure(exception), rethrow(exception); end
+        initial_objective = Inf;
+        evaluation_status = "invalid_geometry";
+        failure_code = string(exception.identifier);
     end
-    [x_best, best_objective, exitflag, solver_output] = ...
-        surrogateopt(@objective, lb, ub, opts);
-    if initial_objective < best_objective
-        x_best = x0;
-        best_objective = initial_objective;
-        exitflag = 0;
-        solver_output.message = ['The supplied CT/analytic starting point ', ...
-            'was better than sampled surrogate points.'];
+    first_history = local_history_table(history_matrix, sizes_mm);
+    result = struct();
+    result.parameters = struct('rho_soft_ohm_m', x0(1), ...
+        'rho_lungs_ohm_m', x0(2), 'centre_u_mm', x0(3), ...
+        'centre_v_mm', x0(4), 'phi_deg', x0(5));
+    result.objective = initial_objective;
+    result.experimental_robust_slope_ohm_per_mm = experimental_slope;
+    result.fem_robust_slope_ohm_per_mm = NaN;
+    result.h_centre_mm = NaN;
+    if evaluation_status == "evaluated"
+        result.fem_robust_slope_ohm_per_mm = first_history.slope_ohm_per_mm(1);
+        result.h_centre_mm = first_history.h_centre_mm(1);
+    end
+    result.status = evaluation_status;
+    result.failure_code = failure_code;
+    result.version = model_identity.version;
+    result.fingerprint = model_identity.fingerprint;
+    result.history = first_history;
+    result.data_selection = data_selection;
+    result.patch_builder_mode = patch_builder_mode;
+    result.result_tag = result_tag;
+    return;
+end
+[initial_objective, ~] = local_safe_objective(@objective, x0);
+
+    function value = solver_objective(x)
+        [value, valid] = local_safe_objective(@objective, x);
+        if ~valid, value = 1e12; end
+    end
+
+if max_evaluations > 0
+    if exist('surrogateopt', 'file') == 2
+        solver_name = "surrogateopt";
+        opts = optimoptions('surrogateopt', ...
+            'MaxFunctionEvaluations', max_evaluations, ...
+            'Display', 'iter', ...
+            'UseParallel', false, ...
+            'PlotFcn', []);
+        if ~isempty(initial_points)
+            opts.InitialPoints = initial_points;
+            opts.MinSurrogatePoints = max(12, size(initial_points, 1) + 5);
+        end
+        [x_best, best_objective, exitflag, solver_output] = ...
+            surrogateopt(@solver_objective, lb, ub, opts);
+    else
+        warning('trkg4:boundedPatternFallback', [ ...
+            'surrogateopt is unavailable. Using a deterministic bounded ', ...
+            'pattern search with millimetre-scale pose steps. This avoids ', ...
+            'finite-difference gradients on discrete electrode patches.']);
+        solver_name = "bounded_pattern_search";
+        [x_best, best_objective, exitflag, solver_output] = ...
+            local_bounded_pattern_search(@objective, x0, initial_objective, ...
+            initial_points, lb, ub, max_evaluations);
+    end
+    if best_sampled_objective < best_objective
+        x_best = best_sampled_x;
+        best_objective = best_sampled_objective;
+        solver_output.message = sprintf(['%s The reported point is evaluation %d, ', ...
+            'the lowest finite objective actually computed before termination.'], ...
+            solver_output.message, best_sampled_evaluation);
     end
 else
     x_best = x0;
     best_objective = initial_objective;
     exitflag = 0;
+    solver_name = "initial_point_only";
     solver_output = struct('message', 'Initial-point evaluation only.');
 end
 
+if ~isfinite(best_sampled_objective)
+    error('trkg4:noAdmissibleInversePoint', ...
+        ['No evaluated point passed electrode geometry QC. ', ...
+         'No inverse result has been accepted; refine the electrode mesh ', ...
+         'or provide admissible starting positions.']);
+end
+solver_output.best_sampled_evaluation = best_sampled_evaluation;
+solver_output.best_sampled_objective = best_sampled_objective;
 [predicted_z_ohm, pose_state] = local_forward_curve(x_best, sizes_mm, ...
     fmdl_mm, fmdl_si, pose, cfg, shared.elem_sigma, shared.tissue_id, ...
-    soft_id, lung_id);
+    soft_id, lung_id, patch_builder_mode);
 [h_axis_mm, h_nearest_mm, skin_axis_xyz_mm] = ...
     local_depth_curve(pose, pose_state, -70:5:70);
 [electrode_geometry, grid_geometry] = local_electrode_geometry( ...
-    sizes_mm, pose, pose_state, fmdl_mm, cfg);
+    sizes_mm, pose, pose_state, fmdl_mm, cfg, patch_builder_mode);
 
 fit_line = robustfit(sizes_mm, predicted_z_ohm);
 residual_ohm = predicted_z_ohm - measured_z_ohm;
 if compute_jacobian
     [jacobian, sensitivity, jacobian_svd] = local_parameter_jacobian( ...
-        x_best, sizes_mm, fmdl_mm, fmdl_si, pose, cfg, shared.elem_sigma, ...
-        shared.tissue_id, soft_id, lung_id, lb, ub);
+        x_best, predicted_z_ohm, sizes_mm, fmdl_mm, fmdl_si, pose, cfg, shared.elem_sigma, ...
+        shared.tissue_id, soft_id, lung_id, patch_builder_mode, lb, ub);
 else
     jacobian = nan(numel(sizes_mm), 5);
-    sensitivity = table();
+    sensitivity = local_uncomputed_sensitivity();
     jacobian_svd = struct('condition', NaN, ...
-        'singular_values', nan(5, 1));
+        'singular_values', nan(5, 1), 'semantic_status', 'not_computed', ...
+        'noise_model', 'not_established');
 end
 comparison = table(sizes_mm, measured_z_ohm, predicted_z_ohm, ...
     residual_ohm, source_files, 'VariableNames', { ...
@@ -172,9 +288,10 @@ jacobian_table = array2table([sizes_mm, jacobian], 'VariableNames', { ...
 writetable(jacobian_table, jacobian_file);
 sensitivity_file = fullfile(root, 'output', ...
     sprintf('nik_trkg4_inverse_inhale_parameter_sensitivity_%s.csv', result_tag));
-if ~isempty(sensitivity)
-    writetable(sensitivity, sensitivity_file);
-end
+writetable(sensitivity, sensitivity_file);
+diagnostics_file = fullfile(root, 'output', ...
+    sprintf('nik_trkg4_inverse_inhale_jacobian_diagnostics_%s.json', result_tag));
+local_write_json(diagnostics_file, jacobian_svd);
 fit_summary = table(x_best(1), x_best(2), x_best(3), x_best(4), x_best(5), ...
     pose_state.centre_xyz_mm(1), pose_state.centre_xyz_mm(2), ...
     pose_state.centre_xyz_mm(3), pose_state.axis_unit_xyz(1), ...
@@ -182,13 +299,16 @@ fit_summary = table(x_best(1), x_best(2), x_best(3), x_best(4), x_best(5), ...
     pose_state.h_centre_mm, experimental_slope, fit_line(2), ...
     sqrt(mean(residual_ohm.^2)), mean(abs(residual_ohm)), ...
     jacobian_svd.condition, size(fmdl_mm.nodes, 1), ...
-    size(fmdl_mm.elems, 1), string(shared_file), ...
+    size(fmdl_mm.elems, 1), solver_name, exitflag, eval_count, ...
+    data_selection, patch_builder_mode, string(shared_file), ...
     'VariableNames', {'rho_soft_ohm_m', 'rho_lungs_ohm_m', ...
     'centre_u_mm', 'centre_v_mm', 'phi_deg', 'centre_x_mm', ...
     'centre_y_mm', 'centre_z_mm', 'axis_x', 'axis_y', 'axis_z', ...
     'h_centre_mm', 'experimental_slope_ohm_per_mm', ...
     'fem_slope_ohm_per_mm', 'rms_residual_ohm', 'mae_residual_ohm', ...
     'jacobian_condition_scaled', 'mesh_nodes', 'mesh_tetrahedra', ...
+    'solver_name', 'solver_exitflag', 'function_evaluations', ...
+    'data_selection', 'patch_builder_mode', ...
     'source_mesh_result'});
 fit_summary_file = fullfile(root, 'output', ...
     sprintf('nik_trkg4_inverse_inhale_fit_summary_%s.csv', result_tag));
@@ -220,7 +340,11 @@ result.experimental_robust_slope_ohm_per_mm = experimental_slope;
 result.fem_robust_slope_ohm_per_mm = fit_line(2);
 result.objective = best_objective;
 result.exitflag = exitflag;
+result.solver_name = solver_name;
 result.solver_output = solver_output;
+result.data_selection = data_selection;
+result.patch_builder_mode = patch_builder_mode;
+result.result_tag = result_tag;
 result.history = local_history_table(history_matrix, sizes_mm);
 result.assumptions = { ...
     'All rigid grids have one common centre on the skin surface.', ...
@@ -232,6 +356,39 @@ result.assumptions = { ...
 result_file = fullfile(root, 'output', ...
     sprintf('nik_trkg4_inverse_inhale_%s.mat', result_tag));
 save(result_file, '-struct', 'result', '-v7.3');
+% Publish the contract last. A partial overwrite cannot pass its hashes.
+artifact_files = {comparison_file, depth_file, jacobian_file, ...
+    sensitivity_file, diagnostics_file, fit_summary_file, electrode_file, ...
+    grid_geometry_file, history_file, result_file};
+contract = struct('schema_version', 1, 'model_revision', 'auditfix_20260908', ...
+    'result_tag', char(result_tag), 'parameters', result.parameters, ...
+    'data_selection', char(data_selection), ...
+    'patch_builder_mode', char(patch_builder_mode), ...
+    'compute_jacobian', logical(compute_jacobian), ...
+    'geometry_qc_passed', true, 'status', 'numerical_candidate_not_validated', ...
+    'units', struct('coordinates', 'mm', 'resistivity', 'ohm_m', ...
+        'transfer_impedance', 'ohm', 'contact_impedance', 'ohm_m2'));
+contract.geometry_qc = struct( ...
+    'max_surface_distance_mm', cfg.max_electrode_surface_distance_mm, ...
+    'max_patch_centroid_offset_mm', cfg.max_electrode_patch_centroid_offset_mm, ...
+    'min_patch_area_fraction', cfg.min_electrode_patch_area_fraction, ...
+    'max_patch_area_ratio', cfg.max_electrode_patch_area_ratio, ...
+    'requested_patch_area_mm2', cfg.electrode_area);
+contract.artifacts = local_file_records(artifact_files, root);
+final_identity = trkg4_inverse_identity(cfg, data_selection, patch_builder_mode);
+if ~strcmp(model_identity.fingerprint, final_identity.fingerprint)
+    error('trkg4:modelChangedDuringRun', ...
+        'Fixed model inputs changed during calculation; no contract was published.');
+end
+contract.inputs = model_identity.inputs;
+contract.version = model_identity.version;
+contract.fingerprint = model_identity.fingerprint;
+contract.runtime = model_identity.runtime;
+contract.created_utc = char(datetime('now', 'TimeZone', 'UTC', ...
+    'Format', 'yyyy-MM-dd''T''HH:mm:ss''Z'''));
+contract_file = fullfile(root, 'output', ...
+    sprintf('nik_trkg4_inverse_inhale_contract_%s.json', result_tag));
+local_write_json(contract_file, contract);
 fprintf('\nSaved inverse result: %s\n', result_file);
 fprintf('Saved FEM/experiment comparison: %s\n', comparison_file);
 fprintf('Saved CT depth curve: %s\n', depth_file);
@@ -242,28 +399,109 @@ fprintf('Saved fitted grid geometry: %s\n', grid_geometry_file);
 fprintf('Scaled Jacobian condition number: %.6g\n', jacobian_svd.condition);
 end
 
-function [sizes, z_inhale, source_files] = local_load_inhale_data(root)
-timestamp_dir = fullfile(root, '..', 'Colab Notebooks', 'timestamps');
-files = dir(fullfile(timestamp_dir, '*nik.json'));
-sizes = zeros(0, 1);
-z_inhale = zeros(0, 1);
-source_files = strings(0, 1);
-for k = 1:numel(files)
-    record = jsondecode(fileread(fullfile(files(k).folder, files(k).name)));
-    if record.size_mm == 90
-        continue; % 90nik is a byte-identical copy of 100nik.
+function [x_best, f_best, exitflag, output] = ...
+        local_bounded_pattern_search(fun, x0, f0, initial_points, lb, ub, budget)
+%LOCAL_BOUNDED_PATTERN_SEARCH Direct search for the discontinuous pose terms.
+% The rho coordinates are continuous, but a small change of pose changes the
+% model only when a boundary face enters or leaves an electrode.  SQP finite
+% differences therefore see false zero derivatives.  This compact fallback
+% evaluates meaningful coordinate steps, respects bounds, and uses every
+% supplied initial point as an explicit start candidate.
+
+x_best = x0;
+f_best = f0;
+evaluations = 0;
+evaluated = x0;
+if isempty(initial_points)
+    initial_points = x0;
+end
+initial_points = min(max(initial_points, lb), ub);
+initial_points = unique(initial_points, 'rows', 'stable');
+for row = 1:size(initial_points, 1)
+    candidate = initial_points(row, :);
+    if any(all(abs(evaluated - candidate) < 1e-12, 2))
+        continue;
     end
-    sizes(end + 1, 1) = record.size_mm; %#ok<AGROW>
-    % MATLAB R2022b transliterates the Cyrillic JSON keys. The producer
-    % writes hold_levels in the documented order: inhale, then exhale.
-    hold_values = struct2cell(record.hold_levels);
-    z_inhale(end + 1, 1) = hold_values{1}; %#ok<AGROW>
-    source_files(end + 1, 1) = string(record.file); %#ok<AGROW>
+    [value, ok] = local_safe_objective(fun, candidate);
+    evaluations = evaluations + 1;
+    evaluated(end + 1, :) = candidate; %#ok<AGROW>
+    if ok && value < f_best
+        x_best = candidate;
+        f_best = value;
+    end
+    if evaluations >= budget
+        break;
+    end
 end
-[sizes, order] = sort(sizes);
-z_inhale = z_inhale(order);
-source_files = source_files(order);
+
+step = [0.75, 3.0, 10.0, 10.0, 5.0];
+minimum_step = [0.05, 0.25, 0.5, 0.5, 0.5];
+sweep = 0;
+while evaluations < budget && any(step >= minimum_step)
+    sweep = sweep + 1;
+    sweep_start_value = f_best;
+    sweep_best_x = x_best;
+    sweep_best_value = f_best;
+    for parameter = 1:numel(x_best)
+        for direction = [-1, 1]
+            if evaluations >= budget
+                break;
+            end
+            candidate = x_best;
+            candidate(parameter) = min(max( ...
+                candidate(parameter) + direction * step(parameter), ...
+                lb(parameter)), ub(parameter));
+            if any(all(abs(evaluated - candidate) < 1e-12, 2))
+                continue;
+            end
+            [value, ok] = local_safe_objective(fun, candidate);
+            evaluations = evaluations + 1;
+            evaluated(end + 1, :) = candidate; %#ok<AGROW>
+            if ok && value < sweep_best_value
+                sweep_best_x = candidate;
+                sweep_best_value = value;
+            end
+        end
+    end
+    if sweep_best_value < f_best
+        x_best = sweep_best_x;
+        f_best = sweep_best_value;
+    else
+        step = step / 2;
+    end
+    fprintf(['Pattern sweep %02d: best J=%.6g, ', ...
+        'step=(%.3g, %.3g, %.3g, %.3g, %.3g)\n'], ...
+        sweep, f_best, step);
+    if f_best >= sweep_start_value && all(step < minimum_step)
+        break;
+    end
 end
+
+exitflag = double(all(step < minimum_step));
+if exitflag
+    message = 'Pattern steps fell below their predefined resolution.';
+else
+    message = 'Function-evaluation budget reached.';
+end
+output = struct('message', message, 'iterations', sweep, ...
+    'function_evaluations_after_initial', evaluations, ...
+    'final_step', step, 'algorithm', 'bounded coordinate pattern search');
+end
+
+function [value, ok] = local_safe_objective(fun, candidate)
+try
+    value = fun(candidate);
+    ok = isfinite(value);
+catch exception
+    invalid_patch = local_is_geometry_failure(exception);
+    if ~invalid_patch
+        rethrow(exception);
+    end
+    value = Inf;
+    ok = false;
+end
+end
+
 
 function centres = local_load_reference_grid(root)
 file = fullfile(root, 'data', 'nik', 'electrodes', ...
@@ -301,50 +539,57 @@ pose.patch_context = electrode_patch_context(fmdl);
 end
 
 function normals = local_boundary_node_normals(fmdl)
-faces = fmdl.boundary;
-nodes = fmdl.nodes;
-p1 = nodes(faces(:, 1), :);
-p2 = nodes(faces(:, 2), :);
-p3 = nodes(faces(:, 3), :);
-face_normals = cross(p2 - p1, p3 - p1, 2);
-face_centres = (p1 + p2 + p3) / 3;
-body_centre = mean(nodes, 1);
-flip = dot(face_normals, face_centres - body_centre, 2) < 0;
-face_normals(flip, :) = -face_normals(flip, :);
-
-normals = zeros(size(nodes));
-for d = 1:3
-    contribution = repmat(face_normals(:, d), 3, 1);
-    normals(:, d) = accumarray(faces(:), contribution, ...
-        [size(nodes, 1), 1], @sum, 0);
-end
-lengths = vecnorm(normals, 2, 2);
-valid = lengths > 0;
-normals(valid, :) = normals(valid, :) ./ lengths(valid);
+normals = trkg4_boundary_normals(fmdl);
 end
 
 function [z_curve, state] = local_forward_curve(x, sizes, fmdl_mm, ...
-    fmdl_si, pose, cfg, base_sigma, tissue_id, soft_id, lung_id)
+    fmdl_si, pose, cfg, base_sigma, tissue_id, soft_id, lung_id, patch_builder_mode)
 elem_sigma = base_sigma;
 elem_sigma(tissue_id == soft_id) = 1 / x(1);
 elem_sigma(tissue_id == lung_id) = 1 / x(2);
 
 state = local_pose_state(pose, x(3), x(4), x(5));
-z_curve = zeros(numel(sizes), 1);
+% Check every grid before spending time on any FEM solve.
+patches = cell(numel(sizes), 1);
+qc_cfg = cfg;
+qc_cfg.electrode_diagnostics_file = '';
+qc_cfg.electrode_diagnostics_verbose = false;
+qc_cfg.fail_on_electrode_diagnostics = true;
 for k = 1:numel(sizes)
-    % Centres are projected onto the skin surface exactly, and deliberately
-    % NOT snapped to boundary nodes the way the forward runner does. The pose
-    % offsets x(3:5) are continuous fit parameters; snapping would quantise
-    % them to the node spacing and turn the objective into a staircase.
+    % Continuous projected centres still select discrete boundary faces.
     centres = local_grid_centres(pose, state, sizes(k));
     model_mm = fmdl_mm;
-    model_mm.electrode = electrode_faces_by_area(model_mm, centres, ...
-        cfg.electrode_area, cfg.z_contact, pose.patch_context);
+    [model_mm.electrode, induced_faces] = local_build_electrode_patches( ...
+        model_mm, centres, cfg, pose.patch_context, patch_builder_mode);
+    trkg4_electrode_diagnostics(model_mm, centres, ...
+        string(cfg.electrode_order), qc_cfg, centres, induced_faces);
+    if patch_builder_mode == "disjoint"
+        all_nodes = vertcat(model_mm.electrode.nodes);
+        if numel(unique(all_nodes)) ~= numel(all_nodes)
+            error('trkg4:patchOverlap', 'Electrode patches share CEM nodes.');
+        end
+    end
+    patches{k} = model_mm.electrode;
+end
+z_curve = zeros(numel(sizes), 1);
+for k = 1:numel(sizes)
+    model_mm = fmdl_mm;
+    model_mm.electrode = patches{k};
     model_si = fmdl_si;
     model_si.electrode = model_mm.electrode;
     img = mk_image(model_si, elem_sigma);
     voltage = fwd_solve(img);
     z_curve(k) = real(voltage.meas(1) / cfg.current_ampere);
+    if ~isfinite(z_curve(k))
+        error('trkg4:nonfiniteForward', 'FEM returned a non-finite impedance.');
+    end
+
+    % Every electrode size creates a different CEM system matrix. Keeping all
+    % nine matrices in the EIDORS cache can exhaust memory during a multi-start
+    % inverse search even though no later size reuses them. Release each one
+    % immediately after extracting its scalar impedance.
+    clear voltage img model_si model_mm
+    eidors_cache('clear_all');
 end
 end
 
@@ -383,7 +628,7 @@ end
 end
 
 function [electrodes_table, grids_table] = local_electrode_geometry( ...
-    sizes, pose, state, fmdl_mm, cfg)
+    sizes, pose, state, fmdl_mm, cfg, patch_builder_mode)
 % Report both the requested skin points and the area-weighted centroids of
 % the electrode patches selected on the discrete FEM boundary.
 labels = ["I_plus"; "V_plus"; "V_minus"; "I_minus"];
@@ -402,8 +647,8 @@ row = 0;
 for k = 1:n_grids
     requested = local_grid_centres(pose, state, sizes(k));
     model = fmdl_mm;
-    [model.electrode, induced_faces] = electrode_faces_by_area(model, ...
-        requested, cfg.electrode_area, cfg.z_contact, pose.patch_context);
+    [model.electrode, induced_faces] = local_build_electrode_patches( ...
+        model, requested, cfg, pose.patch_context, patch_builder_mode);
     patch_centres = zeros(4, 3);
     for e = 1:4
         row = row + 1;
@@ -474,7 +719,8 @@ for j = reshape(candidate_faces, 1, [])
     end
 end
 if norm(normal) == 0
-    normal = point - mean(pose.fmdl.nodes, 1);
+    error('trkg4:invalidSurfaceNormal', ...
+        'Projected point has no valid outward normal from the volume mesh.');
 end
 normal = normal / norm(normal);
 end
@@ -566,43 +812,30 @@ else
 end
 end
 
-function [J, sensitivity, diagnostics] = local_parameter_jacobian(x, sizes, ...
+function [J, sensitivity, diagnostics] = local_parameter_jacobian(x, z0, sizes, ...
     fmdl_mm, fmdl_si, pose, cfg, base_sigma, tissue_id, soft_id, lung_id, ...
-    lb, ub)
-parameter_names = ["rho_soft_ohm_m"; "rho_lungs_ohm_m"; ...
-    "centre_u_mm"; "centre_v_mm"; "phi_deg"];
-step = [0.20, 0.50, 4.0, 4.0, 2.0];
-plausible_scale = [1.0, 5.0, 10.0, 10.0, 10.0];
-J = zeros(numel(sizes), numel(x));
-for j = 1:numel(x)
-    xp = x;
-    xm = x;
-    xp(j) = min(x(j) + step(j), ub(j));
-    xm(j) = max(x(j) - step(j), lb(j));
-    zp = local_forward_curve(xp, sizes, fmdl_mm, fmdl_si, pose, cfg, ...
-        base_sigma, tissue_id, soft_id, lung_id);
-    zm = local_forward_curve(xm, sizes, fmdl_mm, fmdl_si, pose, cfg, ...
-        base_sigma, tissue_id, soft_id, lung_id);
-    J(:, j) = (zp - zm) / (xp(j) - xm(j));
+    patch_builder_mode, lb, ub)
+curve = @(trial) local_forward_curve(trial, sizes, fmdl_mm, fmdl_si, ...
+    pose, cfg, base_sigma, tissue_id, soft_id, lung_id, patch_builder_mode);
+[J, sensitivity, diagnostics] = trkg4_finite_step_diagnostics(curve, x, z0, lb, ub);
 end
 
-J_scaled = J .* plausible_scale;
-singular_values = svd(J_scaled, 'econ');
-if singular_values(end) > 0
-    condition = singular_values(1) / singular_values(end);
-else
-    condition = Inf;
+function [electrodes, induced_faces] = local_build_electrode_patches( ...
+    fmdl, centres, cfg, patch_context, patch_builder_mode)
+switch patch_builder_mode
+    case "disjoint"
+        [electrodes, induced_faces] = electrode_faces_by_area( ...
+            fmdl, centres, cfg.electrode_area, cfg.z_contact, patch_context);
+    case "legacy"
+        [electrodes, induced_faces] = electrode_faces_by_area_legacy( ...
+            fmdl, centres, cfg.electrode_area, cfg.z_contact);
+    case "legacy_fast"
+        [electrodes, induced_faces] = electrode_faces_by_area_legacy_fast( ...
+            fmdl, centres, cfg.electrode_area, cfg.z_contact);
+    otherwise
+        error('trkg4:invalidPatchBuilderMode', ...
+            'Unsupported patch builder mode: %s', patch_builder_mode);
 end
-
-assumed_sigma_ohm = 5;
-covariance = assumed_sigma_ohm^2 * pinv(J' * J);
-crlb_std = sqrt(max(diag(covariance), 0));
-sensitivity = table(parameter_names, step(:), plausible_scale(:), ...
-    vecnorm(J, 2, 1)', crlb_std, 'VariableNames', { ...
-    'parameter', 'finite_difference_step', 'plausible_scale', ...
-    'jacobian_column_norm', 'local_crlb_std_at_sigma5ohm'});
-diagnostics = struct('singular_values', singular_values, ...
-    'condition', condition, 'assumed_sigma_ohm', assumed_sigma_ohm);
 end
 
 function local_write_history(matrix, sizes, filename)
@@ -618,4 +851,48 @@ for k = 1:numel(sizes)
     names{end + 1} = sprintf('Z_FEM_L%03d_ohm', sizes(k)); %#ok<AGROW>
 end
 T = array2table(matrix, 'VariableNames', names);
+end
+
+function sensitivity = local_uncomputed_sensitivity()
+parameter = ["rho_soft_ohm_m"; "rho_lungs_ohm_m"; ...
+    "centre_u_mm"; "centre_v_mm"; "phi_deg"];
+missing = nan(5, 1);
+sensitivity = table(parameter, missing, missing, repmat("not_computed", 5, 1), ...
+    [1; 5; 10; 10; 10], missing, missing, repmat("not_computed", 5, 1), ...
+    'VariableNames', {'parameter', 'finite_difference_step_requested', ...
+    'finite_difference_step_effective', 'difference_scheme', 'plausible_scale', ...
+    'jacobian_column_norm', 'local_crlb_std_at_sigma5ohm', 'status'});
+end
+
+function records = local_file_records(files, root)
+records = repmat(struct('name', '', 'path', '', 'sha256', ''), numel(files), 1);
+for k = 1:numel(files)
+    file = char(files{k});
+    [~, name, extension] = fileparts(file);
+    records(k).name = [name extension];
+    if startsWith(file, [root filesep], 'IgnoreCase', true)
+        records(k).path = strrep(file(numel(root) + 2:end), '\', '/');
+    else
+        records(k).path = ''; % External data path stays out of the contract.
+    end
+    records(k).sha256 = trkg4_file_sha256(file);
+end
+end
+
+function local_write_json(filename, payload)
+temporary = [char(filename) '.tmp'];
+fid = fopen(temporary, 'w', 'n', 'UTF-8');
+if fid < 0, error('trkg4:resultWriteFailed', 'Cannot write %s', temporary); end
+cleanup = onCleanup(@() fclose(fid));
+fprintf(fid, '%s', jsonencode(payload, 'PrettyPrint', true));
+clear cleanup
+movefile(temporary, filename, 'f');
+end
+
+function tf = local_is_geometry_failure(exception)
+tf = ismember(string(exception.identifier), [ ...
+    "electrode_faces_by_area:noSeed", "electrode_faces_by_area:patchTooSmall", ...
+    "electrode_faces_by_area_legacy:patchTooSmall", ...
+    "electrode_faces_by_area_legacy_fast:patchTooSmall", ...
+    "trkg4:electrodeDiagnostics", "trkg4:patchOverlap"]);
 end

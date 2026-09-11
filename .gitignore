@@ -28,9 +28,19 @@ Colab Notebooks_rebuilt_staging_*/
 # Machine-local paths to external medical and physiological data
 Colab Notebooks/config/*.local.json
 
-# Local unsanitized provenance snapshots
-Colab Notebooks/archive/private/
+# Keep non-source private artifacts local, but retain authored code, notebooks,
+# MATLAB scripts, and HTML research reports in Git.
+Colab Notebooks/archive/private/**
+!Colab Notebooks/archive/private/
+!Colab Notebooks/archive/private/**/
+!Colab Notebooks/archive/private/**/*.html
+!Colab Notebooks/archive/private/**/*.m
+!Colab Notebooks/archive/private/**/*.py
+!Colab Notebooks/archive/private/**/*.ipynb
+Colab Notebooks/archive/private/**/__pycache__/
+Colab Notebooks/archive/private/**/.ipynb_checkpoints/
 
 # Subject-linked historical derived data stay local; canonical artifacts use external derived_root
 Colab Notebooks/timestamps/*.json
 Colab Notebooks/params/*.json
+

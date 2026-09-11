@@ -27,3 +27,6 @@
 *.rar binary
 *.7z binary
 *.zip binary
+
+# This self-contained interactive report exceeds the normal GitHub blob limit.
+MATLAB_TRKG4_real_subjects/output/exploratory/scan_localization_20260910/localization_and_layers.html filter=lfs diff=lfs merge=lfs -text
