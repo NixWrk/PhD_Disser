@@ -8,4 +8,12 @@ __pycache__/
 .pytest_cache/
 
 # Local anatomical review and derived ventricular estimates
-heart_rr_analysis/function_analysis/
+heart_rr_analysis/function_analysis/**
+!heart_rr_analysis/function_analysis/
+!heart_rr_analysis/function_analysis/**/
+!heart_rr_analysis/function_analysis/**/*.html
+!heart_rr_analysis/function_analysis/**/*.m
+!heart_rr_analysis/function_analysis/**/*.py
+!heart_rr_analysis/function_analysis/**/*.ipynb
+heart_rr_analysis/function_analysis/**/__pycache__/
+heart_rr_analysis/function_analysis/**/.ipynb_checkpoints/

@@ -43,6 +43,14 @@ HEADER_TAGS = [
 ]
 
 
+def sha256_file(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as stream:
+        while chunk := stream.read(8 * 1024 * 1024):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
 def dicm_offsets(path: Path):
     offsets = []
     with path.open("rb") as stream:
@@ -119,7 +127,7 @@ def inspect(path: Path):
         "container_format_observed": "IPFFS with embedded standard DICOM signatures",
         "source_file_name": path.name,
         "source_size_bytes": path.stat().st_size,
-        "source_sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+        "source_sha256": sha256_file(path),
         "dicm_signatures": len(offsets),
         "parsed_objects": sum(len(records) for records in groups.values()),
         "rejected_candidates": rejected,

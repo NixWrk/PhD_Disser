@@ -397,6 +397,7 @@ def dicom_phase_to_nifti(
     affine_ras = lps_to_ras @ affine_lps
 
     image = nib.Nifti1Image(volume.astype(np.int16), affine_ras)
+    image.header.set_xyzt_units("mm")
     image.set_qform(affine_ras, code=1)
     image.set_sform(affine_ras, code=1)
     output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -810,4 +811,3 @@ def main(argv: Sequence[str] | None = None) -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

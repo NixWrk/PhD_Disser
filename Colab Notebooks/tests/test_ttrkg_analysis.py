@@ -4,9 +4,13 @@ import numpy as np
 
 from ttrkg_analysis import (
     apply_fractional_operator,
+    central_difference,
     ensemble_waveform,
     matrix_diagnostics,
+    relative_derivative_disagreement,
     residual_candidate,
+    robust_signal_metrics,
+    scaled_local_sensitivity,
     validate_fractional_operator,
 )
 
@@ -65,6 +69,30 @@ class TtrkgAnalysisTests(unittest.TestCase):
         self.assertEqual(result["rank"], 1)
         self.assertEqual(result["nullspace"].shape, (2, 1))
         self.assertTrue(np.isinf(result["condition"]))
+
+
+    def test_robust_metrics_expose_repeated_extremes(self):
+        self.assertAlmostEqual(robust_signal_metrics([0.0, 0.0, 1.0, 2.0, 2.0])["fraction_at_exact_extremes"], 0.8)
+
+    def test_scaled_sensitivity_matches_quadratic_derivative(self):
+        p0, step = 3.0, 0.01
+        result = scaled_local_sensitivity((p0 - step) ** 2, p0**2, (p0 + step) ** 2, p0, step)
+        self.assertAlmostEqual(float(result["derivative"]), 2.0 * p0, places=10)
+        self.assertAlmostEqual(float(result["scaled_sensitivity"]), 2.0, places=10)
+
+    def test_vector_sensitivity_requires_fixed_scale(self):
+        with self.assertRaises(ValueError):
+            scaled_local_sensitivity([0.0, 1.0], [0.0, 1.0], [0.0, 1.0], 1.0, 0.1)
+        result = scaled_local_sensitivity([0.0, 0.9], [0.0, 1.0], [0.0, 1.1], 1.0, 0.1, output_scale=1.0)
+        np.testing.assert_allclose(result["scaled_sensitivity"], [0.0, 1.0])
+
+    def test_derivative_step_disagreement(self):
+        self.assertAlmostEqual(relative_derivative_disagreement([1.0, 2.0], [1.0, 2.0]), 0.0)
+        self.assertGreater(relative_derivative_disagreement([1.0, 2.0], [1.0, 2.2]), 0.0)
+
+    def test_central_difference_rejects_invalid_step(self):
+        with self.assertRaises(ValueError):
+            central_difference([0.0], [1.0], 0.0)
 
 
 if __name__ == "__main__":

@@ -125,3 +125,56 @@ def matrix_diagnostics(matrix, relative_tolerance=None):
         "nullspace": nullspace,
         "tolerance": float(tolerance),
     }
+
+
+def robust_signal_metrics(signal, lower_quantile=0.01, upper_quantile=0.99):
+    """Описывает уровень и размах сигнала без физиологической интерпретации."""
+    values = np.asarray(signal, dtype=float)
+    if values.ndim != 1 or values.size < 2 or not np.isfinite(values).all():
+        raise ValueError("Сигнал должен быть конечным одномерным массивом")
+    lower_quantile, upper_quantile = float(lower_quantile), float(upper_quantile)
+    if not 0.0 <= lower_quantile < upper_quantile <= 1.0:
+        raise ValueError("Некорректные границы квантилей")
+    q_low, q_high = np.quantile(values, [lower_quantile, upper_quantile])
+    minimum, maximum, median = float(values.min()), float(values.max()), float(np.median(values))
+    return {"n_samples": int(values.size), "median": median, "mad": float(np.median(np.abs(values - median))), "minimum": minimum, "maximum": maximum, "peak_to_peak": float(maximum - minimum), "robust_range": float(q_high - q_low), "fraction_at_exact_extremes": float(np.mean((values == minimum) | (values == maximum)))}
+
+
+def central_difference(y_minus, y_plus, step):
+    """Центральная конечная разность dY/dp для скаляра или массива Y."""
+    step = float(step)
+    if not np.isfinite(step) or step <= 0.0:
+        raise ValueError("Шаг возмущения должен быть положительным")
+    minus, plus = np.asarray(y_minus, dtype=float), np.asarray(y_plus, dtype=float)
+    if minus.shape != plus.shape or not np.isfinite(minus).all() or not np.isfinite(plus).all():
+        raise ValueError("Y(p-step) и Y(p+step) должны совпадать по форме и быть конечными")
+    return (plus - minus) / (2.0 * step)
+
+
+def scaled_local_sensitivity(y_minus, y_zero, y_plus, parameter_zero, step, output_scale=None):
+    """Возвращает dY/dp и масштабированную чувствительность p0/Yscale*dY/dp."""
+    baseline = np.asarray(y_zero, dtype=float)
+    if not np.isfinite(baseline).all():
+        raise ValueError("Базовый выход должен быть конечным")
+    parameter_zero = float(parameter_zero)
+    if not np.isfinite(parameter_zero) or parameter_zero == 0.0:
+        raise ValueError("Базовое значение параметра должно быть конечным и ненулевым")
+    derivative = central_difference(y_minus, y_plus, step)
+    if output_scale is None:
+        if baseline.ndim != 0 or float(abs(baseline)) == 0.0:
+            raise ValueError("Для массива или нулевого выхода нужен явный output_scale")
+        scale = float(abs(baseline))
+    else:
+        scale = float(output_scale)
+        if not np.isfinite(scale) or scale <= 0.0:
+            raise ValueError("output_scale должен быть положительным")
+    return {"derivative": derivative, "scaled_sensitivity": derivative * parameter_zero / scale, "output_scale": scale}
+
+
+def relative_derivative_disagreement(first, second):
+    """Относительное расхождение двух оценок производной в норме L2."""
+    first, second = np.asarray(first, dtype=float), np.asarray(second, dtype=float)
+    if first.shape != second.shape or not np.isfinite(first).all() or not np.isfinite(second).all():
+        raise ValueError("Производные должны совпадать по форме и быть конечными")
+    denominator = max(float(np.linalg.norm(first)), float(np.linalg.norm(second)), np.finfo(float).eps)
+    return float(np.linalg.norm(first - second) / denominator)

@@ -61,4 +61,14 @@ Desktop.ini
 
 # Jupyter
 notebooks/.ipynb_checkpoints/
-notebooks/figures/*.html
+
+# Keep authored code, notebooks, MATLAB scripts, and HTML reports in private history.
+archive/private/**
+!archive/private/
+!archive/private/**/
+!archive/private/**/*.html
+!archive/private/**/*.m
+!archive/private/**/*.py
+!archive/private/**/*.ipynb
+archive/private/**/__pycache__/
+archive/private/**/.ipynb_checkpoints/

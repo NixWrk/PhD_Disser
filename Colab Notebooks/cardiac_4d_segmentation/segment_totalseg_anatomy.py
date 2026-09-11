@@ -135,13 +135,13 @@ def main() -> int:
         "license": {"source": "local TotalSegmentator user configuration", "value_recorded": False},
         "products": grouped,
         "scope_note": "Body, bone, muscle, and fat masks cover only anatomy present inside the acquired CT field of view.",
-        "temporal_note": "Static surrounding anatomy was segmented on one reference cardiac phase; cardiac structures use all phases in the separate 4D products.",
+        "temporal_note": "Anatomy was segmented from the single input CT volume; this manifest does not assume a temporal sequence.",
         "status": "automatic_segmentation_pending_manual_review",
     }
     (output_dir / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     (output_dir / "README.txt").write_text(
         "TotalSegmentator automatic research segmentation.\n"
-        "Reference phase: phase_00. Products: NIfTI masks and STL meshes.\n"
+        f"Input volume: {input_path.name}. Products: NIfTI masks and STL meshes.\n"
         "All outputs are pending manual expert review and are not clinical diagnoses.\n"
         "The body mask means only the body portion present in the CT scan field of view.\n",
         encoding="utf-8",
