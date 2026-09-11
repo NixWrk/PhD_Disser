@@ -1,0 +1,43 @@
+{
+  "date": "2026-09-11",
+  "tested_research_commit": "99634bbadcb1b6fedeec3d890d1217b52aa827b9",
+  "working_directory": "Colab Notebooks",
+  "checks": [
+    {
+      "command": "python -X utf8 -m pytest tests -q",
+      "result": "passed",
+      "count": 34
+    },
+    {
+      "command": "python -X utf8 -m unittest discover -s tests -v",
+      "result": "passed",
+      "count": 25
+    },
+    {
+      "check": "all_notebook_json",
+      "result": "passed",
+      "count": 148
+    },
+    {
+      "check": "current_notebook_python_ast",
+      "result": "passed_for_regular_python_cells",
+      "notebooks": 62,
+      "ipython_magic_cells": "not_checked_with_plain_ast"
+    },
+    {
+      "check": "top_level_reader_html_input_code",
+      "result": "no_nonempty_code_inputs_found",
+      "method": "DOM selectors within code cells; markdown areas excluded"
+    },
+    {
+      "check": "missing_markdown_links",
+      "result": "one_heuristic_candidate_rejected_after_review",
+      "candidate": "t-tau_m",
+      "reason": "historical mathematical notation, not a file reference"
+    }
+  ],
+  "synthetic_counterexample": "checks.json:identifiability_counterexample",
+  "real_data_pipeline_rerun": false,
+  "scientific_validation": "not_performed",
+  "language_review": "separate_record_after_final_text"
+}

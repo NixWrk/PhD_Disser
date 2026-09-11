@@ -1,0 +1,25 @@
+{
+  "initial_head": "d56bf69",
+  "baseline_commits": [
+    {
+      "group": "01_fem",
+      "sha": "e864a4aedad81f78d27f799f46958526c2dbaeec",
+      "files": 124
+    },
+    {
+      "group": "02_notebooks",
+      "sha": "2c4e0ef5fd14d7020a6b5bf9f99b550542c29e32",
+      "files": 131
+    },
+    {
+      "group": "03_history",
+      "sha": "99634bbadcb1b6fedeec3d890d1217b52aa827b9",
+      "files": 179
+    }
+  ],
+  "authored_paths_preserved": 434,
+  "scientific_source_and_report_files_checked": 385,
+  "scientific_files_changed_by_audit": [],
+  "ancillary_files_pending": 149,
+  "scope": "Local baseline preserves authored sources and reports. Raw CT/STL/signals and local configurations were not added. Audit edits only documentation and audit utilities."
+}

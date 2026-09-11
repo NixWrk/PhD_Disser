@@ -1,0 +1,411 @@
+{
+  "active_notebooks": [
+    {
+      "path": "Colab Notebooks/10.01_QC_эксперимента_2_порядок_и_каналы.ipynb",
+      "cells": 8,
+      "code_cells": 2,
+      "outputs": 5
+    },
+    {
+      "path": "Colab Notebooks/10.11_QC_эксперимента_3.ipynb",
+      "cells": 22,
+      "code_cells": 8,
+      "outputs": 0
+    },
+    {
+      "path": "Colab Notebooks/11.01_Разметка_дыхания_эксперимента_2.ipynb",
+      "cells": 8,
+      "code_cells": 4,
+      "outputs": 5
+    },
+    {
+      "path": "Colab Notebooks/11.02_Разметка_ЭКГ_эксперимента_2.ipynb",
+      "cells": 8,
+      "code_cells": 4,
+      "outputs": 8
+    },
+    {
+      "path": "Colab Notebooks/11.11_Разметка_дыхания_эксперимента_3.ipynb",
+      "cells": 9,
+      "code_cells": 5,
+      "outputs": 0
+    },
+    {
+      "path": "Colab Notebooks/11.12_Разметка_ЭКГ_эксперимента_3.ipynb",
+      "cells": 7,
+      "code_cells": 4,
+      "outputs": 0
+    },
+    {
+      "path": "Colab Notebooks/12.01_Сводный_QC_размеченных_сигналов_эксперимента_2.ipynb",
+      "cells": 9,
+      "code_cells": 4,
+      "outputs": 10
+    },
+    {
+      "path": "Colab Notebooks/20.01_DICOM_QC_и_геометрия_тома.ipynb",
+      "cells": 12,
+      "code_cells": 5,
+      "outputs": 0
+    },
+    {
+      "path": "Colab Notebooks/20.02_Регистрация_Inobitec_и_электродов.ipynb",
+      "cells": 12,
+      "code_cells": 5,
+      "outputs": 0
+    },
+    {
+      "path": "Colab Notebooks/20.03_HU_и_доля_воздуха_в_лёгком.ipynb",
+      "cells": 8,
+      "code_cells": 0,
+      "outputs": 0
+    },
+    {
+      "path": "Colab Notebooks/20.04_Сценарии_электрических_свойств_лёгкого.ipynb",
+      "cells": 10,
+      "code_cells": 0,
+      "outputs": 0
+    },
+    {
+      "path": "Colab Notebooks/20.10_КТ_FEM_локализация_боковых_матриц_МГТУ.ipynb",
+      "cells": 70,
+      "code_cells": 25,
+      "outputs": 97
+    },
+    {
+      "path": "Colab Notebooks/20.11_КТ_FEM_чувствительность_боковых_сборок.ipynb",
+      "cells": 11,
+      "code_cells": 0,
+      "outputs": 0
+    },
+    {
+      "path": "Colab Notebooks/20.12_Критерий_Lmax_плоскослоистой_модели.ipynb",
+      "cells": 13,
+      "code_cells": 0,
+      "outputs": 0
+    },
+    {
+      "path": "Colab Notebooks/20.13_Геометрия_лёгкого_и_ошибка_восстановления_сопротивлений.ipynb",
+      "cells": 28,
+      "code_cells": 13,
+      "outputs": 22
+    },
+    {
+      "path": "Colab Notebooks/20.14_Две_проверки_моделей_с_литературными_сопротивлениями.ipynb",
+      "cells": 21,
+      "code_cells": 7,
+      "outputs": 19
+    },
+    {
+      "path": "Colab Notebooks/20.15_Анатомический_выбор_места_боковых_сборок.ipynb",
+      "cells": 13,
+      "code_cells": 4,
+      "outputs": 6
+    },
+    {
+      "path": "Colab Notebooks/20.16_Поперечная_форма_лёгкого_и_точность_обратной_модели.ipynb",
+      "cells": 44,
+      "code_cells": 19,
+      "outputs": 20
+    },
+    {
+      "path": "Colab Notebooks/30.04_Вычислительное_ядро_двуслойной_модели.ipynb",
+      "cells": 10,
+      "code_cells": 4,
+      "outputs": 0
+    },
+    {
+      "path": "Colab Notebooks/30.05_Масштабные_законы_двуслойной_модели.ipynb",
+      "cells": 9,
+      "code_cells": 4,
+      "outputs": 0
+    },
+    {
+      "path": "Colab Notebooks/31.01_Локальная_чувствительность_двуслойной_модели.ipynb",
+      "cells": 8,
+      "code_cells": 3,
+      "outputs": 0
+    },
+    {
+      "path": "Colab Notebooks/31.02_Глобальная_чувствительность_двуслойной_модели.ipynb",
+      "cells": 10,
+      "code_cells": 5,
+      "outputs": 0
+    },
+    {
+      "path": "Colab Notebooks/31.03_Идентифицируемость_двуслойной_задачи.ipynb",
+      "cells": 10,
+      "code_cells": 5,
+      "outputs": 0
+    },
+    {
+      "path": "Colab Notebooks/31.05_Проверка_допущений_обратной_модели.ipynb",
+      "cells": 10,
+      "code_cells": 3,
+      "outputs": 7
+    },
+    {
+      "path": "Colab Notebooks/32.01_Критерии_Lmin_боковых_сборок.ipynb",
+      "cells": 10,
+      "code_cells": 5,
+      "outputs": 0
+    },
+    {
+      "path": "Colab Notebooks/32.02_Выбор_пары_при_известной_h.ipynb",
+      "cells": 10,
+      "code_cells": 5,
+      "outputs": 0
+    },
+    {
+      "path": "Colab Notebooks/32.03_Выбор_набора_при_неизвестной_h.ipynb",
+      "cells": 11,
+      "code_cells": 5,
+      "outputs": 0
+    },
+    {
+      "path": "Colab Notebooks/33.01_Статическая_оценка_параметров_боковых_сборок.ipynb",
+      "cells": 10,
+      "code_cells": 5,
+      "outputs": 6
+    },
+    {
+      "path": "Colab Notebooks/33.02_Диагностика_статической_обратной_задачи.ipynb",
+      "cells": 6,
+      "code_cells": 3,
+      "outputs": 0
+    },
+    {
+      "path": "Colab Notebooks/33.03_Пульсовые_ансамбли_боковых_сборок.ipynb",
+      "cells": 10,
+      "code_cells": 5,
+      "outputs": 10
+    },
+    {
+      "path": "Colab Notebooks/33.04_Пульсовые_изменения_удельного_сопротивления.ipynb",
+      "cells": 20,
+      "code_cells": 12,
+      "outputs": 20
+    },
+    {
+      "path": "Colab Notebooks/33.05_Временные_метрики_бокового_сигнала.ipynb",
+      "cells": 6,
+      "code_cells": 3,
+      "outputs": 0
+    },
+    {
+      "path": "Colab Notebooks/33.06_Исследовательский_прогон_боковых_сборок.ipynb",
+      "cells": 17,
+      "code_cells": 6,
+      "outputs": 11
+    },
+    {
+      "path": "Colab Notebooks/33.07_Профиль_согласованности_удельного_сопротивления_лёгкого.ipynb",
+      "cells": 24,
+      "code_cells": 10,
+      "outputs": 13
+    },
+    {
+      "path": "Colab Notebooks/40.01_Обработка_ТТРКГ_эксперимента_2.ipynb",
+      "cells": 5,
+      "code_cells": 3,
+      "outputs": 4
+    },
+    {
+      "path": "Colab Notebooks/40.02_Параметрический_монтаж_электродов_ТТРКГ_и_взаимность.ipynb",
+      "cells": 24,
+      "code_cells": 10,
+      "outputs": 19
+    },
+    {
+      "path": "Colab Notebooks/40.03_Поверхностные_координаты_электродов_ТТРКГ.ipynb",
+      "cells": 9,
+      "code_cells": 2,
+      "outputs": 4
+    },
+    {
+      "path": "Colab Notebooks/40.04_КТ_FEM_чувствительность_ТТРКГ_МГТУ.ipynb",
+      "cells": 6,
+      "code_cells": 3,
+      "outputs": 4
+    },
+    {
+      "path": "Colab Notebooks/40.05_Чувствительность_ТТРКГ_к_проводимости_тканей.ipynb",
+      "cells": 52,
+      "code_cells": 17,
+      "outputs": 38
+    },
+    {
+      "path": "Colab Notebooks/40.06_Карты_чувствительности_и_подготовка_новых_комбинаций.ipynb",
+      "cells": 43,
+      "code_cells": 23,
+      "outputs": 25
+    },
+    {
+      "path": "Colab Notebooks/40.07_Чувствительность_сборок_по_удельному_сопротивлению.ipynb",
+      "cells": 47,
+      "code_cells": 25,
+      "outputs": 29
+    },
+    {
+      "path": "Colab Notebooks/40.08_Сходимость_чувствительности_по_удельному_сопротивлению.ipynb",
+      "cells": 25,
+      "code_cells": 13,
+      "outputs": 59
+    },
+    {
+      "path": "Colab Notebooks/40.09_Подготовка_чувствительности_сборок_TEPC.ipynb",
+      "cells": 12,
+      "code_cells": 1,
+      "outputs": 0
+    },
+    {
+      "path": "Colab Notebooks/40.11_Обработка_ТТРКГ_эксперимента_3.ipynb",
+      "cells": 5,
+      "code_cells": 3,
+      "outputs": 3
+    },
+    {
+      "path": "Colab Notebooks/40.12_Межканальное_влияние_реокардиомонитора_РНЦХ.ipynb",
+      "cells": 6,
+      "code_cells": 4,
+      "outputs": 6
+    },
+    {
+      "path": "Colab Notebooks/40.14_КТ_FEM_чувствительность_ТТРКГ_РНЦХ.ipynb",
+      "cells": 6,
+      "code_cells": 3,
+      "outputs": 4
+    },
+    {
+      "path": "Colab Notebooks/40.20_Оператор_переноса_тканевых_вкладов_в_ТТРКГ.ipynb",
+      "cells": 4,
+      "code_cells": 2,
+      "outputs": 0
+    },
+    {
+      "path": "Colab Notebooks/40.21_Скорректированный_сердечный_сигнал_ТТРКГ.ipynb",
+      "cells": 4,
+      "code_cells": 2,
+      "outputs": 0
+    },
+    {
+      "path": "Colab Notebooks/40.22_Исследовательский_прогон_ТТРКГ_и_идентифицируемости.ipynb",
+      "cells": 7,
+      "code_cells": 4,
+      "outputs": 8
+    },
+    {
+      "path": "Colab Notebooks/50.01_Идентифицируемость_источников_ТТРКГ_МГТУ.ipynb",
+      "cells": 5,
+      "code_cells": 2,
+      "outputs": 0
+    },
+    {
+      "path": "Colab Notebooks/50.11_Идентифицируемость_источников_ТТРКГ_РНЦХ.ipynb",
+      "cells": 5,
+      "code_cells": 2,
+      "outputs": 0
+    },
+    {
+      "path": "Colab Notebooks/60.04_Сценарный_расчёт_эквивалентной_сферы_УО_и_ФВ.ipynb",
+      "cells": 6,
+      "code_cells": 3,
+      "outputs": 4
+    },
+    {
+      "path": "Colab Notebooks/70.01_Паспорт_и_QC_эксперимента_1_РЕО32.ipynb",
+      "cells": 66,
+      "code_cells": 39,
+      "outputs": 0
+    },
+    {
+      "path": "Colab Notebooks/70.03_Обработка_каналов_5_и_9_РЕО32.ipynb",
+      "cells": 3,
+      "code_cells": 0,
+      "outputs": 0
+    },
+    {
+      "path": "Colab Notebooks/70.04_Обратная_задача_эквивалентной_сферы.ipynb",
+      "cells": 3,
+      "code_cells": 0,
+      "outputs": 0
+    },
+    {
+      "path": "Colab Notebooks/70.05_Чувствительность_сферической_модели.ipynb",
+      "cells": 3,
+      "code_cells": 0,
+      "outputs": 0
+    },
+    {
+      "path": "Colab Notebooks/70.07_Идентифицируемость_траектории_сферы.ipynb",
+      "cells": 3,
+      "code_cells": 0,
+      "outputs": 0
+    },
+    {
+      "path": "Colab Notebooks/70.08_Инверсия_траектории_эквивалентной_сферы.ipynb",
+      "cells": 3,
+      "code_cells": 0,
+      "outputs": 0
+    },
+    {
+      "path": "Colab Notebooks/70.09_Импедансный_критерий_эквивалентной_сферы.ipynb",
+      "cells": 18,
+      "code_cells": 4,
+      "outputs": 4
+    },
+    {
+      "path": "Colab Notebooks/70.10_КТ_FEM_проверка_сферической_модели.ipynb",
+      "cells": 3,
+      "code_cells": 0,
+      "outputs": 0
+    },
+    {
+      "path": "Colab Notebooks/cardiac_4d_segmentation/21.01_4D_сердце_интерактивно.ipynb",
+      "cells": 7,
+      "code_cells": 3,
+      "outputs": 3
+    },
+    {
+      "path": "Colab Notebooks/cardiac_4d_segmentation/21.03_Вычитание_крови_и_объёмы_камер_RR.ipynb",
+      "cells": 36,
+      "code_cells": 14,
+      "outputs": 14
+    }
+  ],
+  "python_cell_parse_errors": [],
+  "missing_local_link_candidates": [
+    {
+      "path": "Colab Notebooks/КАРТА_НОУТБУКОВ_И_ЗАВИСИМОСТЕЙ.md",
+      "target": "t-tau_m"
+    }
+  ],
+  "html_with_input_elements": [],
+  "identifiability_counterexample": {
+    "with_zero_row": {
+      "rank": 2,
+      "nonzero_subspace_condition": "infinity",
+      "target_estimable": true,
+      "conditional_design_target_std": 1.0,
+      "target_design_pass": false
+    },
+    "without_zero_row": {
+      "rank": 2,
+      "nonzero_subspace_condition": 1.0,
+      "target_estimable": true,
+      "conditional_design_target_std": 1.0,
+      "target_design_pass": true
+    }
+  },
+  "html_check_method": "BeautifulSoup: nonempty .jp-CodeCell .jp-InputArea or .code_cell .input_area; markdown input areas excluded",
+  "verification_tests": {
+    "unittest": {
+      "passed": 25
+    },
+    "pytest": {
+      "passed": 34
+    },
+    "working_directory": "Colab Notebooks",
+    "real_data_notebooks_executed": false
+  }
+}

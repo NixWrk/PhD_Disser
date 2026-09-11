@@ -1,0 +1,27 @@
+{
+  "date": "2026-09-11",
+  "reviewer": "Codex, main audit editor",
+  "language_ru_status": "passed",
+  "review_method": "Full reader-facing text read after final edits; terminology, grammar, argument order and strength of claims checked.",
+  "artifacts": [
+    {
+      "path": "Colab Notebooks/AUDIT_2026-09-11_Прослеживаемость_исследования.md",
+      "sha256": "0a0be4b8d1bdf030e9c464672f6bb182b4932833f557bcaf992e73fd1e56aa0b",
+      "full_text_read": true,
+      "reader_text_sha256": "1ad99f5dfbb2a1acb1aacbf99b545c7b66cbe47b0a0242a885e372a3c9a245ee"
+    },
+    {
+      "path": "Colab Notebooks/audits/2026-09-11/README.md",
+      "sha256": "7a4da7e6410a890e85d503761f308665dcc5493fa2a527da47dacf7e6fefc63c",
+      "full_text_read": true,
+      "reader_text_sha256": "e1352d81997fc7413e07d7628712a1b6f2c78770f94ae587c16533cbeacac3e2"
+    }
+  ],
+  "technical_status": "34 existing pytest tests passed; JSON and ordinary Python-cell syntax checked separately",
+  "scientific_validation": "not performed; audit separates demonstrated defects, unobserved risks and research limitations",
+  "scope_exclusions": [
+    "Independent full language review of every original notebook and detailed subagent appendix",
+    "Clinical, anatomical and experimental validation of the methodology"
+  ],
+  "post_review_normalization": "Only UTF-8/LF normalization and trailing blank-line removal; reader-text hashes unchanged."
+}
