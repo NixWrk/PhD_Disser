@@ -10,7 +10,8 @@
       "language.ru.hash-bound-final-review",
       "language.ru.natural-prose",
       "language.ru.intro-variation",
-      "language.ru.reader-facing-clarity"
+      "language.ru.reader-facing-clarity",
+      "language.ru.encoding"
     ]
   },
   "review_scope": "textandcaptions",
@@ -18,104 +19,117 @@
   "physical": "notperformed",
   "numericnewFEM": "notperformed",
   "sha256": {
-    "final_reader_file": "abd6531dce93d90b689ab6a79c20f557807bc78a983d2cdcd5111dae9956ba5e",
-    "md": "2e4f8b18bdf6266530346874bf24a7605bed30adb06ea9f89062c072cff4531e",
-    "nb": "7e82638fcfc3a95d2aa3a67cfd45f21f4dc6297ea0e41c4e6a69f4c43d171519",
-    "html": "69b6fcc1b76d4a51d3fb5e7574d046ef3c1779814f13c5bcec8231940d74f49b"
+    "md": "80468abdf54a09ec1961d918f6bc713012c057290ece5dc84cab1a87ccc8894f",
+    "nb": "db6e15f9fbc64ccaa2f4a0e3aa318346e8afb4f3b7adb273898ad9dfedc83ff4",
+    "html": "a488c1632afd1af0577cd04f36e733c8ef729d184607e7d536fca28069fe6ec6",
+    "final_reader_file": "4319d7a1f05138be1f6fab5bb519a09d55dacc89a8d00fed6971c66c774db800"
   },
   "artifacts": {
-    "final_reader_file": {
-      "path": "MATLAB_TRKG4_real_subjects/output/exploratory/heart_sphere_methods_20260914/final_reader_text.md",
-      "bytes": 136933,
-      "lines": 601,
-      "cells": 23,
-      "characters": 78846
-    },
     "md": {
       "path": "MATLAB_TRKG4_real_subjects/tools/heart_sphere_methods_ru.md",
-      "bytes": 136109,
-      "lines": 647,
-      "characters": 78300
+      "bytes": 149118,
+      "lines": 681,
+      "characters": 85824
     },
     "nb": {
       "path": "Colab Notebooks/40.15_Эквивалентная_сфера_сердца_методики_и_проверка.ipynb",
-      "bytes": 1742837,
-      "lines": 791,
+      "bytes": 1756140,
+      "lines": 825,
+      "characters": 1692531,
       "cells": 23,
       "markdown_cells": 23,
-      "characters": 1684713
+      "code_cells": 0
     },
     "html": {
       "path": "Colab Notebooks/40.15_Эквивалентная_сфера_сердца_методики_и_проверка.html",
-      "bytes": 2039884,
-      "lines": 8676,
-      "characters": 1981816
+      "bytes": 2053748,
+      "lines": 8700,
+      "characters": 1990194
+    },
+    "final_reader_file": {
+      "path": "MATLAB_TRKG4_real_subjects/output/exploratory/heart_sphere_methods_20260914/final_reader_text.md",
+      "bytes": 149296,
+      "lines": 635,
+      "characters": 85724,
+      "cells": 23
     }
   },
   "model_review": {
     "type": "full_model_semantic_sequential_read",
     "completed_after_last_text_change": true,
     "reader_text_read_from_line": 1,
-    "reader_text_read_to_line": 601,
-    "reader_text_lines_read": 601,
+    "reader_text_read_to_line": 635,
+    "reader_text_lines_read": 635,
     "reader_visible_cells_read": 23,
     "captions_read": 6,
     "all_reader_visible_text_read": true,
     "hash_bound_to_final_reader_file": true,
     "new_findings_only": true,
-    "current_revision_includes": "Joint physiological and electrical criteria, individualized model families and alternatives to the sphere; revised main question, sections 13, 14 and 17, figure 6 caption and bibliography; section 16.7 retained.",
+    "current_revision_includes": "Section 15.1 now attributes the 413-header inventory to the project technical inventory dated 14.09.2026, performed by the orchestrator, not to the author. This is the only source-text change in this revision. All earlier author additions in 17.3 and the methodological plan are preserved; the current adapter conversion result was not added.",
     "sequential_read_ranges": [
       [
         1,
-        100
+        80
       ],
       [
-        101,
-        200
+        81,
+        160
       ],
       [
-        201,
-        300
+        161,
+        240
       ],
       [
-        301,
-        400
+        241,
+        320
       ],
       [
-        401,
-        500
+        321,
+        390
       ],
       [
-        501,
-        601
+        391,
+        450
+      ],
+      [
+        451,
+        510
+      ],
+      [
+        511,
+        570
+      ],
+      [
+        571,
+        635
       ]
     ],
     "all_four_artifact_hashes_unchanged_during_full_read": true,
-    "artifact_binding_scope": "The complete extracted final reader text was read semantically in order. The Markdown source, notebook and HTML are bound by their current file hashes and sizes; no separate complete semantic reading of their serializations is asserted.",
+    "artifact_binding_scope": "The complete extracted final reader text was read semantically in order after rebuilding. Markdown source, notebook and HTML are bound to their final hashes; no separate full semantic read of their serializations is asserted.",
     "attestations": {
       "full_sequential_semantic_read": {
         "attested": true,
-        "statement": "All 601 lines were read semantically in contiguous order without omitted passages: the reader-visible text of all 23 Markdown cells, all six captions and alt texts, equations, tables, headings and bibliography. This new reading follows the latest textual revision and does not rely on the earlier review."
+        "statement": "All 635 lines were read semantically in contiguous order after the provenance correction and rebuild: 23 Markdown cells, six captions and alt texts, equations, tables, headings and bibliography. Extracted text matches concatenated Markdown-cell sources apart from boundary whitespace."
       },
       "scientific_headings": {
         "attested": true,
-        "statement": "All scientific headings were read and assessed for clear naming of the objects, methods, criteria and limitations developed below them. The main question and sections 13, 14 and 17 consistently present joint physiological and electrical requirements and compare multiple candidates without declaring a winning geometry."
+        "statement": "Headings name the scientific objects, methods, evidence boundaries and planned stages. Sections 15.1 and 17.8 distinguish available historical images, absent independent reference masks and future processing."
       },
       "technical_terminology_and_scope": {
         "attested": true,
-        "statement": "Terms and referents were reviewed in context: the ball/sphere convention; whole-heart and chamber domains; geometric versus electrically fitted parameters; modes of deformation, population models and individualized coefficients. The distinction between R, h and center depth c_perp=R+h, including fixed-h and fixed-center derivatives, is explicit. No new concrete terminology error was found."
+        "statement": "Reviewed whole-heart versus chamber quantities; geometry versus electrical fitting; radius versus independent center depth; SliceThickness versus ImagePositionPatient spacing; contrast-administration metadata versus image contrast quality; automatic volumes versus reference errors. No new concrete terminology error was found."
       },
       "derived_analytical_object_definitions": {
         "attested": true,
-        "statement": "The definitions and construction of geometric moments, sphere parameters, control transformations, response differences, Jacobians, error criteria, deformation modes and the example temporal family were read with their inputs, units or coordinate context, comparison roles and stated fitting independence. The example temporal law defines its index, reference value, fixed scale, dimensionless coefficients and functions, and cycle duration; it is labelled as a model example. No new reader-facing definition ambiguity requiring correction was found."
+        "statement": "Definitions, inputs, units and comparison roles were read throughout. The added paired-error equation defines TS and reference volumes for the same region and phase, the two states, e(t) and delta(Delta V), in mL. Its following explanatory paragraph identifies the variables. The affine-volume relation in 17.3 is explicitly limited to continuous geometry."
       },
       "direct_classification_and_meaningful_contrasts": {
         "attested": true,
-        "statement": "Contrasts serve stated scientific distinctions: whole-heart versus chamber quantities; segmentation reproduction versus independent physiological accuracy; electrical fit versus physiological interpretation; phasewise geometry versus a restricted temporal law; shared model structure versus individual coefficients; direct numerical comparison versus inverse identifiability and independent validation. Alternatives to the sphere are independent candidates, and electrical fit cannot compensate for violating a required physiological criterion."
+        "statement": "Meaningful distinctions are preserved: predicted volume versus unknown error; technical pilot phases versus ED/ES; conditional analysis on automatic masks versus anatomical validation; direct sensitivity versus inverse identifiability of a target function. Missing manual references do not block the authorized exploratory work."
       },
       "idiom_cohesion_and_evidence_boundaries": {
         "attested": true,
-        "statement": "The complete Russian prose was assessed for idiom, grammar, referents, information hierarchy, transitions and justified contrasts. The revised main question, sections 13 and 14, figure 6 caption and section 17 are mutually coherent. Source reports, project assumptions, proposed computations and unresolved validation remain distinguishable. This is a language assessment, not an independent check of sources, historical code or scientific correctness."
+        "statement": "The full Russian prose was assessed for grammar, idiom, referents, headings, transitions and claim scope. Project technical inventory performed by the orchestrator, author confirmation that reference masks are absent, planned computations and unperformed validation remain distinct. Sources and external data were not rechecked during this pass."
       }
     }
   },
@@ -142,30 +156,52 @@
     ],
     "alt_texts_read": true,
     "all_six_captions_read_sequentially": true,
-    "scope_note": "Caption wording and consistency with surrounding text were reviewed. Figure 6 states that physiological requirements apply from model construction onward while physical validation remains a separate stage. PNG content, layout and physical meaning were not reviewed."
+    "scope_note": "All six captions and alt texts were read in sequence with the surrounding text. PNG layout and physical interpretation were not separately reviewed in this language pass."
   },
   "language_review": {
     "status": "passed",
     "new_findings": [],
-    "basis": "No new concrete language or reader-facing logical error was found after a complete sequential model reading of all 601 lines, 23 Markdown cells and six captions in the latest revision. This passed status applies only to text and captions.",
+    "basis": "No new concrete language or reader-facing coherence issue was found after a fresh complete sequential read of all 635 lines, 23 Markdown cells and six captions following the final provenance correction. This status applies only to text and captions.",
     "status_scope": "language_only"
   },
   "other_status": {
-    "source_edited_by_reviewer": false,
-    "generator_review": "notperformed",
+    "source_edited_by_reviewer": true,
+    "generator_review": "write_targets_and_build_path_inspected",
     "numeric_recalculation": "notperformed",
     "overall_release_decision": "not_assessed",
     "scientific_validation": "not_assessed",
     "historical_code_execution_or_verification": "notperformed",
     "source_correspondence_verification": "notperformed",
-    "new_literature_or_data_search": "notperformed"
+    "new_literature_or_data_search": "notperformed_during_document_update",
+    "report_build": "completed_without_code_cell_or_FEM_execution",
+    "artifact_checks_update": "left_to_author_unchanged"
   },
-  "methodological_scope_note": "The document proposes joint physiological and electrical criteria, an individualized family of models and alternatives to the sphere; their adequacy remains unvalidated. Conditional computational experiments on automatic masks may start without a mandatory new manual reference. Reproduction of segmentation geometry does not establish independent anatomical or physiological accuracy. No numerical FEM, physical or clinical validation status is upgraded by this language review.",
+  "methodological_scope_note": "Independent reference masks are absent by author confirmation. Automatic V and Delta V and conditional geometric-candidate analysis may proceed; quantitative reference error is not yet available. A later reference must be independent of TotalSegmentator. Existing 39 phase results are reused. No FEM, physical or clinical validation status is upgraded.",
   "reviewer": {
     "role": "final text and captions reviewer",
     "agent": "Codex",
     "model_family": "GPT-6"
   },
-  "review_completed_at": "2026-09-14T21:28:14.2558004+03:00",
-  "record_updated_at": "2026-09-14T21:28:14.2558004+03:00"
+  "review_completed_at": "2026-09-14T22:46:39.884166+03:00",
+  "record_updated_at": "2026-09-14T22:46:39.884166+03:00",
+  "edit_scope": {
+    "source_sections": [
+      "15.1"
+    ],
+    "exact_old_phrase": "По инвентаризации автора",
+    "exact_new_phrase": "По технической инвентаризации проекта от 14.09.2026",
+    "provenance_clarification": "The orchestrator read the 413 headers; this was not an inventory performed by the user.",
+    "only_this_phrase_changed_verified_by_reverse_replacement_sha256": true,
+    "author_17_3_additions_preserved": true,
+    "other_source_regions_preserved": true,
+    "current_20_phase_conversion_result_not_added": true,
+    "artifact_checks_unchanged": true,
+    "builder_unchanged": true,
+    "readme_unchanged": true
+  },
+  "new_formula_review": {
+    "scope": "No formula changed in this revision. All existing formulas were read in sequence, including the paired volume error in 15.1 and the continuous-geometry volume relation in 17.3.",
+    "definitions_and_units": "reviewed",
+    "legacy_formula_layout_outside_edit_scope": "preserved"
+  }
 }

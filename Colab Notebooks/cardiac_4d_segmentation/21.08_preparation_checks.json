@@ -1,0 +1,223 @@
+{
+  "checked_at": "2026-09-14T19:51:52.783110+00:00",
+  "research_status": "automatic_preparation_without_reference",
+  "source_inventory": {
+    "historical_study_folders": 9,
+    "enhanced_CT_objects": 413,
+    "complete_20_phase_groups": 17,
+    "incomplete_18_phase_groups": 1,
+    "reference_masks_available": false
+  },
+  "selected_sequence": {
+    "phase_count": 20,
+    "phase_percent": [
+      0,
+      5,
+      10,
+      15,
+      20,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50,
+      55,
+      60,
+      65,
+      70,
+      75,
+      80,
+      85,
+      90,
+      95
+    ],
+    "pilot_percent": [
+      0,
+      25,
+      50,
+      75
+    ],
+    "selection_before_segmentation": true,
+    "geometry_shape": [
+      512,
+      512,
+      99
+    ],
+    "slice_thickness_mm": 5,
+    "slice_step_mm": 2.5
+  },
+  "checks": {
+    "adapter_synthetic_tests": {
+      "passed": 6,
+      "scope": "orientation, ordering, HU transforms, invalid geometry, phase mapping, privacy and no partial publication"
+    },
+    "real_conversion": {
+      "scope": "5 phases, first/middle/last spatial planes; all pixels in selected planes and physical plane origins",
+      "checks": [
+        {
+          "phase_percent": 0.0,
+          "coordinate_planes_checked": 3,
+          "pixel_planes_checked": 3,
+          "result": "passed"
+        },
+        {
+          "phase_percent": 25.0,
+          "coordinate_planes_checked": 3,
+          "pixel_planes_checked": 3,
+          "result": "passed"
+        },
+        {
+          "phase_percent": 50.0,
+          "coordinate_planes_checked": 3,
+          "pixel_planes_checked": 3,
+          "result": "passed"
+        },
+        {
+          "phase_percent": 75.0,
+          "coordinate_planes_checked": 3,
+          "pixel_planes_checked": 3,
+          "result": "passed"
+        },
+        {
+          "phase_percent": 95.0,
+          "coordinate_planes_checked": 3,
+          "pixel_planes_checked": 3,
+          "result": "passed"
+        }
+      ],
+      "image_visual_review": "not_performed",
+      "anatomical_accuracy": "not_evaluated",
+      "conversion_phases": 20
+    },
+    "synthetic_volume_analysis": {
+      "volume_and_center_with_rotated_affine": "passed",
+      "grid_mismatch_rejected": true,
+      "known_volume_difference_ml": 0.216,
+      "volume_difference": "passed",
+      "report_html_formula_and_no_code": "passed"
+    },
+    "runner_review": {
+      "findings_initial": 3,
+      "fixes": "mandatory pilot gate on resume; exact input phase list/output mapping; model signatures and configuration/code provenance",
+      "regression_tests": {
+        "passed": 3,
+        "file": "tests/test_historical_cardiac_runner.py",
+        "scope": "QC rejection persists across resume; extra input phase blocks inference; changed weights block phase acceptance"
+      }
+    },
+    "russian_protocol_review": {
+      "status": "passed",
+      "reviewer": "orchestrator after final pilot-QC addition; preceding draft reviewed by Luna Max",
+      "full_sequential_read": true,
+      "headings_terminology_definitions_and_scope_checked": true,
+      "path": "21.08_Историческая_контрастная_КТ_объёмы_камер.md",
+      "sha256": "5f6c841a200bf36298d5a7105c1d2ab4c594d0000ae920f86a2e0c035164c885"
+    }
+  },
+  "anatomical_accuracy_evaluated": false,
+  "geometric_FEM_performed": false,
+  "medical_image_visual_review": {
+    "status": "not_performed",
+    "reason": "Automatic approval review rejected sending local CT mosaic to the viewing tool; numerical QC continued without image transfer"
+  },
+  "artifact_hashes": {
+    "enhanced_cardiac_ct.py": "1731e28b6360e8cf5c29c1c3be9f8279b861e742b342f10d9c74fc2146fa7f51",
+    "tests/test_enhanced_cardiac_ct.py": "6d4f6039558f56fa5b377c9a554e8bbfba3f8f02c95705bc406e2c770347ef11",
+    "run_historical_cardiac_sequence.py": "f17a8601020b7618d8384797d604eddcda839d4033e5764ea5c46f264f826636",
+    "analyze_historical_cardiac_sequence.py": "4debec330ca91e7416f94d72f652902fda14595a3dd1c878ef75ecaa40120ad5",
+    "21.08_Историческая_контрастная_КТ_объёмы_камер.md": "5f6c841a200bf36298d5a7105c1d2ab4c594d0000ae920f86a2e0c035164c885",
+    "tests/test_historical_cardiac_runner.py": "a4b684d68bf4ccc5920e66e8d343d9948ad41b46b623146b1070da089aacdf33"
+  },
+  "local_reproduction": "Selected source paths, conversion outputs, masks and process logs are stored in ignored local results; not distributed with the repository.",
+  "pilot_QC": {
+    "rows": [
+      {
+        "phase_percent": 0.0,
+        "structure": "LV",
+        "boundary_voxels_by_face": {
+          "axis2_first": 577
+        }
+      },
+      {
+        "phase_percent": 0.0,
+        "structure": "RV",
+        "boundary_voxels_by_face": {
+          "axis2_first": 6842
+        }
+      },
+      {
+        "phase_percent": 0.0,
+        "structure": "whole_heart",
+        "boundary_voxels_by_face": {
+          "axis2_first": 701
+        }
+      },
+      {
+        "phase_percent": 25.0,
+        "structure": "RV",
+        "boundary_voxels_by_face": {
+          "axis2_first": 1944
+        }
+      },
+      {
+        "phase_percent": 25.0,
+        "structure": "whole_heart",
+        "boundary_voxels_by_face": {
+          "axis2_first": 837
+        }
+      },
+      {
+        "phase_percent": 50.0,
+        "structure": "RV",
+        "boundary_voxels_by_face": {
+          "axis2_first": 5464
+        }
+      },
+      {
+        "phase_percent": 50.0,
+        "structure": "whole_heart",
+        "boundary_voxels_by_face": {
+          "axis2_first": 81
+        }
+      },
+      {
+        "phase_percent": 75.0,
+        "structure": "LV",
+        "boundary_voxels_by_face": {
+          "axis2_first": 497
+        }
+      },
+      {
+        "phase_percent": 75.0,
+        "structure": "RV",
+        "boundary_voxels_by_face": {
+          "axis2_first": 7305
+        }
+      },
+      {
+        "phase_percent": 75.0,
+        "structure": "whole_heart",
+        "boundary_voxels_by_face": {
+          "axis2_first": 717
+        }
+      }
+    ],
+    "interpretation": "Boundary contact requires checking field-of-view truncation; not itself a measured segmentation error."
+  },
+  "pilot_report": {
+    "status": "preliminary_automatic_report",
+    "phases": 4,
+    "nbformat": "passed",
+    "html_has_no_code": true,
+    "full_reader_text_read": true,
+    "language_status": "draft_with_remaining_editorial_findings",
+    "editorial_followup": "Expand boundary-contact discussion in the generated report and polish the sentence about transfer to weakly contrasted CT; detailed current QC is in the protocol Markdown.",
+    "visual_review": "not_performed",
+    "hashes": {
+      "21.08_Историческая_контрастная_КТ_объёмы_камер.ipynb": "8d5e2b2e4d5b09624f932c6567d000bfb49bc77afd6518c37f51cd85c6600539",
+      "21.08_Историческая_контрастная_КТ_объёмы_камер.html": "b11954157e7baa377440307832173e5385b4d6a98d1a53708920686a9d2a7ccd"
+    },
+    "may_be_regenerated_by_running_full_sequence": true
+  }
+}

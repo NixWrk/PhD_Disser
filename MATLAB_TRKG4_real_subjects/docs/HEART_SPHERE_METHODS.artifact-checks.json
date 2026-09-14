@@ -1,12 +1,12 @@
 {
   "schema": "heart_sphere_methods_artifact_checks_v1",
-  "checked_at": "2026-09-14T18:23:52.401840+00:00",
+  "checked_at": "2026-09-14T19:50:55.899782+00:00",
   "artifact_purpose": "Joint physiological/electrical reduced-model proposal, alternative representations and movement laws; no new geometric FEM",
   "artifacts": [
     {
       "path": "MATLAB_TRKG4_real_subjects/tools/heart_sphere_methods_ru.md",
-      "sha256": "2e4f8b18bdf6266530346874bf24a7605bed30adb06ea9f89062c072cff4531e",
-      "bytes": 136109
+      "sha256": "80468abdf54a09ec1961d918f6bc713012c057290ece5dc84cab1a87ccc8894f",
+      "bytes": 149118
     },
     {
       "path": "MATLAB_TRKG4_real_subjects/tools/build_heart_sphere_methods_report.py",
@@ -15,13 +15,13 @@
     },
     {
       "path": "Colab Notebooks/40.15_Эквивалентная_сфера_сердца_методики_и_проверка.ipynb",
-      "sha256": "7e82638fcfc3a95d2aa3a67cfd45f21f4dc6297ea0e41c4e6a69f4c43d171519",
-      "bytes": 1742837
+      "sha256": "db6e15f9fbc64ccaa2f4a0e3aa318346e8afb4f3b7adb273898ad9dfedc83ff4",
+      "bytes": 1756140
     },
     {
       "path": "Colab Notebooks/40.15_Эквивалентная_сфера_сердца_методики_и_проверка.html",
-      "sha256": "69b6fcc1b76d4a51d3fb5e7574d046ef3c1779814f13c5bcec8231940d74f49b",
-      "bytes": 2039884
+      "sha256": "a488c1632afd1af0577cd04f36e733c8ef729d184607e7d536fca28069fe6ec6",
+      "bytes": 2053748
     }
   ],
   "technical_checks": {
@@ -31,7 +31,7 @@
     "embedded_png_count": 6,
     "all_relative_notebook_links": "passed",
     "zotero_page_links": 15,
-    "math_expressions_preserved_in_html": 120,
+    "math_expressions_preserved_in_html": 145,
     "no_notebook_input_or_prompt_nodes": "passed",
     "generator_syntax": "passed",
     "independent_pool_hash_unchanged": "passed",
@@ -115,11 +115,19 @@
   "methodological_review": {
     "reviewer_model": "gpt-5.6-luna",
     "reasoning_effort": "max",
-    "scope": "Section 17; joint physiological/electrical criteria, form vs dynamics, individualization, small-n and target identifiability",
+    "scope": "Section 17; joint physiological/electrical criteria, form vs dynamics, individualization, small-n and target identifiability; refers to the previous source_sha256, not the current revised section; refers to the previous source_sha256, not the current revised section",
     "findings": [],
-    "status": "no_substantive_logical_error_found",
+    "status": "historical_review_retained_not_repeated_for_new_revision",
     "source_sha256": "2e4f8b18bdf6266530346874bf24a7605bed30adb06ea9f89062c072cff4531e",
     "external_source_facts_checked_by": "orchestrator",
     "new_validation_results": false
+  },
+  "historical_ct_preparation": {
+    "scope": "413 OLD Enhanced CT headers; no independent reference masks available per author",
+    "full_20_phase_groups": 17,
+    "incomplete_18_phase_groups": 1,
+    "contrast_administered_tag_yes": 413,
+    "anatomical_accuracy_evaluated": false,
+    "image_visual_review": "blocked_by_automatic_approval_review"
   }
 }
