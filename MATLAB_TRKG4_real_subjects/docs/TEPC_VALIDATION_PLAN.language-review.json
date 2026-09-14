@@ -1,15 +1,31 @@
 {
   "artifact": "MATLAB_TRKG4_real_subjects/docs/TEPC_VALIDATION_PLAN.md",
-  "artifact_sha256": "63b86c92356e703fb8be1a7fde0c2e873d86c8c055c1aff9dde83d82ee2db8c4",
-  "reviewed_at": "2026-09-14T11:57:27.6820933+03:00",
-  "review_kind": "russian_scientific_prose_and_methodological_claim_audit",
+  "artifact_sha256": "0cdf1ed9cb49d858b3f9e37fdd587ee8dc89e5a808a537f7be4ecb741589b0ad",
+  "reviewed_at": "2026-09-14T15:40:05.516483+00:00",
+  "review_kind": "russian_scientific_prose_full_text_model_review",
   "review_status": "passed",
   "review_scope": {
     "full_text_reviewed_after_last_edit": true,
     "terminology_and_logic_checked": true,
-    "distinction_between_verification_spatial_convergence_and_physical_validation_checked": true,
-    "voxel_size_explanation_checked": true
+    "scientific_headings_checked": true,
+    "technical_scope_checked": true,
+    "derived_objects_defined": true,
+    "direct_classification_and_meaningful_contrasts_checked": true,
+    "numerical_and_physical_status_distinguished": true,
+    "full_text_read_sequentially_after_last_byte_change": true
   },
   "language_findings": [],
-  "conclusion": "План последовательно описывает выполненную локальную проверку, обязательную объёмную проверку и независимую физическую валидацию без завышения статуса методики."
+  "computational_validation_status": "volume_run_in_progress",
+  "physical_validation_status": "not_performed",
+  "conclusion": "Полный локальный текст последовательно перечитан после нормализации LF; запись привязана к финальным байтам. Содержание документа сохранено. Объёмная проверка продолжается, физическая проверка не выполнена. Шаблоны и программные проверки входов относятся к подготовке; полнота контракта физической валидации не подтверждена.",
+  "artifact_bytes": 40924,
+  "artifact_lines": 204,
+  "physical_input_validator_status": "preparation_only_contract_incomplete",
+  "line_ending_normalization": {
+    "operation": "CRLF_to_LF_only",
+    "before_sha256": "46bc466ee464e193ab578058191e3a3687f9c813664a1717051cfab73869f172",
+    "removed_CR_bytes": 5,
+    "line_content_unchanged": true,
+    "final_line_endings": "LF"
+  }
 }

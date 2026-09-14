@@ -1,0 +1,44 @@
+{
+  "artifact": "MATLAB_TRKG4_real_subjects/docs/TEPC_PHYSICAL_VALIDATION_PROTOCOL.md",
+  "artifact_sha256": "dc994697a5229df601bb27c54968f9e3c4e806251f1d18561538641c34066b6e",
+  "reviewed_at": "2026-09-14T15:43:10.700936+00:00",
+  "review_kind": "russian_scientific_prose_final_full_text_review",
+  "review_status": "passed",
+  "checks": {
+    "language.ru.hash-bound-final-review": "completed_with_findings",
+    "language.ru.encoding": "passed_utf8",
+    "language.ru.natural-prose": "passed",
+    "language.ru.reader-facing-clarity": "passed",
+    "language.ru.formula-where": "passed",
+    "language.ru.claim-status-and-limitations": "passed"
+  },
+  "attestation": {
+    "full_text_read_sequentially_after_last_byte_change": true,
+    "scientific_headings_checked": true,
+    "technical_terms_and_scope_checked": true,
+    "derived_quantities_defined": true,
+    "calibration_and_validation_claims_distinguished": true,
+    "open_language_findings": 0
+  },
+  "conclusion": "После уточнения области программной проверки весь текст (строки 1–162) последовательно вычитан оркестратором. Языковая проверка не подтверждает полноту программного контракта или выполнение физической валидации.",
+  "artifact_bytes": 21213,
+  "artifact_lines": 162,
+  "computational_validation_status": "volume_run_in_progress",
+  "physical_validation_status": "not_performed",
+  "physical_input_validator_status": "preparation_only_contract_incomplete",
+  "line_ending_normalization": {
+    "operation": "CRLF_to_LF_only",
+    "before_sha256": "8dbc4dbe28d4056b33462dfa066a3d40954547a29483e47187a208854d57450e",
+    "removed_CR_bytes": 2,
+    "line_content_unchanged": true,
+    "final_line_endings": "LF",
+    "followed_by_claim_scope_correction": true
+  },
+  "language_findings": [],
+  "resolved_findings": [
+    {
+      "line": 156,
+      "resolution": "Input checker output is explicitly limited to implemented structural/hash/run_id checks; independence and temporal provenance remain separate unresolved verification requirements."
+    }
+  ]
+}

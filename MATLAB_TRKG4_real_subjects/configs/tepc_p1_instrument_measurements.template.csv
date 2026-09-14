@@ -1,0 +1,1 @@
+run_id,session_id,load_id,repeat_index,connection_repeat,frequency_hz,current_rms_A,reference_Z_real_ohm,reference_Z_imag_ohm,reference_standard_id,reference_standard_uncertainty_ohm,temperature_C,measured_Z_real_ohm,measured_Z_imag_ohm,operator_anonymous_id,notes

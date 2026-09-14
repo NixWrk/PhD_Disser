@@ -1,0 +1,56 @@
+{
+  "schema": "tepc_physical_validation_v1",
+  "status": "template_not_measurement",
+  "study_id": "REQUIRED_UNIQUE_ID",
+  "frequency_hz": 50000,
+  "instrument": {
+    "model": "REQUIRED",
+    "revision": "REQUIRED",
+    "serial_or_anonymous_unit_id": "REQUIRED",
+    "current_rms_A": null,
+    "demodulation": "REQUIRED_SIGNED_COMPLEX_OR_SIGNED_REAL",
+    "calibration_record": "REQUIRED_RELATIVE_PATH",
+    "calibration_record_sha256": "REQUIRED_SHA256"
+  },
+  "contacts": {
+    "diameter_mm": 5.0,
+    "material": "REQUIRED",
+    "specific_contact_impedance_ohm_m2": null,
+    "specific_contact_impedance_measurement": "REQUIRED_MEASURED_OR_CONTROLLED_FACTOR",
+    "placement_fixture": "REQUIRED_DESCRIPTION_OR_FILE"
+  },
+  "phantom": {
+    "geometry_file": "REQUIRED_RELATIVE_PATH",
+    "geometry_file_sha256": "REQUIRED_SHA256",
+    "geometry_measurement_method": "REQUIRED",
+    "temperature_target_C": null,
+    "temperature_tolerance_C": null,
+    "compartments": [
+      "soft",
+      "heart",
+      "lung",
+      "bone"
+    ]
+  },
+  "data": {
+    "instrument_measurements_csv": "REQUIRED_RELATIVE_PATH",
+    "instrument_measurements_sha256": "REQUIRED_SHA256",
+    "phantom_measurements_csv": "REQUIRED_RELATIVE_PATH",
+    "phantom_measurements_sha256": "REQUIRED_SHA256",
+    "model_predictions_csv": "REQUIRED_RELATIVE_PATH",
+    "model_predictions_sha256": "REQUIRED_SHA256"
+  },
+  "split": {
+    "calibration_run_ids": [],
+    "validation_run_ids": [],
+    "fixed_before_validation_results_were_viewed": false
+  },
+  "acceptance": {
+    "fixed_before_validation_results_were_viewed": false,
+    "Z_relative_error_max": null,
+    "delta_Z_normalized_error_max": null,
+    "sensitivity_normalized_error_max": null,
+    "ranking_rule": "The measured top montage must agree only when the measured and numerical uncertainty intervals resolve the top-versus-second gap."
+  },
+  "scope": "Physical validation of a specified instrument, phantom, frequency, contact implementation and conductivity range; no automatic clinical transfer."
+}
