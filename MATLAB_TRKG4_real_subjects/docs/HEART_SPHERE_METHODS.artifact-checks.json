@@ -1,12 +1,12 @@
 {
   "schema": "heart_sphere_methods_artifact_checks_v1",
-  "checked_at": "2026-09-14T15:38:28.063883+00:00",
+  "checked_at": "2026-09-14T16:04:35.381795+00:00",
   "artifact_purpose": "Methodological proposal and bounded historical comparison; no new geometric FEM results",
   "artifacts": [
     {
       "path": "MATLAB_TRKG4_real_subjects/tools/heart_sphere_methods_ru.md",
-      "sha256": "8018c59a609f636d8d8695611ea0c576c2b46e9554dfa343989796416f301fa5",
-      "bytes": 89201
+      "sha256": "78065d4953ee48317d89ef650941a4821495808afcba204e8f42a032e32c5c2a",
+      "bytes": 100615
     },
     {
       "path": "MATLAB_TRKG4_real_subjects/tools/build_heart_sphere_methods_report.py",
@@ -15,13 +15,13 @@
     },
     {
       "path": "Colab Notebooks/40.15_Эквивалентная_сфера_сердца_методики_и_проверка.ipynb",
-      "sha256": "613c483e26b2800e3a47de39e72c85fda3bfa180660786a0d498773d49154fdc",
-      "bytes": 1694754
+      "sha256": "ed0a3baa47a8c14737282aa63c969c217d1a38208aed9eb2b01683cb187c97de",
+      "bytes": 1706475
     },
     {
       "path": "Colab Notebooks/40.15_Эквивалентная_сфера_сердца_методики_и_проверка.html",
-      "sha256": "cb25d69f7b87efc9475c19d5322c6dfa15942fd84c4d584346fcf35a322cacfe",
-      "bytes": 1985870
+      "sha256": "57e2a043308df9ece05be3112982438bcf8267f09d994aa310b74b9ef75035e3",
+      "bytes": 1998404
     }
   ],
   "technical_checks": {
@@ -31,11 +31,12 @@
     "embedded_png_count": 6,
     "all_relative_notebook_links": "passed",
     "zotero_page_links": 15,
-    "math_expressions_preserved_in_html": 112,
+    "math_expressions_preserved_in_html": 122,
     "no_notebook_input_or_prompt_nodes": "passed",
     "generator_syntax": "passed",
     "independent_pool_hash_unchanged": "passed",
-    "LF_serialization_and_reader_equivalence": "passed"
+    "LF_serialization_and_reader_equivalence": "passed",
+    "figure_bytes_match_previous_visual_review": "passed"
   },
   "figure_visual_review": {
     "reviewer": "orchestrator",
@@ -81,7 +82,7 @@
   },
   "scientific_status": {
     "methods": "proposed_not_validated",
-    "historical_comparison": "source_pages_and_selected_code_checked",
+    "historical_comparison": "source_pages_and_expanded_code_map_checked_static_only",
     "new_geometric_FEM": "not_performed",
     "anatomical_validation": "not_performed",
     "physical_validation": "not_performed"
@@ -103,5 +104,6 @@
       160
     ]
   },
-  "not_a_formal_release_gate_receipt": true
+  "not_a_formal_release_gate_receipt": true,
+  "code_audit_record": "MATLAB_TRKG4_real_subjects/docs/HEART_SPHERE_CODE_AUDIT_20260914.json"
 }

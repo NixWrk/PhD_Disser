@@ -18,40 +18,90 @@
   "physical": "notperformed",
   "numericnewFEM": "notperformed",
   "sha256": {
-    "final_reader_file": "6D0EA517E21254F7F29A841CB73D0E9F784EA4A96317BB1585FAB1CEAB6D6400",
-    "md": "8018C59A609F636D8D8695611EA0C576C2B46E9554DFA343989796416F301FA5",
-    "nb": "613c483e26b2800e3a47de39e72c85fda3bfa180660786a0d498773d49154fdc",
-    "html": "cb25d69f7b87efc9475c19d5322c6dfa15942fd84c4d584346fcf35a322cacfe"
+    "final_reader_file": "f237b9a1a76158d546d18f77fd8921f8aec9a03f8fa89d62767e281968b62693",
+    "md": "78065d4953ee48317d89ef650941a4821495808afcba204e8f42a032e32c5c2a",
+    "nb": "ed0a3baa47a8c14737282aa63c969c217d1a38208aed9eb2b01683cb187c97de",
+    "html": "57e2a043308df9ece05be3112982438bcf8267f09d994aa310b74b9ef75035e3"
   },
   "artifacts": {
     "final_reader_file": {
       "path": "MATLAB_TRKG4_real_subjects/output/exploratory/heart_sphere_methods_20260914/final_reader_text.md",
-      "bytes": 89907,
-      "lines": 471,
+      "bytes": 101337,
+      "lines": 505,
       "cells": 23
     },
     "md": {
       "path": "MATLAB_TRKG4_real_subjects/tools/heart_sphere_methods_ru.md",
-      "bytes": 89201,
-      "lines": 517
+      "bytes": 100615,
+      "lines": 551
     },
     "nb": {
       "path": "Colab Notebooks/40.15_Эквивалентная_сфера_сердца_методики_и_проверка.ipynb",
-      "bytes": 1694754
+      "bytes": 1706475,
+      "lines": 695,
+      "cells": 23,
+      "markdown_cells": 23
     },
     "html": {
       "path": "Colab Notebooks/40.15_Эквивалентная_сфера_сердца_методики_и_проверка.html",
-      "bytes": 1985870
+      "bytes": 1998404,
+      "lines": 8516
     }
   },
   "model_review": {
     "type": "full_model_semantic_sequential_read",
     "completed_after_last_text_change": true,
     "reader_text_read_from_line": 1,
-    "reader_text_read_to_line": 471,
+    "reader_text_read_to_line": 505,
     "all_reader_visible_text_read": true,
     "hash_bound_to_final_reader_file": true,
-    "new_findings_only": true
+    "new_findings_only": true,
+    "current_revision_includes": "Section 16.7: Python/Wolfram/STL/Mathcad implementation map and R+h parameterization",
+    "sequential_read_ranges": [
+      [
+        1,
+        100
+      ],
+      [
+        101,
+        200
+      ],
+      [
+        201,
+        300
+      ],
+      [
+        301,
+        400
+      ],
+      [
+        401,
+        505
+      ]
+    ],
+    "all_four_artifact_hashes_unchanged_during_full_read": true,
+    "attestations": {
+      "scientific_headings": {
+        "attested": true,
+        "statement": "All headings were read in order and assessed as names of the scientific objects, methods, comparisons, implementation scope or limitations discussed in their sections. No new concrete heading error was found."
+      },
+      "technical_terminology_and_scope": {
+        "attested": true,
+        "statement": "Technical terms and their referents were reviewed in context, including the ball/sphere convention, whole-heart and chamber domains, geometric and electrical parameters, and the distinction between R, h and center depth c_perp=R+h. The historical units in meters and derivatives in ohms per meter are explicitly stated."
+      },
+      "derived_analytical_object_definitions": {
+        "attested": true,
+        "statement": "Definitions, construction, units or coordinate context, comparison roles and fitting independence were read for the sphere parameters, geometric moments, error criteria, control transformations, response differences and Jacobian. Section 16.7 defines c_perp before using it to distinguish radius changes at fixed h from changes at fixed center."
+      },
+      "direct_classification_and_meaningful_contrasts": {
+        "attested": true,
+        "statement": "Contrasts were assessed for a concrete scientific purpose: whole-heart versus blood domains; model geometry versus physiology; baseline versus dynamic response; source-code inspection and numerical agreement versus independent validation; fixed h versus fixed center. The text permits conditional experiments on automatic masks without asserting anatomical or physiological validation."
+      },
+      "idiom_cohesion_and_evidence_boundaries": {
+        "attested": true,
+        "statement": "The full text was reviewed for idiomatic Russian, sentence referents, information hierarchy, repeated templates, translation calques and transitions. Source statements, author assumptions, proposed computations and unresolved validation are distinguishable. This is a semantic language assessment, not an independent verification of historical code, sources or scientific correctness."
+      }
+    }
   },
   "caption_review": {
     "count": 6,
@@ -65,34 +115,37 @@
     ],
     "textual_consistency": "passed",
     "png_layout_review": "notperformed",
-    "png_physical_meaning_review": "notperformed"
+    "png_physical_meaning_review": "notperformed",
+    "caption_lines_in_final_reader_file": [
+      51,
+      85,
+      112,
+      140,
+      190,
+      299
+    ],
+    "alt_texts_read": true,
+    "all_six_captions_read_sequentially": true
   },
   "language_review": {
     "status": "passed",
     "new_findings": [],
-    "basis": "No new concrete language or reader-facing logical error was found in the final reader text after the full sequential pass."
+    "basis": "No new concrete language or reader-facing logical error was found after a new complete sequential model reading of all 505 lines, 23 Markdown cells and six captions, including section 16.7. This status applies only to text and captions."
   },
   "other_status": {
     "source_edited_by_reviewer": false,
     "generator_review": "notperformed",
     "numeric_recalculation": "notperformed",
-    "overall_release_decision": "not_assessed"
+    "overall_release_decision": "not_assessed",
+    "scientific_validation": "not_assessed",
+    "historical_code_execution_or_verification": "notperformed"
   },
   "methodological_scope_note": "The text retains automatic-mask use without a mandatory new manual reference as a conditional computational experiment. Geometric metrics remain subject to anatomical and physiological interpretation limits.",
   "reviewer": {
-    "role": "delegated final text reviewer",
-    "model": "gpt-5.6-luna",
-    "reasoning_effort": "max"
+    "role": "final text and captions reviewer",
+    "agent": "Codex",
+    "model_family": "GPT-6"
   },
-  "serialization_rebinding": {
-    "operation": "CRLF_to_LF in notebook JSON container and HTML source only",
-    "notebook_JSON_value_identical": true,
-    "HTML_text_identical_after_standard_newline_normalization": true,
-    "reader_text_file_unchanged": true,
-    "original_artifact_hashes": {
-      "nb": "8E6BA43525D36311A65E214ACD2D75EBA970C0A1BAC64D509BFE7592BA99BEE2",
-      "html": "1C3C451C3F2D9A3305E4F8CCC178B48F8FAC25EFB7DCEB52C2E65E3E5B7BEB0D"
-    },
-    "reason": "Repository eol=lf; preserve the hash-bound reviewed report after checkout"
-  }
+  "review_completed_at": "2026-09-14T19:06:02.3097461+03:00",
+  "record_updated_at": "2026-09-14T19:08:16.1916818+03:00"
 }

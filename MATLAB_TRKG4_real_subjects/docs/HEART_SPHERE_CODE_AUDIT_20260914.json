@@ -1,0 +1,128 @@
+{
+  "schema": "heart_sphere_code_audit_v1",
+  "date": "2026-09-14",
+  "scope": "Static inspection of selected historical source modules and stored notebook cells; not a full reproduction of the dissertation calculations.",
+  "reviewers": [
+    {
+      "role": "orchestrator",
+      "scope": "selected source statements, Python R+h parameterization, STL implementation status and Mathcad caveat"
+    },
+    {
+      "role": "executor",
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "max",
+      "scope": "Python port and existing assertions; no execution"
+    }
+  ],
+  "code_changed": false,
+  "historical_tests_executed": false,
+  "historical_wolfram_executed": false,
+  "new_geometric_FEM_executed": false,
+  "findings": [
+    {
+      "id": "depth_parameterization",
+      "path": "Tikhomirov/cardio-model-py/src/cardio_model/models.py",
+      "symbol": "sphere_influence",
+      "code": "Rh = R + h",
+      "finding": "Computed normal depth is R+h, whereas the docstring calls h center depth. Radius variation at fixed h changes depth too; fixed-center radius variation requires h=c_perp-R."
+    },
+    {
+      "id": "contour_fit",
+      "path": "Tikhomirov/cardio-model-py/src/cardio_model/sphere_fit.py",
+      "symbol": "eq_sph_nm_center_radius",
+      "finding": "Geometric fitting of cx,cy,r to a 2D contour; not joint electrical inversion."
+    },
+    {
+      "id": "radial_inverse",
+      "paths": [
+        "Tikhomirov/cardio-model-py/src/cardio_model/finders.py",
+        "Tikhomirov/cardio-model-py/src/cardio_model/radial.py",
+        "Tikhomirov/cardio-model-py/src/cardio_model/pipeline.py"
+      ],
+      "finding": "Separate scalar searches per channel and externally supplied center movement; no joint cx,cy,cz,r electrical inversion found in inspected Python src."
+    },
+    {
+      "id": "original_shape_comparison",
+      "finding": "No complete Z(t) original arbitrary 3D shape vs sphere comparison found in inspected Python source modules. This does not exclude another historical implementation outside the inspected scope."
+    },
+    {
+      "id": "stl_stub",
+      "path": "Tikhomirov/cardio-stl-repair/src/cardio_stl_repair/repair.py",
+      "finding": "Docstring only; import tests do not establish mesh processing functionality."
+    },
+    {
+      "id": "mathcad_formula",
+      "path": "Tikhomirov/mathcad/sphere_mathcad_sketch.py",
+      "symbol": "dro_fl",
+      "finding": "Preserves subtraction 0.05**2 - 0.025**3; provenance and dimensional consistency require investigation."
+    }
+  ],
+  "code_inventory": [
+    {
+      "path": "Tikhomirov/cardio-model-py/src/cardio_model/models.py",
+      "sha256": "3115a726ea8d2315ad7585921fe97586f8dbd0c8e51d8440a0e1de5cc6e8d569"
+    },
+    {
+      "path": "Tikhomirov/cardio-model-py/src/cardio_model/sphere_fit.py",
+      "sha256": "90c80361de9574dbc7e05474b09af74baee7e2973b08d295810e4deab401ac3b"
+    },
+    {
+      "path": "Tikhomirov/cardio-model-py/src/cardio_model/finders.py",
+      "sha256": "717d6ff7dc194683aab0dae29650c070c492ba0461a30bad0700ea6591ee0d30"
+    },
+    {
+      "path": "Tikhomirov/cardio-model-py/src/cardio_model/radial.py",
+      "sha256": "9308c574277bee94e8c57ce31eaaa01b9d6a6722e0f874fbb4d65ff7997ecbbd"
+    },
+    {
+      "path": "Tikhomirov/cardio-model-py/src/cardio_model/pipeline.py",
+      "sha256": "38b0753ea9893c2e9159038ae15d9cf212270231486abcc02c05ff4776d63fb0"
+    },
+    {
+      "path": "Tikhomirov/cardio-model-py/src/cardio_model/geometry.py",
+      "sha256": "009416cb626dacbc2472b9b4f97c76873212388ca25cc012d89c5475516829d7"
+    },
+    {
+      "path": "Tikhomirov/cardio-model-py/src/cardio_model/volume.py",
+      "sha256": "ef1c753319358b1c481d4edd2119a5c7fb88988377a55d85a36f0d92125f115f"
+    },
+    {
+      "path": "Tikhomirov/cardio-stl-repair/src/cardio_stl_repair/repair.py",
+      "sha256": "0e2323ba7663c2ec0c5840d452ffe9a205cc84bae7ef0f1dcc92b46e7d925e1b"
+    },
+    {
+      "path": "Tikhomirov/cardio-stl-repair/tests/test_import.py",
+      "sha256": "e581d84f69328132bf6f9b118d1ecc7451f208df02bbce5a697ee5449ee231dd"
+    },
+    {
+      "path": "Tikhomirov/mathcad/sphere_mathcad_sketch.py",
+      "sha256": "0ed9367e079bdfd054df3c499311d36d7004f4a78c60e9f9b07221876de5be54"
+    },
+    {
+      "path": "Tikhomirov/mathcad/sphere_mathcad_model.md",
+      "sha256": "3a25299df562462fe96d13989ad75cc476f02b03c578e6c9e2d6d80111dd62ef"
+    },
+    {
+      "path": "Tikhomirov/WolframMath-master/Kernel/part1/SphereMovingFunction.m",
+      "sha256": "661ff9c41e24d2cac85ccb2c28d9ac90faf20e1220d054a4d5e2d2bc2077d155"
+    },
+    {
+      "path": "Tikhomirov/WolframMath-master/Kernel/part1/SphereMovingOptimization.m",
+      "sha256": "a4e00ecd904d75a5805f75c9609975d280d6f1dac7ec7b511d7b49d1f2535893"
+    },
+    {
+      "path": "Tikhomirov/WolframMath-master/Kernel/part1/EqualSphereMoveModellingLib.m",
+      "sha256": "1d5ab5c4258599ba6d6b11f4fa7aa679babd740d7a6017ab8ba3be1e9de791f4"
+    },
+    {
+      "path": "Tikhomirov/WolframMath-master/Kernel/Project/RFFI.m",
+      "sha256": "3a58724f6069bc436cbf9ae1bac8ab4ca8083fb0750be9764568d4cd12796925"
+    },
+    {
+      "path": "Tikhomirov/WolframMath-master/implem/sphereMove/SphereMoveModelling.nb",
+      "sha256": "73f58de6ea3b371c7ad50bd7ef3ae9502f42fa2299b55fa28e4984cb7e938be1"
+    }
+  ],
+  "notebook_section": "40.15, sections 16.6-16.7",
+  "status": "implementation_map_not_physical_validation"
+}
