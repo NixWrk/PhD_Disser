@@ -1,0 +1,87 @@
+{
+  "schema": "bounded_method_source_selection_v1",
+  "selected_at": "2026-09-14T18:15:54.118147+00:00",
+  "research_question": "Joint physiological and electrical adequacy of low-dimensional heart representations and transferable dynamics with individual calibration",
+  "genre": "methodological proposal with supporting literature, not a systematic review or source annotation bundle",
+  "discovery_authority": "User requested literature/statistical support for a more universal alternative to small-sample body-type trajectories; web verification also required for niche/current claims",
+  "selection_policy": "Primary research and official resources relevant to mechanical constraints, population shape models, dynamic models and external checks; no exhaustive coverage claim",
+  "local_library_first": {
+    "profile": "Heart_Lung",
+    "thematic_keys": [
+      "L5SKRRXU",
+      "WYLX9VHJ",
+      "MDL9A4T9",
+      "43BPJB4B",
+      "SXEYTF4A"
+    ],
+    "then_other_library_title_search": true,
+    "historical_corpus": "HEART_SPHERE_SOURCE_CORPUS_20260914.json"
+  },
+  "candidate_discovery_reads_used_for_selection": true,
+  "membership_frozen_before_notebook_synthesis": true,
+  "sources": [
+    {
+      "source_id": "carlsson_avpd_2007",
+      "doi": "10.1152/ajpheart.01148.2006",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/17098822/",
+      "locator": "Abstract: study design and longitudinal pumping",
+      "applicability": "Physiological motivation; not a universal AVPD fraction"
+    },
+    {
+      "source_id": "carlsson_total_2007",
+      "doi": "10.1152/ajpheart.01376.2006",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/17307988/",
+      "locator": "Abstract: total versus chamber volume variation",
+      "applicability": "Distinct total-heart and chamber quantities"
+    },
+    {
+      "source_id": "lumens_triseg_2009",
+      "doi": "10.1007/s10439-009-9774-2",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2758607/",
+      "locator": "Methods: General Design; Discussion: Model Assumptions",
+      "applicability": "Mechanically coupled simplified ventricular model; not an impedance validation"
+    },
+    {
+      "source_id": "mauger_atlas_2019",
+      "doi": "10.1186/s12968-019-0551-6",
+      "url": "https://link.springer.com/article/10.1186/s12968-019-0551-6",
+      "locator": "Methods: Biventricular atlas; Results: Atlas principal components",
+      "applicability": "Population ED/ES shape basis and coordinate alignment; not a full-cycle law"
+    },
+    {
+      "source_id": "cap_biventricular_resource",
+      "doi": "",
+      "url": "https://www.cardiacatlas.org/biventricular-modes/",
+      "locator": "Download: UKBRVLV.h5 and UKBRVLV_ALL.h5",
+      "applicability": "Official resource page, linked files not downloaded or executed"
+    },
+    {
+      "source_id": "ma_heartssm_2026_preprint",
+      "doi": "10.48550/arXiv.2603.28711",
+      "url": "https://arxiv.org/html/2603.28711v1",
+      "locator": "Results: 3D+t statistical shape model; Discussion limitations; Data/Code availability",
+      "applicability": "Preprint; generated shape data, no dense independent 3D+t ground truth or electrical validation"
+    },
+    {
+      "source_id": "heartssm_code",
+      "doi": "",
+      "url": "https://github.com/m-qiang/HeartSSM",
+      "locator": "Repository file inventory; ckpts/YOUR_CKPT.txt",
+      "applicability": "Source code present; trained weights/PCA model readiness not established"
+    },
+    {
+      "source_id": "acdc_resource",
+      "doi": "10.1109/TMI.2018.2837502",
+      "url": "https://www.creatis.insa-lyon.fr/Challenge/acdc/databases.html",
+      "locator": "Database access; Study population; protocol; linked Overview",
+      "applicability": "150 exams; ED/ES expert delineation focus; not dense manual full-cycle motion truth"
+    }
+  ],
+  "scope_limits": [
+    "No population data or model weights downloaded",
+    "No new FEM or geometric fit performed",
+    "No declaration of a universally valid law",
+    "No change to the independently frozen original method pool"
+  ],
+  "status": "selected_supporting_sources_not_a_release_receipt"
+}

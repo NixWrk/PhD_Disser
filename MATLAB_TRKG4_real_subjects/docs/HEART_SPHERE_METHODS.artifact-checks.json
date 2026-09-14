@@ -1,12 +1,12 @@
 {
   "schema": "heart_sphere_methods_artifact_checks_v1",
-  "checked_at": "2026-09-14T16:04:35.381795+00:00",
-  "artifact_purpose": "Methodological proposal and bounded historical comparison; no new geometric FEM results",
+  "checked_at": "2026-09-14T18:23:52.401840+00:00",
+  "artifact_purpose": "Joint physiological/electrical reduced-model proposal, alternative representations and movement laws; no new geometric FEM",
   "artifacts": [
     {
       "path": "MATLAB_TRKG4_real_subjects/tools/heart_sphere_methods_ru.md",
-      "sha256": "78065d4953ee48317d89ef650941a4821495808afcba204e8f42a032e32c5c2a",
-      "bytes": 100615
+      "sha256": "2e4f8b18bdf6266530346874bf24a7605bed30adb06ea9f89062c072cff4531e",
+      "bytes": 136109
     },
     {
       "path": "MATLAB_TRKG4_real_subjects/tools/build_heart_sphere_methods_report.py",
@@ -15,13 +15,13 @@
     },
     {
       "path": "Colab Notebooks/40.15_Эквивалентная_сфера_сердца_методики_и_проверка.ipynb",
-      "sha256": "ed0a3baa47a8c14737282aa63c969c217d1a38208aed9eb2b01683cb187c97de",
-      "bytes": 1706475
+      "sha256": "7e82638fcfc3a95d2aa3a67cfd45f21f4dc6297ea0e41c4e6a69f4c43d171519",
+      "bytes": 1742837
     },
     {
       "path": "Colab Notebooks/40.15_Эквивалентная_сфера_сердца_методики_и_проверка.html",
-      "sha256": "57e2a043308df9ece05be3112982438bcf8267f09d994aa310b74b9ef75035e3",
-      "bytes": 1998404
+      "sha256": "69b6fcc1b76d4a51d3fb5e7574d046ef3c1779814f13c5bcec8231940d74f49b",
+      "bytes": 2039884
     }
   ],
   "technical_checks": {
@@ -31,7 +31,7 @@
     "embedded_png_count": 6,
     "all_relative_notebook_links": "passed",
     "zotero_page_links": 15,
-    "math_expressions_preserved_in_html": 122,
+    "math_expressions_preserved_in_html": 120,
     "no_notebook_input_or_prompt_nodes": "passed",
     "generator_syntax": "passed",
     "independent_pool_hash_unchanged": "passed",
@@ -105,5 +105,21 @@
     ]
   },
   "not_a_formal_release_gate_receipt": true,
-  "code_audit_record": "MATLAB_TRKG4_real_subjects/docs/HEART_SPHERE_CODE_AUDIT_20260914.json"
+  "code_audit_record": "MATLAB_TRKG4_real_subjects/docs/HEART_SPHERE_CODE_AUDIT_20260914.json",
+  "supporting_literature": {
+    "selection": "MATLAB_TRKG4_real_subjects/docs/HEART_REDUCED_MODELS_SOURCES_20260914.json",
+    "scope": "Selected primary-source passages and official dataset/code pages; not a systematic review",
+    "public_data_downloaded": false,
+    "weights_or_atlases_executed": false
+  },
+  "methodological_review": {
+    "reviewer_model": "gpt-5.6-luna",
+    "reasoning_effort": "max",
+    "scope": "Section 17; joint physiological/electrical criteria, form vs dynamics, individualization, small-n and target identifiability",
+    "findings": [],
+    "status": "no_substantive_logical_error_found",
+    "source_sha256": "2e4f8b18bdf6266530346874bf24a7605bed30adb06ea9f89062c072cff4531e",
+    "external_source_facts_checked_by": "orchestrator",
+    "new_validation_results": false
+  }
 }
