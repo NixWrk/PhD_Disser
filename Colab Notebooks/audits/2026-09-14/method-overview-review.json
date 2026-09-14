@@ -1,0 +1,995 @@
+{
+  "operation": "new_synthesis_notebook",
+  "notebook": "33.00_Сквозная_методика_боковых_сборок.ipynb",
+  "source_versions": {
+    "AGENTS.md": "9f5a91cf125e7c4dc3c4bc021058e24fc52f270829eaf1f0e5eb235ff23f0e11",
+    "30.01_Прямая_двуслойная_модель_боковой_сборки.md": "d48e2f45dc9e206262d4569aa52e3d797fc053df630846b17d7281ccaedebd16",
+    "30.02_Статическая_обратная_задача_двуслойной_модели.md": "10928dadab574226bc33311a3ae371f5e032646bb66d88c36019ea3d223a37d0",
+    "30.03_Динамическая_линеаризация_двуслойной_модели.md": "4430aa923a128964abb145eccacef854aa15660aa8cece301d97bc1d2a115d6c",
+    "33.03_Пульсовые_ансамбли_боковых_сборок.ipynb": "10615cfd799a6780a29d4ae5440efdcc38bf32db79b9f0d195c71ef2c325ee71",
+    "33.04_Пульсовые_изменения_удельного_сопротивления.ipynb": "abc0fd9575a10bd2d26c52da41260cf030d4dfdea1e634fa9ed6523ed3993fa9",
+    "33.06_Исследовательский_прогон_боковых_сборок.ipynb": "926cce7d829def7e5dad55e06d7162579891ca3766074dd2137605a63b0f99f6",
+    "34.05_Сводка_доказательности_двуслойной_ветки.md": "a43472441b0711e5d20c5f3f48425bf87a2b664927326182a05dcb023f4e88c9",
+    "archive/legacy/33.91_Объединённая_статическая_оценка.ipynb": "eee7f077a49adc7ad7529c5586c5ad7c1dd3146d9b5d919267191d3b5293f449"
+  },
+  "source_artifact": {
+    "id": "33.06_side_arrays_exploratory",
+    "schema_version": 1,
+    "sha256": "0ff279299d7f040df52f3a67525ba5df764013661a01de69d76b64babb23c11c"
+  },
+  "model_function_sha256": "122544f96d6737401cd27a54839bc678dcba26b8aa83a91bcaab8bc45931b8e0",
+  "legacy_claim_locators": {
+    "static_family": "4836dc01",
+    "pulse_lines_and_peak_to_peak_limitation": "def1cc31"
+  },
+  "new_computation": "Small deterministic illustrations; no raw signal processing, fitting, or FEM rerun",
+  "scientific_status": "not_validated",
+  "language_release_status": "partial",
+  "author_clarification": "Equal rho1 at inhale and exhale imposes zero respiratory delta_rho1; fixed h is an independent assumption.",
+  "execution": {
+    "status": "clean_kernel_pass",
+    "code_cells": 5,
+    "raw_signals_read": false,
+    "fem_executed": false
+  },
+  "technical_checks": {
+    "notebook": {
+      "path": "D:\\Аспа\\Kalmykov_PhD\\Colab Notebooks\\33.00_Сквозная_методика_боковых_сборок.ipynb",
+      "status": "review",
+      "valid": true,
+      "cell_count": 17,
+      "counts": {
+        "error": 0,
+        "warning": 8,
+        "note": 0
+      },
+      "findings": [
+        {
+          "rule_id": "NB-OUTPUT-002",
+          "severity": "warning",
+          "message": "Check for an observation and bounded interpretation after the figure or figure group.",
+          "cell_index": 5
+        },
+        {
+          "rule_id": "NB-FIGURE-003",
+          "severity": "warning",
+          "message": "No connected analysis was recognised after the figure in this section.",
+          "cell_index": 5
+        },
+        {
+          "rule_id": "NB-FIGURE-002",
+          "severity": "warning",
+          "message": "Check that the preceding prose explains the scientific purpose of this figure or figure group.",
+          "cell_index": 7
+        },
+        {
+          "rule_id": "NB-NUMBER-004",
+          "severity": "warning",
+          "message": "Static prose contains a possible computed number. Verify its origin; render calculated values from the result object, including the annotation and main result.",
+          "cell_index": 1
+        },
+        {
+          "rule_id": "NB-NUMBER-004",
+          "severity": "warning",
+          "message": "Static prose contains a possible computed number. Verify its origin; render calculated values from the result object, including the annotation and main result.",
+          "cell_index": 2
+        },
+        {
+          "rule_id": "NB-NUMBER-004",
+          "severity": "warning",
+          "message": "Static prose contains a possible computed number. Verify its origin; render calculated values from the result object, including the annotation and main result.",
+          "cell_index": 8
+        },
+        {
+          "rule_id": "NB-NUMBER-004",
+          "severity": "warning",
+          "message": "Static prose contains a possible computed number. Verify its origin; render calculated values from the result object, including the annotation and main result.",
+          "cell_index": 9
+        },
+        {
+          "rule_id": "NB-NUMBER-004",
+          "severity": "warning",
+          "message": "Static prose contains a possible computed number. Verify its origin; render calculated values from the result object, including the annotation and main result.",
+          "cell_index": 13
+        }
+      ],
+      "not_assessed": [
+        "actual_clean_kernel_execution",
+        "scientific_method_validity",
+        "scientific_interpretation_truth",
+        "complete_hidden_state_detection",
+        "current_upstream_resolution",
+        "cross_notebook_chain_truth",
+        "semantic_truth_of_reasoning_bridges",
+        "russian_language_quality_beyond_heuristics",
+        "bibliographic_semantic_correctness",
+        "selection_policy_truth",
+        "validation_status_attestation"
+      ]
+    },
+    "references": {
+      "path": "D:\\Аспа\\Kalmykov_PhD\\Colab Notebooks\\33.00_Сквозная_методика_боковых_сборок.ipynb",
+      "status": "review",
+      "valid": true,
+      "counts": {
+        "error": 0,
+        "warning": 9,
+        "note": 0
+      },
+      "findings": [
+        {
+          "rule_id": "NB-REF-EQ-005",
+          "severity": "warning",
+          "message": "Check definitions; the lexical check could not match symbols: a_j, b_j, h, rho_1, rho_2.",
+          "cell_index": 4
+        },
+        {
+          "rule_id": "NB-REF-EQ-005",
+          "severity": "warning",
+          "message": "Check definitions; the lexical check could not match symbols: a_j, b_j, F, h, rho_1.",
+          "cell_index": 4
+        },
+        {
+          "rule_id": "NB-REF-EQ-005",
+          "severity": "warning",
+          "message": "Check definitions; the lexical check could not match symbols: h, K_j, Z_j.",
+          "cell_index": 4
+        },
+        {
+          "rule_id": "NB-REF-EQ-005",
+          "severity": "warning",
+          "message": "Check definitions; the lexical check could not match symbols: F_j, J_jell, rho.",
+          "cell_index": 6
+        },
+        {
+          "rule_id": "NB-REF-EQ-005",
+          "severity": "warning",
+          "message": "Check definitions; the lexical check could not match symbols: Delta, rho, rho_ell.",
+          "cell_index": 9
+        },
+        {
+          "rule_id": "NB-REF-EQ-005",
+          "severity": "warning",
+          "message": "Check definitions; the lexical check could not match symbols: J_j1, J_j2, rho_1, rho_2.",
+          "cell_index": 10
+        },
+        {
+          "rule_id": "NB-REF-EQ-005",
+          "severity": "warning",
+          "message": "Check definitions; the lexical check could not match symbols: Delta, J_j1, J_j2, rho_1, rho_2, Z_j.",
+          "cell_index": 10
+        },
+        {
+          "rule_id": "NB-REF-TABLE-004",
+          "severity": "warning",
+          "message": "Table 1 is not referenced in the surrounding prose.",
+          "cell_index": 1
+        },
+        {
+          "rule_id": "NB-REF-TABLE-004",
+          "severity": "warning",
+          "message": "Table 3 is not referenced in the surrounding prose.",
+          "cell_index": 13
+        }
+      ],
+      "not_assessed": [
+        "semantic_support_of_citations",
+        "exact_bibliographic_title_against_source",
+        "gost_punctuation_and_required_fields",
+        "semantic_correctness_of_equation_variable_definitions",
+        "validity_of_external_urls",
+        "fragment_anchors_in_linked_files"
+      ]
+    },
+    "html": {
+      "path": "D:\\Аспа\\Kalmykov_PhD\\Colab Notebooks\\33.00_Сквозная_методика_боковых_сборок.html",
+      "status": "pass",
+      "valid": true,
+      "counts": {
+        "error": 0,
+        "warning": 0,
+        "note": 0
+      },
+      "findings": [],
+      "metrics": {
+        "anchors": 31,
+        "links": 38,
+        "images": 3,
+        "code_input_areas": 0
+      },
+      "not_assessed": [
+        "scientific_validity",
+        "citation_support",
+        "visual_layout",
+        "remote_url_availability"
+      ]
+    }
+  },
+  "visual_checks": {
+    "viewports": [
+      {
+        "width": 1440,
+        "bodyWidth": 1440,
+        "images": [
+          {
+            "complete": true,
+            "width": 871
+          },
+          {
+            "complete": true,
+            "width": 1211
+          },
+          {
+            "complete": true,
+            "width": 871
+          }
+        ],
+        "codeInputs": 0
+      },
+      {
+        "width": 390,
+        "bodyWidth": 390,
+        "images": [
+          {
+            "complete": true,
+            "width": 871
+          },
+          {
+            "complete": true,
+            "width": 1211
+          },
+          {
+            "complete": true,
+            "width": 871
+          }
+        ],
+        "codeInputs": 0
+      }
+    ],
+    "browser_errors": [],
+    "scripts": [
+      "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js",
+      "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS_CHTML-full,Safe"
+    ],
+    "mathjax_check": {
+      "chtml": 63,
+      "mathErrors": 0,
+      "loaded": true
+    },
+    "visual_review": {
+      "figures": "axes, legends and synthetic labels inspected",
+      "equations": "rendered equations inspected in screenshot",
+      "overflow": "none at 1440 or 390 pixels"
+    }
+  },
+  "language_checks": {
+    "ipynb": {
+      "valid": true,
+      "language_gate_status": "partial",
+      "manual_full_text_review_required": true,
+      "manual_warning_review_required": true,
+      "profiles": [
+        "core",
+        "genre-notebook"
+      ],
+      "counts": {
+        "errors": 0,
+        "warnings": 84,
+        "issues": 84
+      },
+      "issues": [
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 42,
+          "match": "md",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 42,
+          "match": "md",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 42,
+          "match": "md",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 42,
+          "match": "md",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 42,
+          "match": "ipynb",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 42,
+          "match": "ipynb",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 42,
+          "match": "ipynb",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 42,
+          "match": "md",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 42,
+          "match": "archive/legacy",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 42,
+          "match": "ipynb",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 46,
+          "match": "rows",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 46,
+          "match": "append",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 46,
+          "match": "subject",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 46,
+          "match": "int",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 46,
+          "match": "size",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 48,
+          "match": "zin",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 48,
+          "match": "zout",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 50,
+          "match": "display",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 50,
+          "match": "f",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 50,
+          "match": "len",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 50,
+          "match": "rows",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 170,
+          "match": "ax",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 170,
+          "match": "set",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 170,
+          "match": "xscale",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 170,
+          "match": "log",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 170,
+          "match": "yscale",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 170,
+          "match": "log",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 170,
+          "match": "xlabel",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 170,
+          "match": "ylabel",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 172,
+          "match": "ax",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 174,
+          "match": "f",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 176,
+          "match": "f",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 176,
+          "match": "z",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 204,
+          "match": "ax",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 204,
+          "match": "plot",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 204,
+          "match": "x",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 204,
+          "match": "y",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 204,
+          "match": "color",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 204,
+          "match": "colors",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 204,
+          "match": "size",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 204,
+          "match": "lw",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 204,
+          "match": "label",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 204,
+          "match": "f",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 204,
+          "match": "size",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 206,
+          "match": "xlabel",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 206,
+          "match": "ylabel",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 208,
+          "match": "title",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 208,
+          "match": "f",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 208,
+          "match": "key",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 208,
+          "match": "h",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 208,
+          "match": "thickness",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 218,
+          "match": "f",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 218,
+          "match": "len",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 220,
+          "match": "f",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 220,
+          "match": "max",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 268,
+          "match": "ax",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 268,
+          "match": "plot",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 268,
+          "match": "xx",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 268,
+          "match": "dz",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 268,
+          "match": "row",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 268,
+          "match": "xx",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 268,
+          "match": "row",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 268,
+          "match": "label",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 268,
+          "match": "f",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 268,
+          "match": "size",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 268,
+          "match": "lw",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 270,
+          "match": "label",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 270,
+          "match": "zorder",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 272,
+          "match": "ax",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 272,
+          "match": "set",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 272,
+          "match": "xlabel",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 272,
+          "match": "ylabel",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 272,
+          "match": "title",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 274,
+          "match": "f",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 274,
+          "match": "base",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 274,
+          "match": "base",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 276,
+          "match": "f",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 278,
+          "match": "f",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 278,
+          "match": "recovered",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 278,
+          "match": "recovered",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 280,
+          "match": "f",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 280,
+          "match": "nonlinearity",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 329,
+          "match": "display",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "profile": "core",
+          "line": 333,
+          "match": "display",
+          "message": "Переведи слово или проверь, что это необходимый и ранее введённый термин либо идентификатор."
+        }
+      ],
+      "limitations": "Эвристическая проверка распознаёт только часть поверхностных признаков; она не подтверждает факты, терминологию, синтаксис, связность или научное качество текста.",
+      "artifact": {
+        "path": "C:\\Users\\ELVIS_~1\\AppData\\Local\\Temp\\phd-method-overview-jjingfkz\\reader-ipynb.txt",
+        "sha256": "1c6c7643d35f9867081cbe5de9da0b09d5d5eca31d2ea384e214682b46d6c1eb"
+      }
+    },
+    "html": {
+      "valid": true,
+      "language_gate_status": "partial",
+      "manual_full_text_review_required": true,
+      "manual_warning_review_required": false,
+      "profiles": [
+        "core",
+        "genre-notebook"
+      ],
+      "counts": {
+        "errors": 0,
+        "warnings": 0,
+        "issues": 0
+      },
+      "issues": [],
+      "limitations": "Эвристическая проверка распознаёт только часть поверхностных признаков; она не подтверждает факты, терминологию, синтаксис, связность или научное качество текста.",
+      "artifact": {
+        "path": "C:\\Users\\ELVIS_~1\\AppData\\Local\\Temp\\phd-method-overview-jjingfkz\\reader-html.txt",
+        "sha256": "6dd22b6aa9fd0623fc40c282a0eb29fc3984ab99e22a5500f5a8b0449545fd23"
+      }
+    }
+  },
+  "formal_release_ready": false,
+  "review_notes": {
+    "language": "All 84 raw-notebook warnings are latin_prose for source code identifiers and provenance paths; full extracted reader HTML has zero warnings. Warnings are retained, not waived as a formal release.",
+    "figures": "Figure 1 caption and next section interpret the solution family. Figure 2 is introduced by purpose in multiple-curves. All three rendered figures were visually inspected.",
+    "numeric_prose": "Static numeric tokens refer to notebook numbers, formula labels, author-supplied h ranges or source-version identifiers. Numerical captions are rendered from the data and computed objects.",
+    "symbols": "Coordinates, units and thickness are defined in inputs; F,K and r in static-equation; J in multiple-curves; breathing and pulse increments in their respective sections.",
+    "scientific_limit": "Neither sampled curve closure nor a synthetic pulse intersection validates experimental tissue resistivity. No strict end-to-end pipeline status is raised.",
+    "concurrency": "The six model functions used here match HEAD at creation. Concurrent work in 33.06 and other files is not included in this commit."
+  },
+  "artifact_hashes": {
+    "33.00_Сквозная_методика_боковых_сборок.html": "cbc63c783117d5e66f1fd9203b9520b46479d003d7856ad10c86e516abe4ec3b",
+    "33.00_Сквозная_методика_боковых_сборок.ipynb": "88ef3f87f8e00288e832577cbf22233b61b6d319f82dd7ad318888a5bd95b1c6"
+  }
+}
