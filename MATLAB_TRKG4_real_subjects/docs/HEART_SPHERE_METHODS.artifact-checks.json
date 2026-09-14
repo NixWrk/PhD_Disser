@@ -1,0 +1,106 @@
+{
+  "schema": "heart_sphere_methods_artifact_checks_v1",
+  "checked_at": "2026-09-14T15:38:28.063883+00:00",
+  "artifact_purpose": "Methodological proposal and bounded historical comparison; no new geometric FEM results",
+  "artifacts": [
+    {
+      "path": "MATLAB_TRKG4_real_subjects/tools/heart_sphere_methods_ru.md",
+      "sha256": "8018c59a609f636d8d8695611ea0c576c2b46e9554dfa343989796416f301fa5",
+      "bytes": 89201
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/tools/build_heart_sphere_methods_report.py",
+      "sha256": "5696e1c29f0dde90562d09615aa6bf521d61cae394861dcf4a28273b0761b593",
+      "bytes": 30761
+    },
+    {
+      "path": "Colab Notebooks/40.15_Эквивалентная_сфера_сердца_методики_и_проверка.ipynb",
+      "sha256": "8e6ba43525d36311a65e214acd2d75eba970c0a1bac64d509bfe7592ba99bee2",
+      "bytes": 1695415
+    },
+    {
+      "path": "Colab Notebooks/40.15_Эквивалентная_сфера_сердца_методики_и_проверка.html",
+      "sha256": "1c3c451c3f2d9a3305e4f8ccc178b48f8fac25efb7dceb52c2e65e3e5b7beb0d",
+      "bytes": 1994321
+    }
+  ],
+  "technical_checks": {
+    "nbformat": "passed",
+    "markdown_cells": 23,
+    "code_cells": 0,
+    "embedded_png_count": 6,
+    "all_relative_notebook_links": "passed",
+    "zotero_page_links": 15,
+    "math_expressions_preserved_in_html": 112,
+    "no_notebook_input_or_prompt_nodes": "passed",
+    "generator_syntax": "passed",
+    "independent_pool_hash_unchanged": "passed"
+  },
+  "figure_visual_review": {
+    "reviewer": "orchestrator",
+    "status": "passed_after_layout_corrections",
+    "scope": "all six complete figures; titles, axes, units, legends, formulas, overlaps and synthetic provenance",
+    "figures": [
+      {
+        "path": "MATLAB_TRKG4_real_subjects/output/exploratory/heart_sphere_methods_figures/figure_01_geometry.png",
+        "sha256": "309020bad4312b429a80b0c760761a538001e67a2d2e13dbe543291ae73d5eba",
+        "bytes": 337874
+      },
+      {
+        "path": "MATLAB_TRKG4_real_subjects/output/exploratory/heart_sphere_methods_figures/figure_02_criteria.png",
+        "sha256": "00b4c4e9fadf0d49dfbfd2597f9fad3484964002e2d12d049be30ef277678a28",
+        "bytes": 150867
+      },
+      {
+        "path": "MATLAB_TRKG4_real_subjects/output/exploratory/heart_sphere_methods_figures/figure_03_dynamic.png",
+        "sha256": "0b12d0bcfc7adb1063f36b03cae2a3503ff72ff18b785f1dfc05452355de5f32",
+        "bytes": 157239
+      },
+      {
+        "path": "MATLAB_TRKG4_real_subjects/output/exploratory/heart_sphere_methods_figures/figure_04_decomposition.png",
+        "sha256": "f0f1d9700903fb6ffdbdc35cf5c2496d3a63f225fd35eed41deec0fa12eb90d9",
+        "bytes": 201626
+      },
+      {
+        "path": "MATLAB_TRKG4_real_subjects/output/exploratory/heart_sphere_methods_figures/figure_05_equal_baseline.png",
+        "sha256": "d724f382727be26984645a2a6f4ebd79fefca9cff20f9c60ef8d3c03a33a8190",
+        "bytes": 122978
+      },
+      {
+        "path": "MATLAB_TRKG4_real_subjects/output/exploratory/heart_sphere_methods_figures/figure_06_validation.png",
+        "sha256": "c52a63166232655de8c534cdaa2bc678e6267d24a7a96efe7b1646e065e49ddb",
+        "bytes": 227830
+      }
+    ]
+  },
+  "html_browser_visual_check": {
+    "status": "unavailable",
+    "reason": "Browser tool initialization failed: Windows sandbox helper apply deny-read ACLs",
+    "fallback": "HTML structure, links and all math-expression contents checked; embedded figures reviewed separately"
+  },
+  "scientific_status": {
+    "methods": "proposed_not_validated",
+    "historical_comparison": "source_pages_and_selected_code_checked",
+    "new_geometric_FEM": "not_performed",
+    "anatomical_validation": "not_performed",
+    "physical_validation": "not_performed"
+  },
+  "historical_source_visual_pages": {
+    "NUZKBZGS": [
+      75,
+      81
+    ],
+    "SG58QNPU": [
+      35
+    ],
+    "3NAQJNXQ": [
+      140,
+      144,
+      146,
+      155,
+      156,
+      160
+    ]
+  },
+  "not_a_formal_release_gate_receipt": true
+}

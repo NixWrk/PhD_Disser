@@ -1,0 +1,100 @@
+{
+  "record_type": "hash-bound-language-review",
+  "schema_version": 1,
+  "reviewed_at": "2026-09-14T18:35:43.0267969+03:00",
+  "artifact": {
+    "path": "MATLAB_TRKG4_real_subjects/README.md",
+    "sha256": "1F0A510989BB7D422EADAF75CEAF99309D36E94ADBEA5B9176A7A666B1B1FC10",
+    "bytes": 45159,
+    "line_count": 459,
+    "encoding": "UTF-8",
+    "line_endings": "LF"
+  },
+  "read_verification": {
+    "status": "passed",
+    "full_sequential_read": true,
+    "chunks": [
+      {
+        "start": 1,
+        "end": 80
+      },
+      {
+        "start": 81,
+        "end": 160
+      },
+      {
+        "start": 161,
+        "end": 240
+      },
+      {
+        "start": 241,
+        "end": 320
+      },
+      {
+        "start": 321,
+        "end": 400
+      },
+      {
+        "start": 401,
+        "end": 459
+      }
+    ],
+    "first_line_read": 1,
+    "last_line_read": 459,
+    "hash_before_full_read": "1F0A510989BB7D422EADAF75CEAF99309D36E94ADBEA5B9176A7A666B1B1FC10",
+    "hash_after_full_read": "1F0A510989BB7D422EADAF75CEAF99309D36E94ADBEA5B9176A7A666B1B1FC10",
+    "hash_stable": true,
+    "byte_change_during_full_read": false,
+    "hash_at_record_creation": "1F0A510989BB7D422EADAF75CEAF99309D36E94ADBEA5B9176A7A666B1B1FC10"
+  },
+  "statuses": {
+    "full_read": "passed",
+    "language": "passed",
+    "semantic": "passed_with_scope",
+    "scientific_claims": "not_validated",
+    "technical": "not_assessed",
+    "computational": "not_assessed",
+    "scope_integrity": "passed"
+  },
+  "checks": {
+    "language.ru.hash-bound-final-review": "passed",
+    "language.ru.reader-facing-clarity": "passed",
+    "language.ru.natural-prose": "passed",
+    "language.ru.intro-variation": "passed",
+    "language.ru.formula-where": "passed",
+    "language.ru.encoding": "passed"
+  },
+  "significant_findings": [],
+  "changes_reviewed": [
+    {
+      "locator": "README.md:1",
+      "change": "Русскоязычный заголовок расчётного контура моделирования."
+    },
+    {
+      "locator": "README.md:3",
+      "change": "Дата обозначена как исторический статус конфигурации."
+    },
+    {
+      "locator": "README.md:360-361",
+      "change": "Для B и Q добавлены определения Z, rho, Delta-rho, локального масштаба B, безразмерности Q и трёх изменяемых компартментов в знаменателе."
+    },
+    {
+      "locator": "README.md:402",
+      "change": "Полный TEPC явно определён как серия 40.09 на фиксированной сетке."
+    },
+    {
+      "locator": "README.md:420-421",
+      "change": "Для S3 указаны объекты ошибок, попарных разрывов, изменений предпочтений и ссылка на раздел 4.3 плана."
+    },
+    {
+      "locator": "README.md:433-446",
+      "change": "Для 40.15 уточнены электрическая подгонка сферы по импедансам, контроль остатка формы по Delta-Z, эллипсоид как альтернатива, порядок независимый набор → источники и статус автоматических масок."
+    }
+  ],
+  "scope_notes": [
+    "README.md:81-338 — исторический раздел; полностью прочитан и оставлен без изменений.",
+    "Проверка языка и формулировок не является технической или вычислительной валидацией модели.",
+    "Пункт semantic=passed_with_scope означает, что запрошенные формулировки и их связи проверены в тексте; подлинность baseline, анатомических интерфейсов и научных результатов этим review не подтверждается.",
+    "Термин «опыт» сохранён как допустимый научный термин."
+  ]
+}

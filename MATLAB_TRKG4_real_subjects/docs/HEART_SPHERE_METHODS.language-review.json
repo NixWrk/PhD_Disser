@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "review_record": "language_review",
+  "review_date": "2026-09-14",
+  "skill": {
+    "name": "russian-scientific-prose",
+    "mode": "audit",
+    "policy": "language.ru",
+    "checks": [
+      "language.ru.hash-bound-final-review",
+      "language.ru.natural-prose",
+      "language.ru.intro-variation",
+      "language.ru.reader-facing-clarity"
+    ]
+  },
+  "review_scope": "textandcaptions",
+  "science": "methodological_proposal",
+  "physical": "notperformed",
+  "numericnewFEM": "notperformed",
+  "sha256": {
+    "final_reader_file": "6D0EA517E21254F7F29A841CB73D0E9F784EA4A96317BB1585FAB1CEAB6D6400",
+    "md": "8018C59A609F636D8D8695611EA0C576C2B46E9554DFA343989796416F301FA5",
+    "nb": "8E6BA43525D36311A65E214ACD2D75EBA970C0A1BAC64D509BFE7592BA99BEE2",
+    "html": "1C3C451C3F2D9A3305E4F8CCC178B48F8FAC25EFB7DCEB52C2E65E3E5B7BEB0D"
+  },
+  "artifacts": {
+    "final_reader_file": {
+      "path": "MATLAB_TRKG4_real_subjects/output/exploratory/heart_sphere_methods_20260914/final_reader_text.md",
+      "bytes": 89907,
+      "lines": 471,
+      "cells": 23
+    },
+    "md": {
+      "path": "MATLAB_TRKG4_real_subjects/tools/heart_sphere_methods_ru.md",
+      "bytes": 89201,
+      "lines": 517
+    },
+    "nb": {
+      "path": "Colab Notebooks/40.15_Эквивалентная_сфера_сердца_методики_и_проверка.ipynb",
+      "bytes": 1695415
+    },
+    "html": {
+      "path": "Colab Notebooks/40.15_Эквивалентная_сфера_сердца_методики_и_проверка.html",
+      "bytes": 1994321
+    }
+  },
+  "model_review": {
+    "type": "full_model_semantic_sequential_read",
+    "completed_after_last_text_change": true,
+    "reader_text_read_from_line": 1,
+    "reader_text_read_to_line": 471,
+    "all_reader_visible_text_read": true,
+    "hash_bound_to_final_reader_file": true,
+    "new_findings_only": true
+  },
+  "caption_review": {
+    "count": 6,
+    "sequence": [
+      "Рисунок 1",
+      "Рисунок 2",
+      "Рисунок 3",
+      "Рисунок 4",
+      "Рисунок 5",
+      "Рисунок 6"
+    ],
+    "textual_consistency": "passed",
+    "png_layout_review": "notperformed",
+    "png_physical_meaning_review": "notperformed"
+  },
+  "language_review": {
+    "status": "passed",
+    "new_findings": [],
+    "basis": "No new concrete language or reader-facing logical error was found in the final reader text after the full sequential pass."
+  },
+  "other_status": {
+    "source_edited_by_reviewer": false,
+    "generator_review": "notperformed",
+    "numeric_recalculation": "notperformed",
+    "overall_release_decision": "not_assessed"
+  },
+  "methodological_scope_note": "The text retains automatic-mask use without a mandatory new manual reference as a conditional computational experiment. Geometric metrics remain subject to anatomical and physiological interpretation limits.",
+  "reviewer": {
+    "role": "delegated final text reviewer",
+    "model": "gpt-5.6-luna",
+    "reasoning_effort": "max"
+  }
+}

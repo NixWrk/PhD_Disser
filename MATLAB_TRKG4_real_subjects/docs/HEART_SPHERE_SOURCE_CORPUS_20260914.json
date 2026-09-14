@@ -1,0 +1,46 @@
+{
+  "schema": "heart_sphere_selected_sources_v1",
+  "selection_mode": "fixed",
+  "frozen_at": "2026-09-14T14:52:33.136603+00:00",
+  "source_authority": "user-authorized local Zotero primary texts",
+  "research_questions": [
+    "definition of equivalent sphere",
+    "origin and frame of motion coordinates",
+    "geometric vs electrical validation",
+    "limits of transfer to current CT/EIDORS setting"
+  ],
+  "sources": [
+    {
+      "source_id": "tikhomirov_dissertation",
+      "zotero_item_key": "UHVBNS3Z",
+      "attachment_key": "NUZKBZGS",
+      "filename": "Тихомиров - Компьютерная система многоканальной электроимпедансной кардиографии.pdf",
+      "sha256": "f4b2ae3075b60dd1ab45cc0d2077d2a2b1e1b1f798d0215403070643a14d49ff",
+      "selection_reason": "author-requested predecessor for heart-sphere methods; primary local PDF"
+    },
+    {
+      "source_id": "tikhomirov_abstract",
+      "zotero_item_key": "BUPQP59M",
+      "attachment_key": "FIW7DWQH",
+      "filename": "Автореферат Тихомиров АН.pdf",
+      "sha256": "9293e7f33184dac5829892a1927b11d7860eb5703a66ece2e513a78fd91125d3",
+      "selection_reason": "author-requested predecessor for heart-sphere methods; primary local PDF"
+    },
+    {
+      "source_id": "rfbr_2021",
+      "zotero_item_key": "X9VNDF2Z",
+      "attachment_key": "3NAQJNXQ",
+      "filename": "Отчет РФФИ 2021 v2.1.pdf",
+      "sha256": "973704070f9943ddbb83c3f196ca16b9b83fc4ceb4f2784be5cf089fe7a4d2f8",
+      "selection_reason": "author-requested predecessor for heart-sphere methods; primary local PDF"
+    },
+    {
+      "source_id": "rfbr_2020",
+      "zotero_item_key": "GUT5IB6Q",
+      "attachment_key": "SG58QNPU",
+      "filename": "Отчет РФФИ 2020.pdf",
+      "sha256": "4b25e11e9e73d63985f40e1e6c35657e69bacde20f50857ad658d6157c99db0a",
+      "selection_reason": "author-requested predecessor for heart-sphere methods; primary local PDF"
+    }
+  ]
+}

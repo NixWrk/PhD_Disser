@@ -1,0 +1,31 @@
+{
+  "schema": "heart_sphere_independent_method_pool_v1",
+  "source": "MATLAB_TRKG4_real_subjects/tools/heart_sphere_methods_ru.md",
+  "independent_pool_sha256": "d57b97a4cb1285b7d5ddedc79ece6d3e38a643d9ac1fa8ad6c860f4a7a26301b",
+  "frozen_at": "2026-09-14T17:47:11.813101+03:00",
+  "historical_sources_read_before_freeze": false,
+  "scope": "independent sections before HISTORICAL_COMPARISON marker",
+  "methods": [
+    "G1",
+    "G2",
+    "G3",
+    "G4",
+    "E1",
+    "E2",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "D5",
+    "D6"
+  ],
+  "status": "proposed_not_validated",
+  "numerical_examples": "synthetic_only",
+  "frozen_copy": "MATLAB_TRKG4_real_subjects/docs/archive/heart_sphere_independent_pool_20260914.md",
+  "contributors": [
+    "coordinator",
+    "luna_max_geometric_review",
+    "luna_max_electrical_review",
+    "luna_max_4d_methods_review"
+  ]
+}
