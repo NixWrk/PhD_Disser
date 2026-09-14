@@ -1,0 +1,58 @@
+{
+  "status": "partial",
+  "scope": "Brief review of 62 current notebooks; inventory of 93 other notebooks; narrative edits of 30.04 and 30.05 only.",
+  "inventory_total": 155,
+  "current_notebooks": 62,
+  "other_research_or_snapshot_notebooks": 69,
+  "checkpoints": 24,
+  "notebooks_executed": false,
+  "models_executed": false,
+  "code_cells_preserved": 8,
+  "notebook_metadata_preserved": true,
+  "notebook_schemas_valid": true,
+  "code_ast_valid": true,
+  "new_markdown_local_links_checked": 159,
+  "reader_html_input_code_count": 0,
+  "visual_viewports": [
+    1440,
+    390
+  ],
+  "language_validator_status": "failed",
+  "release_ready": false,
+  "raw_errors": 0,
+  "raw_warnings": 5,
+  "warning_scope": "Unchanged notebook provenance paths and print identifier. Full HTML text and both Markdown files have zero deterministic findings. No warning waived; no complete final-model-release attestation.",
+  "reader_artifacts": [
+    {
+      "path": "Colab Notebooks/30.04_Вычислительное_ядро_двуслойной_модели.html",
+      "sha256": "8748a0a1600910f09aa27a3b60081f63c740f7f4d809c2c647f824628e9463d3"
+    },
+    {
+      "path": "Colab Notebooks/30.04_Вычислительное_ядро_двуслойной_модели.ipynb",
+      "sha256": "16e79b6627f3f18b026f581954b8af89760ac64338ab53eeed8247a258337ce7"
+    },
+    {
+      "path": "Colab Notebooks/30.05_Масштабные_законы_двуслойной_модели.html",
+      "sha256": "78a9d416273bcf4292d70ae3f189a982a76df5b27ab24764608fca5d453b6a8c"
+    },
+    {
+      "path": "Colab Notebooks/30.05_Масштабные_законы_двуслойной_модели.ipynb",
+      "sha256": "5a4b216576b10f83cbe281d8d134e941af34daa1a2e5926b1a9af20d40d330ac"
+    },
+    {
+      "path": "Colab Notebooks/КРАТКИЙ_ОБЗОР_НОУТБУКОВ_2026-09-14.md",
+      "sha256": "844e5b4a213d0f07afd4f0b7fca794c4a8eddc750628d2b90680b420391d3342"
+    },
+    {
+      "path": "Colab Notebooks/РЕЕСТР_ИСТОРИЧЕСКИХ_НОУТБУКОВ_2026-09-14.md",
+      "sha256": "11d6e74a9b5ae576a61a8afa297a34ff001b554a14a013fdb6d92885840476e5"
+    }
+  ],
+  "limitations": [
+    "The full code, every image and external data of all 155 notebooks were not reread.",
+    "No independent physiological validation or model execution was performed.",
+    "Concurrent user changes are not included in this narrative revision."
+  ],
+  "export_normalization": "Only Markdown jp-InputArea wrappers were renamed to reader-MarkdownArea; CSS selectors were aliased and Markdown inner HTML checked unchanged.",
+  "final_hash_basis": "Canonical reader artifacts, UTF-8 with LF; matches Git blob bytes."
+}

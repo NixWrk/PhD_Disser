@@ -1,0 +1,30 @@
+[
+  {
+    "notebook": "3004",
+    "width": 1440,
+    "scroll": 1440,
+    "math": 41,
+    "inputCode": 0
+  },
+  {
+    "notebook": "3004",
+    "width": 390,
+    "scroll": 390,
+    "math": 41,
+    "inputCode": 0
+  },
+  {
+    "notebook": "3005",
+    "width": 1440,
+    "scroll": 1440,
+    "math": 124,
+    "inputCode": 0
+  },
+  {
+    "notebook": "3005",
+    "width": 390,
+    "scroll": 390,
+    "math": 124,
+    "inputCode": 0
+  }
+]
