@@ -20,8 +20,8 @@
   "sha256": {
     "final_reader_file": "6D0EA517E21254F7F29A841CB73D0E9F784EA4A96317BB1585FAB1CEAB6D6400",
     "md": "8018C59A609F636D8D8695611EA0C576C2B46E9554DFA343989796416F301FA5",
-    "nb": "8E6BA43525D36311A65E214ACD2D75EBA970C0A1BAC64D509BFE7592BA99BEE2",
-    "html": "1C3C451C3F2D9A3305E4F8CCC178B48F8FAC25EFB7DCEB52C2E65E3E5B7BEB0D"
+    "nb": "613c483e26b2800e3a47de39e72c85fda3bfa180660786a0d498773d49154fdc",
+    "html": "cb25d69f7b87efc9475c19d5322c6dfa15942fd84c4d584346fcf35a322cacfe"
   },
   "artifacts": {
     "final_reader_file": {
@@ -37,11 +37,11 @@
     },
     "nb": {
       "path": "Colab Notebooks/40.15_Эквивалентная_сфера_сердца_методики_и_проверка.ipynb",
-      "bytes": 1695415
+      "bytes": 1694754
     },
     "html": {
       "path": "Colab Notebooks/40.15_Эквивалентная_сфера_сердца_методики_и_проверка.html",
-      "bytes": 1994321
+      "bytes": 1985870
     }
   },
   "model_review": {
@@ -83,5 +83,16 @@
     "role": "delegated final text reviewer",
     "model": "gpt-5.6-luna",
     "reasoning_effort": "max"
+  },
+  "serialization_rebinding": {
+    "operation": "CRLF_to_LF in notebook JSON container and HTML source only",
+    "notebook_JSON_value_identical": true,
+    "HTML_text_identical_after_standard_newline_normalization": true,
+    "reader_text_file_unchanged": true,
+    "original_artifact_hashes": {
+      "nb": "8E6BA43525D36311A65E214ACD2D75EBA970C0A1BAC64D509BFE7592BA99BEE2",
+      "html": "1C3C451C3F2D9A3305E4F8CCC178B48F8FAC25EFB7DCEB52C2E65E3E5B7BEB0D"
+    },
+    "reason": "Repository eol=lf; preserve the hash-bound reviewed report after checkout"
   }
 }

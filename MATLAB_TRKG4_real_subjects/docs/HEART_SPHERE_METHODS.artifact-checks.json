@@ -10,18 +10,18 @@
     },
     {
       "path": "MATLAB_TRKG4_real_subjects/tools/build_heart_sphere_methods_report.py",
-      "sha256": "5696e1c29f0dde90562d09615aa6bf521d61cae394861dcf4a28273b0761b593",
-      "bytes": 30761
+      "sha256": "b2e2b17c69fca06102c64848f9da889d454abae83512a2f3d7491f4173c8b954",
+      "bytes": 30819
     },
     {
       "path": "Colab Notebooks/40.15_Эквивалентная_сфера_сердца_методики_и_проверка.ipynb",
-      "sha256": "8e6ba43525d36311a65e214acd2d75eba970c0a1bac64d509bfe7592ba99bee2",
-      "bytes": 1695415
+      "sha256": "613c483e26b2800e3a47de39e72c85fda3bfa180660786a0d498773d49154fdc",
+      "bytes": 1694754
     },
     {
       "path": "Colab Notebooks/40.15_Эквивалентная_сфера_сердца_методики_и_проверка.html",
-      "sha256": "1c3c451c3f2d9a3305e4f8ccc178b48f8fac25efb7dceb52c2e65e3e5b7beb0d",
-      "bytes": 1994321
+      "sha256": "cb25d69f7b87efc9475c19d5322c6dfa15942fd84c4d584346fcf35a322cacfe",
+      "bytes": 1985870
     }
   ],
   "technical_checks": {
@@ -34,7 +34,8 @@
     "math_expressions_preserved_in_html": 112,
     "no_notebook_input_or_prompt_nodes": "passed",
     "generator_syntax": "passed",
-    "independent_pool_hash_unchanged": "passed"
+    "independent_pool_hash_unchanged": "passed",
+    "LF_serialization_and_reader_equivalence": "passed"
   },
   "figure_visual_review": {
     "reviewer": "orchestrator",

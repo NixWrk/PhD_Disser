@@ -625,7 +625,7 @@ def _export_html(notebook, html_path: Path) -> None:
     body = str(soup)
     _validate_html(body, notebook)
     html_path.parent.mkdir(parents=True, exist_ok=True)
-    html_path.write_text(body, encoding="utf-8")
+    html_path.write_text(body, encoding="utf-8", newline="\n")
 
 
 def build_report(text_path: Path, notebook_path: Path, html_path: Path, figure_dir: Path, *, include_cli_cell: bool = False) -> Dict[str, object]:
@@ -641,7 +641,7 @@ def build_report(text_path: Path, notebook_path: Path, html_path: Path, figure_d
     import nbformat
 
     notebook_path.parent.mkdir(parents=True, exist_ok=True)
-    nbformat.write(notebook, notebook_path)
+    notebook_path.write_text(nbformat.writes(notebook), encoding="utf-8", newline="\n")
     _export_html(notebook, html_path)
     return {
         "notebook": notebook_path,
