@@ -1,0 +1,13 @@
+{
+  "derived_root": "<LOCAL_DERIVED_CARDIAC4D_ROOT>",
+  "subjects": ["adam", "nix", "georg"],
+  "time_table": "heart_rr_analysis/chamber_volumes_by_rr.csv",
+  "output_dir": "results/exploratory/reduced_heart_geometry",
+  "mask_definitions": {
+    "whole_heart": "existing products_v2/whole_heart used by 21.03",
+    "blood_pool": "existing products_v2/blood_pool used by 21.03",
+    "chambers": "raw heartchambers_highres masks"
+  },
+  "reference_rule": "earliest available phase within each subject/cycle; no ED label",
+  "independent_reference_available": false
+}

@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "review_record": "language_review",
+  "reviewed_at": "2026-09-14T23:54:49.511287+03:00",
+  "skill": {
+    "name": "russian-scientific-prose",
+    "mode": "transform",
+    "final_check": "full_sequential_semantic_audit"
+  },
+  "artifact": {
+    "path": "Colab Notebooks/40.15_План_исполнения_сравнения_моделей_сердца.md",
+    "sha256": "3d0ebd9272fb97652979a4431432eae1e5e12623f0cc5adf9f509e1c78167ca6",
+    "bytes": 10153,
+    "lines": 93,
+    "source_sha256_before_edits": "bc7f48d831b475a3db710feafc5ee860681751cb3b86313d3f6b02ad0f851260"
+  },
+  "review_scope": "Полный читательский текст только стартового плана, включая заголовки, таблицу шести этапов, перечень кандидатов, обозначения и ограничения.",
+  "model_review": {
+    "full_sequential_read": true,
+    "after_last_text_change": true,
+    "line_ranges": [
+      [
+        1,
+        93
+      ]
+    ],
+    "all_reader_visible_text_read": true,
+    "hash_verified_after_read": true,
+    "headings_tables_lists_and_inline_math_reviewed": true
+  },
+  "language_review": {
+    "status": "passed",
+    "findings": [],
+    "basis": "Вся окончательная редакция прочитана последовательно. Конкретных нерешённых языковых замечаний или неоднозначностей относительно согласованного смысла не обнаружено."
+  },
+  "resolved_issues": [
+    "Исправлены слитные написания в 21.03, этапов 2–5, чисел фаз и 234 сочетаний.",
+    "Уточнены названия областей и русские формулировки геометрических операций.",
+    "Явно указано использование объёма V_t и центра объёма c_t каждой целевой маски без заявления о прогнозе движения или подгонке временного закона.",
+    "Различено отсутствие доказанного преимущества исторической ветки по точности и утверждение о доказанном отсутствии такого преимущества."
+  ],
+  "semantic_preservation": {
+    "initial_plan_status_preserved": true,
+    "in_progress_statuses_not_upgraded": true,
+    "39_existing_phases_234_phase_region_pairs_preserved": true,
+    "whole_heart_blood_union_and_four_chambers_separate": true,
+    "candidate_parameters_from_each_target_mask_not_prediction": true,
+    "individual_candidate_isotropic_scaling_and_translation_only": true,
+    "ellipsoid_rescaling_does_not_preserve_exact_second_moments": true,
+    "continuous_volume_agreement_is_by_construction_not_accuracy_validation": true,
+    "voxel_discretization_and_image_boundary_limitations_preserved": true,
+    "geometric_overlap_not_electrical_equivalence": true,
+    "future_receipt_not_created_or_claimed": true
+  },
+  "work_scope": {
+    "edited_documents": [
+      "Colab Notebooks/40.15_План_исполнения_сравнения_моделей_сердца.md"
+    ],
+    "main_40_15_notebook_source_readiness": "not_touched",
+    "report_regeneration": "not_performed",
+    "code_or_medical_data": "not_read_or_modified",
+    "new_calculations": "not_performed",
+    "external_facts_and_literature": "not_checked"
+  },
+  "status_limit": "Passed относится только к языку и сохранению согласованного методологического смысла плана. Выполнение расчётов, научная достаточность, электрическая и физиологическая валидация этой записью не подтверждаются.",
+  "reviewer": {
+    "agent": "Codex",
+    "role": "bounded Russian scientific prose editor and final reader"
+  }
+}
