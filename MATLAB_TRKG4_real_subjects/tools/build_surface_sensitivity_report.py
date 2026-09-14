@@ -9,6 +9,7 @@ LABELS=['I+','V+','V−','I−']
 PARAMS=['soft','heart','lung'];RUS=['Мягкие ткани','Сердце целиком','Лёгкие']
 def read(p):return json.loads(p.read_text(encoding='utf-8-sig'))
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def ru(value,spec='g'):return format(value,spec).replace('.',',')
 def table(headers,rows):
     return '| '+' | '.join(headers)+' |\n|'+'|'.join(['---']*len(headers))+'|\n'+'\n'.join('| '+' | '.join(map(str,r))+' |' for r in rows)
 def pic(p):return f'![{p.stem}](attachment:{p.name})'
@@ -51,12 +52,12 @@ def build(base):
     article_figures='\n\n'.join(pic(images[n]) for n in ['article_scheme_1.png','article_scheme_2.png'] if n in images)
     if not article_figures:article_figures='[Опубликованные рисунки 3–4](https://www.paperhost.org/proceedings/embs/EMBC21/files/1232.pdf#page=3).'
     rows=[]
-    for mid,c in coords.items():rows += [[mid.replace('_','-').upper(),LABELS[j],*[f'{v:.3f}' for v in point]] for j,point in enumerate(c)]
+    for mid,c in coords.items():rows += [[mid.replace('_','-').upper(),LABELS[j],*[ru(v,'.3f') for v in point]] for j,point in enumerate(c)]
     coordtable=table(['Сборка','Роль','X, мм','Y, мм','Z, мм'],rows)
     ranges=[]
     for k,label in zip(PARAMS,RUS):
-        lo,hi=profile['bounds'][k];ranges.append([label,f'{lo:.4f}',f'{hi:.4f}',f'{(hi-lo)/4:.4f}',5])
-    b=profile['bone_fixed_rho_ohm_m'];ranges.append(['Кости',f'{b:.4f}',f'{b:.4f}','—','фиксировано'])
+        lo,hi=profile['bounds'][k];ranges.append([label,ru(lo,'.4f'),ru(hi,'.4f'),ru((hi-lo)/4,'.4f'),5])
+    b=profile['bone_fixed_rho_ohm_m'];ranges.append(['Кости',ru(b,'.4f'),ru(b,'.4f'),'—','фиксировано'])
     rangetable=table(['Компартмент','Нижняя граница','Верхняя граница','Шаг по ρ','Узлов'],ranges)
     fig,axs=plt.subplots(3,1,figsize=(10,5.7),constrained_layout=True)
     for ax,k,label in zip(axs,PARAMS,RUS):
@@ -81,7 +82,7 @@ def build(base):
                 f=pd.read_csv(p);f['montage']=m['id'];frames.append(f)
             rows.append([m['id'].replace('_','-').upper(),'пройден' if m['status']=='passed' else 'не пройден',m.get('error_message','') or '—'])
         contactstatus=table(['Сборка','Геометрический и матричный контроль','Причина отказа'],rows)
-        if prep['status']=='passed':contactstatus+=f"\n\nМаксимальная относительная норма расхождения с матрицей EIDORS — {max(m['matrix_error'] for m in prep['montages']):.3g}; установленный предел — 10⁻¹²."
+        if prep['status']=='passed':contactstatus+=f"\n\nМаксимальная относительная норма расхождения с матрицей EIDORS — {ru(max(m['matrix_error'] for m in prep['montages']),'.3g')}; установленный предел — 10⁻¹²."
         if prep.get('error_message'):contactstatus+='\n\nОбщее препятствие: '+prep['error_message']
         if frames:
             f=pd.concat(frames,ignore_index=True);fig,axs=plt.subplots(2,1,figsize=(13,6),constrained_layout=True)
@@ -104,7 +105,7 @@ def build(base):
                     ax.set(xlim=(-4,4),ylim=(-4,4),title=m['id'].replace('_','-').upper()+' · '+LABELS[col],xlabel='мм',ylabel='мм');ax.set_aspect('equal')
             contactfigure+='\n\n'+save(detail,'04b_real_contact_patches')+'\n\n**Рисунок 4б.** Реальные контактные пятна на расчётной границе в локальной плоской проекции. Крест — исходный центр; пунктир — окружность радиусом 2,5 мм; окрашены фактически включённые в CEM треугольники. Проекция показывает форму дискретизации и не изменяет геометрию при решении.'
 
-            contactstatus+=f'\n\nПо {len(f)} контактам: площадь {f.patch_area_mm2.min():.3f}–{f.patch_area_mm2.max():.3f} мм²; наибольшее смещение центра площади {f.patch_centroid_offset_mm.max():.3f} мм; наибольшее расстояние исходной точки до границы {f.nearest_boundary_distance_mm.max():.3f} мм.'
+            contactstatus+=f'\n\nПо {len(f)} контактам: площадь {ru(f.patch_area_mm2.min(),'.3f')}–{ru(f.patch_area_mm2.max(),'.3f')} мм²; наибольшее смещение центра площади {ru(f.patch_centroid_offset_mm.max(),'.3f')} мм; наибольшее расстояние исходной точки до границы {ru(f.nearest_boundary_distance_mm.max(),'.3f')} мм.'
     planfile=base/'surface_plan.json';plan=read(planfile) if planfile.exists() else None
     pilotfile=base/'pilot_checks.json';pil=read(pilotfile) if pilotfile.exists() else None
     summaryfile=base/'analysis/summary.json'
@@ -121,27 +122,108 @@ def build(base):
             raise ValueError('Analysis is not bound to the current completed study')
         for name,digest in summary['output_sha256'].items():
             if sha(summaryfile.parent/name)!=digest:raise ValueError('Changed analysis table '+name)
-        status='полный перебор и проверка покрытия завершены; '+('критерии выполнены на проверенных состояниях' if summary['adequate_on_tested_states'] else 'требуется дальнейшая проверка покрытия по не прошедшим критериям')
+        status='полный перебор и проверка покрытия завершены; '+('критерии выполнены на проверенных состояниях' if summary['adequate_on_tested_states'] else 'покрытие требует уточнения из-за невыполненных критериев')
         names={'complete_matrix':'Полнота матрицы','derivative_interpolation':'Интерполяция производных','selectivity_interpolation':'Интерполяция долей','pair_S_accuracy':'Парные разности чувствительности','pair_Q_accuracy':'Парные разности долей','pair_preferences':'Устойчивость знаков парных различий','score_stability':'Устойчивость минимумов','preferred_sets_stable':'Устойчивость предпочтительных множеств'}
         results='### Результаты основной серии\n\n'+table(['Критерий','Результат'],[[names[k],'выполнен' if v else 'не выполнен'] for k,v in summary['criteria_decisions'].items()])
-        cards=pd.read_csv(summaryfile.parent/'scorecards.csv');final=cards[cards.stage=='grid5_plus_checks']
+        cards=pd.read_csv(summaryfile.parent/'scorecards.csv');final=cards[cards.stage=='grid5_plus_checks'].copy()
+        montage_order=sorted(final.montage.unique(),key=lambda value:int(value.rsplit('_',1)[1]))
         fig,axs=plt.subplots(2,3,figsize=(13,7),constrained_layout=True)
         for j,(k,label) in enumerate(zip(PARAMS,RUS)):
-            f=final[final.compartment==k]
+            f=final[final.compartment==k].set_index('montage').loc[montage_order].reset_index()
             for row,field,ylabel in [(0,'min_B','Минимальный B, Ом'),(1,'min_Q','Минимальная доля Q')]:
                 axs[row,j].bar(f.montage.str.replace('tepc_',''),f[field],color='#246aa2' if row==0 else '#d5923a');axs[row,j].set(title=label if row==0 else '',xlabel='Номер TEPC',ylabel=ylabel);axs[row,j].grid(axis='y',alpha=.2)
         results+='\n\n'+save(fig,'07_target_scorecards')+'\n\n**Рисунок 7.** Минимальные показатели по 125 узлам и 64 проверочным состояниям каждой сборки. Это минимумы конечной выборки состояний, а не доказанные нижние границы на непрерывной области. B характеризует абсолютный масштаб, Q — долю целевой чувствительности.'
-        results+='\n\n'+table(['Сборка','Компартмент','Минимальный B, Ом','Минимальный Q'],[[r.montage.replace('_','-').upper(),dict(zip(PARAMS,RUS))[r.compartment],f'{r.min_B:.6g}',f'{r.min_Q:.6g}'] for r in final.itertuples()])
-        results+='\n\n'+('По заранее заданным численным критериям покрытие достаточно на проверенных состояниях. Это допускает модельное сравнение в пределах настоящей постановки; пространственная сходимость и физическая валидация остаются отдельными задачами.' if summary['adequate_on_tested_states'] else 'Не все критерии достаточности покрытия выполнены. Предпочтения из этой таблицы предварительны; использовать их для окончательного выбора сборки до разбора не прошедших проверок нельзя.')
+        results+='\n\n'+table(['Сборка','Компартмент','Минимальный B, Ом','Минимальный Q'],[[r.montage.replace('_','-').upper(),dict(zip(PARAMS,RUS))[r.compartment],ru(r.min_B,'.6g'),ru(r.min_Q,'.6g')] for r in final.itertuples()])
+
+        columns=[(k,field,label+' · '+metric) for k,label in zip(PARAMS,RUS) for field,metric in [('min_B','B'),('min_Q','Q')]]
+        raw=np.array([[float(final[(final.montage==montage)&(final.compartment==k)][field].iloc[0]) for k,field,_ in columns] for montage in montage_order])
+        normalized=raw/raw.max(axis=0,keepdims=True)
+        fig,ax=plt.subplots(figsize=(13,5.5),constrained_layout=True)
+        view=ax.imshow(normalized,cmap='YlGnBu',vmin=0,vmax=1,aspect='auto')
+        ax.set(xticks=np.arange(len(columns)),xticklabels=[label for _,_,label in columns],yticks=np.arange(len(montage_order)),yticklabels=[m.replace('_','-').upper() for m in montage_order])
+        ax.tick_params(axis='x',rotation=35,labelsize=9)
+        for row in range(raw.shape[0]):
+            for col in range(raw.shape[1]):
+                value=ru(raw[row,col],'.3g')
+                ax.text(col,row,value+'\n'+ru(100*normalized[row,col],'.0f')+'%',ha='center',va='center',fontsize=8,color='white' if normalized[row,col]>.58 else '#222222')
+        bar=fig.colorbar(view,ax=ax,fraction=.025,pad=.02);bar.set_label('Доля от лучшего значения в столбце')
+        results+='\n\n'+save(fig,'08_sensitivity_matrix')+'\n\n**Рисунок 8.** Матрица минимальной чувствительности с цветовым градиентом. Верхняя строка каждой ячейки — исходное значение B, Ом, либо Q; нижняя — процент от наибольшего значения в том же столбце. Тёмный цвет означает большее значение для выбранного компартмента и показателя. Нормирование выполнено отдельно по столбцам, поэтому цвет B нельзя количественно сравнивать с цветом Q или с другим компартментом.'
+
+        def ordered(compartment,field):
+            return final[final.compartment==compartment].sort_values(field,ascending=False)
+        soft_b,soft_q=ordered('soft','min_B'),ordered('soft','min_Q')
+        heart_b,heart_q=ordered('heart','min_B'),ordered('heart','min_Q')
+        lung_b,lung_q=ordered('lung','min_B'),ordered('lung','min_Q')
+        heart_gap=100*(heart_b.iloc[0].min_B-heart_b.iloc[1].min_B)/heart_b.iloc[0].min_B
+        results+='\n\n### Предварительная практическая интерпретация\n\n'
+        results+=f'''- **Мягкие ткани.** TEPC-2 имеет наибольшие значения минимальных $B$ ({ru(soft_b.iloc[0].min_B,'.3g')} Ом) и $Q$ ({ru(soft_q.iloc[0].min_Q,'.3f')}). Если цель состоит в регистрации изменения сопротивления всего мягкотканного компартмента, TEPC-2 является первым кандидатом среди шести рассчитанных вариантов.
+- **Сердечная область: абсолютный отклик.** Наибольший минимальный $B$ получен у TEPC-4 ({ru(heart_b.iloc[0].min_B,'.3g')} Ом). TEPC-5 почти совпадает с ним; разница составляет около {ru(heart_gap,'.2f')}% от результата TEPC-4. Поскольку часть критериев попарной точности не выполнена, эти две сборки следует считать близкими кандидатами до дополнительного сгущения по ρ и пространственной проверки.
+- **Сердечная область: избирательность.** Наибольший минимальный $Q$ получен у TEPC-7 ({ru(heart_q.iloc[0].min_Q,'.3f')}), но её сердечный $B$ равен только {ru(heart_q.iloc[0].min_B,'.3g')} Ом. Высокая доля возникла при малом абсолютном отклике всех компартментов; одна эта доля не делает TEPC-7 лучшей для измерения сердца.
+- **Лёгкие: абсолютный отклик.** Наибольший минимальный $B$ получен у TEPC-2 ({ru(lung_b.iloc[0].min_B,'.3g')} Ом); второе значение — у TEPC-3 ({ru(lung_b.iloc[1].min_B,'.3g')} Ом). TEPC-2 является кандидатом для максимального модельного отклика лёгких.
+- **Лёгкие: избирательность.** TEPC-7 имеет наибольший минимальный $Q$ ({ru(lung_q.iloc[0].min_Q,'.3f')}), но её лёгочный $B$ равен {ru(lung_q.iloc[0].min_B,'.3g')} Ом. TEPC-3 сочетает существенно больший $B$ ({ru(float(lung_q[lung_q.montage=='tepc_3'].min_B.iloc[0]),'.3g')} Ом) с меньшей, но сравнительно высокой долей Q; поэтому она представляет более содержательный компромисс для последующей проверки отношения сигнал/шум.'''
+        results+='\n\nВ пределах этих шести вариантов широкая диагональная трасса TEPC-2 связана с большим абсолютным вкладом мягких тканей и лёгких, а центральная продольная TEPC-4 — с большим абсолютным вкладом сердечной области. Поперечная TEPC-7 повышает относительную долю сердца и лёгких главным образом за счёт снижения общего абсолютного отклика. Это наблюдение модели, а не доказанный общий закон геометрии электродов.'
+        results+='\n\nИз этой серии нельзя вывести универсальное правило «сдвигать электроды к плечам», «сближать их» или «увеличивать площадь». Координаты не изменялись систематически по одному фактору, а площадь всех контактов была одинаковой. Увеличение площади обычно уменьшает контактную составляющую импеданса и меняет распределение плотности тока, но не обязано увеличивать тканевую производную или её избирательность. Эти факторы требуется проверить отдельным вычислительным планом при фиксированных остальных параметрах.'
+        results+='\n\n'+('По заранее заданным численным критериям покрытие достаточно на проверенных состояниях. Это допускает модельное сравнение в пределах настоящей постановки; пространственная сходимость и физическая валидация остаются отдельными задачами.' if summary['adequate_on_tested_states'] else 'Не все критерии достаточности покрытия выполнены. Указанные предпочтения являются предварительными; окончательное различение близких сборок требует анализа проверок с невыполненными критериями, дополнительного сгущения по ρ и оценки пространственной неопределённости.')
+    fig,ax=plt.subplots(figsize=(13,4.8),constrained_layout=True);ax.set_axis_off()
+    boxes=[(.08,.72,'КТ\nвоксели 1 мм'),(.28,.72,'Ручная\nсегментация'),(.48,.72,'Треугольные\nповерхности'),(.68,.72,'Тетраэдры\nи CEM'),(.88,.72,'Результаты\nZ, S, B, Q')]
+    for x,y,label in boxes:
+        ax.text(x,y,label,ha='center',va='center',fontsize=10,bbox=dict(boxstyle='round,pad=.55',facecolor='#dceaf5',edgecolor='#246aa2',linewidth=1.2),transform=ax.transAxes)
+    for (x1,y1,_),(x2,y2,_) in zip(boxes[:-1],boxes[1:]):
+        ax.annotate('',xy=(x2-.075,y2),xytext=(x1+.075,y1),xycoords=ax.transAxes,arrowprops=dict(arrowstyle='->',color='#555555',lw=1.4))
+    ax.text(.59,.22,'Пространственная сходимость\nменяем только сетку;\nсравниваем Z, S, B, Q',ha='center',va='center',fontsize=10,bbox=dict(boxstyle='round,pad=.55',facecolor='#f7e5c8',edgecolor='#d5923a',linewidth=1.2),transform=ax.transAxes)
+    ax.text(.87,.22,'Физическая валидация\nфантом и прибор;\nсравниваем расчёт с измерением',ha='center',va='center',fontsize=10,bbox=dict(boxstyle='round,pad=.55',facecolor='#f3d8d5',edgecolor='#c04c42',linewidth=1.2),transform=ax.transAxes)
+    ax.annotate('',xy=(.68,.58),xytext=(.59,.36),xycoords=ax.transAxes,arrowprops=dict(arrowstyle='->',color='#d5923a',lw=1.5))
+    ax.annotate('',xy=(.88,.58),xytext=(.87,.36),xycoords=ax.transAxes,arrowprops=dict(arrowstyle='->',color='#c04c42',lw=1.5))
+    ax.text(.08,.46,'Размер вокселя относится\nтолько к исходному изображению',ha='center',va='center',fontsize=9,color='#246aa2',transform=ax.transAxes)
+    validation_figure=save(fig,'09_validation_logic')+'\n\n**Рисунок 9.** Место двух валидаций в расчётной цепочке. Размер вокселя относится к исходному изображению; после него возникают отдельные этапы сегментации, построения поверхностей, тетраэдрализации и контактной модели. Пространственная проверка сравнивает решения на разных сетках, а физическая — расчёт с независимым измерением.'
+    spatial_result='**Текущий статус проверки контактной дискретизации:** результат ещё не получен. Полная пространственная сходимость и физическая валидация не установлены.'
+    spatial_base=ROOT/'output/exploratory/tepc_spatial_convergence_20260914'
+    spatial_summary_path=spatial_base/'spatial_analysis/summary.json'
+    spatial_status_path=spatial_base/'spatial_orchestrator_status.json'
+    if spatial_summary_path.exists():
+        spatial_summary=read(spatial_summary_path)
+        if spatial_summary.get('status')!='completed_contact_local_two_level_mesh_screen':raise ValueError('Unexpected spatial-screen status')
+        for name,digest in spatial_summary['outputs_sha256'].items():
+            candidate=spatial_summary_path.parent/name
+            if sha(candidate)!=digest:raise ValueError('Changed spatial-screen output '+name)
+        mesh_comparison=pd.read_csv(spatial_summary_path.parent/'mesh_metric_comparison.csv')
+        mesh_comparison['criterion_ratio']=mesh_comparison.absolute_change/mesh_comparison.tolerance
+        metric_ratios=mesh_comparison.groupby('metric').criterion_ratio.max().reindex(['Z','S','B','Q'])
+        montage_ratios=mesh_comparison.groupby(['montage','metric']).criterion_ratio.max().unstack().reindex(index=sorted(mesh_comparison.montage.unique(),key=lambda value:int(value.rsplit('_',1)[1])),columns=['Z','S','B','Q'])
+        fig,ax=plt.subplots(figsize=(8.5,5),constrained_layout=True)
+        view=ax.imshow(np.minimum(montage_ratios.to_numpy(),2),cmap='RdYlGn_r',vmin=0,vmax=2,aspect='auto')
+        ax.set(xticks=np.arange(4),xticklabels=['Z','S','B','Q'],yticks=np.arange(len(montage_ratios)),yticklabels=[value.replace('_','-').upper() for value in montage_ratios.index])
+        for row in range(len(montage_ratios)):
+            for col in range(4):
+                ratio=montage_ratios.iloc[row,col]
+                ax.text(col,row,ru(ratio,'.2f'),ha='center',va='center',fontsize=9,color='white' if ratio>1.25 else '#222222')
+        bar=fig.colorbar(view,ax=ax,fraction=.04,pad=.03);bar.set_label('Ошибка / допустимая ошибка; 1 — граница')
+        spatial_result=table(['Показатель предварительной проверки','Результат'],[
+            ['Сопоставленные состояния',spatial_summary['paired_states']],
+            ['Проверок метрик с превышением допуска',spatial_summary['failed_metric_checks']],
+            ['Максимальное относительное изменение Z',ru(100*spatial_summary['max_relative_Z_change'],'.4g')+'%'],
+            ['Наибольшее отношение ошибки S к допуску',ru(metric_ratios['S'],'.4g')],
+            ['Наибольшее отношение ошибки B к допуску',ru(metric_ratios['B'],'.4g')],
+            ['Максимальное абсолютное изменение Q',ru(spatial_summary['max_absolute_Q_change'],'.4g')],
+            ['Сборки с максимальными показателями сохранены','да' if spatial_summary['stable_top_choices'] else 'нет'],
+            ['Полный порядок шести сборок сохранён','да' if spatial_summary['stable_complete_orders'] else 'нет'],
+            ['Решение по локальной проверке','пройден' if spatial_summary['contact_discretisation_screen_passed'] else 'не пройден']])
+        spatial_result+='\n\n'+save(fig,'10_contact_mesh_convergence')+'\n\n**Рисунок 10.** Максимальное по 78 состояниям отношение изменения показателя при переходе 1,0→0,5 мм к его рабочему допуску. Значение 1 соответствует границе критерия; значения больше 1 отмечают требование дополнительного уточнения. Цвет сравнивает ошибку с допуском внутри каждого показателя и не является картой физиологической чувствительности.'
+        spatial_result+='\n\n'+('**Результат математической проверки:** все 780 сопоставлений прошли критерии; локальная контактная дискретизация прошла двухуровневую проверку на 78 состояниях, а полный порядок сборок сохранился. Этот результат не устанавливает сходимость объёмной сетки или границ компартментов.' if spatial_summary['contact_discretisation_screen_passed'] else '**Результат математической проверки:** локальная проверка контактной дискретизации не пройдена. До анализа объёмной сходимости требуется рассмотреть нарушенные метрики и следующий уровень локального уточнения.')
+    elif spatial_status_path.exists():
+        spatial_status=read(spatial_status_path)
+        stages={'refine_contact_neighbourhood':'уточнение контактной сетки','export_fine_fem_model':'экспорт уточнённой модели EIDORS','configure_fine_studies':'подготовка исследований','prepare_contacts':'повторный контроль контактов','seal_pilot':'фиксация входов','run_pilot_78_states':'расчёт 78 состояний','compare_1mm_to_0p5mm':'сопоставление двух сеток'}
+        if spatial_status.get('status')=='running':spatial_result='**Текущий статус проверки контактной дискретизации:** выполняется этап «'+stages.get(spatial_status.get('stage'),spatial_status.get('stage','неизвестно'))+'». Численный результат ещё не сформирован.'
+        elif spatial_status.get('status')=='failed':spatial_result='**Текущий статус проверки контактной дискретизации:** выполнение остановлено на этапе «'+stages.get(spatial_status.get('stage'),spatial_status.get('stage','неизвестно'))+'». Причина сохранена в локальном паспорте запуска; вывод о сходимости отсутствует.'
     readiness=table(['Этап','Текущее состояние'],[
         ['Исходные координаты',f'{len(coords)} файлов, 24 центра; целостность проверена'],
         ['Геометрия и CEM','проверены' if prep and prep['status']=='passed' else 'не допущены к расчёту'],
-        ['Основные файлы запуска',f"{len(plan['batches'])} блоков; {plan['total_required_states']} состояний" if plan else 'ожидают успешной контактной проверки'],
+        ['Основные файлы запуска',f"{len(plan['batches'])} блоков; {plan['total_required_states']} состояния" if plan else 'ожидают успешной контактной проверки'],
         ['Контроль производных','результат сохранён; см. отдельный протокол' if pil else 'не выполнен'],
         ['Основная серия','анализ сохранён' if summary else 'не выполнена'],
-        ['Пространственная сходимость и физическая валидация','для новых сборок не выполнены']])
+        ['Полная пространственная сходимость и физическая валидация','не выполнены']])
     caveat='Сходство с рисунками установлено на уровне назначения пар. Метрическое и анатомическое совпадение с публикацией не подтверждено. В частности, диагональ TEPC-2 и сторона токовой пары TEPC-7 зависят от принятого соглашения о сторонах модели. Токовые точки TEPC-3 находятся у верхней границы усечённой модели; принадлежность расчётной границе не доказывает соответствие кожной поверхности плеча. Координаты и роли не отражались и не переставлялись автоматически: расчёт относится к переданным JSON, а не к восстановленным по рисунку положениям.'
-    replacements=dict(STATUS=status,RESULT_STATUS='ещё не получено' if not summary else 'представлено в разделе результатов с отдельным заключением о покрытии',ARTICLE_FIGURES=article_figures,MONTAGE_FIGURE=montage_figure,GEOMETRY_CAVEAT=caveat,COORDINATES=coordtable,CONTACT_STATUS=contactstatus,CONTACT_FIGURE=contactfigure,RANGES=rangetable,AXES_FIGURE=axesfigure,GRID_FIGURE=gridfigure,READINESS=readiness,RESULTS=results)
+    replacements=dict(STATUS=status,RESULT_STATUS='ещё не получено' if not summary else 'представлено в разделе результатов с отдельным заключением о покрытии',ARTICLE_FIGURES=article_figures,MONTAGE_FIGURE=montage_figure,GEOMETRY_CAVEAT=caveat,COORDINATES=coordtable,CONTACT_STATUS=contactstatus,CONTACT_FIGURE=contactfigure,RANGES=rangetable,AXES_FIGURE=axesfigure,GRID_FIGURE=gridfigure,READINESS=readiness,RESULTS=results,VALIDATION_FIGURE=validation_figure,SPATIAL_RESULT=spatial_result)
     source=Path(__file__).with_name('surface_sensitivity_report_ru.md').read_text(encoding='utf-8')
     for k,v in replacements.items():source=source.replace('@@'+k+'@@',v)
     if '@@' in source:raise ValueError('Unresolved report token')

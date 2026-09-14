@@ -1,0 +1,41 @@
+{
+  "artifact": "Colab Notebooks/40.09_Подготовка_чувствительности_сборок_TEPC.ipynb",
+  "artifact_sha256": "2f53025d373572ea510748bed88385104230ef72548fdb373157c5409cb12cdb",
+  "related_html": {
+    "path": "Colab Notebooks/40.09_Подготовка_чувствительности_сборок_TEPC.html",
+    "sha256": "5583e341a07431c02bb74949ed46398b8879c8348ac19fcc433fe3e224830a91"
+  },
+  "reviewed_reader_text": {
+    "path": "MATLAB_TRKG4_real_subjects/output/exploratory/tepc_preparation_20260911/report/reader_text.md",
+    "sha256": "da8d3bce2e266b0b3be88d6556713309b9e0d827929b7d9d8928b09dbb775d36"
+  },
+  "evidence": {
+    "path": "MATLAB_TRKG4_real_subjects/output/exploratory/tepc_spatial_convergence_20260914/spatial_analysis/summary.json",
+    "sha256": "70578da73557c7c459ff8357a8e38244c76a491590b2e585493c2404a160bd99"
+  },
+  "reviewed_at": "2026-09-14T11:53:44.8038419+03:00",
+  "review_kind": "russian_scientific_prose_and_saved_output_consistency",
+  "review_status": "passed",
+  "review_scope": {
+    "reader_visible_text_reviewed_sequentially": true,
+    "saved_outputs_checked": true,
+    "terminology_and_claim_status_checked": true,
+    "limitations_and_validation_status_checked": true
+  },
+  "execution": {
+    "cells": 14,
+    "code_cells": 1,
+    "error_outputs": 0,
+    "saved_png_outputs": 11
+  },
+  "scientific_status": {
+    "main_rho_states_completed": 1134,
+    "local_spatial_states_compared": 78,
+    "local_spatial_metric_checks_passed": 780,
+    "full_rho_coverage_accepted": false,
+    "full_volume_interface_convergence_established": false,
+    "physical_validation_completed": false
+  },
+  "language_findings": [],
+  "conclusion": "Текст научно отредактирован; результаты математической модели, допущения, ограничения и незавершённые этапы валидации разделены явно."
+}

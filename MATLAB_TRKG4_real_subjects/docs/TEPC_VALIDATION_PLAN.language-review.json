@@ -1,0 +1,15 @@
+{
+  "artifact": "MATLAB_TRKG4_real_subjects/docs/TEPC_VALIDATION_PLAN.md",
+  "artifact_sha256": "63b86c92356e703fb8be1a7fde0c2e873d86c8c055c1aff9dde83d82ee2db8c4",
+  "reviewed_at": "2026-09-14T11:57:27.6820933+03:00",
+  "review_kind": "russian_scientific_prose_and_methodological_claim_audit",
+  "review_status": "passed",
+  "review_scope": {
+    "full_text_reviewed_after_last_edit": true,
+    "terminology_and_logic_checked": true,
+    "distinction_between_verification_spatial_convergence_and_physical_validation_checked": true,
+    "voxel_size_explanation_checked": true
+  },
+  "language_findings": [],
+  "conclusion": "План последовательно описывает выполненную локальную проверку, обязательную объёмную проверку и независимую физическую валидацию без завышения статуса методики."
+}
