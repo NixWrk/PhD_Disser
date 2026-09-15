@@ -1,0 +1,189 @@
+{
+  "schema_version": 3,
+  "review_record": "language_and_reader_integration_review",
+  "reviewed_at": "2026-09-15T14:52:55.439535+03:00",
+  "reviewer": {
+    "role": "primary_orchestrator_final_semantic_reader",
+    "thread": "01a0a4ac-ee2a-7bc1-abef-a9c3c68178fc"
+  },
+  "skill": {
+    "name": "russian-scientific-prose",
+    "modes": [
+      "transform",
+      "audit"
+    ],
+    "root": "C:/Users/ELVIS_NIX/.codex/skills/russian-scientific-prose",
+    "rules": [
+      "language.ru.hash-bound-final-review",
+      "language.ru.encoding",
+      "language.ru.formula-where",
+      "language.ru.natural-prose",
+      "language.ru.intro-variation",
+      "language.ru.reader-facing-clarity"
+    ],
+    "policy_files": {
+      "SKILL.md": "ccdb2355b10547e8e0de2ad6f2dd69a892b78fab336d774b583f12672c72c113",
+      "references\\russian-prose.md": "89a7b1bc2363ca578bc719af03394a4046596b41f02d14b1033fb2344e4930e5",
+      "shared\\policy\\languages\\ru.md": "9a4a0bae3be98f61eda3ba5e9e0b56646ed1abd4faf6ec1359c5446d870fabff",
+      "shared\\release-gate.md": "9e702907dc6a6f62aaa1ccffdca19e370367a71c45a3d3c15e2826f0f686de06"
+    }
+  },
+  "supersedes": {
+    "review_sha256": "9c88fe14e78ebc226f19a8a6d9a42f2fcffc5ffdedc2e4c7125e2e753fcb0ada",
+    "reviewed_at": "2026-09-15T14:42:51.810311+03:00",
+    "artifact_hashes": {
+      "source_markdown": "c0ca2cd9d7f9558057a901dc7d95e9bd6339b68ade17e70086f87de50c148c04",
+      "plan_markdown": "4acffb306621c412908171a722e1bfdd7d96d17fe741c2d5c127d16c074ef0a2",
+      "report_helper": "dfbcce66b726d0d7870f39080257edc7dfa70853ac39b0672bcc194f60670255",
+      "build_generator": "cb3d94f40e463d4239022d53b20142da3ed2b9010c8031602c49e405d7bd506c",
+      "notebook": "f8b289d12d6fd6234aca951c97652601945b84ea2c67726636e6192a096be1cc",
+      "html": "d28e311267913209ff11995e7c1306e4bb9950f3a460b24a843219ed764393de"
+    },
+    "reason": "Corrected provenance of computed static results; visual review found and corrected two clipped/overlapping axis labels by reducing font size without changing wording."
+  },
+  "artifacts": {
+    "source_markdown": {
+      "path": "Colab Notebooks/cardiac_4d_segmentation/heart_geometry_results_ru.md",
+      "sha256": "c304572dafaeeab6d440f46ea1fe2d29c6fc3ae1109e046ce7a50a967a7890ca",
+      "bytes": 40052
+    },
+    "plan_markdown": {
+      "path": "Colab Notebooks/40.15_План_исполнения_сравнения_моделей_сердца.md",
+      "sha256": "0f775e019613d4632faa2c7b5fe6d55fc3fc30d1cdf88f3f68f39491828c8899",
+      "bytes": 16547
+    },
+    "report_helper": {
+      "path": "Colab Notebooks/cardiac_4d_segmentation/heart_geometry_report.py",
+      "sha256": "29fbadc35e3d7c850642531f874739a16a0427362a3e9c87e3ca3c354215e390",
+      "bytes": 13474
+    },
+    "build_generator": {
+      "path": "Colab Notebooks/cardiac_4d_segmentation/build_heart_geometry_results.py",
+      "sha256": "cb3d94f40e463d4239022d53b20142da3ed2b9010c8031602c49e405d7bd506c",
+      "bytes": 4343
+    },
+    "notebook": {
+      "path": "Colab Notebooks/40.16_Геометрическое_сравнение_моделей_сердца.ipynb",
+      "sha256": "466b3899fd4db4e8a58b84256b062250b4b47a2044a6fd9cbb2c28c922629b65",
+      "bytes": 864484
+    },
+    "html": {
+      "path": "Colab Notebooks/40.16_Геометрическое_сравнение_моделей_сердца.html",
+      "sha256": "e2ca81fc728c4303fcd91e8b4102da5d898088c74941aad7c0bbde1c389e93ed",
+      "bytes": 1153628
+    }
+  },
+  "figure_files": [
+    {
+      "path": "Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/reader_figures/01_overlap.png",
+      "sha256": "b877a45f4da1868ecb921baea4ddc39dffabc0a38a053c9fe087d385a574424d",
+      "visually_reviewed": true
+    },
+    {
+      "path": "Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/reader_figures/02_paired.png",
+      "sha256": "ed770a7d24d2b84bb9b20599d6ce8cda437596a177f59df926d1f075b8ab6e49",
+      "visually_reviewed": true
+    },
+    {
+      "path": "Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/reader_figures/03_affine.png",
+      "sha256": "1d96db42897711b5252cd85057e78392f93f3b86f96c2307cb0fabf0f71f2790",
+      "visually_reviewed": true
+    },
+    {
+      "path": "Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/reader_figures/04_discretization.png",
+      "sha256": "f96c4cd2e4e94bebad43f0703273690afd1d411d7fd73ad5dac826048eba67ff",
+      "visually_reviewed": true
+    },
+    {
+      "path": "Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/reader_figures/05_coverage.png",
+      "sha256": "4662c50ad28e8d103755e6e29d2f13140553c7ea460ca68110182c87ce74877d",
+      "visually_reviewed": true
+    },
+    {
+      "path": "Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/reader_figures/06_temporal.png",
+      "sha256": "d525dd190deb9478daa854e95a64af78482750a9c510a7a63f224470b98ba015",
+      "visually_reviewed": true
+    },
+    {
+      "path": "Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/reader_figures/07_overlay.png",
+      "sha256": "72a2e22b0db8aefd653c8dd499bc882473ddc4b6632cade552bb5cdf33399bae",
+      "visually_reviewed": true
+    }
+  ],
+  "language_review": {
+    "status": "passed",
+    "findings": [],
+    "full_sequential_semantic_read": true,
+    "after_last_reader_text_change": true,
+    "all_notebook_markdown_and_generated_tables_read": true,
+    "all_seven_figures_labels_and_captions_read": true,
+    "full_plan_read": true,
+    "scientific_headings_terms_definitions_and_evidence_boundaries_reviewed": true,
+    "post_read_layout_only_changes": "Axis font sizes in figures 3 and 4; wording and data unchanged, final rendered figures re-inspected.",
+    "text_serialization": "Notebook markdown cells and generated text/markdown outputs in cell order separated by two LF; figure text bound separately by reviewed PNG hashes.",
+    "reader_text_sha256": "22c5197e05d727e7a2149554c1d19d85f0b96731698e5846c9b1b26ccfca8ac0",
+    "reader_text_chars": 25148,
+    "plan_sha256": "0f775e019613d4632faa2c7b5fe6d55fc3fc30d1cdf88f3f68f39491828c8899",
+    "final_plan_recheck": {
+      "reviewed_at": "2026-09-15T14:55:57.004659+03:00",
+      "full_read": true,
+      "change": "Trailing empty line removed; reader prose unchanged."
+    }
+  },
+  "semantic_preservation": {
+    "baseline_pairs": 234,
+    "affine_pairs": 234,
+    "reference_pairs": 36,
+    "nonreference_pairs": 198,
+    "temporal_predictions": 480,
+    "temporal_skipped": 6,
+    "automatic_masks_not_independent_anatomical_reference": true,
+    "within_subject_cycle_references_not_ED_assignment": true,
+    "continuous_equal_volume_distinguished_from_discretized_volume": true,
+    "within_voxel_moment_term_preserved": true,
+    "centroid_volume_fit_not_temporal_forecast": true,
+    "log_volume_geometric_mean_and_interpolation_preserved": true,
+    "common_temporal_comparison_sample_preserved": true,
+    "moment_fit_deterioration_not_impossibility_of_affine_family": true,
+    "immutable_lung_bone_soft_background_preserved": true,
+    "original_heart_region_to_soft_and_heart_overlay_priority_preserved": true,
+    "each_state_from_same_background_and_restoration_preserved": true,
+    "lung_intersection_not_rejection_condition": true,
+    "numerical_convergence_requirement_preserved": true,
+    "new_FEM_matrices_and_impedance_not_claimed": true
+  },
+  "provenance_correction": {
+    "model_rule": "Explicit user decision 2026-09-15, including bones preserved",
+    "static_numeric_results": "Computed by prepare_static_heart_replacement_pilot.py; independently read by primary orchestrator from preflight.json, overlay_audit.json and heart_replacement_balance.csv. These numbers were not supplied by the human author."
+  },
+  "technical_checks": {
+    "executed_code_cells": 12,
+    "png_outputs": 7,
+    "html_embedded_pngs": 7,
+    "html_code_inputs": 0,
+    "error_outputs": 0,
+    "build_hashes_match": true,
+    "final_seven_figures_visually_reviewed": true
+  },
+  "computational_checks": {
+    "static_synthetic_tests": {
+      "passed": 20,
+      "command": "python -B -X utf8 -m pytest MATLAB_TRKG4_real_subjects/tests/test_prepare_static_heart_replacement_pilot.py -q -p no:cacheprovider",
+      "dependency_note": "Existing python_solver_deps in PYTHONPATH"
+    },
+    "static_real_transition_checks_passed": 9,
+    "static_real_transition_checks_total": 9,
+    "static_source_code_hash_matches_run": true,
+    "new_FEM_matrices_or_impedances_computed": false
+  },
+  "status_separation": {
+    "language": "passed",
+    "reader_export": "checked",
+    "geometric_and_material_checks": "internal_numerical_checks_passed",
+    "anatomical_validation": "not_established",
+    "physical_validation": "not_established",
+    "new_FEM_solve": "not_performed",
+    "optimal_reduced_heart_model": "not_established"
+  },
+  "review_invalidated_by_subsequent_reader_text_change": true
+}

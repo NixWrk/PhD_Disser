@@ -1,70 +1,133 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "review_record": "language_review",
-  "reviewed_at": "2026-09-14T23:54:49.511287+03:00",
+  "reviewed_at": "2026-09-15T14:42:51.810311+03:00",
   "skill": {
     "name": "russian-scientific-prose",
-    "mode": "transform",
-    "final_check": "full_sequential_semantic_audit"
+    "modes": [
+      "transform",
+      "audit"
+    ],
+    "root": "C:/Users/ELVIS_NIX/.codex/skills/russian-scientific-prose",
+    "rules": [
+      "language.ru.hash-bound-final-review",
+      "language.ru.encoding",
+      "language.ru.formula-where",
+      "language.ru.natural-prose",
+      "language.ru.intro-variation",
+      "language.ru.reader-facing-clarity"
+    ],
+    "policy_files": {
+      "SKILL.md": "ccdb2355b10547e8e0de2ad6f2dd69a892b78fab336d774b583f12672c72c113",
+      "references\\russian-prose.md": "89a7b1bc2363ca578bc719af03394a4046596b41f02d14b1033fb2344e4930e5",
+      "shared\\policy\\languages\\ru.md": "9a4a0bae3be98f61eda3ba5e9e0b56646ed1abd4faf6ec1359c5446d870fabff",
+      "shared\\release-gate.md": "9e702907dc6a6f62aaa1ccffdca19e370367a71c45a3d3c15e2826f0f686de06"
+    }
   },
   "artifact": {
     "path": "Colab Notebooks/40.15_План_исполнения_сравнения_моделей_сердца.md",
-    "sha256": "3d0ebd9272fb97652979a4431432eae1e5e12623f0cc5adf9f509e1c78167ca6",
-    "bytes": 10153,
-    "lines": 93,
-    "source_sha256_before_edits": "bc7f48d831b475a3db710feafc5ee860681751cb3b86313d3f6b02ad0f851260"
+    "sha256": "0f775e019613d4632faa2c7b5fe6d55fc3fc30d1cdf88f3f68f39491828c8899",
+    "bytes": 16547,
+    "characters": 9149,
+    "lines": 160
   },
-  "review_scope": "Полный читательский текст только стартового плана, включая заголовки, таблицу шести этапов, перечень кандидатов, обозначения и ограничения.",
+  "review_scope": "full_plan_text_headings_six_stage_table_lists_formulas_and_material_overlay_rule",
   "model_review": {
     "full_sequential_read": true,
+    "semantic_model_read": true,
     "after_last_text_change": true,
+    "all_reader_visible_text_read": true,
+    "hash_verified_after_read": true,
     "line_ranges": [
       [
         1,
-        93
+        161
       ]
     ],
-    "all_reader_visible_text_read": true,
-    "hash_verified_after_read": true,
-    "headings_tables_lists_and_inline_math_reviewed": true
+    "attestations": {
+      "scientific_headings_name_objects_methods_results_and_limits": true,
+      "russian_technical_terms_have_clear_scope_and_referents": true,
+      "derived_objects_inputs_coordinates_units_construction_and_comparison_role_defined": true,
+      "scientifically_meaningful_contrasts_preserved": true,
+      "direct_classification_used_for_other_statements": true,
+      "authorial_modality_and_evidence_boundaries_preserved": true,
+      "formula_symbols_and_units_clarified_without_computational_changes": true,
+      "idiomatic_register_and_semantic_reverse_translation_check_performed": true,
+      "information_hierarchy_and_transitions_reviewed": true,
+      "reported_values_checked_against_displayed_tables_not_recomputed_from_medical_data": true
+    }
   },
   "language_review": {
     "status": "passed",
     "findings": [],
-    "basis": "Вся окончательная редакция прочитана последовательно. Конкретных нерешённых языковых замечаний или неоднозначностей относительно согласованного смысла не обнаружено."
+    "basis": "После последнего изменения выполнена полная последовательная семантическая вычитка всех читательских текстов, таблиц и подписей итоговой редакции; выборочная проверка и автоматическое извлечение не заменяли модельное чтение."
+  },
+  "historical_reference": {
+    "previous_review_record_sha256": "510001be10220df5210e6416555dda814dfcffacdcc0e3e8b231835d904eb20e",
+    "previous_bound_artifact_sha256": "3d0ebd9272fb97652979a4431432eae1e5e12623f0cc5adf9f509e1c78167ca6",
+    "previous_reviewed_at": "2026-09-14T23:54:49.511287+03:00",
+    "previous_artifact_bytes": 10153,
+    "previous_artifact_lines": 93,
+    "scope_note": "Предыдущая запись относится только к старой редакции; её статус не перенесён на новую без полного повторного чтения.",
+    "incoming_plan_before_language_edits_sha256": "be433428874432ba5f841c931e1f601e5ef694e416bbe2397919c8ecbdd332a2"
   },
   "resolved_issues": [
-    "Исправлены слитные написания в 21.03, этапов 2–5, чисел фаз и 234 сочетаний.",
-    "Уточнены названия областей и русские формулировки геометрических операций.",
-    "Явно указано использование объёма V_t и центра объёма c_t каждой целевой маски без заявления о прогнозе движения или подгонке временного закона.",
-    "Различено отсутствие доказанного преимущества исторической ветки по точности и утверждение о доказанном отсутствии такого преимущества."
+    {
+      "check": "language.ru.natural-prose",
+      "locator": "40.16 §1,4,6,8 и план",
+      "resolution": "Уточнены названия областей и референты; устранены разговорные, канцелярские и неестественные технические сочетания."
+    },
+    {
+      "check": "language.ru.formula-where",
+      "locator": "40.16 §2,3,4.1,6,8; план: правило замещения",
+      "resolution": "Дополнены определения величин, координат и материальной карты; после вынесенных формул сохранены пояснения обозначений."
+    },
+    {
+      "check": "language.ru.reader-facing-clarity",
+      "locator": "40.16 §8.1 и план: этап 5",
+      "resolution": "Добавлены явно разрешённые авторские результаты статического контроля с таблицей до трёх знаков и отмечена готовность материальных карт."
+    }
   ],
   "semantic_preservation": {
-    "initial_plan_status_preserved": true,
-    "in_progress_statuses_not_upgraded": true,
-    "39_existing_phases_234_phase_region_pairs_preserved": true,
-    "whole_heart_blood_union_and_four_chambers_separate": true,
-    "candidate_parameters_from_each_target_mask_not_prediction": true,
-    "individual_candidate_isotropic_scaling_and_translation_only": true,
-    "ellipsoid_rescaling_does_not_preserve_exact_second_moments": true,
-    "continuous_volume_agreement_is_by_construction_not_accuracy_validation": true,
-    "voxel_discretization_and_image_boundary_limitations_preserved": true,
-    "geometric_overlap_not_electrical_equivalence": true,
-    "future_receipt_not_created_or_claimed": true
+    "baseline_pairs": 234,
+    "affine_pairs": 234,
+    "reference_pairs": 36,
+    "nonreference_pairs": 198,
+    "temporal_predictions": 480,
+    "temporal_skipped": 6,
+    "automatic_masks_not_independent_anatomical_reference": true,
+    "within_subject_cycle_references_not_ED_assignment": true,
+    "continuous_equal_volume_distinguished_from_discretized_volume": true,
+    "within_voxel_moment_term_preserved": true,
+    "centroid_volume_fit_not_temporal_forecast": true,
+    "log_volume_geometric_mean_and_interpolation_preserved": true,
+    "common_temporal_comparison_sample_preserved": true,
+    "moment_fit_deterioration_not_impossibility_of_affine_family": true,
+    "immutable_lung_bone_soft_background_preserved": true,
+    "original_heart_region_to_soft_and_heart_overlay_priority_preserved": true,
+    "each_state_from_same_background_and_restoration_preserved": true,
+    "lung_intersection_not_rejection_condition": true,
+    "numerical_convergence_requirement_preserved": true,
+    "new_FEM_matrices_and_impedance_not_claimed": true
   },
-  "work_scope": {
-    "edited_documents": [
-      "Colab Notebooks/40.15_План_исполнения_сравнения_моделей_сердца.md"
-    ],
-    "main_40_15_notebook_source_readiness": "not_touched",
-    "report_regeneration": "not_performed",
-    "code_or_medical_data": "not_read_or_modified",
-    "new_calculations": "not_performed",
-    "external_facts_and_literature": "not_checked"
+  "status_separation": {
+    "language": "passed",
+    "technical_build": "completed_from_saved_results",
+    "scientific": "methodological_proposal_with_exploratory_results_not_physically_or_anatomically_validated",
+    "physical_validation": "not_performed",
+    "new_numeric_FEM": "not_performed",
+    "numerical_convergence": "requirement_preserved_not_newly_tested_here",
+    "medical_arrays": "not_read",
+    "scientific_redesign": "not_performed",
+    "visual_review_by_this_agent": "not_performed",
+    "external_literature": "not_checked",
+    "overall_release": "not_assessed_by_language_reviewer"
   },
-  "status_limit": "Passed относится только к языку и сохранению согласованного методологического смысла плана. Выполнение расчётов, научная достаточность, электрическая и физиологическая валидация этой записью не подтверждаются.",
-  "reviewer": {
-    "agent": "Codex",
-    "role": "bounded Russian scientific prose editor and final reader"
+  "status_limit": "Passed подтверждает только язык и сохранение явно принятого методологического смысла; не является физической, физиологической или FEM-валидацией.",
+  "review_invalidated_by_any_subsequent_reader_byte_change": true,
+  "final_primary_review": {
+    "reviewed_at": "2026-09-15T14:55:57.004659+03:00",
+    "full_plan_read_after_final_change": true,
+    "change": "Removed only an extra blank line at EOF; all prose, equations, table and claims unchanged."
   }
 }
