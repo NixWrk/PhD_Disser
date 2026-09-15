@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "report": "21.10_Сопоставление_динамики_камер_OLD.ipynb",
+  "status": "preliminary_verification",
+  "practical_decision": "retain_TotalSegmentator_for_exploratory_research",
+  "quantitative_accuracy_validated": false,
+  "independent_reference_available": false,
+  "anatomically_reviewed_phases_percent": [
+    0,
+    40
+  ],
+  "series_count": 1,
+  "computed_phase_count": 20,
+  "claims": [
+    {
+      "claim": "technical_volume_calculation",
+      "status": "checked_on_current_inputs"
+    },
+    {
+      "claim": "direction_of_change_for_four_chambers_between_0_and_40_percent",
+      "status": "observed_agreement_with_unblinded_candidate"
+    },
+    {
+      "claim": "absolute_volume_and_change_amplitude_accuracy",
+      "status": "unestablished"
+    },
+    {
+      "claim": "stroke_volume_and_ejection_fraction_accuracy",
+      "status": "not_evaluated"
+    }
+  ],
+  "evidence_hashes": {
+    "original_comparison": "3a7ba6e558a0bee544bbd69b8f9a84ed1f0540a58ebb2a078f4439dc69ffb46d",
+    "direct_comparison": "3d1ebc932000a3a7459f4816923f0584e4d75e78abb0ca2f9210ee9e95d3fdff",
+    "definition_audit": "ac73ca317064449bfd916c1084ffbe0c11789a704a52715cfd60ef99414864c5"
+  },
+  "note": "Research method choice is not anatomical acceptance or clinical validation"
+}

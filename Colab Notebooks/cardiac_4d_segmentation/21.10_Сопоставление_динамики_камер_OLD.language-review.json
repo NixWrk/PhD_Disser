@@ -1,25 +1,26 @@
 {
-  "reviewed_utc": "2026-09-15T15:01:42.163805+00:00",
+  "reviewed_utc": "2026-09-15T15:10:48.415230+00:00",
   "skill": "russian-scientific-prose",
   "mode": "transform_and_audit",
   "language_status": "passed",
   "full_reader_text_read_semantically_and_sequentially_after_last_edit": true,
   "reviewer": "Codex model",
   "artifact_hashes": {
-    "21.10_Сопоставление_динамики_камер_OLD.md": "60bba8e83ec02080844736a7c1da08b2b49cce2a64b3705753776ec1f8a8c2bb",
-    "21.10_Сопоставление_динамики_камер_OLD.ipynb": "88cc0ad6470c93bfd6f54866fcbfe35741753c87e39013dcb9f4ff206368489a",
-    "21.10_Сопоставление_динамики_камер_OLD.html": "5a7931932201a1a80939b6e1317691715bd460632d97d0cb7df59d85f594dd69"
+    "21.10_Сопоставление_динамики_камер_OLD.md": "a7ae8e51eb789bbad080fbf86b63155aa2f9c07f61469b877ef0a82899f446c6",
+    "21.10_Сопоставление_динамики_камер_OLD.ipynb": "9db2c35efdf6ccc513149f1cee71b0db8cb444e18b79bf6e4f68006be5cf1944",
+    "21.10_Сопоставление_динамики_камер_OLD.html": "ee6657d6ec9a9bdb6dfb93dc2540ea33bdd49522826e96f04f04dcaa2c428849"
   },
-  "reader_text_sha256": "43365b7c18748139f16802767495ce266869911ce290a833089f12b93b6bacb1",
+  "reader_text_sha256": "681ab3cf1a250888f5744a4847188906bf9a029e1d1cf36f2937590e7be361d9",
   "checks": {
     "scientific_headings": true,
     "terminology_and_scope": true,
     "derived_quantity_definitions": true,
     "claim_strength_preserved": true,
     "visible_captions_reviewed": true,
+    "figures_unchanged_since_anatomical_review": true,
     "html_code_excluded": true
   },
   "findings": [],
-  "scientific_status": "Unblinded anatomical candidate revision; accuracy of TS remains unestablished",
+  "scientific_status": "Preliminary technical and two-phase anatomical verification; exploratory use retained; quantitative accuracy unestablished",
   "overall_reference_validation_passed": false
 }
