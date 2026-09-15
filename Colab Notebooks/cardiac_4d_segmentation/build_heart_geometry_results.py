@@ -14,7 +14,7 @@ SOURCE=Path(__file__).with_name('heart_geometry_results_ru.md')
 NOTEBOOK=ROOT/'40.16_Геометрическое_сравнение_моделей_сердца.ipynb'
 CODE={
 'setup': '''from pathlib import Path
-import sys, json
+import sys, json, hashlib
 from IPython.display import display, Markdown, Image
 root = Path.cwd()
 if root.name != 'Colab Notebooks':
@@ -31,11 +31,22 @@ assert len(records) == 234
 assert len(temporal['predictions']) == 480
 figures = work / 'reader_figures'
 figures.mkdir(exist_ok=True)
+ct_directory = work / 'ct_overlays_01'
+ct_manifest = json.loads((ct_directory / 'manifest.json').read_text(encoding='utf-8'))
+assert ct_manifest['baseline_sha256'] == hashlib.sha256((work / 'comparison_02/geometry_comparison.jsonl').read_bytes()).hexdigest()
+def show_ct_example(subject):
+    example = next(x for x in ct_manifest['examples'] if x['subject'] == subject)
+    path = ct_directory / example['figure']
+    assert hashlib.sha256(path.read_bytes()).hexdigest() == example['figure_sha256']
+    display(Image(filename=str(path)))
 def show_figure(figure, name):
     figure.savefig(figures / name, dpi=170, bbox_inches='tight', facecolor='white')
     display(Image(filename=str(figures / name)))
     plt.close(figure)
 ''',
+'ct_adam':"show_ct_example('adam')",
+'ct_nix':"show_ct_example('nix')",
+'ct_georg':"show_ct_example('georg')",
 'geometry_table':"display(Markdown(report.geometry_table(records)))",
 'overlap':"show_figure(report.overlap_figure(records), '01_overlap.png')",
 'paired':"show_figure(report.paired_figure(records), '02_paired.png')",

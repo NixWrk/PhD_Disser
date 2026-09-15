@@ -1,0 +1,167 @@
+{
+  "schema": "heart_CT_overlay_v1",
+  "status": "rendered_not_anatomically_validated",
+  "baseline_sha256": "7f31e6b9c4ed50dde617587bd807d67133a438bb207f673c1fa4450da02e263d",
+  "code_sha256": "ffd1102f83813c27f7206ee5c5d5d97ea9cd6008f448e21f1f71df95859e7d07",
+  "selection_rule": "For each subject, longest original cycle; nonreference phase with greatest absolute relative whole-heart volume difference from its own reference. Ties: first cycle/record.",
+  "coordinate_frame": "Original CT NIfTI RAS+ in mm; exact saved candidate transforms; no CT-to-static-FEM registration",
+  "display": {
+    "HU_window": [
+      -200,
+      300
+    ],
+    "CT_interpolation": "trilinear",
+    "mask_interpolation": "nearest voxel, half-open cells",
+    "plane_definition": "World axial/coronal/sagittal planes through target heart volume centroid",
+    "orientations": "R/L right/left; A/P anterior/posterior; S/I superior/inferior",
+    "outside_CT": "muted violet gray, never filled with invented anatomy"
+  },
+  "examples": [
+    {
+      "subject": "adam",
+      "phase_id": "phase_03",
+      "phase_percent_within_cycle": 41.0,
+      "cycle_index": 0,
+      "reference_phase_id": "phase_00",
+      "reference_phase_percent": 12.0,
+      "volume_ml": 595.4818720156662,
+      "figure": "ct_adam.png",
+      "figure_sha256": "d7d07d45248b2cb203e0f97f77392da5fd565eaefe4827e66a546a2e68acc94e",
+      "planes": [
+        {
+          "plane": "Аксиальная",
+          "fixed_RAS_axis": 2,
+          "fixed_coordinate_mm": -111.67545891286743,
+          "outside_CT_fraction": 0.0,
+          "pixel_spacing_mm": [
+            0.438413361169097,
+            0.3966597077244387
+          ]
+        },
+        {
+          "plane": "Корональная",
+          "fixed_RAS_axis": 1,
+          "fixed_coordinate_mm": 28.145918480351035,
+          "outside_CT_fraction": 0.11666666666666667,
+          "pixel_spacing_mm": [
+            0.438413361169097,
+            0.3287806421531627
+          ]
+        },
+        {
+          "plane": "Сагиттальная",
+          "fixed_RAS_axis": 0,
+          "fixed_coordinate_mm": -29.993454331245147,
+          "outside_CT_fraction": 0.11666666666666667,
+          "pixel_spacing_mm": [
+            0.3966597077244103,
+            0.3287806421531627
+          ]
+        }
+      ],
+      "target_touches_CT_boundary": true,
+      "CT_sha256": "2a271ec7ef1535cf9f746e3ddfd19de554aea7d9b9f7d4f066c7d8d187006250",
+      "target_mask_sha256": "47a96f821a8eef7a1b07187a5fae431641515d48f31eaca2dbc6eedada01bdfe",
+      "reference_mask_sha256": "260b72b5eb04b75f5c5229ee43fef77b423156640581f62a9b2c3161ef960bc7",
+      "saved_candidate_parameters_used_without_refit": true
+    },
+    {
+      "subject": "nix",
+      "phase_id": "phase_02",
+      "phase_percent_within_cycle": 33.0,
+      "cycle_index": 0,
+      "reference_phase_id": "phase_00",
+      "reference_phase_percent": 14.0,
+      "volume_ml": 569.8517192077636,
+      "figure": "ct_nix.png",
+      "figure_sha256": "8bd7939ba04f5b5f2b2c620217a18ee0480def3b3d5991679943c862b8bd3ca7",
+      "planes": [
+        {
+          "plane": "Аксиальная",
+          "fixed_RAS_axis": 2,
+          "fixed_coordinate_mm": -149.89080252717048,
+          "outside_CT_fraction": 0.0,
+          "pixel_spacing_mm": [
+            0.438413361169097,
+            0.3966597077244387
+          ]
+        },
+        {
+          "plane": "Корональная",
+          "fixed_RAS_axis": 1,
+          "fixed_coordinate_mm": 20.718246841355374,
+          "outside_CT_fraction": 0.11666666666666667,
+          "pixel_spacing_mm": [
+            0.438413361169097,
+            0.3763603343873285
+          ]
+        },
+        {
+          "plane": "Сагиттальная",
+          "fixed_RAS_axis": 0,
+          "fixed_coordinate_mm": -18.501929282687783,
+          "outside_CT_fraction": 0.11666666666666667,
+          "pixel_spacing_mm": [
+            0.3966597077244103,
+            0.3763603343873285
+          ]
+        }
+      ],
+      "target_touches_CT_boundary": true,
+      "CT_sha256": "bca8fa1d330e02350179f3175132fe4844e9d3beb676ae1c9ac4f9d96342f4d4",
+      "target_mask_sha256": "04901c7b437bd67628c97c3eca0e375870bcb7f0a0568610b4edda2801b09916",
+      "reference_mask_sha256": "f07990cd5ff46ea5858b47d72be8d138e5d32851f1fcc4f0349ce9414bb0bdcc",
+      "saved_candidate_parameters_used_without_refit": true
+    },
+    {
+      "subject": "georg",
+      "phase_id": "phase_05",
+      "phase_percent_within_cycle": 73.0,
+      "cycle_index": 0,
+      "reference_phase_id": "phase_00",
+      "reference_phase_percent": 23.0,
+      "volume_ml": 670.8081118110784,
+      "figure": "ct_georg.png",
+      "figure_sha256": "ae4d59706d79e1276a55d2caafe61d79a5a975d479985ceaeda8d64676b5b640",
+      "planes": [
+        {
+          "plane": "Аксиальная",
+          "fixed_RAS_axis": 2,
+          "fixed_coordinate_mm": -202.96748368208807,
+          "outside_CT_fraction": 0.0,
+          "pixel_spacing_mm": [
+            0.438413361169097,
+            0.40080446084651555
+          ]
+        },
+        {
+          "plane": "Корональная",
+          "fixed_RAS_axis": 1,
+          "fixed_coordinate_mm": 33.596880582322825,
+          "outside_CT_fraction": 0.09375,
+          "pixel_spacing_mm": [
+            0.438413361169097,
+            0.3658712013618697
+          ]
+        },
+        {
+          "plane": "Сагиттальная",
+          "fixed_RAS_axis": 0,
+          "fixed_coordinate_mm": -32.454744814197525,
+          "outside_CT_fraction": 0.09375,
+          "pixel_spacing_mm": [
+            0.40080446084652976,
+            0.3658712013618697
+          ]
+        }
+      ],
+      "target_touches_CT_boundary": false,
+      "CT_sha256": "7c5864467a51968c28310ef5ae0b6bd1a7c962b2908453f2e53df89aea4cfa84",
+      "target_mask_sha256": "40dc6c0eeb6944e8903e4a4b015644f60cbf829869e16dba60fdf644e57aa728",
+      "reference_mask_sha256": "0372ac0ccedc729d1061e02492fce60d818cacbeba6f5a93cf3a4a160f5ad76b",
+      "saved_candidate_parameters_used_without_refit": true
+    }
+  ],
+  "raw_inputs_modified": false,
+  "FEM_run": false
+}
