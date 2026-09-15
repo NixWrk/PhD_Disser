@@ -1,0 +1,181 @@
+{
+  "reviewed_by": "Codex model",
+  "automatic_contours_seen": true,
+  "independent_reference": false,
+  "accepted": false,
+  "axial_slices_reviewed": {
+    "phase_00": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49
+    ],
+    "phase_08": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49
+    ]
+  },
+  "reviewed_visuals": [
+    {
+      "file": "phase_00_axial_1.jpg",
+      "sha256": "a75d036b02ce40daa3825aa3880b4471ad13c92eca27ec2bc78103e767771d37"
+    },
+    {
+      "file": "phase_00_axial_2.jpg",
+      "sha256": "60f33c5d01ebbf6152c3c927ad8cba095fa09852e85dd7feed10250a0575df89"
+    },
+    {
+      "file": "phase_00_axial_3.jpg",
+      "sha256": "03f7d2ed5d3f5af01853849046f092825ed70daf973f0e9190777725d84cb891"
+    },
+    {
+      "file": "phase_00_axial_4.jpg",
+      "sha256": "d09066acca2a6874f1e65d3c5f4bcba2951e100b3a84817789882713a8e90ff2"
+    },
+    {
+      "file": "phase_08_axial_1.jpg",
+      "sha256": "9de4e6b7be32fda3a491174817f28aeda014bdea43d7b99b451aa3a49367c50e"
+    },
+    {
+      "file": "phase_08_axial_2.jpg",
+      "sha256": "7e5102e85e0cab291c2f605170f901a646d9ee102265fe8da209ce0d4d181dc4"
+    },
+    {
+      "file": "phase_08_axial_3.jpg",
+      "sha256": "891f2f8aa2a0dbc8f34011ffb4617863e0229debfe4d80c3c2fd60181c36cc98"
+    },
+    {
+      "file": "phase_08_axial_4.jpg",
+      "sha256": "a33a71c9a806f5fd51450b752f071002274e513ea307638808f3e45d1af0af2a"
+    },
+    {
+      "file": "phase_00_direct_1.jpg",
+      "sha256": "20d51f4c4618a2aeafba0d619d232d1f88d81cbb869d843d85c6d5024b787cd3"
+    },
+    {
+      "file": "phase_00_direct_2.jpg",
+      "sha256": "0e70d7703e47459b2951fef731d0eaf466f8003b4b200911549e9cacc9c5853e"
+    },
+    {
+      "file": "phase_00_direct_3.jpg",
+      "sha256": "77cff486e9292cd7b25941d0af1e12d7d9b178341b003a30e5fa69a505f855ce"
+    },
+    {
+      "file": "phase_00_direct_4.jpg",
+      "sha256": "0cd2c7a829fad9a1f2c44906a700561241f9419016eab382866b10a7f4f64bb2"
+    },
+    {
+      "file": "phase_08_direct_1.jpg",
+      "sha256": "42ce7a9ade6882dd519b0e58b4125eb5157cb5fad3218b643f1416bcfae6a6e7"
+    },
+    {
+      "file": "phase_08_direct_2.jpg",
+      "sha256": "daae44da6f1bc84da4eeaf470d6b4a0594bc49d4c352d3b43f99ab89b4e6e11b"
+    },
+    {
+      "file": "phase_08_direct_3.jpg",
+      "sha256": "86c0e419865b3b3aa760cc4aeb5cabb6ab9599de5348f07f4bb7babaf1bdf994"
+    },
+    {
+      "file": "phase_08_direct_4.jpg",
+      "sha256": "377163bb7a6c3dfc081ef87d7f6a9cc3cc8773f5544bf187cd48d21e96116002"
+    }
+  ],
+  "unresolved": [
+    "valve planes and vessel ostia",
+    "trabecular/papillary inclusion rule",
+    "full myocardium and outer surface",
+    "other 18 phases",
+    "independent repeat annotation"
+  ]
+}

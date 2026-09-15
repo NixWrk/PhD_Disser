@@ -1,0 +1,2418 @@
+{
+  "status": "automatic_results_without_reference",
+  "created_at": "2026-09-14T20:04:55.679905+00:00",
+  "case_id": "historical_01",
+  "sequence_id": "sequence_01",
+  "expected_phases": 20,
+  "completed_phases": 20,
+  "missing_phases": [],
+  "conversion_manifest_sha256": "7b26069ba464d9e0a23a31a6ac230cf20534380ba2f6a91219df4697522723b7",
+  "rows": [
+    {
+      "phase_id": "phase_00",
+      "phase_percent": 0.0,
+      "structure": "LV",
+      "volume_ml": 150.80788199968546,
+      "voxel_count": 269626,
+      "center_ras_mm": [
+        -50.82781599278184,
+        8.126089163225757,
+        -920.9982661167692
+      ],
+      "touches_image_boundary": true,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": 0.0,
+      "previous_phase_percent": null,
+      "delta_from_previous_ml": null
+    },
+    {
+      "phase_id": "phase_00",
+      "phase_percent": 0.0,
+      "structure": "RV",
+      "volume_ml": 197.7244106357058,
+      "voxel_count": 353507,
+      "center_ras_mm": [
+        -12.868130749405921,
+        29.195977286245252,
+        -922.7139901048636
+      ],
+      "touches_image_boundary": true,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": 0.0,
+      "previous_phase_percent": null,
+      "delta_from_previous_ml": null
+    },
+    {
+      "phase_id": "phase_00",
+      "phase_percent": 0.0,
+      "structure": "LA",
+      "volume_ml": 38.49425078762565,
+      "voxel_count": 68823,
+      "center_ras_mm": [
+        -17.704633785183916,
+        -27.41444076778805,
+        -890.1249291661218
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": 0.0,
+      "previous_phase_percent": null,
+      "delta_from_previous_ml": null
+    },
+    {
+      "phase_id": "phase_00",
+      "phase_percent": 0.0,
+      "structure": "RA",
+      "volume_ml": 61.00698045942043,
+      "voxel_count": 109073,
+      "center_ras_mm": [
+        12.885102425733152,
+        0.41268473471238565,
+        -905.6450771501654
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": 0.0,
+      "previous_phase_percent": null,
+      "delta_from_previous_ml": null
+    },
+    {
+      "phase_id": "phase_00",
+      "phase_percent": 0.0,
+      "structure": "whole_heart",
+      "volume_ml": 615.4929953245826,
+      "voxel_count": 1100426,
+      "center_ras_mm": [
+        -28.016144874164553,
+        11.672947771918288,
+        -912.1682384821878
+      ],
+      "touches_image_boundary": true,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": 0.0,
+      "previous_phase_percent": null,
+      "delta_from_previous_ml": null
+    },
+    {
+      "phase_id": "phase_01",
+      "phase_percent": 5.0,
+      "structure": "LV",
+      "volume_ml": 135.69722597948154,
+      "voxel_count": 242610,
+      "center_ras_mm": [
+        -51.00709834646955,
+        8.663572508759302,
+        -921.5874654795763
+      ],
+      "touches_image_boundary": true,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": -15.110656020203919,
+      "previous_phase_percent": 0.0,
+      "delta_from_previous_ml": -15.110656020203919
+    },
+    {
+      "phase_id": "phase_01",
+      "phase_percent": 5.0,
+      "structure": "RV",
+      "volume_ml": 183.62053507287408,
+      "voxel_count": 328291,
+      "center_ras_mm": [
+        -13.677556537580287,
+        29.442355217930995,
+        -923.965486412969
+      ],
+      "touches_image_boundary": true,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": -14.103875562831718,
+      "previous_phase_percent": 0.0,
+      "delta_from_previous_ml": -14.103875562831718
+    },
+    {
+      "phase_id": "phase_01",
+      "phase_percent": 5.0,
+      "structure": "LA",
+      "volume_ml": 41.77635507865899,
+      "voxel_count": 74691,
+      "center_ras_mm": [
+        -18.207715664331303,
+        -27.480680892762336,
+        -890.2595493432943
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": 3.2821042910333347,
+      "previous_phase_percent": 0.0,
+      "delta_from_previous_ml": 3.2821042910333347
+    },
+    {
+      "phase_id": "phase_01",
+      "phase_percent": 5.0,
+      "structure": "RA",
+      "volume_ml": 68.15959628657352,
+      "voxel_count": 121861,
+      "center_ras_mm": [
+        12.743272902103001,
+        1.3038268092791725,
+        -907.2982619541937
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": 7.152615827153085,
+      "previous_phase_percent": 0.0,
+      "delta_from_previous_ml": 7.152615827153085
+    },
+    {
+      "phase_id": "phase_01",
+      "phase_percent": 5.0,
+      "structure": "whole_heart",
+      "volume_ml": 597.0907265312478,
+      "voxel_count": 1067525,
+      "center_ras_mm": [
+        -27.585899429423577,
+        11.44919552250542,
+        -911.7743917004286
+      ],
+      "touches_image_boundary": true,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": -18.40226879333477,
+      "previous_phase_percent": 0.0,
+      "delta_from_previous_ml": -18.40226879333477
+    },
+    {
+      "phase_id": "phase_02",
+      "phase_percent": 10.0,
+      "structure": "LV",
+      "volume_ml": 117.89678817066493,
+      "voxel_count": 210785,
+      "center_ras_mm": [
+        -51.42663484607195,
+        9.447892642353153,
+        -922.4587731574827
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": -32.91109382902053,
+      "previous_phase_percent": 5.0,
+      "delta_from_previous_ml": -17.80043780881661
+    },
+    {
+      "phase_id": "phase_02",
+      "phase_percent": 10.0,
+      "structure": "RV",
+      "volume_ml": 160.8885509903627,
+      "voxel_count": 287649,
+      "center_ras_mm": [
+        -14.937205797947968,
+        30.163813643900568,
+        -924.3285879665842
+      ],
+      "touches_image_boundary": true,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": -36.835859645343106,
+      "previous_phase_percent": 5.0,
+      "delta_from_previous_ml": -22.73198408251139
+    },
+    {
+      "phase_id": "phase_02",
+      "phase_percent": 10.0,
+      "structure": "LA",
+      "volume_ml": 49.6398697732121,
+      "voxel_count": 88750,
+      "center_ras_mm": [
+        -19.15540364142069,
+        -26.553853614173136,
+        -890.6936901408451
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": 11.145618985586445,
+      "previous_phase_percent": 5.0,
+      "delta_from_previous_ml": 7.8635146945531105
+    },
+    {
+      "phase_id": "phase_02",
+      "phase_percent": 10.0,
+      "structure": "RA",
+      "volume_ml": 81.03911494874541,
+      "voxel_count": 144888,
+      "center_ras_mm": [
+        11.749461425972584,
+        2.061856081850678,
+        -910.9265812213572
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": 20.032134489324974,
+      "previous_phase_percent": 5.0,
+      "delta_from_previous_ml": 12.87951866217189
+    },
+    {
+      "phase_id": "phase_02",
+      "phase_percent": 10.0,
+      "structure": "whole_heart",
+      "volume_ml": 578.6448305847604,
+      "voxel_count": 1034546,
+      "center_ras_mm": [
+        -26.9070777029696,
+        10.776533778142522,
+        -910.8679420731413
+      ],
+      "touches_image_boundary": true,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": -36.84816473982221,
+      "previous_phase_percent": 5.0,
+      "delta_from_previous_ml": -18.44589594648744
+    },
+    {
+      "phase_id": "phase_03",
+      "phase_percent": 15.0,
+      "structure": "LV",
+      "volume_ml": 99.54150246534097,
+      "voxel_count": 177968,
+      "center_ras_mm": [
+        -51.38522129401045,
+        10.156232306936843,
+        -923.2814494740628
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": -51.266379534344495,
+      "previous_phase_percent": 10.0,
+      "delta_from_previous_ml": -18.355285705323965
+    },
+    {
+      "phase_id": "phase_03",
+      "phase_percent": 15.0,
+      "structure": "RV",
+      "volume_ml": 143.23857092767557,
+      "voxel_count": 256093,
+      "center_ras_mm": [
+        -16.603416059507083,
+        30.979812173572782,
+        -924.2948284412304
+      ],
+      "touches_image_boundary": true,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": -54.48583970803023,
+      "previous_phase_percent": 10.0,
+      "delta_from_previous_ml": -17.64998006268712
+    },
+    {
+      "phase_id": "phase_03",
+      "phase_percent": 15.0,
+      "structure": "LA",
+      "volume_ml": 58.97104664562334,
+      "voxel_count": 105433,
+      "center_ras_mm": [
+        -20.002655316663592,
+        -25.805144649955395,
+        -890.911412935229
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": 20.476795857997686,
+      "previous_phase_percent": 10.0,
+      "delta_from_previous_ml": 9.331176872411241
+    },
+    {
+      "phase_id": "phase_03",
+      "phase_percent": 15.0,
+      "structure": "RA",
+      "volume_ml": 91.98785242266796,
+      "voxel_count": 164463,
+      "center_ras_mm": [
+        11.05552444956777,
+        3.076712703948459,
+        -912.5912393669092
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": 30.980871963247523,
+      "previous_phase_percent": 10.0,
+      "delta_from_previous_ml": 10.948737473922549
+    },
+    {
+      "phase_id": "phase_03",
+      "phase_percent": 15.0,
+      "structure": "whole_heart",
+      "volume_ml": 565.9191256035759,
+      "voxel_count": 1011794,
+      "center_ras_mm": [
+        -26.31948952857067,
+        10.189597269532527,
+        -910.0136406224983
+      ],
+      "touches_image_boundary": true,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": -49.573869721006645,
+      "previous_phase_percent": 10.0,
+      "delta_from_previous_ml": -12.725704981184435
+    },
+    {
+      "phase_id": "phase_04",
+      "phase_percent": 20.0,
+      "structure": "LV",
+      "volume_ml": 79.30521527215997,
+      "voxel_count": 141788,
+      "center_ras_mm": [
+        -50.7195523678256,
+        10.288791414229507,
+        -922.2923343301267
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": -71.5026667275255,
+      "previous_phase_percent": 15.0,
+      "delta_from_previous_ml": -20.236287193181
+    },
+    {
+      "phase_id": "phase_04",
+      "phase_percent": 20.0,
+      "structure": "RV",
+      "volume_ml": 129.2812378536391,
+      "voxel_count": 231139,
+      "center_ras_mm": [
+        -19.19407376360614,
+        31.605640378551712,
+        -924.7830699276193
+      ],
+      "touches_image_boundary": true,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": -68.44317278206668,
+      "previous_phase_percent": 15.0,
+      "delta_from_previous_ml": -13.957333074036455
+    },
+    {
+      "phase_id": "phase_04",
+      "phase_percent": 20.0,
+      "structure": "LA",
+      "volume_ml": 67.53595172547908,
+      "voxel_count": 120746,
+      "center_ras_mm": [
+        -19.673360225846224,
+        -25.366484138482946,
+        -891.0132923657926
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": 29.041700937853427,
+      "previous_phase_percent": 15.0,
+      "delta_from_previous_ml": 8.564905079855741
+    },
+    {
+      "phase_id": "phase_04",
+      "phase_percent": 20.0,
+      "structure": "RA",
+      "volume_ml": 101.2189105718183,
+      "voxel_count": 180967,
+      "center_ras_mm": [
+        10.67574139207396,
+        5.077644029528585,
+        -912.7941116336127
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": 40.211930112397866,
+      "previous_phase_percent": 15.0,
+      "delta_from_previous_ml": 9.231058149150343
+    },
+    {
+      "phase_id": "phase_04",
+      "phase_percent": 20.0,
+      "structure": "whole_heart",
+      "volume_ml": 556.7658132786338,
+      "voxel_count": 995429,
+      "center_ras_mm": [
+        -25.676946670215486,
+        9.630993826596068,
+        -909.3391758729151
+      ],
+      "touches_image_boundary": true,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": -58.72718204594878,
+      "previous_phase_percent": 15.0,
+      "delta_from_previous_ml": -9.153312324942135
+    },
+    {
+      "phase_id": "phase_05",
+      "phase_percent": 25.0,
+      "structure": "LV",
+      "volume_ml": 66.87930713828189,
+      "voxel_count": 119572,
+      "center_ras_mm": [
+        -50.35720376635567,
+        9.976503063416871,
+        -921.1993568728465
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": -83.92857486140358,
+      "previous_phase_percent": 20.0,
+      "delta_from_previous_ml": -12.425908133878082
+    },
+    {
+      "phase_id": "phase_05",
+      "phase_percent": 25.0,
+      "structure": "RV",
+      "volume_ml": 118.30173764351908,
+      "voxel_count": 211509,
+      "center_ras_mm": [
+        -21.290999280073393,
+        31.792499729620573,
+        -926.0168196152409
+      ],
+      "touches_image_boundary": true,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": -79.42267299218672,
+      "previous_phase_percent": 20.0,
+      "delta_from_previous_ml": -10.979500210120037
+    },
+    {
+      "phase_id": "phase_05",
+      "phase_percent": 25.0,
+      "structure": "LA",
+      "volume_ml": 75.81728030984165,
+      "voxel_count": 135552,
+      "center_ras_mm": [
+        -19.761425956958817,
+        -24.616604099396653,
+        -891.8484013515108
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": 37.323029522216,
+      "previous_phase_percent": 20.0,
+      "delta_from_previous_ml": 8.28132858436257
+    },
+    {
+      "phase_id": "phase_05",
+      "phase_percent": 25.0,
+      "structure": "RA",
+      "volume_ml": 109.0505438852213,
+      "voxel_count": 194969,
+      "center_ras_mm": [
+        10.46616477350669,
+        6.842809058614051,
+        -913.383045509799
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": 48.04356342580087,
+      "previous_phase_percent": 20.0,
+      "delta_from_previous_ml": 7.831633313403003
+    },
+    {
+      "phase_id": "phase_05",
+      "phase_percent": 25.0,
+      "structure": "whole_heart",
+      "volume_ml": 547.3803821260198,
+      "voxel_count": 978649,
+      "center_ras_mm": [
+        -25.350516318137622,
+        9.144479814258304,
+        -909.1693104473616
+      ],
+      "touches_image_boundary": true,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": -68.11261319856283,
+      "previous_phase_percent": 20.0,
+      "delta_from_previous_ml": -9.385431152614046
+    },
+    {
+      "phase_id": "phase_06",
+      "phase_percent": 30.0,
+      "structure": "LV",
+      "volume_ml": 61.65467588699654,
+      "voxel_count": 110231,
+      "center_ras_mm": [
+        -50.627437542416544,
+        10.47863072778793,
+        -921.3113915323275
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": -89.15320611268892,
+      "previous_phase_percent": 25.0,
+      "delta_from_previous_ml": -5.224631251285345
+    },
+    {
+      "phase_id": "phase_06",
+      "phase_percent": 30.0,
+      "structure": "RV",
+      "volume_ml": 106.97433885312931,
+      "voxel_count": 191257,
+      "center_ras_mm": [
+        -22.313461772986912,
+        32.504845606350585,
+        -926.6268920876099
+      ],
+      "touches_image_boundary": true,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": -90.75007178257648,
+      "previous_phase_percent": 25.0,
+      "delta_from_previous_ml": -11.327398790389765
+    },
+    {
+      "phase_id": "phase_06",
+      "phase_percent": 30.0,
+      "structure": "LA",
+      "volume_ml": 81.59004758791852,
+      "voxel_count": 145873,
+      "center_ras_mm": [
+        -19.61669343445577,
+        -24.168408297097756,
+        -892.377362500257
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": 43.09579680029287,
+      "previous_phase_percent": 25.0,
+      "delta_from_previous_ml": 5.77276727807687
+    },
+    {
+      "phase_id": "phase_06",
+      "phase_percent": 30.0,
+      "structure": "RA",
+      "volume_ml": 114.63649745620799,
+      "voxel_count": 204956,
+      "center_ras_mm": [
+        10.126857311729367,
+        8.66069547264047,
+        -914.0529601475439
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": 53.62951699678756,
+      "previous_phase_percent": 25.0,
+      "delta_from_previous_ml": 5.585953570986689
+    },
+    {
+      "phase_id": "phase_06",
+      "phase_percent": 30.0,
+      "structure": "whole_heart",
+      "volume_ml": 539.1712061411022,
+      "voxel_count": 963972,
+      "center_ras_mm": [
+        -25.300603970997372,
+        9.12838806415013,
+        -909.2836534671131
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": -76.3217891834804,
+      "previous_phase_percent": 25.0,
+      "delta_from_previous_ml": -8.209175984917579
+    },
+    {
+      "phase_id": "phase_07",
+      "phase_percent": 35.0,
+      "structure": "LV",
+      "volume_ml": 59.775352366568455,
+      "voxel_count": 106871,
+      "center_ras_mm": [
+        -51.358687235662074,
+        11.001022339041185,
+        -921.3227957069738
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": -91.03252963311701,
+      "previous_phase_percent": 30.0,
+      "delta_from_previous_ml": -1.8793235204280876
+    },
+    {
+      "phase_id": "phase_07",
+      "phase_percent": 35.0,
+      "structure": "RV",
+      "volume_ml": 102.68992868453434,
+      "voxel_count": 183597,
+      "center_ras_mm": [
+        -23.138827229454577,
+        33.01396295497345,
+        -926.8354303174889
+      ],
+      "touches_image_boundary": true,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": -95.03448195117146,
+      "previous_phase_percent": 30.0,
+      "delta_from_previous_ml": -4.284410168594974
+    },
+    {
+      "phase_id": "phase_07",
+      "phase_percent": 35.0,
+      "structure": "LA",
+      "volume_ml": 85.16915211387665,
+      "voxel_count": 152272,
+      "center_ras_mm": [
+        -19.627475264546874,
+        -23.78768462614258,
+        -892.3576527529683
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": 46.674901326250996,
+      "previous_phase_percent": 30.0,
+      "delta_from_previous_ml": 3.5791045259581296
+    },
+    {
+      "phase_id": "phase_07",
+      "phase_percent": 35.0,
+      "structure": "RA",
+      "volume_ml": 119.54902676570795,
+      "voxel_count": 213739,
+      "center_ras_mm": [
+        9.604667995604373,
+        9.514260458846337,
+        -914.9992467448617
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": 58.54204630628752,
+      "previous_phase_percent": 30.0,
+      "delta_from_previous_ml": 4.912529309499959
+    },
+    {
+      "phase_id": "phase_07",
+      "phase_percent": 35.0,
+      "structure": "whole_heart",
+      "volume_ml": 538.5346971630524,
+      "voxel_count": 962834,
+      "center_ras_mm": [
+        -25.260906256946654,
+        9.23838932963315,
+        -909.596471458216
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": -76.95829816153014,
+      "previous_phase_percent": 30.0,
+      "delta_from_previous_ml": -0.6365089780497328
+    },
+    {
+      "phase_id": "phase_08",
+      "phase_percent": 40.0,
+      "structure": "LV",
+      "volume_ml": 69.25139376034602,
+      "voxel_count": 123813,
+      "center_ras_mm": [
+        -52.84652611153987,
+        11.89937940442988,
+        -922.6770250296819
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": -81.55648823933944,
+      "previous_phase_percent": 35.0,
+      "delta_from_previous_ml": 9.476041393777564
+    },
+    {
+      "phase_id": "phase_08",
+      "phase_percent": 40.0,
+      "structure": "RV",
+      "volume_ml": 106.13032123636563,
+      "voxel_count": 189748,
+      "center_ras_mm": [
+        -22.654116953807645,
+        32.700457334872766,
+        -927.25304351034
+      ],
+      "touches_image_boundary": true,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": -91.59408939934016,
+      "previous_phase_percent": 35.0,
+      "delta_from_previous_ml": 3.4403925518312946
+    },
+    {
+      "phase_id": "phase_08",
+      "phase_percent": 40.0,
+      "structure": "LA",
+      "volume_ml": 86.07525452551162,
+      "voxel_count": 153892,
+      "center_ras_mm": [
+        -19.674062753791603,
+        -23.747096882038846,
+        -892.0849816754608
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": 47.58100373788597,
+      "previous_phase_percent": 35.0,
+      "delta_from_previous_ml": 0.9061024116349756
+    },
+    {
+      "phase_id": "phase_08",
+      "phase_percent": 40.0,
+      "structure": "RA",
+      "volume_ml": 116.45988872900429,
+      "voxel_count": 208216,
+      "center_ras_mm": [
+        9.603970417840813,
+        9.111791463772704,
+        -914.5763822184655
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": 55.45290826958386,
+      "previous_phase_percent": 35.0,
+      "delta_from_previous_ml": -3.089138036703659
+    },
+    {
+      "phase_id": "phase_08",
+      "phase_percent": 40.0,
+      "structure": "whole_heart",
+      "volume_ml": 539.9878169565262,
+      "voxel_count": 965432,
+      "center_ras_mm": [
+        -25.38591882337147,
+        9.281987006398651,
+        -909.7789352331391
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": -75.50517836805636,
+      "previous_phase_percent": 35.0,
+      "delta_from_previous_ml": 1.4531197934737747
+    },
+    {
+      "phase_id": "phase_09",
+      "phase_percent": 45.0,
+      "structure": "LV",
+      "volume_ml": 82.66674335483044,
+      "voxel_count": 147798,
+      "center_ras_mm": [
+        -53.48469063383595,
+        11.491911929454787,
+        -923.456443930229
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": -68.14113864485502,
+      "previous_phase_percent": 40.0,
+      "delta_from_previous_ml": 13.415349594484425
+    },
+    {
+      "phase_id": "phase_09",
+      "phase_percent": 45.0,
+      "structure": "RV",
+      "volume_ml": 115.6343287539591,
+      "voxel_count": 206740,
+      "center_ras_mm": [
+        -21.375639824567344,
+        32.67229813749604,
+        -927.4864564186902
+      ],
+      "touches_image_boundary": true,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": -82.0900818817467,
+      "previous_phase_percent": 40.0,
+      "delta_from_previous_ml": 9.504007517593465
+    },
+    {
+      "phase_id": "phase_09",
+      "phase_percent": 45.0,
+      "structure": "LA",
+      "volume_ml": 80.8668436260395,
+      "voxel_count": 144580,
+      "center_ras_mm": [
+        -19.46941072436796,
+        -24.30053541806373,
+        -891.3548381518882
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": 42.372592838413844,
+      "previous_phase_percent": 40.0,
+      "delta_from_previous_ml": -5.208410899472128
+    },
+    {
+      "phase_id": "phase_09",
+      "phase_percent": 45.0,
+      "structure": "RA",
+      "volume_ml": 115.6186677246222,
+      "voxel_count": 206712,
+      "center_ras_mm": [
+        9.521891320304846,
+        7.989540109541281,
+        -914.0949582027168
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": 54.611687265201766,
+      "previous_phase_percent": 40.0,
+      "delta_from_previous_ml": -0.841221004382092
+    },
+    {
+      "phase_id": "phase_09",
+      "phase_percent": 45.0,
+      "structure": "whole_heart",
+      "volume_ml": 553.159301951336,
+      "voxel_count": 988981,
+      "center_ras_mm": [
+        -25.70676279122344,
+        9.444417874510222,
+        -910.093764187583
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": -62.33369337324655,
+      "previous_phase_percent": 40.0,
+      "delta_from_previous_ml": 13.171484994809816
+    },
+    {
+      "phase_id": "phase_10",
+      "phase_percent": 50.0,
+      "structure": "LV",
+      "volume_ml": 101.01419854548595,
+      "voxel_count": 180601,
+      "center_ras_mm": [
+        -52.871693792296895,
+        10.096457680677872,
+        -922.9231344233974
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": -49.79368345419951,
+      "previous_phase_percent": 45.0,
+      "delta_from_previous_ml": 18.34745519065551
+    },
+    {
+      "phase_id": "phase_10",
+      "phase_percent": 50.0,
+      "structure": "RV",
+      "volume_ml": 141.03316240355414,
+      "voxel_count": 252150,
+      "center_ras_mm": [
+        -20.2669001736311,
+        31.07889555661376,
+        -927.0240333135039
+      ],
+      "touches_image_boundary": true,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": -56.69124823215165,
+      "previous_phase_percent": 45.0,
+      "delta_from_previous_ml": 25.398833649595048
+    },
+    {
+      "phase_id": "phase_10",
+      "phase_percent": 50.0,
+      "structure": "LA",
+      "volume_ml": 70.1949707778943,
+      "voxel_count": 125500,
+      "center_ras_mm": [
+        -18.51658312049662,
+        -25.29198042418807,
+        -889.1827091633467
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": 31.700719990268645,
+      "previous_phase_percent": 45.0,
+      "delta_from_previous_ml": -10.671872848145199
+    },
+    {
+      "phase_id": "phase_10",
+      "phase_percent": 50.0,
+      "structure": "RA",
+      "volume_ml": 108.69201817790153,
+      "voxel_count": 194328,
+      "center_ras_mm": [
+        10.547639725115076,
+        6.419569314572996,
+        -912.6586390020996
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": 47.6850377184811,
+      "previous_phase_percent": 45.0,
+      "delta_from_previous_ml": -6.926649546720668
+    },
+    {
+      "phase_id": "phase_10",
+      "phase_percent": 50.0,
+      "structure": "whole_heart",
+      "volume_ml": 579.7858484364489,
+      "voxel_count": 1036586,
+      "center_ras_mm": [
+        -26.188181310522324,
+        9.636392019379116,
+        -910.4008167195003
+      ],
+      "touches_image_boundary": true,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": -35.70714688813371,
+      "previous_phase_percent": 45.0,
+      "delta_from_previous_ml": 26.62654648511284
+    },
+    {
+      "phase_id": "phase_11",
+      "phase_percent": 55.0,
+      "structure": "LV",
+      "volume_ml": 121.36626549126476,
+      "voxel_count": 216988,
+      "center_ras_mm": [
+        -51.82814833136837,
+        8.60133052217897,
+        -921.4737358747949
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": -29.441616508420708,
+      "previous_phase_percent": 50.0,
+      "delta_from_previous_ml": 20.3520669457788
+    },
+    {
+      "phase_id": "phase_11",
+      "phase_percent": 55.0,
+      "structure": "RV",
+      "volume_ml": 171.32830501083595,
+      "voxel_count": 306314,
+      "center_ras_mm": [
+        -16.788272034816842,
+        29.36423289851504,
+        -925.6693670547216
+      ],
+      "touches_image_boundary": true,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": -26.396105624869847,
+      "previous_phase_percent": 50.0,
+      "delta_from_previous_ml": 30.295142607281804
+    },
+    {
+      "phase_id": "phase_11",
+      "phase_percent": 55.0,
+      "structure": "LA",
+      "volume_ml": 57.77074061144516,
+      "voxel_count": 103287,
+      "center_ras_mm": [
+        -17.351027984391862,
+        -26.8278598162035,
+        -888.3326991780185
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": 19.27648982381951,
+      "previous_phase_percent": 50.0,
+      "delta_from_previous_ml": -12.424230166449135
+    },
+    {
+      "phase_id": "phase_11",
+      "phase_percent": 55.0,
+      "structure": "RA",
+      "volume_ml": 87.96800178537134,
+      "voxel_count": 157276,
+      "center_ras_mm": [
+        12.149510773772775,
+        2.909728445193622,
+        -909.1137300033063
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": 26.96102132595091,
+      "previous_phase_percent": 50.0,
+      "delta_from_previous_ml": -20.72401639253019
+    },
+    {
+      "phase_id": "phase_11",
+      "phase_percent": 55.0,
+      "structure": "whole_heart",
+      "volume_ml": 605.6069705556639,
+      "voxel_count": 1082751,
+      "center_ras_mm": [
+        -26.684091952325204,
+        9.725660408486661,
+        -910.9167721849252
+      ],
+      "touches_image_boundary": true,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": -9.886024768918674,
+      "previous_phase_percent": 50.0,
+      "delta_from_previous_ml": 25.821122119215033
+    },
+    {
+      "phase_id": "phase_12",
+      "phase_percent": 60.0,
+      "structure": "LV",
+      "volume_ml": 133.96220765794348,
+      "voxel_count": 239508,
+      "center_ras_mm": [
+        -51.804263502044336,
+        8.504037594305515,
+        -921.5433952101808
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": -16.845674341741983,
+      "previous_phase_percent": 55.0,
+      "delta_from_previous_ml": 12.595942166678725
+    },
+    {
+      "phase_id": "phase_12",
+      "phase_percent": 60.0,
+      "structure": "RV",
+      "volume_ml": 183.27655174993856,
+      "voxel_count": 327676,
+      "center_ras_mm": [
+        -15.364674956805004,
+        29.441922006704914,
+        -923.9948333109535
+      ],
+      "touches_image_boundary": true,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": -14.447858885767232,
+      "previous_phase_percent": 55.0,
+      "delta_from_previous_ml": 11.948246739102615
+    },
+    {
+      "phase_id": "phase_12",
+      "phase_percent": 60.0,
+      "structure": "LA",
+      "volume_ml": 56.16604442688916,
+      "voxel_count": 100418,
+      "center_ras_mm": [
+        -17.26933370228629,
+        -27.358427504518374,
+        -888.0795823457946
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": 17.671793639263505,
+      "previous_phase_percent": 55.0,
+      "delta_from_previous_ml": -1.6046961845560048
+    },
+    {
+      "phase_id": "phase_12",
+      "phase_percent": 60.0,
+      "structure": "RA",
+      "volume_ml": 84.10364279649109,
+      "voxel_count": 150367,
+      "center_ras_mm": [
+        12.229764004389693,
+        1.644225197455654,
+        -908.5200841940053
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": 23.096662337070654,
+      "previous_phase_percent": 55.0,
+      "delta_from_previous_ml": -3.864358988880255
+    },
+    {
+      "phase_id": "phase_12",
+      "phase_percent": 60.0,
+      "structure": "whole_heart",
+      "volume_ml": 619.3763712776575,
+      "voxel_count": 1107369,
+      "center_ras_mm": [
+        -26.968282775087715,
+        10.06735809688577,
+        -910.9719515355766
+      ],
+      "touches_image_boundary": true,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": 3.8833759530749603,
+      "previous_phase_percent": 55.0,
+      "delta_from_previous_ml": 13.769400721993634
+    },
+    {
+      "phase_id": "phase_13",
+      "phase_percent": 65.0,
+      "structure": "LV",
+      "volume_ml": 139.85970384823923,
+      "voxel_count": 250052,
+      "center_ras_mm": [
+        -51.86510724271611,
+        8.551677631493362,
+        -921.4367491561756
+      ],
+      "touches_image_boundary": true,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": -10.948178151446228,
+      "previous_phase_percent": 60.0,
+      "delta_from_previous_ml": 5.897496190295755
+    },
+    {
+      "phase_id": "phase_13",
+      "phase_percent": 65.0,
+      "structure": "RV",
+      "volume_ml": 187.10511410033448,
+      "voxel_count": 334521,
+      "center_ras_mm": [
+        -15.19349600382428,
+        29.759555772450213,
+        -924.0676250519399
+      ],
+      "touches_image_boundary": true,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": -10.61929653537132,
+      "previous_phase_percent": 60.0,
+      "delta_from_previous_ml": 3.828562350395913
+    },
+    {
+      "phase_id": "phase_13",
+      "phase_percent": 65.0,
+      "structure": "LA",
+      "volume_ml": 58.3535546317684,
+      "voxel_count": 104329,
+      "center_ras_mm": [
+        -17.720529723398116,
+        -27.36260177627028,
+        -887.9142088968551
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": 19.859303844142744,
+      "previous_phase_percent": 60.0,
+      "delta_from_previous_ml": 2.1875102048792385
+    },
+    {
+      "phase_id": "phase_13",
+      "phase_percent": 65.0,
+      "structure": "RA",
+      "volume_ml": 83.38994731670947,
+      "voxel_count": 149091,
+      "center_ras_mm": [
+        12.143526612594513,
+        1.6294830749530718,
+        -907.9457411916212
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": 22.382966857289034,
+      "previous_phase_percent": 60.0,
+      "delta_from_previous_ml": -0.7136954797816202
+    },
+    {
+      "phase_id": "phase_13",
+      "phase_percent": 65.0,
+      "structure": "whole_heart",
+      "volume_ml": 629.9576338846393,
+      "voxel_count": 1126287,
+      "center_ras_mm": [
+        -27.26991578532912,
+        10.213823896256102,
+        -911.2516188147426
+      ],
+      "touches_image_boundary": true,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": 14.464638560056756,
+      "previous_phase_percent": 60.0,
+      "delta_from_previous_ml": 10.581262606981795
+    },
+    {
+      "phase_id": "phase_14",
+      "phase_percent": 70.0,
+      "structure": "LV",
+      "volume_ml": 141.91801056108903,
+      "voxel_count": 253732,
+      "center_ras_mm": [
+        -51.88048810473384,
+        8.506355175024325,
+        -921.1650856021314
+      ],
+      "touches_image_boundary": true,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": -8.88987143859643,
+      "previous_phase_percent": 65.0,
+      "delta_from_previous_ml": 2.0583067128497987
+    },
+    {
+      "phase_id": "phase_14",
+      "phase_percent": 70.0,
+      "structure": "RV",
+      "volume_ml": 186.16041843783358,
+      "voxel_count": 332832,
+      "center_ras_mm": [
+        -15.54788602986882,
+        30.15643047977251,
+        -923.9289626598404
+      ],
+      "touches_image_boundary": true,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": -11.56399219787221,
+      "previous_phase_percent": 65.0,
+      "delta_from_previous_ml": -0.9446956625008909
+    },
+    {
+      "phase_id": "phase_14",
+      "phase_percent": 70.0,
+      "structure": "LA",
+      "volume_ml": 61.01872623142311,
+      "voxel_count": 109094,
+      "center_ras_mm": [
+        -17.832064036978494,
+        -27.255769857972894,
+        -887.4360093130695
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": 22.524475443797456,
+      "previous_phase_percent": 65.0,
+      "delta_from_previous_ml": 2.6651715996547125
+    },
+    {
+      "phase_id": "phase_14",
+      "phase_percent": 70.0,
+      "structure": "RA",
+      "volume_ml": 86.0182036329272,
+      "voxel_count": 153790,
+      "center_ras_mm": [
+        12.231671756450936,
+        2.1764683904426363,
+        -908.1293647181221
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": 25.011223173506764,
+      "previous_phase_percent": 65.0,
+      "delta_from_previous_ml": 2.6282563162177297
+    },
+    {
+      "phase_id": "phase_14",
+      "phase_percent": 70.0,
+      "structure": "whole_heart",
+      "volume_ml": 634.2700101770502,
+      "voxel_count": 1133997,
+      "center_ras_mm": [
+        -27.315175729196056,
+        10.300386642806103,
+        -911.2556995300693
+      ],
+      "touches_image_boundary": true,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": 18.777014852467573,
+      "previous_phase_percent": 65.0,
+      "delta_from_previous_ml": 4.312376292410818
+    },
+    {
+      "phase_id": "phase_15",
+      "phase_percent": 75.0,
+      "structure": "LV",
+      "volume_ml": 143.17536748785164,
+      "voxel_count": 255980,
+      "center_ras_mm": [
+        -51.82225695590887,
+        8.333449356328586,
+        -920.8944448785061
+      ],
+      "touches_image_boundary": true,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": -7.6325145118338185,
+      "previous_phase_percent": 70.0,
+      "delta_from_previous_ml": 1.2573569267626112
+    },
+    {
+      "phase_id": "phase_15",
+      "phase_percent": 75.0,
+      "structure": "RV",
+      "volume_ml": 185.3320618504068,
+      "voxel_count": 331351,
+      "center_ras_mm": [
+        -15.790395934008046,
+        30.337308594116294,
+        -924.040491804763
+      ],
+      "touches_image_boundary": true,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": -12.392348785298992,
+      "previous_phase_percent": 70.0,
+      "delta_from_previous_ml": -0.8283565874267822
+    },
+    {
+      "phase_id": "phase_15",
+      "phase_percent": 75.0,
+      "structure": "LA",
+      "volume_ml": 62.11835421986407,
+      "voxel_count": 111060,
+      "center_ras_mm": [
+        -17.688291321736443,
+        -27.105685219283515,
+        -886.9115568161354
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": 23.624103432238414,
+      "previous_phase_percent": 70.0,
+      "delta_from_previous_ml": 1.0996279884409574
+    },
+    {
+      "phase_id": "phase_15",
+      "phase_percent": 75.0,
+      "structure": "RA",
+      "volume_ml": 85.97905105958495,
+      "voxel_count": 153720,
+      "center_ras_mm": [
+        12.275493047088816,
+        2.510019584567388,
+        -908.2551229508197
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": 24.972070600164514,
+      "previous_phase_percent": 70.0,
+      "delta_from_previous_ml": -0.03915257334224975
+    },
+    {
+      "phase_id": "phase_15",
+      "phase_percent": 75.0,
+      "structure": "whole_heart",
+      "volume_ml": 633.1530431918434,
+      "voxel_count": 1132000,
+      "center_ras_mm": [
+        -27.434895003768403,
+        10.368579689725294,
+        -911.3635733215548
+      ],
+      "touches_image_boundary": true,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": 17.6600478672608,
+      "previous_phase_percent": 70.0,
+      "delta_from_previous_ml": -1.1169669852067727
+    },
+    {
+      "phase_id": "phase_16",
+      "phase_percent": 80.0,
+      "structure": "LV",
+      "volume_ml": 144.93052141853715,
+      "voxel_count": 259118,
+      "center_ras_mm": [
+        -51.82278095606145,
+        8.237986386388627,
+        -920.8417709306185
+      ],
+      "touches_image_boundary": true,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": -5.877360581148309,
+      "previous_phase_percent": 75.0,
+      "delta_from_previous_ml": 1.755153930685509
+    },
+    {
+      "phase_id": "phase_16",
+      "phase_percent": 80.0,
+      "structure": "RV",
+      "volume_ml": 187.8534875736478,
+      "voxel_count": 335859,
+      "center_ras_mm": [
+        -15.805005833324813,
+        30.373528224356107,
+        -923.8933272593558
+      ],
+      "touches_image_boundary": true,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": -9.870923062057983,
+      "previous_phase_percent": 75.0,
+      "delta_from_previous_ml": 2.521425723241009
+    },
+    {
+      "phase_id": "phase_16",
+      "phase_percent": 80.0,
+      "structure": "LA",
+      "volume_ml": 60.791641306038045,
+      "voxel_count": 108688,
+      "center_ras_mm": [
+        -17.403859040354547,
+        -27.072165657468247,
+        -887.2491029368467
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": 22.297390518412392,
+      "previous_phase_percent": 75.0,
+      "delta_from_previous_ml": -1.3267129138260216
+    },
+    {
+      "phase_id": "phase_16",
+      "phase_percent": 80.0,
+      "structure": "RA",
+      "volume_ml": 84.04379529152507,
+      "voxel_count": 150260,
+      "center_ras_mm": [
+        12.31850331384372,
+        2.5446813622034057,
+        -908.9341641155331
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": 23.03681483210464,
+      "previous_phase_percent": 75.0,
+      "delta_from_previous_ml": -1.935255768059875
+    },
+    {
+      "phase_id": "phase_16",
+      "phase_percent": 80.0,
+      "structure": "whole_heart",
+      "volume_ml": 634.3583831283084,
+      "voxel_count": 1134155,
+      "center_ras_mm": [
+        -27.519848453118072,
+        10.544680771153551,
+        -911.5927783239505
+      ],
+      "touches_image_boundary": true,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": 18.865387803725866,
+      "previous_phase_percent": 75.0,
+      "delta_from_previous_ml": 1.2053399364650659
+    },
+    {
+      "phase_id": "phase_17",
+      "phase_percent": 85.0,
+      "structure": "LV",
+      "volume_ml": 149.41628767860658,
+      "voxel_count": 267138,
+      "center_ras_mm": [
+        -51.56296241942789,
+        8.267636777341338,
+        -920.6008149346031
+      ],
+      "touches_image_boundary": true,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": -1.391594321078884,
+      "previous_phase_percent": 80.0,
+      "delta_from_previous_ml": 4.4857662600694255
+    },
+    {
+      "phase_id": "phase_17",
+      "phase_percent": 85.0,
+      "structure": "RV",
+      "volume_ml": 191.07406639228617,
+      "voxel_count": 341617,
+      "center_ras_mm": [
+        -15.016410947911538,
+        30.31125723343696,
+        -923.120137463885
+      ],
+      "touches_image_boundary": true,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": -6.6503442434196245,
+      "previous_phase_percent": 80.0,
+      "delta_from_previous_ml": 3.2205788186383586
+    },
+    {
+      "phase_id": "phase_17",
+      "phase_percent": 85.0,
+      "structure": "LA",
+      "volume_ml": 53.45109312684215,
+      "voxel_count": 95564,
+      "center_ras_mm": [
+        -17.488816944592486,
+        -27.024341112099336,
+        -888.3619249926751
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": 14.9568423392165,
+      "previous_phase_percent": 80.0,
+      "delta_from_previous_ml": -7.340548179195892
+    },
+    {
+      "phase_id": "phase_17",
+      "phase_percent": 85.0,
+      "structure": "RA",
+      "volume_ml": 78.47685868473319,
+      "voxel_count": 140307,
+      "center_ras_mm": [
+        12.438610578437277,
+        2.1625531252883974,
+        -909.3684349319706
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": 17.469878225312755,
+      "previous_phase_percent": 80.0,
+      "delta_from_previous_ml": -5.566936606791884
+    },
+    {
+      "phase_id": "phase_17",
+      "phase_percent": 85.0,
+      "structure": "whole_heart",
+      "volume_ml": 630.4755664977097,
+      "voxel_count": 1127213,
+      "center_ras_mm": [
+        -27.787184598907487,
+        10.984641818853916,
+        -911.905407851045
+      ],
+      "touches_image_boundary": true,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": 14.982571173127099,
+      "previous_phase_percent": 80.0,
+      "delta_from_previous_ml": -3.882816630598768
+    },
+    {
+      "phase_id": "phase_18",
+      "phase_percent": 90.0,
+      "structure": "LV",
+      "volume_ml": 155.22541091764413,
+      "voxel_count": 277524,
+      "center_ras_mm": [
+        -51.005203831250356,
+        7.916206078286933,
+        -920.3196624436084
+      ],
+      "touches_image_boundary": true,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": 4.417528917958663,
+      "previous_phase_percent": 85.0,
+      "delta_from_previous_ml": 5.809123239037547
+    },
+    {
+      "phase_id": "phase_18",
+      "phase_percent": 90.0,
+      "structure": "RV",
+      "volume_ml": 204.34007688559373,
+      "voxel_count": 365335,
+      "center_ras_mm": [
+        -13.141920011825889,
+        29.263440225725148,
+        -922.5453693185706
+      ],
+      "touches_image_boundary": true,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": 6.615666249887937,
+      "previous_phase_percent": 85.0,
+      "delta_from_previous_ml": 13.266010493307562
+    },
+    {
+      "phase_id": "phase_18",
+      "phase_percent": 90.0,
+      "structure": "LA",
+      "volume_ml": 41.75566014703522,
+      "voxel_count": 74654,
+      "center_ras_mm": [
+        -17.680726930712652,
+        -27.421752129185336,
+        -889.2344549521794
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": 3.261409359409569,
+      "previous_phase_percent": 85.0,
+      "delta_from_previous_ml": -11.695432979806931
+    },
+    {
+      "phase_id": "phase_18",
+      "phase_percent": 90.0,
+      "structure": "RA",
+      "volume_ml": 58.752910879859364,
+      "voxel_count": 105043,
+      "center_ras_mm": [
+        12.865917406908068,
+        -0.06110356848979848,
+        -906.1613624896471
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": -2.254069579561069,
+      "previous_phase_percent": 85.0,
+      "delta_from_previous_ml": -19.723947804873823
+    },
+    {
+      "phase_id": "phase_18",
+      "phase_percent": 90.0,
+      "structure": "whole_heart",
+      "volume_ml": 622.785441770815,
+      "voxel_count": 1113464,
+      "center_ras_mm": [
+        -28.235580753095945,
+        11.570712875953802,
+        -912.2214966087812
+      ],
+      "touches_image_boundary": true,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": 7.292446446232475,
+      "previous_phase_percent": 85.0,
+      "delta_from_previous_ml": -7.690124726894624
+    },
+    {
+      "phase_id": "phase_19",
+      "phase_percent": 95.0,
+      "structure": "LV",
+      "volume_ml": 157.5902263475161,
+      "voxel_count": 281752,
+      "center_ras_mm": [
+        -50.68798464767997,
+        7.928651141424439,
+        -920.3347074732388
+      ],
+      "touches_image_boundary": true,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": 6.782344347830644,
+      "previous_phase_percent": 90.0,
+      "delta_from_previous_ml": 2.3648154298719817
+    },
+    {
+      "phase_id": "phase_19",
+      "phase_percent": 95.0,
+      "structure": "RV",
+      "volume_ml": 204.80878912074812,
+      "voxel_count": 366173,
+      "center_ras_mm": [
+        -12.51520679331648,
+        29.002606215899732,
+        -922.3628052860261
+      ],
+      "touches_image_boundary": true,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": 7.084378485042322,
+      "previous_phase_percent": 90.0,
+      "delta_from_previous_ml": 0.46871223515438487
+    },
+    {
+      "phase_id": "phase_19",
+      "phase_percent": 95.0,
+      "structure": "LA",
+      "volume_ml": 37.6513518158146,
+      "voxel_count": 67316,
+      "center_ras_mm": [
+        -17.69763316982828,
+        -27.382578327386767,
+        -890.1351610315527
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": -0.8428989718110529,
+      "previous_phase_percent": 90.0,
+      "delta_from_previous_ml": -4.104308331220622
+    },
+    {
+      "phase_id": "phase_19",
+      "phase_percent": 95.0,
+      "structure": "RA",
+      "volume_ml": 57.10290957472161,
+      "voxel_count": 102093,
+      "center_ras_mm": [
+        12.79336696788036,
+        -0.7496741964513944,
+        -905.7138148550831
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": -3.9040708846988252,
+      "previous_phase_percent": 90.0,
+      "delta_from_previous_ml": -1.6500013051377564
+    },
+    {
+      "phase_id": "phase_19",
+      "phase_percent": 95.0,
+      "structure": "whole_heart",
+      "volume_ml": 619.1045405541671,
+      "voxel_count": 1106883,
+      "center_ras_mm": [
+        -28.202420215171244,
+        11.790226796798208,
+        -912.343936079965
+      ],
+      "touches_image_boundary": true,
+      "empty": false,
+      "reference_phase_percent": 0.0,
+      "delta_from_reference_ml": 3.6115452295845216,
+      "previous_phase_percent": 90.0,
+      "delta_from_previous_ml": -3.6809012166479533
+    }
+  ],
+  "provenance": [
+    {
+      "phase_id": "phase_00",
+      "structure": "LV",
+      "mask_sha256": "ab91d5da3a8ecbc5e40ef948a2bb29b3cca6abccc09b2e92fd5f3ebcfe4594e4",
+      "ct_sha256": "d0392e751302237bf827a2499abd430d9b8e7c8d516f61a9c2a750473318c0ff"
+    },
+    {
+      "phase_id": "phase_00",
+      "structure": "RV",
+      "mask_sha256": "a993d440d35bd9348f10704b038f633eaf7a1c55de9f7ecb5d48cd728f9bd661",
+      "ct_sha256": "d0392e751302237bf827a2499abd430d9b8e7c8d516f61a9c2a750473318c0ff"
+    },
+    {
+      "phase_id": "phase_00",
+      "structure": "LA",
+      "mask_sha256": "81ebcefa2def107819983c4be4e659f820b7e38a3bd6573fb0fc6e05e93512be",
+      "ct_sha256": "d0392e751302237bf827a2499abd430d9b8e7c8d516f61a9c2a750473318c0ff"
+    },
+    {
+      "phase_id": "phase_00",
+      "structure": "RA",
+      "mask_sha256": "0a9ab08912f3469167cbf92ecbc61cbc73a77c49a02d13cb98e520f2901598ed",
+      "ct_sha256": "d0392e751302237bf827a2499abd430d9b8e7c8d516f61a9c2a750473318c0ff"
+    },
+    {
+      "phase_id": "phase_00",
+      "structure": "whole_heart",
+      "mask_sha256": "96766e2a34928ecfaba4a91ba3aa8427cbe8006cc4d1463ce9f521035645f654",
+      "ct_sha256": "d0392e751302237bf827a2499abd430d9b8e7c8d516f61a9c2a750473318c0ff"
+    },
+    {
+      "phase_id": "phase_01",
+      "structure": "LV",
+      "mask_sha256": "b3c2f6089589bfe0c5a7fc72891e7ee4607821243d4c2b15bd72d8a29de5bee8",
+      "ct_sha256": "c81e0aa3789521bd7436805ed405516017408f5cb337574450a1cf325c3f892d"
+    },
+    {
+      "phase_id": "phase_01",
+      "structure": "RV",
+      "mask_sha256": "ebe06a346d7ed456b6f30ba0fdba7ba4aa564234c59c5f73d4bafb7ed8b1f7cd",
+      "ct_sha256": "c81e0aa3789521bd7436805ed405516017408f5cb337574450a1cf325c3f892d"
+    },
+    {
+      "phase_id": "phase_01",
+      "structure": "LA",
+      "mask_sha256": "0b7db2a6368cad7d427e69d610d7b9afd7df68ceae6ecf1a769fc44b0fb7a938",
+      "ct_sha256": "c81e0aa3789521bd7436805ed405516017408f5cb337574450a1cf325c3f892d"
+    },
+    {
+      "phase_id": "phase_01",
+      "structure": "RA",
+      "mask_sha256": "d9898bd19930d98cc798972c159695f00b0e24b6c41430a017e42537d49da9e4",
+      "ct_sha256": "c81e0aa3789521bd7436805ed405516017408f5cb337574450a1cf325c3f892d"
+    },
+    {
+      "phase_id": "phase_01",
+      "structure": "whole_heart",
+      "mask_sha256": "d510fab2fa2020d4dd92ea15225176bcc6fb3490d9e89b6a6a43553474a941c2",
+      "ct_sha256": "c81e0aa3789521bd7436805ed405516017408f5cb337574450a1cf325c3f892d"
+    },
+    {
+      "phase_id": "phase_02",
+      "structure": "LV",
+      "mask_sha256": "8060255b0fc84b5a04c6cadd66e2ade4c1fdb10f69ff7a26252a5bd39373682e",
+      "ct_sha256": "dbc26703ff0c7b3f13a1ab742294aa7a9944bd1e82440fa6ab2cc342de76f2ce"
+    },
+    {
+      "phase_id": "phase_02",
+      "structure": "RV",
+      "mask_sha256": "07cbff360fb77886f979fa8ae7e77ccaf294749cfa09d3c51f0e850507f695e5",
+      "ct_sha256": "dbc26703ff0c7b3f13a1ab742294aa7a9944bd1e82440fa6ab2cc342de76f2ce"
+    },
+    {
+      "phase_id": "phase_02",
+      "structure": "LA",
+      "mask_sha256": "f1560b66e1286a11ac27ec76eeb4174ac9116b405433ee03764864cb90e06416",
+      "ct_sha256": "dbc26703ff0c7b3f13a1ab742294aa7a9944bd1e82440fa6ab2cc342de76f2ce"
+    },
+    {
+      "phase_id": "phase_02",
+      "structure": "RA",
+      "mask_sha256": "f8683fb005c638324f33508b490426f9a4f85c4e58e64526ba3eb37c5c7cd543",
+      "ct_sha256": "dbc26703ff0c7b3f13a1ab742294aa7a9944bd1e82440fa6ab2cc342de76f2ce"
+    },
+    {
+      "phase_id": "phase_02",
+      "structure": "whole_heart",
+      "mask_sha256": "153dd71f66ca64409f264335743286a997d15943eaf0cb86a7bf41596cda50fe",
+      "ct_sha256": "dbc26703ff0c7b3f13a1ab742294aa7a9944bd1e82440fa6ab2cc342de76f2ce"
+    },
+    {
+      "phase_id": "phase_03",
+      "structure": "LV",
+      "mask_sha256": "29cb6b142406b2815649b0ba883246103be0c10733c1392b4fe3314db065c450",
+      "ct_sha256": "636f2b5c9e4fef31b3597061fb742954102bf91f8c267381f91ae68627acea79"
+    },
+    {
+      "phase_id": "phase_03",
+      "structure": "RV",
+      "mask_sha256": "e196e2d7d6e39504196bfaa6746d1bc7c73c2f15573bca211367ec1f462cdaa1",
+      "ct_sha256": "636f2b5c9e4fef31b3597061fb742954102bf91f8c267381f91ae68627acea79"
+    },
+    {
+      "phase_id": "phase_03",
+      "structure": "LA",
+      "mask_sha256": "45580e04f06fd2b5dbbaea5c6b25b621379832b60dfd376179e0d92fd497c4a3",
+      "ct_sha256": "636f2b5c9e4fef31b3597061fb742954102bf91f8c267381f91ae68627acea79"
+    },
+    {
+      "phase_id": "phase_03",
+      "structure": "RA",
+      "mask_sha256": "1a9d3661c810d1ee6b569206465148f3c708c1c1def60a2d313187a7400d0859",
+      "ct_sha256": "636f2b5c9e4fef31b3597061fb742954102bf91f8c267381f91ae68627acea79"
+    },
+    {
+      "phase_id": "phase_03",
+      "structure": "whole_heart",
+      "mask_sha256": "d16691d5280892e82e43da023624bae1c947505d3698de5c479f59c1debb7643",
+      "ct_sha256": "636f2b5c9e4fef31b3597061fb742954102bf91f8c267381f91ae68627acea79"
+    },
+    {
+      "phase_id": "phase_04",
+      "structure": "LV",
+      "mask_sha256": "51543132525b20f6d99deaca07343a98bda26de8f41ec58caba3e075fc2cbbe0",
+      "ct_sha256": "84a44ee81e3d6658c54c91ef8039f71f84d73de78e57c362088706e498a40984"
+    },
+    {
+      "phase_id": "phase_04",
+      "structure": "RV",
+      "mask_sha256": "70517fe38bc2a2bab978e397bcc5be1acb037e09744cc4d2bbf0541f889487bb",
+      "ct_sha256": "84a44ee81e3d6658c54c91ef8039f71f84d73de78e57c362088706e498a40984"
+    },
+    {
+      "phase_id": "phase_04",
+      "structure": "LA",
+      "mask_sha256": "f5a7b6ee34aa53a0fdd4a47d4225179630e28ebbc8f4c18eab4d14f7add5e813",
+      "ct_sha256": "84a44ee81e3d6658c54c91ef8039f71f84d73de78e57c362088706e498a40984"
+    },
+    {
+      "phase_id": "phase_04",
+      "structure": "RA",
+      "mask_sha256": "e3a8dd27d31b6a06af7bf21c3a115475baad51bd77e9fb8918a86696ffc2133d",
+      "ct_sha256": "84a44ee81e3d6658c54c91ef8039f71f84d73de78e57c362088706e498a40984"
+    },
+    {
+      "phase_id": "phase_04",
+      "structure": "whole_heart",
+      "mask_sha256": "87f7e9cdd78d5f6dd6c4cafb8015e68518f83076fb92a6bedb0bdd55453d21d5",
+      "ct_sha256": "84a44ee81e3d6658c54c91ef8039f71f84d73de78e57c362088706e498a40984"
+    },
+    {
+      "phase_id": "phase_05",
+      "structure": "LV",
+      "mask_sha256": "5f6fd13ac531f87373746b63177247798cf2b7b4b35bf6cfb1780df7b2b0e86f",
+      "ct_sha256": "3506caf5b9f6e48318fbd3cd435c961d2671fe9d31e762d762ce67c75c96efba"
+    },
+    {
+      "phase_id": "phase_05",
+      "structure": "RV",
+      "mask_sha256": "905798a43bde9dbf686094f9dc411e37fe582217f8224a732a6f817d414829f3",
+      "ct_sha256": "3506caf5b9f6e48318fbd3cd435c961d2671fe9d31e762d762ce67c75c96efba"
+    },
+    {
+      "phase_id": "phase_05",
+      "structure": "LA",
+      "mask_sha256": "472ebe263fe69459376408f1235f603fa3867149a5a9ed066880f43ff46865f3",
+      "ct_sha256": "3506caf5b9f6e48318fbd3cd435c961d2671fe9d31e762d762ce67c75c96efba"
+    },
+    {
+      "phase_id": "phase_05",
+      "structure": "RA",
+      "mask_sha256": "2a3805699de213e0ee6abba54dd0de5b0d2a2eb06ec7a3689419a2709f825fe7",
+      "ct_sha256": "3506caf5b9f6e48318fbd3cd435c961d2671fe9d31e762d762ce67c75c96efba"
+    },
+    {
+      "phase_id": "phase_05",
+      "structure": "whole_heart",
+      "mask_sha256": "780c5262abbe95872b9629175d83d0b8e52545ad2967b904a118287abff02592",
+      "ct_sha256": "3506caf5b9f6e48318fbd3cd435c961d2671fe9d31e762d762ce67c75c96efba"
+    },
+    {
+      "phase_id": "phase_06",
+      "structure": "LV",
+      "mask_sha256": "79ac31da586d685c0bec625f141b98d02873da22e088bec4b04f1d9b94a407a3",
+      "ct_sha256": "569a7ad3d705013cca3a8c9e8a010ffa92f0f0465d83f4e432b17ff7578f591c"
+    },
+    {
+      "phase_id": "phase_06",
+      "structure": "RV",
+      "mask_sha256": "4d9014e0c1ad599b4dd937b2882547f1e68ae9841e9925f21f7f479b13f12121",
+      "ct_sha256": "569a7ad3d705013cca3a8c9e8a010ffa92f0f0465d83f4e432b17ff7578f591c"
+    },
+    {
+      "phase_id": "phase_06",
+      "structure": "LA",
+      "mask_sha256": "2673e41046d08a38a5724a3ddc9fa330d21b4356f2ad7c9b958174501def68c6",
+      "ct_sha256": "569a7ad3d705013cca3a8c9e8a010ffa92f0f0465d83f4e432b17ff7578f591c"
+    },
+    {
+      "phase_id": "phase_06",
+      "structure": "RA",
+      "mask_sha256": "b37be5b93c75f41a9dc7dbaef422f9406b2f5997cf869abddf77da3506907883",
+      "ct_sha256": "569a7ad3d705013cca3a8c9e8a010ffa92f0f0465d83f4e432b17ff7578f591c"
+    },
+    {
+      "phase_id": "phase_06",
+      "structure": "whole_heart",
+      "mask_sha256": "001425ae8e7e85ad5d564644a334c0da92bf6d2746431e28143fd445e2e9db41",
+      "ct_sha256": "569a7ad3d705013cca3a8c9e8a010ffa92f0f0465d83f4e432b17ff7578f591c"
+    },
+    {
+      "phase_id": "phase_07",
+      "structure": "LV",
+      "mask_sha256": "3c75a806d1b01886aa3977e6f65f4d1d1b82e641453cdfe53a99e489ceb8fd96",
+      "ct_sha256": "69bddf7f0ab8ef6010f364de1c3b7fb9dc450a397a9e494260a447e61653358a"
+    },
+    {
+      "phase_id": "phase_07",
+      "structure": "RV",
+      "mask_sha256": "b4725efac10e4cd304ca816fb9213a570a24ea0dfb3381ccdb62f71fc0a3bb06",
+      "ct_sha256": "69bddf7f0ab8ef6010f364de1c3b7fb9dc450a397a9e494260a447e61653358a"
+    },
+    {
+      "phase_id": "phase_07",
+      "structure": "LA",
+      "mask_sha256": "82c41c131c8fb7d841575a2345803373f77a79be381d28d9607b8de135b40891",
+      "ct_sha256": "69bddf7f0ab8ef6010f364de1c3b7fb9dc450a397a9e494260a447e61653358a"
+    },
+    {
+      "phase_id": "phase_07",
+      "structure": "RA",
+      "mask_sha256": "2c0480f71d193130bcb3e4b0fa56f780c61c9fcbcc20a67a1d9ba6e486746896",
+      "ct_sha256": "69bddf7f0ab8ef6010f364de1c3b7fb9dc450a397a9e494260a447e61653358a"
+    },
+    {
+      "phase_id": "phase_07",
+      "structure": "whole_heart",
+      "mask_sha256": "2b20c1436e8f12403bb932b9652454d7aef1d9b61bacba19c34defd0fc59494a",
+      "ct_sha256": "69bddf7f0ab8ef6010f364de1c3b7fb9dc450a397a9e494260a447e61653358a"
+    },
+    {
+      "phase_id": "phase_08",
+      "structure": "LV",
+      "mask_sha256": "20d517d7fb1195e24d263a43de9ff5d5ea78e7a9ffada8dae6666f3ef94de5eb",
+      "ct_sha256": "39248f1441d3248543c69f820746ee020b2a91260ea1dde434355a5b9ce101c4"
+    },
+    {
+      "phase_id": "phase_08",
+      "structure": "RV",
+      "mask_sha256": "1b17ef9d0fb5bba0c580b6149e85056a1b3479d6836a518c529aece62ea0c6b3",
+      "ct_sha256": "39248f1441d3248543c69f820746ee020b2a91260ea1dde434355a5b9ce101c4"
+    },
+    {
+      "phase_id": "phase_08",
+      "structure": "LA",
+      "mask_sha256": "6b4b2e804faa0470b91f7e45e962d6416d07c7b6edac395dd0d8b82b62b4a5a6",
+      "ct_sha256": "39248f1441d3248543c69f820746ee020b2a91260ea1dde434355a5b9ce101c4"
+    },
+    {
+      "phase_id": "phase_08",
+      "structure": "RA",
+      "mask_sha256": "33a8356e59dd5bc51fe888594bcfede870f6b9ad68406ffb571f7cf31b0c4421",
+      "ct_sha256": "39248f1441d3248543c69f820746ee020b2a91260ea1dde434355a5b9ce101c4"
+    },
+    {
+      "phase_id": "phase_08",
+      "structure": "whole_heart",
+      "mask_sha256": "430911ea1f7d7a48b98f632aeef50f10ea598903f890992b91ad317adcdae826",
+      "ct_sha256": "39248f1441d3248543c69f820746ee020b2a91260ea1dde434355a5b9ce101c4"
+    },
+    {
+      "phase_id": "phase_09",
+      "structure": "LV",
+      "mask_sha256": "5635d61c6ef54f6e3921b5410eeb6bb79c2f5129b5f4340ddf88785efbca8611",
+      "ct_sha256": "a4d1735a2f1abd942dd47605175a0b3c64fe25ba63b5bae3b2ab81d53b594f0b"
+    },
+    {
+      "phase_id": "phase_09",
+      "structure": "RV",
+      "mask_sha256": "70ecb61fccb83f1175197ed03b1232cfad12768f0249187abccb6e8ee2a28024",
+      "ct_sha256": "a4d1735a2f1abd942dd47605175a0b3c64fe25ba63b5bae3b2ab81d53b594f0b"
+    },
+    {
+      "phase_id": "phase_09",
+      "structure": "LA",
+      "mask_sha256": "17384f7112454b499dac6623ea90d7825101c2179fad2ba4f5c4434bde66e95d",
+      "ct_sha256": "a4d1735a2f1abd942dd47605175a0b3c64fe25ba63b5bae3b2ab81d53b594f0b"
+    },
+    {
+      "phase_id": "phase_09",
+      "structure": "RA",
+      "mask_sha256": "7eb2409d2931c9cde275e0344177777db5f4640c2f99fd60ff7c4eeaa47120d4",
+      "ct_sha256": "a4d1735a2f1abd942dd47605175a0b3c64fe25ba63b5bae3b2ab81d53b594f0b"
+    },
+    {
+      "phase_id": "phase_09",
+      "structure": "whole_heart",
+      "mask_sha256": "5158d505afa7836828e6027a6d6af9ce38fb81b8c8e605bb481144f49f9cb41b",
+      "ct_sha256": "a4d1735a2f1abd942dd47605175a0b3c64fe25ba63b5bae3b2ab81d53b594f0b"
+    },
+    {
+      "phase_id": "phase_10",
+      "structure": "LV",
+      "mask_sha256": "94de7adcffe27d5a3393386d9460ae0bb6ca991205b5bc301e1ac412f5b6bcad",
+      "ct_sha256": "824e4f2e005e463ac87778c97f4cab909dc1b2daada3c55e7cc7d687e7848a44"
+    },
+    {
+      "phase_id": "phase_10",
+      "structure": "RV",
+      "mask_sha256": "fff33e99dc1d61772f0b494227b6b86d4ec0c2256c1edec9f8a2b1ca0a877ea5",
+      "ct_sha256": "824e4f2e005e463ac87778c97f4cab909dc1b2daada3c55e7cc7d687e7848a44"
+    },
+    {
+      "phase_id": "phase_10",
+      "structure": "LA",
+      "mask_sha256": "a7cfabf81570b1e9cdd9b2aaa6eb89c1bab3cd16e258ad4e922293326108b79e",
+      "ct_sha256": "824e4f2e005e463ac87778c97f4cab909dc1b2daada3c55e7cc7d687e7848a44"
+    },
+    {
+      "phase_id": "phase_10",
+      "structure": "RA",
+      "mask_sha256": "9b0a688ac4a9d0d20743ebf7f1e5f220a72dbd2ad50cd2a43ae971b0499c8b10",
+      "ct_sha256": "824e4f2e005e463ac87778c97f4cab909dc1b2daada3c55e7cc7d687e7848a44"
+    },
+    {
+      "phase_id": "phase_10",
+      "structure": "whole_heart",
+      "mask_sha256": "7194d135a7227597ee34c3a199deb9e5bae407cc9c205bff4cf772ba2efa56e5",
+      "ct_sha256": "824e4f2e005e463ac87778c97f4cab909dc1b2daada3c55e7cc7d687e7848a44"
+    },
+    {
+      "phase_id": "phase_11",
+      "structure": "LV",
+      "mask_sha256": "34490627a166f187160e1ed86845e4d8111604ab16cfbe4b117dccf15c94fa75",
+      "ct_sha256": "19cf4050d2f30d9ab903c84b253bf7bef5872c244233f22ba1b92b60e7c914c7"
+    },
+    {
+      "phase_id": "phase_11",
+      "structure": "RV",
+      "mask_sha256": "6699644182ed0a1e4e5b77d9308f044bcf9f8a223319ae229db26f5bc54f134d",
+      "ct_sha256": "19cf4050d2f30d9ab903c84b253bf7bef5872c244233f22ba1b92b60e7c914c7"
+    },
+    {
+      "phase_id": "phase_11",
+      "structure": "LA",
+      "mask_sha256": "2ce0b09d1d4126a422fd41d66e70c70553b8e6def58d785ba1b304908ef32817",
+      "ct_sha256": "19cf4050d2f30d9ab903c84b253bf7bef5872c244233f22ba1b92b60e7c914c7"
+    },
+    {
+      "phase_id": "phase_11",
+      "structure": "RA",
+      "mask_sha256": "9f8e02af981cdf2ef2e717ccbc6a08d754ad973d4fe63fd96e96a0801243822b",
+      "ct_sha256": "19cf4050d2f30d9ab903c84b253bf7bef5872c244233f22ba1b92b60e7c914c7"
+    },
+    {
+      "phase_id": "phase_11",
+      "structure": "whole_heart",
+      "mask_sha256": "275395be326c893b01eca28870ef6f8e8f214a6bf0a35b8423a24e09398758e7",
+      "ct_sha256": "19cf4050d2f30d9ab903c84b253bf7bef5872c244233f22ba1b92b60e7c914c7"
+    },
+    {
+      "phase_id": "phase_12",
+      "structure": "LV",
+      "mask_sha256": "c82faeea68f6209da6f43283a03bece8b53936054e2e5cce8e6fd25be4317af5",
+      "ct_sha256": "86c7d795e2e0ce8647f245014f672a631c7b03e339c915b0dbebb28200da1046"
+    },
+    {
+      "phase_id": "phase_12",
+      "structure": "RV",
+      "mask_sha256": "89da42f9669cf6fdccbf54f073f0812d6e36d4823d38a13ab17a5df5935dd1ea",
+      "ct_sha256": "86c7d795e2e0ce8647f245014f672a631c7b03e339c915b0dbebb28200da1046"
+    },
+    {
+      "phase_id": "phase_12",
+      "structure": "LA",
+      "mask_sha256": "e17a3ec83b9f71ad40bb8c4dffde94c4d040c8aab795d5a40c1185531a1e3ce5",
+      "ct_sha256": "86c7d795e2e0ce8647f245014f672a631c7b03e339c915b0dbebb28200da1046"
+    },
+    {
+      "phase_id": "phase_12",
+      "structure": "RA",
+      "mask_sha256": "2350dbb9a9d6e26e8a5e59044969f3d8b8fdc4807774eb0f4c348c4d52009730",
+      "ct_sha256": "86c7d795e2e0ce8647f245014f672a631c7b03e339c915b0dbebb28200da1046"
+    },
+    {
+      "phase_id": "phase_12",
+      "structure": "whole_heart",
+      "mask_sha256": "72da72941417cc6d6f6bb48ff61add04fd19c337e6971060d5ecd7da4f526ef0",
+      "ct_sha256": "86c7d795e2e0ce8647f245014f672a631c7b03e339c915b0dbebb28200da1046"
+    },
+    {
+      "phase_id": "phase_13",
+      "structure": "LV",
+      "mask_sha256": "55ded6065cfe4e079b7b60d6fc38fadb0c42233d41c64d7d7455f22b05775362",
+      "ct_sha256": "bd45ac14c03bbbaa44a533fc2e166c6ba8ca55c16f2a8599118ca5f866d263bb"
+    },
+    {
+      "phase_id": "phase_13",
+      "structure": "RV",
+      "mask_sha256": "7b1f73920af41746661e10fef55e7290cfeba81c44c1e6fd641aa6ddb617bfdb",
+      "ct_sha256": "bd45ac14c03bbbaa44a533fc2e166c6ba8ca55c16f2a8599118ca5f866d263bb"
+    },
+    {
+      "phase_id": "phase_13",
+      "structure": "LA",
+      "mask_sha256": "52b2acdb624f06b75eb654609084eae98f59cf9d7d14dd92156e581b0ee68362",
+      "ct_sha256": "bd45ac14c03bbbaa44a533fc2e166c6ba8ca55c16f2a8599118ca5f866d263bb"
+    },
+    {
+      "phase_id": "phase_13",
+      "structure": "RA",
+      "mask_sha256": "ea4019504c0e1fe690e605ebb4416d8d214c9c76a9eef3ade94c1c787eec6289",
+      "ct_sha256": "bd45ac14c03bbbaa44a533fc2e166c6ba8ca55c16f2a8599118ca5f866d263bb"
+    },
+    {
+      "phase_id": "phase_13",
+      "structure": "whole_heart",
+      "mask_sha256": "5a257efd08799c0eb96bcd5563c64df1ba9091a02e4ff93db43a66967dc5715f",
+      "ct_sha256": "bd45ac14c03bbbaa44a533fc2e166c6ba8ca55c16f2a8599118ca5f866d263bb"
+    },
+    {
+      "phase_id": "phase_14",
+      "structure": "LV",
+      "mask_sha256": "621f101eec1e5defe1ac6f91b43e55ccefd936293535601ef82472f94f6860d8",
+      "ct_sha256": "eba9f2b372f100fecf72d8e7ee722e059adee6540198a5eb8ddc6634c7d790c3"
+    },
+    {
+      "phase_id": "phase_14",
+      "structure": "RV",
+      "mask_sha256": "39fb932717cd547b72c19276fb423d425aec6794eab7e7babb1e3b356376cf27",
+      "ct_sha256": "eba9f2b372f100fecf72d8e7ee722e059adee6540198a5eb8ddc6634c7d790c3"
+    },
+    {
+      "phase_id": "phase_14",
+      "structure": "LA",
+      "mask_sha256": "5a8c6342fc3101667989121b96fd30f784e990d93c5934514c5e34449c44c409",
+      "ct_sha256": "eba9f2b372f100fecf72d8e7ee722e059adee6540198a5eb8ddc6634c7d790c3"
+    },
+    {
+      "phase_id": "phase_14",
+      "structure": "RA",
+      "mask_sha256": "6d05bb5cc6d60c9043f7ef4417e12011aa104771ebff5ad7476c5c3bdf6b0fe8",
+      "ct_sha256": "eba9f2b372f100fecf72d8e7ee722e059adee6540198a5eb8ddc6634c7d790c3"
+    },
+    {
+      "phase_id": "phase_14",
+      "structure": "whole_heart",
+      "mask_sha256": "20211fa85b06b6ab1b1d88ecd5527786daa6f9cc6f9eb80b07f75b06b4f02fdb",
+      "ct_sha256": "eba9f2b372f100fecf72d8e7ee722e059adee6540198a5eb8ddc6634c7d790c3"
+    },
+    {
+      "phase_id": "phase_15",
+      "structure": "LV",
+      "mask_sha256": "e1279e386d347f38693a877c781eff6ad6b779b5ec0a7ff039775e6f6afb7917",
+      "ct_sha256": "42ffc7838a9aa6f95b0add1cda555bada94aeed5f54394895eb56f602330559e"
+    },
+    {
+      "phase_id": "phase_15",
+      "structure": "RV",
+      "mask_sha256": "13e6d1d50bb55daf6b72b8a19ad81b7c8728281399e9c41e22a6f2c9613f6c3c",
+      "ct_sha256": "42ffc7838a9aa6f95b0add1cda555bada94aeed5f54394895eb56f602330559e"
+    },
+    {
+      "phase_id": "phase_15",
+      "structure": "LA",
+      "mask_sha256": "2988784db1b119d2e70121016ef6a48998e6f008587108720df0fd8098f1be03",
+      "ct_sha256": "42ffc7838a9aa6f95b0add1cda555bada94aeed5f54394895eb56f602330559e"
+    },
+    {
+      "phase_id": "phase_15",
+      "structure": "RA",
+      "mask_sha256": "8199cf619d8e741b554940ffcc797285f0cd80639d39627948c8438c331b506b",
+      "ct_sha256": "42ffc7838a9aa6f95b0add1cda555bada94aeed5f54394895eb56f602330559e"
+    },
+    {
+      "phase_id": "phase_15",
+      "structure": "whole_heart",
+      "mask_sha256": "539f6aefe26c1ab510ccbb1f557a67f7e984dfcd8f006f651cb67488799dbb43",
+      "ct_sha256": "42ffc7838a9aa6f95b0add1cda555bada94aeed5f54394895eb56f602330559e"
+    },
+    {
+      "phase_id": "phase_16",
+      "structure": "LV",
+      "mask_sha256": "1d0247d79527975377b4a040e2be6808c7a6ddcdde15babe2226dc0e324fddd8",
+      "ct_sha256": "c62ade53ee61a38f5d753e7d201bfabbdbf6ef61fc096d99bc33a27be1e39bf2"
+    },
+    {
+      "phase_id": "phase_16",
+      "structure": "RV",
+      "mask_sha256": "dd7ceb0529759f1d46a7967754cfa98165f2e2869c5dc9f1df5c9ef8e61644a8",
+      "ct_sha256": "c62ade53ee61a38f5d753e7d201bfabbdbf6ef61fc096d99bc33a27be1e39bf2"
+    },
+    {
+      "phase_id": "phase_16",
+      "structure": "LA",
+      "mask_sha256": "303d54862147336a277bd74eda31d8cdbf434dd6659c03adced862873b863ac9",
+      "ct_sha256": "c62ade53ee61a38f5d753e7d201bfabbdbf6ef61fc096d99bc33a27be1e39bf2"
+    },
+    {
+      "phase_id": "phase_16",
+      "structure": "RA",
+      "mask_sha256": "1d3ca414c5590f5e90ed23214c86df0b080541505d5693e9c2649549da0be077",
+      "ct_sha256": "c62ade53ee61a38f5d753e7d201bfabbdbf6ef61fc096d99bc33a27be1e39bf2"
+    },
+    {
+      "phase_id": "phase_16",
+      "structure": "whole_heart",
+      "mask_sha256": "d415ab7306e21fabfa27f756f42972f1aed67789f53904d9c24a3364326d204c",
+      "ct_sha256": "c62ade53ee61a38f5d753e7d201bfabbdbf6ef61fc096d99bc33a27be1e39bf2"
+    },
+    {
+      "phase_id": "phase_17",
+      "structure": "LV",
+      "mask_sha256": "ad9e1cb6286bd019018d663d9bc30dcc7306dadeccae93358d8d490b3a1c60bf",
+      "ct_sha256": "d0c23330486536c5246f0ac7d68dcfb7bb8058d8e0fef7b51d7285b7b75cc1eb"
+    },
+    {
+      "phase_id": "phase_17",
+      "structure": "RV",
+      "mask_sha256": "fc3b95d24ff036c6678086a4c91c897de21018196f8c35c6ca1625d0afd788df",
+      "ct_sha256": "d0c23330486536c5246f0ac7d68dcfb7bb8058d8e0fef7b51d7285b7b75cc1eb"
+    },
+    {
+      "phase_id": "phase_17",
+      "structure": "LA",
+      "mask_sha256": "061516488587985fd401b3d8994bba450630e5f28717f2450aca9751971a5de7",
+      "ct_sha256": "d0c23330486536c5246f0ac7d68dcfb7bb8058d8e0fef7b51d7285b7b75cc1eb"
+    },
+    {
+      "phase_id": "phase_17",
+      "structure": "RA",
+      "mask_sha256": "89dfba481c9e49416bd21a6bc30ce2271830a5605e559da657317477b17789a7",
+      "ct_sha256": "d0c23330486536c5246f0ac7d68dcfb7bb8058d8e0fef7b51d7285b7b75cc1eb"
+    },
+    {
+      "phase_id": "phase_17",
+      "structure": "whole_heart",
+      "mask_sha256": "6d99abf2169ec4ff3077c34319d325a33764fc10fd2b31e85354c21f2ffe72b1",
+      "ct_sha256": "d0c23330486536c5246f0ac7d68dcfb7bb8058d8e0fef7b51d7285b7b75cc1eb"
+    },
+    {
+      "phase_id": "phase_18",
+      "structure": "LV",
+      "mask_sha256": "f17b94166908085eab5bb9a0913a50793dc805e9921346ae9683eaa25ab7ade4",
+      "ct_sha256": "b35cda057d8e6247b330653157f0f365e45baad272b3b954cdcca7e28e45a509"
+    },
+    {
+      "phase_id": "phase_18",
+      "structure": "RV",
+      "mask_sha256": "286dfe9352534df4b8d28703a21ec6f65af96f95f2bea5a20bb06a4534b6c4c4",
+      "ct_sha256": "b35cda057d8e6247b330653157f0f365e45baad272b3b954cdcca7e28e45a509"
+    },
+    {
+      "phase_id": "phase_18",
+      "structure": "LA",
+      "mask_sha256": "b3d5d49ee7d5f2f33894237026d40581374b5c39c7d5143c03487710863b96d1",
+      "ct_sha256": "b35cda057d8e6247b330653157f0f365e45baad272b3b954cdcca7e28e45a509"
+    },
+    {
+      "phase_id": "phase_18",
+      "structure": "RA",
+      "mask_sha256": "9b2c3037294cb489cda6a0c1724f4f212783326c58b31fa4d785737614f7e957",
+      "ct_sha256": "b35cda057d8e6247b330653157f0f365e45baad272b3b954cdcca7e28e45a509"
+    },
+    {
+      "phase_id": "phase_18",
+      "structure": "whole_heart",
+      "mask_sha256": "def2d69d5071339b1a94823b6ebff2b7b4b5aa63344872814afd607c29bda5ca",
+      "ct_sha256": "b35cda057d8e6247b330653157f0f365e45baad272b3b954cdcca7e28e45a509"
+    },
+    {
+      "phase_id": "phase_19",
+      "structure": "LV",
+      "mask_sha256": "af5d36a26d9d45c3195dfdb4335e94799cf3ba194fecb8fdbd5a1cf0bebe2a16",
+      "ct_sha256": "e036f877af87a9a6c9b741f64f10b506983dcc5e43c9607c59b9fec49e0943b0"
+    },
+    {
+      "phase_id": "phase_19",
+      "structure": "RV",
+      "mask_sha256": "22ad8a0995ceea9bd84d64c10d520f53079cfcd9070903a0c7cb8d3bbadece58",
+      "ct_sha256": "e036f877af87a9a6c9b741f64f10b506983dcc5e43c9607c59b9fec49e0943b0"
+    },
+    {
+      "phase_id": "phase_19",
+      "structure": "LA",
+      "mask_sha256": "37f248fb987f1352014fa3103432542a204b2f9dc2e922ed536d7eca07fdd535",
+      "ct_sha256": "e036f877af87a9a6c9b741f64f10b506983dcc5e43c9607c59b9fec49e0943b0"
+    },
+    {
+      "phase_id": "phase_19",
+      "structure": "RA",
+      "mask_sha256": "13694f7a18c439e1627535947670bf6dfaaa9976cc88d1ba9e43f1241c629f2d",
+      "ct_sha256": "e036f877af87a9a6c9b741f64f10b506983dcc5e43c9607c59b9fec49e0943b0"
+    },
+    {
+      "phase_id": "phase_19",
+      "structure": "whole_heart",
+      "mask_sha256": "732b7e356b5782087f1b1523f5e156651eb16583b31fd905b50f18b9926be41c",
+      "ct_sha256": "e036f877af87a9a6c9b741f64f10b506983dcc5e43c9607c59b9fec49e0943b0"
+    }
+  ],
+  "accuracy_evaluated": false,
+  "ED_ES_accepted": false,
+  "temporal_unit": "percent_of_reconstructed_cycle",
+  "anatomical_visual_review": "not_performed"
+}

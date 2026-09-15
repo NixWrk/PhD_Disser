@@ -1,0 +1,29 @@
+{
+  "reviewed_utc": "2026-09-15T14:13:11.882304+00:00",
+  "skill": "russian-scientific-prose",
+  "mode": "audit",
+  "language_status": "passed",
+  "full_reader_text_read_semantically_and_sequentially_after_last_edit": true,
+  "reviewer": "Codex model",
+  "artifact_hashes": {
+    "21.10_Сопоставление_динамики_камер_OLD.md": "971fda4afb5c46f3dc375f18c343612b8b8f34b87335f818c45fb7220951b2ed",
+    "21.10_Сопоставление_динамики_камер_OLD.ipynb": "fb3cf87aabb2b42076afefa87303ce73678611e8f619d970537636096a55f795",
+    "21.10_Сопоставление_динамики_камер_OLD.html": "c08acab18f36ff92f7cb75925d2fd835e3e630f70d6d45ad27d9a63bf6351319"
+  },
+  "reader_text_sha256": "a89e7fbfc03bdf81619e9d1cbd58f1a19f38bf0fb340eeb5105e20db1d88e1c8",
+  "figure_inventory_sha256": "c50bb48f8d43ccd0eceafe9369b2c20999cf9dfc633cceac82737e005869776a",
+  "checks": {
+    "scientific_headings": true,
+    "terminology_and_scope": true,
+    "derived_quantity_definitions": true,
+    "meaningful_contrasts": true,
+    "claim_strength_preserved": true,
+    "figure_labels_reviewed": true,
+    "visible_captions_reviewed": true,
+    "html_code_excluded": true
+  },
+  "findings": [],
+  "scientific_status": "Exploratory comparison complete; anatomical reference and TS accuracy validation incomplete",
+  "computational_status": "20 matched phases checked; seven synthetic comparison tests and 24 exact Slicer roundtrips passed",
+  "overall_reference_validation_passed": false
+}

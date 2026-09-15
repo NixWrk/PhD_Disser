@@ -1,0 +1,303 @@
+{
+  "source_ct_sha256": "f9e961138aac8f9a57957988c5c36bbf3bb72a1660d1ae4c692ee6096b27ce25",
+  "source_spec_sha256": "e075713912c291a3d535d2b196107519b46e84f408d90b9743b0f6aecc7ea54e",
+  "builder_sha256": "a7af0ee160323d672122d2d3caa7c9f3a67ef24f5bb9c1d640b0566a5652bc11",
+  "accepted": false,
+  "status": "four_chamber_extent_candidates_pending_visual_review",
+  "automatic_comparator_used": false,
+  "policy": {
+    "definition": "Four intracardiac blood regions; visual boundary candidates with HU-assisted tissue exclusion",
+    "papillary_trabeculae": "Exclude voxels below HU scenario, incompletely resolved at slice thickness5mm",
+    "mitral": "Working oblique plane v=84 mm in source-derived LV long-axis frame; uncertainty scenario +/-3mm; visually estimated junction, not resolved leaflet surface",
+    "tricuspid": "Partition only the overlap of independently authored RV and RA envelopes by v+0.2u=76mm; do not truncate the RV outflow by extending the AV plane through it. Boundary shifts +/-3mm.",
+    "aortic": "LV axial envelopes terminate by k35 and mitral-plane clipping; outflow cutoff unresolved, candidate only",
+    "pulmonary": "RVOT envelope terminated at k35; approximate valve transition, requires review",
+    "caval": "RA envelope k14..39; lower oval region below k14 treated as caval inlet, uncertainty requires review",
+    "pulmonary_veins": "LA ostia clipped with contour chords at posterior atrial body; no vessel centreline extension",
+    "appendages": "Include only contour-bounded visible atrial region; appendage completeness unconfirmed",
+    "whole_chamber_coverage": "candidate only, not yet accepted",
+    "myocardium": "Separate intensity-constrained wall-residual candidate; outer minus blood alone is not independently segmented myocardium"
+  },
+  "records": [
+    {
+      "chamber": "LV",
+      "HU": 190,
+      "boundary_shift_mm": -3,
+      "file": "LV_HU190_boundary-3mm.nii.gz",
+      "volume_ml": 123.06716514174744,
+      "sha256": "01cb532e29d2e5c8837378be9c454719030ede2dc5749c2e4fcdfed3932be673",
+      "k_range": [
+        5,
+        35
+      ],
+      "accepted": false,
+      "full_chamber": false
+    },
+    {
+      "chamber": "RV",
+      "HU": 190,
+      "boundary_shift_mm": -3,
+      "file": "RV_HU190_boundary-3mm.nii.gz",
+      "volume_ml": 120.32704433026613,
+      "sha256": "3497637bc5a6fb33cb13a79bd069b20e47596856af99c5f471a274874a296397",
+      "k_range": [
+        4,
+        35
+      ],
+      "accepted": false,
+      "full_chamber": false
+    },
+    {
+      "chamber": "LA",
+      "HU": 190,
+      "boundary_shift_mm": -3,
+      "file": "LA_HU190_boundary-3mm.nii.gz",
+      "volume_ml": 33.82334878789501,
+      "sha256": "6083dc76416f0c3ec38fbc4f2bf529d4e42ee3a026e6944502013d134e958791",
+      "k_range": [
+        24,
+        45
+      ],
+      "accepted": false,
+      "full_chamber": false
+    },
+    {
+      "chamber": "RA",
+      "HU": 190,
+      "boundary_shift_mm": -3,
+      "file": "RA_HU190_boundary-3mm.nii.gz",
+      "volume_ml": 46.120612752219984,
+      "sha256": "f40a0a2cf23a51efd3834bb420d345ced46c313fa69359818eeaf1d24ba1b218",
+      "k_range": [
+        14,
+        39
+      ],
+      "accepted": false,
+      "full_chamber": false
+    },
+    {
+      "chamber": "LV",
+      "HU": 170,
+      "boundary_shift_mm": 0,
+      "file": "LV_HU170_boundary+0mm.nii.gz",
+      "volume_ml": 134.19264851818645,
+      "sha256": "b2c5f492b24f9267202064a6005420ad34c6592714036b766f240d81979fe572",
+      "k_range": [
+        5,
+        35
+      ],
+      "accepted": false,
+      "full_chamber": false
+    },
+    {
+      "chamber": "RV",
+      "HU": 170,
+      "boundary_shift_mm": 0,
+      "file": "RV_HU170_boundary+0mm.nii.gz",
+      "volume_ml": 123.30823312904045,
+      "sha256": "910e95003b2409afa373b600014b16c48e17b73b248f3926569db23ab510c80b",
+      "k_range": [
+        4,
+        35
+      ],
+      "accepted": false,
+      "full_chamber": false
+    },
+    {
+      "chamber": "LA",
+      "HU": 170,
+      "boundary_shift_mm": 0,
+      "file": "LA_HU170_boundary+0mm.nii.gz",
+      "volume_ml": 33.294229725298294,
+      "sha256": "72d332fadce7aa0de6a503b1ba08d67b3a8f97187ad5900d18d9254bdb9af036",
+      "k_range": [
+        24,
+        45
+      ],
+      "accepted": false,
+      "full_chamber": false
+    },
+    {
+      "chamber": "RA",
+      "HU": 170,
+      "boundary_shift_mm": 0,
+      "file": "RA_HU170_boundary+0mm.nii.gz",
+      "volume_ml": 47.306376402013896,
+      "sha256": "4a5020aa99a16e7bd8ba03a9a56e95dae2bc0571f9182013dc621fd0c7df5970",
+      "k_range": [
+        14,
+        39
+      ],
+      "accepted": false,
+      "full_chamber": false
+    },
+    {
+      "chamber": "LV",
+      "HU": 190,
+      "boundary_shift_mm": 0,
+      "file": "LV_HU190_boundary+0mm.nii.gz",
+      "volume_ml": 127.63515180583559,
+      "sha256": "ae86b3d61cf6fcab080cf9601b049006fa1c5781f0b11f0a4c41cc07008be0b5",
+      "k_range": [
+        5,
+        35
+      ],
+      "accepted": false,
+      "full_chamber": false
+    },
+    {
+      "chamber": "RV",
+      "HU": 190,
+      "boundary_shift_mm": 0,
+      "file": "RV_HU190_boundary+0mm.nii.gz",
+      "volume_ml": 120.32704433026613,
+      "sha256": "3497637bc5a6fb33cb13a79bd069b20e47596856af99c5f471a274874a296397",
+      "k_range": [
+        4,
+        35
+      ],
+      "accepted": false,
+      "full_chamber": false
+    },
+    {
+      "chamber": "LA",
+      "HU": 190,
+      "boundary_shift_mm": 0,
+      "file": "LA_HU190_boundary+0mm.nii.gz",
+      "volume_ml": 31.845584511634975,
+      "sha256": "6a9cd9283b3823eac04b192277c92194e689f0d98e3d6e3b30aef59f34c4721e",
+      "k_range": [
+        24,
+        45
+      ],
+      "accepted": false,
+      "full_chamber": false
+    },
+    {
+      "chamber": "RA",
+      "HU": 190,
+      "boundary_shift_mm": 0,
+      "file": "RA_HU190_boundary+0mm.nii.gz",
+      "volume_ml": 46.120612752219984,
+      "sha256": "f40a0a2cf23a51efd3834bb420d345ced46c313fa69359818eeaf1d24ba1b218",
+      "k_range": [
+        14,
+        39
+      ],
+      "accepted": false,
+      "full_chamber": false
+    },
+    {
+      "chamber": "LV",
+      "HU": 210,
+      "boundary_shift_mm": 0,
+      "file": "LV_HU210_boundary+0mm.nii.gz",
+      "volume_ml": 119.14128068047222,
+      "sha256": "b70bd4039dac1358cc09271608ca30da17fdf54edf199f4286fb921f81d7d4f2",
+      "k_range": [
+        5,
+        35
+      ],
+      "accepted": false,
+      "full_chamber": false
+    },
+    {
+      "chamber": "RV",
+      "HU": 210,
+      "boundary_shift_mm": 0,
+      "file": "RV_HU210_boundary+0mm.nii.gz",
+      "volume_ml": 115.75234579646217,
+      "sha256": "50a753b83d228afe432029a90e1324c411626d70ee095da9c44a1a496dbda75a",
+      "k_range": [
+        4,
+        35
+      ],
+      "accepted": false,
+      "full_chamber": false
+    },
+    {
+      "chamber": "LA",
+      "HU": 210,
+      "boundary_shift_mm": 0,
+      "file": "LA_HU210_boundary+0mm.nii.gz",
+      "volume_ml": 28.4152597643774,
+      "sha256": "12c5b45573766d4718c397981bde4f6677e7e97de001a31936b589d4003ebbeb",
+      "k_range": [
+        24,
+        45
+      ],
+      "accepted": false,
+      "full_chamber": false
+    },
+    {
+      "chamber": "RA",
+      "HU": 210,
+      "boundary_shift_mm": 0,
+      "file": "RA_HU210_boundary+0mm.nii.gz",
+      "volume_ml": 44.67028957112771,
+      "sha256": "b85886895c49dcbe751c75a6b247784a962188f7987c76ae1226507e023024ee",
+      "k_range": [
+        14,
+        39
+      ],
+      "accepted": false,
+      "full_chamber": false
+    },
+    {
+      "chamber": "LV",
+      "HU": 190,
+      "boundary_shift_mm": 3,
+      "file": "LV_HU190_boundary+3mm.nii.gz",
+      "volume_ml": 131.42512090536556,
+      "sha256": "ff73be4194599ebf6216593a76f5b83401986b2f1867fa6bc8c6d0efd0fe052b",
+      "k_range": [
+        5,
+        35
+      ],
+      "accepted": false,
+      "full_chamber": false
+    },
+    {
+      "chamber": "RV",
+      "HU": 190,
+      "boundary_shift_mm": 3,
+      "file": "RV_HU190_boundary+3mm.nii.gz",
+      "volume_ml": 120.32704433026613,
+      "sha256": "3497637bc5a6fb33cb13a79bd069b20e47596856af99c5f471a274874a296397",
+      "k_range": [
+        4,
+        35
+      ],
+      "accepted": false,
+      "full_chamber": false
+    },
+    {
+      "chamber": "LA",
+      "HU": 190,
+      "boundary_shift_mm": 3,
+      "file": "LA_HU190_boundary+3mm.nii.gz",
+      "volume_ml": 29.767142189637724,
+      "sha256": "b4a1d805f56fd22b87a1d387a2ae533a648dfef4fa173b24a542b25755d93e57",
+      "k_range": [
+        25,
+        45
+      ],
+      "accepted": false,
+      "full_chamber": false
+    },
+    {
+      "chamber": "RA",
+      "HU": 190,
+      "boundary_shift_mm": 3,
+      "file": "RA_HU190_boundary+3mm.nii.gz",
+      "volume_ml": 46.120612752219984,
+      "sha256": "f40a0a2cf23a51efd3834bb420d345ced46c313fa69359818eeaf1d24ba1b218",
+      "k_range": [
+        14,
+        39
+      ],
+      "accepted": false,
+      "full_chamber": false
+    }
+  ]
+}

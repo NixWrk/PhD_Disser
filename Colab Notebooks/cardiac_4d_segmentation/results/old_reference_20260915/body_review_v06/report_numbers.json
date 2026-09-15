@@ -1,0 +1,44 @@
+[
+  {
+    "chamber": "Левый желудочек",
+    "lower_hu": 170.0,
+    "partial_volume_ml": 90.86808882507955,
+    "accepted": false,
+    "whole_chamber": false
+  },
+  {
+    "chamber": "Левый желудочек",
+    "lower_hu": 190.0,
+    "partial_volume_ml": 86.45055990712092,
+    "accepted": false,
+    "whole_chamber": false
+  },
+  {
+    "chamber": "Левый желудочек",
+    "lower_hu": 210.0,
+    "partial_volume_ml": 81.05869123541653,
+    "accepted": false,
+    "whole_chamber": false
+  },
+  {
+    "chamber": "Правый желудочек",
+    "lower_hu": 170.0,
+    "partial_volume_ml": 93.04385325795612,
+    "accepted": false,
+    "whole_chamber": false
+  },
+  {
+    "chamber": "Правый желудочек",
+    "lower_hu": 190.0,
+    "partial_volume_ml": 90.59346148920747,
+    "accepted": false,
+    "whole_chamber": false
+  },
+  {
+    "chamber": "Правый желудочек",
+    "lower_hu": 210.0,
+    "partial_volume_ml": 86.62898377706632,
+    "accepted": false,
+    "whole_chamber": false
+  }
+]

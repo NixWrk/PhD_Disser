@@ -1,0 +1,64 @@
+{
+  "status": "unblinded_method_audit_not_accuracy_validation",
+  "pair_comparison": [
+    {
+      "region": "LV",
+      "old_disagreement_ml": -4.240783015442176,
+      "new_disagreement_ml": 16.439046901458894,
+      "delta_direct_ml": -100.48507948288923,
+      "delta_TS_ml": -84.04603258143034
+    },
+    {
+      "region": "RV",
+      "old_disagreement_ml": -62.2604221288488,
+      "new_disagreement_ml": -4.979088684181775,
+      "delta_direct_ml": -84.11259195611218,
+      "delta_TS_ml": -89.09168064029396
+    },
+    {
+      "region": "LA",
+      "old_disagreement_ml": 27.35590299423132,
+      "new_disagreement_ml": 14.28229943277713,
+      "delta_direct_ml": 33.94919634506653,
+      "delta_TS_ml": 48.23149577784366
+    },
+    {
+      "region": "RA",
+      "old_disagreement_ml": 65.96145895464423,
+      "new_disagreement_ml": 7.220293846787527,
+      "delta_direct_ml": 59.618182750723136,
+      "delta_TS_ml": 66.83847659751066
+    }
+  ],
+  "definition_effect": [
+    {
+      "region": "LV",
+      "phase40_threshold_effect_ml": -13.717383731696088,
+      "max_absolute_threshold_effect_ml": 18.66738764710935,
+      "phase_of_max_percent": 50
+    },
+    {
+      "region": "RV",
+      "phase40_threshold_effect_ml": -16.779674289536487,
+      "max_absolute_threshold_effect_ml": 16.779674289536487,
+      "phase_of_max_percent": 40
+    },
+    {
+      "region": "LA",
+      "phase40_threshold_effect_ml": 1.8636624910911905,
+      "max_absolute_threshold_effect_ml": 1.939730347870423,
+      "phase_of_max_percent": 35
+    },
+    {
+      "region": "RA",
+      "phase40_threshold_effect_ml": -6.908751227478469,
+      "max_absolute_threshold_effect_ml": 10.809466177319393,
+      "phase_of_max_percent": 30
+    }
+  ],
+  "source_intensity_sha256": "ac73ca317064449bfd916c1084ffbe0c11789a704a52715cfd60ef99414864c5",
+  "overlap_excluded_ml": {
+    "phase_00": 0.13759332917419917,
+    "phase_08": 0.36579689951189537
+  }
+}

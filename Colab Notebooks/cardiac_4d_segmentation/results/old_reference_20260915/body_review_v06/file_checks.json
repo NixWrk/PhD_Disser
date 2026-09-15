@@ -1,0 +1,22 @@
+{
+  "LV": {
+    "exact_voxels": true,
+    "exact_affine": true,
+    "units": [
+      "mm",
+      "sec"
+    ],
+    "source_sha256": "4e7d2ac8974603bec67df56d36f82b7d93dedb1ee3ff4996eca3b75428c168c3"
+  },
+  "RV": {
+    "exact_voxels": true,
+    "exact_affine": true,
+    "units": [
+      "mm",
+      "sec"
+    ],
+    "source_sha256": "e81677da88ac8c24c46ee172008bdf93af0daf4f3c117c82c9cf3d32c611238f"
+  },
+  "reviewed_k4_11_identical_to_v03": true,
+  "ct_unchanged": true
+}

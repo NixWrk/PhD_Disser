@@ -1,0 +1,498 @@
+{
+  "status": "automatic_results_without_reference",
+  "created_at": "2026-09-14T19:41:13.209464+00:00",
+  "case_id": "synthetic",
+  "sequence_id": "test",
+  "expected_phases": 4,
+  "completed_phases": 4,
+  "missing_phases": [],
+  "conversion_manifest_sha256": "981edaccae76d0d0362a2d4d99275603e1bd45f0b9a09136a4bbaf34afccaa5e",
+  "rows": [
+    {
+      "phase_id": "phase_00",
+      "phase_percent": 0,
+      "structure": "LV",
+      "volume_ml": 0.4319999999999999,
+      "voxel_count": 18,
+      "center_ras_mm": [
+        5.0,
+        9.0,
+        16.0
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0,
+      "delta_from_reference_ml": 0.0,
+      "previous_phase_percent": null,
+      "delta_from_previous_ml": null
+    },
+    {
+      "phase_id": "phase_00",
+      "phase_percent": 0,
+      "structure": "RV",
+      "volume_ml": 0.4319999999999999,
+      "voxel_count": 18,
+      "center_ras_mm": [
+        5.0,
+        9.0,
+        16.0
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0,
+      "delta_from_reference_ml": 0.0,
+      "previous_phase_percent": null,
+      "delta_from_previous_ml": null
+    },
+    {
+      "phase_id": "phase_00",
+      "phase_percent": 0,
+      "structure": "LA",
+      "volume_ml": 0.4319999999999999,
+      "voxel_count": 18,
+      "center_ras_mm": [
+        5.0,
+        9.0,
+        16.0
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0,
+      "delta_from_reference_ml": 0.0,
+      "previous_phase_percent": null,
+      "delta_from_previous_ml": null
+    },
+    {
+      "phase_id": "phase_00",
+      "phase_percent": 0,
+      "structure": "RA",
+      "volume_ml": 0.4319999999999999,
+      "voxel_count": 18,
+      "center_ras_mm": [
+        5.0,
+        9.0,
+        16.0
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0,
+      "delta_from_reference_ml": 0.0,
+      "previous_phase_percent": null,
+      "delta_from_previous_ml": null
+    },
+    {
+      "phase_id": "phase_00",
+      "phase_percent": 0,
+      "structure": "whole_heart",
+      "volume_ml": 0.4319999999999999,
+      "voxel_count": 18,
+      "center_ras_mm": [
+        5.0,
+        9.0,
+        16.0
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0,
+      "delta_from_reference_ml": 0.0,
+      "previous_phase_percent": null,
+      "delta_from_previous_ml": null
+    },
+    {
+      "phase_id": "phase_01",
+      "phase_percent": 25,
+      "structure": "LV",
+      "volume_ml": 0.6479999999999998,
+      "voxel_count": 27,
+      "center_ras_mm": [
+        6.0,
+        9.0,
+        16.0
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0,
+      "delta_from_reference_ml": 0.21599999999999991,
+      "previous_phase_percent": 0,
+      "delta_from_previous_ml": 0.21599999999999991
+    },
+    {
+      "phase_id": "phase_01",
+      "phase_percent": 25,
+      "structure": "RV",
+      "volume_ml": 0.6479999999999998,
+      "voxel_count": 27,
+      "center_ras_mm": [
+        6.0,
+        9.0,
+        16.0
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0,
+      "delta_from_reference_ml": 0.21599999999999991,
+      "previous_phase_percent": 0,
+      "delta_from_previous_ml": 0.21599999999999991
+    },
+    {
+      "phase_id": "phase_01",
+      "phase_percent": 25,
+      "structure": "LA",
+      "volume_ml": 0.6479999999999998,
+      "voxel_count": 27,
+      "center_ras_mm": [
+        6.0,
+        9.0,
+        16.0
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0,
+      "delta_from_reference_ml": 0.21599999999999991,
+      "previous_phase_percent": 0,
+      "delta_from_previous_ml": 0.21599999999999991
+    },
+    {
+      "phase_id": "phase_01",
+      "phase_percent": 25,
+      "structure": "RA",
+      "volume_ml": 0.6479999999999998,
+      "voxel_count": 27,
+      "center_ras_mm": [
+        6.0,
+        9.0,
+        16.0
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0,
+      "delta_from_reference_ml": 0.21599999999999991,
+      "previous_phase_percent": 0,
+      "delta_from_previous_ml": 0.21599999999999991
+    },
+    {
+      "phase_id": "phase_01",
+      "phase_percent": 25,
+      "structure": "whole_heart",
+      "volume_ml": 0.6479999999999998,
+      "voxel_count": 27,
+      "center_ras_mm": [
+        6.0,
+        9.0,
+        16.0
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0,
+      "delta_from_reference_ml": 0.21599999999999991,
+      "previous_phase_percent": 0,
+      "delta_from_previous_ml": 0.21599999999999991
+    },
+    {
+      "phase_id": "phase_02",
+      "phase_percent": 50,
+      "structure": "LV",
+      "volume_ml": 0.4319999999999999,
+      "voxel_count": 18,
+      "center_ras_mm": [
+        5.0,
+        9.0,
+        16.0
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0,
+      "delta_from_reference_ml": 0.0,
+      "previous_phase_percent": 25,
+      "delta_from_previous_ml": -0.21599999999999991
+    },
+    {
+      "phase_id": "phase_02",
+      "phase_percent": 50,
+      "structure": "RV",
+      "volume_ml": 0.4319999999999999,
+      "voxel_count": 18,
+      "center_ras_mm": [
+        5.0,
+        9.0,
+        16.0
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0,
+      "delta_from_reference_ml": 0.0,
+      "previous_phase_percent": 25,
+      "delta_from_previous_ml": -0.21599999999999991
+    },
+    {
+      "phase_id": "phase_02",
+      "phase_percent": 50,
+      "structure": "LA",
+      "volume_ml": 0.4319999999999999,
+      "voxel_count": 18,
+      "center_ras_mm": [
+        5.0,
+        9.0,
+        16.0
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0,
+      "delta_from_reference_ml": 0.0,
+      "previous_phase_percent": 25,
+      "delta_from_previous_ml": -0.21599999999999991
+    },
+    {
+      "phase_id": "phase_02",
+      "phase_percent": 50,
+      "structure": "RA",
+      "volume_ml": 0.4319999999999999,
+      "voxel_count": 18,
+      "center_ras_mm": [
+        5.0,
+        9.0,
+        16.0
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0,
+      "delta_from_reference_ml": 0.0,
+      "previous_phase_percent": 25,
+      "delta_from_previous_ml": -0.21599999999999991
+    },
+    {
+      "phase_id": "phase_02",
+      "phase_percent": 50,
+      "structure": "whole_heart",
+      "volume_ml": 0.4319999999999999,
+      "voxel_count": 18,
+      "center_ras_mm": [
+        5.0,
+        9.0,
+        16.0
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0,
+      "delta_from_reference_ml": 0.0,
+      "previous_phase_percent": 25,
+      "delta_from_previous_ml": -0.21599999999999991
+    },
+    {
+      "phase_id": "phase_03",
+      "phase_percent": 75,
+      "structure": "LV",
+      "volume_ml": 0.6479999999999998,
+      "voxel_count": 27,
+      "center_ras_mm": [
+        6.0,
+        9.0,
+        16.0
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0,
+      "delta_from_reference_ml": 0.21599999999999991,
+      "previous_phase_percent": 50,
+      "delta_from_previous_ml": 0.21599999999999991
+    },
+    {
+      "phase_id": "phase_03",
+      "phase_percent": 75,
+      "structure": "RV",
+      "volume_ml": 0.6479999999999998,
+      "voxel_count": 27,
+      "center_ras_mm": [
+        6.0,
+        9.0,
+        16.0
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0,
+      "delta_from_reference_ml": 0.21599999999999991,
+      "previous_phase_percent": 50,
+      "delta_from_previous_ml": 0.21599999999999991
+    },
+    {
+      "phase_id": "phase_03",
+      "phase_percent": 75,
+      "structure": "LA",
+      "volume_ml": 0.6479999999999998,
+      "voxel_count": 27,
+      "center_ras_mm": [
+        6.0,
+        9.0,
+        16.0
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0,
+      "delta_from_reference_ml": 0.21599999999999991,
+      "previous_phase_percent": 50,
+      "delta_from_previous_ml": 0.21599999999999991
+    },
+    {
+      "phase_id": "phase_03",
+      "phase_percent": 75,
+      "structure": "RA",
+      "volume_ml": 0.6479999999999998,
+      "voxel_count": 27,
+      "center_ras_mm": [
+        6.0,
+        9.0,
+        16.0
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0,
+      "delta_from_reference_ml": 0.21599999999999991,
+      "previous_phase_percent": 50,
+      "delta_from_previous_ml": 0.21599999999999991
+    },
+    {
+      "phase_id": "phase_03",
+      "phase_percent": 75,
+      "structure": "whole_heart",
+      "volume_ml": 0.6479999999999998,
+      "voxel_count": 27,
+      "center_ras_mm": [
+        6.0,
+        9.0,
+        16.0
+      ],
+      "touches_image_boundary": false,
+      "empty": false,
+      "reference_phase_percent": 0,
+      "delta_from_reference_ml": 0.21599999999999991,
+      "previous_phase_percent": 50,
+      "delta_from_previous_ml": 0.21599999999999991
+    }
+  ],
+  "provenance": [
+    {
+      "phase_id": "phase_00",
+      "structure": "LV",
+      "mask_sha256": "6ec8224535fd42039ee6999240d1f99bd159106b21e28c5864de40b4eba4263f",
+      "ct_sha256": "eec5dc71c4e237ccfa3d434101f9f35a7793b6aef09ae4c3516f7b2dc2da7404"
+    },
+    {
+      "phase_id": "phase_00",
+      "structure": "RV",
+      "mask_sha256": "6ec8224535fd42039ee6999240d1f99bd159106b21e28c5864de40b4eba4263f",
+      "ct_sha256": "eec5dc71c4e237ccfa3d434101f9f35a7793b6aef09ae4c3516f7b2dc2da7404"
+    },
+    {
+      "phase_id": "phase_00",
+      "structure": "LA",
+      "mask_sha256": "6ec8224535fd42039ee6999240d1f99bd159106b21e28c5864de40b4eba4263f",
+      "ct_sha256": "eec5dc71c4e237ccfa3d434101f9f35a7793b6aef09ae4c3516f7b2dc2da7404"
+    },
+    {
+      "phase_id": "phase_00",
+      "structure": "RA",
+      "mask_sha256": "6ec8224535fd42039ee6999240d1f99bd159106b21e28c5864de40b4eba4263f",
+      "ct_sha256": "eec5dc71c4e237ccfa3d434101f9f35a7793b6aef09ae4c3516f7b2dc2da7404"
+    },
+    {
+      "phase_id": "phase_00",
+      "structure": "whole_heart",
+      "mask_sha256": "6ec8224535fd42039ee6999240d1f99bd159106b21e28c5864de40b4eba4263f",
+      "ct_sha256": "eec5dc71c4e237ccfa3d434101f9f35a7793b6aef09ae4c3516f7b2dc2da7404"
+    },
+    {
+      "phase_id": "phase_01",
+      "structure": "LV",
+      "mask_sha256": "3adc18ac402f52b2f20a071d12389876a953d6c501c6ece008836a2028614f43",
+      "ct_sha256": "eec5dc71c4e237ccfa3d434101f9f35a7793b6aef09ae4c3516f7b2dc2da7404"
+    },
+    {
+      "phase_id": "phase_01",
+      "structure": "RV",
+      "mask_sha256": "3adc18ac402f52b2f20a071d12389876a953d6c501c6ece008836a2028614f43",
+      "ct_sha256": "eec5dc71c4e237ccfa3d434101f9f35a7793b6aef09ae4c3516f7b2dc2da7404"
+    },
+    {
+      "phase_id": "phase_01",
+      "structure": "LA",
+      "mask_sha256": "3adc18ac402f52b2f20a071d12389876a953d6c501c6ece008836a2028614f43",
+      "ct_sha256": "eec5dc71c4e237ccfa3d434101f9f35a7793b6aef09ae4c3516f7b2dc2da7404"
+    },
+    {
+      "phase_id": "phase_01",
+      "structure": "RA",
+      "mask_sha256": "3adc18ac402f52b2f20a071d12389876a953d6c501c6ece008836a2028614f43",
+      "ct_sha256": "eec5dc71c4e237ccfa3d434101f9f35a7793b6aef09ae4c3516f7b2dc2da7404"
+    },
+    {
+      "phase_id": "phase_01",
+      "structure": "whole_heart",
+      "mask_sha256": "3adc18ac402f52b2f20a071d12389876a953d6c501c6ece008836a2028614f43",
+      "ct_sha256": "eec5dc71c4e237ccfa3d434101f9f35a7793b6aef09ae4c3516f7b2dc2da7404"
+    },
+    {
+      "phase_id": "phase_02",
+      "structure": "LV",
+      "mask_sha256": "6ec8224535fd42039ee6999240d1f99bd159106b21e28c5864de40b4eba4263f",
+      "ct_sha256": "eec5dc71c4e237ccfa3d434101f9f35a7793b6aef09ae4c3516f7b2dc2da7404"
+    },
+    {
+      "phase_id": "phase_02",
+      "structure": "RV",
+      "mask_sha256": "6ec8224535fd42039ee6999240d1f99bd159106b21e28c5864de40b4eba4263f",
+      "ct_sha256": "eec5dc71c4e237ccfa3d434101f9f35a7793b6aef09ae4c3516f7b2dc2da7404"
+    },
+    {
+      "phase_id": "phase_02",
+      "structure": "LA",
+      "mask_sha256": "6ec8224535fd42039ee6999240d1f99bd159106b21e28c5864de40b4eba4263f",
+      "ct_sha256": "eec5dc71c4e237ccfa3d434101f9f35a7793b6aef09ae4c3516f7b2dc2da7404"
+    },
+    {
+      "phase_id": "phase_02",
+      "structure": "RA",
+      "mask_sha256": "6ec8224535fd42039ee6999240d1f99bd159106b21e28c5864de40b4eba4263f",
+      "ct_sha256": "eec5dc71c4e237ccfa3d434101f9f35a7793b6aef09ae4c3516f7b2dc2da7404"
+    },
+    {
+      "phase_id": "phase_02",
+      "structure": "whole_heart",
+      "mask_sha256": "6ec8224535fd42039ee6999240d1f99bd159106b21e28c5864de40b4eba4263f",
+      "ct_sha256": "eec5dc71c4e237ccfa3d434101f9f35a7793b6aef09ae4c3516f7b2dc2da7404"
+    },
+    {
+      "phase_id": "phase_03",
+      "structure": "LV",
+      "mask_sha256": "3adc18ac402f52b2f20a071d12389876a953d6c501c6ece008836a2028614f43",
+      "ct_sha256": "eec5dc71c4e237ccfa3d434101f9f35a7793b6aef09ae4c3516f7b2dc2da7404"
+    },
+    {
+      "phase_id": "phase_03",
+      "structure": "RV",
+      "mask_sha256": "3adc18ac402f52b2f20a071d12389876a953d6c501c6ece008836a2028614f43",
+      "ct_sha256": "eec5dc71c4e237ccfa3d434101f9f35a7793b6aef09ae4c3516f7b2dc2da7404"
+    },
+    {
+      "phase_id": "phase_03",
+      "structure": "LA",
+      "mask_sha256": "3adc18ac402f52b2f20a071d12389876a953d6c501c6ece008836a2028614f43",
+      "ct_sha256": "eec5dc71c4e237ccfa3d434101f9f35a7793b6aef09ae4c3516f7b2dc2da7404"
+    },
+    {
+      "phase_id": "phase_03",
+      "structure": "RA",
+      "mask_sha256": "3adc18ac402f52b2f20a071d12389876a953d6c501c6ece008836a2028614f43",
+      "ct_sha256": "eec5dc71c4e237ccfa3d434101f9f35a7793b6aef09ae4c3516f7b2dc2da7404"
+    },
+    {
+      "phase_id": "phase_03",
+      "structure": "whole_heart",
+      "mask_sha256": "3adc18ac402f52b2f20a071d12389876a953d6c501c6ece008836a2028614f43",
+      "ct_sha256": "eec5dc71c4e237ccfa3d434101f9f35a7793b6aef09ae4c3516f7b2dc2da7404"
+    }
+  ],
+  "accuracy_evaluated": false,
+  "ED_ES_accepted": false,
+  "temporal_unit": "percent_of_reconstructed_cycle",
+  "anatomical_visual_review": "not_performed"
+}

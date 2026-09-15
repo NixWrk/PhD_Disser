@@ -1,0 +1,49 @@
+{
+  "status": "revised_partial_agent_drafts_not_accepted",
+  "reviewed_utc": "2026-09-15T12:55:42.008241+00:00",
+  "reviewer": "Codex, not human expert",
+  "expert_accepted": false,
+  "TS_accuracy_estimated": false,
+  "changed_rv_axial_k": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "unchanged_rv_k": [
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24
+  ],
+  "LV_version": "v04 unchanged",
+  "RV_version": "v04",
+  "reviewed_images": [
+    "../body_review_v05/RV_before_after_4_7.jpg",
+    "../body_review_v05/RV_before_after_8_11.jpg",
+    "RV_before_after_12_15.jpg",
+    "RV_orthogonal_review.jpg",
+    "oblique_partial_boundaries.jpg"
+  ],
+  "observations": [
+    "Restrictive early axial envelopes revised, including apical displacement and transition to k16.",
+    "k4..8 contain HU-dependent irregular margins; tissue identity remains uncertain.",
+    "Axial transition k11..12 improved after source-guided revision k12..15.",
+    "Superior k24 truncation remains artificial. RV outflow and tricuspid boundaries incomplete.",
+    "Coronal and sagittal views show stair-step boundaries and residual provisional limits; visual review is not accuracy validation."
+  ],
+  "next_required": "Independent endocardial boundary review; complete valve and outflow anatomy before whole-chamber volumes."
+}

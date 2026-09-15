@@ -1,0 +1,66 @@
+{
+  "phase_id": "phase_05",
+  "phase_percent": 25,
+  "source_ct_sha256": "701365be9759c4b04c163c9685cdc343d09cbce31ed0eb62f419528acc798323",
+  "reference_ct_sha256": "f9e961138aac8f9a57957988c5c36bbf3bb72a1660d1ae4c692ee6096b27ce25",
+  "reference_mask_hashes": {
+    "LV": "ae86b3d61cf6fcab080cf9601b049006fa1c5781f0b11f0a4c41cc07008be0b5",
+    "RV": "3497637bc5a6fb33cb13a79bd069b20e47596856af99c5f471a274874a296397",
+    "LA": "6a9cd9283b3823eac04b192277c92194e689f0d98e3d6e3b30aef59f34c4721e",
+    "RA": "f40a0a2cf23a51efd3834bb420d345ced46c313fa69359818eeaf1d24ba1b218",
+    "outer_heart_candidate": "07e75842a66b5b27912d564a8dea873f4929c4d71bfe5c2b7adaa5ee381d4116",
+    "myocardium_intensity_candidate": "44a4eaf66e06b4335feec15cba3319b2418e01b1f743db936a4a088110914b9a"
+  },
+  "method": "Author CT contours in phase00 plus CT-only BSpline transport; other phases are propagated candidates, not manual references",
+  "accepted": false,
+  "whole_chamber_coverage": "candidate_not_confirmed",
+  "records": {
+    "LV": {
+      "file": "LV.nii.gz",
+      "sha256": "be035f02b4c0ff739f460da9f9f07e09b017cc3db50bbaa7ac7ec0173bac97a4",
+      "volume_ml": 76.30109425185661
+    },
+    "RV": {
+      "file": "RV.nii.gz",
+      "sha256": "e590fa190745113402eb4dbdd72d3fa16aa7918bd29054af0acfbbec176cf964",
+      "volume_ml": 106.66559284620183
+    },
+    "LA": {
+      "file": "LA.nii.gz",
+      "sha256": "c5f18f84234f130487823ee03aaf09ee244eb0bd182b093c790d778740c83be8",
+      "volume_ml": 44.249119746460345
+    },
+    "RA": {
+      "file": "RA.nii.gz",
+      "sha256": "1eff5330616b3ab648b5104e941e690bc27c20de9d010231223de3e697bf6235",
+      "volume_ml": 58.50569034532686
+    },
+    "outer_heart_candidate": {
+      "file": "outer_heart_candidate.nii.gz",
+      "sha256": "3d0216376b9e4a1a33644d6c3d6688ea46199755676211a8241e80dfc8d558ed",
+      "volume_ml": 538.1431714296298
+    },
+    "myocardium_intensity_candidate": {
+      "file": "myocardium_intensity_candidate.nii.gz",
+      "sha256": "6e1437bb4871a104f733c1c8981c6e7417d8249b318d90963ee83bd37c17d34f",
+      "volume_ml": 165.12541874847062
+    }
+  },
+  "registration": {
+    "metric_value": -1.2086416647040068,
+    "optimizer_stop": "GradientDescentOptimizerv4Template: Maximum number of iterations (40) exceeded.",
+    "optimizer_iteration": 40,
+    "bspline_mesh_size": [
+      7,
+      7,
+      7
+    ],
+    "optimizer": "gradient_descent_physical_shift",
+    "jacobian_min": 0.4648981899846654,
+    "jacobian_nonpositive_fraction": 0.0,
+    "mae_before_hu": 62.47079086303711,
+    "mae_after_hu": 50.79969024658203
+  },
+  "elapsed_s": 94.78428173065186,
+  "automatic_comparator_used": false
+}

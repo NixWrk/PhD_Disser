@@ -1,0 +1,17 @@
+{
+  "phase00_outer_reviewed": true,
+  "reference_accepted": false,
+  "findings": [
+    "Upper outer contour excludes unresolved anterior outflow structures; whole-heart completeness not established",
+    "Residual HU mask is not tissue-specific myocardium",
+    "RV/RA boundary and RVOT incomplete/uncertain; observed mismatch after unblinding"
+  ],
+  "comparison_unblinded": true,
+  "future_revisions_must_record_unblinding": true,
+  "images_reviewed": [
+    "whole_chamber_review_v01/phase00_outer_candidates_v02.jpg",
+    "whole_heart_comparison_v01/phase_00_RV_methods.jpg",
+    "whole_heart_comparison_v01/phase_10_RV_methods.jpg"
+  ],
+  "scope": "Visible selected slices only; not a complete slice-by-slice anatomic review"
+}

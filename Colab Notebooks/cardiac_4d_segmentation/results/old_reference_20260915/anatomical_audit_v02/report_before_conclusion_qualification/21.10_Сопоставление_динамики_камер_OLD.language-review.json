@@ -1,0 +1,25 @@
+{
+  "reviewed_utc": "2026-09-15T15:01:42.163805+00:00",
+  "skill": "russian-scientific-prose",
+  "mode": "transform_and_audit",
+  "language_status": "passed",
+  "full_reader_text_read_semantically_and_sequentially_after_last_edit": true,
+  "reviewer": "Codex model",
+  "artifact_hashes": {
+    "21.10_Сопоставление_динамики_камер_OLD.md": "60bba8e83ec02080844736a7c1da08b2b49cce2a64b3705753776ec1f8a8c2bb",
+    "21.10_Сопоставление_динамики_камер_OLD.ipynb": "88cc0ad6470c93bfd6f54866fcbfe35741753c87e39013dcb9f4ff206368489a",
+    "21.10_Сопоставление_динамики_камер_OLD.html": "5a7931932201a1a80939b6e1317691715bd460632d97d0cb7df59d85f594dd69"
+  },
+  "reader_text_sha256": "43365b7c18748139f16802767495ce266869911ce290a833089f12b93b6bacb1",
+  "checks": {
+    "scientific_headings": true,
+    "terminology_and_scope": true,
+    "derived_quantity_definitions": true,
+    "claim_strength_preserved": true,
+    "visible_captions_reviewed": true,
+    "html_code_excluded": true
+  },
+  "findings": [],
+  "scientific_status": "Unblinded anatomical candidate revision; accuracy of TS remains unestablished",
+  "overall_reference_validation_passed": false
+}

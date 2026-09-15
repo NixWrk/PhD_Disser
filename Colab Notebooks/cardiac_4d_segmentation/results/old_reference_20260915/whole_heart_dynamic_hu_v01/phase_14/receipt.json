@@ -1,0 +1,88 @@
+{
+  "phase_id": "phase_14",
+  "phase_percent": 70,
+  "source_ct_sha256": "e044e65d21965a2e9272a8b12d6d52c08b9cdda833b7ec84f31da9934c916ef1",
+  "transport_receipt_sha256": "aa9e5c0e2c5cec052e8d93c6e3ef9096d8b048dea028cb5336e6a6602f20565f",
+  "source_domains_sha256": "1b70fed7159089daa57c28b51e9d03de80225b83164f1620721fbff4fb70e396",
+  "method": "CT-only BSpline transport of authored search domains then target-phase HU filtering and largest6connectedcomponent",
+  "accepted": false,
+  "whole_chamber_confirmed": false,
+  "registration": {
+    "metric_value": -1.3386576631103466,
+    "optimizer_stop": "GradientDescentOptimizerv4Template: Maximum number of iterations (40) exceeded.",
+    "optimizer_iteration": 40,
+    "bspline_mesh_size": [
+      7,
+      7,
+      7
+    ],
+    "optimizer": "gradient_descent_physical_shift",
+    "jacobian_min": 0.547774770032705,
+    "jacobian_nonpositive_fraction": 0.0,
+    "mae_before_hu": 44.24306869506836,
+    "mae_after_hu": 36.899051666259766
+  },
+  "records": {
+    "LV_HU170": {
+      "file": "LV_HU170.nii.gz",
+      "volume_ml": 117.50582175971871,
+      "sha256": "659f5af26a2b0c838f495126c689c45bacee761b6a1d1aec0928960bff256701"
+    },
+    "RV_HU170": {
+      "file": "RV_HU170.nii.gz",
+      "volume_ml": 119.28502655688591,
+      "sha256": "e049739d037008a0836446d4184763d3b657832cca0ebe637126767f83fdb188"
+    },
+    "LA_HU170": {
+      "file": "LA_HU170.nii.gz",
+      "volume_ml": 45.15634080304795,
+      "sha256": "d7ed17471310ee539b7b630cf53be21484888f1fb2d2fefb1d3fbc64aae0f019"
+    },
+    "RA_HU170": {
+      "file": "RA_HU170.nii.gz",
+      "volume_ml": 55.89812896073289,
+      "sha256": "4c37e7935a37a8d6f7088fd6e2ea62d1dd343f53ea1138884336d5d692dba348"
+    },
+    "LV_HU190": {
+      "file": "LV_HU190.nii.gz",
+      "volume_ml": 111.24141002495843,
+      "sha256": "6ee7d6da253be2495e41df2710d496bb2b17b181018976402d6e590fa5c35ff3"
+    },
+    "RV_HU190": {
+      "file": "RV_HU190.nii.gz",
+      "volume_ml": 115.48722694268749,
+      "sha256": "7482cc477c63d210c764b9bc0791908e8d41c46f26e521707f4280bf139934ea"
+    },
+    "LA_HU190": {
+      "file": "LA_HU190.nii.gz",
+      "volume_ml": 44.07069587651494,
+      "sha256": "5d178cc8de3d5312db1f476e61d5ab9ee97276d0925d7a357e9a82dd91753a3e"
+    },
+    "RA_HU190": {
+      "file": "RA_HU190.nii.gz",
+      "volume_ml": 52.416905868130385,
+      "sha256": "6725a707016ba6ab0b2d81462fc0aacf9517b572f01ee946ff8f7ecde6bc9b2e"
+    },
+    "LV_HU210": {
+      "file": "LV_HU210.nii.gz",
+      "volume_ml": 102.26260631262747,
+      "sha256": "4fa9246725ecccb2397ef6c7f706783bbd24a99de48838bdde5f1b8961d1eba6"
+    },
+    "RV_HU210": {
+      "file": "RV_HU210.nii.gz",
+      "volume_ml": 109.15289989838746,
+      "sha256": "8451aa4312f2d09be2bafdf6a6e01d45268debe51b7827f1d510c49198c8f3a3"
+    },
+    "LA_HU210": {
+      "file": "LA_HU210.nii.gz",
+      "volume_ml": 42.643304916951706,
+      "sha256": "3844386581db5ec6e7e65e35a8ce04f306ce087e08ed7c4d3b895a4977b0ed84"
+    },
+    "RA_HU210": {
+      "file": "RA_HU210.nii.gz",
+      "volume_ml": 48.6107164167872,
+      "sha256": "9b46783de3ca0dc2e7e75a77be6d468dc0bdf8bffadc27716c7caff71f37eecd"
+    }
+  },
+  "automatic_comparator_used": false
+}

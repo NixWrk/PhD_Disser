@@ -1,0 +1,12 @@
+{
+  "source_ct_sha256": "f9e961138aac8f9a57957988c5c36bbf3bb72a1660d1ae4c692ee6096b27ce25",
+  "source_spec_sha256": "e075713912c291a3d535d2b196107519b46e84f408d90b9743b0f6aecc7ea54e",
+  "label_map": {
+    "1": "LV",
+    "2": "RV",
+    "3": "LA",
+    "4": "RA"
+  },
+  "accepted": false,
+  "purpose": "Non-overlapping source-authored search domains before HU filtering"
+}

@@ -1,0 +1,3297 @@
+{
+  "thresholds": [
+    {
+      "phase_id": "phase_00",
+      "phase_percent": 0,
+      "region": "LV",
+      "threshold_hu": 170,
+      "volume_ml": 134.19264851818645
+    },
+    {
+      "phase_id": "phase_00",
+      "phase_percent": 0,
+      "region": "LV",
+      "threshold_hu": 190,
+      "volume_ml": 127.63515180583559
+    },
+    {
+      "phase_id": "phase_00",
+      "phase_percent": 0,
+      "region": "LV",
+      "threshold_hu": 210,
+      "volume_ml": 119.14128068047222
+    },
+    {
+      "phase_id": "phase_00",
+      "phase_percent": 0,
+      "region": "RV",
+      "threshold_hu": 170,
+      "volume_ml": 123.30823312904045
+    },
+    {
+      "phase_id": "phase_00",
+      "phase_percent": 0,
+      "region": "RV",
+      "threshold_hu": 190,
+      "volume_ml": 120.32704433026613
+    },
+    {
+      "phase_id": "phase_00",
+      "phase_percent": 0,
+      "region": "RV",
+      "threshold_hu": 210,
+      "volume_ml": 115.75234579646217
+    },
+    {
+      "phase_id": "phase_00",
+      "phase_percent": 0,
+      "region": "LA",
+      "threshold_hu": 170,
+      "volume_ml": 33.294229725298294
+    },
+    {
+      "phase_id": "phase_00",
+      "phase_percent": 0,
+      "region": "LA",
+      "threshold_hu": 190,
+      "volume_ml": 31.845584511634975
+    },
+    {
+      "phase_id": "phase_00",
+      "phase_percent": 0,
+      "region": "LA",
+      "threshold_hu": 210,
+      "volume_ml": 28.4152597643774
+    },
+    {
+      "phase_id": "phase_00",
+      "phase_percent": 0,
+      "region": "RA",
+      "threshold_hu": 170,
+      "volume_ml": 47.306376402013896
+    },
+    {
+      "phase_id": "phase_00",
+      "phase_percent": 0,
+      "region": "RA",
+      "threshold_hu": 190,
+      "volume_ml": 46.120612752219984
+    },
+    {
+      "phase_id": "phase_00",
+      "phase_percent": 0,
+      "region": "RA",
+      "threshold_hu": 210,
+      "volume_ml": 44.67028957112771
+    },
+    {
+      "phase_id": "phase_01",
+      "phase_percent": 5,
+      "region": "LV",
+      "threshold_hu": 170,
+      "volume_ml": 121.50441814291527
+    },
+    {
+      "phase_id": "phase_01",
+      "phase_percent": 5,
+      "region": "LV",
+      "threshold_hu": 190,
+      "volume_ml": 114.93237904618015
+    },
+    {
+      "phase_id": "phase_01",
+      "phase_percent": 5,
+      "region": "LV",
+      "threshold_hu": 210,
+      "volume_ml": 106.35069429203487
+    },
+    {
+      "phase_id": "phase_01",
+      "phase_percent": 5,
+      "region": "RV",
+      "threshold_hu": 170,
+      "volume_ml": 124.60306466171635
+    },
+    {
+      "phase_id": "phase_01",
+      "phase_percent": 5,
+      "region": "RV",
+      "threshold_hu": 190,
+      "volume_ml": 121.16938397960087
+    },
+    {
+      "phase_id": "phase_01",
+      "phase_percent": 5,
+      "region": "RV",
+      "threshold_hu": 210,
+      "volume_ml": 115.12646394546246
+    },
+    {
+      "phase_id": "phase_01",
+      "phase_percent": 5,
+      "region": "LA",
+      "threshold_hu": 170,
+      "volume_ml": 34.64723079551125
+    },
+    {
+      "phase_id": "phase_01",
+      "phase_percent": 5,
+      "region": "LA",
+      "threshold_hu": 190,
+      "volume_ml": 33.20473812908743
+    },
+    {
+      "phase_id": "phase_01",
+      "phase_percent": 5,
+      "region": "LA",
+      "threshold_hu": 210,
+      "volume_ml": 28.7374295107365
+    },
+    {
+      "phase_id": "phase_01",
+      "phase_percent": 5,
+      "region": "RA",
+      "threshold_hu": 170,
+      "volume_ml": 51.90009190001267
+    },
+    {
+      "phase_id": "phase_01",
+      "phase_percent": 5,
+      "region": "RA",
+      "threshold_hu": 190,
+      "volume_ml": 50.563870504089245
+    },
+    {
+      "phase_id": "phase_01",
+      "phase_percent": 5,
+      "region": "RA",
+      "threshold_hu": 210,
+      "volume_ml": 48.692377498329606
+    },
+    {
+      "phase_id": "phase_02",
+      "phase_percent": 10,
+      "region": "LV",
+      "threshold_hu": 170,
+      "volume_ml": 106.03243980301
+    },
+    {
+      "phase_id": "phase_02",
+      "phase_percent": 10,
+      "region": "LV",
+      "threshold_hu": 190,
+      "volume_ml": 98.47095924566854
+    },
+    {
+      "phase_id": "phase_02",
+      "phase_percent": 10,
+      "region": "LV",
+      "threshold_hu": 210,
+      "volume_ml": 88.18837484104058
+    },
+    {
+      "phase_id": "phase_02",
+      "phase_percent": 10,
+      "region": "RV",
+      "threshold_hu": 170,
+      "volume_ml": 117.43814374008427
+    },
+    {
+      "phase_id": "phase_02",
+      "phase_percent": 10,
+      "region": "RV",
+      "threshold_hu": 190,
+      "volume_ml": 112.39976687341277
+    },
+    {
+      "phase_id": "phase_02",
+      "phase_percent": 10,
+      "region": "RV",
+      "threshold_hu": 210,
+      "volume_ml": 104.57764204210719
+    },
+    {
+      "phase_id": "phase_02",
+      "phase_percent": 10,
+      "region": "LA",
+      "threshold_hu": 170,
+      "volume_ml": 38.608352572794495
+    },
+    {
+      "phase_id": "phase_02",
+      "phase_percent": 10,
+      "region": "LA",
+      "threshold_hu": 190,
+      "volume_ml": 37.032181834530704
+    },
+    {
+      "phase_id": "phase_02",
+      "phase_percent": 10,
+      "region": "LA",
+      "threshold_hu": 210,
+      "volume_ml": 32.66666990686963
+    },
+    {
+      "phase_id": "phase_02",
+      "phase_percent": 10,
+      "region": "RA",
+      "threshold_hu": 170,
+      "volume_ml": 53.975737609628325
+    },
+    {
+      "phase_id": "phase_02",
+      "phase_percent": 10,
+      "region": "RA",
+      "threshold_hu": 190,
+      "volume_ml": 52.28826169857727
+    },
+    {
+      "phase_id": "phase_02",
+      "phase_percent": 10,
+      "region": "RA",
+      "threshold_hu": 210,
+      "volume_ml": 50.03139550663462
+    },
+    {
+      "phase_id": "phase_03",
+      "phase_percent": 15,
+      "region": "LV",
+      "threshold_hu": 170,
+      "volume_ml": 89.94856267401296
+    },
+    {
+      "phase_id": "phase_03",
+      "phase_percent": 15,
+      "region": "LV",
+      "threshold_hu": 190,
+      "volume_ml": 81.60235268239751
+    },
+    {
+      "phase_id": "phase_03",
+      "phase_percent": 15,
+      "region": "LV",
+      "threshold_hu": 210,
+      "volume_ml": 71.89810771828225
+    },
+    {
+      "phase_id": "phase_03",
+      "phase_percent": 15,
+      "region": "RV",
+      "threshold_hu": 170,
+      "volume_ml": 103.61952264017465
+    },
+    {
+      "phase_id": "phase_03",
+      "phase_percent": 15,
+      "region": "RV",
+      "threshold_hu": 190,
+      "volume_ml": 98.44634905671056
+    },
+    {
+      "phase_id": "phase_03",
+      "phase_percent": 15,
+      "region": "RV",
+      "threshold_hu": 210,
+      "volume_ml": 92.02924228591549
+    },
+    {
+      "phase_id": "phase_03",
+      "phase_percent": 15,
+      "region": "LA",
+      "threshold_hu": 170,
+      "volume_ml": 40.72986272546823
+    },
+    {
+      "phase_id": "phase_03",
+      "phase_percent": 15,
+      "region": "LA",
+      "threshold_hu": 190,
+      "volume_ml": 39.33938704934197
+    },
+    {
+      "phase_id": "phase_03",
+      "phase_percent": 15,
+      "region": "LA",
+      "threshold_hu": 210,
+      "volume_ml": 35.76196049081279
+    },
+    {
+      "phase_id": "phase_03",
+      "phase_percent": 15,
+      "region": "RA",
+      "threshold_hu": 170,
+      "volume_ml": 59.28482655483767
+    },
+    {
+      "phase_id": "phase_03",
+      "phase_percent": 15,
+      "region": "RA",
+      "threshold_hu": 190,
+      "volume_ml": 57.20918084522201
+    },
+    {
+      "phase_id": "phase_03",
+      "phase_percent": 15,
+      "region": "RA",
+      "threshold_hu": 210,
+      "volume_ml": 53.94721216333612
+    },
+    {
+      "phase_id": "phase_04",
+      "phase_percent": 20,
+      "region": "LV",
+      "threshold_hu": 170,
+      "volume_ml": 74.12141456164584
+    },
+    {
+      "phase_id": "phase_04",
+      "phase_percent": 20,
+      "region": "LV",
+      "threshold_hu": 190,
+      "volume_ml": 66.35522197797202
+    },
+    {
+      "phase_id": "phase_04",
+      "phase_percent": 20,
+      "region": "LV",
+      "threshold_hu": 210,
+      "volume_ml": 57.38704539269109
+    },
+    {
+      "phase_id": "phase_04",
+      "phase_percent": 20,
+      "region": "RV",
+      "threshold_hu": 170,
+      "volume_ml": 100.38272346972306
+    },
+    {
+      "phase_id": "phase_04",
+      "phase_percent": 20,
+      "region": "RV",
+      "threshold_hu": 190,
+      "volume_ml": 95.04063449841097
+    },
+    {
+      "phase_id": "phase_04",
+      "phase_percent": 20,
+      "region": "RV",
+      "threshold_hu": 210,
+      "volume_ml": 88.43000215080991
+    },
+    {
+      "phase_id": "phase_04",
+      "phase_percent": 20,
+      "region": "LA",
+      "threshold_hu": 170,
+      "volume_ml": 46.032239800961754
+    },
+    {
+      "phase_id": "phase_04",
+      "phase_percent": 20,
+      "region": "LA",
+      "threshold_hu": 190,
+      "volume_ml": 44.86437447041002
+    },
+    {
+      "phase_id": "phase_04",
+      "phase_percent": 20,
+      "region": "LA",
+      "threshold_hu": 210,
+      "volume_ml": 42.81725420708656
+    },
+    {
+      "phase_id": "phase_04",
+      "phase_percent": 20,
+      "region": "RA",
+      "threshold_hu": 170,
+      "volume_ml": 59.90958976088475
+    },
+    {
+      "phase_id": "phase_04",
+      "phase_percent": 20,
+      "region": "RA",
+      "threshold_hu": 190,
+      "volume_ml": 57.17785878654821
+    },
+    {
+      "phase_id": "phase_04",
+      "phase_percent": 20,
+      "region": "RA",
+      "threshold_hu": 210,
+      "volume_ml": 54.2688225872189
+    },
+    {
+      "phase_id": "phase_05",
+      "phase_percent": 25,
+      "region": "LV",
+      "threshold_hu": 170,
+      "volume_ml": 67.68920608399019
+    },
+    {
+      "phase_id": "phase_05",
+      "phase_percent": 25,
+      "region": "LV",
+      "threshold_hu": 190,
+      "volume_ml": 61.09535341067866
+    },
+    {
+      "phase_id": "phase_05",
+      "phase_percent": 25,
+      "region": "LV",
+      "threshold_hu": 210,
+      "volume_ml": 53.830873088261995
+    },
+    {
+      "phase_id": "phase_05",
+      "phase_percent": 25,
+      "region": "RV",
+      "threshold_hu": 170,
+      "volume_ml": 98.1320098250199
+    },
+    {
+      "phase_id": "phase_05",
+      "phase_percent": 25,
+      "region": "RV",
+      "threshold_hu": 190,
+      "volume_ml": 92.62100546585981
+    },
+    {
+      "phase_id": "phase_05",
+      "phase_percent": 25,
+      "region": "RV",
+      "threshold_hu": 210,
+      "volume_ml": 85.3956777167854
+    },
+    {
+      "phase_id": "phase_05",
+      "phase_percent": 25,
+      "region": "LA",
+      "threshold_hu": 170,
+      "volume_ml": 48.093902448669475
+    },
+    {
+      "phase_id": "phase_05",
+      "phase_percent": 25,
+      "region": "LA",
+      "threshold_hu": 190,
+      "volume_ml": 46.91540999106769
+    },
+    {
+      "phase_id": "phase_05",
+      "phase_percent": 25,
+      "region": "LA",
+      "threshold_hu": 210,
+      "volume_ml": 44.9264592652813
+    },
+    {
+      "phase_id": "phase_05",
+      "phase_percent": 25,
+      "region": "RA",
+      "threshold_hu": 170,
+      "volume_ml": 55.75606105174815
+    },
+    {
+      "phase_id": "phase_05",
+      "phase_percent": 25,
+      "region": "RA",
+      "threshold_hu": 190,
+      "volume_ml": 53.56855084686891
+    },
+    {
+      "phase_id": "phase_05",
+      "phase_percent": 25,
+      "region": "RA",
+      "threshold_hu": 210,
+      "volume_ml": 50.8972266999747
+    },
+    {
+      "phase_id": "phase_06",
+      "phase_percent": 30,
+      "region": "LV",
+      "threshold_hu": 170,
+      "volume_ml": 62.45282906070216
+    },
+    {
+      "phase_id": "phase_06",
+      "phase_percent": 30,
+      "region": "LV",
+      "threshold_hu": 190,
+      "volume_ml": 56.00104429637538
+    },
+    {
+      "phase_id": "phase_06",
+      "phase_percent": 30,
+      "region": "LV",
+      "threshold_hu": 210,
+      "volume_ml": 48.647631700224174
+    },
+    {
+      "phase_id": "phase_06",
+      "phase_percent": 30,
+      "region": "RV",
+      "threshold_hu": 170,
+      "volume_ml": 89.4367826081821
+    },
+    {
+      "phase_id": "phase_06",
+      "phase_percent": 30,
+      "region": "RV",
+      "threshold_hu": 190,
+      "volume_ml": 85.24018606836903
+    },
+    {
+      "phase_id": "phase_06",
+      "phase_percent": 30,
+      "region": "RV",
+      "threshold_hu": 210,
+      "volume_ml": 79.74260544864056
+    },
+    {
+      "phase_id": "phase_06",
+      "phase_percent": 30,
+      "region": "LA",
+      "threshold_hu": 170,
+      "volume_ml": 51.80221046665704
+    },
+    {
+      "phase_id": "phase_06",
+      "phase_percent": 30,
+      "region": "LA",
+      "threshold_hu": 190,
+      "volume_ml": 50.965464042085486
+    },
+    {
+      "phase_id": "phase_06",
+      "phase_percent": 30,
+      "region": "LA",
+      "threshold_hu": 210,
+      "volume_ml": 49.678463024078034
+    },
+    {
+      "phase_id": "phase_06",
+      "phase_percent": 30,
+      "region": "RA",
+      "threshold_hu": 170,
+      "volume_ml": 50.88324363806675
+    },
+    {
+      "phase_id": "phase_06",
+      "phase_percent": 30,
+      "region": "RA",
+      "threshold_hu": 190,
+      "volume_ml": 48.62861473602937
+    },
+    {
+      "phase_id": "phase_06",
+      "phase_percent": 30,
+      "region": "RA",
+      "threshold_hu": 210,
+      "volume_ml": 46.72356238169066
+    },
+    {
+      "phase_id": "phase_07",
+      "phase_percent": 35,
+      "region": "LV",
+      "threshold_hu": 170,
+      "volume_ml": 54.39299217696147
+    },
+    {
+      "phase_id": "phase_07",
+      "phase_percent": 35,
+      "region": "LV",
+      "threshold_hu": 190,
+      "volume_ml": 50.185209187622036
+    },
+    {
+      "phase_id": "phase_07",
+      "phase_percent": 35,
+      "region": "LV",
+      "threshold_hu": 210,
+      "volume_ml": 45.51039193055717
+    },
+    {
+      "phase_id": "phase_07",
+      "phase_percent": 35,
+      "region": "RV",
+      "threshold_hu": 170,
+      "volume_ml": 100.82962212830105
+    },
+    {
+      "phase_id": "phase_07",
+      "phase_percent": 35,
+      "region": "RV",
+      "threshold_hu": 190,
+      "volume_ml": 95.51046537851799
+    },
+    {
+      "phase_id": "phase_07",
+      "phase_percent": 35,
+      "region": "RV",
+      "threshold_hu": 210,
+      "volume_ml": 88.49991746034965
+    },
+    {
+      "phase_id": "phase_07",
+      "phase_percent": 35,
+      "region": "LA",
+      "threshold_hu": 170,
+      "volume_ml": 54.76102636637864
+    },
+    {
+      "phase_id": "phase_07",
+      "phase_percent": 35,
+      "region": "LA",
+      "threshold_hu": 190,
+      "volume_ml": 54.0311105347838
+    },
+    {
+      "phase_id": "phase_07",
+      "phase_percent": 35,
+      "region": "LA",
+      "threshold_hu": 210,
+      "volume_ml": 53.03607584941429
+    },
+    {
+      "phase_id": "phase_07",
+      "phase_percent": 35,
+      "region": "RA",
+      "threshold_hu": 170,
+      "volume_ml": 47.001545652420646
+    },
+    {
+      "phase_id": "phase_07",
+      "phase_percent": 35,
+      "region": "RA",
+      "threshold_hu": 190,
+      "volume_ml": 43.98735682754358
+    },
+    {
+      "phase_id": "phase_07",
+      "phase_percent": 35,
+      "region": "RA",
+      "threshold_hu": 210,
+      "volume_ml": 41.613032915574166
+    },
+    {
+      "phase_id": "phase_08",
+      "phase_percent": 40,
+      "region": "LV",
+      "threshold_hu": 170,
+      "volume_ml": 50.82898935786392
+    },
+    {
+      "phase_id": "phase_08",
+      "phase_percent": 40,
+      "region": "LV",
+      "threshold_hu": 190,
+      "volume_ml": 47.829902239847435
+    },
+    {
+      "phase_id": "phase_08",
+      "phase_percent": 40,
+      "region": "LV",
+      "threshold_hu": 210,
+      "volume_ml": 44.44264532326633
+    },
+    {
+      "phase_id": "phase_08",
+      "phase_percent": 40,
+      "region": "RV",
+      "threshold_hu": 170,
+      "volume_ml": 97.72258577235522
+    },
+    {
+      "phase_id": "phase_08",
+      "phase_percent": 40,
+      "region": "RV",
+      "threshold_hu": 190,
+      "volume_ml": 93.49578581882098
+    },
+    {
+      "phase_id": "phase_08",
+      "phase_percent": 40,
+      "region": "RV",
+      "threshold_hu": 210,
+      "volume_ml": 88.02281538805049
+    },
+    {
+      "phase_id": "phase_08",
+      "phase_percent": 40,
+      "region": "LA",
+      "threshold_hu": 170,
+      "volume_ml": 53.48409315294491
+    },
+    {
+      "phase_id": "phase_08",
+      "phase_percent": 40,
+      "region": "LA",
+      "threshold_hu": 190,
+      "volume_ml": 52.721177295247315
+    },
+    {
+      "phase_id": "phase_08",
+      "phase_percent": 40,
+      "region": "LA",
+      "threshold_hu": 210,
+      "volume_ml": 51.77536298779378
+    },
+    {
+      "phase_id": "phase_08",
+      "phase_percent": 40,
+      "region": "RA",
+      "threshold_hu": 170,
+      "volume_ml": 50.594073917810405
+    },
+    {
+      "phase_id": "phase_08",
+      "phase_percent": 40,
+      "region": "RA",
+      "threshold_hu": 190,
+      "volume_ml": 46.997630395086425
+    },
+    {
+      "phase_id": "phase_08",
+      "phase_percent": 40,
+      "region": "RA",
+      "threshold_hu": 210,
+      "volume_ml": 43.55555987582617
+    },
+    {
+      "phase_id": "phase_09",
+      "phase_percent": 45,
+      "region": "LV",
+      "threshold_hu": 170,
+      "volume_ml": 54.830382353442054
+    },
+    {
+      "phase_id": "phase_09",
+      "phase_percent": 45,
+      "region": "LV",
+      "threshold_hu": 190,
+      "volume_ml": 50.76410795061104
+    },
+    {
+      "phase_id": "phase_09",
+      "phase_percent": 45,
+      "region": "LV",
+      "threshold_hu": 210,
+      "volume_ml": 46.750409860553916
+    },
+    {
+      "phase_id": "phase_09",
+      "phase_percent": 45,
+      "region": "RV",
+      "threshold_hu": 170,
+      "volume_ml": 99.30658702528746
+    },
+    {
+      "phase_id": "phase_09",
+      "phase_percent": 45,
+      "region": "RV",
+      "threshold_hu": 190,
+      "volume_ml": 94.76153258272835
+    },
+    {
+      "phase_id": "phase_09",
+      "phase_percent": 45,
+      "region": "RV",
+      "threshold_hu": 210,
+      "volume_ml": 88.87746013186421
+    },
+    {
+      "phase_id": "phase_09",
+      "phase_percent": 45,
+      "region": "LA",
+      "threshold_hu": 170,
+      "volume_ml": 57.20862152274569
+    },
+    {
+      "phase_id": "phase_09",
+      "phase_percent": 45,
+      "region": "LA",
+      "threshold_hu": 190,
+      "volume_ml": 56.335519137213474
+    },
+    {
+      "phase_id": "phase_09",
+      "phase_percent": 45,
+      "region": "LA",
+      "threshold_hu": 210,
+      "volume_ml": 54.95958584547149
+    },
+    {
+      "phase_id": "phase_09",
+      "phase_percent": 45,
+      "region": "RA",
+      "threshold_hu": 170,
+      "volume_ml": 53.14122847496205
+    },
+    {
+      "phase_id": "phase_09",
+      "phase_percent": 45,
+      "region": "RA",
+      "threshold_hu": 190,
+      "volume_ml": 50.32000590441464
+    },
+    {
+      "phase_id": "phase_09",
+      "phase_percent": 45,
+      "region": "RA",
+      "threshold_hu": 210,
+      "volume_ml": 47.41880021975379
+    },
+    {
+      "phase_id": "phase_10",
+      "phase_percent": 50,
+      "region": "LV",
+      "threshold_hu": 170,
+      "volume_ml": 60.660759846579666
+    },
+    {
+      "phase_id": "phase_10",
+      "phase_percent": 50,
+      "region": "LV",
+      "threshold_hu": 190,
+      "volume_ml": 54.32363618989805
+    },
+    {
+      "phase_id": "phase_10",
+      "phase_percent": 50,
+      "region": "LV",
+      "threshold_hu": 210,
+      "volume_ml": 47.70293603772327
+    },
+    {
+      "phase_id": "phase_10",
+      "phase_percent": 50,
+      "region": "RV",
+      "threshold_hu": 170,
+      "volume_ml": 101.24631737315788
+    },
+    {
+      "phase_id": "phase_10",
+      "phase_percent": 50,
+      "region": "RV",
+      "threshold_hu": 190,
+      "volume_ml": 95.86675379593248
+    },
+    {
+      "phase_id": "phase_10",
+      "phase_percent": 50,
+      "region": "RV",
+      "threshold_hu": 210,
+      "volume_ml": 88.9552059560724
+    },
+    {
+      "phase_id": "phase_10",
+      "phase_percent": 50,
+      "region": "LA",
+      "threshold_hu": 170,
+      "volume_ml": 53.77997474291707
+    },
+    {
+      "phase_id": "phase_10",
+      "phase_percent": 50,
+      "region": "LA",
+      "threshold_hu": 190,
+      "volume_ml": 52.01139707279992
+    },
+    {
+      "phase_id": "phase_10",
+      "phase_percent": 50,
+      "region": "LA",
+      "threshold_hu": 210,
+      "volume_ml": 49.968751389287014
+    },
+    {
+      "phase_id": "phase_10",
+      "phase_percent": 50,
+      "region": "RA",
+      "threshold_hu": 170,
+      "volume_ml": 61.09423476572602
+    },
+    {
+      "phase_id": "phase_10",
+      "phase_percent": 50,
+      "region": "RA",
+      "threshold_hu": 190,
+      "volume_ml": 58.20477485306784
+    },
+    {
+      "phase_id": "phase_10",
+      "phase_percent": 50,
+      "region": "RA",
+      "threshold_hu": 210,
+      "volume_ml": 55.8013661723299
+    },
+    {
+      "phase_id": "phase_11",
+      "phase_percent": 55,
+      "region": "LV",
+      "threshold_hu": 170,
+      "volume_ml": 75.91124648586306
+    },
+    {
+      "phase_id": "phase_11",
+      "phase_percent": 55,
+      "region": "LV",
+      "threshold_hu": 190,
+      "volume_ml": 66.7014425908128
+    },
+    {
+      "phase_id": "phase_11",
+      "phase_percent": 55,
+      "region": "LV",
+      "threshold_hu": 210,
+      "volume_ml": 56.72312961330177
+    },
+    {
+      "phase_id": "phase_11",
+      "phase_percent": 55,
+      "region": "RV",
+      "threshold_hu": 170,
+      "volume_ml": 109.41913739711478
+    },
+    {
+      "phase_id": "phase_11",
+      "phase_percent": 55,
+      "region": "RV",
+      "threshold_hu": 190,
+      "volume_ml": 103.97637038006546
+    },
+    {
+      "phase_id": "phase_11",
+      "phase_percent": 55,
+      "region": "RV",
+      "threshold_hu": 210,
+      "volume_ml": 96.69790699574085
+    },
+    {
+      "phase_id": "phase_11",
+      "phase_percent": 55,
+      "region": "LA",
+      "threshold_hu": 170,
+      "volume_ml": 47.82207172517898
+    },
+    {
+      "phase_id": "phase_11",
+      "phase_percent": 55,
+      "region": "LA",
+      "threshold_hu": 190,
+      "volume_ml": 46.41425705228687
+    },
+    {
+      "phase_id": "phase_11",
+      "phase_percent": 55,
+      "region": "LA",
+      "threshold_hu": 210,
+      "volume_ml": 44.447679225553195
+    },
+    {
+      "phase_id": "phase_11",
+      "phase_percent": 55,
+      "region": "RA",
+      "threshold_hu": 170,
+      "volume_ml": 59.65901329149433
+    },
+    {
+      "phase_id": "phase_11",
+      "phase_percent": 55,
+      "region": "RA",
+      "threshold_hu": 190,
+      "volume_ml": 56.789688987983595
+    },
+    {
+      "phase_id": "phase_11",
+      "phase_percent": 55,
+      "region": "RA",
+      "threshold_hu": 210,
+      "volume_ml": 53.918127394567584
+    },
+    {
+      "phase_id": "phase_12",
+      "phase_percent": 60,
+      "region": "LV",
+      "threshold_hu": 170,
+      "volume_ml": 93.49187056148675
+    },
+    {
+      "phase_id": "phase_12",
+      "phase_percent": 60,
+      "region": "LV",
+      "threshold_hu": 190,
+      "volume_ml": 85.22452503903213
+    },
+    {
+      "phase_id": "phase_12",
+      "phase_percent": 60,
+      "region": "LV",
+      "threshold_hu": 210,
+      "volume_ml": 74.72827944845073
+    },
+    {
+      "phase_id": "phase_12",
+      "phase_percent": 60,
+      "region": "RV",
+      "threshold_hu": 170,
+      "volume_ml": 106.60294872885424
+    },
+    {
+      "phase_id": "phase_12",
+      "phase_percent": 60,
+      "region": "RV",
+      "threshold_hu": 190,
+      "volume_ml": 101.64567362124885
+    },
+    {
+      "phase_id": "phase_12",
+      "phase_percent": 60,
+      "region": "RV",
+      "threshold_hu": 210,
+      "volume_ml": 94.98805818563709
+    },
+    {
+      "phase_id": "phase_12",
+      "phase_percent": 60,
+      "region": "LA",
+      "threshold_hu": 170,
+      "volume_ml": 44.4571877076506
+    },
+    {
+      "phase_id": "phase_12",
+      "phase_percent": 60,
+      "region": "LA",
+      "threshold_hu": 190,
+      "volume_ml": 42.93471192711332
+    },
+    {
+      "phase_id": "phase_12",
+      "phase_percent": 60,
+      "region": "LA",
+      "threshold_hu": 210,
+      "volume_ml": 40.18340466610566
+    },
+    {
+      "phase_id": "phase_12",
+      "phase_percent": 60,
+      "region": "RA",
+      "threshold_hu": 170,
+      "volume_ml": 60.40794608728398
+    },
+    {
+      "phase_id": "phase_12",
+      "phase_percent": 60,
+      "region": "RA",
+      "threshold_hu": 190,
+      "volume_ml": 57.999503504259174
+    },
+    {
+      "phase_id": "phase_12",
+      "phase_percent": 60,
+      "region": "RA",
+      "threshold_hu": 210,
+      "volume_ml": 55.73089154031384
+    },
+    {
+      "phase_id": "phase_13",
+      "phase_percent": 65,
+      "region": "LV",
+      "threshold_hu": 170,
+      "volume_ml": 109.01362860178432
+    },
+    {
+      "phase_id": "phase_13",
+      "phase_percent": 65,
+      "region": "LV",
+      "threshold_hu": 190,
+      "volume_ml": 102.38006403265423
+    },
+    {
+      "phase_id": "phase_13",
+      "phase_percent": 65,
+      "region": "LV",
+      "threshold_hu": 210,
+      "volume_ml": 92.50746300316727
+    },
+    {
+      "phase_id": "phase_13",
+      "phase_percent": 65,
+      "region": "RV",
+      "threshold_hu": 170,
+      "volume_ml": 119.11163658922737
+    },
+    {
+      "phase_id": "phase_13",
+      "phase_percent": 65,
+      "region": "RV",
+      "threshold_hu": 190,
+      "volume_ml": 113.65880176760433
+    },
+    {
+      "phase_id": "phase_13",
+      "phase_percent": 65,
+      "region": "RV",
+      "threshold_hu": 210,
+      "volume_ml": 105.86576170506727
+    },
+    {
+      "phase_id": "phase_13",
+      "phase_percent": 65,
+      "region": "LA",
+      "threshold_hu": 170,
+      "volume_ml": 46.170392452612276
+    },
+    {
+      "phase_id": "phase_13",
+      "phase_percent": 65,
+      "region": "LA",
+      "threshold_hu": 190,
+      "volume_ml": 45.047272920165966
+    },
+    {
+      "phase_id": "phase_13",
+      "phase_percent": 65,
+      "region": "LA",
+      "threshold_hu": 210,
+      "volume_ml": 43.09467815534023
+    },
+    {
+      "phase_id": "phase_13",
+      "phase_percent": 65,
+      "region": "RA",
+      "threshold_hu": 170,
+      "volume_ml": 58.032503530361936
+    },
+    {
+      "phase_id": "phase_13",
+      "phase_percent": 65,
+      "region": "RA",
+      "threshold_hu": 190,
+      "volume_ml": 55.95070527350677
+    },
+    {
+      "phase_id": "phase_13",
+      "phase_percent": 65,
+      "region": "RA",
+      "threshold_hu": 210,
+      "volume_ml": 53.140109830009415
+    },
+    {
+      "phase_id": "phase_14",
+      "phase_percent": 70,
+      "region": "LV",
+      "threshold_hu": 170,
+      "volume_ml": 117.50582175971873
+    },
+    {
+      "phase_id": "phase_14",
+      "phase_percent": 70,
+      "region": "LV",
+      "threshold_hu": 190,
+      "volume_ml": 111.24141002495844
+    },
+    {
+      "phase_id": "phase_14",
+      "phase_percent": 70,
+      "region": "LV",
+      "threshold_hu": 210,
+      "volume_ml": 102.26260631262747
+    },
+    {
+      "phase_id": "phase_14",
+      "phase_percent": 70,
+      "region": "RV",
+      "threshold_hu": 170,
+      "volume_ml": 119.28502655688591
+    },
+    {
+      "phase_id": "phase_14",
+      "phase_percent": 70,
+      "region": "RV",
+      "threshold_hu": 190,
+      "volume_ml": 115.48722694268749
+    },
+    {
+      "phase_id": "phase_14",
+      "phase_percent": 70,
+      "region": "RV",
+      "threshold_hu": 210,
+      "volume_ml": 109.15289989838747
+    },
+    {
+      "phase_id": "phase_14",
+      "phase_percent": 70,
+      "region": "LA",
+      "threshold_hu": 170,
+      "volume_ml": 45.156340803047954
+    },
+    {
+      "phase_id": "phase_14",
+      "phase_percent": 70,
+      "region": "LA",
+      "threshold_hu": 190,
+      "volume_ml": 44.07069587651494
+    },
+    {
+      "phase_id": "phase_14",
+      "phase_percent": 70,
+      "region": "LA",
+      "threshold_hu": 210,
+      "volume_ml": 42.643304916951706
+    },
+    {
+      "phase_id": "phase_14",
+      "phase_percent": 70,
+      "region": "RA",
+      "threshold_hu": 170,
+      "volume_ml": 55.89812896073289
+    },
+    {
+      "phase_id": "phase_14",
+      "phase_percent": 70,
+      "region": "RA",
+      "threshold_hu": 190,
+      "volume_ml": 52.41690586813039
+    },
+    {
+      "phase_id": "phase_14",
+      "phase_percent": 70,
+      "region": "RA",
+      "threshold_hu": 210,
+      "volume_ml": 48.6107164167872
+    },
+    {
+      "phase_id": "phase_15",
+      "phase_percent": 75,
+      "region": "LV",
+      "threshold_hu": 170,
+      "volume_ml": 123.76016568990529
+    },
+    {
+      "phase_id": "phase_15",
+      "phase_percent": 75,
+      "region": "LV",
+      "threshold_hu": 190,
+      "volume_ml": 117.15344859963847
+    },
+    {
+      "phase_id": "phase_15",
+      "phase_percent": 75,
+      "region": "LV",
+      "threshold_hu": 210,
+      "volume_ml": 108.50911972814559
+    },
+    {
+      "phase_id": "phase_15",
+      "phase_percent": 75,
+      "region": "RV",
+      "threshold_hu": 170,
+      "volume_ml": 121.28851966705658
+    },
+    {
+      "phase_id": "phase_15",
+      "phase_percent": 75,
+      "region": "RV",
+      "threshold_hu": 190,
+      "volume_ml": 117.62607609212708
+    },
+    {
+      "phase_id": "phase_15",
+      "phase_percent": 75,
+      "region": "RV",
+      "threshold_hu": 210,
+      "volume_ml": 111.51044413606735
+    },
+    {
+      "phase_id": "phase_15",
+      "phase_percent": 75,
+      "region": "LA",
+      "threshold_hu": 170,
+      "volume_ml": 45.5081546406519
+    },
+    {
+      "phase_id": "phase_15",
+      "phase_percent": 75,
+      "region": "LA",
+      "threshold_hu": 190,
+      "volume_ml": 44.14228915348363
+    },
+    {
+      "phase_id": "phase_15",
+      "phase_percent": 75,
+      "region": "LA",
+      "threshold_hu": 210,
+      "volume_ml": 42.04706715719684
+    },
+    {
+      "phase_id": "phase_15",
+      "phase_percent": 75,
+      "region": "RA",
+      "threshold_hu": 170,
+      "volume_ml": 52.98461818159304
+    },
+    {
+      "phase_id": "phase_15",
+      "phase_percent": 75,
+      "region": "RA",
+      "threshold_hu": 190,
+      "volume_ml": 49.294767805323964
+    },
+    {
+      "phase_id": "phase_15",
+      "phase_percent": 75,
+      "region": "RA",
+      "threshold_hu": 210,
+      "volume_ml": 45.03161189082906
+    },
+    {
+      "phase_id": "phase_16",
+      "phase_percent": 80,
+      "region": "LV",
+      "threshold_hu": 170,
+      "volume_ml": 134.1227332086467
+    },
+    {
+      "phase_id": "phase_16",
+      "phase_percent": 80,
+      "region": "LV",
+      "threshold_hu": 190,
+      "volume_ml": 126.76372738773233
+    },
+    {
+      "phase_id": "phase_16",
+      "phase_percent": 80,
+      "region": "LV",
+      "threshold_hu": 210,
+      "volume_ml": 116.29321063106156
+    },
+    {
+      "phase_id": "phase_16",
+      "phase_percent": 80,
+      "region": "RV",
+      "threshold_hu": 170,
+      "volume_ml": 128.70569502550802
+    },
+    {
+      "phase_id": "phase_16",
+      "phase_percent": 80,
+      "region": "RV",
+      "threshold_hu": 190,
+      "volume_ml": 125.53713319716721
+    },
+    {
+      "phase_id": "phase_16",
+      "phase_percent": 80,
+      "region": "RV",
+      "threshold_hu": 210,
+      "volume_ml": 120.10163737231002
+    },
+    {
+      "phase_id": "phase_16",
+      "phase_percent": 80,
+      "region": "LA",
+      "threshold_hu": 170,
+      "volume_ml": 41.17452409414094
+    },
+    {
+      "phase_id": "phase_16",
+      "phase_percent": 80,
+      "region": "LA",
+      "threshold_hu": 190,
+      "volume_ml": 39.5843702939692
+    },
+    {
+      "phase_id": "phase_16",
+      "phase_percent": 80,
+      "region": "LA",
+      "threshold_hu": 210,
+      "volume_ml": 37.22962266867091
+    },
+    {
+      "phase_id": "phase_16",
+      "phase_percent": 80,
+      "region": "RA",
+      "threshold_hu": 170,
+      "volume_ml": 50.898904667403656
+    },
+    {
+      "phase_id": "phase_16",
+      "phase_percent": 80,
+      "region": "RA",
+      "threshold_hu": 190,
+      "volume_ml": 48.34615688548884
+    },
+    {
+      "phase_id": "phase_16",
+      "phase_percent": 80,
+      "region": "RA",
+      "threshold_hu": 210,
+      "volume_ml": 45.499764803507134
+    },
+    {
+      "phase_id": "phase_17",
+      "phase_percent": 85,
+      "region": "LV",
+      "threshold_hu": 170,
+      "volume_ml": 139.01960148880977
+    },
+    {
+      "phase_id": "phase_17",
+      "phase_percent": 85,
+      "region": "LV",
+      "threshold_hu": 190,
+      "volume_ml": 131.288646221144
+    },
+    {
+      "phase_id": "phase_17",
+      "phase_percent": 85,
+      "region": "LV",
+      "threshold_hu": 210,
+      "volume_ml": 119.97299320275691
+    },
+    {
+      "phase_id": "phase_17",
+      "phase_percent": 85,
+      "region": "RV",
+      "threshold_hu": 170,
+      "volume_ml": 132.9682916175266
+    },
+    {
+      "phase_id": "phase_17",
+      "phase_percent": 85,
+      "region": "RV",
+      "threshold_hu": 190,
+      "volume_ml": 130.09281476677637
+    },
+    {
+      "phase_id": "phase_17",
+      "phase_percent": 85,
+      "region": "RV",
+      "threshold_hu": 210,
+      "volume_ml": 125.46833653258011
+    },
+    {
+      "phase_id": "phase_17",
+      "phase_percent": 85,
+      "region": "LA",
+      "threshold_hu": 170,
+      "volume_ml": 38.05686061114506
+    },
+    {
+      "phase_id": "phase_17",
+      "phase_percent": 85,
+      "region": "LA",
+      "threshold_hu": 190,
+      "volume_ml": 36.70889344321897
+    },
+    {
+      "phase_id": "phase_17",
+      "phase_percent": 85,
+      "region": "LA",
+      "threshold_hu": 210,
+      "volume_ml": 34.660095212466565
+    },
+    {
+      "phase_id": "phase_17",
+      "phase_percent": 85,
+      "region": "RA",
+      "threshold_hu": 170,
+      "volume_ml": 49.070479492320494
+    },
+    {
+      "phase_id": "phase_17",
+      "phase_percent": 85,
+      "region": "RA",
+      "threshold_hu": 190,
+      "volume_ml": 46.70510473997217
+    },
+    {
+      "phase_id": "phase_17",
+      "phase_percent": 85,
+      "region": "RA",
+      "threshold_hu": 210,
+      "volume_ml": 44.090272163186064
+    },
+    {
+      "phase_id": "phase_18",
+      "phase_percent": 90,
+      "region": "LV",
+      "threshold_hu": 170,
+      "volume_ml": 139.3328220755478
+    },
+    {
+      "phase_id": "phase_18",
+      "phase_percent": 90,
+      "region": "LV",
+      "threshold_hu": 190,
+      "volume_ml": 132.99122383905564
+    },
+    {
+      "phase_id": "phase_18",
+      "phase_percent": 90,
+      "region": "LV",
+      "threshold_hu": 210,
+      "volume_ml": 124.0789795014065
+    },
+    {
+      "phase_id": "phase_18",
+      "phase_percent": 90,
+      "region": "RV",
+      "threshold_hu": 170,
+      "volume_ml": 126.95557499710937
+    },
+    {
+      "phase_id": "phase_18",
+      "phase_percent": 90,
+      "region": "RV",
+      "threshold_hu": 190,
+      "volume_ml": 123.60635200891788
+    },
+    {
+      "phase_id": "phase_18",
+      "phase_percent": 90,
+      "region": "RV",
+      "threshold_hu": 210,
+      "volume_ml": 117.59922861326382
+    },
+    {
+      "phase_id": "phase_18",
+      "phase_percent": 90,
+      "region": "LA",
+      "threshold_hu": 170,
+      "volume_ml": 35.52033318104347
+    },
+    {
+      "phase_id": "phase_18",
+      "phase_percent": 90,
+      "region": "LA",
+      "threshold_hu": 190,
+      "volume_ml": 34.29541695790731
+    },
+    {
+      "phase_id": "phase_18",
+      "phase_percent": 90,
+      "region": "LA",
+      "threshold_hu": 210,
+      "volume_ml": 32.70582248021188
+    },
+    {
+      "phase_id": "phase_18",
+      "phase_percent": 90,
+      "region": "RA",
+      "threshold_hu": 170,
+      "volume_ml": 46.19220602918867
+    },
+    {
+      "phase_id": "phase_18",
+      "phase_percent": 90,
+      "region": "RA",
+      "threshold_hu": 190,
+      "volume_ml": 44.22954345978922
+    },
+    {
+      "phase_id": "phase_18",
+      "phase_percent": 90,
+      "region": "RA",
+      "threshold_hu": 210,
+      "volume_ml": 41.978270492609745
+    },
+    {
+      "phase_id": "phase_19",
+      "phase_percent": 95,
+      "region": "LV",
+      "threshold_hu": 170,
+      "volume_ml": 139.2740932155344
+    },
+    {
+      "phase_id": "phase_19",
+      "phase_percent": 95,
+      "region": "LV",
+      "threshold_hu": 190,
+      "volume_ml": 132.7182744706125
+    },
+    {
+      "phase_id": "phase_19",
+      "phase_percent": 95,
+      "region": "LV",
+      "threshold_hu": 210,
+      "volume_ml": 124.4514882706342
+    },
+    {
+      "phase_id": "phase_19",
+      "phase_percent": 95,
+      "region": "RV",
+      "threshold_hu": 170,
+      "volume_ml": 128.94172911051416
+    },
+    {
+      "phase_id": "phase_19",
+      "phase_percent": 95,
+      "region": "RV",
+      "threshold_hu": 190,
+      "volume_ml": 125.57460780308051
+    },
+    {
+      "phase_id": "phase_19",
+      "phase_percent": 95,
+      "region": "RV",
+      "threshold_hu": 210,
+      "volume_ml": 119.6066369807687
+    },
+    {
+      "phase_id": "phase_19",
+      "phase_percent": 95,
+      "region": "LA",
+      "threshold_hu": 170,
+      "volume_ml": 33.5196366832544
+    },
+    {
+      "phase_id": "phase_19",
+      "phase_percent": 95,
+      "region": "LA",
+      "threshold_hu": 190,
+      "volume_ml": 32.40155105309495
+    },
+    {
+      "phase_id": "phase_19",
+      "phase_percent": 95,
+      "region": "LA",
+      "threshold_hu": 210,
+      "volume_ml": 30.852227793694418
+    },
+    {
+      "phase_id": "phase_19",
+      "phase_percent": 95,
+      "region": "RA",
+      "threshold_hu": 170,
+      "volume_ml": 46.759359020175005
+    },
+    {
+      "phase_id": "phase_19",
+      "phase_percent": 95,
+      "region": "RA",
+      "threshold_hu": 190,
+      "volume_ml": 45.31295109641696
+    },
+    {
+      "phase_id": "phase_19",
+      "phase_percent": 95,
+      "region": "RA",
+      "threshold_hu": 210,
+      "volume_ml": 43.32344104815425
+    }
+  ],
+  "supplemental": [
+    {
+      "phase_id": "phase_00",
+      "phase_percent": 0,
+      "method": "transport",
+      "region": "LV",
+      "volume_ml": 127.63515180583559
+    },
+    {
+      "phase_id": "phase_00",
+      "phase_percent": 0,
+      "method": "transport",
+      "region": "RV",
+      "volume_ml": 120.32704433026613
+    },
+    {
+      "phase_id": "phase_00",
+      "phase_percent": 0,
+      "method": "transport",
+      "region": "LA",
+      "volume_ml": 31.845584511634975
+    },
+    {
+      "phase_id": "phase_00",
+      "phase_percent": 0,
+      "method": "transport",
+      "region": "RA",
+      "volume_ml": 46.120612752219984
+    },
+    {
+      "phase_id": "phase_00",
+      "phase_percent": 0,
+      "method": "transport",
+      "region": "outer_heart_candidate",
+      "volume_ml": 582.0091552798125
+    },
+    {
+      "phase_id": "phase_00",
+      "phase_percent": 0,
+      "method": "transport",
+      "region": "myocardium_intensity_candidate",
+      "volume_ml": 169.71130373180097
+    },
+    {
+      "phase_id": "phase_00",
+      "phase_percent": 0,
+      "method": "TotalSegmentator",
+      "region": "outer_heart_candidate",
+      "volume_ml": 629.1997519292286
+    },
+    {
+      "phase_id": "phase_00",
+      "phase_percent": 0,
+      "method": "TotalSegmentator",
+      "region": "myocardium_intensity_candidate",
+      "volume_ml": 123.52301295994651
+    },
+    {
+      "phase_id": "phase_01",
+      "phase_percent": 5,
+      "method": "transport",
+      "region": "LV",
+      "volume_ml": 117.8677034018964
+    },
+    {
+      "phase_id": "phase_01",
+      "phase_percent": 5,
+      "method": "transport",
+      "region": "RV",
+      "volume_ml": 121.26055354324068
+    },
+    {
+      "phase_id": "phase_01",
+      "phase_percent": 5,
+      "method": "transport",
+      "region": "LA",
+      "volume_ml": 32.83950055205185
+    },
+    {
+      "phase_id": "phase_01",
+      "phase_percent": 5,
+      "method": "transport",
+      "region": "RA",
+      "volume_ml": 50.11697184551125
+    },
+    {
+      "phase_id": "phase_01",
+      "phase_percent": 5,
+      "method": "transport",
+      "region": "outer_heart_candidate",
+      "volume_ml": 579.7813738566383
+    },
+    {
+      "phase_id": "phase_01",
+      "phase_percent": 5,
+      "method": "transport",
+      "region": "myocardium_intensity_candidate",
+      "volume_ml": 170.35228728966126
+    },
+    {
+      "phase_id": "phase_01",
+      "phase_percent": 5,
+      "method": "TotalSegmentator",
+      "region": "outer_heart_candidate",
+      "volume_ml": 619.6263884245717
+    },
+    {
+      "phase_id": "phase_01",
+      "phase_percent": 5,
+      "method": "TotalSegmentator",
+      "region": "myocardium_intensity_candidate",
+      "volume_ml": 118.78443294058141
+    },
+    {
+      "phase_id": "phase_02",
+      "phase_percent": 10,
+      "method": "transport",
+      "region": "LV",
+      "volume_ml": 103.27777660714443
+    },
+    {
+      "phase_id": "phase_02",
+      "phase_percent": 10,
+      "method": "transport",
+      "region": "RV",
+      "volume_ml": 116.19029529541908
+    },
+    {
+      "phase_id": "phase_02",
+      "phase_percent": 10,
+      "method": "transport",
+      "region": "LA",
+      "volume_ml": 37.13621581512583
+    },
+    {
+      "phase_id": "phase_02",
+      "phase_percent": 10,
+      "method": "transport",
+      "region": "RA",
+      "volume_ml": 52.73795696953685
+    },
+    {
+      "phase_id": "phase_02",
+      "phase_percent": 10,
+      "method": "transport",
+      "region": "outer_heart_candidate",
+      "volume_ml": 565.8240407826019
+    },
+    {
+      "phase_id": "phase_02",
+      "phase_percent": 10,
+      "method": "transport",
+      "region": "myocardium_intensity_candidate",
+      "volume_ml": 167.6955055271513
+    },
+    {
+      "phase_id": "phase_02",
+      "phase_percent": 10,
+      "method": "TotalSegmentator",
+      "region": "outer_heart_candidate",
+      "volume_ml": 606.5393611236858
+    },
+    {
+      "phase_id": "phase_02",
+      "phase_percent": 10,
+      "method": "TotalSegmentator",
+      "region": "myocardium_intensity_candidate",
+      "volume_ml": 115.49505745735594
+    },
+    {
+      "phase_id": "phase_03",
+      "phase_percent": 15,
+      "method": "transport",
+      "region": "LV",
+      "volume_ml": 89.76398625682806
+    },
+    {
+      "phase_id": "phase_03",
+      "phase_percent": 15,
+      "method": "transport",
+      "region": "RV",
+      "volume_ml": 105.90379563345688
+    },
+    {
+      "phase_id": "phase_03",
+      "phase_percent": 15,
+      "method": "transport",
+      "region": "LA",
+      "volume_ml": 38.94114944620364
+    },
+    {
+      "phase_id": "phase_03",
+      "phase_percent": 15,
+      "method": "transport",
+      "region": "RA",
+      "volume_ml": 57.920639035098354
+    },
+    {
+      "phase_id": "phase_03",
+      "phase_percent": 15,
+      "method": "transport",
+      "region": "outer_heart_candidate",
+      "volume_ml": 545.1033803249296
+    },
+    {
+      "phase_id": "phase_03",
+      "phase_percent": 15,
+      "method": "transport",
+      "region": "myocardium_intensity_candidate",
+      "volume_ml": 166.31733494550406
+    },
+    {
+      "phase_id": "phase_03",
+      "phase_percent": 15,
+      "method": "TotalSegmentator",
+      "region": "outer_heart_candidate",
+      "volume_ml": 593.5401474515819
+    },
+    {
+      "phase_id": "phase_03",
+      "phase_percent": 15,
+      "method": "TotalSegmentator",
+      "region": "myocardium_intensity_candidate",
+      "volume_ml": 112.0938174788669
+    },
+    {
+      "phase_id": "phase_04",
+      "phase_percent": 20,
+      "method": "transport",
+      "region": "LV",
+      "volume_ml": 78.2240449254375
+    },
+    {
+      "phase_id": "phase_04",
+      "phase_percent": 20,
+      "method": "transport",
+      "region": "RV",
+      "volume_ml": 104.83493038121341
+    },
+    {
+      "phase_id": "phase_04",
+      "phase_percent": 20,
+      "method": "transport",
+      "region": "LA",
+      "volume_ml": 42.71377954896776
+    },
+    {
+      "phase_id": "phase_04",
+      "phase_percent": 20,
+      "method": "transport",
+      "region": "RA",
+      "volume_ml": 59.98286100528239
+    },
+    {
+      "phase_id": "phase_04",
+      "phase_percent": 20,
+      "method": "transport",
+      "region": "outer_heart_candidate",
+      "volume_ml": 543.3784298079653
+    },
+    {
+      "phase_id": "phase_04",
+      "phase_percent": 20,
+      "method": "transport",
+      "region": "myocardium_intensity_candidate",
+      "volume_ml": 169.04067608269582
+    },
+    {
+      "phase_id": "phase_04",
+      "phase_percent": 20,
+      "method": "TotalSegmentator",
+      "region": "outer_heart_candidate",
+      "volume_ml": 585.7174632978
+    },
+    {
+      "phase_id": "phase_04",
+      "phase_percent": 20,
+      "method": "TotalSegmentator",
+      "region": "myocardium_intensity_candidate",
+      "volume_ml": 108.24567884179986
+    },
+    {
+      "phase_id": "phase_05",
+      "phase_percent": 25,
+      "method": "transport",
+      "region": "LV",
+      "volume_ml": 76.30109425185663
+    },
+    {
+      "phase_id": "phase_05",
+      "phase_percent": 25,
+      "method": "transport",
+      "region": "RV",
+      "volume_ml": 106.66559284620185
+    },
+    {
+      "phase_id": "phase_05",
+      "phase_percent": 25,
+      "method": "transport",
+      "region": "LA",
+      "volume_ml": 44.249119746460345
+    },
+    {
+      "phase_id": "phase_05",
+      "phase_percent": 25,
+      "method": "transport",
+      "region": "RA",
+      "volume_ml": 58.50569034532686
+    },
+    {
+      "phase_id": "phase_05",
+      "phase_percent": 25,
+      "method": "transport",
+      "region": "outer_heart_candidate",
+      "volume_ml": 538.1431714296299
+    },
+    {
+      "phase_id": "phase_05",
+      "phase_percent": 25,
+      "method": "transport",
+      "region": "myocardium_intensity_candidate",
+      "volume_ml": 165.12541874847065
+    },
+    {
+      "phase_id": "phase_05",
+      "phase_percent": 25,
+      "method": "TotalSegmentator",
+      "region": "outer_heart_candidate",
+      "volume_ml": 576.5043034678919
+    },
+    {
+      "phase_id": "phase_05",
+      "phase_percent": 25,
+      "method": "TotalSegmentator",
+      "region": "myocardium_intensity_candidate",
+      "volume_ml": 106.12528733407876
+    },
+    {
+      "phase_id": "phase_06",
+      "phase_percent": 30,
+      "method": "transport",
+      "region": "LV",
+      "volume_ml": 71.73310758776847
+    },
+    {
+      "phase_id": "phase_06",
+      "phase_percent": 30,
+      "method": "transport",
+      "region": "RV",
+      "volume_ml": 99.34629892110603
+    },
+    {
+      "phase_id": "phase_06",
+      "phase_percent": 30,
+      "method": "transport",
+      "region": "LA",
+      "volume_ml": 47.60617324932028
+    },
+    {
+      "phase_id": "phase_06",
+      "phase_percent": 30,
+      "method": "transport",
+      "region": "RA",
+      "volume_ml": 56.92336705982357
+    },
+    {
+      "phase_id": "phase_06",
+      "phase_percent": 30,
+      "method": "transport",
+      "region": "outer_heart_candidate",
+      "volume_ml": 520.6609881098382
+    },
+    {
+      "phase_id": "phase_06",
+      "phase_percent": 30,
+      "method": "transport",
+      "region": "myocardium_intensity_candidate",
+      "volume_ml": 157.84639604166972
+    },
+    {
+      "phase_id": "phase_06",
+      "phase_percent": 30,
+      "method": "TotalSegmentator",
+      "region": "outer_heart_candidate",
+      "volume_ml": 571.6057572202999
+    },
+    {
+      "phase_id": "phase_06",
+      "phase_percent": 30,
+      "method": "TotalSegmentator",
+      "region": "myocardium_intensity_candidate",
+      "volume_ml": 103.9400144191048
+    },
+    {
+      "phase_id": "phase_07",
+      "phase_percent": 35,
+      "method": "transport",
+      "region": "LV",
+      "volume_ml": 72.64144728930872
+    },
+    {
+      "phase_id": "phase_07",
+      "phase_percent": 35,
+      "method": "transport",
+      "region": "RV",
+      "volume_ml": 113.695157728565
+    },
+    {
+      "phase_id": "phase_07",
+      "phase_percent": 35,
+      "method": "transport",
+      "region": "LA",
+      "volume_ml": 50.1527684839956
+    },
+    {
+      "phase_id": "phase_07",
+      "phase_percent": 35,
+      "method": "transport",
+      "region": "RA",
+      "volume_ml": 54.089839394797174
+    },
+    {
+      "phase_id": "phase_07",
+      "phase_percent": 35,
+      "method": "transport",
+      "region": "outer_heart_candidate",
+      "volume_ml": 534.6927110732248
+    },
+    {
+      "phase_id": "phase_07",
+      "phase_percent": 35,
+      "method": "transport",
+      "region": "myocardium_intensity_candidate",
+      "volume_ml": 154.7460715554397
+    },
+    {
+      "phase_id": "phase_07",
+      "phase_percent": 35,
+      "method": "TotalSegmentator",
+      "region": "outer_heart_candidate",
+      "volume_ml": 565.3128200392473
+    },
+    {
+      "phase_id": "phase_07",
+      "phase_percent": 35,
+      "method": "TotalSegmentator",
+      "region": "myocardium_intensity_candidate",
+      "volume_ml": 106.43850792081679
+    },
+    {
+      "phase_id": "phase_08",
+      "phase_percent": 40,
+      "method": "transport",
+      "region": "LV",
+      "volume_ml": 61.36215023188229
+    },
+    {
+      "phase_id": "phase_08",
+      "phase_percent": 40,
+      "method": "transport",
+      "region": "RV",
+      "volume_ml": 108.7283741388622
+    },
+    {
+      "phase_id": "phase_08",
+      "phase_percent": 40,
+      "method": "transport",
+      "region": "LA",
+      "volume_ml": 48.90100478199618
+    },
+    {
+      "phase_id": "phase_08",
+      "phase_percent": 40,
+      "method": "transport",
+      "region": "RA",
+      "volume_ml": 56.66272278585944
+    },
+    {
+      "phase_id": "phase_08",
+      "phase_percent": 40,
+      "method": "transport",
+      "region": "outer_heart_candidate",
+      "volume_ml": 511.2766756021767
+    },
+    {
+      "phase_id": "phase_08",
+      "phase_percent": 40,
+      "method": "transport",
+      "region": "myocardium_intensity_candidate",
+      "volume_ml": 150.36825453329962
+    },
+    {
+      "phase_id": "phase_08",
+      "phase_percent": 40,
+      "method": "TotalSegmentator",
+      "region": "outer_heart_candidate",
+      "volume_ml": 563.9279375878842
+    },
+    {
+      "phase_id": "phase_08",
+      "phase_percent": 40,
+      "method": "TotalSegmentator",
+      "region": "myocardium_intensity_candidate",
+      "volume_ml": 107.88044126476429
+    },
+    {
+      "phase_id": "phase_09",
+      "phase_percent": 45,
+      "method": "transport",
+      "region": "LV",
+      "volume_ml": 69.23069882872227
+    },
+    {
+      "phase_id": "phase_09",
+      "phase_percent": 45,
+      "method": "transport",
+      "region": "RV",
+      "volume_ml": 111.8656139085292
+    },
+    {
+      "phase_id": "phase_09",
+      "phase_percent": 45,
+      "method": "transport",
+      "region": "LA",
+      "volume_ml": 52.801160409360776
+    },
+    {
+      "phase_id": "phase_09",
+      "phase_percent": 45,
+      "method": "transport",
+      "region": "RA",
+      "volume_ml": 54.094873297084035
+    },
+    {
+      "phase_id": "phase_09",
+      "phase_percent": 45,
+      "method": "transport",
+      "region": "outer_heart_candidate",
+      "volume_ml": 533.1226928822006
+    },
+    {
+      "phase_id": "phase_09",
+      "phase_percent": 45,
+      "method": "transport",
+      "region": "myocardium_intensity_candidate",
+      "volume_ml": 154.5463934313942
+    },
+    {
+      "phase_id": "phase_09",
+      "phase_percent": 45,
+      "method": "TotalSegmentator",
+      "region": "outer_heart_candidate",
+      "volume_ml": 563.8283781870997
+    },
+    {
+      "phase_id": "phase_09",
+      "phase_percent": 45,
+      "method": "TotalSegmentator",
+      "region": "myocardium_intensity_candidate",
+      "volume_ml": 104.99601525439296
+    },
+    {
+      "phase_id": "phase_10",
+      "phase_percent": 50,
+      "method": "transport",
+      "region": "LV",
+      "volume_ml": 73.26788846278474
+    },
+    {
+      "phase_id": "phase_10",
+      "phase_percent": 50,
+      "method": "transport",
+      "region": "RV",
+      "volume_ml": 112.45569912104456
+    },
+    {
+      "phase_id": "phase_10",
+      "phase_percent": 50,
+      "method": "transport",
+      "region": "LA",
+      "volume_ml": 50.59239595038145
+    },
+    {
+      "phase_id": "phase_10",
+      "phase_percent": 50,
+      "method": "transport",
+      "region": "RA",
+      "volume_ml": 63.11450755018622
+    },
+    {
+      "phase_id": "phase_10",
+      "phase_percent": 50,
+      "method": "transport",
+      "region": "outer_heart_candidate",
+      "volume_ml": 547.1393141387267
+    },
+    {
+      "phase_id": "phase_10",
+      "phase_percent": 50,
+      "method": "transport",
+      "region": "myocardium_intensity_candidate",
+      "volume_ml": 156.7478866981814
+    },
+    {
+      "phase_id": "phase_10",
+      "phase_percent": 50,
+      "method": "TotalSegmentator",
+      "region": "outer_heart_candidate",
+      "volume_ml": 570.2309425735104
+    },
+    {
+      "phase_id": "phase_10",
+      "phase_percent": 50,
+      "method": "TotalSegmentator",
+      "region": "myocardium_intensity_candidate",
+      "volume_ml": 104.55750643295974
+    },
+    {
+      "phase_id": "phase_11",
+      "phase_percent": 55,
+      "method": "transport",
+      "region": "LV",
+      "volume_ml": 81.48545428484708
+    },
+    {
+      "phase_id": "phase_11",
+      "phase_percent": 55,
+      "method": "transport",
+      "region": "RV",
+      "volume_ml": 116.37375306765134
+    },
+    {
+      "phase_id": "phase_11",
+      "phase_percent": 55,
+      "method": "transport",
+      "region": "LA",
+      "volume_ml": 46.204511123667665
+    },
+    {
+      "phase_id": "phase_11",
+      "phase_percent": 55,
+      "method": "transport",
+      "region": "RA",
+      "volume_ml": 60.74242092812207
+    },
+    {
+      "phase_id": "phase_11",
+      "phase_percent": 55,
+      "method": "transport",
+      "region": "outer_heart_candidate",
+      "volume_ml": 560.6749180656194
+    },
+    {
+      "phase_id": "phase_11",
+      "phase_percent": 55,
+      "method": "transport",
+      "region": "myocardium_intensity_candidate",
+      "volume_ml": 165.46436816911927
+    },
+    {
+      "phase_id": "phase_11",
+      "phase_percent": 55,
+      "method": "TotalSegmentator",
+      "region": "outer_heart_candidate",
+      "volume_ml": 582.293291097782
+    },
+    {
+      "phase_id": "phase_11",
+      "phase_percent": 55,
+      "method": "TotalSegmentator",
+      "region": "myocardium_intensity_candidate",
+      "volume_ml": 107.13262711392727
+    },
+    {
+      "phase_id": "phase_12",
+      "phase_percent": 60,
+      "method": "transport",
+      "region": "LV",
+      "volume_ml": 92.80054798075784
+    },
+    {
+      "phase_id": "phase_12",
+      "phase_percent": 60,
+      "method": "transport",
+      "region": "RV",
+      "volume_ml": 111.22295238323996
+    },
+    {
+      "phase_id": "phase_12",
+      "phase_percent": 60,
+      "method": "transport",
+      "region": "LA",
+      "volume_ml": 42.54262687121449
+    },
+    {
+      "phase_id": "phase_12",
+      "phase_percent": 60,
+      "method": "transport",
+      "region": "RA",
+      "volume_ml": 60.94098040721492
+    },
+    {
+      "phase_id": "phase_12",
+      "phase_percent": 60,
+      "method": "transport",
+      "region": "outer_heart_candidate",
+      "volume_ml": 561.5111051677147
+    },
+    {
+      "phase_id": "phase_12",
+      "phase_percent": 60,
+      "method": "transport",
+      "region": "myocardium_intensity_candidate",
+      "volume_ml": 166.87162351953506
+    },
+    {
+      "phase_id": "phase_12",
+      "phase_percent": 60,
+      "method": "TotalSegmentator",
+      "region": "outer_heart_candidate",
+      "volume_ml": 611.8238398799372
+    },
+    {
+      "phase_id": "phase_12",
+      "phase_percent": 60,
+      "method": "TotalSegmentator",
+      "region": "myocardium_intensity_candidate",
+      "volume_ml": 113.38193714182698
+    },
+    {
+      "phase_id": "phase_13",
+      "phase_percent": 65,
+      "method": "transport",
+      "region": "LV",
+      "volume_ml": 105.31147313103625
+    },
+    {
+      "phase_id": "phase_13",
+      "phase_percent": 65,
+      "method": "transport",
+      "region": "RV",
+      "volume_ml": 121.68172336790805
+    },
+    {
+      "phase_id": "phase_13",
+      "phase_percent": 65,
+      "method": "transport",
+      "region": "LA",
+      "volume_ml": 43.33183088529902
+    },
+    {
+      "phase_id": "phase_13",
+      "phase_percent": 65,
+      "method": "transport",
+      "region": "RA",
+      "volume_ml": 59.5890979819546
+    },
+    {
+      "phase_id": "phase_13",
+      "phase_percent": 65,
+      "method": "transport",
+      "region": "outer_heart_candidate",
+      "volume_ml": 593.3371133926786
+    },
+    {
+      "phase_id": "phase_13",
+      "phase_percent": 65,
+      "method": "transport",
+      "region": "myocardium_intensity_candidate",
+      "volume_ml": 173.12261151486373
+    },
+    {
+      "phase_id": "phase_13",
+      "phase_percent": 65,
+      "method": "TotalSegmentator",
+      "region": "outer_heart_candidate",
+      "volume_ml": 633.069704142872
+    },
+    {
+      "phase_id": "phase_13",
+      "phase_percent": 65,
+      "method": "TotalSegmentator",
+      "region": "myocardium_intensity_candidate",
+      "volume_ml": 116.71549910068157
+    },
+    {
+      "phase_id": "phase_14",
+      "phase_percent": 70,
+      "method": "transport",
+      "region": "LV",
+      "volume_ml": 113.22476752598166
+    },
+    {
+      "phase_id": "phase_14",
+      "phase_percent": 70,
+      "method": "transport",
+      "region": "RV",
+      "volume_ml": 117.31677076272328
+    },
+    {
+      "phase_id": "phase_14",
+      "phase_percent": 70,
+      "method": "transport",
+      "region": "LA",
+      "volume_ml": 43.56506835792357
+    },
+    {
+      "phase_id": "phase_14",
+      "phase_percent": 70,
+      "method": "transport",
+      "region": "RA",
+      "volume_ml": 59.549945408612345
+    },
+    {
+      "phase_id": "phase_14",
+      "phase_percent": 70,
+      "method": "transport",
+      "region": "outer_heart_candidate",
+      "volume_ml": 595.3892675582889
+    },
+    {
+      "phase_id": "phase_14",
+      "phase_percent": 70,
+      "method": "transport",
+      "region": "myocardium_intensity_candidate",
+      "volume_ml": 172.12701750701788
+    },
+    {
+      "phase_id": "phase_14",
+      "phase_percent": 70,
+      "method": "TotalSegmentator",
+      "region": "outer_heart_candidate",
+      "volume_ml": 642.736474501074
+    },
+    {
+      "phase_id": "phase_14",
+      "phase_percent": 70,
+      "method": "TotalSegmentator",
+      "region": "myocardium_intensity_candidate",
+      "volume_ml": 120.91936683268678
+    },
+    {
+      "phase_id": "phase_15",
+      "phase_percent": 75,
+      "method": "transport",
+      "region": "LV",
+      "volume_ml": 118.31236477056912
+    },
+    {
+      "phase_id": "phase_15",
+      "phase_percent": 75,
+      "method": "transport",
+      "region": "RV",
+      "volume_ml": 119.49309451807616
+    },
+    {
+      "phase_id": "phase_15",
+      "phase_percent": 75,
+      "method": "transport",
+      "region": "LA",
+      "volume_ml": 44.175848502062706
+    },
+    {
+      "phase_id": "phase_15",
+      "phase_percent": 75,
+      "method": "transport",
+      "region": "RA",
+      "volume_ml": 57.604621835978755
+    },
+    {
+      "phase_id": "phase_15",
+      "phase_percent": 75,
+      "method": "transport",
+      "region": "outer_heart_candidate",
+      "volume_ml": 601.5776114362699
+    },
+    {
+      "phase_id": "phase_15",
+      "phase_percent": 75,
+      "method": "transport",
+      "region": "myocardium_intensity_candidate",
+      "volume_ml": 173.57622204315754
+    },
+    {
+      "phase_id": "phase_15",
+      "phase_percent": 75,
+      "method": "TotalSegmentator",
+      "region": "outer_heart_candidate",
+      "volume_ml": 644.6985777479971
+    },
+    {
+      "phase_id": "phase_15",
+      "phase_percent": 75,
+      "method": "TotalSegmentator",
+      "region": "myocardium_intensity_candidate",
+      "volume_ml": 123.66284357902599
+    },
+    {
+      "phase_id": "phase_16",
+      "phase_percent": 80,
+      "method": "transport",
+      "region": "LV",
+      "volume_ml": 128.32815235399346
+    },
+    {
+      "phase_id": "phase_16",
+      "phase_percent": 80,
+      "method": "transport",
+      "region": "RV",
+      "volume_ml": 125.2272685452871
+    },
+    {
+      "phase_id": "phase_16",
+      "phase_percent": 80,
+      "method": "transport",
+      "region": "LA",
+      "volume_ml": 40.110133421708014
+    },
+    {
+      "phase_id": "phase_16",
+      "phase_percent": 80,
+      "method": "transport",
+      "region": "RA",
+      "volume_ml": 54.09207668470245
+    },
+    {
+      "phase_id": "phase_16",
+      "phase_percent": 80,
+      "method": "transport",
+      "region": "outer_heart_candidate",
+      "volume_ml": 609.0367359804452
+    },
+    {
+      "phase_id": "phase_16",
+      "phase_percent": 80,
+      "method": "transport",
+      "region": "myocardium_intensity_candidate",
+      "volume_ml": 173.19252682440347
+    },
+    {
+      "phase_id": "phase_16",
+      "phase_percent": 80,
+      "method": "TotalSegmentator",
+      "region": "outer_heart_candidate",
+      "volume_ml": 643.9490856297311
+    },
+    {
+      "phase_id": "phase_16",
+      "phase_percent": 80,
+      "method": "TotalSegmentator",
+      "region": "myocardium_intensity_candidate",
+      "volume_ml": 124.33962377537063
+    },
+    {
+      "phase_id": "phase_17",
+      "phase_percent": 85,
+      "method": "transport",
+      "region": "LV",
+      "volume_ml": 133.04268150687687
+    },
+    {
+      "phase_id": "phase_17",
+      "phase_percent": 85,
+      "method": "transport",
+      "region": "RV",
+      "volume_ml": 129.25439037477585
+    },
+    {
+      "phase_id": "phase_17",
+      "phase_percent": 85,
+      "method": "transport",
+      "region": "LA",
+      "volume_ml": 36.84648677239316
+    },
+    {
+      "phase_id": "phase_17",
+      "phase_percent": 85,
+      "method": "transport",
+      "region": "RA",
+      "volume_ml": 49.60910703701462
+    },
+    {
+      "phase_id": "phase_17",
+      "phase_percent": 85,
+      "method": "transport",
+      "region": "outer_heart_candidate",
+      "volume_ml": 610.4529404904821
+    },
+    {
+      "phase_id": "phase_17",
+      "phase_percent": 85,
+      "method": "transport",
+      "region": "myocardium_intensity_candidate",
+      "volume_ml": 174.59586691748504
+    },
+    {
+      "phase_id": "phase_17",
+      "phase_percent": 85,
+      "method": "TotalSegmentator",
+      "region": "outer_heart_candidate",
+      "volume_ml": 644.2930689526667
+    },
+    {
+      "phase_id": "phase_17",
+      "phase_percent": 85,
+      "method": "TotalSegmentator",
+      "region": "myocardium_intensity_candidate",
+      "volume_ml": 126.09757431843772
+    },
+    {
+      "phase_id": "phase_18",
+      "phase_percent": 90,
+      "method": "transport",
+      "region": "LV",
+      "volume_ml": 132.386596242156
+    },
+    {
+      "phase_id": "phase_18",
+      "phase_percent": 90,
+      "method": "transport",
+      "region": "RV",
+      "volume_ml": 124.77421733946962
+    },
+    {
+      "phase_id": "phase_18",
+      "phase_percent": 90,
+      "method": "transport",
+      "region": "LA",
+      "volume_ml": 34.58234938825838
+    },
+    {
+      "phase_id": "phase_18",
+      "phase_percent": 90,
+      "method": "transport",
+      "region": "RA",
+      "volume_ml": 46.11837546231471
+    },
+    {
+      "phase_id": "phase_18",
+      "phase_percent": 90,
+      "method": "transport",
+      "region": "outer_heart_candidate",
+      "volume_ml": 593.9607579537729
+    },
+    {
+      "phase_id": "phase_18",
+      "phase_percent": 90,
+      "method": "transport",
+      "region": "myocardium_intensity_candidate",
+      "volume_ml": 171.3954237079941
+    },
+    {
+      "phase_id": "phase_18",
+      "phase_percent": 90,
+      "method": "TotalSegmentator",
+      "region": "outer_heart_candidate",
+      "volume_ml": 640.3571166868177
+    },
+    {
+      "phase_id": "phase_18",
+      "phase_percent": 90,
+      "method": "TotalSegmentator",
+      "region": "myocardium_intensity_candidate",
+      "volume_ml": 127.7604400405308
+    },
+    {
+      "phase_id": "phase_19",
+      "phase_percent": 95,
+      "method": "transport",
+      "region": "LV",
+      "volume_ml": 133.27535965702512
+    },
+    {
+      "phase_id": "phase_19",
+      "phase_percent": 95,
+      "method": "transport",
+      "region": "RV",
+      "volume_ml": 126.38338810383617
+    },
+    {
+      "phase_id": "phase_19",
+      "phase_percent": 95,
+      "method": "transport",
+      "region": "LA",
+      "volume_ml": 32.458042623203056
+    },
+    {
+      "phase_id": "phase_19",
+      "phase_percent": 95,
+      "method": "transport",
+      "region": "RA",
+      "volume_ml": 46.328680713410236
+    },
+    {
+      "phase_id": "phase_19",
+      "phase_percent": 95,
+      "method": "transport",
+      "region": "outer_heart_candidate",
+      "volume_ml": 595.7970136435246
+    },
+    {
+      "phase_id": "phase_19",
+      "phase_percent": 95,
+      "method": "transport",
+      "region": "myocardium_intensity_candidate",
+      "volume_ml": 170.44625346568264
+    },
+    {
+      "phase_id": "phase_19",
+      "phase_percent": 95,
+      "method": "TotalSegmentator",
+      "region": "outer_heart_candidate",
+      "volume_ml": 633.6357384889056
+    },
+    {
+      "phase_id": "phase_19",
+      "phase_percent": 95,
+      "method": "TotalSegmentator",
+      "region": "myocardium_intensity_candidate",
+      "volume_ml": 127.45504996846122
+    }
+  ],
+  "registration": [
+    {
+      "phase_id": "phase_00"
+    },
+    {
+      "phase_id": "phase_01",
+      "metric_value": -1.4640095064118899,
+      "optimizer_stop": "GradientDescentOptimizerv4Template: Convergence checker passed at iteration 4.",
+      "optimizer_iteration": 4,
+      "bspline_mesh_size": [
+        7,
+        7,
+        7
+      ],
+      "optimizer": "gradient_descent_physical_shift",
+      "jacobian_min": 0.826879553931279,
+      "jacobian_nonpositive_fraction": 0.0,
+      "mae_before_hu": 20.26335334777832,
+      "mae_after_hu": 24.676542282104492
+    },
+    {
+      "phase_id": "phase_02",
+      "metric_value": -1.3504977501983246,
+      "optimizer_stop": "GradientDescentOptimizerv4Template: Maximum number of iterations (40) exceeded.",
+      "optimizer_iteration": 40,
+      "bspline_mesh_size": [
+        7,
+        7,
+        7
+      ],
+      "optimizer": "gradient_descent_physical_shift",
+      "jacobian_min": 0.6975873689136015,
+      "jacobian_nonpositive_fraction": 0.0,
+      "mae_before_hu": 32.50295639038086,
+      "mae_after_hu": 32.62893295288086
+    },
+    {
+      "phase_id": "phase_03",
+      "metric_value": -1.3055281351996901,
+      "optimizer_stop": "GradientDescentOptimizerv4Template: Maximum number of iterations (40) exceeded.",
+      "optimizer_iteration": 40,
+      "bspline_mesh_size": [
+        7,
+        7,
+        7
+      ],
+      "optimizer": "gradient_descent_physical_shift",
+      "jacobian_min": 0.5599612953328634,
+      "jacobian_nonpositive_fraction": 0.0,
+      "mae_before_hu": 44.330020904541016,
+      "mae_after_hu": 46.166160583496094
+    },
+    {
+      "phase_id": "phase_04",
+      "metric_value": -1.2753497434030616,
+      "optimizer_stop": "GradientDescentOptimizerv4Template: Maximum number of iterations (40) exceeded.",
+      "optimizer_iteration": 40,
+      "bspline_mesh_size": [
+        7,
+        7,
+        7
+      ],
+      "optimizer": "gradient_descent_physical_shift",
+      "jacobian_min": 0.47380896244977,
+      "jacobian_nonpositive_fraction": 0.0,
+      "mae_before_hu": 54.5750732421875,
+      "mae_after_hu": 44.03611755371094
+    },
+    {
+      "phase_id": "phase_05",
+      "metric_value": -1.2086416647040068,
+      "optimizer_stop": "GradientDescentOptimizerv4Template: Maximum number of iterations (40) exceeded.",
+      "optimizer_iteration": 40,
+      "bspline_mesh_size": [
+        7,
+        7,
+        7
+      ],
+      "optimizer": "gradient_descent_physical_shift",
+      "jacobian_min": 0.4648981899846654,
+      "jacobian_nonpositive_fraction": 0.0,
+      "mae_before_hu": 62.47079086303711,
+      "mae_after_hu": 50.79969024658203
+    },
+    {
+      "phase_id": "phase_06",
+      "metric_value": -1.18130146866838,
+      "optimizer_stop": "GradientDescentOptimizerv4Template: Maximum number of iterations (40) exceeded.",
+      "optimizer_iteration": 40,
+      "bspline_mesh_size": [
+        7,
+        7,
+        7
+      ],
+      "optimizer": "gradient_descent_physical_shift",
+      "jacobian_min": 0.36425772083971497,
+      "jacobian_nonpositive_fraction": 0.0,
+      "mae_before_hu": 67.78583526611328,
+      "mae_after_hu": 62.19416427612305
+    },
+    {
+      "phase_id": "phase_07",
+      "metric_value": -1.1691921213758345,
+      "optimizer_stop": "GradientDescentOptimizerv4Template: Maximum number of iterations (40) exceeded.",
+      "optimizer_iteration": 40,
+      "bspline_mesh_size": [
+        7,
+        7,
+        7
+      ],
+      "optimizer": "gradient_descent_physical_shift",
+      "jacobian_min": 0.3718005782801667,
+      "jacobian_nonpositive_fraction": 0.0,
+      "mae_before_hu": 69.81627655029297,
+      "mae_after_hu": 67.8717269897461
+    },
+    {
+      "phase_id": "phase_08",
+      "metric_value": -1.1239949662873006,
+      "optimizer_stop": "GradientDescentOptimizerv4Template: Convergence checker passed at iteration 36.",
+      "optimizer_iteration": 36,
+      "bspline_mesh_size": [
+        7,
+        7,
+        7
+      ],
+      "optimizer": "gradient_descent_physical_shift",
+      "jacobian_min": 0.2852036929941707,
+      "jacobian_nonpositive_fraction": 0.0,
+      "mae_before_hu": 70.29869079589844,
+      "mae_after_hu": 69.30455017089844
+    },
+    {
+      "phase_id": "phase_09",
+      "metric_value": -1.1651478742821826,
+      "optimizer_stop": "GradientDescentOptimizerv4Template: Maximum number of iterations (40) exceeded.",
+      "optimizer_iteration": 40,
+      "bspline_mesh_size": [
+        7,
+        7,
+        7
+      ],
+      "optimizer": "gradient_descent_physical_shift",
+      "jacobian_min": 0.30856865494625374,
+      "jacobian_nonpositive_fraction": 0.0,
+      "mae_before_hu": 68.11363983154297,
+      "mae_after_hu": 63.19099807739258
+    },
+    {
+      "phase_id": "phase_10",
+      "metric_value": -1.193050844864093,
+      "optimizer_stop": "GradientDescentOptimizerv4Template: Maximum number of iterations (40) exceeded.",
+      "optimizer_iteration": 40,
+      "bspline_mesh_size": [
+        7,
+        7,
+        7
+      ],
+      "optimizer": "gradient_descent_physical_shift",
+      "jacobian_min": 0.3954252502479339,
+      "jacobian_nonpositive_fraction": 0.0,
+      "mae_before_hu": 64.41578674316406,
+      "mae_after_hu": 61.63676452636719
+    },
+    {
+      "phase_id": "phase_11",
+      "metric_value": -1.1873643658246622,
+      "optimizer_stop": "GradientDescentOptimizerv4Template: Maximum number of iterations (40) exceeded.",
+      "optimizer_iteration": 40,
+      "bspline_mesh_size": [
+        7,
+        7,
+        7
+      ],
+      "optimizer": "gradient_descent_physical_shift",
+      "jacobian_min": 0.41467256697832683,
+      "jacobian_nonpositive_fraction": 0.0,
+      "mae_before_hu": 58.28461837768555,
+      "mae_after_hu": 48.283416748046875
+    },
+    {
+      "phase_id": "phase_12",
+      "metric_value": -1.2750250444883293,
+      "optimizer_stop": "GradientDescentOptimizerv4Template: Maximum number of iterations (40) exceeded.",
+      "optimizer_iteration": 40,
+      "bspline_mesh_size": [
+        7,
+        7,
+        7
+      ],
+      "optimizer": "gradient_descent_physical_shift",
+      "jacobian_min": 0.4875621318270334,
+      "jacobian_nonpositive_fraction": 0.0,
+      "mae_before_hu": 53.26717758178711,
+      "mae_after_hu": 43.49273681640625
+    },
+    {
+      "phase_id": "phase_13",
+      "metric_value": -1.2729209770605272,
+      "optimizer_stop": "GradientDescentOptimizerv4Template: Maximum number of iterations (40) exceeded.",
+      "optimizer_iteration": 40,
+      "bspline_mesh_size": [
+        7,
+        7,
+        7
+      ],
+      "optimizer": "gradient_descent_physical_shift",
+      "jacobian_min": 0.5364763527268617,
+      "jacobian_nonpositive_fraction": 0.0,
+      "mae_before_hu": 47.84427261352539,
+      "mae_after_hu": 35.80796813964844
+    },
+    {
+      "phase_id": "phase_14",
+      "metric_value": -1.3386576631103466,
+      "optimizer_stop": "GradientDescentOptimizerv4Template: Maximum number of iterations (40) exceeded.",
+      "optimizer_iteration": 40,
+      "bspline_mesh_size": [
+        7,
+        7,
+        7
+      ],
+      "optimizer": "gradient_descent_physical_shift",
+      "jacobian_min": 0.547774770032705,
+      "jacobian_nonpositive_fraction": 0.0,
+      "mae_before_hu": 44.24306869506836,
+      "mae_after_hu": 36.899051666259766
+    },
+    {
+      "phase_id": "phase_15",
+      "metric_value": -1.319335222125414,
+      "optimizer_stop": "GradientDescentOptimizerv4Template: Maximum number of iterations (40) exceeded.",
+      "optimizer_iteration": 40,
+      "bspline_mesh_size": [
+        7,
+        7,
+        7
+      ],
+      "optimizer": "gradient_descent_physical_shift",
+      "jacobian_min": 0.5359550937704507,
+      "jacobian_nonpositive_fraction": 0.0,
+      "mae_before_hu": 42.92499923706055,
+      "mae_after_hu": 36.745540618896484
+    },
+    {
+      "phase_id": "phase_16",
+      "metric_value": -1.3296429934953582,
+      "optimizer_stop": "GradientDescentOptimizerv4Template: Maximum number of iterations (40) exceeded.",
+      "optimizer_iteration": 40,
+      "bspline_mesh_size": [
+        7,
+        7,
+        7
+      ],
+      "optimizer": "gradient_descent_physical_shift",
+      "jacobian_min": 0.6513748856404279,
+      "jacobian_nonpositive_fraction": 0.0,
+      "mae_before_hu": 39.39989471435547,
+      "mae_after_hu": 34.1693000793457
+    },
+    {
+      "phase_id": "phase_17",
+      "metric_value": -1.3616570837851796,
+      "optimizer_stop": "GradientDescentOptimizerv4Template: Convergence checker passed at iteration 8.",
+      "optimizer_iteration": 8,
+      "bspline_mesh_size": [
+        7,
+        7,
+        7
+      ],
+      "optimizer": "gradient_descent_physical_shift",
+      "jacobian_min": 0.7492242172288548,
+      "jacobian_nonpositive_fraction": 0.0,
+      "mae_before_hu": 31.81521987915039,
+      "mae_after_hu": 30.39107894897461
+    },
+    {
+      "phase_id": "phase_18",
+      "metric_value": -1.4271937495528895,
+      "optimizer_stop": "GradientDescentOptimizerv4Template: Convergence checker passed at iteration 6.",
+      "optimizer_iteration": 6,
+      "bspline_mesh_size": [
+        7,
+        7,
+        7
+      ],
+      "optimizer": "gradient_descent_physical_shift",
+      "jacobian_min": 0.7945385218590976,
+      "jacobian_nonpositive_fraction": 0.0,
+      "mae_before_hu": 24.274316787719727,
+      "mae_after_hu": 28.095500946044922
+    },
+    {
+      "phase_id": "phase_19",
+      "metric_value": -1.4979084772362339,
+      "optimizer_stop": "GradientDescentOptimizerv4Template: Convergence checker passed at iteration 4.",
+      "optimizer_iteration": 4,
+      "bspline_mesh_size": [
+        7,
+        7,
+        7
+      ],
+      "optimizer": "gradient_descent_physical_shift",
+      "jacobian_min": 0.8423644998946217,
+      "jacobian_nonpositive_fraction": 0.0,
+      "mae_before_hu": 17.26691436767578,
+      "mae_after_hu": 21.618192672729492
+    }
+  ],
+  "spatial_disagreement": [
+    {
+      "phase_id": "phase_00",
+      "phase_percent": 0,
+      "ts_rv_above_baseline_cut_ml": 21.552932302433298,
+      "ts_rv_outside_authored_ml": 77.35094253990529,
+      "authored_rv_outside_ts_ml": 1.1963907768439515,
+      "authored_rv_in_ts_ra_ml": 0.013423739431629188,
+      "definition": "Label disagreement, not anatomic error; fixed k>35 is a diagnostic partition, not a valve plane"
+    },
+    {
+      "phase_id": "phase_01",
+      "phase_percent": 5,
+      "ts_rv_above_baseline_cut_ml": 18.251251724728835,
+      "ts_rv_outside_authored_ml": 66.1197472154422,
+      "authored_rv_outside_ts_ml": 1.7792047971671852,
+      "authored_rv_in_ts_ra_ml": 0.08054243658977513,
+      "definition": "Label disagreement, not anatomic error; fixed k>35 is a diagnostic partition, not a valve plane"
+    },
+    {
+      "phase_id": "phase_02",
+      "phase_percent": 10,
+      "ts_rv_above_baseline_cut_ml": 14.115062012358091,
+      "ts_rv_outside_authored_ml": 64.16827109556911,
+      "authored_rv_outside_ts_ml": 1.1947128094149977,
+      "authored_rv_in_ts_ra_ml": 0.05705089258442405,
+      "definition": "Label disagreement, not anatomic error; fixed k>35 is a diagnostic partition, not a valve plane"
+    },
+    {
+      "phase_id": "phase_03",
+      "phase_percent": 15,
+      "ts_rv_above_baseline_cut_ml": 9.487787165780246,
+      "ts_rv_outside_authored_ml": 67.67578234455856,
+      "authored_rv_outside_ts_ml": 2.1326966022000873,
+      "authored_rv_in_ts_ra_ml": 1.6197978914165887,
+      "definition": "Label disagreement, not anatomic error; fixed k>35 is a diagnostic partition, not a valve plane"
+    },
+    {
+      "phase_id": "phase_04",
+      "phase_percent": 20,
+      "ts_rv_above_baseline_cut_ml": 7.504988987233352,
+      "ts_rv_outside_authored_ml": 60.15065774817776,
+      "authored_rv_outside_ts_ml": 5.27049569434341,
+      "authored_rv_in_ts_ra_ml": 4.923715759026322,
+      "definition": "Label disagreement, not anatomic error; fixed k>35 is a diagnostic partition, not a valve plane"
+    },
+    {
+      "phase_id": "phase_05",
+      "phase_percent": 25,
+      "ts_rv_above_baseline_cut_ml": 5.997614913556657,
+      "ts_rv_outside_authored_ml": 55.44004385262855,
+      "authored_rv_outside_ts_ml": 13.527214089747996,
+      "authored_rv_in_ts_ra_ml": 12.862179665406034,
+      "definition": "Label disagreement, not anatomic error; fixed k>35 is a diagnostic partition, not a valve plane"
+    },
+    {
+      "phase_id": "phase_06",
+      "phase_percent": 30,
+      "ts_rv_above_baseline_cut_ml": 6.1212251808229095,
+      "ts_rv_outside_authored_ml": 55.27616236706741,
+      "authored_rv_outside_ts_ml": 20.141202372206962,
+      "authored_rv_in_ts_ra_ml": 19.304455947635407,
+      "definition": "Label disagreement, not anatomic error; fixed k>35 is a diagnostic partition, not a valve plane"
+    },
+    {
+      "phase_id": "phase_07",
+      "phase_percent": 35,
+      "ts_rv_above_baseline_cut_ml": 5.673767199768603,
+      "ts_rv_outside_authored_ml": 50.035310763968845,
+      "authored_rv_outside_ts_ml": 33.79706063150807,
+      "authored_rv_in_ts_ra_ml": 31.495448641459983,
+      "definition": "Label disagreement, not anatomic error; fixed k>35 is a diagnostic partition, not a valve plane"
+    },
+    {
+      "phase_id": "phase_08",
+      "phase_percent": 40,
+      "ts_rv_above_baseline_cut_ml": 4.834224162815461,
+      "ts_rv_outside_authored_ml": 54.50821260708295,
+      "authored_rv_outside_ts_ml": 40.61408297287043,
+      "authored_rv_in_ts_ra_ml": 37.98135207684215,
+      "definition": "Label disagreement, not anatomic error; fixed k>35 is a diagnostic partition, not a valve plane"
+    },
+    {
+      "phase_id": "phase_09",
+      "phase_percent": 45,
+      "ts_rv_above_baseline_cut_ml": 5.235817700811701,
+      "ts_rv_outside_authored_ml": 49.25729319941067,
+      "authored_rv_outside_ts_ml": 36.25192698006726,
+      "authored_rv_in_ts_ra_ml": 33.75119618845,
+      "definition": "Label disagreement, not anatomic error; fixed k>35 is a diagnostic partition, not a valve plane"
+    },
+    {
+      "phase_id": "phase_10",
+      "phase_percent": 50,
+      "ts_rv_above_baseline_cut_ml": 5.701174001108179,
+      "ts_rv_outside_authored_ml": 49.29364916037133,
+      "authored_rv_outside_ts_ml": 30.603888614209275,
+      "authored_rv_in_ts_ra_ml": 27.9085136008334,
+      "definition": "Label disagreement, not anatomic error; fixed k>35 is a diagnostic partition, not a valve plane"
+    },
+    {
+      "phase_id": "phase_11",
+      "phase_percent": 55,
+      "ts_rv_above_baseline_cut_ml": 6.267767669618195,
+      "ts_rv_outside_authored_ml": 52.536600878062416,
+      "authored_rv_outside_ts_ml": 27.117072296843595,
+      "authored_rv_in_ts_ra_ml": 24.826646756321864,
+      "definition": "Label disagreement, not anatomic error; fixed k>35 is a diagnostic partition, not a valve plane"
+    },
+    {
+      "phase_id": "phase_12",
+      "phase_percent": 60,
+      "ts_rv_above_baseline_cut_ml": 10.204279257943455,
+      "ts_rv_outside_authored_ml": 64.34333903065661,
+      "authored_rv_outside_ts_ml": 11.198195298360332,
+      "authored_rv_in_ts_ra_ml": 10.098567309919375,
+      "definition": "Label disagreement, not anatomic error; fixed k>35 is a diagnostic partition, not a valve plane"
+    },
+    {
+      "phase_id": "phase_13",
+      "phase_percent": 65,
+      "ts_rv_above_baseline_cut_ml": 14.938944019974333,
+      "ts_rv_outside_authored_ml": 66.04647597104456,
+      "authored_rv_outside_ts_ml": 3.961121777283246,
+      "authored_rv_in_ts_ra_ml": 3.2569347795990318,
+      "definition": "Label disagreement, not anatomic error; fixed k>35 is a diagnostic partition, not a valve plane"
+    },
+    {
+      "phase_id": "phase_14",
+      "phase_percent": 70,
+      "ts_rv_above_baseline_cut_ml": 17.707030955271534,
+      "ts_rv_outside_authored_ml": 73.82497364919736,
+      "authored_rv_outside_ts_ml": 1.016848261945911,
+      "authored_rv_in_ts_ra_ml": 0.25784766158254396,
+      "definition": "Label disagreement, not anatomic error; fixed k>35 is a diagnostic partition, not a valve plane"
+    },
+    {
+      "phase_id": "phase_15",
+      "phase_percent": 75,
+      "ts_rv_above_baseline_cut_ml": 18.863709836296916,
+      "ts_rv_outside_authored_ml": 76.31899257109879,
+      "authored_rv_outside_ts_ml": 1.107458503109408,
+      "authored_rv_in_ts_ra_ml": 0.27239004596680894,
+      "definition": "Label disagreement, not anatomic error; fixed k>35 is a diagnostic partition, not a valve plane"
+    },
+    {
+      "phase_id": "phase_16",
+      "phase_percent": 80,
+      "ts_rv_above_baseline_cut_ml": 20.522100978579438,
+      "ts_rv_outside_authored_ml": 73.57439717980694,
+      "authored_rv_outside_ts_ml": 1.0369838710933548,
+      "authored_rv_in_ts_ra_ml": 0.024050866481668962,
+      "definition": "Label disagreement, not anatomic error; fixed k>35 is a diagnostic partition, not a valve plane"
+    },
+    {
+      "phase_id": "phase_17",
+      "phase_percent": 85,
+      "ts_rv_above_baseline_cut_ml": 22.72750950270085,
+      "ts_rv_outside_authored_ml": 72.40820981668416,
+      "authored_rv_outside_ts_ml": 0.9262380207824139,
+      "authored_rv_in_ts_ra_ml": 0.044186475629112744,
+      "definition": "Label disagreement, not anatomic error; fixed k>35 is a diagnostic partition, not a valve plane"
+    },
+    {
+      "phase_id": "phase_18",
+      "phase_percent": 90,
+      "ts_rv_above_baseline_cut_ml": 24.01227323080303,
+      "ts_rv_outside_authored_ml": 83.75854082860295,
+      "authored_rv_outside_ts_ml": 0.9564414345035797,
+      "authored_rv_in_ts_ra_ml": 0.02796612381589414,
+      "definition": "Label disagreement, not anatomic error; fixed k>35 is a diagnostic partition, not a valve plane"
+    },
+    {
+      "phase_id": "phase_19",
+      "phase_percent": 95,
+      "ts_rv_above_baseline_cut_ml": 23.577120344227716,
+      "ts_rv_outside_authored_ml": 78.34094332298794,
+      "authored_rv_outside_ts_ml": 1.0319499688064937,
+      "authored_rv_in_ts_ra_ml": 0.004474579810543063,
+      "definition": "Label disagreement, not anatomic error; fixed k>35 is a diagnostic partition, not a valve plane"
+    }
+  ]
+}

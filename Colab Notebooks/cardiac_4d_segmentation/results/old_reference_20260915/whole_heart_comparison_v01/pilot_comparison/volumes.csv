@@ -1,0 +1,21 @@
+phase_id,phase_percent,region,authored_ml,automatic_ml,disagreement_ml,authored_method,reference_accepted,whole_chamber_confirmed
+phase_00,0,LV,127.63515180583559,145.8327085728379,18.19755676700231,CT-only BSpline transport of authored search domains then target-phase HU filtering and largest6connectedcomponent,False,False
+phase_00,0,RV,120.32704433026613,196.48159609332745,76.15455176306132,CT-only BSpline transport of authored search domains then target-phase HU filtering and largest6connectedcomponent,False,False
+phase_00,0,LA,31.845584511634975,41.97659252518079,10.131008013545816,CT-only BSpline transport of authored search domains then target-phase HU filtering and largest6connectedcomponent,False,False
+phase_00,0,RA,46.120612752219984,62.04955755527697,15.928944803056986,CT-only BSpline transport of authored search domains then target-phase HU filtering and largest6connectedcomponent,False,False
+phase_00,0,blood_pool_sum,325.9283933999567,446.3404547466231,120.4120613466664,CT-only BSpline transport of authored search domains then target-phase HU filtering and largest6connectedcomponent,False,False
+phase_05,25,LV,61.09535341067866,78.61445201390738,17.51909860322872,CT-only BSpline transport of authored search domains then target-phase HU filtering and largest6connectedcomponent,False,False
+phase_05,25,RV,92.62100546585981,134.53383522874034,41.912829762880534,CT-only BSpline transport of authored search domains then target-phase HU filtering and largest6connectedcomponent,False,False
+phase_05,25,LA,46.91540999106769,71.7778533858739,24.862443394806206,CT-only BSpline transport of authored search domains then target-phase HU filtering and largest6connectedcomponent,False,False
+phase_05,25,RA,53.56855084686891,112.63580095841893,59.06725011155002,CT-only BSpline transport of authored search domains then target-phase HU filtering and largest6connectedcomponent,False,False
+phase_05,25,blood_pool_sum,254.20031971447509,397.5619415869405,143.36162187246543,CT-only BSpline transport of authored search domains then target-phase HU filtering and largest6connectedcomponent,False,False
+phase_10,50,LV,54.32363618989805,76.40792484483333,22.08428865493528,CT-only BSpline transport of authored search domains then target-phase HU filtering and largest6connectedcomponent,False,False
+phase_10,50,RV,95.86675379593248,114.55651434209453,18.68976054616205,CT-only BSpline transport of authored search domains then target-phase HU filtering and largest6connectedcomponent,False,False
+phase_10,50,LA,52.01139707279992,84.18754116793878,32.17614409513885,CT-only BSpline transport of authored search domains then target-phase HU filtering and largest6connectedcomponent,False,False
+phase_10,50,RA,58.20477485306784,127.47798218999026,69.27320733692241,CT-only BSpline transport of authored search domains then target-phase HU filtering and largest6connectedcomponent,False,False
+phase_10,50,blood_pool_sum,260.4065619116983,402.6299625448569,142.22340063315858,CT-only BSpline transport of authored search domains then target-phase HU filtering and largest6connectedcomponent,False,False
+phase_15,75,LV,117.15344859963847,140.40448394017287,23.2510353405344,CT-only BSpline transport of authored search domains then target-phase HU filtering and largest6connectedcomponent,False,False
+phase_15,75,RV,117.62607609212708,192.83761016011647,75.21153406798939,CT-only BSpline transport of authored search domains then target-phase HU filtering and largest6connectedcomponent,False,False
+phase_15,75,LA,44.14228915348363,57.77353722382675,13.63124807034312,CT-only BSpline transport of authored search domains then target-phase HU filtering and largest6connectedcomponent,False,False
+phase_15,75,RA,49.294767805323964,79.03897777343266,29.7442099681087,CT-only BSpline transport of authored search domains then target-phase HU filtering and largest6connectedcomponent,False,False
+phase_15,75,blood_pool_sum,328.2165816505731,470.05460909754873,141.83802744697562,CT-only BSpline transport of authored search domains then target-phase HU filtering and largest6connectedcomponent,False,False

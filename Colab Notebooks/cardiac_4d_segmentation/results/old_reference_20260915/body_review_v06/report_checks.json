@@ -1,0 +1,47 @@
+{
+  "notebook_valid": true,
+  "figures": 11,
+  "embedded_images": true,
+  "html_code_absent": true,
+  "absolute_roots_absent": true,
+  "new_numbers_present": true,
+  "all_masks": [
+    {
+      "chamber": "LV",
+      "HU": 170,
+      "volume_ml": 90.86808882507955,
+      "hash_valid": true
+    },
+    {
+      "chamber": "RV",
+      "HU": 170,
+      "volume_ml": 93.04385325795612,
+      "hash_valid": true
+    },
+    {
+      "chamber": "LV",
+      "HU": 190,
+      "volume_ml": 86.45055990712092,
+      "hash_valid": true
+    },
+    {
+      "chamber": "RV",
+      "HU": 190,
+      "volume_ml": 90.59346148920747,
+      "hash_valid": true
+    },
+    {
+      "chamber": "LV",
+      "HU": 210,
+      "volume_ml": 81.05869123541653,
+      "hash_valid": true
+    },
+    {
+      "chamber": "RV",
+      "HU": 210,
+      "volume_ml": 86.62898377706632,
+      "hash_valid": true
+    }
+  ],
+  "no_overlap_all_thresholds": true
+}

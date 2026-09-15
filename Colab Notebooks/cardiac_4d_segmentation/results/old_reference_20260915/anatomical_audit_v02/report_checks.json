@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "embedded_images": 19,
+  "code_hidden_in_html": true,
+  "notebook_valid": true,
+  "source_CT_and_TS_record_hash_matches": 100,
+  "comparison_tests_passed": 9,
+  "direct_slicer_exact_roundtrips": 8,
+  "scientific_accuracy_validated": false
+}

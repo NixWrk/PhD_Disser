@@ -1,0 +1,11 @@
+phase_id,phase_percent,region,authored_ml,automatic_ml,disagreement_ml,authored_method,reference_accepted,whole_chamber_confirmed
+phase_00,0,LV,148.97833817964968,145.8327085728379,-3.145629606811781,direct_per_phase_envelope_unblinded,False,False
+phase_00,0,RV,171.34061010531497,196.48159609332745,25.14098598801249,direct_per_phase_envelope_unblinded,False,False
+phase_00,0,LA,41.3233038728415,41.97659252518079,0.6532886523392918,direct_per_phase_envelope_unblinded,False,False
+phase_00,0,RA,49.97714122643178,62.04955755527697,12.072416328845186,direct_per_phase_envelope_unblinded,False,False
+phase_00,0,blood_pool_sum,411.6193933842379,446.3404547466231,34.72106136238517,direct_per_phase_envelope_unblinded,False,False
+phase_08,40,LV,48.49325869676044,61.78667599140756,13.29341729464712,direct_per_phase_envelope_unblinded,False,False
+phase_08,40,RV,87.22801814920278,107.3899154530335,20.161897303830713,direct_per_phase_envelope_unblinded,False,False
+phase_08,40,LA,75.27250021790803,90.20808830302445,14.935588085116422,direct_per_phase_envelope_unblinded,False,False
+phase_08,40,RA,109.59532397715492,128.88803415278764,19.29271017563272,direct_per_phase_envelope_unblinded,False,False
+phase_08,40,blood_pool_sum,320.5891010410262,388.27271390025317,67.68361285922697,direct_per_phase_envelope_unblinded,False,False

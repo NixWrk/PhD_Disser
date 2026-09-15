@@ -1,0 +1,52 @@
+{
+  "phase_id": "phase_00",
+  "phase_percent": 0,
+  "source_ct_sha256": "f9e961138aac8f9a57957988c5c36bbf3bb72a1660d1ae4c692ee6096b27ce25",
+  "reference_ct_sha256": "f9e961138aac8f9a57957988c5c36bbf3bb72a1660d1ae4c692ee6096b27ce25",
+  "reference_mask_hashes": {
+    "LV": "ae86b3d61cf6fcab080cf9601b049006fa1c5781f0b11f0a4c41cc07008be0b5",
+    "RV": "3497637bc5a6fb33cb13a79bd069b20e47596856af99c5f471a274874a296397",
+    "LA": "6a9cd9283b3823eac04b192277c92194e689f0d98e3d6e3b30aef59f34c4721e",
+    "RA": "f40a0a2cf23a51efd3834bb420d345ced46c313fa69359818eeaf1d24ba1b218",
+    "outer_heart_candidate": "07e75842a66b5b27912d564a8dea873f4929c4d71bfe5c2b7adaa5ee381d4116",
+    "myocardium_intensity_candidate": "44a4eaf66e06b4335feec15cba3319b2418e01b1f743db936a4a088110914b9a"
+  },
+  "method": "Author CT contours in phase00 plus CT-only BSpline transport; other phases are propagated candidates, not manual references",
+  "accepted": false,
+  "whole_chamber_coverage": "candidate_not_confirmed",
+  "records": {
+    "LV": {
+      "file": "LV.nii.gz",
+      "sha256": "b0967d84954695a06217f546aadf334efe5d045c4cf63aa30fea1e9d4f81013f",
+      "volume_ml": 127.63515180583559
+    },
+    "RV": {
+      "file": "RV.nii.gz",
+      "sha256": "2ea7442e0ed5b3c8abfab8edeaed20c75e9b41eff89450ee03b0f5facca78b55",
+      "volume_ml": 120.32704433026613
+    },
+    "LA": {
+      "file": "LA.nii.gz",
+      "sha256": "70ef8e5cd7bbb015ad71d56a9829a4ffe9849c9f44eeee9343fe02e391eae743",
+      "volume_ml": 31.845584511634975
+    },
+    "RA": {
+      "file": "RA.nii.gz",
+      "sha256": "830b9c09ed313a890c980388a4e012a5bd82ba56ca1ddc4efd78525ff299b046",
+      "volume_ml": 46.120612752219984
+    },
+    "outer_heart_candidate": {
+      "file": "outer_heart_candidate.nii.gz",
+      "sha256": "c84c61b327da6251dd6ce2d854803d2f525e11a24d84a699b7b80bb32aa6e2d7",
+      "volume_ml": 582.0091552798124
+    },
+    "myocardium_intensity_candidate": {
+      "file": "myocardium_intensity_candidate.nii.gz",
+      "sha256": "bf31d32ced33d5ef5043e6cd25b358095f48227a4667db9889c2303eb4fd0fb3",
+      "volume_ml": 169.71130373180097
+    }
+  },
+  "registration": {},
+  "elapsed_s": 1.0663697719573975,
+  "automatic_comparator_used": false
+}

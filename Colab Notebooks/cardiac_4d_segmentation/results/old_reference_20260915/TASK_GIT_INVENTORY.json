@@ -1,0 +1,762 @@
+{
+  "task": "OLD independent-candidate segmentation and preliminary TotalSegmentator verification",
+  "scope": "source snapshots, complete reports, numerical comparisons and QC; excludes primary scans, dense masks, local configuration and runtime files",
+  "files": [
+    {
+      "path": "21.08_Историческая_контрастная_КТ_объёмы_камер.html",
+      "bytes": 496923,
+      "sha256": "25901fa9b9a53f25cfd8bac95d1ceade10e3f15ce80e7cf90ec3ff728346c102"
+    },
+    {
+      "path": "21.08_Историческая_контрастная_КТ_объёмы_камер.ipynb",
+      "bytes": 215989,
+      "sha256": "8726140c52cb1ffce6c56d7ccb1dfd9b530aeb7f1c6d267ff6c56e5823050e64"
+    },
+    {
+      "path": "results/old_reference_20260915/anatomical_audit_v02/analysis_v01/comparison/phase_differences.csv",
+      "bytes": 1018,
+      "sha256": "b363c25250e78485ff32ad8f0d05e492a2287ed3d09aa96eacafa29037e521fb"
+    },
+    {
+      "path": "results/old_reference_20260915/anatomical_audit_v02/analysis_v01/comparison/summary.json",
+      "bytes": 10456,
+      "sha256": "3d1ebc932000a3a7459f4816923f0584e4d75e78abb0ca2f9210ee9e95d3fdff"
+    },
+    {
+      "path": "results/old_reference_20260915/anatomical_audit_v02/analysis_v01/comparison/volumes.csv",
+      "bytes": 1340,
+      "sha256": "d471d94ea01b4e317acc603f35b9c55c1f73fe7d79edbe4e599ded1bad97e474"
+    },
+    {
+      "path": "results/old_reference_20260915/anatomical_audit_v02/analysis_v01/findings.json",
+      "bytes": 1998,
+      "sha256": "b5205276d407681fd15fdbac77f3dc20bc9356e67e7cf95d04c60114c2107eef"
+    },
+    {
+      "path": "results/old_reference_20260915/anatomical_audit_v02/analysis_v02/comparison/phase_differences.csv",
+      "bytes": 1018,
+      "sha256": "b363c25250e78485ff32ad8f0d05e492a2287ed3d09aa96eacafa29037e521fb"
+    },
+    {
+      "path": "results/old_reference_20260915/anatomical_audit_v02/analysis_v02/comparison/summary.json",
+      "bytes": 10456,
+      "sha256": "3d1ebc932000a3a7459f4816923f0584e4d75e78abb0ca2f9210ee9e95d3fdff"
+    },
+    {
+      "path": "results/old_reference_20260915/anatomical_audit_v02/analysis_v02/comparison/volumes.csv",
+      "bytes": 1340,
+      "sha256": "d471d94ea01b4e317acc603f35b9c55c1f73fe7d79edbe4e599ded1bad97e474"
+    },
+    {
+      "path": "results/old_reference_20260915/anatomical_audit_v02/analysis_v02/findings.json",
+      "bytes": 1998,
+      "sha256": "b5205276d407681fd15fdbac77f3dc20bc9356e67e7cf95d04c60114c2107eef"
+    },
+    {
+      "path": "results/old_reference_20260915/anatomical_audit_v02/anatomical_review_ledger.json",
+      "bytes": 3712,
+      "sha256": "a51f14256112047f3efcbb6af622228265cb8cc114b6630976045dfc71df5f85"
+    },
+    {
+      "path": "results/old_reference_20260915/anatomical_audit_v02/conclusion_report_checks.json",
+      "bytes": 201,
+      "sha256": "ea876304b0fbcbe84192066b95291d87d4bf663b1c5febff346330cfca0484f8"
+    },
+    {
+      "path": "results/old_reference_20260915/anatomical_audit_v02/direct_roundtrip_checks.json",
+      "bytes": 1822,
+      "sha256": "30477ede662a63326b9a4ba7bf6f76e536d053aa2f9b6b6fca685c0b06eb77df"
+    },
+    {
+      "path": "results/old_reference_20260915/anatomical_audit_v02/direct_v01/volumes.json",
+      "bytes": 4907,
+      "sha256": "ea922acd73424c1e4d8d3b3c5b73bc490d6af94e4d66feef05f1f91d12e75777"
+    },
+    {
+      "path": "results/old_reference_20260915/anatomical_audit_v02/intensity_audit.csv",
+      "bytes": 24708,
+      "sha256": "0043123dbeb83b441ed90e2157bca81f3ebfde7628823afc9e8096b759a38929"
+    },
+    {
+      "path": "results/old_reference_20260915/anatomical_audit_v02/intensity_audit.json",
+      "bytes": 53828,
+      "sha256": "ac73ca317064449bfd916c1084ffbe0c11789a704a52715cfd60ef99414864c5"
+    },
+    {
+      "path": "results/old_reference_20260915/anatomical_audit_v02/render_direct_review.py",
+      "bytes": 1245,
+      "sha256": "24ac6cdd25e16573f10daaa7e0d643ad92ed1c1a8585966528bcc7bbd7d1d05b"
+    },
+    {
+      "path": "results/old_reference_20260915/anatomical_audit_v02/report_before_anatomical_audit/21.10_Сопоставление_динамики_камер_OLD.html",
+      "bytes": 2764367,
+      "sha256": "c08acab18f36ff92f7cb75925d2fd835e3e630f70d6d45ad27d9a63bf6351319"
+    },
+    {
+      "path": "results/old_reference_20260915/anatomical_audit_v02/report_before_anatomical_audit/21.10_Сопоставление_динамики_камер_OLD.ipynb",
+      "bytes": 2463240,
+      "sha256": "fb3cf87aabb2b42076afefa87303ce73678611e8f619d970537636096a55f795"
+    },
+    {
+      "path": "results/old_reference_20260915/anatomical_audit_v02/report_before_anatomical_audit/21.10_Сопоставление_динамики_камер_OLD.language-review.json",
+      "bytes": 1549,
+      "sha256": "6df45bba3a72f69389dfa079e7f4f161880c8be2de4970f930fc0f94d2298462"
+    },
+    {
+      "path": "results/old_reference_20260915/anatomical_audit_v02/report_before_anatomical_audit/21.10_Сопоставление_динамики_камер_OLD.md",
+      "bytes": 36179,
+      "sha256": "971fda4afb5c46f3dc375f18c343612b8b8f34b87335f818c45fb7220951b2ed"
+    },
+    {
+      "path": "results/old_reference_20260915/anatomical_audit_v02/report_before_conclusion_qualification/21.10_Сопоставление_динамики_камер_OLD.html",
+      "bytes": 7961457,
+      "sha256": "5a7931932201a1a80939b6e1317691715bd460632d97d0cb7df59d85f594dd69"
+    },
+    {
+      "path": "results/old_reference_20260915/anatomical_audit_v02/report_before_conclusion_qualification/21.10_Сопоставление_динамики_камер_OLD.ipynb",
+      "bytes": 7652030,
+      "sha256": "88cc0ad6470c93bfd6f54866fcbfe35741753c87e39013dcb9f4ff206368489a"
+    },
+    {
+      "path": "results/old_reference_20260915/anatomical_audit_v02/report_before_conclusion_qualification/21.10_Сопоставление_динамики_камер_OLD.language-review.json",
+      "bytes": 1251,
+      "sha256": "acde912319b6bb622fcfa216713606b7c34071fba1017510303a817a73e0f748"
+    },
+    {
+      "path": "results/old_reference_20260915/anatomical_audit_v02/report_before_conclusion_qualification/21.10_Сопоставление_динамики_камер_OLD.md",
+      "bytes": 59817,
+      "sha256": "60bba8e83ec02080844736a7c1da08b2b49cce2a64b3705753776ec1f8a8c2bb"
+    },
+    {
+      "path": "results/old_reference_20260915/anatomical_audit_v02/report_checks.json",
+      "bytes": 275,
+      "sha256": "bd84dd804d453705f2c3275ff5bceef3b2799e4faf81c29762d6ebb31e060509"
+    },
+    {
+      "path": "results/old_reference_20260915/anatomical_audit_v02/ts_technical_diagnostics.json",
+      "bytes": 10305,
+      "sha256": "552f264be135ac4b6b9d02bc790fe2a6c53494d139e671fd3d254ba52b1ca71b"
+    },
+    {
+      "path": "results/old_reference_20260915/author_ventricular_body_drafts.py",
+      "bytes": 3072,
+      "sha256": "6f2666eda42d75c6dd4206e1906f2623488f36fa2f842a9388bfff343edcf858"
+    },
+    {
+      "path": "results/old_reference_20260915/body_review_v06/anatomical_review.json",
+      "bytes": 1426,
+      "sha256": "d1f626b29f2a2951a10d531021c8e35fbc43d1e479ff7f2a4e3e5102f064e439"
+    },
+    {
+      "path": "results/old_reference_20260915/body_review_v06/file_checks.json",
+      "bytes": 492,
+      "sha256": "17a036f6c617933d89f4908a239a906f03994d38573edede9a652044c99669eb"
+    },
+    {
+      "path": "results/old_reference_20260915/body_review_v06/prose_review.json",
+      "bytes": 724,
+      "sha256": "84bf6a7ec1051aa2f3d5aece4016967844171fa44aedc3aafe7cf3215ffbd1c5"
+    },
+    {
+      "path": "results/old_reference_20260915/body_review_v06/report_checks.json",
+      "bytes": 964,
+      "sha256": "e5fadcb541f24190399b6eeefb81dcb68edb007cdd900b1d023a76f982f5164d"
+    },
+    {
+      "path": "results/old_reference_20260915/body_review_v06/report_numbers.json",
+      "bytes": 1095,
+      "sha256": "78f55a4601977dcc3e884afe8f932a86d535fbe015f15434b3c316fdcc59d98f"
+    },
+    {
+      "path": "results/old_reference_20260915/body_review_v06/RV_revision_comparison.json",
+      "bytes": 2665,
+      "sha256": "e3fb8c65c2667e08c17fcc2c2ce9afbd031f8d6eca352f2472a514e3ad03d3c4"
+    },
+    {
+      "path": "results/old_reference_20260915/compare_rv_revision_v04.py",
+      "bytes": 2274,
+      "sha256": "b4cec947480f3b0f68014d15a5ff99133ba841e6275ec19397e7d0493614061a"
+    },
+    {
+      "path": "results/old_reference_20260915/create_body_review_scene.py",
+      "bytes": 2332,
+      "sha256": "5d5e43c3358eceaef54c92a2826baeb913e074e21f0c4efe909fb8ab9bec0cbc"
+    },
+    {
+      "path": "results/old_reference_20260915/create_body_review_scene_v04.py",
+      "bytes": 2371,
+      "sha256": "e2fc338618e4f527cbe87ca6d7a44ca2afa53908a9cec33237578cd3f0eb9010"
+    },
+    {
+      "path": "results/old_reference_20260915/create_body_review_scene_v05.py",
+      "bytes": 2371,
+      "sha256": "3dafda7dcbf8d65b3e13f9f84a09684077e23a70ee5ad7b800d60e417fcd6f28"
+    },
+    {
+      "path": "results/old_reference_20260915/create_body_review_scene_v06.py",
+      "bytes": 2371,
+      "sha256": "26ccaa153b96d2eb988935448b1c2a068983e0444c41bfc71fa32f7d794ebed6"
+    },
+    {
+      "path": "results/old_reference_20260915/inspect_thin_phase.py",
+      "bytes": 1940,
+      "sha256": "0369d269edf7f2d359068f732babbec9fdbc60b3a8533e892d81a5de69a21759"
+    },
+    {
+      "path": "results/old_reference_20260915/phase_review.py",
+      "bytes": 786,
+      "sha256": "5e4970f087bbd910e3ba94d7f023e30aa440ff0a5fdf6eed61b6ef76311dcbef"
+    },
+    {
+      "path": "results/old_reference_20260915/prepare_oblique_review.py",
+      "bytes": 3096,
+      "sha256": "632aeda5fd2381b82797e82c05193a0e0cd34fc6b99b477668b36f5296990ad6"
+    },
+    {
+      "path": "results/old_reference_20260915/probe_coverage.py",
+      "bytes": 2882,
+      "sha256": "15c8db5b7768b9a02b64e7c89e0d034df3fcf5754f8a10667751670afc9d619a"
+    },
+    {
+      "path": "results/old_reference_20260915/render_thin_comparison.py",
+      "bytes": 1585,
+      "sha256": "899883f9472e5ba0c1989672e20ad3b23ed2a49ed6553329a9e5f7bfc828746b"
+    },
+    {
+      "path": "results/old_reference_20260915/review_body_masks.py",
+      "bytes": 2272,
+      "sha256": "88e056eab95bd55a603395455e255ffae4688864cb97d1276446e1b5b73c9cc1"
+    },
+    {
+      "path": "results/old_reference_20260915/review_body_masks_v04.py",
+      "bytes": 2408,
+      "sha256": "30ab5113ff71c5716492121cebb7f1122099f294a9ae891bea3bdb8023c3f189"
+    },
+    {
+      "path": "results/old_reference_20260915/review_body_masks_v05.py",
+      "bytes": 2408,
+      "sha256": "5bd7a0f958759b071a06862d23dead45f42b4f48b7c80e74911273ddf535f133"
+    },
+    {
+      "path": "results/old_reference_20260915/review_body_masks_v06.py",
+      "bytes": 2408,
+      "sha256": "180c7e7edf141a62cca809f7ee177a9f9246ac21d23550a177d22035251d0aef"
+    },
+    {
+      "path": "results/old_reference_20260915/sequence02_ts_comparator_v1/resume/run_sequence02_ts_comparator_v2.py",
+      "bytes": 12885,
+      "sha256": "16f36d4df9f76dcaaa35971bc544b1b77647c883dfb866eae5a884d136a9ab2b"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_chamber_phase10_v01/phase10_review.py",
+      "bytes": 4930,
+      "sha256": "fb5d2ebab1e2982d9f00824ba28ee287ce03dbd5891d689fc66c1afb9fd85e67"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_chamber_review_v01/build_outer_candidates.py",
+      "bytes": 2578,
+      "sha256": "caf2695e7d76ecfc8ebc8fe0f2cad307b0b1fae24c63253bdae392f816b54f39"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_chamber_review_v01/build_outer_candidates_v02.py",
+      "bytes": 2697,
+      "sha256": "7a78b18d93643489f1460158c0af2dc4e12e99975bdd43f6cba0199bca4c9595"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_chamber_review_v01/build_phase00_candidates.py",
+      "bytes": 2680,
+      "sha256": "df13cccdb1eb4cd00c1e0aa1fc8e7ef27963ef1dab0152835ba8e399ce1cbf56"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_chamber_review_v01/build_phase00_candidates_v02.py",
+      "bytes": 2718,
+      "sha256": "a7af0ee160323d672122d2d3caa7c9f3a67ef24f5bb9c1d640b0566a5652bc11"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_chamber_review_v01/phase00_candidate_v01/provenance.json",
+      "bytes": 9138,
+      "sha256": "b0f56a230100d6123800270a3dc9ff84280f127c6c2a58b0c04df9131848b0a0"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_chamber_review_v01/phase00_candidate_v02/provenance.json",
+      "bytes": 9221,
+      "sha256": "342050d734642fdcd1e6dab9d98c681ac5acef304a2637529ee50a60b492439e"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_chamber_review_v01/phase00_outer_v01/provenance.json",
+      "bytes": 15864,
+      "sha256": "bc72a14090e4f49a8370dadfc62552bc4dd08215584a519fa611e741ed5987eb"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_chamber_review_v01/phase00_outer_v02/provenance.json",
+      "bytes": 20964,
+      "sha256": "bc4c04fb09f5d059f0616503ddbe010746f257da7cbac324247d39d8a141a5c1"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_chamber_review_v01/phase00_search_domains_v01/provenance.json",
+      "bytes": 380,
+      "sha256": "0f1f7c98ae251723200bdb035c982ab0616826c0e565beca8d3d4f65d156c225"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_chamber_review_v01/review_phase00_candidates.py",
+      "bytes": 963,
+      "sha256": "78fc72b8ed5ddfb843ac0b95d5ac8cacd33cf93185a362858100409cad7d5b6b"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_chamber_review_v01/review_phase00_candidates_v02.py",
+      "bytes": 967,
+      "sha256": "7b413f8c1320585180a65cd3020ad782f13e7f18633f40529e99caa18ac5caa7"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_comparison_v01/anatomical_findings.json",
+      "bytes": 747,
+      "sha256": "9f798f18df8f8b5131988e0d9d3f2ed3781b570634daddbc13055b9592b36140"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_comparison_v01/domain_reconstruction_check/checks.json",
+      "bytes": 79,
+      "sha256": "8cad8ebfa2db854e9986398a118328e8698f676cd79ffd9df8eea593c7e114f4"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_comparison_v01/freeze_verification.json",
+      "bytes": 409,
+      "sha256": "a49fed0f88607cdd8c24878b4d64b33324587e36fe9cb94f64db18b5d17853f3"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_comparison_v01/full20/comparison/phase_differences.csv",
+      "bytes": 11952,
+      "sha256": "b1b7b5cd12299b40e191ecf84f45a171619ba5796ed5bbf68a7daef48af302bf"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_comparison_v01/full20/comparison/summary.json",
+      "bytes": 105120,
+      "sha256": "3a7ba6e558a0bee544bbd69b8f9a84ed1f0540a58ebb2a078f4439dc69ffb46d"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_comparison_v01/full20/comparison/volumes.csv",
+      "bytes": 20178,
+      "sha256": "71f6e063aa17877d76315d529dba2307e7e91eb180363398a710629d910a758d"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_comparison_v01/full20/diagnostics.json",
+      "bytes": 86382,
+      "sha256": "950905fa176395c7fa043faf6061195104688b9542214e84c98ed8017bc3688f"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_comparison_v01/full20/report_checks.json",
+      "bytes": 189,
+      "sha256": "c7cd1c9d671b0609092c64f0afae8fc3f09aa325df7aebd71f1f971f76005f16"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_comparison_v01/full20/report_inventory.json",
+      "bytes": 9932,
+      "sha256": "5ede6c0eaf957afd59273b8ed3f2d1b8ba3ee49f491e044b6cde11303425326c"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_comparison_v01/pilot_comparison/phase_differences.csv",
+      "bytes": 2242,
+      "sha256": "9a0a0a78e7ef479323b12897f7158c33c69e331f225a63d056c40bcfc3efda70"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_comparison_v01/pilot_comparison/summary.json",
+      "bytes": 21616,
+      "sha256": "573970f0a47e263549a1a22987dc968eee32052b0725c1e6093d5fd0b18c7db5"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_comparison_v01/pilot_comparison/volumes.csv",
+      "bytes": 4134,
+      "sha256": "9e62867adb14ff92fd0cf50e85be8c0b703e2e320db69bdc84471c0435640096"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_comparison_v01/precomparison_freeze.json",
+      "bytes": 1010,
+      "sha256": "f5e0a4f8697998ac11f7a3168560ea32886046065a2cd6c2c6d6d2ca59b98afb"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_dynamic_hu_v01/phase_00/receipt.json",
+      "bytes": 2826,
+      "sha256": "33c8ac51650cb4d18b7b697db0f670a59f3455a0341cc3539012418c97ba38b7"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_dynamic_hu_v01/phase_01/receipt.json",
+      "bytes": 3290,
+      "sha256": "caa38203f82a11761642bfa85f7f3bf0d2e0313407f0189be411069d9a88a01b"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_dynamic_hu_v01/phase_02/receipt.json",
+      "bytes": 3294,
+      "sha256": "a50643b35315334582188a52b7d23905927be919916d4ae16c23e700a8c70f5d"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_dynamic_hu_v01/phase_03/receipt.json",
+      "bytes": 3292,
+      "sha256": "f19fa4d65219748c31c865f8cab9e059e466432df2d444982f44232a2ca6adca"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_dynamic_hu_v01/phase_04/receipt.json",
+      "bytes": 3285,
+      "sha256": "643dc6206ebd969d28339bc25f7486f2c0ab6af3a87e9512359184c70a8a572a"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_dynamic_hu_v01/phase_05/receipt.json",
+      "bytes": 3286,
+      "sha256": "3397d3214ec3d1375245ddaf1b2f3f6bb70fb82523407f05f68de2803d75ab2b"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_dynamic_hu_v01/phase_06/receipt.json",
+      "bytes": 3286,
+      "sha256": "6a47390c7ad393e87532a3722206b09369162f09b8473ea40b988d3a772a64be"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_dynamic_hu_v01/phase_07/receipt.json",
+      "bytes": 3291,
+      "sha256": "1d3f27c2388c9a331dc2492df14970a3158792e2e70623feaafdf91eeb67311e"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_dynamic_hu_v01/phase_08/receipt.json",
+      "bytes": 3287,
+      "sha256": "dd77e51b27646635a2ed9471c69ec8359e7e206518a4358be03d28bb7ca8df2d"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_dynamic_hu_v01/phase_09/receipt.json",
+      "bytes": 3292,
+      "sha256": "a3dc4350c27cd75da895c6f99defc97b7f92d7f8ac049d933a858ab8d0ac87fe"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_dynamic_hu_v01/phase_10/receipt.json",
+      "bytes": 3289,
+      "sha256": "0bceb15649d965d40f802868ba0c76c082f3e59502879de9a926bbf6890a70be"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_dynamic_hu_v01/phase_11/receipt.json",
+      "bytes": 3294,
+      "sha256": "6a5df94d4046d916300d0d07914f42e9016613388de6c8530ef213c85a929f64"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_dynamic_hu_v01/phase_12/receipt.json",
+      "bytes": 3290,
+      "sha256": "d8d4fe73bb39897e19a7d97b653fe9a629ff10d230411f118455d0d8e8453586"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_dynamic_hu_v01/phase_13/receipt.json",
+      "bytes": 3291,
+      "sha256": "1a7ccd7d664132713f83237f27ea54dd76e78226dde10eeadad4a8d51b425ece"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_dynamic_hu_v01/phase_14/receipt.json",
+      "bytes": 3294,
+      "sha256": "c31086e5c3bf4f428a7db93dfc3c5e823a9d51aed877bf55938f848cc83ad2d9"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_dynamic_hu_v01/phase_15/receipt.json",
+      "bytes": 3295,
+      "sha256": "0b9ce333d8daf65b2ed64ee53b39403289e35b1f93d7b02d6d617f10d204176d"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_dynamic_hu_v01/phase_16/receipt.json",
+      "bytes": 3291,
+      "sha256": "5e29b0c84386d9fe541de9ca6a99f574335b6631a136957c2f020d305452cdf2"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_dynamic_hu_v01/phase_17/receipt.json",
+      "bytes": 3292,
+      "sha256": "30b9aa3d99b23928a36b176bb9e1985fa3463bbc83e53eefe659e0e4e0138986"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_dynamic_hu_v01/phase_18/receipt.json",
+      "bytes": 3289,
+      "sha256": "76fe25007d796fb4e8b9ea834a2ca14b7cae8353f438cf09722ce52ba04fdf58"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_dynamic_hu_v01/phase_19/receipt.json",
+      "bytes": 3291,
+      "sha256": "deb2e41277f9024ae6675094d4640cf8228bbba751a2540d116d9a6db06e2550"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_dynamic_hu_v01/refine_target_hu.py",
+      "bytes": 2505,
+      "sha256": "b3279bf875a4f2dbc8a86ac7182ca318d2a9fade1c982c4da9a6ec511afb7886"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_dynamic_hu_v01/status.json",
+      "bytes": 414,
+      "sha256": "1a158fb70d64eccb4d2bc3c71c970654d11183f6587abffc7e3c54b8b2be49c4"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_dynamic_v01/phase_00/receipt.json",
+      "bytes": 2262,
+      "sha256": "8063e829e2d1f22adeb0d0298523d9425a56c34e9c02f0d4f22bc22d0489140c"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_dynamic_v01/phase_01/receipt.json",
+      "bytes": 2723,
+      "sha256": "d01d47fdbc49315ff8b14371e31c395dfdc26e0b6ffde6d402d909b5444f10b2"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_dynamic_v01/phase_02/receipt.json",
+      "bytes": 2725,
+      "sha256": "2110032579b757b6b0935e12a60a2fad83b0d36867c69a492fcdffc70069a927"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_dynamic_v01/phase_03/receipt.json",
+      "bytes": 2726,
+      "sha256": "04fec9bad955e1b14e7de50e5da699ff6abba36b3ad798df1129338b228cd68b"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_dynamic_v01/phase_04/receipt.json",
+      "bytes": 2720,
+      "sha256": "db4f11024dc2dd3a6156cfc97e801369787e737cfbaf7b1dbc49fc8bcbd131f6"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_dynamic_v01/phase_05/receipt.json",
+      "bytes": 2726,
+      "sha256": "b9caabe22157f49c8623b715ef34d385edf8ec2496c7e6f20f1aa4ad1390de0a"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_dynamic_v01/phase_06/receipt.json",
+      "bytes": 2723,
+      "sha256": "f8f6c25d09e048ab6dfa306e584586f7108193d16c91dffa7b3861e22c1eac1c"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_dynamic_v01/phase_07/receipt.json",
+      "bytes": 2723,
+      "sha256": "99cec63a957353799b3b62a58f5ddc97b6f65275df06ce2674231d0af06f8575"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_dynamic_v01/phase_08/receipt.json",
+      "bytes": 2724,
+      "sha256": "e942bb76bb6650642217f417b16ffa22f4824ea8fd53694be3324ffb8dc8f136"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_dynamic_v01/phase_09/receipt.json",
+      "bytes": 2725,
+      "sha256": "a7705326b3fad7025a15ffca26557ef6468fab84fd128bcc3e10a013b1283b5e"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_dynamic_v01/phase_10/receipt.json",
+      "bytes": 2723,
+      "sha256": "bcdd606970ed5ffd2f9070295bf7cd60704023989bef51b2a574a29da530771d"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_dynamic_v01/phase_11/receipt.json",
+      "bytes": 2729,
+      "sha256": "741c4df5ddccc2b53d0487fe823ede2f0d67d94104b66d2949f64865bbc64557"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_dynamic_v01/phase_12/receipt.json",
+      "bytes": 2725,
+      "sha256": "c021193fdfd9cd0b1e1f47ec4a6741fb830b3d377436c2706600bd5f9b049b05"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_dynamic_v01/phase_13/receipt.json",
+      "bytes": 2726,
+      "sha256": "d6135be7f3ee7068332c7e26f9134483d84671767bcc7564d97316382a8698f7"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_dynamic_v01/phase_14/receipt.json",
+      "bytes": 2727,
+      "sha256": "aa9e5c0e2c5cec052e8d93c6e3ef9096d8b048dea028cb5336e6a6602f20565f"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_dynamic_v01/phase_15/receipt.json",
+      "bytes": 2724,
+      "sha256": "4bf0c5c7b0ebacfcaf39cb7975d45d29ef10fd117075419fd80c7346a596bca9"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_dynamic_v01/phase_16/receipt.json",
+      "bytes": 2725,
+      "sha256": "bc21752537051710b957307bc186524d3a51eb890bf1e7c30bfcf26a64f22c9e"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_dynamic_v01/phase_17/receipt.json",
+      "bytes": 2720,
+      "sha256": "110e3da0ff9da66942bc8c44f228ad9bd8100a8a54918076795920edac832b9f"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_dynamic_v01/phase_18/receipt.json",
+      "bytes": 2723,
+      "sha256": "8b95652a1925d8359e50fc445692fa27f86925e2d2b7bbc091fabe5c5f5e083c"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_dynamic_v01/phase_19/receipt.json",
+      "bytes": 2728,
+      "sha256": "4829f5ad7555e9d9426e1bac12acad7f51287375d950cabf5b96adebc19ef5c7"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_dynamic_v01/run_ct_transport.py",
+      "bytes": 4488,
+      "sha256": "120b706978574f528c1dc558068a43a76171d872ea2a3f9fa69af910e7cc3697"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_dynamic_v01/run_ct_transport_before_unicode_fix.py",
+      "bytes": 4388,
+      "sha256": "6271a71954dc8a39996dbb6fb6613adc2366c9fffe5d0d9ea247885b8d733b60"
+    },
+    {
+      "path": "results/old_reference_20260915/whole_heart_dynamic_v01/status.json",
+      "bytes": 704,
+      "sha256": "738ee3dbfb08159fdcd841a9888a52f5a21268c0e504fcf0208e7479e8fc3dff"
+    },
+    {
+      "path": "results/old_verification_20260914/add_pilot_qc_note.py",
+      "bytes": 2712,
+      "sha256": "6b7e9bcf1e7e9928d8e7e44772f50cb4eb487916de945595a5e236391358fdbb"
+    },
+    {
+      "path": "results/old_verification_20260914/check_analysis.py",
+      "bytes": 2177,
+      "sha256": "1bea826706b358ed04cae0cb8f43d6dab5b72f076feeb0d68a49dbd11272dfba"
+    },
+    {
+      "path": "results/old_verification_20260914/check_boundary.py",
+      "bytes": 1168,
+      "sha256": "c22ff04af5d39e92560a248d02c3916a7a3a8c3b5b538b9c77bd5dae962476d7"
+    },
+    {
+      "path": "results/old_verification_20260914/check_contrast.py",
+      "bytes": 516,
+      "sha256": "5749139c869a8ce0eaf5e11f49f3fcabe04e899fb786d302188ec5206bd46837"
+    },
+    {
+      "path": "results/old_verification_20260914/check_methods_report.py",
+      "bytes": 2375,
+      "sha256": "0baa60fea5bb08e9200da75b8b3f01943ba7549f699257fcb88d9c831e1269bf"
+    },
+    {
+      "path": "results/old_verification_20260914/check_real_conversion.py",
+      "bytes": 1731,
+      "sha256": "3e20f341c1e2e37e9904d04b74b5b36cd42118dbdcd205ec2594e2baf485289f"
+    },
+    {
+      "path": "results/old_verification_20260914/check_report.py",
+      "bytes": 1903,
+      "sha256": "3ec2648e1eb6a94c70639bcf25e12705bce333a4ec7f67cd02c51229d41aa8ed"
+    },
+    {
+      "path": "results/old_verification_20260914/confirm_summary.py",
+      "bytes": 1180,
+      "sha256": "9f1ad36fd67b7ea100e799012f05c2a3c23e311b6f69dbcf154374719d3dba69"
+    },
+    {
+      "path": "results/old_verification_20260914/fix_runner_review.py",
+      "bytes": 3431,
+      "sha256": "95bd1dce9eadd977b390b7a9e902fd09e846dc4e3ed4cca586856dfc56c23526"
+    },
+    {
+      "path": "results/old_verification_20260914/inspect_old.py",
+      "bytes": 2278,
+      "sha256": "ae71dd80074c3228fe449aeed562b58d748af46ee667c07095394f4b53c43ba0"
+    },
+    {
+      "path": "results/old_verification_20260914/integrate_adapter.py",
+      "bytes": 1105,
+      "sha256": "39cde351a689783a9ae486efc95adbb65b1e5873f3b710eed3b2d022757a20c1"
+    },
+    {
+      "path": "results/old_verification_20260914/prepare_commit.py",
+      "bytes": 3644,
+      "sha256": "5394549beaeaa85d19cd0a37413407f45e46126d9c06e66acd4d020a0fa9eff6"
+    },
+    {
+      "path": "results/old_verification_20260914/prepare_run.py",
+      "bytes": 1813,
+      "sha256": "dfa1de7d8114f2070543f341d50aff53bce0d7575c1ea8c1d65e823740f21143"
+    },
+    {
+      "path": "results/old_verification_20260914/preview_source.py",
+      "bytes": 1170,
+      "sha256": "009b0e1b2a78556f1dd703fa0f17df1aeb9bf7ee283c45b26ca0642222253c15"
+    },
+    {
+      "path": "results/old_verification_20260914/read_pilot_report.py",
+      "bytes": 637,
+      "sha256": "ebddafe45bd3639e61253e0e2b3bc4a5a796dddfb3a0a3ac1a677ac2423b7632"
+    },
+    {
+      "path": "results/old_verification_20260914/reconcile_runner.py",
+      "bytes": 3656,
+      "sha256": "7453cfcf3cd0fd061bc3fe849cf849c4db82d48f0233f8df3bfd33b5da3fb3e0"
+    },
+    {
+      "path": "results/old_verification_20260914/run_01/analysis/automatic_sequence_summary.json",
+      "bytes": 79620,
+      "sha256": "43ea71615063bb99fbc355d5428b3c89021f8410fe1d85d8338a7d6fae03a703"
+    },
+    {
+      "path": "results/old_verification_20260914/run_01/analysis/automatic_volumes.csv",
+      "bytes": 10327,
+      "sha256": "9c37e94bc3580e2009ad54335b0ffc0ee40725b47846191192c3fc4d1dc03c25"
+    },
+    {
+      "path": "results/old_verification_20260914/run_01/run_status.json",
+      "bytes": 28900,
+      "sha256": "73b2f3a2b4b30e5e6e2089cdc91dd68d9dfa7a1d00b477f2a6034a8233807ef8"
+    },
+    {
+      "path": "results/old_verification_20260914/runner_before_review.py",
+      "bytes": 4734,
+      "sha256": "d82a13a453847dab6132e4ab87d785005e696f927e822c3218fc8914f21c73ea"
+    },
+    {
+      "path": "results/old_verification_20260914/select_pilot.py",
+      "bytes": 2117,
+      "sha256": "51a440f0102a66da825fdec763d2d74b73238c1d824ed778daddcdfccc046602"
+    },
+    {
+      "path": "results/old_verification_20260914/summarize_headers.py",
+      "bytes": 2797,
+      "sha256": "8d6e397924c9e36adc88940f1af68897e80aa1c3e4a28ed0037d7badba148284"
+    },
+    {
+      "path": "results/old_verification_20260914/synthetic_report_check/analysis/automatic_sequence_summary.json",
+      "bytes": 15146,
+      "sha256": "06182ab5d65f618205ffcfdd6f1f86889ac25a874fdd84dca898a8f90ed995fd"
+    },
+    {
+      "path": "results/old_verification_20260914/synthetic_report_check/analysis/automatic_volumes.csv",
+      "bytes": 1845,
+      "sha256": "83504dd44910fa7c4362deb89b6696699938aa27cf3268247d3bc6d895c45333"
+    },
+    {
+      "path": "results/old_verification_20260914/synthetic_report_check/checks.json",
+      "bytes": 138,
+      "sha256": "59f5470d1320d06e561c7375ebef692085151916a50c4b336fcee54380428e3e"
+    },
+    {
+      "path": "results/old_verification_20260914/synthetic_report_check/synthetic_report.html",
+      "bytes": 496359,
+      "sha256": "4e08cdbeb9770b9e52580e313385e0adbc1aab5ec1979aac9e8abe527137d528"
+    },
+    {
+      "path": "results/old_verification_20260914/synthetic_report_check/synthetic_report.ipynb",
+      "bytes": 215424,
+      "sha256": "3d796543f74a5c175c54c641d484a44a64971bfbf61f3a5282dceb8b5e313d62"
+    },
+    {
+      "path": "results/old_verification_20260914/update_method_explanation.py",
+      "bytes": 5444,
+      "sha256": "8720dc015d689c63b376a1526e7fcf568147c95e080cfb19cbed2f1bca07436e"
+    },
+    {
+      "path": "results/old_verification_20260914/update_report_fixture.py",
+      "bytes": 558,
+      "sha256": "946aebf4c2266aeb99b06a3224bc518775ebde53648aa4eff16ca1f8527a93aa"
+    },
+    {
+      "path": "results/old_verification_20260914/write_preparation_record.py",
+      "bytes": 2358,
+      "sha256": "829c3c640094ddd785773b76aba7c8161dd67c3ff86bbe112d9f95b3f9ec5506"
+    }
+  ],
+  "verification": {
+    "report_2108_completed_phases": 20,
+    "report_2108_chamber_ranges_match_summary": true,
+    "report_2108_QC_flags": 45,
+    "reference_accuracy_validated": false
+  },
+  "local_records_excluded": [
+    "anatomical_audit_v02/direct_v01/phase_00/receipt.json",
+    "anatomical_audit_v02/direct_v01/phase_08/receipt.json",
+    "body_review_v06/slicer/review_scene.json"
+  ]
+}

@@ -1,0 +1,478 @@
+[
+  {
+    "phase": 0,
+    "region": "LV",
+    "volume_ml": 145.8327085728379,
+    "centroid_ijk": [
+      220.14793024228035,
+      283.69356923419156,
+      21.38745680413913
+    ],
+    "bounds_ijk": [
+      [
+        131,
+        202,
+        6
+      ],
+      [
+        302,
+        347,
+        37
+      ]
+    ],
+    "hu_quantiles": [
+      183.0,
+      233.0,
+      253.0,
+      266.0,
+      282.0
+    ],
+    "fraction_below_170": 0.029536188638865344,
+    "component_count": 1,
+    "largest_component_fraction": 1.0,
+    "source_ct_sha256": "f9e961138aac8f9a57957988c5c36bbf3bb72a1660d1ae4c692ee6096b27ce25",
+    "mask_sha256": "ea28e8fba0f87864db1ae29700a22493e284cdee295de0f99e81829e590d33c6"
+  },
+  {
+    "phase": 0,
+    "region": "RV",
+    "volume_ml": 196.48159609332745,
+    "centroid_ijk": [
+      176.58272342969383,
+      202.9903554094254,
+      20.785009322914444
+    ],
+    "bounds_ijk": [
+      [
+        117,
+        119,
+        4
+      ],
+      [
+        261,
+        301,
+        47
+      ]
+    ],
+    "hu_quantiles": [
+      167.0,
+      238.0,
+      268.0,
+      294.0,
+      331.0
+    ],
+    "fraction_below_170": 0.05387648205872724,
+    "component_count": 1,
+    "largest_component_fraction": 1.0,
+    "source_ct_sha256": "f9e961138aac8f9a57957988c5c36bbf3bb72a1660d1ae4c692ee6096b27ce25",
+    "mask_sha256": "3560e0dbf4b961dcb79e223c33b26dc5d370fae5760ec79c1a7e9ede1ebb384b"
+  },
+  {
+    "phase": 0,
+    "region": "LA",
+    "volume_ml": 41.97659252518079,
+    "centroid_ijk": [
+      296.43831363509173,
+      213.55699609588402,
+      33.93617503231222
+    ],
+    "bounds_ijk": [
+      [
+        259,
+        151,
+        23
+      ],
+      [
+        331,
+        277,
+        43
+      ]
+    ],
+    "hu_quantiles": [
+      179.0,
+      218.0,
+      235.0,
+      250.0,
+      273.0
+    ],
+    "fraction_below_170": 0.03457740942584178,
+    "component_count": 1,
+    "largest_component_fraction": 1.0,
+    "source_ct_sha256": "f9e961138aac8f9a57957988c5c36bbf3bb72a1660d1ae4c692ee6096b27ce25",
+    "mask_sha256": "c4fb16bbd08fbe8e27440ae776921b3674833dfa3ec703bb2f0f283279e9a7f0"
+  },
+  {
+    "phase": 0,
+    "region": "RA",
+    "volume_ml": 62.04955755527697,
+    "centroid_ijk": [
+      237.29703345141837,
+      148.53137366252918,
+      27.080568250448454
+    ],
+    "bounds_ijk": [
+      [
+        178,
+        106,
+        14
+      ],
+      [
+        294,
+        200,
+        44
+      ]
+    ],
+    "hu_quantiles": [
+      140.0,
+      253.0,
+      318.0,
+      397.0,
+      565.0
+    ],
+    "fraction_below_170": 0.08647250241127848,
+    "component_count": 1,
+    "largest_component_fraction": 1.0,
+    "source_ct_sha256": "f9e961138aac8f9a57957988c5c36bbf3bb72a1660d1ae4c692ee6096b27ce25",
+    "mask_sha256": "b301ce818618c3dc4f8dc889984ef46a3be8dbdafaaaf186d7a743cdfac8116b"
+  },
+  {
+    "phase": 0,
+    "region": "myo",
+    "volume_ml": 123.52301295994651,
+    "centroid_ijk": [
+      214.5449774501458,
+      288.73158881382335,
+      20.283883646374818
+    ],
+    "bounds_ijk": [
+      [
+        118,
+        199,
+        4
+      ],
+      [
+        317,
+        364,
+        39
+      ]
+    ],
+    "hu_quantiles": [
+      55.0,
+      101.0,
+      120.0,
+      147.0,
+      195.0
+    ],
+    "fraction_below_170": 0.8714341345021825,
+    "component_count": 1,
+    "largest_component_fraction": 1.0,
+    "source_ct_sha256": "f9e961138aac8f9a57957988c5c36bbf3bb72a1660d1ae4c692ee6096b27ce25",
+    "mask_sha256": "b22865411df3af7ee81b52bb71a5bce093e7dbbddb3ae7d8a943b1b29d3c9250"
+  },
+  {
+    "phase": 0,
+    "region": "aorta",
+    "volume_ml": 121.72199458620292,
+    "centroid_ijk": [
+      285.74880987391094,
+      225.7411774436643,
+      45.03451365658199
+    ],
+    "bounds_ijk": [
+      [
+        194,
+        155,
+        0
+      ],
+      [
+        371,
+        285,
+        69
+      ]
+    ],
+    "hu_quantiles": [
+      121.0,
+      217.0,
+      244.0,
+      260.0,
+      288.0
+    ],
+    "fraction_below_170": 0.11351689151931772,
+    "component_count": 1,
+    "largest_component_fraction": 1.0,
+    "source_ct_sha256": "f9e961138aac8f9a57957988c5c36bbf3bb72a1660d1ae4c692ee6096b27ce25",
+    "mask_sha256": "3c05d72a22c8be7fccce7c44bdafc68a09c440a36d728e1db9f0c850c1716c1a"
+  },
+  {
+    "phase": 0,
+    "region": "PA",
+    "volume_ml": 50.89778602245102,
+    "centroid_ijk": [
+      256.38285036099296,
+      229.34901482433872,
+      50.67907339641095
+    ],
+    "bounds_ijk": [
+      [
+        177,
+        97,
+        40
+      ],
+      [
+        341,
+        329,
+        61
+      ]
+    ],
+    "hu_quantiles": [
+      159.0,
+      234.0,
+      261.0,
+      284.0,
+      316.0
+    ],
+    "fraction_below_170": 0.06395674677743711,
+    "component_count": 1,
+    "largest_component_fraction": 1.0,
+    "source_ct_sha256": "f9e961138aac8f9a57957988c5c36bbf3bb72a1660d1ae4c692ee6096b27ce25",
+    "mask_sha256": "a36db5d101d5a744117e65e556f5c1450c9c5f6d884d07908eaed876a7d08cec"
+  },
+  {
+    "phase": 8,
+    "region": "LV",
+    "volume_ml": 61.78667599140756,
+    "centroid_ijk": [
+      214.2931373170268,
+      288.00518706944155,
+      21.2294350348973
+    ],
+    "bounds_ijk": [
+      [
+        143,
+        215,
+        9
+      ],
+      [
+        283,
+        343,
+        33
+      ]
+    ],
+    "hu_quantiles": [
+      102.0,
+      147.0,
+      227.0,
+      256.0,
+      278.0
+    ],
+    "fraction_below_170": 0.31823983633121206,
+    "component_count": 1,
+    "largest_component_fraction": 1.0,
+    "source_ct_sha256": "93ef048a81f50490f25b68a70a8ed2d2b1e098970dcda0868e782f36c3116075",
+    "mask_sha256": "5ac2d70a46fe1d321718e471389ecfe46c69699e83df2238b5818990c00bb112"
+  },
+  {
+    "phase": 8,
+    "region": "RV",
+    "volume_ml": 107.3899154530335,
+    "centroid_ijk": [
+      167.6854375,
+      227.759671875,
+      19.184276041666667
+    ],
+    "bounds_ijk": [
+      [
+        117,
+        164,
+        5
+      ],
+      [
+        230,
+        313,
+        41
+      ]
+    ],
+    "hu_quantiles": [
+      107.0,
+      170.0,
+      244.0,
+      279.0,
+      302.0
+    ],
+    "fraction_below_170": 0.24761979166666667,
+    "component_count": 1,
+    "largest_component_fraction": 1.0,
+    "source_ct_sha256": "93ef048a81f50490f25b68a70a8ed2d2b1e098970dcda0868e782f36c3116075",
+    "mask_sha256": "83d2b2d97247ff106af344f6ef8445c5a05b189a78949c145ec70531e5fbea89"
+  },
+  {
+    "phase": 8,
+    "region": "LA",
+    "volume_ml": 90.20808830302445,
+    "centroid_ijk": [
+      288.50024491415604,
+      218.20503965129186,
+      32.66548446500208
+    ],
+    "bounds_ijk": [
+      [
+        243,
+        143,
+        20
+      ],
+      [
+        333,
+        292,
+        45
+      ]
+    ],
+    "hu_quantiles": [
+      215.0,
+      238.0,
+      249.0,
+      260.0,
+      276.0
+    ],
+    "fraction_below_170": 0.004538662334682944,
+    "component_count": 1,
+    "largest_component_fraction": 1.0,
+    "source_ct_sha256": "93ef048a81f50490f25b68a70a8ed2d2b1e098970dcda0868e782f36c3116075",
+    "mask_sha256": "06e1d2c582d2d771a41d8ff8917d124eab5dafba3870962bf4be833aee4d2d02"
+  },
+  {
+    "phase": 8,
+    "region": "RA",
+    "volume_ml": 128.88803415278764,
+    "centroid_ijk": [
+      217.07969674877188,
+      155.30468329601277,
+      22.98106632644205
+    ],
+    "bounds_ijk": [
+      [
+        144,
+        104,
+        8
+      ],
+      [
+        299,
+        222,
+        42
+      ]
+    ],
+    "hu_quantiles": [
+      157.0,
+      238.0,
+      290.0,
+      344.0,
+      449.0
+    ],
+    "fraction_below_170": 0.0719809404780503,
+    "component_count": 1,
+    "largest_component_fraction": 1.0,
+    "source_ct_sha256": "93ef048a81f50490f25b68a70a8ed2d2b1e098970dcda0868e782f36c3116075",
+    "mask_sha256": "975a666e2c9da6e70963f7a3a82f6d205ef5f4fc0e6890c06d3dbced9328e863"
+  },
+  {
+    "phase": 8,
+    "region": "myo",
+    "volume_ml": 107.88044126476429,
+    "centroid_ijk": [
+      205.98241366259325,
+      297.26955002410864,
+      19.18173758405616
+    ],
+    "bounds_ijk": [
+      [
+        123,
+        214,
+        6
+      ],
+      [
+        294,
+        363,
+        35
+      ]
+    ],
+    "hu_quantiles": [
+      58.0,
+      88.0,
+      103.0,
+      117.0,
+      143.0
+    ],
+    "fraction_below_170": 0.9914608792131773,
+    "component_count": 1,
+    "largest_component_fraction": 1.0,
+    "source_ct_sha256": "93ef048a81f50490f25b68a70a8ed2d2b1e098970dcda0868e782f36c3116075",
+    "mask_sha256": "83c5f4c9496f0980c798841bbabb73261f0e44e889639409aabdf154b1aaa3ce"
+  },
+  {
+    "phase": 8,
+    "region": "aorta",
+    "volume_ml": 139.72938171125716,
+    "centroid_ijk": [
+      279.71301622374597,
+      229.6668187767944,
+      44.01658000392284
+    ],
+    "bounds_ijk": [
+      [
+        182,
+        159,
+        0
+      ],
+      [
+        376,
+        287,
+        69
+      ]
+    ],
+    "hu_quantiles": [
+      132.0,
+      232.0,
+      252.0,
+      268.0,
+      287.0
+    ],
+    "fraction_below_170": 0.08850007405361482,
+    "component_count": 1,
+    "largest_component_fraction": 1.0,
+    "source_ct_sha256": "93ef048a81f50490f25b68a70a8ed2d2b1e098970dcda0868e782f36c3116075",
+    "mask_sha256": "c3a334b0373a17a1bb37c5ae1855d7076ed8e0c92e5bb3ef59ec04a4835eeab1"
+  },
+  {
+    "phase": 8,
+    "region": "PA",
+    "volume_ml": 57.00502814136598,
+    "centroid_ijk": [
+      252.6823230440158,
+      230.38047253674523,
+      49.48612610137562
+    ],
+    "bounds_ijk": [
+      [
+        165,
+        94,
+        36
+      ],
+      [
+        341,
+        331,
+        61
+      ]
+    ],
+    "hu_quantiles": [
+      169.0,
+      239.0,
+      263.0,
+      280.0,
+      301.0
+    ],
+    "fraction_below_170": 0.05016778194234581,
+    "component_count": 1,
+    "largest_component_fraction": 1.0,
+    "source_ct_sha256": "93ef048a81f50490f25b68a70a8ed2d2b1e098970dcda0868e782f36c3116075",
+    "mask_sha256": "f0d35fb5e72d15f9f20ecb1e0e3e6a76084c93e2c1d7cb77c52746e512d752d5"
+  }
+]

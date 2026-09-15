@@ -1,0 +1,14 @@
+{
+  "frozen_utc": "2026-09-15T13:40:27.236802+00:00",
+  "automatic_comparator_images_seen": false,
+  "automatic_comparator_volumes_seen": false,
+  "accepted": false,
+  "reason": "Freeze authored baseline, source domains and transport/refinement method before viewing TS comparison. This does not establish anatomical accuracy.",
+  "files": {
+    "whole_chamber_review_v01\\phase00_authored_spec_v02.local.json": "e075713912c291a3d535d2b196107519b46e84f408d90b9743b0f6aecc7ea54e",
+    "whole_chamber_review_v01\\phase00_search_domains_v01\\chamber_domains.nii.gz": "1b70fed7159089daa57c28b51e9d03de80225b83164f1620721fbff4fb70e396",
+    "whole_heart_dynamic_v01\\config.local.json": "e31a447e719ef3e6eec235d78308d3d4c751ff20f9c90cff6badf5792d233ad6",
+    "whole_heart_dynamic_v01\\run_ct_transport.py": "120b706978574f528c1dc558068a43a76171d872ea2a3f9fa69af910e7cc3697",
+    "whole_heart_dynamic_hu_v01\\refine_target_hu.py": "b3279bf875a4f2dbc8a86ac7182ca318d2a9fade1c982c4da9a6ec511afb7886"
+  }
+}

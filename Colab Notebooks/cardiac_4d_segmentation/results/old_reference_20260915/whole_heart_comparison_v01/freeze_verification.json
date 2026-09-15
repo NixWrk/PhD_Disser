@@ -1,0 +1,10 @@
+{
+  "all_frozen_inputs_unchanged": true,
+  "checks": {
+    "whole_chamber_review_v01\\phase00_authored_spec_v02.local.json": true,
+    "whole_chamber_review_v01\\phase00_search_domains_v01\\chamber_domains.nii.gz": true,
+    "whole_heart_dynamic_v01\\config.local.json": true,
+    "whole_heart_dynamic_v01\\run_ct_transport.py": true,
+    "whole_heart_dynamic_hu_v01\\refine_target_hu.py": true
+  }
+}

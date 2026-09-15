@@ -1,0 +1,520 @@
+{
+  "status": "exploratory_method_disagreement_not_accuracy_validation",
+  "phase_count": 4,
+  "baseline_phase": "phase_00",
+  "manifest_sha256": "8432b4f12c03491f8989d57f04b42367bba7a63a53f7e66bf4d05caae57dd6a8",
+  "code_sha256": "178452756804e24cd1564ceafcd110ec6b637a86a42089d4b06422431d1e5a96",
+  "reference_accepted_for_all_phases": false,
+  "whole_chamber_confirmed_for_all_phases": false,
+  "SV_EF_computed": false,
+  "blood_pool_sum_definition": "Sum of four blood cavities, excludes myocardium; not whole-heart volume",
+  "rows": [
+    {
+      "phase_id": "phase_00",
+      "phase_percent": 0,
+      "region": "LV",
+      "authored_ml": 127.63515180583559,
+      "automatic_ml": 145.8327085728379,
+      "disagreement_ml": 18.19755676700231,
+      "authored_method": "CT-only BSpline transport of authored search domains then target-phase HU filtering and largest6connectedcomponent",
+      "reference_accepted": false,
+      "whole_chamber_confirmed": false
+    },
+    {
+      "phase_id": "phase_00",
+      "phase_percent": 0,
+      "region": "RV",
+      "authored_ml": 120.32704433026613,
+      "automatic_ml": 196.48159609332745,
+      "disagreement_ml": 76.15455176306132,
+      "authored_method": "CT-only BSpline transport of authored search domains then target-phase HU filtering and largest6connectedcomponent",
+      "reference_accepted": false,
+      "whole_chamber_confirmed": false
+    },
+    {
+      "phase_id": "phase_00",
+      "phase_percent": 0,
+      "region": "LA",
+      "authored_ml": 31.845584511634975,
+      "automatic_ml": 41.97659252518079,
+      "disagreement_ml": 10.131008013545816,
+      "authored_method": "CT-only BSpline transport of authored search domains then target-phase HU filtering and largest6connectedcomponent",
+      "reference_accepted": false,
+      "whole_chamber_confirmed": false
+    },
+    {
+      "phase_id": "phase_00",
+      "phase_percent": 0,
+      "region": "RA",
+      "authored_ml": 46.120612752219984,
+      "automatic_ml": 62.04955755527697,
+      "disagreement_ml": 15.928944803056986,
+      "authored_method": "CT-only BSpline transport of authored search domains then target-phase HU filtering and largest6connectedcomponent",
+      "reference_accepted": false,
+      "whole_chamber_confirmed": false
+    },
+    {
+      "phase_id": "phase_00",
+      "phase_percent": 0,
+      "region": "blood_pool_sum",
+      "authored_ml": 325.9283933999567,
+      "automatic_ml": 446.3404547466231,
+      "disagreement_ml": 120.4120613466664,
+      "authored_method": "CT-only BSpline transport of authored search domains then target-phase HU filtering and largest6connectedcomponent",
+      "reference_accepted": false,
+      "whole_chamber_confirmed": false
+    },
+    {
+      "phase_id": "phase_05",
+      "phase_percent": 25,
+      "region": "LV",
+      "authored_ml": 61.09535341067866,
+      "automatic_ml": 78.61445201390738,
+      "disagreement_ml": 17.51909860322872,
+      "authored_method": "CT-only BSpline transport of authored search domains then target-phase HU filtering and largest6connectedcomponent",
+      "reference_accepted": false,
+      "whole_chamber_confirmed": false
+    },
+    {
+      "phase_id": "phase_05",
+      "phase_percent": 25,
+      "region": "RV",
+      "authored_ml": 92.62100546585981,
+      "automatic_ml": 134.53383522874034,
+      "disagreement_ml": 41.912829762880534,
+      "authored_method": "CT-only BSpline transport of authored search domains then target-phase HU filtering and largest6connectedcomponent",
+      "reference_accepted": false,
+      "whole_chamber_confirmed": false
+    },
+    {
+      "phase_id": "phase_05",
+      "phase_percent": 25,
+      "region": "LA",
+      "authored_ml": 46.91540999106769,
+      "automatic_ml": 71.7778533858739,
+      "disagreement_ml": 24.862443394806206,
+      "authored_method": "CT-only BSpline transport of authored search domains then target-phase HU filtering and largest6connectedcomponent",
+      "reference_accepted": false,
+      "whole_chamber_confirmed": false
+    },
+    {
+      "phase_id": "phase_05",
+      "phase_percent": 25,
+      "region": "RA",
+      "authored_ml": 53.56855084686891,
+      "automatic_ml": 112.63580095841893,
+      "disagreement_ml": 59.06725011155002,
+      "authored_method": "CT-only BSpline transport of authored search domains then target-phase HU filtering and largest6connectedcomponent",
+      "reference_accepted": false,
+      "whole_chamber_confirmed": false
+    },
+    {
+      "phase_id": "phase_05",
+      "phase_percent": 25,
+      "region": "blood_pool_sum",
+      "authored_ml": 254.20031971447509,
+      "automatic_ml": 397.5619415869405,
+      "disagreement_ml": 143.36162187246543,
+      "authored_method": "CT-only BSpline transport of authored search domains then target-phase HU filtering and largest6connectedcomponent",
+      "reference_accepted": false,
+      "whole_chamber_confirmed": false
+    },
+    {
+      "phase_id": "phase_10",
+      "phase_percent": 50,
+      "region": "LV",
+      "authored_ml": 54.32363618989805,
+      "automatic_ml": 76.40792484483333,
+      "disagreement_ml": 22.08428865493528,
+      "authored_method": "CT-only BSpline transport of authored search domains then target-phase HU filtering and largest6connectedcomponent",
+      "reference_accepted": false,
+      "whole_chamber_confirmed": false
+    },
+    {
+      "phase_id": "phase_10",
+      "phase_percent": 50,
+      "region": "RV",
+      "authored_ml": 95.86675379593248,
+      "automatic_ml": 114.55651434209453,
+      "disagreement_ml": 18.68976054616205,
+      "authored_method": "CT-only BSpline transport of authored search domains then target-phase HU filtering and largest6connectedcomponent",
+      "reference_accepted": false,
+      "whole_chamber_confirmed": false
+    },
+    {
+      "phase_id": "phase_10",
+      "phase_percent": 50,
+      "region": "LA",
+      "authored_ml": 52.01139707279992,
+      "automatic_ml": 84.18754116793878,
+      "disagreement_ml": 32.17614409513885,
+      "authored_method": "CT-only BSpline transport of authored search domains then target-phase HU filtering and largest6connectedcomponent",
+      "reference_accepted": false,
+      "whole_chamber_confirmed": false
+    },
+    {
+      "phase_id": "phase_10",
+      "phase_percent": 50,
+      "region": "RA",
+      "authored_ml": 58.20477485306784,
+      "automatic_ml": 127.47798218999026,
+      "disagreement_ml": 69.27320733692241,
+      "authored_method": "CT-only BSpline transport of authored search domains then target-phase HU filtering and largest6connectedcomponent",
+      "reference_accepted": false,
+      "whole_chamber_confirmed": false
+    },
+    {
+      "phase_id": "phase_10",
+      "phase_percent": 50,
+      "region": "blood_pool_sum",
+      "authored_ml": 260.4065619116983,
+      "automatic_ml": 402.6299625448569,
+      "disagreement_ml": 142.22340063315858,
+      "authored_method": "CT-only BSpline transport of authored search domains then target-phase HU filtering and largest6connectedcomponent",
+      "reference_accepted": false,
+      "whole_chamber_confirmed": false
+    },
+    {
+      "phase_id": "phase_15",
+      "phase_percent": 75,
+      "region": "LV",
+      "authored_ml": 117.15344859963847,
+      "automatic_ml": 140.40448394017287,
+      "disagreement_ml": 23.2510353405344,
+      "authored_method": "CT-only BSpline transport of authored search domains then target-phase HU filtering and largest6connectedcomponent",
+      "reference_accepted": false,
+      "whole_chamber_confirmed": false
+    },
+    {
+      "phase_id": "phase_15",
+      "phase_percent": 75,
+      "region": "RV",
+      "authored_ml": 117.62607609212708,
+      "automatic_ml": 192.83761016011647,
+      "disagreement_ml": 75.21153406798939,
+      "authored_method": "CT-only BSpline transport of authored search domains then target-phase HU filtering and largest6connectedcomponent",
+      "reference_accepted": false,
+      "whole_chamber_confirmed": false
+    },
+    {
+      "phase_id": "phase_15",
+      "phase_percent": 75,
+      "region": "LA",
+      "authored_ml": 44.14228915348363,
+      "automatic_ml": 57.77353722382675,
+      "disagreement_ml": 13.63124807034312,
+      "authored_method": "CT-only BSpline transport of authored search domains then target-phase HU filtering and largest6connectedcomponent",
+      "reference_accepted": false,
+      "whole_chamber_confirmed": false
+    },
+    {
+      "phase_id": "phase_15",
+      "phase_percent": 75,
+      "region": "RA",
+      "authored_ml": 49.294767805323964,
+      "automatic_ml": 79.03897777343266,
+      "disagreement_ml": 29.7442099681087,
+      "authored_method": "CT-only BSpline transport of authored search domains then target-phase HU filtering and largest6connectedcomponent",
+      "reference_accepted": false,
+      "whole_chamber_confirmed": false
+    },
+    {
+      "phase_id": "phase_15",
+      "phase_percent": 75,
+      "region": "blood_pool_sum",
+      "authored_ml": 328.2165816505731,
+      "automatic_ml": 470.05460909754873,
+      "disagreement_ml": 141.83802744697562,
+      "authored_method": "CT-only BSpline transport of authored search domains then target-phase HU filtering and largest6connectedcomponent",
+      "reference_accepted": false,
+      "whole_chamber_confirmed": false
+    }
+  ],
+  "phase_differences": [
+    {
+      "phase_id": "phase_00",
+      "phase_percent": 0,
+      "baseline_phase": "phase_00",
+      "region": "LV",
+      "delta_authored_ml": 0.0,
+      "delta_automatic_ml": 0.0,
+      "disagreement_delta_ml": 0.0,
+      "change_authored_percent_of_baseline": 0.0,
+      "change_automatic_percent_of_baseline": 0.0
+    },
+    {
+      "phase_id": "phase_00",
+      "phase_percent": 0,
+      "baseline_phase": "phase_00",
+      "region": "RV",
+      "delta_authored_ml": 0.0,
+      "delta_automatic_ml": 0.0,
+      "disagreement_delta_ml": 0.0,
+      "change_authored_percent_of_baseline": 0.0,
+      "change_automatic_percent_of_baseline": 0.0
+    },
+    {
+      "phase_id": "phase_00",
+      "phase_percent": 0,
+      "baseline_phase": "phase_00",
+      "region": "LA",
+      "delta_authored_ml": 0.0,
+      "delta_automatic_ml": 0.0,
+      "disagreement_delta_ml": 0.0,
+      "change_authored_percent_of_baseline": 0.0,
+      "change_automatic_percent_of_baseline": 0.0
+    },
+    {
+      "phase_id": "phase_00",
+      "phase_percent": 0,
+      "baseline_phase": "phase_00",
+      "region": "RA",
+      "delta_authored_ml": 0.0,
+      "delta_automatic_ml": 0.0,
+      "disagreement_delta_ml": 0.0,
+      "change_authored_percent_of_baseline": 0.0,
+      "change_automatic_percent_of_baseline": 0.0
+    },
+    {
+      "phase_id": "phase_00",
+      "phase_percent": 0,
+      "baseline_phase": "phase_00",
+      "region": "blood_pool_sum",
+      "delta_authored_ml": 0.0,
+      "delta_automatic_ml": 0.0,
+      "disagreement_delta_ml": 0.0,
+      "change_authored_percent_of_baseline": 0.0,
+      "change_automatic_percent_of_baseline": 0.0
+    },
+    {
+      "phase_id": "phase_05",
+      "phase_percent": 25,
+      "baseline_phase": "phase_00",
+      "region": "LV",
+      "delta_authored_ml": -66.53979839515694,
+      "delta_automatic_ml": -67.21825655893052,
+      "disagreement_delta_ml": -0.678458163773584,
+      "change_authored_percent_of_baseline": -52.132815649704646,
+      "change_automatic_percent_of_baseline": -46.092716247780274
+    },
+    {
+      "phase_id": "phase_05",
+      "phase_percent": 25,
+      "baseline_phase": "phase_00",
+      "region": "RV",
+      "delta_authored_ml": -27.706038864406324,
+      "delta_automatic_ml": -61.94776086458711,
+      "disagreement_delta_ml": -34.241722000180786,
+      "change_authored_percent_of_baseline": -23.025612420396968,
+      "change_automatic_percent_of_baseline": -31.528530964886063
+    },
+    {
+      "phase_id": "phase_05",
+      "phase_percent": 25,
+      "baseline_phase": "phase_00",
+      "region": "LA",
+      "delta_authored_ml": 15.069825479432716,
+      "delta_automatic_ml": 29.801260860693105,
+      "disagreement_delta_ml": 14.73143538126039,
+      "change_authored_percent_of_baseline": 47.321554025572574,
+      "change_automatic_percent_of_baseline": 70.99494996602218
+    },
+    {
+      "phase_id": "phase_05",
+      "phase_percent": 25,
+      "baseline_phase": "phase_00",
+      "region": "RA",
+      "delta_authored_ml": 7.447938094648926,
+      "delta_automatic_ml": 50.58624340314196,
+      "disagreement_delta_ml": 43.13830530849303,
+      "change_authored_percent_of_baseline": 16.148827281767684,
+      "change_automatic_percent_of_baseline": 81.52555053769255
+    },
+    {
+      "phase_id": "phase_05",
+      "phase_percent": 25,
+      "baseline_phase": "phase_00",
+      "region": "blood_pool_sum",
+      "delta_authored_ml": -71.7280736854816,
+      "delta_automatic_ml": -48.778513159682575,
+      "disagreement_delta_ml": 22.94956052579903,
+      "change_authored_percent_of_baseline": -22.00731054365733,
+      "change_automatic_percent_of_baseline": -10.928544038736748
+    },
+    {
+      "phase_id": "phase_10",
+      "phase_percent": 50,
+      "baseline_phase": "phase_00",
+      "region": "LV",
+      "delta_authored_ml": -73.31151561593754,
+      "delta_automatic_ml": -69.42478372800457,
+      "disagreement_delta_ml": 3.8867318879329673,
+      "change_authored_percent_of_baseline": -57.43834247751932,
+      "change_automatic_percent_of_baseline": -47.60576993146193
+    },
+    {
+      "phase_id": "phase_10",
+      "phase_percent": 50,
+      "baseline_phase": "phase_00",
+      "region": "RV",
+      "delta_authored_ml": -24.46029053433365,
+      "delta_automatic_ml": -81.92508175123292,
+      "disagreement_delta_ml": -57.46479121689927,
+      "change_authored_percent_of_baseline": -20.32817366243667,
+      "change_automatic_percent_of_baseline": -41.69605875571117
+    },
+    {
+      "phase_id": "phase_10",
+      "phase_percent": 50,
+      "baseline_phase": "phase_00",
+      "region": "LA",
+      "delta_authored_ml": 20.165812561164948,
+      "delta_automatic_ml": 42.210948642757984,
+      "disagreement_delta_ml": 22.045136081593036,
+      "change_authored_percent_of_baseline": 63.32373190951244,
+      "change_automatic_percent_of_baseline": 100.55830190941919
+    },
+    {
+      "phase_id": "phase_10",
+      "phase_percent": 50,
+      "baseline_phase": "phase_00",
+      "region": "RA",
+      "delta_authored_ml": 12.084162100847855,
+      "delta_automatic_ml": 65.42842463471328,
+      "disagreement_delta_ml": 53.344262533865425,
+      "change_authored_percent_of_baseline": 26.201217589560738,
+      "change_automatic_percent_of_baseline": 105.44543299350079
+    },
+    {
+      "phase_id": "phase_10",
+      "phase_percent": 50,
+      "baseline_phase": "phase_00",
+      "region": "blood_pool_sum",
+      "delta_authored_ml": -65.52183148825839,
+      "delta_automatic_ml": -43.710492201766215,
+      "disagreement_delta_ml": 21.81133928649217,
+      "change_authored_percent_of_baseline": -20.103137012630423,
+      "change_automatic_percent_of_baseline": -9.793083225355323
+    },
+    {
+      "phase_id": "phase_15",
+      "phase_percent": 75,
+      "baseline_phase": "phase_00",
+      "region": "LV",
+      "delta_authored_ml": -10.481703206197125,
+      "delta_automatic_ml": -5.428224632665035,
+      "disagreement_delta_ml": 5.0534785735320895,
+      "change_authored_percent_of_baseline": -8.212238601903628,
+      "change_automatic_percent_of_baseline": -3.7222271229734742
+    },
+    {
+      "phase_id": "phase_15",
+      "phase_percent": 75,
+      "baseline_phase": "phase_00",
+      "region": "RV",
+      "delta_authored_ml": -2.7009682381390547,
+      "delta_automatic_ml": -3.6439859332109847,
+      "disagreement_delta_ml": -0.94301769507193,
+      "change_authored_percent_of_baseline": -2.244689257658159,
+      "change_automatic_percent_of_baseline": -1.8546194685226984
+    },
+    {
+      "phase_id": "phase_15",
+      "phase_percent": 75,
+      "baseline_phase": "phase_00",
+      "region": "LA",
+      "delta_authored_ml": 12.296704641848656,
+      "delta_automatic_ml": 15.796944698645959,
+      "disagreement_delta_ml": 3.5002400567973027,
+      "change_authored_percent_of_baseline": 38.61353098215541,
+      "change_automatic_percent_of_baseline": 37.63274660555103
+    },
+    {
+      "phase_id": "phase_15",
+      "phase_percent": 75,
+      "baseline_phase": "phase_00",
+      "region": "RA",
+      "delta_authored_ml": 3.1741550531039806,
+      "delta_automatic_ml": 16.989420218155693,
+      "disagreement_delta_ml": 13.815265165051713,
+      "change_authored_percent_of_baseline": 6.882291590870494,
+      "change_automatic_percent_of_baseline": 27.38040509478353
+    },
+    {
+      "phase_id": "phase_15",
+      "phase_percent": 75,
+      "baseline_phase": "phase_00",
+      "region": "blood_pool_sum",
+      "delta_authored_ml": 2.288188250616429,
+      "delta_automatic_ml": 23.71415435092564,
+      "disagreement_delta_ml": 21.42596610030921,
+      "change_authored_percent_of_baseline": 0.7020524437122369,
+      "change_automatic_percent_of_baseline": 5.3130192656158854
+    }
+  ],
+  "provenance": [
+    {
+      "phase_id": "phase_00",
+      "ct_sha256": "f9e961138aac8f9a57957988c5c36bbf3bb72a1660d1ae4c692ee6096b27ce25",
+      "mask_hashes": {
+        "authored_LV": "b0967d84954695a06217f546aadf334efe5d045c4cf63aa30fea1e9d4f81013f",
+        "authored_RV": "2ea7442e0ed5b3c8abfab8edeaed20c75e9b41eff89450ee03b0f5facca78b55",
+        "authored_LA": "70ef8e5cd7bbb015ad71d56a9829a4ffe9849c9f44eeee9343fe02e391eae743",
+        "authored_RA": "830b9c09ed313a890c980388a4e012a5bd82ba56ca1ddc4efd78525ff299b046",
+        "automatic_LV": "ea28e8fba0f87864db1ae29700a22493e284cdee295de0f99e81829e590d33c6",
+        "automatic_RV": "3560e0dbf4b961dcb79e223c33b26dc5d370fae5760ec79c1a7e9ede1ebb384b",
+        "automatic_LA": "c4fb16bbd08fbe8e27440ae776921b3674833dfa3ec703bb2f0f283279e9a7f0",
+        "automatic_RA": "b301ce818618c3dc4f8dc889984ef46a3be8dbdafaaaf186d7a743cdfac8116b"
+      }
+    },
+    {
+      "phase_id": "phase_05",
+      "ct_sha256": "701365be9759c4b04c163c9685cdc343d09cbce31ed0eb62f419528acc798323",
+      "mask_hashes": {
+        "authored_LV": "432c1329155268f167d2f78abae7b34e98674b4a0028c22bc31b35d63b4bb849",
+        "authored_RV": "5f4032c10f477edb549a14b6cda9468bfed2b53caf8a2a56c715712735677e54",
+        "authored_LA": "ad0e185ba7665ca910bb16cdbc97c5e6bf789337c359202e42c34ff61530521c",
+        "authored_RA": "a78e56005a62811574cbf4b2ce2dc0e9c9f476882e4a28c9b7a2faa128974cea",
+        "automatic_LV": "81b0bda38e05bf824bbf67f8974991a994e0e65d5c181b1a4ab85d167783ed77",
+        "automatic_RV": "7159ef6d3015535907828b6498d0ab09bc54f8098f5cbdf6a92692acaef16bbd",
+        "automatic_LA": "a7cef3b98110e5474bcfa456cf0f760abfcfe99d20c64c967189be2d3d76058b",
+        "automatic_RA": "213a36c8b9995f2613739276b04d14c1e6850535160b42c8ef6732544311ca4a"
+      }
+    },
+    {
+      "phase_id": "phase_10",
+      "ct_sha256": "b02e062c9cec46e0c81c267a53a3303de729198bfb57a6b0a1b16c8a1a931ff7",
+      "mask_hashes": {
+        "authored_LV": "70caaee5e0e27f02ff3851f47d6d745e7c45652207595a58082dc270558406d0",
+        "authored_RV": "93c12c4502d1238e5079854fa8311ebf6af0fd18c5822c294510921df7f52643",
+        "authored_LA": "4135e2d68d533ed6fa80bd14f141205aae33b19aa48286a54f7c5d46e41ded51",
+        "authored_RA": "895471ccc2edc0522b7e53786ecbc6d790381c13b6611d7df9b76c6a03ee0d8e",
+        "automatic_LV": "d53fd45cbc7b64c53b66aecf0e80143138eb72ac3188cf0daf30c055341c346c",
+        "automatic_RV": "7027c4e90746a051b8b8c260c873f92807f5dd10ddfccbc8e731f46de3a95eaa",
+        "automatic_LA": "8a736ef0707f5e98bc5be48025d60f083117b8eac2ca1fdca42f9479a69a4255",
+        "automatic_RA": "810d7797c1276277b9d9d7eb36e4ae2e48bc199c9008408b2b056690e858c2bd"
+      }
+    },
+    {
+      "phase_id": "phase_15",
+      "ct_sha256": "c994ddd014e452b3344f065b516372476d66b4560e62f09ca51a1cefd9a1f7b0",
+      "mask_hashes": {
+        "authored_LV": "b5501cee9af17c581df3413d1cb03ebdd1e48779c76414e459552025e88e393f",
+        "authored_RV": "baf7a63e87b9ecf7e8d87d7efa9bc13216aaf756508eb0813c041c9c7e336583",
+        "authored_LA": "2f26018f76c9de8228e10819329e810215497be706ed2c3262a6cd009943070f",
+        "authored_RA": "049cfbbf87af589a700948039d761a2db1bd236a3e689e833196662f41866e86",
+        "automatic_LV": "b90b4771d317bd922d281ff28e1d92bf1950c552af28743640a02b00f9522bbc",
+        "automatic_RV": "642ef47d22f2eab9e9c67faf997c312db6eeaf48e30fab0c748ca64a7236daaf",
+        "automatic_LA": "b1a83449e90ebb7dee6986faaf9e3b25d916b1bdb497992a3e0c10004dfd2329",
+        "automatic_RA": "72b7d14c1b511b55c6b4dd779becc4c9341b4ad3620045515dd0de81ed9a5fad"
+      }
+    }
+  ],
+  "limitations": [
+    "Unaccepted CT-authored and propagated candidates; not manually accepted whole-chamber reference",
+    "Valves, atrial appendages and vessel cutoffs require independent review",
+    "Source slice thickness5mm, step2.5mm",
+    "HU170/190/210 are segmentation scenarios, not measured physiological limits",
+    "Registration and annotation errors may depend on phase; differences cannot be attributed exclusively to TS"
+  ]
+}

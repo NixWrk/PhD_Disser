@@ -1,0 +1,226 @@
+[
+  {
+    "phase_id": "phase_00",
+    "phase_percent": 0,
+    "region": "LV",
+    "definition": "cavity_envelope",
+    "volume_ml": 148.97833817964968
+  },
+  {
+    "phase_id": "phase_00",
+    "phase_percent": 0,
+    "region": "LV",
+    "definition": "HU170",
+    "volume_ml": 134.19656377552067
+  },
+  {
+    "phase_id": "phase_00",
+    "phase_percent": 0,
+    "region": "LV",
+    "definition": "HU190",
+    "volume_ml": 127.64857554526722
+  },
+  {
+    "phase_id": "phase_00",
+    "phase_percent": 0,
+    "region": "LV",
+    "definition": "HU210",
+    "volume_ml": 119.19945021800928
+  },
+  {
+    "phase_id": "phase_00",
+    "phase_percent": 0,
+    "region": "RV",
+    "definition": "cavity_envelope",
+    "volume_ml": 171.34061010531497
+  },
+  {
+    "phase_id": "phase_00",
+    "phase_percent": 0,
+    "region": "RV",
+    "definition": "HU170",
+    "volume_ml": 155.96203861895475
+  },
+  {
+    "phase_id": "phase_00",
+    "phase_percent": 0,
+    "region": "RV",
+    "definition": "HU190",
+    "volume_ml": 151.40859433925087
+  },
+  {
+    "phase_id": "phase_00",
+    "phase_percent": 0,
+    "region": "RV",
+    "definition": "HU210",
+    "volume_ml": 145.07762322980875
+  },
+  {
+    "phase_id": "phase_00",
+    "phase_percent": 0,
+    "region": "LA",
+    "definition": "cavity_envelope",
+    "volume_ml": 41.3233038728415
+  },
+  {
+    "phase_id": "phase_00",
+    "phase_percent": 0,
+    "region": "LA",
+    "definition": "HU170",
+    "volume_ml": 33.30206023996674
+  },
+  {
+    "phase_id": "phase_00",
+    "phase_percent": 0,
+    "region": "LA",
+    "definition": "HU190",
+    "volume_ml": 31.886415052406182
+  },
+  {
+    "phase_id": "phase_00",
+    "phase_percent": 0,
+    "region": "LA",
+    "definition": "HU210",
+    "volume_ml": 28.43595469600116
+  },
+  {
+    "phase_id": "phase_00",
+    "phase_percent": 0,
+    "region": "RA",
+    "definition": "cavity_envelope",
+    "volume_ml": 49.97714122643178
+  },
+  {
+    "phase_id": "phase_00",
+    "phase_percent": 0,
+    "region": "RA",
+    "definition": "HU170",
+    "volume_ml": 46.45844352791598
+  },
+  {
+    "phase_id": "phase_00",
+    "phase_percent": 0,
+    "region": "RA",
+    "definition": "HU190",
+    "volume_ml": 45.36217147433293
+  },
+  {
+    "phase_id": "phase_00",
+    "phase_percent": 0,
+    "region": "RA",
+    "definition": "HU210",
+    "volume_ml": 44.135577283767816
+  },
+  {
+    "phase_id": "phase_08",
+    "phase_percent": 40,
+    "region": "LV",
+    "definition": "cavity_envelope",
+    "volume_ml": 48.49325869676044
+  },
+  {
+    "phase_id": "phase_08",
+    "phase_percent": 40,
+    "region": "LV",
+    "definition": "HU170",
+    "volume_ml": 34.0420438761353
+  },
+  {
+    "phase_id": "phase_08",
+    "phase_percent": 40,
+    "region": "LV",
+    "definition": "HU190",
+    "volume_ml": 31.86851673316401
+  },
+  {
+    "phase_id": "phase_08",
+    "phase_percent": 40,
+    "region": "LV",
+    "definition": "HU210",
+    "volume_ml": 29.452802957947075
+  },
+  {
+    "phase_id": "phase_08",
+    "phase_percent": 40,
+    "region": "RV",
+    "definition": "cavity_envelope",
+    "volume_ml": 87.22801814920278
+  },
+  {
+    "phase_id": "phase_08",
+    "phase_percent": 40,
+    "region": "RV",
+    "definition": "HU170",
+    "volume_ml": 72.9697695829073
+  },
+  {
+    "phase_id": "phase_08",
+    "phase_percent": 40,
+    "region": "RV",
+    "definition": "HU190",
+    "volume_ml": 67.33795156886255
+  },
+  {
+    "phase_id": "phase_08",
+    "phase_percent": 40,
+    "region": "RV",
+    "definition": "HU210",
+    "volume_ml": 61.57301480545413
+  },
+  {
+    "phase_id": "phase_08",
+    "phase_percent": 40,
+    "region": "LA",
+    "definition": "cavity_envelope",
+    "volume_ml": 75.27250021790803
+  },
+  {
+    "phase_id": "phase_08",
+    "phase_percent": 40,
+    "region": "LA",
+    "definition": "HU170",
+    "volume_ml": 73.0038882539627
+  },
+  {
+    "phase_id": "phase_08",
+    "phase_percent": 40,
+    "region": "LA",
+    "definition": "HU190",
+    "volume_ml": 72.31815889799698
+  },
+  {
+    "phase_id": "phase_08",
+    "phase_percent": 40,
+    "region": "LA",
+    "definition": "HU210",
+    "volume_ml": 71.16259866192424
+  },
+  {
+    "phase_id": "phase_08",
+    "phase_percent": 40,
+    "region": "RA",
+    "definition": "cavity_envelope",
+    "volume_ml": 109.59532397715492
+  },
+  {
+    "phase_id": "phase_08",
+    "phase_percent": 40,
+    "region": "RA",
+    "definition": "HU170",
+    "volume_ml": 99.02468849722325
+  },
+  {
+    "phase_id": "phase_08",
+    "phase_percent": 40,
+    "region": "RA",
+    "definition": "HU190",
+    "volume_ml": 94.70112575528601
+  },
+  {
+    "phase_id": "phase_08",
+    "phase_percent": 40,
+    "region": "RA",
+    "definition": "HU210",
+    "volume_ml": 89.52851149429823
+  }
+]

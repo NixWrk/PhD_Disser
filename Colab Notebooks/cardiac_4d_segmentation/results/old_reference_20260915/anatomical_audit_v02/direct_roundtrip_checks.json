@@ -1,0 +1,61 @@
+{
+  "status": "passed",
+  "checks": [
+    {
+      "phase_id": "phase_00",
+      "region": "LV",
+      "voxel_exact": true,
+      "grid_exact": true,
+      "editable_file_sha256": "c4b96d5f665c39fc798c0ba44c65fe08b14f393f6246c11b8a286be6bdf99e67"
+    },
+    {
+      "phase_id": "phase_00",
+      "region": "RV",
+      "voxel_exact": true,
+      "grid_exact": true,
+      "editable_file_sha256": "b947cbf527ec30cfd04e423b80d78cd0d91eba9bffaeabf87749db439e1469c5"
+    },
+    {
+      "phase_id": "phase_00",
+      "region": "LA",
+      "voxel_exact": true,
+      "grid_exact": true,
+      "editable_file_sha256": "cb1be952a920306a0a46770a6852daf863eda82cd35d793ddb04c5043ce62712"
+    },
+    {
+      "phase_id": "phase_00",
+      "region": "RA",
+      "voxel_exact": true,
+      "grid_exact": true,
+      "editable_file_sha256": "67550bd7a322f86a9fb12a3eafa3cbb6c3097cdb173382e8ddb65d787dffd40d"
+    },
+    {
+      "phase_id": "phase_08",
+      "region": "LV",
+      "voxel_exact": true,
+      "grid_exact": true,
+      "editable_file_sha256": "0094a5078487d8f1291bfab5d68c98abd2b8003bd9ff3446eef385000d766e55"
+    },
+    {
+      "phase_id": "phase_08",
+      "region": "RV",
+      "voxel_exact": true,
+      "grid_exact": true,
+      "editable_file_sha256": "5e4ef7edacb151770ae55e4ec74a791e87aeb6daffdd49edd70e16b1d3ee524e"
+    },
+    {
+      "phase_id": "phase_08",
+      "region": "LA",
+      "voxel_exact": true,
+      "grid_exact": true,
+      "editable_file_sha256": "123e853864d1f7c61074ac9766358a655910687e7638c760313ea0113517f9d5"
+    },
+    {
+      "phase_id": "phase_08",
+      "region": "RA",
+      "voxel_exact": true,
+      "grid_exact": true,
+      "editable_file_sha256": "4ce301c769ee79f88287ad827a3fd40ec90d52a43298a1ff556266f46d20e62e"
+    }
+  ]
+}

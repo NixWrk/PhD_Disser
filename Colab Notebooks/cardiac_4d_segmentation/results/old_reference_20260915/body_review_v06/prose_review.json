@@ -1,0 +1,16 @@
+{
+  "reviewer": "Codex",
+  "reviewed_utc": "2026-09-15T13:00:01.310608+00:00",
+  "scope": "Current protocol, full notebook reader text, figure captions and practical conclusion",
+  "scientific_headings_reviewed": true,
+  "terminology_and_scope_reviewed": true,
+  "derived_quantities_defined": true,
+  "claims_and_uncertainty_preserved": true,
+  "distinguishes_draft_volume_difference_from_accuracy": true,
+  "anatomical_validation_complete": false,
+  "hashes": {
+    ".md": "36c4d16d3b98db4c962fa15136cff022ca42dcf732e550f983b2c18c288509ce",
+    ".ipynb": "4de9c8987d4b56a91ba44b64c807b77e22932e0f4172936e5f690a944a6a2494",
+    ".html": "7a3abcfafb80e6a54b6c72c4d9292f47496100c01189e321c52ec21a54a1c5dc"
+  }
+}
