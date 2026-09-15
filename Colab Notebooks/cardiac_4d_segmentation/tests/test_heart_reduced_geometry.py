@@ -1,7 +1,7 @@
 """Analytic and lattice controls, without medical data or disk-backed volumes."""
 from __future__ import annotations
 
-import importlib.util
+import sys
 import unittest
 from unittest import mock
 from pathlib import Path
@@ -9,11 +9,9 @@ from pathlib import Path
 import numpy as np
 
 
-MODULE_PATH = Path(__file__).parents[1] / "heart_reduced_geometry.py"
-SPEC = importlib.util.spec_from_file_location("heart_reduced_geometry", MODULE_PATH)
-geometry = importlib.util.module_from_spec(SPEC)
-assert SPEC.loader is not None
-SPEC.loader.exec_module(geometry)
+sys.path.insert(0, str(Path(__file__).parents[1]))
+import heart_reduced_geometry as geometry
+import heart_affine_geometry as affine_geometry
 
 
 def oblique_affine(reflected=False):
@@ -167,6 +165,167 @@ class ReducedGeometryTests(unittest.TestCase):
                 geometry.mask_moments(np.ones((1, 1, 1)), affine)
         with self.assertRaises(ValueError):
             geometry.mask_moments(np.ones((1, 1, 1)), np.eye(4), chunk_size=0)
+
+
+class AffineGeometryTests(unittest.TestCase):
+    BUILDERS = (affine_geometry.individual_rigid_isotropic_candidate,
+                affine_geometry.individual_affine_moment_candidate)
+
+    @staticmethod
+    def rotation_z(degrees):
+        angle = np.deg2rad(degrees)
+        c, s = np.cos(angle), np.sin(angle)
+        return np.array([[c, -s, 0], [s, c, 0], [0, 0, 1]])
+
+    def test_known_principal_affine_and_rigid_similarity(self):
+        mask = np.ones((7, 5, 3), dtype=bool)
+        q = oblique_affine()[:3, :3] / np.array([2, 3, 4])
+        reference_affine = np.eye(4)
+        reference_affine[:3, :3] = q
+        reference_affine[:3, 3] = [13, -7, 5]
+        rotation = self.rotation_z(35)
+        for builder in self.BUILDERS:
+            with self.subTest(builder=builder.__name__):
+                scales = ([1.25, .9, 1.1] if builder is self.BUILDERS[1]
+                          else [1.2, 1.2, 1.2])
+                expected = np.eye(4)
+                expected[:3, :3] = rotation @ (q * scales) @ q.T
+                expected[:3, 3] = [8, -2, 1.5]
+                target_affine = expected @ reference_affine
+                candidate = builder(mask, reference_affine, mask, target_affine, chunk_size=11)
+                np.testing.assert_allclose(candidate["transform_world"], expected, atol=1e-12)
+                np.testing.assert_allclose(candidate["rotation_matrix"], rotation, atol=1e-12)
+                np.testing.assert_allclose(candidate["principal_scales"], scales, atol=1e-12)
+                target_moments = geometry.mask_moments(mask, target_affine)
+                np.testing.assert_allclose(candidate["covariance_mm2"], target_moments["covariance_mm2"], atol=1e-12)
+                result = geometry.sampled_dice(mask, target_affine, candidate, chunk_size=13)
+                self.assertEqual(result["dice_voxel_center_approx"], 1)
+
+    def test_volume_correction_preserves_scale_ratios_not_exact_target_covariance(self):
+        reference = np.ones((9, 5, 3), dtype=bool)
+        target = np.ones((7, 5, 4), dtype=bool)
+        target[1:6, 1:4, 1:3] = False
+        ref_moments = geometry.mask_moments(reference, np.eye(4))
+        target_moments = geometry.mask_moments(target, oblique_affine())
+        for builder in self.BUILDERS:
+            with self.subTest(builder=builder.__name__):
+                candidate = builder(reference, np.eye(4), target, oblique_affine(),
+                    reference_moments=ref_moments, target_moments=target_moments)
+                ratio = target_moments["volume_mm3"] / ref_moments["volume_mm3"]
+                np.testing.assert_allclose(np.linalg.det(candidate["transform_world"][:3, :3]), ratio, rtol=1e-13)
+                np.testing.assert_allclose(candidate["volume_mm3"], target_moments["volume_mm3"], rtol=1e-13)
+                np.testing.assert_allclose(candidate["principal_scales"] / candidate["raw_principal_scales"],
+                                           candidate["common_scale"], rtol=1e-13)
+                if builder is self.BUILDERS[1]:
+                    self.assertFalse(np.isclose(candidate["common_scale"], 1))
+                    np.testing.assert_allclose(candidate["covariance_mm2"],
+                        candidate["common_scale"]**2 * target_moments["covariance_mm2"], rtol=1e-12, atol=1e-12)
+                    self.assertFalse(np.allclose(candidate["covariance_mm2"], target_moments["covariance_mm2"]))
+
+    def test_identity_and_cached_moments_no_rescans(self):
+        storage = np.zeros((8, 5, 6), dtype=bool)
+        storage[::2, 1:4, 2:5] = True
+        storage[6, 4, 5] = True
+        mask = storage[::2]
+        before = mask.copy()
+        affine = oblique_affine(reflected=True)
+        moments = geometry.mask_moments(mask, affine)
+        with mock.patch.object(geometry, "mask_moments", side_effect=AssertionError("cache ignored")):
+            for builder in self.BUILDERS:
+                with self.subTest(builder=builder.__name__):
+                    candidate = builder(mask, affine, mask, affine,
+                        reference_moments=moments, target_moments=moments)
+                    np.testing.assert_allclose(candidate["transform_world"], np.eye(4), atol=1e-12)
+                    self.assertIs(candidate["reference_mask"], mask)
+                    result = geometry.sampled_dice(mask, affine, candidate, target_moments=moments, chunk_size=7)
+                    self.assertEqual(result["dice_voxel_center_approx"], 1)
+                    self.assertEqual(result["candidate_sample_count"], moments["voxel_count"])
+        np.testing.assert_array_equal(mask, before)
+
+    def test_sign_ambiguity_uses_minimum_proper_rotation_not_actual_170_degrees(self):
+        mask = np.ones((7, 5, 3), dtype=bool)
+        target_affine = np.eye(4)
+        target_affine[:3, :3] = self.rotation_z(170)
+        for builder in self.BUILDERS:
+            with self.subTest(builder=builder.__name__):
+                candidate = builder(mask, np.eye(4), mask, target_affine)
+                # Moments identify undirected axes. They cannot distinguish 170
+                # degrees from -10 degrees; the stipulated convention picks -10.
+                np.testing.assert_allclose(candidate["rotation_matrix"], self.rotation_z(-10), atol=1e-12)
+                self.assertAlmostEqual(candidate["rotation_angle_rad"], np.deg2rad(10))
+                for key in ("rotation_matrix", "reference_axes_matrix", "target_axes_matrix"):
+                    frame = candidate[key]
+                    np.testing.assert_allclose(frame.T @ frame, np.eye(3), atol=1e-12)
+                    self.assertAlmostEqual(np.linalg.det(frame), 1)
+                self.assertFalse(candidate["rotation_is_anatomical_motion"])
+                self.assertFalse(candidate["target_dice_optimized"])
+
+    def test_all_four_proper_flips_resolve_to_same_rotation(self):
+        reference = {"covariance_mm2": np.diag([9, 4, 1])}
+        target = {"covariance_mm2": np.diag([9, 4, 1])}
+        rotation = self.rotation_z(20)
+        # Supply four equivalent principal-axis representations independently;
+        # fitting should resolve their arbitrary eigenvector signs identically.
+        for signs in ((1, 1, 1), (1, -1, -1), (-1, 1, -1), (-1, -1, 1)):
+            frames = [(np.array([9., 4., 1.]), np.eye(3), False),
+                      (np.array([9., 4., 1.]), rotation * signs, False)]
+            with self.subTest(signs=signs), mock.patch.object(geometry, "_eigenframe", side_effect=frames):
+                alignment = affine_geometry._principal_alignment(reference, target, 1e-6)
+                np.testing.assert_allclose(alignment["rotation_matrix"], rotation, atol=1e-12)
+                np.testing.assert_array_equal(alignment["selected_target_sign_flip"], signs)
+
+    def test_near_degenerate_flags_for_either_frame(self):
+        cube = np.ones((3, 3, 3), dtype=bool)
+        distinct = np.ones((7, 5, 3), dtype=bool)
+        almost_equal = np.diag([1, 1 + 2e-7, 2, 1])
+        for builder in self.BUILDERS:
+            with self.subTest(builder=builder.__name__):
+                candidate = builder(cube, almost_equal, distinct, np.eye(4))
+                self.assertTrue(candidate["reference_orientation_degenerate"])
+                self.assertFalse(candidate["target_orientation_degenerate"])
+                np.testing.assert_array_equal(candidate["reference_degenerate_axes"], [False, True, True])
+                self.assertTrue(candidate["orientation_degenerate"])
+                self.assertFalse(candidate["temporal_prediction"])
+                tight = builder(cube, almost_equal, distinct, np.eye(4), eigen_rtol=1e-9)
+                self.assertFalse(tight["orientation_degenerate"])
+                target_degenerate = builder(distinct, np.eye(4), cube, np.eye(4))
+                self.assertTrue(target_degenerate["target_orientation_degenerate"])
+                identity = builder(cube, np.eye(4), cube, np.eye(4))
+                self.assertTrue(identity["orientation_degenerate"])
+                np.testing.assert_allclose(identity["transform_world"], np.eye(4), atol=1e-12)
+
+    def test_full_affine_shear_pullback_includes_outside_image_in_bounded_chunks(self):
+        reference = np.ones((3, 3, 1), dtype=bool)
+        target = np.ones((1, 3, 1), dtype=bool)
+        target_affine = np.eye(4)
+        target_affine[:3, 3] = [1, -1, 0]
+        transform = np.eye(4)
+        transform[:3, :3] = [[1, 1, 0], [0, 1, 0], [0, 0, 1]]
+        transform[:3, 3] = [-2, -1, 0]
+        # Isolate the renderer using a known determinant-one shear. The nine
+        # transformed centers are (i+j-2,j-1,0). Only (1,0,0),(1,1,0)
+        # intersect this three-voxel target; seven candidate cells lie outside.
+        for builder in self.BUILDERS:
+            candidate = builder(reference, np.eye(4), reference, np.eye(4))
+            candidate["transform_world"] = transform
+            candidate["center_mm"] = np.zeros(3)
+            for chunk in (2, 17):
+                lengths = []
+                lookup = geometry._lookup
+                def bounded_lookup(mask, indices):
+                    lengths.append(len(indices))
+                    return lookup(mask, indices)
+                with self.subTest(builder=builder.__name__, chunk=chunk), mock.patch.object(
+                        geometry, "_lookup", side_effect=bounded_lookup):
+                    result = geometry.sampled_dice(target, target_affine, candidate, chunk_size=chunk)
+                self.assertEqual(result["candidate_sample_count"], 9)
+                self.assertEqual(result["intersection_sample_count"], 2)
+                self.assertEqual(result["dice_voxel_center_approx"], 1/3)
+                self.assertLess(result["grid_bounds_index_inclusive"][0, 0], 0)
+                self.assertGreater(result["grid_bounds_index_inclusive"][1, 0], 0)
+                self.assertLessEqual(max(lengths), chunk)
+                self.assertFalse(result["exact_continuous_dice"])
+                self.assertFalse(result["candidate_clipped_to_image_extent"])
 
 
 if __name__ == "__main__":

@@ -212,6 +212,8 @@ Lattice indices may be negative or beyond the target image. All candidate
 samples there count in the denominator; target occupancy there is zero.
 Only chunk_size lattice points are materialized at a time, not the full volume.
 Individual pullback uses floor(index+0.5), i.e. half-open reference voxel cells.
+The full affine of a reference candidate transforms both its bounding corners
+and the pullback; isotropic and anisotropic reference candidates use this path.
 Optional target_moments must describe this same unchanged target mask and affine;
 the cache is trusted rather than verified by another full-mask scan.
 """
@@ -222,7 +224,9 @@ the cache is trusted rather than verified by another full-mask scan.
               if target_moments is None else target_moments)
     inverse_target = np.linalg.inv(target_affine)
     kind = candidate["kind"]
-    individual = kind == "individual_isotropic_volume_centroid"
+    individual = kind in ("individual_isotropic_volume_centroid",
+                          "individual_rigid_isotropic_volume_centroid",
+                          "individual_affine_moment_volume_centroid")
     if individual:
         transform = _affine(candidate["transform_world"])
         reference_affine = _affine(candidate["reference_affine"])

@@ -13,6 +13,7 @@ import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from run_reduced_heart_geometry import run, TARGETS, mask_path
+from run_affine_heart_geometry import run as run_affine
 
 
 class ReducedGeometryRunTest(unittest.TestCase):
@@ -73,6 +74,16 @@ class ReducedGeometryRunTest(unittest.TestCase):
                 expected = affine @ [5.5+offset, 7., 7., 1.]
                 np.testing.assert_allclose(record['moments']['centroid_mm'], expected[:3])
             self.assertEqual(json.loads((output / 'run_status.json').read_text())['status'], 'completed')
+            affine_output = root / 'exploratory' / 'affine'
+            with contextlib.redirect_stdout(io.StringIO()):
+                run_affine(config, output, affine_output)
+            affine_records = [json.loads(line) for line in (affine_output / 'affine_comparison.jsonl').read_text().splitlines()]
+            self.assertEqual(len(affine_records), 48)
+            for record in affine_records:
+                for comparison in record['comparisons'].values():
+                    self.assertAlmostEqual(comparison['overlap']['dice_voxel_center_approx'], 1.)
+            self.assertEqual(json.loads((affine_output / 'run_status.json').read_text())['status'], 'completed')
+
 
 
 if __name__ == '__main__':
