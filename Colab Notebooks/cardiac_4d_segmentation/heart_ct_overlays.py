@@ -86,7 +86,7 @@ def select_examples(records):
     return selected
 
 
-def field_bounds(target):
+def field_bounds(target, models=MODELS):
     p = target['comparisons']['individual_isotropic']['parameters']
     lo, hi = np.asarray(p['reference_bbox_index_centers'])
     corners = np.array(list(product(*zip(lo - .5, hi + .5))))
@@ -100,7 +100,8 @@ def field_bounds(target):
     corners = np.array(list(product(*zip(lo + crop - .5, hi + crop + .5))))
     points = corners @ affine[:3, :3].T + affine[:3, 3]
     low, high = np.minimum(low, points.min(axis=0)), np.maximum(high, points.max(axis=0))
-    for model in MODELS[:2]:
+    for model in models:
+        if model == "individual_isotropic": continue
         p = target['comparisons'][model]['parameters']
         half = np.sqrt(np.sum((np.asarray(p['axes_matrix']) * np.asarray(p['semi_axes_mm']))**2, axis=1))
         low = np.minimum(low, np.asarray(p['center_mm']) - half)
@@ -110,10 +111,11 @@ def field_bounds(target):
     return np.column_stack((center - half, center + half))
 
 
-def make_figure(data, ct_affine, target_mask, target_affine, reference_mask, row):
+def make_figure(data, ct_affine, target_mask, target_affine, reference_mask, row,
+                *, models=MODELS, labels=LABELS, colors=COLORS):
     center = np.asarray(row['moments']['centroid_mm'])
-    bounds = field_bounds(row)
-    fig, axes = plt.subplots(3, 3, figsize=(12, 11.5))
+    bounds = field_bounds(row, models)
+    fig, axes = plt.subplots(3, len(models), figsize=(4 * len(models), 11.5), squeeze=False)
     cmap = plt.get_cmap('gray').copy(); cmap.set_bad('#383242')
     sample_checks = []
     for i, (plane, horizontal, vertical, fixed, left, right, top, bottom) in enumerate(PLANES):
@@ -126,7 +128,7 @@ def make_figure(data, ct_affine, target_mask, target_affine, reference_mask, row
         sample_checks.append({'plane': plane, 'fixed_RAS_axis': fixed,
             'fixed_coordinate_mm': float(center[fixed]), 'outside_CT_fraction': float(np.isnan(ct).mean()),
             'pixel_spacing_mm': [abs(float(dx)), abs(float(dy))]})
-        for j, (model, label, color) in enumerate(zip(MODELS, LABELS, COLORS)):
+        for j, (model, label, color) in enumerate(zip(models, labels, colors)):
             ax = axes[i, j]
             candidate = candidate_membership(row['comparisons'][model]['parameters'], world, reference_mask)
             ax.imshow(ct, origin='lower', extent=extent, cmap=cmap, vmin=-200, vmax=300,
@@ -152,9 +154,10 @@ def make_figure(data, ct_affine, target_mask, target_affine, reference_mask, row
     title = f"{row['subject'].capitalize()} · цикл {row['cycle_index']+1} · фаза {phase:g}% R–R · целое сердце"
     fig.suptitle(title, fontsize=13, y=.99)
     handles=[Line2D([0],[0],color=TARGET_COLOR,lw=1.5,ls='--',label='Автоматическая маска целевой фазы')]
-    handles += [Line2D([0],[0],color=c,lw=1.8,label=t) for c,t in zip(COLORS,LABELS)]
-    fig.legend(handles=handles, loc='lower center', ncol=2, frameon=False, bbox_to_anchor=(.5,.005),fontsize=10)
-    fig.tight_layout(rect=[0,.055,1,.965])
+    handles += [Line2D([0],[0],color=c,lw=1.8,label=t) for c,t in zip(colors,labels)]
+    fig.legend(handles=handles, loc='lower center', ncol=4 if len(models)>3 else 2,
+               frameon=False, bbox_to_anchor=(.5,.005), fontsize=9 if len(models)>3 else 10)
+    fig.tight_layout(rect=[0,.12 if len(models)>3 else .055,1,.965])
     return fig, sample_checks
 
 

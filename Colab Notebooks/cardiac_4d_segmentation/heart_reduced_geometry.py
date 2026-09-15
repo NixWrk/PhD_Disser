@@ -237,7 +237,9 @@ the cache is trusted rather than verified by another full-mask scan.
         candidate_lower, candidate_upper = corners.min(axis=0), corners.max(axis=0)
         pullback = np.linalg.inv(reference_affine) @ np.linalg.inv(transform) @ target_affine
         reference_mask = candidate["reference_mask"]
-    elif kind in ("sphere_equal_volume_centroid", "ellipsoid_raw_moment", "ellipsoid_volume_scaled"):
+    elif kind in ("sphere_equal_volume_centroid", "sphere_second_moment",
+                  "sphere_surface_fixed_center", "sphere_surface_free_center",
+                  "ellipsoid_raw_moment", "ellipsoid_volume_scaled"):
         center = np.asarray(candidate["center_mm"], dtype=float)
         axes = np.asarray(candidate["axes_matrix"], dtype=float)
         radii = np.asarray(candidate["semi_axes_mm"], dtype=float)

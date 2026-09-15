@@ -14,7 +14,7 @@ REGIONS = {
     'heart_ventricle_left': 'Левый желудочек', 'heart_ventricle_right': 'Правый желудочек',
     'heart_atrium_left': 'Левое предсердие', 'heart_atrium_right': 'Правое предсердие',
 }
-MODELS = {'sphere': 'Сфера', 'ellipsoid_volume_scaled': 'Эллипсоид',
+MODELS = {'sphere': 'Сфера Г1', 'ellipsoid_volume_scaled': 'Эллипсоид Л1',
           'individual_isotropic': 'Индивидуальная форма'}
 TEMPORAL = {'constant': 'Постоянное значение', 'linear_neighbors': 'Интерполяция между соседними фазами',
             'one_harmonic': 'Одна гармоника'}
@@ -56,7 +56,7 @@ def overlap_figure(records):
         for model in MODELS] for region in REGIONS])
     fig, ax = plt.subplots(figsize=(9, 5))
     im = ax.imshow(values, vmin=0, vmax=1, cmap='viridis', aspect='auto')
-    ax.set_xticks(range(3), ['Сфера', 'Эллипсоид', 'Индивидуальная форма\nравномерный масштаб и перенос'])
+    ax.set_xticks(range(3), ['Сфера Г1\nравный объём', 'Эллипсоид Л1\nмоменты и объём', 'Индивидуальная форма\nмасштаб и перенос'])
     ax.set_yticks(range(6), REGIONS.values())
     for i in range(6):
         for j in range(3):
@@ -78,7 +78,7 @@ def paired_figure(records):
                            color=['#2674ac','#bd4e2c','#498c52'][s], label=subject.capitalize() if i==0 else None)
         ax.axvline(0, color='black', lw=.8)
         ax.set_title(MODELS[model])
-        ax.set_xlabel('Разность Dice относительно сферы')
+        ax.set_xlabel('Разность Dice относительно сферы Г1')
         ax.grid(axis='x', alpha=.25)
     axes[0].set_yticks(range(6), REGIONS.values())
     axes[0].invert_yaxis()
@@ -219,3 +219,21 @@ def overlay_schematic():
     fig.suptitle('Схема принятого правила; не индивидуальная анатомия',fontsize=11,y=.99)
     fig.tight_layout(rect=[0,.09,1,.95])
     return fig
+
+
+def construction_table(result):
+    names = {'sphere':'Г1 · объём', 'sphere_second_moment':'Г2 · второй момент',
+        'sphere_surface_fixed_center':'Г3а · поверхность, центр фиксирован',
+        'sphere_surface_free_center':'Г3б · поверхность, центр подбирается',
+        'ellipsoid_volume_scaled':'Л1 · моменты и объём', 'ellipsoid_raw_moment':'Л2 · моменты'}
+    rows=[]
+    for ex in result['examples']:
+        for method, label in names.items():
+            data=ex['methods'][method];p=data['parameters']
+            size = _number(p['radius_mm'],2) if 'radius_mm' in p else ' / '.join(_number(x,2) for x in p['semi_axes_mm'])
+            rows.append([ex['subject'].capitalize(),label,size,
+                _number(round(data['analytic_volume_error_percent'],2) or 0,2),_number(data['center_shift_mm'],2),
+                _number(data['overlap']['dice_voxel_center_approx'],3),
+                _number(p['surface_RMS_mm'],2) if 'surface_RMS_mm' in p else '—'])
+    return _table(['Участник','Способ','Радиус либо три полуоси, мм',
+        'Разность объёмов, %','Смещение центра, мм','Dice','Среднеквадратичная ошибка поверхности, мм'],rows)

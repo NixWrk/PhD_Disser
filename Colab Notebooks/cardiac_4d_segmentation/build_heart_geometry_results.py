@@ -34,6 +34,17 @@ figures.mkdir(exist_ok=True)
 ct_directory = work / 'ct_overlays_01'
 ct_manifest = json.loads((ct_directory / 'manifest.json').read_text(encoding='utf-8'))
 assert ct_manifest['baseline_sha256'] == hashlib.sha256((work / 'comparison_02/geometry_comparison.jsonl').read_bytes()).hexdigest()
+construction_directory = work / 'construction_criteria_01'
+construction = json.loads((construction_directory / 'results.json').read_text(encoding='utf-8'))
+assert construction['baseline_sha256'] == ct_manifest['baseline_sha256']
+assert len(construction['examples']) == 3
+
+def show_construction(subject):
+    example = next(x for x in construction['examples'] if x['subject'] == subject)
+    path = construction_directory / example['figure']
+    assert hashlib.sha256(path.read_bytes()).hexdigest() == example['figure_sha256']
+    display(Image(filename=str(path)))
+
 def show_ct_example(subject):
     example = next(x for x in ct_manifest['examples'] if x['subject'] == subject)
     path = ct_directory / example['figure']
@@ -44,6 +55,10 @@ def show_figure(figure, name):
     display(Image(filename=str(figures / name)))
     plt.close(figure)
 ''',
+'construction_table':"display(Markdown(report.construction_table(construction)))",
+'construction_adam':"show_construction('adam')",
+'construction_nix':"show_construction('nix')",
+'construction_georg':"show_construction('georg')",
 'ct_adam':"show_ct_example('adam')",
 'ct_nix':"show_ct_example('nix')",
 'ct_georg':"show_ct_example('georg')",

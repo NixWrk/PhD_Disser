@@ -1,0 +1,2083 @@
+{
+  "schema": "heart_construction_criteria_examples_v1",
+  "status": "exploratory_hypothesis_not_validated",
+  "baseline_sha256": "7f31e6b9c4ed50dde617587bd807d67133a438bb207f673c1fa4450da02e263d",
+  "code_sha256": {
+    "heart_construction_variants.py": "3961881c8717d3090ac9bd2ac30f51e03e9b384572171009aa98a93a035af2d9",
+    "heart_ct_overlays.py": "f4b2ce63dcbb9dadfc2e47268267253a1e72cb138fe622871229b6c6701d381c",
+    "heart_reduced_geometry.py": "75b4e8cb543ac4464fea3fda31e4ef92676bd2683a2ccc313f24e2a5e08f04fd"
+  },
+  "selection_rule": "Same three whole-heart examples as CT overlays: maximum absolute relative volume change in longest original cycle; no selection by fitting quality.",
+  "scope": "three selected phases, not all 234 phase-region combinations",
+  "surface_integration_convergence_verified": false,
+  "FEM_run": false,
+  "raw_inputs_modified": false,
+  "examples": [
+    {
+      "subject": "adam",
+      "phase_id": "phase_03",
+      "region": "whole_heart",
+      "phase_percent_within_cycle": 41.0,
+      "cycle_index": 0,
+      "target_volume_ml": 595.4818720156662,
+      "target_center_mm": [
+        -29.993454331245147,
+        28.145918480351035,
+        -111.67545891286743
+      ],
+      "target_touches_CT_boundary": true,
+      "CT_sha256": "2a271ec7ef1535cf9f746e3ddfd19de554aea7d9b9f7d4f066c7d8d187006250",
+      "mask_sha256": "47a96f821a8eef7a1b07187a5fae431641515d48f31eaca2dbc6eedada01bdfe",
+      "surface": {
+        "triangle_count": 654650,
+        "area_mm2": 73544.8831496427,
+        "surface_definition": "padded_binary_mask_isosurface_0.5_without_smoothing",
+        "quadrature": "three_barycentric_points_per_triangle_area_over_three",
+        "bounds_mm": [
+          [
+            -96.34991079568863,
+            -45.95424681901932,
+            -162.1824951171875
+          ],
+          [
+            46.54458302259445,
+            83.28790682554245,
+            -50.9324951171875
+          ]
+        ]
+      },
+      "methods": {
+        "sphere": {
+          "parameters": {
+            "kind": "sphere_equal_volume_centroid",
+            "center_mm": [
+              -29.993454331245147,
+              28.145918480351035,
+              -111.67545891286743
+            ],
+            "semi_axes_mm": [
+              52.19072284394492,
+              52.19072284394492,
+              52.19072284394492
+            ],
+            "axes_matrix": [
+              [
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "volume_mm3": 595481.872015666,
+            "volume_ml": 595.481872015666,
+            "covariance_mm2": [
+              [
+                544.7743101946947,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                544.7743101946947,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                544.7743101946947
+              ]
+            ],
+            "orientation_degenerate": true,
+            "axes_convention": "columns_are_physical_axes_descending_size_det_plus_one",
+            "volume_definition": "analytic_continuous_ellipsoid",
+            "radius_mm": 52.19072284394492,
+            "preserves_volume": true,
+            "preserves_covariance": false
+          },
+          "overlap": {
+            "dice_voxel_center_approx": 0.6752455460876302,
+            "target_voxel_count": 4600625,
+            "candidate_sample_count": 4600499,
+            "intersection_sample_count": 3106509,
+            "candidate_sampled_volume_ml": 595.465563206347,
+            "candidate_continuous_volume_ml": 595.481872015666,
+            "grid_bounds_index_inclusive": [
+              [
+                -1,
+                -1,
+                -4
+              ],
+              [
+                284,
+                314,
+                178
+              ]
+            ],
+            "grid_shape": [
+              286,
+              316,
+              183
+            ],
+            "sampling": "target_native_voxel_centers_on_extended_index_grid",
+            "exact_continuous_dice": false,
+            "candidate_clipped_to_image_extent": false,
+            "individual_tie_rule": null
+          },
+          "analytic_volume_error_percent": -4.440892098500626e-14,
+          "center_displacement_mm": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "center_shift_mm": 0.0
+        },
+        "sphere_second_moment": {
+          "parameters": {
+            "kind": "sphere_second_moment",
+            "center_mm": [
+              -29.993454331245147,
+              28.145918480351035,
+              -111.67545891286743
+            ],
+            "semi_axes_mm": [
+              61.93392304151615,
+              61.93392304151615,
+              61.93392304151615
+            ],
+            "axes_matrix": [
+              [
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "volume_mm3": 995117.5364821592,
+            "volume_ml": 995.1175364821592,
+            "covariance_mm2": [
+              [
+                767.1621646624891,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                767.1621646624891,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                767.1621646624891
+              ]
+            ],
+            "orientation_degenerate": true,
+            "axes_convention": "columns_are_physical_axes_descending_size_det_plus_one",
+            "volume_definition": "analytic_continuous_ellipsoid",
+            "radius_mm": 61.93392304151615,
+            "preserves_volume": false,
+            "preserves_trace_covariance": true
+          },
+          "overlap": {
+            "dice_voxel_center_approx": 0.6407552779989559,
+            "target_voxel_count": 4600625,
+            "candidate_sample_count": 7688360,
+            "intersection_sample_count": 3937116,
+            "candidate_sampled_volume_ml": 995.1428350561865,
+            "candidate_continuous_volume_ml": 995.1175364821592,
+            "grid_bounds_index_inclusive": [
+              [
+                -16,
+                -1,
+                -19
+              ],
+              [
+                284,
+                314,
+                180
+              ]
+            ],
+            "grid_shape": [
+              301,
+              316,
+              200
+            ],
+            "sampling": "target_native_voxel_centers_on_extended_index_grid",
+            "exact_continuous_dice": false,
+            "candidate_clipped_to_image_extent": false,
+            "individual_tie_rule": null
+          },
+          "analytic_volume_error_percent": 67.11130653125561,
+          "center_displacement_mm": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "center_shift_mm": 0.0
+        },
+        "sphere_surface_fixed_center": {
+          "parameters": {
+            "kind": "sphere_surface_fixed_center",
+            "center_mm": [
+              -29.993454331245147,
+              28.145918480351035,
+              -111.67545891286743
+            ],
+            "semi_axes_mm": [
+              54.79093869336375,
+              54.79093869336375,
+              54.79093869336375
+            ],
+            "axes_matrix": [
+              [
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "volume_mm3": 688993.0357734342,
+            "volume_ml": 688.9930357734343,
+            "covariance_mm2": [
+              [
+                600.409392579989,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                600.409392579989,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                600.409392579989
+              ]
+            ],
+            "orientation_degenerate": true,
+            "axes_convention": "columns_are_physical_axes_descending_size_det_plus_one",
+            "volume_definition": "analytic_continuous_ellipsoid",
+            "radius_mm": 54.79093869336375,
+            "preserves_volume": false,
+            "surface_RMS_mm": 15.579841587718654
+          },
+          "overlap": {
+            "dice_voxel_center_approx": 0.6770770981390855,
+            "target_voxel_count": 4600625,
+            "candidate_sample_count": 5322883,
+            "intersection_sample_count": 3359490,
+            "candidate_sampled_volume_ml": 688.9673323429678,
+            "candidate_continuous_volume_ml": 688.9930357734343,
+            "grid_bounds_index_inclusive": [
+              [
+                -1,
+                -1,
+                -8
+              ],
+              [
+                284,
+                314,
+                178
+              ]
+            ],
+            "grid_shape": [
+              286,
+              316,
+              187
+            ],
+            "sampling": "target_native_voxel_centers_on_extended_index_grid",
+            "exact_continuous_dice": false,
+            "candidate_clipped_to_image_extent": false,
+            "individual_tie_rule": null
+          },
+          "analytic_volume_error_percent": 15.703444244446763,
+          "center_displacement_mm": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "center_shift_mm": 0.0
+        },
+        "sphere_surface_free_center": {
+          "parameters": {
+            "kind": "sphere_surface_free_center",
+            "center_mm": [
+              -31.791811205208237,
+              26.14252707757629,
+              -111.32455851501894
+            ],
+            "semi_axes_mm": [
+              54.74557197609725,
+              54.74557197609725,
+              54.74557197609725
+            ],
+            "axes_matrix": [
+              [
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "volume_mm3": 687283.0005474217,
+            "volume_ml": 687.2830005474217,
+            "covariance_mm2": [
+              [
+                599.4155301980089,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                599.4155301980089,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                599.4155301980089
+              ]
+            ],
+            "orientation_degenerate": true,
+            "axes_convention": "columns_are_physical_axes_descending_size_det_plus_one",
+            "volume_definition": "analytic_continuous_ellipsoid",
+            "radius_mm": 54.74557197609725,
+            "preserves_volume": false,
+            "surface_RMS_mm": 15.532775157101058,
+            "optimization": {
+              "success": true,
+              "global_optimum_certified": false,
+              "center_domain": "physical_axis_aligned_surface_bounding_box",
+              "radius_upper_bound_mm": 222.48355701549687,
+              "active_bounds": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "trials": [
+                {
+                  "success": true,
+                  "nfev": 9,
+                  "RMS_mm": 15.53277515725727,
+                  "parameters_mm": [
+                    -31.791722360415598,
+                    26.142778391245898,
+                    -111.32463808768216,
+                    54.74559206096667
+                  ]
+                },
+                {
+                  "success": true,
+                  "nfev": 10,
+                  "RMS_mm": 15.532775157101058,
+                  "parameters_mm": [
+                    -31.791811205208237,
+                    26.14252707757629,
+                    -111.32455851501894,
+                    54.74557197609725
+                  ]
+                },
+                {
+                  "success": true,
+                  "nfev": 10,
+                  "RMS_mm": 15.532775157215577,
+                  "parameters_mm": [
+                    -31.791849727389682,
+                    26.142465578307405,
+                    -111.32454267506762,
+                    54.74556956491953
+                  ]
+                }
+              ]
+            }
+          },
+          "overlap": {
+            "dice_voxel_center_approx": 0.6725554045605514,
+            "target_voxel_count": 4600625,
+            "candidate_sample_count": 5309931,
+            "intersection_sample_count": 3332699,
+            "candidate_sampled_volume_ml": 687.2908902929535,
+            "candidate_continuous_volume_ml": 687.2830005474217,
+            "grid_bounds_index_inclusive": [
+              [
+                -1,
+                -1,
+                -7
+              ],
+              [
+                284,
+                314,
+                178
+              ]
+            ],
+            "grid_shape": [
+              286,
+              316,
+              186
+            ],
+            "sampling": "target_native_voxel_centers_on_extended_index_grid",
+            "exact_continuous_dice": false,
+            "candidate_clipped_to_image_extent": false,
+            "individual_tie_rule": null
+          },
+          "analytic_volume_error_percent": 15.416275934818113,
+          "center_displacement_mm": [
+            -1.7983568739630904,
+            -2.0033914027747457,
+            0.35090039784849125
+          ],
+          "center_shift_mm": 2.7149209285082856
+        },
+        "ellipsoid_volume_scaled": {
+          "parameters": {
+            "kind": "ellipsoid_volume_scaled",
+            "center_mm": [
+              -29.993454331245147,
+              28.145918480351035,
+              -111.67545891286743
+            ],
+            "semi_axes_mm": [
+              74.46357837975668,
+              50.94923745048815,
+              37.47126413247275
+            ],
+            "axes_matrix": [
+              [
+                0.7042431800826958,
+                0.6943231559997796,
+                -0.14817860287341658
+              ],
+              [
+                -0.5299905786133156,
+                0.65301900055179,
+                0.5409955374117833
+              ],
+              [
+                0.47238917206910536,
+                -0.30245915420242664,
+                0.8278689087959625
+              ]
+            ],
+            "volume_mm3": 595481.872015666,
+            "volume_ml": 595.481872015666,
+            "covariance_mm2": [
+              [
+                806.4478929736329,
+                -201.03151112013532,
+                225.45125751651528
+              ],
+              [
+                -201.03151112013532,
+                615.0757272193262,
+                -254.41213603799966
+              ],
+              [
+                225.45125751651528,
+                -254.4121360379997,
+                487.42536732502714
+              ]
+            ],
+            "orientation_degenerate": false,
+            "axes_convention": "columns_are_physical_axes_descending_size_det_plus_one",
+            "volume_definition": "analytic_continuous_ellipsoid",
+            "eigenvalues_mm2": [
+              1337.0015431006866,
+              625.9209386552523,
+              338.5640122315283
+            ],
+            "eigen_rtol": 1e-06,
+            "common_axis_scale": 0.9107369274484938,
+            "preserves_volume": true,
+            "preserves_covariance": false
+          },
+          "overlap": {
+            "dice_voxel_center_approx": 0.7851258935124149,
+            "target_voxel_count": 4600625,
+            "candidate_sample_count": 4600842,
+            "intersection_sample_count": 3612155,
+            "candidate_sampled_volume_ml": 595.5099594094937,
+            "candidate_continuous_volume_ml": 595.481872015666,
+            "grid_bounds_index_inclusive": [
+              [
+                -2,
+                -1,
+                -1
+              ],
+              [
+                284,
+                314,
+                178
+              ]
+            ],
+            "grid_shape": [
+              287,
+              316,
+              180
+            ],
+            "sampling": "target_native_voxel_centers_on_extended_index_grid",
+            "exact_continuous_dice": false,
+            "candidate_clipped_to_image_extent": false,
+            "individual_tie_rule": null
+          },
+          "analytic_volume_error_percent": -4.440892098500626e-14,
+          "center_displacement_mm": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "center_shift_mm": 0.0
+        },
+        "ellipsoid_raw_moment": {
+          "parameters": {
+            "kind": "ellipsoid_raw_moment",
+            "center_mm": [
+              -29.993454331245147,
+              28.145918480351035,
+              -111.67545891286743
+            ],
+            "semi_axes_mm": [
+              81.7618964769252,
+              55.94286990561229,
+              41.14389457936185
+            ],
+            "axes_matrix": [
+              [
+                0.7042431800826958,
+                0.6943231559997796,
+                -0.14817860287341658
+              ],
+              [
+                -0.5299905786133156,
+                0.65301900055179,
+                0.5409955374117833
+              ],
+              [
+                0.47238917206910536,
+                -0.30245915420242664,
+                0.8278689087959625
+              ]
+            ],
+            "volume_mm3": 788296.6962969226,
+            "volume_ml": 788.2966962969226,
+            "covariance_mm2": [
+              [
+                972.277910996812,
+                -242.3696551003429,
+                271.8108381206084
+              ],
+              [
+                -242.36965510034295,
+                741.5538541002848,
+                -306.7269470407688
+              ],
+              [
+                271.8108381206084,
+                -306.7269470407688,
+                587.654728890371
+              ]
+            ],
+            "orientation_degenerate": false,
+            "axes_convention": "columns_are_physical_axes_descending_size_det_plus_one",
+            "volume_definition": "analytic_continuous_ellipsoid",
+            "eigenvalues_mm2": [
+              1337.0015431006866,
+              625.9209386552523,
+              338.5640122315283
+            ],
+            "eigen_rtol": 1e-06,
+            "common_axis_scale": 1.0,
+            "preserves_volume": false,
+            "preserves_covariance": true
+          },
+          "overlap": {
+            "dice_voxel_center_approx": 0.7804303320761021,
+            "target_voxel_count": 4600625,
+            "candidate_sample_count": 6090328,
+            "intersection_sample_count": 4171772,
+            "candidate_sampled_volume_ml": 788.3015717711027,
+            "candidate_continuous_volume_ml": 788.2966962969226,
+            "grid_bounds_index_inclusive": [
+              [
+                -14,
+                -1,
+                -7
+              ],
+              [
+                284,
+                321,
+                178
+              ]
+            ],
+            "grid_shape": [
+              299,
+              323,
+              186
+            ],
+            "sampling": "target_native_voxel_centers_on_extended_index_grid",
+            "exact_continuous_dice": false,
+            "candidate_clipped_to_image_extent": false,
+            "individual_tie_rule": null
+          },
+          "analytic_volume_error_percent": 32.37962956430414,
+          "center_displacement_mm": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "center_shift_mm": 0.0
+        }
+      },
+      "planes": [
+        {
+          "plane": "Аксиальная",
+          "fixed_RAS_axis": 2,
+          "fixed_coordinate_mm": -111.67545891286743,
+          "outside_CT_fraction": 0.0,
+          "pixel_spacing_mm": [
+            0.438413361169097,
+            0.3966597077244387
+          ]
+        },
+        {
+          "plane": "Корональная",
+          "fixed_RAS_axis": 1,
+          "fixed_coordinate_mm": 28.145918480351035,
+          "outside_CT_fraction": 0.12291666666666666,
+          "pixel_spacing_mm": [
+            0.438413361169097,
+            0.33375333211489533
+          ]
+        },
+        {
+          "plane": "Сагиттальная",
+          "fixed_RAS_axis": 0,
+          "fixed_coordinate_mm": -29.993454331245147,
+          "outside_CT_fraction": 0.12291666666666666,
+          "pixel_spacing_mm": [
+            0.3966597077244103,
+            0.33375333211489533
+          ]
+        }
+      ],
+      "figure": "construction_adam.png",
+      "figure_sha256": "018ca1c47f9a1b9a14e9455a8f7e3d9f8c90cf18d81edfa03ed40a8ce3f6b1a9"
+    },
+    {
+      "subject": "nix",
+      "phase_id": "phase_02",
+      "region": "whole_heart",
+      "phase_percent_within_cycle": 33.0,
+      "cycle_index": 0,
+      "target_volume_ml": 569.8517192077636,
+      "target_center_mm": [
+        -18.501929282687783,
+        20.718246841355374,
+        -149.89080252717048
+      ],
+      "target_touches_CT_boundary": true,
+      "CT_sha256": "bca8fa1d330e02350179f3175132fe4844e9d3beb676ae1c9ac4f9d96342f4d4",
+      "mask_sha256": "04901c7b437bd67628c97c3eca0e375870bcb7f0a0568610b4edda2801b09916",
+      "surface": {
+        "triangle_count": 304764,
+        "area_mm2": 66654.65112495856,
+        "surface_definition": "padded_binary_mask_isosurface_0.5_without_smoothing",
+        "quadrature": "three_barycentric_points_per_triangle_area_over_three",
+        "bounds_mm": [
+          [
+            -81.67756652832031,
+            -47.74644470214844,
+            -205.87750244140625
+          ],
+          [
+            55.36930847167969,
+            70.15980529785156,
+            -77.75250244140625
+          ]
+        ]
+      },
+      "methods": {
+        "sphere": {
+          "parameters": {
+            "kind": "sphere_equal_volume_centroid",
+            "center_mm": [
+              -18.501929282687783,
+              20.718246841355374,
+              -149.89080252717048
+            ],
+            "semi_axes_mm": [
+              51.430934775584234,
+              51.430934775584234,
+              51.430934775584234
+            ],
+            "axes_matrix": [
+              [
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "volume_mm3": 569851.7192077632,
+            "volume_ml": 569.8517192077632,
+            "covariance_mm2": [
+              [
+                529.0282103780798,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                529.0282103780798,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                529.0282103780798
+              ]
+            ],
+            "orientation_degenerate": true,
+            "axes_convention": "columns_are_physical_axes_descending_size_det_plus_one",
+            "volume_definition": "analytic_continuous_ellipsoid",
+            "radius_mm": 51.430934775584234,
+            "preserves_volume": true,
+            "preserves_covariance": false
+          },
+          "overlap": {
+            "dice_voxel_center_approx": 0.7139682992782667,
+            "target_voxel_count": 1555427,
+            "candidate_sample_count": 1555417,
+            "intersection_sample_count": 1110522,
+            "candidate_sampled_volume_ml": 569.8480555725097,
+            "candidate_continuous_volume_ml": 569.8517192077632,
+            "grid_bounds_index_inclusive": [
+              [
+                -4,
+                -1,
+                -1
+              ],
+              [
+                154,
+                179,
+                205
+              ]
+            ],
+            "grid_shape": [
+              159,
+              181,
+              207
+            ],
+            "sampling": "target_native_voxel_centers_on_extended_index_grid",
+            "exact_continuous_dice": false,
+            "candidate_clipped_to_image_extent": false,
+            "individual_tie_rule": null
+          },
+          "analytic_volume_error_percent": -6.661338147750939e-14,
+          "center_displacement_mm": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "center_shift_mm": 0.0
+        },
+        "sphere_second_moment": {
+          "parameters": {
+            "kind": "sphere_second_moment",
+            "center_mm": [
+              -18.501929282687783,
+              20.718246841355374,
+              -149.89080252717048
+            ],
+            "semi_axes_mm": [
+              59.489642651684164,
+              59.489642651684164,
+              59.489642651684164
+            ],
+            "axes_matrix": [
+              [
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "volume_mm3": 881886.4906119783,
+            "volume_ml": 881.8864906119784,
+            "covariance_mm2": [
+              [
+                707.803516565016,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                707.803516565016,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                707.803516565016
+              ]
+            ],
+            "orientation_degenerate": true,
+            "axes_convention": "columns_are_physical_axes_descending_size_det_plus_one",
+            "volume_definition": "analytic_continuous_ellipsoid",
+            "radius_mm": 59.489642651684164,
+            "preserves_volume": false,
+            "preserves_trace_covariance": true
+          },
+          "overlap": {
+            "dice_voxel_center_approx": 0.6883849767177637,
+            "target_voxel_count": 1555427,
+            "candidate_sample_count": 2407036,
+            "intersection_sample_count": 1363850,
+            "candidate_sampled_volume_ml": 881.8501947021483,
+            "candidate_continuous_volume_ml": 881.8864906119784,
+            "grid_bounds_index_inclusive": [
+              [
+                -14,
+                -1,
+                -7
+              ],
+              [
+                154,
+                179,
+                205
+              ]
+            ],
+            "grid_shape": [
+              169,
+              181,
+              213
+            ],
+            "sampling": "target_native_voxel_centers_on_extended_index_grid",
+            "exact_continuous_dice": false,
+            "candidate_clipped_to_image_extent": false,
+            "individual_tie_rule": null
+          },
+          "analytic_volume_error_percent": 54.757186981557446,
+          "center_displacement_mm": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "center_shift_mm": 0.0
+        },
+        "sphere_surface_fixed_center": {
+          "parameters": {
+            "kind": "sphere_surface_fixed_center",
+            "center_mm": [
+              -18.501929282687783,
+              20.718246841355374,
+              -149.89080252717048
+            ],
+            "semi_axes_mm": [
+              53.75104550815946,
+              53.75104550815946,
+              53.75104550815946
+            ],
+            "axes_matrix": [
+              [
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "volume_mm3": 650503.0806231173,
+            "volume_ml": 650.5030806231173,
+            "covariance_mm2": [
+              [
+                577.8349786440458,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                577.8349786440458,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                577.8349786440458
+              ]
+            ],
+            "orientation_degenerate": true,
+            "axes_convention": "columns_are_physical_axes_descending_size_det_plus_one",
+            "volume_definition": "analytic_continuous_ellipsoid",
+            "radius_mm": 53.75104550815946,
+            "preserves_volume": false,
+            "surface_RMS_mm": 14.420233260507045
+          },
+          "overlap": {
+            "dice_voxel_center_approx": 0.7169337648535213,
+            "target_voxel_count": 1555427,
+            "candidate_sample_count": 1775433,
+            "intersection_sample_count": 1194003,
+            "candidate_sampled_volume_ml": 650.4538929748534,
+            "candidate_continuous_volume_ml": 650.5030806231173,
+            "grid_bounds_index_inclusive": [
+              [
+                -7,
+                -1,
+                -1
+              ],
+              [
+                154,
+                179,
+                205
+              ]
+            ],
+            "grid_shape": [
+              162,
+              181,
+              207
+            ],
+            "sampling": "target_native_voxel_centers_on_extended_index_grid",
+            "exact_continuous_dice": false,
+            "candidate_clipped_to_image_extent": false,
+            "individual_tie_rule": null
+          },
+          "analytic_volume_error_percent": 14.153043449176451,
+          "center_displacement_mm": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "center_shift_mm": 0.0
+        },
+        "sphere_surface_free_center": {
+          "parameters": {
+            "kind": "sphere_surface_free_center",
+            "center_mm": [
+              -21.504181543254756,
+              18.06749030882207,
+              -147.10327222310278
+            ],
+            "semi_axes_mm": [
+              53.54506434844275,
+              53.54506434844275,
+              53.54506434844275
+            ],
+            "axes_matrix": [
+              [
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "volume_mm3": 643053.2592780554,
+            "volume_ml": 643.0532592780554,
+            "covariance_mm2": [
+              [
+                573.414783215775,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                573.414783215775,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                573.414783215775
+              ]
+            ],
+            "orientation_degenerate": true,
+            "axes_convention": "columns_are_physical_axes_descending_size_det_plus_one",
+            "volume_definition": "analytic_continuous_ellipsoid",
+            "radius_mm": 53.54506434844275,
+            "preserves_volume": false,
+            "surface_RMS_mm": 14.217774837106752,
+            "optimization": {
+              "success": true,
+              "global_optimum_certified": false,
+              "center_domain": "physical_axis_aligned_surface_bounding_box",
+              "radius_upper_bound_mm": 221.58462347673884,
+              "active_bounds": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "trials": [
+                {
+                  "success": true,
+                  "nfev": 9,
+                  "RMS_mm": 14.217774837137227,
+                  "parameters_mm": [
+                    -21.504156315508414,
+                    18.067688846316308,
+                    -147.10336326149613,
+                    53.545079242762945
+                  ]
+                },
+                {
+                  "success": true,
+                  "nfev": 9,
+                  "RMS_mm": 14.21777483741678,
+                  "parameters_mm": [
+                    -21.504130752562595,
+                    18.067421535829386,
+                    -147.10320844945662,
+                    53.545047822157365
+                  ]
+                },
+                {
+                  "success": true,
+                  "nfev": 10,
+                  "RMS_mm": 14.217774837106752,
+                  "parameters_mm": [
+                    -21.504181543254756,
+                    18.06749030882207,
+                    -147.10327222310278,
+                    53.54506434844275
+                  ]
+                }
+              ]
+            }
+          },
+          "overlap": {
+            "dice_voxel_center_approx": 0.6990486448542944,
+            "target_voxel_count": 1555427,
+            "candidate_sample_count": 1755324,
+            "intersection_sample_count": 1157188,
+            "candidate_sampled_volume_ml": 643.0866888427734,
+            "candidate_continuous_volume_ml": 643.0532592780554,
+            "grid_bounds_index_inclusive": [
+              [
+                -3,
+                -1,
+                -1
+              ],
+              [
+                154,
+                179,
+                205
+              ]
+            ],
+            "grid_shape": [
+              158,
+              181,
+              207
+            ],
+            "sampling": "target_native_voxel_centers_on_extended_index_grid",
+            "exact_continuous_dice": false,
+            "candidate_clipped_to_image_extent": false,
+            "individual_tie_rule": null
+          },
+          "analytic_volume_error_percent": 12.845717158151304,
+          "center_displacement_mm": [
+            -3.002252260566973,
+            -2.650756532533304,
+            2.787530304067701
+          ],
+          "center_shift_mm": 4.879585435971303
+        },
+        "ellipsoid_volume_scaled": {
+          "parameters": {
+            "kind": "ellipsoid_volume_scaled",
+            "center_mm": [
+              -18.501929282687783,
+              20.718246841355374,
+              -149.89080252717048
+            ],
+            "semi_axes_mm": [
+              66.71794010478685,
+              51.766907874578166,
+              39.38931241814338
+            ],
+            "axes_matrix": [
+              [
+                0.6478379202033424,
+                0.7589202413408003,
+                -0.06592493026032452
+              ],
+              [
+                -0.441397106391306,
+                0.4445010923266872,
+                0.7794789114464635
+              ],
+              [
+                0.6208660271072894,
+                -0.47587692337788645,
+                0.6229498616906559
+              ]
+            ],
+            "volume_mm3": 569851.7192077637,
+            "volume_ml": 569.8517192077637,
+            "covariance_mm2": [
+              [
+                683.676935822773,
+                -89.7157962716359,
+                151.77173805340792
+              ],
+              [
+                -89.71579627163594,
+                467.88264160976985,
+                -206.6684107835675
+              ],
+              [
+                151.7717380534079,
+                -206.6684107835675,
+                584.963265666475
+              ]
+            ],
+            "orientation_degenerate": false,
+            "axes_convention": "columns_are_physical_axes_descending_size_det_plus_one",
+            "volume_definition": "analytic_continuous_ellipsoid",
+            "eigenvalues_mm2": [
+              1088.6009877411152,
+              655.372048697365,
+              379.43751325656814
+            ],
+            "eigen_rtol": 1e-06,
+            "common_axis_scale": 0.9043223511255003,
+            "preserves_volume": true,
+            "preserves_covariance": false
+          },
+          "overlap": {
+            "dice_voxel_center_approx": 0.7812294574236471,
+            "target_voxel_count": 1555427,
+            "candidate_sample_count": 1555490,
+            "intersection_sample_count": 1215170,
+            "candidate_sampled_volume_ml": 569.8748001098631,
+            "candidate_continuous_volume_ml": 569.8517192077637,
+            "grid_bounds_index_inclusive": [
+              [
+                -1,
+                -1,
+                -1
+              ],
+              [
+                154,
+                179,
+                205
+              ]
+            ],
+            "grid_shape": [
+              156,
+              181,
+              207
+            ],
+            "sampling": "target_native_voxel_centers_on_extended_index_grid",
+            "exact_continuous_dice": false,
+            "candidate_clipped_to_image_extent": false,
+            "individual_tie_rule": null
+          },
+          "analytic_volume_error_percent": 2.220446049250313e-14,
+          "center_displacement_mm": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "center_shift_mm": 0.0
+        },
+        "ellipsoid_raw_moment": {
+          "parameters": {
+            "kind": "ellipsoid_raw_moment",
+            "center_mm": [
+              -18.501929282687783,
+              20.718246841355374,
+              -149.89080252717048
+            ],
+            "semi_axes_mm": [
+              73.77672355631941,
+              57.24386642677821,
+              43.55671666095645
+            ],
+            "axes_matrix": [
+              [
+                0.6478379202033424,
+                0.7589202413408003,
+                -0.06592493026032452
+              ],
+              [
+                -0.441397106391306,
+                0.4445010923266872,
+                0.7794789114464635
+              ],
+              [
+                0.6208660271072894,
+                -0.47587692337788645,
+                0.6229498616906559
+              ]
+            ],
+            "volume_mm3": 770534.4634069129,
+            "volume_ml": 770.5344634069129,
+            "covariance_mm2": [
+              [
+                835.9963843138926,
+                -109.70398059233638,
+                185.58564375290712
+              ],
+              [
+                -109.70398059233638,
+                572.1243121917987,
+                -252.71299222495392
+              ],
+              [
+                185.5856437529071,
+                -252.71299222495392,
+                715.2898531893561
+              ]
+            ],
+            "orientation_degenerate": false,
+            "axes_convention": "columns_are_physical_axes_descending_size_det_plus_one",
+            "volume_definition": "analytic_continuous_ellipsoid",
+            "eigenvalues_mm2": [
+              1088.6009877411152,
+              655.372048697365,
+              379.43751325656814
+            ],
+            "eigen_rtol": 1e-06,
+            "common_axis_scale": 1.0,
+            "preserves_volume": false,
+            "preserves_covariance": true
+          },
+          "overlap": {
+            "dice_voxel_center_approx": 0.7798521832368105,
+            "target_voxel_count": 1555427,
+            "candidate_sample_count": 2103292,
+            "intersection_sample_count": 1426630,
+            "candidate_sampled_volume_ml": 770.5694720458984,
+            "candidate_continuous_volume_ml": 770.5344634069129,
+            "grid_bounds_index_inclusive": [
+              [
+                -6,
+                -1,
+                -7
+              ],
+              [
+                154,
+                181,
+                205
+              ]
+            ],
+            "grid_shape": [
+              161,
+              183,
+              213
+            ],
+            "sampling": "target_native_voxel_centers_on_extended_index_grid",
+            "exact_continuous_dice": false,
+            "candidate_clipped_to_image_extent": false,
+            "individual_tie_rule": null
+          },
+          "analytic_volume_error_percent": 35.21666030562276,
+          "center_displacement_mm": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "center_shift_mm": 0.0
+        }
+      },
+      "planes": [
+        {
+          "plane": "Аксиальная",
+          "fixed_RAS_axis": 2,
+          "fixed_coordinate_mm": -149.89080252717048,
+          "outside_CT_fraction": 0.0,
+          "pixel_spacing_mm": [
+            0.438413361169097,
+            0.3966597077244387
+          ]
+        },
+        {
+          "plane": "Корональная",
+          "fixed_RAS_axis": 1,
+          "fixed_coordinate_mm": 20.718246841355374,
+          "outside_CT_fraction": 0.11666666666666667,
+          "pixel_spacing_mm": [
+            0.438413361169097,
+            0.3763603343873285
+          ]
+        },
+        {
+          "plane": "Сагиттальная",
+          "fixed_RAS_axis": 0,
+          "fixed_coordinate_mm": -18.501929282687783,
+          "outside_CT_fraction": 0.11666666666666667,
+          "pixel_spacing_mm": [
+            0.3966597077244103,
+            0.3763603343873285
+          ]
+        }
+      ],
+      "figure": "construction_nix.png",
+      "figure_sha256": "46e8be7dd1e20a2616eb8c1bf5e12c9e3c654e207411454afc20d728e93a719e"
+    },
+    {
+      "subject": "georg",
+      "phase_id": "phase_05",
+      "region": "whole_heart",
+      "phase_percent_within_cycle": 73.0,
+      "cycle_index": 0,
+      "target_volume_ml": 670.8081118110784,
+      "target_center_mm": [
+        -32.454744814197525,
+        33.596880582322825,
+        -202.96748368208807
+      ],
+      "target_touches_CT_boundary": false,
+      "CT_sha256": "7c5864467a51968c28310ef5ae0b6bd1a7c962b2908453f2e53df89aea4cfa84",
+      "mask_sha256": "40dc6c0eeb6944e8903e4a4b015644f60cbf829869e16dba60fdf644e57aa728",
+      "surface": {
+        "triangle_count": 705400,
+        "area_mm2": 79876.56402322283,
+        "surface_definition": "padded_binary_mask_isosurface_0.5_without_smoothing",
+        "quadrature": "three_barycentric_points_per_triangle_area_over_three",
+        "bounds_mm": [
+          [
+            -102.02171702682972,
+            -44.39578779041767,
+            -250.01849365234375
+          ],
+          [
+            48.52503089606762,
+            94.21737645566463,
+            -133.76849365234375
+          ]
+        ]
+      },
+      "methods": {
+        "sphere": {
+          "parameters": {
+            "kind": "sphere_equal_volume_centroid",
+            "center_mm": [
+              -32.454744814197525,
+              33.596880582322825,
+              -202.96748368208807
+            ],
+            "semi_axes_mm": [
+              54.30459329513199,
+              54.30459329513199,
+              54.30459329513199
+            ],
+            "axes_matrix": [
+              [
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "volume_mm3": 670808.1118110783,
+            "volume_ml": 670.8081118110782,
+            "covariance_mm2": [
+              [
+                589.7977705899388,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                589.7977705899388,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                589.7977705899388
+              ]
+            ],
+            "orientation_degenerate": true,
+            "axes_convention": "columns_are_physical_axes_descending_size_det_plus_one",
+            "volume_definition": "analytic_continuous_ellipsoid",
+            "radius_mm": 54.30459329513199,
+            "preserves_volume": true,
+            "preserves_covariance": false
+          },
+          "overlap": {
+            "dice_voxel_center_approx": 0.6734999156966548,
+            "target_voxel_count": 5094754,
+            "candidate_sample_count": 5094640,
+            "intersection_sample_count": 3431278,
+            "candidate_sampled_volume_ml": 670.7931018371434,
+            "candidate_continuous_volume_ml": 670.8081118110782,
+            "grid_bounds_index_inclusive": [
+              [
+                -1,
+                -1,
+                -13
+              ],
+              [
+                302,
+                328,
+                186
+              ]
+            ],
+            "grid_shape": [
+              304,
+              330,
+              200
+            ],
+            "sampling": "target_native_voxel_centers_on_extended_index_grid",
+            "exact_continuous_dice": false,
+            "candidate_clipped_to_image_extent": false,
+            "individual_tie_rule": null
+          },
+          "analytic_volume_error_percent": -3.3306690738754696e-14,
+          "center_displacement_mm": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "center_shift_mm": 0.0
+        },
+        "sphere_second_moment": {
+          "parameters": {
+            "kind": "sphere_second_moment",
+            "center_mm": [
+              -32.454744814197525,
+              33.596880582322825,
+              -202.96748368208807
+            ],
+            "semi_axes_mm": [
+              64.65802280271431,
+              64.65802280271431,
+              64.65802280271431
+            ],
+            "axes_matrix": [
+              [
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "volume_mm3": 1132285.3010114152,
+            "volume_ml": 1132.2853010114152,
+            "covariance_mm2": [
+              [
+                836.1319825512649,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                836.1319825512649,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                836.1319825512649
+              ]
+            ],
+            "orientation_degenerate": true,
+            "axes_convention": "columns_are_physical_axes_descending_size_det_plus_one",
+            "volume_definition": "analytic_continuous_ellipsoid",
+            "radius_mm": 64.65802280271431,
+            "preserves_volume": false,
+            "preserves_trace_covariance": true
+          },
+          "overlap": {
+            "dice_voxel_center_approx": 0.6470487635964376,
+            "target_voxel_count": 5094754,
+            "candidate_sample_count": 8599642,
+            "intersection_sample_count": 4430471,
+            "candidate_sampled_volume_ml": 1132.2842304596545,
+            "candidate_continuous_volume_ml": 1132.2853010114152,
+            "grid_bounds_index_inclusive": [
+              [
+                -10,
+                -1,
+                -29
+              ],
+              [
+                302,
+                328,
+                186
+              ]
+            ],
+            "grid_shape": [
+              313,
+              330,
+              216
+            ],
+            "sampling": "target_native_voxel_centers_on_extended_index_grid",
+            "exact_continuous_dice": false,
+            "candidate_clipped_to_image_extent": false,
+            "individual_tie_rule": null
+          },
+          "analytic_volume_error_percent": 68.79421716508756,
+          "center_displacement_mm": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "center_shift_mm": 0.0
+        },
+        "sphere_surface_fixed_center": {
+          "parameters": {
+            "kind": "sphere_surface_fixed_center",
+            "center_mm": [
+              -32.454744814197525,
+              33.596880582322825,
+              -202.96748368208807
+            ],
+            "semi_axes_mm": [
+              56.568036486532876,
+              56.568036486532876,
+              56.568036486532876
+            ],
+            "axes_matrix": [
+              [
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "volume_mm3": 758231.6738229879,
+            "volume_ml": 758.2316738229879,
+            "covariance_mm2": [
+              [
+                639.9885503883429,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                639.9885503883429,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                639.9885503883429
+              ]
+            ],
+            "orientation_degenerate": true,
+            "axes_convention": "columns_are_physical_axes_descending_size_det_plus_one",
+            "volume_definition": "analytic_continuous_ellipsoid",
+            "radius_mm": 56.568036486532876,
+            "preserves_volume": false,
+            "surface_RMS_mm": 16.59504605193821
+          },
+          "overlap": {
+            "dice_voxel_center_approx": 0.6798522629933945,
+            "target_voxel_count": 5094754,
+            "candidate_sample_count": 5758857,
+            "intersection_sample_count": 3689426,
+            "candidate_sampled_volume_ml": 758.2481883050706,
+            "candidate_continuous_volume_ml": 758.2316738229879,
+            "grid_bounds_index_inclusive": [
+              [
+                -1,
+                -1,
+                -16
+              ],
+              [
+                302,
+                328,
+                186
+              ]
+            ],
+            "grid_shape": [
+              304,
+              330,
+              203
+            ],
+            "sampling": "target_native_voxel_centers_on_extended_index_grid",
+            "exact_continuous_dice": false,
+            "candidate_clipped_to_image_extent": false,
+            "individual_tie_rule": null
+          },
+          "analytic_volume_error_percent": 13.032573767761878,
+          "center_displacement_mm": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "center_shift_mm": 0.0
+        },
+        "sphere_surface_free_center": {
+          "parameters": {
+            "kind": "sphere_surface_free_center",
+            "center_mm": [
+              -34.23510439063558,
+              30.23543424519929,
+              -201.49285851895036
+            ],
+            "semi_axes_mm": [
+              56.35639318398686,
+              56.35639318398686,
+              56.35639318398686
+            ],
+            "axes_matrix": [
+              [
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "volume_mm3": 749752.945444032,
+            "volume_ml": 749.752945444032,
+            "covariance_mm2": [
+              [
+                635.2086105416241,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                635.2086105416241,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                635.2086105416241
+              ]
+            ],
+            "orientation_degenerate": true,
+            "axes_convention": "columns_are_physical_axes_descending_size_det_plus_one",
+            "volume_definition": "analytic_continuous_ellipsoid",
+            "radius_mm": 56.35639318398686,
+            "preserves_volume": false,
+            "surface_RMS_mm": 16.474920475845288,
+            "optimization": {
+              "success": true,
+              "global_optimum_certified": false,
+              "center_domain": "physical_axis_aligned_surface_bounding_box",
+              "radius_upper_bound_mm": 235.35504055038163,
+              "active_bounds": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "trials": [
+                {
+                  "success": true,
+                  "nfev": 10,
+                  "RMS_mm": 16.474920475845288,
+                  "parameters_mm": [
+                    -34.23510439063558,
+                    30.23543424519929,
+                    -201.49285851895036,
+                    56.35639318398686
+                  ]
+                },
+                {
+                  "success": true,
+                  "nfev": 12,
+                  "RMS_mm": 16.474920476510583,
+                  "parameters_mm": [
+                    -34.234854171497474,
+                    30.235285398240514,
+                    -201.4926723106086,
+                    56.356337972149234
+                  ]
+                },
+                {
+                  "success": true,
+                  "nfev": 13,
+                  "RMS_mm": 16.474920475955553,
+                  "parameters_mm": [
+                    -34.23496934873776,
+                    30.235281324310254,
+                    -201.49276991839326,
+                    56.35636096549987
+                  ]
+                }
+              ]
+            }
+          },
+          "overlap": {
+            "dice_voxel_center_approx": 0.6690016678800776,
+            "target_voxel_count": 5094754,
+            "candidate_sample_count": 5694391,
+            "intersection_sample_count": 3608978,
+            "candidate_sampled_volume_ml": 749.7601797111301,
+            "candidate_continuous_volume_ml": 749.752945444032,
+            "grid_bounds_index_inclusive": [
+              [
+                -1,
+                -1,
+                -14
+              ],
+              [
+                302,
+                328,
+                186
+              ]
+            ],
+            "grid_shape": [
+              304,
+              330,
+              201
+            ],
+            "sampling": "target_native_voxel_centers_on_extended_index_grid",
+            "exact_continuous_dice": false,
+            "candidate_clipped_to_image_extent": false,
+            "individual_tie_rule": null
+          },
+          "analytic_volume_error_percent": 11.768616425912715,
+          "center_displacement_mm": [
+            -1.7803595764380518,
+            -3.3614463371235352,
+            1.4746251631377163
+          ],
+          "center_shift_mm": 4.0796471747609315
+        },
+        "ellipsoid_volume_scaled": {
+          "parameters": {
+            "kind": "ellipsoid_volume_scaled",
+            "center_mm": [
+              -32.454744814197525,
+              33.596880582322825,
+              -202.96748368208807
+            ],
+            "semi_axes_mm": [
+              73.56946305713511,
+              54.93828115618688,
+              39.62205919059986
+            ],
+            "axes_matrix": [
+              [
+                0.719888817261069,
+                0.681833911355722,
+                -0.12985610539291922
+              ],
+              [
+                -0.5609365072199379,
+                0.6817017686190927,
+                0.46971580080884845
+              ],
+              [
+                0.40879129840342276,
+                -0.2653021220928294,
+                0.8732150126759647
+              ]
+            ],
+            "volume_mm3": 670808.1118110786,
+            "volume_ml": 670.8081118110787,
+            "covariance_mm2": [
+              [
+                846.9178006266084,
+                -175.69739719595415,
+                173.7634739534312
+              ],
+              [
+                -175.69739719595415,
+                690.4042086370857,
+                -228.6115834710659
+              ],
+              [
+                173.76347395343117,
+                -228.61158347106587,
+                462.7956318192676
+              ]
+            ],
+            "orientation_degenerate": false,
+            "axes_convention": "columns_are_physical_axes_descending_size_det_plus_one",
+            "volume_definition": "analytic_continuous_ellipsoid",
+            "eigenvalues_mm2": [
+              1357.5808980180966,
+              757.0432316997164,
+              393.77181793598163
+            ],
+            "eigen_rtol": 1e-06,
+            "common_axis_scale": 0.8929553115617861,
+            "preserves_volume": true,
+            "preserves_covariance": false
+          },
+          "overlap": {
+            "dice_voxel_center_approx": 0.763915771184443,
+            "target_voxel_count": 5094754,
+            "candidate_sample_count": 5094728,
+            "intersection_sample_count": 3891953,
+            "candidate_sampled_volume_ml": 670.8046884836898,
+            "candidate_continuous_volume_ml": 670.8081118110787,
+            "grid_bounds_index_inclusive": [
+              [
+                -1,
+                -1,
+                -3
+              ],
+              [
+                302,
+                328,
+                186
+              ]
+            ],
+            "grid_shape": [
+              304,
+              330,
+              190
+            ],
+            "sampling": "target_native_voxel_centers_on_extended_index_grid",
+            "exact_continuous_dice": false,
+            "candidate_clipped_to_image_extent": false,
+            "individual_tie_rule": null
+          },
+          "analytic_volume_error_percent": 2.220446049250313e-14,
+          "center_displacement_mm": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "center_shift_mm": 0.0
+        },
+        "ellipsoid_raw_moment": {
+          "parameters": {
+            "kind": "ellipsoid_raw_moment",
+            "center_mm": [
+              -32.454744814197525,
+              33.596880582322825,
+              -202.96748368208807
+            ],
+            "semi_axes_mm": [
+              82.38874006859483,
+              61.52411038364214,
+              44.37182765764678
+            ],
+            "axes_matrix": [
+              [
+                0.719888817261069,
+                0.681833911355722,
+                -0.12985610539291922
+              ],
+              [
+                -0.5609365072199379,
+                0.6817017686190927,
+                0.46971580080884845
+              ],
+              [
+                0.40879129840342276,
+                -0.2653021220928294,
+                0.8732150126759647
+              ]
+            ],
+            "volume_mm3": 942126.3073492927,
+            "volume_ml": 942.1263073492927,
+            "covariance_mm2": [
+              [
+                1062.1401138871975,
+                -220.34635867769447,
+                217.92097872754746
+              ],
+              [
+                -220.34635867769458,
+                865.8526296736757,
+                -286.70732050293105
+              ],
+              [
+                217.9209787275474,
+                -286.70732050293105,
+                580.4032040929224
+              ]
+            ],
+            "orientation_degenerate": false,
+            "axes_convention": "columns_are_physical_axes_descending_size_det_plus_one",
+            "volume_definition": "analytic_continuous_ellipsoid",
+            "eigenvalues_mm2": [
+              1357.5808980180966,
+              757.0432316997164,
+              393.77181793598163
+            ],
+            "eigen_rtol": 1e-06,
+            "common_axis_scale": 1.0,
+            "preserves_volume": false,
+            "preserves_covariance": true
+          },
+          "overlap": {
+            "dice_voxel_center_approx": 0.7558698005140068,
+            "target_voxel_count": 5094754,
+            "candidate_sample_count": 7155279,
+            "intersection_sample_count": 4629715,
+            "candidate_sampled_volume_ml": 942.1100990296021,
+            "candidate_continuous_volume_ml": 942.1263073492927,
+            "grid_bounds_index_inclusive": [
+              [
+                -12,
+                -1,
+                -12
+              ],
+              [
+                302,
+                335,
+                186
+              ]
+            ],
+            "grid_shape": [
+              315,
+              337,
+              199
+            ],
+            "sampling": "target_native_voxel_centers_on_extended_index_grid",
+            "exact_continuous_dice": false,
+            "candidate_clipped_to_image_extent": false,
+            "individual_tie_rule": null
+          },
+          "analytic_volume_error_percent": 40.44646908125438,
+          "center_displacement_mm": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "center_shift_mm": 0.0
+        }
+      },
+      "planes": [
+        {
+          "plane": "Аксиальная",
+          "fixed_RAS_axis": 2,
+          "fixed_coordinate_mm": -202.96748368208807,
+          "outside_CT_fraction": 0.0,
+          "pixel_spacing_mm": [
+            0.438413361169097,
+            0.40080446084651555
+          ]
+        },
+        {
+          "plane": "Корональная",
+          "fixed_RAS_axis": 1,
+          "fixed_coordinate_mm": 33.596880582322825,
+          "outside_CT_fraction": 0.09375,
+          "pixel_spacing_mm": [
+            0.438413361169097,
+            0.3658712013618697
+          ]
+        },
+        {
+          "plane": "Сагиттальная",
+          "fixed_RAS_axis": 0,
+          "fixed_coordinate_mm": -32.454744814197525,
+          "outside_CT_fraction": 0.09375,
+          "pixel_spacing_mm": [
+            0.40080446084652976,
+            0.3658712013618697
+          ]
+        }
+      ],
+      "figure": "construction_georg.png",
+      "figure_sha256": "f5ed696182a9b85ca794d2995c04fdec2df1585a5923e6085b5e58a24f495f1f"
+    }
+  ],
+  "render_code_sha256": {
+    "heart_construction_variants.py": "0d9186a8d3dfc0f85bf2ad7410f26161180d5ad2860b416f41ee3bb7c6b9d2af",
+    "heart_ct_overlays.py": "609048f8b7cceea1691a1b9eb90e45bf4f8363bec9a7ecf9fa92f96d6e6876be"
+  },
+  "rendered_from_saved_fit": true
+}

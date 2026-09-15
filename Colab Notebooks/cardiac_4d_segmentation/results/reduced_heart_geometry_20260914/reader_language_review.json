@@ -1,7 +1,7 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "review_record": "language_and_reader_integration_review",
-  "reviewed_at": "2026-09-15T15:15:01.232213+03:00",
+  "reviewed_at": "2026-09-15T12:49:36.539190+00:00",
   "reviewer": {
     "role": "primary_orchestrator_final_semantic_reader",
     "thread": "01a0a4ac-ee2a-7bc1-abef-a9c3c68178fc"
@@ -29,213 +29,211 @@
     }
   },
   "supersedes": {
-    "review_sha256": "e409faf190af73093a614f46595173f4924647d5e68380eee7e31fd5a918bdf7",
-    "reviewed_at": "2026-09-15T14:52:55.439535+03:00",
-    "artifact_hashes": {
-      "source_markdown": "c304572dafaeeab6d440f46ea1fe2d29c6fc3ae1109e046ce7a50a967a7890ca",
-      "plan_markdown": "0f775e019613d4632faa2c7b5fe6d55fc3fc30d1cdf88f3f68f39491828c8899",
-      "report_helper": "29fbadc35e3d7c850642531f874739a16a0427362a3e9c87e3ca3c354215e390",
-      "build_generator": "cb3d94f40e463d4239022d53b20142da3ed2b9010c8031602c49e405d7bd506c",
-      "notebook": "466b3899fd4db4e8a58b84256b062250b4b47a2044a6fd9cbb2c28c922629b65",
-      "html": "e2ca81fc728c4303fcd91e8b4102da5d898088c74941aad7c0bbde1c389e93ed"
-    },
-    "reason": "Added source-CT overlays with explanations and explicit TEPC-2 through TEPC-7 scope; renumbered figures in reading order."
+    "review_sha256": "a511e8e651bee8d3740ca2c2c9f105536442e5cd01a4c020b021e5a4cc467233",
+    "reason": "Separate shape families from construction criteria; add four sphere and two ellipsoid CT examples, qualify previous conclusions."
   },
-  "artifacts": {
-    "source_markdown": {
+  "artifacts": [
+    {
       "path": "Colab Notebooks/cardiac_4d_segmentation/heart_geometry_results_ru.md",
-      "sha256": "58bc4ba750ca3df41a0705ae9781589555a393291cc353766ac2cef0854d54e2",
-      "bytes": 51140
+      "sha256": "7810025a5bba1da7a550803dc8ef80043b469e050d87f48f7df0c1bb7701b144",
+      "bytes": 73892
     },
-    "plan_markdown": {
-      "path": "Colab Notebooks/40.15_План_исполнения_сравнения_моделей_сердца.md",
-      "sha256": "0f775e019613d4632faa2c7b5fe6d55fc3fc30d1cdf88f3f68f39491828c8899",
-      "bytes": 16547
-    },
-    "report_helper": {
+    {
       "path": "Colab Notebooks/cardiac_4d_segmentation/heart_geometry_report.py",
-      "sha256": "29fbadc35e3d7c850642531f874739a16a0427362a3e9c87e3ca3c354215e390",
-      "bytes": 13474
+      "sha256": "6354e3daf5292efa4e4d423cdf08ffa547ac4719d16c0947f2cf84625c26ece8",
+      "bytes": 14906
     },
-    "build_generator": {
+    {
       "path": "Colab Notebooks/cardiac_4d_segmentation/build_heart_geometry_results.py",
-      "sha256": "d020c8ba1735f983fa08cc8316e001c43e7bfd43204f9e4d6e3685464314fead",
-      "bytes": 5013
+      "sha256": "2f76807def3273a3dd84da7c043f4c575205649426dfa9639c7468cbd9097b68",
+      "bytes": 5824
     },
-    "notebook": {
-      "path": "Colab Notebooks/40.16_Геометрическое_сравнение_моделей_сердца.ipynb",
-      "sha256": "477c9bd485f35548066370f163607c95a4d9a548f19e5a9c416c2bf3b726b8e3",
-      "bytes": 5546639
+    {
+      "path": "Colab Notebooks/cardiac_4d_segmentation/heart_construction_variants.py",
+      "sha256": "0d9186a8d3dfc0f85bf2ad7410f26161180d5ad2860b416f41ee3bb7c6b9d2af",
+      "bytes": 13232
     },
-    "html": {
-      "path": "Colab Notebooks/40.16_Геометрическое_сравнение_моделей_сердца.html",
-      "sha256": "50fbfb0fa1f3cfd0781d8a4ce41001fcc28f88412d8269a659afc97ef519df9b",
-      "bytes": 5836525
-    },
-    "CT_renderer": {
+    {
       "path": "Colab Notebooks/cardiac_4d_segmentation/heart_ct_overlays.py",
-      "sha256": "ffd1102f83813c27f7206ee5c5d5d97ea9cd6008f448e21f1f71df95859e7d07",
-      "bytes": 12681
+      "sha256": "609048f8b7cceea1691a1b9eb90e45bf4f8363bec9a7ecf9fa92f96d6e6876be",
+      "bytes": 13163
     },
-    "CT_manifest": {
-      "path": "Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/ct_overlays_01/manifest.json",
-      "sha256": "c597775ad998e96fd3c3941e037a3174746add133a57fc207bdbf6c2c27ddad9",
-      "bytes": 6323
+    {
+      "path": "Colab Notebooks/cardiac_4d_segmentation/heart_reduced_geometry.py",
+      "sha256": "75b4e8cb543ac4464fea3fda31e4ef92676bd2683a2ccc313f24e2a5e08f04fd",
+      "bytes": 16020
+    },
+    {
+      "path": "Colab Notebooks/cardiac_4d_segmentation/tests/test_heart_construction_variants.py",
+      "sha256": "68ea7bf2d1b93aa9174aae6bbf9cd80a46cb535e00baf8d106cef915e9574cc1",
+      "bytes": 2160
+    },
+    {
+      "path": "Colab Notebooks/cardiac_4d_segmentation/README.md",
+      "sha256": "f8a0a3e993e30a731f521e1f7ad178dc23412122e98b0ad143f80a0ecfdea543",
+      "bytes": 43893
+    },
+    {
+      "path": "Colab Notebooks/40.15_План_исполнения_сравнения_моделей_сердца.md",
+      "sha256": "12b0e33aca96042dc479f8d22fd0aa2b0a9930e5fe04cd7884eabc2c1a0c6708",
+      "bytes": 20792
+    },
+    {
+      "path": "Colab Notebooks/40.16_Геометрическое_сравнение_моделей_сердца.ipynb",
+      "sha256": "21d21958cc925557faa0bd1f4c7b7dff0a3ba31345c071a29cd320e18d4a7d53",
+      "bytes": 12561477
+    },
+    {
+      "path": "Colab Notebooks/40.16_Геометрическое_сравнение_моделей_сердца.html",
+      "sha256": "5583b449d0a70a76caf71fc36d91ee5ca8c4adb434b8cf9dbe6fe1391a48fda7",
+      "bytes": 12853568
+    },
+    {
+      "path": "Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/construction_criteria_01/results.json",
+      "sha256": "d51fec1ca8b41fc0f64176488a50fe0f856907fbdfbb83223931402f0193b10f",
+      "bytes": 64924
     }
-  },
+  ],
   "figure_files": [
     {
       "path": "Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/reader_figures/01_overlap.png",
-      "sha256": "b877a45f4da1868ecb921baea4ddc39dffabc0a38a053c9fe087d385a574424d",
-      "visually_reviewed": true
+      "sha256": "ef3cf498f180584397158488174345477f92a3128d6f81a098dff839f687d646",
+      "bytes": 105453,
+      "review_basis": "visually_inspected_final_layout"
     },
     {
       "path": "Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/reader_figures/02_paired.png",
-      "sha256": "ed770a7d24d2b84bb9b20599d6ce8cda437596a177f59df926d1f075b8ab6e49",
-      "visually_reviewed": true
+      "sha256": "1d68dbad157c4b8166eff41571aa596917b835127ac7b2e4107a1f98b8e3922d",
+      "bytes": 115517,
+      "review_basis": "visually_inspected_final_layout"
     },
     {
       "path": "Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/reader_figures/03_affine.png",
       "sha256": "1d96db42897711b5252cd85057e78392f93f3b86f96c2307cb0fabf0f71f2790",
-      "visually_reviewed": true
+      "bytes": 123352,
+      "review_basis": "byte_identical_to_previously_visually_reviewed_figure"
     },
     {
       "path": "Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/reader_figures/04_discretization.png",
       "sha256": "f96c4cd2e4e94bebad43f0703273690afd1d411d7fd73ad5dac826048eba67ff",
-      "visually_reviewed": true
+      "bytes": 44551,
+      "review_basis": "byte_identical_to_previously_visually_reviewed_figure"
     },
     {
       "path": "Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/reader_figures/05_coverage.png",
       "sha256": "4662c50ad28e8d103755e6e29d2f13140553c7ea460ca68110182c87ce74877d",
-      "visually_reviewed": true
+      "bytes": 44135,
+      "review_basis": "byte_identical_to_previously_visually_reviewed_figure"
     },
     {
       "path": "Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/reader_figures/06_temporal.png",
       "sha256": "d525dd190deb9478daa854e95a64af78482750a9c510a7a63f224470b98ba015",
-      "visually_reviewed": true
+      "bytes": 121543,
+      "review_basis": "byte_identical_to_previously_visually_reviewed_figure"
     },
     {
       "path": "Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/reader_figures/07_overlay.png",
       "sha256": "72a2e22b0db8aefd653c8dd499bc882473ddc4b6632cade552bb5cdf33399bae",
-      "visually_reviewed": true
+      "bytes": 54241,
+      "review_basis": "byte_identical_to_previously_visually_reviewed_figure"
     },
     {
       "path": "Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/ct_overlays_01/ct_adam.png",
       "sha256": "d7d07d45248b2cb203e0f97f77392da5fd565eaefe4827e66a546a2e68acc94e",
-      "visually_reviewed": true
+      "bytes": 1216555,
+      "review_basis": "byte_identical_to_previously_visually_reviewed_figure"
     },
     {
       "path": "Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/ct_overlays_01/ct_nix.png",
       "sha256": "8bd7939ba04f5b5f2b2c620217a18ee0480def3b3d5991679943c862b8bd3ca7",
-      "visually_reviewed": true
+      "bytes": 1078506,
+      "review_basis": "byte_identical_to_previously_visually_reviewed_figure"
     },
     {
       "path": "Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/ct_overlays_01/ct_georg.png",
       "sha256": "ae4d59706d79e1276a55d2caafe61d79a5a975d479985ceaeda8d64676b5b640",
-      "visually_reviewed": true
+      "bytes": 1205982,
+      "review_basis": "byte_identical_to_previously_visually_reviewed_figure"
+    },
+    {
+      "path": "Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/construction_criteria_01/construction_adam.png",
+      "sha256": "018ca1c47f9a1b9a14e9455a8f7e3d9f8c90cf18d81edfa03ed40a8ce3f6b1a9",
+      "bytes": 1898918,
+      "review_basis": "visually_inspected_final_CT_layout"
+    },
+    {
+      "path": "Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/construction_criteria_01/construction_georg.png",
+      "sha256": "f5ed696182a9b85ca794d2995c04fdec2df1585a5923e6085b5e58a24f495f1f",
+      "bytes": 1784620,
+      "review_basis": "visually_inspected_final_CT_layout"
+    },
+    {
+      "path": "Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/construction_criteria_01/construction_nix.png",
+      "sha256": "46e8be7dd1e20a2616eb8c1bf5e12c9e3c654e207411454afc20d728e93a719e",
+      "bytes": 1552315,
+      "review_basis": "visually_inspected_final_CT_layout"
     }
   ],
   "language_review": {
-    "status": "passed",
-    "findings": [],
-    "full_sequential_semantic_read": true,
-    "after_last_reader_text_change": true,
-    "all_notebook_markdown_and_generated_tables_read": true,
-    "full_plan_read": true,
-    "scientific_headings_terms_definitions_and_evidence_boundaries_reviewed": true,
-    "text_serialization": "Notebook markdown cells and generated text/markdown outputs in cell order separated by two LF; figure text bound separately by reviewed PNG hashes.",
-    "reader_text_sha256": "3261a4463b1c6183ba7f42de82db9df206fa315e9a6644f47d06f24b30def727",
-    "reader_text_chars": 31212,
-    "plan_sha256": "0f775e019613d4632faa2c7b5fe6d55fc3fc30d1cdf88f3f68f39491828c8899",
-    "final_plan_recheck": {
-      "reviewed_at": "2026-09-15T14:55:57.004659+03:00",
-      "full_read": true,
-      "change": "Trailing empty line removed; reader prose unchanged."
+    "status": "reviewed",
+    "scope": "Complete final reader narrative, formulas, definitions, generated tables, all captions, figure labels, methods plan and README additions.",
+    "method": "Sequential semantic reading; final content checked against that reading with re-examination of zero formatting, reproducibility sentence and shortened plot labels. Full scientific interpretation reviewed in final wording.",
+    "coverage": {
+      "notebook_cells": 36,
+      "code_cells": 19,
+      "figures": 13,
+      "CT_panels": 81
     },
-    "all_ten_figures_labels_and_captions_read": true
-  },
-  "semantic_preservation": {
-    "baseline_pairs": 234,
-    "affine_pairs": 234,
-    "reference_pairs": 36,
-    "nonreference_pairs": 198,
-    "temporal_predictions": 480,
-    "temporal_skipped": 6,
-    "automatic_masks_not_independent_anatomical_reference": true,
-    "within_subject_cycle_references_not_ED_assignment": true,
-    "continuous_equal_volume_distinguished_from_discretized_volume": true,
-    "within_voxel_moment_term_preserved": true,
-    "centroid_volume_fit_not_temporal_forecast": true,
-    "log_volume_geometric_mean_and_interpolation_preserved": true,
-    "common_temporal_comparison_sample_preserved": true,
-    "moment_fit_deterioration_not_impossibility_of_affine_family": true,
-    "immutable_lung_bone_soft_background_preserved": true,
-    "original_heart_region_to_soft_and_heart_overlay_priority_preserved": true,
-    "each_state_from_same_background_and_restoration_preserved": true,
-    "lung_intersection_not_rejection_condition": true,
-    "numerical_convergence_requirement_preserved": true,
-    "new_FEM_matrices_and_impedance_not_claimed": true
-  },
-  "provenance_correction": {
-    "model_rule": "Explicit user decision 2026-09-15, including bones preserved",
-    "static_numeric_results": "Computed by prepare_static_heart_replacement_pilot.py; independently read by primary orchestrator from preflight.json, overlay_audit.json and heart_replacement_balance.csv. These numbers were not supplied by the human author."
+    "claims_qualified": [
+      "234-case baseline concerns G1 and L1 only",
+      "new methods evaluated on three selected whole-heart phases",
+      "optimization criterion differs from Dice",
+      "surface closure and convergence remain limitations",
+      "no new FEM or independent anatomical validation"
+    ]
   },
   "technical_checks": {
-    "executed_code_cells": 15,
-    "png_outputs": 10,
-    "CT_panels": 27,
-    "html_embedded_pngs": 10,
-    "html_code_inputs": 0,
-    "error_outputs": 0,
-    "all_three_CT_images_visually_reviewed": true,
-    "seven_previous_figures_identical_to_reviewed_bytes": true,
-    "all_captions_numbered_in_order": true,
-    "CT_embedded_image_bytes_match_saved_sources": true
-  },
-  "computational_checks": {
-    "static_synthetic_tests": {
-      "passed": 20,
-      "command": "python -B -X utf8 -m pytest MATLAB_TRKG4_real_subjects/tests/test_prepare_static_heart_replacement_pilot.py -q -p no:cacheprovider",
-      "dependency_note": "Existing python_solver_deps in PYTHONPATH"
-    },
-    "static_real_transition_checks_passed": 9,
-    "static_real_transition_checks_total": 9,
-    "static_source_code_hash_matches_run": true,
-    "new_FEM_matrices_or_impedances_computed": false,
-    "CT_coordinate_tests": {
-      "passed": 4,
-      "scope": [
-        "trilinear physical CT sampling on permuted negative anisotropic axes",
-        "explicit anatomical plane directions",
-        "individual saved transform and reference voxel affine",
-        "ellipsoid physical axis columns"
-      ]
-    }
-  },
-  "status_separation": {
-    "language": "passed",
-    "reader_export": "checked",
-    "geometric_and_material_checks": "internal_numerical_checks_passed",
-    "anatomical_validation": "not_established",
-    "physical_validation": "not_established",
-    "new_FEM_solve": "not_performed",
-    "optimal_reduced_heart_model": "not_established",
-    "CT_overlay": "rendered_and_coordinate_checked_not_independent_anatomical_validation"
-  },
-  "review_invalidated_by_subsequent_reader_text_change": true,
-  "electrode_scope": {
-    "manifest_sha256": "4d839482dc2b349b077fce9a1f40368373adda47090d4b422553ef8865e3c9c1",
-    "verified_input_ids": [
-      "tepc_2",
-      "tepc_3",
-      "tepc_4",
-      "tepc_5",
-      "tepc_6",
-      "tepc_7"
+    "html_has_no_code_input_elements": true,
+    "notebook_errors": 0,
+    "embedded_png_count": 13,
+    "caption_numbers": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
     ],
-    "diameter_mm": 5,
-    "frequency_hz": 50000,
-    "planned_static_form_montage_combinations": 18,
-    "new_electrical_run_performed": false
-  }
+    "baseline_sampled_outputs_reproduced_exactly": true,
+    "moment_invariants_verified": true,
+    "pytest_tests_passed": 24,
+    "pytest_subtests_passed": 31,
+    "CT_figures_match_saved_hashes": true,
+    "all_9_surface_optimizations_converged": true,
+    "surface_global_optimality_certified": false,
+    "surface_integration_convergence_verified": false
+  },
+  "electrode_scope": {
+    "assemblies": [
+      "TEPC-2",
+      "TEPC-3",
+      "TEPC-4",
+      "TEPC-5",
+      "TEPC-6",
+      "TEPC-7"
+    ],
+    "contact_diameter_mm": 5,
+    "frequency_Hz": 50000,
+    "initial_technical_control_combinations": 18,
+    "planned_expanded_combinations": 42,
+    "new_FEM_run": false
+  },
+  "review_invalidated_by_subsequent_reader_text_change": true
 }
