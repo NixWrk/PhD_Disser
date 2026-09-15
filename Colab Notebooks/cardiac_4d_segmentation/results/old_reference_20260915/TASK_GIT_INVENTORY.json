@@ -746,6 +746,16 @@
       "path": "results/old_verification_20260914/write_preparation_record.py",
       "bytes": 2358,
       "sha256": "829c3c640094ddd785773b76aba7c8161dd67c3ff86bbe112d9f95b3f9ec5506"
+    },
+    {
+      "path": "results/old_reference_20260915/.gitattributes",
+      "bytes": 105,
+      "sha256": "477dc165b41c3ae1ea848ac6f739866b2abfd4611064f67e9e685aa753aeaba0"
+    },
+    {
+      "path": "results/old_verification_20260914/.gitattributes",
+      "bytes": 105,
+      "sha256": "477dc165b41c3ae1ea848ac6f739866b2abfd4611064f67e9e685aa753aeaba0"
     }
   ],
   "verification": {
@@ -758,5 +768,6 @@
     "anatomical_audit_v02/direct_v01/phase_00/receipt.json",
     "anatomical_audit_v02/direct_v01/phase_08/receipt.json",
     "body_review_v06/slicer/review_scene.json"
-  ]
+  ],
+  "byte_preservation": "Per-directory .gitattributes disables line-ending conversion for task archives."
 }

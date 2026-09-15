@@ -1,0 +1,2 @@
+# Immutable historical snapshots: retain exact bytes, including original whitespace.
+* -text -whitespace
