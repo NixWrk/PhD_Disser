@@ -1,29 +1,25 @@
 {
-  "reviewed_utc": "2026-09-15T14:13:11.882304+00:00",
+  "reviewed_utc": "2026-09-15T15:01:42.163805+00:00",
   "skill": "russian-scientific-prose",
-  "mode": "audit",
+  "mode": "transform_and_audit",
   "language_status": "passed",
   "full_reader_text_read_semantically_and_sequentially_after_last_edit": true,
   "reviewer": "Codex model",
   "artifact_hashes": {
-    "21.10_Сопоставление_динамики_камер_OLD.md": "971fda4afb5c46f3dc375f18c343612b8b8f34b87335f818c45fb7220951b2ed",
-    "21.10_Сопоставление_динамики_камер_OLD.ipynb": "fb3cf87aabb2b42076afefa87303ce73678611e8f619d970537636096a55f795",
-    "21.10_Сопоставление_динамики_камер_OLD.html": "c08acab18f36ff92f7cb75925d2fd835e3e630f70d6d45ad27d9a63bf6351319"
+    "21.10_Сопоставление_динамики_камер_OLD.md": "60bba8e83ec02080844736a7c1da08b2b49cce2a64b3705753776ec1f8a8c2bb",
+    "21.10_Сопоставление_динамики_камер_OLD.ipynb": "88cc0ad6470c93bfd6f54866fcbfe35741753c87e39013dcb9f4ff206368489a",
+    "21.10_Сопоставление_динамики_камер_OLD.html": "5a7931932201a1a80939b6e1317691715bd460632d97d0cb7df59d85f594dd69"
   },
-  "reader_text_sha256": "a89e7fbfc03bdf81619e9d1cbd58f1a19f38bf0fb340eeb5105e20db1d88e1c8",
-  "figure_inventory_sha256": "c50bb48f8d43ccd0eceafe9369b2c20999cf9dfc633cceac82737e005869776a",
+  "reader_text_sha256": "43365b7c18748139f16802767495ce266869911ce290a833089f12b93b6bacb1",
   "checks": {
     "scientific_headings": true,
     "terminology_and_scope": true,
     "derived_quantity_definitions": true,
-    "meaningful_contrasts": true,
     "claim_strength_preserved": true,
-    "figure_labels_reviewed": true,
     "visible_captions_reviewed": true,
     "html_code_excluded": true
   },
   "findings": [],
-  "scientific_status": "Exploratory comparison complete; anatomical reference and TS accuracy validation incomplete",
-  "computational_status": "20 matched phases checked; seven synthetic comparison tests and 24 exact Slicer roundtrips passed",
+  "scientific_status": "Unblinded anatomical candidate revision; accuracy of TS remains unestablished",
   "overall_reference_validation_passed": false
 }

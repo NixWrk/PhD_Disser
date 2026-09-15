@@ -54,3 +54,21 @@ def test_shifted_grid_is_rejected(tmp_path):
 def test_edited_mask_rejected(tmp_path):
     path,cfg=make(tmp_path);cfg["phases"][0]["authored_mask_hashes"]["LV"]="wrong";path.write_text(json.dumps(cfg))
     with pytest.raises(ValueError,match="Mask hash"):compare(path,tmp_path/"out")
+
+
+def test_overlap_is_not_silently_double_counted(tmp_path):
+    path,cfg=make(tmp_path);p=cfg["phases"][0]
+    lv=Path(p["authored_masks"]["LV"]);rv=Path(p["authored_masks"]["RV"])
+    rv.write_bytes(lv.read_bytes());p["authored_mask_hashes"]["RV"]=sha(rv)
+    path.write_text(json.dumps(cfg))
+    with pytest.raises(ValueError,match="overlap"):compare(path,tmp_path/"out")
+
+def test_accepted_flags_do_not_validate_unblinded_mismatched_definitions(tmp_path):
+    path,cfg=make(tmp_path)
+    for p in cfg["phases"]:p["reference_accepted"]=True
+    cfg["measurement_definitions"]={"alignment":"unresolved","authored":"HU_subset","automatic":"cavity"}
+    cfg["independent_reference"]=False;path.write_text(json.dumps(cfg))
+    result=compare(path,tmp_path/"out")
+    assert result["status"]=="exploratory_method_disagreement_not_accuracy_validation"
+    assert not result["independent_reference"] and not result["SV_EF_computed"]
+    assert result["measurement_definitions"]["alignment"]=="unresolved"

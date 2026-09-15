@@ -82,7 +82,9 @@ def compare(manifest,output):
              "baseline_phase":cfg["baseline_phase"],"manifest_sha256":sha(manifest),"code_sha256":sha(__file__),
              "reference_accepted_for_all_phases":all(p.get("reference_accepted",False) for p in phases),
              "whole_chamber_confirmed_for_all_phases":all(p.get("whole_chamber_confirmed",False) for p in phases),
-             "SV_EF_computed":False,"blood_pool_sum_definition":"Sum of four blood cavities, excludes myocardium; not whole-heart volume",
+             "SV_EF_computed":False,"blood_pool_sum_definition":"Sum of four selected chamber regions; inclusion of wall or trabeculae depends on the segmentation definition; not whole-heart volume",
+             "measurement_definitions":cfg.get("measurement_definitions", {"alignment":"not_established","authored":"unspecified_selected_region","automatic":"unspecified_selected_region"}),
+             "independent_reference":cfg.get("independent_reference",False),
              "rows":rows,"phase_differences":differences,"provenance":provenance,"limitations":cfg.get("limitations",[])}
     (out/"summary.json").write_text(json.dumps(summary,ensure_ascii=False,indent=2),encoding="utf-8")
     return summary
