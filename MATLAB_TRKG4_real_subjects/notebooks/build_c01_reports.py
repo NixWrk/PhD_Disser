@@ -22,7 +22,7 @@ def build(which=None):
       'experimental_fits.csv','experimental_perturbations.csv','conditional_holdouts.csv','cem_fit_summary.json','cem_baseline.csv','library_timings.csv',
       'analytic_quadrature_qc.csv','pem_library.csv','reference_holdouts.csv','sensitivity_atlas.csv','sensitivity_atlas_summary.json']
     expected={p:sha(OUT/p) for p in files}
-    source_files=[SOURCE/'figures/03_four_models_3d.json',SOURCE/'cem_inverse.csv',SOURCE/'geometry_control_recovery.csv',
+    source_files=[SOURCE/'figures/03_four_models_3d.json',SOURCE/'figures/03_four_models_3d_2016.json',SOURCE/'cem_inverse.csv',SOURCE/'geometry_control_recovery.csv',
       SOURCE/'cem_baseline.csv',SOURCE/'geometry_volumes.csv',HALF/'fem_benchmark.csv',HALF/'direct_timings.csv']
     source_expected={p.relative_to(PIPE).as_posix():sha(p) for p in source_files}
     visual_record=None

@@ -32,7 +32,30 @@ def mesh_trace(field,s,t,d,color,name,opacity=.45):
     v+=np.array([s[0],t[0],d[0]])
     keep=np.all((abs(v[f,0])<=95)&(abs(v[f,1])<=45)&(v[f,2]>=-15)&(v[f,2]<=180),axis=1)
     f=f[keep]
-    return go.Mesh3d(x=v[:,0],y=v[:,1],z=v[:,2],i=f[:,0],j=f[:,1],k=f[:,2],color=color,opacity=opacity,name=name,showlegend=False,hoverinfo='skip',flatshading=False)
+    return go.Mesh3d(x=v[:,0],y=v[:,1],z=v[:,2],i=f[:,0],j=f[:,1],k=f[:,2],color=color,opacity=opacity,name=name,showlegend=False,hoverinfo='skip',flatshading=False,
+                     lighting={'ambient':.58,'diffuse':.72,'specular':.08,'roughness':.82})
+
+def box_trace(x0,x1,y0,y1,z0,z1,color,name,opacity=.72):
+    """Closed cuboid used to depict the tissue volume of a planar kernel."""
+    x=np.array([x0,x1,x1,x0,x0,x1,x1,x0],dtype=float)
+    y=np.array([y0,y0,y1,y1,y0,y0,y1,y1],dtype=float)
+    z=np.array([z0,z0,z0,z0,z1,z1,z1,z1],dtype=float)
+    triangles=np.array([
+        [0,1,2],[0,2,3],[4,6,5],[4,7,6],
+        [0,4,5],[0,5,1],[1,5,6],[1,6,2],
+        [2,6,7],[2,7,3],[3,7,4],[3,4,0],
+    ])
+    return go.Mesh3d(x=x,y=y,z=z,i=triangles[:,0],j=triangles[:,1],k=triangles[:,2],
+                     color=color,opacity=opacity,name=name,showlegend=False,hoverinfo='skip',flatshading=False,
+                     lighting={'ambient':.62,'diffuse':.68,'specular':.06,'roughness':.86})
+
+def assembly_span_trace(ep):
+    """Dashed guide showing the full I+--I- span; it is not a tissue boundary."""
+    order=np.argsort(ep[:,0]);q=ep[order]
+    return go.Scatter3d(x=q[:,0],y=q[:,1],z=q[:,2]-2.0,mode='lines',
+                        line={'color':'#17212b','width':7,'dash':'dash'},
+                        name='Полная длина сборки I+–I−',showlegend=False,
+                        hovertemplate='Полная рабочая длина сборки I+–I−<extra></extra>')
 
 def geometry_figures(out):
     dest=out/'figures';dest.mkdir(exist_ok=True)
@@ -75,20 +98,21 @@ def geometry_figures(out):
         row,col=index//2+1,index%2+1
         if name in ['planar','averaged']:
             xx=np.array([-95,95]);yy=np.array([-45,45]);fig.add_trace(go.Surface(x=xx,y=yy,z=np.zeros((2,2)),colorscale=[[0,'#d5ba8e'],[1,'#d5ba8e']],showscale=False,opacity=.28,hoverinfo='skip'),row,col)
-            if name=='planar':fig.add_trace(go.Surface(x=xx,y=yy,z=np.full((2,2),geom['h_centre_mm']),colorscale=[[0,'#4bb3d1'],[1,'#4bb3d1']],showscale=False,opacity=.7,hoverinfo='skip'),row,col)
+            if name=='planar':fig.add_trace(box_trace(-95,95,-45,45,geom['h_centre_mm'],180,'#238fb8','Объём лёгкого'),row,col)
             else:
                 for x in np.arange(-60,61,20):
                     h=np.interp(x,p.s_mm,p.h_mm)
-                    if np.isfinite(h):fig.add_trace(go.Surface(x=np.array([x-6,x+6]),y=yy,z=np.full((2,2),h),colorscale=[[0,'#4bb3d1'],[1,'#4bb3d1']],showscale=False,opacity=.8,hoverinfo='skip'),row,col)
+                    if np.isfinite(h):fig.add_trace(box_trace(x-6,x+6,-45,45,h,180,'#238fb8','Локальное плоское ядро'),row,col)
             ep=np.column_stack([[-70,-35,35,70],np.zeros(4),np.zeros(4)])
         else:
-            fig.add_trace(mesh_trace(fields[name],s,t,d,'#3babc7','Граница лёгкого',.60),row,col)
+            fig.add_trace(mesh_trace(fields[name],s,t,d,'#238fb8','Объём лёгкого',.78),row,col)
             fig.add_trace(mesh_trace(body,s,t,d,'#c6a66d','Кожа',.20),row,col);ep=electrodes
+        fig.add_trace(assembly_span_trace(ep),row,col)
         fig.add_trace(go.Scatter3d(x=ep[:,0],y=ep[:,1],z=ep[:,2],mode='markers+text',text=['I+','V+','V−','I−'],textposition='top center',marker={'size':4,'color':'#202d3a'},textfont={'size':12},showlegend=False,name='Электроды'),row,col)
         fig.update_scenes(xaxis={'title':'s, мм','range':[-95,95]},yaxis={'title':'t, мм','range':[-45,45]},zaxis={'title':'d, мм','range':[180,-20]},aspectmode='data',camera={'eye':{'x':1.5,'y':-2.0,'z':1.1},'projection':{'type':'orthographic'}},row=row,col=col)
     fig.update_layout(height=1000,width=None,margin={'l':5,'r':5,'t':55,'b':10},template='plotly_white')
-    fig.write_json(dest/'03_four_models_3d.json')
-    fig.write_html(dest/'03_four_models_3d.html',include_plotlyjs=True,full_html=True,config={'responsive':True,'displaylogo':False})
+    fig.write_json(dest/'03_four_models_3d_2016.json')
+    fig.write_html(dest/'03_four_models_3d_2016.html',include_plotlyjs=True,full_html=True,config={'responsive':True,'displaylogo':False})
     # Static volume companion: common central profile in two transverse views.
     fig=plt.figure(figsize=(12,5.5),layout='constrained')
     for idx,name in enumerate(['uniform_transverse','variable_transverse']):

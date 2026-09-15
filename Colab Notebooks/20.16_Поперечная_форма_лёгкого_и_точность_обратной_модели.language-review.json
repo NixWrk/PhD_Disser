@@ -2,27 +2,29 @@
   "language": "ru",
   "review_status": "passed",
   "review_type": "final_full_text_model_review",
-  "reviewed_utc": "2026-09-15T13:07:24.9377611Z",
+  "reviewed_utc": "2026-09-15T13:44:40.293405Z",
   "skill": "russian-scientific-prose/SKILL.md",
   "reviewed_after_last_text_edit": true,
   "all_reader_visible_text_read_in_sequence": true,
   "figures_and_labels_reviewed": true,
   "artifact_sha256": {
-    "Colab Notebooks/20.16_Поперечная_форма_лёгкого_и_точность_обратной_модели.ipynb": "098e71f485843b2620a0b84c12cb4b5c3a59e0ed3fe370e3b0c34e91667bd1af",
-    "Colab Notebooks/20.16_Поперечная_форма_лёгкого_и_точность_обратной_модели.html": "bb1d5421a096622e8a764868133c2e0086bb83cf33df8a47810c66c418bc2bf3",
+    "Colab Notebooks/20.16_Поперечная_форма_лёгкого_и_точность_обратной_модели.ipynb": "a0c75cc9d6b558257a800f9796937d70cbf18a969fc62350e3886cd07ae2ac91",
+    "Colab Notebooks/20.16_Поперечная_форма_лёгкого_и_точность_обратной_модели.html": "428a8513f586e37b92999423cd0ca439198b58d813da0aef0bc8d06a90401221",
     "Colab Notebooks/20.16_Поперечная_форма_лёгкого_и_точность_обратной_модели.md": "0d3a5a23a83fe21e646d51c1dce7ece69cd7265593cd12a7a8974e11fb92820c",
-    "MATLAB_TRKG4_real_subjects/output/exploratory/baseline_model_comparison_20260914/reader_20.16.md": "00e2b6bc444ab378b3b9f9b8cf8586f8c6b60d5692bd7b176ecf85faafbb1409"
+    "MATLAB_TRKG4_real_subjects/output/exploratory/baseline_model_comparison_20260914/reader_20.16.md": "ddd53de344df57d2f66493ebe3ca832a99872a7e03048118bfaebbb43490d2fb"
   },
   "source_sha256": {
-    "MATLAB_TRKG4_real_subjects/notebooks/c01_report_text.py": "6184d42ca1473be8e503a23d5de3acd3ceeb7e54f597d5bbaf599c0af6685138",
-    "MATLAB_TRKG4_real_subjects/notebooks/build_c01_reports.py": "08a705fa931e7dcebb77f92be4e2a9c252cddf95859518d7f8f529065e9cb3bb",
+    "MATLAB_TRKG4_real_subjects/notebooks/c01_report_text.py": "2b0cdeef6146526b27ad66e8170c193c2f18a3d7bfc75997d8baad09c61bd45e",
+    "MATLAB_TRKG4_real_subjects/notebooks/build_c01_reports.py": "edd61eea10758d03978c0793fc951c84eddccd5e8d3a4198c087fa8b70b1cc4f",
     "MATLAB_TRKG4_real_subjects/tools/c01_model_catalog.py": "3cd3cd9d689209f8482f53aeafe0b6f6570a940a2033e75eafa8e920260b48fe",
     "MATLAB_TRKG4_real_subjects/tools/c01_report_tables.py": "801be86fb2fcc3082c7acb389f36a5d65033af09bc17f12b4eb46e6d822acc28",
     "MATLAB_TRKG4_real_subjects/tools/c01_sensitivity_figure.py": "7a5697c5ffd8930fdf0a7173546e81a89355c94169877005495ae80764220684",
     "MATLAB_TRKG4_real_subjects/tools/verify_c01_reports.py": "ee1d41caa3f422fb19b209dd55f756ef4c00fd2471dc08467107a9b312580738",
-    "MATLAB_TRKG4_real_subjects/tools/verify_c01_sensitivity_atlas.py": "74eead4c61f75eba8c61647e32443840c881c0d7d3435f06f8934eb39941345f"
+    "MATLAB_TRKG4_real_subjects/tools/verify_c01_sensitivity_atlas.py": "74eead4c61f75eba8c61647e32443840c881c0d7d3435f06f8934eb39941345f",
+    "MATLAB_TRKG4_real_subjects/tools/transverse_geometry_figures.py": "5acd892a4e9a009d4a52eaf7f3924eb428a2cf453d4bbcbaa9799e4644f2711b",
+    "MATLAB_TRKG4_real_subjects/output/exploratory/transverse_consistency_20260914/figures/03_four_models_3d_2016.json": "b0fbe605f7a8946a4aa48a246ca7cbd7deb95d9342cf2a0e89f42367f048895a"
   },
-  "scope": "Окончательная читательская редакция 20.16: основной паспорт шести авторских моделей и КТ/FEM-референса, отдельный паспорт 12 диагностических расчётов, семь таблиц, три интерактивных рисунка, одна встроенная объёмная визуализация, формулы, выводы, источники и паспорт этапа. Выполнена последовательная вычитка после разделения основной задачи и вспомогательных проверок.",
+  "scope": "Окончательная читательская редакция 20.16: основной паспорт шести авторских моделей и КТ/FEM-референса, отдельный паспорт 12 диагностических расчётов, семь таблиц, три интерактивных рисунка, одна встроенная объёмная визуализация, формулы, выводы, источники и паспорт этапа. После полной последовательной вычитки рисунок 2 получил синее объёмное представление лёгкого, штриховое обозначение полной длины сборки и прямое объяснение раздельных локальных ядер и локального окна поперечной кривизны.",
   "narrative_sequence": [
     "цель восстановления двух сопротивлений",
     "КТ и монтаж C01",
@@ -55,7 +57,8 @@
     "Разделены объёмная геометрия, плоские физические модели и эвристическое усреднение локальных ядер.",
     "Добавлены переходы от результата к следующей проверке.",
     "Исправлена незавершённая условная конструкция; CEM определена при первом употреблении.",
-    "Удалена диаграмма классификации, дублировавшая таблицу 1; оставшиеся рисунки перенумерованы, а переход к таблице уточнён."
+    "Удалена диаграмма классификации, дублировавшая таблицу 1; оставшиеся рисунки перенумерованы, а переход к таблице уточнён.",
+    "На рисунке 2 лёгочная ткань показана синим объёмом; полная длина сборки отмечена штриховой линией, а текст отделяет реальные непересекающие лёгкое области от условных промежутков между локальными аналитическими ядрами."
   ],
   "findings": [],
   "technical_status": {
