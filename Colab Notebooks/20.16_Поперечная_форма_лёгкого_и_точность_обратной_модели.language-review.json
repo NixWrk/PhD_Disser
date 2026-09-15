@@ -2,27 +2,27 @@
   "language": "ru",
   "review_status": "passed",
   "review_type": "final_full_text_model_review",
-  "reviewed_utc": "2026-09-15T13:44:40.293405Z",
+  "reviewed_utc": "2026-09-15T13:54:58.953625Z",
   "skill": "russian-scientific-prose/SKILL.md",
   "reviewed_after_last_text_edit": true,
   "all_reader_visible_text_read_in_sequence": true,
   "figures_and_labels_reviewed": true,
   "artifact_sha256": {
-    "Colab Notebooks/20.16_Поперечная_форма_лёгкого_и_точность_обратной_модели.ipynb": "a0c75cc9d6b558257a800f9796937d70cbf18a969fc62350e3886cd07ae2ac91",
-    "Colab Notebooks/20.16_Поперечная_форма_лёгкого_и_точность_обратной_модели.html": "428a8513f586e37b92999423cd0ca439198b58d813da0aef0bc8d06a90401221",
+    "Colab Notebooks/20.16_Поперечная_форма_лёгкого_и_точность_обратной_модели.ipynb": "456ada84598701fe8d5f004a2c784a379efcaeae1f72e5b217b6ae3f84b8d802",
+    "Colab Notebooks/20.16_Поперечная_форма_лёгкого_и_точность_обратной_модели.html": "f26cbb20d5dd75071d70e8f62283c01a21736ee3b10b449075e312bd4b22107c",
     "Colab Notebooks/20.16_Поперечная_форма_лёгкого_и_точность_обратной_модели.md": "0d3a5a23a83fe21e646d51c1dce7ece69cd7265593cd12a7a8974e11fb92820c",
-    "MATLAB_TRKG4_real_subjects/output/exploratory/baseline_model_comparison_20260914/reader_20.16.md": "ddd53de344df57d2f66493ebe3ca832a99872a7e03048118bfaebbb43490d2fb"
+    "MATLAB_TRKG4_real_subjects/output/exploratory/baseline_model_comparison_20260914/reader_20.16.md": "1a3cf043038c3da9be5d0b95ccf6f8bc204b45166b66bf44c753719c7ce70740"
   },
   "source_sha256": {
-    "MATLAB_TRKG4_real_subjects/notebooks/c01_report_text.py": "2b0cdeef6146526b27ad66e8170c193c2f18a3d7bfc75997d8baad09c61bd45e",
+    "MATLAB_TRKG4_real_subjects/notebooks/c01_report_text.py": "0b1aa1918689c5eab3c3e058676bda2a2082f4ebc72802ee280ba645e793a485",
     "MATLAB_TRKG4_real_subjects/notebooks/build_c01_reports.py": "edd61eea10758d03978c0793fc951c84eddccd5e8d3a4198c087fa8b70b1cc4f",
     "MATLAB_TRKG4_real_subjects/tools/c01_model_catalog.py": "3cd3cd9d689209f8482f53aeafe0b6f6570a940a2033e75eafa8e920260b48fe",
     "MATLAB_TRKG4_real_subjects/tools/c01_report_tables.py": "801be86fb2fcc3082c7acb389f36a5d65033af09bc17f12b4eb46e6d822acc28",
     "MATLAB_TRKG4_real_subjects/tools/c01_sensitivity_figure.py": "7a5697c5ffd8930fdf0a7173546e81a89355c94169877005495ae80764220684",
     "MATLAB_TRKG4_real_subjects/tools/verify_c01_reports.py": "ee1d41caa3f422fb19b209dd55f756ef4c00fd2471dc08467107a9b312580738",
     "MATLAB_TRKG4_real_subjects/tools/verify_c01_sensitivity_atlas.py": "74eead4c61f75eba8c61647e32443840c881c0d7d3435f06f8934eb39941345f",
-    "MATLAB_TRKG4_real_subjects/tools/transverse_geometry_figures.py": "5acd892a4e9a009d4a52eaf7f3924eb428a2cf453d4bbcbaa9799e4644f2711b",
-    "MATLAB_TRKG4_real_subjects/output/exploratory/transverse_consistency_20260914/figures/03_four_models_3d_2016.json": "b0fbe605f7a8946a4aa48a246ca7cbd7deb95d9342cf2a0e89f42367f048895a"
+    "MATLAB_TRKG4_real_subjects/tools/transverse_geometry_figures.py": "7b71c31782fbcbed7bee1ae06fb00c9941d903f5222d868034cbdbf1a197bfa8",
+    "MATLAB_TRKG4_real_subjects/output/exploratory/transverse_consistency_20260914/figures/03_four_models_3d_2016.json": "fb1231667466b91039b33605b0a73bc7c5aea041d13e4a6e574a01d19965935c"
   },
   "scope": "Окончательная читательская редакция 20.16: основной паспорт шести авторских моделей и КТ/FEM-референса, отдельный паспорт 12 диагностических расчётов, семь таблиц, три интерактивных рисунка, одна встроенная объёмная визуализация, формулы, выводы, источники и паспорт этапа. После полной последовательной вычитки рисунок 2 получил синее объёмное представление лёгкого, штриховое обозначение полной длины сборки и прямое объяснение раздельных локальных ядер и локального окна поперечной кривизны.",
   "narrative_sequence": [
@@ -58,7 +58,8 @@
     "Добавлены переходы от результата к следующей проверке.",
     "Исправлена незавершённая условная конструкция; CEM определена при первом употреблении.",
     "Удалена диаграмма классификации, дублировавшая таблицу 1; оставшиеся рисунки перенумерованы, а переход к таблице уточнён.",
-    "На рисунке 2 лёгочная ткань показана синим объёмом; полная длина сборки отмечена штриховой линией, а текст отделяет реальные непересекающие лёгкое области от условных промежутков между локальными аналитическими ядрами."
+    "На рисунке 2 лёгочная ткань показана синим объёмом; полная длина сборки отмечена штриховой линией, а текст отделяет реальные непересекающие лёгкое области от условных промежутков между локальными аналитическими ядрами.",
+    "Условные раздельные ступеньки модели 2 заменены непрерывным объёмом по фактически интегрируемому профилю h(s); отсутствие лёгкого при h(s)=∞ показано отдельно и объяснено как однородный фон ρ₁."
   ],
   "findings": [],
   "technical_status": {

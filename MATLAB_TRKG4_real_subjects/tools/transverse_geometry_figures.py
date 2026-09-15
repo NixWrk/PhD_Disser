@@ -49,6 +49,38 @@ def box_trace(x0,x1,y0,y1,z0,z1,color,name,opacity=.72):
                      color=color,opacity=opacity,name=name,showlegend=False,hoverinfo='skip',flatshading=False,
                      lighting={'ambient':.62,'diffuse':.68,'specular':.06,'roughness':.86})
 
+def profile_volume_traces(s,h,x0,x1,y0=-45,y1=45,z1=180,color='#238fb8',opacity=.72):
+    """Closed volumes under every contiguous finite part of the CT-derived h(s)."""
+    s=np.asarray(s,dtype=float);h=np.asarray(h,dtype=float)
+    ids=np.flatnonzero((s>=x0)&(s<=x1)&np.isfinite(h))
+    groups=np.split(ids,np.flatnonzero(np.diff(ids)>1)+1) if ids.size else []
+    traces=[]
+    for group in groups:
+        if group.size<2:continue
+        x=s[group];top=np.minimum(h[group],z1);n=len(x)
+        vx=np.r_[x,x,x,x]
+        vy=np.r_[np.full(n,y0),np.full(n,y1),np.full(n,y0),np.full(n,y1)]
+        vz=np.r_[top,top,np.full(n,z1),np.full(n,z1)]
+        faces=[]
+        def quad(a,b,c,d):faces.extend([[a,b,c],[a,c,d]])
+        for i in range(n-1):
+            quad(i,i+1,n+i+1,n+i)
+            quad(2*n+i,3*n+i,3*n+i+1,2*n+i+1)
+            quad(i,2*n+i,2*n+i+1,i+1)
+            quad(n+i,n+i+1,3*n+i+1,3*n+i)
+        quad(0,n,3*n,2*n)
+        quad(n-1,2*n-1,4*n-1,3*n-1)
+        f=np.asarray(faces,dtype=int)
+        traces.append(go.Mesh3d(x=vx,y=vy,z=vz,i=f[:,0],j=f[:,1],k=f[:,2],
+                                color=color,opacity=opacity,name='Профильная область ρ₂',
+                                showlegend=False,hoverinfo='skip',flatshading=False,
+                                lighting={'ambient':.62,'diffuse':.68,'specular':.06,'roughness':.86}))
+        traces.append(go.Scatter3d(x=x,y=np.full(n,y0-.8),z=top,mode='lines',
+                                   line={'color':'#075f82','width':6},
+                                   name='Профиль h(s) из КТ',showlegend=False,
+                                   hovertemplate='s=%{x:.1f} мм<br>h(s)=%{z:.1f} мм<extra></extra>'))
+    return traces
+
 def assembly_span_trace(ep):
     """Dashed guide showing the full I+--I- span; it is not a tissue boundary."""
     order=np.argsort(ep[:,0]);q=ep[order]
@@ -100,9 +132,8 @@ def geometry_figures(out):
             xx=np.array([-95,95]);yy=np.array([-45,45]);fig.add_trace(go.Surface(x=xx,y=yy,z=np.zeros((2,2)),colorscale=[[0,'#d5ba8e'],[1,'#d5ba8e']],showscale=False,opacity=.28,hoverinfo='skip'),row,col)
             if name=='planar':fig.add_trace(box_trace(-95,95,-45,45,geom['h_centre_mm'],180,'#238fb8','Объём лёгкого'),row,col)
             else:
-                for x in np.arange(-60,61,20):
-                    h=np.interp(x,p.s_mm,p.h_mm)
-                    if np.isfinite(h):fig.add_trace(box_trace(x-6,x+6,-45,45,h,180,'#238fb8','Локальное плоское ядро'),row,col)
+                for trace in profile_volume_traces(p.s_mm.to_numpy(),p.h_mm.to_numpy(),-70,70):
+                    fig.add_trace(trace,row,col)
             ep=np.column_stack([[-70,-35,35,70],np.zeros(4),np.zeros(4)])
         else:
             fig.add_trace(mesh_trace(fields[name],s,t,d,'#238fb8','Объём лёгкого',.78),row,col)
