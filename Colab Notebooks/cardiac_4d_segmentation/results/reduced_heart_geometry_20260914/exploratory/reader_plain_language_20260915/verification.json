@@ -1,0 +1,35 @@
+{
+  "revision": "verbatim_plain_language_explanation",
+  "before": {
+    "Colab Notebooks/cardiac_4d_segmentation/heart_method_comparison_ru.md": "2cf6e37c0ead3b72e2bd667065e39c99b6b2b3d006604a0aded0d02807902a23",
+    "Colab Notebooks/40.17_Сравнение_форм_сердца_и_электрического_отклика.ipynb": "b6290781fe633c8c0283c2d60af64b5b0d9ff8966564367015cd0e1346095af1",
+    "Colab Notebooks/40.17_Сравнение_форм_сердца_и_электрического_отклика.html": "f85a51d26320d6943883b81b4c495f2855c1d47e7b98fbdbe121e05db3674eee"
+  },
+  "after": {
+    "Colab Notebooks/cardiac_4d_segmentation/heart_method_comparison_ru.md": "bac6c4507fed855e1be710ba3d85494ccdad34e2d8c2e4ce7cef054e66a970df",
+    "Colab Notebooks/40.17_Сравнение_форм_сердца_и_электрического_отклика.ipynb": "305673b8a0705fe768abe9e6f9a3658657c736192fa4b280282034d32e482815",
+    "Colab Notebooks/40.17_Сравнение_форм_сердца_и_электрического_отклика.html": "6fdbde3cf92b12a7c6b76047c2fea6133831f6e92e13974849f7ba3a0f75f330"
+  },
+  "full_code_cells_and_outputs_unchanged": true,
+  "code_cells": 15,
+  "image_outputs": 11,
+  "no_computational_cells_executed": true,
+  "original_reader_text_preserved": true,
+  "notebook_source_section_exact": true,
+  "source_section_exact": true,
+  "reader_text_sha256": "6e673fe09664cfd5ca68e943c7d6ddd03c6b9d85b8e6dce4855c04f08678b2b4",
+  "reader_lines": 536,
+  "language_review": "passed",
+  "browser": {
+    "images": 11,
+    "brokenImages": 0,
+    "codeInputs": 0,
+    "width": 1440,
+    "viewport": 1440,
+    "mathErrors": 0,
+    "mathNodes": 28,
+    "mainListItems": 6
+  },
+  "language_review_file": "Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/reader_plain_language_20260915/language_review.json",
+  "new_section_visually_verified": true
+}

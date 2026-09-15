@@ -1,0 +1,55 @@
+{
+  "schema": "hash_bound_final_full_text_review_v1",
+  "status": "passed",
+  "language": "ru",
+  "mode": "audit",
+  "skill": "russian-scientific-prose",
+  "reviewer": "Codex coordinator semantic model pass",
+  "reviewed_at_utc": "2026-09-15T15:32:58.371121+00:00",
+  "artifacts": {
+    "Colab Notebooks/cardiac_4d_segmentation/heart_method_comparison_ru.md": "bac6c4507fed855e1be710ba3d85494ccdad34e2d8c2e4ce7cef054e66a970df",
+    "Colab Notebooks/40.17_Сравнение_форм_сердца_и_электрического_отклика.ipynb": "305673b8a0705fe768abe9e6f9a3658657c736192fa4b280282034d32e482815",
+    "Colab Notebooks/40.17_Сравнение_форм_сердца_и_электрического_отклика.html": "6fdbde3cf92b12a7c6b76047c2fea6133831f6e92e13974849f7ba3a0f75f330"
+  },
+  "reader_text_sha256": "6e673fe09664cfd5ca68e943c7d6ddd03c6b9d85b8e6dce4855c04f08678b2b4",
+  "full_sequential_read": {
+    "ranges_inclusive": [
+      [
+        1,
+        180
+      ],
+      [
+        181,
+        360
+      ],
+      [
+        361,
+        536
+      ]
+    ],
+    "complete": true,
+    "includes_generated_tables_and_figure_captions": true
+  },
+  "figures": "All 11 image outputs preserved exactly; original visual review remains applicable to unchanged pixels. New reader section visually inspected in the exported HTML.",
+  "user_instruction": "Preserve the preceding explanation verbatim; no substantive rewriting of the approved passage.",
+  "checks": {
+    "language.ru.hash-bound-final-review": "passed",
+    "language.ru.encoding": "passed",
+    "language.ru.natural-prose": "passed",
+    "language.ru.intro-variation": "passed",
+    "language.ru.reader-facing-clarity": "passed",
+    "language.ru.formula-where": "passed"
+  },
+  "attestations": {
+    "scientific_headings_and_scope": true,
+    "technical_terms_and_units": true,
+    "derived_quantities_defined": true,
+    "meaningful_contrasts_only": true,
+    "calque_reverse_check": true,
+    "facts_basis_interpretation_limitations_distinguished": true,
+    "claims_not_strengthened": true
+  },
+  "findings": [],
+  "scientific_status": "Exploratory model results; no new physical or spatial validation.",
+  "computational_status": "Presentation-only change; no numerical cells executed."
+}
