@@ -1,6 +1,7 @@
 """Build and execute the geometry-results notebook, then export HTML without code."""
 from __future__ import annotations
 import argparse
+from copy import deepcopy
 import hashlib
 import json
 from pathlib import Path
@@ -11,6 +12,7 @@ from nbconvert import HTMLExporter
 
 ROOT=Path(__file__).resolve().parents[1]
 SOURCE=Path(__file__).with_name('heart_geometry_results_ru.md')
+REGISTRY=ROOT/'40.15_Реестр_методов_аппроксимации_сердца.md'
 NOTEBOOK=ROOT/'40.16_Геометрическое_сравнение_моделей_сердца.ipynb'
 CODE={
 'setup': '''from pathlib import Path
@@ -76,8 +78,18 @@ def show_figure(figure, name):
 }
 
 
-def build():
+def build(*, presentation_only=False):
     text=SOURCE.read_text(encoding='utf-8-sig')
+    registry=REGISTRY.read_text(encoding='utf-8')
+    # Embed the authoritative list as Markdown; do not maintain a second copy.
+    registry=re.sub(r'^## (\d+)\.', r'### 2.1.\1.', registry, flags=re.MULTILINE)
+    registry=registry.replace('## Как читать реестр', '### Как читать реестр', 1)
+    registry=registry.replace('# Общий реестр методов аппроксимации сердца',
+                              '## 2.1. Общий реестр методов аппроксимации сердца', 1)
+    marker='<!-- INCLUDE: heart_approximation_registry -->'
+    if text.count(marker) != 1:
+        raise ValueError('Expected exactly one method-registry inclusion')
+    text=text.replace(marker,registry.strip())
     parts=re.split(r'<!-- CODE: (\w+) -->',text)
     cells=[]
     for i,part in enumerate(parts):
@@ -87,17 +99,32 @@ def build():
             cells.append(nbformat.v4.new_markdown_cell(part.strip(),id=f'text-{i//2}'))
     nb=nbformat.v4.new_notebook(cells=cells,metadata={'kernelspec':{'display_name':'Python 3','language':'python','name':'python3'},
         'language_info':{'name':'python'},'evidence_status':'exploratory_hypothesis_not_validated',
-        'source_text_sha256':hashlib.sha256(SOURCE.read_bytes()).hexdigest()})
-    NotebookClient(nb,timeout=180,resources={'metadata':{'path':str(ROOT)}}).execute()
+        'source_text_sha256':hashlib.sha256(SOURCE.read_bytes()).hexdigest(),
+        'method_registry_sha256':hashlib.sha256(REGISTRY.read_bytes()).hexdigest()})
+    if presentation_only:
+        previous=nbformat.read(NOTEBOOK,as_version=4)
+        saved={cell.id:cell for cell in previous.cells if cell.cell_type=='code'}
+        fresh={cell.id:cell for cell in cells if cell.cell_type=='code'}
+        if saved.keys() != fresh.keys() or any(saved[key].source != fresh[key].source for key in fresh):
+            raise ValueError('Presentation-only mode requires unchanged code cells')
+        updated_metadata=deepcopy(previous.metadata)
+        updated_metadata.update(nb.metadata)
+        nb.metadata=updated_metadata
+        nb.cells=[deepcopy(saved[cell.id]) if cell.cell_type=='code' else cell for cell in cells]
+    else:
+        NotebookClient(nb,timeout=180,resources={'metadata':{'path':str(ROOT)}}).execute()
     nbformat.write(nb,NOTEBOOK)
     exporter=HTMLExporter()
     exporter.exclude_input=True;exporter.exclude_input_prompt=True;exporter.exclude_output_prompt=True
     body,_=exporter.from_notebook_node(nb)
     NOTEBOOK.with_suffix('.html').write_text(body,encoding='utf-8')
     receipt={'notebook':NOTEBOOK.name,'cells':len(nb.cells),
-        'executed_code_cells':sum(c.cell_type=='code' for c in nb.cells),
+        'executed_code_cells':0 if presentation_only else sum(c.cell_type=='code' for c in nb.cells),
+        'build_mode':'preserve_saved_outputs' if presentation_only else 'execute',
+        'code_cells':sum(c.cell_type=='code' for c in nb.cells),
         'output_errors':[o for c in nb.cells if c.cell_type=='code' for o in c.outputs if o.output_type=='error'],
         'source_text_sha256':hashlib.sha256(SOURCE.read_bytes()).hexdigest(),
+        'method_registry_sha256':hashlib.sha256(REGISTRY.read_bytes()).hexdigest(),
         'notebook_sha256':hashlib.sha256(NOTEBOOK.read_bytes()).hexdigest(),
         'html_sha256':hashlib.sha256(NOTEBOOK.with_suffix('.html').read_bytes()).hexdigest(),
         'evidence_status':'exploratory_hypothesis_not_validated'}
@@ -107,4 +134,8 @@ def build():
 
 
 if __name__=='__main__':
-    build()
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--presentation-only',action='store_true',
+                        help='Update prose and HTML while preserving unchanged code cells and outputs')
+    args=parser.parse_args()
+    build(presentation_only=args.presentation_only)

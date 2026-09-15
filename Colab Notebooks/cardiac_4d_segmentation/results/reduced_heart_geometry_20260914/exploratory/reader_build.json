@@ -1,10 +1,13 @@
 {
   "notebook": "40.16_Геометрическое_сравнение_моделей_сердца.ipynb",
   "cells": 36,
-  "executed_code_cells": 19,
+  "executed_code_cells": 0,
+  "build_mode": "preserve_saved_outputs",
+  "code_cells": 19,
   "output_errors": [],
-  "source_text_sha256": "7810025a5bba1da7a550803dc8ef80043b469e050d87f48f7df0c1bb7701b144",
-  "notebook_sha256": "21d21958cc925557faa0bd1f4c7b7dff0a3ba31345c071a29cd320e18d4a7d53",
-  "html_sha256": "5583b449d0a70a76caf71fc36d91ee5ca8c4adb434b8cf9dbe6fe1391a48fda7",
+  "source_text_sha256": "0354c9e1fa6bf93e12b520c9f3ccb87ba287b79fdaa5de4f9de1be4c09c708f3",
+  "method_registry_sha256": "33c061b254bebfb04ff696a992f6b0d7bd96dd271117ea7c67af32e96495dbb1",
+  "notebook_sha256": "4895a52452bf2a194d9ef1617fcb2ced1feb871ebdc13ecf0896463e8ad862c5",
+  "html_sha256": "c86c050eee313fc511078cab0638cb731341046e0cae20f97b7a25b4c0472d6f",
   "evidence_status": "exploratory_hypothesis_not_validated"
 }
