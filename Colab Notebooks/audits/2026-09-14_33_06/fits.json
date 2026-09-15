@@ -1,0 +1,176 @@
+{
+  "reproduction": {
+    "exp02_georg": {
+      "h_m": 0.001,
+      "rho1_ohm_m": 1.007057091842501,
+      "rho2_inhale_ohm_m": 27.724023040813098,
+      "rho2_exhale_ohm_m": 26.170309662497974,
+      "residual_sum_squares_ohm2": 1177.896001538404,
+      "residual_rms_ohm": 7.674294760883257,
+      "predicted_inhale_ohm": [
+        209.39860075717476,
+        194.27828034955945,
+        181.20046552475668,
+        169.76084717388076,
+        159.66044862060522,
+        150.6718371384124,
+        142.61807183346812,
+        135.3589361050763,
+        128.78158619171788,
+        122.79400139544067
+      ],
+      "predicted_exhale_ohm": [
+        204.68693103569547,
+        189.42468381450252,
+        176.2789681947565,
+        164.82231207333948,
+        154.74025753822843,
+        145.79473062222115,
+        137.80131750906426,
+        130.61446578626015,
+        124.11747263861837,
+        118.2154991912147
+      ],
+      "jacobian_log_rank": 3,
+      "jacobian_log_condition": 6.137331447242719,
+      "parameter_bound_hit": false,
+      "optimizer_success": true,
+      "optimizer_message": "`ftol` termination condition is satisfied.",
+      "optimizer_multistart_count": 4,
+      "optimizer_converged_candidate_count": 4
+    },
+    "exp02_nik": {
+      "h_m": 0.001,
+      "rho1_ohm_m": 0.48324143628035504,
+      "rho2_inhale_ohm_m": 12.633660015950404,
+      "rho2_exhale_ohm_m": 11.444415999898704,
+      "residual_sum_squares_ohm2": 670.391731076237,
+      "residual_rms_ohm": 6.102785024871099,
+      "predicted_inhale_ohm": [
+        98.45686181555985,
+        91.13984808964331,
+        84.83478679170086,
+        79.33772168404676,
+        74.49853561665854,
+        66.3645516438695,
+        62.912053014260394,
+        59.79021256742677,
+        56.953659193235
+      ],
+      "predicted_exhale_ohm": [
+        94.53006569765044,
+        87.11725420021041,
+        80.77588261714567,
+        75.28252819835105,
+        70.47424795288374,
+        62.45157060877934,
+        59.06922461137255,
+        56.022779366711234,
+        53.26470040161048
+      ],
+      "jacobian_log_rank": 3,
+      "jacobian_log_condition": 5.87457032736508,
+      "parameter_bound_hit": false,
+      "optimizer_success": true,
+      "optimizer_message": "`ftol` termination condition is satisfied.",
+      "optimizer_multistart_count": 4,
+      "optimizer_converged_candidate_count": 4
+    }
+  },
+  "synthetic": [
+    {
+      "truth": [
+        0.02,
+        5.0,
+        22.0,
+        15.0
+      ],
+      "best": {
+        "h_m": 0.02,
+        "rho1_ohm_m": 5.000000000000001,
+        "rho2_inhale_ohm_m": 21.999999999999996,
+        "rho2_exhale_ohm_m": 15.0,
+        "residual_sum_squares_ohm2": 1.5651000359584874e-27,
+        "residual_rms_ohm": 8.846185720293485e-15,
+        "predicted_inhale_ohm": [
+          97.83307488444254,
+          86.64674561321422,
+          79.08795604954958,
+          73.63709980175068,
+          69.48426196539454,
+          66.16998785067626,
+          63.420848038858594,
+          61.067681212403784,
+          59.00232440070225,
+          57.153558300013714
+        ],
+        "predicted_exhale_ohm": [
+          94.82692927462928,
+          82.90570357032871,
+          74.68918304899503,
+          68.66254351934526,
+          64.01250381523587,
+          60.272718999436975,
+          57.16175446797445,
+          54.50250246840794,
+          52.17943863714781,
+          50.11476488461556
+        ],
+        "jacobian_log_rank": 3,
+        "jacobian_log_condition": 11.473679420679797,
+        "parameter_bound_hit": false,
+        "optimizer_success": true,
+        "optimizer_message": "`gtol` termination condition is satisfied.",
+        "optimizer_multistart_count": 4,
+        "optimizer_converged_candidate_count": 4
+      }
+    },
+    {
+      "truth": [
+        0.015,
+        15.0,
+        4.0,
+        7.0
+      ],
+      "best": {
+        "h_m": 0.015,
+        "rho1_ohm_m": 15.0,
+        "rho2_inhale_ohm_m": 4.000000000000001,
+        "rho2_exhale_ohm_m": 6.999999999999999,
+        "residual_sum_squares_ohm2": 0.0,
+        "residual_rms_ohm": 0.0,
+        "predicted_inhale_ohm": [
+          205.53679462241834,
+          157.16770959403306,
+          123.28295769413714,
+          98.78317921330225,
+          80.65114703284428,
+          66.97881956893323,
+          56.503947208394635,
+          48.36413634542578,
+          41.955736735358606,
+          36.84810103685825
+        ],
+        "predicted_exhale_ohm": [
+          222.57012150157914,
+          176.06042753230983,
+          143.18709894680757,
+          119.06620298502601,
+          100.86675409729726,
+          86.82606240368773,
+          75.78964931475906,
+          66.97260644278305,
+          59.82575311744942,
+          53.95595326967822
+        ],
+        "jacobian_log_rank": 3,
+        "jacobian_log_condition": 6.4329216306912755,
+        "parameter_bound_hit": false,
+        "optimizer_success": true,
+        "optimizer_message": "`gtol` termination condition is satisfied.",
+        "optimizer_multistart_count": 4,
+        "optimizer_converged_candidate_count": 4
+      }
+    }
+  ]
+}

@@ -72,3 +72,7 @@ archive/private/**
 !archive/private/**/*.ipynb
 archive/private/**/__pycache__/
 archive/private/**/.ipynb_checkpoints/
+
+# Isolated notebook replay data and local work pointers
+.notebook-runs/
+audits/**/*.local.txt

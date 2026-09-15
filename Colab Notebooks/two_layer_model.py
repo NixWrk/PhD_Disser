@@ -9,6 +9,7 @@ impedance, ribs, curvature, or an instrument gain/offset.
 from __future__ import annotations
 
 from dataclasses import dataclass
+from functools import lru_cache
 from math import isfinite, pi
 
 import numpy as np
@@ -152,6 +153,106 @@ def forward_curve(
     return np.asarray(z_values), np.asarray(rows)
 
 
+@lru_cache(maxsize=8)
+def _ratio_grid_and_powers(
+    ratio_min: float,
+    ratio_max: float,
+    n_points: int,
+    n_terms: int,
+) -> tuple[np.ndarray, np.ndarray]:
+    """Return a cached log-ratio grid and powers of its reflection factors."""
+    ratios = np.geomspace(ratio_min, ratio_max, n_points)
+    contrasts = (ratios - 1.0) / (ratios + 1.0)
+    indices = np.arange(1, n_terms + 1, dtype=float)
+    powers = np.power(contrasts[np.newaxis, :], indices[:, np.newaxis])
+    ratios.setflags(write=False)
+    powers.setflags(write=False)
+    return ratios, powers
+
+
+def isoimpedance_curves(
+    sizes: np.ndarray | list[float],
+    observed_z: np.ndarray | list[float],
+    h: float,
+    beta: float = 0.5,
+    *,
+    ratio_min: float = 1e-4,
+    ratio_max: float = 1e4,
+    n_points: int = 161,
+    n_terms: int = 8192,
+) -> dict[str, np.ndarray | int]:
+    """Parameterize fixed-impedance solution curves in the rho1-rho2 plane.
+
+    For every electrode size and observed positive transfer impedance, the
+    function varies the ratio rho2/rho1 on a logarithmic grid. The series
+    then gives an impedance kernel K such that Z = rho1 * K; therefore
+    rho1 = observed_z / K and rho2 = ratio * rho1. Each returned row
+    is the solution set for one observation at the supplied fixed thickness.
+
+    relative_kernel_change compares the full series with its first half.
+    It is a numerical truncation diagnostic for plotting, not an uncertainty
+    estimate for the physical model.
+    """
+    sizes_array = np.asarray(sizes, dtype=float)
+    z_array = np.asarray(observed_z, dtype=float)
+    if sizes_array.ndim != 1 or z_array.ndim != 1:
+        raise ValueError("sizes and observed_z must be one-dimensional")
+    if sizes_array.size == 0 or sizes_array.shape != z_array.shape:
+        raise ValueError("sizes and observed_z must have the same non-zero length")
+    if not np.all(np.isfinite(z_array)) or not np.all(z_array > 0):
+        raise ValueError("observed_z must contain positive finite impedances")
+    if not isfinite(h) or h <= 0:
+        raise ValueError("h must be a positive finite length")
+    if not isfinite(beta) or not 0 < beta < 1:
+        raise ValueError("beta=b/a must lie strictly between 0 and 1")
+    if (
+        not isfinite(ratio_min)
+        or not isfinite(ratio_max)
+        or ratio_min <= 0
+        or ratio_max <= ratio_min
+    ):
+        raise ValueError("ratio bounds must be positive, finite, and increasing")
+    if n_points < 3 or n_terms < 16 or n_terms % 2:
+        raise ValueError("n_points must be at least 3 and n_terms an even integer >= 16")
+
+    ratios, powers = _ratio_grid_and_powers(
+        float(ratio_min), float(ratio_max), int(n_points), int(n_terms)
+    )
+    half_terms = n_terms // 2
+    rho1_rows: list[np.ndarray] = []
+    rho2_rows: list[np.ndarray] = []
+    relative_changes: list[float] = []
+    indices = np.arange(1, n_terms + 1, dtype=float)
+    for size, z_value in zip(sizes_array, z_array, strict=True):
+        a, b = geometry_from_size(float(size), beta)
+        d1, d2 = a - b, a + b
+        g1 = 1.0 / np.sqrt(d1 * d1 + (2.0 * indices * h) ** 2)
+        g2 = 1.0 / np.sqrt(d2 * d2 + (2.0 * indices * h) ** 2)
+        delta_geometry = g1 - g2
+        base_geometry = 1.0 / d1 - 1.0 / d2
+        kernel = (base_geometry + 2.0 * (delta_geometry @ powers)) / pi
+        kernel_half = (
+            base_geometry
+            + 2.0 * (delta_geometry[:half_terms] @ powers[:half_terms])
+        ) / pi
+        if not np.all(np.isfinite(kernel)) or not np.all(kernel > 0):
+            raise RuntimeError("isoimpedance kernel is non-positive or non-finite")
+        relative_changes.append(
+            float(np.max(np.abs(kernel - kernel_half) / np.maximum(np.abs(kernel), 1e-15)))
+        )
+        rho1 = float(z_value) / kernel
+        rho1_rows.append(rho1)
+        rho2_rows.append(ratios * rho1)
+
+    return {
+        "rho2_to_rho1_ratio": ratios.copy(),
+        "rho1_ohm_m": np.asarray(rho1_rows),
+        "rho2_ohm_m": np.asarray(rho2_rows),
+        "relative_kernel_change": np.asarray(relative_changes),
+        "n_terms": int(n_terms),
+    }
+
+
 def surface_kernel(
     distance: float,
     rho1: float,
@@ -216,6 +317,7 @@ __all__ = [
     "evaluate",
     "forward_curve",
     "geometry_from_size",
+    "isoimpedance_curves",
     "surface_kernel",
     "transfer_impedance",
     "transfer_impedance_coordinates",

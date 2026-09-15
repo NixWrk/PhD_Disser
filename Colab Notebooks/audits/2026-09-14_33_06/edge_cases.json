@@ -1,0 +1,45 @@
+{
+  "penalty_rho1_0.01": {
+    "forward_status": "series did not converge by max_terms=16384",
+    "fit": {
+      "rho2_ohm_m": 999.0000000000003,
+      "rss_ohm2": 3e+18,
+      "bound_hit": false,
+      "success": true
+    }
+  },
+  "penalty_rho1_0.1": {
+    "forward_status": "series did not converge by max_terms=16384",
+    "fit": {
+      "rho2_ohm_m": 999.0000000000003,
+      "rss_ohm2": 3e+18,
+      "bound_hit": false,
+      "success": true
+    }
+  },
+  "penalty_rho1_0.5": {
+    "forward_status": "series did not converge by max_terms=16384",
+    "fit": {
+      "rho2_ohm_m": 999.0000000000003,
+      "rss_ohm2": 3e+18,
+      "bound_hit": false,
+      "success": true
+    }
+  },
+  "dynamic_h_1e-08": {
+    "rank": 2,
+    "finite_outputs": true
+  },
+  "dynamic_h_1e-05": {
+    "rank": 2,
+    "finite_outputs": true
+  },
+  "dynamic_h_0.001": {
+    "rank": 2,
+    "finite_outputs": true
+  },
+  "duplicate_rpeaks": {
+    "accepted_n_beats": 3,
+    "maximum_reported_se": 7.850462293418875e-17
+  }
+}

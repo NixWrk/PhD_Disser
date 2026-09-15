@@ -1,0 +1,103 @@
+{
+  "schema_version": 2,
+  "artifact_id": "33.06_side_arrays_scientific_notebook",
+  "reviewed_at": "2026-09-15T01:42:02.556736+03:00",
+  "reviewer": "Codex orchestrator; skill: russian-scientific-prose",
+  "language_status": "passed",
+  "technical_status": "passed_with_accessibility_warning",
+  "hashes": {
+    "notebook_sha256": "db43666d16aa459c12744989e199cdaefa7d2cd9958f24a6c62c8c0f80b51a85",
+    "reader_source_markdown_sha256": "30febdce347e2210edef6b165db7a5e996b24ac6109e97bf85e68667ab281dfd",
+    "reader_generated_markdown_sha256": "671680fac2352bd5925ecb172e221e36d834e6667600a6585596dd4310e1ea5d",
+    "html_sha256": "2486d2a656526be40f0c8d7b8582ec13f5c5d84e73adf5def34f37ea0cf2931b",
+    "external_static_artifact_sha256": "b56e83593879db46fe86642a95ded9f9d1af741242ed43a351bcbe693deb12f4",
+    "external_sensitivity_artifact_sha256": "07ae0787afd1dd21d19bc0d9cecdf56fe471306bf028d2cb730e4126542ea942"
+  },
+  "language_review": {
+    "full_sequential_reader_text_read_after_last_byte_change": true,
+    "visible_tables_reviewed": true,
+    "visible_plot_labels_reviewed_in_source_and_rendered_outputs": true,
+    "numbered_figure_captions_present": true,
+    "local_numeric_analysis_after_each_figure": true,
+    "terminology_and_notation_consistent": true,
+    "displayed_formula_variables_defined": true,
+    "discrete_rho2_grid_reflected_in_formula_and_prose": true,
+    "claims_scoped_to_model_and_evidence": true,
+    "individual_ct_to_reduction_to_fem_to_array_selection_sequence_explicit": true,
+    "pulse_analysis_absent_from_notebook_scope": true,
+    "display_window_explained_as_visualization_only": true,
+    "every_curve_has_visible_point_for_each_h": true,
+    "out_of_window_fits_explicitly_disclosed": true,
+    "parametric_set_not_mislabeled_as_function": true,
+    "effective_layer_parameter_labels_used": true
+  },
+  "technical_checks": {
+    "executed_code_cells": 9,
+    "execution_errors": 0,
+    "targeted_tests": "21 passed",
+    "numbered_figures": 10,
+    "local_figure_analyses": 10,
+    "embedded_raster_figures": 8,
+    "plotly_figures": 2,
+    "h_frames_per_plotly_figure": 80,
+    "rms_profile_figures": 2,
+    "discrete_rms_maps": 2,
+    "static_observations": 19,
+    "input_provenance_rows": 19,
+    "html_source_code_excluded": true,
+    "rms_map": {
+      "h_values": 80,
+      "fixed_rho1_values_ohm_m": [
+        0.25,
+        0.5,
+        1.0,
+        2.0,
+        5.0,
+        10.0,
+        15.0,
+        20.0
+      ],
+      "rho2_to_rho1_ratio_points": 1001,
+      "rho2_to_rho1_ratio_range": [
+        0.0001,
+        10000.0
+      ],
+      "series_terms": 32768,
+      "maximum_relative_kernel_change": {
+        "exp02_georg": 2.743197976862286e-06,
+        "exp02_nik": 2.743197976862286e-06
+      },
+      "parameter_boundary_cells": {
+        "exp02_georg": 507,
+        "exp02_nik": 538
+      },
+      "interpolated_contours_used": false,
+      "color_scale": "logarithmic ratio to subject-specific free-fit minimum"
+    },
+    "solution_atlas_axes": {
+      "x": "rho1",
+      "y": "rho2"
+    },
+    "solution_atlas_display_window_ohm_m": {
+      "rho1": [
+        0.25,
+        20.0
+      ],
+      "rho2": [
+        1.0,
+        80.0
+      ]
+    },
+    "curves_without_visible_point_for_any_h": 0,
+    "fitted_markers_outside_display_window": {
+      "exp02_georg": 110,
+      "exp02_nik": 93
+    }
+  },
+  "open_warning": {
+    "id": "missing_image_alt_text",
+    "count": 8,
+    "scope": "embedded raster figures in the HTML export",
+    "impact": "accessibility only; numerical results and surrounding scientific captions are present"
+  }
+}

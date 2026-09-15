@@ -12,6 +12,7 @@ from two_layer_model import (  # noqa: E402
     apparent_resistivity,
     evaluate,
     geometry_from_size,
+    isoimpedance_curves,
     transfer_impedance,
     transfer_impedance_coordinates,
 )
@@ -104,6 +105,55 @@ class TwoLayerModelTests(unittest.TestCase):
         closed = transfer_impedance(self.rho1, self.rho2, self.h, self.a, self.b)
         self.assertAlmostEqual(direct, reciprocal, places=11)
         self.assertAlmostEqual(direct, closed, places=11)
+
+    def test_isoimpedance_curve_reconstructs_fixed_observation(self):
+        sizes = np.asarray([0.050, 0.140])
+        observed = np.asarray([
+            transfer_impedance(self.rho1, self.rho2, self.h, *geometry_from_size(size))
+            for size in sizes
+        ])
+        curves = isoimpedance_curves(
+            sizes,
+            observed,
+            self.h,
+            ratio_min=0.25,
+            ratio_max=4.0,
+            n_points=3,
+            n_terms=1024,
+        )
+        np.testing.assert_allclose(curves["rho1_ohm_m"][:, -1], self.rho1, rtol=1e-10)
+        np.testing.assert_allclose(curves["rho2_ohm_m"][:, -1], self.rho2, rtol=1e-10)
+        self.assertTrue(np.all(curves["relative_kernel_change"] < 1e-10))
+
+    def test_isoimpedance_curve_scales_with_observed_impedance(self):
+        curves = isoimpedance_curves(
+            [0.090],
+            [12.0],
+            self.h,
+            ratio_min=0.1,
+            ratio_max=10.0,
+            n_points=5,
+            n_terms=512,
+        )
+        doubled = isoimpedance_curves(
+            [0.090],
+            [24.0],
+            self.h,
+            ratio_min=0.1,
+            ratio_max=10.0,
+            n_points=5,
+            n_terms=512,
+        )
+        np.testing.assert_allclose(
+            doubled["rho1_ohm_m"], 2.0 * curves["rho1_ohm_m"]
+        )
+        np.testing.assert_allclose(
+            doubled["rho2_ohm_m"], 2.0 * curves["rho2_ohm_m"]
+        )
+
+    def test_isoimpedance_curve_rejects_mismatched_inputs(self):
+        with self.assertRaises(ValueError):
+            isoimpedance_curves([0.050, 0.060], [10.0], self.h)
 
     def test_invalid_geometry_is_rejected(self):
         with self.assertRaises(ValueError):

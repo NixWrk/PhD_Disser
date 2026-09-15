@@ -1,0 +1,27 @@
+{
+  "status": "language_review_passed",
+  "language": "ru",
+  "reviewed_at": "2026-09-03",
+  "artifact": {
+    "path": "MATLAB_TRKG4_real_subjects/docs/PIPELINE_FOR_NOTEBOOKS.md",
+    "sha256": "7e1c1b288d61e10f2dcd1ff3c2f48e498624eb85e951fff682a6d609bb54e908"
+  },
+  "checks": {
+    "language.ru.hash-bound-final-review": "passed",
+    "language.ru.encoding": "passed_utf8",
+    "language.ru.natural-prose": "passed",
+    "language.ru.intro-variation": "passed",
+    "language.ru.reader-facing-clarity": "passed",
+    "language.ru.formula-where": "passed",
+    "language.ru.claim-status-and-limitations": "passed"
+  },
+  "attestation": {
+    "full_text_read_sequentially_after_last_byte_change": true,
+    "scientific_headings_checked": true,
+    "technical_terms_and_scope_checked": true,
+    "claim_status_and_limitations_preserved": true,
+    "open_language_findings": 0,
+    "notebook_artifact_map_updated": true,
+    "surface_coordinate_owner_explicit": true
+  }
+}

@@ -43,4 +43,8 @@ Colab Notebooks/archive/private/**/.ipynb_checkpoints/
 # Subject-linked historical derived data stay local; canonical artifacts use external derived_root
 Colab Notebooks/timestamps/*.json
 Colab Notebooks/params/*.json
-
+# Local notebook replay state and protected input manifests
+Colab Notebooks/.notebook-runs/
+Colab Notebooks/audits/**/*.local.json
+Colab Notebooks/audits/**/*.local.txt
+Colab Notebooks/audits/**/.protected-inputs.local.json

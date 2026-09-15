@@ -30,10 +30,14 @@ class SelectedAnnotation:
 
 
 def select_modes(annotation: dict) -> SelectedAnnotation:
-    """Select accepted modes when available, otherwise candidate modes."""
+    """Select modes without falling back from accepted QC to candidates."""
     qc_status = annotation.get("qc", {}).get("status")
     accepted = annotation.get("accepted_modes")
-    if qc_status == "accepted" and accepted:
+    if qc_status == "accepted":
+        if not accepted:
+            raise ValueError(
+                "Breathing annotation has accepted QC but no accepted_modes"
+            )
         values = accepted
         source = "accepted_modes"
         is_accepted = True
@@ -130,7 +134,7 @@ def _static_prediction(theta_log, sizes_m, h_m):
 
 
 def fit_static_at_h(sizes_m, z_inhale_ohm, z_exhale_ohm, h_m):
-    """Fit three resistivities for a fixed scenario value of ``h``."""
+    """Fit three resistivities for a fixed scenario value of h."""
     sizes_m = np.asarray(sizes_m, dtype=float)
     z_inhale_ohm = np.asarray(z_inhale_ohm, dtype=float)
     z_exhale_ohm = np.asarray(z_exhale_ohm, dtype=float)
@@ -142,23 +146,73 @@ def fit_static_at_h(sizes_m, z_inhale_ohm, z_exhale_ohm, h_m):
     if not np.isfinite(observed).all() or np.any(observed <= 0):
         raise ValueError("This exploratory observation model requires positive finite impedance")
 
+    cache = {"theta": None, "predicted": None, "jacobian": None, "valid": False}
+
+    def calculation(theta_log):
+        theta_log = np.asarray(theta_log, dtype=float)
+        if cache["theta"] is None or not np.array_equal(theta_log, cache["theta"]):
+            try:
+                predicted, jacobian = _static_prediction(
+                    theta_log, sizes_m, float(h_m)
+                )
+                valid = bool(
+                    np.isfinite(predicted).all() and np.isfinite(jacobian).all()
+                )
+            except RuntimeError:
+                predicted = np.full_like(observed, 1.0e9)
+                jacobian = np.zeros((observed.size, 3), dtype=float)
+                valid = False
+            cache.update({
+                "theta": theta_log.copy(),
+                "predicted": predicted,
+                "jacobian": jacobian,
+                "valid": valid,
+            })
+        return cache["predicted"], cache["jacobian"], cache["valid"]
+
     def residual(theta_log):
-        predicted, _ = _static_prediction(theta_log, sizes_m, float(h_m))
+        predicted, _, _ = calculation(theta_log)
         return predicted - observed
 
+    def jacobian(theta_log):
+        _, matrix, _ = calculation(theta_log)
+        return matrix
+
     seeds = [
-        np.log([rho1, rho2_inhale, rho2_exhale])
-        for rho1 in (0.5, 2.0, 10.0, 50.0)
-        for rho2_inhale, rho2_exhale in ((0.5, 0.7), (5.0, 3.0), (30.0, 20.0), (100.0, 60.0))
+        np.log([0.5, 0.5, 0.7]),
+        np.log([2.0, 5.0, 3.0]),
+        np.log([10.0, 30.0, 20.0]),
+        np.log([50.0, 100.0, 60.0]),
     ]
     lower = np.log([0.01, 0.01, 0.01])
     upper = np.log([1000.0, 1000.0, 1000.0])
-    candidates = [
-        least_squares(residual, seed, bounds=(lower, upper), method="trf")
-        for seed in seeds
-    ]
-    solution = min(candidates, key=lambda item: float(np.sum(item.fun**2)))
-    predicted, jacobian_log = _static_prediction(solution.x, sizes_m, float(h_m))
+    candidates = []
+    for seed in seeds:
+        solution = least_squares(
+            residual,
+            seed,
+            jac=jacobian,
+            bounds=(lower, upper),
+            method="trf",
+        )
+        if not solution.success or not np.isfinite(solution.fun).all():
+            continue
+        try:
+            predicted, jacobian_log = _static_prediction(
+                solution.x, sizes_m, float(h_m)
+            )
+        except RuntimeError:
+            continue
+        if not np.isfinite(predicted).all() or not np.isfinite(jacobian_log).all():
+            continue
+        candidates.append((solution, predicted, jacobian_log))
+    if not candidates:
+        raise RuntimeError(f"No converged static solution for h={h_m}")
+
+    solution, predicted, jacobian_log = min(
+        candidates,
+        key=lambda item: float(np.sum((item[1] - observed) ** 2)),
+    )
     diagnostics = matrix_diagnostics(jacobian_log)
     rho1, rho2_inhale, rho2_exhale = np.exp(solution.x)
     return {
@@ -176,8 +230,10 @@ def fit_static_at_h(sizes_m, z_inhale_ohm, z_exhale_ohm, h_m):
             np.any(np.isclose(solution.x, lower, atol=1e-5))
             or np.any(np.isclose(solution.x, upper, atol=1e-5))
         ),
-        "optimizer_success": bool(solution.success),
+        "optimizer_success": True,
         "optimizer_message": str(solution.message),
+        "optimizer_multistart_count": len(seeds),
+        "optimizer_converged_candidate_count": len(candidates),
     }
 
 
@@ -187,9 +243,10 @@ def profile_static_h(sizes_m, z_inhale_ohm, z_exhale_ohm, h_grid_m):
         fit_static_at_h(sizes_m, z_inhale_ohm, z_exhale_ohm, float(h_m))
         for h_m in np.asarray(h_grid_m, dtype=float)
     ]
+    if not rows or not all(row["optimizer_success"] for row in rows):
+        raise RuntimeError("Static h profile contains no rows or a failed solution")
     best_index = int(np.argmin([row["residual_sum_squares_ohm2"] for row in rows]))
     return {"profile": rows, "best_index": best_index, "best": rows[best_index]}
-
 
 
 def _static_prediction_four(theta_log, sizes_m):

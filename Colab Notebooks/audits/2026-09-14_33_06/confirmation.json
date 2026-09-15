@@ -1,0 +1,172 @@
+{
+  "exp02_georg": {
+    "without_50_original_optimizer": [
+      {
+        "h_m": 0.001,
+        "rho1_ohm_m": 1.196704666066364,
+        "rho2_inhale_ohm_m": 24.746689005621917,
+        "rho2_exhale_ohm_m": 23.53718527218585,
+        "residual_sum_squares_ohm2": 750.5993091756447,
+        "residual_rms_ohm": 6.457550744738221,
+        "predicted_inhale_ohm": [
+          201.97115321196037,
+          186.25520425694603,
+          172.7626472574083,
+          161.04660988710515,
+          150.77533996826912,
+          141.6964129901588,
+          133.613836761023,
+          126.37282248458749,
+          119.84932774020369
+        ],
+        "predicted_exhale_ohm": [
+          196.8745253994987,
+          181.1872977883922,
+          167.76460594668532,
+          156.1438487038431,
+          145.98312221291863,
+          137.02332500345784,
+          129.06401954906903,
+          121.94743969397435,
+          115.54754978328813
+        ],
+        "jacobian_log_rank": 3,
+        "jacobian_log_condition": 6.699257921262304,
+        "parameter_bound_hit": false,
+        "optimizer_success": true,
+        "optimizer_message": "`ftol` termination condition is satisfied.",
+        "optimizer_multistart_count": 4,
+        "optimizer_converged_candidate_count": 4,
+        "held_out_50mm_errors_ohm": [
+          21.050282558267554,
+          21.30261651188519
+        ]
+      },
+      {
+        "h_m": 0.01,
+        "rho1_ohm_m": 9.547750757508958,
+        "rho2_inhale_ohm_m": 26.44981284200418,
+        "rho2_exhale_ohm_m": 24.81853108675155,
+        "residual_sum_squares_ohm2": 738.5905619770718,
+        "residual_rms_ohm": 6.4056856774841995,
+        "predicted_inhale_ohm": [
+          202.73342902720196,
+          185.64880941765705,
+          171.8688742226715,
+          160.30968333025402,
+          150.36267586977533,
+          141.65326642867137,
+          133.93221019171563,
+          127.02292004997608,
+          120.79406261276651
+        ],
+        "predicted_exhale_ohm": [
+          198.37621871861302,
+          181.04447143172789,
+          167.11629970294916,
+          155.4793390685049,
+          145.50467339520867,
+          136.80324264221244,
+          129.1154914667974,
+          122.25744375497084,
+          116.09242843497418
+        ],
+        "jacobian_log_rank": 3,
+        "jacobian_log_condition": 6.022451577604764,
+        "parameter_bound_hit": false,
+        "optimizer_success": true,
+        "optimizer_message": "`ftol` termination condition is satisfied.",
+        "optimizer_multistart_count": 4,
+        "optimizer_converged_candidate_count": 4,
+        "held_out_50mm_errors_ohm": [
+          25.78557654207168,
+          27.124578905365155
+        ]
+      }
+    ],
+    "pulse_fit": {}
+  },
+  "exp02_nik": {
+    "without_50_original_optimizer": [
+      {
+        "h_m": 0.001,
+        "rho1_ohm_m": 0.8044465141823198,
+        "rho2_inhale_ohm_m": 9.878143745090268,
+        "rho2_exhale_ohm_m": 9.16328854932735,
+        "residual_sum_squares_ohm2": 64.16115492748395,
+        "residual_rms_ohm": 2.0025164625959375,
+        "predicted_inhale_ohm": [
+          100.79105103091203,
+          91.00085315787763,
+          82.88886896067136,
+          76.06001516275175,
+          65.20946176619587,
+          60.831969906484915,
+          56.98636061629145,
+          53.582686678080975
+        ],
+        "predicted_exhale_ohm": [
+          95.99206415360914,
+          86.40978011421642,
+          78.51050342955028,
+          71.8897724223826,
+          61.425886684058035,
+          57.22423814122121,
+          53.542677343700646,
+          50.29173384922733
+        ],
+        "jacobian_log_rank": 3,
+        "jacobian_log_condition": 7.315023433960713,
+        "parameter_bound_hit": false,
+        "optimizer_success": true,
+        "optimizer_message": "`ftol` termination condition is satisfied.",
+        "optimizer_multistart_count": 4,
+        "optimizer_converged_candidate_count": 4,
+        "held_out_50mm_errors_ohm": [
+          27.14986745351547,
+          24.721386702199666
+        ]
+      },
+      {
+        "h_m": 0.01,
+        "rho1_ohm_m": 5.403127861051401,
+        "rho2_inhale_ohm_m": 10.503290691623812,
+        "rho2_exhale_ohm_m": 9.456015259578047,
+        "residual_sum_squares_ohm2": 61.38253320114819,
+        "residual_rms_ohm": 1.9586751453652957,
+        "predicted_inhale_ohm": [
+          100.94582908204025,
+          90.60048889956488,
+          82.4393101984825,
+          75.75338607592865,
+          65.31287562803855,
+          61.125115169105655,
+          57.444552843059675,
+          54.18048091339094
+        ],
+        "predicted_exhale_ohm": [
+          96.88379483473281,
+          86.38746237500847,
+          78.16774741744182,
+          71.48506722577378,
+          61.15856219497957,
+          57.057360551817865,
+          53.47314643466979,
+          50.310692989253646
+        ],
+        "jacobian_log_rank": 3,
+        "jacobian_log_condition": 4.846374041309381,
+        "parameter_bound_hit": false,
+        "optimizer_success": true,
+        "optimizer_message": "`ftol` termination condition is satisfied.",
+        "optimizer_multistart_count": 4,
+        "optimizer_converged_candidate_count": 4,
+        "held_out_50mm_errors_ohm": [
+          29.13147237112362,
+          27.91123861385394
+        ]
+      }
+    ],
+    "pulse_fit": {}
+  }
+}

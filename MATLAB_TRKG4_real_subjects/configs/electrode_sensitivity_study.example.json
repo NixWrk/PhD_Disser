@@ -1,0 +1,96 @@
+{
+  "schema_version": "electrode_sensitivity_v1",
+  "status": "exploratory_hypothesis_not_validated",
+  "source": {
+    "prepared_fem": "../output/exploratory/arm_sigma_20260908/prepared_fem.mat",
+    "prepared_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "frequency_hz": 100000.0
+  },
+  "parameters": [
+    {
+      "id": "soft",
+      "block_indices": [0, 1],
+      "nominal_sigma": 0.4,
+      "fixed": false
+    },
+    {
+      "id": "heart",
+      "block_indices": [2],
+      "nominal_sigma": 0.25,
+      "fixed": false
+    },
+    {
+      "id": "lung",
+      "block_indices": [3],
+      "nominal_sigma": 0.08,
+      "fixed": false
+    },
+    {
+      "id": "bone",
+      "block_indices": [4],
+      "nominal_sigma": 0.02,
+      "fixed": true
+    }
+  ],
+  "states": [
+    {
+      "id": "baseline",
+      "conductivity": {
+        "soft": 0.4,
+        "heart": 0.25,
+        "lung": 0.08,
+        "bone": 0.02
+      }
+    },
+    {
+      "id": "inhale",
+      "conductivity": {
+        "soft": 0.42,
+        "heart": 0.25,
+        "lung": 0.05,
+        "bone": 0.02
+      }
+    },
+    {
+      "id": "systole",
+      "conductivity": {
+        "soft": 0.4,
+        "heart": 0.3,
+        "lung": 0.08,
+        "bone": 0.02
+      }
+    }
+  ],
+  "montages": [
+    {
+      "id": "six_electrode_example",
+      "contact_matrix": "../frozen_outputs/six_electrode_cem_contact.mat",
+      "contact_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "electrodes": [
+        "electrode_1",
+        "electrode_2",
+        "electrode_3",
+        "electrode_4",
+        "electrode_5",
+        "electrode_6"
+      ],
+      "contact_geometry_provenance": "Six named contacts supplied by the geometry orchestrator for a conditional study example",
+      "channels": [
+        {
+          "id": "channel_a",
+          "drive": [0.25, 0.25, 0.25, 0.25, -0.5, -0.5],
+          "measure": [0.5, 0.5, -0.25, -0.25, -0.25, -0.25]
+        },
+        {
+          "id": "channel_b",
+          "drive": [1.0, 0.0, -1.0, 0.0, 0.0, 0.0],
+          "measure": [0.0, 0.5, 0.5, -0.5, -0.5, 0.0]
+        }
+      ]
+    }
+  ],
+  "analysis": {
+    "map_states": ["baseline", "inhale", "systole"],
+    "save_fields": false
+  }
+}

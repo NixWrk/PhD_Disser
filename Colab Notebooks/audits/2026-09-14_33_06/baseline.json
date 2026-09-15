@@ -1,0 +1,1000 @@
+{
+  "configuration_hash_matches": true,
+  "source_code_hashes": {
+    "two_layer_model.py": "1cc44f6107f18fc59be1ef1fd60c4291349a16cd5a572a04c345a27d098696c7",
+    "exploratory_analysis.py": "4120b79c055bb2e4e6ed291baac468e42de1c807530c7878beaadf637ac33f52",
+    "ttrkg_analysis.py": "bb80eef3ec818121b8aa5becad69b3343dac7cb5a528d2449260e8e966c39860"
+  },
+  "provenance": [
+    {
+      "record_id": "0afa461c34a0558e",
+      "subject_id": "exp02_nik",
+      "size_mm": 130,
+      "csv_hash_matches": true,
+      "breathing_hash_matches": true,
+      "ecg_hash_matches": true,
+      "time_increasing": true,
+      "levels": [
+        {
+          "state": "inhale",
+          "median_ohm": 60.925,
+          "saved_delta_ohm": 0.0,
+          "duration_s": 21.160000000000004,
+          "slope_ohm_s": -0.006779199029389833,
+          "margin_delta_ohm": {
+            "0.0": -0.001999999999995339,
+            "1.0": 0.0010000000000047748,
+            "2.0": 0.0010000000000047748
+          }
+        },
+        {
+          "state": "exhale",
+          "median_ohm": 55.784,
+          "saved_delta_ohm": 0.0,
+          "duration_s": 23.255000000000003,
+          "slope_ohm_s": -0.0004897303151497914,
+          "margin_delta_ohm": {
+            "0.0": 0.0,
+            "1.0": -0.0009999999999976694,
+            "2.0": -0.0020000000000024443
+          }
+        }
+      ]
+    },
+    {
+      "record_id": "16e1fb61f5c4f94d",
+      "subject_id": "exp02_georg",
+      "size_mm": 60,
+      "csv_hash_matches": true,
+      "breathing_hash_matches": true,
+      "ecg_hash_matches": true,
+      "time_increasing": true,
+      "levels": [
+        {
+          "state": "inhale",
+          "median_ohm": 207.626,
+          "saved_delta_ohm": 0.0,
+          "duration_s": 21.120000000000005,
+          "slope_ohm_s": -0.07251491158573434,
+          "margin_delta_ohm": {
+            "0.0": 0.0,
+            "1.0": 0.0,
+            "2.0": 0.0
+          }
+        },
+        {
+          "state": "exhale",
+          "median_ohm": 200.517,
+          "saved_delta_ohm": 0.0,
+          "duration_s": 19.285000000000004,
+          "slope_ohm_s": -0.01222823490171573,
+          "margin_delta_ohm": {
+            "0.0": -0.006000000000000227,
+            "1.0": 0.009000000000014552,
+            "2.0": 0.030000000000001137
+          }
+        }
+      ]
+    },
+    {
+      "record_id": "38014daebf7ff78a",
+      "subject_id": "exp02_georg",
+      "size_mm": 110,
+      "csv_hash_matches": true,
+      "breathing_hash_matches": true,
+      "ecg_hash_matches": true,
+      "time_increasing": true,
+      "levels": [
+        {
+          "state": "inhale",
+          "median_ohm": 141.818,
+          "saved_delta_ohm": 0.0,
+          "duration_s": 23.76,
+          "slope_ohm_s": -0.0770548316248729,
+          "margin_delta_ohm": {
+            "0.0": 0.0,
+            "1.0": 0.0,
+            "2.0": 0.0
+          }
+        },
+        {
+          "state": "exhale",
+          "median_ohm": 138.028,
+          "saved_delta_ohm": 0.0,
+          "duration_s": 10.344999999999999,
+          "slope_ohm_s": -0.011681820528433019,
+          "margin_delta_ohm": {
+            "0.0": -0.003999999999990678,
+            "1.0": 0.0030000000000143245,
+            "2.0": 0.0030000000000143245
+          }
+        }
+      ]
+    },
+    {
+      "record_id": "3813722c0a78cfd5",
+      "subject_id": "exp02_nik",
+      "size_mm": 120,
+      "csv_hash_matches": true,
+      "breathing_hash_matches": true,
+      "ecg_hash_matches": true,
+      "time_increasing": true,
+      "levels": [
+        {
+          "state": "inhale",
+          "median_ohm": 62.821,
+          "saved_delta_ohm": 0.0,
+          "duration_s": 20.65,
+          "slope_ohm_s": -0.016731868343663588,
+          "margin_delta_ohm": {
+            "0.0": 0.0,
+            "1.0": 0.0,
+            "2.0": 0.0
+          }
+        },
+        {
+          "state": "exhale",
+          "median_ohm": 57.685,
+          "saved_delta_ohm": 0.0,
+          "duration_s": 20.339999999999996,
+          "slope_ohm_s": -0.0046897095331110816,
+          "margin_delta_ohm": {
+            "0.0": 0.0,
+            "1.0": -0.0010000000000047748,
+            "2.0": -0.0040000000000048885
+          }
+        }
+      ]
+    },
+    {
+      "record_id": "3eb16c060e856d45",
+      "subject_id": "exp02_nik",
+      "size_mm": 70,
+      "csv_hash_matches": true,
+      "breathing_hash_matches": true,
+      "ecg_hash_matches": true,
+      "time_increasing": true,
+      "levels": [
+        {
+          "state": "inhale",
+          "median_ohm": 88.678,
+          "saved_delta_ohm": 0.0,
+          "duration_s": 14.425,
+          "slope_ohm_s": -0.03007130159069431,
+          "margin_delta_ohm": {
+            "0.0": 0.0,
+            "1.0": 0.0,
+            "2.0": 0.0
+          }
+        },
+        {
+          "state": "exhale",
+          "median_ohm": 85.633,
+          "saved_delta_ohm": 0.0,
+          "duration_s": 22.475,
+          "slope_ohm_s": -0.0010738280757256178,
+          "margin_delta_ohm": {
+            "0.0": 0.0,
+            "1.0": 0.0010000000000047748,
+            "2.0": 0.0020000000000095497
+          }
+        }
+      ]
+    },
+    {
+      "record_id": "457a9c313389d102",
+      "subject_id": "exp02_nik",
+      "size_mm": 60,
+      "csv_hash_matches": true,
+      "breathing_hash_matches": true,
+      "ecg_hash_matches": true,
+      "time_increasing": true,
+      "levels": [
+        {
+          "state": "inhale",
+          "median_ohm": 101.102,
+          "saved_delta_ohm": 0.0,
+          "duration_s": 20.03,
+          "slope_ohm_s": -0.0360988352499609,
+          "margin_delta_ohm": {
+            "0.0": 0.0,
+            "1.0": 0.0,
+            "2.0": 0.0
+          }
+        },
+        {
+          "state": "exhale",
+          "median_ohm": 97.44,
+          "saved_delta_ohm": 0.0,
+          "duration_s": 22.714999999999996,
+          "slope_ohm_s": -0.01936073124988907,
+          "margin_delta_ohm": {
+            "0.0": 0.0,
+            "1.0": 0.0,
+            "2.0": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "record_id": "532548295b851498",
+      "subject_id": "exp02_georg",
+      "size_mm": 140,
+      "csv_hash_matches": true,
+      "breathing_hash_matches": true,
+      "ecg_hash_matches": true,
+      "time_increasing": true,
+      "levels": [
+        {
+          "state": "inhale",
+          "median_ohm": 115.915,
+          "saved_delta_ohm": 0.0,
+          "duration_s": 23.825000000000003,
+          "slope_ohm_s": -0.007665280061421868,
+          "margin_delta_ohm": {
+            "0.0": 0.0,
+            "1.0": 0.0,
+            "2.0": 0.0
+          }
+        },
+        {
+          "state": "exhale",
+          "median_ohm": 111.636,
+          "saved_delta_ohm": 0.0,
+          "duration_s": 29.814999999999998,
+          "slope_ohm_s": 0.02103412040001145,
+          "margin_delta_ohm": {
+            "0.0": 0.0,
+            "1.0": 0.0,
+            "2.0": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "record_id": "5c3d49578fcc44a2",
+      "subject_id": "exp02_nik",
+      "size_mm": 80,
+      "csv_hash_matches": true,
+      "breathing_hash_matches": true,
+      "ecg_hash_matches": true,
+      "time_increasing": true,
+      "levels": [
+        {
+          "state": "inhale",
+          "median_ohm": 83.943,
+          "saved_delta_ohm": 0.0,
+          "duration_s": 23.0,
+          "slope_ohm_s": -0.02230753174128862,
+          "margin_delta_ohm": {
+            "0.0": 0.0,
+            "1.0": 0.0,
+            "2.0": 0.0
+          }
+        },
+        {
+          "state": "exhale",
+          "median_ohm": 79.63,
+          "saved_delta_ohm": 0.0,
+          "duration_s": 21.57999999999999,
+          "slope_ohm_s": -0.013639726740386288,
+          "margin_delta_ohm": {
+            "0.0": 0.0,
+            "1.0": 0.0,
+            "2.0": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "record_id": "61792d81e4b89349",
+      "subject_id": "exp02_nik",
+      "size_mm": 90,
+      "csv_hash_matches": true,
+      "breathing_hash_matches": true,
+      "ecg_hash_matches": true,
+      "time_increasing": true,
+      "levels": [
+        {
+          "state": "inhale",
+          "median_ohm": 74.573,
+          "saved_delta_ohm": 0.0,
+          "duration_s": 22.029999999999998,
+          "slope_ohm_s": -0.013257682878320133,
+          "margin_delta_ohm": {
+            "0.0": 0.007000000000005002,
+            "1.0": -0.007999999999995566,
+            "2.0": -0.01799999999998647
+          }
+        },
+        {
+          "state": "exhale",
+          "median_ohm": 70.327,
+          "saved_delta_ohm": 0.0,
+          "duration_s": 22.049999999999997,
+          "slope_ohm_s": -0.013455491065380477,
+          "margin_delta_ohm": {
+            "0.0": 0.0,
+            "1.0": 0.0,
+            "2.0": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "record_id": "74a1a7f4a6c3da1a",
+      "subject_id": "exp02_georg",
+      "size_mm": 70,
+      "csv_hash_matches": true,
+      "breathing_hash_matches": true,
+      "ecg_hash_matches": true,
+      "time_increasing": true,
+      "levels": [
+        {
+          "state": "inhale",
+          "median_ohm": 175.277,
+          "saved_delta_ohm": 0.0,
+          "duration_s": 15.129999999999999,
+          "slope_ohm_s": -0.08885968967095145,
+          "margin_delta_ohm": {
+            "0.0": 0.0,
+            "1.0": 0.0,
+            "2.0": 0.0
+          }
+        },
+        {
+          "state": "exhale",
+          "median_ohm": 171.211,
+          "saved_delta_ohm": 0.0,
+          "duration_s": 20.18,
+          "slope_ohm_s": 0.005129359679451734,
+          "margin_delta_ohm": {
+            "0.0": 0.0,
+            "1.0": 0.0009999999999763531,
+            "2.0": 0.030000000000001137
+          }
+        }
+      ]
+    },
+    {
+      "record_id": "a4131daac20b73b0",
+      "subject_id": "exp02_georg",
+      "size_mm": 130,
+      "csv_hash_matches": true,
+      "breathing_hash_matches": true,
+      "ecg_hash_matches": true,
+      "time_increasing": true,
+      "levels": [
+        {
+          "state": "inhale",
+          "median_ohm": 130.421,
+          "saved_delta_ohm": 0.0,
+          "duration_s": 23.290000000000003,
+          "slope_ohm_s": -0.0031772583401641855,
+          "margin_delta_ohm": {
+            "0.0": -0.001999999999981128,
+            "1.0": 0.0010000000000047748,
+            "2.0": 0.009000000000014552
+          }
+        },
+        {
+          "state": "exhale",
+          "median_ohm": 125.641,
+          "saved_delta_ohm": 0.0,
+          "duration_s": 21.559999999999995,
+          "slope_ohm_s": 0.026609901281192633,
+          "margin_delta_ohm": {
+            "0.0": 0.0,
+            "1.0": 0.0,
+            "2.0": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "record_id": "abb001faf8162073",
+      "subject_id": "exp02_nik",
+      "size_mm": 140,
+      "csv_hash_matches": true,
+      "breathing_hash_matches": true,
+      "ecg_hash_matches": true,
+      "time_increasing": true,
+      "levels": [
+        {
+          "state": "inhale",
+          "median_ohm": 50.103,
+          "saved_delta_ohm": 0.0,
+          "duration_s": 20.775,
+          "slope_ohm_s": -0.011568292209038447,
+          "margin_delta_ohm": {
+            "0.0": 0.0,
+            "1.0": 0.0,
+            "2.0": 0.0
+          }
+        },
+        {
+          "state": "exhale",
+          "median_ohm": 46.828,
+          "saved_delta_ohm": 0.0,
+          "duration_s": 21.924999999999997,
+          "slope_ohm_s": 0.00992063993701927,
+          "margin_delta_ohm": {
+            "0.0": 0.0,
+            "1.0": 0.0,
+            "2.0": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "record_id": "af9442f5b70f4964",
+      "subject_id": "exp02_georg",
+      "size_mm": 50,
+      "csv_hash_matches": true,
+      "breathing_hash_matches": true,
+      "ecg_hash_matches": true,
+      "time_increasing": true,
+      "levels": [
+        {
+          "state": "inhale",
+          "median_ohm": 199.481,
+          "saved_delta_ohm": 0.0,
+          "duration_s": 25.285,
+          "slope_ohm_s": -0.0018383816757806186,
+          "margin_delta_ohm": {
+            "0.0": 0.0010000000000047748,
+            "1.0": 0.0,
+            "2.0": 0.0
+          }
+        },
+        {
+          "state": "exhale",
+          "median_ohm": 194.1695,
+          "saved_delta_ohm": 0.0,
+          "duration_s": 20.645000000000003,
+          "slope_ohm_s": 0.07660688820252527,
+          "margin_delta_ohm": {
+            "0.0": 0.0,
+            "1.0": 0.0,
+            "2.0": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "record_id": "c65e99bd76dba9a3",
+      "subject_id": "exp02_georg",
+      "size_mm": 120,
+      "csv_hash_matches": true,
+      "breathing_hash_matches": true,
+      "ecg_hash_matches": true,
+      "time_increasing": true,
+      "levels": [
+        {
+          "state": "inhale",
+          "median_ohm": 134.209,
+          "saved_delta_ohm": 0.0,
+          "duration_s": 23.590000000000003,
+          "slope_ohm_s": -0.02808834807076377,
+          "margin_delta_ohm": {
+            "0.0": 0.0,
+            "1.0": 0.0,
+            "2.0": 0.003999999999990678
+          }
+        },
+        {
+          "state": "exhale",
+          "median_ohm": 128.727,
+          "saved_delta_ohm": 0.0,
+          "duration_s": 19.529999999999994,
+          "slope_ohm_s": 0.039181831081902777,
+          "margin_delta_ohm": {
+            "0.0": 0.0,
+            "1.0": 0.0,
+            "2.0": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "record_id": "dc6569ff63a799cf",
+      "subject_id": "exp02_georg",
+      "size_mm": 90,
+      "csv_hash_matches": true,
+      "breathing_hash_matches": true,
+      "ecg_hash_matches": true,
+      "time_increasing": true,
+      "levels": [
+        {
+          "state": "inhale",
+          "median_ohm": 150.875,
+          "saved_delta_ohm": 0.0,
+          "duration_s": 18.77,
+          "slope_ohm_s": -0.03350075185737128,
+          "margin_delta_ohm": {
+            "0.0": 0.0,
+            "1.0": 0.0,
+            "2.0": 0.0
+          }
+        },
+        {
+          "state": "exhale",
+          "median_ohm": 147.042,
+          "saved_delta_ohm": 0.0,
+          "duration_s": 15.605000000000004,
+          "slope_ohm_s": 0.055496845738558474,
+          "margin_delta_ohm": {
+            "0.0": 0.0,
+            "1.0": 0.0,
+            "2.0": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "record_id": "de3d881503ce81e8",
+      "subject_id": "exp02_georg",
+      "size_mm": 80,
+      "csv_hash_matches": true,
+      "breathing_hash_matches": true,
+      "ecg_hash_matches": true,
+      "time_increasing": true,
+      "levels": [
+        {
+          "state": "inhale",
+          "median_ohm": 182.33749999999998,
+          "saved_delta_ohm": 0.0,
+          "duration_s": 15.465,
+          "slope_ohm_s": -0.07701541157469528,
+          "margin_delta_ohm": {
+            "0.0": 0.0,
+            "1.0": 0.0,
+            "2.0": 0.0
+          }
+        },
+        {
+          "state": "exhale",
+          "median_ohm": 176.966,
+          "saved_delta_ohm": 0.0,
+          "duration_s": 17.42,
+          "slope_ohm_s": 0.034754894910259855,
+          "margin_delta_ohm": {
+            "0.0": 0.0,
+            "1.0": 0.0,
+            "2.0": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "record_id": "ebac1f4aa63db94d",
+      "subject_id": "exp02_georg",
+      "size_mm": 100,
+      "csv_hash_matches": true,
+      "breathing_hash_matches": true,
+      "ecg_hash_matches": true,
+      "time_increasing": true,
+      "levels": [
+        {
+          "state": "inhale",
+          "median_ohm": 155.90249999999997,
+          "saved_delta_ohm": 0.0,
+          "duration_s": 22.215000000000003,
+          "slope_ohm_s": -0.09600265054462008,
+          "margin_delta_ohm": {
+            "0.0": 0.0,
+            "1.0": 0.0,
+            "2.0": 0.0
+          }
+        },
+        {
+          "state": "exhale",
+          "median_ohm": 151.82,
+          "saved_delta_ohm": 0.0,
+          "duration_s": 21.620000000000005,
+          "slope_ohm_s": 0.026700623063738303,
+          "margin_delta_ohm": {
+            "0.0": 0.0,
+            "1.0": 0.0,
+            "2.0": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "record_id": "f230453caab02f7c",
+      "subject_id": "exp02_nik",
+      "size_mm": 50,
+      "csv_hash_matches": true,
+      "breathing_hash_matches": true,
+      "ecg_hash_matches": true,
+      "time_increasing": true,
+      "levels": [
+        {
+          "state": "inhale",
+          "median_ohm": 85.689,
+          "saved_delta_ohm": 0.0,
+          "duration_s": 23.765,
+          "slope_ohm_s": -0.028676157688957628,
+          "margin_delta_ohm": {
+            "0.0": 0.0,
+            "1.0": 0.0,
+            "2.0": 0.0
+          }
+        },
+        {
+          "state": "exhale",
+          "median_ohm": 83.134,
+          "saved_delta_ohm": 0.0,
+          "duration_s": 22.309999999999995,
+          "slope_ohm_s": -0.027936380273362836,
+          "margin_delta_ohm": {
+            "0.0": 0.0,
+            "1.0": 0.0,
+            "2.0": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "record_id": "f8e058ae0d2a7d5b",
+      "subject_id": "exp02_nik",
+      "size_mm": 110,
+      "csv_hash_matches": true,
+      "breathing_hash_matches": true,
+      "ecg_hash_matches": true,
+      "time_increasing": true,
+      "levels": [
+        {
+          "state": "inhale",
+          "median_ohm": 65.581,
+          "saved_delta_ohm": 0.0,
+          "duration_s": 22.475,
+          "slope_ohm_s": -0.01282645787938448,
+          "margin_delta_ohm": {
+            "0.0": 0.0,
+            "1.0": 0.0,
+            "2.0": 0.0
+          }
+        },
+        {
+          "state": "exhale",
+          "median_ohm": 61.474,
+          "saved_delta_ohm": 0.0,
+          "duration_s": 22.005000000000003,
+          "slope_ohm_s": -0.005081775942472131,
+          "margin_delta_ohm": {
+            "0.0": 0.0,
+            "1.0": -0.0009999999999976694,
+            "2.0": -0.0009999999999976694
+          }
+        }
+      ]
+    }
+  ],
+  "subjects": {
+    "exp02_georg": {
+      "paired_residual_correlation": 0.9936120922987098,
+      "common_record_residual_fraction_of_rss": 0.9958057994229798,
+      "residuals_by_size_ohm": [
+        {
+          "size_mm": 50.0,
+          "inhale": 9.917605146432749,
+          "exhale": 10.517435523985881
+        },
+        {
+          "size_mm": 60.0,
+          "inhale": -13.34771711730042,
+          "exhale": -11.092313484857584
+        },
+        {
+          "size_mm": 70.0,
+          "inhale": 5.92346662231742,
+          "exhale": 5.0679695207466295
+        },
+        {
+          "size_mm": 80.0,
+          "inhale": -12.57665285250431,
+          "exhale": -12.143687671344168
+        },
+        {
+          "size_mm": 90.0,
+          "inhale": 8.785447706233185,
+          "exhale": 7.698256951613956
+        },
+        {
+          "size_mm": 100.0,
+          "inhale": -5.2306644821845225,
+          "exhale": -6.025270631118758
+        },
+        {
+          "size_mm": 110.0,
+          "inhale": 0.8000696486489005,
+          "exhale": -0.22668427484029507
+        },
+        {
+          "size_mm": 120.0,
+          "inhale": 1.1499334682881397,
+          "exhale": 1.887463578897723
+        },
+        {
+          "size_mm": 130.0,
+          "inhale": -1.639416807415813,
+          "exhale": -1.5235299070825334
+        },
+        {
+          "size_mm": 140.0,
+          "inhale": 6.878998106126119,
+          "exhale": 6.5794963754137825
+        }
+      ],
+      "profile_local_minima_h_mm": [],
+      "failed_optimizer_rows": 0,
+      "dynamic_along_profile": {
+        "задержка_вдох": [
+          {
+            "h_mm": 1,
+            "static_rms_ohm": 7.674294760882557,
+            "delta_rho1_ptp": 0.0005760936281167774,
+            "delta_rho2_ptp": 0.025897533390344427,
+            "fractional_rho1_abs_max": 0.0005551120394180651,
+            "fractional_rho2_abs_max": 0.0008432963901962345,
+            "dynamic_rms_ohm": 0.009844490449279045,
+            "condition": 80.87416247509225
+          },
+          {
+            "h_mm": 5,
+            "static_rms_ohm": 7.735409084262318,
+            "delta_rho1_ptp": 0.0023818123167946245,
+            "delta_rho2_ptp": 0.0262853195506812,
+            "fractional_rho1_abs_max": 0.0004793526500570285,
+            "fractional_rho2_abs_max": 0.0008437127345216534,
+            "dynamic_rms_ohm": 0.009877862123737102,
+            "condition": 18.50448553992501
+          },
+          {
+            "h_mm": 15,
+            "static_rms_ohm": 9.364769225541428,
+            "delta_rho1_ptp": 0.0022229181697217904,
+            "delta_rho2_ptp": 0.04480912033738469,
+            "fractional_rho1_abs_max": 0.00021168290924296356,
+            "fractional_rho2_abs_max": 0.0010894439085139132,
+            "dynamic_rms_ohm": 0.00956222931536539,
+            "condition": 21.974247122009192
+          },
+          {
+            "h_mm": 20,
+            "static_rms_ohm": 10.386225104742904,
+            "delta_rho1_ptp": 0.001986409479402072,
+            "delta_rho2_ptp": 0.0832642414481591,
+            "fractional_rho1_abs_max": 0.0001656414037961449,
+            "fractional_rho2_abs_max": 0.0015062474779762073,
+            "dynamic_rms_ohm": 0.009207147331121527,
+            "condition": 43.46999408294355
+          },
+          {
+            "h_mm": 40,
+            "static_rms_ohm": 14.116790739285351,
+            "delta_rho1_ptp": 0.0015675597184623454,
+            "delta_rho2_ptp": 34.05141314086116,
+            "fractional_rho1_abs_max": 9.983857700565262e-05,
+            "fractional_rho2_abs_max": 0.03257481774222633,
+            "dynamic_rms_ohm": 0.0084536811718952,
+            "condition": 18637.936832563806
+          }
+        ],
+        "задержка_выдох": [
+          {
+            "h_mm": 1,
+            "static_rms_ohm": 7.674294760882557,
+            "delta_rho1_ptp": 0.0008348737245989101,
+            "delta_rho2_ptp": 0.037542581341660414,
+            "fractional_rho1_abs_max": 0.0006737376263217295,
+            "fractional_rho2_abs_max": 0.0011014702467411963,
+            "dynamic_rms_ohm": 0.008298252734806874,
+            "condition": 71.87790691133452
+          },
+          {
+            "h_mm": 5,
+            "static_rms_ohm": 7.735409084262318,
+            "delta_rho1_ptp": 0.003389457439380712,
+            "delta_rho2_ptp": 0.03793109480232357,
+            "fractional_rho1_abs_max": 0.0005736318597778035,
+            "fractional_rho2_abs_max": 0.001101039988271893,
+            "dynamic_rms_ohm": 0.008308693733206593,
+            "condition": 16.464057139557934
+          },
+          {
+            "h_mm": 15,
+            "static_rms_ohm": 9.364769225541428,
+            "delta_rho1_ptp": 0.0021707897456600188,
+            "delta_rho2_ptp": 0.060083547378824056,
+            "fractional_rho1_abs_max": 0.00017997081154814786,
+            "fractional_rho2_abs_max": 0.0013564527310515105,
+            "dynamic_rms_ohm": 0.00837910144929277,
+            "condition": 18.42482990869594
+          },
+          {
+            "h_mm": 20,
+            "static_rms_ohm": 10.386225104742904,
+            "delta_rho1_ptp": 0.0016154152069155895,
+            "delta_rho2_ptp": 0.10207204733344044,
+            "fractional_rho1_abs_max": 0.00012094494076463827,
+            "fractional_rho2_abs_max": 0.001768176972470146,
+            "dynamic_rms_ohm": 0.008527969583495167,
+            "condition": 33.729171595307925
+          },
+          {
+            "h_mm": 40,
+            "static_rms_ohm": 14.116790739285351,
+            "delta_rho1_ptp": 0.0024718202717806566,
+            "delta_rho2_ptp": 47.74393291910353,
+            "fractional_rho1_abs_max": 0.00011184254986491984,
+            "fractional_rho2_abs_max": 0.03672599673121556,
+            "dynamic_rms_ohm": 0.009362728908355388,
+            "condition": 18637.936832563806
+          }
+        ]
+      }
+    },
+    "exp02_nik": {
+      "paired_residual_correlation": 0.9903006129725189,
+      "common_record_residual_fraction_of_rss": 0.9948362589859884,
+      "residuals_by_size_ohm": [
+        {
+          "size_mm": 50.0,
+          "inhale": 12.767861804958173,
+          "exhale": 11.396065703646059
+        },
+        {
+          "size_mm": 60.0,
+          "inhale": -9.962151923110497,
+          "exhale": -10.322745795383867
+        },
+        {
+          "size_mm": 70.0,
+          "inhale": -3.8432132225743345,
+          "exhale": -4.857117379675358
+        },
+        {
+          "size_mm": 80.0,
+          "inhale": -4.605278331297825,
+          "exhale": -4.347471799430906
+        },
+        {
+          "size_mm": 90.0,
+          "inhale": -0.07446439942489746,
+          "exhale": 0.14724795434007376
+        },
+        {
+          "size_mm": 110.0,
+          "inhale": 0.7835516269832539,
+          "exhale": 0.9775706091346663
+        },
+        {
+          "size_mm": 120.0,
+          "inhale": 0.09105299720437188,
+          "exhale": 1.3842246113291452
+        },
+        {
+          "size_mm": 130.0,
+          "inhale": -1.1347874496927872,
+          "exhale": 0.2387793663428468
+        },
+        {
+          "size_mm": 140.0,
+          "inhale": 6.850659176133163,
+          "exhale": 6.436700400976264
+        }
+      ],
+      "profile_local_minima_h_mm": [],
+      "failed_optimizer_rows": 0,
+      "dynamic_along_profile": {
+        "задержка_вдох": [
+          {
+            "h_mm": 1,
+            "static_rms_ohm": 6.102785024871101,
+            "delta_rho1_ptp": 0.0014181903124791837,
+            "delta_rho2_ptp": 0.07169279163079532,
+            "fractional_rho1_abs_max": 0.002748740409632657,
+            "fractional_rho2_abs_max": 0.00538239932762516,
+            "dynamic_rms_ohm": 0.005920767307433489,
+            "condition": 72.61543512623234
+          },
+          {
+            "h_mm": 5,
+            "static_rms_ohm": 6.151921841970277,
+            "delta_rho1_ptp": 0.005614689327421518,
+            "delta_rho2_ptp": 0.07315865284324378,
+            "fractional_rho1_abs_max": 0.0022746440086406383,
+            "fractional_rho2_abs_max": 0.005402824785262376,
+            "dynamic_rms_ohm": 0.0059090631297701104,
+            "condition": 16.948617373761625
+          },
+          {
+            "h_mm": 15,
+            "static_rms_ohm": 7.227389114277808,
+            "delta_rho1_ptp": 0.0024087162638287175,
+            "delta_rho2_ptp": 0.12168354256912065,
+            "fractional_rho1_abs_max": 0.00045374400455726766,
+            "fractional_rho2_abs_max": 0.006734430062902045,
+            "dynamic_rms_ohm": 0.006608130305412895,
+            "condition": 20.402797269708064
+          },
+          {
+            "h_mm": 20,
+            "static_rms_ohm": 7.770301630485931,
+            "delta_rho1_ptp": 0.0016790519750832444,
+            "delta_rho2_ptp": 0.21334404908763305,
+            "fractional_rho1_abs_max": 0.0002421486917290382,
+            "fractional_rho2_abs_max": 0.00883359487896583,
+            "dynamic_rms_ohm": 0.0076704250937888584,
+            "condition": 38.661396420349455
+          },
+          {
+            "h_mm": 40,
+            "static_rms_ohm": 9.192651667309818,
+            "delta_rho1_ptp": 0.003614525047564722,
+            "delta_rho2_ptp": 391.16694956537566,
+            "fractional_rho1_abs_max": 0.0005503515168339817,
+            "fractional_rho2_abs_max": 0.37012631624399484,
+            "dynamic_rms_ohm": 0.011506507458062485,
+            "condition": 81579.92392822116
+          }
+        ],
+        "задержка_выдох": [
+          {
+            "h_mm": 1,
+            "static_rms_ohm": 6.102785024871101,
+            "delta_rho1_ptp": 0.0009846857476060178,
+            "delta_rho2_ptp": 0.035144653968364185,
+            "fractional_rho1_abs_max": 0.0018920506460933164,
+            "fractional_rho2_abs_max": 0.002890395356098878,
+            "dynamic_rms_ohm": 0.006309695548656307,
+            "condition": 59.480966534533565
+          },
+          {
+            "h_mm": 5,
+            "static_rms_ohm": 6.151921841970277,
+            "delta_rho1_ptp": 0.003945050136865827,
+            "delta_rho2_ptp": 0.035519987220206765,
+            "fractional_rho1_abs_max": 0.0015850175848188175,
+            "fractional_rho2_abs_max": 0.002891668999519327,
+            "dynamic_rms_ohm": 0.006311061128163878,
+            "condition": 13.920649286229587
+          },
+          {
+            "h_mm": 15,
+            "static_rms_ohm": 7.227389114277808,
+            "delta_rho1_ptp": 0.002347099371443578,
+            "delta_rho2_ptp": 0.05352550932877899,
+            "fractional_rho1_abs_max": 0.0004475189858151819,
+            "fractional_rho2_abs_max": 0.0035255035508878815,
+            "dynamic_rms_ohm": 0.006528651947267857,
+            "condition": 15.012762783153367
+          },
+          {
+            "h_mm": 20,
+            "static_rms_ohm": 7.770301630485931,
+            "delta_rho1_ptp": 0.0012936843854495941,
+            "delta_rho2_ptp": 0.08353381895884672,
+            "fractional_rho1_abs_max": 0.00021795785591242615,
+            "fractional_rho2_abs_max": 0.0044667411093831915,
+            "dynamic_rms_ohm": 0.006893398657253604,
+            "condition": 24.925655940455
+          },
+          {
+            "h_mm": 40,
+            "static_rms_ohm": 9.192651667309818,
+            "delta_rho1_ptp": 0.0009638823852546495,
+            "delta_rho2_ptp": 3.22669289820736,
+            "fractional_rho1_abs_max": 0.00013455744642763427,
+            "fractional_rho2_abs_max": 0.028166539602953393,
+            "dynamic_rms_ohm": 0.008472783870575692,
+            "condition": 1144.873094428443
+          }
+        ]
+      }
+    }
+  }
+}

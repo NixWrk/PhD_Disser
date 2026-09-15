@@ -1,7 +1,9 @@
 import numpy as np
+import pytest
 
 from exploratory_analysis import (
     equivalent_volume_scenarios,
+    fit_static_at_h,
     fit_static_bounded,
     invert_rho2_at_observed_z,
     profile_static_h_bounded,
@@ -29,6 +31,55 @@ def test_candidate_annotations_are_not_promoted():
     assert selected.accepted is False
     assert peaks.accepted is False
 
+
+def test_accepted_breathing_qc_without_accepted_modes_fails_closed():
+    with pytest.raises(ValueError, match="accepted_modes"):
+        normalized_modes({
+            "candidate_modes": {"hold": [1.0, 2.0]},
+            "accepted_modes": None,
+            "qc": {"status": "accepted"},
+        })
+
+
+
+def test_fixed_h_static_fit_recovers_exact_synthetic_parameters():
+    from two_layer_model import evaluate, geometry_from_size
+
+    sizes = np.asarray([0.05, 0.07, 0.09, 0.11, 0.14])
+    truth = {
+        "rho1": 5.0,
+        "rho2_inhale": 20.0,
+        "rho2_exhale": 15.0,
+        "h": 0.02,
+    }
+
+    def curve(rho2):
+        return np.asarray([
+            evaluate(
+                truth["rho1"],
+                rho2,
+                truth["h"],
+                *geometry_from_size(size),
+            ).z
+            for size in sizes
+        ])
+
+    result = fit_static_at_h(
+        sizes,
+        curve(truth["rho2_inhale"]),
+        curve(truth["rho2_exhale"]),
+        truth["h"],
+    )
+    assert result["optimizer_success"] is True
+    assert result["optimizer_multistart_count"] == 4
+    assert result["residual_rms_ohm"] < 1e-8
+    assert np.isclose(result["rho1_ohm_m"], truth["rho1"], rtol=1e-6)
+    assert np.isclose(
+        result["rho2_inhale_ohm_m"], truth["rho2_inhale"], rtol=1e-6
+    )
+    assert np.isclose(
+        result["rho2_exhale_ohm_m"], truth["rho2_exhale"], rtol=1e-6
+    )
 
 def test_residual_scenario_preserves_sign():
     measured = np.array([0.0, 2.0, -1.0])

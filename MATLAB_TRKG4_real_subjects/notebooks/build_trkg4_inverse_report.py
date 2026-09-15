@@ -3950,11 +3950,15 @@ cells[0].source = cells[0].source.replace('# ', '# 20.10 ', 1)
 _heading, _rest = cells[0].source.split('\n', 1)
 cells[0].source = _heading + '\n\n' + '**Место в последовательности:** [карта проекта](00.00_Карта_проекта.md) →\n[20.01–20.04: КТ и исходные свойства](20.10_КТ_FEM_локализация_боковых_матриц_МГТУ.md#входы-и-происхождение) → **20.10: данный отчёт** →\n[20.11: чувствительность](20.11_КТ_FEM_чувствительность_боковых_сборок.ipynb) →\n[20.12: применимость упрощённых моделей](20.12_Критерий_Lmax_плоскослоистой_модели.ipynb) →\n[32: выбор размеров](32.02_Выбор_пары_при_известной_h.ipynb).\nАналитическая основа: [30.01](30.01_Прямая_двуслойная_модель_боковой_сборки.md)\nи [30.04](30.04_Вычислительное_ядро_двуслойной_модели.ipynb).\n[Паспорт этапа](20.10_КТ_FEM_локализация_боковых_матриц_МГТУ.md) определяет входы,\nвыходы и статус передачи результата. Нумерация задаёт порядок исследования;\nчисленные результаты не становятся принятыми входами следующих этапов автоматически.\n' + '\n' + _rest.lstrip()
 
+from synchronize_transverse_sections import apply_current_section
+cells = apply_current_section(cells)
 nb["cells"] = cells
 nb["metadata"] = {
     "kernelspec": {"display_name": "Python 3", "language": "python", "name": "python3"},
     "language_info": {"name": "python", "version": "3"},
 }
 nb['metadata']['kalmykov_corpus'] = {'id': '20.10', 'status': 'numerical_candidate_not_validated', 'canonical_owner': 'Colab Notebooks', 'experiment': 2, 'outputs_in_git': True, 'storage_authorization': 'author_explicit_request_2026-09-10_full_ipynb_and_html'}
+from revise_2010 import apply as apply_scientific_figure_revision
+nb = apply_scientific_figure_revision(nb)
 TARGET.write_text(nbf.writes(nb), encoding="utf-8")
 print(TARGET)
