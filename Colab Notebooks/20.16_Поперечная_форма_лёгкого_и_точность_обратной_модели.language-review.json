@@ -2,23 +2,23 @@
   "language": "ru",
   "review_status": "passed",
   "review_type": "final_full_text_model_review",
-  "reviewed_utc": "2026-09-15T11:55:22.691489+00:00",
+  "reviewed_utc": "2026-09-15T12:15:13.5841139Z",
   "skill": "russian-scientific-prose/SKILL.md",
   "reviewed_after_last_text_edit": true,
   "all_reader_visible_text_read_in_sequence": true,
   "figures_and_labels_reviewed": true,
   "artifact_sha256": {
-    "Colab Notebooks/20.16_Поперечная_форма_лёгкого_и_точность_обратной_модели.ipynb": "17fc0ad8233e864a8313db77acebe85b5703e2047932a4ed028fc05c843a52a7",
-    "Colab Notebooks/20.16_Поперечная_форма_лёгкого_и_точность_обратной_модели.html": "cb832c3e57f23facfd00d7b248a1300cbf8a78e1bf7c039f9aa7f58e09b5dab6",
+    "Colab Notebooks/20.16_Поперечная_форма_лёгкого_и_точность_обратной_модели.ipynb": "bc72ba9976a3b003134fd5d7853edcf4c3a397c4faa3a98f0e08ae5437b9f987",
+    "Colab Notebooks/20.16_Поперечная_форма_лёгкого_и_точность_обратной_модели.html": "0cbc7ffaa2885be59cfadec1154592c41d049e6f09ee27cef58ec0364c71c07d",
     "Colab Notebooks/20.16_Поперечная_форма_лёгкого_и_точность_обратной_модели.md": "c00f8c448decc32dca3b424b43a45399a041477c3391ee5aa927e4a209d32274",
-    "MATLAB_TRKG4_real_subjects/output/exploratory/baseline_model_comparison_20260914/reader_20.16.md": "e7c54aa7ee465a5b167bbeaf52779639bb7a9daf4ce6e3f6b5b7748668ba752e"
+    "MATLAB_TRKG4_real_subjects/output/exploratory/baseline_model_comparison_20260914/reader_20.16.md": "483f295cddc5cf454cdeeba45b3c30a5fdb500c5e0f17dbd16b20e7366a5dc6e"
   },
   "source_sha256": {
-    "MATLAB_TRKG4_real_subjects/notebooks/c01_report_text.py": "7119adab7566d63107194409eecf87634d0b8af4e5f3c85816b0c03f47b1036d",
+    "MATLAB_TRKG4_real_subjects/notebooks/c01_report_text.py": "8cd9f1330882a4ec4e91e3020be43031c0e74d2ed978f41d34e01a598f2b4ddc",
     "MATLAB_TRKG4_real_subjects/notebooks/build_c01_reports.py": "e83f9758c38aba5f260d7dde5ce0a6fda440b437f541fcb3782df7970961ae0a",
-    "MATLAB_TRKG4_real_subjects/tools/c01_model_catalog.py": "3b54dd2e961b605d670432824fb5589e7ba649fbbb8710b6434e83543ffd774c"
+    "MATLAB_TRKG4_real_subjects/tools/c01_model_catalog.py": "e5668fcb217cd70ebe4184059919e5ad913f78ee1cd684f8dc467af77fd3000f"
   },
-  "scope": "Окончательная читательская редакция 20.16: весь текст, паспорт 19 реализаций, семь таблиц, подписи и пояснения четырёх интерактивных рисунков, определения формул, выводы, источники и одноимённый паспорт этапа. Последовательная модельная вычитка после последней правки.",
+  "scope": "Окончательная читательская редакция 20.16: весь текст, паспорт 19 реализаций, семь таблиц, подписи и пояснения трёх интерактивных рисунков, определения формул, выводы, источники и одноимённый паспорт этапа. Последовательная модельная вычитка после удаления дублирующей классификационной диаграммы и перенумерации оставшихся рисунков.",
   "narrative_sequence": [
     "цель восстановления двух сопротивлений",
     "КТ и монтаж C01",
@@ -45,14 +45,15 @@
     "Указана избыточность M16/M18 для текущего центрального луча C01.",
     "Разделены объёмная геометрия, плоские физические модели и эвристическое усреднение локальных ядер.",
     "Добавлены переходы от результата к следующей проверке.",
-    "Исправлена незавершённая условная конструкция; CEM определена при первом употреблении."
+    "Исправлена незавершённая условная конструкция; CEM определена при первом употреблении.",
+    "Удалена диаграмма классификации, дублировавшая таблицу 1; оставшиеся рисунки перенумерованы, а переход к таблице уточнён."
   ],
   "findings": [],
   "technical_status": {
     "verify_c01_reports.py": "passed",
     "verify_c01_sensitivity_atlas.py": "passed",
-    "executed_code_cells": 11,
-    "interactive_figures": 4
+    "executed_code_cells": 10,
+    "interactive_figures": 3
   },
   "computational_status": {
     "new_FEM_or_BEM_solves": 0,

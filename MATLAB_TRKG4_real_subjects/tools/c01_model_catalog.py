@@ -374,6 +374,6 @@ def model_scheme_figure():
     figure.update_xaxes(showgrid=True, gridcolor="#e6ebf2", zeroline=False)
     figure.update_yaxes(showgrid=True, gridcolor="#e6ebf2", zeroline=False)
     display(HTML(pio.to_html(
-        figure, include_plotlyjs=False, full_html=False,
+        figure, include_plotlyjs=True, full_html=False,
         config={"responsive": True, "displaylogo": False})))
 
