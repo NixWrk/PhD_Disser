@@ -1,0 +1,76 @@
+{
+  "notebook_sha256": "b6290781fe633c8c0283c2d60af64b5b0d9ff8966564367015cd0e1346095af1",
+  "html_sha256": "f85a51d26320d6943883b81b4c495f2855c1d47e7b98fbdbe121e05db3674eee",
+  "notebook_valid": true,
+  "error_outputs": 0,
+  "browser": {
+    "images": 11,
+    "brokenImages": 0,
+    "codeInputs": 0,
+    "documentWidth": 1440,
+    "viewportWidth": 1440,
+    "mathErrors": 0,
+    "mathNodes": 28
+  },
+  "request_failures": [],
+  "headings": [
+    "Сравнение геометрических представлений сердца и их электрического отклика¶",
+    "Основной результат и границы его интерпретации¶",
+    "1. Постановка и организация сравнения¶",
+    "2. Исходные данные, вычислительные условия и проверочные величины¶",
+    "3. Сравнение основных представлений¶",
+    "4. Влияние способа построения сферы и эллипсоида¶",
+    "4.1. Отдельное сравнение библиотечных реализаций¶",
+    "4.2. Проверка зависимости от фазы¶",
+    "5. Электрический отклик трёх форм¶",
+    "6. Достаточность дискретизации для малых изменений геометрии¶",
+    "6.1. Учёт частичного заполнения конечных элементов¶",
+    "6.2. Первый расчёт чувствительности импеданса к объёму¶",
+    "7. Выводы и дальнейшее сравнение¶",
+    "Приложение. Полные численные результаты методов проекта¶"
+  ],
+  "legacy_40_16_code_outputs_unchanged": true,
+  "math_typeset_queue_completed": true,
+  "input_provenance_entries_checked": 42,
+  "input_hash_mismatches": [],
+  "figures_visually_reviewed": 11,
+  "computational_checks": {
+    "project_geometry_and_common_runner": {
+      "observed_result": "46 passed, 32 subtests passed",
+      "provenance": "Executed earlier in the same coordinator turn after runner fixes; retained in tool transcript"
+    },
+    "existing_geometry_construction_and_fractional_materials": {
+      "observed_result": "28 passed, 31 subtests passed",
+      "provenance": "Executed earlier in the same coordinator turn; retained in tool transcript"
+    },
+    "fractional_electrical_receipt": "MATLAB_TRKG4_real_subjects/output/exploratory/heart_fractional_electrical_20260915/verification.json",
+    "matlab_synthetic_receipt": "MATLAB_TRKG4_real_subjects/output/exploratory/heart_library_fits_20260915/synthetic_01/audit.json"
+  },
+  "scientific_status": {
+    "physical_validation": "not_completed",
+    "spatial_convergence": "not_completed",
+    "individual_shape_electrical_derivative": "not_calculated",
+    "full_background_resistivity_matrix": "not_calculated"
+  },
+  "documentation_review": {
+    "reviewer_agent": "01a0a554-3e60-7551-bd21-ee85d522b858",
+    "semantic_full_plan_and_owned_README_section_read": true,
+    "plan_sha256": "6c8cb0fac7516a24e0fe5ba1ef44af25335ac553bd7d2b8c9b288403964802aa",
+    "README_owned_section_raw_CRLF_sha256": "2105c1944a2974083d20556e68318b0ec4b5add855ef66536024508cb4b43824",
+    "README_owned_section_LF_sha256": "a7b1a18a1c74570923f44a3b4a84588c6a392c7fbe13185279b862e6bff534dc",
+    "other_README_edits_excluded_from_scope": true
+  },
+  "legacy_40_16_browser": {
+    "images": 13,
+    "brokenImages": 0,
+    "codeInputs": 0,
+    "documentWidth": 1440,
+    "viewportWidth": 1440,
+    "mathErrors": 0,
+    "mathNodes": 84
+  },
+  "legacy_40_16_sha256": {
+    "Colab Notebooks/40.16_Геометрическое_сравнение_моделей_сердца.ipynb": "e6591ef4f6d3b7e6d844b9ca7ac99185df76397ce61c074976940950db0d0f18",
+    "Colab Notebooks/40.16_Геометрическое_сравнение_моделей_сердца.html": "b5f60b58e5571fa5ea2f93337c705d1523b88af3dad21069b2614243b33e7f9f"
+  }
+}

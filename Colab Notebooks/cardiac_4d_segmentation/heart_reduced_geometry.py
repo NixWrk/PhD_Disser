@@ -239,7 +239,7 @@ the cache is trusted rather than verified by another full-mask scan.
         reference_mask = candidate["reference_mask"]
     elif kind in ("sphere_equal_volume_centroid", "sphere_second_moment",
                   "sphere_surface_fixed_center", "sphere_surface_free_center",
-                  "ellipsoid_raw_moment", "ellipsoid_volume_scaled"):
+                  "ellipsoid_raw_moment", "ellipsoid_volume_scaled") or candidate.get("sampling_family") == "ellipsoid":
         center = np.asarray(candidate["center_mm"], dtype=float)
         axes = np.asarray(candidate["axes_matrix"], dtype=float)
         radii = np.asarray(candidate["semi_axes_mm"], dtype=float)

@@ -1,0 +1,103 @@
+[
+  {
+    "method_id": "M1",
+    "registry_label": "М1",
+    "package": "hyperellipsoidfit",
+    "source": "hyperellipsoidfit/hyperellipsoidfit.m",
+    "call": "[Me,c,ok,A,lambda,residual] = hyperellipsoidfit(P,0,'BOOK','normalize',true,'forceOrigin',false,'forceAxial',false);",
+    "rfbr_name_mentioned": true,
+    "historical_implementation_identity": "not_established",
+    "source_sha256": "214e432cc1e950067232ebbb96b5f8128f4941f94c32f0d4639cd555dc71f0aa",
+    "license": "hyperellipsoidfit/license.txt"
+  },
+  {
+    "method_id": "M2",
+    "registry_label": "М2",
+    "package": "hyperellipsoidfit",
+    "source": "hyperellipsoidfit/hyperellipsoidfit.m",
+    "call": "[Me,c,ok,A,lambda,residual] = hyperellipsoidfit(P,0,'TAUB','normalize',true,'forceOrigin',false,'forceAxial',false);",
+    "rfbr_name_mentioned": true,
+    "historical_implementation_identity": "not_established",
+    "source_sha256": "214e432cc1e950067232ebbb96b5f8128f4941f94c32f0d4639cd555dc71f0aa",
+    "license": "hyperellipsoidfit/license.txt"
+  },
+  {
+    "method_id": "M3",
+    "registry_label": "М3",
+    "package": "hyperellipsoidfit",
+    "source": "hyperellipsoidfit/hyperellipsoidfit.m",
+    "call": "[Me,c,ok,A,lambda,residual] = hyperellipsoidfit(P,0,'HES','normalize',true,'forceOrigin',false,'forceAxial',false,'eta',1);",
+    "rfbr_name_mentioned": true,
+    "historical_implementation_identity": "not_established",
+    "source_sha256": "214e432cc1e950067232ebbb96b5f8128f4941f94c32f0d4639cd555dc71f0aa",
+    "license": "hyperellipsoidfit/license.txt"
+  },
+  {
+    "method_id": "M4",
+    "registry_label": "М4",
+    "package": "hyperellipsoidfit",
+    "source": "hyperellipsoidfit/hyperellipsoidfit.m",
+    "call": "[Me,c,ok,A,lambda,residual] = hyperellipsoidfit(P,0,'SOD','normalize',true,'forceOrigin',false,'forceAxial',false);",
+    "rfbr_name_mentioned": true,
+    "historical_implementation_identity": "not_established",
+    "source_sha256": "214e432cc1e950067232ebbb96b5f8128f4941f94c32f0d4639cd555dc71f0aa",
+    "license": "hyperellipsoidfit/license.txt"
+  },
+  {
+    "method_id": "M5",
+    "registry_label": "М5",
+    "package": "hyperellipsoidfit",
+    "source": "hyperellipsoidfit/hyperellipsoidfit.m",
+    "call": "[Me,c,ok,A,lambda,residual] = hyperellipsoidfit(P,0,'FC','normalize',true,'forceOrigin',false,'forceAxial',false);",
+    "rfbr_name_mentioned": true,
+    "historical_implementation_identity": "not_established",
+    "source_sha256": "214e432cc1e950067232ebbb96b5f8128f4941f94c32f0d4639cd555dc71f0aa",
+    "license": "hyperellipsoidfit/license.txt"
+  },
+  {
+    "method_id": "M6",
+    "registry_label": "М6",
+    "package": "hyperellipsoidfit",
+    "source": "hyperellipsoidfit/hyperellipsoidfit.m",
+    "call": "[Me,c,ok,A,lambda,residual] = hyperellipsoidfit(P,0,'2-NORM','normalize',true,'forceOrigin',false,'forceAxial',false);",
+    "rfbr_name_mentioned": true,
+    "historical_implementation_identity": "not_established",
+    "source_sha256": "214e432cc1e950067232ebbb96b5f8128f4941f94c32f0d4639cd555dc71f0aa",
+    "license": "hyperellipsoidfit/license.txt"
+  },
+  {
+    "method_id": "M7",
+    "registry_label": "М7",
+    "package": "ellipsoid_fit",
+    "source": "ellipsoid_fit/ellipsoid_fit/ellipsoid_fit.m",
+    "call": "[c,radii,R,v,chi2] = ellipsoid_fit_new(P,'xyz');",
+    "rfbr_name_mentioned": false,
+    "historical_implementation_identity": "not_established",
+    "runtime_alias": "byte-identical ellipsoid_fit_new.m",
+    "source_sha256": "bc6b2bb131806cb2004f6cfb28aad8aec2f1a778dbe21a4576d6975ede087684",
+    "license": "ellipsoid_fit/license.txt"
+  },
+  {
+    "method_id": "M8",
+    "registry_label": "М8",
+    "package": "ellipsoid_fit",
+    "source": "ellipsoid_fit/ellipsoid_fit/ellipsoid_fit.m",
+    "call": "[c,radii,R,v,chi2] = ellipsoid_fit_new(P,'');",
+    "rfbr_name_mentioned": false,
+    "historical_implementation_identity": "not_established",
+    "runtime_alias": "byte-identical ellipsoid_fit_new.m",
+    "source_sha256": "bc6b2bb131806cb2004f6cfb28aad8aec2f1a778dbe21a4576d6975ede087684",
+    "license": "ellipsoid_fit/license.txt"
+  },
+  {
+    "method_id": "M9",
+    "registry_label": "М9",
+    "package": "sphereFit",
+    "source": "sphereFit/sphereFit/sphereFit.m",
+    "call": "[c,r] = sphereFit(P);",
+    "rfbr_name_mentioned": false,
+    "historical_implementation_identity": "not_established",
+    "source_sha256": "a5789240e9d03f176699af484dc7fe0d10410686783133d7a4acce5dd8804fa9",
+    "license": "sphereFit/license.txt"
+  }
+]

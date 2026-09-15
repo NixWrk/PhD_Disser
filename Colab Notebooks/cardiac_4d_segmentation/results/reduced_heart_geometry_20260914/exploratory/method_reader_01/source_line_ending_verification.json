@@ -1,0 +1,10 @@
+{
+  "file": "Colab Notebooks/cardiac_4d_segmentation/heart_additional_ellipsoid_methods.py",
+  "before_sha256": "a6e6a3f1c55ddca3b94abecc54466a220ebac5e70592104d0ed61835e25ff825",
+  "after_sha256": "cdcc73fd88533e29acd54b4c5a973916ba5a6d0640e9e66d6ae6bfe83d51ea9f",
+  "reason": "Repeated CR characters are interpreted by Python universal-newline reading as extra newlines; Git flags retained CR as trailing whitespace. Save the identical Python-decoded text as LF.",
+  "AST_including_docstrings_equal": true,
+  "source_snapshot": "Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/method_reader_01/source_before_eol_normalization/heart_additional_ellipsoid_methods.py",
+  "original_result_protocol_hashes_preserved": true,
+  "upstream_whitespace_policy": "Vendored library sources are byte-preserved; their existing trailing spaces are excluded from repository whitespace checks."
+}

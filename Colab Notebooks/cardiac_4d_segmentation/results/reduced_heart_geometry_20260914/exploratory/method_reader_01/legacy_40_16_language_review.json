@@ -1,0 +1,531 @@
+{
+  "schema": "legacy_40_16_language_review_v2",
+  "status": "passed",
+  "previous_review": {
+    "schema": "legacy_40_16_language_review_v1",
+    "reviewed_at_utc": "2026-09-15T15:02:30.743953+00:00",
+    "mode": "audit_no_text_edits",
+    "skill": "russian-scientific-prose",
+    "skill_source": "C:/Users/ELVIS_NIX/.codex/skills/russian-scientific-prose/SKILL.md",
+    "reviewer": "assistant_model_semantic_pass",
+    "status": "completed_with_findings",
+    "language_status": "findings_open_not_passed",
+    "release_status": "not_assessed_by_this_review",
+    "computational_status": "not_recomputed_not_revalidated_in_this_pass",
+    "scientific_status": "internal_semantic_consistency_review_only_not_independent_scientific_validation",
+    "artifact": {
+      "path": "Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/method_reader_01/40.16_reader_text.txt",
+      "raw_file_sha256": "c7835086f9f0f07f8d1d60371a7488879da5e5d24154aca9558f5b93c73d10e7",
+      "utf8_lf_normalized_text_sha256": "460dc1539510b0675d0ef2cb923d82104b8ccc8f3f8dea533ae0b3f7e5c0e9c4",
+      "user_requested_sha256": "460dc1539510b0675d0ef2cb923d82104b8ccc8f3f8dea533ae0b3f7e5c0e9c4",
+      "requested_hash_matches_lf_text": true,
+      "requested_hash_matches_raw_bytes": false,
+      "raw_bytes": 109184,
+      "raw_characters_including_CRLF": 62869,
+      "lf_text_bytes": 108708,
+      "lf_text_characters": 62393,
+      "line_count": 477,
+      "crlf_count": 476,
+      "normalization": "For comparison only, CRLF replaced by LF; no file bytes changed."
+    },
+    "coverage": {
+      "complete": true,
+      "coverage_percent": 100,
+      "unread_lines": [],
+      "sequential_read_ranges_inclusive": [
+        [
+          1,
+          60
+        ],
+        [
+          61,
+          130
+        ],
+        [
+          131,
+          210
+        ],
+        [
+          211,
+          290
+        ],
+        [
+          291,
+          370
+        ],
+        [
+          371,
+          477
+        ]
+      ],
+      "all_headings_paragraphs_tables_formulas_captions_conclusions_and_reproducibility_read": true,
+      "figure_captions_read": 13,
+      "figure_pixels_inspected_in_this_pass": false,
+      "full_40_17_notebook_review_included": false,
+      "method": "Entire visible text read semantically by model in sequential line-numbered chunks; no search or linter substituted for any portion."
+    },
+    "registered_checks": [
+      {
+        "check_id": "language.ru.hash-bound-final-review",
+        "status": "full_pass_completed_findings_open",
+        "evidence": "All 477 lines read; raw hash unchanged before/after reading; LF text matches requested hash."
+      },
+      {
+        "check_id": "language.ru.reader-facing-clarity",
+        "status": "finding_open",
+        "evidence": "Scope of volume-preservation statement at line 326 conflicts with registered G3c at line 82."
+      },
+      {
+        "check_id": "language.ru.natural-prose",
+        "status": "reviewed_no_additional_P1_P2",
+        "evidence": "Read all clauses for grammar, idiomatic register, scientific noun phrases, clear referents and reverse-translation calques."
+      },
+      {
+        "check_id": "language.ru.intro-variation",
+        "status": "reviewed_no_additional_P1_P2",
+        "evidence": "Assessed repeated cautionary contrasts for actual distinction of evidence levels; no new substantive issue beyond the recorded finding."
+      },
+      {
+        "check_id": "language.ru.formula-where",
+        "status": "reviewed_no_P1_P2",
+        "evidence": "Read displayed and inline formulas with their variable definitions, units and surrounding scope."
+      },
+      {
+        "check_id": "language.ru.encoding",
+        "status": "checked",
+        "evidence": "Strict UTF-8 decoding succeeded; apparent requested hash mismatch explained exactly by 476 CRLF separators."
+      }
+    ],
+    "semantic_inventory": [
+      {
+        "lines": [
+          1,
+          44
+        ],
+        "topics": [
+          "234 phase-region states, 198 nonreference comparisons",
+          "automatic target mask versus transformed reference shape",
+          "measured coordinates versus automatic derived masks",
+          "volume and full voxel-cell moments",
+          "known target parameters versus prediction"
+        ]
+      },
+      {
+        "lines": [
+          46,
+          185
+        ],
+        "topics": [
+          "project, RFBR descriptions and MATLAB implementations kept distinct",
+          "fixed/free volume and centre constraints",
+          "implemented versus proposed methods",
+          "13 partial electrical solutions versus full comparison",
+          "separate fitting and verification roles"
+        ]
+      },
+      {
+        "lines": [
+          187,
+          328
+        ],
+        "topics": [
+          "native-lattice Dice and full candidate extent",
+          "paired versus marginal summaries",
+          "moment-based rotations not anatomical rotations",
+          "CT slice captions and 3D metric scope",
+          "original full-surface construction experiment",
+          "CT truncation and rasterization error"
+        ]
+      },
+      {
+        "lines": [
+          330,
+          377
+        ],
+        "topics": [
+          "within-cycle excluded-phase reconstruction",
+          "log-volume model and positivity",
+          "dependent phases and six distinct cycles",
+          "common test cases, missing predictions and generalization limits",
+          "four distinct error sources and unvalidated function estimates"
+        ]
+      },
+      {
+        "lines": [
+          381,
+          477
+        ],
+        "topics": [
+          "immutable background, cardiac override and restoration",
+          "fixed conductivities and spatial contrast",
+          "static FEM material-map control versus 4D geometry",
+          "18 completed versus 42 planned static combinations",
+          "code cells reading saved outputs versus new segmentation/FEM"
+        ]
+      }
+    ],
+    "findings": [
+      {
+        "id": "LEGACY40_16_P2_01",
+        "severity": "P2",
+        "check_id": "language.ru.reader-facing-clarity",
+        "rule_id": "rule.language.ru-reader-facing-clarity",
+        "path": "Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/method_reader_01/40.16_reader_text.txt",
+        "line_start": 326,
+        "line_end": 326,
+        "title_ru": "Слишком широкое исключение группы Г3 из моделей с сохранением объёма",
+        "quote": "Это утверждение не относится к дополнительным вариантам Г2, Г3 и Л2.",
+        "evidence_lines": [
+          82,
+          87,
+          266,
+          280,
+          281,
+          286,
+          287,
+          292,
+          293
+        ],
+        "explanation_ru": "Подпись к рисунку 10 исключает всю группу Г3 из утверждения о равенстве непрерывного объёма объёму маски. В том же реестре Г3в прямо определён как метод с фиксированным объёмом (строка 82). В исходном опыте раздела 4.3 использованы только Г3а и Г3б, для которых исключение верно. После расширения реестра обозначение всей группы стало неверным по области действия.",
+        "suggested_resolution_ru": "Уточнить перечисление до «Г2, Г3а, Г3б и Л2» и, при необходимости, указать, что речь идёт о дополнительном опыте раздела 4.3. Текст в рамках этого аудита не изменялся.",
+        "status": "open"
+      }
+    ],
+    "severity_summary": {
+      "P1": 0,
+      "P2": 1
+    },
+    "review_limits": [
+      "No new geometry, temporal, FEM or derivative calculations were launched.",
+      "Numbers were checked for meaning and consistency within this complete reader; no fresh independent verification of all primary numerical arrays.",
+      "External literature links and original MATLAB libraries were not reopened in this language pass.",
+      "Visual correspondence of captions to image pixels was not revalidated: scope is the supplied reader text.",
+      "Any subsequent byte change invalidates currency of this raw-hash-bound review."
+    ],
+    "files_read_for_artifact_scope": [
+      "Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/method_reader_01/40.16_reader_text.txt"
+    ],
+    "policy_files_read": [
+      "SKILL.md",
+      "references/russian-prose.md",
+      "shared/policy/languages/ru.md",
+      "shared/release-gate.md",
+      "shared/composition-lifecycle.md",
+      "policy/languages/ru/ru.yaml",
+      "policy/rules/language-ru.yaml",
+      "policy/rules/language-ru-reader-facing.yaml",
+      "policy/rules/language-ru-formula.yaml",
+      "policy/rules/russian-prose.yaml",
+      "policy/rules/language-ru-draft.yaml",
+      "policy/checks.yaml"
+    ],
+    "operations": {
+      "text_artifacts_edited": false,
+      "old_reader_language_review_modified": false,
+      "new_computations_started": false,
+      "only_new_sidecar_written": "legacy_40_16_language_review.json",
+      "transient_approval_network_failure_did_not_skip_any_text": true
+    }
+  },
+  "authorized_changes": {
+    "registry_lines_changed": 11,
+    "registry_before_sha256": "42cc3d53fde65add2e09789adb144217b247ce6dde52970033660b9c19fb2a06",
+    "registry_after_sha256": "88b751be0b924f0c2fba4fd66b4792556538cf0d346749116fd27fb4e1fae02c",
+    "replacements": {
+      "Реализовано и проверено синтетически; рассчитаны три примера и все 39 фаз целого сердца": "Реализовано и проверено синтетически; все 39 фаз целого сердца рассчитаны с приближённой подгонкой по 4096 точкам и поверхностной оценкой по 8192 точкам; подгонка по полной площадочной квадратуре выполнена только для трёх КТ-примеров",
+      "Самостоятельная реализация проекта; три примера и все 39 фаз целого сердца": "Самостоятельная реализация проекта; все 39 фаз целого сердца рассчитаны с приближённой подгонкой по 4096 точкам и поверхностной оценкой по 8192 точкам; подгонка по полной площадочной квадратуре выполнена только для трёх КТ-примеров",
+      "Исходники и версии проверены; синтетический тест и три КТ-примера выполнены, сравниваются плотности площадочной выборки": "Исходники и версии проверены; синтетический тест и подгонки на трёх КТ-примерах по 32 768 точкам, выбранным по площади из полной поверхности, завершены; сравнение с 8192 точками выполнено, устойчивость порядка близких методов не установлена"
+    },
+    "caption_scope": {
+      "path": "Colab Notebooks/cardiac_4d_segmentation/heart_geometry_results_ru.md",
+      "before_sha256": "60034b8ab2c274efb7197fda0ccb7a3dace0eaa2d558c39ee816862ae4018b3a",
+      "after_sha256": "7a67d1a6835f2851ec863d2d09d56845fa26047949b52e4c986436e66f1d391f",
+      "old_sentence": "Это утверждение не относится к дополнительным вариантам Г2, Г3 и Л2.",
+      "new_sentence": "Это утверждение не относится к дополнительным вариантам Г2, Г3а, Г3б и Л2."
+    }
+  },
+  "preservation": {
+    "all_19_complete_code_cells_equal": true,
+    "code_cells_canonical_sha256_before": "e9d782379e25d0c198d3077cd43c9fa2ef3e29fa30c1012a86fab12bc942a8d0",
+    "code_cells_canonical_sha256_after": "e9d782379e25d0c198d3077cd43c9fa2ef3e29fa30c1012a86fab12bc942a8d0",
+    "outputs_equal": true,
+    "execution_counts_equal": true,
+    "code_execution_blocked_during_presentation_only": true,
+    "protected_files_unchanged": {
+      "Colab Notebooks/40.17_Сравнение_форм_сердца_и_электрического_отклика.html": "f85a51d26320d6943883b81b4c495f2855c1d47e7b98fbdbe121e05db3674eee",
+      "Colab Notebooks/40.17_Сравнение_форм_сердца_и_электрического_отклика.ipynb": "b6290781fe633c8c0283c2d60af64b5b0d9ff8966564367015cd0e1346095af1",
+      "Colab Notebooks/cardiac_4d_segmentation/heart_method_comparison_ru.md": "2cf6e37c0ead3b72e2bd667065e39c99b6b2b3d006604a0aded0d02807902a23",
+      "Colab Notebooks/cardiac_4d_segmentation/heart_method_comparison_report.py": "edab4cd67c58d32b578e52537da704dcf7f12cdf035d0b55a9fd029972526990",
+      "Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/method_reader_01/40.17_reader_text.txt": "d0c682f4b81dcdb50631730986d312188af39be77349dc3c5d37e95d01d0ba98",
+      "Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/method_reader_01/language_review.json": "2234e2768678a13849dfc60a017c63551219ca5b5b8671a80c31b4dbc4d5a927"
+    },
+    "html_code_input_cells_absent": true,
+    "html_check_note": "Initial overbroad CSS selector also matched legitimate rendered Markdown containers. Final selector is restricted to code-cell inputs; none are present. No HTML changes were made to resolve this check.",
+    "notebook_image_output_count": 13
+  },
+  "artifact": {
+    "path": "Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/method_reader_01/40.16_reader_text.txt",
+    "raw_file_sha256": "097eb16f91bd2647f5667b7f2d4afbc8e6ca4d9b5693d95e7f5cfa18c91f0bd4",
+    "utf8_lf_normalized_text_sha256": "9002005341800e6c5f57bdd34bbd75d6882e6a15714cb04875dc0277eac5e517",
+    "lf_text_characters": 63791,
+    "line_count": 477,
+    "raw_bytes": 111639,
+    "crlf_count": 476,
+    "normalization": "Raw bytes retain 476 CRLF separators; normalized hash is over UTF-8 with CRLF replaced by LF.",
+    "previous_requested_lf_sha256": "460dc1539510b0675d0ef2cb923d82104b8ccc8f3f8dea533ae0b3f7e5c0e9c4",
+    "previous_requested_hash_applies_to": "superseded version before authorized corrections"
+  },
+  "generated_artifact_hashes": {
+    "Colab Notebooks/40.15_Реестр_методов_аппроксимации_сердца.md": "88b751be0b924f0c2fba4fd66b4792556538cf0d346749116fd27fb4e1fae02c",
+    "Colab Notebooks/cardiac_4d_segmentation/heart_geometry_results_ru.md": "7a67d1a6835f2851ec863d2d09d56845fa26047949b52e4c986436e66f1d391f",
+    "Colab Notebooks/40.16_Геометрическое_сравнение_моделей_сердца.ipynb": "e6591ef4f6d3b7e6d844b9ca7ac99185df76397ce61c074976940950db0d0f18",
+    "Colab Notebooks/40.16_Геометрическое_сравнение_моделей_сердца.html": "b5f60b58e5571fa5ea2f93337c705d1523b88af3dad21069b2614243b33e7f9f",
+    "Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/method_reader_01/40.16_reader_text.txt": "097eb16f91bd2647f5667b7f2d4afbc8e6ca4d9b5693d95e7f5cfa18c91f0bd4"
+  },
+  "new_computations_started": false,
+  "updated_at_utc": "2026-09-15T15:10:30.020090+00:00",
+  "language_status": "passed",
+  "mode": "authorized_targeted_updates_then_full_semantic_audit",
+  "reviewed_at_utc": "2026-09-15T15:16:12.576244+00:00",
+  "skill": "russian-scientific-prose",
+  "skill_source": "C:/Users/ELVIS_NIX/.codex/skills/russian-scientific-prose/SKILL.md",
+  "reviewer": "assistant_model_semantic_pass",
+  "release_status": "not_assessed_coordinator_owned",
+  "scientific_status": "semantic_consistency_checked_not_independent_scientific_validation",
+  "computational_status": "no_new_calculations_saved_outputs_preserved",
+  "findings": [],
+  "severity_summary": {
+    "P1": 0,
+    "P2": 0
+  },
+  "previous_review_status": "historical_only_superseded_by_this_complete_pass",
+  "coverage": {
+    "complete": true,
+    "coverage_percent": 100,
+    "line_count": 477,
+    "unread_lines": [],
+    "sequential_read_ranges_inclusive": [
+      [
+        1,
+        100
+      ],
+      [
+        101,
+        170
+      ],
+      [
+        171,
+        250
+      ],
+      [
+        251,
+        330
+      ],
+      [
+        331,
+        410
+      ],
+      [
+        411,
+        477
+      ]
+    ],
+    "entire_text_read_after_last_authorized_change": true,
+    "earlier_partial_read_not_counted": true,
+    "method": "Entire text read semantically and sequentially by the model after the final caption correction and presentation-only regeneration. No script, linter, search or previous review substituted for reading.",
+    "all_headings_paragraphs_tables_formulas_captions_conclusions_and_reproducibility_read": true,
+    "figure_captions_read": 13,
+    "figure_pixels_inspected_in_this_pass": false,
+    "full_40_17_notebook_review_included": false,
+    "extraction": "Notebook Markdown cells and text/markdown outputs in cell order joined with two LF separators; source code and image pixels excluded."
+  },
+  "resolved_findings": [
+    {
+      "id": "LEGACY40_16_P2_01",
+      "status": "resolved",
+      "lines": [
+        326
+      ],
+      "resolution_ru": "Уточнено до «Г2, Г3а, Г3б и Л2», согласовано с фиксированным объёмом Г3в."
+    },
+    {
+      "id": "BOHR_REGISTRY_M1_M9_STALE_STATUS",
+      "status": "resolved",
+      "lines": [
+        143,
+        151
+      ],
+      "resolution_ru": "Девять методов, по три КТ-примера: завершённые подгонки по 32768 точкам из полной поверхности; сравнение с 8192 выполнено, устойчивость близких методов не установлена."
+    },
+    {
+      "id": "BOHR_REGISTRY_PHASE_APPROXIMATION_SCOPE",
+      "status": "resolved",
+      "lines": [
+        82,
+        85
+      ],
+      "resolution_ru": "Все 39 фаз: приближённая подгонка по 4096 точкам, оценка по 8192; полная площадочная квадратура только для трёх КТ-примеров."
+    }
+  ],
+  "semantic_inventory": [
+    {
+      "lines": [
+        1,
+        100
+      ],
+      "topics": [
+        "target automatic masks versus transformed reference shape",
+        "234 states versus 198 nonreference comparisons",
+        "physical coordinates, voxel-cell moments, dimensions",
+        "known target geometry versus prediction",
+        "4096/8192 phase approximation versus three full-surface fits"
+      ]
+    },
+    {
+      "lines": [
+        101,
+        170
+      ],
+      "topics": [
+        "fixed/free centre and volume definitions",
+        "RFBR descriptions separate from MATLAB implementations",
+        "27 completed library fits distinct from proven convergence",
+        "baseline impedance, derivative estimation and electrical fitting"
+      ]
+    },
+    {
+      "lines": [
+        171,
+        250
+      ],
+      "topics": [
+        "fit criterion versus independent metric",
+        "whole-candidate voxel-centre Dice",
+        "paired versus marginal summaries",
+        "negative result of moment-based affine deformation",
+        "3D metrics versus CT cross-sections"
+      ]
+    },
+    {
+      "lines": [
+        251,
+        330
+      ],
+      "topics": [
+        "example selection, physical CT coordinates and field-of-view limits",
+        "4D geometry versus separate static FEM",
+        "original six-model experiment versus expanded registry",
+        "surface error versus Dice and volume",
+        "corrected caption scope"
+      ]
+    },
+    {
+      "lines": [
+        331,
+        410
+      ],
+      "topics": [
+        "within-cycle excluded-phase prediction",
+        "log-volume positivity and interpolation",
+        "480 forecasts and common 26 phases per region",
+        "dependent phases and lack of anatomical validation",
+        "immutable background and restoration"
+      ]
+    },
+    {
+      "lines": [
+        411,
+        477
+      ],
+      "topics": [
+        "heart/lung/soft tissue/bone assignment",
+        "conductivity-contrast formula",
+        "static material-map control versus solved Z",
+        "18 completed static states versus 42 planned states",
+        "contact conditions and reproducibility"
+      ]
+    }
+  ],
+  "registered_checks": [
+    {
+      "check_id": "language.ru.hash-bound-final-review",
+      "status": "passed",
+      "evidence": "All 477 lines read after final edit; both raw and LF hashes unchanged at final verification."
+    },
+    {
+      "check_id": "language.ru.reader-facing-clarity",
+      "status": "passed",
+      "evidence": "Reviewed headings, terms, scope, derived-object definitions, referents, meaningful contrasts, fact/basis/interpretation/limitations. All recorded findings resolved."
+    },
+    {
+      "check_id": "language.ru.natural-prose",
+      "status": "passed",
+      "evidence": "Entire text reviewed for Russian scientific syntax, terminology, idiomatic register and calques."
+    },
+    {
+      "check_id": "language.ru.intro-variation",
+      "status": "passed",
+      "evidence": "Repeated qualifications checked for meaningful distinction of evidence and applicability."
+    },
+    {
+      "check_id": "language.ru.formula-where",
+      "status": "passed",
+      "evidence": "All formula definitions, units and contextual scope read."
+    },
+    {
+      "check_id": "language.ru.encoding",
+      "status": "passed",
+      "evidence": "Strict UTF-8 and CRLF/LF accounting verified."
+    }
+  ],
+  "policy_files_read": [
+    "SKILL.md",
+    "references/russian-prose.md",
+    "shared/policy/languages/ru.md",
+    "shared/release-gate.md",
+    "shared/composition-lifecycle.md",
+    "policy/languages/ru/ru.yaml",
+    "policy/rules/language-ru.yaml",
+    "policy/rules/language-ru-reader-facing.yaml",
+    "policy/rules/language-ru-formula.yaml",
+    "policy/rules/russian-prose.yaml",
+    "policy/rules/language-ru-draft.yaml",
+    "policy/checks.yaml"
+  ],
+  "review_limits": [
+    "Passed applies to this final language and semantic text review, not physical validation or overall release readiness.",
+    "The complete reader text, including 13 captions, was read; image pixels were not re-inspected.",
+    "No new geometry, segmentation, temporal, FEM or derivative calculations were started.",
+    "The authorized status corrections were checked against saved library results and phase/full-surface protocols; this is not a new audit of every raw numerical array.",
+    "External literature and original MATLAB libraries were not reopened.",
+    "40.17 was preserved and not included in this full reader pass.",
+    "Subsequent reader-text changes invalidate this hash-bound review."
+  ],
+  "files_read_for_artifact_scope": [
+    "Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/method_reader_01/40.16_reader_text.txt"
+  ],
+  "supporting_files_read": [
+    "Colab Notebooks/40.15_Реестр_методов_аппроксимации_сердца.md",
+    "Colab Notebooks/cardiac_4d_segmentation/heart_geometry_results_ru.md",
+    "Colab Notebooks/cardiac_4d_segmentation/build_heart_geometry_results.py",
+    "Colab Notebooks/cardiac_4d_segmentation/heart_method_comparison_ru.md (relevant scope paragraphs only)",
+    "Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/method_reader_01/input_provenance.json",
+    "Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/method_phase_01/protocol.json",
+    "Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/method_phase_01/status.json",
+    "Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/method_surface_full/status.json",
+    "MATLAB_TRKG4_real_subjects/output/exploratory/heart_library_fits_20260915/ct_fullsurface_32768_02/geometry_comparison/*__32768.json (27 saved status/fit-count checks)"
+  ],
+  "operations": {
+    "modified_source_files": [
+      "Colab Notebooks/40.15_Реестр_методов_аппроксимации_сердца.md",
+      "Colab Notebooks/cardiac_4d_segmentation/heart_geometry_results_ru.md"
+    ],
+    "registry_changed_lines": 11,
+    "caption_sentences_changed": 1,
+    "presentation_only_builds": 2,
+    "executed_code_cells": 0,
+    "old_reader_language_review_modified": false,
+    "40_17_modified": false,
+    "committed": false
+  }
+}

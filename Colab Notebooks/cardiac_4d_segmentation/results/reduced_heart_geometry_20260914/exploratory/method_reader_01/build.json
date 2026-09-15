@@ -1,0 +1,14 @@
+{
+  "notebook_sha256": "b6290781fe633c8c0283c2d60af64b5b0d9ff8966564367015cd0e1346095af1",
+  "html_sha256": "f85a51d26320d6943883b81b4c495f2855c1d47e7b98fbdbe121e05db3674eee",
+  "source_sha256": "2cf6e37c0ead3b72e2bd667065e39c99b6b2b3d006604a0aded0d02807902a23",
+  "builder_sha256": "9d07e04bb6bc8b900e155b74974ce72558fb9a8c3d45162eddae00cce1dedb7c",
+  "figure_module_sha256": "edab4cd67c58d32b578e52537da704dcf7f12cdf035d0b55a9fd029972526990",
+  "cell_count": 28,
+  "code_cells": 15,
+  "image_outputs": 11,
+  "FEM_reexecuted": false,
+  "geometry_reexecuted": false,
+  "html_inputs_excluded": true,
+  "input_provenance_sha256": "5a9f46499caece17ce8313a9d246db3d31e099bfa852e45401b649fcb061a2af"
+}

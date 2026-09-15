@@ -1,0 +1,56 @@
+{
+  "schema": "hash_bound_final_full_text_review_v1",
+  "language": "ru",
+  "skill": "russian-scientific-prose",
+  "mode": "audit",
+  "reviewer": "Codex coordinator semantic model pass",
+  "reviewed_at_utc": "2026-09-15T15:04:58.609784+00:00",
+  "status": "passed",
+  "scope": "40.17 reader-visible Markdown, computed tables, figure captions, plot titles, labels and legends; code cells excluded from reader surface",
+  "sequential_full_text_read": true,
+  "text_read_segments": [
+    "lines 1-238",
+    "lines 239-505"
+  ],
+  "reader_text_sha256": "d0c682f4b81dcdb50631730986d312188af39be77349dc3c5d37e95d01d0ba98",
+  "reader_text_LF_sha256": "32b24442ceb5380821b48a79037101c5f1b248881dc408561b78458abfa5d93c",
+  "artifacts": {
+    "Colab Notebooks/40.17_Сравнение_форм_сердца_и_электрического_отклика.ipynb": "b6290781fe633c8c0283c2d60af64b5b0d9ff8966564367015cd0e1346095af1",
+    "Colab Notebooks/40.17_Сравнение_форм_сердца_и_электрического_отклика.html": "f85a51d26320d6943883b81b4c495f2855c1d47e7b98fbdbe121e05db3674eee",
+    "Colab Notebooks/cardiac_4d_segmentation/heart_method_comparison_ru.md": "2cf6e37c0ead3b72e2bd667065e39c99b6b2b3d006604a0aded0d02807902a23",
+    "Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/method_reader_01/40.17_reader_text.txt": "d0c682f4b81dcdb50631730986d312188af39be77349dc3c5d37e95d01d0ba98"
+  },
+  "figure_review": {
+    "Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/method_reader_01/01_anatomical_controls.png": "535382ece084f41ddd830f5df5cf666364767e9f374a22effada4bf4368ffee4",
+    "Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/method_reader_01/02_sphere_criteria.png": "e4803c44d8fcd33dd2a6f3f5ade61e4e0c85ab1243defd6369b65eb3a58fc715",
+    "Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/method_reader_01/03_ellipsoid_criteria.png": "b1ff56d9bbeea3e49fc099d5972a4f29a9c2731fe6624c0f17a2e9b0cceebf0f",
+    "Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/method_reader_01/03b_ellipsoid_surface_RMS.png": "675a0a03c6d3bafe2ea155004ef4512d7280ef715053d9ff631508c375472c5c",
+    "Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/method_reader_01/04_electrical_replacement.png": "920a5f621f8e5c666cba1d73f9f3c65b483d73a3d30d18d1f442dcd9b750da1d",
+    "Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/method_reader_01/05_material_resolution.png": "7e31bfa95a23cd2dc8baea91f75e63d0b92ea84cecb09efa9e4c0c00c98adee6",
+    "Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/method_reader_01/06_fractional_resolution.png": "d5975907a992d0cd3510a5b0cc8fcc671d0dabd343c29c58ae5f80f1978b587d",
+    "Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/method_reader_01/07_library_criteria.png": "b6f5ba91fb19dc1775123eafb6bbb68ae243f8b018e26434dc7bd2139a598cd7",
+    "Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/method_reader_01/08_phase_stability.png": "981da800a6f06b5c841cff70d168aae65bd8887dad7b08a2dc704522e3fdb652",
+    "Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/method_reader_01/09_volume_sensitivity.png": "5dc18a4953579430b492b8997fbd5e537b4d9e0a260463969215b1d8e76253d1",
+    "MATLAB_TRKG4_real_subjects/output/exploratory/tepc_preparation_20260911/report/figures/03_montages.png": "546a73dfcc6533637711d5ff5c5c5870fe0c79ec941a687c1739a95356fabb40"
+  },
+  "checks": {
+    "language.ru.hash-bound-final-review": "passed",
+    "language.ru.encoding": "passed",
+    "language.ru.natural-prose": "passed",
+    "language.ru.intro-variation": "passed",
+    "language.ru.reader-facing-clarity": "passed",
+    "language.ru.formula-where": "passed"
+  },
+  "attestations": {
+    "scientific_headings": true,
+    "technical_terminology_and_anatomical_scope": true,
+    "derived_quantities_defined": true,
+    "meaningful_classification_and_contrasts": true,
+    "calque_reverse_check": true,
+    "fact_basis_interpretation_limitations_distinguished": true,
+    "no_strengthening_of_evidence": true
+  },
+  "findings": [],
+  "scientific_status": "exploratory_model_results_not_physically_or_clinically_validated",
+  "limits": "Language review does not establish scientific validity. Other notebooks and full project README are outside this record."
+}
