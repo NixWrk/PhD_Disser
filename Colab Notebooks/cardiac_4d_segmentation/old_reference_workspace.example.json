@@ -1,0 +1,7 @@
+{
+  "conversion_manifest": "<LOCAL_CONVERTED_SEQUENCE>/phases/conversion_manifest.json",
+  "output_dir": "<NEW_LOCAL_ANNOTATION_WORKSPACE>",
+  "phase_ids": ["phase_00", "phase_05", "phase_10", "phase_15"],
+  "selection_rule": "Uniform reconstructed phases 0,25,50,75 percent; no ED/ES labels",
+  "guide_lower_hu": 250
+}
