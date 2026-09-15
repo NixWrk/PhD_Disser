@@ -2,33 +2,38 @@
   "language": "ru",
   "review_status": "passed",
   "review_type": "final_full_text_model_review",
-  "reviewed_utc": "2026-09-15T12:15:13.5841139Z",
+  "reviewed_utc": "2026-09-15T13:07:24.9377611Z",
   "skill": "russian-scientific-prose/SKILL.md",
   "reviewed_after_last_text_edit": true,
   "all_reader_visible_text_read_in_sequence": true,
   "figures_and_labels_reviewed": true,
   "artifact_sha256": {
-    "Colab Notebooks/20.16_Поперечная_форма_лёгкого_и_точность_обратной_модели.ipynb": "bc72ba9976a3b003134fd5d7853edcf4c3a397c4faa3a98f0e08ae5437b9f987",
-    "Colab Notebooks/20.16_Поперечная_форма_лёгкого_и_точность_обратной_модели.html": "0cbc7ffaa2885be59cfadec1154592c41d049e6f09ee27cef58ec0364c71c07d",
-    "Colab Notebooks/20.16_Поперечная_форма_лёгкого_и_точность_обратной_модели.md": "c00f8c448decc32dca3b424b43a45399a041477c3391ee5aa927e4a209d32274",
-    "MATLAB_TRKG4_real_subjects/output/exploratory/baseline_model_comparison_20260914/reader_20.16.md": "483f295cddc5cf454cdeeba45b3c30a5fdb500c5e0f17dbd16b20e7366a5dc6e"
+    "Colab Notebooks/20.16_Поперечная_форма_лёгкого_и_точность_обратной_модели.ipynb": "098e71f485843b2620a0b84c12cb4b5c3a59e0ed3fe370e3b0c34e91667bd1af",
+    "Colab Notebooks/20.16_Поперечная_форма_лёгкого_и_точность_обратной_модели.html": "bb1d5421a096622e8a764868133c2e0086bb83cf33df8a47810c66c418bc2bf3",
+    "Colab Notebooks/20.16_Поперечная_форма_лёгкого_и_точность_обратной_модели.md": "0d3a5a23a83fe21e646d51c1dce7ece69cd7265593cd12a7a8974e11fb92820c",
+    "MATLAB_TRKG4_real_subjects/output/exploratory/baseline_model_comparison_20260914/reader_20.16.md": "00e2b6bc444ab378b3b9f9b8cf8586f8c6b60d5692bd7b176ecf85faafbb1409"
   },
   "source_sha256": {
-    "MATLAB_TRKG4_real_subjects/notebooks/c01_report_text.py": "8cd9f1330882a4ec4e91e3020be43031c0e74d2ed978f41d34e01a598f2b4ddc",
-    "MATLAB_TRKG4_real_subjects/notebooks/build_c01_reports.py": "e83f9758c38aba5f260d7dde5ce0a6fda440b437f541fcb3782df7970961ae0a",
-    "MATLAB_TRKG4_real_subjects/tools/c01_model_catalog.py": "e5668fcb217cd70ebe4184059919e5ad913f78ee1cd684f8dc467af77fd3000f"
+    "MATLAB_TRKG4_real_subjects/notebooks/c01_report_text.py": "6184d42ca1473be8e503a23d5de3acd3ceeb7e54f597d5bbaf599c0af6685138",
+    "MATLAB_TRKG4_real_subjects/notebooks/build_c01_reports.py": "08a705fa931e7dcebb77f92be4e2a9c252cddf95859518d7f8f529065e9cb3bb",
+    "MATLAB_TRKG4_real_subjects/tools/c01_model_catalog.py": "3cd3cd9d689209f8482f53aeafe0b6f6570a940a2033e75eafa8e920260b48fe",
+    "MATLAB_TRKG4_real_subjects/tools/c01_report_tables.py": "801be86fb2fcc3082c7acb389f36a5d65033af09bc17f12b4eb46e6d822acc28",
+    "MATLAB_TRKG4_real_subjects/tools/c01_sensitivity_figure.py": "7a5697c5ffd8930fdf0a7173546e81a89355c94169877005495ae80764220684",
+    "MATLAB_TRKG4_real_subjects/tools/verify_c01_reports.py": "ee1d41caa3f422fb19b209dd55f756ef4c00fd2471dc08467107a9b312580738",
+    "MATLAB_TRKG4_real_subjects/tools/verify_c01_sensitivity_atlas.py": "74eead4c61f75eba8c61647e32443840c881c0d7d3435f06f8934eb39941345f"
   },
-  "scope": "Окончательная читательская редакция 20.16: весь текст, паспорт 19 реализаций, семь таблиц, подписи и пояснения трёх интерактивных рисунков, определения формул, выводы, источники и одноимённый паспорт этапа. Последовательная модельная вычитка после удаления дублирующей классификационной диаграммы и перенумерации оставшихся рисунков.",
+  "scope": "Окончательная читательская редакция 20.16: основной паспорт шести авторских моделей и КТ/FEM-референса, отдельный паспорт 12 диагностических расчётов, семь таблиц, три интерактивных рисунка, одна встроенная объёмная визуализация, формулы, выводы, источники и паспорт этапа. Выполнена последовательная вычитка после разделения основной задачи и вспомогательных проверок.",
   "narrative_sequence": [
     "цель восстановления двух сопротивлений",
     "КТ и монтаж C01",
     "анатомическая информация и проверяемые потери",
-    "назначение 19 реализаций",
+    "шесть моделей и КТ/FEM-референс",
+    "12 дополнительных диагностических расчётов",
     "физическая геометрия и способ расчёта",
     "ошибка восстановления синтетических сопротивлений",
     "чувствительность и различимость",
     "согласование с реальными измерениями",
-    "контроль конечных контактов и глубины",
+    "контроль конечных контактов при фиксированной геометрии",
     "скорость и перенос библиотеки",
     "минимальный набор и нерешённые проверки"
   ],
@@ -40,9 +45,13 @@
     "claims_and_uncertainty_preserved": true
   },
   "resolved_findings": [
-    "Объяснено диагностическое назначение 19 реализаций и связь каждой с потерями КТ-геометрии.",
-    "Разделены референс, основные сокращения поперечной формы и вспомогательные проверки.",
-    "Указана избыточность M16/M18 для текущего центрального луча C01.",
+    "Восстановлен исходный состав: четыре первоначальные модели и две позднее добавленные автором полупространственные модели.",
+    "Девятнадцать программных реализаций разделены на один КТ/FEM-референс, шесть основных моделей и 12 вспомогательных проверок.",
+    "Выбор победителя ограничен шестью основными моделями; диагностические результаты приведены отдельно.",
+    "Указано, что M16/M18 для текущего центрального луча C01 являются одним численным оператором.",
+    "Разделены модели, определяемые одним STL-срезом, и модели, требующие соседних КТ-сечений.",
+    "Зафиксированы точные геометрия C01, положение электродов и h; тест искусственного смещения h исключён из основной последовательности.",
+    "Добавлена объёмная визуализация моделей 5–6 непосредственно в 20.16.",
     "Разделены объёмная геометрия, плоские физические модели и эвристическое усреднение локальных ядер.",
     "Добавлены переходы от результата к следующей проверке.",
     "Исправлена незавершённая условная конструкция; CEM определена при первом употреблении.",
@@ -52,14 +61,18 @@
   "technical_status": {
     "verify_c01_reports.py": "passed",
     "verify_c01_sensitivity_atlas.py": "passed",
-    "executed_code_cells": 10,
-    "interactive_figures": 3
+    "executed_code_cells": 12,
+    "interactive_figures": 3,
+    "embedded_static_3d_figures": 1
   },
   "computational_status": {
     "new_FEM_or_BEM_solves": 0,
     "numerical_inputs_unchanged": true,
     "checked_input_files": 40,
-    "models": 19,
+    "operator_implementations": 19,
+    "main_models": 6,
+    "reference_models": 1,
+    "diagnostic_implementations": 12,
     "synthetic_states": 65,
     "sizes": 9
   },

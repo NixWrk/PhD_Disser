@@ -162,6 +162,64 @@ MODEL_CATALOG = [
 ]
 
 
+# The scientific study contains six author-defined candidate models. M01 is
+# the computational reference. The remaining implementations are paired
+# diagnostics introduced later to isolate individual assumptions; they must
+# not be counted as additional candidate models.
+REFERENCE_KEY = "reference"
+PRIMARY_KEYS = [
+    "planar_nominal",
+    "averaged",
+    "uniform_transverse",
+    "variable_transverse",
+    "m3h",
+    "m4h",
+]
+MAIN_KEYS = [REFERENCE_KEY, *PRIMARY_KEYS]
+DIAGNOSTIC_KEYS = [row["key"] for row in MODEL_CATALOG if row["key"] not in MAIN_KEYS]
+
+PRIMARY_NUMBERS = {key: str(index) for index, key in enumerate(PRIMARY_KEYS, 1)}
+GEOMETRY_SOURCE = {
+    "reference": "Полная КТ/STL-сегментация тела и лёгких.",
+    "planar_nominal": "Из центрального среза берётся только h(0).",
+    "averaged": "Из центрального среза берётся профиль первого входа h(s).",
+    "uniform_transverse": "Полный контур центрального среза; параметр общего закона кривизны по t оценён по соседним КТ-сечениям.",
+    "variable_transverse": "Центральный срез и соседние КТ-сечения; коэффициенты изменения по t являются картами по (s,d).",
+    "m3h": "Полный контур центрального среза; без изменения продолжается по t.",
+    "m4h": "Трёхмерное поле модели 4, построенное по центральному и соседним КТ-сечениям.",
+}
+DIAGNOSTIC_DECISION = {
+    "plane": "Оставить как отрицательный FEM-контроль замены всей границы плоскостью; в число шести не включать.",
+    "ellipsoid": "Оставить как разведочный тест малопараметрической поверхности; это отдельная идея, предложенная после исходных шести.",
+    "ellipsoid_depth": "Оставить только в паре с эллипсоидом для выделения роли центральной глубины.",
+    "extended_lung": "Оставить как контроль влияния дистальных выходов и возврата к фону; анатомическим кандидатом не считать.",
+    "planar_projected": "Оставить как технический контроль переноса фактических контактов на плоскость.",
+    "planar_nearest": "Оставить как контроль определения h; кратчайшее расстояние не заменяет направленный профиль.",
+    "averaged_projected": "Оставить как парный контроль координат контактов для модели 2.",
+    "mean_h": "Оставить как проверку дешёвого сведения профиля к нескольким средним; правило остаётся эвристическим.",
+    "central_finite": "Оставить как контроль учёта первого выхода из лёгкого при двух сопротивлениях.",
+    "mean_finite": "Оставить как разведочную эвристику частичного покрытия; самостоятельной пространственной модели нет.",
+    "central_stack": "Для C01 не считать отдельным результатом: центральный интервал один, поэтому расчёт совпадает с M16.",
+    "mean_stack": "Оставить как разведочную проверку всех пересечений лучей; это усреднение локальных задач, а не единая среда.",
+}
+
+for row in MODEL_CATALOG:
+    key = row["key"]
+    if key == REFERENCE_KEY:
+        row["study_no"] = "R"
+        row["role"] = "КТ/FEM-референс; не входит в шесть моделей"
+    elif key in PRIMARY_NUMBERS:
+        row["study_no"] = PRIMARY_NUMBERS[key]
+        row["role"] = "Основная модель задачи"
+    else:
+        row["study_no"] = "—"
+        row["role"] = "Дополнительный диагностический расчёт"
+    row["geometry_source"] = GEOMETRY_SOURCE.get(
+        key, "Производная от КТ-геометрии C01 по отдельному правилу упрощения."
+    )
+    row["decision"] = DIAGNOSTIC_DECISION.get(key, "Основное сравнение.")
+
+
 GROUP_COLORS = {
     "КТ/FEM-референс": "#37474f",
     "FEM-сокращения в КТ-теле": "#1565c0",
@@ -172,14 +230,30 @@ GROUP_COLORS = {
 }
 
 
-def model_catalog_table():
-    frame = pd.DataFrame(MODEL_CATALOG)
+def _catalog_rows(keys=None):
+    if keys is None:
+        return MODEL_CATALOG
+    wanted = set(keys)
+    rows = [row for row in MODEL_CATALOG if row["key"] in wanted]
+    order = {key: index for index, key in enumerate(keys)}
+    return sorted(rows, key=lambda row: order[row["key"]])
+
+
+def model_catalog_table(keys=None, compact=False):
+    frame = pd.DataFrame(_catalog_rows(keys))
     frame["id"] = frame["id"] + "<br><code>" + frame["key"] + "</code>"
-    view = frame[["id", "group", "name", "view", "simplify", "reason", "method", "contacts", "limit"]].rename(
-        columns={"id": "№ / код реализации", "group": "Идея", "name": "Реализация",
-                 "view": "Как выглядит и что сохраняет", "simplify": "Что упрощается",
-                 "reason": "Зачем введена", "method": "Как рассчитывается",
-                 "contacts": "Контакты", "limit": "Главное ограничение"})
+    if compact:
+        columns = ["id", "name", "reason", "method", "decision", "limit"]
+    else:
+        columns = ["study_no", "id", "role", "name", "geometry_source", "view", "simplify",
+                   "reason", "method", "contacts", "limit"]
+    view = frame[columns].rename(columns={
+        "study_no": "№ модели", "id": "Код реализации", "role": "Роль",
+        "group": "Идея", "name": "Реализация", "geometry_source": "Источник геометрии",
+        "view": "Как выглядит и что сохраняет", "simplify": "Что упрощается",
+        "reason": "Зачем введена", "method": "Как рассчитывается",
+        "contacts": "Контакты", "decision": "Статус в этой работе",
+        "limit": "Главное ограничение"})
     style = """
     <style>
     table.c01-catalog {border-collapse:collapse; width:100%; font-size:12px; line-height:1.25;}
@@ -334,10 +408,21 @@ def _scheme_data(key):
     ]
 
 
-def model_scheme_figure():
+def model_scheme_figure(keys=None):
+    rows = _catalog_rows(keys)
+
+    def display_label(row):
+        if row["study_no"] == "R":
+            prefix = "Референс"
+        elif row["study_no"] == "—":
+            prefix = "Диагностика"
+        else:
+            prefix = "Модель " + row["study_no"]
+        return prefix + " · " + row["id"] + " · " + row["name"]
+
     figure = go.Figure()
     trace_groups = []
-    for row_index, row in enumerate(MODEL_CATALOG):
+    for row_index, row in enumerate(rows):
         start = len(figure.data)
         for trace in _scheme_data(row["key"]):
             trace.visible = row_index == 0
@@ -346,23 +431,23 @@ def model_scheme_figure():
         trace_groups.append(range(start, len(figure.data)))
 
     buttons = []
-    for row_index, row in enumerate(MODEL_CATALOG):
+    for row_index, row in enumerate(rows):
         visible = [False] * len(figure.data)
         for trace_index in trace_groups[row_index]:
             visible[trace_index] = True
         buttons.append(dict(
-            label=row["id"] + " · " + row["name"],
+            label=display_label(row),
             method="update",
             args=[
                 dict(visible=visible, showlegend=[v and (i - min(trace_groups[row_index]) >= 0)
                                                    for i, v in enumerate(visible)]),
-                {"title.text": ("<b>" + row["id"] + ". " + row["name"] + "</b><br>"
+                {"title.text": ("<b>" + display_label(row) + "</b><br>"
                                 "<sup>" + row["view"] + "<br>Условная схема принципа, не срез КТ C01; размеры не используются в расчёте. Фон — ρ₁.</sup>")}
             ]))
 
-    first = MODEL_CATALOG[0]
+    first = rows[0]
     figure.update_layout(
-        title=("<b>" + first["id"] + ". " + first["name"] + "</b><br>"
+        title=("<b>" + display_label(first) + "</b><br>"
                "<sup>" + first["view"] + "<br>Условная схема принципа, не срез КТ C01; размеры не используются в расчёте. Фон — ρ₁.</sup>"),
         width=1100, height=650, margin=dict(l=80, r=40, t=155, b=75),
         updatemenus=[dict(type="dropdown", direction="down", x=0, y=1.18,
@@ -370,7 +455,7 @@ def model_scheme_figure():
         xaxis=dict(title="условная координата сечения (схема принципа)", range=[-78, 78]),
         yaxis=dict(title="глубина внутрь среды, условные единицы", range=[155, -14], scaleanchor="x", scaleratio=0.9),
         plot_bgcolor="white", legend=dict(orientation="h", y=-0.16),
-        meta=dict(operator_count=19, schematic=True, keys=[row["key"] for row in MODEL_CATALOG]))
+        meta=dict(operator_count=len(rows), schematic=True, keys=[row["key"] for row in rows]))
     figure.update_xaxes(showgrid=True, gridcolor="#e6ebf2", zeroline=False)
     figure.update_yaxes(showgrid=True, gridcolor="#e6ebf2", zeroline=False)
     display(HTML(pio.to_html(
