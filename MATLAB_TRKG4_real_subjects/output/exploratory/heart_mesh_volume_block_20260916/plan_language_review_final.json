@@ -1,0 +1,25 @@
+{
+  "schema": "heart_plan_language_review_final_v3",
+  "reviewer": "Pascal (Luna Max)",
+  "skill": "russian-scientific-prose",
+  "hash_bindings": {
+    "plan_path": "Colab Notebooks/40.15_План_исполнения_сравнения_моделей_сердца.md",
+    "plan_sha256": "f52aaaa38b25ff26a4b601e11113e5723ca24e3bcbbf48229891dd22892c3c32",
+    "owned_sections_path": "MATLAB_TRKG4_real_subjects/output/exploratory/heart_mesh_volume_block_20260916/owned_document_sections.json",
+    "owned_sha256": "20351344bab5f786410748957084b7ffa34f7b9294b9be0bb798a37adcc47e25"
+  },
+  "full_sequential_read": {
+    "plan": true,
+    "owned_sections": 3,
+    "dynamic_report_40_18_read": false,
+    "sources_edited": false
+  },
+  "status": "passed",
+  "findings": [],
+  "assessment": "Язык, последовательность и научная осторожность сохранены. Формулы направленных оценок, область TEPC-2, полуширина 0,5%, разделение электрической чувствительности и геометрических ошибок указаны однозначно.",
+  "hash_domain": "reviewed working-tree bytes",
+  "canonical_lf_sha256": {
+    "Colab Notebooks/40.15_План_исполнения_сравнения_моделей_сердца.md": "381665108e2e4230590edfe4647f74cb9c508cc4e979b2ecd7ecbc8b5e71cf5a",
+    "MATLAB_TRKG4_real_subjects/output/exploratory/heart_mesh_volume_block_20260916/owned_document_sections.json": "76d7b12b187260a95e32c761800c84a9d27b2d5f777b36a00f87ab19ad7adf02"
+  }
+}

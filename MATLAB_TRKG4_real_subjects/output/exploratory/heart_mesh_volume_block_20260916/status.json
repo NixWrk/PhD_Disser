@@ -1,0 +1,13 @@
+{
+  "status": "complete",
+  "completed_jobs": [
+    "L1_individual_q16384",
+    "L1_sphere_q16384",
+    "L1_ellipsoid_q16384",
+    "L0_sphere_q16384",
+    "L0_ellipsoid_q16384"
+  ],
+  "new_solutions": 25,
+  "spatial_convergence": false,
+  "physical_validation": false
+}

@@ -1,0 +1,624 @@
+{
+  "schema": "heart_mesh_level_comparison_v1",
+  "status": "complete",
+  "coarse_stage": "L0_individual_q16384",
+  "fine_stage": "L1_individual_q16384",
+  "coarse_plan_sha256": "1d1060175e88248aef9884c57d57751574ee3a476bf80e0bdc6a4ebcd253aff2",
+  "fine_plan_sha256": "e4a6e2d0c42bb25771b6e13ace1e1ee45ca933073a94ca638d3cc02b2a849f1a",
+  "implementation_sha256": "55586d38601c4d1dad83ff33be84734e24ad94871cc445550c09d0fa5575e917",
+  "stage_implementation_sha256": {
+    "coarse": [
+      "379a68d54040a25ba5b292718c472cc1a571f0af4014601225d1a3ed7885eb40",
+      "9efb4f42f5ec728cfc1e7466e330b02b6b6ed926e262c84ee8e368d2fbccd7b9",
+      "95004ec1019dfde71e2440fbb341c4c7ed4dc1f3853489fc70a77e9578f2d192",
+      "8f253902e4330cc75a944bf61baea115642638830e4b5cf9e7401f6284811f8a",
+      "043fd2ebc45db42100a49df7a4de2dbdd92dcd8f0696d39a022bb958eaa567cb",
+      "5746b49438277f7681d46c51309fe885610d1361d3a2be1a08eb0148d5c97435",
+      "00f157f9c6a1e751ef15a82da125665367ba0c4fe17af923b0ed251e7f3c9724",
+      "2978a228cb3324ceaa3deea26914238c8b97f2a70643b6492dbef5d78eea9bf8",
+      "3c3fa6b685c5775a8763080d07c190cc0efcbeb95fbbc028545063db911d8f53",
+      "4816afeb4685c877b40784336f4f71cdaa5e1df94459d30ec74d8a0c2ac15737",
+      "f15764e1b70d305a37d393002fb91e2689e005d8d97c20a91739565a13470a0c"
+    ],
+    "fine": [
+      "379a68d54040a25ba5b292718c472cc1a571f0af4014601225d1a3ed7885eb40",
+      "9efb4f42f5ec728cfc1e7466e330b02b6b6ed926e262c84ee8e368d2fbccd7b9",
+      "95004ec1019dfde71e2440fbb341c4c7ed4dc1f3853489fc70a77e9578f2d192",
+      "8f253902e4330cc75a944bf61baea115642638830e4b5cf9e7401f6284811f8a",
+      "043fd2ebc45db42100a49df7a4de2dbdd92dcd8f0696d39a022bb958eaa567cb",
+      "5746b49438277f7681d46c51309fe885610d1361d3a2be1a08eb0148d5c97435",
+      "00f157f9c6a1e751ef15a82da125665367ba0c4fe17af923b0ed251e7f3c9724",
+      "2978a228cb3324ceaa3deea26914238c8b97f2a70643b6492dbef5d78eea9bf8",
+      "3c3fa6b685c5775a8763080d07c190cc0efcbeb95fbbc028545063db911d8f53",
+      "fa374ca88f4437df215779574d50771e67ceff07b1924b85cadfb044225709d0",
+      "f15764e1b70d305a37d393002fb91e2689e005d8d97c20a91739565a13470a0c"
+    ]
+  },
+  "spatial_convergence": false,
+  "spatial_convergence_reason": "One coarse/fine mesh pair is a comparison and cannot certify spatial convergence.",
+  "physical_validation": false,
+  "one_sided_asymmetry_reported": true,
+  "one_sided_asymmetry_note": "Sminus and Splus are reported separately; no cause is assigned without separating tests.",
+  "provenance": {
+    "same_original_geometric_source": true,
+    "original_geometric_source_sha256": "d83fa6231da30496b7e457e5e2e88d1c7927057ec6fbf58d8a6dca1441389a0a",
+    "same_geometry": true,
+    "same_parameter": true,
+    "same_deformation": true,
+    "same_frequency_hz": true,
+    "same_rho_ohm_m": true,
+    "same_sigma": true,
+    "same_electrode_model": true,
+    "electrode_diameter_mm": 5.0,
+    "same_ground_zero_based": true,
+    "contact_id": "tepc_2",
+    "contact_physical_metadata_equal": true,
+    "coarse_prepared_sha256": "d83fa6231da30496b7e457e5e2e88d1c7927057ec6fbf58d8a6dca1441389a0a",
+    "fine_prepared_sha256": "125dfc7c1cdd7175792ed6ece1feb2b2074491c8c660520c7eb097d49ab15677",
+    "coarse_contact_sha256": "dd7dd7f596063eafcefd5a27a435061438b3fef48a850fc56aff648846865a12",
+    "fine_contact_sha256": "6a34748efd09fb2a42675fd7af165489a4671dafa06a2b332ce89fad917058cc",
+    "coarse_plan_sha256": "1d1060175e88248aef9884c57d57751574ee3a476bf80e0bdc6a4ebcd253aff2",
+    "fine_plan_sha256": "e4a6e2d0c42bb25771b6e13ace1e1ee45ca933073a94ca638d3cc02b2a849f1a",
+    "implementation_sha256": "55586d38601c4d1dad83ff33be84734e24ad94871cc445550c09d0fa5575e917",
+    "coarse_implementation_sha256": [
+      "379a68d54040a25ba5b292718c472cc1a571f0af4014601225d1a3ed7885eb40",
+      "9efb4f42f5ec728cfc1e7466e330b02b6b6ed926e262c84ee8e368d2fbccd7b9",
+      "95004ec1019dfde71e2440fbb341c4c7ed4dc1f3853489fc70a77e9578f2d192",
+      "8f253902e4330cc75a944bf61baea115642638830e4b5cf9e7401f6284811f8a",
+      "043fd2ebc45db42100a49df7a4de2dbdd92dcd8f0696d39a022bb958eaa567cb",
+      "5746b49438277f7681d46c51309fe885610d1361d3a2be1a08eb0148d5c97435",
+      "00f157f9c6a1e751ef15a82da125665367ba0c4fe17af923b0ed251e7f3c9724",
+      "2978a228cb3324ceaa3deea26914238c8b97f2a70643b6492dbef5d78eea9bf8",
+      "3c3fa6b685c5775a8763080d07c190cc0efcbeb95fbbc028545063db911d8f53",
+      "4816afeb4685c877b40784336f4f71cdaa5e1df94459d30ec74d8a0c2ac15737",
+      "f15764e1b70d305a37d393002fb91e2689e005d8d97c20a91739565a13470a0c"
+    ],
+    "fine_implementation_sha256": [
+      "379a68d54040a25ba5b292718c472cc1a571f0af4014601225d1a3ed7885eb40",
+      "9efb4f42f5ec728cfc1e7466e330b02b6b6ed926e262c84ee8e368d2fbccd7b9",
+      "95004ec1019dfde71e2440fbb341c4c7ed4dc1f3853489fc70a77e9578f2d192",
+      "8f253902e4330cc75a944bf61baea115642638830e4b5cf9e7401f6284811f8a",
+      "043fd2ebc45db42100a49df7a4de2dbdd92dcd8f0696d39a022bb958eaa567cb",
+      "5746b49438277f7681d46c51309fe885610d1361d3a2be1a08eb0148d5c97435",
+      "00f157f9c6a1e751ef15a82da125665367ba0c4fe17af923b0ed251e7f3c9724",
+      "2978a228cb3324ceaa3deea26914238c8b97f2a70643b6492dbef5d78eea9bf8",
+      "3c3fa6b685c5775a8763080d07c190cc0efcbeb95fbbc028545063db911d8f53",
+      "fa374ca88f4437df215779574d50771e67ceff07b1924b85cadfb044225709d0",
+      "f15764e1b70d305a37d393002fb91e2689e005d8d97c20a91739565a13470a0c"
+    ]
+  },
+  "fine_refinement_provenance": {
+    "status": "passed_heart_refinement_export",
+    "source_prepared_sha256": "d83fa6231da30496b7e457e5e2e88d1c7927057ec6fbf58d8a6dca1441389a0a",
+    "prepared_sha256": "125dfc7c1cdd7175792ed6ece1feb2b2074491c8c660520c7eb097d49ab15677",
+    "contact_sha256": "6a34748efd09fb2a42675fd7af165489a4671dafa06a2b332ce89fad917058cc",
+    "prepared_file": "prepared_fem.mat",
+    "contact_file": "contact.mat",
+    "original_nodes_preserved": true,
+    "outer_boundary_preserved": true,
+    "contact_faces_preserved": true,
+    "contact_embedding_relative_error": 0.0,
+    "matrix_relative_error": 1.0434070010698313e-17,
+    "hashes_passed": true,
+    "source_matches_coarse_prepared": true,
+    "surface_and_node_prefix_preserved": true,
+    "coarse_prepared_sha256": "d83fa6231da30496b7e457e5e2e88d1c7927057ec6fbf58d8a6dca1441389a0a"
+  },
+  "state_designs": {
+    "planned": 5,
+    "coarse_completed": 5,
+    "fine_completed": 5,
+    "compared_completed": 5,
+    "coarse_only_completed": [],
+    "fine_only_completed": []
+  },
+  "quadrature": {
+    "coarse_points_per_tet": [
+      16384
+    ],
+    "fine_points_per_tet": [
+      16384
+    ]
+  },
+  "baseline_Z_shift": {
+    "q_coarse": 16384,
+    "q_fine": 16384,
+    "Z_coarse_ohm": 165.79844870356382,
+    "Z_fine_ohm": 166.41749318056551,
+    "Z_fine_minus_coarse_ohm": 0.6190444770016938,
+    "relative_to_coarse": 0.003733716942723045
+  },
+  "state_comparisons": [
+    {
+      "design": {
+        "geometry": "individual",
+        "parameter": "baseline",
+        "signed_step": 0.0,
+        "volume_fraction": 0.0,
+        "translation_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "analytic_volume_ml": 782.8918539180374
+      },
+      "label": "baseline",
+      "state_id_coarse": "individual_q16384_base",
+      "state_id_fine": "individual_q16384_base",
+      "q_coarse": 16384,
+      "q_fine": 16384,
+      "Z_coarse_ohm": 165.79844870356382,
+      "Z_fine_ohm": 166.41749318056551,
+      "Z_fine_minus_coarse_ohm": 0.6190444770016938,
+      "Z_difference_relative_to_coarse": 0.003733716942723045
+    },
+    {
+      "design": {
+        "geometry": "individual",
+        "parameter": "volume_fraction",
+        "signed_step": -0.01,
+        "volume_fraction": -0.01,
+        "translation_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "analytic_volume_ml": 775.0629353788571
+      },
+      "label": "volume_fraction:-0.01",
+      "state_id_coarse": "individual_q16384_volume_m0p01",
+      "state_id_fine": "individual_q16384_volume_m0p01",
+      "q_coarse": 16384,
+      "q_fine": 16384,
+      "Z_coarse_ohm": 165.89611446664705,
+      "Z_fine_ohm": 166.5089865768905,
+      "Z_fine_minus_coarse_ohm": 0.612872110243444,
+      "Z_difference_relative_to_coarse": 0.003694312625788835
+    },
+    {
+      "design": {
+        "geometry": "individual",
+        "parameter": "volume_fraction",
+        "signed_step": -0.005,
+        "volume_fraction": -0.005,
+        "translation_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "analytic_volume_ml": 778.9773946484472
+      },
+      "label": "volume_fraction:-0.005",
+      "state_id_coarse": "individual_q16384_volume_m0p005",
+      "state_id_fine": "individual_q16384_volume_m0p005",
+      "q_coarse": 16384,
+      "q_fine": 16384,
+      "Z_coarse_ohm": 165.84716863187163,
+      "Z_fine_ohm": 166.46292750833425,
+      "Z_fine_minus_coarse_ohm": 0.6157588764626212,
+      "Z_difference_relative_to_coarse": 0.0037128090973287072
+    },
+    {
+      "design": {
+        "geometry": "individual",
+        "parameter": "volume_fraction",
+        "signed_step": 0.005,
+        "volume_fraction": 0.005,
+        "translation_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "analytic_volume_ml": 786.8063131876276
+      },
+      "label": "volume_fraction:+0.005",
+      "state_id_coarse": "individual_q16384_volume_p0p005",
+      "state_id_fine": "individual_q16384_volume_p0p005",
+      "q_coarse": 16384,
+      "q_fine": 16384,
+      "Z_coarse_ohm": 165.72467372418225,
+      "Z_fine_ohm": 166.33832651654788,
+      "Z_fine_minus_coarse_ohm": 0.6136527923656274,
+      "Z_difference_relative_to_coarse": 0.0037028450777760336
+    },
+    {
+      "design": {
+        "geometry": "individual",
+        "parameter": "volume_fraction",
+        "signed_step": 0.01,
+        "volume_fraction": 0.01,
+        "translation_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "analytic_volume_ml": 790.7207724572178
+      },
+      "label": "volume_fraction:+0.01",
+      "state_id_coarse": "individual_q16384_volume_p0p01",
+      "state_id_fine": "individual_q16384_volume_p0p01",
+      "q_coarse": 16384,
+      "q_fine": 16384,
+      "Z_coarse_ohm": 165.65269962368447,
+      "Z_fine_ohm": 166.26300497003908,
+      "Z_fine_minus_coarse_ohm": 0.6103053463546075,
+      "Z_difference_relative_to_coarse": 0.003684246304111232
+    }
+  ],
+  "derivatives": {
+    "coarse": [
+      {
+        "parameter": "volume_fraction",
+        "step": 0.005,
+        "units": "ohm/ml",
+        "q_plus": 16384,
+        "q_minus": 16384,
+        "analytic_denominator": 7.828918539180375,
+        "baseline_analytic_volume_ml": 782.8918539180374,
+        "Z_baseline_ohm": 165.79844870356382,
+        "dV_one_sided": 3.9144592695901874,
+        "Z_minus_ohm": 165.84716863187163,
+        "Z_plus_ohm": 165.72467372418225,
+        "Sminus": -0.012446145163979372,
+        "Splus": -0.01884678682307294,
+        "one_sided_slope_difference_Splus_minus_Sminus": -0.006400641659093568,
+        "one_sided_normalized_difference": -0.4090790637158501,
+        "derivative": -0.015646465993526155,
+        "material_volume_derivative": 0.9995437925047875,
+        "expected_material_volume_derivative": 1.0
+      },
+      {
+        "parameter": "volume_fraction",
+        "step": 0.01,
+        "units": "ohm/ml",
+        "q_plus": 16384,
+        "q_minus": 16384,
+        "analytic_denominator": 15.65783707836075,
+        "baseline_analytic_volume_ml": 782.8918539180374,
+        "Z_baseline_ohm": 165.79844870356382,
+        "dV_one_sided": 7.828918539180375,
+        "Z_minus_ohm": 165.89611446664705,
+        "Z_plus_ohm": 165.65269962368447,
+        "Sminus": -0.012475000550133793,
+        "Splus": -0.01861675774884359,
+        "one_sided_slope_difference_Splus_minus_Sminus": -0.006141757198709796,
+        "one_sided_normalized_difference": -0.39507300549881097,
+        "derivative": -0.015545879149488693,
+        "material_volume_derivative": 0.9995476549424359,
+        "expected_material_volume_derivative": 1.0
+      }
+    ],
+    "fine": [
+      {
+        "parameter": "volume_fraction",
+        "step": 0.005,
+        "units": "ohm/ml",
+        "q_plus": 16384,
+        "q_minus": 16384,
+        "analytic_denominator": 7.828918539180375,
+        "baseline_analytic_volume_ml": 782.8918539180374,
+        "Z_baseline_ohm": 166.41749318056551,
+        "dV_one_sided": 3.9144592695901874,
+        "Z_minus_ohm": 166.46292750833425,
+        "Z_plus_ohm": 166.33832651654788,
+        "Sminus": -0.011606795380831252,
+        "Splus": -0.020224163432392188,
+        "one_sided_slope_difference_Splus_minus_Sminus": -0.008617368051560936,
+        "one_sided_normalized_difference": -0.5414457102675179,
+        "derivative": -0.01591547940661172,
+        "material_volume_derivative": 0.9991218859539693,
+        "expected_material_volume_derivative": 1.0
+      },
+      {
+        "parameter": "volume_fraction",
+        "step": 0.01,
+        "units": "ohm/ml",
+        "q_plus": 16384,
+        "q_minus": 16384,
+        "analytic_denominator": 15.65783707836075,
+        "baseline_analytic_volume_ml": 782.8918539180374,
+        "Z_baseline_ohm": 166.41749318056551,
+        "dV_one_sided": 7.828918539180375,
+        "Z_minus_ohm": 166.5089865768905,
+        "Z_plus_ohm": 166.26300497003908,
+        "Sminus": -0.011686594497961991,
+        "Splus": -0.01973302056386085,
+        "one_sided_slope_difference_Splus_minus_Sminus": -0.00804642606589886,
+        "one_sided_normalized_difference": -0.5121912569626521,
+        "derivative": -0.01570980753091142,
+        "material_volume_derivative": 0.9995205627196156,
+        "expected_material_volume_derivative": 1.0
+      }
+    ]
+  },
+  "derivative_comparison": [
+    {
+      "parameter": "volume_fraction",
+      "step": 0.005,
+      "q_coarse_plus_minus": [
+        16384,
+        16384
+      ],
+      "q_fine_plus_minus": [
+        16384,
+        16384
+      ],
+      "derivative_coarse": -0.015646465993526155,
+      "derivative_fine": -0.01591547940661172,
+      "derivative_fine_minus_coarse": -0.00026901341308556426,
+      "Sminus_coarse": -0.012446145163979372,
+      "Splus_coarse": -0.01884678682307294,
+      "Sminus_fine": -0.011606795380831252,
+      "Splus_fine": -0.020224163432392188,
+      "one_sided_normalized_difference_coarse": -0.4090790637158501,
+      "one_sided_normalized_difference_fine": -0.5414457102675179,
+      "material_dV_slope_coarse": 0.9995437925047875,
+      "material_dV_slope_fine": 0.9991218859539693
+    },
+    {
+      "parameter": "volume_fraction",
+      "step": 0.01,
+      "q_coarse_plus_minus": [
+        16384,
+        16384
+      ],
+      "q_fine_plus_minus": [
+        16384,
+        16384
+      ],
+      "derivative_coarse": -0.015545879149488693,
+      "derivative_fine": -0.01570980753091142,
+      "derivative_fine_minus_coarse": -0.00016392838142272916,
+      "Sminus_coarse": -0.012475000550133793,
+      "Splus_coarse": -0.01861675774884359,
+      "Sminus_fine": -0.011686594497961991,
+      "Splus_fine": -0.01973302056386085,
+      "one_sided_normalized_difference_coarse": -0.39507300549881097,
+      "one_sided_normalized_difference_fine": -0.5121912569626521,
+      "material_dV_slope_coarse": 0.9995476549424359,
+      "material_dV_slope_fine": 0.9995205627196156
+    }
+  ],
+  "material_dV_slopes": [
+    {
+      "parameter": "volume_fraction",
+      "step": 0.005,
+      "q_coarse_plus_minus": [
+        16384,
+        16384
+      ],
+      "q_fine_plus_minus": [
+        16384,
+        16384
+      ],
+      "material_dV_slope_coarse": 0.9995437925047875,
+      "material_dV_slope_fine": 0.9991218859539693,
+      "material_dV_slope_fine_minus_coarse": -0.0004219065508181963,
+      "expected_material_dV_slope": 1.0
+    },
+    {
+      "parameter": "volume_fraction",
+      "step": 0.01,
+      "q_coarse_plus_minus": [
+        16384,
+        16384
+      ],
+      "q_fine_plus_minus": [
+        16384,
+        16384
+      ],
+      "material_dV_slope_coarse": 0.9995476549424359,
+      "material_dV_slope_fine": 0.9995205627196156,
+      "material_dV_slope_fine_minus_coarse": -2.7092222820268574e-05,
+      "expected_material_dV_slope": 1.0
+    }
+  ],
+  "step_refinement": {
+    "coarse": [
+      {
+        "parameter": "volume_fraction",
+        "fine_step": 0.005,
+        "coarse_step": 0.01,
+        "fine_derivative": -0.015646465993526155,
+        "coarse_derivative": -0.015545879149488693,
+        "derivative_difference_coarse_minus_fine": 0.00010058684403746292,
+        "relative_difference": 0.00642872608287913,
+        "fine_one_sided_normalized_difference": -0.4090790637158501,
+        "coarse_one_sided_normalized_difference": -0.39507300549881097
+      }
+    ],
+    "fine": [
+      {
+        "parameter": "volume_fraction",
+        "fine_step": 0.005,
+        "coarse_step": 0.01,
+        "fine_derivative": -0.01591547940661172,
+        "coarse_derivative": -0.01570980753091142,
+        "derivative_difference_coarse_minus_fine": 0.00020567187570029802,
+        "relative_difference": 0.012922757175310495,
+        "fine_one_sided_normalized_difference": -0.5414457102675179,
+        "coarse_one_sided_normalized_difference": -0.5121912569626521
+      }
+    ],
+    "stage_summaries": {
+      "coarse": [
+        {
+          "parameter": "volume_fraction",
+          "fine_step": 0.005,
+          "coarse_step": 0.01,
+          "derivative_difference": 0.00010058684403746292,
+          "relative_difference": 0.00642872608287913
+        }
+      ],
+      "fine": [
+        {
+          "parameter": "volume_fraction",
+          "fine_step": 0.005,
+          "coarse_step": 0.01,
+          "derivative_difference": 0.00020567187570029802,
+          "relative_difference": 0.012922757175310495
+        }
+      ]
+    }
+  },
+  "numerical_qc": {
+    "coarse": {
+      "summary_status": "complete",
+      "summary_completed": 5,
+      "summary_required": 5,
+      "completed_rows": [
+        {
+          "label": "baseline",
+          "state_id": "individual_q16384_base",
+          "q": 16384,
+          "checked_result": true,
+          "checks": {
+            "max_relative_residual": 1.330747636899319e-11,
+            "reciprocity_absolute_ohm": 6.454854428739054e-10,
+            "max_current_error_A": 7.105427357601002e-14,
+            "max_ground_residual_A": 4.764650008257543e-11,
+            "matrix_asymmetry_relative": 7.383143228507816e-22
+          }
+        },
+        {
+          "label": "volume_fraction:-0.01",
+          "state_id": "individual_q16384_volume_m0p01",
+          "q": 16384,
+          "checked_result": true,
+          "checks": {
+            "max_relative_residual": 1.962545001052629e-11,
+            "reciprocity_absolute_ohm": 9.61392743192846e-10,
+            "max_current_error_A": 5.684341886080802e-14,
+            "max_ground_residual_A": 5.5630029418716684e-11,
+            "matrix_asymmetry_relative": 7.3831432288049105e-22
+          }
+        },
+        {
+          "label": "volume_fraction:-0.005",
+          "state_id": "individual_q16384_volume_m0p005",
+          "q": 16384,
+          "checked_result": true,
+          "checks": {
+            "max_relative_residual": 1.5518010102646597e-11,
+            "reciprocity_absolute_ohm": 1.1937117960769683e-11,
+            "max_current_error_A": 1.1368683772161603e-13,
+            "max_ground_residual_A": 6.497764633750687e-11,
+            "matrix_asymmetry_relative": 7.383143228654875e-22
+          }
+        },
+        {
+          "label": "volume_fraction:+0.005",
+          "state_id": "individual_q16384_volume_p0p005",
+          "q": 16384,
+          "checked_result": true,
+          "checks": {
+            "max_relative_residual": 1.6503228079919425e-11,
+            "reciprocity_absolute_ohm": 3.709317297762027e-10,
+            "max_current_error_A": 7.105427357601002e-14,
+            "max_ground_residual_A": 4.603162828394156e-11,
+            "matrix_asymmetry_relative": 7.383143228343884e-22
+          }
+        },
+        {
+          "label": "volume_fraction:+0.01",
+          "state_id": "individual_q16384_volume_p0p01",
+          "q": 16384,
+          "checked_result": true,
+          "checks": {
+            "max_relative_residual": 1.6467668140462942e-11,
+            "reciprocity_absolute_ohm": 1.1550582712516189e-10,
+            "max_current_error_A": 4.263256414560601e-14,
+            "max_ground_residual_A": 4.0494725508003035e-11,
+            "matrix_asymmetry_relative": 7.38314322818618e-22
+          }
+        }
+      ],
+      "maxima": {
+        "max_relative_residual": 1.962545001052629e-11,
+        "reciprocity_absolute_ohm": 9.61392743192846e-10,
+        "max_current_error_A": 1.1368683772161603e-13,
+        "max_ground_residual_A": 6.497764633750687e-11,
+        "matrix_asymmetry_relative": 7.3831432288049105e-22
+      }
+    },
+    "fine": {
+      "summary_status": "complete",
+      "summary_completed": 5,
+      "summary_required": 5,
+      "completed_rows": [
+        {
+          "label": "baseline",
+          "state_id": "individual_q16384_base",
+          "q": 16384,
+          "checked_result": true,
+          "checks": {
+            "max_relative_residual": 1.791056838872072e-11,
+            "reciprocity_absolute_ohm": 3.510081114654895e-10,
+            "max_current_error_A": 4.263256414560601e-14,
+            "max_ground_residual_A": 5.164660876802441e-11,
+            "matrix_asymmetry_relative": 7.3831230918854205e-22
+          }
+        },
+        {
+          "label": "volume_fraction:-0.01",
+          "state_id": "individual_q16384_volume_m0p01",
+          "q": 16384,
+          "checked_result": true,
+          "checks": {
+            "max_relative_residual": 1.950549876267449e-11,
+            "reciprocity_absolute_ohm": 2.815738753270125e-10,
+            "max_current_error_A": 4.263256414560601e-14,
+            "max_ground_residual_A": 5.0913967420397025e-11,
+            "matrix_asymmetry_relative": 7.38312309281143e-22
+          }
+        },
+        {
+          "label": "volume_fraction:-0.005",
+          "state_id": "individual_q16384_volume_m0p005",
+          "q": 16384,
+          "checked_result": true,
+          "checks": {
+            "max_relative_residual": 1.7024249465895108e-11,
+            "reciprocity_absolute_ohm": 8.161578080034815e-10,
+            "max_current_error_A": 4.263256414560601e-14,
+            "max_ground_residual_A": 4.2566571600315324e-11,
+            "matrix_asymmetry_relative": 7.383123092345436e-22
+          }
+        },
+        {
+          "label": "volume_fraction:+0.005",
+          "state_id": "individual_q16384_volume_p0p005",
+          "q": 16384,
+          "checked_result": true,
+          "checks": {
+            "max_relative_residual": 1.1912054832843548e-11,
+            "reciprocity_absolute_ohm": 3.3944047572731506e-10,
+            "max_current_error_A": 7.105427357601002e-14,
+            "max_ground_residual_A": 4.098228900743751e-11,
+            "matrix_asymmetry_relative": 7.383123091301488e-22
+          }
+        },
+        {
+          "label": "volume_fraction:+0.01",
+          "state_id": "individual_q16384_volume_p0p01",
+          "q": 16384,
+          "checked_result": true,
+          "checks": {
+            "max_relative_residual": 1.4097157332297741e-11,
+            "reciprocity_absolute_ohm": 6.986624612181913e-10,
+            "max_current_error_A": 4.263256414560601e-14,
+            "max_ground_residual_A": 4.7631310874312965e-11,
+            "matrix_asymmetry_relative": 7.383123090705466e-22
+          }
+        }
+      ],
+      "maxima": {
+        "max_relative_residual": 1.950549876267449e-11,
+        "reciprocity_absolute_ohm": 8.161578080034815e-10,
+        "max_current_error_A": 7.105427357601002e-14,
+        "max_ground_residual_A": 5.164660876802441e-11,
+        "matrix_asymmetry_relative": 7.38312309281143e-22
+      }
+    }
+  }
+}

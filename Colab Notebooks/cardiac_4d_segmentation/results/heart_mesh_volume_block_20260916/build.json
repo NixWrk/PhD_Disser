@@ -1,0 +1,8 @@
+{
+  "notebook_sha256": "876c5a40f4a8bad189793db192641482bf7fb4c8eba81511c0d849a94a03c8ab",
+  "html_sha256": "69580430037edafc9bc7315062f6a9375ac5930b5b70b0dedae6deaef966355a",
+  "summary_sha256": "c8c9aa4745fb1c177c15b87fb16275819d636abc0c447451963160597afd46cf",
+  "builder_sha256": "216eb0d5483dda73914c119bc10c7e256f956ac706153b4e1ee878bb04bcdda1",
+  "FEM_reexecuted": false,
+  "image_outputs": 3
+}

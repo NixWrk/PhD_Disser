@@ -1,0 +1,624 @@
+{
+  "schema": "heart_mesh_level_comparison_v1",
+  "status": "complete",
+  "coarse_stage": "L0_ellipsoid_q16384",
+  "fine_stage": "L1_ellipsoid_q16384",
+  "coarse_plan_sha256": "5c726ef7a0555d340ae3cf3355776c2afd2dc2c807416d7442c8b26e560d7585",
+  "fine_plan_sha256": "d94cf6d07e70fd6c290a5bcc6ddd7b4e2f58a1568ef3c11605ed529db357e200",
+  "implementation_sha256": "55586d38601c4d1dad83ff33be84734e24ad94871cc445550c09d0fa5575e917",
+  "stage_implementation_sha256": {
+    "coarse": [
+      "379a68d54040a25ba5b292718c472cc1a571f0af4014601225d1a3ed7885eb40",
+      "9efb4f42f5ec728cfc1e7466e330b02b6b6ed926e262c84ee8e368d2fbccd7b9",
+      "95004ec1019dfde71e2440fbb341c4c7ed4dc1f3853489fc70a77e9578f2d192",
+      "8f253902e4330cc75a944bf61baea115642638830e4b5cf9e7401f6284811f8a",
+      "043fd2ebc45db42100a49df7a4de2dbdd92dcd8f0696d39a022bb958eaa567cb",
+      "5746b49438277f7681d46c51309fe885610d1361d3a2be1a08eb0148d5c97435",
+      "00f157f9c6a1e751ef15a82da125665367ba0c4fe17af923b0ed251e7f3c9724",
+      "2978a228cb3324ceaa3deea26914238c8b97f2a70643b6492dbef5d78eea9bf8",
+      "3c3fa6b685c5775a8763080d07c190cc0efcbeb95fbbc028545063db911d8f53",
+      "fa374ca88f4437df215779574d50771e67ceff07b1924b85cadfb044225709d0",
+      "f15764e1b70d305a37d393002fb91e2689e005d8d97c20a91739565a13470a0c"
+    ],
+    "fine": [
+      "379a68d54040a25ba5b292718c472cc1a571f0af4014601225d1a3ed7885eb40",
+      "9efb4f42f5ec728cfc1e7466e330b02b6b6ed926e262c84ee8e368d2fbccd7b9",
+      "95004ec1019dfde71e2440fbb341c4c7ed4dc1f3853489fc70a77e9578f2d192",
+      "8f253902e4330cc75a944bf61baea115642638830e4b5cf9e7401f6284811f8a",
+      "043fd2ebc45db42100a49df7a4de2dbdd92dcd8f0696d39a022bb958eaa567cb",
+      "5746b49438277f7681d46c51309fe885610d1361d3a2be1a08eb0148d5c97435",
+      "00f157f9c6a1e751ef15a82da125665367ba0c4fe17af923b0ed251e7f3c9724",
+      "2978a228cb3324ceaa3deea26914238c8b97f2a70643b6492dbef5d78eea9bf8",
+      "3c3fa6b685c5775a8763080d07c190cc0efcbeb95fbbc028545063db911d8f53",
+      "fa374ca88f4437df215779574d50771e67ceff07b1924b85cadfb044225709d0",
+      "f15764e1b70d305a37d393002fb91e2689e005d8d97c20a91739565a13470a0c"
+    ]
+  },
+  "spatial_convergence": false,
+  "spatial_convergence_reason": "One coarse/fine mesh pair is a comparison and cannot certify spatial convergence.",
+  "physical_validation": false,
+  "one_sided_asymmetry_reported": true,
+  "one_sided_asymmetry_note": "Sminus and Splus are reported separately; no cause is assigned without separating tests.",
+  "provenance": {
+    "same_original_geometric_source": true,
+    "original_geometric_source_sha256": "d83fa6231da30496b7e457e5e2e88d1c7927057ec6fbf58d8a6dca1441389a0a",
+    "same_geometry": true,
+    "same_parameter": true,
+    "same_deformation": true,
+    "same_frequency_hz": true,
+    "same_rho_ohm_m": true,
+    "same_sigma": true,
+    "same_electrode_model": true,
+    "electrode_diameter_mm": 5.0,
+    "same_ground_zero_based": true,
+    "contact_id": "tepc_2",
+    "contact_physical_metadata_equal": true,
+    "coarse_prepared_sha256": "d83fa6231da30496b7e457e5e2e88d1c7927057ec6fbf58d8a6dca1441389a0a",
+    "fine_prepared_sha256": "125dfc7c1cdd7175792ed6ece1feb2b2074491c8c660520c7eb097d49ab15677",
+    "coarse_contact_sha256": "dd7dd7f596063eafcefd5a27a435061438b3fef48a850fc56aff648846865a12",
+    "fine_contact_sha256": "6a34748efd09fb2a42675fd7af165489a4671dafa06a2b332ce89fad917058cc",
+    "coarse_plan_sha256": "5c726ef7a0555d340ae3cf3355776c2afd2dc2c807416d7442c8b26e560d7585",
+    "fine_plan_sha256": "d94cf6d07e70fd6c290a5bcc6ddd7b4e2f58a1568ef3c11605ed529db357e200",
+    "implementation_sha256": "55586d38601c4d1dad83ff33be84734e24ad94871cc445550c09d0fa5575e917",
+    "coarse_implementation_sha256": [
+      "379a68d54040a25ba5b292718c472cc1a571f0af4014601225d1a3ed7885eb40",
+      "9efb4f42f5ec728cfc1e7466e330b02b6b6ed926e262c84ee8e368d2fbccd7b9",
+      "95004ec1019dfde71e2440fbb341c4c7ed4dc1f3853489fc70a77e9578f2d192",
+      "8f253902e4330cc75a944bf61baea115642638830e4b5cf9e7401f6284811f8a",
+      "043fd2ebc45db42100a49df7a4de2dbdd92dcd8f0696d39a022bb958eaa567cb",
+      "5746b49438277f7681d46c51309fe885610d1361d3a2be1a08eb0148d5c97435",
+      "00f157f9c6a1e751ef15a82da125665367ba0c4fe17af923b0ed251e7f3c9724",
+      "2978a228cb3324ceaa3deea26914238c8b97f2a70643b6492dbef5d78eea9bf8",
+      "3c3fa6b685c5775a8763080d07c190cc0efcbeb95fbbc028545063db911d8f53",
+      "fa374ca88f4437df215779574d50771e67ceff07b1924b85cadfb044225709d0",
+      "f15764e1b70d305a37d393002fb91e2689e005d8d97c20a91739565a13470a0c"
+    ],
+    "fine_implementation_sha256": [
+      "379a68d54040a25ba5b292718c472cc1a571f0af4014601225d1a3ed7885eb40",
+      "9efb4f42f5ec728cfc1e7466e330b02b6b6ed926e262c84ee8e368d2fbccd7b9",
+      "95004ec1019dfde71e2440fbb341c4c7ed4dc1f3853489fc70a77e9578f2d192",
+      "8f253902e4330cc75a944bf61baea115642638830e4b5cf9e7401f6284811f8a",
+      "043fd2ebc45db42100a49df7a4de2dbdd92dcd8f0696d39a022bb958eaa567cb",
+      "5746b49438277f7681d46c51309fe885610d1361d3a2be1a08eb0148d5c97435",
+      "00f157f9c6a1e751ef15a82da125665367ba0c4fe17af923b0ed251e7f3c9724",
+      "2978a228cb3324ceaa3deea26914238c8b97f2a70643b6492dbef5d78eea9bf8",
+      "3c3fa6b685c5775a8763080d07c190cc0efcbeb95fbbc028545063db911d8f53",
+      "fa374ca88f4437df215779574d50771e67ceff07b1924b85cadfb044225709d0",
+      "f15764e1b70d305a37d393002fb91e2689e005d8d97c20a91739565a13470a0c"
+    ]
+  },
+  "fine_refinement_provenance": {
+    "status": "passed_heart_refinement_export",
+    "source_prepared_sha256": "d83fa6231da30496b7e457e5e2e88d1c7927057ec6fbf58d8a6dca1441389a0a",
+    "prepared_sha256": "125dfc7c1cdd7175792ed6ece1feb2b2074491c8c660520c7eb097d49ab15677",
+    "contact_sha256": "6a34748efd09fb2a42675fd7af165489a4671dafa06a2b332ce89fad917058cc",
+    "prepared_file": "prepared_fem.mat",
+    "contact_file": "contact.mat",
+    "original_nodes_preserved": true,
+    "outer_boundary_preserved": true,
+    "contact_faces_preserved": true,
+    "contact_embedding_relative_error": 0.0,
+    "matrix_relative_error": 1.0434070010698313e-17,
+    "hashes_passed": true,
+    "source_matches_coarse_prepared": true,
+    "surface_and_node_prefix_preserved": true,
+    "coarse_prepared_sha256": "d83fa6231da30496b7e457e5e2e88d1c7927057ec6fbf58d8a6dca1441389a0a"
+  },
+  "state_designs": {
+    "planned": 5,
+    "coarse_completed": 5,
+    "fine_completed": 5,
+    "compared_completed": 5,
+    "coarse_only_completed": [],
+    "fine_only_completed": []
+  },
+  "quadrature": {
+    "coarse_points_per_tet": [
+      16384
+    ],
+    "fine_points_per_tet": [
+      16384
+    ]
+  },
+  "baseline_Z_shift": {
+    "q_coarse": 16384,
+    "q_fine": 16384,
+    "Z_coarse_ohm": 166.1687434270957,
+    "Z_fine_ohm": 166.80666340152288,
+    "Z_fine_minus_coarse_ohm": 0.6379199744271773,
+    "relative_to_coarse": 0.003838988977533287
+  },
+  "state_comparisons": [
+    {
+      "design": {
+        "geometry": "ellipsoid",
+        "parameter": "baseline",
+        "signed_step": 0.0,
+        "volume_fraction": 0.0,
+        "translation_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "analytic_volume_ml": 782.8918539180374
+      },
+      "label": "baseline",
+      "state_id_coarse": "ellipsoid_q16384_base",
+      "state_id_fine": "ellipsoid_q16384_base",
+      "q_coarse": 16384,
+      "q_fine": 16384,
+      "Z_coarse_ohm": 166.1687434270957,
+      "Z_fine_ohm": 166.80666340152288,
+      "Z_fine_minus_coarse_ohm": 0.6379199744271773,
+      "Z_difference_relative_to_coarse": 0.003838988977533287
+    },
+    {
+      "design": {
+        "geometry": "ellipsoid",
+        "parameter": "volume_fraction",
+        "signed_step": -0.01,
+        "volume_fraction": -0.01,
+        "translation_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "analytic_volume_ml": 775.0629353788571
+      },
+      "label": "volume_fraction:-0.01",
+      "state_id_coarse": "ellipsoid_q16384_volume_m0p01",
+      "state_id_fine": "ellipsoid_q16384_volume_m0p01",
+      "q_coarse": 16384,
+      "q_fine": 16384,
+      "Z_coarse_ohm": 166.28147980386922,
+      "Z_fine_ohm": 166.91793611626338,
+      "Z_fine_minus_coarse_ohm": 0.6364563123941593,
+      "Z_difference_relative_to_coarse": 0.003827583884536428
+    },
+    {
+      "design": {
+        "geometry": "ellipsoid",
+        "parameter": "volume_fraction",
+        "signed_step": -0.005,
+        "volume_fraction": -0.005,
+        "translation_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "analytic_volume_ml": 778.9773946484472
+      },
+      "label": "volume_fraction:-0.005",
+      "state_id_coarse": "ellipsoid_q16384_volume_m0p005",
+      "state_id_fine": "ellipsoid_q16384_volume_m0p005",
+      "q_coarse": 16384,
+      "q_fine": 16384,
+      "Z_coarse_ohm": 166.2249345083934,
+      "Z_fine_ohm": 166.86222791217213,
+      "Z_fine_minus_coarse_ohm": 0.6372934037787275,
+      "Z_difference_relative_to_coarse": 0.003833921822038966
+    },
+    {
+      "design": {
+        "geometry": "ellipsoid",
+        "parameter": "volume_fraction",
+        "signed_step": 0.005,
+        "volume_fraction": 0.005,
+        "translation_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "analytic_volume_ml": 786.8063131876276
+      },
+      "label": "volume_fraction:+0.005",
+      "state_id_coarse": "ellipsoid_q16384_volume_p0p005",
+      "state_id_fine": "ellipsoid_q16384_volume_p0p005",
+      "q_coarse": 16384,
+      "q_fine": 16384,
+      "Z_coarse_ohm": 166.11306288082622,
+      "Z_fine_ohm": 166.75102107477642,
+      "Z_fine_minus_coarse_ohm": 0.6379581939501975,
+      "Z_difference_relative_to_coarse": 0.0038405058752536826
+    },
+    {
+      "design": {
+        "geometry": "ellipsoid",
+        "parameter": "volume_fraction",
+        "signed_step": 0.01,
+        "volume_fraction": 0.01,
+        "translation_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "analytic_volume_ml": 790.7207724572178
+      },
+      "label": "volume_fraction:+0.01",
+      "state_id_coarse": "ellipsoid_q16384_volume_p0p01",
+      "state_id_fine": "ellipsoid_q16384_volume_p0p01",
+      "q_coarse": 16384,
+      "q_fine": 16384,
+      "Z_coarse_ohm": 166.05663222797625,
+      "Z_fine_ohm": 166.69568909939136,
+      "Z_fine_minus_coarse_ohm": 0.6390568714151073,
+      "Z_difference_relative_to_coarse": 0.0038484272674984593
+    }
+  ],
+  "derivatives": {
+    "coarse": [
+      {
+        "parameter": "volume_fraction",
+        "step": 0.005,
+        "units": "ohm/ml",
+        "q_plus": 16384,
+        "q_minus": 16384,
+        "analytic_denominator": 7.828918539180375,
+        "baseline_analytic_volume_ml": 782.8918539180374,
+        "Z_baseline_ohm": 166.1687434270957,
+        "dV_one_sided": 3.9144592695901874,
+        "Z_minus_ohm": 166.2249345083934,
+        "Z_plus_ohm": 166.11306288082622,
+        "Sminus": -0.014354749258530496,
+        "Splus": -0.014224326384500786,
+        "one_sided_slope_difference_Splus_minus_Sminus": 0.00013042287402970955,
+        "one_sided_normalized_difference": 0.009127158320917341,
+        "derivative": -0.01428953782151564,
+        "material_volume_derivative": 0.997215453271853,
+        "expected_material_volume_derivative": 1.0
+      },
+      {
+        "parameter": "volume_fraction",
+        "step": 0.01,
+        "units": "ohm/ml",
+        "q_plus": 16384,
+        "q_minus": 16384,
+        "analytic_denominator": 15.65783707836075,
+        "baseline_analytic_volume_ml": 782.8918539180374,
+        "Z_baseline_ohm": 166.1687434270957,
+        "dV_one_sided": 7.828918539180375,
+        "Z_minus_ohm": 166.28147980386922,
+        "Z_plus_ohm": 166.05663222797625,
+        "Sminus": -0.014399993589065303,
+        "Splus": -0.014320138670288302,
+        "one_sided_slope_difference_Splus_minus_Sminus": 7.985491877700139e-05,
+        "one_sided_normalized_difference": 0.005560901882754677,
+        "derivative": -0.014360066129676802,
+        "material_volume_derivative": 0.998530209029846,
+        "expected_material_volume_derivative": 1.0
+      }
+    ],
+    "fine": [
+      {
+        "parameter": "volume_fraction",
+        "step": 0.005,
+        "units": "ohm/ml",
+        "q_plus": 16384,
+        "q_minus": 16384,
+        "analytic_denominator": 7.828918539180375,
+        "baseline_analytic_volume_ml": 782.8918539180374,
+        "Z_baseline_ohm": 166.80666340152288,
+        "dV_one_sided": 3.9144592695901874,
+        "Z_minus_ohm": 166.86222791217213,
+        "Z_plus_ohm": 166.75102107477642,
+        "Sminus": -0.014194683562275226,
+        "Splus": -0.014214562705691531,
+        "one_sided_slope_difference_Splus_minus_Sminus": -1.9879143416305298e-05,
+        "one_sided_normalized_difference": -0.001399484043244069,
+        "derivative": -0.014204623133983378,
+        "material_volume_derivative": 1.0001480356381238,
+        "expected_material_volume_derivative": 1.0
+      },
+      {
+        "parameter": "volume_fraction",
+        "step": 0.01,
+        "units": "ohm/ml",
+        "q_plus": 16384,
+        "q_minus": 16384,
+        "analytic_denominator": 15.65783707836075,
+        "baseline_analytic_volume_ml": 782.8918539180374,
+        "Z_baseline_ohm": 166.80666340152288,
+        "dV_one_sided": 7.828918539180375,
+        "Z_minus_ohm": 166.91793611626338,
+        "Z_plus_ohm": 166.69568909939136,
+        "Sminus": -0.01421303775018501,
+        "Splus": -0.014174921041283699,
+        "one_sided_slope_difference_Splus_minus_Sminus": 3.8116708901310414e-05,
+        "one_sided_normalized_difference": 0.0026854138531978876,
+        "derivative": -0.014193979395734354,
+        "material_volume_derivative": 1.0001302678275248,
+        "expected_material_volume_derivative": 1.0
+      }
+    ]
+  },
+  "derivative_comparison": [
+    {
+      "parameter": "volume_fraction",
+      "step": 0.005,
+      "q_coarse_plus_minus": [
+        16384,
+        16384
+      ],
+      "q_fine_plus_minus": [
+        16384,
+        16384
+      ],
+      "derivative_coarse": -0.01428953782151564,
+      "derivative_fine": -0.014204623133983378,
+      "derivative_fine_minus_coarse": 8.49146875322622e-05,
+      "Sminus_coarse": -0.014354749258530496,
+      "Splus_coarse": -0.014224326384500786,
+      "Sminus_fine": -0.014194683562275226,
+      "Splus_fine": -0.014214562705691531,
+      "one_sided_normalized_difference_coarse": 0.009127158320917341,
+      "one_sided_normalized_difference_fine": -0.001399484043244069,
+      "material_dV_slope_coarse": 0.997215453271853,
+      "material_dV_slope_fine": 1.0001480356381238
+    },
+    {
+      "parameter": "volume_fraction",
+      "step": 0.01,
+      "q_coarse_plus_minus": [
+        16384,
+        16384
+      ],
+      "q_fine_plus_minus": [
+        16384,
+        16384
+      ],
+      "derivative_coarse": -0.014360066129676802,
+      "derivative_fine": -0.014193979395734354,
+      "derivative_fine_minus_coarse": 0.0001660867339424478,
+      "Sminus_coarse": -0.014399993589065303,
+      "Splus_coarse": -0.014320138670288302,
+      "Sminus_fine": -0.01421303775018501,
+      "Splus_fine": -0.014174921041283699,
+      "one_sided_normalized_difference_coarse": 0.005560901882754677,
+      "one_sided_normalized_difference_fine": 0.0026854138531978876,
+      "material_dV_slope_coarse": 0.998530209029846,
+      "material_dV_slope_fine": 1.0001302678275248
+    }
+  ],
+  "material_dV_slopes": [
+    {
+      "parameter": "volume_fraction",
+      "step": 0.005,
+      "q_coarse_plus_minus": [
+        16384,
+        16384
+      ],
+      "q_fine_plus_minus": [
+        16384,
+        16384
+      ],
+      "material_dV_slope_coarse": 0.997215453271853,
+      "material_dV_slope_fine": 1.0001480356381238,
+      "material_dV_slope_fine_minus_coarse": 0.0029325823662708084,
+      "expected_material_dV_slope": 1.0
+    },
+    {
+      "parameter": "volume_fraction",
+      "step": 0.01,
+      "q_coarse_plus_minus": [
+        16384,
+        16384
+      ],
+      "q_fine_plus_minus": [
+        16384,
+        16384
+      ],
+      "material_dV_slope_coarse": 0.998530209029846,
+      "material_dV_slope_fine": 1.0001302678275248,
+      "material_dV_slope_fine_minus_coarse": 0.0016000587976787717,
+      "expected_material_dV_slope": 1.0
+    }
+  ],
+  "step_refinement": {
+    "coarse": [
+      {
+        "parameter": "volume_fraction",
+        "fine_step": 0.005,
+        "coarse_step": 0.01,
+        "fine_derivative": -0.01428953782151564,
+        "coarse_derivative": -0.014360066129676802,
+        "derivative_difference_coarse_minus_fine": -7.052830816116178e-05,
+        "relative_difference": 0.0049356605540431045,
+        "fine_one_sided_normalized_difference": 0.009127158320917341,
+        "coarse_one_sided_normalized_difference": 0.005560901882754677
+      }
+    ],
+    "fine": [
+      {
+        "parameter": "volume_fraction",
+        "fine_step": 0.005,
+        "coarse_step": 0.01,
+        "fine_derivative": -0.014204623133983378,
+        "coarse_derivative": -0.014193979395734354,
+        "derivative_difference_coarse_minus_fine": 1.0643738249023829e-05,
+        "relative_difference": 0.0007493150750025583,
+        "fine_one_sided_normalized_difference": -0.001399484043244069,
+        "coarse_one_sided_normalized_difference": 0.0026854138531978876
+      }
+    ],
+    "stage_summaries": {
+      "coarse": [
+        {
+          "parameter": "volume_fraction",
+          "fine_step": 0.005,
+          "coarse_step": 0.01,
+          "derivative_difference": -7.052830816116178e-05,
+          "relative_difference": 0.0049356605540431045
+        }
+      ],
+      "fine": [
+        {
+          "parameter": "volume_fraction",
+          "fine_step": 0.005,
+          "coarse_step": 0.01,
+          "derivative_difference": 1.0643738249023829e-05,
+          "relative_difference": 0.0007493150750025583
+        }
+      ]
+    }
+  },
+  "numerical_qc": {
+    "coarse": {
+      "summary_status": "complete",
+      "summary_completed": 5,
+      "summary_required": 5,
+      "completed_rows": [
+        {
+          "label": "baseline",
+          "state_id": "ellipsoid_q16384_base",
+          "q": 16384,
+          "checked_result": true,
+          "checks": {
+            "max_relative_residual": 1.155209124227043e-11,
+            "reciprocity_absolute_ohm": 3.23325366480276e-10,
+            "max_current_error_A": 4.263256414560601e-14,
+            "max_ground_residual_A": 2.931575486108274e-11,
+            "matrix_asymmetry_relative": 7.383143230605104e-22
+          }
+        },
+        {
+          "label": "volume_fraction:-0.01",
+          "state_id": "ellipsoid_q16384_volume_m0p01",
+          "q": 16384,
+          "checked_result": true,
+          "checks": {
+            "max_relative_residual": 1.8043046592384194e-11,
+            "reciprocity_absolute_ohm": 3.065281362069072e-10,
+            "max_current_error_A": 5.684341886080802e-14,
+            "max_ground_residual_A": 4.877147727595321e-11,
+            "matrix_asymmetry_relative": 7.383143230836205e-22
+          }
+        },
+        {
+          "label": "volume_fraction:-0.005",
+          "state_id": "ellipsoid_q16384_volume_m0p005",
+          "q": 16384,
+          "checked_result": true,
+          "checks": {
+            "max_relative_residual": 1.63725048738247e-11,
+            "reciprocity_absolute_ohm": 9.488871910434682e-10,
+            "max_current_error_A": 5.684341886080802e-14,
+            "max_ground_residual_A": 4.2813469246279364e-11,
+            "matrix_asymmetry_relative": 7.383143230720084e-22
+          }
+        },
+        {
+          "label": "volume_fraction:+0.005",
+          "state_id": "ellipsoid_q16384_volume_p0p005",
+          "q": 16384,
+          "checked_result": true,
+          "checks": {
+            "max_relative_residual": 1.7007486259052522e-11,
+            "reciprocity_absolute_ohm": 8.416520813625539e-10,
+            "max_current_error_A": 7.105427357601002e-14,
+            "max_ground_residual_A": 4.186449720688847e-11,
+            "matrix_asymmetry_relative": 7.383143230488713e-22
+          }
+        },
+        {
+          "label": "volume_fraction:+0.01",
+          "state_id": "ellipsoid_q16384_volume_p0p01",
+          "q": 16384,
+          "checked_result": true,
+          "checks": {
+            "max_relative_residual": 1.628902651456243e-11,
+            "reciprocity_absolute_ohm": 9.159180081041995e-10,
+            "max_current_error_A": 7.105427357601002e-14,
+            "max_ground_residual_A": 6.529699990853331e-11,
+            "matrix_asymmetry_relative": 7.383143230373317e-22
+          }
+        }
+      ],
+      "maxima": {
+        "max_relative_residual": 1.8043046592384194e-11,
+        "reciprocity_absolute_ohm": 9.488871910434682e-10,
+        "max_current_error_A": 7.105427357601002e-14,
+        "max_ground_residual_A": 6.529699990853331e-11,
+        "matrix_asymmetry_relative": 7.383143230836205e-22
+      }
+    },
+    "fine": {
+      "summary_status": "complete",
+      "summary_completed": 5,
+      "summary_required": 5,
+      "completed_rows": [
+        {
+          "label": "baseline",
+          "state_id": "ellipsoid_q16384_base",
+          "q": 16384,
+          "checked_result": true,
+          "checks": {
+            "max_relative_residual": 1.599184698680881e-11,
+            "reciprocity_absolute_ohm": 3.183231456205249e-11,
+            "max_current_error_A": 7.105427357601002e-14,
+            "max_ground_residual_A": 6.236544020129359e-11,
+            "matrix_asymmetry_relative": 7.383123098262287e-22
+          }
+        },
+        {
+          "label": "volume_fraction:-0.01",
+          "state_id": "ellipsoid_q16384_volume_m0p01",
+          "q": 16384,
+          "checked_result": true,
+          "checks": {
+            "max_relative_residual": 1.3859229543820134e-11,
+            "reciprocity_absolute_ohm": 2.575006874394603e-10,
+            "max_current_error_A": 8.526512829121202e-14,
+            "max_ground_residual_A": 5.256832381741528e-11,
+            "matrix_asymmetry_relative": 7.383123099237161e-22
+          }
+        },
+        {
+          "label": "volume_fraction:-0.005",
+          "state_id": "ellipsoid_q16384_volume_m0p005",
+          "q": 16384,
+          "checked_result": true,
+          "checks": {
+            "max_relative_residual": 1.4041512065212257e-11,
+            "reciprocity_absolute_ohm": 6.218385806278093e-10,
+            "max_current_error_A": 5.684341886080802e-14,
+            "max_ground_residual_A": 3.652359860880391e-11,
+            "matrix_asymmetry_relative": 7.383123098749478e-22
+          }
+        },
+        {
+          "label": "volume_fraction:+0.005",
+          "state_id": "ellipsoid_q16384_volume_p0p005",
+          "q": 16384,
+          "checked_result": true,
+          "checks": {
+            "max_relative_residual": 1.6782958670441933e-11,
+            "reciprocity_absolute_ohm": 5.256310942058917e-10,
+            "max_current_error_A": 8.526512829121202e-14,
+            "max_ground_residual_A": 4.383192559892512e-11,
+            "matrix_asymmetry_relative": 7.383123097774803e-22
+          }
+        },
+        {
+          "label": "volume_fraction:+0.01",
+          "state_id": "ellipsoid_q16384_volume_p0p01",
+          "q": 16384,
+          "checked_result": true,
+          "checks": {
+            "max_relative_residual": 1.9006494470498484e-11,
+            "reciprocity_absolute_ohm": 9.394227618031437e-10,
+            "max_current_error_A": 7.105427357601002e-14,
+            "max_ground_residual_A": 8.241155311679836e-11,
+            "matrix_asymmetry_relative": 7.383123097288952e-22
+          }
+        }
+      ],
+      "maxima": {
+        "max_relative_residual": 1.9006494470498484e-11,
+        "reciprocity_absolute_ohm": 9.394227618031437e-10,
+        "max_current_error_A": 8.526512829121202e-14,
+        "max_ground_residual_A": 8.241155311679836e-11,
+        "matrix_asymmetry_relative": 7.383123099237161e-22
+      }
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "stage": "matched_volume_geometry_mesh_comparison",
+  "electrical_points_per_tet": 16384,
+  "geometry_levels": [
+    4096,
+    8192,
+    16384
+  ],
+  "steps": [
+    -0.01,
+    -0.005,
+    0.0,
+    0.005,
+    0.01
+  ],
+  "jobs": [
+    {
+      "mesh": "L1",
+      "geometry": "individual",
+      "directory": "L1_individual_q16384"
+    },
+    {
+      "mesh": "L1",
+      "geometry": "sphere",
+      "directory": "L1_sphere_q16384"
+    },
+    {
+      "mesh": "L1",
+      "geometry": "ellipsoid",
+      "directory": "L1_ellipsoid_q16384"
+    },
+    {
+      "mesh": "L0",
+      "geometry": "sphere",
+      "directory": "L0_sphere_q16384"
+    },
+    {
+      "mesh": "L0",
+      "geometry": "ellipsoid",
+      "directory": "L0_ellipsoid_q16384"
+    }
+  ],
+  "new_solutions": 25,
+  "spatial_convergence": false,
+  "physical_validation": false,
+  "montage": "TEPC-2",
+  "contact_diameter_mm": 5
+}

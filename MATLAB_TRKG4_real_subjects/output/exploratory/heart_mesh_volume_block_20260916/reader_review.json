@@ -1,0 +1,36 @@
+{
+  "schema": "heart_volume_mesh_reader_review_v1",
+  "status": "passed",
+  "scope": "complete reader text of notebook and equivalent input-free HTML; all markdown cells, saved tables and three figure labels/captions",
+  "review_method": "sequential full-text semantic model reading after final build; visual inspection of all three figures",
+  "skill": "russian-scientific-prose",
+  "checks": [
+    "Russian scientific headings and register",
+    "technical terms and scope",
+    "definitions and units of derived quantities",
+    "claim/evidence/limitation separation",
+    "no unexplained pipeline identifiers in prose",
+    "uncertainty and causal claims preserved",
+    "figure labels and shared scales readable"
+  ],
+  "findings": [],
+  "artifacts": {
+    "Colab Notebooks/40.18_Сеточная_устойчивость_объёмного_отклика_сердца.ipynb": "876c5a40f4a8bad189793db192641482bf7fb4c8eba81511c0d849a94a03c8ab",
+    "Colab Notebooks/40.18_Сеточная_устойчивость_объёмного_отклика_сердца.html": "69580430037edafc9bc7315062f6a9375ac5930b5b70b0dedae6deaef966355a",
+    "Colab Notebooks/cardiac_4d_segmentation/heart_volume_mesh_report.py": "216eb0d5483dda73914c119bc10c7e256f956ac706153b4e1ee878bb04bcdda1",
+    "MATLAB_TRKG4_real_subjects/output/exploratory/heart_mesh_volume_block_20260916/comparison/summary.json": "c8c9aa4745fb1c177c15b87fb16275819d636abc0c447451963160597afd46cf"
+  },
+  "scientific_status": "exploratory; spatial convergence and physical validation not established",
+  "technical_checks": {
+    "no_error_outputs": true,
+    "embedded_figures": 3,
+    "html_excludes_source": true
+  },
+  "hash_domain": "exact reviewed working-tree bytes; canonical LF hashes supplied separately for Git transport",
+  "canonical_lf_sha256": {
+    "Colab Notebooks/40.18_Сеточная_устойчивость_объёмного_отклика_сердца.ipynb": "62e55dcd3079cb8446e0f502248e217162a37534e666475668b7bb4d08da4473",
+    "Colab Notebooks/40.18_Сеточная_устойчивость_объёмного_отклика_сердца.html": "fcaf76bb9d4eaef51e1cad5b9203f02bfcf6b4134d653044910dcc3eb2b82b61",
+    "Colab Notebooks/cardiac_4d_segmentation/heart_volume_mesh_report.py": "8f6324cecbeae3c5f4cccd66c3b62664a6b99d59a961b7b3faad62f7d27a7906",
+    "MATLAB_TRKG4_real_subjects/output/exploratory/heart_mesh_volume_block_20260916/comparison/summary.json": "a7a5c0baf4e486729f08185b753c51c0db4b873b8e8c7779cabee7ae211ccc3e"
+  }
+}
