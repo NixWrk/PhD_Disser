@@ -13,6 +13,11 @@ addpath(fullfile(project_root, 'src'));
 addpath(fullfile(project_root, 'vendor_stl_eidors'));
 
 profile_index=find(cellfun(@(x)(ischar(x)||isstring(x)) && strcmpi(string(x),"Profile"),varargin),1);
+if ~isempty(profile_index) && profile_index < numel(varargin) && strcmpi(string(varargin{profile_index+1}),"lateral_resistivity_range")
+    args=varargin;args(profile_index:profile_index+1)=[];
+    report=run_lateral_resistivity_range(args{:});
+    return;
+end
 if ~isempty(profile_index) && profile_index < numel(varargin) && strcmpi(string(varargin{profile_index+1}),"lateral_array_design")
     args=varargin;args(profile_index:profile_index+1)=[];
     report=run_lateral_array_design(args{:});

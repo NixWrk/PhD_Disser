@@ -46,3 +46,8 @@ MATLAB_TRKG4_real_subjects/tools/lateral_array_design*.py -text
 MATLAB_TRKG4_real_subjects/tools/verify_lateral_array_design.py -text
 MATLAB_TRKG4_real_subjects/notebooks/build_lateral_array_design.py -text
 MATLAB_TRKG4_real_subjects/notebooks/lateral_array_design_results.py -text
+
+MATLAB_TRKG4_real_subjects/output/exploratory/lateral_resistivity_range_20260916/** -text
+MATLAB_TRKG4_real_subjects/src/run_lateral_resistivity_range.m -text
+MATLAB_TRKG4_real_subjects/tools/lateral_resistivity_range*.py -text
+MATLAB_TRKG4_real_subjects/notebooks/lateral_resistivity_range_results.py -text

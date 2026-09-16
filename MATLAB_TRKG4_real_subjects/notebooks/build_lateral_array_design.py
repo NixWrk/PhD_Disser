@@ -10,6 +10,7 @@ from nbconvert import HTMLExporter
 ROOT = Path(__file__).resolve().parents[2]
 PIPE = ROOT / 'MATLAB_TRKG4_real_subjects'
 OUT = PIPE / 'output/exploratory/lateral_array_design_20260916'
+RANGE_OUT = PIPE / 'output/exploratory/lateral_resistivity_range_20260916'
 NAME = '33.09_Выбор_размеров_и_числа_боковых_сборок'
 
 
@@ -18,13 +19,16 @@ def sha(path):
         return hashlib.file_digest(f, 'sha256').hexdigest()
 
 
-def build(out=OUT):
+def build(out=OUT, range_out=RANGE_OUT):
     out = Path(out).resolve()
+    range_out = Path(range_out).resolve()
     cells = []
     def md(s): cells.append(nbf.v4.new_markdown_cell(s))
     def code(s): cells.append(nbf.v4.new_code_cell(s))
     expected = {p.name: sha(p) for p in out.iterdir() if p.suffix in ['.csv', '.json']
                 and not p.name.startswith(('execution_33', 'language_', 'literature_', 'visual_qc'))}
+    range_expected = {p.name: sha(p) for p in range_out.iterdir() if p.suffix in ['.csv', '.json']
+                      and not p.name.startswith(('execution_33', 'language_', 'literature_', 'visual_'))}
     md(r'''# 33.09. Выбор размеров и числа боковых электродных сборок
 
 **Задача:** определить, какие размеры сборок и какое число измерений лучше подходят для совместного восстановления базовых удельных сопротивлений мягких тканей ρ₁ и лёгкого ρ₂. Геометрическая модель выбрана в [20.16](20.16_Поперечная_форма_лёгкого_и_точность_обратной_модели.ipynb), её применение к эксперименту представлено в [33.08](33.08_Применение_КТ_модели_к_боковым_измерениям.ipynb). Здесь исследуется следующий шаг — сокращение набора измерений при известной индивидуальной КТ и фиксированном монтаже.
@@ -43,9 +47,21 @@ project = next(p for p in [Path.cwd().resolve(), *Path.cwd().resolve().parents] 
 pipe = project/'MATLAB_TRKG4_real_subjects'
 out = pipe/''' + repr(out.relative_to(PIPE).as_posix()) + '''
 expected = ''' + repr(expected) + '''
+range_out = pipe/''' + repr(range_out.relative_to(PIPE).as_posix()) + '''
+range_expected = ''' + repr(range_expected) + '''
 def sha(path):
     with Path(path).open('rb') as f: return hashlib.file_digest(f,'sha256').hexdigest()
 for name,digest in expected.items(): assert sha(out/name)==digest, 'Изменён расчётный файл: '+name
+for name,digest in range_expected.items(): assert sha(range_out/name)==digest, 'Изменён расширенный расчёт: '+name
+range_plan=json.loads((range_out/'plan.json').read_text(encoding='utf-8'))
+for entry in range_plan['sources'].values(): assert sha(pipe/entry['path'])==entry['sha256']
+assert range_plan['finite_electrodes'] and range_plan['diameter_mm']==5
+range_execution=json.loads((range_out/'responses.csv.execution.json').read_text(encoding='utf-8'))
+assert range_execution['complete'] and range_execution['responses_sha256']==sha(range_out/'responses.csv')
+range_curves_qc=json.loads((range_out/'solution_curves_qc.json').read_text(encoding='utf-8'))
+for name,digest in range_curves_qc['input_sha256'].items(): assert sha(range_out/name)==digest
+for name,digest in range_curves_qc['output_sha256'].items(): assert sha(range_out/name)==digest
+for name,digest in range_curves_qc['code_sha256'].items(): assert sha(pipe/'tools'/name)==digest
 def read(name): return json.loads((out/name).read_text(encoding='utf-8'))
 plan=read('plan.json'); preparation=read('preparation_qc.json'); execution=read('responses.csv.execution.json')
 assert execution['complete'] and execution['finite_diameter_mm']==5
@@ -145,9 +161,9 @@ $$g_j=\sqrt{[(J^\mathsf{T}J)^{-1}]_{jj}},\qquad s_j\approx \sigma g_j,$$
 
 Публикации Somersalo и Joshi сверены по внешним первичным источникам; данные из работ используются только в указанной методической роли.
 
-Команды полного повторения и состав файлов приведены в [документации расчётов, этап 33.09](../MATLAB_TRKG4_real_subjects/docs/PIPELINE_FOR_NOTEBOOKS.md#выбор-размеров-и-числа-сборок-3309). Полный опыт включает подготовку уточнённой сетки, прямые CEM-решения, перебор наборов и нелинейные проверки. Обычное выполнение данного ноутбука проверяет контрольные суммы, читает сохранённые расчёты и строит представления; MATLAB заново не запускается. Быстрый анализ можно повторить отдельной Python-командой без новых FEM-решений.
+Команды полного повторения и состав файлов приведены в [документации расчётов, этап 33.09](../MATLAB_TRKG4_real_subjects/docs/PIPELINE_FOR_NOTEBOOKS.md#выбор-размеров-и-числа-сборок-3309). Полный опыт включает подготовку уточнённой сетки, прямые CEM-решения, перебор наборов и нелинейные проверки. Обычное выполнение данного ноутбука проверяет контрольные суммы, читает сохранённые расчёты и строит представления; MATLAB заново не запускается. Быстрый анализ можно повторить отдельной Python-командой без новых FEM-решений. Разделы 5.1–5.2 используют отдельную новую CEM-библиотеку расширенного диапазона; команды её построения приведены в той же документации.
 
-Расчётные таблицы находятся в [каталоге этого опыта](../MATLAB_TRKG4_real_subjects/output/exploratory/lateral_array_design_20260916). Для полного воспроизведения нужны локальные исходные производные КТ-модели и таблица наблюдений предыдущего этапа. Читательский HTML сохраняет результаты и формулы без исходного кода.''')
+Расчётные таблицы находятся в [каталоге этого опыта](../MATLAB_TRKG4_real_subjects/output/exploratory/lateral_array_design_20260916). Для полного воспроизведения нужны локальные исходные производные КТ-модели и таблица наблюдений предыдущего этапа. Расширенная диагностическая библиотека хранится [отдельно](../MATLAB_TRKG4_real_subjects/output/exploratory/lateral_resistivity_range_20260916), с собственным планом, контрольными суммами и прямыми проверками. Читательский HTML сохраняет результаты и формулы без исходного кода.''')
     nb=nbf.v4.new_notebook(cells=cells,metadata={
         'kernelspec':{'name':'python3','display_name':'Python 3','language':'python'},
         'language_info':{'name':'python'},
@@ -155,6 +171,9 @@ $$g_j=\sqrt{[(J^\mathsf{T}J)^{-1}]_{jj}},\qquad s_j\approx \sigma g_j,$$
                  'candidate':'C01','subject_id':'exp02_nik','finite_diameter_mm':5,
                  'anatomies':1,'input_sha256':expected,'generator_sha256':sha(Path(__file__)),
                  'results_text_sha256':sha(Path(__file__).with_name('lateral_array_design_results.py')),
+                 'expanded_results_text_sha256':sha(Path(__file__).with_name('lateral_resistivity_range_results.py')),
+                 'expanded_plot_source_sha256':sha(PIPE/'tools/lateral_resistivity_range_plots.py'),
+                 'expanded_input_sha256':range_expected,
                  'new_FEM_solutions_during_notebook_execution':0}})
     NotebookClient(nb,timeout=240,kernel_name='python3',resources={'metadata':{'path':str(ROOT)}}).execute()
     dest=ROOT/'Colab Notebooks'/(NAME+'.ipynb');nbf.write(nb,dest)
@@ -168,7 +187,7 @@ $$g_j=\sqrt{[(J^\mathsf{T}J)^{-1}]_{jj}},\qquad s_j\approx \sigma g_j,$$
 
 [Выполненный ноутбук]({NAME}.ipynb) · [HTML без кода]({NAME}.html)
 
-Продолжение 33.08: выбор подмножества из девяти размеров при фиксированной КТ и модели 4. Все новые прямые решения используют конечные контакты диаметром 5 мм. Сопоставляются локальное усиление ошибок, нелинейное восстановление известных сопротивлений и условная подгонка реальных записей. Достаточность числа сборок определяется только для заданного критерия; перенос на других людей ещё не проверен. Пульсовая задача и восстановление h не входят в этот опыт.
+Продолжение 33.08: выбор подмножества из девяти размеров при фиксированной КТ и модели 4. Все новые прямые решения используют конечные контакты диаметром 5 мм. Сопоставляются локальное усиление ошибок, нелинейное восстановление известных сопротивлений и условная подгонка реальных записей. Достаточность числа сборок определяется только для заданного критерия; перенос на других людей ещё не проверен. Пульсовая задача и восстановление h не входят в этот опыт. В разделах 5.1–5.2 выполнен новый CEM-расчёт для ρ₁ = 0,1–20 и ρ₂ = 0,1–100 Ом·м: кривые решений и совместная подгонка показаны для полного набора и лучших подмножеств. Расширение имеет диагностический смысл и не меняет литературных границ физиологического сценария.
 ''',encoding='utf-8')
     reader=[]
     for c in nb.cells:
@@ -181,7 +200,7 @@ $$g_j=\sqrt{[(J^\mathsf{T}J)^{-1}]_{jj}},\qquad s_j\approx \sigma g_j,$$
     (out/'reader_33.09.md').write_text('\n\n'.join(reader),encoding='utf-8')
     (out/'execution_33.09.json').write_text(json.dumps({'code_cells':[c.execution_count for c in nb.cells if c.cell_type=='code'],
         'artifact_sha256':{p.name:sha(p) for p in [dest,dest.with_suffix('.html'),dest.with_suffix('.md')]},
-        'input_sha256':expected,'scientific_status':'exploratory_hypothesis_not_validated'},ensure_ascii=False,indent=2),encoding='utf-8')
+        'input_sha256':expected,'expanded_input_sha256':range_expected,'scientific_status':'exploratory_hypothesis_not_validated'},ensure_ascii=False,indent=2),encoding='utf-8')
     print(dest)
 
 
@@ -192,5 +211,5 @@ def result_sections(md, code):
 
 if __name__=='__main__':
     import argparse
-    p=argparse.ArgumentParser();p.add_argument('--out',type=Path,default=OUT)
-    build(p.parse_args().out)
+    p=argparse.ArgumentParser();p.add_argument('--out',type=Path,default=OUT);p.add_argument('--range-out',type=Path,default=RANGE_OUT)
+    args=p.parse_args();build(args.out,args.range_out)

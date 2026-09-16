@@ -1,0 +1,121 @@
+{
+  "status": "exploratory_hypothesis_not_validated",
+  "task": "diagnostic expanded solution curves",
+  "model": "variable_transverse",
+  "bounds_ohm_m": [
+    [
+      0.1,
+      20.0
+    ],
+    [
+      0.1,
+      100.0
+    ]
+  ],
+  "literature_bounds_ohm_m": [
+    [
+      1.3774104683195594,
+      10.0
+    ],
+    [
+      9.741271489527174,
+      24.074073806584366
+    ]
+  ],
+  "grid_rho1": [
+    0.1,
+    0.15550791539731854,
+    0.24182711751219577,
+    0.3760603093086394,
+    0.5848035476425733,
+    0.9094158061085302,
+    1.4142135623730951,
+    2.199214030112558,
+    3.419951893353395,
+    5.318295896944989,
+    8.270371084000278,
+    12.861081668351451,
+    20.0
+  ],
+  "grid_rho2": [
+    0.1,
+    0.1539926526059492,
+    0.23713737056616552,
+    0.3651741272548377,
+    0.5623413251903491,
+    0.8659643233600653,
+    1.333521432163324,
+    2.0535250264571463,
+    3.1622776601683795,
+    4.869675251658631,
+    7.498942093324558,
+    11.547819846894582,
+    17.78279410038923,
+    27.384196342643612,
+    42.169650342858226,
+    64.93816315762113,
+    100.0
+  ],
+  "sizes_mm": [
+    50,
+    60,
+    70,
+    80,
+    90,
+    110,
+    120,
+    130,
+    140
+  ],
+  "finite_electrodes": true,
+  "diameter_mm": 5.0,
+  "contact_ohm_m2": 0.00015915494309189532,
+  "electrode_count_per_measurement": 4,
+  "geometry_fixed": true,
+  "simultaneous_all_sizes": false,
+  "sources": {
+    "base_plan": {
+      "path": "output/exploratory/lateral_array_design_20260916/plan.json",
+      "sha256": "ad06381a46e9ee0c2d3d0fb18f6f21d29ac74bf88fd2383c4b8a0b8d0ca68dc9"
+    },
+    "prepared_fem": {
+      "path": "output/exploratory/lateral_array_design_20260916/prepared_fem.mat",
+      "sha256": "6251229d40d0ae757d31103751c17a15adf268ed6b9912497e4f667c9e74b075"
+    },
+    "base_responses": {
+      "path": "output/exploratory/lateral_array_design_20260916/responses.csv",
+      "sha256": "14dbbcefb9f4afcea3c213a18ebc3d73b485557831e6c0e5a6172edb8ed4fe0b"
+    },
+    "base_execution": {
+      "path": "output/exploratory/lateral_array_design_20260916/responses.csv.execution.json",
+      "sha256": "6059e2f412cf1ef8ae653a73de3973cc09160aabdac8bc39cb113586c468299a"
+    },
+    "best_sets": {
+      "path": "output/exploratory/lateral_array_design_20260916/best_by_count.csv",
+      "sha256": "35da2fb28387c742849fddd22e8df61b40d690915aa588c9da2bf43b4880f1cc"
+    },
+    "base_fits": {
+      "path": "output/exploratory/lateral_array_design_20260916/real_fits.csv",
+      "sha256": "2106493fe4957ce2c5cceccc3669c2c78e68d3d7cafcdbe3118087d127c95c3e"
+    },
+    "observations": {
+      "path": "output/exploratory/lateral_real_application_20260915/observations.csv",
+      "sha256": "29e57ee9a6c1c71c280e6a7a0041a7909189deecfc88290f75991f83ad4b363c"
+    }
+  },
+  "points_sha256": "77a7c80a748e60c66f2d9d1f87455dcc8626f91fe8d8930a678267d961353e7c",
+  "preparation_source_sha256": "13e1387f0a2d4527c004310854b1dd75d44b501a0891e63a3b91cff550ac6276",
+  "acceptance": {
+    "system_relative_residual_max": 1e-07,
+    "reciprocity_abs_ohm_max": 1e-07,
+    "anchor_Z_abs_error_ohm_max": 1e-06,
+    "interpolation_absolute_allowance_ohm": 0.02,
+    "interpolation_relative_allowance": 0.001
+  },
+  "notes": [
+    "Expanded bounds are diagnostic, not physiological reference intervals.",
+    "rho=0 is excluded; no extrapolation of the former spline is used.",
+    "Best size sets remain the ones selected within the literature scenario.",
+    "Existing fixed-geometry CEM matrices are read in place, without copying medical inputs."
+  ]
+}

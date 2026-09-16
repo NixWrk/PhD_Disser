@@ -1,0 +1,9 @@
+{
+  "plan_sha256": "4dab1223816eb1a18e79ebaed867c7c3626cd9acdeab8a4e5d7a3a48340d4f7b",
+  "prepared_sha256": "6251229d40d0ae757d31103751c17a15adf268ed6b9912497e4f667c9e74b075",
+  "requests_sha256": "927b251944b0d6f301ac6034260cf48b1b8bd2e12b8d0b67afe48b48e0d001ed",
+  "worker_source_sha256": "bc419ece2e468d2b8dde0b0b5aaa36bfa5216826e0697ef05b1b9f8cd9e8b97d",
+  "worker_index": 1,
+  "num_workers": 2,
+  "finite_diameter_mm": 5
+}

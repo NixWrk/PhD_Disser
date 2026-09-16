@@ -1,0 +1,57 @@
+{
+  "complete": true,
+  "status": "merged_complete",
+  "identity": {
+    "status": "merged_complete",
+    "complete": true,
+    "model": "variable_transverse",
+    "plan_sha256": "4dab1223816eb1a18e79ebaed867c7c3626cd9acdeab8a4e5d7a3a48340d4f7b",
+    "requests_sha256": "77a7c80a748e60c66f2d9d1f87455dcc8626f91fe8d8930a678267d961353e7c",
+    "prepared_sha256": "6251229d40d0ae757d31103751c17a15adf268ed6b9912497e4f667c9e74b075",
+    "worker_source_sha256": "bc419ece2e468d2b8dde0b0b5aaa36bfa5216826e0697ef05b1b9f8cd9e8b97d",
+    "workers": [
+      {
+        "worker_index": 1,
+        "response_file": "points_w01of02.csv",
+        "response_sha256": "20fd089a22c4b22c17c8e616aac4215e81379370d48c5a9c191dab9d13757203",
+        "execution_file": "points_w01of02.csv.execution.json",
+        "identity_file": "points_w01of02.csv.identity.json",
+        "identity": {
+          "plan_sha256": "4dab1223816eb1a18e79ebaed867c7c3626cd9acdeab8a4e5d7a3a48340d4f7b",
+          "prepared_sha256": "6251229d40d0ae757d31103751c17a15adf268ed6b9912497e4f667c9e74b075",
+          "requests_sha256": "77a7c80a748e60c66f2d9d1f87455dcc8626f91fe8d8930a678267d961353e7c",
+          "worker_source_sha256": "bc419ece2e468d2b8dde0b0b5aaa36bfa5216826e0697ef05b1b9f8cd9e8b97d",
+          "worker_index": 1,
+          "num_workers": 2,
+          "finite_diameter_mm": 5
+        },
+        "rows": 1080
+      },
+      {
+        "worker_index": 2,
+        "response_file": "points_w02of02.csv",
+        "response_sha256": "c93e151ee932d1749ca4f11c142cb929a9f6d82ce120d256cad57639294b083d",
+        "execution_file": "points_w02of02.csv.execution.json",
+        "identity_file": "points_w02of02.csv.identity.json",
+        "identity": {
+          "plan_sha256": "4dab1223816eb1a18e79ebaed867c7c3626cd9acdeab8a4e5d7a3a48340d4f7b",
+          "prepared_sha256": "6251229d40d0ae757d31103751c17a15adf268ed6b9912497e4f667c9e74b075",
+          "requests_sha256": "77a7c80a748e60c66f2d9d1f87455dcc8626f91fe8d8930a678267d961353e7c",
+          "worker_source_sha256": "bc419ece2e468d2b8dde0b0b5aaa36bfa5216826e0697ef05b1b9f8cd9e8b97d",
+          "worker_index": 2,
+          "num_workers": 2,
+          "finite_diameter_mm": 5
+        },
+        "rows": 1071
+      }
+    ],
+    "rows": 2151,
+    "points": 239,
+    "finite_diameter_mm": 5,
+    "responses_sha256": "38ba13d748d10f982e784e962b1c966eed15bd0173f037deb183b03f77ffd86d"
+  },
+  "responses_sha256": "38ba13d748d10f982e784e962b1c966eed15bd0173f037deb183b03f77ffd86d",
+  "rows": 2151,
+  "points": 239,
+  "new_direct_CEM_solves": true
+}

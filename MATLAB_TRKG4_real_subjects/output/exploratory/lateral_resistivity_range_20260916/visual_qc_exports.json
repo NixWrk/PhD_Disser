@@ -1,0 +1,22 @@
+{
+  "source_sha256": "9768da81741b04897337eb4b3852169e38e5910fbbbc05c89ba0cb00f5aa3b7a",
+  "inputs_sha256": {
+    "plan.json": "4dab1223816eb1a18e79ebaed867c7c3626cd9acdeab8a4e5d7a3a48340d4f7b",
+    "solution_curves.csv": "5bff408775b54777000bd6b1318a6558d8958fddfb7247f146bb457ce7009824",
+    "solution_curve_intersections.csv": "0d640a46b5670147199a0425ede43c0c04f73b1e6b218bc87ed1694ebe8818ef",
+    "real_fits.csv": "49570f1e82d83ba039eac06f92dd8694cff38d9cce536a96b4d3363aa1c9d2a8"
+  },
+  "artifacts_sha256": {
+    "optimal_solution_curves.html": "4ad8cf25ddb02fe773268b6a6e2083cc5dbf000b1e427c3b871abfe6a0c01b6a",
+    "optimal_solution_curves.png": "7457892cbf0111713036c703b31d424f1e24e4a4cb3a73d83037f807b8dbda5a",
+    "solution_curves.html": "ff4f7516edda0005248c7becd9237089d345962e90fa4e2413a69edab6af5e34",
+    "solution_curves.png": "3437b22c2526a2c6d3fbd718c88afc996fdfdfe70b97f854fb92235ea7fd6302",
+    "solution_curves_k2.html": "8a0ea84feccfb7094ca88ce52bc9064256609ea892cfac11dd841968cbac125d",
+    "solution_curves_k3.html": "e5e590f8522e74b364584b01f27318068df2f83b343fcd5944899abf42caad29",
+    "solution_curves_k4.html": "0b2c450d5264166e37df8198a2f377ad8480a654420e9ae793eb91cb6d58a0ba",
+    "solution_curves_k5.html": "99324965bb5f5647893be70f53edc6316ada74d2af8f1074d77010b64644d595",
+    "solution_curves_k6.html": "dc58702aab9000c99e88b98aba6d41ccfc5d74eb5dae7f2b7889325384d3f1d1",
+    "solution_curves_k7.html": "3a5e6c520a880f1f67264889674d59242d76cea291aea8c842be1f7f2424d90c",
+    "solution_curves_k8.html": "7f7e097736faf87f9a062f06edbeea074e325686305ee3648fad671766401e58"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "fit_points": 16,
+  "curve_points": 90,
+  "skipped": [],
+  "input_sha256": {
+    "plan.json": "4dab1223816eb1a18e79ebaed867c7c3626cd9acdeab8a4e5d7a3a48340d4f7b",
+    "responses.csv": "38ba13d748d10f982e784e962b1c966eed15bd0173f037deb183b03f77ffd86d",
+    "real_fits.csv": "49570f1e82d83ba039eac06f92dd8694cff38d9cce536a96b4d3363aa1c9d2a8"
+  },
+  "requests_sha256": "927b251944b0d6f301ac6034260cf48b1b8bd2e12b8d0b67afe48b48e0d001ed",
+  "source_sha256": "54b4bfe87998a0377cba52102e675351e8af4d81a54d508725e08c8cf9c3dd61"
+}
