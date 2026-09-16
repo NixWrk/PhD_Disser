@@ -1,24 +1,24 @@
 {
   "skill": "russian-scientific-prose",
-  "reviewed_at_utc": "2026-09-16T12:30:22.377965+00:00",
+  "reviewed_at_utc": "2026-09-16T13:22:58.872600+00:00",
   "mode": "final_full_text_semantic_review",
   "language": "ru",
   "reviewer": "Codex",
   "artifact_sha256": {
-    "33.09_Выбор_размеров_и_числа_боковых_сборок.ipynb": "5a42fea72e25c71992df93337295c2cd31a783d1b0e0a94b233e8a36ee5f6f08",
-    "33.09_Выбор_размеров_и_числа_боковых_сборок.html": "d54ca05d094b33d3f45059b77b77da5c08ef8860d91d9d905bd101c154a7b994",
-    "33.09_Выбор_размеров_и_числа_боковых_сборок.md": "08dd0fd9918d921be3755a14b3ba82c415a96e9d48373fc489b73881632db639"
+    "33.09_Выбор_размеров_и_числа_боковых_сборок.ipynb": "06280fadf97ce959064fd031c3b486fa15f8cb6132ee546bc1cec97bb7ad9248",
+    "33.09_Выбор_размеров_и_числа_боковых_сборок.html": "d465f865c03c5c18337b8706bfc57ee849f30fca8635e24e798a8ab1c35aee17",
+    "33.09_Выбор_размеров_и_числа_боковых_сборок.md": "a49db84d808fd81c9003bff1908b19291b4a4dcdea679564db9222b51e8a2770"
   },
-  "reader_text_sha256": "22c92fda93914f5be4b13450674de875637740554cda74aec12051a8dc88ddfa",
+  "reader_text_sha256": "a579f3da1b0cfb7df214b7999390cddffb2ae9b20eed80225a3e989ae4929c73",
   "language_status": "passed",
   "technical_status": "passed_executed_notebook_and_rendered_HTML",
   "computational_status": "passed_declared_checks",
   "scientific_status": "exploratory_hypothesis_not_validated",
   "review_scope": [
-    "entire final reader text read semantically in sequence after final transition edit",
-    "all seven tables and captions",
-    "all five figures: visible titles, legends, axes and captions; new plot visually inspected standalone and embedded",
-    "all formulas, conclusions, source links, passport and direct-comparison README"
+    "entire final reader text semantically read in sequence after frequency comparison edit",
+    "seven tables and all captions",
+    "five figures including ten frequency-comparison traces, legends, axes and both respiratory-state panels",
+    "formulas, conclusions, sources, passport and 100 kHz reproduction README"
   ],
   "checks": {
     "language.ru.hash-bound-final-review": "passed",
@@ -59,9 +59,12 @@
     "max_expanded_interpolation_validation_error_ohm": 0.00033755860768280854,
     "max_old_grid_check_error_ohm": 0.0012873464897182885,
     "max_expanded_direct_check_error_ohm": 0.0002914397628757115,
-    "literature_forward_CEM_responses": 36,
+    "literature_forward_CEM_responses": 72,
     "literature_forward_fitted_parameters": 0,
-    "literature_forward_curve_csv_agreement": true
+    "literature_forward_curve_csv_agreement": true,
+    "literature_forward_CEM_100khz_responses": 36,
+    "previous_50khz_numerical_files_unchanged": true,
+    "frequency_comparison_plot_matches_csv": true
   },
   "limitations_retained": [
     "one anatomy and fixed CT/montage C01",
@@ -79,11 +82,12 @@
     "no full FEM optimization repeated at every inverse step",
     "rho1 curve spread is not error relative to true resistivity",
     "best subsets retained from the literature-range design",
-    "two a priori literature pairs only; not an exhaustive physiological-domain test",
     "muscle value transferred to entire nonlung background",
     "database deflated not established as equivalent to volunteer exhale",
     "50 kHz is a literature scenario; no new instrument-frequency verification",
-    "real scalar conductivity only; dielectric contribution omitted"
+    "real scalar conductivity only; dielectric contribution omitted",
+    "two a priori literature pairs per frequency; 50 and 100 kHz are modeled scenarios with the same observations",
+    "contact impedance fixed across frequencies; dielectric contribution omitted"
   ],
   "findings": [],
   "additional_artifact_sha256": {
@@ -120,15 +124,40 @@
     "points_responses.csv": "b39cbc10ac393e598155e9f990a80e778739e577144bd87a89a640d53368ab64",
     "points_responses.csv.execution.json": "da2f974ae072ee8876c10993ae7937c766de9f147b76f8db726f0e9671901d92",
     "points_responses.csv.identity.json": "ba1866cf3e38e0bcd7960a0799b4b5157e034743450d39cdbb395910caa95b69",
-    "qc.json": "4b0fe23d0c509fcc2911fba55fdc3df5ac34ffd9c752d664645b1a3062f675e0",
+    "qc.json": "b136c27e14d5ed25788248299069120d374ba941c077f6b7c2b007271678c653",
     "README.md": "0fbf71212880bcb18c542d3b1f2984eefd374f06dc9e5288df566f4bfd3c8370",
     "visual_qc.json": "61396fdfc0526a9ad83150ae3b439d10e78c1f3f696ae5ede4e516125b94061a"
   },
   "forward_source_sha256": {
-    "MATLAB_TRKG4_real_subjects/tools/lateral_literature_forward.py": "ada44a4addf4c6488d1c1ce4614304a7222f3d20f4a43b4f5b59c301f275b810",
-    "MATLAB_TRKG4_real_subjects/notebooks/lateral_literature_forward_results.py": "95c9a9e39412a58d37ef26c1623d84050ab977d8ec1dee1fd98c766b27a8a735",
-    "MATLAB_TRKG4_real_subjects/notebooks/build_lateral_array_design.py": "3e8e9a3f507c6359c0708543c424f7c0baf3254e2d87d0d1d83ac1801b8843d6",
+    "MATLAB_TRKG4_real_subjects/tools/lateral_literature_forward.py": "590f240c1a0faa64cebe4f39a8e80fd12881ec7cbc5a4aeaffd01dd95d36bd87",
+    "MATLAB_TRKG4_real_subjects/notebooks/lateral_literature_forward_results.py": "215b7b9421029c72ed6a4411a15187a43053ae49f3c1724d29b39caf10e72586",
+    "MATLAB_TRKG4_real_subjects/notebooks/build_lateral_array_design.py": "c3062d33ed3193df4a124ac4cd5f1bbe4919fda282d9530b912e7bf7ded6ab3d",
     "MATLAB_TRKG4_real_subjects/notebooks/lateral_array_design_results.py": "153aa51d5e15041225505c61f4e4645810bb8cb66e9010271b39b06b98bbd1e7",
-    "MATLAB_TRKG4_real_subjects/notebooks/lateral_resistivity_range_results.py": "89ea302ac306791c53ef41a7b34df9fe469c2994cb886085c9140ddaeabe3998"
+    "MATLAB_TRKG4_real_subjects/notebooks/lateral_resistivity_range_results.py": "89ea302ac306791c53ef41a7b34df9fe469c2994cb886085c9140ddaeabe3998",
+    "MATLAB_TRKG4_real_subjects/tools/lateral_literature_frequency_comparison.py": "8b337b88f29dcc9b0ab27a6db7ac758b513612dcdd56d5c4adf50db628b3e94b"
+  },
+  "frequency_artifact_root": "MATLAB_TRKG4_real_subjects/output/exploratory/lateral_literature_100khz_20260916",
+  "frequency_artifact_sha256": {
+    "breathing_contrast.csv": "537c9392a01221c991f015d43e5171df6ec4ae03d84169d8e245648350dbf028",
+    "comparison.csv": "c51e90c285fb3c29e316c46179bf6696fd6092d5a4012445d61ff4eb9ea6f63a",
+    "forward_comparison.html": "8e8f0b8f4cb5a54302c7293d650779a6666ab062270eaa24035236db2c23dce0",
+    "forward_comparison.png": "aed34eb811efe7d91d18ac51bde075f0e87b73570ca7873c4181c4d970bd0181",
+    "frequency_change.csv": "5517d3aad1b6833ba8f2da4d53f64ec779470f347d4052b20dc02d25b03bdeac",
+    "frequency_comparison.csv": "61ac5c3b6ec01ad3dc66c756fc6936557fea2f42b23dcaad7d121e6fcc308ca0",
+    "frequency_comparison.html": "db05df620eed3d16d531b51a97f5debc32f2a579a8efa11498e204ce583fc035",
+    "frequency_comparison.png": "307a890d6edd4ca7b4065d1b1fe6152511c4fac3c6112637c17277ce7be405c9",
+    "frequency_metrics.csv": "01fdd864d5e0569c7d450e855731a0aa1ebec91bda4bf8e2317bcc47911f7c7f",
+    "frequency_qc.json": "90c9afc017e6791be0f5f58a6cfb50fdd48042d234c115aa6a9350a29d2978e5",
+    "frequency_values.csv": "fbe8847c76c3507373c860a012a8bec607689f6d50bfe1f9f6b5bc22c5d17eff",
+    "literature_values.csv": "2aa58d907892065a340c20fbc10c7812e20a76da9833a6bc7d51fe6d8d73273c",
+    "metrics.csv": "7f664438ce15d6c8032020841d6feda4ebd8f3c9b95cecb556341aa0a010295f",
+    "plan.json": "53fc8e2647a59cfea3e91a7fdf3ea7ecb2993381b77e6b23275b8625b1050f11",
+    "points.csv": "174382745e2f9549178544a6692c7cda56f6996f5a40d27e2686d85590198d7c",
+    "points_responses.csv": "8c6496f542106e1ef94aa171656d2e7372ad68c5d6d802a792ec7c9390d4035e",
+    "points_responses.csv.execution.json": "479ac8e56b8f00b3ac3259363f42c3969a1ee026778c54250225ebdcfcf9047d",
+    "points_responses.csv.identity.json": "2936c7838bc05973b9be389f8c8b95dbafc8f67e43f5e76b340766c993b9b7cb",
+    "qc.json": "a1b7800b36c34626d9ed1de165be643cf5f5cc008edfd87e597f8c7c6e016e18",
+    "README.md": "164311766176bae3b7abaafe5fd792e17a7624777c3eee3133312916515693bd",
+    "visual_qc.json": "0df6c4cc65aec5b57b7c1cf0ce20b66b3cd774cdfd75397245d54f08ed9772d4"
   }
 }

@@ -1,0 +1,87 @@
+{
+  "status": "exploratory_hypothesis_not_validated",
+  "task": "Direct CEM comparison at a priori literature points; no parameter fitting",
+  "models": [
+    "reference",
+    "variable_transverse"
+  ],
+  "sizes_mm": [
+    50,
+    60,
+    70,
+    80,
+    90,
+    110,
+    120,
+    130,
+    140
+  ],
+  "frequency_hz": 100000,
+  "frequency_status": "literature_scenario_not_new_instrument_verification",
+  "frequency_change_scope": "real tissue conductivities only; contact impedance held fixed; displacement current omitted",
+  "diameter_mm": 5,
+  "contact_ohm_m2": 0.00015915494309189532,
+  "electrode_count_per_measurement": 4,
+  "simultaneous_all_sizes": false,
+  "geometry": "fixed inspiratory CT, exact accepted C01 montage; two scalar conductive materials",
+  "mapping": {
+    "inhale": "inflated",
+    "exhale": "deflated"
+  },
+  "mapping_status": "hypothesis: database inflated/deflated not established as volunteer inhale/exhale",
+  "rho1_status": "muscle value assigned to entire nonlung background; no mixture calibration",
+  "sources": [
+    {
+      "path": "output/exploratory/lateral_array_design_20260916/plan.json",
+      "sha256": "ad06381a46e9ee0c2d3d0fb18f6f21d29ac74bf88fd2383c4b8a0b8d0ca68dc9"
+    },
+    {
+      "path": "output/exploratory/lateral_array_design_20260916/prepared_fem.mat",
+      "sha256": "6251229d40d0ae757d31103751c17a15adf268ed6b9912497e4f667c9e74b075"
+    },
+    {
+      "path": "output/exploratory/lateral_array_design_20260916/contact_qc.csv",
+      "sha256": "8ff447d73268f5674072f48d66e1578b8f1b6582a27f2f666371a1328d934322"
+    },
+    {
+      "path": "output/exploratory/lateral_real_application_20260915/observations.csv",
+      "sha256": "29e57ee9a6c1c71c280e6a7a0041a7909189deecfc88290f75991f83ad4b363c"
+    },
+    {
+      "path": "output/exploratory/geometry_validation_20260910/literature_selection.json",
+      "sha256": "698b1c6e7c35ebd2e6192cbc15206de6b0804df7fefb89115c13e4e6fca5828b"
+    },
+    {
+      "path": "output/exploratory/geometry_validation_20260910/literature_anchors.csv",
+      "sha256": "c138f9ab8d7f5f7e113bd40fe80606a091350b650c548bf40ad1e27f42ea6491"
+    },
+    {
+      "path": "output/exploratory/arm_sigma_20260908/literature/Thermal_dielectric_acoustic_MR properties_database_V5.0(ASCII).txt",
+      "sha256": "d139ae961db460112345b43cd929042920390a1f2db3d462a2278b3be931c7e2"
+    },
+    {
+      "path": "src/run_lateral_array_design.m",
+      "sha256": "6c9a267870a00542ca40f23622626557b7c38c8d2621fba5f4fc4ea217df5df1"
+    }
+  ],
+  "observations": {
+    "path": "output/exploratory/lateral_real_application_20260915/observations.csv",
+    "sha256": "29e57ee9a6c1c71c280e6a7a0041a7909189deecfc88290f75991f83ad4b363c"
+  },
+  "points_sha256": "174382745e2f9549178544a6692c7cda56f6996f5a40d27e2686d85590198d7c",
+  "literature_values_sha256": "2aa58d907892065a340c20fbc10c7812e20a76da9833a6bc7d51fe6d8d73273c",
+  "literature_doi": "10.13099/VIP21000-05-0",
+  "literature_urls": [
+    "https://itis.swiss/virtual-population/tissue-properties/downloads/database-v5-0",
+    "https://itis.swiss/virtual-population/tissue-properties/database/low-frequency-conductivity",
+    "https://itis.swiss/virtual-population/tissue-properties/database/dielectric-properties"
+  ],
+  "preparation_script_sha256": "590f240c1a0faa64cebe4f39a8e80fd12881ec7cbc5a4aeaffd01dd95d36bd87",
+  "acceptance": {
+    "area_relative_error_max": 0.1,
+    "centroid_error_mm_max": 0.75,
+    "radial_extent_mm_max": 3.5,
+    "system_relative_residual_max": 1e-07,
+    "reciprocity_abs_ohm_max": 1e-07
+  }
+}

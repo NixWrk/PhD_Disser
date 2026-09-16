@@ -1,0 +1,22 @@
+{
+  "complete": true,
+  "direct_CEM_solves": 36,
+  "fitted_parameters": 0,
+  "max_model_geometry_difference_ohm": 0.04473953960430066,
+  "max_system_relative_residual": 5.18690756007682e-10,
+  "max_reciprocity_error_ohm": 4.2632564145606e-14,
+  "global_spatial_convergence": false,
+  "physical_validation": false,
+  "source_sha256": {
+    "plan.json": "53fc8e2647a59cfea3e91a7fdf3ea7ecb2993381b77e6b23275b8625b1050f11",
+    "points.csv": "174382745e2f9549178544a6692c7cda56f6996f5a40d27e2686d85590198d7c",
+    "literature_values.csv": "2aa58d907892065a340c20fbc10c7812e20a76da9833a6bc7d51fe6d8d73273c",
+    "points_responses.csv": "8c6496f542106e1ef94aa171656d2e7372ad68c5d6d802a792ec7c9390d4035e"
+  },
+  "output_sha256": {
+    "comparison.csv": "c51e90c285fb3c29e316c46179bf6696fd6092d5a4012445d61ff4eb9ea6f63a",
+    "metrics.csv": "7f664438ce15d6c8032020841d6feda4ebd8f3c9b95cecb556341aa0a010295f",
+    "breathing_contrast.csv": "537c9392a01221c991f015d43e5171df6ec4ae03d84169d8e245648350dbf028"
+  },
+  "analysis_script_sha256": "590f240c1a0faa64cebe4f39a8e80fd12881ec7cbc5a4aeaffd01dd95d36bd87"
+}

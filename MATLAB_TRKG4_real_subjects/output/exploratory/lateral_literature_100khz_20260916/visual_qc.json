@@ -1,0 +1,11 @@
+{
+  "plots": 5,
+  "tables": 7,
+  "sourceCodeInputs": 0,
+  "mathExpressions": 14,
+  "mathErrors": 0,
+  "code_cells": 16,
+  "browser_errors": [],
+  "all_ten_traces_match_csv": true,
+  "finite_CEM_100khz_solutions": 36
+}

@@ -33,7 +33,8 @@ def source(path):
     return {'path': Path(path).relative_to(PIPE).as_posix(), 'sha256': sha(path)}
 
 
-def prepare(out=OUT):
+def prepare(out=OUT, frequency_hz=50000):
+    assert frequency_hz in (50000, 100000), "This comparison defines 50 and 100 kHz only."
     out = Path(out)
     out.mkdir(parents=True, exist_ok=True)
     if (out/'plan.json').exists():
@@ -50,12 +51,13 @@ def prepare(out=OUT):
         delta = np.array([float(row[i]) for i in (28,31,35,38)])
         tau = np.array([float(row[i]) for i in (29,32,36,39)]) * [1e-12,1e-9,1e-6,1e-3]
         alpha = np.array([float(row[i]) for i in (30,33,37,40)])
-        omega = 2*np.pi*50000
+        omega = 2*np.pi*frequency_hz
         eps = np.sum(delta/(1+(1j*omega*tau)**(1-alpha)))
         sigma = float(row[34])-omega*8.8542e-12*eps.imag
         rho = 1/sigma
-        assert np.isclose(rho, anchors.loc[row[1], 'resistivity_50khz_ohm_m'], rtol=1e-12)
-        rows.append(dict(tissue=row[1], source_line=line, frequency_hz=50000,
+        if frequency_hz == 50000:
+            assert np.isclose(rho, anchors.loc[row[1], 'resistivity_50khz_ohm_m'], rtol=1e-12)
+        rows.append(dict(tissue=row[1], source_line=line, frequency_hz=frequency_hz,
                          conductivity_S_m=sigma, rho_ohm_m=rho))
     a = pd.DataFrame(rows).set_index('tissue')
     assert set(a.index) == {'Muscle','Lung (Inflated)','Lung (Deflated)'}
@@ -73,8 +75,9 @@ def prepare(out=OUT):
     assert sha(paths[3]) == bp['observations_sha256']
     write(out/'plan.json', dict(status='exploratory_hypothesis_not_validated',
         task='Direct CEM comparison at a priori literature points; no parameter fitting',
-        models=list(MODELS), sizes_mm=bp['sizes_mm'], frequency_hz=50000,
+        models=list(MODELS), sizes_mm=bp['sizes_mm'], frequency_hz=frequency_hz,
         frequency_status='literature_scenario_not_new_instrument_verification',
+        frequency_change_scope='real tissue conductivities only; contact impedance held fixed; displacement current omitted',
         diameter_mm=5, contact_ohm_m2=bp['contact_ohm_m2'],
         electrode_count_per_measurement=4, simultaneous_all_sizes=False,
         geometry='fixed inspiratory CT, exact accepted C01 montage; two scalar conductive materials',
@@ -204,7 +207,7 @@ def figure(out=OUT):
     fig.update_yaxes(range=[0,115],row=1,col=2)
     fig.update_layout(template='plotly_white',width=1250,height=570,
         font=dict(family='Arial',size=14),margin=dict(l=70,r=25,t=85,b=100),
-        title=dict(text='Прямая задача: литературные сопротивления без подгонки',x=.5,xanchor='center'),
+        title=dict(text=f"Прямая задача: литературные сопротивления, {read(out/'plan.json')['frequency_hz']/1000:g} кГц",x=.5,xanchor='center'),
         legend=dict(orientation='h',x=.5,xanchor='center',y=-.2),hovermode='x unified')
     return fig
 
@@ -214,9 +217,10 @@ if __name__=='__main__':
     parser.add_argument('--prepare',action='store_true')
     parser.add_argument('--collect',action='store_true')
     parser.add_argument('--out',type=Path,default=OUT)
+    parser.add_argument('--frequency-hz',type=int,choices=[50000,100000],default=50000)
     args=parser.parse_args()
     if args.prepare:
-        print(prepare(args.out).to_string(index=False))
+        print(prepare(args.out,args.frequency_hz).to_string(index=False))
     else:
         if args.collect: collect(args.out)
         print(compare(args.out).to_string(index=False))

@@ -1,0 +1,30 @@
+{
+  "complete": true,
+  "new_CEM_solves_100khz": 36,
+  "previous_CEM_solves_50khz": 36,
+  "fitted_parameters": 0,
+  "same_geometry_contacts_observations": true,
+  "scope": "two real-conductivity scenarios, not full complex-frequency validation",
+  "min_impedance_change_pct": -2.878902714265814,
+  "max_impedance_change_pct": -2.7641923397560344,
+  "input_sha256": {
+    "output/exploratory/lateral_literature_forward_20260916/plan.json": "7956b4db30c37f39552ddf593350e4a9cecf734a3ed49505aa2e8c5b3851537b",
+    "output/exploratory/lateral_literature_forward_20260916/points_responses.csv": "b39cbc10ac393e598155e9f990a80e778739e577144bd87a89a640d53368ab64",
+    "output/exploratory/lateral_literature_forward_20260916/comparison.csv": "0ed732546a11d7d8c898be3edc5f00417296c2f4c6cf4c48c52494ab80d1e370",
+    "output/exploratory/lateral_literature_forward_20260916/qc.json": "b136c27e14d5ed25788248299069120d374ba941c077f6b7c2b007271678c653",
+    "output/exploratory/lateral_literature_100khz_20260916/plan.json": "53fc8e2647a59cfea3e91a7fdf3ea7ecb2993381b77e6b23275b8625b1050f11",
+    "output/exploratory/lateral_literature_100khz_20260916/points_responses.csv": "8c6496f542106e1ef94aa171656d2e7372ad68c5d6d802a792ec7c9390d4035e",
+    "output/exploratory/lateral_literature_100khz_20260916/comparison.csv": "c51e90c285fb3c29e316c46179bf6696fd6092d5a4012445d61ff4eb9ea6f63a",
+    "output/exploratory/lateral_literature_100khz_20260916/qc.json": "a1b7800b36c34626d9ed1de165be643cf5f5cc008edfd87e597f8c7c6e016e18"
+  },
+  "output_sha256": {
+    "frequency_comparison.csv": "61ac5c3b6ec01ad3dc66c756fc6936557fea2f42b23dcaad7d121e6fcc308ca0",
+    "frequency_metrics.csv": "01fdd864d5e0569c7d450e855731a0aa1ebec91bda4bf8e2317bcc47911f7c7f",
+    "frequency_values.csv": "fbe8847c76c3507373c860a012a8bec607689f6d50bfe1f9f6b5bc22c5d17eff",
+    "frequency_change.csv": "5517d3aad1b6833ba8f2da4d53f64ec779470f347d4052b20dc02d25b03bdeac"
+  },
+  "source_sha256": {
+    "tools/lateral_literature_frequency_comparison.py": "8b337b88f29dcc9b0ab27a6db7ac758b513612dcdd56d5c4adf50db628b3e94b",
+    "tools/lateral_literature_forward.py": "590f240c1a0faa64cebe4f39a8e80fd12881ec7cbc5a4aeaffd01dd95d36bd87"
+  }
+}

@@ -56,3 +56,7 @@ MATLAB_TRKG4_real_subjects/notebooks/lateral_resistivity_range_results.py -text
 MATLAB_TRKG4_real_subjects/output/exploratory/lateral_literature_forward_20260916/** -text
 MATLAB_TRKG4_real_subjects/tools/lateral_literature_forward.py -text
 MATLAB_TRKG4_real_subjects/notebooks/lateral_literature_forward_results.py -text
+
+# Preserve bytes of the 100 kHz direct comparison.
+MATLAB_TRKG4_real_subjects/output/exploratory/lateral_literature_100khz_20260916/** -text
+MATLAB_TRKG4_real_subjects/tools/lateral_literature_frequency_comparison.py -text
