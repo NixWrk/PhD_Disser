@@ -1,0 +1,28 @@
+{
+  "skill": "russian-scientific-prose",
+  "mode": "audit",
+  "artifact": "40.08_Литературные_диапазоны_электрических_свойств_тканей.md",
+  "artifact_sha256": "59aa8cef822ba9df3cd7a80a930f95c0c3afaf660ed0cdeaeb2c9968e8e62a98",
+  "reader_text_sha256": "59aa8cef822ba9df3cd7a80a930f95c0c3afaf660ed0cdeaeb2c9968e8e62a98",
+  "status": "passed",
+  "full_text_model_review": true,
+  "scope": "Entire final revision 2, all tables, formulas, source limitations, separate versus combined materials and explicit lack of new FEM segmentation.",
+  "checks": [
+    "scientific headings",
+    "terminology and scope",
+    "definitions and units",
+    "source facts separated from modelling assumptions",
+    "no physiological or clinical validation claim",
+    "coherent Russian prose"
+  ],
+  "policy_file_sha256": {
+    "languages\\ru\\ru.yaml": "8de5f852a5d9822ab28ec6ba0b0be948336138b2b04a6f0bc7103e0781267ace",
+    "rules\\language-ru.yaml": "ed5513d59d90334a9ff5545a7aa7dc6fbbe87a7716d8feb7a58bec9693ee87c7",
+    "rules\\language-ru-draft.yaml": "ba73b7e75a99c192ecfd27d682fb3a4274aee46fc7226e228d7d93814b46c91c",
+    "rules\\language-ru-formula.yaml": "9cdc2faf4b9aaae5c973a4327b3a592ed20ec9a696036d56eabdcc163d4d467c",
+    "rules\\russian-prose.yaml": "7f204b891ca3336817993f60c9bc30473f3e91933b20d332f42d2ecdc8e10af2",
+    "rules\\language-ru-reader-facing.yaml": "508c335c0e1155c730fc86bc7bbe0c4b51de4f6df2043ece1a25da18d0c1bf06"
+  },
+  "findings": [],
+  "physical_validation": false
+}

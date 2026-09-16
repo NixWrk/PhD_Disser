@@ -1,0 +1,135 @@
+{
+  "status": "complete",
+  "baseline_Z_ohm": 482.1758492993495,
+  "baseline_result_sha256": "fe078ce1f68ded160d27975ddd2828b6e9279d63dc9fc1f32ffa75b879bee12c",
+  "cases": [
+    {
+      "Z_ohm": 185.82124236176418,
+      "reciprocal_Z_ohm": 185.82124238880704,
+      "max_relative_residual": 1.3342476973182954e-10,
+      "reciprocity_absolute_ohm": 2.7042858619097387e-08,
+      "max_current_error_A": 2.1316282072803006e-14,
+      "max_ground_residual_A": 2.6187540087105025e-10,
+      "recovered_currents_A": [
+        [
+          1.0000000000000142,
+          -8.881784197001252e-15
+        ],
+        [
+          -5.329070518200751e-15,
+          0.9999999999999787
+        ],
+        [
+          7.105427357601002e-15,
+          -0.9999999999999858
+        ],
+        [
+          -1.0,
+          -1.7763568394002505e-15
+        ]
+      ],
+      "matrix_asymmetry_relative": 3.576792132886235e-22,
+      "solve_seconds": 22.45324468612671,
+      "factorization_memory": {
+        "iparm_15_16_17_kib": [
+          540791,
+          458654,
+          3892971
+        ],
+        "rss_after_symbolic_gib": 0.9623794555664062,
+        "conservative_rss_plus_solver_estimate_gib": 6.112412452697754,
+        "available_gib": 38.88547897338867
+      },
+      "rhs_count": 2,
+      "factorizations": 1,
+      "case": "old_soft_only",
+      "conductivity_by_soft_lung_heart_bone": [
+        0.21149810344548203,
+        0.1475083493529169,
+        0.30563640682653775,
+        0.020641911403089824
+      ],
+      "rho_by_soft_lung_heart_bone": [
+        4.728174786010649,
+        6.779277270654548,
+        3.271861524558311,
+        48.44512605796346
+      ],
+      "blocks_sha256": "b1bfb3cd78b7dbf6c22c7c794d6d1ac3d127312938ba9a7e42314b55863bce15",
+      "contact_sha256": "2cc6dd6e3e0aaf9f1e05a9ab9fa4ba7dae40d4a1218cfb16dd6a4486ce6c33ec",
+      "cycle_plan_sha256": "2b89826bf5f91b87a84da78d72c8f038bb840284faf84151d0fb0bcfe2839635",
+      "old_contract_sha256": "7d6ba96c00352c98815e2f6af0a4601b8f0a6b3a1bd2ab127c5459a8350f46e1",
+      "audit_code_sha256": "8d9a794807cf3eda3f14f3e4d339ecfb9f6af26c1bbf6083ebb1411d599284e8",
+      "geometry_and_contacts_unchanged": true,
+      "scientific_status": "controlled_numerical_comparison_not_physical_validation"
+    },
+    {
+      "Z_ohm": 193.66030234887322,
+      "reciprocal_Z_ohm": 193.6603023513803,
+      "max_relative_residual": 1.5420011041384662e-10,
+      "reciprocity_absolute_ohm": 2.5070789888559375e-09,
+      "max_current_error_A": 4.263256414560601e-14,
+      "max_ground_residual_A": 1.4288587735782171e-10,
+      "recovered_currents_A": [
+        [
+          1.0000000000000142,
+          3.552713678800501e-15
+        ],
+        [
+          0.0,
+          1.000000000000007
+        ],
+        [
+          0.0,
+          -1.0000000000000426
+        ],
+        [
+          -0.9999999999999716,
+          -3.552713678800501e-15
+        ]
+      ],
+      "matrix_asymmetry_relative": 3.5767921390495167e-22,
+      "solve_seconds": 21.033445596694946,
+      "factorization_memory": {
+        "iparm_15_16_17_kib": [
+          540791,
+          458654,
+          3892971
+        ],
+        "rss_after_symbolic_gib": 0.9629058837890625,
+        "conservative_rss_plus_solver_estimate_gib": 6.11293888092041,
+        "available_gib": 39.599273681640625
+      },
+      "rhs_count": 2,
+      "factorizations": 1,
+      "case": "all_old_tissues",
+      "conductivity_by_soft_lung_heart_bone": [
+        0.21149810344548203,
+        0.057449143146029974,
+        0.19543524171093257,
+        0.020641911403089824
+      ],
+      "rho_by_soft_lung_heart_bone": [
+        4.728174786010649,
+        17.4067,
+        5.116784420483874,
+        48.44512605796346
+      ],
+      "blocks_sha256": "b1bfb3cd78b7dbf6c22c7c794d6d1ac3d127312938ba9a7e42314b55863bce15",
+      "contact_sha256": "2cc6dd6e3e0aaf9f1e05a9ab9fa4ba7dae40d4a1218cfb16dd6a4486ce6c33ec",
+      "cycle_plan_sha256": "2b89826bf5f91b87a84da78d72c8f038bb840284faf84151d0fb0bcfe2839635",
+      "old_contract_sha256": "7d6ba96c00352c98815e2f6af0a4601b8f0a6b3a1bd2ab127c5459a8350f46e1",
+      "audit_code_sha256": "8d9a794807cf3eda3f14f3e4d339ecfb9f6af26c1bbf6083ebb1411d599284e8",
+      "geometry_and_contacts_unchanged": true,
+      "scientific_status": "controlled_numerical_comparison_not_physical_validation"
+    }
+  ],
+  "criteria": {
+    "relative_residual": 1e-07,
+    "reciprocity_atol_ohm": 1e-08,
+    "reciprocity_rtol": 1e-08,
+    "current_atol_A": 1e-07,
+    "ground_residual_atol_A": 1e-07,
+    "matrix_rtol": 1e-12
+  }
+}

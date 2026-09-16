@@ -1,0 +1,10 @@
+{
+  "skill": "russian-scientific-prose",
+  "mode": "audit",
+  "full_text_model_review": true,
+  "status": "passed_for_controlled_model_comparison",
+  "artifact_sha256": "fea06940a99d231f17e4f6527588add955eae69f2ec6231e41031fc91773eef9",
+  "scope": "All final prose and both tables; model assumptions, controlled recalculation and remaining geometry difference distinguished.",
+  "physical_validation": false,
+  "open_language_findings": []
+}

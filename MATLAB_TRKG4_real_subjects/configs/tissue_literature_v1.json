@@ -1,0 +1,923 @@
+{
+  "schema_version": 1,
+  "registry_id": "itis_v5_tissue_reference_20260916_v1",
+  "source": {
+    "version": "ITIS V5.0",
+    "doi": "10.13099/VIP21000-05-0",
+    "url": "https://itis.swiss/assets/Downloads/TissueDb/Database-V5-0.zip",
+    "archive_sha256": "531adceeca8a108b0c6ec0fdb276381cba4f3f0627990e3bb66aaa6673a063c0",
+    "member": "Thermal_dielectric_acoustic_MR properties_database_V5.0(ASCII).txt",
+    "member_sha256": "d139ae961db460112345b43cd929042920390a1f2db3d462a2278b3be931c7e2"
+  },
+  "tissues": {
+    "Blood": {
+      "source_assignment": "Blood",
+      "source_row_name": "Blood",
+      "coefficients": {
+        "ef": 4.0,
+        "del1": 56.0,
+        "tau1 (ps)": 8.377,
+        "alf1": 0.1,
+        "del2": 5200.0,
+        "tau2 (ns)": 132.629,
+        "alf2": 0.1,
+        "sig": 0.7,
+        "del3": 0.0,
+        "tau3 (µs)": 159.155,
+        "alf3": 0.2,
+        "del4": 0.0,
+        "tau4 (ms)": 15.915,
+        "alf4": 0.0
+      },
+      "gabriel_at_frequency": {
+        "50000": {
+          "sigma_S_m": 0.700800987466554,
+          "rho_ohm_m": 1.426938628632748,
+          "relative_permittivity": 5197.699942043847
+        },
+        "100000": {
+          "sigma_S_m": 0.7029217238456084,
+          "rho_ohm_m": 1.4226335110673614,
+          "relative_permittivity": 5120.009190103191
+        }
+      },
+      "low_frequency_up_to_1MHz": {
+        "mixed": {
+          "mean_S_m": 0.662459736,
+          "sd_S_m": 0.107254247,
+          "sample_size": 33.0,
+          "min_S_m": 0.433087917,
+          "max_S_m": 0.945572828
+        },
+        "across": {
+          "mean_S_m": null,
+          "sd_S_m": null,
+          "sample_size": null,
+          "min_S_m": null,
+          "max_S_m": null
+        },
+        "along": {
+          "mean_S_m": null,
+          "sd_S_m": null,
+          "sample_size": null,
+          "min_S_m": null,
+          "max_S_m": null
+        },
+        "normal": {
+          "mean_S_m": null,
+          "sd_S_m": null,
+          "sample_size": null,
+          "min_S_m": null,
+          "max_S_m": null
+        }
+      },
+      "low_frequency_mixed_rho_bounds_ohm_m": [
+        1.0575600000214898,
+        2.3089999991849233
+      ]
+    },
+    "Bone (Cancellous)": {
+      "source_assignment": "Bone (Cancellous)",
+      "source_row_name": "Bone (Cancellous)",
+      "coefficients": {
+        "ef": 2.5,
+        "del1": 18.0,
+        "tau1 (ps)": 13.263,
+        "alf1": 0.22,
+        "del2": 300.0,
+        "tau2 (ns)": 79.577,
+        "alf2": 0.25,
+        "sig": 0.07,
+        "del3": 20000.0,
+        "tau3 (µs)": 159.155,
+        "alf3": 0.2,
+        "del4": 20000000.0,
+        "tau4 (ms)": 15.915,
+        "alf4": 0.0
+      },
+      "gabriel_at_frequency": {
+        "50000": {
+          "sigma_S_m": 0.0834218279300588,
+          "rho_ohm_m": 11.987270296191593,
+          "relative_permittivity": 613.1809433836335
+        },
+        "100000": {
+          "sigma_S_m": 0.08389196472448021,
+          "rho_ohm_m": 11.920092744093209,
+          "relative_permittivity": 471.7063274785155
+        }
+      },
+      "low_frequency_up_to_1MHz": {
+        "mixed": {
+          "mean_S_m": 0.080459528,
+          "sd_S_m": 0.094180264,
+          "sample_size": 5.0,
+          "min_S_m": 0.006,
+          "max_S_m": 0.2
+        },
+        "across": {
+          "mean_S_m": null,
+          "sd_S_m": null,
+          "sample_size": null,
+          "min_S_m": null,
+          "max_S_m": null
+        },
+        "along": {
+          "mean_S_m": null,
+          "sd_S_m": null,
+          "sample_size": null,
+          "min_S_m": null,
+          "max_S_m": null
+        },
+        "normal": {
+          "mean_S_m": null,
+          "sd_S_m": null,
+          "sample_size": null,
+          "min_S_m": null,
+          "max_S_m": null
+        }
+      },
+      "low_frequency_mixed_rho_bounds_ohm_m": [
+        5.0,
+        166.66666666666666
+      ]
+    },
+    "Bone (Cortical)": {
+      "source_assignment": "Bone (Cortical)",
+      "source_row_name": "Bone (Cortical)",
+      "coefficients": {
+        "ef": 2.5,
+        "del1": 10.0,
+        "tau1 (ps)": 13.263,
+        "alf1": 0.2,
+        "del2": 180.0,
+        "tau2 (ns)": 79.577,
+        "alf2": 0.2,
+        "sig": 0.02,
+        "del3": 5000.0,
+        "tau3 (µs)": 159.155,
+        "alf3": 0.2,
+        "del4": 100000.0,
+        "tau4 (ms)": 15.915,
+        "alf4": 0.0
+      },
+      "gabriel_at_frequency": {
+        "50000": {
+          "sigma_S_m": 0.020641911403089828,
+          "rho_ohm_m": 48.445126057963456,
+          "relative_permittivity": 264.186173469559
+        },
+        "100000": {
+          "sigma_S_m": 0.02079102639898367,
+          "rho_ohm_m": 48.09767352557847,
+          "relative_permittivity": 227.6417864188272
+        }
+      },
+      "low_frequency_up_to_1MHz": {
+        "mixed": {
+          "mean_S_m": 0.006301997,
+          "sd_S_m": 0.003380654,
+          "sample_size": 6.0,
+          "min_S_m": 0.001851852,
+          "max_S_m": 0.0091
+        },
+        "across": {
+          "mean_S_m": 0.001851852,
+          "sd_S_m": null,
+          "sample_size": 5.0,
+          "min_S_m": 0.001851852,
+          "max_S_m": 0.001851852
+        },
+        "along": {
+          "mean_S_m": 0.005882353,
+          "sd_S_m": null,
+          "sample_size": 5.0,
+          "min_S_m": 0.005882353,
+          "max_S_m": 0.005882353
+        },
+        "normal": {
+          "mean_S_m": null,
+          "sd_S_m": null,
+          "sample_size": null,
+          "min_S_m": null,
+          "max_S_m": null
+        }
+      },
+      "low_frequency_mixed_rho_bounds_ohm_m": [
+        109.89010989010988,
+        539.9999568000035
+      ]
+    },
+    "Fat": {
+      "source_assignment": "Fat (Average Infiltrated)",
+      "source_row_name": "Fat",
+      "coefficients": {
+        "ef": 2.5,
+        "del1": 9.0,
+        "tau1 (ps)": 7.958,
+        "alf1": 0.2,
+        "del2": 35.0,
+        "tau2 (ns)": 15.915,
+        "alf2": 0.1,
+        "sig": 0.035,
+        "del3": 33000.0,
+        "tau3 (µs)": 159.155,
+        "alf3": 0.05,
+        "del4": 10000000.0,
+        "tau4 (ms)": 15.915,
+        "alf4": 0.01
+      },
+      "gabriel_at_frequency": {
+        "50000": {
+          "sigma_S_m": 0.043273918565,
+          "rho_ohm_m": 23.108607520669533,
+          "relative_permittivity": 163.26152510694058
+        },
+        "100000": {
+          "sigma_S_m": 0.04340163769684506,
+          "rho_ohm_m": 23.040605218284004,
+          "relative_permittivity": 101.49326041483408
+        }
+      },
+      "low_frequency_up_to_1MHz": {
+        "mixed": {
+          "mean_S_m": 0.077621273,
+          "sd_S_m": 0.093082005,
+          "sample_size": 91.0,
+          "min_S_m": 0.023986634,
+          "max_S_m": 0.215217391
+        },
+        "across": {
+          "mean_S_m": null,
+          "sd_S_m": null,
+          "sample_size": null,
+          "min_S_m": null,
+          "max_S_m": null
+        },
+        "along": {
+          "mean_S_m": null,
+          "sd_S_m": null,
+          "sample_size": null,
+          "min_S_m": null,
+          "max_S_m": null
+        },
+        "normal": {
+          "mean_S_m": null,
+          "sd_S_m": null,
+          "sample_size": null,
+          "min_S_m": null,
+          "max_S_m": null
+        }
+      },
+      "low_frequency_mixed_rho_bounds_ohm_m": [
+        4.646464653035404,
+        41.68988445815282
+      ]
+    },
+    "Heart Muscle": {
+      "source_assignment": "Heart Muscle",
+      "source_row_name": "Heart Muscle",
+      "coefficients": {
+        "ef": 4.0,
+        "del1": 50.0,
+        "tau1 (ps)": 7.958,
+        "alf1": 0.1,
+        "del2": 1200.0,
+        "tau2 (ns)": 159.155,
+        "alf2": 0.05,
+        "sig": 0.05,
+        "del3": 450000.0,
+        "tau3 (µs)": 72.343,
+        "alf3": 0.22,
+        "del4": 25000000.0,
+        "tau4 (ms)": 4.547,
+        "alf4": 0.0
+      },
+      "gabriel_at_frequency": {
+        "50000": {
+          "sigma_S_m": 0.19543524171093254,
+          "rho_ohm_m": 5.116784420483875,
+          "relative_permittivity": 16982.366160097692
+        },
+        "100000": {
+          "sigma_S_m": 0.21510885640192495,
+          "rho_ohm_m": 4.648809057547718,
+          "relative_permittivity": 9845.82360087332
+        }
+      },
+      "low_frequency_up_to_1MHz": {
+        "mixed": {
+          "mean_S_m": 0.385354162,
+          "sd_S_m": 0.153984276,
+          "sample_size": 55.0,
+          "min_S_m": 0.103626943,
+          "max_S_m": 0.775193798
+        },
+        "across": {
+          "mean_S_m": 0.205972268,
+          "sd_S_m": 0.040574914,
+          "sample_size": 54.0,
+          "min_S_m": 0.177,
+          "max_S_m": 0.264550265
+        },
+        "along": {
+          "mean_S_m": 0.392796733,
+          "sd_S_m": 0.080647803,
+          "sample_size": 54.0,
+          "min_S_m": 0.319488818,
+          "max_S_m": 0.471698113
+        },
+        "normal": {
+          "mean_S_m": null,
+          "sd_S_m": null,
+          "sample_size": null,
+          "min_S_m": null,
+          "max_S_m": null
+        }
+      },
+      "low_frequency_mixed_rho_bounds_ohm_m": [
+        1.2900000007482,
+        9.6500000004825
+      ]
+    },
+    "Lung (Deflated)": {
+      "source_assignment": "Lung (Deflated)",
+      "source_row_name": "Lung (Deflated)",
+      "coefficients": {
+        "ef": 4.0,
+        "del1": 45.0,
+        "tau1 (ps)": 7.958,
+        "alf1": 0.1,
+        "del2": 1000.0,
+        "tau2 (ns)": 159.155,
+        "alf2": 0.1,
+        "sig": 0.2,
+        "del3": 500000.0,
+        "tau3 (µs)": 159.155,
+        "alf3": 0.2,
+        "del4": 10000000.0,
+        "tau4 (ms)": 15.915,
+        "alf4": 0.0
+      },
+      "gabriel_at_frequency": {
+        "50000": {
+          "sigma_S_m": 0.26196642649624746,
+          "rho_ohm_m": 3.8172830517819216,
+          "relative_permittivity": 8531.400961060866
+        },
+        "100000": {
+          "sigma_S_m": 0.2716140934232484,
+          "rho_ohm_m": 3.681694080732876,
+          "relative_permittivity": 5145.254266370705
+        }
+      },
+      "low_frequency_up_to_1MHz": {
+        "mixed": {
+          "mean_S_m": 0.111089859,
+          "sd_S_m": 0.047213353,
+          "sample_size": 118.0,
+          "min_S_m": 0.041841004,
+          "max_S_m": 0.201538462
+        },
+        "across": {
+          "mean_S_m": null,
+          "sd_S_m": null,
+          "sample_size": null,
+          "min_S_m": null,
+          "max_S_m": null
+        },
+        "along": {
+          "mean_S_m": null,
+          "sd_S_m": null,
+          "sample_size": null,
+          "min_S_m": null,
+          "max_S_m": null
+        },
+        "normal": {
+          "mean_S_m": null,
+          "sd_S_m": null,
+          "sample_size": null,
+          "min_S_m": null,
+          "max_S_m": null
+        }
+      },
+      "low_frequency_mixed_rho_bounds_ohm_m": [
+        4.961832049705728,
+        23.90000010516
+      ]
+    },
+    "Lung (Inflated)": {
+      "source_assignment": "Lung (Inflated)",
+      "source_row_name": "Lung (Inflated)",
+      "coefficients": {
+        "ef": 2.5,
+        "del1": 18.0,
+        "tau1 (ps)": 7.958,
+        "alf1": 0.1,
+        "del2": 500.0,
+        "tau2 (ns)": 63.662,
+        "alf2": 0.1,
+        "sig": 0.03,
+        "del3": 250000.0,
+        "tau3 (µs)": 159.155,
+        "alf3": 0.2,
+        "del4": 40000000.0,
+        "tau4 (ms)": 7.958,
+        "alf4": 0.0
+      },
+      "gabriel_at_frequency": {
+        "50000": {
+          "sigma_S_m": 0.10265600348733724,
+          "rho_ohm_m": 9.74127148952717,
+          "relative_permittivity": 4272.540637754878
+        },
+        "100000": {
+          "sigma_S_m": 0.10735081570870107,
+          "rho_ohm_m": 9.315252924705511,
+          "relative_permittivity": 2581.294814859951
+        }
+      },
+      "low_frequency_up_to_1MHz": {
+        "mixed": {
+          "mean_S_m": 0.058283069,
+          "sd_S_m": null,
+          "sample_size": 120.0,
+          "min_S_m": 0.041538462,
+          "max_S_m": 0.07
+        },
+        "across": {
+          "mean_S_m": null,
+          "sd_S_m": null,
+          "sample_size": null,
+          "min_S_m": null,
+          "max_S_m": null
+        },
+        "along": {
+          "mean_S_m": null,
+          "sd_S_m": null,
+          "sample_size": null,
+          "min_S_m": null,
+          "max_S_m": null
+        },
+        "normal": {
+          "mean_S_m": null,
+          "sd_S_m": null,
+          "sample_size": null,
+          "min_S_m": null,
+          "max_S_m": null
+        }
+      },
+      "low_frequency_mixed_rho_bounds_ohm_m": [
+        14.285714285714285,
+        24.074073806584366
+      ]
+    },
+    "Muscle": {
+      "source_assignment": "Muscles",
+      "source_row_name": "Muscle",
+      "coefficients": {
+        "ef": 4.0,
+        "del1": 50.0,
+        "tau1 (ps)": 7.234,
+        "alf1": 0.1,
+        "del2": 7000.0,
+        "tau2 (ns)": 353.678,
+        "alf2": 0.1,
+        "sig": 0.2,
+        "del3": 1200000.0,
+        "tau3 (µs)": 318.31,
+        "alf3": 0.1,
+        "del4": 25000000.0,
+        "tau4 (ms)": 2.274,
+        "alf4": 0.0
+      },
+      "gabriel_at_frequency": {
+        "50000": {
+          "sigma_S_m": 0.35182781036018673,
+          "rho_ohm_m": 2.8422994730753133,
+          "relative_permittivity": 10093.726122159285
+        },
+        "100000": {
+          "sigma_S_m": 0.36184869972103617,
+          "rho_ohm_m": 2.763585998155971,
+          "relative_permittivity": 8089.153496916243
+        }
+      },
+      "low_frequency_up_to_1MHz": {
+        "mixed": {
+          "mean_S_m": 0.461007526,
+          "sd_S_m": 0.243781754,
+          "sample_size": 24.0,
+          "min_S_m": 0.1,
+          "max_S_m": 0.726
+        },
+        "across": {
+          "mean_S_m": 0.13188759,
+          "sd_S_m": 0.095260419,
+          "sample_size": 55.0,
+          "min_S_m": 0.043478261,
+          "max_S_m": 0.293400666
+        },
+        "along": {
+          "mean_S_m": 0.415109444,
+          "sd_S_m": 0.261076443,
+          "sample_size": 55.0,
+          "min_S_m": 0.138810944,
+          "max_S_m": 5.37
+        },
+        "normal": {
+          "mean_S_m": null,
+          "sd_S_m": null,
+          "sample_size": null,
+          "min_S_m": null,
+          "max_S_m": null
+        }
+      },
+      "low_frequency_mixed_rho_bounds_ohm_m": [
+        1.3774104683195594,
+        10.0
+      ]
+    },
+    "Skin": {
+      "source_assignment": "Skin (Dry)",
+      "source_row_name": "Skin",
+      "coefficients": {
+        "ef": 4.0,
+        "del1": 32.0,
+        "tau1 (ps)": 7.234,
+        "alf1": 0.0,
+        "del2": 1100.0,
+        "tau2 (ns)": 32.481,
+        "alf2": 0.2,
+        "sig": 0.0002,
+        "del3": 0.0,
+        "tau3 (µs)": 159.155,
+        "alf3": 0.2,
+        "del4": 0.0,
+        "tau4 (ms)": 15.915,
+        "alf4": 0.2
+      },
+      "gabriel_at_frequency": {
+        "50000": {
+          "sigma_S_m": 0.0002730879413809578,
+          "rho_ohm_m": 3661.824081075039,
+          "relative_permittivity": 1126.7574024506798
+        },
+        "100000": {
+          "sigma_S_m": 0.00045128906467351747,
+          "rho_ohm_m": 2215.8746539170947,
+          "relative_permittivity": 1119.2126372940043
+        }
+      },
+      "low_frequency_up_to_1MHz": {
+        "mixed": {
+          "mean_S_m": 0.148297101,
+          "sd_S_m": 0.042145684,
+          "sample_size": 7.0,
+          "min_S_m": 0.056521739,
+          "max_S_m": 0.25
+        },
+        "across": {
+          "mean_S_m": null,
+          "sd_S_m": null,
+          "sample_size": null,
+          "min_S_m": null,
+          "max_S_m": null
+        },
+        "along": {
+          "mean_S_m": null,
+          "sd_S_m": null,
+          "sample_size": null,
+          "min_S_m": null,
+          "max_S_m": null
+        },
+        "normal": {
+          "mean_S_m": null,
+          "sd_S_m": null,
+          "sample_size": null,
+          "min_S_m": null,
+          "max_S_m": null
+        }
+      },
+      "low_frequency_mixed_rho_bounds_ohm_m": [
+        4.0,
+        17.692307733136094
+      ]
+    }
+  },
+  "screening_profiles": {
+    "50000": {
+      "id": "itis_v5_lf_gabriel_screening_50000hz_v1",
+      "frequency_hz": 50000,
+      "compartments": {
+        "soft": {
+          "rho_bounds_ohm_m": [
+            1.3774104683195594,
+            41.68988445815282
+          ],
+          "lower_source": {
+            "rho_ohm_m": 1.3774104683195594,
+            "tissue": "Muscle",
+            "origin": "LF_mixed_rho_min"
+          },
+          "upper_source": {
+            "rho_ohm_m": 41.68988445815282,
+            "tissue": "Fat",
+            "origin": "LF_mixed_rho_max"
+          },
+          "tissue_members": [
+            "Muscle",
+            "Fat"
+          ]
+        },
+        "heart": {
+          "rho_bounds_ohm_m": [
+            1.0575600000214898,
+            9.6500000004825
+          ],
+          "lower_source": {
+            "rho_ohm_m": 1.0575600000214898,
+            "tissue": "Blood",
+            "origin": "LF_mixed_rho_min"
+          },
+          "upper_source": {
+            "rho_ohm_m": 9.6500000004825,
+            "tissue": "Heart Muscle",
+            "origin": "LF_mixed_rho_max"
+          },
+          "tissue_members": [
+            "Blood",
+            "Heart Muscle"
+          ]
+        },
+        "lung_inflated": {
+          "rho_bounds_ohm_m": [
+            9.74127148952717,
+            24.074073806584366
+          ],
+          "lower_source": {
+            "rho_ohm_m": 9.74127148952717,
+            "tissue": "Lung (Inflated)",
+            "origin": "Gabriel_50000Hz"
+          },
+          "upper_source": {
+            "rho_ohm_m": 24.074073806584366,
+            "tissue": "Lung (Inflated)",
+            "origin": "LF_mixed_rho_max"
+          },
+          "tissue_members": [
+            "Lung (Inflated)"
+          ]
+        },
+        "lung_deflated": {
+          "rho_bounds_ohm_m": [
+            3.8172830517819216,
+            23.90000010516
+          ],
+          "lower_source": {
+            "rho_ohm_m": 3.8172830517819216,
+            "tissue": "Lung (Deflated)",
+            "origin": "Gabriel_50000Hz"
+          },
+          "upper_source": {
+            "rho_ohm_m": 23.90000010516,
+            "tissue": "Lung (Deflated)",
+            "origin": "LF_mixed_rho_max"
+          },
+          "tissue_members": [
+            "Lung (Deflated)"
+          ]
+        },
+        "lung_unspecified": {
+          "rho_bounds_ohm_m": [
+            3.8172830517819216,
+            24.074073806584366
+          ],
+          "lower_source": {
+            "rho_ohm_m": 3.8172830517819216,
+            "tissue": "Lung (Deflated)",
+            "origin": "Gabriel_50000Hz"
+          },
+          "upper_source": {
+            "rho_ohm_m": 24.074073806584366,
+            "tissue": "Lung (Inflated)",
+            "origin": "LF_mixed_rho_max"
+          },
+          "tissue_members": [
+            "Lung (Inflated)",
+            "Lung (Deflated)"
+          ]
+        },
+        "bone_cortical": {
+          "rho_bounds_ohm_m": [
+            48.445126057963456,
+            539.9999568000035
+          ],
+          "lower_source": {
+            "rho_ohm_m": 48.445126057963456,
+            "tissue": "Bone (Cortical)",
+            "origin": "Gabriel_50000Hz"
+          },
+          "upper_source": {
+            "rho_ohm_m": 539.9999568000035,
+            "tissue": "Bone (Cortical)",
+            "origin": "LF_mixed_rho_max"
+          },
+          "tissue_members": [
+            "Bone (Cortical)"
+          ]
+        },
+        "bone_cancellous": {
+          "rho_bounds_ohm_m": [
+            5.0,
+            166.66666666666666
+          ],
+          "lower_source": {
+            "rho_ohm_m": 5.0,
+            "tissue": "Bone (Cancellous)",
+            "origin": "LF_mixed_rho_min"
+          },
+          "upper_source": {
+            "rho_ohm_m": 166.66666666666666,
+            "tissue": "Bone (Cancellous)",
+            "origin": "LF_mixed_rho_max"
+          },
+          "tissue_members": [
+            "Bone (Cancellous)"
+          ]
+        }
+      },
+      "default_nominal": null,
+      "frequency_transfer_assumption": "LF mixed min/max applied as uncertainty scenarios at this frequency; not a measured frequency-specific interval",
+      "physiological_population_interval": false,
+      "pulse_or_breathing_amplitude": false,
+      "independent_joint_distribution_assumed": false,
+      "anisotropy_covered": false
+    },
+    "100000": {
+      "id": "itis_v5_lf_gabriel_screening_100000hz_v1",
+      "frequency_hz": 100000,
+      "compartments": {
+        "soft": {
+          "rho_bounds_ohm_m": [
+            1.3774104683195594,
+            41.68988445815282
+          ],
+          "lower_source": {
+            "rho_ohm_m": 1.3774104683195594,
+            "tissue": "Muscle",
+            "origin": "LF_mixed_rho_min"
+          },
+          "upper_source": {
+            "rho_ohm_m": 41.68988445815282,
+            "tissue": "Fat",
+            "origin": "LF_mixed_rho_max"
+          },
+          "tissue_members": [
+            "Muscle",
+            "Fat"
+          ]
+        },
+        "heart": {
+          "rho_bounds_ohm_m": [
+            1.0575600000214898,
+            9.6500000004825
+          ],
+          "lower_source": {
+            "rho_ohm_m": 1.0575600000214898,
+            "tissue": "Blood",
+            "origin": "LF_mixed_rho_min"
+          },
+          "upper_source": {
+            "rho_ohm_m": 9.6500000004825,
+            "tissue": "Heart Muscle",
+            "origin": "LF_mixed_rho_max"
+          },
+          "tissue_members": [
+            "Blood",
+            "Heart Muscle"
+          ]
+        },
+        "lung_inflated": {
+          "rho_bounds_ohm_m": [
+            9.315252924705511,
+            24.074073806584366
+          ],
+          "lower_source": {
+            "rho_ohm_m": 9.315252924705511,
+            "tissue": "Lung (Inflated)",
+            "origin": "Gabriel_100000Hz"
+          },
+          "upper_source": {
+            "rho_ohm_m": 24.074073806584366,
+            "tissue": "Lung (Inflated)",
+            "origin": "LF_mixed_rho_max"
+          },
+          "tissue_members": [
+            "Lung (Inflated)"
+          ]
+        },
+        "lung_deflated": {
+          "rho_bounds_ohm_m": [
+            3.681694080732876,
+            23.90000010516
+          ],
+          "lower_source": {
+            "rho_ohm_m": 3.681694080732876,
+            "tissue": "Lung (Deflated)",
+            "origin": "Gabriel_100000Hz"
+          },
+          "upper_source": {
+            "rho_ohm_m": 23.90000010516,
+            "tissue": "Lung (Deflated)",
+            "origin": "LF_mixed_rho_max"
+          },
+          "tissue_members": [
+            "Lung (Deflated)"
+          ]
+        },
+        "lung_unspecified": {
+          "rho_bounds_ohm_m": [
+            3.681694080732876,
+            24.074073806584366
+          ],
+          "lower_source": {
+            "rho_ohm_m": 3.681694080732876,
+            "tissue": "Lung (Deflated)",
+            "origin": "Gabriel_100000Hz"
+          },
+          "upper_source": {
+            "rho_ohm_m": 24.074073806584366,
+            "tissue": "Lung (Inflated)",
+            "origin": "LF_mixed_rho_max"
+          },
+          "tissue_members": [
+            "Lung (Inflated)",
+            "Lung (Deflated)"
+          ]
+        },
+        "bone_cortical": {
+          "rho_bounds_ohm_m": [
+            48.09767352557847,
+            539.9999568000035
+          ],
+          "lower_source": {
+            "rho_ohm_m": 48.09767352557847,
+            "tissue": "Bone (Cortical)",
+            "origin": "Gabriel_100000Hz"
+          },
+          "upper_source": {
+            "rho_ohm_m": 539.9999568000035,
+            "tissue": "Bone (Cortical)",
+            "origin": "LF_mixed_rho_max"
+          },
+          "tissue_members": [
+            "Bone (Cortical)"
+          ]
+        },
+        "bone_cancellous": {
+          "rho_bounds_ohm_m": [
+            5.0,
+            166.66666666666666
+          ],
+          "lower_source": {
+            "rho_ohm_m": 5.0,
+            "tissue": "Bone (Cancellous)",
+            "origin": "LF_mixed_rho_min"
+          },
+          "upper_source": {
+            "rho_ohm_m": 166.66666666666666,
+            "tissue": "Bone (Cancellous)",
+            "origin": "LF_mixed_rho_max"
+          },
+          "tissue_members": [
+            "Bone (Cancellous)"
+          ]
+        }
+      },
+      "default_nominal": null,
+      "frequency_transfer_assumption": "LF mixed min/max applied as uncertainty scenarios at this frequency; not a measured frequency-specific interval",
+      "physiological_population_interval": false,
+      "pulse_or_breathing_amplitude": false,
+      "independent_joint_distribution_assumed": false,
+      "anisotropy_covered": false
+    }
+  },
+  "policy": {
+    "scope": "prospective direct tissue-property calculations and sensitivity",
+    "no_automatic_midpoint_nominal": true,
+    "legacy_runs_are_immutable": true,
+    "inverse_search_bounds_are_separate": true,
+    "required_run_metadata": [
+      "registry_id",
+      "registry_sha256",
+      "profile_id",
+      "frequency_hz",
+      "material_mapping",
+      "rho_ohm_m",
+      "nominal_rationale",
+      "literature_frequency_transfer_assumption",
+      "fixed_parameters"
+    ]
+  }
+}
