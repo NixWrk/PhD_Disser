@@ -1,0 +1,6 @@
+{
+  "reason": "Rename finite-difference parameter loop index to avoid sharing the forward electrode loop variable. Numerical forward/objective formulas unchanged.",
+  "prior_source_sha256": "93a449080326f12af8aab91339dee94901d5e97014812a408bf65700d30b4326",
+  "current_source_sha256": "a817d5cfa28d7edbb587852b509fcebc5cfcaff9287a0bd283768cb1aa61cfd6",
+  "explicit_prior_worker": true
+}

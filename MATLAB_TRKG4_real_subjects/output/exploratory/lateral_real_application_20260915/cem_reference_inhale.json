@@ -1,0 +1,92 @@
+{
+  "complete": true,
+  "identity": {
+    "prepared_sha256": "2e487e40d6f69a41c7e1c9b7d24c0295ae168eab38bacc7454b2b28e4df474d4",
+    "geometry_sha256": "82d943f39fdd348ad5577ddd730f88bce83d78f3f3688b98a2ad128cb770abd3",
+    "input_contract_sha256": "9062295973a26f7da4bd344b84fa652edf3fdffd311fe8073161670c4f1a8be2",
+    "observations_sha256": "29e57ee9a6c1c71c280e6a7a0041a7909189deecfc88290f75991f83ad4b363c",
+    "worker_sha256": "a817d5cfa28d7edbb587852b509fcebc5cfcaff9287a0bd283768cb1aa61cfd6",
+    "contact_ohm_m2": 0.00015915494309189532,
+    "current_ampere": 1,
+    "requested_area_mm2": 70.685834705770347,
+    "sizes_mm": [
+      50,
+      60,
+      70,
+      80,
+      90,
+      110,
+      120,
+      130,
+      140
+    ],
+    "signal_units_accepted": true
+  },
+  "model": "reference",
+  "scenario": "inhale",
+  "best": {
+    "start": 2,
+    "rho": [
+      5.6865500595900773,
+      24.074073805682698
+    ],
+    "rmse_ohm": 2.7475748704172394,
+    "exitflag": 1,
+    "iterations": 11,
+    "function_count": 12,
+    "condition_log_parameters": 65.598291054504983,
+    "at_bound": [
+      false,
+      true
+    ],
+    "residual_gradient_log": [
+      -6.3156512118843642E-9,
+      -0.37995410408234143
+    ]
+  },
+  "starts": [
+    {
+      "start": 1,
+      "rho": [
+        5.6865500595446079,
+        24.074073806583506
+      ],
+      "rmse_ohm": 2.7475748707342724,
+      "exitflag": 2,
+      "iterations": 10,
+      "function_count": 11,
+      "condition_log_parameters": 65.598291091900023,
+      "at_bound": [
+        false,
+        true
+      ],
+      "residual_gradient_log": [
+        -6.6127015922271915E-7,
+        -0.37995412407592766
+      ]
+    },
+    {
+      "start": 2,
+      "rho": [
+        5.6865500595900773,
+        24.074073805682698
+      ],
+      "rmse_ohm": 2.7475748704172394,
+      "exitflag": 1,
+      "iterations": 11,
+      "function_count": 12,
+      "condition_log_parameters": 65.598291054504983,
+      "at_bound": [
+        false,
+        true
+      ],
+      "residual_gradient_log": [
+        -6.3156512118843642E-9,
+        -0.37995410408234143
+      ]
+    }
+  ],
+  "start_rmse_spread": 3.1703306646591045E-10,
+  "residual_rms_recomputed": 2.7475748704172394,
+  "global_minimum_proven": false
+}

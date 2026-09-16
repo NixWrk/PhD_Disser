@@ -1,0 +1,29 @@
+{
+  "date_utc": "2026-09-16T07:33:06.152032+00:00",
+  "scope": "conclusions_only",
+  "changed_cells": [
+    2,
+    3,
+    5,
+    7,
+    9,
+    12,
+    14,
+    16,
+    17
+  ],
+  "computation_ast_unchanged": true,
+  "nonprose_outputs_unchanged": true,
+  "formulae_unchanged": true,
+  "figure_captions_unchanged": true,
+  "cell_ids_and_execution_counts_unchanged": true,
+  "cells_reexecuted": false,
+  "all_frozen_inputs_unchanged": true,
+  "sha256": {
+    "33.08_Применение_КТ_модели_к_боковым_измерениям.ipynb": "151afe5b0e9101b28740284bef9fd0c89b864ff227d987f25fd2a969b8315a53",
+    "33.08_Применение_КТ_модели_к_боковым_измерениям.html": "9b074003b396029a0af6c649e9f909ffb5dc926cfee168b965254682d66aabc9",
+    "build_lateral_real_application.py": "c3b8e3ea34f3d5fbfbb6d3a22a81cae10375a6903dc6cd74234b612f03a52880"
+  },
+  "prior_execution_manifest_unchanged_sha256": "ed37b1042a04300dd3bceb9813da1ab14be8fce67f4b4442248e11a97d72dd6f",
+  "generator_code_cells_compile_and_match_notebook": true
+}

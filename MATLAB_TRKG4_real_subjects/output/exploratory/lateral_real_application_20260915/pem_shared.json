@@ -1,0 +1,15 @@
+{
+  "rho": [
+    5.738779098390974,
+    24.07407380658436,
+    9.74127148952718
+  ],
+  "rmse_ohm": 8.540322806918661,
+  "scenario": "shared_rho1",
+  "model": "variable_transverse",
+  "order": [
+    "rho1",
+    "rho2_inhale",
+    "rho2_exhale"
+  ]
+}

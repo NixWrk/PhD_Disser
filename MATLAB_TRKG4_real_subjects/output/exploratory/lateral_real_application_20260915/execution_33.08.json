@@ -1,0 +1,48 @@
+{
+  "code_cells": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "expected_sha256": {
+    "input_contract.json": "9062295973a26f7da4bd344b84fa652edf3fdffd311fe8073161670c4f1a8be2",
+    "observations.csv": "29e57ee9a6c1c71c280e6a7a0041a7909189deecfc88290f75991f83ad4b363c",
+    "pulse_inputs.csv": "857ae3575383f2361c24e7b3f488f60bb22b4384c62282c96cd0ee19881d0840",
+    "pem_fits.csv": "0bf7a4b7966d8db987e5098c389892404fba95172d1aacb77f82af1a272e5588",
+    "pem_predictions.csv": "2f962b00173f32ce69a800c7d0fa0c03cfb08d799b6990a53f6af3741d29161b",
+    "pem_shared.json": "0621762ef8d3dc6d2ccbe2c4ae8315927f504521d5276cd6c17856144ad1e10a",
+    "baseline_fits.csv": "e9bff235cc4ab41d6dcac9532ffe99b1b84c2491e4804b56da6d8ff717a4d790",
+    "baseline_predictions.csv": "71c7346239f80c053872be159905cc96b4681ea759d9a964f118d82d6637853e",
+    "pulse_fits.csv": "b02831147ec546b8fb57353f502d3b437de1130ff633848bb5dd0e087aa6a3bc",
+    "pulse_waveforms.csv": "23f5b5d645a4a6dbb4a51612faac36882ce210adadd763e7c999d2176d786b41",
+    "cem_identity.json": "057404f8f7cf85d3750aae5ed265ebad29c79db4e3c3f69893a3e2d3009602f9",
+    "cem_execution.json": "7bca6a21fb462e95b54b41eb62ffba8bf6c7ed547521064f87312addfe016967",
+    "cem_derivative_qc.json": "c629e2d0afe938f086793ff219fd28f72660956f3823fe891459f079b3fc899b",
+    "cem_variable_transverse_shared.json": "b8a7e85b0f26cc3172bdd5a7d7869e9c642016a936782a36952f08fe1d421a66",
+    "cem_variable_transverse_shared_predictions.csv": "1807032d082b139b4779c0fe527731e362187c6028650331f85b7be443005f19",
+    "cem_variable_transverse_inhale.json": "ee72faa311d46655150686909fc1b69eab2f8e91d73efea53beafb831ea9a37b",
+    "cem_variable_transverse_inhale_predictions.csv": "2e15d26fc6f1ee6b83c74475de79e49674cb93fdf808e060445a66f5377c1bd4",
+    "cem_variable_transverse_exhale.json": "636aeb85a42ccbb89fe2846af61e43043fed1635a89bc4233d9e351316c05b16",
+    "cem_variable_transverse_exhale_predictions.csv": "0c081dff767f52ca5496850be0f2b06d2440bcc3000e106647a485357389dd8d",
+    "cem_reference_inhale.json": "b5b429ddaea814a535d8ae1bbf6f95cf9d40adb81537d133a12921021f46ae35",
+    "cem_reference_inhale_predictions.csv": "ff6a4bf4cba5cc66f63b505d559e176d2b85d60a11c48bde4c98e92c8b25b710",
+    "cem_reference_exhale.json": "0266a3575e5dd01445c2a6d17c1faf1a234ec48c3e4f99523225d8017b907ff7",
+    "cem_reference_exhale_predictions.csv": "f02fbc67a4e4b9cdd23acd965c2c28e725117a85bbd8adce224ae1822d84af78",
+    "cem_variable_transverse_exhale_resume_qc.json": "c0f75c47c36110ad3b510931ce8c425c605868d20c18748082e7ecc0c09dcb3f",
+    "cem_variable_transverse_inhale_resume_qc.json": "9a8f9066fb2139248b2a4fff570c33c2e413a9c0b6812bc2746460f974a22179",
+    "cem_variable_transverse_shared_resume_qc.json": "9e008d0685f1ccbd3b06de8acf1ae5965662078a1e40655771de141de669f25d",
+    "cem_prior_identity.json": "c3bcffdebaccec619010693db9ea058a2be42d86b1d3583cd1141f9d02025e66",
+    "cem_resume_reason.json": "681a608df7e75f30c1995417c19966786f34b0a8c0aa77b4bafa3b0080c002fe",
+    "cem_worker_before_derivative_index_fix.m": "93a449080326f12af8aab91339dee94901d5e97014812a408bf65700d30b4326"
+  },
+  "artifact_sha256": {
+    "33.08_Применение_КТ_модели_к_боковым_измерениям.ipynb": "8ff3d80f76f3ea10b739558faec1dd5e98651d096e6936cf830f103c7c670dad",
+    "33.08_Применение_КТ_модели_к_боковым_измерениям.html": "c1ab5d7e59802f78637f4945b63e498838dfc475286ac3f1a6eb3a2b8aa652a1",
+    "33.08_Применение_КТ_модели_к_боковым_измерениям.md": "b3bfdb67ed0f1e9bd62e5deaa218c32b249c01124fdf59fb4ef040072247cf40"
+  },
+  "scientific_status": "exploratory_hypothesis_not_validated"
+}

@@ -1,0 +1,12 @@
+{
+  "status": "passed_numerical_and_document_checks",
+  "code_cells": 7,
+  "figures": 2,
+  "tables": 4,
+  "scientific_status": "exploratory_hypothesis_not_validated",
+  "artifact_sha256": {
+    "33.08_Применение_КТ_модели_к_боковым_измерениям.ipynb": "151afe5b0e9101b28740284bef9fd0c89b864ff227d987f25fd2a969b8315a53",
+    "33.08_Применение_КТ_модели_к_боковым_измерениям.html": "9b074003b396029a0af6c649e9f909ffb5dc926cfee168b965254682d66aabc9"
+  },
+  "input_contract_sha256": "9062295973a26f7da4bd344b84fa652edf3fdffd311fe8073161670c4f1a8be2"
+}

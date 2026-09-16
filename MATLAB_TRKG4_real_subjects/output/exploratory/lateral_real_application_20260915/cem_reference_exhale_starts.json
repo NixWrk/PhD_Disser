@@ -1,0 +1,42 @@
+[
+  {
+    "start": 1,
+    "rho": [
+      5.5193362729702233,
+      10.399197678356611
+    ],
+    "rmse_ohm": 2.2571264072267581,
+    "exitflag": 2,
+    "iterations": 16,
+    "function_count": 17,
+    "condition_log_parameters": 42.137893486574988,
+    "at_bound": [
+      false,
+      false
+    ],
+    "residual_gradient_log": [
+      3.7744375605244488E-7,
+      6.2147417010136348E-7
+    ]
+  },
+  {
+    "start": 2,
+    "rho": [
+      5.5193362902600942,
+      10.399196585184244
+    ],
+    "rmse_ohm": 2.2571264076402513,
+    "exitflag": 2,
+    "iterations": 9,
+    "function_count": 10,
+    "condition_log_parameters": 42.13789143164977,
+    "at_bound": [
+      false,
+      false
+    ],
+    "residual_gradient_log": [
+      2.2225240235861241E-7,
+      6.9429029439207728E-9
+    ]
+  }
+]

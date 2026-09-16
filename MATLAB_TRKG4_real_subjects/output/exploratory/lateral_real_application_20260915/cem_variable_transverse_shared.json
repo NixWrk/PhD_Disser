@@ -1,0 +1,101 @@
+{
+  "complete": true,
+  "identity": {
+    "prepared_sha256": "2e487e40d6f69a41c7e1c9b7d24c0295ae168eab38bacc7454b2b28e4df474d4",
+    "geometry_sha256": "82d943f39fdd348ad5577ddd730f88bce83d78f3f3688b98a2ad128cb770abd3",
+    "input_contract_sha256": "9062295973a26f7da4bd344b84fa652edf3fdffd311fe8073161670c4f1a8be2",
+    "observations_sha256": "29e57ee9a6c1c71c280e6a7a0041a7909189deecfc88290f75991f83ad4b363c",
+    "worker_sha256": "93a449080326f12af8aab91339dee94901d5e97014812a408bf65700d30b4326",
+    "contact_ohm_m2": 0.00015915494309189532,
+    "current_ampere": 1,
+    "requested_area_mm2": 70.685834705770347,
+    "sizes_mm": [
+      50,
+      60,
+      70,
+      80,
+      90,
+      110,
+      120,
+      130,
+      140
+    ],
+    "signal_units_accepted": true
+  },
+  "model": "variable_transverse",
+  "scenario": "shared",
+  "best": {
+    "start": 2,
+    "rho": [
+      5.6086990150344631,
+      24.074073806580554,
+      9.74127148952901
+    ],
+    "rmse_ohm": 2.7107562060360193,
+    "exitflag": 2,
+    "iterations": 15,
+    "function_count": 16,
+    "condition_log_parameters": 79.0263068562441,
+    "at_bound": [
+      false,
+      true,
+      true
+    ],
+    "residual_gradient_log": [
+      8.352532941938805E-7,
+      -1.6485890640722318,
+      2.1467961874606321
+    ]
+  },
+  "starts": [
+    {
+      "start": 1,
+      "rho": [
+        5.6086990147041744,
+        24.074073806583836,
+        9.7412714895273886
+      ],
+      "rmse_ohm": 2.710756206179326,
+      "exitflag": 2,
+      "iterations": 9,
+      "function_count": 10,
+      "condition_log_parameters": 79.026306889675837,
+      "at_bound": [
+        false,
+        true,
+        true
+      ],
+      "residual_gradient_log": [
+        -6.0632717710296462E-8,
+        -1.6485890733890072,
+        2.1467961658225745
+      ]
+    },
+    {
+      "start": 2,
+      "rho": [
+        5.6086990150344631,
+        24.074073806580554,
+        9.74127148952901
+      ],
+      "rmse_ohm": 2.7107562060360193,
+      "exitflag": 2,
+      "iterations": 15,
+      "function_count": 16,
+      "condition_log_parameters": 79.0263068562441,
+      "at_bound": [
+        false,
+        true,
+        true
+      ],
+      "residual_gradient_log": [
+        8.352532941938805E-7,
+        -1.6485890640722318,
+        2.1467961874606321
+      ]
+    }
+  ],
+  "start_rmse_spread": 1.4330669984019551E-10,
+  "residual_rms_recomputed": 2.7107562060360193,
+  "global_minimum_proven": false
+}

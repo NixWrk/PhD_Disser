@@ -1,0 +1,92 @@
+{
+  "complete": true,
+  "identity": {
+    "prepared_sha256": "2e487e40d6f69a41c7e1c9b7d24c0295ae168eab38bacc7454b2b28e4df474d4",
+    "geometry_sha256": "82d943f39fdd348ad5577ddd730f88bce83d78f3f3688b98a2ad128cb770abd3",
+    "input_contract_sha256": "9062295973a26f7da4bd344b84fa652edf3fdffd311fe8073161670c4f1a8be2",
+    "observations_sha256": "29e57ee9a6c1c71c280e6a7a0041a7909189deecfc88290f75991f83ad4b363c",
+    "worker_sha256": "93a449080326f12af8aab91339dee94901d5e97014812a408bf65700d30b4326",
+    "contact_ohm_m2": 0.00015915494309189532,
+    "current_ampere": 1,
+    "requested_area_mm2": 70.685834705770347,
+    "sizes_mm": [
+      50,
+      60,
+      70,
+      80,
+      90,
+      110,
+      120,
+      130,
+      140
+    ],
+    "signal_units_accepted": true
+  },
+  "model": "variable_transverse",
+  "scenario": "exhale",
+  "best": {
+    "start": 1,
+    "rho": [
+      5.5200783886165263,
+      10.26070627667159
+    ],
+    "rmse_ohm": 2.2577646666596909,
+    "exitflag": 2,
+    "iterations": 12,
+    "function_count": 13,
+    "condition_log_parameters": 41.111772646864438,
+    "at_bound": [
+      false,
+      false
+    ],
+    "residual_gradient_log": [
+      6.4333332893006127E-7,
+      1.7162001202879967E-8
+    ]
+  },
+  "starts": [
+    {
+      "start": 1,
+      "rho": [
+        5.5200783886165263,
+        10.26070627667159
+      ],
+      "rmse_ohm": 2.2577646666596909,
+      "exitflag": 2,
+      "iterations": 12,
+      "function_count": 13,
+      "condition_log_parameters": 41.111772646864438,
+      "at_bound": [
+        false,
+        false
+      ],
+      "residual_gradient_log": [
+        6.4333332893006127E-7,
+        1.7162001202879967E-8
+      ]
+    },
+    {
+      "start": 2,
+      "rho": [
+        5.5200783880787343,
+        10.260706292664063
+      ],
+      "rmse_ohm": 2.2577646669837512,
+      "exitflag": 2,
+      "iterations": 11,
+      "function_count": 12,
+      "condition_log_parameters": 41.111772688266967,
+      "at_bound": [
+        false,
+        false
+      ],
+      "residual_gradient_log": [
+        1.4469774277535583E-7,
+        8.95924953978364E-9
+      ]
+    }
+  ],
+  "start_rmse_spread": 3.2406033412257784E-10,
+  "residual_rms_recomputed": 2.2577646666596909,
+  "global_minimum_proven": false
+}

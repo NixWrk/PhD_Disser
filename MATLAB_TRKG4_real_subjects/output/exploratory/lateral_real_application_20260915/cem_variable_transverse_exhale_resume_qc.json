@@ -1,0 +1,5 @@
+{
+  "prediction_max_error_ohm": 4.2632564145606011E-14,
+  "jacobian_relative_error": 1.9764505354479546E-15,
+  "prior_fit_worker_sha256": "93a449080326f12af8aab91339dee94901d5e97014812a408bf65700d30b4326"
+}

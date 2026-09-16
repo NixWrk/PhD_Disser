@@ -1,0 +1,65 @@
+{
+  "complete": true,
+  "status": "exploratory_hypothesis_not_validated",
+  "identity": {
+    "prepared_sha256": "2e487e40d6f69a41c7e1c9b7d24c0295ae168eab38bacc7454b2b28e4df474d4",
+    "geometry_sha256": "82d943f39fdd348ad5577ddd730f88bce83d78f3f3688b98a2ad128cb770abd3",
+    "input_contract_sha256": "9062295973a26f7da4bd344b84fa652edf3fdffd311fe8073161670c4f1a8be2",
+    "observations_sha256": "29e57ee9a6c1c71c280e6a7a0041a7909189deecfc88290f75991f83ad4b363c",
+    "worker_sha256": "a817d5cfa28d7edbb587852b509fcebc5cfcaff9287a0bd283768cb1aa61cfd6",
+    "contact_ohm_m2": 0.00015915494309189532,
+    "current_ampere": 1,
+    "requested_area_mm2": 70.685834705770347,
+    "sizes_mm": [
+      50,
+      60,
+      70,
+      80,
+      90,
+      110,
+      120,
+      130,
+      140
+    ],
+    "signal_units_accepted": true
+  },
+  "accepted_prior_fit_identity": {
+    "prepared_sha256": "2e487e40d6f69a41c7e1c9b7d24c0295ae168eab38bacc7454b2b28e4df474d4",
+    "geometry_sha256": "82d943f39fdd348ad5577ddd730f88bce83d78f3f3688b98a2ad128cb770abd3",
+    "input_contract_sha256": "9062295973a26f7da4bd344b84fa652edf3fdffd311fe8073161670c4f1a8be2",
+    "observations_sha256": "29e57ee9a6c1c71c280e6a7a0041a7909189deecfc88290f75991f83ad4b363c",
+    "worker_sha256": "93a449080326f12af8aab91339dee94901d5e97014812a408bf65700d30b4326",
+    "contact_ohm_m2": 0.00015915494309189532,
+    "current_ampere": 1,
+    "requested_area_mm2": 70.685834705770347,
+    "sizes_mm": [
+      50,
+      60,
+      70,
+      80,
+      90,
+      110,
+      120,
+      130,
+      140
+    ],
+    "signal_units_accepted": true
+  },
+  "baseline_reproduction": [
+    {
+      "model": "variable_transverse",
+      "baseline_Z_max_error_ohm": 5.6843418860808015E-14,
+      "baseline_J_relative_error": 1.8503814898810665E-11
+    },
+    {
+      "model": "reference",
+      "baseline_Z_max_error_ohm": 7.1054273576010019E-14,
+      "baseline_J_relative_error": 3.3138049654822093E-11
+    }
+  ],
+  "new_cached_parameter_evaluations": 59,
+  "global_optimum_proved": false,
+  "geometry_fixed": true,
+  "new_mesh": false,
+  "independent_tissue_validation": false
+}

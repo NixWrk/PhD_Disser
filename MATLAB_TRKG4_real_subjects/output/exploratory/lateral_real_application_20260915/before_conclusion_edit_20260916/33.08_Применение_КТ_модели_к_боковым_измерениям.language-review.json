@@ -1,0 +1,43 @@
+{
+  "reviewed_at_utc": "2026-09-15T16:10:26.489596+00:00",
+  "skill": "russian-scientific-prose",
+  "mode": "final_semantic_language_review",
+  "scope": "Полный читательский текст нового ноутбука 33.08, его Markdown-паспорт, четыре таблицы и подписи/оси/легенды двух рисунков. Навигационные документы не объявляются полностью проверенными.",
+  "status": "passed_for_scoped_final_revision",
+  "reader_text_read_completely_after_last_edit": true,
+  "review_checks": [
+    "Последовательность задачи, допущений, вычислений, результатов и ограничений",
+    "Определения символов и единиц в обеих формулах",
+    "Различение геометрической и электродной моделей",
+    "Различение дыхательной разности и пульсового размаха",
+    "Различение невязки импеданса и точности восстановления тканей",
+    "Границы поиска отмечены в раздельном и совместном сценариях",
+    "Четыре подписи над таблицами и две подписи под рисунками",
+    "Ограничения принятых данных и двухтканного описания",
+    "Ссылки на исходные ноутбуки, литературу и повторение расчёта"
+  ],
+  "findings_remaining": [],
+  "artifact_sha256": {
+    "Colab Notebooks\\33.08_Применение_КТ_модели_к_боковым_измерениям.ipynb": "8ff3d80f76f3ea10b739558faec1dd5e98651d096e6936cf830f103c7c670dad",
+    "Colab Notebooks\\33.08_Применение_КТ_модели_к_боковым_измерениям.html": "c1ab5d7e59802f78637f4945b63e498838dfc475286ac3f1a6eb3a2b8aa652a1",
+    "Colab Notebooks\\33.08_Применение_КТ_модели_к_боковым_измерениям.md": "b3bfdb67ed0f1e9bd62e5deaa218c32b249c01124fdf59fb4ef040072247cf40",
+    "MATLAB_TRKG4_real_subjects\\output\\exploratory\\lateral_real_application_20260915\\reader_33.08.md": "9fc8757e413e22024e59ddd6f1affbf0f57aaad88bab83eb34978042dc1a2573"
+  },
+  "source_sha256": {
+    "MATLAB_TRKG4_real_subjects\\notebooks\\build_lateral_real_application.py": "475022009a0fe82abc621e9be516e84c2937be505d38aea7bcd5b5b93e83d8a8",
+    "MATLAB_TRKG4_real_subjects\\tools\\lateral_real_application.py": "12d4321eb3c6b335e6d60d489d8cd4fad72c5a1c7151fe7c78444bfab56c434f",
+    "MATLAB_TRKG4_real_subjects\\src\\run_lateral_real_application.m": "a817d5cfa28d7edbb587852b509fcebc5cfcaff9287a0bd283768cb1aa61cfd6"
+  },
+  "ancillary_full_text_review": {
+    "Colab Notebooks\\20.16_Поперечная_форма_лёгкого_и_точность_обратной_модели.md": "527532ffd71ed576c57675c41d82219b0e612a7d72b5eae062335aa7b38f4b9b",
+    "MATLAB_TRKG4_real_subjects\\output\\exploratory\\lateral_real_application_20260915\\documentation_33.08.md": "39dfac54018f7df9e565949c775168a2943d5c50dc55051cf0a621e5d729787a"
+  },
+  "numerical_and_browser_verification": {
+    "path": "MATLAB_TRKG4_real_subjects\\output\\exploratory\\lateral_real_application_20260915\\verification_33.08.json",
+    "sha256": "751c1863c3a57851261d80729974fff529256e4431ddebfcd23efc10e6e01431"
+  },
+  "local_links_checked": 8,
+  "scientific_status": "exploratory_hypothesis_not_validated",
+  "independent_physiological_validation": false,
+  "language_review_does_not_establish_scientific_validity": true
+}

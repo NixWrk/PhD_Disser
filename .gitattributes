@@ -30,3 +30,10 @@
 
 # This self-contained interactive report exceeds the normal GitHub blob limit.
 MATLAB_TRKG4_real_subjects/output/exploratory/scan_localization_20260910/localization_and_layers.html filter=lfs diff=lfs merge=lfs -text
+
+# Preserve bytes of the hash-bound 33.08 calculations and reader artifacts.
+"Colab Notebooks/33.08_*" -text
+MATLAB_TRKG4_real_subjects/output/exploratory/lateral_real_application_20260915/** -text
+MATLAB_TRKG4_real_subjects/src/run_lateral_real_application.m -text
+MATLAB_TRKG4_real_subjects/tools/lateral_real_application.py -text
+MATLAB_TRKG4_real_subjects/notebooks/build_lateral_real_application.py -text

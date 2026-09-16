@@ -1,0 +1,271 @@
+{
+  "status": "exploratory_hypothesis_not_validated",
+  "subject_id": "exp02_nik",
+  "experiment": "2: MGTU rheocardiomonitor",
+  "candidate": "C01",
+  "centre_mm": [
+    -187.5,
+    31.051379345918,
+    -138.051379345918
+  ],
+  "sizes_mm": [
+    50,
+    60,
+    70,
+    80,
+    90,
+    110,
+    120,
+    130,
+    140
+  ],
+  "bounds_ohm_m": [
+    [
+      1.3774104683195594,
+      10.0
+    ],
+    [
+      9.741271489527174,
+      24.074073806584366
+    ]
+  ],
+  "source_static_sha256": "b56e83593879db46fe86642a95ded9f9d1af741242ed43a351bcbe693deb12f4",
+  "source_pulse_sha256": "961260df4a2add0d786b3da219e2a70083dc8faf5298fe136c1d95906e2ea477",
+  "source_upstream_status": {
+    "12.01_status": "pending_manual_review",
+    "12.01_sha256": "7a6a8133c6ba1e52895a1fae288f2a398d4cbe94f989397a33e2a9f4b66007f9",
+    "breathing_annotation_status": "accepted",
+    "ecg_annotation_status": "accepted"
+  },
+  "source_legacy_signal_semantics": {
+    "column": "RHEO_2_mΩ",
+    "unit": "mOhm_native_file_scale",
+    "gain": "unknown_not_applied",
+    "physical_sign": "unknown_native_sign_preserved",
+    "offset": "per_cycle_median_removed",
+    "timing_calibration": "not_measured"
+  },
+  "signal_interpretation": "Author decision: recorded physical units and sign accepted; no additional gain/offset/sign fitted.",
+  "decision_source": "Colab Notebooks/AGENTS.md: Scientific results, experiments 2-3 measured output units.",
+  "source_code_sha256": "12d4321eb3c6b335e6d60d489d8cd4fad72c5a1c7151fe7c78444bfab56c434f",
+  "geometry_sha256": {
+    "output/exploratory/transverse_consistency_20260914/geometry.json": "82d943f39fdd348ad5577ddd730f88bce83d78f3f3688b98a2ad128cb770abd3",
+    "output/exploratory/transverse_consistency_20260914/geometry_masks.mat": "f31dde70b04137f09352c8f886d4dd7277cc2ef6462d494ece04f8fd74d38d38",
+    "output/exploratory/transverse_consistency_20260914/input_contract.json": "f231228f20722b3f102fed0a27c9cad1ddf78e6e4d4fcea74c70174a8ab21fe0",
+    "output/exploratory/transverse_consistency_20260914/prepared_fem.mat": "2e487e40d6f69a41c7e1c9b7d24c0295ae168eab38bacc7454b2b28e4df474d4",
+    "output/exploratory/transverse_consistency_20260914/contacts.csv": "21120fd308feaeca08c0d730856a8da62653f4677250f8575c748e99e490b78a",
+    "output/exploratory/transverse_consistency_20260914/cem_baseline.csv": "ea0b611b6121bf20158fbfed5c7259153916fb94af8d32cdac39c01dfb69a33f"
+  },
+  "prepared_sha256": {
+    "observations.csv": "29e57ee9a6c1c71c280e6a7a0041a7909189deecfc88290f75991f83ad4b363c",
+    "pulse_inputs.csv": "857ae3575383f2361c24e7b3f488f60bb22b4384c62282c96cd0ee19881d0840"
+  },
+  "provenance": [
+    {
+      "state": "inhale",
+      "L_mm": 50,
+      "n_cycles": 19,
+      "input_sha256": "f230453caab02f7ca3c6dd255ce2ba59972b3b7bbe41fcad2df0e92d8f85962a",
+      "annotation_sha256": {
+        "input_sha256": "f230453caab02f7ca3c6dd255ce2ba59972b3b7bbe41fcad2df0e92d8f85962a",
+        "breathing_sidecar_sha256": "d189740aebaa9823fbd7b50dd030f3fc1cc8acf5af2afc4be5a1beb299766ecf",
+        "ecg_sidecar_sha256": "eb0f40494d8ae2408b1d6429c3862dd6e4e49894d727a4cdaaf21ebebeb74584"
+      }
+    },
+    {
+      "state": "inhale",
+      "L_mm": 60,
+      "n_cycles": 18,
+      "input_sha256": "457a9c313389d1027b1650675ec5e4d35bd48de41c85f842e5bcfba6fe806f17",
+      "annotation_sha256": {
+        "input_sha256": "457a9c313389d1027b1650675ec5e4d35bd48de41c85f842e5bcfba6fe806f17",
+        "breathing_sidecar_sha256": "7242a047419d9ba6a894a4e501de3f8b26ea4b7a52b93625b75eda1de399a8d2",
+        "ecg_sidecar_sha256": "5aec5106bd40e5051aacc9eb0fe71244b3edf4492aa95ffe59de5b9e0823385c"
+      }
+    },
+    {
+      "state": "inhale",
+      "L_mm": 70,
+      "n_cycles": 11,
+      "input_sha256": "3eb16c060e856d456f242dd045c328c3296f8894e1439d0972e5a21fe9d5961d",
+      "annotation_sha256": {
+        "input_sha256": "3eb16c060e856d456f242dd045c328c3296f8894e1439d0972e5a21fe9d5961d",
+        "breathing_sidecar_sha256": "b8a4773cc52defc9c8bf76bfd8ebdff6df201a116eb3fa78096f9601af175204",
+        "ecg_sidecar_sha256": "1b52ea72b101afb4bfee2495c0a19a8fec3b7f4b3cc3b02cee2d57996c973e20"
+      }
+    },
+    {
+      "state": "inhale",
+      "L_mm": 80,
+      "n_cycles": 20,
+      "input_sha256": "5c3d49578fcc44a220f361ac2cb917f5b0e54c81adda18daf8ca704dde1153f7",
+      "annotation_sha256": {
+        "input_sha256": "5c3d49578fcc44a220f361ac2cb917f5b0e54c81adda18daf8ca704dde1153f7",
+        "breathing_sidecar_sha256": "e463b4746d5a8f3e580333c35fa5f25e37276f47f5c3bf4bd963401885c3109d",
+        "ecg_sidecar_sha256": "0e27adca01d4988a0f14c1811b54b0136b0b91fb263771eb728d20d7dcea6618"
+      }
+    },
+    {
+      "state": "inhale",
+      "L_mm": 90,
+      "n_cycles": 19,
+      "input_sha256": "61792d81e4b89349660c769b6896dd64eed30f6c968043fd964526cc645829b0",
+      "annotation_sha256": {
+        "input_sha256": "61792d81e4b89349660c769b6896dd64eed30f6c968043fd964526cc645829b0",
+        "breathing_sidecar_sha256": "85ba8b5f36032b06e2f0aea5ef35c7b0aa4028275056de024e98546cdf72ae2b",
+        "ecg_sidecar_sha256": "741f546f72905f3ebcf15db96942ecd7de0ae53fe6052144fcd81b888f016b42"
+      }
+    },
+    {
+      "state": "inhale",
+      "L_mm": 110,
+      "n_cycles": 19,
+      "input_sha256": "f8e058ae0d2a7d5b5459e33e21932967cb37377d25a46accfb8bca2ad0a7db99",
+      "annotation_sha256": {
+        "input_sha256": "f8e058ae0d2a7d5b5459e33e21932967cb37377d25a46accfb8bca2ad0a7db99",
+        "breathing_sidecar_sha256": "877d0db0ce28ff16fe11adcef623b0a2f27ae846ddefc9ed9b61ba6aad05b914",
+        "ecg_sidecar_sha256": "bf464637b1f90853de420041371246ae7b9495519f4213a31e6ea02e2ace7292"
+      }
+    },
+    {
+      "state": "inhale",
+      "L_mm": 120,
+      "n_cycles": 19,
+      "input_sha256": "3813722c0a78cfd55238a2729250b2606f36f2829dde356e93c81eee9594b6eb",
+      "annotation_sha256": {
+        "input_sha256": "3813722c0a78cfd55238a2729250b2606f36f2829dde356e93c81eee9594b6eb",
+        "breathing_sidecar_sha256": "27713e36951d93899085ba862e8ce7c04e7ab1864e2d4a8c53c11acad5ef2c3a",
+        "ecg_sidecar_sha256": "026cd2cb0cef0468780f6b53c4ffbc1314a0f825f9fb271f6e650eb2e0d2eb10"
+      }
+    },
+    {
+      "state": "inhale",
+      "L_mm": 130,
+      "n_cycles": 19,
+      "input_sha256": "0afa461c34a0558e3ed67844f4174026d1948303d9525a55d76bc991193527ab",
+      "annotation_sha256": {
+        "input_sha256": "0afa461c34a0558e3ed67844f4174026d1948303d9525a55d76bc991193527ab",
+        "breathing_sidecar_sha256": "e3539d02207a351646d960e6382138a97afbb0956a3030261aa60fd0e05096bf",
+        "ecg_sidecar_sha256": "91b370cdcc084418a25b9e03bb822ad05f0c80eab6cba369755adf98ed37ed64"
+      }
+    },
+    {
+      "state": "inhale",
+      "L_mm": 140,
+      "n_cycles": 19,
+      "input_sha256": "abb001faf8162073a7284176b2c634a48627757557f94893af29e4f3a0a6e6e7",
+      "annotation_sha256": {
+        "input_sha256": "abb001faf8162073a7284176b2c634a48627757557f94893af29e4f3a0a6e6e7",
+        "breathing_sidecar_sha256": "63919ad65bb5ffee3712e9c9a8d8590c6b3b9fd68947d589ce2bb1f1d5cf74e3",
+        "ecg_sidecar_sha256": "cf35a97581000eee99c018207424926270e93942d1f8c95248c89b628b3ac7c0"
+      }
+    },
+    {
+      "state": "exhale",
+      "L_mm": 50,
+      "n_cycles": 20,
+      "input_sha256": "f230453caab02f7ca3c6dd255ce2ba59972b3b7bbe41fcad2df0e92d8f85962a",
+      "annotation_sha256": {
+        "input_sha256": "f230453caab02f7ca3c6dd255ce2ba59972b3b7bbe41fcad2df0e92d8f85962a",
+        "breathing_sidecar_sha256": "d189740aebaa9823fbd7b50dd030f3fc1cc8acf5af2afc4be5a1beb299766ecf",
+        "ecg_sidecar_sha256": "eb0f40494d8ae2408b1d6429c3862dd6e4e49894d727a4cdaaf21ebebeb74584"
+      }
+    },
+    {
+      "state": "exhale",
+      "L_mm": 60,
+      "n_cycles": 21,
+      "input_sha256": "457a9c313389d1027b1650675ec5e4d35bd48de41c85f842e5bcfba6fe806f17",
+      "annotation_sha256": {
+        "input_sha256": "457a9c313389d1027b1650675ec5e4d35bd48de41c85f842e5bcfba6fe806f17",
+        "breathing_sidecar_sha256": "7242a047419d9ba6a894a4e501de3f8b26ea4b7a52b93625b75eda1de399a8d2",
+        "ecg_sidecar_sha256": "5aec5106bd40e5051aacc9eb0fe71244b3edf4492aa95ffe59de5b9e0823385c"
+      }
+    },
+    {
+      "state": "exhale",
+      "L_mm": 70,
+      "n_cycles": 21,
+      "input_sha256": "3eb16c060e856d456f242dd045c328c3296f8894e1439d0972e5a21fe9d5961d",
+      "annotation_sha256": {
+        "input_sha256": "3eb16c060e856d456f242dd045c328c3296f8894e1439d0972e5a21fe9d5961d",
+        "breathing_sidecar_sha256": "b8a4773cc52defc9c8bf76bfd8ebdff6df201a116eb3fa78096f9601af175204",
+        "ecg_sidecar_sha256": "1b52ea72b101afb4bfee2495c0a19a8fec3b7f4b3cc3b02cee2d57996c973e20"
+      }
+    },
+    {
+      "state": "exhale",
+      "L_mm": 80,
+      "n_cycles": 20,
+      "input_sha256": "5c3d49578fcc44a220f361ac2cb917f5b0e54c81adda18daf8ca704dde1153f7",
+      "annotation_sha256": {
+        "input_sha256": "5c3d49578fcc44a220f361ac2cb917f5b0e54c81adda18daf8ca704dde1153f7",
+        "breathing_sidecar_sha256": "e463b4746d5a8f3e580333c35fa5f25e37276f47f5c3bf4bd963401885c3109d",
+        "ecg_sidecar_sha256": "0e27adca01d4988a0f14c1811b54b0136b0b91fb263771eb728d20d7dcea6618"
+      }
+    },
+    {
+      "state": "exhale",
+      "L_mm": 90,
+      "n_cycles": 20,
+      "input_sha256": "61792d81e4b89349660c769b6896dd64eed30f6c968043fd964526cc645829b0",
+      "annotation_sha256": {
+        "input_sha256": "61792d81e4b89349660c769b6896dd64eed30f6c968043fd964526cc645829b0",
+        "breathing_sidecar_sha256": "85ba8b5f36032b06e2f0aea5ef35c7b0aa4028275056de024e98546cdf72ae2b",
+        "ecg_sidecar_sha256": "741f546f72905f3ebcf15db96942ecd7de0ae53fe6052144fcd81b888f016b42"
+      }
+    },
+    {
+      "state": "exhale",
+      "L_mm": 110,
+      "n_cycles": 21,
+      "input_sha256": "f8e058ae0d2a7d5b5459e33e21932967cb37377d25a46accfb8bca2ad0a7db99",
+      "annotation_sha256": {
+        "input_sha256": "f8e058ae0d2a7d5b5459e33e21932967cb37377d25a46accfb8bca2ad0a7db99",
+        "breathing_sidecar_sha256": "877d0db0ce28ff16fe11adcef623b0a2f27ae846ddefc9ed9b61ba6aad05b914",
+        "ecg_sidecar_sha256": "bf464637b1f90853de420041371246ae7b9495519f4213a31e6ea02e2ace7292"
+      }
+    },
+    {
+      "state": "exhale",
+      "L_mm": 120,
+      "n_cycles": 20,
+      "input_sha256": "3813722c0a78cfd55238a2729250b2606f36f2829dde356e93c81eee9594b6eb",
+      "annotation_sha256": {
+        "input_sha256": "3813722c0a78cfd55238a2729250b2606f36f2829dde356e93c81eee9594b6eb",
+        "breathing_sidecar_sha256": "27713e36951d93899085ba862e8ce7c04e7ab1864e2d4a8c53c11acad5ef2c3a",
+        "ecg_sidecar_sha256": "026cd2cb0cef0468780f6b53c4ffbc1314a0f825f9fb271f6e650eb2e0d2eb10"
+      }
+    },
+    {
+      "state": "exhale",
+      "L_mm": 130,
+      "n_cycles": 23,
+      "input_sha256": "0afa461c34a0558e3ed67844f4174026d1948303d9525a55d76bc991193527ab",
+      "annotation_sha256": {
+        "input_sha256": "0afa461c34a0558e3ed67844f4174026d1948303d9525a55d76bc991193527ab",
+        "breathing_sidecar_sha256": "e3539d02207a351646d960e6382138a97afbb0956a3030261aa60fd0e05096bf",
+        "ecg_sidecar_sha256": "91b370cdcc084418a25b9e03bb822ad05f0c80eab6cba369755adf98ed37ed64"
+      }
+    },
+    {
+      "state": "exhale",
+      "L_mm": 140,
+      "n_cycles": 25,
+      "input_sha256": "abb001faf8162073a7284176b2c634a48627757557f94893af29e4f3a0a6e6e7",
+      "annotation_sha256": {
+        "input_sha256": "abb001faf8162073a7284176b2c634a48627757557f94893af29e4f3a0a6e6e7",
+        "breathing_sidecar_sha256": "63919ad65bb5ffee3712e9c9a8d8590c6b3b9fd68947d589ce2bb1f1d5cf74e3",
+        "ecg_sidecar_sha256": "cf35a97581000eee99c018207424926270e93942d1f8c95248c89b628b3ac7c0"
+      }
+    }
+  ],
+  "assumptions": [
+    "Exact CT and fixed C01 montage accepted.",
+    "Inspiration geometry reused for expiration; h unchanged.",
+    "Two scalar resistivities, isotropic real conductivity.",
+    "Nine sequential sizes treated as repeatable states.",
+    "Literature-motivated search bounds reused for both states, not personal physiological norms.",
+    "No pulse geometry/contact change; upstream exploratory QC status preserved."
+  ]
+}

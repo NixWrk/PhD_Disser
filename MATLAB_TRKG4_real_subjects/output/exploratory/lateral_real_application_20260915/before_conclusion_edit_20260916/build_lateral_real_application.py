@@ -1,0 +1,326 @@
+"""Executed scientific notebook 33.08: selected geometry applied to real signals."""
+from pathlib import Path
+import hashlib
+import json
+import sys
+
+import nbformat as nbf
+from nbclient import NotebookClient
+from nbconvert import HTMLExporter
+
+ROOT = Path(__file__).resolve().parents[2]
+PIPE = ROOT/'MATLAB_TRKG4_real_subjects'
+OUT = PIPE/'output/exploratory/lateral_real_application_20260915'
+NAME = '33.08_Применение_КТ_модели_к_боковым_измерениям'
+
+
+def sha(path):
+    with Path(path).open('rb') as f:
+        return hashlib.file_digest(f,'sha256').hexdigest()
+
+
+def build():
+    manifest = json.loads((OUT/'analysis_manifest.json').read_text(encoding='utf-8'))
+    required = ['input_contract.json','observations.csv','pulse_inputs.csv','pem_fits.csv','pem_predictions.csv','pem_shared.json',
+        'baseline_fits.csv','baseline_predictions.csv','pulse_fits.csv','pulse_waveforms.csv','cem_identity.json','cem_execution.json','cem_derivative_qc.json',
+        'cem_variable_transverse_shared.json','cem_variable_transverse_shared_predictions.csv']
+    required += [f'cem_{m}_{s}{suffix}' for m in ['variable_transverse','reference'] for s in ['inhale','exhale']
+                 for suffix in ['.json','_predictions.csv']]
+    required += [p.name for p in OUT.glob('*resume_qc.json')]
+    required += [n for n in ['cem_prior_identity.json','cem_resume_reason.json','cem_worker_before_derivative_index_fix.m'] if (OUT/n).exists()]
+    expected = {n:sha(OUT/n) for n in required}
+    worker = PIPE/'src/run_lateral_real_application.m'
+    assert json.loads((OUT/'cem_identity.json').read_text())['worker_sha256']==sha(worker)
+    cells=[]
+    def md(text): cells.append(nbf.v4.new_markdown_cell(text))
+    def code(text): cells.append(nbf.v4.new_code_cell(text))
+    md(r'''# 33.08. Применение выбранной КТ-модели к измерениям боковых сборок
+
+**Задача:** по экспериментальным импедансам восстановить базовые сопротивления мягких тканей и лёгкого на вдохе и выдохе, а затем оценить их пульсовые изменения. Геометрическая модель уже выбрана в [20.16](20.16_Поперечная_форма_лёгкого_и_точность_обратной_модели.ipynb); этот ноутбук отвечает за её применение к реальному исследованию и прослеживаемость полученных оценок.
+
+Текущий пример — **Ник, эксперимент 2, реокардиомонитор МГТУ**. Используются девять независимых размеров сборок: 50, 60, 70, 80, 90, 110, 120, 130 и 140 мм. Результаты имеют исследовательский статус: реальные сопротивления тканей независимо не измерены. Малую невязку импеданса нельзя автоматически считать малой ошибкой восстановления сопротивления.
+
+Последовательность анализа: принятые данные и геометрия → базовые оценки с конечными электродами → проверка постоянства сопротивления мягких тканей при дыхании → пульсовая инверсия → оценка последствий исключения одного пульсового параметра. Общая методика представлена в [33.00](33.00_Сквозная_методика_боковых_сборок.ipynb), исходные ансамбли — в [33.03](33.03_Пульсовые_ансамбли_боковых_сборок.ipynb).''')
+    code('''from pathlib import Path
+import sys, json, hashlib
+import numpy as np
+import pandas as pd
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
+from IPython.display import display, HTML, Markdown
+project = next(p for p in [Path.cwd().resolve(),*Path.cwd().resolve().parents] if (p/'MATLAB_TRKG4_real_subjects').is_dir())
+pipe = project/'MATLAB_TRKG4_real_subjects'
+sys.path.insert(0,str(pipe/'tools'))
+from lateral_real_application import verify_inputs, point_fits, combine, pulse_fits, read, sha
+out = pipe/'''+repr(OUT.relative_to(PIPE).as_posix())+'''
+expected = '''+repr(expected)+'''
+for name,digest in expected.items():
+    assert sha(out/name)==digest, 'Изменён расчётный вход: '+name
+contract = verify_inputs(out)
+cem = read(out/'cem_execution.json')
+assert cem['complete'] and cem['identity']['input_contract_sha256']==sha(out/'input_contract.json')
+assert cem['identity']['worker_sha256']==sha(pipe/'src/run_lateral_real_application.m')
+assert cem['identity']['prepared_sha256']==sha(pipe/'output/exploratory/transverse_consistency_20260914/prepared_fem.mat')
+assert cem['identity']['observations_sha256']==sha(out/'observations.csv')
+accepted_identities=[cem['identity']]
+prior=cem.get('accepted_prior_fit_identity')
+if isinstance(prior,dict):
+    assert sha(out/'cem_worker_before_derivative_index_fix.m')==prior['worker_sha256']
+    accepted_identities.append(prior)
+for model in ['variable_transverse','reference']:
+    for state in ['inhale','exhale']:
+        saved=read(out/f'cem_{model}_{state}.json')
+        assert saved['identity'] in accepted_identities
+        if saved['identity']!=cem['identity']:
+            q=read(out/f'cem_{model}_{state}_resume_qc.json')
+            assert q['prediction_max_error_ohm']<1e-7 and q['jacobian_relative_error']<1e-7
+saved=read(out/'cem_variable_transverse_shared.json')
+assert saved['identity'] in accepted_identities
+if saved['identity']!=cem['identity']:
+    q=read(out/'cem_variable_transverse_shared_resume_qc.json')
+    assert q['prediction_max_error_ohm']<1e-7 and q['jacobian_relative_error']<1e-7
+obs = pd.read_csv(out/'observations.csv')
+bounds = np.asarray(contract['bounds_ohm_m'])
+states = {'inhale':'Вдох','exhale':'Выдох'}
+labels = {('variable_transverse','CEM'):'Модель 4, конечные электроды',('reference','CEM'):'Полная КТ, конечные электроды',
+          ('variable_transverse','PEM'):'Модель 4, точечные электроды',('reference','PEM'):'Полная КТ, точечные электроды',
+          ('planar_nominal','PEM'):'Плоская аналитическая модель'}
+def table(df):
+    display(HTML(df.to_html(index=False,escape=False,border=0,classes='dataframe',float_format=lambda x:f'{x:.5g}'.replace('.',','))))
+def number(x,places=3):
+    return f'{float(x):.{places}f}'.replace('.',',')
+def bound_label(rho,k):
+    if np.isclose(rho,bounds[k,0],rtol=1e-6): return 'нижняя граница'
+    if np.isclose(rho,bounds[k,1],rtol=1e-6): return 'верхняя граница'
+    return 'внутри диапазона'
+''')
+    md(r'''## 1. Экспериментальные входы и принятые условия
+
+КТ/STL-сегментация на вдохе и положение сборок **C01** принимаются точно известными. Центр монтажа: (−187,500; 31,051; −138,051) мм, угол 14°. Геометрическое построение и объёмные изображения находятся в [20.10](20.10_КТ_FEM_локализация_боковых_матриц_МГТУ.ipynb) и 20.16. Здесь монтаж повторно не подбирается.
+
+Профиль кожа–лёгкое используется через пространственную геометрию модели 4; одна эффективная толщина в неё не подставляется. Центральная направленная глубина 67,00 мм и кратчайшее расстояние 51,02 мм — разные характеристики КТ. **Для выдоха пока используется та же геометрия, что для вдоха.** Постоянство профиля является рабочим сценарием; дыхательное изменение толщины в этом прогоне не восстанавливается.
+
+Измерения разных размеров выполнены последовательно. Их совместный анализ опирается на принятое допущение о сопоставимости физиологических состояний. Размер 100 мм исключён только у Ника как повторная копия записи 90 мм. Дыхательные интервалы являются принятой автором экспертной реконструкцией: приборные метки команд отсутствуют. Разметка дыхания и ЭКГ принята, но общий контроль сопоставимости сигналов сохраняет незавершённый исследовательский статус.
+
+По актуальному решению автора значения приборов считаются измеренными величинами в единицах файлов. Выполняется только перевод пульсового сигнала из мОм в Ом; дополнительные множители, смещение и изменение знака не подбираются. Это условие расчёта не устанавливает истинность последующего разделения сигнала по тканям. Конкретные флаги качества записей сохраняются в исходных артефактах.
+
+Использованы текущие базовые уровни из обработки эксперимента 2 и медианные пульсовые ансамбли того же набора записей. Идентификаторы исходных записей и контрольные суммы принятой разметки сверены при подготовке; при несовпадении расчёт останавливается. Данные Георга и эксперимента 3 в этот индивидуальный пример не включены.''')
+    md(r'''## 2. Геометрическая и электродная модели
+
+Модель 4 описывает **переменное поперечное сечение лёгкого в КТ-геометрии тела** по принятому в 20.16 правилу редукции. В качестве контроля используется исходная полная геометрия лёгкого. В обеих постановках имеются ровно два материала: ρ₁ — весь внелёгочный фон, включая мышцы, жир, кости, сердце и поддиафрагмальные ткани; ρ₂ — лёгкое. Сопротивления действительные, скалярные и однородные внутри каждого материала. Такое объединение тканей является допущением.
+
+**Основная электродная постановка — CEM, полная модель конечных электродов.** Она учитывает площадь контактов и заданное поверхностное контактное сопротивление. Используется та же сетка тела и те же площадки, что в 20.16; новая сетка не строилась. Точечная модель PEM заменяет контакты узлами сетки и служит сравнением с предыдущим расчётом. Плоская аналитическая модель сохранена только как исходный ориентир.
+
+Номинальный контакт — диск диаметром 9 мм, площадь 70,686 мм². Фактические площади дискретных площадок находятся в диапазоне **70,783–94,195 мм²**: расчёт использует именно их, а не идеальные диски. Поверхностное контактное сопротивление фиксировано: **0,000159155 Ом·м²**. Это параметр принятой постановки, который не восстанавливался из данного эксперимента. Единичный ток 1 А используется для нормировки линейной задачи и получения импеданса в омах; он не обозначает ток прибора.
+
+Потенциал в объёме определяется конечноэлементным методом с граничными условиями CEM. Математическая электродная постановка описана у [Somersalo, Cheney и Isaacson (1992)](https://doi.org/10.1137/0152060). При фиксированном контакте зависимость CEM от сопротивлений нельзя в общем случае заменить простым масштабированием по их отношению. Поэтому **базовые CEM-оценки ниже получены прямыми FEM-решениями при оптимизации двух сопротивлений**. Точечные оценки вычислены по интерполяционной библиотеке 20.16.
+
+Рабочий диапазон поиска: 1,3774–10,0000 Ом·м для ρ₁ и 9,7413–24,0741 Ом·м для ρ₂. Его построение по мышце и расправленному лёгкому из [IT’IS, версия 5.0](https://itis.swiss/virtual-population/tissue-properties/downloads/database-v5-0) подробно дано в 20.16. Диапазон объединяет низкочастотную сводку и ориентир 50 кГц; он не является индивидуальной физиологической нормой. Одинаковые границы для вдоха и выдоха приняты для сопоставимости сценариев. Их достижение обязательно отмечается в результатах.''')
+    md(r'''## 3. Восстановление базовых сопротивлений
+
+Вдох и выдох сначала анализируются независимо. Для каждого состояния минимизируется сумма квадратов расхождений девяти импедансов:
+
+$$ (\widehat\rho_1,\widehat\rho_2)=\underset{(\rho_1,\rho_2)\in B}{\operatorname{argmin}}\ \frac{1}{9}\sum_L\left[Z_L(\rho_1,\rho_2)-Z_L^{\mathrm{изм}}\right]^2, $$
+
+где ρ̂₁ и ρ̂₂ — искомые сопротивления, Ом·м; B — заданный диапазон поиска; L — размер сборки; Z — рассчитанный импеданс, Ом; $Z_L^{\mathrm{изм}}$ — измеренный базовый уровень, Ом. Квадратный корень из критерия обозначается RMSE. Все размеры имеют равный вес в омах; это допущение, поскольку ковариация ошибок не установлена. Для CEM использованы две начальные точки. Совпадение их результатов является проверкой устойчивости численной оптимизации, но не доказательством глобального минимума.
+
+**Таблица 1. Базовые оценки и согласование с экспериментом.** Главные строки — модель 4 с конечными электродами. Полная КТ с теми же контактами проверяет влияние геометрического упрощения; точечная модель 4 показывает влияние электродной постановки. Число κ равно отношению наибольшего сингулярного числа матрицы производных по относительным изменениям сопротивлений к наименьшему. Чем оно больше, тем сильнее различается чувствительность к двум сочетаниям тканевых параметров. Оно не является процентом ошибки или доверительным интервалом.''')
+    code('''saved_baseline = pd.read_csv(out/'baseline_fits.csv')
+saved_pulse = pd.read_csv(out/'pulse_fits.csv')
+# Recompute the inexpensive inversions, keeping direct CEM results immutable.
+point_fits(out)
+fits, predictions = combine(out)
+np.testing.assert_allclose(fits[['rho1','rho2','train_rmse']],saved_baseline[['rho1','rho2','train_rmse']],rtol=1e-9,atol=1e-10)
+pulses = pulse_fits(out,fits,predictions)
+np.testing.assert_allclose(pulses[['delta_rho1_ptp','delta_rho2_ptp']],saved_pulse[['delta_rho1_ptp','delta_rho2_ptp']],rtol=1e-9,atol=1e-10)
+selected = [('variable_transverse','CEM'),('reference','CEM'),('variable_transverse','PEM')]
+rows = []
+for model,electrodes in selected:
+    for state in ['inhale','exhale']:
+        b = fits[(fits.model==model)&(fits.electrodes==electrodes)&(fits.state==state)].iloc[0]
+        rows.append({'Модель':labels[model,electrodes],'Состояние':states[state],'ρ₁, Ом·м':b.rho1,'ρ₂, Ом·м':b.rho2,
+                     'RMSE, Ом':b.train_rmse,'κ':b.condition_log_parameters,'Положение ρ₂':bound_label(b.rho2,1)})
+table(pd.DataFrame(rows))
+main = fits[(fits.model=='variable_transverse')&(fits.electrodes=='CEM')].set_index('state')
+reference = fits[(fits.model=='reference')&(fits.electrodes=='CEM')].set_index('state')
+ai,ae = main.loc['inhale'],main.loc['exhale']
+planar = fits[fits.model=='planar_nominal'].set_index('state')
+display(Markdown(f"Плоский аналитический ориентир с центральной глубиной из 20.16 даёт RMSE "
+    f"**{number(planar.loc['inhale'].train_rmse)} Ом на вдохе** и **{number(planar.loc['exhale'].train_rmse)} Ом на выдохе**. "
+    "Это сопоставление с ранее применявшимся приближением; одновременно различаются форма среды и представление контактов."))
+display(Markdown(f"Для модели 4: ρ₂ на вдохе — **{bound_label(ai.rho2,1)}**, на выдохе — **{bound_label(ae.rho2,1)}**. "
+    "Граничный результат определяется одновременно данными, моделью и заданным ограничением. Его нельзя считать независимо установленным сопротивлением ткани. "
+    "Внутренний минимум также требует проверки точности: истинные сопротивления данного человека неизвестны."))
+''')
+    code('''figure1 = make_subplots(rows=2,cols=2,shared_xaxes=True,vertical_spacing=.12,
+    subplot_titles=('Задержка на вдохе','Задержка на выдохе','Остаток: расчёт − измерение','Остаток: расчёт − измерение'))
+styles = [(('variable_transverse','CEM'),'#1565c0','solid'),(('reference','CEM'),'#008577','dash'),
+          (('variable_transverse','PEM'),'#e27721','dot')]
+for col,state in enumerate(['inhale','exhale'],1):
+    figure1.add_trace(go.Scatter(x=obs.L_mm,y=obs[f'Z_{state}_hold_ohm'],name='Измерение',mode='markers',
+        marker=dict(color='#17212d',size=8),legendgroup='data',showlegend=col==1),row=1,col=col)
+    for (model,electrodes),color,dash in styles:
+        p = predictions[(predictions.model==model)&(predictions.electrodes==electrodes)&(predictions.state==state)].sort_values('L_mm')
+        for row,values in [(1,p.predicted_ohm),(2,p.predicted_ohm-p.observed_ohm)]:
+            figure1.add_trace(go.Scatter(x=p.L_mm,y=values,name=labels[model,electrodes],mode='lines+markers',
+                line=dict(color=color,dash=dash,width=2),marker=dict(size=4),legendgroup=model+electrodes,showlegend=col==1 and row==1),row=row,col=col)
+    figure1.add_hline(y=0,line_width=1,line_color='#707070',row=2,col=col)
+figure1.update_yaxes(title_text='Импеданс, Ом',row=1,col=1)
+figure1.update_yaxes(title_text='Остаток, Ом',row=2,col=1)
+figure1.update_xaxes(title_text='Размер сборки, мм',row=2)
+figure1.update_layout(template='plotly_white',height=640,margin=dict(l=65,r=25,t=50,b=100),
+    legend=dict(orientation='h',y=-.17,x=0),font=dict(family='Arial',size=12),hovermode='x unified')
+display(HTML(figure1.to_html(full_html=False,include_plotlyjs=True,config={'responsive':True,'displaylogo':False})))
+''')
+    md(r'''**Рисунок 1. Воспроизведение базового импеданса на вдохе и выдохе.** Верхние панели сопоставляют измерения и прогнозы по размерам; нижние показывают остатки в омах. Близость кривой к точкам характеризует согласование прямого прогноза. Сравнение синей и зелёной CEM-кривых оценивает последствия геометрического упрощения при одинаковых контактах, а сравнение CEM и PEM модели 4 — последствия замены конечных контактов точками. Для каждой кривой использованы собственные восстановленные сопротивления. Поэтому здесь сравнивается вся процедура восстановления: близость кривых может достигаться компенсацией параметров. Изолированное сравнение геометрий при общих заданных сопротивлениях выполнено в 20.16. Линии соединяют отдельные размеры для удобства чтения; непрерывного размерного эксперимента не было.
+
+Если остатки изменяются с размером систематически, одна средняя RMSE не описывает всего расхождения. Однако по этому рисунку нельзя установить его причину или истинные значения ρ₁ и ρ₂. Следующий шаг проверяет, насколько оценки зависят от условия о неизменности мягких тканей при дыхании.''')
+    md(r'''## 4. Дыхательная разность и постоянство базового ρ₁
+
+Основной расчёт допускает разные базовые сопротивления обеих тканей на вдохе и выдохе. Альтернативный сценарий связывает только ρ₁: для двух состояний совместно оцениваются одно ρ₁ и два значения ρ₂. Геометрия и контактные параметры в обоих сценариях одинаковы. Это проверка одного конкретного упрощения; она не проверяет постоянство пульсового δρ₁.
+
+**Таблица 2. Проверка постоянства базового ρ₁ при дыхании.** Сравниваются оценки при одинаковых наблюдениях, геометрии и контактах; общая RMSE рассчитана по обоим состояниям.''')
+    code('''shared = read(out/'cem_variable_transverse_shared.json')['best']
+r1,ri,re = shared['rho']
+independent_rmse = np.sqrt(np.mean(main.train_rmse.to_numpy()**2))
+table(pd.DataFrame([
+ {'Сценарий':'Раздельные ρ₁','ρ₁ вдох, Ом·м':ai.rho1,'ρ₁ выдох, Ом·м':ae.rho1,'ρ₂ вдох, Ом·м':ai.rho2,'ρ₂ выдох, Ом·м':ae.rho2,'Общая RMSE, Ом':independent_rmse},
+ {'Сценарий':'Общее ρ₁','ρ₁ вдох, Ом·м':r1,'ρ₁ выдох, Ом·м':r1,'ρ₂ вдох, Ом·м':ri,'ρ₂ выдох, Ом·м':re,'Общая RMSE, Ом':shared['rmse_ohm']}]))
+display(Markdown(f"В основном сценарии разность «вдох минус выдох» составляет "
+    f"Δρ₁ = **{number(ai.rho1-ae.rho1,5)} Ом·м**, Δρ₂ = **{number(ai.rho2-ae.rho2,5)} Ом·м**. "
+    f"При общем ρ₁ дыхательная разность Δρ₂ составляет **{number(ri-re,5)} Ом·м**. "
+    "Изменение оценки ρ₂ между строками характеризует влияние введённой связи. При общем ρ₁ значение ρ₂ на выдохе достигает нижней границы поиска; граничное решение сохраняется и на вдохе. Малая прибавка невязки не доказывает постоянство ρ₁: "
+    "параметры могут компенсировать друг друга. Дыхательная разность относится к двум задержкам и отличается от пульсового размаха за сердечный цикл."))
+''')
+    md(r'''## 5. Восстановление пульсовых изменений обеих тканей
+
+После выбора базовой точки рассчитываются производные импеданса по сопротивлениям. Для CEM они получены из прямого и взаимного полей в той же конечноэлементной задаче. В каждой фазе нормированного сердечного цикла решается линейная система по всем девяти размерам:
+
+$$ \delta Z_L(\varphi)\simeq J_{L1}\,\delta\rho_1(\varphi)+J_{L2}\,\delta\rho_2(\varphi), $$
+
+где δZ — отклонение импеданса, Ом; φ — относительная фаза от одного принятого R-зубца до следующего; L — размер сборки; J — матрица производных импеданса по соответствующим сопротивлениям, м⁻¹; δρ₁ и δρ₂ — искомые отклонения сопротивлений, Ом·м. Для вдоха и выдоха используются собственные базовые точки из раздела 3. Решение определяется методом наименьших квадратов с равными весами; пульсовое изменение геометрии не вводится.
+
+Из каждого исходного цикла вычтена медиана, циклы приведены к 200 фазовым отсчётам, затем взята медиана по циклам. На одну запись приходится 11–25 циклов. Такая обработка определяет нулевой уровень кривой и требует допущения о сопоставимости форм циклов последовательных записей. Принятая ЭКГ-разметка задаёт время, но сама по себе не отделяет источник мягких тканей от лёгочного. В основном ансамбле циклы не исключались только на основании кандидатных флагов ЭКГ; ограничения их качества отражены в незавершённом общем QC.
+
+**Таблица 3. Пульсовые размахи при выбранных базовых сопротивлениях.** Размах определяется как максимум минус минимум восстановленной кривой за цикл. Процент вычисляется относительно базового сопротивления той же ткани и того же состояния. Относительная невязка — отношение нормы остатка к норме входного пульсового сигнала; она не является относительной ошибкой δρ.''')
+    code('''rows=[]
+for model in ['variable_transverse','reference']:
+    for state in ['inhale','exhale']:
+        p=pulses[(pulses.model==model)&(pulses.electrodes=='CEM')&(pulses.state==state)].iloc[0]
+        rows.append({'Модель':labels[model,'CEM'],'Состояние':states[state],'Размах δρ₁, Ом·м':p.delta_rho1_ptp,
+                     'От ρ₁, %':p.delta_rho1_percent,'Размах δρ₂, Ом·м':p.delta_rho2_ptp,'От ρ₂, %':p.delta_rho2_percent,
+                     'Невязка, %':p.relative_residual_percent})
+table(pd.DataFrame(rows))
+waveforms=pd.read_csv(out/'pulse_waveforms.csv')
+figure2=make_subplots(rows=2,cols=2,shared_xaxes=True,vertical_spacing=.12,subplot_titles=('Вдох: мягкие ткани','Выдох: мягкие ткани','Вдох: лёгкое','Выдох: лёгкое'))
+for col,state in enumerate(['inhale','exhale'],1):
+    for model,color,dash in [('variable_transverse','#1565c0','solid'),('reference','#008577','dash')]:
+        w=waveforms[(waveforms.model==model)&(waveforms.electrodes=='CEM')&(waveforms.state==state)].sort_values('phase_rr')
+        for row in [1,2]:
+            figure2.add_trace(go.Scatter(x=w.phase_rr,y=w[f'delta_rho{row}'],name=labels[model,'CEM'],
+                line=dict(color=color,dash=dash,width=2),legendgroup=model,showlegend=row==1 and col==1),row=row,col=col)
+    for row in [1,2]: figure2.add_hline(y=0,line_width=1,line_color='#777',row=row,col=col)
+figure2.update_yaxes(title_text='δρ₁, Ом·м',row=1,col=1)
+figure2.update_yaxes(title_text='δρ₂, Ом·м',row=2,col=1)
+figure2.update_xaxes(title_text='Относительная фаза R–R',row=2)
+figure2.update_layout(template='plotly_white',height=620,margin=dict(l=70,r=25,t=50,b=95),
+    legend=dict(orientation='h',y=-.17,x=0),font=dict(family='Arial',size=12),hovermode='x unified')
+display(HTML(figure2.to_html(full_html=False,include_plotlyjs=False,config={'responsive':True,'displaylogo':False})))
+''')
+    md(r'''**Рисунок 2. Восстановленные пульсовые кривые мягких тканей и лёгкого.** Столбцы соответствуют дыхательным состояниям, строки — тканям. Сопоставление модели 4 и полной КТ показывает, как выбор геометрии вместе с собственной восстановленной базовой точкой влияет на разложение одного и того же набора сигналов. Вертикальные масштабы для тканей различаются; разница высоты кривых на экране не равна отношению тканевых вкладов в измеренный импеданс.
+
+Кривые относятся к ансамблям последовательных записей, а не к одновременно измеренному сокращению. Их нулевой уровень задан центрированием. Интерпретация кривой как изменения свойства конкретной ткани дополнительно зависит от двухтканного допущения, базовой точки и отсутствия пульсового изменения геометрии. Эти условия ограничивают физиологический вывод даже при хорошем согласовании кривых двух моделей.
+
+Малый размах δρ₁ ещё не определяет возможность его исключения: влияние на сигнал задаётся произведением производной на изменение параметра. Поэтому далее повторяется пульсовая инверсия при δρ₁ = 0.''')
+    md(r'''## 6. Последствия исключения пульсового δρ₁
+
+Базовые сопротивления остаются равными основному результату CEM. Меняется только пульсовая задача: вместо двух неизвестных восстанавливается одна кривая δρ₂. Это позволяет оценить, сколько сигнала перераспределяется в лёгочный параметр при отказе от пульсового изменения мягких тканей.
+
+**Таблица 4. Последствия исключения пульсового параметра мягких тканей.** Сравниваются восстановленный размах δρ₂ и относительная невязка при двух и одном пульсовом параметре.''')
+    code('''mp=pulses[(pulses.model=='variable_transverse')&(pulses.electrodes=='CEM')].set_index('state')
+table(pd.DataFrame([{'Состояние':states[s],'Размах δρ₂: две ткани, Ом·м':mp.loc[s].delta_rho2_ptp,
+    'Размах δρ₂ при δρ₁ = 0, Ом·м':mp.loc[s].rho1_omitted_delta_rho2_ptp,
+    'Невязка двух параметров, %':mp.loc[s].relative_residual_percent,
+    'Невязка при δρ₁ = 0, %':mp.loc[s].rho1_omitted_residual_percent} for s in ['inhale','exhale']]))
+display(Markdown('Сравнение показывает изменение оценки лёгочного размаха и согласования с сигналами. '
+    'Увеличение невязки ожидаемо при уменьшении числа параметров; его допустимость требует заранее выбранного критерия. '
+    'Само улучшение двухпараметрической подгонки не доказывает, что модель правильно локализовала физиологический источник.'))
+outside={states[s]:int(mp.loc[s].rho2_outside_baseline_box_count) for s in ['inhale','exhale']}
+display(Markdown(f"В линейной пульсовой инверсии границы базового поиска на приращения не накладывались. "
+    f"Число фаз, в которых сумма базового ρ₂ и δρ₂ выходит из этого диапазона: **вдох — {outside['Вдох']}, выдох — {outside['Выдох']} из 200**. "
+    "При базовой точке на границе это дополнительно ограничивает физиологическую интерпретацию; выход нельзя скрывать обрезанием пульсовой кривой."))
+''')
+    md(r'''## 7. Проверки и границы применения результата
+
+Выполнены контроль входных хэшей и состава девяти размеров, повторное воспроизведение сохранённой CEM-точки при ρ₁ = 4 и ρ₂ = 16 Ом·м, проверка взаимности и невязки линейной системы при каждом прямом решении. Производные модели 4 в найденной базовой точке вдоха дополнительно проверены центральными конечными разностями. Это внутренние математические проверки; они не устанавливают истинные сопротивления тканей.''')
+    code('''dq=read(out/'cem_derivative_qc.json')
+if isinstance(prior,dict):
+    display(Markdown('После исправления процедуры проверки конечными разностями ранее завершённые подгонки модели 4 повторно проверены по прямым прогнозам и производным. Предыдущая версия решателя и исходные контрольные суммы результатов сохранены.'))
+trace=pd.read_csv(out/'cem_trace.csv')
+display(Markdown(f"В завершающем прогоне максимальная относительная невязка полевой системы: **{trace.relative_residual.max():.2e}**; "
+    f"максимальное нарушение взаимности: **{trace.reciprocity_abs_ohm.max():.2e} Ом**; "
+    f"относительное расхождение производных с конечными разностями: **{dq['relative_error']:.2e}**. "
+    "Числа проверяют вычислительную согласованность данной сетки и постановки."))
+display(Markdown(f"В основной CEM-модели число обусловленности для относительных изменений сопротивлений равно "
+    f"**{number(ai.condition_log_parameters,2)} на вдохе** и **{number(ae.condition_log_parameters,2)} на выдохе**. "
+    "Большое значение означает, что разные сочетания тканевых изменений различимы неодинаково. Без модели ошибок это число нельзя переводить в доверительный интервал."))
+''')
+    md(r'''**Полученный результат:** выбранная геометрическая модель применена к реальным уровням и пульсовым ансамблям в согласованной постановке с конечными электродами. Получены базовые пары сопротивлений, дыхательные разности, пульсовые кривые и количественные последствия двух разных упрощений: общего базового ρ₁ и нулевого пульсового δρ₁. Полная КТ служит вычислительным контролем, а не независимым измерением тканевых свойств.
+
+**Остаются открытыми:** нелинейный остаток пульсовой линеаризации в новых CEM-точках, достаточность двухтканного описания, влияние фиксированного контактного сопротивления и дискретизации площадок, цена использования одной геометрии для вдоха и выдоха, устойчивость к конкретным флагам качества записей и допустимый критерий погрешности восстановления. Следующая проверка должна менять по одному физическому допущению при неизменных наблюдениях. Для дыхательной геометрии сохраняются заданные автором сценарии размаха до 2 мм при глубоком дыхании и до 1 мм при обычном; они здесь ещё не рассчитаны.
+
+Результаты этого примера пока не обосновывают выбор оптимальной пары сборок, перенос на другого человека или применение к обычному дыханию вне использованных задержек. Перед передачей параметров в методику коррекции ТТРКГ требуется установить допустимую ошибку и проверить сокращённый набор размеров. Прямой расчёт функций сердца в этом ноутбуке отсутствует.
+
+## Источники и повторение расчёта
+
+1. [20.16 — сравнение и выбор геометрической модели](20.16_Поперечная_форма_лёгкого_и_точность_обратной_модели.ipynb). Источник модели 4, общей КТ-геометрии и рабочих границ сопротивлений.
+2. [33.03 — пульсовые ансамбли](33.03_Пульсовые_ансамбли_боковых_сборок.ipynb). Источник нормированных пульсовых сигналов и их происхождения; новый ноутбук не создаёт повторную разметку.
+3. IT’IS Foundation. *Tissue Properties Database V5.0*. [База данных](https://itis.swiss/virtual-population/tissue-properties/downloads/database-v5-0), [ограничения низкочастотных данных](https://itis.swiss/virtual-population/tissue-properties/database/low-frequency-conductivity). Перенос свойств мышцы на весь внелёгочный фон является допущением проекта.
+4. Somersalo E., Cheney M., Isaacson D. *Existence and Uniqueness for Electrode Models for Electric Current Computed Tomography*. SIAM Journal on Applied Mathematics. 1992;52:1023–1040. [DOI](https://doi.org/10.1137/0152060). Основание полной электродной модели; точность из работы не переносится на данный эксперимент.
+
+Полный прогон выполняется через [документацию MATLAB/Python-расчётов](../MATLAB_TRKG4_real_subjects/docs/PIPELINE_FOR_NOTEBOOKS.md), профиль `lateral_real_application`. Он включает подготовку наблюдений, новые прямые CEM-подгонки, анализ и сборку отчёта. Обычное выполнение этого ноутбука проверяет сохранённые CEM-решения, повторяет быстрые точечные и пульсовые инверсии и строит таблицы и рисунки. Оно не запускает MATLAB заново. Для полного повторения нужны локальные производные экспериментальные данные и подготовленные матрицы FEM.
+
+Расчётные таблицы и контракты находятся в [каталоге текущего прогона](../MATLAB_TRKG4_real_subjects/output/exploratory/lateral_real_application_20260915). Исходные физиологические записи и анатомические массивы не изменены. HTML представляет выполненный научный текст и результаты без исходного кода.''')
+    nb=nbf.v4.new_notebook(cells=cells,metadata={'kernelspec':{'name':'python3','display_name':'Python 3','language':'python'},
+        'language_info':{'name':'python'},'study':{'status':'exploratory_hypothesis_not_validated','owner':'33.08',
+        'model_selection_owner':'20.16','candidate':'C01','subject_id':'exp02_nik','input_sha256':expected,
+        'generator_sha256':sha(Path(__file__)),'analysis_source_sha256':sha(PIPE/'tools/lateral_real_application.py'),
+        'cem_worker_sha256':sha(worker),'new_FEM_solutions_during_notebook_execution':0}})
+    NotebookClient(nb,timeout=240,kernel_name='python3',resources={'metadata':{'path':str(ROOT)}}).execute()
+    dest=ROOT/'Colab Notebooks'/(NAME+'.ipynb')
+    nbf.write(nb,dest)
+    exporter=HTMLExporter();exporter.exclude_input=True;exporter.exclude_input_prompt=True;exporter.exclude_output_prompt=True
+    html,_=exporter.from_notebook_node(nb)
+    dest.with_suffix('.html').write_text(html,encoding='utf-8')
+    passport=f'''# 33.08. Применение КТ-модели к боковым измерениям
+
+[Выполненный ноутбук]({NAME}.ipynb) · [HTML без кода]({NAME}.html)
+
+Этап применения выбранной в [20.16](20.16_Поперечная_форма_лёгкого_и_точность_обратной_модели.ipynb) модели 4 к эксперименту 2, Ник. Основная постановка использует конечные электроды; контроль — полная КТ при тех же контактах. Рассчитаны базовые сопротивления на вдохе и выдохе, дыхательные разности и пульсовые изменения. Проверены допущения об общем базовом ρ₁ и нулевом пульсовом δρ₁. Геометрия фиксирована, изменение толщины при дыхании здесь не оценивалось.
+
+Ноутбук является владельцем этого индивидуального применения модели. Исследовательский статус сохраняется: истинные сопротивления тканей неизвестны, качество подгонки не равно точности восстановления. Путь полной подготовки и расчёта указан в [документации запуска](../MATLAB_TRKG4_real_subjects/docs/PIPELINE_FOR_NOTEBOOKS.md).
+'''
+    dest.with_suffix('.md').write_text(passport,encoding='utf-8')
+    reader=[]
+    for c in nb.cells:
+        if c.cell_type=='markdown': reader.append(c.source)
+        else:
+            for output in c.get('outputs',[]):
+                data=output.get('data',{})
+                if 'text/markdown' in data: reader.append(data['text/markdown'])
+                elif 'text/html' in data and 'plotly' not in data['text/html'].lower(): reader.append(data['text/html'])
+    (OUT/'reader_33.08.md').write_text('\n\n'.join(reader),encoding='utf-8')
+    (OUT/'execution_33.08.json').write_text(json.dumps({'code_cells':[c.execution_count for c in nb.cells if c.cell_type=='code'],
+        'expected_sha256':expected,'artifact_sha256':{p.name:sha(p) for p in [dest,dest.with_suffix('.html'),dest.with_suffix('.md')]},
+        'scientific_status':'exploratory_hypothesis_not_validated'},ensure_ascii=False,indent=2),encoding='utf-8')
+    print(dest)
+    print('Executed code cells:',[c.execution_count for c in nb.cells if c.cell_type=='code'])
+
+
+if __name__=='__main__':
+    import argparse
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--out',type=Path,default=OUT)
+    args=parser.parse_args()
+    OUT=args.out.resolve()
+    build()

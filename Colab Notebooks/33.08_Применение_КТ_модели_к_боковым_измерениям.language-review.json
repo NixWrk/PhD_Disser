@@ -1,0 +1,45 @@
+{
+  "reviewed_at_utc": "2026-09-16T07:35:50.663257+00:00",
+  "skill": "russian-scientific-prose",
+  "mode": "final_semantic_language_review_after_conclusions_edit",
+  "scope": "Полный читательский текст ноутбука 33.08 после редакции выводов. Методика, формулы, численные таблицы, подписи и графики сохранены; проверена последовательность объяснений результатов и границы выводов.",
+  "status": "passed_for_scoped_final_revision",
+  "reader_text_read_completely_after_last_edit": true,
+  "review_checks": [
+    "Последовательность задачи, допущений, вычислений, результатов и ограничений",
+    "Определения символов и единиц в обеих формулах",
+    "Различение геометрической и электродной моделей",
+    "Различение дыхательной разности и пульсового размаха",
+    "Различение невязки импеданса и точности восстановления тканей",
+    "Границы поиска отмечены в раздельном и совместном сценариях",
+    "Четыре подписи над таблицами и две подписи под рисунками",
+    "Ограничения принятых данных и двухтканного описания",
+    "Ссылки на исходные ноутбуки, литературу и повторение расчёта"
+  ],
+  "findings_remaining": [],
+  "artifact_sha256": {
+    "Colab Notebooks\\33.08_Применение_КТ_модели_к_боковым_измерениям.ipynb": "151afe5b0e9101b28740284bef9fd0c89b864ff227d987f25fd2a969b8315a53",
+    "Colab Notebooks\\33.08_Применение_КТ_модели_к_боковым_измерениям.html": "9b074003b396029a0af6c649e9f909ffb5dc926cfee168b965254682d66aabc9",
+    "MATLAB_TRKG4_real_subjects\\output\\exploratory\\lateral_real_application_20260915\\reader_33.08.md": "c48f8dc84125b005c68e418aa4f2339b67758833f251a3d6d6cc98a2129e53e4"
+  },
+  "source_sha256": {
+    "MATLAB_TRKG4_real_subjects\\notebooks\\build_lateral_real_application.py": "c3b8e3ea34f3d5fbfbb6d3a22a81cae10375a6903dc6cd74234b612f03a52880",
+    "MATLAB_TRKG4_real_subjects\\tools\\lateral_real_application.py": "12d4321eb3c6b335e6d60d489d8cd4fad72c5a1c7151fe7c78444bfab56c434f",
+    "MATLAB_TRKG4_real_subjects\\src\\run_lateral_real_application.m": "a817d5cfa28d7edbb587852b509fcebc5cfcaff9287a0bd283768cb1aa61cfd6"
+  },
+  "numerical_and_browser_verification": {
+    "path": "MATLAB_TRKG4_real_subjects\\output\\exploratory\\lateral_real_application_20260915\\verification_33.08.json",
+    "sha256": "f59e266aac4ff8c0448df95d93c141220f87b276b2e5ae19ba99888a7537da0d",
+    "browser_rerun": false,
+    "figure_outputs_byte_identical_to_previously_reviewed_version": true
+  },
+  "local_links_checked": 8,
+  "scientific_status": "exploratory_hypothesis_not_validated",
+  "independent_physiological_validation": false,
+  "language_review_does_not_establish_scientific_validity": true,
+  "editorial_verification": {
+    "path": "MATLAB_TRKG4_real_subjects\\output\\exploratory\\lateral_real_application_20260915\\editorial_verification_20260916.json",
+    "sha256": "24b518cb87704df9a16ba0f6c5e370ba80a0be95763ceeb0e24d1c4c1a2edc0d"
+  },
+  "cells_reexecuted": false
+}
