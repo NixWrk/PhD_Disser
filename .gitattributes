@@ -69,3 +69,7 @@ MATLAB_TRKG4_real_subjects/tools/lateral_literature_frequency_comparison.py -tex
 MATLAB_TRKG4_real_subjects/tools/lateral_tissue_inverse_analysis.py -text
 MATLAB_TRKG4_real_subjects/notebooks/lateral_tissue_ablation_results.py -text
 MATLAB_TRKG4_real_subjects/tools/verify_lateral_tissue_report.py -text
+
+# Preserve bytes of the hash-bound Nix cardiac-cycle calculation and report.
+"Colab Notebooks/40.23_*" -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+MATLAB_TRKG4_real_subjects/tools/heart_cardiac_cycle_electrical.py -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
