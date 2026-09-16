@@ -1,0 +1,27 @@
+{
+  "complete": true,
+  "identity": {
+    "worker_sha256": "a9c781dc028fbbdcf53687d4533e5d7469ac0a63b8c433534c1dedabf9d97640",
+    "forward_execution_sha256": "9ed4476891e4db6836ad6de0c36dda618ee6639a38fd1f64f7428163e8041cd5",
+    "prepared_sha256": "7a21df14a740a34240554461f2217f8124f5407a4c639946e33a615e4a4dd0ff",
+    "base_prepared_sha256": "6251229d40d0ae757d31103751c17a15adf268ed6b9912497e4f667c9e74b075"
+  },
+  "fits": 6,
+  "bounds_ohm_m": [
+    [
+      1.3774104683195594,
+      10
+    ],
+    [
+      3.8172830517819216,
+      24.074073806584366
+    ]
+  ],
+  "starts_per_fit": 2,
+  "global_optimum_certified": false,
+  "synthetic_only": true,
+  "source_frequency_hz": 50000,
+  "CEM_solves": 1071,
+  "fits_sha256": "c7b59b86c48cb2bcfcacb949b269f42cba7edd9ec636d2ba169139a28033a30d",
+  "predictions_sha256": "4509b3b2ec4208d6353f58fc0c48deb6fc643fb775df05f68a6bfe0e339b6401"
+}

@@ -1,0 +1,126 @@
+{
+  "status": "exploratory_hypothesis_not_validated",
+  "candidate": "C01",
+  "purpose": "matched sequential restoration of bone then heart; no geometry or resistivity fitting",
+  "models": [
+    "two_tissue",
+    "bones",
+    "bones_heart"
+  ],
+  "sizes_mm": [
+    50,
+    60,
+    70,
+    80,
+    90,
+    110,
+    120,
+    130,
+    140
+  ],
+  "finite_electrodes": true,
+  "diameter_mm": 5,
+  "contact_ohm_m2": 0.00015915494309189532,
+  "electrodes_per_measurement": 4,
+  "sources": [
+    {
+      "path": "output/exploratory/lateral_array_design_20260916/plan.json",
+      "sha256": "ad06381a46e9ee0c2d3d0fb18f6f21d29ac74bf88fd2383c4b8a0b8d0ca68dc9"
+    },
+    {
+      "path": "output/exploratory/lateral_array_design_20260916/prepared_fem.mat",
+      "sha256": "6251229d40d0ae757d31103751c17a15adf268ed6b9912497e4f667c9e74b075"
+    },
+    {
+      "path": "output/exploratory/lateral_array_design_20260916/refined_mesh.mat",
+      "sha256": "d4230010cb6e3e7bdec51d68677d76a48d94e0e5b4bbbb0c2af0e7607df4e798"
+    },
+    {
+      "path": "output/exploratory/lateral_array_design_20260916/contact_qc.csv",
+      "sha256": "8ff447d73268f5674072f48d66e1578b8f1b6582a27f2f666371a1328d934322"
+    },
+    {
+      "path": "output/exploratory/transverse_consistency_20260914/input_contract.json",
+      "sha256": "f231228f20722b3f102fed0a27c9cad1ddf78e6e4d4fcea74c70174a8ab21fe0"
+    },
+    {
+      "path": "output/exploratory/transverse_consistency_20260914/geometry_input.mat",
+      "sha256": "952fdad64bc71930bcff18afd623b1e7f162e1a0afaa1317b516bfd0d8658a98"
+    },
+    {
+      "path": "output/exploratory/transverse_consistency_20260914/geometry_masks.mat",
+      "sha256": "f31dde70b04137f09352c8f886d4dd7277cc2ef6462d494ece04f8fd74d38d38"
+    },
+    {
+      "path": "output/exploratory/lateral_tissue_ablation_20260916/original_labels.mat",
+      "sha256": "612e0bdf28fe5d11a1498f19a7a138d2796ec830e33728a7f8daf586acb0f729"
+    },
+    {
+      "path": "output/nik_trkg4_right_rib_050mm_full_v5_1mm_local2mm.mat",
+      "sha256": "2168afe5f8d13ef5d6ef26f7640d889fc5cb2af0174ebc3afcb6e345f50ab923"
+    },
+    {
+      "path": "output/exploratory/arm_sigma_20260908/literature/Thermal_dielectric_acoustic_MR properties_database_V5.0(ASCII).txt",
+      "sha256": "d139ae961db460112345b43cd929042920390a1f2db3d462a2278b3be931c7e2"
+    },
+    {
+      "path": "output/exploratory/lateral_real_application_20260915/observations.csv",
+      "sha256": "29e57ee9a6c1c71c280e6a7a0041a7909189deecfc88290f75991f83ad4b363c"
+    },
+    {
+      "path": "src/run_lateral_array_design.m",
+      "sha256": "6c9a267870a00542ca40f23622626557b7c38c8d2621fba5f4fc4ea217df5df1"
+    },
+    {
+      "path": "tools/refine_surface_contact_mesh.py",
+      "sha256": "fc98ffd0cce704c3df3b33283d255044e9a6bab5c9e3ac45883ed34e0c7d1242"
+    }
+  ],
+  "requests_sha256": "88edd863eefbcd851209207e675a1d94993d8907a490755be13e79cd379eebb0",
+  "masks_sha256": "13c58a4a0c782adc12719c5a98297295827b7f442e142ff380cb26e11dbf2f44",
+  "literature_values_sha256": "933941d6fd04ddbe2ca4c71450ef9eb0d9a993116dc47bb0434d356d45b725bd",
+  "material_inventory_sha256": "015eb80f0bf1b49031d718a55ab4a2ca78e695b3daa174a6c2a7e6797dcd7135",
+  "literature_doi": "10.13099/VIP21000-05-0",
+  "literature_urls": [
+    "https://itis.swiss/virtual-population/tissue-properties/downloads/database-v5-0",
+    "https://itis.swiss/virtual-population/tissue-properties/database/low-frequency-conductivity",
+    "https://itis.swiss/virtual-population/tissue-properties/database/dielectric-properties"
+  ],
+  "literature_scope": "frozen ITIS V5.0 corpus extended to existing-model Bone (Cortical) and Heart Muscle rows",
+  "mask_overlap": {
+    "bone_elements": 9,
+    "bone_volume_mm3": 540.0339458672363,
+    "heart_elements": 0
+  },
+  "overlap_policy": "current closed lung has priority; no change to lung or external surface",
+  "geometry_checks": {
+    "identical_refined_nodes_elements_boundary": true,
+    "positive_volumes": true,
+    "parent_material_volumes_preserved": true,
+    "before_mm3": [
+      0.0,
+      14372159.846839594,
+      4216733.272550529,
+      768831.139506422,
+      813038.6994337229
+    ],
+    "after_mm3": [
+      0.0,
+      14372159.84684083,
+      4216733.272550529,
+      768831.139506422,
+      813038.6994337229
+    ]
+  },
+  "preparation_script_sha256": "a600cbb0b08d502ca2ac7a81fa124192f5a42277954448e96d0a50a6e6a94dd0",
+  "limitations": [
+    "Fixed inspiratory geometry in both electrical respiratory scenarios.",
+    "Deflated is not independently established as this volunteer exhalation.",
+    "Whole bone mask assigned cortical bone; marrow and cancellous bone not separated.",
+    "Whole heart mask assigned heart muscle; blood not separately segmented.",
+    "Real isotropic conductivities only; fixed transferred contact resistance.",
+    "Five mm contact is a design scenario, not measured historical diameter.",
+    "Sequential increments depend on background; not independent impedance fractions.",
+    "No new pose search, fat segmentation, or population validation."
+  ]
+}

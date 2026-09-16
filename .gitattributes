@@ -60,3 +60,12 @@ MATLAB_TRKG4_real_subjects/notebooks/lateral_literature_forward_results.py -text
 # Preserve bytes of the 100 kHz direct comparison.
 MATLAB_TRKG4_real_subjects/output/exploratory/lateral_literature_100khz_20260916/** -text
 MATLAB_TRKG4_real_subjects/tools/lateral_literature_frequency_comparison.py -text
+
+/MATLAB_TRKG4_real_subjects/output/exploratory/lateral_tissue_ablation_20260916/** -text
+/MATLAB_TRKG4_real_subjects/src/run_lateral_tissue_ablation.m -text
+/MATLAB_TRKG4_real_subjects/src/run_lateral_tissue_inverse_probe.m -text
+/MATLAB_TRKG4_real_subjects/tools/lateral_tissue_ablation.py -text
+
+MATLAB_TRKG4_real_subjects/tools/lateral_tissue_inverse_analysis.py -text
+MATLAB_TRKG4_real_subjects/notebooks/lateral_tissue_ablation_results.py -text
+MATLAB_TRKG4_real_subjects/tools/verify_lateral_tissue_report.py -text

@@ -1,0 +1,13 @@
+{
+  "complete": true,
+  "synthetic_only": true,
+  "global_optimum_certified": false,
+  "max_two_start_log_difference": 1.14614409296721e-06,
+  "inputs_sha256": {
+    "synthetic_inverse_qc.json": "dc33842d28c78200348c4d602a6000ac3a1cdbe53fe269461ae90f5764720e19",
+    "synthetic_inverse.csv": "c7b59b86c48cb2bcfcacb949b269f42cba7edd9ec636d2ba169139a28033a30d",
+    "synthetic_inverse_predictions.csv": "4509b3b2ec4208d6353f58fc0c48deb6fc643fb775df05f68a6bfe0e339b6401",
+    "responses.csv": "102f64649ed9e0f0185498b6b8d7a0a143c9dbc8d33e6aed41595c1f974b6b98"
+  },
+  "analysis_source_sha256": "a5bcebeb0c59f95627f4b9cfe0ef7c30546bfbc0215076c2f992356324efb033"
+}

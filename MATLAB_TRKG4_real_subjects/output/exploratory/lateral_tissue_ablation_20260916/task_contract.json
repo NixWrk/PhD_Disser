@@ -1,0 +1,23 @@
+{
+  "request": "restore bone then heart at fixed C01; assess direct and inverse effects of replacing them with background",
+  "owner_notebook": "33.09",
+  "language": "ru",
+  "genre": "computational_notebook_section",
+  "scope": [
+    "three electrical material assignments on identical finite-contact CT mesh",
+    "50 and 100 kHz direct literary-input scenarios",
+    "50 kHz nonlinear synthetic replacement test"
+  ],
+  "deferred": [
+    "fat segmentation",
+    "new joint pose-resistivity search",
+    "pulse analysis"
+  ],
+  "future_localization": "profile the residual over common rho1/rho2 at each pose, then compare poses using all independently recorded baseline impedances",
+  "review_required": [
+    "computational consistency",
+    "rendered figure and notebook",
+    "full final Russian reader-text model review"
+  ],
+  "scientific_status": "exploratory_hypothesis_not_validated"
+}

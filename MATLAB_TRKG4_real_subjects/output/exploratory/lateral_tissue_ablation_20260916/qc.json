@@ -1,0 +1,30 @@
+{
+  "complete": true,
+  "new_forward_solves": 108,
+  "equal_material_control_solves": 27,
+  "derivative_solves": 9,
+  "prior_reference_max_difference_ohm": 2.2026824808563106e-12,
+  "equal_material_max_difference_ohm": 9.947598300641403e-14,
+  "max_system_relative_residual": 6.46328145681688e-10,
+  "max_reciprocity_abs_ohm": 3.19744231092045e-14,
+  "global_spatial_convergence": false,
+  "physical_validation": false,
+  "nonlinear_inverse_performed": false,
+  "input_sha256": {
+    "plan.json": "b54274e67ae7bacfba81e65a14715b3ba7d0834dfa215749819bf0dee67a8d42",
+    "requests.csv": "88edd863eefbcd851209207e675a1d94993d8907a490755be13e79cd379eebb0",
+    "responses.csv": "102f64649ed9e0f0185498b6b8d7a0a143c9dbc8d33e6aed41595c1f974b6b98",
+    "execution.json": "9ed4476891e4db6836ad6de0c36dda618ee6639a38fd1f64f7428163e8041cd5",
+    "literature_values.csv": "933941d6fd04ddbe2ca4c71450ef9eb0d9a993116dc47bb0434d356d45b725bd",
+    "material_inventory.csv": "015eb80f0bf1b49031d718a55ab4a2ca78e695b3daa174a6c2a7e6797dcd7135",
+    "preparation_qc.json": "168e5bc7a1b8d47eeeff2703c4f88767683362b0022d346a9003e6d8446600c2",
+    "derivative_qc.json": "1bd3818c84fcecdcd7650d5fb7e3ec38fd51de7ea619aeaec243cd6eefe7d9b8"
+  },
+  "output_sha256": {
+    "comparison.csv": "2f0b93fab7aa7d9bfa9f4b0081e713384b58189fceb7ca9c2f85f7392043dbe1",
+    "increments.csv": "164c91ff13e3385d58a0277d2cd050c2c596f434c0fd4682aafcb167b6c49d7b",
+    "metrics.csv": "417b0c83cd8bd44054a4e39c4e92bfed1a2c0e073d5bc3523a8928f9aa559216",
+    "local_inverse_diagnostic.csv": "858d5d34d50289b786bbb76cefd8fd5591c2ce556b1a7fe2bfa97f55ecc520aa"
+  },
+  "analysis_script_sha256": "a600cbb0b08d502ca2ac7a81fa124192f5a42277954448e96d0a50a6e6a94dd0"
+}
