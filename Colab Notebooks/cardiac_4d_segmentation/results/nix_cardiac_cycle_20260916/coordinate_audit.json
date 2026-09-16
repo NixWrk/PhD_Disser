@@ -1,0 +1,107 @@
+{
+  "schema": "cardiac_coordinate_audit_v1",
+  "same_dicom_patient_frame": true,
+  "dicom_series": {
+    "301": {
+      "count": 241,
+      "frame_hashes": [
+        "2f4286ce1e018e538b7980c9d6810c77bcc2144f5fa3a8b7e20f737dcb9837d1"
+      ],
+      "orientations": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ]
+      ]
+    },
+    "307": {
+      "count": 3072,
+      "frame_hashes": [
+        "2f4286ce1e018e538b7980c9d6810c77bcc2144f5fa3a8b7e20f737dcb9837d1"
+      ],
+      "orientations": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ]
+      ]
+    }
+  },
+  "transform_ras_mm_to_fem_mm": [
+    [
+      -1.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      -1.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "additional_registration": false,
+  "inputs": [
+    {
+      "role": "bones_in_scan_fov",
+      "sha256": "8190a88c8b179640ce81822b27ceb63c2f93274df2149617b1f8086d403b7c91"
+    },
+    {
+      "role": "body_in_scan_fov",
+      "sha256": "a139dc34746f1f5d863d758eead4df82ddb12c2633b1ad5cc816f53e717086ac"
+    },
+    {
+      "role": "prepared_fem",
+      "sha256": "d83fa6231da30496b7e457e5e2e88d1c7927057ec6fbf58d8a6dca1441389a0a"
+    },
+    {
+      "role": "static_bones_stl",
+      "sha256": "8ca51e9412c34534d55831dd739f73365773e1a4913733b62318f4ee51bea5e2"
+    }
+  ],
+  "limitations": [
+    "FEM/STL axis agreement is supported by surface distances; STL contains no DICOM frame metadata.",
+    "Distance combines segmentation, sampling, respiration and possible motion; not independent registration uncertainty.",
+    "Static series 301 and cardiac series 307 share the patient frame; common origin alone would not establish anatomical alignment."
+  ],
+  "bones": {
+    "sample_count": 6191,
+    "distance_p50_p90_p95_mm": [
+      0.7904413627184986,
+      2.62095951096859,
+      4.387158772778555
+    ],
+    "distance_direction": "static surface sample to nearest 4D boundary voxel centre; CT end caps excluded"
+  },
+  "body": {
+    "sample_count": 29651,
+    "distance_p50_p90_p95_mm": [
+      0.5630162625832309,
+      1.1475767842109723,
+      1.4097156363156211
+    ],
+    "distance_direction": "static surface sample to nearest 4D boundary voxel centre; CT end caps excluded"
+  },
+  "code_sha256": "20a35ab24a57717d36db58efd8fc7668cc85cb1310b2e63399ad93c584f19c50"
+}

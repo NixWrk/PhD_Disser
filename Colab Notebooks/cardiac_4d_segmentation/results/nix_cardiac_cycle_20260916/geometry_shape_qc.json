@@ -1,0 +1,887 @@
+{
+  "schema": "cardiac_cycle_shape_qc_v1",
+  "rows": [
+    {
+      "id": "phase_00",
+      "mask_sha256": "f07990cd5ff46ea5858b47d72be8d138e5d32851f1fcc4f0349ce9414bb0bdcc",
+      "moments": {
+        "voxel_count": 1703924,
+        "voxel_volume_mm3": 0.36636352539062494,
+        "volume_mm3": 624255.6036376952,
+        "volume_ml": 624.2556036376952,
+        "centroid_mm": [
+          20.828886052401202,
+          -22.34276081516043,
+          -151.86675687705008
+        ],
+        "covariance_mm2": [
+          [
+            793.0538571257114,
+            -56.08985849862673,
+            -177.54824748411545
+          ],
+          [
+            -56.08985849862673,
+            578.7187817735792,
+            217.22728917814732
+          ],
+          [
+            -177.54824748411545,
+            217.22728917814732,
+            742.8192015426815
+          ]
+        ],
+        "bbox_index_centers": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            149,
+            178,
+            209
+          ]
+        ],
+        "coordinate_system": "input_affine_physical_mm",
+        "moment_definition": "uniform_full_voxel_cells_including_index_I_over_12"
+      },
+      "principal_axes_columns_fem": [
+        [
+          -0.6082786614827956,
+          0.7741622543850094,
+          -0.17512816412621404
+        ],
+        [
+          0.40459104146285596,
+          0.49224548084084585,
+          0.770714263368575
+        ],
+        [
+          0.6828639389751808,
+          0.3979537541942328,
+          -0.6126415349696887
+        ]
+      ],
+      "principal_variances_mm2": [
+        1029.6801914273924,
+        666.1218471403835,
+        418.7898018741955
+      ],
+      "orientation_degenerate": false,
+      "connected_components_26": 1,
+      "largest_component_fraction": 1.0,
+      "touches_ct_boundary": true
+    },
+    {
+      "id": "phase_01",
+      "mask_sha256": "86c5bd9518eb9bf379a95cb84accc450f3b6bd407faa805b3ea6c97c7c2df8ca",
+      "moments": {
+        "voxel_count": 1629480,
+        "voxel_volume_mm3": 0.36636352539062494,
+        "volume_mm3": 596982.0373535155,
+        "volume_ml": 596.9820373535155,
+        "centroid_mm": [
+          19.514795947368114,
+          -21.48808320322628,
+          -150.40451335899962
+        ],
+        "covariance_mm2": [
+          [
+            829.5924717922715,
+            -85.60138055127905,
+            -187.08540919873658
+          ],
+          [
+            -85.60138055127905,
+            575.2462271969938,
+            247.7592619334364
+          ],
+          [
+            -187.08540919873658,
+            247.7592619334364,
+            743.3876208158285
+          ]
+        ],
+        "bbox_index_centers": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            151,
+            180,
+            204
+          ]
+        ],
+        "coordinate_system": "input_affine_physical_mm",
+        "moment_definition": "uniform_full_voxel_cells_including_index_I_over_12"
+      },
+      "principal_axes_columns_fem": [
+        [
+          -0.6259228645296514,
+          0.7722266415884886,
+          -0.109025601030031
+        ],
+        [
+          0.42457465120966775,
+          0.45467520448875287,
+          0.7829475231286572
+        ],
+        [
+          0.6541841737685071,
+          0.44377524992283496,
+          -0.612459463431451
+        ]
+      ],
+      "principal_variances_mm2": [
+        1083.1899981435786,
+        671.679376253487,
+        393.35694540802814
+      ],
+      "orientation_degenerate": false,
+      "connected_components_26": 1,
+      "largest_component_fraction": 1.0,
+      "touches_ct_boundary": true
+    },
+    {
+      "id": "phase_02",
+      "mask_sha256": "04901c7b437bd67628c97c3eca0e375870bcb7f0a0568610b4edda2801b09916",
+      "moments": {
+        "voxel_count": 1555427,
+        "voxel_volume_mm3": 0.36636352539062494,
+        "volume_mm3": 569851.7192077636,
+        "volume_ml": 569.8517192077636,
+        "centroid_mm": [
+          18.501929282687783,
+          -20.718246841355374,
+          -149.89080252717048
+        ],
+        "covariance_mm2": [
+          [
+            835.9963843138931,
+            -109.70398059233649,
+            -185.58564375290746
+          ],
+          [
+            -109.70398059233649,
+            572.1243121917985,
+            252.71299222495378
+          ],
+          [
+            -185.58564375290746,
+            252.71299222495378,
+            715.2898531893562
+          ]
+        ],
+        "bbox_index_centers": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            153,
+            178,
+            204
+          ]
+        ],
+        "coordinate_system": "input_affine_physical_mm",
+        "moment_definition": "uniform_full_voxel_cells_including_index_I_over_12"
+      },
+      "principal_axes_columns_fem": [
+        [
+          0.6478379202033424,
+          0.7589202413408003,
+          0.06592493026032452
+        ],
+        [
+          -0.441397106391306,
+          0.4445010923266872,
+          -0.7794789114464635
+        ],
+        [
+          -0.6208660271072894,
+          0.47587692337788645,
+          0.6229498616906559
+        ]
+      ],
+      "principal_variances_mm2": [
+        1088.6009877411152,
+        655.372048697365,
+        379.43751325656814
+      ],
+      "orientation_degenerate": false,
+      "connected_components_26": 1,
+      "largest_component_fraction": 1.0,
+      "touches_ct_boundary": true
+    },
+    {
+      "id": "phase_03",
+      "mask_sha256": "b2110bc5406d5dde8fcf3649b002aa4e1ad83634f7d5c1451465ee40578be299",
+      "moments": {
+        "voxel_count": 1564337,
+        "voxel_volume_mm3": 0.36636352539062494,
+        "volume_mm3": 573116.018218994,
+        "volume_ml": 573.116018218994,
+        "centroid_mm": [
+          17.834128366698167,
+          -20.569539906067376,
+          -149.56372841924863
+        ],
+        "covariance_mm2": [
+          [
+            848.65981085866,
+            -107.34552387536722,
+            -182.3434279251631
+          ],
+          [
+            -107.34552387536722,
+            582.397655326201,
+            253.97858176068297
+          ],
+          [
+            -182.3434279251631,
+            253.97858176068297,
+            697.7278463347473
+          ]
+        ],
+        "bbox_index_centers": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            151,
+            178,
+            202
+          ]
+        ],
+        "coordinate_system": "input_affine_physical_mm",
+        "moment_definition": "uniform_full_voxel_cells_including_index_I_over_12"
+      },
+      "principal_axes_columns_fem": [
+        [
+          0.66311489243982,
+          0.7445615066973416,
+          0.07685572307324025
+        ],
+        [
+          -0.44478244923532106,
+          0.4745357845582504,
+          -0.759594867034997
+        ],
+        [
+          -0.6020358895254961,
+          0.4695145918054841,
+          0.6458396362913741
+        ]
+      ],
+      "principal_variances_mm2": [
+        1086.2094340833926,
+        665.2603317109732,
+        377.3155467252432
+      ],
+      "orientation_degenerate": false,
+      "connected_components_26": 1,
+      "largest_component_fraction": 1.0,
+      "touches_ct_boundary": true
+    },
+    {
+      "id": "phase_04",
+      "mask_sha256": "ebae57ee95457ea089ac221cc6cfa5f137c333baf7c50ad16b96dec7919299c8",
+      "moments": {
+        "voxel_count": 1589154,
+        "voxel_volume_mm3": 0.36636352539062494,
+        "volume_mm3": 582208.0618286132,
+        "volume_ml": 582.2080618286132,
+        "centroid_mm": [
+          18.497725202369523,
+          -21.41884379412066,
+          -150.2818639759082
+        ],
+        "covariance_mm2": [
+          [
+            860.7860554172019,
+            -105.32030927525395,
+            -198.20651913517838
+          ],
+          [
+            -105.32030927525395,
+            576.9493487856502,
+            248.15564194079815
+          ],
+          [
+            -198.20651913517838,
+            248.15564194079815,
+            699.2731280823316
+          ]
+        ],
+        "bbox_index_centers": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            151,
+            178,
+            204
+          ]
+        ],
+        "coordinate_system": "input_affine_physical_mm",
+        "moment_definition": "uniform_full_voxel_cells_including_index_I_over_12"
+      },
+      "principal_axes_columns_fem": [
+        [
+          0.6816488439929115,
+          0.724688920113633,
+          0.10090006217869109
+        ],
+        [
+          -0.42123170268095556,
+          0.5014360726215017,
+          -0.7557286005772352
+        ],
+        [
+          -0.598263074357452,
+          0.4726392219637088,
+          0.6470652669722812
+        ]
+      ],
+      "principal_variances_mm2": [
+        1099.8298037259651,
+        658.6419723815723,
+        378.53675617764577
+      ],
+      "orientation_degenerate": false,
+      "connected_components_26": 1,
+      "largest_component_fraction": 1.0,
+      "touches_ct_boundary": true
+    },
+    {
+      "id": "phase_05",
+      "mask_sha256": "eb72fcfea0310353460d8b8699c129f575086dc579450786b33afcd00ab2d2c4",
+      "moments": {
+        "voxel_count": 1694691,
+        "voxel_volume_mm3": 0.36636352539062494,
+        "volume_mm3": 620872.9692077636,
+        "volume_ml": 620.8729692077635,
+        "centroid_mm": [
+          19.60422975833542,
+          -21.18381258277106,
+          -150.34024354730698
+        ],
+        "covariance_mm2": [
+          [
+            833.0088840099314,
+            -94.53643814525837,
+            -191.58060604928195
+          ],
+          [
+            -94.53643814525837,
+            572.8344855638726,
+            230.6634066190009
+          ],
+          [
+            -191.58060604928195,
+            230.6634066190009,
+            725.9008057533146
+          ]
+        ],
+        "bbox_index_centers": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            149,
+            180,
+            207
+          ]
+        ],
+        "coordinate_system": "input_affine_physical_mm",
+        "moment_definition": "uniform_full_voxel_cells_including_index_I_over_12"
+      },
+      "principal_axes_columns_fem": [
+        [
+          0.657159027488145,
+          0.7465788679050017,
+          0.10374009151972784
+        ],
+        [
+          -0.41246462377907167,
+          0.4713818174549539,
+          -0.7795332682468745
+        ],
+        [
+          -0.63088425778555,
+          0.4694882066362803,
+          0.6177101886061336
+        ]
+      ],
+      "principal_variances_mm2": [
+        1076.2652620856147,
+        652.8436007807867,
+        402.63531246071733
+      ],
+      "orientation_degenerate": false,
+      "connected_components_26": 1,
+      "largest_component_fraction": 1.0,
+      "touches_ct_boundary": true
+    },
+    {
+      "id": "phase_06",
+      "mask_sha256": "5b161ca2e28940c9da45ce7181804aa7a1ea6e2c5ab3e0d6923b4f5e921953b8",
+      "moments": {
+        "voxel_count": 1817954,
+        "voxel_volume_mm3": 0.36636352539062494,
+        "volume_mm3": 666032.0364379882,
+        "volume_ml": 666.0320364379882,
+        "centroid_mm": [
+          20.531757756137424,
+          -21.181728922225453,
+          -150.81873376519113
+        ],
+        "covariance_mm2": [
+          [
+            835.2645723190801,
+            -41.93310561139832,
+            -192.2184499881084
+          ],
+          [
+            -41.93310561139832,
+            593.4508734959809,
+            204.3431585339027
+          ],
+          [
+            -192.2184499881084,
+            204.3431585339027,
+            721.6159134566997
+          ]
+        ],
+        "bbox_index_centers": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            149,
+            178,
+            207
+          ]
+        ],
+        "coordinate_system": "input_affine_physical_mm",
+        "moment_definition": "uniform_full_voxel_cells_including_index_I_over_12"
+      },
+      "principal_axes_columns_fem": [
+        [
+          0.6786099302069978,
+          0.6979030974688625,
+          0.22895377080935103
+        ],
+        [
+          -0.3579743181661147,
+          0.5864441344339236,
+          -0.7265931906655545
+        ],
+        [
+          -0.6413602343129469,
+          0.41111378440939333,
+          0.6477981986009442
+        ]
+      ],
+      "principal_variances_mm2": [
+        1039.0521074812743,
+        686.7982900972211,
+        424.4809616932646
+      ],
+      "orientation_degenerate": false,
+      "connected_components_26": 1,
+      "largest_component_fraction": 1.0,
+      "touches_ct_boundary": true
+    },
+    {
+      "id": "phase_07",
+      "mask_sha256": "741544744c01623df15a1a5a53a7353afdd01672f32e0ea55f56ea8d22d8bc29",
+      "moments": {
+        "voxel_count": 1837987,
+        "voxel_volume_mm3": 0.36636352539062494,
+        "volume_mm3": 673371.3969421386,
+        "volume_ml": 673.3713969421385,
+        "centroid_mm": [
+          20.779018173346913,
+          -21.554269709698595,
+          -151.55925967771967
+        ],
+        "covariance_mm2": [
+          [
+            832.4163129876041,
+            -30.284348399192474,
+            -186.4176632494574
+          ],
+          [
+            -30.284348399192474,
+            589.0176916197976,
+            194.82997145635497
+          ],
+          [
+            -186.4176632494574,
+            194.82997145635497,
+            722.7258635499196
+          ]
+        ],
+        "bbox_index_centers": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            149,
+            176,
+            209
+          ]
+        ],
+        "coordinate_system": "input_affine_physical_mm",
+        "moment_definition": "uniform_full_voxel_cells_including_index_I_over_12"
+      },
+      "principal_axes_columns_fem": [
+        [
+          0.6854632201036657,
+          0.6874484253568985,
+          0.23990589063096035
+        ],
+        [
+          -0.3376180165009425,
+          0.5920243702239626,
+          -0.7317931538316614
+        ],
+        [
+          -0.6451001851023475,
+          0.42062074073355094,
+          0.6379059050092544
+        ]
+      ],
+      "principal_variances_mm2": [
+        1022.7731503484728,
+        692.2745884059193,
+        429.1121294029298
+      ],
+      "orientation_degenerate": false,
+      "connected_components_26": 1,
+      "largest_component_fraction": 1.0,
+      "touches_ct_boundary": true
+    },
+    {
+      "id": "phase_08",
+      "mask_sha256": "58f1a2b5286349f333302f1e48235b53927591f21768fa0a6f566f66e5d41349",
+      "moments": {
+        "voxel_count": 1826259,
+        "voxel_volume_mm3": 0.36636352539062494,
+        "volume_mm3": 669074.6855163573,
+        "volume_ml": 669.0746855163572,
+        "centroid_mm": [
+          21.551228294840016,
+          -22.220852768219963,
+          -151.49207179465787
+        ],
+        "covariance_mm2": [
+          [
+            801.8346082383728,
+            -10.400721312666475,
+            -175.89092816232608
+          ],
+          [
+            -10.400721312666475,
+            589.2233801815888,
+            179.78500739833606
+          ],
+          [
+            -175.89092816232608,
+            179.78500739833606,
+            723.380229650659
+          ]
+        ],
+        "bbox_index_centers": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            151,
+            176,
+            209
+          ]
+        ],
+        "coordinate_system": "input_affine_physical_mm",
+        "moment_definition": "uniform_full_voxel_cells_including_index_I_over_12"
+      },
+      "principal_axes_columns_fem": [
+        [
+          -0.6662551087327577,
+          0.6900731790729748,
+          -0.28267143048355403
+        ],
+        [
+          0.3233451313828736,
+          0.6088988875933949,
+          0.7243549341990558
+        ],
+        [
+          0.6719762317958078,
+          0.391204744618012,
+          -0.628813797311941
+        ]
+      ],
+      "principal_variances_mm2": [
+        984.2835592777349,
+        692.9441955277041,
+        437.2104632651813
+      ],
+      "orientation_degenerate": false,
+      "connected_components_26": 1,
+      "largest_component_fraction": 1.0,
+      "touches_ct_boundary": true
+    },
+    {
+      "id": "phase_09",
+      "mask_sha256": "cac54dc510d168ab45d45ec806a42d5b9cfc934f46d3f72af8f5129c6efc7524",
+      "moments": {
+        "voxel_count": 1830462,
+        "voxel_volume_mm3": 0.36636352539062494,
+        "volume_mm3": 670614.5114135741,
+        "volume_ml": 670.6145114135741,
+        "centroid_mm": [
+          21.368135348855773,
+          -22.11882897090512,
+          -151.32468872552468
+        ],
+        "covariance_mm2": [
+          [
+            806.3120564447488,
+            -2.8576859512346178,
+            -174.14840359557957
+          ],
+          [
+            -2.8576859512346178,
+            591.829356820709,
+            182.30702564629706
+          ],
+          [
+            -174.14840359557957,
+            182.30702564629706,
+            733.8168280573361
+          ]
+        ],
+        "bbox_index_centers": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            149,
+            176,
+            209
+          ]
+        ],
+        "coordinate_system": "input_affine_physical_mm",
+        "moment_definition": "uniform_full_voxel_cells_including_index_I_over_12"
+      },
+      "principal_axes_columns_fem": [
+        [
+          -0.6592558895652503,
+          0.694763805349029,
+          -0.2875498684584406
+        ],
+        [
+          0.3184993846157873,
+          0.6044422461540843,
+          0.7302107319558994
+        ],
+        [
+          0.6811312752127119,
+          0.3898112695153151,
+          -0.6197639551361173
+        ]
+      ],
+      "principal_variances_mm2": [
+        987.6196447820058,
+        706.116398771053,
+        438.2221977697354
+      ],
+      "orientation_degenerate": false,
+      "connected_components_26": 1,
+      "largest_component_fraction": 1.0,
+      "touches_ct_boundary": true
+    },
+    {
+      "id": "phase_10",
+      "mask_sha256": "10c539cc1f898576a962e613988903ae01879840888cfd39a9f1178f50946820",
+      "moments": {
+        "voxel_count": 1763613,
+        "voxel_volume_mm3": 0.36636352539062494,
+        "volume_mm3": 646123.4761047362,
+        "volume_ml": 646.1234761047363,
+        "centroid_mm": [
+          20.998471942908154,
+          -21.98696397987957,
+          -151.54599536615788
+        ],
+        "covariance_mm2": [
+          [
+            824.4811300579634,
+            -25.27504810045817,
+            -190.69233001293458
+          ],
+          [
+            -25.27504810045817,
+            587.1763130334865,
+            205.8747459547114
+          ],
+          [
+            -190.69233001293458,
+            205.8747459547114,
+            740.7622893128611
+          ]
+        ],
+        "bbox_index_centers": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            151,
+            178,
+            209
+          ]
+        ],
+        "coordinate_system": "input_affine_physical_mm",
+        "moment_definition": "uniform_full_voxel_cells_including_index_I_over_12"
+      },
+      "principal_axes_columns_fem": [
+        [
+          -0.6550690319879084,
+          0.7131306571569508,
+          -0.24965822468590915
+        ],
+        [
+          0.3468970311106877,
+          0.5774030183496536,
+          0.7390995901820673
+        ],
+        [
+          0.6712279889404309,
+          0.39755555614731974,
+          -0.6256217440589639
+        ]
+      ],
+      "principal_variances_mm2": [
+        1033.2619785635607,
+        697.7095721868217,
+        421.44818165392843
+      ],
+      "orientation_degenerate": false,
+      "connected_components_26": 1,
+      "largest_component_fraction": 1.0,
+      "touches_ct_boundary": true
+    },
+    {
+      "id": "phase_11",
+      "mask_sha256": "26d60e6c30dc45fb8461011a22a7d55a7e9cbc270134392f05803d76253da415",
+      "moments": {
+        "voxel_count": 1657970,
+        "voxel_volume_mm3": 0.36636352539062494,
+        "volume_mm3": 607419.7341918944,
+        "volume_ml": 607.4197341918945,
+        "centroid_mm": [
+          20.106376873199892,
+          -21.956527795846107,
+          -150.92252323490675
+        ],
+        "covariance_mm2": [
+          [
+            802.071264622687,
+            -78.67232634379518,
+            -181.55670848493244
+          ],
+          [
+            -78.67232634379518,
+            572.4433079897915,
+            230.5593868688204
+          ],
+          [
+            -181.55670848493244,
+            230.5593868688204,
+            741.427169267357
+          ]
+        ],
+        "bbox_index_centers": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            149,
+            180,
+            207
+          ]
+        ],
+        "coordinate_system": "input_affine_physical_mm",
+        "moment_definition": "uniform_full_voxel_cells_including_index_I_over_12"
+      },
+      "principal_axes_columns_fem": [
+        [
+          -0.613975039377585,
+          0.7797790137583813,
+          -0.12239011693473777
+        ],
+        [
+          0.42056286705857204,
+          0.4543914090182434,
+          0.7852740427786269
+        ],
+        [
+          0.6679532362918581,
+          0.4306659228594957,
+          -0.606931080943143
+        ]
+      ],
+      "principal_variances_mm2": [
+        1053.4789607479272,
+        655.9551027117171,
+        406.5076784201916
+      ],
+      "orientation_degenerate": false,
+      "connected_components_26": 1,
+      "largest_component_fraction": 1.0,
+      "touches_ct_boundary": true
+    }
+  ],
+  "geometry_sha256": "bc46b1ea3eaedc72b86ec9b108b96a2e06ba1557e601c589c2243bf7711baee3",
+  "implementation": [
+    {
+      "name": "audit_cycle_shape.py",
+      "sha256": "a805fe5de6df6e04cbec5f5103b95211071659671de0af80fcd84a1573751547"
+    },
+    {
+      "name": "run_reduced_heart_geometry.py",
+      "sha256": "05df4492bb476bebb5ac00d1011d5bd5a874293d3dc5f9a9d3cec4dd85810c2e"
+    },
+    {
+      "name": "heart_reduced_geometry.py",
+      "sha256": "2a5b2ec5f31498e23fd9ba664fa0a8320c001e8495cfe22f9afacdad12e6c521"
+    }
+  ],
+  "axis_convention": "descending eigenvalues; deterministic signs, det +1; no temporal rotation estimate",
+  "physical_validation": false,
+  "orientation_trajectory_validated": false
+}

@@ -55,8 +55,7 @@
 4. `tools/heart_cardiac_cycle_electrical.py run --output <каталог>`:
    последовательная сборка EIDORS и решение с ограничением памяти 32 ГиБ.
    Команды 1–4 запускаются с префиксом `python MATLAB_TRKG4_real_subjects/`.
-5. После завершения: `python Colab Notebooks/cardiac_4d_segmentation/heart_cardiac_cycle_report.py --build`
-   (путь с пробелом нужно заключить в кавычки). Формируются выполненный ноутбук
+5. После завершения: `python "Colab Notebooks/cardiac_4d_segmentation/heart_cardiac_cycle_report.py" --build`. Формируются выполненный ноутбук
    40.23 и HTML без исходного кода.
 
 Завершённые состояния проверяются по контрольным суммам при продолжении.

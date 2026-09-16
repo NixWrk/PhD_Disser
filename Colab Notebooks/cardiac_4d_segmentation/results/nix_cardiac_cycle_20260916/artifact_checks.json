@@ -1,0 +1,39 @@
+{
+  "status": "reader_artifacts_checked",
+  "code_inputs_in_html": 0,
+  "embedded_figures": 6,
+  "notebook_execution_errors": 0,
+  "tables_have_consistent_columns": true,
+  "complete_unique_electrical_pairs": 72,
+  "visual_review": [
+    "ct_overlay.png",
+    "geometry.png",
+    "montages.png",
+    "one_cycle.png",
+    "all_phases.png",
+    "heatmap.png"
+  ],
+  "independent_review_findings_resolved": [
+    "reject incomplete or duplicate phase/montage coverage",
+    "regenerate CT overlay and bind its mask hash",
+    "mark static geometry above CT field as unobserved"
+  ],
+  "reader_artifacts": [
+    {
+      "path": "Colab Notebooks/40.23_Изменение_импеданса_TEPC_по_4D_КТ_Nix.ipynb",
+      "sha256": "fd2939c22ed07e7d5c64540b839a4a58fb2c4ac757e2ad07f034d09da8752ae9"
+    },
+    {
+      "path": "Colab Notebooks/40.23_Изменение_импеданса_TEPC_по_4D_КТ_Nix.html",
+      "sha256": "26df5afbc75813556674bd69c91f6383aa65041bb4f72c77b7075bf872d331b7"
+    },
+    {
+      "path": "Colab Notebooks/40.19_План_выбора_электродов_и_модели_для_оценки_объёма.md",
+      "sha256": "0ae770673113323eb12822cbd59ce6eacab148c1f814e0c49cf89cf17617da7a"
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/docs/CARDIAC_CYCLE_TEPC_PILOT.md",
+      "sha256": "1b86f09d251dcc7efe003a058a57529c1de378d4699ef20c3b8035740ba402d4"
+    }
+  ]
+}

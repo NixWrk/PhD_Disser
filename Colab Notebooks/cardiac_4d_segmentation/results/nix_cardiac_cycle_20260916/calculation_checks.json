@@ -1,0 +1,26 @@
+{
+  "status": "72_checked_solutions_complete",
+  "count": 72,
+  "numerical_qc": {
+    "completed_rows": 72,
+    "required_rows": 72,
+    "max_relative_residual": 4.573563713636044e-11,
+    "max_reciprocity_absolute_ohm": 1.665952709117846e-09,
+    "max_current_error_A": 1.7053025658242404e-13,
+    "max_ground_residual_A": 1.075518726720812e-10
+  },
+  "criteria": {
+    "relative_residual": 1e-07,
+    "reciprocity_atol_ohm": 1e-08,
+    "reciprocity_rtol": 1e-08,
+    "current_atol_A": 1e-07,
+    "ground_residual_atol_A": 1e-07,
+    "matrix_rtol": 1e-12
+  },
+  "tests_passed": 10,
+  "physical_validation": false,
+  "spatial_convergence": false,
+  "code_inputs_verified": true,
+  "plan_sha256": "38e50d2713e25ac5eb761e3086037f04d6bf5da8ae2f0d0d28d77da235121ce4",
+  "summary_sha256": "f6a23af14a248d9eb3abac28ff44e95baaf83afca3c33d9bd7c76f8521bfeb07"
+}
