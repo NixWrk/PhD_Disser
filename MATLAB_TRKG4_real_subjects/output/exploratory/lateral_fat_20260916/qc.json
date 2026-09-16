@@ -1,0 +1,36 @@
+{
+  "complete": true,
+  "new_CEM_solutions": 189,
+  "main_five_tissue_solutions": 36,
+  "no_parameter_fitting": true,
+  "no_localization": true,
+  "max_relative_residual": 1.1026409826114502e-09,
+  "max_reciprocity_ohm": 5.6843418860808e-14,
+  "equal_material_checks_ohm": {
+    "equal_material_limit": 4.733294645120623e-09,
+    "fat_equal_limit": 1.1816801759323425e-08
+  },
+  "quadrature_all_within_tolerance": false,
+  "quadrature_max_difference_ohm": 0.2296144111448939,
+  "quadrature_max_difference_pct": 0.3058913771936228,
+  "numeric_tolerance": "abs difference <= 0.02 ohm + 0.001 abs(Z_1024); numerical scenario, not instrument noise",
+  "global_spatial_convergence": false,
+  "physical_validation": false,
+  "inputs_sha256": {
+    "plan.json": "fc7341d44131a05e5a5a3ed146ddcbad1c6785b6b7ae7c1a6ecc934dd0b0d2d6",
+    "responses.csv": "ff64929c37cd9d8fab9f5d22332087b9328e212482b39836d04ef6dcf440385e",
+    "requests.csv": "a4a173cb299edd8f6129aa510a847b063f5c4fe54d45189cfa84ae8d0ee9a041",
+    "execution.json": "27f5a9b77a188704da9d903a5a175033ce1fe4a033bb9281c24bc960b2f3d7a2",
+    "material_inventory.csv": "32e1f34fe3d0af1c4f7fc223339c312fe303993062da7f55d4c4df556dc3016a",
+    "literature_values.csv": "3182b0063f96f859e30fb16283fe9dc181e586d8f19cb8544a5f259cf773cf0e",
+    "matrix_qc_q256.json": "9ae5178f1ee2003619e51924c07ceaed65b8fbae16b14b25a85ccffe2568cd38",
+    "matrix_qc_q1024.json": "72a81c7b4e2f6d77a08516ece830455076800f4b8a44e26d3ce62b7704ce7338"
+  },
+  "outputs_sha256": {
+    "comparison.csv": "76d6142a123ae7a385afd8e453def67b1f0801020bd3bb192fd0cc52f5ddb878",
+    "increments.csv": "ac39e98da4d0a2511740902071b72966357a47452ef4114bc7dad95dc4682f97",
+    "metrics.csv": "630f769f8e2da648eb722ff4b18a355604781d437af90e15c4bfd2f10778c627",
+    "quadrature_comparison.csv": "0842595424ab365dbef9327ffd15986ef7e0a270f124cb74eb21dcee15fb2713"
+  },
+  "analysis_sha256": "7a33ae901fe021641aedc25dad602e3e301afbece42c380236a6231adb19df0d"
+}

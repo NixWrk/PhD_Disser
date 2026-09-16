@@ -124,6 +124,8 @@ paragraph(f"Дополнительная проверка включает {dire
     forward_sections(md, code)
     from lateral_tissue_ablation_results import result_sections as tissue_sections
     tissue_sections(md, code)
+    from lateral_fat_results import result_sections as fat_sections
+    fat_sections(md, code)
     md(r'''## 6. Условно достаточное число сборок
 
 **Таблица 5. Минимальное число размеров по локальному критерию для заданных σ и порога стандартного отклонения обеих тканевых оценок.** Условие проверено на 49 узлах. «Не достигнуто» означает, что даже девять размеров не удовлетворяют сценарию. Порог не является гарантированной максимальной ошибкой или 95%-ным интервалом.''')

@@ -1,0 +1,11 @@
+{
+  "complete": true,
+  "uniform_tetrahedron_first_moment_error": 0.00044160804827697575,
+  "analytical_plane_cut_volume_fraction": 0.3429999999999999,
+  "quadrature_plane_cut_volume_fraction": 0.3408203125,
+  "voxel_indexing_and_outside_test": true,
+  "nonnegative_unit_sum_material_fractions": true,
+  "mask_comparison_sha256": "66fe23907dafad4ac47f4bcb19e346daf4aeff841e8cd915aaedf88ca8361ee8",
+  "script_sha256": "440debd3c53e7703a8c6ccd12e3c27c9d4e4a2dfe589b740f673f458d12ddd2c",
+  "overlap_scope": "discrete model agreement at 1024 points per element, not segmentation accuracy"
+}

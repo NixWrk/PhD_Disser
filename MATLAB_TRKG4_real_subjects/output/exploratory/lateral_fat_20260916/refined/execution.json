@@ -1,0 +1,13 @@
+{
+  "complete": true,
+  "identity": {
+    "plan_sha256": "cca5d9750a5da008cc46bfde2bc59c8a859b303e8b9a3769dd2660943ae9cc29",
+    "worker_sha256": "2e9b567543b7a0842657b35bc51af2a331c03d90192c4c4372d87e94376e19f7"
+  },
+  "rows": 189,
+  "responses_sha256": "939ded3f10b0735467b8fa913c4510cf7193e14d5b77f91855be88dc6df27403",
+  "no_new_pose_search": true,
+  "no_inverse_fit": true,
+  "global_spatial_convergence": false,
+  "physical_validation": false
+}

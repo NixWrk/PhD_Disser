@@ -1,0 +1,19 @@
+{
+  "old_mask_found": true,
+  "old_mask_sha256": "ef375b699dcecbe0b9925bccab6b15e7e5853a1de613aa49853c8bcf75540ead",
+  "old_mask_shape": [
+    512,
+    512,
+    256
+  ],
+  "old_mask_z_range_mm": [
+    -237.44000244140625,
+    -78.06500244140625
+  ],
+  "old_mask_source": "cardiac reference phase; TotalSegmentator anatomy products",
+  "reuse_decision": "do not extrapolate incomplete cardiac-FOV fat into static body; segment full static series 301",
+  "new_segmentation_version": "2.18.0",
+  "new_ct_sha256": "2d8a5a510f80df68b84cb12caddf35c6bb9e8b7624e58a262c81597c02e8440a",
+  "new_mask_sha256": "e04b8d09e6af900e9a118a2bb3c8d609e4d15d027471a6b8bb9450a557b54f7e",
+  "pose_recomputed": false
+}

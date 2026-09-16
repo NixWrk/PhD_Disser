@@ -1,0 +1,155 @@
+{
+  "complete_preparation": true,
+  "status": "exploratory_not_validated",
+  "candidate": "C01",
+  "purpose": "forward comparison only; full static TotalSegmentator v2 organs with and without fat",
+  "sizes_mm": [
+    50,
+    60,
+    70,
+    80,
+    90,
+    110,
+    120,
+    130,
+    140
+  ],
+  "diameter_mm": 5,
+  "contact_ohm_m2": 0.00015915494309189532,
+  "contacts_per_measurement": 4,
+  "sources": [
+    {
+      "path": "output/exploratory/lateral_array_design_20260916/plan.json",
+      "sha256": "ad06381a46e9ee0c2d3d0fb18f6f21d29ac74bf88fd2383c4b8a0b8d0ca68dc9"
+    },
+    {
+      "path": "output/exploratory/lateral_array_design_20260916/prepared_fem.mat",
+      "sha256": "6251229d40d0ae757d31103751c17a15adf268ed6b9912497e4f667c9e74b075"
+    },
+    {
+      "path": "output/exploratory/lateral_array_design_20260916/refined_mesh.mat",
+      "sha256": "d4230010cb6e3e7bdec51d68677d76a48d94e0e5b4bbbb0c2af0e7607df4e798"
+    },
+    {
+      "path": "output/exploratory/lateral_array_design_20260916/contact_qc.csv",
+      "sha256": "8ff447d73268f5674072f48d66e1578b8f1b6582a27f2f666371a1328d934322"
+    },
+    {
+      "path": "output/exploratory/transverse_consistency_20260914/input_contract.json",
+      "sha256": "f231228f20722b3f102fed0a27c9cad1ddf78e6e4d4fcea74c70174a8ab21fe0"
+    },
+    {
+      "path": "output/exploratory/lateral_tissue_ablation_20260916/comparison.csv",
+      "sha256": "2f0b93fab7aa7d9bfa9f4b0081e713384b58189fceb7ca9c2f85f7392043dbe1"
+    },
+    {
+      "path": "output/exploratory/lateral_tissue_ablation_20260916/qc.json",
+      "sha256": "fcf4ffd18be6e8e0af26c54d9906383c4e487138397c29dc05e243570c1d1b32"
+    },
+    {
+      "path": "output/exploratory/nix_cardiac_cycle_20260916/coordinate_audit.json",
+      "sha256": "2007a8f4d09b5558b5a31ff5e00760d56a063104b5e8bad6d0a0dac1347a63fc"
+    },
+    {
+      "path": "output/exploratory/arm_sigma_20260908/literature/Thermal_dielectric_acoustic_MR properties_database_V5.0(ASCII).txt",
+      "sha256": "d139ae961db460112345b43cd929042920390a1f2db3d462a2278b3be931c7e2"
+    },
+    {
+      "path": "output/exploratory/lateral_real_application_20260915/observations.csv",
+      "sha256": "29e57ee9a6c1c71c280e6a7a0041a7909189deecfc88290f75991f83ad4b363c"
+    },
+    {
+      "path": "output/exploratory/lateral_fat_20260916/segmentation/conversion.json",
+      "sha256": "572b64909ac5ef34da48c5ba1ac48244db95038c81cf5f964d1cfb3cc613d56a"
+    },
+    {
+      "path": "output/exploratory/lateral_fat_20260916/segmentation/segmentation.json",
+      "sha256": "840247f0c3d28c5434f125f573e4bde4778592d4ab1ac151ff3592a89d66b2fa"
+    },
+    {
+      "path": "output/exploratory/lateral_fat_20260916/segmentation/fat.nii.gz",
+      "sha256": "e04b8d09e6af900e9a118a2bb3c8d609e4d15d027471a6b8bb9450a557b54f7e"
+    },
+    {
+      "path": "output/exploratory/lateral_fat_20260916/segmentation/heart.nii.gz",
+      "sha256": "f9a1219048b69cc22a558d792b884edcf47986e54b2f83218bb6f8ee6f80c6e3"
+    },
+    {
+      "path": "output/exploratory/lateral_fat_20260916/segmentation/bone.nii.gz",
+      "sha256": "1c5d6e7fc4503ba7c16175134b8560bbeb2187968a1205471d62d64998476cef"
+    },
+    {
+      "path": "output/exploratory/lateral_fat_20260916/segmentation/lung.nii.gz",
+      "sha256": "276d0acaaa619db96223cb8b3f2d255a1f30f00985d4f5ac8ed6c474c81d2ad0"
+    }
+  ],
+  "requests_sha256": "a4a173cb299edd8f6129aa510a847b063f5c4fe54d45189cfa84ae8d0ee9a041",
+  "fractions_sha256": {
+    "fractions_q256.mat": "e711c0172228582e278c3e28323e39342e8c884eb040440895df72c61c1009fd",
+    "fractions_q1024.mat": "378faa8319249f5f2e52f9a54c84fe0b525f472c521145b83f8d2abaf8dc99d4"
+  },
+  "preparation_script_sha256": "72e90e5aa0d0af29cd6acec95c2d7981a8c3a16c55aa61e24f5d9cd48215d50b",
+  "ras_to_fem_mm": [
+    [
+      -1.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      -1.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "segmentation_version": "2.18.0",
+  "priority": [
+    "lung",
+    "bone",
+    "heart",
+    "fat",
+    "soft_background"
+  ],
+  "quadrature": {
+    "points": [
+      256,
+      1024
+    ],
+    "main_points": 1024,
+    "method": "nested scrambled Sobol order-statistic tetrahedral coordinates",
+    "seed": 20260916,
+    "rule": "element sigma is integral mean using material fractions; P1 gradients are constant"
+  },
+  "geometry_checks": {
+    "unchanged_nodes_elements_boundary_and_contacts": true,
+    "all_electrodes_in_ct": true,
+    "fem_volume_ml": 20170.762958333333,
+    "element_centroid_outside_ct_volume_ml": 952.2063597099669,
+    "ct_outside_rule": "retain soft background in extrapolated body/arm regions outside acquired CT; quantify separately"
+  },
+  "literature": {
+    "doi": "10.13099/VIP21000-05-0",
+    "fat": "Fat; same Gabriel coefficients as SAT (Subcutaneous Fat) in this version"
+  },
+  "limitations": [
+    "Automatic masks are research inputs, not a manually validated anatomy.",
+    "Whole heart = Heart Muscle; whole bone = cortical bone; remainder = Muscle.",
+    "Subcutaneous and torso fat share the Fat conductivity; no HU-based conductivity fitting.",
+    "Inspiratory CT fixed for both electrical states; deflated not established as volunteer exhalation.",
+    "Real scalar conductivity; fixed contact impedance; no inverse fit or new localization.",
+    "Quadrature agreement does not establish global mesh convergence."
+  ]
+}

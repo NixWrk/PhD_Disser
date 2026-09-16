@@ -73,3 +73,13 @@ MATLAB_TRKG4_real_subjects/tools/verify_lateral_tissue_report.py -text
 # Preserve bytes of the hash-bound Nix cardiac-cycle calculation and report.
 "Colab Notebooks/40.23_*" -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 MATLAB_TRKG4_real_subjects/tools/heart_cardiac_cycle_electrical.py -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# Preserve the bytes used by the full-static fat experiment.
+MATLAB_TRKG4_real_subjects/output/exploratory/lateral_fat_20260916/** -text
+MATLAB_TRKG4_real_subjects/src/run_lateral_fat_forward.m -text
+MATLAB_TRKG4_real_subjects/tools/lateral_fat_segmentation.py -text
+MATLAB_TRKG4_real_subjects/tools/lateral_fat_prepare.py -text
+MATLAB_TRKG4_real_subjects/tools/lateral_fat_refine.py -text
+MATLAB_TRKG4_real_subjects/tools/lateral_fat_analysis.py -text
+MATLAB_TRKG4_real_subjects/tools/verify_lateral_fat.py -text
+MATLAB_TRKG4_real_subjects/notebooks/lateral_fat_results.py -text

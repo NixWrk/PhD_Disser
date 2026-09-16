@@ -1,0 +1,397 @@
+{
+  "complete": true,
+  "backend": "TotalSegmentator",
+  "version": "2.18.0",
+  "ct_sha256": "2d8a5a510f80df68b84cb12caddf35c6bb9e8b7624e58a262c81597c02e8440a",
+  "runner_sha256": "ffd27199fc2cc762f06b93a6c7f082e79fe6db9ccb384228ced96214bf5e9936",
+  "products": {
+    "lung": {
+      "classes": [
+        "lung_upper_lobe_left",
+        "lung_lower_lobe_left",
+        "lung_upper_lobe_right",
+        "lung_middle_lobe_right",
+        "lung_lower_lobe_right"
+      ],
+      "sha256": "276d0acaaa619db96223cb8b3f2d255a1f30f00985d4f5ac8ed6c474c81d2ad0",
+      "source_masks": [
+        {
+          "file": "raw_total/lung_upper_lobe_left.nii.gz",
+          "sha256": "cad24835659df346e97caeb3c9a6fd1d074bf118e805aad766aa17e7c7fe6049"
+        },
+        {
+          "file": "raw_total/lung_lower_lobe_left.nii.gz",
+          "sha256": "83c00d6c2e94f3e9386e5a99be96f4a3a67e5294d47219f9c5e7227765df3a66"
+        },
+        {
+          "file": "raw_total/lung_upper_lobe_right.nii.gz",
+          "sha256": "5b1a45868193f61a0b8a3c35038ea1f6c57194802aa01036a35bcf2a0c070925"
+        },
+        {
+          "file": "raw_total/lung_middle_lobe_right.nii.gz",
+          "sha256": "a00e90d1b67f227cbe946516a4ccf402a11b28021160466cb23ff2c88055eb4b"
+        },
+        {
+          "file": "raw_total/lung_lower_lobe_right.nii.gz",
+          "sha256": "c90da2c01a9af41c87e886388ee88380919e4dc3ae83e703d047eed0f8bf0526"
+        }
+      ],
+      "voxels": 5696187,
+      "volume_ml": 4173.750301208496
+    },
+    "bone": {
+      "classes": [
+        "sacrum",
+        "vertebrae_S1",
+        "vertebrae_L5",
+        "vertebrae_L4",
+        "vertebrae_L3",
+        "vertebrae_L2",
+        "vertebrae_L1",
+        "vertebrae_T12",
+        "vertebrae_T11",
+        "vertebrae_T10",
+        "vertebrae_T9",
+        "vertebrae_T8",
+        "vertebrae_T7",
+        "vertebrae_T6",
+        "vertebrae_T5",
+        "vertebrae_T4",
+        "vertebrae_T3",
+        "vertebrae_T2",
+        "vertebrae_T1",
+        "vertebrae_C7",
+        "vertebrae_C6",
+        "vertebrae_C5",
+        "vertebrae_C4",
+        "vertebrae_C3",
+        "vertebrae_C2",
+        "vertebrae_C1",
+        "humerus_left",
+        "humerus_right",
+        "scapula_left",
+        "scapula_right",
+        "clavicula_left",
+        "clavicula_right",
+        "femur_left",
+        "femur_right",
+        "hip_left",
+        "hip_right",
+        "skull",
+        "rib_left_1",
+        "rib_left_2",
+        "rib_left_3",
+        "rib_left_4",
+        "rib_left_5",
+        "rib_left_6",
+        "rib_left_7",
+        "rib_left_8",
+        "rib_left_9",
+        "rib_left_10",
+        "rib_left_11",
+        "rib_left_12",
+        "rib_right_1",
+        "rib_right_2",
+        "rib_right_3",
+        "rib_right_4",
+        "rib_right_5",
+        "rib_right_6",
+        "rib_right_7",
+        "rib_right_8",
+        "rib_right_9",
+        "rib_right_10",
+        "rib_right_11",
+        "rib_right_12",
+        "sternum"
+      ],
+      "sha256": "1c5d6e7fc4503ba7c16175134b8560bbeb2187968a1205471d62d64998476cef",
+      "source_masks": [
+        {
+          "file": "raw_total/sacrum.nii.gz",
+          "sha256": "22c30cd012a337b8910fc973c135d2b27cd613cca909f4ea30412c50cac589e2"
+        },
+        {
+          "file": "raw_total/vertebrae_S1.nii.gz",
+          "sha256": "22c30cd012a337b8910fc973c135d2b27cd613cca909f4ea30412c50cac589e2"
+        },
+        {
+          "file": "raw_total/vertebrae_L5.nii.gz",
+          "sha256": "22c30cd012a337b8910fc973c135d2b27cd613cca909f4ea30412c50cac589e2"
+        },
+        {
+          "file": "raw_total/vertebrae_L4.nii.gz",
+          "sha256": "22c30cd012a337b8910fc973c135d2b27cd613cca909f4ea30412c50cac589e2"
+        },
+        {
+          "file": "raw_total/vertebrae_L3.nii.gz",
+          "sha256": "22c30cd012a337b8910fc973c135d2b27cd613cca909f4ea30412c50cac589e2"
+        },
+        {
+          "file": "raw_total/vertebrae_L2.nii.gz",
+          "sha256": "22c30cd012a337b8910fc973c135d2b27cd613cca909f4ea30412c50cac589e2"
+        },
+        {
+          "file": "raw_total/vertebrae_L1.nii.gz",
+          "sha256": "c0432221c22c2886ad05b5204d186626e12e79432d2ea78b1065e633b13dfda1"
+        },
+        {
+          "file": "raw_total/vertebrae_T12.nii.gz",
+          "sha256": "273bde51ce2d91449e16d55b634cba4a60de218fc96642037a5ce4caacf3b67f"
+        },
+        {
+          "file": "raw_total/vertebrae_T11.nii.gz",
+          "sha256": "0b5dded1e3e969f1306444ba203978e89304cd3f45afdbd039918f3054c1ed04"
+        },
+        {
+          "file": "raw_total/vertebrae_T10.nii.gz",
+          "sha256": "773dc7029f70639a6d74e377deb2bfaa60e628def88f6d556470c987bc933319"
+        },
+        {
+          "file": "raw_total/vertebrae_T9.nii.gz",
+          "sha256": "995edd7afca9268c2d119a024c1aabb95651d86791a5fdc895a7b93ccb26118c"
+        },
+        {
+          "file": "raw_total/vertebrae_T8.nii.gz",
+          "sha256": "6102d098c86617aa1c254e623cf6e8cd93f766547a1171d7e8ce55b3e7fb86d5"
+        },
+        {
+          "file": "raw_total/vertebrae_T7.nii.gz",
+          "sha256": "48cdb2e5641d958c8005560e1618843b43152fcc67d47a0ca0ee315c32b86d5c"
+        },
+        {
+          "file": "raw_total/vertebrae_T6.nii.gz",
+          "sha256": "92700aec2eaf9be947fd37a3dbf8020474df09b9aac881b4806aff6492b71393"
+        },
+        {
+          "file": "raw_total/vertebrae_T5.nii.gz",
+          "sha256": "abc8f4e13c5df56c4a962c0064d88cbfcb330e29ca21420b610c3d75465f4a66"
+        },
+        {
+          "file": "raw_total/vertebrae_T4.nii.gz",
+          "sha256": "4f2952e4bf990fca0406797d491364eadb6c85211bc73891d5d54620dc33706b"
+        },
+        {
+          "file": "raw_total/vertebrae_T3.nii.gz",
+          "sha256": "e3b2b8bb5715c3e3eb8b3b6116a9b52733bae8220962454efe66917c300e415d"
+        },
+        {
+          "file": "raw_total/vertebrae_T2.nii.gz",
+          "sha256": "f118b1c5b791900a84e726c24d0b0212c7dc4e337b193001add493a16b5f49c9"
+        },
+        {
+          "file": "raw_total/vertebrae_T1.nii.gz",
+          "sha256": "e2a671895fa026e637cb053f85c165cbbe7252415fd0889439b0915e82fc9f8d"
+        },
+        {
+          "file": "raw_total/vertebrae_C7.nii.gz",
+          "sha256": "c2cb9f7fd76b3235030d57cfad7d51ea6615de042bc6e691ab65378c04bf871a"
+        },
+        {
+          "file": "raw_total/vertebrae_C6.nii.gz",
+          "sha256": "d0b072eafe3c655a27c24f7b109e266d4bacaca815fe278b0074f440d5936c06"
+        },
+        {
+          "file": "raw_total/vertebrae_C5.nii.gz",
+          "sha256": "22c30cd012a337b8910fc973c135d2b27cd613cca909f4ea30412c50cac589e2"
+        },
+        {
+          "file": "raw_total/vertebrae_C4.nii.gz",
+          "sha256": "22c30cd012a337b8910fc973c135d2b27cd613cca909f4ea30412c50cac589e2"
+        },
+        {
+          "file": "raw_total/vertebrae_C3.nii.gz",
+          "sha256": "22c30cd012a337b8910fc973c135d2b27cd613cca909f4ea30412c50cac589e2"
+        },
+        {
+          "file": "raw_total/vertebrae_C2.nii.gz",
+          "sha256": "22c30cd012a337b8910fc973c135d2b27cd613cca909f4ea30412c50cac589e2"
+        },
+        {
+          "file": "raw_total/vertebrae_C1.nii.gz",
+          "sha256": "22c30cd012a337b8910fc973c135d2b27cd613cca909f4ea30412c50cac589e2"
+        },
+        {
+          "file": "raw_total/humerus_left.nii.gz",
+          "sha256": "9eddea75bf5e69eb05974248e9862ba593fe6ad2528264fceba06bea7893dff4"
+        },
+        {
+          "file": "raw_total/humerus_right.nii.gz",
+          "sha256": "760767c8d6b16b21915d2582b995d0d309e6bd63e2b6f5426c6fb8237ff080a9"
+        },
+        {
+          "file": "raw_total/scapula_left.nii.gz",
+          "sha256": "1e7bd8bbd337946bf21ab71e7f13cfcbfba6990571bd2a94a96c5ba36f6a5938"
+        },
+        {
+          "file": "raw_total/scapula_right.nii.gz",
+          "sha256": "0ef4d819287982ce02b6b5428062ef385b5fe059d0858182799c35f3f21c60e0"
+        },
+        {
+          "file": "raw_total/clavicula_left.nii.gz",
+          "sha256": "c73b0b54a59326787cf2c692723670aa77a17e2653c2b7680b6c31248a8eeae3"
+        },
+        {
+          "file": "raw_total/clavicula_right.nii.gz",
+          "sha256": "aa3bd0d5b7c35aacb0f8aab6a34833c3d1588ced0faf839a953c2ea1dfa0f47b"
+        },
+        {
+          "file": "raw_total/femur_left.nii.gz",
+          "sha256": "22c30cd012a337b8910fc973c135d2b27cd613cca909f4ea30412c50cac589e2"
+        },
+        {
+          "file": "raw_total/femur_right.nii.gz",
+          "sha256": "22c30cd012a337b8910fc973c135d2b27cd613cca909f4ea30412c50cac589e2"
+        },
+        {
+          "file": "raw_total/hip_left.nii.gz",
+          "sha256": "22c30cd012a337b8910fc973c135d2b27cd613cca909f4ea30412c50cac589e2"
+        },
+        {
+          "file": "raw_total/hip_right.nii.gz",
+          "sha256": "22c30cd012a337b8910fc973c135d2b27cd613cca909f4ea30412c50cac589e2"
+        },
+        {
+          "file": "raw_total/skull.nii.gz",
+          "sha256": "613b439c613b3c379640aad7c14223d6b1d249b81524c5b91d8e227beda57fd4"
+        },
+        {
+          "file": "raw_total/rib_left_1.nii.gz",
+          "sha256": "9afcce8fe2cf2f1a4c022d5753c1508675dfd691f18ab7f2bfed82b5f856f930"
+        },
+        {
+          "file": "raw_total/rib_left_2.nii.gz",
+          "sha256": "2f6d16eea570128a36b0eb8083de2108bc8c208ae092ad999f097594d23ef7cd"
+        },
+        {
+          "file": "raw_total/rib_left_3.nii.gz",
+          "sha256": "4f52cb65b9749c4b4e474750eab6cf8e001d81de19c433aaa095df6b6b262b63"
+        },
+        {
+          "file": "raw_total/rib_left_4.nii.gz",
+          "sha256": "551c4d2c2b120507f06fa53c64adbb0821353c443aae016cbfb084f6d581fa17"
+        },
+        {
+          "file": "raw_total/rib_left_5.nii.gz",
+          "sha256": "060f20ca55385d5052475cefd1664271940f1a61c547c5e62617fa0ecc7fc065"
+        },
+        {
+          "file": "raw_total/rib_left_6.nii.gz",
+          "sha256": "12e47292b48e7bbaa54737b705454288d48a495953ef962fef6cbef517c9e37c"
+        },
+        {
+          "file": "raw_total/rib_left_7.nii.gz",
+          "sha256": "7b9e777793e47ddd94650fba72ef0046ee4e8e25db38069d206230d7e1192400"
+        },
+        {
+          "file": "raw_total/rib_left_8.nii.gz",
+          "sha256": "b5b66b6ca163a7f21fadbf998d489345f9a1b77692ca05de8ff8b4b80ee4ef6b"
+        },
+        {
+          "file": "raw_total/rib_left_9.nii.gz",
+          "sha256": "7e4ea9761c30e2f56cf33346aec3916ad79d9343592bcca28ea6228cd063190a"
+        },
+        {
+          "file": "raw_total/rib_left_10.nii.gz",
+          "sha256": "5f2ca6b90e04ee17702eb459c7af207886f3519bdb047648761e61985d1447df"
+        },
+        {
+          "file": "raw_total/rib_left_11.nii.gz",
+          "sha256": "ea76db0af9b52fb66877bd7b369389327ae90dfefaac1ea4af02ecfcadffc151"
+        },
+        {
+          "file": "raw_total/rib_left_12.nii.gz",
+          "sha256": "f0af59daccc4aef216dd239b5a1068e46476169899d4a2854ca0b47bf4044afb"
+        },
+        {
+          "file": "raw_total/rib_right_1.nii.gz",
+          "sha256": "ab140a93ef985dc2c91147622e2deb677a5d6f73266ccfb782dcc1e45ae290bd"
+        },
+        {
+          "file": "raw_total/rib_right_2.nii.gz",
+          "sha256": "5de1a350aa298ada13d6917d02b3d05568fa102a0de88fb7e67743dcd7a8214e"
+        },
+        {
+          "file": "raw_total/rib_right_3.nii.gz",
+          "sha256": "e7762f12638406678f5dddddd8b380945de499f02b5722467b9b27b4e600e853"
+        },
+        {
+          "file": "raw_total/rib_right_4.nii.gz",
+          "sha256": "c24a6db1f6dba6b8831f567b188776f3a4917f023a07311448c93069c5545dae"
+        },
+        {
+          "file": "raw_total/rib_right_5.nii.gz",
+          "sha256": "24aadb2e6d37ad93133f5f70e8a7c8ded3328b1e636c67f88c49c4528fd68705"
+        },
+        {
+          "file": "raw_total/rib_right_6.nii.gz",
+          "sha256": "f559bc210e643e6455c84d7073ee796bcb12bd140c2ce2a319bcad8186161633"
+        },
+        {
+          "file": "raw_total/rib_right_7.nii.gz",
+          "sha256": "552869a2ebc8c288268dc72d0525db921f640cb3e0536433ba81fb2babfd29aa"
+        },
+        {
+          "file": "raw_total/rib_right_8.nii.gz",
+          "sha256": "e6bbad2dd342a6512201b918dc9b2202d1db4f1b54609fbc932d2a81a6791303"
+        },
+        {
+          "file": "raw_total/rib_right_9.nii.gz",
+          "sha256": "0240f3e9c88d339825d57900a639e776c13c865e8012645a15626000cd0033c7"
+        },
+        {
+          "file": "raw_total/rib_right_10.nii.gz",
+          "sha256": "d967a5e97a347a1ccc087a27bf82e446ee00848bc3a8405932c8e8510fd57b28"
+        },
+        {
+          "file": "raw_total/rib_right_11.nii.gz",
+          "sha256": "d30dff1ec88ec45d8753ddf1a85f6f22b5060189e91187729d6ca26e0b95e172"
+        },
+        {
+          "file": "raw_total/rib_right_12.nii.gz",
+          "sha256": "678ac90cee7e8f0ea443d1ccd5dbb78dcc836ada2c52b0525491f05ea020dfba"
+        },
+        {
+          "file": "raw_total/sternum.nii.gz",
+          "sha256": "73e9833ed497789a5334d23886d6b0de9080d2cfea89f387f370f24dab4d7dbb"
+        }
+      ],
+      "voxels": 1788378,
+      "volume_ml": 1310.3929376220703
+    },
+    "heart": {
+      "classes": [
+        "heart"
+      ],
+      "sha256": "f9a1219048b69cc22a558d792b884edcf47986e54b2f83218bb6f8ee6f80c6e3",
+      "source_masks": [
+        {
+          "file": "raw_total/heart.nii.gz",
+          "sha256": "69e05896f7a23c49f8d2dfa5807e6ac91e207bbab3202e1f81e14bdc3825639a"
+        }
+      ],
+      "voxels": 789432,
+      "volume_ml": 578.4381811523438
+    },
+    "fat": {
+      "classes": [
+        "subcutaneous_fat",
+        "torso_fat"
+      ],
+      "sha256": "e04b8d09e6af900e9a118a2bb3c8d609e4d15d027471a6b8bb9450a557b54f7e",
+      "source_masks": [
+        {
+          "file": "raw_tissue_types/subcutaneous_fat.nii.gz",
+          "sha256": "49a5619453181efa4adf48e83d41040eb126a092295935399fa564793df38466"
+        },
+        {
+          "file": "raw_tissue_types/torso_fat.nii.gz",
+          "sha256": "661cb7016f7e2916d9e1468cb1b5a7e6840dfe7d143ea02c64034b09bdbd4128"
+        }
+      ],
+      "voxels": 4245694,
+      "volume_ml": 3110.9348431396484
+    }
+  },
+  "elapsed_seconds": 261.13999999998487,
+  "scope": "full static CT; unchanged original FEM boundary and montage; automatic masks not manually validated"
+}

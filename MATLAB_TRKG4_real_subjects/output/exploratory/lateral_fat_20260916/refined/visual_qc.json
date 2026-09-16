@@ -1,0 +1,17 @@
+{
+  "complete": true,
+  "all_24_traces_match_csv": true,
+  "frequency_switch_checked": true,
+  "code_inputs_absent": true,
+  "notebook_plot_count": 7,
+  "MathJax_expressions": 26,
+  "table_count": 13,
+  "html_sha256": "843f44c75657aaf60ee6ff1700d4a903e2a76a8d17c8bd6ba1a07cb6c2a2ee46",
+  "standalone_sha256": "a501f620037ef2604ee0b6276dec11c5dd31df3c01e8caf1316406be18b61495",
+  "verification_script_sha256": "440debd3c53e7703a8c6ccd12e3c27c9d4e4a2dfe589b740f673f458d12ddd2c",
+  "outputs_sha256": {
+    "comparison.png": "dc90b8dcc8a4522fb03bb814f081807091c1deb9fb435bee046297ae6dffa46c",
+    "comparison_100khz.png": "cca5d0617ed8637f28e677e219ec18d09c0b0a3d8c57085c86c551ac43e62346",
+    "notebook_section55.png": "054c4333541e1f69df3547ef7be0a7e8bbd5c51729d58fbff459f195058cc5a9"
+  }
+}

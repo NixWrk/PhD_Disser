@@ -1,0 +1,9 @@
+{
+  "identity": {
+    "plan_sha256": "cca5d9750a5da008cc46bfde2bc59c8a859b303e8b9a3769dd2660943ae9cc29",
+    "worker_sha256": "2e9b567543b7a0842657b35bc51af2a331c03d90192c4c4372d87e94376e19f7"
+  },
+  "partition_relative_error": 1.135969161739968E-16,
+  "same_mesh_and_contacts": true,
+  "quadrature_points": 4096
+}

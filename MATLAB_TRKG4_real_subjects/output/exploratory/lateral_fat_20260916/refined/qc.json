@@ -1,0 +1,40 @@
+{
+  "complete": true,
+  "new_CEM_solutions": 189,
+  "main_five_tissue_solutions": 36,
+  "no_parameter_fitting": true,
+  "no_localization": true,
+  "max_relative_residual": 7.97603339132825e-10,
+  "max_reciprocity_ohm": 5.6843418860808e-14,
+  "equal_material_checks_ohm": {
+    "equal_material_limit": 7.112497257821815e-09,
+    "fat_equal_limit": 7.824599634886908e-09
+  },
+  "quadrature_all_within_tolerance": true,
+  "quadrature_max_difference_ohm": 0.08138776045319673,
+  "quadrature_max_difference_pct": 0.1015617722738037,
+  "quadrature_points": [
+    1024,
+    4096
+  ],
+  "numeric_tolerance": "abs difference <= 0.02 ohm + 0.001 abs(Z_fine); numerical scenario, not instrument noise",
+  "global_spatial_convergence": false,
+  "physical_validation": false,
+  "inputs_sha256": {
+    "plan.json": "cca5d9750a5da008cc46bfde2bc59c8a859b303e8b9a3769dd2660943ae9cc29",
+    "responses.csv": "939ded3f10b0735467b8fa913c4510cf7193e14d5b77f91855be88dc6df27403",
+    "requests.csv": "d5569dd9172b78be9e8ca1e074855e060635d3ea16f65f2ded0924eba08ee670",
+    "execution.json": "97879d279caa81fff5f235a15d64f411be35d0b89c4b125467f0f6024b5c7e93",
+    "material_inventory.csv": "03ffc2de43a396849962bc764bfdfe1a63ff65d5fb1ab5aeaa26da4298ee4c31",
+    "literature_values.csv": "3182b0063f96f859e30fb16283fe9dc181e586d8f19cb8544a5f259cf773cf0e",
+    "matrix_qc_q1024.json": "7c5ef189eb208fd21e8ce26d63d9fd34e7b4549ba1e96a8f439798b0bef7da8a",
+    "matrix_qc_q4096.json": "013a1fb98e6a26f57d8a6830771b59ef2f6336e12b004e31eb99bd3758565950"
+  },
+  "outputs_sha256": {
+    "comparison.csv": "4da01d325fce4d3492d0a428db453b4413df8389116549ddf496619786e1adca",
+    "increments.csv": "e9351a0cd15206fef957abed285ce2aa92f4394d67102670c9ce2a8db4d2de3e",
+    "metrics.csv": "289cc0494a5779653ffbaa2d3907541460ed44e8145d9b9651a2125747a31101",
+    "quadrature_comparison.csv": "d1ae41c40f75bd1eaaed18bfa29a79143c5ed18faf17a551a6836b9fd94ab341"
+  },
+  "analysis_sha256": "de2881d7fb9fe44930c57b41b527316b47d444d9a984213e2e53186d299e9969"
+}

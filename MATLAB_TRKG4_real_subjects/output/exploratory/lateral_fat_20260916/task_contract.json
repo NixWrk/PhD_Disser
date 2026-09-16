@@ -1,0 +1,19 @@
+{
+  "user_scope": "add fat to bones/lung/heart; remaining tissue is soft; fixed C01; forward impedance for all nine arrays",
+  "frequency_hz": [
+    50000,
+    100000
+  ],
+  "diameter_mm": 5,
+  "primary_comparison": "same TotalSegmentator v2 organ masks, fat resistivity versus soft resistivity",
+  "new_localization": false,
+  "inverse_fitting": false,
+  "pulse": false,
+  "scientific_status": "computational model result, not physical validation",
+  "quadrature_acceptance": "abs difference <= 0.02 ohm + 0.001 abs(Z_fine)",
+  "initial_quadrature_failed": true,
+  "final_quadrature_points": [
+    1024,
+    4096
+  ]
+}
