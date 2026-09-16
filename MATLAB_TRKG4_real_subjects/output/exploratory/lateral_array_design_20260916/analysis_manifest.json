@@ -1,0 +1,112 @@
+{
+  "status": "exploratory_scenario_analysis",
+  "scientific_status": "conditional_design_sensitivity_not_validation",
+  "plan_file": "plan.json",
+  "responses_file": "responses.csv",
+  "input_sha256": {
+    "plan.json": "ad06381a46e9ee0c2d3d0fb18f6f21d29ac74bf88fd2383c4b8a0b8d0ca68dc9",
+    "responses.csv": "14dbbcefb9f4afcea3c213a18ebc3d73b485557831e6c0e5a6172edb8ed4fe0b"
+  },
+  "analysis_source_sha256": "d5ea4d8024c0b8e3a14185e4b709cb53fba187f39a88f89cb72811a718039b4b",
+  "response_execution_sidecar": "responses.csv.execution.json",
+  "observations_source": "output/exploratory/lateral_real_application_20260915/observations.csv",
+  "observations_sha256_verified": true,
+  "observations_copy_created": false,
+  "grid": {
+    "model": "variable_transverse",
+    "points": 49,
+    "channels": 9
+  },
+  "validation": {
+    "points_per_model": 16,
+    "models": [
+      "variable_transverse",
+      "reference"
+    ]
+  },
+  "subsets": {
+    "counts": "k=2..9",
+    "total": 502
+  },
+  "measurement_design": {
+    "current_experiment": "sequential_four_contact_montages",
+    "simultaneous_all_sizes": false
+  },
+  "best_by_count": {
+    "rule": "strictly minimum worst local relative-noise-amplification",
+    "score": "max over 49 grid points of max sqrt(diag(inv(Jlog.T @ Jlog)))",
+    "Jlog": "dZ_dlogrho1 and dZ_dlogrho2; unit hypothetical impedance error in ohms",
+    "worst_score_sequence": [
+      4.671284475511923,
+      3.88965215115094,
+      3.6250737231507353,
+      3.2760311735358987,
+      3.1813373210298246,
+      3.1350814013893276,
+      3.126247459528939,
+      3.118400369838873
+    ],
+    "worst_score_nonincreasing_checked": true,
+    "not_selected_by_nonlinear_CT_error": true
+  },
+  "additional_subset_metrics": {
+    "kappa": "worst singular-value ratio over the same 49 states",
+    "g1_g2": "minimum over states of the Jlog column 2-norms",
+    "attenuation_relative_full9": "min(g1/full9_g1, g2/full9_g2)",
+    "rank2_min": "minimum numerical rank over the 49 states; local check only"
+  },
+  "identifiability": {
+    "rank2_local_check": true,
+    "global_injectivity_proven": false
+  },
+  "surrogate": "RectBivariateSpline in log(rho1), log(rho2), fitted to grid Z only",
+  "inverse_validation": {
+    "starts": [
+      "best grid point",
+      "log-bound center"
+    ],
+    "solver": "scipy.optimize.least_squares in log resistivities",
+    "self_target": "variable_transverse",
+    "ct_target": "reference",
+    "k2_zero_residual_is_not_validation": true,
+    "independent_tissue_truth": false
+  },
+  "real_inverse": {
+    "source_read_in_place": true,
+    "independent_tissue_truth": false,
+    "heldout_rmse_only_for_k_lt_9": true
+  },
+  "scenario_sigmas": {
+    "values_ohm": [
+      0.01,
+      0.05,
+      0.1,
+      0.25,
+      0.5,
+      1.0
+    ],
+    "empirical_noise_estimates": false,
+    "confidence_or_crlb": false,
+    "criterion": "linearized sigma times worst unit log-parameter sensitivity"
+  },
+  "not_claimed": [
+    "Gaussian errors",
+    "CRLB or confidence intervals",
+    "experimental tissue accuracy",
+    "global injectivity",
+    "multi-anatomy portability",
+    "necessity or sufficiency of any k"
+  ],
+  "outputs": [
+    "subset_scores.csv",
+    "best_by_count.csv",
+    "inverse_validation.csv",
+    "summary_by_count.csv",
+    "real_fits.csv",
+    "real_predictions.csv",
+    "minimum_k_by_threshold.csv",
+    "interpolation_qc.json",
+    "real_inversion_status.json",
+    "analysis_manifest.json"
+  ]
+}

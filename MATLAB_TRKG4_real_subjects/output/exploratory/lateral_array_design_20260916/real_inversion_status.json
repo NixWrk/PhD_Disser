@@ -1,0 +1,17 @@
+{
+  "status": "conditional_real_inverse_completed",
+  "model": "variable_transverse",
+  "states": [
+    "inhale",
+    "exhale"
+  ],
+  "observations_source": "output/exploratory/lateral_real_application_20260915/observations.csv",
+  "observations_sha256": "29e57ee9a6c1c71c280e6a7a0041a7909189deecfc88290f75991f83ad4b363c",
+  "observations_sha256_verified": true,
+  "observations_copy_created": false,
+  "measurement_design": "sequential_four_contact_montages",
+  "simultaneous_all_sizes": false,
+  "heldout_rmse_only_for_k_lt_9": true,
+  "independent_tissue_truth": false,
+  "data_scope": "one anatomy and fixed CT/montage"
+}

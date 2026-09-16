@@ -1,0 +1,9 @@
+point_id,kind,model,rho1,rho2
+ct_k2,directcheck,variable_transverse,1.7646285848548426,19.62305890253842
+ct_k3,directcheck,variable_transverse,1.7646227444787428,19.657619282828204
+ct_k5,directcheck,variable_transverse,1.7646551317541734,19.66704674884141
+ct_k9,directcheck,variable_transverse,1.7647261016361713,19.67409191954716
+inhale_k2,directcheck,variable_transverse,5.059413945280995,24.07407380658436
+inhale_k9,directcheck,variable_transverse,5.898838188372726,24.07407380658436
+exhale_k2,directcheck,variable_transverse,4.863251545363707,24.07407380658436
+exhale_k9,directcheck,variable_transverse,5.604838469970408,24.07407380658436

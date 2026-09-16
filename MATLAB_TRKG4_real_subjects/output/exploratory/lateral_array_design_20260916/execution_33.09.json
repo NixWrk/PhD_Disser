@@ -1,0 +1,45 @@
+{
+  "code_cells": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "artifact_sha256": {
+    "33.09_Выбор_размеров_и_числа_боковых_сборок.ipynb": "62b9f52905e44a65ba279bca38a9ca743aec5b70f828715efd4b9328443175da",
+    "33.09_Выбор_размеров_и_числа_боковых_сборок.html": "db4d9283ed7f85651fd9c6f5f281ef2370b8029a77b46692fa8195bf1134edef",
+    "33.09_Выбор_размеров_и_числа_боковых_сборок.md": "51c97aab8e033bfd195eb2d32c271bd550122d28f9e1779cd811de99936f8dd2"
+  },
+  "input_sha256": {
+    "analysis_manifest.json": "ff05f998c08715324caf3a3edf352038c1ff90a9bcdbd29b5b48d78b6cea45ec",
+    "best_by_count.csv": "35da2fb28387c742849fddd22e8df61b40d690915aa588c9da2bf43b4880f1cc",
+    "contact_qc.csv": "8ff447d73268f5674072f48d66e1578b8f1b6582a27f2f666371a1328d934322",
+    "derivative_qc.json": "118066fb39de5c603425def6891ae70c6c8a6f37b4acc6adc357e43bb3d61515",
+    "direct_checks.csv": "a6d0915a782c407ed72259a94a781d43b92efdf1ce6a589485f76d340180c2e2",
+    "direct_checks_responses.csv": "1abe5018e11ce70f0dcb11e0c03c6f42d4b4d56bb83d2dd7cba1f54f94b58805",
+    "direct_checks_responses.csv.execution.json": "f92b85fbb675d41b48822756a84d1816fce858f7ca2020d9cfdc08303897430b",
+    "direct_checks_responses.csv.identity.json": "8761c1bda7b70205df1c77a9b985268c68535ed00c975587e4e1a0e7b51c2463",
+    "direct_check_cases.csv": "fc9485fe8ea22f18636010773e5fcd4ea29014840f55a9e9b83f3e1cb913ed7d",
+    "direct_check_qc.json": "77efa75d8a91dee3ab25fb480daac6ed5f01da4be732deedf2ab4543ed18061e",
+    "direct_check_summary.csv": "73059ce8d9ac018d8545b14ce028eed1066a04c3164e9f7c6b0b77eed0e8f624",
+    "interpolation_qc.json": "1d4190fe3a20478a02824890ae5f66109ec382f34c6156856aab8490e7bcab6d",
+    "inverse_validation.csv": "a84d1275b5804569de5845132166d596019177998f607414f28d7c838a4a9824",
+    "minimum_k_by_threshold.csv": "8a184f74ec4c837a77d6e960be844ad9d8bde1ae472dca94fa221c20db8bfe25",
+    "plan.json": "ad06381a46e9ee0c2d3d0fb18f6f21d29ac74bf88fd2383c4b8a0b8d0ca68dc9",
+    "points.csv": "32b092c31f96fdb9ac98a4f0f1bb005214ee7fe8f94c26b95de1de940040aecd",
+    "preparation_qc.json": "327ced7c1ff63efdfcfbebbdcd6a7fc10b1a43071938b2c229f1815fcd3f449f",
+    "real_fits.csv": "2106493fe4957ce2c5cceccc3669c2c78e68d3d7cafcdbe3118087d127c95c3e",
+    "real_inversion_status.json": "f124d4d4060f5391318d48dbfab1adb922462b3974c1264cde51f6b03a8ce9ce",
+    "real_predictions.csv": "d5671cdb6758abe3969c08ff18265b228e5aa6fdfe3259832830bc9044ab5fac",
+    "responses.csv": "14dbbcefb9f4afcea3c213a18ebc3d73b485557831e6c0e5a6172edb8ed4fe0b",
+    "responses.csv.execution.json": "6059e2f412cf1ef8ae653a73de3973cc09160aabdac8bc39cb113586c468299a",
+    "responses.csv.identity.json": "d663440b05ba9870ee9480aa1d2679ff69c79c2835f425588d3eb5a80310bcc0",
+    "subset_scores.csv": "1d14bfd9ddbb7da62730a8dc580e1243d41b6fc53f7b5be0146949e3988bd1ce",
+    "summary_by_count.csv": "c92452d58cc109ee72a55ded4fc54841f176d1a5bd982f3d38944ae5813376c1",
+    "verification.json": "07553c67fdb0086ed4c201c222ac32b657adc51f32f2fb62ce7ad4ef863dc2a5"
+  },
+  "scientific_status": "exploratory_hypothesis_not_validated"
+}

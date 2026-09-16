@@ -1,0 +1,158 @@
+{
+  "status": "exploratory_hypothesis_not_validated",
+  "subject": "exp02_nik",
+  "candidate": "C01",
+  "task": "select independently recorded montage sizes for baseline rho1/rho2 with fixed CT geometry",
+  "centre_mm": [
+    -187.5,
+    31.051379345918,
+    -138.051379345918
+  ],
+  "sizes_mm": [
+    50,
+    60,
+    70,
+    80,
+    90,
+    110,
+    120,
+    130,
+    140
+  ],
+  "bounds_ohm_m": [
+    [
+      1.3774104683195594,
+      10.0
+    ],
+    [
+      9.741271489527174,
+      24.074073806584366
+    ]
+  ],
+  "grid_rho1": [
+    1.3774104683195594,
+    1.9166941444952776,
+    2.667118138011843,
+    3.711348095126028,
+    5.164414911693138,
+    7.186386374036075,
+    10.000000000000002
+  ],
+  "grid_rho2": [
+    9.741271489527175,
+    11.326732326326788,
+    13.170238128583716,
+    15.313787539627592,
+    17.806214779054415,
+    20.70430218111321,
+    24.07407380658437
+  ],
+  "finite_electrodes": true,
+  "diameter_mm": 5.0,
+  "radius_mm": 2.5,
+  "nominal_area_mm2": 19.634954084936208,
+  "contact_ohm_m2": 0.00015915494309189532,
+  "current_ampere": 1.0,
+  "electrode_count_per_measurement": 4,
+  "simultaneous_all_sizes": false,
+  "refined_mesh_sha256": "d4230010cb6e3e7bdec51d68677d76a48d94e0e5b4bbbb0c2af0e7607df4e798",
+  "refinement_source_sha256": "fc98ffd0cce704c3df3b33283d255044e9a6bab5c9e3ac45883ed34e0c7d1242",
+  "preparation_source_sha256": "e739928cbc2d6f489753c7c7a8f6d16afa4fba95c88b37c890b4e738673bb673",
+  "points_sha256": "32b092c31f96fdb9ac98a4f0f1bb005214ee7fe8f94c26b95de1de940040aecd",
+  "observations_sha256": "29e57ee9a6c1c71c280e6a7a0041a7909189deecfc88290f75991f83ad4b363c",
+  "observations_source": "output\\exploratory\\lateral_real_application_20260915\\observations.csv",
+  "source_hashes": {
+    "output\\exploratory\\transverse_consistency_20260914\\geometry_input.mat": "952fdad64bc71930bcff18afd623b1e7f162e1a0afaa1317b516bfd0d8658a98",
+    "output\\exploratory\\transverse_consistency_20260914\\geometry_masks.mat": "f31dde70b04137f09352c8f886d4dd7277cc2ef6462d494ece04f8fd74d38d38",
+    "output\\exploratory\\transverse_consistency_20260914\\input_contract.json": "f231228f20722b3f102fed0a27c9cad1ddf78e6e4d4fcea74c70174a8ab21fe0",
+    "output\\exploratory\\transverse_consistency_20260914\\source_electrodes.csv": "08c7214de4ca0e0ac74a4f18ef581ff547654491a4146bfe8a030a87b77af5d9",
+    "output\\exploratory\\lateral_real_application_20260915\\observations.csv": "29e57ee9a6c1c71c280e6a7a0041a7909189deecfc88290f75991f83ad4b363c"
+  },
+  "geometry_qc": {
+    "original_vertices_unchanged": true,
+    "boundary_conforming": true,
+    "positive_tetrahedra": true,
+    "volumes_before_mm3": [
+      20170762.958333336,
+      4216733.27255054,
+      4219573.9276733715
+    ],
+    "volumes_after_mm3": [
+      20170762.958333332,
+      4216733.27255054,
+      4219573.9276733715
+    ],
+    "source_reoriented_tetrahedra": 0,
+    "nodes": 192407,
+    "tetrahedra": 806034,
+    "local_edge_mm": 0.5,
+    "radius_of_refinement_mm": 4.0,
+    "rounds": [
+      {
+        "round": 1,
+        "edges": 679,
+        "nodes": 154094,
+        "tetrahedra": 723763,
+        "boundary": 156478
+      },
+      {
+        "round": 2,
+        "edges": 2014,
+        "nodes": 156108,
+        "tetrahedra": 728742,
+        "boundary": 160506
+      },
+      {
+        "round": 3,
+        "edges": 4621,
+        "nodes": 160729,
+        "tetrahedra": 739189,
+        "boundary": 169748
+      },
+      {
+        "round": 4,
+        "edges": 10014,
+        "nodes": 170743,
+        "tetrahedra": 760681,
+        "boundary": 189776
+      },
+      {
+        "round": 5,
+        "edges": 13771,
+        "nodes": 184514,
+        "tetrahedra": 789864,
+        "boundary": 217318
+      },
+      {
+        "round": 6,
+        "edges": 7571,
+        "nodes": 192085,
+        "tetrahedra": 805390,
+        "boundary": 232460
+      },
+      {
+        "round": 7,
+        "edges": 322,
+        "nodes": 192407,
+        "tetrahedra": 806034,
+        "boundary": 233104
+      }
+    ]
+  },
+  "acceptance": {
+    "area_relative_error_max": 0.1,
+    "centroid_error_mm_max": 0.75,
+    "radial_extent_mm_max": 3.5,
+    "system_relative_residual_max": 1e-07,
+    "reciprocity_abs_ohm_max": 1e-07
+  },
+  "limitations": [
+    "One anatomy only; exact fixed CT montage is accepted.",
+    "h and all geometry fixed; two scalar resistivities only.",
+    "5 mm is a new design assumption, not a measured contact diameter of the old experiment.",
+    "Recorded-data fits with 5 mm are conditional scenarios, not independent validation.",
+    "Contact impedance is a transferred assumption, not newly measured.",
+    "Linear sensitivity noise scenarios do not define experimental noise or confidence intervals.",
+    "No simultaneous multi-array coupling and no pulse protocol optimization in this study."
+  ]
+}

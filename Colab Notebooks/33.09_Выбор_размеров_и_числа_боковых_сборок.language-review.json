@@ -1,0 +1,61 @@
+{
+  "skill": "russian-scientific-prose",
+  "reviewed_at_utc": "2026-09-16T08:44:01.020432+00:00",
+  "mode": "final_full_text_semantic_review",
+  "language": "ru",
+  "reviewer": "Codex",
+  "artifact_sha256": {
+    "33.09_Выбор_размеров_и_числа_боковых_сборок.ipynb": "62b9f52905e44a65ba279bca38a9ca743aec5b70f828715efd4b9328443175da",
+    "33.09_Выбор_размеров_и_числа_боковых_сборок.html": "db4d9283ed7f85651fd9c6f5f281ef2370b8029a77b46692fa8195bf1134edef",
+    "33.09_Выбор_размеров_и_числа_боковых_сборок.md": "51c97aab8e033bfd195eb2d32c271bd550122d28f9e1779cd811de99936f8dd2"
+  },
+  "reader_text_sha256": "2010544da261ce61f51d1903ec5c86d9f6a3a9f23e4e77840455f23526b20e16",
+  "language_status": "passed",
+  "technical_status": "passed_executed_notebook_and_rendered_HTML",
+  "computational_status": "passed_declared_checks",
+  "scientific_status": "exploratory_hypothesis_not_validated",
+  "review_scope": [
+    "all headings and paragraphs in sequence",
+    "all five tables and captions",
+    "both figures, legends, axes and explanatory captions",
+    "formulas and definitions",
+    "full conclusions and limitations",
+    "source roles and passport"
+  ],
+  "checks": {
+    "language.ru.hash-bound-final-review": "passed",
+    "language.ru.encoding": "passed",
+    "language.ru.formula-where": "passed",
+    "language.ru.reader-facing-clarity": "passed",
+    "language.ru.natural-prose": "passed"
+  },
+  "semantic_attestations": {
+    "scientific_headings": true,
+    "technical_terminology_and_scope": true,
+    "derived_objects_defined": true,
+    "direct_classification_and_meaningful_contrasts": true,
+    "claims_match_saved_computations": true,
+    "no_unread_reader_visible_text": true
+  },
+  "computational_evidence": {
+    "main_FEM_responses": 729,
+    "additional_direct_FEM_responses": 72,
+    "subsets": 502,
+    "synthetic_inversions": 256,
+    "real_inversions": 16,
+    "code_cells_executed": 7,
+    "plotly_figures_rendered": 2,
+    "MathJax_rendered": true
+  },
+  "limitations_retained": [
+    "one anatomy",
+    "finite5mm is a new design scenario, not measured old experimental contact",
+    "fixed CT breathing geometry and h",
+    "two electrical materials",
+    "global spatial convergence not established",
+    "true experimental resistivities unknown",
+    "no population necessity/sufficiency claim",
+    "local stochastic scenarios do not include model bias"
+  ],
+  "findings": []
+}

@@ -1,0 +1,14 @@
+{
+  "prepared_identity": {
+    "plan_sha256": "ad06381a46e9ee0c2d3d0fb18f6f21d29ac74bf88fd2383c4b8a0b8d0ca68dc9",
+    "mesh_sha256": "d4230010cb6e3e7bdec51d68677d76a48d94e0e5b4bbbb0c2af0e7607df4e798",
+    "worker_sha256": "6c9a267870a00542ca40f23622626557b7c38c8d2621fba5f4fc4ea217df5df1",
+    "contact_source_sha256": "2978a228cb3324ceaa3deea26914238c8b97f2a70643b6492dbef5d78eea9bf8",
+    "patch_source_sha256": "65759b1ab0e2e5a177bd55dcc49c26c25ed1cee63a8e1b278384f3ab43ccd3b7",
+    "fields_source_sha256": "89875278549dc00a1fceda1c465e1aa4792034ee23fedbd688a6b7cb65ca56c6",
+    "diameter_mm": 5,
+    "nominal_area_mm2": 19.634954084936208,
+    "contact_ohm_m2": 0.00015915494309189532
+  },
+  "requests_sha256": "32b092c31f96fdb9ac98a4f0f1bb005214ee7fe8f94c26b95de1de940040aecd"
+}

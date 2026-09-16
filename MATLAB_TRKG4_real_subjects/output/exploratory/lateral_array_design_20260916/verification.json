@@ -1,0 +1,14 @@
+{
+  "status": "passed_declared_numerical_checks",
+  "scientific_status": "exploratory_hypothesis_not_validated",
+  "response_rows": 729,
+  "grid_states": 49,
+  "offgrid_states_per_model": 16,
+  "contacts": 36,
+  "minimum_singular_value_all_nine_ohm": 0.32066658635783846,
+  "maximum_condition_all_nine": 168.17645095393598,
+  "global_spatial_convergence": false,
+  "population_generalization_validated": false,
+  "script_sha256": "fcc78072191742c88dcfc0eb160a03150831048cd7dc197876db20008f354183",
+  "responses_sha256": "14dbbcefb9f4afcea3c213a18ebc3d73b485557831e6c0e5a6172edb8ed4fe0b"
+}

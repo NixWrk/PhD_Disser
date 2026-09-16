@@ -1,0 +1,18 @@
+{
+  "status": "computed_direct_comparison",
+  "points": 8,
+  "rows": 72,
+  "max_spline_Z_error_ohm": 0.011919462945485293,
+  "max_selected_rmse_change_ohm": 0.00392293536482621,
+  "direct_optimization_repeated": false,
+  "independent_tissue_truth": false,
+  "input_sha256": {
+    "plan.json": "ad06381a46e9ee0c2d3d0fb18f6f21d29ac74bf88fd2383c4b8a0b8d0ca68dc9",
+    "responses.csv": "14dbbcefb9f4afcea3c213a18ebc3d73b485557831e6c0e5a6172edb8ed4fe0b",
+    "best_by_count.csv": "35da2fb28387c742849fddd22e8df61b40d690915aa588c9da2bf43b4880f1cc",
+    "direct_checks.csv": "a6d0915a782c407ed72259a94a781d43b92efdf1ce6a589485f76d340180c2e2",
+    "direct_check_cases.csv": "fc9485fe8ea22f18636010773e5fcd4ea29014840f55a9e9b83f3e1cb913ed7d",
+    "direct_checks_responses.csv": "1abe5018e11ce70f0dcb11e0c03c6f42d4b4d56bb83d2dd7cba1f54f94b58805"
+  },
+  "script_sha256": "9573e573cbbcc002acad1112b9ca85e82ba2eaa950baded59be034570955dd2d"
+}

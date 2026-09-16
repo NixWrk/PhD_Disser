@@ -1,0 +1,8 @@
+{
+  "identity_matrix_expected_g": 1,
+  "identity_observed_g": 1.0,
+  "added_joint_measurement_expected_g": 0.816496580927726,
+  "added_joint_measurement_observed_g": 0.816496580927726,
+  "rank_deficient_rejected": true,
+  "status": "passed_analytic_fixture_checks"
+}

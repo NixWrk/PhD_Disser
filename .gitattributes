@@ -37,3 +37,12 @@ MATLAB_TRKG4_real_subjects/output/exploratory/lateral_real_application_20260915/
 MATLAB_TRKG4_real_subjects/src/run_lateral_real_application.m -text
 MATLAB_TRKG4_real_subjects/tools/lateral_real_application.py -text
 MATLAB_TRKG4_real_subjects/notebooks/build_lateral_real_application.py -text
+
+# Preserve bytes of the hash-bound finite-contact array design study 33.09.
+"Colab Notebooks/33.09_*" -text
+MATLAB_TRKG4_real_subjects/output/exploratory/lateral_array_design_20260916/** -text
+MATLAB_TRKG4_real_subjects/src/run_lateral_array_design.m -text
+MATLAB_TRKG4_real_subjects/tools/lateral_array_design*.py -text
+MATLAB_TRKG4_real_subjects/tools/verify_lateral_array_design.py -text
+MATLAB_TRKG4_real_subjects/notebooks/build_lateral_array_design.py -text
+MATLAB_TRKG4_real_subjects/notebooks/lateral_array_design_results.py -text

@@ -1,0 +1,29 @@
+{
+  "date": "2026-09-16",
+  "zotero": {
+    "requested_profile": "Heart_Lung",
+    "collection_keys_found": false,
+    "current_API_library_matches_project": false,
+    "library_modified": false
+  },
+  "external_primary_sources": [
+    {
+      "title": "Sensor Selection via Convex Optimization",
+      "authors": [
+        "S. Joshi",
+        "S. Boyd"
+      ],
+      "year": 2009,
+      "url": "https://web.stanford.edu/~boyd/papers/sensor_selection.html",
+      "role": "General finite measurement subset selection; current objective and exhaustive algorithm differ."
+    },
+    {
+      "title": "Existence and Uniqueness for Electrode Models for Electric Current Computed Tomography",
+      "year": 1992,
+      "doi": "10.1137/0152060",
+      "url": "https://epubs.siam.org/doi/10.1137/0152060",
+      "role": "CEM mathematical foundation, not experimental validation."
+    }
+  ],
+  "physiological_bounds_source": "20.16: ITIS database v5.0, inherited muscle and lung scenario; no new subject-specific bounds"
+}
