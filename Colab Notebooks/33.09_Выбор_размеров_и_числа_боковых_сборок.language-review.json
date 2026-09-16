@@ -1,25 +1,24 @@
 {
   "skill": "russian-scientific-prose",
-  "reviewed_at_utc": "2026-09-16T11:52:31.950356+00:00",
+  "reviewed_at_utc": "2026-09-16T12:30:22.377965+00:00",
   "mode": "final_full_text_semantic_review",
   "language": "ru",
   "reviewer": "Codex",
   "artifact_sha256": {
-    "33.09_Выбор_размеров_и_числа_боковых_сборок.ipynb": "dcb95a9a003744bbcb8f93145ff08c021c52de2740d05a774118d1ed2279f8c7",
-    "33.09_Выбор_размеров_и_числа_боковых_сборок.html": "9a30c49b57213d91c4e076552680ae837794f60aa36034f06b48923f6c58f1d5",
-    "33.09_Выбор_размеров_и_числа_боковых_сборок.md": "40be76947ba780e3ba91628c5a539ae940070309b5545e5c164955b82c47916d"
+    "33.09_Выбор_размеров_и_числа_боковых_сборок.ipynb": "5a42fea72e25c71992df93337295c2cd31a783d1b0e0a94b233e8a36ee5f6f08",
+    "33.09_Выбор_размеров_и_числа_боковых_сборок.html": "d54ca05d094b33d3f45059b77b77da5c08ef8860d91d9d905bd101c154a7b994",
+    "33.09_Выбор_размеров_и_числа_боковых_сборок.md": "08dd0fd9918d921be3755a14b3ba82c415a96e9d48373fc489b73881632db639"
   },
-  "reader_text_sha256": "1511e681c5089b37509f48320d5a7159b6e1a9fa58c2bcd619db9c34d65c953a",
+  "reader_text_sha256": "22c92fda93914f5be4b13450674de875637740554cda74aec12051a8dc88ddfa",
   "language_status": "passed",
   "technical_status": "passed_executed_notebook_and_rendered_HTML",
   "computational_status": "passed_declared_checks",
   "scientific_status": "exploratory_hypothesis_not_validated",
   "review_scope": [
-    "all headings and paragraphs in sequence after the last prose edit",
-    "all six tables and captions",
-    "all four figures, axes, legends, captions and eight subset selections for both states",
-    "formulas and definitions",
-    "full conclusions, limitations, sources and passport"
+    "entire final reader text read semantically in sequence after final transition edit",
+    "all seven tables and captions",
+    "all five figures: visible titles, legends, axes and captions; new plot visually inspected standalone and embedded",
+    "all formulas, conclusions, source links, passport and direct-comparison README"
   ],
   "checks": {
     "language.ru.hash-bound-final-review": "passed",
@@ -43,8 +42,8 @@
     "subsets": 502,
     "synthetic_inversions": 256,
     "real_inversions": 16,
-    "code_cells_executed": 14,
-    "plotly_figures_rendered": 4,
+    "code_cells_executed": 16,
+    "plotly_figures_rendered": 5,
     "MathJax_rendered": true,
     "isoimpedance_curve_points": 10818,
     "pair_intersections": 32,
@@ -59,7 +58,10 @@
     "independent_math_tests_passed": 2,
     "max_expanded_interpolation_validation_error_ohm": 0.00033755860768280854,
     "max_old_grid_check_error_ohm": 0.0012873464897182885,
-    "max_expanded_direct_check_error_ohm": 0.0002914397628757115
+    "max_expanded_direct_check_error_ohm": 0.0002914397628757115,
+    "literature_forward_CEM_responses": 36,
+    "literature_forward_fitted_parameters": 0,
+    "literature_forward_curve_csv_agreement": true
   },
   "limitations_retained": [
     "one anatomy and fixed CT/montage C01",
@@ -76,7 +78,12 @@
     "sign-change search does not exhaustively certify tangencies",
     "no full FEM optimization repeated at every inverse step",
     "rho1 curve spread is not error relative to true resistivity",
-    "best subsets retained from the literature-range design"
+    "best subsets retained from the literature-range design",
+    "two a priori literature pairs only; not an exhaustive physiological-domain test",
+    "muscle value transferred to entire nonlung background",
+    "database deflated not established as equivalent to volunteer exhale",
+    "50 kHz is a literature scenario; no new instrument-frequency verification",
+    "real scalar conductivity only; dielectric contribution omitted"
   ],
   "findings": [],
   "additional_artifact_sha256": {
@@ -99,5 +106,29 @@
     "MATLAB_TRKG4_real_subjects/tools/lateral_resistivity_range_plots.py": "9768da81741b04897337eb4b3852169e38e5910fbbbc05c89ba0cb00f5aa3b7a",
     "MATLAB_TRKG4_real_subjects/src/run_lateral_resistivity_range.m": "bc419ece2e468d2b8dde0b0b5aaa36bfa5216826e0697ef05b1b9f8cd9e8b97d",
     "MATLAB_TRKG4_real_subjects/tests/test_lateral_resistivity_range.py": "7305471f7d02bb949155bfacf2b62c44690ed3eb17b72a5b393236cd9f4dd3d1"
+  },
+  "forward_artifact_root": "MATLAB_TRKG4_real_subjects/output/exploratory/lateral_literature_forward_20260916",
+  "forward_artifact_sha256": {
+    "breathing_contrast.csv": "37f23412da74d73db08a688208d0b9980633acb49872b02337e59a2c7f94e40d",
+    "comparison.csv": "0ed732546a11d7d8c898be3edc5f00417296c2f4c6cf4c48c52494ab80d1e370",
+    "forward_comparison.html": "5c6fb97002f5eb8431e111ccc07df900fe31a3541fd51c8681cbb55d295a7200",
+    "forward_comparison.png": "6b259da0def031290a2086579462675779be66e9b64d211c7a10f01186b868cc",
+    "literature_values.csv": "61f7353485a68e2fa6a03e021484daff6854a624ae029afc504d415fdf945d2a",
+    "metrics.csv": "509d073a587af286a7c5608bdc39be198c4c1d866dd53d728cf10e60f4c18372",
+    "plan.json": "7956b4db30c37f39552ddf593350e4a9cecf734a3ed49505aa2e8c5b3851537b",
+    "points.csv": "8155a9f91d2fea186cb904d2b73e211c884eb71437750e52189d5b7acd272ed3",
+    "points_responses.csv": "b39cbc10ac393e598155e9f990a80e778739e577144bd87a89a640d53368ab64",
+    "points_responses.csv.execution.json": "da2f974ae072ee8876c10993ae7937c766de9f147b76f8db726f0e9671901d92",
+    "points_responses.csv.identity.json": "ba1866cf3e38e0bcd7960a0799b4b5157e034743450d39cdbb395910caa95b69",
+    "qc.json": "4b0fe23d0c509fcc2911fba55fdc3df5ac34ffd9c752d664645b1a3062f675e0",
+    "README.md": "0fbf71212880bcb18c542d3b1f2984eefd374f06dc9e5288df566f4bfd3c8370",
+    "visual_qc.json": "61396fdfc0526a9ad83150ae3b439d10e78c1f3f696ae5ede4e516125b94061a"
+  },
+  "forward_source_sha256": {
+    "MATLAB_TRKG4_real_subjects/tools/lateral_literature_forward.py": "ada44a4addf4c6488d1c1ce4614304a7222f3d20f4a43b4f5b59c301f275b810",
+    "MATLAB_TRKG4_real_subjects/notebooks/lateral_literature_forward_results.py": "95c9a9e39412a58d37ef26c1623d84050ab977d8ec1dee1fd98c766b27a8a735",
+    "MATLAB_TRKG4_real_subjects/notebooks/build_lateral_array_design.py": "3e8e9a3f507c6359c0708543c424f7c0baf3254e2d87d0d1d83ac1801b8843d6",
+    "MATLAB_TRKG4_real_subjects/notebooks/lateral_array_design_results.py": "153aa51d5e15041225505c61f4e4645810bb8cb66e9010271b39b06b98bbd1e7",
+    "MATLAB_TRKG4_real_subjects/notebooks/lateral_resistivity_range_results.py": "89ea302ac306791c53ef41a7b34df9fe469c2994cb886085c9140ddaeabe3998"
   }
 }

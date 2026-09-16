@@ -51,3 +51,8 @@ MATLAB_TRKG4_real_subjects/output/exploratory/lateral_resistivity_range_20260916
 MATLAB_TRKG4_real_subjects/src/run_lateral_resistivity_range.m -text
 MATLAB_TRKG4_real_subjects/tools/lateral_resistivity_range*.py -text
 MATLAB_TRKG4_real_subjects/notebooks/lateral_resistivity_range_results.py -text
+
+# Preserve byte identity of the unfitted literature forward check.
+MATLAB_TRKG4_real_subjects/output/exploratory/lateral_literature_forward_20260916/** -text
+MATLAB_TRKG4_real_subjects/tools/lateral_literature_forward.py -text
+MATLAB_TRKG4_real_subjects/notebooks/lateral_literature_forward_results.py -text
