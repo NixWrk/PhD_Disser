@@ -1,0 +1,6 @@
+{
+  "status": "stopped_by_explicit_user_request",
+  "reason": "upper bound must be 100 ohm m without further expansion",
+  "worker_sha256": "c425d4d0b4b89c3fc9cf8990f2d3161f6500fc10b7827eaae5d6d9667f42a7ff",
+  "not_final_estimates": true
+}

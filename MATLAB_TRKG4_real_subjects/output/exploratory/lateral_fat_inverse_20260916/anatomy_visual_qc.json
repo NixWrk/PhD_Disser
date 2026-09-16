@@ -1,0 +1,12 @@
+{
+  "complete": true,
+  "html_sha256": "381877aa1b69ed9238c473672dd6d9378a5f524565fdddcaa552f2ececf21ca0",
+  "trace_count": 50,
+  "array_size_menu_checked": true,
+  "tissue_opacity_menu_checked": true,
+  "source_sha256": "131e4e031dd180df9d2f17f42d698fad62d36e068dfd9ecf3332c051b6200d69",
+  "output_sha256": {
+    "segmentation_3d.png": "63216418328715512aa4aa17f1227232c9558eebe644e933f7010afdaa50530f",
+    "segmentation_fat.png": "d5efdf24ac4b21cf7efdccd6acdc05b5efb956eca03a0f1cffd22c3cc6b7c9de"
+  }
+}

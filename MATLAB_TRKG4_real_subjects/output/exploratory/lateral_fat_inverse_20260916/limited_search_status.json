@@ -1,0 +1,10 @@
+{
+  "status": "stopped_by_user_correction",
+  "reason": "literature intervals must assess estimates, not constrain optimization",
+  "completed_cases": {
+    "fits_exhale.csv": 4,
+    "fits_inhale.csv": 3
+  },
+  "worker_sha256": "da7509d8bfff3cb231da71cad9c3370d23e6d666ebeab92f81bfdd0f1169a996",
+  "results_are_not_final_recovered_tissue_values": true
+}

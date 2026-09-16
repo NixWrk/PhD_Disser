@@ -1,0 +1,33 @@
+{
+  "complete": true,
+  "all_30_traces_match_csv": true,
+  "all_five_scenario_updates_checked": true,
+  "seven_old_figures_unchanged": true,
+  "current_plot_sha256": [
+    "2560f65fd9a6a59011eb0df3523a06d928f88aedf86e866e8ca67947ab272e35",
+    "9a12354319651e54615b34dcf8c9181a739c6029ef4fbc22d19a156750b9b70b",
+    "d2afa678e4b673f874d44394abb3e4a60ed68a0ae653bc2538714e27430cbd19",
+    "4a1bbb9f5ba08698f0b277888ab2f29cd3229ed0eb65a0dfdfe91e61682cffc9",
+    "e950bb2dd418d17bf82a70ff513b51e4b5a3ef31e66ecbbee296e52a345939f6",
+    "51623244994fc39eba2cab53a26122b20c62a7ae5025cbc81df2dcab261261c6",
+    "9551bb29308708da4bd115634d1c7a5ef6e264a99ae5103e97ce2fb41d92be6c",
+    "7aba1ca4d2f6f11ca24ba1bcf7e914b6225643696c66551aabf61ff34efb7212",
+    "b58c39e88ef3a2754d2e500207626a6ab21c5d1be58fcdcc89e2c688c78222d9",
+    "855db4dc2a6091e6ab6985939e8586d4f50dc4df4073a48c04725963c9815cd1"
+  ],
+  "plot_count": 10,
+  "MathJax_expressions": 33,
+  "table_count": 16,
+  "code_inputs_absent": true,
+  "notebook_sha256": "a5c1638724c362a9056ea10b28c95a42f2b4ddf8ebc74c4fa0453024636ee00a",
+  "html_sha256": "f360abec970ec68dceb250503ffe69f96065e3e808f6e0a26bc46ed4a0a14fc4",
+  "source_sha256": "131e4e031dd180df9d2f17f42d698fad62d36e068dfd9ecf3332c051b6200d69",
+  "outputs_sha256": {
+    "inverse_comparison.png": "220a47ce6a29e5a9001ca8c3eae25328dd50ebff742c219d4d5c4a5a2d7a60d0",
+    "inverse_three_parameters.png": "573b3e1c4579a78c0e683e0d477c6258dac5cd8072163afff0bb57cef7dd32cb",
+    "notebook_anatomy.png": "1f534865371305cecb984f0b5c7a0d3a4a339397d9edf1571700a181e7a95ace",
+    "notebook_inverse.png": "392e1b1221f755dd5e3c06d7f52286807af2e756ab2ea193f08669aac14b3aab",
+    "rho2_profile.png": "6a6e9376e155511b98a46d478e81a87475c4ec337eb07fd703405512aa84e21a",
+    "rho2_profile_detail.png": "733ec78c6df9e4536bae5653640ad298fb1e0e33ddcbd6e524de6b6a5b4aa3a8"
+  }
+}

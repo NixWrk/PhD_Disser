@@ -1,0 +1,40 @@
+{
+  "complete": true,
+  "source_sha256": "fa2dd919bd49a01e3622b54b841850590ed666e9bff5768557d2ae28ded4825f",
+  "segmentation_sha256": "840247f0c3d28c5434f125f573e4bde4778592d4ab1ac151ff3592a89d66b2fa",
+  "mesh_sha256": "d4230010cb6e3e7bdec51d68677d76a48d94e0e5b4bbbb0c2af0e7607df4e798",
+  "contacts_sha256": "5a91270b948384c7c456e72ed3a13b31fc04bd4029e939306a09494785057da4",
+  "counts": {
+    "lung": {
+      "original_surface_faces": 856128,
+      "display_faces": 35000,
+      "priority_voxels": 5696187
+    },
+    "bone": {
+      "original_surface_faces": 1489576,
+      "display_faces": 60000,
+      "priority_voxels": 1788378
+    },
+    "heart": {
+      "original_surface_faces": 187576,
+      "display_faces": 18000,
+      "priority_voxels": 789432
+    },
+    "fat": {
+      "original_surface_faces": 3226046,
+      "display_faces": 65000,
+      "priority_voxels": 4244431
+    }
+  },
+  "coordinate_system": "FEM DICOM LPS mm; standard RAS axis flip only",
+  "same_priority_as_FEM": true,
+  "all_36_contact_areas_match": true,
+  "area_range_mm2": [
+    19.635649402049637,
+    19.721343046203227
+  ],
+  "surface_simplification_display_only": true,
+  "background_shown_as_external_envelope": true,
+  "CT_organs_displayed_across_full_acquired_FOV_not_clipped_to_FEM": true,
+  "output_sha256": "381877aa1b69ed9238c473672dd6d9378a5f524565fdddcaa552f2ececf21ca0"
+}

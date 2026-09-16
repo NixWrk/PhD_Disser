@@ -1,0 +1,25 @@
+{
+  "complete": true,
+  "identity": {
+    "worker_sha256": "cac464467061bb2ff727fcd64a734a1bc5a55d8876a731e8ec2143ea1de82136",
+    "matrix_sha256": "3a2200c75935853c4976070d00875d16c64aa87e18409fbf3157f12785630ec7",
+    "base_sha256": "6251229d40d0ae757d31103751c17a15adf268ed6b9912497e4f667c9e74b075",
+    "coarse_matrix_sha256": "daf390c115f0b829cfc49fc2b62489df94325baa935c823502ccb8ac1cadfaf0",
+    "forward_plan_sha256": "cca5d9750a5da008cc46bfde2bc59c8a859b303e8b9a3769dd2660943ae9cc29",
+    "observations_sha256": "29e57ee9a6c1c71c280e6a7a0041a7909189deecfc88290f75991f83ad4b363c",
+    "literature_sha256": "3182b0063f96f859e30fb16283fe9dc181e586d8f19cb8544a5f259cf773cf0e"
+  },
+  "state": "inhale",
+  "fits": 6,
+  "global_optimum_certified": false,
+  "no_new_localization": true,
+  "same_inspiratory_geometry": true,
+  "rho3_scenario_is_not_population_interval": true,
+  "physiological_bounds_used": false,
+  "CEM_solves_profile": 441,
+  "profile_sha256": "71b8d1f9e8d8a25f73ee685bbbe5fe34570e42fd2d111d85bff53e4383054b8e",
+  "CEM_solves_optimization": 1368,
+  "fit_sha256": "c2fcb991d3229904026ce0155941cf7c39419762035651988af33a548d0d67e4",
+  "predictions_sha256": "2b62fc9c0651e40c91a4ab77540ff32b97b26610c6a23a72e7b288b2497a577c",
+  "jacobian_sha256": "a8f15edf80bfed8aab3e5e7b1d26bd6ba0d8637ad7bd5c4c0d185e7e5f2d0dc0"
+}

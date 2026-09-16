@@ -1,0 +1,64 @@
+{
+  "scope": "experimental rho1/rho2 with fixed literature fat; fixed C01; CT tissue visualization; fat sensitivity and trial third unknown",
+  "primary_frequencies_hz": [
+    50000,
+    100000
+  ],
+  "fat_sensitivity_frequency_hz": 50000,
+  "fat_multipliers": [
+    0.75,
+    1,
+    1.25
+  ],
+  "fat_range_is_physiological_reference": false,
+  "three_free_bounds_fat_multipliers": [
+    0.75,
+    1.25
+  ],
+  "states": [
+    "inhale",
+    "exhale"
+  ],
+  "observations": "nine sequential sizes of one volunteer, fixed inspiratory geometry",
+  "estimated_parameter_definition": {
+    "rho1": "remaining soft background excluding lung bone heart and fat",
+    "rho2": "lung",
+    "rho3": "union of subcutaneous and torso fat"
+  },
+  "no_new_localization": true,
+  "contact_diameter_mm": 5,
+  "contacts_per_measurement": 4,
+  "main_quadrature": 4096,
+  "check_quadrature": 1024,
+  "weights": "equal unweighted least squares, no empirical noise covariance",
+  "starts_per_case": 2,
+  "planned_experimental_fits": 10,
+  "synthetic_checks": [
+    {
+      "frequency_hz": 50000,
+      "rho1": 4,
+      "rho2": 12,
+      "rho3": "literature fat",
+      "purpose": "same-model noiseless algorithm check only"
+    }
+  ],
+  "sources": [
+    {
+      "title": "ITIS Tissue Properties Database V5.0",
+      "doi": "10.13099/VIP21000-05-0",
+      "url": "https://itis.swiss/virtual-population/tissue-properties/downloads/database-v5-0",
+      "role": "frozen frequency-dependent material values; no subject fat measurement"
+    },
+    {
+      "title": "ITIS dielectric properties",
+      "url": "https://itis.swiss/virtual-population/tissue-properties/database/dielectric-properties",
+      "role": "Gabriel frequency dispersion method"
+    },
+    {
+      "title": "ITIS low-frequency conductivity",
+      "url": "https://itis.swiss/virtual-population/tissue-properties/database/low-frequency-conductivity",
+      "role": "literature aggregation and spread; does not justify the chosen plus/minus25 scenario as a frequency-specific reference interval"
+    }
+  ],
+  "scientific_status": "exploratory; no physical validation"
+}
