@@ -1,0 +1,77 @@
+{
+  "schema": "hash_bound_final_full_text_review_v1",
+  "status": "passed",
+  "language": "ru",
+  "mode": "audit",
+  "skill": "russian-scientific-prose",
+  "reviewer": "Codex coordinator semantic model pass",
+  "reviewed_at_utc": "2026-09-16T09:43:13.218313+00:00",
+  "base_commit": "880b1e4900eeccb16ebab2c892313ce0681542ce",
+  "artifacts": {
+    "Colab Notebooks/40.15_План_исполнения_сравнения_моделей_сердца.md": "d4961888a5c2775064f7d5cd71625352f9340c1f6caf028cf780dfaf4b71c015"
+  },
+  "full_sequential_read": {
+    "ranges_inclusive": [
+      [
+        1,
+        165
+      ],
+      [
+        166,
+        330
+      ],
+      [
+        331,
+        490
+      ],
+      [
+        491,
+        634
+      ]
+    ],
+    "complete": true
+  },
+  "checks": {
+    "language.ru.hash-bound-final-review": "passed",
+    "language.ru.encoding": "passed",
+    "language.ru.natural-prose": "passed",
+    "language.ru.intro-variation": "passed",
+    "language.ru.reader-facing-clarity": "passed",
+    "language.ru.formula-where": "passed"
+  },
+  "attestations": {
+    "scientific_headings_and_scope": true,
+    "technical_terms_and_units": true,
+    "derived_quantities_defined": true,
+    "meaningful_contrasts_only": true,
+    "calque_reverse_check": true,
+    "facts_basis_interpretation_limitations_distinguished": true,
+    "claims_not_strengthened": true
+  },
+  "findings": [],
+  "technical_status": {
+    "utf8": "passed",
+    "git_diff_check": "passed",
+    "historical_plan_preserved_except_dated_navigation_and_past_tense": "passed",
+    "local_links_and_anchor": "passed",
+    "local_links_checked": [
+      "40.15_Реестр_методов_аппроксимации_сердца.md",
+      "40.16_Геометрическое_сравнение_моделей_сердца.ipynb",
+      "40.17_Сравнение_форм_сердца_и_электрического_отклика.ipynb",
+      "cardiac_4d_segmentation/temporal_registration.py"
+    ],
+    "reader_lines": 634
+  },
+  "computational_status": "Not applicable to this documentation change; no registration, segmentation or FEM jobs launched.",
+  "scientific_status": "Research hypotheses and verification protocol recorded. Anatomical accuracy, CT registration, physical equivalence and reduced-input applicability are not newly validated.",
+  "sources": [
+    {
+      "url": "https://github.com/wasserth/TotalSegmentator",
+      "scope": "Segmentation capability; no claim of validated registration on project CT."
+    },
+    {
+      "url": "https://simpleitk.readthedocs.io/en/master/registrationOverview.html",
+      "scope": "Registration framework and fixed-to-moving transform convention; no dataset-specific accuracy claim."
+    }
+  ]
+}
