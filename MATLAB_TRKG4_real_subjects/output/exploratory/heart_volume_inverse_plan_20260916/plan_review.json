@@ -1,0 +1,22 @@
+{
+  "schema": "heart_volume_inverse_plan_review_v1",
+  "status": "passed",
+  "reviewer": "Pascal (Luna Max)",
+  "skill": "russian-scientific-prose",
+  "full_sequential_read": [
+    "Colab Notebooks/40.19_План_выбора_электродов_и_модели_для_оценки_объёма.md",
+    "Colab Notebooks/40.15_План_исполнения_сравнения_моделей_сердца.md"
+  ],
+  "sha256": {
+    "Colab Notebooks/40.19_План_выбора_электродов_и_модели_для_оценки_объёма.md": "87d0e04c841c5f67f7c9a6bc8b3db92afa2a4f06113be73f1d86d9981ec50ea9",
+    "Colab Notebooks/40.15_План_исполнения_сравнения_моделей_сердца.md": "3b4d1688b4a229f7938874793d6b914a46423a869807022867b88588187572ed"
+  },
+  "findings": [],
+  "technical_checks": {
+    "local_links_resolve": true,
+    "utf8_and_control_characters": true
+  },
+  "scientific_status": "planned_exploratory_study_not_validated",
+  "calculations_launched": false,
+  "scope": "goal, staged forward and inverse design, separate/joint V xyz, no-ECG main mode, held-out validation, physical electrode combinations"
+}
