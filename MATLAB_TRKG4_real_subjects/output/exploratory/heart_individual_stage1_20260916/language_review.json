@@ -1,0 +1,70 @@
+{
+  "status": "completed_no_open_language_findings",
+  "review_type": "russian_scientific_prose_language_and_logic_audit",
+  "review_date": "2026-09-16",
+  "hash_algorithm": "SHA-256",
+  "full_read": true,
+  "full_read_method": "The coordinator semantically read the complete final source, including the middle ranges in consecutive untruncated chunks, then all generated reader-visible text and table outputs. The unchanged plan retains the prior complete Luna Max audit at the identical hash. Automatic checks do not replace model reading.",
+  "reviewed_files": [
+    {
+      "path": "Colab Notebooks/cardiac_4d_segmentation/heart_method_comparison_ru.md",
+      "sha256": "ed78f69658c704eb50960639c9df8fddef17e1c60766caad21c73315063e31b5",
+      "full_read": true,
+      "reviewer": "coordinator_model"
+    },
+    {
+      "path": "Colab Notebooks/40.15_План_исполнения_сравнения_моделей_сердца.md",
+      "sha256": "e129b81be99376255e6a5301816eaec049b291b19e0ff8230ab00065b69a9b63",
+      "full_read": true,
+      "reviewer": "Luna Max; full-read record retained for unchanged bytes"
+    }
+  ],
+  "applied_skill": {
+    "name": "russian-scientific-prose",
+    "path": "skill:russian-scientific-prose/SKILL.md",
+    "references": [
+      "references/russian-prose.md",
+      "shared/policy/languages/ru.md",
+      "shared/composition-lifecycle.md",
+      "shared/release-gate.md"
+    ]
+  },
+  "prior_review_source_sha256": "63a4150a2e025b0dfd224de063d5ca09e2df221862429c5690edecdc7b1e5407",
+  "resolved_findings": [
+    {
+      "id": "LR-001",
+      "resolution": "Section 6.5 distinguishes the left DeltaZ panel of Figure 11 from directional estimates in Figure 13."
+    },
+    {
+      "id": "LR-002",
+      "resolution": "The practical summary, section 6.4 and conclusions explicitly disclose 16384 versus 4096 integration counts and require matched integration and mesh checks before final preference."
+    },
+    {
+      "id": "LR-003",
+      "resolution": "Section 6.6 says prescribed contact geometry. Only preservation of the numerical contact geometry is established."
+    }
+  ],
+  "open_findings": [],
+  "reader_checks": {
+    "scientific_headings": true,
+    "technical_terms_and_scope": true,
+    "derived_quantities_defined": true,
+    "direct_classification_and_meaningful_contrasts": true,
+    "generated_tables_read": true,
+    "approved_plain_language_section_preserved": true,
+    "new_figures_visually_reviewed_in_reader_checks": true
+  },
+  "claim_scope_checks": {
+    "central_and_one_sided_estimates_distinguished": true,
+    "unique_derivative_established": false,
+    "spatial_convergence_established": false,
+    "l1_scope_is_baseline_impedance_only": true,
+    "l1_derivative_reported": false,
+    "physical_or_clinical_validation_claimed": false
+  },
+  "scientific_status": "exploratory_numerical_stage_in_progress",
+  "reader_artifacts": {
+    "Colab Notebooks/40.17_Сравнение_форм_сердца_и_электрического_отклика.ipynb": "b39c4b881e653bbb1c3bf62e4cdc592f05d0ef736780a65b04086cdb90593bb4",
+    "Colab Notebooks/40.17_Сравнение_форм_сердца_и_электрического_отклика.html": "2d148499deac03ba77149fc1109223b01d7ec6dc20b76b1089863b4ac5bc25cd"
+  }
+}

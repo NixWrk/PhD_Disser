@@ -214,3 +214,132 @@ def ellipsoid_surface_validation():
     fig,ax=plt.subplots(figsize=(9,3.7));im=heat(ax,values,[LABELS[m] for m in methods],NAMES,
         'Проверочная поверхностная RMS: 4096 точек подгонки, 32768 точек проверки',cmap='magma_r',fmt='.3f')
     fig.colorbar(im,ax=ax,label='RMS, мм; меньше — лучше');show(fig,'03b_ellipsoid_surface_RMS.png')
+
+
+def individual_volume_sensitivity():
+    """Original-mesh comparison only; spatial convergence stays separate."""
+    folder=REPO/'MATLAB_TRKG4_real_subjects/output/exploratory/heart_individual_stage1_20260916/comparison'
+    data=read(folder/'comparison.json')
+    if data['status']!='calculated_on_original_mesh':
+        raise ValueError('Expected completed original-mesh comparison')
+    names={'individual':'Индивидуальная форма','sphere':'Сфера','ellipsoid':'Эллипсоид'}
+    colors={'individual':'#26705e','sphere':'#b96c00','ellipsoid':'#9657af'}
+    fig,axes=plt.subplots(1,3,figsize=(14,4.4))
+    for geometry in names:
+        states=sorted([r for r in data['states'] if r['geometry']==geometry],
+                      key=lambda r:r['volume_fraction'])
+        baseline=next(r for r in states if r['volume_fraction']==0)
+        axes[0].plot([r['analytic_volume_ml']-baseline['analytic_volume_ml'] for r in states],
+                     [1000*(r['Z_ohm']-baseline['Z_ohm']) for r in states],
+                     'o-',label=names[geometry],color=colors[geometry])
+        ds=sorted([r for r in data['derivatives'] if r['geometry']==geometry],
+                  key=lambda r:r['step_fraction'])
+        axes[1].plot([100*r['step_fraction'] for r in ds],
+                     [1000*r['dZ_dV_ohm_per_ml'] for r in ds],
+                     'o-',label=names[geometry],color=colors[geometry])
+    checks=data['individual_material_derivative_checks']
+    for step in sorted({r['step_fraction'] for r in checks}):
+        values=sorted([r for r in checks if r['step_fraction']==step],
+                      key=lambda r:r['points_per_tet'])
+        axes[2].plot([r['points_per_tet'] for r in values],
+                     [100*r['error_from_one'] for r in values],
+                     'o-',label=f'Полуширина ±{100*step:g}%')
+    axes[0].set(xlabel='Заданное изменение объёма, мл',
+                ylabel='Изменение импеданса, мОм',title='Отклик трёх форм · TEPC-2')
+    axes[1].set(xlabel='Полуширина возмущения объёма, %',
+                ylabel='Центральная оценка, мОм/мл',title='Зависимость от шага')
+    axes[2].axhline(0,color='black',lw=.7)
+    axes[2].set(xlabel='Точек интегрирования в элементе',
+                ylabel='Ошибка производной объёма, %',title='Точность изменения объёма')
+    axes[2].set_xscale('log',base=2)
+    for ax in axes:
+        ax.grid(alpha=.2);ax.legend(fontsize=8)
+    fig.tight_layout();show(fig,'10_individual_volume_sensitivity.png')
+    lines=['| Представление | Полуширина, % | dZ/dV, мОм/мл | Отличие производной от индивидуальной формы, % |',
+           '|---|---:|---:|---:|']
+    for r in data['derivatives']:
+        error='—' if r['derivative_relative_error'] is None else f"{100*r['derivative_relative_error']:.2f}"
+        lines.append(f"| {names[r['geometry']]} | {100*r['step_fraction']:g} | {1000*r['dZ_dV_ohm_per_ml']:.4f} | {error} |")
+    display(Markdown('\n'.join(lines)))
+
+
+def individual_quadrature_refinement():
+    """Separate integration convergence from FEM-space convergence."""
+    root=REPO/'MATLAB_TRKG4_real_subjects/output/exploratory/heart_individual_stage1_20260916'
+    coarse=read(root/'comparison/comparison.json')
+    fine=read(root/'comparison_q16384/comparison.json')
+    fig,axes=plt.subplots(1,2,figsize=(11.8,4.4))
+    colors={.005:'#26705e',.01:'#754ca3'}
+    for step,color in colors.items():
+        rows=sorted([r for r in fine['individual_material_derivative_checks'] if r['step_fraction']==step],key=lambda r:r['points_per_tet'])
+        label=f'Полуширина ±{100*step:g}%'
+        axes[0].plot([r['points_per_tet'] for r in rows],[100*r['error_from_one'] for r in rows],'o-',color=color,label=label)
+        values=[next(r for r in d['derivatives'] if r['geometry']=='individual' and r['step_fraction']==step) for d in (coarse,fine)]
+        axes[1].plot([r['points_per_tet'] for r in values],[1000*r['dZ_dV_ohm_per_ml'] for r in values],'o-',color=color,label=label)
+    axes[0].axhline(0,color='black',lw=.7)
+    axes[0].set(xlabel='Точек интегрирования в элементе',ylabel='Ошибка производной объёма, %',title='Воспроизведение заданного приращения')
+    axes[1].set(xlabel='Точек интегрирования в элементе',ylabel='Центральная оценка, мОм/мл',title='Чувствительность индивидуальной формы')
+    for ax in axes:
+        ax.set_xscale('log',base=2);ax.set_xticks([4096,8192,16384],['4096','8192','16384']);ax.grid(alpha=.2);ax.legend(fontsize=9)
+    fig.tight_layout();show(fig,'11_individual_quadrature_refinement.png')
+    lines=['| Представление | Точек в элементе | Полуширина, % | dZ/dV, мОм/мл | Отличие от индивидуальной формы, % |','|---|---:|---:|---:|---:|']
+    names={'individual':'Индивидуальная форма','sphere':'Сфера','ellipsoid':'Эллипсоид'}
+    for r in fine['derivatives']:
+        lines.append(f"| {names[r['geometry']]} | {r['points_per_tet']} | {100*r['step_fraction']:g} | {1000*r['dZ_dV_ohm_per_ml']:.4f} | {100*r['derivative_relative_error']:.2f} |")
+    display(Markdown('\n'.join(lines)))
+
+
+def heart_directional_response():
+    root=REPO/'MATLAB_TRKG4_real_subjects/output/exploratory/heart_individual_stage1_20260916'
+    data=read(root/'comparison_q16384/comparison.json')
+    records={r['geometry']:r for r in data['derivatives'] if r['step_fraction']==.005}
+    names=['Индивидуальная форма','Сфера','Эллипсоид'];geometries=['individual','sphere','ellipsoid']
+    fields=['decrease_slope_ohm_per_ml','dZ_dV_ohm_per_ml','increase_slope_ohm_per_ml']
+    labels=['Уменьшение объёма','Центральная оценка','Увеличение объёма']
+    colors=['#3c789a','#8c9299','#b0713f']
+    fig,axes=plt.subplots(1,2,figsize=(12,4.6))
+    for i,(field,label,color) in enumerate(zip(fields,labels,colors)):
+        values=[abs(records[g][field])*1000 for g in geometries]
+        bars=axes[0].bar(np.arange(3)+(i-1)*.24,values,width=.23,color=color,label=label)
+        axes[0].bar_label(bars,fmt='%.2f',fontsize=8,padding=2)
+        errors=[100*abs(records[g][field]/records['individual'][field]-1) for g in ['sphere','ellipsoid']]
+        bars=axes[1].bar(np.arange(2)+(i-1)*.24,errors,width=.23,color=color,label=label)
+        axes[1].bar_label(bars,fmt='%.1f',fontsize=8,padding=2)
+    axes[0].set_xticks(range(3),names);axes[1].set_xticks(range(2),['Сфера','Эллипсоид'])
+    axes[0].set(ylabel='Модуль разностной оценки, мОм/мл',title='Чувствительность зависит от направления',ylim=(0,24))
+    axes[1].set(ylabel='Отличие от индивидуальной формы, %',title='Ошибка для того же направления',ylim=(0,72))
+    for ax in axes:ax.legend(fontsize=8,loc='upper right');ax.grid(axis='y',alpha=.2)
+    fig.tight_layout();show(fig,'12_heart_directional_response.png')
+    exchange=read(root/'material_exchange_diagnostic.json')
+    lines=['| Изменение объёма | В исходных мягких тканях, мл | В исходном лёгком, мл | В исходной области сердца, мл | Всего, мл |',
+           '|---|---:|---:|---:|---:|']
+    for r in exchange['rows']:
+        if abs(r['volume_fraction'])!=.005:continue
+        v=r['changes_by_original_material_ml']
+        lines.append(f"| {100*r['volume_fraction']:+g}% | {v['1']:+.3f} | {v['2']:+.3f} | {v['3']:+.3f} | {r['delta_heart_volume_ml']:+.3f} |")
+    display(Markdown('\n'.join(lines)))
+
+
+def heart_spatial_baseline():
+    root=REPO/'MATLAB_TRKG4_real_subjects/output/exploratory/heart_individual_stage1_20260916'
+    result=read(root/'L1_baseline/result.json')
+    seal=read(root/'L1_baseline/completion.json')
+    if hashlib.sha256((root/'L1_baseline/result.json').read_bytes()).hexdigest()!=seal['hashes']['result.json']:
+        raise ValueError('Baseline comparison result changed')
+    export=read(root/'L1_export/heart_refinement_export.json')
+    if hashlib.sha256((root/'L1_export/heart_refinement_export.json').read_bytes()).hexdigest()!=result['refined_export_sha256']:
+        raise ValueError('Refined export changed')
+    mesh=read(root/'L1_interior_collar0/refinement_report.json')
+    if hashlib.sha256((root/'L1_interior_collar0/refinement_report.json').read_bytes()).hexdigest()!=export['refinement_report_sha256']:
+        raise ValueError('Refined geometry QC changed')
+    if not all(mesh['checks'].values()) or not export['contact_faces_preserved']:
+        raise ValueError('Refined geometry or contact QC incomplete')
+    volumes=mesh['metrics']['original_heart_volume_m3']
+    rows=[('Узлы',f"{result['coarse_nodes']:,}",f"{result['fine_nodes']:,}"),
+          ('Тетраэдры',f"{int(result['coarse_elements']):,}",f"{int(result['fine_elements']):,}"),
+          ('Наружные треугольники',f"{mesh['mesh']['boundary_triangles']:,}",f"{mesh['mesh']['boundary_triangles']:,}"),
+          ('Объём исходной сердечной области, мл',f"{1e6*volumes['before']:.6f}",f"{1e6*volumes['after']:.6f}"),
+          ('Базовый импеданс TEPC-2, Ом',f"{result['coarse_Z_ohm']:.6f}",f"{result['fine_Z_ohm']:.6f}")]
+    lines=['| Показатель | Исходная сетка | Уточнённая сетка |','|---|---:|---:|']
+    lines += [f"| {name} | {coarse.replace(',', ' ').replace('.', ',')} | {fine.replace(',', ' ').replace('.', ',')} |" for name,coarse,fine in rows]
+    display(Markdown('\n'.join(lines)))

@@ -1,0 +1,383 @@
+{
+  "status": "complete",
+  "completed": 5,
+  "required": 5,
+  "rows": [
+    {
+      "Z_ohm": 165.79844870356382,
+      "reciprocal_Z_ohm": 165.79844870291834,
+      "max_relative_residual": 1.330747636899319e-11,
+      "reciprocity_absolute_ohm": 6.454854428739054e-10,
+      "max_current_error_A": 7.105427357601002e-14,
+      "max_ground_residual_A": 4.764650008257543e-11,
+      "recovered_currents_A": [
+        [
+          1.0000000000000142,
+          4.440892098500626e-15
+        ],
+        [
+          -1.7763568394002505e-15,
+          0.9999999999999574
+        ],
+        [
+          1.2434497875801753e-14,
+          -0.999999999999929
+        ],
+        [
+          -0.9999999999999574,
+          1.5987211554602254e-14
+        ]
+      ],
+      "matrix_asymmetry_relative": 7.383143228507816e-22,
+      "solve_seconds": 30.25486183166504,
+      "factorization_memory": {
+        "iparm_15_16_17_kib": [
+          540677,
+          458708,
+          3858901
+        ],
+        "rss_after_symbolic_gib": 1.0018043518066406,
+        "conservative_rss_plus_solver_estimate_gib": 6.119397163391113,
+        "available_gib": 36.49614334106445
+      },
+      "rhs_count": 2,
+      "factorizations": 1,
+      "id": "individual_q16384_base",
+      "parameter": "baseline",
+      "signed_step": 0.0,
+      "volume_fraction": 0.0,
+      "translation_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "geometry": "individual",
+      "points_per_tet": 16384,
+      "fraction_mat": "individual_q16384_base_fraction.mat",
+      "fraction_mat_sha256": "dfaf8e6476e2da45e27ed3acb347d0149f1b29ca4eddc9715781c5a32063e100",
+      "analytic_volume_ml": 782.8918539180374,
+      "material_volume_ml": 782.8918539180374,
+      "geometry_npz_sha256": "f5a9b82a71e4fd99c03424fd1867a0f89d4027c2a23f7c1ec1bd3c23899c8d75",
+      "geometry_npz": "individual_q16384_base_geometry.npz",
+      "montage": "tepc_2",
+      "blocks_sha256": "7be34f7632d350ecca6823607dd5a7350c19d493f4300059d770c68fdabf4333",
+      "contact_sha256": "dd7dd7f596063eafcefd5a27a435061438b3fef48a850fc56aff648846865a12",
+      "plan_sha256": "1d1060175e88248aef9884c57d57751574ee3a476bf80e0bdc6a4ebcd253aff2",
+      "frequency_hz": 50000,
+      "scientific_status": "original_individual_geometry_probe_not_physically_validated",
+      "runtime": {
+        "numpy": "2.4.3",
+        "scipy": "1.17.1",
+        "pypardiso": "0.4.7",
+        "h5py": "3.16.0"
+      }
+    },
+    {
+      "Z_ohm": 165.84716863187163,
+      "reciprocal_Z_ohm": 165.84716863188356,
+      "max_relative_residual": 1.5518010102646597e-11,
+      "reciprocity_absolute_ohm": 1.1937117960769683e-11,
+      "max_current_error_A": 1.1368683772161603e-13,
+      "max_ground_residual_A": 6.497764633750687e-11,
+      "recovered_currents_A": [
+        [
+          0.9999999999999858,
+          -4.440892098500626e-15
+        ],
+        [
+          5.329070518200751e-15,
+          0.9999999999999574
+        ],
+        [
+          -3.552713678800501e-15,
+          -1.0000000000001137
+        ],
+        [
+          -1.0000000000000426,
+          -7.105427357601002e-15
+        ]
+      ],
+      "matrix_asymmetry_relative": 7.383143228654875e-22,
+      "solve_seconds": 24.993006706237793,
+      "factorization_memory": {
+        "iparm_15_16_17_kib": [
+          540677,
+          458708,
+          3858901
+        ],
+        "rss_after_symbolic_gib": 1.0009536743164062,
+        "conservative_rss_plus_solver_estimate_gib": 6.118546485900879,
+        "available_gib": 36.61079025268555
+      },
+      "rhs_count": 2,
+      "factorizations": 1,
+      "id": "individual_q16384_volume_m0p005",
+      "parameter": "volume_fraction",
+      "signed_step": -0.005,
+      "volume_fraction": -0.005,
+      "translation_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "geometry": "individual",
+      "points_per_tet": 16384,
+      "fraction_mat": "individual_q16384_volume_m0p005_fraction.mat",
+      "fraction_mat_sha256": "02e90f10a260212acc4ec9bf74a6c27c897bd1b927fe0563a9dbc77a25913cab",
+      "analytic_volume_ml": 778.9773946484472,
+      "material_volume_ml": 778.9765350685237,
+      "geometry_npz_sha256": "0479c77cc115da487bba1b56f1dac6fee8a6d6b8c94a65bae3fa8ac83d2194ff",
+      "geometry_npz": "individual_q16384_volume_m0p005_geometry.npz",
+      "montage": "tepc_2",
+      "blocks_sha256": "8c5cb9c0d208681b9b4e535702247b0300dae11693ac9d82f071fdb362e47c48",
+      "contact_sha256": "dd7dd7f596063eafcefd5a27a435061438b3fef48a850fc56aff648846865a12",
+      "plan_sha256": "1d1060175e88248aef9884c57d57751574ee3a476bf80e0bdc6a4ebcd253aff2",
+      "frequency_hz": 50000,
+      "scientific_status": "original_individual_geometry_probe_not_physically_validated",
+      "runtime": {
+        "numpy": "2.4.3",
+        "scipy": "1.17.1",
+        "pypardiso": "0.4.7",
+        "h5py": "3.16.0"
+      }
+    },
+    {
+      "Z_ohm": 165.72467372418225,
+      "reciprocal_Z_ohm": 165.72467372381132,
+      "max_relative_residual": 1.6503228079919425e-11,
+      "reciprocity_absolute_ohm": 3.709317297762027e-10,
+      "max_current_error_A": 7.105427357601002e-14,
+      "max_ground_residual_A": 4.603162828394156e-11,
+      "recovered_currents_A": [
+        [
+          1.0000000000000284,
+          3.552713678800501e-15
+        ],
+        [
+          -4.440892098500626e-15,
+          1.0000000000000568
+        ],
+        [
+          -1.7763568394002505e-15,
+          -1.0000000000000568
+        ],
+        [
+          -0.999999999999929,
+          -3.552713678800501e-15
+        ]
+      ],
+      "matrix_asymmetry_relative": 7.383143228343884e-22,
+      "solve_seconds": 24.929725170135498,
+      "factorization_memory": {
+        "iparm_15_16_17_kib": [
+          540677,
+          458708,
+          3858901
+        ],
+        "rss_after_symbolic_gib": 1.0013656616210938,
+        "conservative_rss_plus_solver_estimate_gib": 6.118958473205566,
+        "available_gib": 36.44411849975586
+      },
+      "rhs_count": 2,
+      "factorizations": 1,
+      "id": "individual_q16384_volume_p0p005",
+      "parameter": "volume_fraction",
+      "signed_step": 0.005,
+      "volume_fraction": 0.005,
+      "translation_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "geometry": "individual",
+      "points_per_tet": 16384,
+      "fraction_mat": "individual_q16384_volume_p0p005_fraction.mat",
+      "fraction_mat_sha256": "bf3d9882dd0ca32bb4c926f0a62d96c692ab4ee4ca6081fb0699fbc488fcb2f0",
+      "analytic_volume_ml": 786.8063131876276,
+      "material_volume_ml": 786.8018819963871,
+      "geometry_npz_sha256": "a8a24fd830b5dff2791dd70c0714cc5deb3e08edfd77ea58afff78e619bd5ca7",
+      "geometry_npz": "individual_q16384_volume_p0p005_geometry.npz",
+      "montage": "tepc_2",
+      "blocks_sha256": "000ccea27afcaec531ec10d82a10af8358be4afe2e6ff0c51aeeba21cf0f0e47",
+      "contact_sha256": "dd7dd7f596063eafcefd5a27a435061438b3fef48a850fc56aff648846865a12",
+      "plan_sha256": "1d1060175e88248aef9884c57d57751574ee3a476bf80e0bdc6a4ebcd253aff2",
+      "frequency_hz": 50000,
+      "scientific_status": "original_individual_geometry_probe_not_physically_validated",
+      "runtime": {
+        "numpy": "2.4.3",
+        "scipy": "1.17.1",
+        "pypardiso": "0.4.7",
+        "h5py": "3.16.0"
+      }
+    },
+    {
+      "Z_ohm": 165.89611446664705,
+      "reciprocal_Z_ohm": 165.89611446760844,
+      "max_relative_residual": 1.962545001052629e-11,
+      "reciprocity_absolute_ohm": 9.61392743192846e-10,
+      "max_current_error_A": 5.684341886080802e-14,
+      "max_ground_residual_A": 5.5630029418716684e-11,
+      "recovered_currents_A": [
+        [
+          1.0000000000000568,
+          8.881784197001252e-16
+        ],
+        [
+          5.329070518200751e-15,
+          1.0000000000000568
+        ],
+        [
+          5.329070518200751e-15,
+          -1.0000000000000426
+        ],
+        [
+          -0.9999999999999858,
+          -5.329070518200751e-15
+        ]
+      ],
+      "matrix_asymmetry_relative": 7.3831432288049105e-22,
+      "solve_seconds": 26.601571083068848,
+      "factorization_memory": {
+        "iparm_15_16_17_kib": [
+          540677,
+          458708,
+          3858901
+        ],
+        "rss_after_symbolic_gib": 1.0009841918945312,
+        "conservative_rss_plus_solver_estimate_gib": 6.118577003479004,
+        "available_gib": 37.21402359008789
+      },
+      "rhs_count": 2,
+      "factorizations": 1,
+      "id": "individual_q16384_volume_m0p01",
+      "parameter": "volume_fraction",
+      "signed_step": -0.01,
+      "volume_fraction": -0.01,
+      "translation_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "geometry": "individual",
+      "points_per_tet": 16384,
+      "fraction_mat": "individual_q16384_volume_m0p01_fraction.mat",
+      "fraction_mat_sha256": "60206f5358cb75cd765b5dd0648dba8ce056fb13f3ae569fe713cd623a9f4fe5",
+      "analytic_volume_ml": 775.0629353788571,
+      "material_volume_ml": 775.0668544701683,
+      "geometry_npz_sha256": "a83d097a969f53dee13993c53e1afc26498c6147d1773a539690b7e82d109aa3",
+      "geometry_npz": "individual_q16384_volume_m0p01_geometry.npz",
+      "montage": "tepc_2",
+      "blocks_sha256": "57cc92206eb4a042faec65fc976a8a8445a999bc8aac44ce37b510ad5f205b87",
+      "contact_sha256": "dd7dd7f596063eafcefd5a27a435061438b3fef48a850fc56aff648846865a12",
+      "plan_sha256": "1d1060175e88248aef9884c57d57751574ee3a476bf80e0bdc6a4ebcd253aff2",
+      "frequency_hz": 50000,
+      "scientific_status": "original_individual_geometry_probe_not_physically_validated",
+      "runtime": {
+        "numpy": "2.4.3",
+        "scipy": "1.17.1",
+        "pypardiso": "0.4.7",
+        "h5py": "3.16.0"
+      }
+    },
+    {
+      "Z_ohm": 165.65269962368447,
+      "reciprocal_Z_ohm": 165.65269962356896,
+      "max_relative_residual": 1.6467668140462942e-11,
+      "reciprocity_absolute_ohm": 1.1550582712516189e-10,
+      "max_current_error_A": 4.263256414560601e-14,
+      "max_ground_residual_A": 4.0494725508003035e-11,
+      "recovered_currents_A": [
+        [
+          1.0000000000000142,
+          -2.6645352591003757e-15
+        ],
+        [
+          -7.105427357601002e-15,
+          0.9999999999999858
+        ],
+        [
+          3.552713678800501e-15,
+          -1.0000000000000142
+        ],
+        [
+          -1.0000000000000426,
+          -1.7763568394002505e-15
+        ]
+      ],
+      "matrix_asymmetry_relative": 7.38314322818618e-22,
+      "solve_seconds": 25.663980722427368,
+      "factorization_memory": {
+        "iparm_15_16_17_kib": [
+          540677,
+          458708,
+          3858901
+        ],
+        "rss_after_symbolic_gib": 1.0015945434570312,
+        "conservative_rss_plus_solver_estimate_gib": 6.119187355041504,
+        "available_gib": 36.7452392578125
+      },
+      "rhs_count": 2,
+      "factorizations": 1,
+      "id": "individual_q16384_volume_p0p01",
+      "parameter": "volume_fraction",
+      "signed_step": 0.01,
+      "volume_fraction": 0.01,
+      "translation_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "geometry": "individual",
+      "points_per_tet": 16384,
+      "fraction_mat": "individual_q16384_volume_p0p01_fraction.mat",
+      "fraction_mat_sha256": "9dfda026adf83f93da5168d0a256a9f7f1cda48127cba0997561a0838fcf48b3",
+      "analytic_volume_ml": 790.7207724572178,
+      "material_volume_ml": 790.7176088033145,
+      "geometry_npz_sha256": "2c35ca35583c4ed3d52a484acdfa4dfad89576c823b4ffe3ccee37e2f8c699c6",
+      "geometry_npz": "individual_q16384_volume_p0p01_geometry.npz",
+      "montage": "tepc_2",
+      "blocks_sha256": "7c363f684f689ebe96ac12407fcd86b4ba8c333f7f8dde48b1104b419545ec30",
+      "contact_sha256": "dd7dd7f596063eafcefd5a27a435061438b3fef48a850fc56aff648846865a12",
+      "plan_sha256": "1d1060175e88248aef9884c57d57751574ee3a476bf80e0bdc6a4ebcd253aff2",
+      "frequency_hz": 50000,
+      "scientific_status": "original_individual_geometry_probe_not_physically_validated",
+      "runtime": {
+        "numpy": "2.4.3",
+        "scipy": "1.17.1",
+        "pypardiso": "0.4.7",
+        "h5py": "3.16.0"
+      }
+    }
+  ],
+  "derivatives": [
+    {
+      "parameter": "volume_fraction",
+      "step": 0.005,
+      "units": "ohm/ml",
+      "derivative": -0.015646465993526155,
+      "material_volume_derivative": 0.9995437925047875,
+      "expected_material_volume_derivative": 1.0
+    },
+    {
+      "parameter": "volume_fraction",
+      "step": 0.01,
+      "units": "ohm/ml",
+      "derivative": -0.015545879149488693,
+      "material_volume_derivative": 0.9995476549424359,
+      "expected_material_volume_derivative": 1.0
+    }
+  ],
+  "step_checks": [
+    {
+      "parameter": "volume_fraction",
+      "fine_step": 0.005,
+      "coarse_step": 0.01,
+      "derivative_difference": 0.00010058684403746292,
+      "relative_difference": 0.00642872608287913
+    }
+  ],
+  "spatial_convergence": false,
+  "physical_validation": false,
+  "source_prepared_sha256": "d83fa6231da30496b7e457e5e2e88d1c7927057ec6fbf58d8a6dca1441389a0a",
+  "plan_sha256": "1d1060175e88248aef9884c57d57751574ee3a476bf80e0bdc6a4ebcd253aff2"
+}

@@ -1,0 +1,279 @@
+{
+  "schema": "trkg4_heart_volume_refinement_v1",
+  "status": "passed_heart_volume_refinement",
+  "source_prepared_sha256": "d83fa6231da30496b7e457e5e2e88d1c7927057ec6fbf58d8a6dca1441389a0a",
+  "candidate_parameters_sha256": "3d26ffbbe26a20abfb5e74ccb7dd3a8cbda2bca1052dcca56177f44105b28a80",
+  "refined_mesh_sha256": "24f2c2be9362277e870999e916bfa4f415701d12a6ad00a3880e7b2f5f3829c3",
+  "checks": {
+    "original_vertices_unchanged": true,
+    "outer_boundary_unchanged": true,
+    "tissue_labels_inherited": true,
+    "all_positive_tetrahedra": true,
+    "all_marked_edge_incident_tetrahedra_split": true,
+    "per_parent_volumes_preserved": true,
+    "original_heart_volume_preserved": true,
+    "local_new_node_faces_have_two_incident_tetrahedra": true,
+    "quality_and_local_edge_qc_recorded": true,
+    "heart_volume_centroid_scaling_explicit": true,
+    "vertex_aabb_selection_used": true,
+    "marked_edges_are_interior": true,
+    "boundary_edges_excluded_by_policy": true,
+    "all_included_interior_edges_refined_globally": true
+  },
+  "mesh": {
+    "nodes": 821731,
+    "tetrahedra": 4630591,
+    "boundary_triangles": 351620
+  },
+  "metrics": {
+    "old_nodes": 791141,
+    "new_nodes": 821731,
+    "old_tetrahedra": 4448426,
+    "new_tetrahedra": 4630591,
+    "marked_edges": 30590,
+    "split_parent_tetrahedra": 39851,
+    "minimum_signed_tetra_volume_m3": 8.13404767541136e-16,
+    "maximum_parent_volume_error_m3": 1.9587636905255695e-21,
+    "volume_by_tissue_id_m3": {
+      "before": {
+        "1": 0.014328259628134256,
+        "2": 0.004239212114029969,
+        "3": 0.0007828918539180373,
+        "4": 0.0008211575079286444
+      },
+      "after": {
+        "1": 0.014328259628140957,
+        "2": 0.004239212114030027,
+        "3": 0.0007828918539180439,
+        "4": 0.0008211575079286592
+      }
+    },
+    "original_heart_volume_m3": {
+      "before": 0.0007828918539180373,
+      "after": 0.0007828918539180439,
+      "absolute_error": 6.613633252161577e-18
+    },
+    "quality_distribution": {
+      "before": {
+        "count": 4448426,
+        "min": 4.3595503978473965e-07,
+        "p01": 0.03760153710352384,
+        "p05": 0.3287826186655936,
+        "median": 0.8416188743469089,
+        "p95": 0.9566563866417659,
+        "p99": 0.9794551108227717,
+        "max": 0.999997120007289
+      },
+      "after": {
+        "count": 4630591,
+        "min": 4.3595503978473965e-07,
+        "p01": 0.03264457907290625,
+        "p05": 0.288933972411428,
+        "median": 0.8362807191884934,
+        "p95": 0.9558559016150255,
+        "p99": 0.9790981472349924,
+        "max": 1.0000000000000007
+      }
+    },
+    "local_edge_length_mm": {
+      "before_affected_parent_tets": {
+        "count": 62167,
+        "min": 0.04419417382415435,
+        "p01": 0.17677669529663703,
+        "p05": 0.5000000000000004,
+        "median": 4.123105625617658,
+        "p95": 19.443643232379536,
+        "p99": 21.58144810730122,
+        "max": 50.99999999999999
+      },
+      "after_refined_children": {
+        "count": 274922,
+        "min": 0.022097086912067365,
+        "p01": 0.17677669529663703,
+        "p05": 0.3952847075210476,
+        "median": 4.976542947591144,
+        "p95": 14.325767788195497,
+        "p99": 17.789299222388312,
+        "max": 50.99999999999999
+      },
+      "marked_edges_before": {
+        "count": 30590,
+        "min": 0.1530931089239456,
+        "p01": 0.8970437559004517,
+        "p05": 1.7320508075688743,
+        "median": 9.937303457175894,
+        "p95": 20.183405219189964,
+        "p99": 21.846217503172248,
+        "max": 27.169878455767044
+      }
+    },
+    "selection": {
+      "collar_mm": 0.0,
+      "selected_tets": 31475,
+      "selected_tet_id_range_1based": [
+        685,
+        4435951
+      ],
+      "selected_tet_id_sample_1based": [
+        685,
+        2016,
+        2116,
+        2185,
+        2748,
+        2874,
+        3035,
+        3177,
+        3226,
+        3334,
+        3439,
+        3523,
+        4701,
+        8134,
+        8211,
+        8333
+      ],
+      "total_candidate_edges": 48310,
+      "excluded_outer_edges": 17720,
+      "included_interior_edges": 30590,
+      "selected_tets_with_zero_remaining_marked_edges": 4
+    },
+    "selection_policy": {
+      "name": "vertex_aabb_union_exclude_boundary_edges",
+      "candidate_selection": "vertex AABB overlap with the union of originalheart, sphere, and ellipsoid boxes",
+      "collar_mm": 0.0,
+      "boundary_edge_action": "exclude every candidate edge present in the original boundary triangles",
+      "collar_action": "keep the requested collar unchanged; never shrink it to avoid a boundary edge",
+      "interior_refinement_action": "refine every remaining interior edge globally, including all incident tetrahedra",
+      "surface_contact_action": "copy the original boundary array exactly, preserving node IDs, order, and orientation"
+    },
+    "heart_plus_affected_region": {
+      "parent_tetrahedra": 39851,
+      "child_tetrahedra": 222016,
+      "volume_by_tissue_id_m3": {
+        "before": {
+          "1": 0.002304103468691533,
+          "2": 0.0020837746023177166,
+          "3": 0.0007828918539180373,
+          "4": 0.00019761677037792398
+        },
+        "after": {
+          "1": 0.0023041034686914525,
+          "2": 0.002083774602317758,
+          "3": 0.0007828918539180439,
+          "4": 0.00019761677037792528
+        }
+      },
+      "tetra_quality_distribution": {
+        "before": {
+          "count": 39851,
+          "min": 0.0007910143405832743,
+          "p01": 0.008419106281968772,
+          "p05": 0.030841023775173105,
+          "median": 0.5915808500231855,
+          "p95": 0.9325258535432741,
+          "p99": 0.9688746079277137,
+          "max": 0.9985554592960628
+        },
+        "after": {
+          "count": 222016,
+          "min": 0.0007910143405833387,
+          "p01": 0.011513160509097838,
+          "p05": 0.05000947735710938,
+          "median": 0.4894342654403999,
+          "p95": 0.8704587642280165,
+          "p99": 0.944517934628152,
+          "max": 1.0000000000000007
+        }
+      },
+      "edge_length_mm": {
+        "before": {
+          "count": 62167,
+          "min": 0.04419417382415435,
+          "p01": 0.17677669529663703,
+          "p05": 0.5000000000000004,
+          "median": 4.123105625617658,
+          "p95": 19.443643232379536,
+          "p99": 21.58144810730122,
+          "max": 50.99999999999999
+        },
+        "after": {
+          "count": 274922,
+          "min": 0.022097086912067365,
+          "p01": 0.17677669529663703,
+          "p05": 0.3952847075210476,
+          "median": 4.976542947591144,
+          "p95": 14.325767788195497,
+          "p99": 17.789299222388312,
+          "max": 50.99999999999999
+        }
+      }
+    },
+    "scope": {
+      "kind": "interior_only",
+      "surface_contact_mesh_unchanged": true,
+      "complete_global_spatial_convergence_proof": false
+    }
+  },
+  "selection": {
+    "collar_mm": 0.0,
+    "selected_tets": 31475,
+    "selected_tet_id_range_1based": [
+      685,
+      4435951
+    ],
+    "selected_tet_id_sample_1based": [
+      685,
+      2016,
+      2116,
+      2185,
+      2748,
+      2874,
+      3035,
+      3177,
+      3226,
+      3334,
+      3439,
+      3523,
+      4701,
+      8134,
+      8211,
+      8333
+    ],
+    "total_candidate_edges": 48310,
+    "excluded_outer_edges": 17720,
+    "included_interior_edges": 30590,
+    "selected_tets_with_zero_remaining_marked_edges": 4
+  },
+  "selection_policy": {
+    "name": "vertex_aabb_union_exclude_boundary_edges",
+    "candidate_selection": "vertex AABB overlap with the union of originalheart, sphere, and ellipsoid boxes",
+    "collar_mm": 0.0,
+    "boundary_edge_action": "exclude every candidate edge present in the original boundary triangles",
+    "collar_action": "keep the requested collar unchanged; never shrink it to avoid a boundary edge",
+    "interior_refinement_action": "refine every remaining interior edge globally, including all incident tetrahedra",
+    "surface_contact_action": "copy the original boundary array exactly, preserving node IDs, order, and orientation"
+  },
+  "refinement_scope": {
+    "kind": "interior_only",
+    "surface_contact_mesh_unchanged": true,
+    "complete_global_spatial_convergence_proof": false,
+    "statement": "This refines the interior field only. The unchanged surface/contact mesh does not constitute a complete global spatial-convergence proof."
+  },
+  "spatial_solution_convergence": false,
+  "physical_validation": false,
+  "implementation_hashes": {
+    "wrapper_implementation": "426ec9cd465a628f4fc6ff1594ce69261d48fec39f21af488c0b8177be2d5363",
+    "base_volume_refinement_implementation": "ac91a6991471264c373d3e5eac5eb271fea5e1656e4859dac2bae1ec68a64bd3",
+    "split_simplices_source": "fc98ffd0cce704c3df3b33283d255044e9a6bab5c9e3ac45883ed34e0c7d1242"
+  },
+  "rejected_attempts": [
+    {
+      "collar_mm": 15,
+      "outer_edges": 78593
+    },
+    {
+      "collar_mm": 0,
+      "outer_edges": 17720
+    }
+  ]
+}

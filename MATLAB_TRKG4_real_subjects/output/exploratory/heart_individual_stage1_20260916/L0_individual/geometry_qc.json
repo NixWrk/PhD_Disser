@@ -1,0 +1,112 @@
+{
+  "original_volume_ml": 782.8918539180374,
+  "original_centre_m": [
+    0.01459302834831819,
+    -0.018102293667109397,
+    -0.13987559673903507
+  ],
+  "original_heart_tetrahedra": 1963,
+  "selected_tetrahedra": 31216,
+  "all_tetrahedra_scanned": 4448426,
+  "total_domain_volume_ml": 20171.521104023082,
+  "original_identity_exact": true,
+  "union_is_not_convex_hull": true,
+  "geometry": "individual",
+  "original_geometric_source_sha256": "d83fa6231da30496b7e457e5e2e88d1c7927057ec6fbf58d8a6dca1441389a0a",
+  "quadrature_levels": [
+    512,
+    4096
+  ],
+  "rows": [
+    {
+      "state": "base",
+      "parameter": "baseline",
+      "signed_step": 0.0,
+      "points_per_tet": 512,
+      "analytic_volume_ml": 782.8918539180374,
+      "material_volume_ml": 782.8918539180374,
+      "volume_error_percent": 0.0
+    },
+    {
+      "state": "base",
+      "parameter": "baseline",
+      "signed_step": 0.0,
+      "points_per_tet": 4096,
+      "analytic_volume_ml": 782.8918539180374,
+      "material_volume_ml": 782.8918539180374,
+      "volume_error_percent": 0.0
+    },
+    {
+      "state": "volume_m0p005",
+      "parameter": "volume_fraction",
+      "signed_step": -0.005,
+      "points_per_tet": 512,
+      "analytic_volume_ml": 778.9773946484472,
+      "material_volume_ml": 779.1422379886261,
+      "volume_error_percent": 0.021161504982214474
+    },
+    {
+      "state": "volume_m0p005",
+      "parameter": "volume_fraction",
+      "signed_step": -0.005,
+      "points_per_tet": 4096,
+      "analytic_volume_ml": 778.9773946484472,
+      "material_volume_ml": 779.046915558916,
+      "volume_error_percent": 0.008924637729723628
+    },
+    {
+      "state": "volume_p0p005",
+      "parameter": "volume_fraction",
+      "signed_step": 0.005,
+      "points_per_tet": 512,
+      "analytic_volume_ml": 786.8063131876276,
+      "material_volume_ml": 786.6538028813449,
+      "volume_error_percent": -0.01938346245149436
+    },
+    {
+      "state": "volume_p0p005",
+      "parameter": "volume_fraction",
+      "signed_step": 0.005,
+      "points_per_tet": 4096,
+      "analytic_volume_ml": 786.8063131876276,
+      "material_volume_ml": 786.7351212115057,
+      "volume_error_percent": -0.009048221262164535
+    },
+    {
+      "state": "volume_m0p01",
+      "parameter": "volume_fraction",
+      "signed_step": -0.01,
+      "points_per_tet": 512,
+      "analytic_volume_ml": 775.0629353788571,
+      "material_volume_ml": 775.2395104329416,
+      "volume_error_percent": 0.02278202788761341
+    },
+    {
+      "state": "volume_m0p01",
+      "parameter": "volume_fraction",
+      "signed_step": -0.01,
+      "points_per_tet": 4096,
+      "analytic_volume_ml": 775.0629353788571,
+      "material_volume_ml": 775.1894236542875,
+      "volume_error_percent": 0.016319742521098135
+    },
+    {
+      "state": "volume_p0p01",
+      "parameter": "volume_fraction",
+      "signed_step": 0.01,
+      "points_per_tet": 512,
+      "analytic_volume_ml": 790.7207724572178,
+      "material_volume_ml": 790.5192822636064,
+      "volume_error_percent": -0.025481838928453904
+    },
+    {
+      "state": "volume_p0p01",
+      "parameter": "volume_fraction",
+      "signed_step": 0.01,
+      "points_per_tet": 4096,
+      "analytic_volume_ml": 790.7207724572178,
+      "material_volume_ml": 790.6056478717592,
+      "volume_error_percent": -0.014559448729400959
+    }
+  ]
+}

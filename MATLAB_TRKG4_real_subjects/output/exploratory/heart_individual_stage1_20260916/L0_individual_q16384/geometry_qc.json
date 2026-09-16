@@ -1,0 +1,848 @@
+{
+  "original_volume_ml": 782.8918539180374,
+  "original_centre_m": [
+    0.01459302834831819,
+    -0.018102293667109397,
+    -0.13987559673903507
+  ],
+  "original_heart_tetrahedra": 1963,
+  "selected_tetrahedra": 31216,
+  "all_tetrahedra_scanned": 4448426,
+  "total_domain_volume_ml": 20171.521104023082,
+  "original_identity_exact": true,
+  "geometry": "individual",
+  "quadrature_levels": [
+    4096,
+    8192,
+    16384
+  ],
+  "rows": [
+    {
+      "state": "individual_q4096_base",
+      "parameter": "baseline",
+      "signed_step": 0.0,
+      "points_per_tet": 4096,
+      "analytic_volume_ml": 782.8918539180374,
+      "material_volume_ml": 782.8918539180374,
+      "volume_error_percent": 0.0
+    },
+    {
+      "state": "individual_q4096_base",
+      "parameter": "baseline",
+      "signed_step": 0.0,
+      "points_per_tet": 8192,
+      "analytic_volume_ml": 782.8918539180374,
+      "material_volume_ml": 782.8918539180374,
+      "volume_error_percent": 0.0
+    },
+    {
+      "state": "individual_q4096_base",
+      "parameter": "baseline",
+      "signed_step": 0.0,
+      "points_per_tet": 16384,
+      "analytic_volume_ml": 782.8918539180374,
+      "material_volume_ml": 782.8918539180374,
+      "volume_error_percent": 0.0
+    },
+    {
+      "state": "individual_q4096_volume_m0p005",
+      "parameter": "volume_fraction",
+      "signed_step": -0.005,
+      "points_per_tet": 4096,
+      "analytic_volume_ml": 778.9773946484472,
+      "material_volume_ml": 779.046915558916,
+      "volume_error_percent": 0.008924637729723628
+    },
+    {
+      "state": "individual_q4096_volume_m0p005",
+      "parameter": "volume_fraction",
+      "signed_step": -0.005,
+      "points_per_tet": 8192,
+      "analytic_volume_ml": 778.9773946484472,
+      "material_volume_ml": 779.0332133474567,
+      "volume_error_percent": 0.007165637846862083
+    },
+    {
+      "state": "individual_q4096_volume_m0p005",
+      "parameter": "volume_fraction",
+      "signed_step": -0.005,
+      "points_per_tet": 16384,
+      "analytic_volume_ml": 778.9773946484472,
+      "material_volume_ml": 778.9765350685237,
+      "volume_error_percent": -0.00011034722309233302
+    },
+    {
+      "state": "individual_q4096_volume_p0p005",
+      "parameter": "volume_fraction",
+      "signed_step": 0.005,
+      "points_per_tet": 4096,
+      "analytic_volume_ml": 786.8063131876276,
+      "material_volume_ml": 786.7351212115057,
+      "volume_error_percent": -0.009048221262164535
+    },
+    {
+      "state": "individual_q4096_volume_p0p005",
+      "parameter": "volume_fraction",
+      "signed_step": 0.005,
+      "points_per_tet": 8192,
+      "analytic_volume_ml": 786.8063131876276,
+      "material_volume_ml": 786.7479079370814,
+      "volume_error_percent": -0.007423078534984917
+    },
+    {
+      "state": "individual_q4096_volume_p0p005",
+      "parameter": "volume_fraction",
+      "signed_step": 0.005,
+      "points_per_tet": 16384,
+      "analytic_volume_ml": 786.8063131876276,
+      "material_volume_ml": 786.8018819963871,
+      "volume_error_percent": -0.0005631870469424705
+    },
+    {
+      "state": "individual_q4096_volume_m0p01",
+      "parameter": "volume_fraction",
+      "signed_step": -0.01,
+      "points_per_tet": 4096,
+      "analytic_volume_ml": 775.0629353788571,
+      "material_volume_ml": 775.1894236542875,
+      "volume_error_percent": 0.016319742521098135
+    },
+    {
+      "state": "individual_q4096_volume_m0p01",
+      "parameter": "volume_fraction",
+      "signed_step": -0.01,
+      "points_per_tet": 8192,
+      "analytic_volume_ml": 775.0629353788571,
+      "material_volume_ml": 775.1815436332453,
+      "volume_error_percent": 0.015303048175074885
+    },
+    {
+      "state": "individual_q4096_volume_m0p01",
+      "parameter": "volume_fraction",
+      "signed_step": -0.01,
+      "points_per_tet": 16384,
+      "analytic_volume_ml": 775.0629353788571,
+      "material_volume_ml": 775.0668544701683,
+      "volume_error_percent": 0.0005056481393150847
+    },
+    {
+      "state": "individual_q4096_volume_p0p01",
+      "parameter": "volume_fraction",
+      "signed_step": 0.01,
+      "points_per_tet": 4096,
+      "analytic_volume_ml": 790.7207724572178,
+      "material_volume_ml": 790.6056478717592,
+      "volume_error_percent": -0.014559448729400959
+    },
+    {
+      "state": "individual_q4096_volume_p0p01",
+      "parameter": "volume_fraction",
+      "signed_step": 0.01,
+      "points_per_tet": 8192,
+      "analytic_volume_ml": 790.7207724572178,
+      "material_volume_ml": 790.6116055358284,
+      "volume_error_percent": -0.013806001459926165
+    },
+    {
+      "state": "individual_q4096_volume_p0p01",
+      "parameter": "volume_fraction",
+      "signed_step": 0.01,
+      "points_per_tet": 16384,
+      "analytic_volume_ml": 790.7207724572178,
+      "material_volume_ml": 790.7176088033145,
+      "volume_error_percent": -0.0004000974823781256
+    }
+  ],
+  "classification_diagnostics": [
+    {
+      "state": "individual_q16384_base",
+      "seconds": 137.69680881500244,
+      "diagnostics": {
+        "input_tetrahedra": 31216,
+        "heart_tetrahedra": 1963,
+        "levels": [
+          4096,
+          8192,
+          16384
+        ],
+        "barycentric_points_per_tet": 16384,
+        "exact_empty_tetrahedra_by_conservative_aabb": 26046,
+        "exact_full_tetrahedra_by_strict_same_tet": 0,
+        "partial_quadrature_tetrahedra": 5170,
+        "query_tetrahedra_pruned_by_aabb": 26046,
+        "query_tetrahedra_pruned_by_strict_containment": 0,
+        "sample_points_evaluated_by_level": [
+          21176320,
+          42352640,
+          84705280
+        ],
+        "inside_sample_count_by_level": [
+          8040448,
+          16080896,
+          32161792
+        ],
+        "empty_fraction_tetrahedra_by_level": [
+          29253,
+          29253,
+          29253
+        ],
+        "unit_fraction_tetrahedra_by_level": [
+          1963,
+          1963,
+          1963
+        ],
+        "aabb_chunk_size": 256,
+        "aabb_pair_tests": 61277008,
+        "aabb_overlap_pairs": 175374,
+        "strict_full_vertex_tests": 701496,
+        "frozen_integrator_calls": 1,
+        "frozen_bvh_node_tests": 34425,
+        "frozen_tetrahedron_aabb_tests": 1654276426,
+        "frozen_barycentric_point_tests": 158628858,
+        "broad_phase": "conservative query-AABB versus original-heart-tetrahedron-AABB blocks",
+        "centroid_filter_used": false,
+        "full_classification_requires_one_same_original_tetrahedron": true,
+        "union_membership": "OR of original tetrahedra",
+        "volume_fraction": 0.0,
+        "scale": 1.0,
+        "translation_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "inverse_mapped_query_vertices": true,
+        "partial_integrator_frame": "original query vertices with frozen inverse transform",
+        "identity_transform": true,
+        "heart_volume_ml": 782.8918539180374,
+        "transformed_heart_volume_ml": 782.8918539180374,
+        "heart_centre_m": [
+          0.01459302834831819,
+          -0.018102293667109397,
+          -0.13987559673903507
+        ],
+        "overlap_assumption": "positive-volume overlap absent; shared faces allowed; exact duplicates rejected; no all-pairs overlap validation performed",
+        "batch_size": 32,
+        "frozen_integrator_diagnostics": {
+          "input_tetrahedra": 5170,
+          "heart_tetrahedra": 1963,
+          "levels": [
+            4096,
+            8192,
+            16384
+          ],
+          "barycentric_points_per_tet": 16384,
+          "sample_points_evaluated_by_level": [
+            21176320,
+            42352640,
+            84705280
+          ],
+          "inside_sample_count_by_level": [
+            8040448,
+            16080896,
+            32161792
+          ],
+          "full_sample_fraction_tetrahedra_by_level": [
+            1963,
+            1963,
+            1963
+          ],
+          "empty_sample_fraction_tetrahedra_by_level": [
+            3207,
+            3207,
+            3207
+          ],
+          "partial_sample_fraction_tetrahedra_by_level": [
+            0,
+            0,
+            0
+          ],
+          "zero_fraction_tetrahedra_by_level": [
+            3207,
+            3207,
+            3207
+          ],
+          "unit_fraction_tetrahedra_by_level": [
+            1963,
+            1963,
+            1963
+          ],
+          "bvh_node_tests": 34425,
+          "tetrahedron_aabb_tests": 1654276426,
+          "barycentric_point_tests": 158628858,
+          "broad_phase": "conservative AABB hierarchy over original heart tetrahedra",
+          "centroid_filter_used": false,
+          "union_membership": "OR of original tetrahedra",
+          "volume_fraction": 0.0,
+          "scale": 1.0,
+          "translation_m": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "identity_transform": true,
+          "heart_volume_ml": 782.8918539180374,
+          "transformed_heart_volume_ml": 782.8918539180374,
+          "heart_centre_m": [
+            0.01459302834831819,
+            -0.018102293667109397,
+            -0.13987559673903507
+          ],
+          "overlap_assumption": "positive-volume overlap absent; shared faces allowed; exact duplicates rejected; no all-pairs overlap validation performed",
+          "batch_size": 32
+        }
+      }
+    },
+    {
+      "state": "individual_q16384_volume_m0p005",
+      "seconds": 186.88863825798035,
+      "diagnostics": {
+        "input_tetrahedra": 31216,
+        "heart_tetrahedra": 1963,
+        "levels": [
+          4096,
+          8192,
+          16384
+        ],
+        "barycentric_points_per_tet": 16384,
+        "exact_empty_tetrahedra_by_conservative_aabb": 26444,
+        "exact_full_tetrahedra_by_strict_same_tet": 0,
+        "partial_quadrature_tetrahedra": 4772,
+        "query_tetrahedra_pruned_by_aabb": 26444,
+        "query_tetrahedra_pruned_by_strict_containment": 0,
+        "sample_points_evaluated_by_level": [
+          19546112,
+          39092224,
+          78184448
+        ],
+        "inside_sample_count_by_level": [
+          7999291,
+          15998297,
+          31994102
+        ],
+        "empty_fraction_tetrahedra_by_level": [
+          29124,
+          29114,
+          29110
+        ],
+        "unit_fraction_tetrahedra_by_level": [
+          1206,
+          1121,
+          1096
+        ],
+        "aabb_chunk_size": 256,
+        "aabb_pair_tests": 61277008,
+        "aabb_overlap_pairs": 132508,
+        "strict_full_vertex_tests": 530032,
+        "frozen_integrator_calls": 1,
+        "frozen_bvh_node_tests": 33438,
+        "frozen_tetrahedron_aabb_tests": 1628294980,
+        "frozen_barycentric_point_tests": 157843024,
+        "broad_phase": "conservative query-AABB versus original-heart-tetrahedron-AABB blocks",
+        "centroid_filter_used": false,
+        "full_classification_requires_one_same_original_tetrahedron": true,
+        "union_membership": "OR of original tetrahedra",
+        "volume_fraction": -0.005,
+        "scale": 0.9983305478136912,
+        "translation_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "inverse_mapped_query_vertices": true,
+        "partial_integrator_frame": "original query vertices with frozen inverse transform",
+        "identity_transform": false,
+        "heart_volume_ml": 782.8918539180374,
+        "transformed_heart_volume_ml": 778.9773946484472,
+        "heart_centre_m": [
+          0.01459302834831819,
+          -0.018102293667109397,
+          -0.13987559673903507
+        ],
+        "overlap_assumption": "positive-volume overlap absent; shared faces allowed; exact duplicates rejected; no all-pairs overlap validation performed",
+        "batch_size": 32,
+        "frozen_integrator_diagnostics": {
+          "input_tetrahedra": 4772,
+          "heart_tetrahedra": 1963,
+          "levels": [
+            4096,
+            8192,
+            16384
+          ],
+          "barycentric_points_per_tet": 16384,
+          "sample_points_evaluated_by_level": [
+            19546112,
+            39092224,
+            78184448
+          ],
+          "inside_sample_count_by_level": [
+            7999291,
+            15998297,
+            31994102
+          ],
+          "full_sample_fraction_tetrahedra_by_level": [
+            1206,
+            1121,
+            1096
+          ],
+          "empty_sample_fraction_tetrahedra_by_level": [
+            2680,
+            2670,
+            2666
+          ],
+          "partial_sample_fraction_tetrahedra_by_level": [
+            886,
+            981,
+            1010
+          ],
+          "zero_fraction_tetrahedra_by_level": [
+            2680,
+            2670,
+            2666
+          ],
+          "unit_fraction_tetrahedra_by_level": [
+            1206,
+            1121,
+            1096
+          ],
+          "bvh_node_tests": 33438,
+          "tetrahedron_aabb_tests": 1628294980,
+          "barycentric_point_tests": 157843024,
+          "broad_phase": "conservative AABB hierarchy over original heart tetrahedra",
+          "centroid_filter_used": false,
+          "union_membership": "OR of original tetrahedra",
+          "volume_fraction": -0.005,
+          "scale": 0.9983305478136912,
+          "translation_m": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "identity_transform": false,
+          "heart_volume_ml": 782.8918539180374,
+          "transformed_heart_volume_ml": 778.9773946484472,
+          "heart_centre_m": [
+            0.01459302834831819,
+            -0.018102293667109397,
+            -0.13987559673903507
+          ],
+          "overlap_assumption": "positive-volume overlap absent; shared faces allowed; exact duplicates rejected; no all-pairs overlap validation performed",
+          "batch_size": 32
+        }
+      }
+    },
+    {
+      "state": "individual_q16384_volume_p0p005",
+      "seconds": 143.72012615203857,
+      "diagnostics": {
+        "input_tetrahedra": 31216,
+        "heart_tetrahedra": 1963,
+        "levels": [
+          4096,
+          8192,
+          16384
+        ],
+        "barycentric_points_per_tet": 16384,
+        "exact_empty_tetrahedra_by_conservative_aabb": 26040,
+        "exact_full_tetrahedra_by_strict_same_tet": 1,
+        "partial_quadrature_tetrahedra": 5175,
+        "query_tetrahedra_pruned_by_aabb": 26040,
+        "query_tetrahedra_pruned_by_strict_containment": 1,
+        "sample_points_evaluated_by_level": [
+          21196800,
+          42393600,
+          84787200
+        ],
+        "inside_sample_count_by_level": [
+          8083169,
+          16166581,
+          32335441
+        ],
+        "empty_fraction_tetrahedra_by_level": [
+          28278,
+          28139,
+          28094
+        ],
+        "unit_fraction_tetrahedra_by_level": [
+          1842,
+          1833,
+          1832
+        ],
+        "aabb_chunk_size": 256,
+        "aabb_pair_tests": 61277008,
+        "aabb_overlap_pairs": 146063,
+        "strict_full_vertex_tests": 584104,
+        "frozen_integrator_calls": 1,
+        "frozen_bvh_node_tests": 35127,
+        "frozen_tetrahedron_aabb_tests": 1660835033,
+        "frozen_barycentric_point_tests": 159344524,
+        "broad_phase": "conservative query-AABB versus original-heart-tetrahedron-AABB blocks",
+        "centroid_filter_used": false,
+        "full_classification_requires_one_same_original_tetrahedron": true,
+        "union_membership": "OR of original tetrahedra",
+        "volume_fraction": 0.005,
+        "scale": 1.0016638965793119,
+        "translation_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "inverse_mapped_query_vertices": true,
+        "partial_integrator_frame": "original query vertices with frozen inverse transform",
+        "identity_transform": false,
+        "heart_volume_ml": 782.8918539180374,
+        "transformed_heart_volume_ml": 786.8063131876276,
+        "heart_centre_m": [
+          0.01459302834831819,
+          -0.018102293667109397,
+          -0.13987559673903507
+        ],
+        "overlap_assumption": "positive-volume overlap absent; shared faces allowed; exact duplicates rejected; no all-pairs overlap validation performed",
+        "batch_size": 32,
+        "frozen_integrator_diagnostics": {
+          "input_tetrahedra": 5175,
+          "heart_tetrahedra": 1963,
+          "levels": [
+            4096,
+            8192,
+            16384
+          ],
+          "barycentric_points_per_tet": 16384,
+          "sample_points_evaluated_by_level": [
+            21196800,
+            42393600,
+            84787200
+          ],
+          "inside_sample_count_by_level": [
+            8083169,
+            16166581,
+            32335441
+          ],
+          "full_sample_fraction_tetrahedra_by_level": [
+            1841,
+            1832,
+            1831
+          ],
+          "empty_sample_fraction_tetrahedra_by_level": [
+            2238,
+            2099,
+            2054
+          ],
+          "partial_sample_fraction_tetrahedra_by_level": [
+            1096,
+            1244,
+            1290
+          ],
+          "zero_fraction_tetrahedra_by_level": [
+            2238,
+            2099,
+            2054
+          ],
+          "unit_fraction_tetrahedra_by_level": [
+            1841,
+            1832,
+            1831
+          ],
+          "bvh_node_tests": 35127,
+          "tetrahedron_aabb_tests": 1660835033,
+          "barycentric_point_tests": 159344524,
+          "broad_phase": "conservative AABB hierarchy over original heart tetrahedra",
+          "centroid_filter_used": false,
+          "union_membership": "OR of original tetrahedra",
+          "volume_fraction": 0.005,
+          "scale": 1.0016638965793119,
+          "translation_m": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "identity_transform": false,
+          "heart_volume_ml": 782.8918539180374,
+          "transformed_heart_volume_ml": 786.8063131876276,
+          "heart_centre_m": [
+            0.01459302834831819,
+            -0.018102293667109397,
+            -0.13987559673903507
+          ],
+          "overlap_assumption": "positive-volume overlap absent; shared faces allowed; exact duplicates rejected; no all-pairs overlap validation performed",
+          "batch_size": 32
+        }
+      }
+    },
+    {
+      "state": "individual_q16384_volume_m0p01",
+      "seconds": 134.53311920166016,
+      "diagnostics": {
+        "input_tetrahedra": 31216,
+        "heart_tetrahedra": 1963,
+        "levels": [
+          4096,
+          8192,
+          16384
+        ],
+        "barycentric_points_per_tet": 16384,
+        "exact_empty_tetrahedra_by_conservative_aabb": 26480,
+        "exact_full_tetrahedra_by_strict_same_tet": 0,
+        "partial_quadrature_tetrahedra": 4736,
+        "query_tetrahedra_pruned_by_aabb": 26480,
+        "query_tetrahedra_pruned_by_strict_containment": 0,
+        "sample_points_evaluated_by_level": [
+          19398656,
+          38797312,
+          77594624
+        ],
+        "inside_sample_count_by_level": [
+          7957971,
+          15915805,
+          31826876
+        ],
+        "empty_fraction_tetrahedra_by_level": [
+          29108,
+          29100,
+          29098
+        ],
+        "unit_fraction_tetrahedra_by_level": [
+          1046,
+          1017,
+          1012
+        ],
+        "aabb_chunk_size": 256,
+        "aabb_pair_tests": 61277008,
+        "aabb_overlap_pairs": 132004,
+        "strict_full_vertex_tests": 528016,
+        "frozen_integrator_calls": 1,
+        "frozen_bvh_node_tests": 33388,
+        "frozen_tetrahedron_aabb_tests": 1618127818,
+        "frozen_barycentric_point_tests": 157038933,
+        "broad_phase": "conservative query-AABB versus original-heart-tetrahedron-AABB blocks",
+        "centroid_filter_used": false,
+        "full_classification_requires_one_same_original_tetrahedron": true,
+        "union_membership": "OR of original tetrahedra",
+        "volume_fraction": -0.01,
+        "scale": 0.9966554934125964,
+        "translation_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "inverse_mapped_query_vertices": true,
+        "partial_integrator_frame": "original query vertices with frozen inverse transform",
+        "identity_transform": false,
+        "heart_volume_ml": 782.8918539180374,
+        "transformed_heart_volume_ml": 775.0629353788571,
+        "heart_centre_m": [
+          0.01459302834831819,
+          -0.018102293667109397,
+          -0.13987559673903507
+        ],
+        "overlap_assumption": "positive-volume overlap absent; shared faces allowed; exact duplicates rejected; no all-pairs overlap validation performed",
+        "batch_size": 32,
+        "frozen_integrator_diagnostics": {
+          "input_tetrahedra": 4736,
+          "heart_tetrahedra": 1963,
+          "levels": [
+            4096,
+            8192,
+            16384
+          ],
+          "barycentric_points_per_tet": 16384,
+          "sample_points_evaluated_by_level": [
+            19398656,
+            38797312,
+            77594624
+          ],
+          "inside_sample_count_by_level": [
+            7957971,
+            15915805,
+            31826876
+          ],
+          "full_sample_fraction_tetrahedra_by_level": [
+            1046,
+            1017,
+            1012
+          ],
+          "empty_sample_fraction_tetrahedra_by_level": [
+            2628,
+            2620,
+            2618
+          ],
+          "partial_sample_fraction_tetrahedra_by_level": [
+            1062,
+            1099,
+            1106
+          ],
+          "zero_fraction_tetrahedra_by_level": [
+            2628,
+            2620,
+            2618
+          ],
+          "unit_fraction_tetrahedra_by_level": [
+            1046,
+            1017,
+            1012
+          ],
+          "bvh_node_tests": 33388,
+          "tetrahedron_aabb_tests": 1618127818,
+          "barycentric_point_tests": 157038933,
+          "broad_phase": "conservative AABB hierarchy over original heart tetrahedra",
+          "centroid_filter_used": false,
+          "union_membership": "OR of original tetrahedra",
+          "volume_fraction": -0.01,
+          "scale": 0.9966554934125964,
+          "translation_m": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "identity_transform": false,
+          "heart_volume_ml": 782.8918539180374,
+          "transformed_heart_volume_ml": 775.0629353788571,
+          "heart_centre_m": [
+            0.01459302834831819,
+            -0.018102293667109397,
+            -0.13987559673903507
+          ],
+          "overlap_assumption": "positive-volume overlap absent; shared faces allowed; exact duplicates rejected; no all-pairs overlap validation performed",
+          "batch_size": 32
+        }
+      }
+    },
+    {
+      "state": "individual_q16384_volume_p0p01",
+      "seconds": 152.12814617156982,
+      "diagnostics": {
+        "input_tetrahedra": 31216,
+        "heart_tetrahedra": 1963,
+        "levels": [
+          4096,
+          8192,
+          16384
+        ],
+        "barycentric_points_per_tet": 16384,
+        "exact_empty_tetrahedra_by_conservative_aabb": 26022,
+        "exact_full_tetrahedra_by_strict_same_tet": 1,
+        "partial_quadrature_tetrahedra": 5193,
+        "query_tetrahedra_pruned_by_aabb": 26022,
+        "query_tetrahedra_pruned_by_strict_containment": 1,
+        "sample_points_evaluated_by_level": [
+          21270528,
+          42541056,
+          85082112
+        ],
+        "inside_sample_count_by_level": [
+          8129518,
+          16259079,
+          32522458
+        ],
+        "empty_fraction_tetrahedra_by_level": [
+          27982,
+          27918,
+          27903
+        ],
+        "unit_fraction_tetrahedra_by_level": [
+          1827,
+          1816,
+          1809
+        ],
+        "aabb_chunk_size": 256,
+        "aabb_pair_tests": 61277008,
+        "aabb_overlap_pairs": 145881,
+        "strict_full_vertex_tests": 583396,
+        "frozen_integrator_calls": 1,
+        "frozen_bvh_node_tests": 35499,
+        "frozen_tetrahedron_aabb_tests": 1668581609,
+        "frozen_barycentric_point_tests": 160155521,
+        "broad_phase": "conservative query-AABB versus original-heart-tetrahedron-AABB blocks",
+        "centroid_filter_used": false,
+        "full_classification_requires_one_same_original_tetrahedron": true,
+        "union_membership": "OR of original tetrahedra",
+        "volume_fraction": 0.01,
+        "scale": 1.0033222835420892,
+        "translation_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "inverse_mapped_query_vertices": true,
+        "partial_integrator_frame": "original query vertices with frozen inverse transform",
+        "identity_transform": false,
+        "heart_volume_ml": 782.8918539180374,
+        "transformed_heart_volume_ml": 790.7207724572178,
+        "heart_centre_m": [
+          0.01459302834831819,
+          -0.018102293667109397,
+          -0.13987559673903507
+        ],
+        "overlap_assumption": "positive-volume overlap absent; shared faces allowed; exact duplicates rejected; no all-pairs overlap validation performed",
+        "batch_size": 32,
+        "frozen_integrator_diagnostics": {
+          "input_tetrahedra": 5193,
+          "heart_tetrahedra": 1963,
+          "levels": [
+            4096,
+            8192,
+            16384
+          ],
+          "barycentric_points_per_tet": 16384,
+          "sample_points_evaluated_by_level": [
+            21270528,
+            42541056,
+            85082112
+          ],
+          "inside_sample_count_by_level": [
+            8129518,
+            16259079,
+            32522458
+          ],
+          "full_sample_fraction_tetrahedra_by_level": [
+            1826,
+            1815,
+            1808
+          ],
+          "empty_sample_fraction_tetrahedra_by_level": [
+            1960,
+            1896,
+            1881
+          ],
+          "partial_sample_fraction_tetrahedra_by_level": [
+            1407,
+            1482,
+            1504
+          ],
+          "zero_fraction_tetrahedra_by_level": [
+            1960,
+            1896,
+            1881
+          ],
+          "unit_fraction_tetrahedra_by_level": [
+            1826,
+            1815,
+            1808
+          ],
+          "bvh_node_tests": 35499,
+          "tetrahedron_aabb_tests": 1668581609,
+          "barycentric_point_tests": 160155521,
+          "broad_phase": "conservative AABB hierarchy over original heart tetrahedra",
+          "centroid_filter_used": false,
+          "union_membership": "OR of original tetrahedra",
+          "volume_fraction": 0.01,
+          "scale": 1.0033222835420892,
+          "translation_m": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "identity_transform": false,
+          "heart_volume_ml": 782.8918539180374,
+          "transformed_heart_volume_ml": 790.7207724572178,
+          "heart_centre_m": [
+            0.01459302834831819,
+            -0.018102293667109397,
+            -0.13987559673903507
+          ],
+          "overlap_assumption": "positive-volume overlap absent; shared faces allowed; exact duplicates rejected; no all-pairs overlap validation performed",
+          "batch_size": 32
+        }
+      }
+    }
+  ]
+}

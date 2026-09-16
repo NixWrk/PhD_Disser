@@ -1,0 +1,6 @@
+{
+  "status": "complete",
+  "states": 5,
+  "FEM_solved": true,
+  "spatial_convergence": false
+}

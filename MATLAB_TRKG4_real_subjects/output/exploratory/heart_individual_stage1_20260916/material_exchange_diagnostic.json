@@ -1,0 +1,83 @@
+{
+  "source_plan_sha256": "1d1060175e88248aef9884c57d57751574ee3a476bf80e0bdc6a4ebcd253aff2",
+  "implementation_sha256": "1fba4445e54a3282154f790eb22c65825e0d6e9c83f40e2a9d79439dc798d726",
+  "geometry_hashes": {
+    "individual_q16384_base_geometry.npz": "f5a9b82a71e4fd99c03424fd1867a0f89d4027c2a23f7c1ec1bd3c23899c8d75",
+    "individual_q16384_volume_m0p005_geometry.npz": "0479c77cc115da487bba1b56f1dac6fee8a6d6b8c94a65bae3fa8ac83d2194ff",
+    "individual_q16384_volume_p0p005_geometry.npz": "a8a24fd830b5dff2791dd70c0714cc5deb3e08edfd77ea58afff78e619bd5ca7",
+    "individual_q16384_volume_m0p01_geometry.npz": "a83d097a969f53dee13993c53e1afc26498c6147d1773a539690b7e82d109aa3",
+    "individual_q16384_volume_p0p01_geometry.npz": "2c35ca35583c4ed3d52a484acdfa4dfad89576c823b4ffe3ccee37e2f8c699c6"
+  },
+  "quadrature": 16384,
+  "original_materials": {
+    "1": "soft",
+    "2": "lung",
+    "3": "heart (background soft)",
+    "4": "bone"
+  },
+  "rows": [
+    {
+      "volume_fraction": 0.0,
+      "delta_heart_volume_ml": 0.0,
+      "analytic_delta_volume_ml": 0.0,
+      "one_sided_material_volume_ratio": null,
+      "changes_by_original_material_ml": {
+        "1": 0.0,
+        "2": 0.0,
+        "3": 0.0,
+        "4": 0.0
+      }
+    },
+    {
+      "volume_fraction": -0.005,
+      "delta_heart_volume_ml": -3.9153188495139126,
+      "analytic_delta_volume_ml": -3.9144592695901874,
+      "one_sided_material_volume_ratio": 1.0002195909740084,
+      "changes_by_original_material_ml": {
+        "1": 0.44636638875038587,
+        "2": 0.02803603113140868,
+        "3": -4.389721269395708,
+        "4": 0.0
+      }
+    },
+    {
+      "volume_fraction": 0.005,
+      "delta_heart_volume_ml": 3.9100280783497374,
+      "analytic_delta_volume_ml": 3.9144592695901874,
+      "one_sided_material_volume_ratio": 0.9988679940356324,
+      "changes_by_original_material_ml": {
+        "1": 3.5559080904966565,
+        "2": 0.8295590315701181,
+        "3": -0.47550815469247276,
+        "4": 6.911097543551575e-05
+      }
+    },
+    {
+      "volume_fraction": -0.01,
+      "delta_heart_volume_ml": -7.824999447869174,
+      "analytic_delta_volume_ml": -7.828918539180375,
+      "one_sided_material_volume_ratio": 0.9994994083420862,
+      "changes_by_original_material_ml": {
+        "1": 0.876523728292642,
+        "2": 0.055388410765847614,
+        "3": -8.756911586927663,
+        "4": 0.0
+      }
+    },
+    {
+      "volume_fraction": 0.01,
+      "delta_heart_volume_ml": 7.825754885277197,
+      "analytic_delta_volume_ml": 7.828918539180375,
+      "one_sided_material_volume_ratio": 0.9995959015428063,
+      "changes_by_original_material_ml": {
+        "1": 7.079643043631228,
+        "2": 1.67918409815237,
+        "3": -0.933682548887821,
+        "4": 0.0006102923814190446
+      }
+    }
+  ],
+  "interpretation": "Signed material-volume accounting, not causal decomposition of impedance.",
+  "nonnested_shapes_possible": true,
+  "physical_validation": false
+}

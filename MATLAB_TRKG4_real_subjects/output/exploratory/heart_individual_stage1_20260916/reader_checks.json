@@ -1,0 +1,15 @@
+{
+  "notebook_sha256": "b39c4b881e653bbb1c3bf62e4cdc592f05d0ef736780a65b04086cdb90593bb4",
+  "html_sha256": "2d148499deac03ba77149fc1109223b01d7ec6dc20b76b1089863b4ac5bc25cd",
+  "source_sha256": "ed78f69658c704eb50960639c9df8fddef17e1c60766caad21c73315063e31b5",
+  "error_outputs": 0,
+  "image_outputs": 14,
+  "code_inputs_excluded_from_html": true,
+  "new_result_sections_present": true,
+  "new_figures_visually_reviewed": [
+    "10_individual_volume_sensitivity.png",
+    "11_individual_quadrature_refinement.png",
+    "12_heart_directional_response.png"
+  ],
+  "visual_review": "Labels, legend, numerical annotations and curves inspected; no clipping or overlap obscures results."
+}

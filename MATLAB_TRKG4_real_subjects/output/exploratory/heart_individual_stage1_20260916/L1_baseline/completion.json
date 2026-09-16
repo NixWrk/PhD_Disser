@@ -1,0 +1,8 @@
+{
+  "status": "completed_numerical_checks_passed",
+  "hashes": {
+    "result.json": "0a1868b3c31c7cc07f64f118def6bab7c360c3fade95b508c473dd32cf6fbea0",
+    "fields.npz": "dfe195539df5dd4c4e044afb1d1debc7e4e42ed1cc3940baa67feb7adb7db6c8",
+    "factorization_memory.json": "2d65adccaebbf70616083484dc84b32deb9a22c99acc03c0159fd7e5d39a8f1e"
+  }
+}

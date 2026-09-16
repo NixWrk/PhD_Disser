@@ -1,0 +1,37 @@
+{
+  "stage": 1,
+  "status": "numerical_stage_in_progress_first_calculation_block_completed",
+  "new_direct_solutions": 11,
+  "original_mesh_individual_states_per_quadrature": 5,
+  "quadrature_levels_electrically_solved": [
+    4096,
+    16384
+  ],
+  "geometry_only_intermediate_quadrature": 8192,
+  "refined_mesh_baseline_solutions": 1,
+  "refined_mesh_derivative_solutions": 0,
+  "registration_implemented_in_this_stage": false,
+  "physical_validation": false,
+  "spatial_convergence": false,
+  "individual_central_volume_derivative_ohm_per_ml_at_step_0p005": -0.015646465993526155,
+  "individual_one_sided_slopes_ohm_per_ml": {
+    "decrease": -0.012446145163979372,
+    "increase": -0.01884678682307294
+  },
+  "baseline_mesh_change_ohm": 0.6190444762183631,
+  "baseline_mesh_change_relative": 0.003733716937998448,
+  "next": [
+    "Five volume states on the refined mesh for each of individual/sphere/ellipsoid",
+    "Central and one-sided comparison across mesh levels",
+    "Separate same-background control near moving boundary",
+    "Translations and remaining electrode montages after numerical review",
+    "Then static-to-4D CT registration"
+  ],
+  "calculation_sources": {
+    "MATLAB_TRKG4_real_subjects/output/exploratory/heart_individual_stage1_20260916/comparison/comparison.json": "10781bcfaa308f3ed869658454155f6204fafd906fa2ce6948094f78247a8cd0",
+    "MATLAB_TRKG4_real_subjects/output/exploratory/heart_individual_stage1_20260916/comparison_q16384/comparison.json": "d6e1f78efb200c49f114ea6a2336d18492f1e37cf24536ba636d6c4503befec5",
+    "MATLAB_TRKG4_real_subjects/output/exploratory/heart_individual_stage1_20260916/L1_baseline/result.json": "0a1868b3c31c7cc07f64f118def6bab7c360c3fade95b508c473dd32cf6fbea0",
+    "MATLAB_TRKG4_real_subjects/output/exploratory/heart_individual_stage1_20260916/mesh_checks.json": "326ec79eaadc7a0f616de25fd29395258c984770cf8bcee6341bbd1dc19d75a5",
+    "MATLAB_TRKG4_real_subjects/output/exploratory/heart_individual_stage1_20260916/material_exchange_diagnostic.json": "5156049699c2e4ed91847fc0141d9e421aa3d4c187a791bebb1241819dd5705b"
+  }
+}

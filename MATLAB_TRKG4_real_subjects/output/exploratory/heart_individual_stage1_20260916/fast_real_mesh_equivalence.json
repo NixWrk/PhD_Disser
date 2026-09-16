@@ -1,0 +1,133 @@
+{
+  "fractions_exactly_equal": true,
+  "query_tetrahedra": 31216,
+  "levels": [
+    512,
+    4096
+  ],
+  "elapsed_seconds": 25.972809099999722,
+  "max_fraction_difference": 0.0,
+  "diagnostics": {
+    "input_tetrahedra": 31216,
+    "heart_tetrahedra": 1963,
+    "levels": [
+      512,
+      4096
+    ],
+    "barycentric_points_per_tet": 4096,
+    "exact_empty_tetrahedra_by_conservative_aabb": 26444,
+    "exact_full_tetrahedra_by_strict_same_tet": 0,
+    "partial_quadrature_tetrahedra": 4772,
+    "query_tetrahedra_pruned_by_aabb": 26444,
+    "query_tetrahedra_pruned_by_strict_containment": 0,
+    "sample_points_evaluated_by_level": [
+      2443264,
+      19546112
+    ],
+    "inside_sample_count_by_level": [
+      1000053,
+      7999291
+    ],
+    "empty_fraction_tetrahedra_by_level": [
+      29154,
+      29124
+    ],
+    "unit_fraction_tetrahedra_by_level": [
+      1383,
+      1206
+    ],
+    "aabb_chunk_size": 256,
+    "aabb_pair_tests": 61277008,
+    "aabb_overlap_pairs": 132508,
+    "strict_full_vertex_tests": 530032,
+    "frozen_integrator_calls": 1,
+    "frozen_bvh_node_tests": 33183,
+    "frozen_tetrahedron_aabb_tests": 407058530,
+    "frozen_barycentric_point_tests": 39459248,
+    "broad_phase": "conservative query-AABB versus original-heart-tetrahedron-AABB blocks",
+    "centroid_filter_used": false,
+    "full_classification_requires_one_same_original_tetrahedron": true,
+    "union_membership": "OR of original tetrahedra",
+    "volume_fraction": -0.005,
+    "scale": 0.9983305478136912,
+    "translation_m": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "inverse_mapped_query_vertices": true,
+    "partial_integrator_frame": "original query vertices with frozen inverse transform",
+    "identity_transform": false,
+    "heart_volume_ml": 782.8918539180374,
+    "transformed_heart_volume_ml": 778.9773946484472,
+    "heart_centre_m": [
+      0.01459302834831819,
+      -0.018102293667109397,
+      -0.13987559673903507
+    ],
+    "overlap_assumption": "positive-volume overlap absent; shared faces allowed; exact duplicates rejected; no all-pairs overlap validation performed",
+    "batch_size": 32,
+    "frozen_integrator_diagnostics": {
+      "input_tetrahedra": 4772,
+      "heart_tetrahedra": 1963,
+      "levels": [
+        512,
+        4096
+      ],
+      "barycentric_points_per_tet": 4096,
+      "sample_points_evaluated_by_level": [
+        2443264,
+        19546112
+      ],
+      "inside_sample_count_by_level": [
+        1000053,
+        7999291
+      ],
+      "full_sample_fraction_tetrahedra_by_level": [
+        1383,
+        1206
+      ],
+      "empty_sample_fraction_tetrahedra_by_level": [
+        2710,
+        2680
+      ],
+      "partial_sample_fraction_tetrahedra_by_level": [
+        679,
+        886
+      ],
+      "zero_fraction_tetrahedra_by_level": [
+        2710,
+        2680
+      ],
+      "unit_fraction_tetrahedra_by_level": [
+        1383,
+        1206
+      ],
+      "bvh_node_tests": 33183,
+      "tetrahedron_aabb_tests": 407058530,
+      "barycentric_point_tests": 39459248,
+      "broad_phase": "conservative AABB hierarchy over original heart tetrahedra",
+      "centroid_filter_used": false,
+      "union_membership": "OR of original tetrahedra",
+      "volume_fraction": -0.005,
+      "scale": 0.9983305478136912,
+      "translation_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "identity_transform": false,
+      "heart_volume_ml": 782.8918539180374,
+      "transformed_heart_volume_ml": 778.9773946484472,
+      "heart_centre_m": [
+        0.01459302834831819,
+        -0.018102293667109397,
+        -0.13987559673903507
+      ],
+      "overlap_assumption": "positive-volume overlap absent; shared faces allowed; exact duplicates rejected; no all-pairs overlap validation performed",
+      "batch_size": 32
+    }
+  },
+  "source_plan_sha256": "1a6343360650cef8698c45e25df90e6b124e942c3414cb6c56f7b7a2ac00bb3f",
+  "fast_implementation_sha256": "f15764e1b70d305a37d393002fb91e2689e005d8d97c20a91739565a13470a0c"
+}

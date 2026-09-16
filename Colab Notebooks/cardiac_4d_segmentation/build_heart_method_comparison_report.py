@@ -11,7 +11,11 @@ CODE={'core':'report.core()', 'spheres':"report.method_tradeoff('G')",'ellipsoid
       'physical_settings':'report.physical_settings()','electrodes':'report.electrodes()',
       'electrical':'report.electrical()','material_resolution':'report.material_resolution()','table':'report.table()','fractional_resolution':'report.fractional_resolution()',
       'libraries':'report.libraries()','phase_stability':'report.phase_stability()','volume_sensitivity':'report.volume_sensitivity()',
-      'ellipsoid_surface_validation':'report.ellipsoid_surface_validation()'}
+      'ellipsoid_surface_validation':'report.ellipsoid_surface_validation()',
+      'individual_volume_sensitivity':'report.individual_volume_sensitivity()',
+      'individual_quadrature_refinement':'report.individual_quadrature_refinement()',
+      'heart_directional_response':'report.heart_directional_response()',
+      'heart_spatial_baseline':'report.heart_spatial_baseline()'}
 def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 def main():
     source=SOURCE.read_text(encoding='utf-8-sig')

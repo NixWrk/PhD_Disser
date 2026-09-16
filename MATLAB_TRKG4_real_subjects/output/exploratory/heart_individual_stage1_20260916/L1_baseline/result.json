@@ -1,0 +1,73 @@
+{
+  "Z_ohm": 166.41749317978218,
+  "reciprocal_Z_ohm": 166.41749317968066,
+  "max_relative_residual": 1.99096735581759e-11,
+  "reciprocity_absolute_ohm": 1.0152234608540311e-10,
+  "max_current_error_A": 1.1368683772161603e-13,
+  "max_ground_residual_A": 3.97779851253415e-11,
+  "recovered_currents_A": [
+    [
+      1.0,
+      1.7763568394002505e-15
+    ],
+    [
+      -1.7763568394002505e-15,
+      0.9999999999998863
+    ],
+    [
+      -1.2434497875801753e-14,
+      -0.9999999999999858
+    ],
+    [
+      -1.0000000000000426,
+      3.552713678800501e-15
+    ]
+  ],
+  "matrix_asymmetry_relative": 7.3831230918854205e-22,
+  "solve_seconds": 19.086193561553955,
+  "factorization_memory": {
+    "iparm_15_16_17_kib": [
+      558797,
+      475271,
+      3941937
+    ],
+    "rss_after_symbolic_gib": 1.3865165710449219,
+    "conservative_rss_plus_solver_estimate_gib": 6.599094390869141,
+    "available_gib": 41.23475646972656
+  },
+  "rhs_count": 2,
+  "factorizations": 1,
+  "geometry": "individual",
+  "montage": "tepc_2",
+  "frequency_hz": 50000,
+  "rho_ohm_m": {
+    "soft": 12.97545349687242,
+    "heart": 3.271861524558311,
+    "lung": 6.779277270654547,
+    "bone": 48.44512605796346
+  },
+  "coarse_Z_ohm": 165.79844870356382,
+  "fine_Z_ohm": 166.41749317978218,
+  "change_ohm": 0.6190444762183631,
+  "relative_change": 0.003733716937998448,
+  "coarse_nodes": 791141,
+  "fine_nodes": 821731,
+  "coarse_elements": 4448426,
+  "fine_elements": 4630591.0,
+  "source_plan_sha256": "1d1060175e88248aef9884c57d57751574ee3a476bf80e0bdc6a4ebcd253aff2",
+  "refined_export_sha256": "c7f0ff3b6c826354c54d9484740dfdb61f2017c99698c9ad2c937a6a8724509c",
+  "input_hashes": {
+    "prepared_fem.mat": "125dfc7c1cdd7175792ed6ece1feb2b2074491c8c660520c7eb097d49ab15677",
+    "contact.mat": "6a34748efd09fb2a42675fd7af165489a4671dafa06a2b332ce89fad917058cc",
+    "heart_refinement_export.json": "c7f0ff3b6c826354c54d9484740dfdb61f2017c99698c9ad2c937a6a8724509c",
+    "check_heart_refinement_baseline.py": "ec975fff301aba5f01adfd4d3e9db72a6bb830ef4c3baf51abe8118fde6786c4",
+    "heart_replacement_electrical_pilot.py": "043fd2ebc45db42100a49df7a4de2dbdd92dcd8f0696d39a022bb958eaa567cb",
+    "run_electrode_sensitivity.py": "5746b49438277f7681d46c51309fe885610d1361d3a2be1a08eb0148d5c97435",
+    "plan.json": "1d1060175e88248aef9884c57d57751574ee3a476bf80e0bdc6a4ebcd253aff2",
+    "result.json": "e05e864455e4c5358838dd94a91df8749a06b0a37a1bf4d8ad6e2f84397d16ca"
+  },
+  "scientific_status": "exploratory_not_validated",
+  "spatial_convergence": false,
+  "physical_validation": false,
+  "scope": "Unchanged geometry and physical contacts; baseline only, no volume or translation derivative"
+}
