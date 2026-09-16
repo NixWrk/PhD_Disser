@@ -1,0 +1,49 @@
+{
+  "status": "passed",
+  "geometry_qc": {
+    "passed": true,
+    "external": true,
+    "edge_connected": true,
+    "node_disjoint": true
+  },
+  "areas_mm2": [
+    19.881299131178846,
+    19.881337258725726,
+    20.37966869755579,
+    19.88254705143527
+  ],
+  "actual_centres_xyz_mm": [
+    [
+      266.62952126490785,
+      25.400598634814173,
+      0.8056072756854304
+    ],
+    [
+      206.62371417878614,
+      25.42549837078587,
+      0.8044336276233373
+    ],
+    [
+      -225.31120652939043,
+      24.835803353830865,
+      29.283042988304658
+    ],
+    [
+      -285.62420305105724,
+      24.835421283777364,
+      29.284002803337327
+    ]
+  ],
+  "matrix_error": 1.0434070780423844e-17,
+  "source_prepared_sha256": "d83fa6231da30496b7e457e5e2e88d1c7927057ec6fbf58d8a6dca1441389a0a",
+  "contact_sha256": "2cc6dd6e3e0aaf9f1e05a9ab9fa4ba7dae40d4a1218cfb16dd6a4486ce6c33ec",
+  "source_json_sha256": "8b350a551a7c7ea5d9d36dcb2c32b04430e55c7be54bcb08296e8e7ef6353eeb",
+  "manifest_sha256": "88130cb128a73bebed601fd77ac2593e61b6be0f819635d59d7dcf3144038153",
+  "nominal_diameter_mm": 5,
+  "V_from_join_mm": 20,
+  "I_from_join_mm": 80,
+  "interelectrode_gap_mm": 60,
+  "experimental_placement_verified": false,
+  "first_attempt": "rejected before contact creation: reference_definition did not match required schema enum; retained local receipt",
+  "final_attempt": "original reference enum retained; scenario explanation in separate metadata; geometry QC thresholds unchanged"
+}

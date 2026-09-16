@@ -1,6 +1,6 @@
 {
-  "completed": 72,
-  "required": 72,
+  "completed": 84,
+  "required": 84,
   "geometry": [
     {
       "id": "phase_00",
@@ -1041,6 +1041,37 @@
           -96.06024725316425
         ]
       ]
+    },
+    {
+      "id": "ttrkg",
+      "areas_mm2": [
+        19.881299131178846,
+        19.881337258725726,
+        20.37966869755579,
+        19.88254705143527
+      ],
+      "actual_centres_xyz_mm": [
+        [
+          266.62952126490785,
+          25.400598634814173,
+          0.8056072756854304
+        ],
+        [
+          206.62371417878614,
+          25.42549837078587,
+          0.8044336276233373
+        ],
+        [
+          -225.31120652939043,
+          24.835803353830865,
+          29.283042988304658
+        ],
+        [
+          -285.62420305105724,
+          24.835421283777364,
+          29.284002803337327
+        ]
+      ]
     }
   ],
   "solutions": [
@@ -1619,6 +1650,102 @@
       "max_relative_residual": 6.9791063283461266e-12,
       "max_current_error_A": 5.684341886080802e-14,
       "reciprocity_absolute_ohm": 2.517808184165915e-11
+    },
+    {
+      "id": "phase_00",
+      "montage": "ttrkg",
+      "Z_ohm": 482.1758492993495,
+      "max_relative_residual": 8.600890847281218e-11,
+      "max_current_error_A": 5.684341886080802e-14,
+      "reciprocity_absolute_ohm": 1.446943542759982e-08
+    },
+    {
+      "id": "phase_01",
+      "montage": "ttrkg",
+      "Z_ohm": 482.1840033729306,
+      "max_relative_residual": 1.3156719616725644e-10,
+      "max_current_error_A": 5.684341886080802e-14,
+      "reciprocity_absolute_ohm": 1.4801742054260103e-08
+    },
+    {
+      "id": "phase_02",
+      "montage": "ttrkg",
+      "Z_ohm": 482.26682235825376,
+      "max_relative_residual": 1.2181897102524447e-10,
+      "max_current_error_A": 5.684341886080802e-14,
+      "reciprocity_absolute_ohm": 5.078868525743019e-08
+    },
+    {
+      "id": "phase_03",
+      "montage": "ttrkg",
+      "Z_ohm": 482.23830208105676,
+      "max_relative_residual": 1.0571035947452071e-10,
+      "max_current_error_A": 5.684341886080802e-14,
+      "reciprocity_absolute_ohm": 2.211163518950343e-08
+    },
+    {
+      "id": "phase_04",
+      "montage": "ttrkg",
+      "Z_ohm": 482.2330600262518,
+      "max_relative_residual": 1.208441712977084e-10,
+      "max_current_error_A": 2.842170943040401e-14,
+      "reciprocity_absolute_ohm": 4.5272372517501935e-09
+    },
+    {
+      "id": "phase_05",
+      "montage": "ttrkg",
+      "Z_ohm": 482.1028470275883,
+      "max_relative_residual": 1.0897830234940269e-10,
+      "max_current_error_A": 2.842170943040401e-14,
+      "reciprocity_absolute_ohm": 4.340398618296604e-08
+    },
+    {
+      "id": "phase_06",
+      "montage": "ttrkg",
+      "Z_ohm": 481.9865718299386,
+      "max_relative_residual": 1.0536375848642586e-10,
+      "max_current_error_A": 5.684341886080802e-14,
+      "reciprocity_absolute_ohm": 1.2893963230453664e-08
+    },
+    {
+      "id": "phase_07",
+      "montage": "ttrkg",
+      "Z_ohm": 481.99896873133696,
+      "max_relative_residual": 1.1975592927499726e-10,
+      "max_current_error_A": 5.684341886080802e-14,
+      "reciprocity_absolute_ohm": 3.325283159938408e-08
+    },
+    {
+      "id": "phase_08",
+      "montage": "ttrkg",
+      "Z_ohm": 482.04771796703005,
+      "max_relative_residual": 1.4083787105990568e-10,
+      "max_current_error_A": 5.684341886080802e-14,
+      "reciprocity_absolute_ohm": 2.417777977825608e-09
+    },
+    {
+      "id": "phase_09",
+      "montage": "ttrkg",
+      "Z_ohm": 482.0249006406985,
+      "max_relative_residual": 1.2805405273680278e-10,
+      "max_current_error_A": 8.526512829121202e-14,
+      "reciprocity_absolute_ohm": 9.528321243124083e-09
+    },
+    {
+      "id": "phase_10",
+      "montage": "ttrkg",
+      "Z_ohm": 482.0914099911914,
+      "max_relative_residual": 9.585465827275104e-11,
+      "max_current_error_A": 5.684341886080802e-14,
+      "reciprocity_absolute_ohm": 1.0132225725101307e-08
+    },
+    {
+      "id": "phase_11",
+      "montage": "ttrkg",
+      "Z_ohm": 482.18542938042003,
+      "max_relative_residual": 1.5745123451568808e-10,
+      "max_current_error_A": 5.684341886080802e-14,
+      "reciprocity_absolute_ohm": 2.333069915039232e-08
     }
   ],
   "coordinate_qc": {
@@ -40520,6 +40647,14 @@
   "plan_sha256": "38e50d2713e25ac5eb761e3086037f04d6bf5da8ae2f0d0d28d77da235121ce4",
   "geometry_sha256": "bc46b1ea3eaedc72b86ec9b108b96a2e06ba1557e601c589c2243bf7711baee3",
   "summary_sha256": "f6a23af14a248d9eb3abac28ff44e95baaf83afca3c33d9bd7c76f8521bfeb07",
+  "extension_plan_sha256": "2b89826bf5f91b87a84da78d72c8f038bb840284faf84151d0fb0bcfe2839635",
+  "ttrkg_scenario": {
+    "V_from_join_mm": 20,
+    "I_from_join_mm": 80,
+    "I_to_V_gap_mm": 60,
+    "diameter_mm": 5,
+    "experimental_placement_verified": false
+  },
   "spatial_convergence": false,
   "physical_validation": false
 }

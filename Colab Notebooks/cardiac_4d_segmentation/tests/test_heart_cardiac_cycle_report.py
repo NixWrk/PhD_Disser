@@ -20,3 +20,12 @@ def test_partial_and_nonfinite_are_rejected():
     with pytest.raises(ValueError):validate_summary(d)
     d=complete();d['states'][0]['Z_ohm']=float('nan')
     with pytest.raises(ValueError,match='Nonfinite'):validate_summary(d)
+
+
+def test_extended_coverage_requires_ttrkg_for_every_phase():
+    d=complete();d['completed']=d['required']=84
+    d['states'] += [{'id':f'phase_{j:02d}','montage':'ttrkg','Z_ohm':2.0} for j in range(12)]
+    montages=[f'tepc_{m}' for m in range(2,8)]+['ttrkg']
+    validate_summary(d,montages)
+    d['states'][-1]=dict(d['states'][-2])
+    with pytest.raises(ValueError,match='84 unique'):validate_summary(d,montages)

@@ -83,3 +83,6 @@ MATLAB_TRKG4_real_subjects/tools/lateral_fat_refine.py -text
 MATLAB_TRKG4_real_subjects/tools/lateral_fat_analysis.py -text
 MATLAB_TRKG4_real_subjects/tools/verify_lateral_fat.py -text
 MATLAB_TRKG4_real_subjects/notebooks/lateral_fat_results.py -text
+
+# Preserve the byte identity of the audited seven-montage numerical summary.
+"Colab Notebooks/cardiac_4d_segmentation/results/nix_cardiac_cycle_20260916/summary.json" -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

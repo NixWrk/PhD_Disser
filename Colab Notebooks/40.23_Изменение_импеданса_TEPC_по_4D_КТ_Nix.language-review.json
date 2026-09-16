@@ -4,24 +4,24 @@
   "status": "passed_for_exploratory_reader_report",
   "full_text_model_review": true,
   "review_after_last_reader_edit": true,
-  "semantic_review_scope": "Complete notebook prose and displayed tables, all six final figures, HTML reader equivalence, revised full plan, execution protocol. Facts, assumptions, model results and uncompleted validation kept distinct.",
-  "reader_text_sha256": "7ed7562c7a7aa7544501296f515f9d3dc9c0397cac64e8e627d1b0ebcb04d665",
+  "semantic_review_scope": "Complete final notebook prose, tables and seven figures; full updated plan; execution protocol; added pipeline section. Whole-heart approximation, TEPC-6/7 potential differences and chosen TTRKG scenario distinguished from validation.",
+  "reader_text_sha256": "debfb99f6f2818b383b17ee6de59342f6f27615b6f514bdfb613f49fb6b737ad",
   "artifacts": [
     {
       "path": "Colab Notebooks/40.23_Изменение_импеданса_TEPC_по_4D_КТ_Nix.ipynb",
-      "sha256": "fd2939c22ed07e7d5c64540b839a4a58fb2c4ac757e2ad07f034d09da8752ae9"
+      "sha256": "17c9a084959f846798a808bfa17c674aa88699d1560754cfee539b11255bbbbb"
     },
     {
       "path": "Colab Notebooks/40.23_Изменение_импеданса_TEPC_по_4D_КТ_Nix.html",
-      "sha256": "26df5afbc75813556674bd69c91f6383aa65041bb4f72c77b7075bf872d331b7"
+      "sha256": "0f911093bc9dfce858a596ce25822245c0b181642c92c5ddf32278d935901565"
     },
     {
       "path": "Colab Notebooks/40.19_План_выбора_электродов_и_модели_для_оценки_объёма.md",
-      "sha256": "0ae770673113323eb12822cbd59ce6eacab148c1f814e0c49cf89cf17617da7a"
+      "sha256": "4ae4ff6e940716e31ddf8c6ccdf43575173820e4475a5f0e8b7f9a4b5a6f4e9e"
     },
     {
       "path": "MATLAB_TRKG4_real_subjects/docs/CARDIAC_CYCLE_TEPC_PILOT.md",
-      "sha256": "1b86f09d251dcc7efe003a058a57529c1de378d4699ef20c3b8035740ba402d4"
+      "sha256": "22557dd7959cfedd9e032fd6902a28087e3b0888c1598a3aa163b8ccda664966"
     }
   ],
   "checks": {
@@ -32,6 +32,6 @@
     "language.ru.natural-prose": "passed"
   },
   "open_language_findings": [],
-  "computational_status": "72 direct solutions checked; 10 focused tests passed",
+  "computational_status": "84 direct solutions checked; 13 focused tests passed; original 72 preserved",
   "scientific_status": "limited observed-mask computational pilot; no physical or spatial validation claim"
 }

@@ -1,0 +1,90 @@
+{
+  "state_id": "phase_00",
+  "rr_percent": 14,
+  "test_current_mA": 1,
+  "note": "1 mA is an illustrative linear rescaling, not a measured instrument current. Potentials use the solver ground; only differences are gauge invariant.",
+  "contact_order": [
+    "I+",
+    "V+",
+    "V-",
+    "I-"
+  ],
+  "contacts": [
+    {
+      "montage": "tepc_2",
+      "contact_potentials_mV_at_1mA": [
+        793.4076175379548,
+        58.73670808002544,
+        -108.22912447063138,
+        -951.8256688683616
+      ],
+      "voltage_difference_mV_at_1mA": 166.9658325506568,
+      "fields_sha256": "816ca98c84fd72a1c8af54f8ef82ba4713f9c08ce2cef106f289600b0c8b81f8"
+    },
+    {
+      "montage": "tepc_3",
+      "contact_potentials_mV_at_1mA": [
+        193.69194524894817,
+        18.977390717282542,
+        -25.620724556935645,
+        -144.49959255269343
+      ],
+      "voltage_difference_mV_at_1mA": 44.59811527421819,
+      "fields_sha256": "1536fc89a6b2c1a1705b9a454adab8a59d481b431045d9914f6ab3999319fe5d"
+    },
+    {
+      "montage": "tepc_4",
+      "contact_potentials_mV_at_1mA": [
+        582.0873963580514,
+        6.389502769771145,
+        -90.78214084619185,
+        -777.9560527741758
+      ],
+      "voltage_difference_mV_at_1mA": 97.17164361596299,
+      "fields_sha256": "f0b69728f7f3bcde190b11e29b4d8ffb69ba1abcaeba1204bc1972f60fa48be3"
+    },
+    {
+      "montage": "tepc_5",
+      "contact_potentials_mV_at_1mA": [
+        863.3651035018063,
+        82.9351650065722,
+        -21.971574422416293,
+        -573.5990404660832
+      ],
+      "voltage_difference_mV_at_1mA": 104.9067394289885,
+      "fields_sha256": "2540a0795f494b042cd76e10208f41f00a073048ef4a842253f85cfaf2169b76"
+    },
+    {
+      "montage": "tepc_6",
+      "contact_potentials_mV_at_1mA": [
+        609.4364813720348,
+        -3.3040077182867456,
+        -21.012587266993876,
+        -691.8865525607484
+      ],
+      "voltage_difference_mV_at_1mA": 17.70857954870713,
+      "fields_sha256": "05da85fa04b3102eef54f15639e756318a124eeb65379b794ece96d4e3d611d0"
+    },
+    {
+      "montage": "tepc_7",
+      "contact_potentials_mV_at_1mA": [
+        451.9573314237004,
+        -6.185479982976508,
+        -8.072770342492197,
+        -651.8513184412342
+      ],
+      "voltage_difference_mV_at_1mA": 1.8872903595156885,
+      "fields_sha256": "249378ee8358dc5088b1e61c971a653be259bbcf4ae56fe1f1ae1ad1f7e0ccfd"
+    }
+  ],
+  "tepc7_requested_to_actual_offsets_mm": [
+    0.00300229671948263,
+    0.08625471680402129,
+    0.20300960781050129,
+    0.055185433643294195
+  ],
+  "tepc7_raw_json_sha256": "a10fd7e0ec130d2fe0e18d20a08af56773523a51a4c8eb5325ba82f366a84135",
+  "tepc7_raw_roles_verified": true,
+  "tepc7_geometry_sha256": "827d4bf9224b56ed8ef31bf13329e3f8d97d668da94cea40600039ba214996a1",
+  "plan_sha256": "38e50d2713e25ac5eb761e3086037f04d6bf5da8ae2f0d0d28d77da235121ce4"
+}
