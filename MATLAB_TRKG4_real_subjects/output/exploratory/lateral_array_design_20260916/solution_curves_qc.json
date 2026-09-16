@@ -1,0 +1,55 @@
+{
+  "status": "exploratory_hypothesis_not_validated",
+  "model": "variable_transverse",
+  "finite_diameter_mm": 5,
+  "new_FEM_solutions": 0,
+  "bounds_ohm_m": [
+    [
+      1.3774104683195594,
+      10.0
+    ],
+    [
+      9.741271489527174,
+      24.074073806584366
+    ]
+  ],
+  "rho2_samples": 601,
+  "log_rho1_derivative_samples": 401,
+  "min_sampled_dZ_dlogrho1": 12.534306394701265,
+  "max_root_residual_ohm": 2.1458390619955026e-12,
+  "intersection_method": "sign-changing brackets on 601 rho2 values, refined by Brent; tangencies not exhaustively certified",
+  "spread_method": "601 samples, local refinement around best sample, and endpoints; not an interval proof",
+  "observations_source": "output/exploratory/lateral_real_application_20260915/observations.csv",
+  "observations_sha256": "29e57ee9a6c1c71c280e6a7a0041a7909189deecfc88290f75991f83ad4b363c",
+  "input_sha256": {
+    "plan.json": "ad06381a46e9ee0c2d3d0fb18f6f21d29ac74bf88fd2383c4b8a0b8d0ca68dc9",
+    "responses.csv": "14dbbcefb9f4afcea3c213a18ebc3d73b485557831e6c0e5a6172edb8ed4fe0b",
+    "real_fits.csv": "2106493fe4957ce2c5cceccc3669c2c78e68d3d7cafcdbe3118087d127c95c3e"
+  },
+  "code_sha256": {
+    "lateral_array_design_solution_curves.py": "d0a89b6a8510dba32c3f13c50b695bf1b19630e0eb565501178084bf575b3ca8",
+    "lateral_array_design_analysis.py": "d5ea4d8024c0b8e3a14185e4b709cb53fba187f39a88f89cb72811a718039b4b"
+  },
+  "states": {
+    "inhale": {
+      "pair_crossings_found": 1,
+      "minimum_sampled_and_refined_rho1_spread": 1.7534637575734253,
+      "rho2_at_minimum": 24.074073806584366,
+      "sampled_rho1_50_max": 4.994422257142541,
+      "sampled_rho1_70_min": 6.715747628389278,
+      "sampled_50_70_envelope_gap": 1.7213253712467367
+    },
+    "exhale": {
+      "pair_crossings_found": 4,
+      "minimum_sampled_and_refined_rho1_spread": 1.6689283120500162,
+      "rho2_at_minimum": 24.074073806584366,
+      "sampled_rho1_50_max": 4.843406489149277,
+      "sampled_rho1_70_min": 6.481643269810553,
+      "sampled_50_70_envelope_gap": 1.6382367806612752
+    }
+  },
+  "output_sha256": {
+    "solution_curves.csv": "b9a2130bb3ea1eaef07d14f02134c11619b7f2a6c49bd17d7de61b63894aacc1",
+    "solution_curve_intersections.csv": "50721ba63e0c9d689a8ec0c8400c8c4d7e7660a31236b5e40b40096d77426fc5"
+  }
+}

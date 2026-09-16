@@ -6,14 +6,17 @@
     4,
     5,
     6,
-    7
+    7,
+    8,
+    9
   ],
   "artifact_sha256": {
-    "33.09_Выбор_размеров_и_числа_боковых_сборок.ipynb": "62b9f52905e44a65ba279bca38a9ca743aec5b70f828715efd4b9328443175da",
-    "33.09_Выбор_размеров_и_числа_боковых_сборок.html": "db4d9283ed7f85651fd9c6f5f281ef2370b8029a77b46692fa8195bf1134edef",
+    "33.09_Выбор_размеров_и_числа_боковых_сборок.ipynb": "b0d714305ac7f637718341e829d2ce75c07cf063c7350297d30212609d4da8fa",
+    "33.09_Выбор_размеров_и_числа_боковых_сборок.html": "8d9f79305dad9ece4d3ece38ee1370b07cec43c8afd650efe99ffc4f412802da",
     "33.09_Выбор_размеров_и_числа_боковых_сборок.md": "51c97aab8e033bfd195eb2d32c271bd550122d28f9e1779cd811de99936f8dd2"
   },
   "input_sha256": {
+    "algorithm_qc.json": "b93ad123483d472a6335757a4e03c1198dda21034d6b4d834317bc4769e3efc9",
     "analysis_manifest.json": "ff05f998c08715324caf3a3edf352038c1ff90a9bcdbd29b5b48d78b6cea45ec",
     "best_by_count.csv": "35da2fb28387c742849fddd22e8df61b40d690915aa588c9da2bf43b4880f1cc",
     "contact_qc.csv": "8ff447d73268f5674072f48d66e1578b8f1b6582a27f2f666371a1328d934322",
@@ -37,6 +40,9 @@
     "responses.csv": "14dbbcefb9f4afcea3c213a18ebc3d73b485557831e6c0e5a6172edb8ed4fe0b",
     "responses.csv.execution.json": "6059e2f412cf1ef8ae653a73de3973cc09160aabdac8bc39cb113586c468299a",
     "responses.csv.identity.json": "d663440b05ba9870ee9480aa1d2679ff69c79c2835f425588d3eb5a80310bcc0",
+    "solution_curves.csv": "b9a2130bb3ea1eaef07d14f02134c11619b7f2a6c49bd17d7de61b63894aacc1",
+    "solution_curves_qc.json": "a803751f65166c860f1eec8b45bf8e69d2ecb5662232920cc81ea425e3c160c9",
+    "solution_curve_intersections.csv": "50721ba63e0c9d689a8ec0c8400c8c4d7e7660a31236b5e40b40096d77426fc5",
     "subset_scores.csv": "1d14bfd9ddbb7da62730a8dc580e1243d41b6fc53f7b5be0146949e3988bd1ce",
     "summary_by_count.csv": "c92452d58cc109ee72a55ded4fc54841f176d1a5bd982f3d38944ae5813376c1",
     "verification.json": "07553c67fdb0086ed4c201c222ac32b657adc51f32f2fb62ce7ad4ef863dc2a5"
