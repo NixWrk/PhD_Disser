@@ -1,15 +1,15 @@
 {
   "skill": "russian-scientific-prose",
-  "reviewed_at_utc": "2026-09-16T09:54:03.376395+00:00",
+  "reviewed_at_utc": "2026-09-16T10:26:22.976809+00:00",
   "mode": "final_full_text_semantic_review",
   "language": "ru",
   "reviewer": "Codex",
   "artifact_sha256": {
-    "33.09_Выбор_размеров_и_числа_боковых_сборок.ipynb": "b0d714305ac7f637718341e829d2ce75c07cf063c7350297d30212609d4da8fa",
-    "33.09_Выбор_размеров_и_числа_боковых_сборок.html": "8d9f79305dad9ece4d3ece38ee1370b07cec43c8afd650efe99ffc4f412802da",
+    "33.09_Выбор_размеров_и_числа_боковых_сборок.ipynb": "106861bb0dbb185005b0286d2c0f5e8aa7a00df30c971a5829b2140661f22fee",
+    "33.09_Выбор_размеров_и_числа_боковых_сборок.html": "dc5dd060c26c5bdf3305e757ad19d579acc1ca3c6540253ebdbdc3cf993fdd16",
     "33.09_Выбор_размеров_и_числа_боковых_сборок.md": "51c97aab8e033bfd195eb2d32c271bd550122d28f9e1779cd811de99936f8dd2"
   },
-  "reader_text_sha256": "34232f637c6ac9f55fe808feeeaf4cbbff364c233a2155a9ab58c01d519c99ef",
+  "reader_text_sha256": "99ff29f2e81282f68a5fd7c9b411b7e6405e083c478d4917ba068bb4e2589bd2",
   "language_status": "passed",
   "technical_status": "passed_executed_notebook_and_rendered_HTML",
   "computational_status": "passed_declared_checks",
@@ -17,7 +17,7 @@
   "review_scope": [
     "all headings and paragraphs in sequence",
     "all five tables and captions",
-    "all three figures, legends, axes, interactive controls and explanatory captions",
+    "all four figures, axes, legends, captions and all eight subset/state selections",
     "formulas and definitions",
     "full conclusions and limitations",
     "source roles and passport"
@@ -44,12 +44,15 @@
     "subsets": 502,
     "synthetic_inversions": 256,
     "real_inversions": 16,
-    "code_cells_executed": 9,
-    "plotly_figures_rendered": 3,
+    "code_cells_executed": 10,
+    "plotly_figures_rendered": 4,
     "MathJax_rendered": true,
     "isoimpedance_curve_points": 10818,
     "pair_intersections": 5,
-    "new_FEM_solutions_for_curves": 0
+    "new_FEM_solutions_for_curves": 0,
+    "optimal_subsets": 8,
+    "subset_state_views_checked": 16,
+    "numerical_curves_unchanged": true
   },
   "limitations_retained": [
     "one anatomy",
@@ -62,11 +65,21 @@
     "local stochastic scenarios do not include model bias",
     "curve roots use the validated spline, not additional direct FEM solves",
     "pair-intersection search does not exhaustively certify tangencies",
-    "rho1 curve spread is not error relative to true resistivity"
+    "rho1 curve spread is not error relative to true resistivity",
+    "axes start at zero, but no curve calculation or extrapolation below declared positive bounds"
   ],
   "findings": [],
   "additional_artifact_sha256": {
-    "solution_curves.html": "cafcd1dc2ab0062605b39c1558e943ca3ddf4d7f54ae5268573900e477cbed16",
-    "solution_curves.png": "8801c2e34e805165055198261f90ca67618a167737192ff2be317d90f44c6c54"
+    "solution_curves.html": "be03a7e1cfa7452fac2922558ed4cf8bebda403edb8b1dc079b135f1969c691a",
+    "solution_curves.png": "5f8ba840e8b2b93639bb3d5f9859cc30ec5ab4eea0f998745acb2295f2ad27c3",
+    "optimal_solution_curves.html": "d03fcc6e555cf03b071d95f36f6ef6e622c271bb5e14b2651e22921a042fe698",
+    "optimal_solution_curves.png": "2a3c11f110d80160b96aba4956180f69d6b2123f203a9e1a8fea494c101ce359",
+    "solution_curves_k2.html": "77115c4b043b0d342492aeda1b8aaaa098cf31a91394db0ede3bd34e40421e9e",
+    "solution_curves_k3.html": "99e2e5b8118708d22af9793a03aa9ff8c9a7d531d145d7a9420f95b39782425c",
+    "solution_curves_k4.html": "b316e624c8df0594990aff5d6d8b23b3fcb22ede0f83474606a180bf7b87e3fd",
+    "solution_curves_k5.html": "f38c8ca0dcedee1b32f96aef43bc61949ddb5baf155cd0a69ae2b788e90c2551",
+    "solution_curves_k6.html": "8d74092d67a4c09fa81417475bad0358bcace00a503ff6bae0910d349d1a25ff",
+    "solution_curves_k7.html": "2a57a8c350f613ee652b55b69e760df4e2cc3490b910ffc35447baba1d038dfe",
+    "solution_curves_k8.html": "04ceaafcae720943b9237fc17a92f30dee1a3880ecc66c1488edf10e18792be6"
   }
 }

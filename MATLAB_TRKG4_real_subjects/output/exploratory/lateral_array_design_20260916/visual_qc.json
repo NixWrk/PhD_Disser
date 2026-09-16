@@ -1,68 +1,24 @@
 {
-  "plots_rendered": 3,
+  "plots_rendered": 4,
   "calculation_input_cells_in_HTML": 0,
   "javascript_errors": [],
   "mathjax_nodes": 28,
-  "html_sha256": "8d9f79305dad9ece4d3ece38ee1370b07cec43c8afd650efe99ffc4f412802da",
-  "figures": [
-    {
-      "axes": [
-        "Число разных размеров сборок",
-        "Локальное стандартное отклонение, %"
-      ],
-      "names": [
-        "Мягкие ткани ρ₁",
-        "Лёгкое ρ₂"
-      ]
-    },
-    {
-      "axes": [
-        "Число разных размеров",
-        "ρ₁, Ом·м",
-        "Число разных размеров",
-        "ρ₂, Ом·м"
-      ],
-      "names": [
-        "Вдох",
-        "Вдох",
-        "Выдох",
-        "Выдох"
-      ]
-    },
-    {
-      "axes": [
-        "ρ₂ лёгкого, Ом·м",
-        "ρ₁ мягких тканей, Ом·м",
-        "ρ₂ лёгкого, Ом·м",
-        null
-      ],
-      "names": [
-        "50 мм",
-        "60 мм",
-        "70 мм",
-        "80 мм",
-        "90 мм",
-        "110 мм",
-        "120 мм",
-        "130 мм",
-        "140 мм",
-        "Пересечение двух кривых",
-        "Подгонка по 9 размерам",
-        "50 мм",
-        "60 мм",
-        "70 мм",
-        "80 мм",
-        "90 мм",
-        "110 мм",
-        "120 мм",
-        "130 мм",
-        "140 мм",
-        "Пересечение двух кривых",
-        "Подгонка по 9 размерам"
-      ]
-    }
+  "html_sha256": "dc5dd060c26c5bdf3305e757ad19d579acc1ca3c6540253ebdbdc3cf993fdd16",
+  "code_cells_executed": 10,
+  "optimal_subset_dropdown_default": 2,
+  "optimal_subset_dropdown_clicked": [
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
   ],
-  "solution_curves_full_bounds_button": true,
-  "solution_curves_linked_legend": true,
-  "code_cells_executed": 9
+  "both_axes_from_zero": true,
+  "zoom_and_reset": true,
+  "selected_sizes_and_fits_all_16_cases": true,
+  "numeric_csv_unchanged_from_previous_commit": true,
+  "legend_does_not_enable_hidden_subsets": true,
+  "all_titles_inside_figure": true
 }

@@ -8,11 +8,12 @@
     6,
     7,
     8,
-    9
+    9,
+    10
   ],
   "artifact_sha256": {
-    "33.09_Выбор_размеров_и_числа_боковых_сборок.ipynb": "b0d714305ac7f637718341e829d2ce75c07cf063c7350297d30212609d4da8fa",
-    "33.09_Выбор_размеров_и_числа_боковых_сборок.html": "8d9f79305dad9ece4d3ece38ee1370b07cec43c8afd650efe99ffc4f412802da",
+    "33.09_Выбор_размеров_и_числа_боковых_сборок.ipynb": "106861bb0dbb185005b0286d2c0f5e8aa7a00df30c971a5829b2140661f22fee",
+    "33.09_Выбор_размеров_и_числа_боковых_сборок.html": "dc5dd060c26c5bdf3305e757ad19d579acc1ca3c6540253ebdbdc3cf993fdd16",
     "33.09_Выбор_размеров_и_числа_боковых_сборок.md": "51c97aab8e033bfd195eb2d32c271bd550122d28f9e1779cd811de99936f8dd2"
   },
   "input_sha256": {
@@ -41,7 +42,7 @@
     "responses.csv.execution.json": "6059e2f412cf1ef8ae653a73de3973cc09160aabdac8bc39cb113586c468299a",
     "responses.csv.identity.json": "d663440b05ba9870ee9480aa1d2679ff69c79c2835f425588d3eb5a80310bcc0",
     "solution_curves.csv": "b9a2130bb3ea1eaef07d14f02134c11619b7f2a6c49bd17d7de61b63894aacc1",
-    "solution_curves_qc.json": "a803751f65166c860f1eec8b45bf8e69d2ecb5662232920cc81ea425e3c160c9",
+    "solution_curves_qc.json": "1e2625415e11e2f0cce688a8c40928fe10c6b86e3be6e3ea5e428811bdb123de",
     "solution_curve_intersections.csv": "50721ba63e0c9d689a8ec0c8400c8c4d7e7660a31236b5e40b40096d77426fc5",
     "subset_scores.csv": "1d14bfd9ddbb7da62730a8dc580e1243d41b6fc53f7b5be0146949e3988bd1ce",
     "summary_by_count.csv": "c92452d58cc109ee72a55ded4fc54841f176d1a5bd982f3d38944ae5813376c1",

@@ -96,13 +96,14 @@ def calculate(out):
     frame.to_csv(out/'solution_curves.csv', index=False, float_format='%.14g')
     pair_frame.to_csv(out/'solution_curve_intersections.csv', index=False, float_format='%.14g')
     qc = dict(status='exploratory_hypothesis_not_validated', model='variable_transverse',
-              finite_diameter_mm=5, new_FEM_solutions=0, bounds_ohm_m=plan['bounds'].tolist(),
+              finite_diameter_mm=5, new_FEM_solutions=0, rho_display_axes_start_at_zero=True,
+              extrapolated=False, bounds_ohm_m=plan['bounds'].tolist(),
               rho2_samples=601, log_rho1_derivative_samples=401,
               min_sampled_dZ_dlogrho1=min_dx, max_root_residual_ohm=float(frame.residual_ohm.abs().max()),
               intersection_method='sign-changing brackets on 601 rho2 values, refined by Brent; tangencies not exhaustively certified',
               spread_method='601 samples, local refinement around best sample, and endpoints; not an interval proof',
               observations_source=source, observations_sha256=source_sha,
-              input_sha256={n:sha256_file(out/n) for n in ['plan.json','responses.csv','real_fits.csv']},
+              input_sha256={n:sha256_file(out/n) for n in ['plan.json','responses.csv','real_fits.csv','best_by_count.csv']},
               code_sha256={Path(__file__).name:sha256_file(Path(__file__)),
                            'lateral_array_design_analysis.py':sha256_file(Path(__file__).with_name('lateral_array_design_analysis.py'))},
               states=summary,
@@ -110,49 +111,98 @@ def calculate(out):
     save_json(out/'solution_curves_qc.json', qc)
     make_figure(out).write_html(out/'solution_curves.html', include_plotlyjs=True,
                                config={'responsive':True,'displaylogo':False})
+    for k in range(2,9):
+        make_figure(out,k).write_html(out/f'solution_curves_k{k}.html', include_plotlyjs=True,
+                                     config={'responsive':True,'displaylogo':False})
+    make_optimal_figure(out).write_html(out/'optimal_solution_curves.html', include_plotlyjs=True,
+                                       config={'responsive':True,'displaylogo':False})
     print(summary)
     return qc
 
 
-def make_figure(out):
+def make_figure(out, k=9):
     curves = pd.read_csv(out/'solution_curves.csv')
     pairs = pd.read_csv(out/'solution_curve_intersections.csv')
     fits = pd.read_csv(out/'real_fits.csv')
+    best = pd.read_csv(out/'best_by_count.csv')
+    chosen = best[best.k==k]
+    if len(chosen)!=1:
+        raise ValueError('Select a declared best set with 2 to 9 sizes.')
+    lengths = [int(x) for x in chosen.iloc[0].sizes_mm.split('|')]
+    assert len(lengths)==k
+    palette = dict(zip(sorted(curves.L_mm.unique()), COLORS))
+    rho1_close_range=[float(curves.rho1.min())-.18,float(curves.rho1.max())+.18]
+    curves = curves[curves.L_mm.isin(lengths)]
+    pairs = pairs[pairs.L1_mm.isin(lengths)&pairs.L2_mm.isin(lengths)]
     bounds = load_plan(out/'plan.json')['bounds']
     fig = make_subplots(rows=1, cols=2, shared_yaxes=True, horizontal_spacing=0.08,
                         subplot_titles=list(STATES.values()))
     for col, state in enumerate(STATES, 1):
-        for color, (length, d) in zip(COLORS, curves[curves.state==state].groupby('L_mm', sort=True)):
+        for length, d in curves[curves.state==state].groupby('L_mm', sort=True):
             fig.add_trace(go.Scatter(x=d.rho2, y=d.rho1, mode='lines',
                 name=f'{length} мм', legendgroup=str(length), showlegend=col==1,
-                line=dict(color=color,width=2.8),
+                line=dict(color=palette[length],width=2.8),
+                meta=dict(k=k,state=state,role='curve',L_mm=int(length)),
                 hovertemplate='ρ₂ = %{x:.4f} Ом·м<br>ρ₁ = %{y:.4f} Ом·м<extra>%{fullData.name}</extra>'), row=1,col=col)
         d = pairs[pairs.state==state]
         fig.add_trace(go.Scatter(x=d.rho2,y=d.rho1,mode='markers',
             name='Пересечение двух кривых',legendgroup='pairs',showlegend=col==1,
             marker=dict(symbol='circle-open',color='#555',size=13,line=dict(width=2)),
+            meta=dict(k=k,state=state,role='pairs'),
             customdata=d[['L1_mm','L2_mm','all_nine_rmse_ohm']].to_numpy(),
             hovertemplate='Пара %{customdata[0]:.0f}/%{customdata[1]:.0f} мм<br>ρ₂ = %{x:.4f}<br>ρ₁ = %{y:.4f} Ом·м<br>Невязка всех 9: %{customdata[2]:.3f} Ом<extra></extra>'),row=1,col=col)
-        d = fits[(fits.state==state)&(fits.k==9)]
+        d = fits[(fits.state==state)&(fits.k==k)]
+        assert len(d)==1 and d.iloc[0].sizes_mm==chosen.iloc[0].sizes_mm
         fig.add_trace(go.Scatter(x=d.rho2_hat,y=d.rho1_hat,mode='markers',
-            name='Подгонка по 9 размерам',legendgroup='fit',showlegend=col==1,
+            name='Подгонка выбранного набора',legendgroup='fit',showlegend=col==1,
             marker=dict(symbol='diamond',color='black',size=13,line=dict(color='white',width=1.5)),
+            meta=dict(k=k,state=state,role='fit'),
             customdata=d[['fit_resid_rmse_ohm']].to_numpy(),
-            hovertemplate='Общая подгонка<br>ρ₂ = %{x:.4f}<br>ρ₁ = %{y:.4f} Ом·м<br>Невязка: %{customdata[0]:.3f} Ом<extra></extra>'),row=1,col=col)
-        fig.add_vline(x=bounds[1,1],line_dash='dot',line_color='#999',row=1,col=col)
-        fig.update_xaxes(title='ρ₂ лёгкого, Ом·м',range=[bounds[1,0]-.3,bounds[1,1]+.55],row=1,col=col)
-    zoom=[float(curves.rho1.min())-.18,float(curves.rho1.max())+.18]
-    fig.update_yaxes(range=zoom,showticklabels=True)
+            hovertemplate='Подгонка выбранного набора<br>ρ₂ = %{x:.4f}<br>ρ₁ = %{y:.4f} Ом·м<br>Невязка набора: %{customdata[0]:.3f} Ом<extra></extra>'),row=1,col=col)
+        fig.add_vrect(x0=0,x1=bounds[1,0],fillcolor='#eceff2',opacity=0.65,line_width=0,layer='below',row=1,col=col)
+        fig.add_vrect(x0=bounds[1,1],x1=bounds[1,1]+.55,fillcolor='#eceff2',opacity=0.65,line_width=0,layer='below',row=1,col=col)
+        fig.add_hrect(y0=0,y1=bounds[0,0],fillcolor='#eceff2',opacity=0.65,line_width=0,layer='below',row=1,col=col)
+        for b in bounds[1]:fig.add_vline(x=b,line_dash='dot',line_color='#999',row=1,col=col)
+        fig.add_hline(y=bounds[0,0],line_dash='dot',line_color='#999',row=1,col=col)
+        fig.add_annotation(x=bounds[1,0]/2,y=8.8,text='Вне расчётного<br>диапазона',showarrow=False,
+                           font=dict(size=12,color='#747c85'),row=1,col=col)
+        fig.update_xaxes(title='ρ₂ лёгкого, Ом·м',range=[0,bounds[1,1]+.55],row=1,col=col)
+    fig.update_yaxes(range=[0,bounds[0,1]],showticklabels=True)
     fig.update_yaxes(title='ρ₁ мягких тканей, Ом·м',row=1,col=1)
-    fig.update_layout(template='plotly_white',height=630,font=dict(family='Arial',size=14),
-        title=dict(text='Решения каждой сборки при заданном ρ₂<br><sup>Модель 4 · фиксированная КТ-геометрия · CEM, диаметр контакта 5 мм</sup>',x=.05),
-        margin=dict(l=80,r=30,t=125,b=135),separators=', ',
+    # Keep the close-up scale identical across all selected subsets.
+    zoom=rho1_close_range
+    zero={'xaxis.range':[0,bounds[1,1]+.55],'xaxis2.range':[0,bounds[1,1]+.55],
+          'yaxis.range':[0,bounds[0,1]],'yaxis2.range':[0,bounds[0,1]]}
+    close={'xaxis.range':[bounds[1,0]-.3,bounds[1,1]+.55],
+           'xaxis2.range':[bounds[1,0]-.3,bounds[1,1]+.55],
+           'yaxis.range':zoom,'yaxis2.range':zoom}
+    names=', '.join(str(x) for x in lengths)
+    fig.update_layout(template='plotly_white',height=660,font=dict(family='Arial',size=14),
+        title=dict(text=f'Набор из {k}: {names} мм<br><sup>Модель 4 · фиксированная КТ-геометрия · CEM, диаметр контакта 5 мм</sup>',x=.05,y=.94,yanchor='top'),
+        margin=dict(l=80,r=30,t=155,b=125),separators=', ',
         legend=dict(orientation='h',x=0,y=-.20,groupclick='togglegroup'),
-        updatemenus=[dict(type='buttons',direction='right',x=1,xanchor='right',y=1.20,
-            buttons=[dict(label='Крупнее',method='relayout',args=[{'yaxis.range':zoom,'yaxis2.range':zoom}]),
-                     dict(label='Весь диапазон ρ₁',method='relayout',
-                          args=[{'yaxis.range':bounds[0].tolist(),'yaxis2.range':bounds[0].tolist()}])])])
+        updatemenus=[dict(type='buttons',direction='right',x=1,xanchor='right',y=1.23,
+            buttons=[dict(label='От нуля',method='relayout',args=[zero]),
+                     dict(label='Крупнее',method='relayout',args=[close])])])
     return fig
+
+
+def make_optimal_figure(out):
+    figures={k:make_figure(out,k) for k in range(2,10)}
+    combined=go.Figure(layout=figures[2].layout)
+    for k, fig in figures.items():
+        for trace in fig.data:
+            trace.visible=(k==2)
+            combined.add_trace(trace)
+    buttons=[]
+    for k, fig in figures.items():
+        word='размера' if k<5 else 'размеров'
+        buttons.append(dict(label=f'{k} {word}',method='update',
+            args=[{'visible':[t.meta['k']==k for t in combined.data]},
+                  {'title.text':fig.layout.title.text}]))
+    combined.update_layout(updatemenus=[*combined.layout.updatemenus,
+        dict(type='dropdown',direction='down',x=0,xanchor='left',y=1.23,active=0,buttons=buttons)])
+    return combined
 
 
 if __name__ == '__main__':
@@ -167,6 +217,7 @@ if __name__ == '__main__':
         with sync_playwright() as pw:
             browser=pw.chromium.launch(headless=True)
             page=browser.new_page(viewport={'width':1400,'height':900},device_scale_factor=1.5)
-            page.goto((out/'solution_curves.html').as_uri(),wait_until='networkidle')
-            page.locator('.plotly-graph-div.js-plotly-plot').screenshot(path=str(out/'solution_curves.png'))
+            for name in ['solution_curves','optimal_solution_curves']:
+                page.goto((out/(name+'.html')).as_uri(),wait_until='networkidle')
+                page.locator('.plotly-graph-div.js-plotly-plot').screenshot(path=str(out/(name+'.png')))
             browser.close()

@@ -3,6 +3,8 @@
   "model": "variable_transverse",
   "finite_diameter_mm": 5,
   "new_FEM_solutions": 0,
+  "rho_display_axes_start_at_zero": true,
+  "extrapolated": false,
   "bounds_ohm_m": [
     [
       1.3774104683195594,
@@ -24,10 +26,11 @@
   "input_sha256": {
     "plan.json": "ad06381a46e9ee0c2d3d0fb18f6f21d29ac74bf88fd2383c4b8a0b8d0ca68dc9",
     "responses.csv": "14dbbcefb9f4afcea3c213a18ebc3d73b485557831e6c0e5a6172edb8ed4fe0b",
-    "real_fits.csv": "2106493fe4957ce2c5cceccc3669c2c78e68d3d7cafcdbe3118087d127c95c3e"
+    "real_fits.csv": "2106493fe4957ce2c5cceccc3669c2c78e68d3d7cafcdbe3118087d127c95c3e",
+    "best_by_count.csv": "35da2fb28387c742849fddd22e8df61b40d690915aa588c9da2bf43b4880f1cc"
   },
   "code_sha256": {
-    "lateral_array_design_solution_curves.py": "d0a89b6a8510dba32c3f13c50b695bf1b19630e0eb565501178084bf575b3ca8",
+    "lateral_array_design_solution_curves.py": "40ed77e1ac363510d11881a655389f668aca9d1fd208046b01cc17328a23cbf3",
     "lateral_array_design_analysis.py": "d5ea4d8024c0b8e3a14185e4b709cb53fba187f39a88f89cb72811a718039b4b"
   },
   "states": {
