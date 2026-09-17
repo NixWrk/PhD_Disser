@@ -1,0 +1,28 @@
+{
+  "status": "language_review_passed",
+  "language": "ru",
+  "reviewed_at": "2026-09-03",
+  "artifact": {
+    "path": "MATLAB_TRKG4_real_subjects/docs/SURFACE_ELECTRODE_COORDINATES.md",
+    "sha256": "a98cb40a2c7128d9bf3daea05bfcbcefd142a8dea483e93eb8933ddf6a0e96c2"
+  },
+  "checks": {
+    "language.ru.hash-bound-final-review": "passed",
+    "language.ru.encoding": "passed_utf8",
+    "language.ru.natural-prose": "passed",
+    "language.ru.intro-variation": "passed",
+    "language.ru.reader-facing-clarity": "passed",
+    "language.ru.formula-where": "passed",
+    "language.ru.claim-status-and-limitations": "passed"
+  },
+  "attestation": {
+    "full_text_read_sequentially_after_last_byte_change": true,
+    "scientific_headings_checked": true,
+    "technical_terms_and_scope_checked": true,
+    "claim_status_and_limitations_preserved": true,
+    "open_language_findings": 0,
+    "interactive_notebook_path_explicit": true,
+    "formula_where_structure_checked": true,
+    "arm_profile_scope_explicit": true
+  }
+}

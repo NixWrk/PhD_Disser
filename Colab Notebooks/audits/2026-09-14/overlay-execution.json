@@ -1,0 +1,500 @@
+{
+  "schema_version": 1,
+  "scope": ".git-recovery\\2026-08-23-pre-restore\\quarantine\\comsol-rebuilt-overlay",
+  "started_at": "2026-09-14T14:10:01.023566+00:00",
+  "TEMPbackup": "C:\\Users\\ELVIS_~1\\AppData\\Local\\Temp\\kalmykov_overlay_before_20260914_6n1kt8_u",
+  "backup_manifest_sha256": "62be27845ac20aece8bf858fb0c8a1ec59802e17aa36157b8318e7f7030301fd",
+  "before_files": [
+    {
+      "path": "02_Kandidadskaya.ipynb",
+      "sha256": "4ef7be2f60b71b68aafd89591b04b1d4f82d55b6aa8f240c4c897ee46b6d5bf3",
+      "backup": "C:\\Users\\ELVIS_~1\\AppData\\Local\\Temp\\kalmykov_overlay_before_20260914_6n1kt8_u\\02_Kandidadskaya.ipynb"
+    },
+    {
+      "path": "05_Анализ_чувствительности_решётки.ipynb",
+      "sha256": "1a82aaaa9409c3e1d139c2e6f2d54bd43ab2267eda98cfab1a54b1db6268292b",
+      "backup": "C:\\Users\\ELVIS_~1\\AppData\\Local\\Temp\\kalmykov_overlay_before_20260914_6n1kt8_u\\05_Анализ_чувствительности_решётки.ipynb"
+    },
+    {
+      "path": "07_Скетч_модель_лёгких.ipynb",
+      "sha256": "6b26101a3f0fcd4bbae497b86de81a692d867352f6f84f21c067e05614618b0a",
+      "backup": "C:\\Users\\ELVIS_~1\\AppData\\Local\\Temp\\kalmykov_overlay_before_20260914_6n1kt8_u\\07_Скетч_модель_лёгких.ipynb"
+    },
+    {
+      "path": "08_Скетч_разметки.ipynb",
+      "sha256": "01095124c9850777bf85bf03939a620aec18d428afd7df337d9e4add542b2f4e",
+      "backup": "C:\\Users\\ELVIS_~1\\AppData\\Local\\Temp\\kalmykov_overlay_before_20260914_6n1kt8_u\\08_Скетч_разметки.ipynb"
+    },
+    {
+      "path": "09_Статическая_оценка_параметров.ipynb",
+      "sha256": "4daa87abdf64d854dbded009a2bdb572081fc4e249e7f7505c6f3f1e23311123",
+      "backup": "C:\\Users\\ELVIS_~1\\AppData\\Local\\Temp\\kalmykov_overlay_before_20260914_6n1kt8_u\\09_Статическая_оценка_параметров.ipynb"
+    },
+    {
+      "path": "10_КТ_оценка_HU.ipynb",
+      "sha256": "082e1985dc53a6eda37f052edfc61dcc0bf5529be19653bb26a54840c80dbe44",
+      "backup": "C:\\Users\\ELVIS_~1\\AppData\\Local\\Temp\\kalmykov_overlay_before_20260914_6n1kt8_u\\10_КТ_оценка_HU.ipynb"
+    },
+    {
+      "path": "11_Систолические_Δρ_и_задержка.ipynb",
+      "sha256": "0c8fe8032b5503a836b19c07f901441e12634a54d62e1a86de372660051f830b",
+      "backup": "C:\\Users\\ELVIS_~1\\AppData\\Local\\Temp\\kalmykov_overlay_before_20260914_6n1kt8_u\\11_Систолические_Δρ_и_задержка.ipynb"
+    },
+    {
+      "path": "12_Аналитическое_обоснование.ipynb",
+      "sha256": "910308b36a91d6ce41919657dc8c5da03a5a6bf1800a7b0f266d452767579435",
+      "backup": "C:\\Users\\ELVIS_~1\\AppData\\Local\\Temp\\kalmykov_overlay_before_20260914_6n1kt8_u\\12_Аналитическое_обоснование.ipynb"
+    },
+    {
+      "path": "14_Идентифицируемость_источников.ipynb",
+      "sha256": "c1b5b99652d554415cb21e3b6b701852fd403072774abeb05276906b1e075978",
+      "backup": "C:\\Users\\ELVIS_~1\\AppData\\Local\\Temp\\kalmykov_overlay_before_20260914_6n1kt8_u\\14_Идентифицируемость_источников.ipynb"
+    },
+    {
+      "path": "16_Эксперимент_РНЦХ_2026-07-15.ipynb",
+      "sha256": "858e695828cb67bd7012cb2fce80bb3161b136a9acacefacb42bea857290cfd3",
+      "backup": "C:\\Users\\ELVIS_~1\\AppData\\Local\\Temp\\kalmykov_overlay_before_20260914_6n1kt8_u\\16_Эксперимент_РНЦХ_2026-07-15.ipynb"
+    },
+    {
+      "path": "17_Дрейф_опорного_канала_и_порядок_съёмки.ipynb",
+      "sha256": "d64ab3b806e39ed899eef23c73fbf283ec400f6f98ff3d6245a2a5c099c59f25",
+      "backup": "C:\\Users\\ELVIS_~1\\AppData\\Local\\Temp\\kalmykov_overlay_before_20260914_6n1kt8_u\\17_Дрейф_опорного_канала_и_порядок_съёмки.ipynb"
+    },
+    {
+      "path": "18_Эквивалентная_сфера_импедансный_критерий.ipynb",
+      "sha256": "f05ed5bcd0750c55a5f6a62418d70f4967e1b207d588bb1f93a144f0b6bff3e6",
+      "backup": "C:\\Users\\ELVIS_~1\\AppData\\Local\\Temp\\kalmykov_overlay_before_20260914_6n1kt8_u\\18_Эквивалентная_сфера_импедансный_критерий.ipynb"
+    },
+    {
+      "path": "19_Сердечный_сигнал_ТТРКГ_и_лёгочный_конфаундер.ipynb",
+      "sha256": "d5aa4c4f9775d8ec516332f3384d64fc86f5d1c09f8b09208b086c64a8568a0b",
+      "backup": "C:\\Users\\ELVIS_~1\\AppData\\Local\\Temp\\kalmykov_overlay_before_20260914_6n1kt8_u\\19_Сердечный_сигнал_ТТРКГ_и_лёгочный_конфаундер.ipynb"
+    }
+  ],
+  "baseline": {
+    "01_Математическая_модель_импеданса.md": "9c474b804fb913e22f37edf848c1735c79e514d83e240ecd32a6ade5c591092f",
+    "02_Kandidadskaya.ipynb": "4ef7be2f60b71b68aafd89591b04b1d4f82d55b6aa8f240c4c897ee46b6d5bf3",
+    "03_Модель_импеданса_лёгких.md": "c862f44a439b04a72bc6fab398b94eba71630f54acf82303318b693358739533",
+    "04_Чувствительность_и_дизайн_решётки.md": "e94d1f71121423ed5339835e42fb3d44e11bbd4e8a376212766d01eb661e8db8",
+    "05_Анализ_чувствительности_решётки.ipynb": "1a82aaaa9409c3e1d139c2e6f2d54bd43ab2267eda98cfab1a54b1db6268292b",
+    "06_Перекрёстная_проверка_и_применимость.md": "fbe0aa0a3f69d28bd65f9eb0b3b858ef99c851903ef165da5e8eb3e8ca6b8b18",
+    "07_Скетч_модель_лёгких.ipynb": "6b26101a3f0fcd4bbae497b86de81a692d867352f6f84f21c067e05614618b0a",
+    "08_Скетч_разметки.ipynb": "01095124c9850777bf85bf03939a620aec18d428afd7df337d9e4add542b2f4e",
+    "09_Статическая_оценка_параметров.ipynb": "4daa87abdf64d854dbded009a2bdb572081fc4e249e7f7505c6f3f1e23311123",
+    "10_КТ_оценка_HU.ipynb": "082e1985dc53a6eda37f052edfc61dcc0bf5529be19653bb26a54840c80dbe44",
+    "11_Систолические_Δρ_и_задержка.ipynb": "0c8fe8032b5503a836b19c07f901441e12634a54d62e1a86de372660051f830b",
+    "12_Аналитическое_обоснование.ipynb": "910308b36a91d6ce41919657dc8c5da03a5a6bf1800a7b0f266d452767579435",
+    "13_Методология_ФВ_УО.md": "73b97166c1f80a249ec9e015a905a692df46286d188f641a7be45ee62ac32296",
+    "14_Идентифицируемость_источников.ipynb": "c1b5b99652d554415cb21e3b6b701852fd403072774abeb05276906b1e075978",
+    "15_Кросс_локализация_и_траектории_сферы.md": "571ffb35a49f991d5e18347ef8f5be2e9c2188a0a542f68742131b552820158b",
+    "16_Эксперимент_РНЦХ_2026-07-15.ipynb": "858e695828cb67bd7012cb2fce80bb3161b136a9acacefacb42bea857290cfd3",
+    "17_Дрейф_опорного_канала_и_порядок_съёмки.ipynb": "d64ab3b806e39ed899eef23c73fbf283ec400f6f98ff3d6245a2a5c099c59f25",
+    "18_Эквивалентная_сфера_импедансный_критерий.ipynb": "f05ed5bcd0750c55a5f6a62418d70f4967e1b207d588bb1f93a144f0b6bff3e6",
+    "19_Сердечный_сигнал_ТТРКГ_и_лёгочный_конфаундер.ipynb": "d5aa4c4f9775d8ec516332f3384d64fc86f5d1c09f8b09208b086c64a8568a0b",
+    "environment.json": "0760f11b295ad98ba4e1f472bcf7f64612c1a0bd0ccfb7dc08df9166ff4f20ce",
+    "project_paths.json": "76d9a52640950413d9fdf6f9709569d21f72eb3ad0ce2d0fc4182ee2828a892c",
+    "README (Николай Калмыков).md": "1126a11c34ec598278f3150c59780ee349f48c47b9640c5302ddb5486e6af5a4",
+    "rebuild_manifest.json": "0eae5222690573e0d4e3bd882d3b181dd648f57471562ae55a9facb2622c4f97",
+    "checks\\analysis-bitrix-source.json": "3b2c743b2432e9c5945de98079b64b0b11918ea93167f6da645d1eb5a8f568a2",
+    "checks\\analysis-rebuilt.json": "ecc40bf549b42d1112698152f0dca6e50aa68cb141b36520745f294d99edc89e",
+    "checks\\analysis-source-notebooks.json": "c3da932a0cd017c3fcf52a52fbd26d50812762787e519625fbffdfc5bf76d502",
+    "checks\\artifact-summary.json": "d0060791d4d9d37bbaf31b39774594352112d89d596a97970a55489478197a21",
+    "checks\\equation-definitions.json": "10c6389d4d6c2e87058870808f55d0cc811e50893c096c1901bba568be534615",
+    "checks\\execution-clean-run.json": "00277f5257b6a5b336777172c79fc797e4642f673c6f10d7d3666625e09fcecf",
+    "checks\\execution-revision-2026-08-21.json": "0a60e7317c538e36ac791f2d2da31553aab6c9498141619c90e6167787e96d08",
+    "checks\\execution-summary.json": "45442b6da1a5b6a232bb975828e76bfa2abcc506a86481934aa296c578b21836",
+    "checks\\figure-inventory-pre-v021.json": "78f4c8250e88daa284e3456d8165b461c7cf4398e3cd3b7fe23ee1c0965795f0",
+    "checks\\formula-flow.json": "0fa511731aff68aba510401dd319aad920c2331c7ac7d23a9c76f6a3eb9b639a",
+    "checks\\integrity-summary.json": "bdcff703b7757f87cf1c6642fa118d86eb33de1a708672da71c48bfdba733d11",
+    "checks\\lint-final.json": "eac2bde06fa51588134affc83a62e8d9d2268db396418c26ce82ef48a4a1c02c",
+    "checks\\lint-flow.json": "eac2bde06fa51588134affc83a62e8d9d2268db396418c26ce82ef48a4a1c02c",
+    "checks\\lint-v021-pre-final.json": "2292923e80cc4f0efa14812ba4401d8e4f39272a8151a34c8277111f9a34da96",
+    "checks\\narrative-flow.json": "bc19d67c483262547f285ff98fdea85215246617e5692679ba0e2163af975501",
+    "checks\\narrative-summary.json": "511692af6940536fe5ef2f34b88469f42b0610f31c698eedb82850d338b3bd42",
+    "checks\\references-final.json": "79555f48de6796e4c88e7945dad1fd1b833adf6daae887644d2c1e05bd35c81b",
+    "checks\\russian-summary.json": "e1a8de877624d2c15e0f591cc22fb43e14b41ada40de51e4a255e1062515f863",
+    "checks\\russian-summary.pre-final.json": "195faef3a9e99ed3966448f42a2b2c325aa97144b0194e421a95a4c07fb8ed67",
+    "checks\\three-corpus-comparison.json": "1b7912d3273a26c437b7e5cdf1cdf8e8cc73aadc6447acdb611938666ce51337",
+    "checks\\validation-summary.json": "1653ba8a7f920001f2fe4ab297f7747015cb381415d68b93d8fe5a4b84416432",
+    "params\\ct.json": "6409c78b363955c1f3d32197c0a8a86cf381b449b68e05ada9a7784100adae79",
+    "params\\static.json": "c9854757ddc98d938f28d966f9d39204a874c6ac160c276925ec56795e135197",
+    "params\\systolic.json": "df71776c72ed6e9baaa63019d969c29dd21178fcf84275a486ac41f39a5a5fc0",
+    "reports\\02_Kandidadskaya.json": "535fa551f1bf2dbea824e174f4adeddfc82850c135c4c315c502ecbccd1e325e",
+    "reports\\05_Анализ_чувствительности_решётки.json": "c384fd15756f2da4edd5cd43d69bd3452b780a91b24b84b08371cd07e5da1134",
+    "reports\\07_Скетч_модель_лёгких.json": "28329442f5fe95b87b071687dc2d333ff5ee2ca7311d870df6cd076f872ea358",
+    "reports\\08_Скетч_разметки.json": "f4ae42c0080edbfa481ad2e49307c9e97d0368fc3a371c808a4c73355e06ed01",
+    "reports\\09_Статическая_оценка_параметров.json": "fb127cc34c8da9c27ac907845e188b882b27ecef24ac2a5b4d9019035d7a55a1",
+    "reports\\10_КТ_оценка_HU.json": "2e2ee5c9c36a2d350c5e64ec788dca0f020fb9d531b8f57fa72505eedf0b013c",
+    "reports\\11_Систолические_Δρ_и_задержка.json": "eb5cfd0f49b4d808cf794d66407b4c0b9bcd8ed004c08fd352adfb146e30e7ff",
+    "reports\\12_Аналитическое_обоснование.json": "b74bf1a81e3f3ac7d0a8eb0f10a4205b8b89aff0415dbdf1bd120dbf3ca34e89",
+    "reports\\14_Идентифицируемость_источников.json": "672e558dee450287877b210d14f3e71acbef5cd0c829dd0fa33c0b95a46c4dcd",
+    "reports\\16_Эксперимент_РНЦХ_2026-07-15.json": "b4e98e34c1cb5ea2ee4e8e4c00fdacde1905315d4964e79eb01e475f66a77e5d",
+    "reports\\17_Дрейф_опорного_канала_и_порядок_съёмки.json": "fb6b8b7048dc8c1773cc1da948a410f16a3385e2c67507200f9af0df69f986d1",
+    "reports\\18_Эквивалентная_сфера_импедансный_критерий.json": "c6b62c1612e8f7314c4c8afeac180b1de1cc89feb55a8c63afa808c6eec3125c",
+    "reports\\19_Сердечный_сигнал_ТТРКГ_и_лёгочный_конфаундер.json": "9904b67c9bc437b08233181d56877556dc8b42450716813863e6f964b8f42dfe",
+    "timestamps\\100georg.json": "30466b03a53319abbded8a759366de4ae895b0a9c961a340bedb04b2e3924afe",
+    "timestamps\\100nik.json": "7e4747934db29e9551ee9186d014963162770f0c99441657c1fe0a8b3b46cc5a",
+    "timestamps\\110georg.json": "c11892693fa4ed05d8eb55836e9779f20553796cadfef5ff36ef905e56857eee",
+    "timestamps\\110nik.json": "3e17ea6215ab00a4fafb51f0db85b378b9bdc02897e02573432dbaa375b91fcd",
+    "timestamps\\120georg.json": "a337e83787649936d92419f128a221bf8cde39cd98478b8d72cc5e1144660574",
+    "timestamps\\120nik.json": "942b3d9e3689af995e0860e3cc641273e0b2c6c7fd89000852cadb46bd771cb4",
+    "timestamps\\130georg.json": "c19d2a6635b7a610bfb126251bcc4f7178aa06c0b99f346210615689421bb820",
+    "timestamps\\130nik.json": "2df5b6cc88666396fff0d11604aaee196f4dd4b4c037dc69de33a1994f98e077",
+    "timestamps\\140georg.json": "872cd6656c39343e6e0aede7906e9130bbf139267cdfb4db60ad88fa94456862",
+    "timestamps\\140nik.json": "1b9ecf485fa5ab64c98808842fe42c3bedfafdd558c318cadc9056d182fd6d61",
+    "timestamps\\50georg.json": "efb3e37bfad9cc7b57e5a1cd2d4a8dbbeea37993d59c3db723cf39dbdc12913d",
+    "timestamps\\50nik.json": "744020ae9b43257fe277c946f3892414527c3451d0b496a3028deddce08fcc5b",
+    "timestamps\\60georg.json": "c8a34ccc410d118ebcf8260f141e0731e11f628ec2a45f29a556fde12591b12d",
+    "timestamps\\60nik.json": "73d63cc7468fc2f0900ead8e03b8351d289521e9035ac7c69e9f8530174432a1",
+    "timestamps\\70georg.json": "ab805d0fd1d65d99dce8fc783e0d20e28e400196b4802fad4b52a26e4db47f05",
+    "timestamps\\70nik.json": "08d0e47e030fd9aac8992b2977065faa5e61e266ade7de34285ef83378bad516",
+    "timestamps\\80georg.json": "9cc715cdb752d3c350b5c4c5733d78de77fbb3334ddcff49cf4e4054847133fd",
+    "timestamps\\80nik.json": "126be3abe99ebd6c4ef63bb23be9ec45f534aca87892a39e3919962be7b6e131",
+    "timestamps\\90georg.json": "165dfa23d48f1fcd4708c3e89cd503dffbc1a6ebccd60ce91e709f519368990d",
+    "timestamps\\90nik.json": "78c58f26de15b81d2f12ab2cd22e51a91e8211bbd474197b1851a1f53df290cf",
+    "checks\\russian\\02_Kandidadskaya.json": "7d97590fbc9a2bcba89fb4705d5b76648206a04aaa928253ded6c0c469ddc65f",
+    "checks\\russian\\02_Kandidadskaya.md": "51327f9bc3ad73651af601d7c2d67404b1c288ba22eee45c66d34417114a2d52",
+    "checks\\russian\\05_Анализ_чувствительности_решётки.json": "cd987cd70c08eb5ed571d3a9d6dade63d3cb8c5e43f34c7b94cb04c694ad050a",
+    "checks\\russian\\05_Анализ_чувствительности_решётки.md": "15d154e0d96bb5664a44df09e508e24ee274d337eaae2c13e95bb537e9fca136",
+    "checks\\russian\\07_Скетч_модель_лёгких.json": "0bd391fcf051ec08314f47a94e68d5281556185842eade5123c8f28ffae7bc98",
+    "checks\\russian\\07_Скетч_модель_лёгких.md": "482a2717bd9554b10524b7ece4c4d418c53dcee9371719ea4279ae2d3fd2e461",
+    "checks\\russian\\08_Скетч_разметки.json": "1624dfc8466af9a687452183ed3d678df914ec566968ae3efe9ce95c310aa9dc",
+    "checks\\russian\\08_Скетч_разметки.md": "7a6e00c77fbf3faa9c6885c595a0d29726109e97d54388219ad581a0602c9daf",
+    "checks\\russian\\09_Статическая_оценка_параметров.json": "a2cc61ce188506d2836a0707a25439620e204d35aafa6d110ef5ea2ebd6c49be",
+    "checks\\russian\\09_Статическая_оценка_параметров.md": "264dd0db025a43d81cd7e1b3a631348320d23af2e4a41455bde1a1c6a3988906",
+    "checks\\russian\\10_КТ_оценка_HU.json": "57cd29137280bef00e0a0c51b14ff6202fd095abb4eeaef228b5f7255ffbcfb6",
+    "checks\\russian\\10_КТ_оценка_HU.md": "8ed26414b4c31fbf169bc8cd3983ccf1a64260985fb6c7045ab019249e79f522",
+    "checks\\russian\\11_Систолические_Δρ_и_задержка.json": "105dce2bc57617369023e32c1022c66491994dbbbb7cdda7bc229ef986521e64",
+    "checks\\russian\\11_Систолические_Δρ_и_задержка.md": "aea78941fd3040769d4decb37e6b0b7896226441d5210fa70c4025d32e56586d",
+    "checks\\russian\\12_Аналитическое_обоснование.json": "30f2cc4b47986c80aa4ca9e294ff984a98b6662614ba6efbee7e4f124b4e9859",
+    "checks\\russian\\12_Аналитическое_обоснование.md": "43335e3e9ac4179b0dfefe9a80cb90152b7400ed9f3f06d59001b4aee5d122d6",
+    "checks\\russian\\14_Идентифицируемость_источников.json": "3d50ced7a34ea49e8eaa9f54dee7f7760df8d6a6a26c16e892c3c0e8c66f60ad",
+    "checks\\russian\\14_Идентифицируемость_источников.md": "1e167eedaf33b20b86985d904b7698dc4235cfd00c37feb99e9758dacfba394d",
+    "checks\\russian\\16_Эксперимент_РНЦХ_2026-07-15.json": "1cdac29c09512756b78acefcffebb9fd04896bc61b4c6110490c7cf9a278ec33",
+    "checks\\russian\\16_Эксперимент_РНЦХ_2026-07-15.md": "d4f122dea2d10924c1647d12a55edb40d520a4649c23835e1a6bcbc53629ece6",
+    "checks\\russian\\17_Дрейф_опорного_канала_и_порядок_съёмки.json": "d44d7552d38db60ad6ea0f81045ca2057bf512aae1ddfce3846c9659ead7de1a",
+    "checks\\russian\\17_Дрейф_опорного_канала_и_порядок_съёмки.md": "8f20c2d9857fbebcce64fcbfb29e418e3560e45578b6944990824fb08a831623",
+    "checks\\russian\\18_Эквивалентная_сфера_импедансный_критерий.json": "2edd63046cded7f911ff867de153f9a0b5c9f4ef76ae4127470b0453785a4f82",
+    "checks\\russian\\18_Эквивалентная_сфера_импедансный_критерий.md": "7c54658c3d8d3465b71e6f35d0f9b571ce22265430fdbfca61e6ba5118565d98",
+    "checks\\russian\\19_Сердечный_сигнал_ТТРКГ_и_лёгочный_конфаундер.json": "88e55c5bdacd40922ad369763741c444216f6335a5d8b6a35457bd44ec781e0b",
+    "checks\\russian\\19_Сердечный_сигнал_ТТРКГ_и_лёгочный_конфаундер.md": "895b169189c2a733855175214a7d613da5546f90a43e2d88b4c4fb0276ba5251",
+    "artifacts\\handoffs\\HANDOFF-08-TIMESTAMPS-v1.json": "6704e97e8e40de2c112b36bd084ab5a1f02a3c1d83ec6ca14f114cda3cf91775",
+    "artifacts\\handoffs\\HANDOFF-08-TIMESTAMPS-v2.json": "566dabb934a1c8c6b07c224b33158758b643fc32751f0f3e792228c511d08d29",
+    "artifacts\\handoffs\\HANDOFF-08-TIMESTAMPS-v3.json": "c0c823ca02678a25107737f6da6050a27a6c7cf85d34df5a52c02aa28d3e1d30",
+    "artifacts\\handoffs\\HANDOFF-08-TIMESTAMPS-v4.json": "98a833fa7544bf9cf80ba6e2dca9f6dc82d816f73e6b24905f2db6b90673b35f",
+    "artifacts\\handoffs\\HANDOFF-08-TIMESTAMPS-v5.json": "292d96926cff5611a9aee1d78e2dd8e2387a214dcac0aba5a85e4315cac15e4f",
+    "artifacts\\handoffs\\HANDOFF-09-STATIC-v1.json": "070c935ff98ae686c5ac0e2af5f186a4373dc6d73f7cc878781d11c329c086cc",
+    "artifacts\\handoffs\\HANDOFF-09-STATIC-v2.json": "7e41e0e720775faa76a0261c8e12e366bc8f378b8dce2ea2fd088765c68d0310",
+    "artifacts\\handoffs\\HANDOFF-09-STATIC-v3.json": "b4398390977d53e548b4e5f7095ca9597c19bae49ed14376ad8e673018489d22",
+    "artifacts\\handoffs\\HANDOFF-09-STATIC-v4.json": "5c560d736465d0151bc25b4ea7cdaf27f9b2f8d5e54db8eb80e4bcccf6d818f8",
+    "artifacts\\handoffs\\HANDOFF-09-STATIC-v5.json": "e2667936e798cb7e56faa560558d3907e52188a2d2b701245d9607b8c5613348",
+    "artifacts\\handoffs\\HANDOFF-10-CT-v1.json": "c4d59aa8d3b90c9241b192402f346360c68a1473f6b5aa9c5c066c1141971cad",
+    "artifacts\\handoffs\\HANDOFF-10-CT-v2.json": "b18134a6531aaa9cd69fe3d712f248d5641aeba2be98b94c23d03035321b5729",
+    "artifacts\\handoffs\\HANDOFF-10-CT-v3.json": "a92530377d737e87370c0c2ec208a66f8ea6e16a38ef396e0bde6a26d170a7d4",
+    "artifacts\\handoffs\\HANDOFF-10-CT-v4.json": "f22d57bb488ffa7d5845a2aad1648fdba26cc41db354a3fe53f56ee8e8a48b02",
+    "artifacts\\handoffs\\HANDOFF-10-CT-v5.json": "b4c7742a0f9fea02928c8fad4f875c9d93af0605ba239c45f9e91b0a5de2515a",
+    "artifacts\\handoffs\\HANDOFF-11-SYSTOLIC-v1.json": "dfcd6126fb7205087740d491a2aa73d087f9e2014796a3d385aa515665f6d5b1",
+    "artifacts\\handoffs\\HANDOFF-11-SYSTOLIC-v2.json": "13b360bc15694fd887848186290f286265809213fdd47c80722d667c8c407d18",
+    "artifacts\\handoffs\\HANDOFF-11-SYSTOLIC-v3.json": "f46d0f02d16e0d02d55b31f080af4e2663b9c1abc380a9bafc171858ddb35fd9",
+    "artifacts\\handoffs\\HANDOFF-11-SYSTOLIC-v4.json": "dbe45ed7292d5cfd312ac8081ab6dfccb37ef4c91cf3fe6203894cac4773c621",
+    "artifacts\\handoffs\\HANDOFF-11-SYSTOLIC-v5.json": "33e6015c7c6e8d88d6208225c49f197423175820d05da5b597ff4befdb3ba7cb",
+    "artifacts\\handoffs\\HANDOFF-16-RNCH-v1.json": "5b2e325295137a94fd283ba5bd763e7d85f17ae71bc54a72b86361ac1fc83d01",
+    "artifacts\\handoffs\\HANDOFF-16-RNCH-v2.json": "473387c716229451fb5f6f9b385a8ed52a608f694ea5f8dac32c9b28e7b757ce",
+    "artifacts\\handoffs\\HANDOFF-16-RNCH-v3.json": "54a1e07bb67589583e423e35bcf62ed543d8ab754c4d01b81194fcd78a846055",
+    "artifacts\\handoffs\\HANDOFF-16-RNCH-v4.json": "57e9374f80d6fe9b23d377a5db9ba8265650b2a846e58851afceb4bd7fdef6bb",
+    "artifacts\\handoffs\\HANDOFF-16-RNCH-v5.json": "188f5f0895a379a49924787ba27af3f5f9222e718df9131335998f035c07d7ad",
+    "artifacts\\handoffs\\index.json": "2269462e5c81b7640a333d4037c0026446297b50533598a8551f203fb46c4864",
+    "artifacts\\schemas\\ct-v1.schema.json": "5017e37f241e262e44b706a8e69be9500d6fda918f71c8c64e6923fd764b034b",
+    "artifacts\\schemas\\rnch-record-catalog-v1.schema.json": "82fa2aeeff6c89fa1ec6367c29b6d0fce012af6cde7b68badb25af87e3e6bb06",
+    "artifacts\\schemas\\static-v1.schema.json": "7f16907b26e377c46b282f5f32611eea515f102513952a6859b80e515d9d4d37",
+    "artifacts\\schemas\\systolic-v1.schema.json": "d8f5845bb3401da85e128296a8f3ec464c2773524cd6a2b2de57c29b4e42eec5",
+    "artifacts\\schemas\\timestamps-manifest-v1.schema.json": "2ee3935121aa67a367bd04fd8998f102b669ae3823d085b64962065573cd3255",
+    "artifacts\\selection-policies\\SEL-NIK-90-100-v1.json": "cd664c59f9faef8d16c5ea59f159fa700f00e4d92f70522e09c6d6cf77b58e51",
+    "artifacts\\versions\\ART-16-RNCH\\v1\\record-catalog.json": "de326b9d66afc988f29059e6a6c7d31031e3e724d7528e602a2b131641111eb9",
+    "artifacts\\versions\\ART-16-RNCH\\v2\\record-catalog.json": "9b91a282eb7cc1b58c66ad4ba44f7f60884b5f5b90fb49302150de7dc52d2696",
+    "artifacts\\versions\\ART-16-RNCH\\v3\\record-catalog.json": "ebe61d746f9deab3fd6b1f38ef8c9007eb5551ed58d64ed04646e413f0521eed",
+    "artifacts\\versions\\ART-16-RNCH\\v4\\record-catalog.json": "8bda0022e0efd3312e975a3cc44def7559738156a194b9dc64f92e325b30267a",
+    "artifacts\\versions\\ART-16-RNCH\\v5\\record-catalog.json": "8bda0022e0efd3312e975a3cc44def7559738156a194b9dc64f92e325b30267a",
+    "artifacts\\versions\\ART-11-SYSTOLIC\\v1\\systolic.json": "df71776c72ed6e9baaa63019d969c29dd21178fcf84275a486ac41f39a5a5fc0",
+    "artifacts\\versions\\ART-11-SYSTOLIC\\v2\\systolic.json": "df71776c72ed6e9baaa63019d969c29dd21178fcf84275a486ac41f39a5a5fc0",
+    "artifacts\\versions\\ART-11-SYSTOLIC\\v3\\systolic.json": "df71776c72ed6e9baaa63019d969c29dd21178fcf84275a486ac41f39a5a5fc0",
+    "artifacts\\versions\\ART-11-SYSTOLIC\\v4\\systolic.json": "df71776c72ed6e9baaa63019d969c29dd21178fcf84275a486ac41f39a5a5fc0",
+    "artifacts\\versions\\ART-11-SYSTOLIC\\v5\\systolic.json": "df71776c72ed6e9baaa63019d969c29dd21178fcf84275a486ac41f39a5a5fc0",
+    "artifacts\\versions\\ART-10-CT\\v1\\ct.json": "6409c78b363955c1f3d32197c0a8a86cf381b449b68e05ada9a7784100adae79",
+    "artifacts\\versions\\ART-10-CT\\v2\\ct.json": "6409c78b363955c1f3d32197c0a8a86cf381b449b68e05ada9a7784100adae79",
+    "artifacts\\versions\\ART-10-CT\\v3\\ct.json": "6409c78b363955c1f3d32197c0a8a86cf381b449b68e05ada9a7784100adae79",
+    "artifacts\\versions\\ART-10-CT\\v4\\ct.json": "6409c78b363955c1f3d32197c0a8a86cf381b449b68e05ada9a7784100adae79",
+    "artifacts\\versions\\ART-10-CT\\v5\\ct.json": "6409c78b363955c1f3d32197c0a8a86cf381b449b68e05ada9a7784100adae79",
+    "artifacts\\versions\\ART-09-STATIC\\v1\\static.json": "c9854757ddc98d938f28d966f9d39204a874c6ac160c276925ec56795e135197",
+    "artifacts\\versions\\ART-09-STATIC\\v2\\static.json": "c9854757ddc98d938f28d966f9d39204a874c6ac160c276925ec56795e135197",
+    "artifacts\\versions\\ART-09-STATIC\\v3\\static.json": "c9854757ddc98d938f28d966f9d39204a874c6ac160c276925ec56795e135197",
+    "artifacts\\versions\\ART-09-STATIC\\v4\\static.json": "c9854757ddc98d938f28d966f9d39204a874c6ac160c276925ec56795e135197",
+    "artifacts\\versions\\ART-09-STATIC\\v5\\static.json": "c9854757ddc98d938f28d966f9d39204a874c6ac160c276925ec56795e135197",
+    "artifacts\\versions\\ART-08-TIMESTAMPS\\v1\\timestamps-manifest.json": "4ea18a3ddb1feef894422a54d9811461e49dfdc675310741adbf6b97faa8fedd",
+    "artifacts\\versions\\ART-08-TIMESTAMPS\\v2\\timestamps-manifest.json": "4ea18a3ddb1feef894422a54d9811461e49dfdc675310741adbf6b97faa8fedd",
+    "artifacts\\versions\\ART-08-TIMESTAMPS\\v3\\timestamps-manifest.json": "4ea18a3ddb1feef894422a54d9811461e49dfdc675310741adbf6b97faa8fedd",
+    "artifacts\\versions\\ART-08-TIMESTAMPS\\v4\\timestamps-manifest.json": "4ea18a3ddb1feef894422a54d9811461e49dfdc675310741adbf6b97faa8fedd",
+    "artifacts\\versions\\ART-08-TIMESTAMPS\\v5\\timestamps-manifest.json": "4ea18a3ddb1feef894422a54d9811461e49dfdc675310741adbf6b97faa8fedd"
+  },
+  "notebooks": [
+    {
+      "notebook": ".git-recovery\\2026-08-23-pre-restore\\quarantine\\comsol-rebuilt-overlay\\02_Kandidadskaya.ipynb",
+      "name": "02_Kandidadskaya.ipynb",
+      "hashes": {
+        "before": "4ef7be2f60b71b68aafd89591b04b1d4f82d55b6aa8f240c4c897ee46b6d5bf3",
+        "after": "9a7837093c7decf515f5f4941a5ed6c218ce56fb3969329d3e8de60453dada5c"
+      },
+      "actualruns": [],
+      "inputs": [],
+      "blockers": [],
+      "status": "prepared_not_run",
+      "changes": [
+        "portable runtime/configured local data root",
+        "isolated derived output cwd",
+        "fresh outputs, no old execution state"
+      ]
+    },
+    {
+      "notebook": ".git-recovery\\2026-08-23-pre-restore\\quarantine\\comsol-rebuilt-overlay\\05_Анализ_чувствительности_решётки.ipynb",
+      "name": "05_Анализ_чувствительности_решётки.ipynb",
+      "hashes": {
+        "before": "1a82aaaa9409c3e1d139c2e6f2d54bd43ab2267eda98cfab1a54b1db6268292b",
+        "after": "835df6632e1bdcdb4d78fe46a40cda2a82d158cacff0bc7ff9d9ae0c4d1df7bb"
+      },
+      "actualruns": [],
+      "inputs": [],
+      "blockers": [],
+      "status": "prepared_not_run",
+      "changes": [
+        "portable runtime/configured local data root",
+        "isolated derived output cwd",
+        "fresh outputs, no old execution state"
+      ]
+    },
+    {
+      "notebook": ".git-recovery\\2026-08-23-pre-restore\\quarantine\\comsol-rebuilt-overlay\\07_Скетч_модель_лёгких.ipynb",
+      "name": "07_Скетч_модель_лёгких.ipynb",
+      "hashes": {
+        "before": "6b26101a3f0fcd4bbae497b86de81a692d867352f6f84f21c067e05614618b0a",
+        "after": "65b08d0c54a25b4a6e53964d267dd1fc6c33fc8320a7d4956c8a17e86f5b1f34"
+      },
+      "actualruns": [],
+      "inputs": [],
+      "blockers": [],
+      "status": "prepared_not_run",
+      "changes": [
+        "portable runtime/configured local data root",
+        "isolated derived output cwd",
+        "fresh outputs, no old execution state"
+      ]
+    },
+    {
+      "notebook": ".git-recovery\\2026-08-23-pre-restore\\quarantine\\comsol-rebuilt-overlay\\08_Скетч_разметки.ipynb",
+      "name": "08_Скетч_разметки.ipynb",
+      "hashes": {
+        "before": "01095124c9850777bf85bf03939a620aec18d428afd7df337d9e4add542b2f4e",
+        "after": "a68cb5f6a1a02a9855ce9e38fcf5e6140a85d258bdb001c8b2931670c2698772"
+      },
+      "actualruns": [],
+      "inputs": [],
+      "blockers": [],
+      "status": "prepared_not_run",
+      "changes": [
+        "portable runtime/configured local data root",
+        "isolated derived output cwd",
+        "fresh outputs, no old execution state"
+      ]
+    },
+    {
+      "notebook": ".git-recovery\\2026-08-23-pre-restore\\quarantine\\comsol-rebuilt-overlay\\09_Статическая_оценка_параметров.ipynb",
+      "name": "09_Статическая_оценка_параметров.ipynb",
+      "hashes": {
+        "before": "4daa87abdf64d854dbded009a2bdb572081fc4e249e7f7505c6f3f1e23311123",
+        "after": "6d685678ed22033948198fd6a5132600c00d9f0adbc84ed8ffd2a33387f86012"
+      },
+      "actualruns": [],
+      "inputs": [],
+      "blockers": [],
+      "status": "prepared_not_run",
+      "changes": [
+        "portable runtime/configured local data root",
+        "isolated derived output cwd",
+        "fresh outputs, no old execution state"
+      ]
+    },
+    {
+      "notebook": ".git-recovery\\2026-08-23-pre-restore\\quarantine\\comsol-rebuilt-overlay\\10_КТ_оценка_HU.ipynb",
+      "name": "10_КТ_оценка_HU.ipynb",
+      "hashes": {
+        "before": "082e1985dc53a6eda37f052edfc61dcc0bf5529be19653bb26a54840c80dbe44",
+        "after": "d1c9b091d4e275e01cacaf03ea493c4fba70a1b8a3f809471c8d158ff48c25ba"
+      },
+      "actualruns": [],
+      "inputs": [],
+      "blockers": [],
+      "status": "prepared_not_run",
+      "changes": [
+        "portable runtime/configured local data root",
+        "isolated derived output cwd",
+        "fresh outputs, no old execution state"
+      ]
+    },
+    {
+      "notebook": ".git-recovery\\2026-08-23-pre-restore\\quarantine\\comsol-rebuilt-overlay\\11_Систолические_Δρ_и_задержка.ipynb",
+      "name": "11_Систолические_Δρ_и_задержка.ipynb",
+      "hashes": {
+        "before": "0c8fe8032b5503a836b19c07f901441e12634a54d62e1a86de372660051f830b",
+        "after": "eb24bd0fbc4c9489515761b36fc89c09db93c109c258c76179556da351e319ed"
+      },
+      "actualruns": [],
+      "inputs": [],
+      "blockers": [],
+      "status": "prepared_not_run",
+      "changes": [
+        "portable runtime/configured local data root",
+        "isolated derived output cwd",
+        "fresh outputs, no old execution state"
+      ]
+    },
+    {
+      "notebook": ".git-recovery\\2026-08-23-pre-restore\\quarantine\\comsol-rebuilt-overlay\\12_Аналитическое_обоснование.ipynb",
+      "name": "12_Аналитическое_обоснование.ipynb",
+      "hashes": {
+        "before": "910308b36a91d6ce41919657dc8c5da03a5a6bf1800a7b0f266d452767579435",
+        "after": "4eeed0638869d9574c10514f7585c346634de78ba67e90f3359882a5704dc644"
+      },
+      "actualruns": [],
+      "inputs": [],
+      "blockers": [],
+      "status": "prepared_not_run",
+      "changes": [
+        "portable runtime/configured local data root",
+        "isolated derived output cwd",
+        "fresh outputs, no old execution state"
+      ]
+    },
+    {
+      "notebook": ".git-recovery\\2026-08-23-pre-restore\\quarantine\\comsol-rebuilt-overlay\\14_Идентифицируемость_источников.ipynb",
+      "name": "14_Идентифицируемость_источников.ipynb",
+      "hashes": {
+        "before": "c1b5b99652d554415cb21e3b6b701852fd403072774abeb05276906b1e075978",
+        "after": "2f7bdccfa7b0725d2a2fc1eac00990846346ce580734f184681c30b885a29884"
+      },
+      "actualruns": [],
+      "inputs": [],
+      "blockers": [],
+      "status": "prepared_not_run",
+      "changes": [
+        "portable runtime/configured local data root",
+        "isolated derived output cwd",
+        "fresh outputs, no old execution state"
+      ]
+    },
+    {
+      "notebook": ".git-recovery\\2026-08-23-pre-restore\\quarantine\\comsol-rebuilt-overlay\\16_Эксперимент_РНЦХ_2026-07-15.ipynb",
+      "name": "16_Эксперимент_РНЦХ_2026-07-15.ipynb",
+      "hashes": {
+        "before": "858e695828cb67bd7012cb2fce80bb3161b136a9acacefacb42bea857290cfd3",
+        "after": "4d6114de864b111492c9428728deceeee117def707db4d622ba2be798dfcc8ee"
+      },
+      "actualruns": [],
+      "inputs": [],
+      "blockers": [],
+      "status": "prepared_not_run",
+      "changes": [
+        "portable runtime/configured local data root",
+        "isolated derived output cwd",
+        "fresh outputs, no old execution state"
+      ]
+    },
+    {
+      "notebook": ".git-recovery\\2026-08-23-pre-restore\\quarantine\\comsol-rebuilt-overlay\\17_Дрейф_опорного_канала_и_порядок_съёмки.ipynb",
+      "name": "17_Дрейф_опорного_канала_и_порядок_съёмки.ipynb",
+      "hashes": {
+        "before": "d64ab3b806e39ed899eef23c73fbf283ec400f6f98ff3d6245a2a5c099c59f25",
+        "after": "4d8cc53fd0d2548b0730279c3fa7b5b0f03cc8dc417bc80e6459983f6905d8fb"
+      },
+      "actualruns": [],
+      "inputs": [],
+      "blockers": [],
+      "status": "prepared_not_run",
+      "changes": [
+        "portable runtime/configured local data root",
+        "isolated derived output cwd",
+        "fresh outputs, no old execution state"
+      ]
+    },
+    {
+      "notebook": ".git-recovery\\2026-08-23-pre-restore\\quarantine\\comsol-rebuilt-overlay\\18_Эквивалентная_сфера_импедансный_критерий.ipynb",
+      "name": "18_Эквивалентная_сфера_импедансный_критерий.ipynb",
+      "hashes": {
+        "before": "f05ed5bcd0750c55a5f6a62418d70f4967e1b207d588bb1f93a144f0b6bff3e6",
+        "after": "2223bbdedb550053da0d2c8e95fcd9da5c56310dc2962f337c157d52ac64acc9"
+      },
+      "actualruns": [],
+      "inputs": [],
+      "blockers": [],
+      "status": "prepared_not_run",
+      "changes": [
+        "portable runtime/configured local data root",
+        "isolated derived output cwd",
+        "fresh outputs, no old execution state"
+      ]
+    },
+    {
+      "notebook": ".git-recovery\\2026-08-23-pre-restore\\quarantine\\comsol-rebuilt-overlay\\19_Сердечный_сигнал_ТТРКГ_и_лёгочный_конфаундер.ipynb",
+      "name": "19_Сердечный_сигнал_ТТРКГ_и_лёгочный_конфаундер.ipynb",
+      "hashes": {
+        "before": "d5aa4c4f9775d8ec516332f3384d64fc86f5d1c09f8b09208b086c64a8568a0b",
+        "after": "93541b16366d8deea69a4d41ed451d343e57ee44ab9ed3f6a407b941952734ec"
+      },
+      "actualruns": [],
+      "inputs": [],
+      "blockers": [],
+      "status": "prepared_not_run",
+      "changes": [
+        "portable runtime/configured local data root",
+        "isolated derived output cwd",
+        "fresh outputs, no old execution state"
+      ]
+    }
+  ],
+  "actualruns": [],
+  "changedfiles": [],
+  "scientific_status": "historical_exploratory_not_validated",
+  "preflight": {
+    "all_code_read": true,
+    "source_code_lines": 6161,
+    "external_downloads": "none active; no package installation",
+    "external_commands": "none active; runtime rejects subprocess/os.system",
+    "external_writes": "all relative output paths redirected through isolated cwd; runtime guards Python open/mkdir/rename/remove",
+    "expensive_cycles": {
+      "02": "100000 model samples; Sobol N=8192; grids up to 100x100 with scalar roots; original sizes retained",
+      "05": "41x400 Lmin scan; 400 image terms",
+      "09": "pairwise root scans and nonlinear profiles",
+      "10": "all DICOM headers, each fourth slice for pixels; historical SLICE_STEP=4",
+      "11": "400 bootstrap resamples",
+      "14": "1500 batches per blob; historical loop retained"
+    },
+    "cell_timeout_s": 600,
+    "inputs_synthesized": false
+  },
+  "environment": {
+    "python": "3.13.6 (tags/v3.13.6:4e66535, Aug  6 2025, 14:36:00) [MSC v.1944 64 bit (AMD64)]",
+    "executable": "C:\\PC\\Python\\python.exe",
+    "packages": {
+      "nbformat": "5.10.4",
+      "nbclient": "0.11.0",
+      "nbconvert": "7.17.1",
+      "ipykernel": "7.3.0",
+      "numpy": "2.4.3",
+      "pandas": "2.3.3",
+      "scipy": "1.17.1",
+      "matplotlib": "3.10.8",
+      "pydicom": "3.0.2",
+      "SALib": "1.5.2",
+      "altair": "6.0.0",
+      "scikit-learn": "1.7.2"
+    }
+  }
+}

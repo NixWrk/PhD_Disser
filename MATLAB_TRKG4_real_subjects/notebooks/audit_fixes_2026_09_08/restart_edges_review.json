@@ -1,0 +1,100 @@
+{
+  "status": "Подтверждено изолированным mock-replay; исправления не вносились.",
+  "checked_utc": "2026-09-08T13:06:31.554061+00:00",
+  "source": {
+    "path": "tools/run_restartable_inverse_search.py",
+    "sha256": "f4fe9c3a99c32d036ca0a87bcad01bc56b36d5df13fd5ecf45b7492fe4291900",
+    "protected_python_matlab_files": 105,
+    "changed_during_review": []
+  },
+  "method": "Байтовая копия driver в tmp, настоящий main/CLI/evaluate_points/resume/finalise; только subprocess.run заменён mock-runner. Все фиксированные входы синтетические, engine identity постоянна, прерывание KeyboardInterrupt перед следующей batch-записью после сохранённых строк. MATLAB/FEM не запускался.",
+  "control": "Без прерывания завершение budget=5, затем resume budget=15 и повторное чтение 15 строк успешны.",
+  "findings": [
+    {
+      "id": 1,
+      "classification": "Дефект перехода completed→running; сработавший hash-guard корректен.",
+      "reproduce": "Завершить 5 оценок; resume budget=20; сохранить 3 новые строки; прервать перед следующей; повторить resume.",
+      "observed": "В history 8 валидных строк той же модели; summary по-прежнему complete для 5, contract и summary побайтно прежние. Следующий resume: EvaluationContractError / driver artifact hash does not match, до runner (0 новых оценок).",
+      "cause": "main дописывает историю, но статус/хэш завершённого поколения сохраняются до следующей успешной финализации.",
+      "source_lines": [
+        613,
+        838,
+        842,
+        1200,
+        1287,
+        1334
+      ]
+    },
+    {
+      "id": 2,
+      "classification": "Дефект повторного старта под тем же тегом; guards корректно запрещают смешанное состояние.",
+      "reproduce": "Завершить budget=5; --no-resume budget=20 с тем же seed и identity; прервать до первой либо после двух новых оценок; затем обычный resume.",
+      "observed": {
+        "before_first_new_row": "Старая history(5), summary/contract сохранены; sidecar уже сброшен. ResumeIdentityError: Summary and identity sidecar do not match.",
+        "after_two_new_rows": "History заменена на 2 валидные новые строки, summary/contract старые. EvaluationContractError: driver artifact hash does not match.",
+        "accepted_on_followup_resume": 0
+      },
+      "source_lines": [
+        588,
+        613,
+        1189,
+        1198,
+        842
+      ]
+    },
+    {
+      "id": 3,
+      "classification": "Дефект сохранения состояния поиска, не fail-closed.",
+      "reproduce": "Новый тег, budget=100; J=1 кроме точки [5,20,-0.25,2,3], где J=0.5. После 3 уменьшений и прохода с новым best прервать перед оценкой 42.",
+      "observed": {
+        "saved_rows": 41,
+        "summary_exists": false,
+        "in_memory_step": [
+          0.09375,
+          0.375,
+          1.25,
+          1.25,
+          0.625
+        ],
+        "restored_step": [
+          0.75,
+          3.0,
+          10.0,
+          10.0,
+          5.0
+        ],
+        "next_point_without_restart": [
+          4.90625,
+          20.0,
+          -0.25,
+          2.0,
+          3.0
+        ],
+        "next_point_after_restart": [
+          4.25,
+          20.0,
+          -0.25,
+          2.0,
+          3.0
+        ]
+      },
+      "cause": "step живёт в main; final_step записывается только после finalise. load_resume_state берёт старый summary.final_step либо INITIAL_STEP. При том же J и истории после рестарта меняется порядок кандидатов и расход бюджета; изменение итогового FEM-минимума этим mock не установлено.",
+      "source_lines": [
+        620,
+        622,
+        1271,
+        1291,
+        1299,
+        1325
+      ]
+    }
+  ],
+  "interpretation": "1–2: нельзя просто отключать проверку хэшей — она верно отклоняет историю, переставшую соответствовать опубликованному контракту. Реальный дефект в отсутствии согласованного перехода/поколения checkpoint при допустимом продолжении или новом старте. 3: нет точного восстановления шага. Интеграция отложена для обсуждения.",
+  "replay": {
+    "command": "& 'C:\\PC\\Python\\python.exe' -X utf8 -B 'C:\\Users\\ELVIS_~1\\AppData\\Local\\Temp\\trkg4_restart_edges_q_c9ge91\\replay.py'",
+    "script_sha256": "5ce0bb1037fc5d6cec7bb4764d211e37e4c3fa6ecd706e27d2a7d2ad90cf0598",
+    "observations": "C:\\Users\\ELVIS_~1\\AppData\\Local\\Temp\\trkg4_restart_edges_q_c9ge91\\mock_observations.json",
+    "note": "Скрипт и неизменённая копия driver оставлены в tmp для повторения. Повторный запуск пишет только в новую подпапку tmp; доступны до очистки системного tmp."
+  },
+  "limitations": "Это диагностика Python-возобновления на синтетическом runner, не численная/физическая валидация FEM. Рабочие output и состояние текущего auditfix_20260908 не читались и не изменялись; о повреждении его результатов выводов нет."
+}

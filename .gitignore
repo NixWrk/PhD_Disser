@@ -37,6 +37,7 @@ Colab Notebooks/archive/private/**
 !Colab Notebooks/archive/private/**/*.m
 !Colab Notebooks/archive/private/**/*.py
 !Colab Notebooks/archive/private/**/*.ipynb
+!Colab Notebooks/archive/private/**/*.md
 Colab Notebooks/archive/private/**/__pycache__/
 Colab Notebooks/archive/private/**/.ipynb_checkpoints/
 
@@ -48,3 +49,7 @@ Colab Notebooks/.notebook-runs/
 Colab Notebooks/audits/**/*.local.json
 Colab Notebooks/audits/**/*.local.txt
 Colab Notebooks/audits/**/.protected-inputs.local.json
+
+# Machine-specific HnL bindings and Windows thumbnail caches are not source files.
+HnL/config/*.local.json
+Thumbs.db

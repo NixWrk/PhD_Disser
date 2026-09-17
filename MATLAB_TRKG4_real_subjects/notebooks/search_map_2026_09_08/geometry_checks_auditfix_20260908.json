@@ -1,0 +1,10 @@
+{
+  "result_tag": "auditfix_20260908",
+  "contract_validated": true,
+  "fem_recomputed": false,
+  "rows": 100,
+  "h_max_error_mm": 4.6185277824406512E-14,
+  "best_xyz_max_error_mm": 3.1263880373444408E-13,
+  "best_axis_max_error": 3.3306690738754696E-16,
+  "boundary_faces": 155120
+}

@@ -1,0 +1,103 @@
+{
+  "results": [
+    {
+      "path": "Colab Notebooks/30.04_Вычислительное_ядро_двуслойной_модели.ipynb",
+      "source_sha256": "16e79b6627f3f18b026f581954b8af89760ac64338ab53eeed8247a258337ce7",
+      "started_at": "2026-09-14T14:03:08.605367+00:00",
+      "code_cells": 4,
+      "mode": "execute",
+      "status": "executed",
+      "notebook_sha256": "1e03e1d3eb4e1991cce0d57c5976355033d91423a24be2c1f3daa5f85ed383e0",
+      "html_sha256": "50245cce16985a8b1c5c63c758fa9154c1100157c66f0d46f0b3189514d849e6",
+      "elapsed_s": 1.754
+    },
+    {
+      "path": "Colab Notebooks/30.05_Масштабные_законы_двуслойной_модели.ipynb",
+      "source_sha256": "5a4b216576b10f83cbe281d8d134e941af34daa1a2e5926b1a9af20d40d330ac",
+      "started_at": "2026-09-14T14:03:08.606876+00:00",
+      "code_cells": 4,
+      "mode": "execute",
+      "status": "executed",
+      "notebook_sha256": "f0088ec4aa9160730ecdd4a776acc9e6aae2d51cef4087318f98500d09be3e3f",
+      "html_sha256": "6939f737263dbb12fcee7b8811f073904dd420397aa81501478c4d8c668291a3",
+      "elapsed_s": 1.89
+    },
+    {
+      "path": "Colab Notebooks/31.01_Локальная_чувствительность_двуслойной_модели.ipynb",
+      "source_sha256": "f9754343b01e41316105848782ab068859b40b8bda78943f21f25da124c3a18d",
+      "started_at": "2026-09-14T14:03:10.425021+00:00",
+      "code_cells": 3,
+      "mode": "execute",
+      "status": "executed",
+      "notebook_sha256": "4f8391fed284307795981d167f726255d1c3b9b7d73bb970a0561f03d445c624",
+      "html_sha256": "9bd142896279c12d03ee4f3246986ed45efb290badb45296f7e6d4f6b89fd80a",
+      "elapsed_s": 1.472
+    },
+    {
+      "path": "Colab Notebooks/31.02_Глобальная_чувствительность_двуслойной_модели.ipynb",
+      "source_sha256": "e2bac79c0dcba1a307e1549e3bc503e77af0d57e9c97599ee4cf43915057b6cd",
+      "started_at": "2026-09-14T14:03:10.499681+00:00",
+      "code_cells": 5,
+      "mode": "execute",
+      "status": "executed",
+      "notebook_sha256": "2577155b3dbb199de7383440571973e4d911626de5926588b2ea8c7cb2742387",
+      "html_sha256": "423a05bc21fa29e361421f0d42a0aef1a2de8d9aff58ce9ea140f9f2a978a038",
+      "elapsed_s": 29.924
+    },
+    {
+      "path": "Colab Notebooks/31.03_Идентифицируемость_двуслойной_задачи.ipynb",
+      "source_sha256": "bbdd5d3a32fcfcd01796211fb1138ef96acd053d10a7cf904d7f16f38c9b48ab",
+      "started_at": "2026-09-14T14:03:11.901597+00:00",
+      "code_cells": 5,
+      "mode": "execute",
+      "status": "executed",
+      "notebook_sha256": "0fd810bc1f76d1014bd9e8502fcf88619b35c2b3055a50c26b271afb30d72d7f",
+      "html_sha256": "c184062dcd3f9974948ca7a70a6c244206bcbfdd8d7a2207f458bb9126b7ac1d",
+      "elapsed_s": 1.513
+    },
+    {
+      "path": "Colab Notebooks/32.01_Критерии_Lmin_боковых_сборок.ipynb",
+      "source_sha256": "28b86a4e70cc90c6dd31b76c8f6f93abfd6aadf5350d2da33caaab7b42794bf4",
+      "started_at": "2026-09-14T14:03:13.419000+00:00",
+      "code_cells": 5,
+      "mode": "execute",
+      "status": "executed",
+      "notebook_sha256": "1c8f8aadab7101d554fbe6d119e3bbf2f03a5ba8b962159549f88dbe6e50a8dc",
+      "html_sha256": "84d256e760d74d074471c4658061d250f9c4905b110f0d18285a48f44cb8c5d1",
+      "elapsed_s": 1.639
+    },
+    {
+      "path": "Colab Notebooks/32.02_Выбор_пары_при_известной_h.ipynb",
+      "source_sha256": "93288049b5617299ebd2673303bfadbb49c4d227fafc58f3f57a28e208797665",
+      "started_at": "2026-09-14T14:03:15.063777+00:00",
+      "code_cells": 5,
+      "mode": "execute",
+      "status": "executed",
+      "notebook_sha256": "f6d04857bf7ab52c1621ccc1e8c7f589a1961b848f5eb357621ca7fe50e5d89b",
+      "html_sha256": "379cd4f741128ea652b2ade4afee702f1966ee025cccf67d7d75c1708db7c2a1",
+      "elapsed_s": 1.638
+    },
+    {
+      "path": "Colab Notebooks/32.03_Выбор_набора_при_неизвестной_h.ipynb",
+      "source_sha256": "2ea55c603ff936f64f7eb3df91e4bc09762eca69e24be045a2d432bb17aebad5",
+      "started_at": "2026-09-14T14:03:16.706531+00:00",
+      "code_cells": 5,
+      "mode": "execute",
+      "status": "executed",
+      "notebook_sha256": "2cb285050762105b90e92c5511ab43cc48816944f63cea9e3016e046c5bd8872",
+      "html_sha256": "fea55bb08088582f48408829273ea2562707db41ff4aa2bdfa005bb28286e439",
+      "elapsed_s": 2.793
+    },
+    {
+      "path": "Colab Notebooks/33.00_Сквозная_методика_боковых_сборок.ipynb",
+      "source_sha256": "88ef3f87f8e00288e832577cbf22233b61b6d319f82dd7ad318888a5bd95b1c6",
+      "started_at": "2026-09-14T14:03:19.512408+00:00",
+      "code_cells": 5,
+      "mode": "execute",
+      "status": "executed",
+      "notebook_sha256": "793458e4a6f158474fc552a31f8a6b2a34c8a47b4019cc2b507725e6cb7cdb56",
+      "html_sha256": "f027d9906f3191091703d2c1c71197901beac1853713b59201d989cabece8599",
+      "elapsed_s": 9.608
+    }
+  ]
+}

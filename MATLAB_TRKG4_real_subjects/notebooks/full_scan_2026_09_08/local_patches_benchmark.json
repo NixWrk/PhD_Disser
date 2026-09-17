@@ -1,0 +1,15 @@
+{
+  "case_count": 46,
+  "repetitions": 3,
+  "mesh_faces": 155120,
+  "context_seconds": 0.1165481,
+  "context_bytes": 3.9659273E+7,
+  "all_node_face_and_qc_checks_passed": true,
+  "median_canonical_builder_seconds": 0.0416008,
+  "median_local_builder_seconds": 0.0121817,
+  "median_canonical_qc_seconds": 0.1535436,
+  "median_local_qc_seconds": 0.000602,
+  "successful_builder_fallbacks": 3,
+  "accepted_cases": 33,
+  "pose_count": 2.381321E+6
+}

@@ -1,0 +1,12 @@
+{
+  "notebooks/TRKG4_inverse_inhale_results.ipynb": "ddab37b6361b555b8a0a3e69205efe671217316718e16a30a1a173b484ff8f27",
+  "notebooks/build_trkg4_inverse_report.py": "9693f480869e313299c4de320ff8df8e42c2c5f6611b9d2be45f0b9dc700c3f8",
+  "src/run_trkg4_inverse_inhale.m": "804edc13d07eba38cc7baeac8eb0761b400fe71518dd2176f2414264ba2ce385",
+  "src/trkg4_config.m": "eebca240352df7286c4079a327434079470c5aa62b8136e2cec6f9cb615d8317",
+  "vendor_stl_eidors/electrode_faces_by_area.m": "e9b35bb28e9ae2fd40f06f88d76055cfc43620c2afe47756c3a2538f0cbcafde",
+  "tools/run_restartable_inverse_search.py": "93b438552bf1f9ccd5fa3aa43cbb9a0e9278da652e4775bc52d1a9a8ad9b06fc",
+  "src/run_trkg4_notebook_pipeline.m": "7a8d9b6f58632066ec8f4f87e17e74c0b487f93414fe067dc5fd3e9320796c63",
+  "src/run_trkg4_fast_pem_scan.m": "5818d5f5bd4dd8f6718873e1a3bf8b4a4acaef380b8b976bee7ca089ea35abd7",
+  "src/run_trkg4_fast_cem_refine.m": "f463c7e2c2284723503b84dcf82c09c78de07d265675bf15acb984668fe3af59",
+  "src/trkg4_electrode_diagnostics.m": "fdd25084012bf608cbc257c2338743170c0e60db03ed6fccddec918eb4452451"
+}

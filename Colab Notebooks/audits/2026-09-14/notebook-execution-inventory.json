@@ -1,0 +1,2945 @@
+{
+  "scope": "all local repository notebooks including ignored histories and checkpoints; excludes environments",
+  "notebooks": [
+    {
+      "path": ".git-recovery/2026-08-23-pre-restore/quarantine/colab-embedded-breath-geometry/notebooks/01_inhale_exhale_inspection.ipynb",
+      "sha256": "0adc1e7cafe2226aa31d359aac303869857f89159cbb6ec065fcfe2f0bc5747e",
+      "bytes": 2992367,
+      "cells": 34,
+      "code_cells": 16,
+      "output_cells": 15,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": ".git-recovery/2026-08-23-pre-restore/quarantine/colab-embedded-breath-geometry/notebooks/02_registration_benchmark.ipynb",
+      "sha256": "3d6f200be33a5bbae26f6f720f6df29d51014ee43bdaa497a8ee131ec5a00589",
+      "bytes": 186191,
+      "cells": 13,
+      "code_cells": 8,
+      "output_cells": 8,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3 (ipykernel)",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": ".git-recovery/2026-08-23-pre-restore/quarantine/colab-embedded-breath-geometry/notebooks/04_convexadam_registration_benchmark.ipynb",
+      "sha256": "596210793d10902fb3d9a99770d330277f02e7ffceb0dfc5774764b11d90111a",
+      "bytes": 263965,
+      "cells": 15,
+      "code_cells": 9,
+      "output_cells": 9,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3 (ipykernel)",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": ".git-recovery/2026-08-23-pre-restore/quarantine/colab-embedded-breath-geometry/notebooks/05_sliding_phantom.ipynb",
+      "sha256": "f8b58ffae537ed1550ece14231974c80fa7ee011e12a47456a7ee2c7c8d10e4f",
+      "bytes": 281614,
+      "cells": 13,
+      "code_cells": 7,
+      "output_cells": 6,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Breath Geometry (.venv)",
+        "language": "python",
+        "name": "breathgeom"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": ".git-recovery/2026-08-23-pre-restore/quarantine/colab-embedded-breath-geometry/notebooks/06_sliding_s1_synthetic_benchmark.ipynb",
+      "sha256": "c6a25be6aa922eb9f8b824c22d9a24947ef1dd22d6145b7888b05a1b942e85df",
+      "bytes": 183204,
+      "cells": 11,
+      "code_cells": 6,
+      "output_cells": 5,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Breath Geometry (.venv)",
+        "language": "python",
+        "name": "breathgeom"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": ".git-recovery/2026-08-23-pre-restore/quarantine/colab-embedded-breath-geometry/notebooks/07_sliding_s11_synthetic_benchmark.ipynb",
+      "sha256": "e1301e87d8c7ed5c958c1f08df703934742e7297c7e67c724df911a66b673f32",
+      "bytes": 212154,
+      "cells": 11,
+      "code_cells": 6,
+      "output_cells": 5,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Breath Geometry (.venv)",
+        "language": "python",
+        "name": "breathgeom"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": ".git-recovery/2026-08-23-pre-restore/quarantine/colab-embedded-breath-geometry/notebooks/08_sliding_s11_real_development.ipynb",
+      "sha256": "e976a03e09cd48fe75d57c3ca1b16a42b29319910b1a49ee7e4363a800974614",
+      "bytes": 3793628,
+      "cells": 16,
+      "code_cells": 8,
+      "output_cells": 8,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Breath Geometry (.venv)",
+        "language": "python",
+        "name": "breathgeom"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": ".git-recovery/2026-08-23-pre-restore/quarantine/colab-embedded-breath-geometry/notebooks/09_sliding_s12_heuristic_screen.ipynb",
+      "sha256": "070e38e4d7b9d2b9094d6cb5fa241379b396178150a16ecbc2fe48580b74a538",
+      "bytes": 209312,
+      "cells": 12,
+      "code_cells": 6,
+      "output_cells": 6,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Breath Geometry (.venv)",
+        "language": "python",
+        "name": "breathgeom"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": ".git-recovery/2026-08-23-pre-restore/quarantine/colab-embedded-breath-geometry/notebooks/10_piecewise_svf_j10_numeric_gate.ipynb",
+      "sha256": "4b2d870af7cb24f54a5bb2c1416acc77281db8761c6d17b0c8edc8826bb90157",
+      "bytes": 131915,
+      "cells": 9,
+      "code_cells": 5,
+      "output_cells": 5,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Breath Geometry (.venv)",
+        "language": "python",
+        "name": "breathgeom"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": ".git-recovery/2026-08-23-pre-restore/quarantine/colab-embedded-breath-geometry/notebooks/11_piecewise_svf_j11_representation_gate.ipynb",
+      "sha256": "d8e5518e283eaf8123ed33bd1d41a3a30d60dab590e3ee8c126857b4c560fcbf",
+      "bytes": 159686,
+      "cells": 9,
+      "code_cells": 5,
+      "output_cells": 5,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Breath Geometry (.venv)",
+        "language": "python",
+        "name": "breathgeom"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": ".git-recovery/2026-08-23-pre-restore/quarantine/colab-embedded-breath-geometry/notebooks/12_piecewise_svf_j12_truth_preflight.ipynb",
+      "sha256": "903bbc2ec7c56824388b925f8ecc94b333500bc22a8ea9bf317b5f9290e561cb",
+      "bytes": 123896,
+      "cells": 7,
+      "code_cells": 4,
+      "output_cells": 4,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Breath Geometry (.venv)",
+        "language": "python",
+        "name": "breathgeom"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": ".git-recovery/2026-08-23-pre-restore/quarantine/colab-embedded-breath-geometry/notebooks/13_piecewise_svf_j12_contact_preflight_v2.ipynb",
+      "sha256": "92e46292185d4857b3fc1ac9e35d40e6bd7b7f4f0b8c3b088f6201f4a2de110f",
+      "bytes": 121846,
+      "cells": 7,
+      "code_cells": 6,
+      "output_cells": 6,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": ".git-recovery/2026-08-23-pre-restore/quarantine/colab-embedded-breath-geometry/notebooks/14_piecewise_svf_j12_contact_preflight_v3.ipynb",
+      "sha256": "9e44cff4213b78ecbdf57db34e341b207ae3ba8bcef0ef30aed1ad0a53808cd1",
+      "bytes": 124006,
+      "cells": 7,
+      "code_cells": 6,
+      "output_cells": 6,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": ".git-recovery/2026-08-23-pre-restore/quarantine/colab-embedded-breath-geometry/notebooks/15_piecewise_svf_j12_contact_development_v3.ipynb",
+      "sha256": "ba5736b7333e75c298e754c150ca90c8df894a28b633f1c7e05dd780a4e47bc0",
+      "bytes": 182013,
+      "cells": 8,
+      "code_cells": 7,
+      "output_cells": 7,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": ".git-recovery/2026-08-23-pre-restore/quarantine/colab-embedded-breath-geometry/notebooks/16_piecewise_svf_j12_identifiability_screen.ipynb",
+      "sha256": "87ecac4405f29d27f4d25bef22e355e2df708771efe042920adbcc70b4b91e32",
+      "bytes": 207865,
+      "cells": 8,
+      "code_cells": 7,
+      "output_cells": 7,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": ".git-recovery/2026-08-23-pre-restore/quarantine/colab-embedded-breath-geometry/notebooks/17_wall_measurement_uncertainty_w1.ipynb",
+      "sha256": "087d5ec532ff1af37afed57d3c7d706b5f7f8612f2a9fe31f89f3c7a41481de3",
+      "bytes": 106019,
+      "cells": 13,
+      "code_cells": 7,
+      "output_cells": 7,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": ".git-recovery/2026-08-23-pre-restore/quarantine/colab-embedded-breath-geometry/notebooks/18_wall_spatial_map_w2.ipynb",
+      "sha256": "9c4fd7ad3412312a37790d9d8a1504bf80e971f34a324eb1763d8f48434ba8a6",
+      "bytes": 232883,
+      "cells": 13,
+      "code_cells": 7,
+      "output_cells": 7,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": ".git-recovery/2026-08-23-pre-restore/quarantine/comsol-rebuilt-overlay/02_Kandidadskaya.ipynb",
+      "sha256": "4ef7be2f60b71b68aafd89591b04b1d4f82d55b6aa8f240c4c897ee46b6d5bf3",
+      "bytes": 12501987,
+      "cells": 80,
+      "code_cells": 46,
+      "output_cells": 33,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3 (ipykernel)",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": ".git-recovery/2026-08-23-pre-restore/quarantine/comsol-rebuilt-overlay/05_Анализ_чувствительности_решётки.ipynb",
+      "sha256": "1a82aaaa9409c3e1d139c2e6f2d54bd43ab2267eda98cfab1a54b1db6268292b",
+      "bytes": 747009,
+      "cells": 77,
+      "code_cells": 25,
+      "output_cells": 17,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3 (ipykernel)",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": ".git-recovery/2026-08-23-pre-restore/quarantine/comsol-rebuilt-overlay/07_Скетч_модель_лёгких.ipynb",
+      "sha256": "6b26101a3f0fcd4bbae497b86de81a692d867352f6f84f21c067e05614618b0a",
+      "bytes": 447426,
+      "cells": 28,
+      "code_cells": 9,
+      "output_cells": 7,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3 (ipykernel)",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": ".git-recovery/2026-08-23-pre-restore/quarantine/comsol-rebuilt-overlay/08_Скетч_разметки.ipynb",
+      "sha256": "01095124c9850777bf85bf03939a620aec18d428afd7df337d9e4add542b2f4e",
+      "bytes": 880138,
+      "cells": 45,
+      "code_cells": 12,
+      "output_cells": 10,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3 (ipykernel)",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": ".git-recovery/2026-08-23-pre-restore/quarantine/comsol-rebuilt-overlay/09_Статическая_оценка_параметров.ipynb",
+      "sha256": "4daa87abdf64d854dbded009a2bdb572081fc4e249e7f7505c6f3f1e23311123",
+      "bytes": 1216546,
+      "cells": 68,
+      "code_cells": 17,
+      "output_cells": 14,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3 (ipykernel)",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": ".git-recovery/2026-08-23-pre-restore/quarantine/comsol-rebuilt-overlay/10_КТ_оценка_HU.ipynb",
+      "sha256": "082e1985dc53a6eda37f052edfc61dcc0bf5529be19653bb26a54840c80dbe44",
+      "bytes": 363892,
+      "cells": 26,
+      "code_cells": 9,
+      "output_cells": 6,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3 (ipykernel)",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": ".git-recovery/2026-08-23-pre-restore/quarantine/comsol-rebuilt-overlay/11_Систолические_Δρ_и_задержка.ipynb",
+      "sha256": "0c8fe8032b5503a836b19c07f901441e12634a54d62e1a86de372660051f830b",
+      "bytes": 818390,
+      "cells": 46,
+      "code_cells": 12,
+      "output_cells": 10,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3 (ipykernel)",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": ".git-recovery/2026-08-23-pre-restore/quarantine/comsol-rebuilt-overlay/12_Аналитическое_обоснование.ipynb",
+      "sha256": "910308b36a91d6ce41919657dc8c5da03a5a6bf1800a7b0f266d452767579435",
+      "bytes": 341428,
+      "cells": 36,
+      "code_cells": 9,
+      "output_cells": 8,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": ".git-recovery/2026-08-23-pre-restore/quarantine/comsol-rebuilt-overlay/14_Идентифицируемость_источников.ipynb",
+      "sha256": "c1b5b99652d554415cb21e3b6b701852fd403072774abeb05276906b1e075978",
+      "bytes": 97115,
+      "cells": 18,
+      "code_cells": 5,
+      "output_cells": 4,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": ".git-recovery/2026-08-23-pre-restore/quarantine/comsol-rebuilt-overlay/16_Эксперимент_РНЦХ_2026-07-15.ipynb",
+      "sha256": "858e695828cb67bd7012cb2fce80bb3161b136a9acacefacb42bea857290cfd3",
+      "bytes": 1367889,
+      "cells": 30,
+      "code_cells": 13,
+      "output_cells": 10,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": ".git-recovery/2026-08-23-pre-restore/quarantine/comsol-rebuilt-overlay/17_Дрейф_опорного_канала_и_порядок_съёмки.ipynb",
+      "sha256": "d64ab3b806e39ed899eef23c73fbf283ec400f6f98ff3d6245a2a5c099c59f25",
+      "bytes": 610960,
+      "cells": 30,
+      "code_cells": 7,
+      "output_cells": 6,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3 (ipykernel)",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": ".git-recovery/2026-08-23-pre-restore/quarantine/comsol-rebuilt-overlay/18_Эквивалентная_сфера_импедансный_критерий.ipynb",
+      "sha256": "f05ed5bcd0750c55a5f6a62418d70f4967e1b207d588bb1f93a144f0b6bff3e6",
+      "bytes": 55104,
+      "cells": 20,
+      "code_cells": 6,
+      "output_cells": 5,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": ".git-recovery/2026-08-23-pre-restore/quarantine/comsol-rebuilt-overlay/19_Сердечный_сигнал_ТТРКГ_и_лёгочный_конфаундер.ipynb",
+      "sha256": "d5aa4c4f9775d8ec516332f3384d64fc86f5d1c09f8b09208b086c64a8568a0b",
+      "bytes": 57165,
+      "cells": 16,
+      "code_cells": 5,
+      "output_cells": 4,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "COMSOL_investigation_NIX/.ipynb_checkpoints/05_Анализ_чувствительности_решётки-checkpoint.ipynb",
+      "sha256": "e11eafcd28192a008cc57c37f4cfc8c454638b39dcaf8899a4c441e1fb8a1ef4",
+      "bytes": 727648,
+      "cells": 66,
+      "code_cells": 25,
+      "output_cells": 17,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3 (ipykernel)",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": true
+    },
+    {
+      "path": "Colab Notebooks/.ipynb_checkpoints/02_Kandidadskaya-checkpoint.ipynb",
+      "sha256": "fe8111587e41474ca8f330a70f9b1830a31fb59559e429cd35c82bab1052c151",
+      "bytes": 13030311,
+      "cells": 63,
+      "code_cells": 44,
+      "output_cells": 28,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3 (ipykernel)",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": true
+    },
+    {
+      "path": "Colab Notebooks/.ipynb_checkpoints/05_Анализ_чувствительности_решётки-checkpoint.ipynb",
+      "sha256": "a6cc8bf3ded31043316b1d504dc6aa66ff9ad19b2981db6053d86aa8625b9135",
+      "bytes": 752936,
+      "cells": 71,
+      "code_cells": 23,
+      "output_cells": 16,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3 (ipykernel)",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": true
+    },
+    {
+      "path": "Colab Notebooks/.ipynb_checkpoints/07_Скетч_модель_лёгких-checkpoint.ipynb",
+      "sha256": "a3298a3d279cb89da7a9eac46610012aef6385fa2ce31dd332b9b5fa7257159e",
+      "bytes": 412093,
+      "cells": 24,
+      "code_cells": 7,
+      "output_cells": 6,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3 (ipykernel)",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": true
+    },
+    {
+      "path": "Colab Notebooks/.ipynb_checkpoints/08_Скетч_разметки-checkpoint.ipynb",
+      "sha256": "f9dc510db768ff44e3022801dada8f29b76421bbc196e15ea5d22534afa7d201",
+      "bytes": 840353,
+      "cells": 38,
+      "code_cells": 10,
+      "output_cells": 9,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3 (ipykernel)",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": true
+    },
+    {
+      "path": "Colab Notebooks/.ipynb_checkpoints/09_Статическая_оценка_параметров-checkpoint.ipynb",
+      "sha256": "25b29a190e3155b6a561eb64f89873cab837090e9558d434db8f19d520c38449",
+      "bytes": 1012132,
+      "cells": 48,
+      "code_cells": 13,
+      "output_cells": 11,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3 (ipykernel)",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": true
+    },
+    {
+      "path": "Colab Notebooks/.ipynb_checkpoints/10.01_QC_эксперимента_2_порядок_и_каналы-checkpoint.ipynb",
+      "sha256": "9a10344a0c1558fa3cc36d3f9b61c8c801ee6b2657adf4d6ca0bc4ca66092004",
+      "bytes": 58248,
+      "cells": 26,
+      "code_cells": 6,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3 (ipykernel)",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": true
+    },
+    {
+      "path": "Colab Notebooks/.ipynb_checkpoints/11_Систолические_Δρ_и_задержка-checkpoint.ipynb",
+      "sha256": "7b843a853d147a1bc8f9d5ce141f0736d7a00d0b03fc7df1152a40434ec364c5",
+      "bytes": 777904,
+      "cells": 39,
+      "code_cells": 10,
+      "output_cells": 9,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3 (ipykernel)",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": true
+    },
+    {
+      "path": "Colab Notebooks/.ipynb_checkpoints/12.01_Сводный_QC_размеченных_сигналов_эксперимента_2-checkpoint.ipynb",
+      "sha256": "c27e90a4f378f451f2edde80e37ffb16dfbef1cf284093a088cfc13f9d71417a",
+      "bytes": 1720809,
+      "cells": 9,
+      "code_cells": 4,
+      "output_cells": 3,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3 (ipykernel)",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": true
+    },
+    {
+      "path": "Colab Notebooks/.ipynb_checkpoints/14_Идентифицируемость_источников-checkpoint.ipynb",
+      "sha256": "889133442ca2a3e7b1e7b0805e6d1a5d5efef8aaf3c23fda69887dd1c2afb8ee",
+      "bytes": 79316,
+      "cells": 15,
+      "code_cells": 3,
+      "output_cells": 3,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": true
+    },
+    {
+      "path": "Colab Notebooks/.ipynb_checkpoints/17_Дрейф_опорного_канала_и_порядок_съёмки-checkpoint.ipynb",
+      "sha256": "a27e6929fc5a9c111e3c9debb1878bb57c9a3745fba16b68112156d3da667a50",
+      "bytes": 527573,
+      "cells": 22,
+      "code_cells": 5,
+      "output_cells": 5,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": true
+    },
+    {
+      "path": "Colab Notebooks/.ipynb_checkpoints/20.04_Сценарии_электрических_свойств_лёгкого-checkpoint.ipynb",
+      "sha256": "537423414a92affcb7a9a6ac40f98af332d7942652f784928310a36356c88d49",
+      "bytes": 18878,
+      "cells": 10,
+      "code_cells": 0,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3 (ipykernel)",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": true
+    },
+    {
+      "path": "Colab Notebooks/.ipynb_checkpoints/20.10_КТ_FEM_локализация_боковых_матриц_МГТУ-checkpoint.ipynb",
+      "sha256": "208879850db0ce0f9dad312538e869ed4bf41d1bef9e04c2d8a2dd6c6ac18bc3",
+      "bytes": 34568600,
+      "cells": 77,
+      "code_cells": 27,
+      "output_cells": 27,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": true
+    },
+    {
+      "path": "Colab Notebooks/.ipynb_checkpoints/32.01_Критерии_Lmin_боковых_сборок-checkpoint.ipynb",
+      "sha256": "ded114caeb66bac6fe66c7b2a155fbde32f95bac8a1fe92b372b597d49bb49f7",
+      "bytes": 18784,
+      "cells": 10,
+      "code_cells": 5,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": true
+    },
+    {
+      "path": "Colab Notebooks/.ipynb_checkpoints/32.02_Выбор_пары_при_известной_h-checkpoint.ipynb",
+      "sha256": "d5a277501c3be2a503b975ea5a9231236a6471351e15d7b40a231fa8fbe87398",
+      "bytes": 22204,
+      "cells": 10,
+      "code_cells": 5,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": true
+    },
+    {
+      "path": "Colab Notebooks/.ipynb_checkpoints/32.03_Выбор_набора_при_неизвестной_h-checkpoint.ipynb",
+      "sha256": "2ea55c603ff936f64f7eb3df91e4bc09762eca69e24be045a2d432bb17aebad5",
+      "bytes": 20926,
+      "cells": 11,
+      "code_cells": 5,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": true
+    },
+    {
+      "path": "Colab Notebooks/.ipynb_checkpoints/33.01_Статическая_оценка_параметров_боковых_сборок-checkpoint.ipynb",
+      "sha256": "11e3c5eacfcbadb8ca7cf61f7e57882a58042b6f34423dcf92c05b568e6944c5",
+      "bytes": 147936,
+      "cells": 10,
+      "code_cells": 5,
+      "output_cells": 3,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": true
+    },
+    {
+      "path": "Colab Notebooks/.ipynb_checkpoints/33.02_Диагностика_статической_обратной_задачи-checkpoint.ipynb",
+      "sha256": "c4c2d768ee6d4a0818cfd012835a4b8cae73da66692c19211704c362aa1fcf54",
+      "bytes": 11413,
+      "cells": 6,
+      "code_cells": 3,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": true
+    },
+    {
+      "path": "Colab Notebooks/.ipynb_checkpoints/33.03_Пульсовые_ансамбли_боковых_сборок-checkpoint.ipynb",
+      "sha256": "444abfd7a50c914330a7edc019e4130097fa51a68604b0f78ffe45c97f507c7d",
+      "bytes": 74261,
+      "cells": 40,
+      "code_cells": 10,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3 (ipykernel)",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": true
+    },
+    {
+      "path": "Colab Notebooks/.ipynb_checkpoints/33.06_Исследовательский_прогон_боковых_сборок-checkpoint.ipynb",
+      "sha256": "9d270c2e21e8362fcf3b09b2ffaa47a667586fe1ee6064a1c36e3b9c4c81844c",
+      "bytes": 17684,
+      "cells": 7,
+      "code_cells": 4,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": true
+    },
+    {
+      "path": "Colab Notebooks/.ipynb_checkpoints/40.02_Параметрический_монтаж_электродов_ТТРКГ_и_взаимность-checkpoint.ipynb",
+      "sha256": "035d5a7786b41d8ef1471477a2c276d4a849b088c2c250e4d723eac03f589743",
+      "bytes": 467414,
+      "cells": 21,
+      "code_cells": 8,
+      "output_cells": 8,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": true
+    },
+    {
+      "path": "Colab Notebooks/.ipynb_checkpoints/40.03_Поверхностные_координаты_электродов_ТТРКГ-checkpoint.ipynb",
+      "sha256": "e730f16d56ec5952f84f5605ea9ad92985fd818631c83d64a637daa01c424f60",
+      "bytes": 25616,
+      "cells": 9,
+      "code_cells": 2,
+      "output_cells": 2,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3 (ipykernel)",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": true
+    },
+    {
+      "path": "Colab Notebooks/.ipynb_checkpoints/40.04_КТ_FEM_чувствительность_ТТРКГ_МГТУ-checkpoint.ipynb",
+      "sha256": "a4b8ae74b3efbd3f155ed17454c2966b9b9b25fe8153c3284f2bf55b699f9502",
+      "bytes": 17946,
+      "cells": 6,
+      "code_cells": 3,
+      "output_cells": 3,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": true
+    },
+    {
+      "path": "Colab Notebooks/.ipynb_checkpoints/40.08_Сходимость_чувствительности_по_удельному_сопротивлению-checkpoint.ipynb",
+      "sha256": "31248484fc33c3ed3bdf5a7329b67d21b6a6e69005cbf51a395a331bb8e8a97d",
+      "bytes": 2552539,
+      "cells": 25,
+      "code_cells": 13,
+      "output_cells": 12,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": true
+    },
+    {
+      "path": "Colab Notebooks/10.01_QC_эксперимента_2_порядок_и_каналы.ipynb",
+      "sha256": "767586e10ea75db7f5e7cf187fa3bf0886d889c752ef9c869c4151f921c12ddb",
+      "bytes": 180056,
+      "cells": 8,
+      "code_cells": 2,
+      "output_cells": 2,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3 (ipykernel)",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/10.11_QC_эксперимента_3.ipynb",
+      "sha256": "c11f424ef9534a7fa753fe79c809dbd58029bc5d4579624dbbfd4aa2048d6f25",
+      "bytes": 57364,
+      "cells": 22,
+      "code_cells": 8,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/11.01_Разметка_дыхания_эксперимента_2.ipynb",
+      "sha256": "2d75ad6d7dc74a4bd2259c8fac073caff6671f434a54208f8c57d8ee08586490",
+      "bytes": 862022,
+      "cells": 8,
+      "code_cells": 4,
+      "output_cells": 2,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/11.02_Разметка_ЭКГ_эксперимента_2.ipynb",
+      "sha256": "1cc6d2cdc32bd44dab2eb2a5582911f9f0488250d2a861a1032e5a8a1300ac3d",
+      "bytes": 3157034,
+      "cells": 8,
+      "code_cells": 4,
+      "output_cells": 2,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/11.11_Разметка_дыхания_эксперимента_3.ipynb",
+      "sha256": "339c5cf6703c9e8dfc7ae2b2f1f273f08018ac2bb825d11394a5a0480c053a8f",
+      "bytes": 44377,
+      "cells": 9,
+      "code_cells": 5,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/11.12_Разметка_ЭКГ_эксперимента_3.ipynb",
+      "sha256": "753cec6dd2b999707cb0478aa8277ca38b06f064dc75130ee5049b8e24ac16d4",
+      "bytes": 47175,
+      "cells": 7,
+      "code_cells": 4,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/12.01_Сводный_QC_размеченных_сигналов_эксперимента_2.ipynb",
+      "sha256": "c27e90a4f378f451f2edde80e37ffb16dfbef1cf284093a088cfc13f9d71417a",
+      "bytes": 1720809,
+      "cells": 9,
+      "code_cells": 4,
+      "output_cells": 3,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3 (ipykernel)",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/20.01_DICOM_QC_и_геометрия_тома.ipynb",
+      "sha256": "4b0c99f4f6e64b717ff8e09196a5b43efdcc1813df2c19343cd0b9f86d8e8ccd",
+      "bytes": 38870,
+      "cells": 12,
+      "code_cells": 5,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3 (ipykernel)",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/20.02_Регистрация_Inobitec_и_электродов.ipynb",
+      "sha256": "91c33ed7ae42500528106e9e406b2029b03a49387171d8d1825dadc6d6a8a0f2",
+      "bytes": 35437,
+      "cells": 12,
+      "code_cells": 5,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3 (ipykernel)",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/20.03_HU_и_доля_воздуха_в_лёгком.ipynb",
+      "sha256": "6bdfb81370e3d1741e5134cbb1e3c8e588b39e8ed8ae009edde028f046a256a9",
+      "bytes": 13781,
+      "cells": 8,
+      "code_cells": 0,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3 (ipykernel)",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/20.04_Сценарии_электрических_свойств_лёгкого.ipynb",
+      "sha256": "537423414a92affcb7a9a6ac40f98af332d7942652f784928310a36356c88d49",
+      "bytes": 18878,
+      "cells": 10,
+      "code_cells": 0,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3 (ipykernel)",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/20.10_КТ_FEM_локализация_боковых_матриц_МГТУ.ipynb",
+      "sha256": "208879850db0ce0f9dad312538e869ed4bf41d1bef9e04c2d8a2dd6c6ac18bc3",
+      "bytes": 34568600,
+      "cells": 77,
+      "code_cells": 27,
+      "output_cells": 27,
+      "html_exists": true,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/20.11_КТ_FEM_чувствительность_боковых_сборок.ipynb",
+      "sha256": "9d1917cb18b30915cda36b1e0a816c4eaae37ca8da77101d608a447f2cd5016c",
+      "bytes": 24682,
+      "cells": 11,
+      "code_cells": 0,
+      "output_cells": 0,
+      "html_exists": true,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/20.12_Критерий_Lmax_плоскослоистой_модели.ipynb",
+      "sha256": "bc3f3310147eae6ebe0ad4ff141a7b0b13e81ee7f2706e920023683da176c0be",
+      "bytes": 28349,
+      "cells": 13,
+      "code_cells": 0,
+      "output_cells": 0,
+      "html_exists": true,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/20.13_Геометрия_лёгкого_и_ошибка_восстановления_сопротивлений.ipynb",
+      "sha256": "fe6286ffecd6792bc84355cb806328e83be9375a7d4eb2cc8c2cff6cac977e39",
+      "bytes": 1035690,
+      "cells": 28,
+      "code_cells": 13,
+      "output_cells": 13,
+      "html_exists": true,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/20.14_Две_проверки_моделей_с_литературными_сопротивлениями.ipynb",
+      "sha256": "dd15139305fbf7da0b168b987d4abc930a40e95c578fed4834b694ecb814a2e5",
+      "bytes": 587208,
+      "cells": 21,
+      "code_cells": 7,
+      "output_cells": 7,
+      "html_exists": true,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/20.15_Анатомический_выбор_места_боковых_сборок.ipynb",
+      "sha256": "f8e7734fbd3f81888c96f83a7cb82643faf11db48dcb812c73949ca720554b94",
+      "bytes": 204332,
+      "cells": 13,
+      "code_cells": 4,
+      "output_cells": 4,
+      "html_exists": true,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/20.16_Поперечная_форма_лёгкого_и_точность_обратной_модели.ipynb",
+      "sha256": "4eb25a8b0c6d1acb255ebd939adcfd902c9ffdd54616a8ef6bdf438fe81ebdde",
+      "bytes": 9570002,
+      "cells": 39,
+      "code_cells": 16,
+      "output_cells": 16,
+      "html_exists": true,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/30.04_Вычислительное_ядро_двуслойной_модели.ipynb",
+      "sha256": "16e79b6627f3f18b026f581954b8af89760ac64338ab53eeed8247a258337ce7",
+      "bytes": 17645,
+      "cells": 10,
+      "code_cells": 4,
+      "output_cells": 0,
+      "html_exists": true,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/30.05_Масштабные_законы_двуслойной_модели.ipynb",
+      "sha256": "5a4b216576b10f83cbe281d8d134e941af34daa1a2e5926b1a9af20d40d330ac",
+      "bytes": 26229,
+      "cells": 9,
+      "code_cells": 4,
+      "output_cells": 0,
+      "html_exists": true,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/31.01_Локальная_чувствительность_двуслойной_модели.ipynb",
+      "sha256": "f9754343b01e41316105848782ab068859b40b8bda78943f21f25da124c3a18d",
+      "bytes": 7652,
+      "cells": 8,
+      "code_cells": 3,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/31.02_Глобальная_чувствительность_двуслойной_модели.ipynb",
+      "sha256": "e2bac79c0dcba1a307e1549e3bc503e77af0d57e9c97599ee4cf43915057b6cd",
+      "bytes": 22882,
+      "cells": 10,
+      "code_cells": 5,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/31.03_Идентифицируемость_двуслойной_задачи.ipynb",
+      "sha256": "bbdd5d3a32fcfcd01796211fb1138ef96acd053d10a7cf904d7f16f38c9b48ab",
+      "bytes": 21332,
+      "cells": 10,
+      "code_cells": 5,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/31.05_Проверка_допущений_обратной_модели.ipynb",
+      "sha256": "227c9ecca6efaee09742690527d91b98d41db632b0a0fab8ca61563d8c56bfe3",
+      "bytes": 309701,
+      "cells": 10,
+      "code_cells": 3,
+      "output_cells": 3,
+      "html_exists": true,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/32.01_Критерии_Lmin_боковых_сборок.ipynb",
+      "sha256": "28b86a4e70cc90c6dd31b76c8f6f93abfd6aadf5350d2da33caaab7b42794bf4",
+      "bytes": 18999,
+      "cells": 10,
+      "code_cells": 5,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3 (ipykernel)",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/32.02_Выбор_пары_при_известной_h.ipynb",
+      "sha256": "93288049b5617299ebd2673303bfadbb49c4d227fafc58f3f57a28e208797665",
+      "bytes": 27645,
+      "cells": 10,
+      "code_cells": 5,
+      "output_cells": 5,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3 (ipykernel)",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/32.03_Выбор_набора_при_неизвестной_h.ipynb",
+      "sha256": "2ea55c603ff936f64f7eb3df91e4bc09762eca69e24be045a2d432bb17aebad5",
+      "bytes": 20926,
+      "cells": 11,
+      "code_cells": 5,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/33.00_Сквозная_методика_боковых_сборок.ipynb",
+      "sha256": "88ef3f87f8e00288e832577cbf22233b61b6d319f82dd7ad318888a5bd95b1c6",
+      "bytes": 395701,
+      "cells": 17,
+      "code_cells": 5,
+      "output_cells": 5,
+      "html_exists": true,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/33.01_Статическая_оценка_параметров_боковых_сборок.ipynb",
+      "sha256": "11e3c5eacfcbadb8ca7cf61f7e57882a58042b6f34423dcf92c05b568e6944c5",
+      "bytes": 147936,
+      "cells": 10,
+      "code_cells": 5,
+      "output_cells": 3,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/33.02_Диагностика_статической_обратной_задачи.ipynb",
+      "sha256": "5264d0ace956545514c71ad0c55314474c9b75cf677c4b17f334b138227094be",
+      "bytes": 11393,
+      "cells": 6,
+      "code_cells": 3,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3 (ipykernel)",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/33.03_Пульсовые_ансамбли_боковых_сборок.ipynb",
+      "sha256": "10615cfd799a6780a29d4ae5440efdcc38bf32db79b9f0d195c71ef2c325ee71",
+      "bytes": 2885697,
+      "cells": 10,
+      "code_cells": 5,
+      "output_cells": 4,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3 (ipykernel)",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/33.04_Пульсовые_изменения_удельного_сопротивления.ipynb",
+      "sha256": "abc0fd9575a10bd2d26c52da41260cf030d4dfdea1e634fa9ed6523ed3993fa9",
+      "bytes": 2204561,
+      "cells": 20,
+      "code_cells": 12,
+      "output_cells": 10,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/33.05_Временные_метрики_бокового_сигнала.ipynb",
+      "sha256": "dbff888ca02a7abb4d056baefa2fbf3ff173ed03427236a4280cdde64eda1878",
+      "bytes": 9335,
+      "cells": 6,
+      "code_cells": 3,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/33.06_Исследовательский_прогон_боковых_сборок.ipynb",
+      "sha256": "f0465be242ec64c9806f7207b4a7726bcbcb4f2bccd05f0deebd030f9e6efb01",
+      "bytes": 14243272,
+      "cells": 23,
+      "code_cells": 9,
+      "output_cells": 6,
+      "html_exists": true,
+      "kernel": {
+        "display_name": "Python 3 (ipykernel)",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/33.07_Профиль_согласованности_удельного_сопротивления_лёгкого.ipynb",
+      "sha256": "3318e9c0ebdb934e7cb38d0dd29f613575bb37c507a822e8e59cb5a08d6a82c0",
+      "bytes": 905118,
+      "cells": 24,
+      "code_cells": 10,
+      "output_cells": 9,
+      "html_exists": true,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/40.01_Обработка_ТТРКГ_эксперимента_2.ipynb",
+      "sha256": "2e72951e3d0029d71a8d0659be7866dde9136590ee3ffefe815a8b4bbb909a50",
+      "bytes": 720510,
+      "cells": 5,
+      "code_cells": 3,
+      "output_cells": 2,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/40.02_Параметрический_монтаж_электродов_ТТРКГ_и_взаимность.ipynb",
+      "sha256": "ebf8d12403c6ef0dccd180b3377bd32f6114cd33e1dcab341c3854bfe083a159",
+      "bytes": 895406,
+      "cells": 24,
+      "code_cells": 10,
+      "output_cells": 10,
+      "html_exists": true,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/40.03_Поверхностные_координаты_электродов_ТТРКГ.ipynb",
+      "sha256": "e730f16d56ec5952f84f5605ea9ad92985fd818631c83d64a637daa01c424f60",
+      "bytes": 25616,
+      "cells": 9,
+      "code_cells": 2,
+      "output_cells": 2,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3 (ipykernel)",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/40.04_КТ_FEM_чувствительность_ТТРКГ_МГТУ.ipynb",
+      "sha256": "a4b8ae74b3efbd3f155ed17454c2966b9b9b25fe8153c3284f2bf55b699f9502",
+      "bytes": 17946,
+      "cells": 6,
+      "code_cells": 3,
+      "output_cells": 3,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/40.05_Чувствительность_ТТРКГ_к_проводимости_тканей.ipynb",
+      "sha256": "935816d77fce4b9e8420f3bb797008e632382c4419ee04b71bb4ae6edbe8e648",
+      "bytes": 1566690,
+      "cells": 52,
+      "code_cells": 17,
+      "output_cells": 17,
+      "html_exists": true,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/40.06_Карты_чувствительности_и_подготовка_новых_комбинаций.ipynb",
+      "sha256": "861d4163997b42a8d953d25e19b9cb75769582212625d819765eed8f4871f63d",
+      "bytes": 1956455,
+      "cells": 43,
+      "code_cells": 23,
+      "output_cells": 22,
+      "html_exists": true,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/40.07_Чувствительность_сборок_по_удельному_сопротивлению.ipynb",
+      "sha256": "4ab87f7f0768e5cd54f1f8b4f714482d4074ec389623183f300576932a4e3016",
+      "bytes": 2521161,
+      "cells": 47,
+      "code_cells": 25,
+      "output_cells": 24,
+      "html_exists": true,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/40.08_Сходимость_чувствительности_по_удельному_сопротивлению.ipynb",
+      "sha256": "31248484fc33c3ed3bdf5a7329b67d21b6a6e69005cbf51a395a331bb8e8a97d",
+      "bytes": 2552539,
+      "cells": 25,
+      "code_cells": 13,
+      "output_cells": 12,
+      "html_exists": true,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/40.09_Подготовка_чувствительности_сборок_TEPC.ipynb",
+      "sha256": "2f53025d373572ea510748bed88385104230ef72548fdb373157c5409cb12cdb",
+      "bytes": 3078199,
+      "cells": 14,
+      "code_cells": 1,
+      "output_cells": 0,
+      "html_exists": true,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/40.11_Обработка_ТТРКГ_эксперимента_3.ipynb",
+      "sha256": "0763ad86f2ed154878385962089a754e9af6f208b2591282e3530048edae148f",
+      "bytes": 337758,
+      "cells": 5,
+      "code_cells": 3,
+      "output_cells": 2,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/40.12_Межканальное_влияние_реокардиомонитора_РНЦХ.ipynb",
+      "sha256": "20af3f73e2e526ce87a8d0204cf7ea68f13ca421526d357ec7dae147d8b7ee62",
+      "bytes": 131617,
+      "cells": 6,
+      "code_cells": 4,
+      "output_cells": 4,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/40.14_КТ_FEM_чувствительность_ТТРКГ_РНЦХ.ipynb",
+      "sha256": "5eadb6ecaed5bcdbf2f679f39c28005d3bf7395f32501edaef64462b8bdd3e6e",
+      "bytes": 17753,
+      "cells": 6,
+      "code_cells": 3,
+      "output_cells": 3,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/40.20_Оператор_переноса_тканевых_вкладов_в_ТТРКГ.ipynb",
+      "sha256": "ad8a838ea9b7823c371843291b9fa6d966fa617f83aa7603ff30fcadc8b80c9e",
+      "bytes": 12728,
+      "cells": 4,
+      "code_cells": 2,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/40.21_Скорректированный_сердечный_сигнал_ТТРКГ.ipynb",
+      "sha256": "f94eaeaaedea10e01eb3f84e9716a6169afce2c83d2024d9d34a8fe8100064cc",
+      "bytes": 8409,
+      "cells": 4,
+      "code_cells": 2,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/40.22_Исследовательский_прогон_ТТРКГ_и_идентифицируемости.ipynb",
+      "sha256": "2d73a311f4fa700524690b6eda85c83b19cff07dd1e1d1000f9d15264f4b0a20",
+      "bytes": 41164,
+      "cells": 7,
+      "code_cells": 4,
+      "output_cells": 1,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/50.01_Идентифицируемость_источников_ТТРКГ_МГТУ.ipynb",
+      "sha256": "5f1525a536caa0734af647f7638b9ebc7dd274b0f6c402c3d458b187b35a95b9",
+      "bytes": 14417,
+      "cells": 5,
+      "code_cells": 2,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/50.11_Идентифицируемость_источников_ТТРКГ_РНЦХ.ipynb",
+      "sha256": "5bc1e560c735f689be61aad32f01f0922894efd8a8b90dc1782786c4e5aff614",
+      "bytes": 14430,
+      "cells": 5,
+      "code_cells": 2,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/60.04_Сценарный_расчёт_эквивалентной_сферы_УО_и_ФВ.ipynb",
+      "sha256": "c947cc8c549886d1726260bedc182f65434fdb26936770563d45a1bf7ac400d6",
+      "bytes": 20457,
+      "cells": 6,
+      "code_cells": 3,
+      "output_cells": 1,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/70.01_Паспорт_и_QC_эксперимента_1_РЕО32.ipynb",
+      "sha256": "cd5fc9ec06570016d09ba36f1fdd36241a6eec33efad20a53352880910fe7e5e",
+      "bytes": 315105,
+      "cells": 66,
+      "code_cells": 44,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3 (ipykernel)",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/70.03_Обработка_каналов_5_и_9_РЕО32.ipynb",
+      "sha256": "034ca4c83990dbbd5938ebde03544f300e5640b12f99a53ed875bac30452b4f4",
+      "bytes": 2877,
+      "cells": 3,
+      "code_cells": 0,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/70.04_Обратная_задача_эквивалентной_сферы.ipynb",
+      "sha256": "4bf38a8bd4fdcf254895a383a9fc8212a4afbefedfd35725b0188a9d142ec979",
+      "bytes": 2893,
+      "cells": 3,
+      "code_cells": 0,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/70.05_Чувствительность_сферической_модели.ipynb",
+      "sha256": "6b34629183335596956ab500454d920c05118b6fac91842704b0830dc1b2650a",
+      "bytes": 2888,
+      "cells": 3,
+      "code_cells": 0,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/70.07_Идентифицируемость_траектории_сферы.ipynb",
+      "sha256": "c02b004eedbf5e83dee921676ab9b2e48e1399ca7e863ddcc39bb322699bfc5c",
+      "bytes": 3090,
+      "cells": 3,
+      "code_cells": 0,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/70.08_Инверсия_траектории_эквивалентной_сферы.ipynb",
+      "sha256": "dbcc5f34b63cdf108212ae887a8181e08b0c790fe8ccc621e1c7f350c78cbe69",
+      "bytes": 2898,
+      "cells": 3,
+      "code_cells": 0,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/70.09_Импедансный_критерий_эквивалентной_сферы.ipynb",
+      "sha256": "0f24afd91356e0b1fdc33c71a280f87a8b0ff4d6d5d3f7f0ada9687d894dd319",
+      "bytes": 45352,
+      "cells": 18,
+      "code_cells": 4,
+      "output_cells": 4,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/70.10_КТ_FEM_проверка_сферической_модели.ipynb",
+      "sha256": "ab256e8a4fb2dae64898db90e86fdf106d8c0ee44337d2cd31758975faf98928",
+      "bytes": 2851,
+      "cells": 3,
+      "code_cells": 0,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/archive/legacy/.ipynb_checkpoints/10.90_Исторический_QC_эксперимента_2-checkpoint.ipynb",
+      "sha256": "c229ff3406f89eb5f864706b5cec039c0b9ba9f6310f98d112cd71b0a9cd7a39",
+      "bytes": 1869,
+      "cells": 1,
+      "code_cells": 0,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {},
+      "checkpoint": true
+    },
+    {
+      "path": "Colab Notebooks/archive/legacy/.ipynb_checkpoints/10.91_Снимок_10.01_до_разделения_ответственности-checkpoint.ipynb",
+      "sha256": "14c42551f9f04c022e2f43ed9de097925245756be23ee97354797833ae692fa3",
+      "bytes": 61239,
+      "cells": 26,
+      "code_cells": 6,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3 (ipykernel)",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": true
+    },
+    {
+      "path": "Colab Notebooks/archive/legacy/.ipynb_checkpoints/20.90_Скетч_пороговой_КТ_сегментации-checkpoint.ipynb",
+      "sha256": "dfb9525c96962b7bfc6b886657d8ea2c7b27e749872b74fd16b5b743737420cf",
+      "bytes": 2499,
+      "cells": 1,
+      "code_cells": 0,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {},
+      "checkpoint": true
+    },
+    {
+      "path": "Colab Notebooks/archive/legacy/.ipynb_checkpoints/30.91_Историческое_аналитическое_обоснование-checkpoint.ipynb",
+      "sha256": "66b5c71b214bb0f7edd672c645b32a55a786e52a7bfc4e148ff05a6fc547d48c",
+      "bytes": 36066,
+      "cells": 31,
+      "code_cells": 7,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": true
+    },
+    {
+      "path": "Colab Notebooks/archive/legacy/.ipynb_checkpoints/33.91_Объединённая_статическая_оценка-checkpoint.ipynb",
+      "sha256": "eee7f077a49adc7ad7529c5586c5ad7c1dd3146d9b5d919267191d3b5293f449",
+      "bytes": 137571,
+      "cells": 58,
+      "code_cells": 15,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3 (ipykernel)",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": true
+    },
+    {
+      "path": "Colab Notebooks/archive/legacy/10.90_Исторический_QC_эксперимента_2.ipynb",
+      "sha256": "c229ff3406f89eb5f864706b5cec039c0b9ba9f6310f98d112cd71b0a9cd7a39",
+      "bytes": 1869,
+      "cells": 1,
+      "code_cells": 0,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {},
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/archive/legacy/10.91_Снимок_10.01_до_разделения_ответственности.ipynb",
+      "sha256": "14c42551f9f04c022e2f43ed9de097925245756be23ee97354797833ae692fa3",
+      "bytes": 61239,
+      "cells": 26,
+      "code_cells": 6,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3 (ipykernel)",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/archive/legacy/11.90_Скетч_механических_точек.ipynb",
+      "sha256": "c4595ba9671ef951d22e2033acd430c6c95c304f130f2d0de54daf6b1341fdde",
+      "bytes": 839553,
+      "cells": 38,
+      "code_cells": 10,
+      "output_cells": 9,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3 (ipykernel)",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/archive/legacy/20.90_Скетч_пороговой_КТ_сегментации.ipynb",
+      "sha256": "dfb9525c96962b7bfc6b886657d8ea2c7b27e749872b74fd16b5b743737420cf",
+      "bytes": 2499,
+      "cells": 1,
+      "code_cells": 0,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {},
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/archive/legacy/30.91_Историческое_аналитическое_обоснование.ipynb",
+      "sha256": "66b5c71b214bb0f7edd672c645b32a55a786e52a7bfc4e148ff05a6fc547d48c",
+      "bytes": 36066,
+      "cells": 31,
+      "code_cells": 7,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/archive/legacy/31.90_Объединённый_анализ_чувствительности.ipynb",
+      "sha256": "a8803a94d8c36f3c8be5ac8b0dda8faeb1a617cd881724cfe6e8f0da163bf77c",
+      "bytes": 89405,
+      "cells": 73,
+      "code_cells": 23,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3 (ipykernel)",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/archive/legacy/33.90_Скетч_боковых_сборок.ipynb",
+      "sha256": "d664614a48ff10e64d098ba7b2787f08b61d55e211c8148e44770d0053a3e981",
+      "bytes": 411604,
+      "cells": 24,
+      "code_cells": 7,
+      "output_cells": 6,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3 (ipykernel)",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/archive/legacy/33.91_Объединённая_статическая_оценка.ipynb",
+      "sha256": "eee7f077a49adc7ad7529c5586c5ad7c1dd3146d9b5d919267191d3b5293f449",
+      "bytes": 137571,
+      "cells": 58,
+      "code_cells": 15,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3 (ipykernel)",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/archive/legacy/33.92_Объединённый_пульсовой_анализ.ipynb",
+      "sha256": "efab76f55341fe80eab3f701c725ef1699a8ce393133275a9d9c906f915ae683",
+      "bytes": 75449,
+      "cells": 40,
+      "code_cells": 10,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3 (ipykernel)",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/archive/legacy/40.90_Объединённый_прототип_ТТРКГ.ipynb",
+      "sha256": "67df97fe2e2a18a165509553493910f2568e6d6a2908d33077a0dca0d6d7d231",
+      "bytes": 47102,
+      "cells": 15,
+      "code_cells": 3,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/archive/legacy/50.90_Прототип_идентифицируемости_источников.ipynb",
+      "sha256": "840de6a2050ad0acaff7cee4a5b9ad212a4c29c890dd191182dcb46f24e63550",
+      "bytes": 29106,
+      "cells": 15,
+      "code_cells": 3,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3 (ipykernel)",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/archive/legacy/70.90_Объединённый_прототип_РЕО32.ipynb",
+      "sha256": "e6080c90f2247aa06e6db07c1aabe21965f4c4e82922826d5ad7c0f572b03659",
+      "bytes": 1691,
+      "cells": 1,
+      "code_cells": 0,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {},
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/archive/legacy/70.92_Смешанный_импедансный_критерий.ipynb",
+      "sha256": "607297913671f5e86935e2a2ddbcc4829f4aa104a0defc6a5004eb508f60f3bf",
+      "bytes": 1904,
+      "cells": 1,
+      "code_cells": 0,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {},
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/archive/private/21.03_before_function_analysis_20260909/21.03_Вычитание_крови_и_объёмы_камер_RR.ipynb",
+      "sha256": "0767965c34220104faf7061d0eee1217b0a5658ad19637834f41fabfa3ab3e50",
+      "bytes": 134155,
+      "cells": 15,
+      "code_cells": 7,
+      "output_cells": 7,
+      "html_exists": true,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/archive/private/21.03_before_georg_pilot_20260910/21.03_Вычитание_крови_и_объёмы_камер_RR.ipynb",
+      "sha256": "9f927dd025a473bca51ba67ffbe6bc89ca31571b304aa36f11ced24c09ddd3a3",
+      "bytes": 5269350,
+      "cells": 23,
+      "code_cells": 11,
+      "output_cells": 11,
+      "html_exists": true,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/archive/private/21.03_before_joint_dynamics_20260910/21.03_Вычитание_крови_и_объёмы_камер_RR.ipynb",
+      "sha256": "514dd5d8f1a436737bc321895e2652e8485284096dc33a9dae99175acb17799b",
+      "bytes": 5288446,
+      "cells": 25,
+      "code_cells": 12,
+      "output_cells": 12,
+      "html_exists": true,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/archive/private/21.03_before_reference_indexing_20260910/21.03_Вычитание_крови_и_объёмы_камер_RR.ipynb",
+      "sha256": "06ced5906bd9aaef8fca6ceb5a9a60895ed207ef77a601f1de3dc6f96fd01a3d",
+      "bytes": 5474046,
+      "cells": 33,
+      "code_cells": 13,
+      "output_cells": 13,
+      "html_exists": true,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/archive/private/21.03_before_scientific_layout_20260910/21.03_Вычитание_крови_и_объёмы_камер_RR.ipynb",
+      "sha256": "ac268ce67fd07c809b106f414328fbfd3abb7fbcdaf0954e0ffcb27ef2ceec8d",
+      "bytes": 5425751,
+      "cells": 28,
+      "code_cells": 13,
+      "output_cells": 13,
+      "html_exists": true,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/cardiac_4d_segmentation/21.01_4D_сердце_интерактивно.ipynb",
+      "sha256": "b439cc2592ab91141f9f8a814e45a7431359a00ff6acc19b82ec9eb144ac1987",
+      "bytes": 61966016,
+      "cells": 7,
+      "code_cells": 3,
+      "output_cells": 3,
+      "html_exists": true,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Colab Notebooks/cardiac_4d_segmentation/21.03_Вычитание_крови_и_объёмы_камер_RR.ipynb",
+      "sha256": "d15ba0988f676e5e086c8896908ce399208ab22c9dea0ec9158e5e1dbb2339cb",
+      "bytes": 5493664,
+      "cells": 36,
+      "code_cells": 14,
+      "output_cells": 14,
+      "html_exists": true,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "HnL/prototype.ipynb",
+      "sha256": "925c64ee59f60c63ec257cb8361fa856b6deaa0787c3479942e466f05fcce3ab",
+      "bytes": 19341,
+      "cells": 8,
+      "code_cells": 8,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "name": "python3",
+        "display_name": "Python 3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/notebooks/.ipynb_checkpoints/TRKG4_inverse_inhale_results-checkpoint.ipynb",
+      "sha256": "f0a8c88c19b9165514241acd694f9e9bafdd0b5801740988264334837a1fdb16",
+      "bytes": 187425,
+      "cells": 6,
+      "code_cells": 4,
+      "output_cells": 4,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": true
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/notebooks/TRKG4_inverse_inhale_results.ipynb",
+      "sha256": "a0832d63bd9f7666a743dac28d692562c413360d9a5c850b4375f3dc38c635cb",
+      "bytes": 1230,
+      "cells": 1,
+      "code_cells": 0,
+      "output_cells": 0,
+      "html_exists": true,
+      "kernel": {},
+      "checkpoint": false
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/notebooks/audit_fixes_2026_09_08/before/TRKG4_inverse_inhale_results.ipynb",
+      "sha256": "ddab37b6361b555b8a0a3e69205efe671217316718e16a30a1a173b484ff8f27",
+      "bytes": 31800389,
+      "cells": 50,
+      "code_cells": 24,
+      "output_cells": 24,
+      "html_exists": true,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/notebooks/audit_fixes_2026_09_08/report_auditfix_20260908_minimal.ipynb",
+      "sha256": "8c6b5a67ab4a5c13fbe3fee9397ee3492a9ef6a174db5fb4e575fafd3173d1c1",
+      "bytes": 251842,
+      "cells": 50,
+      "code_cells": 24,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/notebooks/audit_fixes_2026_09_08/report_auditfix_nojac_smoke_minimal.ipynb",
+      "sha256": "d13ca784e7fa8999850eee8632dddff43cfdc49e96cf909bf74b399e3993e993",
+      "bytes": 251817,
+      "cells": 50,
+      "code_cells": 24,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/notebooks/audit_fixes_2026_09_08/report_disjoint_restartable_manifest90_minimal.ipynb",
+      "sha256": "bc10bfb3c907d7a45b9e8729a8fe453752e64bda301ee6ff2a6a32639ee28f32",
+      "bytes": 243080,
+      "cells": 50,
+      "code_cells": 24,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/notebooks/review_current_2026_09_08/generated.ipynb",
+      "sha256": "da2cd4885d134ca4c02675f839108ffc085f778ad6103bb34ea1d987a14b5927",
+      "bytes": 252638,
+      "cells": 50,
+      "code_cells": 24,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/output/exploratory/arm_sigma_20260908/report_history/20260908T221018Z/40.05_Чувствительность_ТТРКГ_к_проводимости_тканей.ipynb",
+      "sha256": "d51bed839c086a963f30c6f85c2b08c1a378d8401e2c4a5f12fae9da4d18a9fb",
+      "bytes": 1223872,
+      "cells": 19,
+      "code_cells": 9,
+      "output_cells": 9,
+      "html_exists": true,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/output/exploratory/electrode_sensitivity_20260910/report_revision_20260910/previous_reader/40.06_Карты_чувствительности_и_подготовка_новых_комбинаций.ipynb",
+      "sha256": "06469dee9abbe263aca8d36cc663400c76f8d777c864934feafd4ef267a7e439",
+      "bytes": 664467,
+      "cells": 17,
+      "code_cells": 8,
+      "output_cells": 8,
+      "html_exists": true,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/output/exploratory/fullscan_acceleration_20260909/report_link_verification/generated.ipynb",
+      "sha256": "200a586645ec99f1e58345ef63bec331c34dbc6fb56c35ce8e08aa77294c77d3",
+      "bytes": 384024,
+      "cells": 56,
+      "code_cells": 25,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/output/exploratory/geometry_reduction_20260910/ct_anatomy_unknown_rho_20260910/before/20.13_Геометрия_лёгкого_и_ошибка_восстановления_сопротивлений.ipynb",
+      "sha256": "38afdc3918223dafa5a6fce2e2ad84890c98a8f1dbb8034f51387f92f76c589f",
+      "bytes": 1025525,
+      "cells": 28,
+      "code_cells": 13,
+      "output_cells": 13,
+      "html_exists": true,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/output/exploratory/geometry_reduction_20260910/documents_before/Colab Notebooks/20.12_Критерий_Lmax_плоскослоистой_модели.ipynb",
+      "sha256": "9e6de0941afc230a3c025dbdd4aa6e21253fbf209c9b47d3c55915c849a8e8f1",
+      "bytes": 27574,
+      "cells": 12,
+      "code_cells": 0,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/output/exploratory/geometry_reduction_20260910/explanation_revision_20260910/before/20.13_Геометрия_лёгкого_и_ошибка_восстановления_сопротивлений.ipynb",
+      "sha256": "b2c1530b94959d694ee03343c74d2a3fd4ab7e8d440928f076a80abdd79c1e16",
+      "bytes": 810386,
+      "cells": 26,
+      "code_cells": 12,
+      "output_cells": 12,
+      "html_exists": true,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/output/exploratory/geometry_reduction_20260910/model_comparison_20260910/before/20.13_Геометрия_лёгкого_и_ошибка_восстановления_сопротивлений.ipynb",
+      "sha256": "a9de2525c734d41a533047b92a48d6bd4ddb76a86349cf9a0cd4a6746b63aee2",
+      "bytes": 888619,
+      "cells": 26,
+      "code_cells": 12,
+      "output_cells": 12,
+      "html_exists": true,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/output/exploratory/geometry_reduction_20260910/physiology_criteria_20260910/before/20.13_Геометрия_лёгкого_и_ошибка_восстановления_сопротивлений.ipynb",
+      "sha256": "4b60b65cf04241041cb1bfb68d83d8fdc121d3a86d858f5ec4dae41b327b63e1",
+      "bytes": 875912,
+      "cells": 26,
+      "code_cells": 12,
+      "output_cells": 12,
+      "html_exists": true,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/output/exploratory/geometry_validation_20260910/electrode_description_20260910/before/20.14_Две_проверки_моделей_с_литературными_сопротивлениями.ipynb",
+      "sha256": "841c4df73d2f5f029c4930bd26f638b2f1be3b322398a4f4fb93f032c15b4c55",
+      "bytes": 567110,
+      "cells": 15,
+      "code_cells": 7,
+      "output_cells": 7,
+      "html_exists": true,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/output/exploratory/halfspace_documentation_20260914/before/20.16_Поперечная_форма_лёгкого_и_точность_обратной_модели.ipynb",
+      "sha256": "5e6dd59e9830372332a610d155fdb6a7559744cddb6755c30ce64acebad3c826",
+      "bytes": 10387445,
+      "cells": 44,
+      "code_cells": 19,
+      "output_cells": 19,
+      "html_exists": true,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/output/exploratory/halfspace_reader_revision_20260914/before/20.16_Поперечная_форма_лёгкого_и_точность_обратной_модели.ipynb",
+      "sha256": "93a8d97a2b231a318431ab9fe5b437485ec00dc1964c94621fa6b228166a4176",
+      "bytes": 10403335,
+      "cells": 44,
+      "code_cells": 19,
+      "output_cells": 19,
+      "html_exists": true,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/output/exploratory/scan_localization_20260910/best_pose_review/report_revision/generated.ipynb",
+      "sha256": "b4cbdeced37ef8da74339f90c777c3a3cdf5ae005a281fc2f0d29b97ad69400e",
+      "bytes": 400767,
+      "cells": 56,
+      "code_cells": 25,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/output/exploratory/scan_localization_20260910/report_revision/generated.ipynb",
+      "sha256": "14b051cf6ce8f3d37768ab4d48801362c835de9094cf18a48840cbe85a96a1c7",
+      "bytes": 393442,
+      "cells": 56,
+      "code_cells": 25,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/output/exploratory/scan_localization_20260910/scientific_notebook/full_report_git/revision/generated.ipynb",
+      "sha256": "6f9106f5dffc5aae5cde52ba007beec8e3665b1d6ede181ae61f86becbb003b9",
+      "bytes": 2038869,
+      "cells": 70,
+      "code_cells": 25,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/output/exploratory/scan_localization_20260910/scientific_notebook/report_revision/generated.ipynb",
+      "sha256": "c6049d15c06b4b7a1c2c72bd37c79227a334bcb791470425278c96469a5526ee",
+      "bytes": 2038783,
+      "cells": 70,
+      "code_cells": 25,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/output/exploratory/tepc_volume_analysis_smoke_20260914_01/report_target/40.10_Пространственная_сходимость_чувствительности_TEPC.ipynb",
+      "sha256": "373df4c6157a3735aecc0489ffcf94a8b433ca448cdad2a18669d0218fdd2eca",
+      "bytes": 1545773,
+      "cells": 15,
+      "code_cells": 1,
+      "output_cells": 1,
+      "html_exists": true,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/output/exploratory/tepc_volume_convergence_report_smoke_20260914_01/report_target/40.10_Пространственная_сходимость_чувствительности_TEPC.ipynb",
+      "sha256": "6b6dbbc35e02f7c77768ba060052c5542122483f97a437c7383408ad4e03e929",
+      "bytes": 1534531,
+      "cells": 15,
+      "code_cells": 1,
+      "output_cells": 1,
+      "html_exists": true,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/output/exploratory/transverse_consistency_20260914/documentation_before/20.10_КТ_FEM_локализация_боковых_матриц_МГТУ.ipynb",
+      "sha256": "e9537568de07f0c1e6e56f54edfc2e9bd75f97fc10fa9f17393fbfbb02d566ce",
+      "bytes": 34052047,
+      "cells": 70,
+      "code_cells": 25,
+      "output_cells": 25,
+      "html_exists": true,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/output/exploratory/transverse_consistency_20260914/documentation_before/20.16_Поперечная_форма_лёгкого_и_точность_обратной_модели.ipynb",
+      "sha256": "a94d09f93801ee69401359588d791ca8d7f3194037fd82e455f13077ebe507e7",
+      "bytes": 9568928,
+      "cells": 39,
+      "code_cells": 16,
+      "output_cells": 16,
+      "html_exists": true,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/output/exploratory/transverse_documentation_20260914/before/20.16_Поперечная_форма_лёгкого_и_точность_обратной_модели.ipynb",
+      "sha256": "d5e73e160504982f9e9b82fadee45dde6558fa4f697794aa54df9730cf7647d4",
+      "bytes": 10370740,
+      "cells": 44,
+      "code_cells": 19,
+      "output_cells": 19,
+      "html_exists": true,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/output/full_pose_scan_fullscan_20260908_v2/geometry_report/linked_report_before/20.10_КТ_FEM_локализация_боковых_матриц_МГТУ.ipynb",
+      "sha256": "ca5bed3a2bf9e4d4d9d1a353e25ea5f5972787eab44b488aaba7bf39a32417c2",
+      "bytes": 32391029,
+      "cells": 56,
+      "code_cells": 25,
+      "output_cells": 25,
+      "html_exists": true,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/output/full_pose_scan_fullscan_20260908_v2/geometry_report/report_link_verification/generated.ipynb",
+      "sha256": "7b8526eaf014bb29c2ee742aff4732b631554cbdfc486e31ab8703982931fd05",
+      "bytes": 380928,
+      "cells": 56,
+      "code_cells": 25,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/output/full_pose_scan_fullscan_smoke05/report/full_scan.ipynb",
+      "sha256": "32491f3701039d67d245e04150cff386177866771a5be09c6b6e86b27dd2900c",
+      "bytes": 1464,
+      "cells": 2,
+      "code_cells": 1,
+      "output_cells": 0,
+      "html_exists": true,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/output/integration_2010_20260909/before/Colab Notebooks/20.11_КТ_FEM_чувствительность_боковых_сборок.ipynb",
+      "sha256": "9ba1c86c84289443f161dc6a67db21d770d0c5caa3d59978c4fb8c9b6911ba96",
+      "bytes": 23104,
+      "cells": 11,
+      "code_cells": 0,
+      "output_cells": 0,
+      "html_exists": true,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/output/integration_2010_20260909/before/Colab Notebooks/20.12_Критерий_Lmax_плоскослоистой_модели.ipynb",
+      "sha256": "5ee285e4908d3d06240bf2c8545bf55998af1995459f158d61669d69ffa7c085",
+      "bytes": 21990,
+      "cells": 12,
+      "code_cells": 0,
+      "output_cells": 0,
+      "html_exists": true,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/output/integration_2010_20260909/before/MATLAB_TRKG4_real_subjects/notebooks/TRKG4_inverse_inhale_results.ipynb",
+      "sha256": "4ed5a1b916631bdce81e4d919728647861652fad18b2b8e4e157c87a277d9b17",
+      "bytes": 32387120,
+      "cells": 56,
+      "code_cells": 25,
+      "output_cells": 25,
+      "html_exists": true,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/output/integration_2010_20260909/generated.ipynb",
+      "sha256": "321821928fcf2f5be9177b94a85d7b03afb876a9b8522dcdf67175695432d8ca",
+      "bytes": 378109,
+      "cells": 56,
+      "code_cells": 25,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/output/scientific_report_20260909/before/TRKG4_inverse_inhale_results.ipynb",
+      "sha256": "7bb87a302702116fa56892b4eb4382d7dcb1957e482e546916a374574742641c",
+      "bytes": 32277227,
+      "cells": 52,
+      "code_cells": 25,
+      "output_cells": 25,
+      "html_exists": true,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/output/scientific_report_20260909/generated.ipynb",
+      "sha256": "cfedc456d81dcdc6a05cf457ca5ae661266359bf60b4fc6a825bd68f1f351aa3",
+      "bytes": 374953,
+      "cells": 56,
+      "code_cells": 25,
+      "output_cells": 0,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/output/scientific_report_20260909/review.ipynb",
+      "sha256": "d9fec3a06f274be92a887cb69bc965b79d36a26c350f086404063db391ab788b",
+      "bytes": 32388045,
+      "cells": 56,
+      "code_cells": 25,
+      "output_cells": 25,
+      "html_exists": true,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/output/two_tissue_auditfix_20260908/before/TRKG4_inverse_inhale_results.ipynb",
+      "sha256": "d41a89d6fa290546f7e904fa62b2ebebc83b50b4b3d9dbe658c65139e6dbb2c3",
+      "bytes": 31755038,
+      "cells": 50,
+      "code_cells": 24,
+      "output_cells": 24,
+      "html_exists": true,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "Tikhomirov/mathcad/Tichiy_MathCad_OLD_WRONG.ipynb",
+      "sha256": "ce4d8472cbbc50558652128547e58fbdc29b5f7ef100b8093483708c5343b2aa",
+      "bytes": 386515,
+      "cells": 17,
+      "code_cells": 15,
+      "output_cells": 4,
+      "html_exists": false,
+      "kernel": {
+        "name": "python3",
+        "display_name": "Python 3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "breath geometry/notebooks/01_inhale_exhale_inspection.ipynb",
+      "sha256": "0adc1e7cafe2226aa31d359aac303869857f89159cbb6ec065fcfe2f0bc5747e",
+      "bytes": 2992367,
+      "cells": 34,
+      "code_cells": 16,
+      "output_cells": 15,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "breath geometry/notebooks/02_registration_benchmark.ipynb",
+      "sha256": "3d6f200be33a5bbae26f6f720f6df29d51014ee43bdaa497a8ee131ec5a00589",
+      "bytes": 186191,
+      "cells": 13,
+      "code_cells": 8,
+      "output_cells": 8,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3 (ipykernel)",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "breath geometry/notebooks/03_whole_body_profiles.ipynb",
+      "sha256": "33dfae96dca2f84d7c6cc047f69a6d4118c2a369ec01d6bb3627d0eadfcec5d5",
+      "bytes": 684927,
+      "cells": 15,
+      "code_cells": 9,
+      "output_cells": 9,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3 (ipykernel)",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "breath geometry/notebooks/04_convexadam_registration_benchmark.ipynb",
+      "sha256": "596210793d10902fb3d9a99770d330277f02e7ffceb0dfc5774764b11d90111a",
+      "bytes": 263965,
+      "cells": 15,
+      "code_cells": 9,
+      "output_cells": 9,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3 (ipykernel)",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "breath geometry/notebooks/05_sliding_phantom.ipynb",
+      "sha256": "f8b58ffae537ed1550ece14231974c80fa7ee011e12a47456a7ee2c7c8d10e4f",
+      "bytes": 281614,
+      "cells": 13,
+      "code_cells": 7,
+      "output_cells": 6,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Breath Geometry (.venv)",
+        "language": "python",
+        "name": "breathgeom"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "breath geometry/notebooks/06_sliding_s1_synthetic_benchmark.ipynb",
+      "sha256": "c6a25be6aa922eb9f8b824c22d9a24947ef1dd22d6145b7888b05a1b942e85df",
+      "bytes": 183204,
+      "cells": 11,
+      "code_cells": 6,
+      "output_cells": 5,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Breath Geometry (.venv)",
+        "language": "python",
+        "name": "breathgeom"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "breath geometry/notebooks/07_sliding_s11_synthetic_benchmark.ipynb",
+      "sha256": "e1301e87d8c7ed5c958c1f08df703934742e7297c7e67c724df911a66b673f32",
+      "bytes": 212154,
+      "cells": 11,
+      "code_cells": 6,
+      "output_cells": 5,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Breath Geometry (.venv)",
+        "language": "python",
+        "name": "breathgeom"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "breath geometry/notebooks/08_sliding_s11_real_development.ipynb",
+      "sha256": "e976a03e09cd48fe75d57c3ca1b16a42b29319910b1a49ee7e4363a800974614",
+      "bytes": 3793628,
+      "cells": 16,
+      "code_cells": 8,
+      "output_cells": 8,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Breath Geometry (.venv)",
+        "language": "python",
+        "name": "breathgeom"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "breath geometry/notebooks/09_sliding_s12_heuristic_screen.ipynb",
+      "sha256": "070e38e4d7b9d2b9094d6cb5fa241379b396178150a16ecbc2fe48580b74a538",
+      "bytes": 209312,
+      "cells": 12,
+      "code_cells": 6,
+      "output_cells": 6,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Breath Geometry (.venv)",
+        "language": "python",
+        "name": "breathgeom"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "breath geometry/notebooks/10_piecewise_svf_j10_numeric_gate.ipynb",
+      "sha256": "4b2d870af7cb24f54a5bb2c1416acc77281db8761c6d17b0c8edc8826bb90157",
+      "bytes": 131915,
+      "cells": 9,
+      "code_cells": 5,
+      "output_cells": 5,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Breath Geometry (.venv)",
+        "language": "python",
+        "name": "breathgeom"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "breath geometry/notebooks/11_piecewise_svf_j11_representation_gate.ipynb",
+      "sha256": "d8e5518e283eaf8123ed33bd1d41a3a30d60dab590e3ee8c126857b4c560fcbf",
+      "bytes": 159686,
+      "cells": 9,
+      "code_cells": 5,
+      "output_cells": 5,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Breath Geometry (.venv)",
+        "language": "python",
+        "name": "breathgeom"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "breath geometry/notebooks/12_piecewise_svf_j12_truth_preflight.ipynb",
+      "sha256": "903bbc2ec7c56824388b925f8ecc94b333500bc22a8ea9bf317b5f9290e561cb",
+      "bytes": 123896,
+      "cells": 7,
+      "code_cells": 4,
+      "output_cells": 4,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Breath Geometry (.venv)",
+        "language": "python",
+        "name": "breathgeom"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "breath geometry/notebooks/13_piecewise_svf_j12_contact_preflight_v2.ipynb",
+      "sha256": "92e46292185d4857b3fc1ac9e35d40e6bd7b7f4f0b8c3b088f6201f4a2de110f",
+      "bytes": 121846,
+      "cells": 7,
+      "code_cells": 6,
+      "output_cells": 6,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "breath geometry/notebooks/14_piecewise_svf_j12_contact_preflight_v3.ipynb",
+      "sha256": "9e44cff4213b78ecbdf57db34e341b207ae3ba8bcef0ef30aed1ad0a53808cd1",
+      "bytes": 124006,
+      "cells": 7,
+      "code_cells": 6,
+      "output_cells": 6,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "breath geometry/notebooks/15_piecewise_svf_j12_contact_development_v3.ipynb",
+      "sha256": "ba5736b7333e75c298e754c150ca90c8df894a28b633f1c7e05dd780a4e47bc0",
+      "bytes": 182013,
+      "cells": 8,
+      "code_cells": 7,
+      "output_cells": 7,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "breath geometry/notebooks/16_piecewise_svf_j12_identifiability_screen.ipynb",
+      "sha256": "87ecac4405f29d27f4d25bef22e355e2df708771efe042920adbcc70b4b91e32",
+      "bytes": 207865,
+      "cells": 8,
+      "code_cells": 7,
+      "output_cells": 7,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "breath geometry/notebooks/17_wall_measurement_uncertainty_w1.ipynb",
+      "sha256": "087d5ec532ff1af37afed57d3c7d706b5f7f8612f2a9fe31f89f3c7a41481de3",
+      "bytes": 106019,
+      "cells": 13,
+      "code_cells": 7,
+      "output_cells": 7,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    },
+    {
+      "path": "breath geometry/notebooks/18_wall_spatial_map_w2.ipynb",
+      "sha256": "9c4fd7ad3412312a37790d9d8a1504bf80e971f34a324eb1763d8f48434ba8a6",
+      "bytes": 232883,
+      "cells": 13,
+      "code_cells": 7,
+      "output_cells": 7,
+      "html_exists": false,
+      "kernel": {
+        "display_name": "Python 3",
+        "language": "python",
+        "name": "python3"
+      },
+      "checkpoint": false
+    }
+  ]
+}

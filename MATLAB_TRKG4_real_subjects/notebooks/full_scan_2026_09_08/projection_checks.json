@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "cases": 270,
+  "max_xyz_difference_mm": 2.8421709430404007E-14,
+  "max_normal_difference": 2.2204460492503131E-16,
+  "seconds_mex": 0.0078943,
+  "seconds_matlab": 15.1627958,
+  "full_centres_seconds": 0.3213554,
+  "centre_count": 58081
+}

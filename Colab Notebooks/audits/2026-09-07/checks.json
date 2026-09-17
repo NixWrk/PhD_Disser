@@ -1,0 +1,98 @@
+{
+  "audit_date": "2026-09-07",
+  "scope": "Existing unit tests and static source/contract inspection; no notebook execution, new segmentation, FEM solve, or raw-data reanalysis.",
+  "runtime": {
+    "python": "3.13.6",
+    "packages": {
+      "numpy": "2.4.3",
+      "scipy": "1.17.1",
+      "pytest": "9.0.2",
+      "nibabel": "5.3.3",
+      "pydicom": "3.0.2"
+    }
+  },
+  "test_runs": [
+    {
+      "cwd": "Colab Notebooks",
+      "command": ".venv/Scripts/python.exe -B -m pytest tests -q -p no:cacheprovider",
+      "result": "startup_failed",
+      "reason": "Historical virtual environment references an unavailable interpreter on another drive.",
+      "interpretation": "Does not imply that the project cannot run in another environment."
+    },
+    {
+      "cwd": "Colab Notebooks",
+      "command": "python -B -m pytest tests -q -p no:cacheprovider",
+      "exit_code": 0,
+      "passed": 34,
+      "pytest_reported_seconds": 5.07,
+      "result": "passed",
+      "scope": "two_layer_model, record_qc, ttrkg_analysis, exploratory_analysis"
+    },
+    {
+      "cwd": "Colab Notebooks",
+      "command": "python -B -m pytest cardiac_4d_segmentation/tests -q -p no:cacheprovider",
+      "exit_code": 1,
+      "result": "collection_failed",
+      "exception": "ModuleNotFoundError: cardiac4d",
+      "interpretation": "Import depends on working directory; repeated from module directory below."
+    },
+    {
+      "cwd": "Colab Notebooks/cardiac_4d_segmentation",
+      "command": "python -B -m pytest tests -q -p no:cacheprovider",
+      "exit_code": 0,
+      "passed": 25,
+      "pytest_reported_seconds": 2.75,
+      "result": "passed",
+      "scope": "Existing cardiac4d and segmentation preparation/validation utility tests; not model inference or anatomical validation."
+    }
+  ],
+  "static_findings": {
+    "F26": {
+      "result": "confirmed_source_contract_mismatch",
+      "producer_cells": [
+        "33.03:d526a4d5",
+        "33.04:3304-real"
+      ],
+      "consumer_cells": [
+        "33.05:3305-real",
+        "40.20:4020-real"
+      ],
+      "differences": [
+        "artifact filenames",
+        "evidence status",
+        "phase_rr versus seconds",
+        "median versus mean",
+        "mOhm versus Ohm",
+        "scenario family versus single accepted estimate"
+      ]
+    },
+    "F27": {
+      "result": "confirmed_export_gap_in_current_notebook_source",
+      "producer_cell": "40.04:569d0074; analogous 40.14 cell",
+      "consumer_cell": "40.20:4020-real",
+      "detail": "Current FEM notebooks display sensitivity/stability tables but do not write the checked operator JSON expected by 40.20."
+    },
+    "F28": {
+      "result": "confirmed_working_assumption_metadata_conflict",
+      "detail": "Current AGENTS accepts stated physical units by default; parts of 30.02/33.03/33.04 still assume globally unknown gain/sign."
+    },
+    "F32": {
+      "result": "confirmed_method_description_version_mismatch",
+      "detail": "00.02 describes previous per-array rho2 inversion for 33.07; current notebook describes joint four-parameter fit."
+    }
+  },
+  "literature": {
+    "local_zotero_api_http_status": 403,
+    "review_completed": false,
+    "settings_changed": false
+  },
+  "not_performed": [
+    "all-notebook end-to-end execution",
+    "MATLAB/EIDORS/Gmsh tests or model runs",
+    "automatic segmentation inference",
+    "independent manual mask validation",
+    "new ECG/respiratory acceptance",
+    "full external-data inventory",
+    "independent experimental or clinical validation"
+  ]
+}

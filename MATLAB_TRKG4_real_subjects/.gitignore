@@ -8,6 +8,8 @@ output/**
 !output/**/*.m
 !output/**/*.py
 !output/**/*.ipynb
+!output/**/*.md
+!output/**/*.ps1
 
 # Vendored solver environments and generated caches are reproducible dependencies.
 output/**/python_solver_deps/

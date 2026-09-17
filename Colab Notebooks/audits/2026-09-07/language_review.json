@@ -1,0 +1,55 @@
+{
+  "artifact": "Colab Notebooks/AUDIT_2026-09-07_Методика_и_приоритеты.md",
+  "sha256": "b6f6debb5219c9a3394f7425c920555545c1989fadd5ecf351d4c53d5b22e54c",
+  "language": "ru",
+  "genre": "diagnostic methodology and implementation audit",
+  "reviewer": "assistant_model",
+  "review_method": "semantic_sequential_full_text_after_last_reader_edit",
+  "full_reader_text_read": true,
+  "read_line_ranges_one_based": [
+    [
+      1,
+      130
+    ],
+    [
+      131,
+      245
+    ],
+    [
+      246,
+      375
+    ],
+    [
+      376,
+      500
+    ],
+    [
+      501,
+      645
+    ]
+  ],
+  "language_status": "reviewed",
+  "applicable_check_ids": [
+    "language.ru.hash-bound-final-review",
+    "language.ru.encoding",
+    "language.ru.formula-where",
+    "language.ru.natural-prose",
+    "language.ru.intro-variation",
+    "language.ru.reader-facing-clarity"
+  ],
+  "attestations": {
+    "scientific_headings_and_scope_checked": true,
+    "technical_terms_and_variable_definitions_checked": true,
+    "derived_objects_and_evidence_limits_checked": true,
+    "semantic_reverse_translation_check": true,
+    "meaningful_contrasts_and_referents_checked": true,
+    "claims_not_strengthened_by_language_editing": true,
+    "technical_audit_identifiers": "Retained where they are the specific object of a verified interface mismatch or issue lookup; accompanied by human-readable explanations."
+  },
+  "open_language_findings": [],
+  "technical_status": "local links, issue counts and source hashes checked; see verification.json",
+  "computational_status": "59 existing tests passed in their documented directories; full method not rerun",
+  "scientific_status": "diagnostic_audit_not_independent_validation; literature review incomplete",
+  "overall_release_claim": "none",
+  "created_at_utc": "2026-09-07T15:02:50.743136+00:00"
+}

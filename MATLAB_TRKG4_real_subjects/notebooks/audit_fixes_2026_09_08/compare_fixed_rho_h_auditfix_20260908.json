@@ -1,0 +1,239 @@
+{
+  "tag": "auditfix_20260908",
+  "status": "single_pose_fixed_rho_model_comparison_not_validation",
+  "input_hashes": {
+    "output/nik_trkg4_inverse_inhale_comparison_auditfix_20260908.csv": "501006111dc825e310521840fda4b4ec632124880e827e5750141f1d162cbe58",
+    "output/nik_trkg4_inverse_inhale_fit_summary_auditfix_20260908.csv": "85cf4db181182039781b153e360630269f1b87199972e82357f9a80969c15cea"
+  },
+  "input_pair_contract": "not_validated_here",
+  "legacy_debug_only": false,
+  "units": {
+    "L": "mm",
+    "h": "mm",
+    "rho": "ohm_m",
+    "Z": "ohm"
+  },
+  "rho1_ohm_m": 5.5521664546649,
+  "rho2_ohm_m": 30.7069468090815,
+  "nominal_electrodes_over_L": [
+    -0.5,
+    -0.25,
+    0.25,
+    0.5
+  ],
+  "contact_models": {
+    "planar": "point_electrodes",
+    "FEM": "saved_CEM_reference"
+  },
+  "h_geom_mm": 30.4849289802345,
+  "h_geom_status": "nearest_vertex_not_soft",
+  "h_range_mm": [
+    0.0,
+    200.0
+  ],
+  "h_eff": {
+    "h_mm": 24.900733047921666,
+    "rmse_train_ohm": 5.117398828577305,
+    "boundary_lower": false,
+    "boundary_upper": false,
+    "objective_flat_on_grid": false
+  },
+  "h_eff_status": "curve_fit_parameter_without_anatomical_interpretation",
+  "fit_method": "1mm_grid_all_detected_local_minima_refined_including_endpoints",
+  "rmse_geom_ohm": 7.814456591698084,
+  "rmse_fit_ohm": 5.117398828577305,
+  "rmse_loo_ohm": 5.634535633388209,
+  "loo_h_range_mm": [
+    24.442659253990197,
+    25.710850191431366
+  ],
+  "loo": [
+    {
+      "L_mm": 50.0,
+      "h_mm": 24.726577305795857,
+      "rmse_train_ohm": 5.330128161651845,
+      "boundary_lower": false,
+      "boundary_upper": false,
+      "objective_flat_on_grid": false,
+      "prediction_ohm": 104.11980363134596,
+      "error_ohm": 2.9838419963779614
+    },
+    {
+      "L_mm": 60.0,
+      "h_mm": 25.710850191431366,
+      "rmse_train_ohm": 3.8008570705253266,
+      "boundary_lower": false,
+      "boundary_upper": false,
+      "objective_flat_on_grid": false,
+      "prediction_ohm": 90.05701141921182,
+      "error_ohm": -11.398703226877188
+    },
+    {
+      "L_mm": 70.0,
+      "h_mm": 25.660554257428863,
+      "rmse_train_ohm": 4.4004548962177505,
+      "boundary_lower": false,
+      "boundary_upper": false,
+      "objective_flat_on_grid": false,
+      "prediction_ohm": 81.27277181022703,
+      "error_ohm": -9.45772403666507
+    },
+    {
+      "L_mm": 80.0,
+      "h_mm": 24.442659253990197,
+      "rmse_train_ohm": 5.1123737094096,
+      "boundary_lower": false,
+      "boundary_upper": false,
+      "objective_flat_on_grid": false,
+      "prediction_ohm": 76.66111957942148,
+      "error_ohm": 5.487945779757084
+    },
+    {
+      "L_mm": 90.0,
+      "h_mm": 24.66781006769187,
+      "rmse_train_ohm": 5.357385344594587,
+      "boundary_lower": false,
+      "boundary_upper": false,
+      "objective_flat_on_grid": false,
+      "prediction_ohm": 71.789414385292,
+      "error_ohm": 2.6397778583527014
+    },
+    {
+      "L_mm": 110.0,
+      "h_mm": 24.826169193672985,
+      "rmse_train_ohm": 5.421385425389509,
+      "boundary_lower": false,
+      "boundary_upper": false,
+      "objective_flat_on_grid": false,
+      "prediction_ohm": 65.23144337052902,
+      "error_ohm": 0.8053483531897143
+    },
+    {
+      "L_mm": 120.0,
+      "h_mm": 24.80685774874249,
+      "rmse_train_ohm": 5.417651770222149,
+      "boundary_lower": false,
+      "boundary_upper": false,
+      "objective_flat_on_grid": false,
+      "prediction_ohm": 62.942407339420484,
+      "error_ohm": 1.0125470532379808
+    },
+    {
+      "L_mm": 130.0,
+      "h_mm": 24.674441326539366,
+      "rmse_train_ohm": 5.366635085105932,
+      "boundary_lower": false,
+      "boundary_upper": false,
+      "objective_flat_on_grid": false,
+      "prediction_ohm": 61.175368194398075,
+      "error_ohm": 2.474741255357472
+    },
+    {
+      "L_mm": 140.0,
+      "h_mm": 24.582459919724823,
+      "rmse_train_ohm": 5.300959280068138,
+      "boundary_lower": false,
+      "boundary_upper": false,
+      "objective_flat_on_grid": false,
+      "prediction_ohm": 59.60158668119456,
+      "error_ohm": 3.544781538943461
+    }
+  ],
+  "curves": {
+    "L_mm": [
+      50.0,
+      60.0,
+      70.0,
+      80.0,
+      90.0,
+      110.0,
+      120.0,
+      130.0,
+      140.0
+    ],
+    "FEM_ohm": [
+      101.135961634968,
+      101.455714646089,
+      90.7304958468921,
+      71.1731737996644,
+      69.1496365269393,
+      64.4260950173393,
+      61.9298602861825,
+      58.7006269390406,
+      56.0568051422511
+    ],
+    "geom_ohm": [
+      100.1143864186376,
+      86.24596763873899,
+      76.8322650281122,
+      70.13247333487664,
+      65.17795891761745,
+      58.41215153140491,
+      56.004571039302014,
+      54.01145661684531,
+      52.32470401045675
+    ],
+    "fit_ohm": [
+      103.9542169503292,
+      90.9263118946127,
+      82.1952172564462,
+      76.02129511240267,
+      71.45195696040686,
+      65.11965007208558,
+      62.80118216968867,
+      60.83511666491353,
+      59.12712182375961
+    ]
+  },
+  "series_check": {
+    "N": 128,
+    "production_N": 256,
+    "max_N_2N_delta_ohm": 0.0,
+    "uniform_production_truncation_bound_ohm": 9.517592860558657e-39,
+    "checked_h_mm": [
+      0.0,
+      0.25,
+      24.442659253990197,
+      24.582459919724823,
+      24.66781006769187,
+      24.674441326539366,
+      24.726577305795857,
+      24.80685774874249,
+      24.826169193672985,
+      24.900733047921666,
+      25.660554257428863,
+      25.710850191431366,
+      30.4849289802345,
+      200.0
+    ],
+    "bound_excludes_roundoff": true
+  },
+  "math_checks": {
+    "status": "passed",
+    "max_abs_errors_ohm": {
+      "homogeneous": 5.684341886080802e-14,
+      "h_zero": 1.7053025658242404e-13,
+      "h_large": 5.684341886080802e-14,
+      "series_32_64": 0.0006295750976619274,
+      "independent_scalar_series": 1.7053025658242404e-13
+    },
+    "series_terms": [
+      32,
+      64
+    ],
+    "max_truncation_bounds_ohm": [
+      0.0031478827843747395,
+      7.296225746416788e-09
+    ],
+    "limit_test_h_mm": 100000000.0,
+    "known_h_recovery_test_mm": [
+      0.0,
+      0.25,
+      37.25,
+      200.0
+    ],
+    "known_h_recovery_max_error_mm": 1.6008442571546766e-08,
+    "endpoint_flags_passed": true
+  },
+  "interpretation": "Fit and leave-one-size-out measure approximation of nine FEM values at one pose; they do not validate anatomy, FEM, experimental calibration or transfer to another pose. Residuals include point-versus-finite electrode and projected-versus-nominal geometry differences; they cannot be attributed only to curvature or a third tissue layer."
+}

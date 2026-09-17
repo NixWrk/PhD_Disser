@@ -1,29 +1,12 @@
 {
   "skill": "russian-scientific-prose",
-  "mode": "audit",
+  "mode": "transform_and_audit",
   "status": "passed_for_exploratory_reader_report",
   "full_text_model_review": true,
   "review_after_last_reader_edit": true,
-  "semantic_review_scope": "Complete final notebook prose, tables and seven figures; full updated plan; execution protocol; added pipeline section. Whole-heart approximation, TEPC-6/7 potential differences and chosen TTRKG scenario distinguished from validation.",
-  "reader_text_sha256": "debfb99f6f2818b383b17ee6de59342f6f27615b6f514bdfb613f49fb6b737ad",
-  "artifacts": [
-    {
-      "path": "Colab Notebooks/40.23_Изменение_импеданса_TEPC_по_4D_КТ_Nix.ipynb",
-      "sha256": "17c9a084959f846798a808bfa17c674aa88699d1560754cfee539b11255bbbbb"
-    },
-    {
-      "path": "Colab Notebooks/40.23_Изменение_импеданса_TEPC_по_4D_КТ_Nix.html",
-      "sha256": "0f911093bc9dfce858a596ce25822245c0b181642c92c5ddf32278d935901565"
-    },
-    {
-      "path": "Colab Notebooks/40.19_План_выбора_электродов_и_модели_для_оценки_объёма.md",
-      "sha256": "4ae4ff6e940716e31ddf8c6ccdf43575173820e4475a5f0e8b7f9a4b5a6f4e9e"
-    },
-    {
-      "path": "MATLAB_TRKG4_real_subjects/docs/CARDIAC_CYCLE_TEPC_PILOT.md",
-      "sha256": "22557dd7959cfedd9e032fd6902a28087e3b0888c1598a3aa163b8ccda664966"
-    }
-  ],
+  "review_date": "2026-09-17",
+  "reader_text_sha256": "2c21b712117be58df3219c620becaeeff414b3c08c296d21d14cb0f368024b2b",
+  "semantic_review_scope": "Complete final notebook reader text, all eight tables and six figures, including final axis labels. Checked scientific headings, terminology, definitions, source scope, temporal window, whole-heart material scenarios, selected muscle background, fat mapping and limits of inference.",
   "checks": {
     "language.ru.hash-bound-final-review": "passed",
     "language.ru.encoding": "passed",
@@ -32,6 +15,45 @@
     "language.ru.natural-prose": "passed"
   },
   "open_language_findings": [],
-  "computational_status": "84 direct solutions checked; 13 focused tests passed; original 72 preserved",
-  "scientific_status": "limited observed-mask computational pilot; no physical or spatial validation claim"
+  "artifacts": [
+    {
+      "path": "Colab Notebooks/40.23_Изменение_импеданса_TEPC_по_4D_КТ_Nix.ipynb",
+      "sha256": "a9974d8a0afe6c22a86c9998802bb65519112d938470583892ac1c0a7843d3a0"
+    },
+    {
+      "path": "Colab Notebooks/40.23_Изменение_импеданса_TEPC_по_4D_КТ_Nix.html",
+      "sha256": "dfc49ce6607a0277bef6838b8a79c23bc789e662ec4358bea527ab4d37951784"
+    },
+    {
+      "path": "Colab Notebooks/cardiac_4d_segmentation/heart_cardiac_cycle_fat_report.py",
+      "sha256": "8975698fec0310a60826b8f756443034a9a67bd16be2106a324d7961b34d1482"
+    },
+    {
+      "path": "Colab Notebooks/cardiac_4d_segmentation/results/nix_cardiac_cycle_fat_20260916/absolute_cycle.png",
+      "sha256": "04d040d1223ff9eacd928485f1f06875901550f70935f6bd688ed5d78f549512"
+    },
+    {
+      "path": "Colab Notebooks/cardiac_4d_segmentation/results/nix_cardiac_cycle_fat_20260916/delta_cycle.png",
+      "sha256": "25e8e77ea91ff0829ab0788b9b5111f84ceb178685cd1eae1e930ecf86261a1e"
+    },
+    {
+      "path": "Colab Notebooks/cardiac_4d_segmentation/results/nix_cardiac_cycle_fat_20260916/fat_ct_overlay.png",
+      "sha256": "c8e94f263907f2ec53200bb441d20c171fb5fb6511c6e949fbd2ad86378ed1f0"
+    },
+    {
+      "path": "Colab Notebooks/cardiac_4d_segmentation/results/nix_cardiac_cycle_fat_20260916/geometry.png",
+      "sha256": "70b9b207222683d59f8b17a03245882ce7d05ad0b152c4e323433b5f44abae68"
+    },
+    {
+      "path": "Colab Notebooks/cardiac_4d_segmentation/results/nix_cardiac_cycle_fat_20260916/montages.png",
+      "sha256": "ef32b4d3f864b35718bff5161db30d20bc8a962b0ee865f349180f479f59a57f"
+    },
+    {
+      "path": "Colab Notebooks/cardiac_4d_segmentation/results/nix_cardiac_cycle_fat_20260916/scenario_matrix.png",
+      "sha256": "b0049fab3b234209428f18857a993a12fcc5c720a0d14e68935fd7cdca94430b"
+    }
+  ],
+  "computational_status": "336 independently solved phase/montage/scenario combinations; residual, current balance, reciprocity, export identities and completion hashes checked; notebook executed; HTML input code excluded.",
+  "scientific_status": "Exploratory direct-model comparison. Physical validation and spatial convergence for the new material assignment not established. No chamber-only segmentation or validated stroke-volume estimate.",
+  "physical_validation": false
 }

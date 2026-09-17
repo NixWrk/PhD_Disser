@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "scope": "five static scientific figures: two-layer h comparison, FEM/data/residual/search, fixed-rho comparison, curvature and scaled secants; DICOM and browser WebGL not reviewed",
+  "files": [
+    {
+      "name": "fixed_rho_h_auditfix_20260908.png",
+      "sha256": "a317aa747f14a56d7a9e283b2f7757f237d2916ca6c44eaa480cb1d33860cb6f"
+    },
+    {
+      "name": "canonical_cell_23_output_1.png",
+      "sha256": "56fb12aa6a2b60475208fc9cedab84047ba7acd4cd7c8c14682e9d60fd86664c"
+    },
+    {
+      "name": "canonical_cell_30_output_4.png",
+      "sha256": "0580955574932b51592ca40e0fe0e016d36b16c2e272ed662a405d115e423c01"
+    },
+    {
+      "name": "canonical_curvature.png",
+      "sha256": "16ecabe2b33bced692dcb9313e48e01bd5e9e1eeb9fbe1f91acb52681b2262a6"
+    },
+    {
+      "name": "canonical_scaled_secants.png",
+      "sha256": "e1d8a00cf171e04dacab7116c622180d7bcfd1609c523655da430fb99328a502"
+    }
+  ],
+  "report_links_checked": true
+}

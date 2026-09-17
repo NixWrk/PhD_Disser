@@ -1,0 +1,27 @@
+{
+  "status": "language_review_passed",
+  "language": "ru",
+  "reviewed_at": "2026-09-03",
+  "artifact": {
+    "path": "Colab Notebooks/README.md",
+    "sha256": "4273245fe557fe0c5607ff6de27ac03ff825f1de08c0a0a1d296a89b8873fedd"
+  },
+  "checks": {
+    "language.ru.hash-bound-final-review": "passed",
+    "language.ru.encoding": "passed_utf8",
+    "language.ru.natural-prose": "passed",
+    "language.ru.intro-variation": "passed",
+    "language.ru.reader-facing-clarity": "passed",
+    "language.ru.formula-where": "passed",
+    "language.ru.claim-status-and-limitations": "passed"
+  },
+  "attestation": {
+    "full_text_read_sequentially_after_last_byte_change": true,
+    "scientific_headings_checked": true,
+    "technical_terms_and_scope_checked": true,
+    "claim_status_and_limitations_preserved": true,
+    "open_language_findings": 0,
+    "series_40_boundary_updated": true,
+    "method_development_status_preserved": true
+  }
+}

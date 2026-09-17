@@ -1,0 +1,25 @@
+{
+  "status": "language_review_passed",
+  "language": "ru",
+  "reviewed_at": "2026-09-08",
+  "artifact": {
+    "path": "MATLAB_TRKG4_real_subjects/data/yaroslav/README.md",
+    "sha256": "15d183c71e2df86683ae213ba31f4ec6a0662eea0458c981e3be8f0a8509a403"
+  },
+  "checks": {
+    "language.ru.hash-bound-final-review": "passed",
+    "language.ru.encoding": "passed_utf8",
+    "language.ru.natural-prose": "passed",
+    "language.ru.reader-facing-clarity": "passed",
+    "language.ru.formula-where": "passed",
+    "language.ru.claim-status-and-limitations": "passed"
+  },
+  "attestation": {
+    "full_text_read_sequentially_after_last_byte_change": true,
+    "scientific_headings_checked": true,
+    "technical_terms_and_scope_checked": true,
+    "claim_status_and_limitations_preserved": true,
+    "medical_or_personal_content_not_reproduced": true,
+    "open_language_findings": 0
+  }
+}

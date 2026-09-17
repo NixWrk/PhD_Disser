@@ -1,0 +1,13 @@
+{
+  "tag": "auditfix_20260908",
+  "code_cells": 24,
+  "errors": 0,
+  "generator_sha256": "86048ebfe799e84c70520e87a3af9f95d0b3dec7ba25a56fd77c9b2230251c66",
+  "notebook_sha256": "d41a89d6fa290546f7e904fa62b2ebebc83b50b4b3d9dbe658c65139e6dbb2c3",
+  "html_sha256": "c66117fd2ac6e1f953fde01ec67630ab20a49846d1d84532b825d55a0cb40fec",
+  "dicom_available": false,
+  "notebook": "D:\\Аспа\\Kalmykov_PhD\\MATLAB_TRKG4_real_subjects\\notebooks\\TRKG4_inverse_inhale_results.ipynb",
+  "html": "D:\\Аспа\\Kalmykov_PhD\\MATLAB_TRKG4_real_subjects\\notebooks\\TRKG4_inverse_inhale_results.html",
+  "elapsed_s": 15.119971900014207,
+  "scope": "fresh Python kernel and HTML export; no MATLAB solve"
+}

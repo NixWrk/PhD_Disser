@@ -1,0 +1,160 @@
+{
+  "schema": "heart_plan_language_review_v1",
+  "review": {
+    "mode": "audit",
+    "status": "completed_with_findings",
+    "reviewed_at": "2026-09-16",
+    "language": "ru",
+    "skill": "russian-scientific-prose",
+    "policy_id": "language.ru",
+    "hash_binding": "Exact repository bytes were bound with git_blob_sha1 before this sidecar was written."
+  },
+  "scope": {
+    "plan": "Colab Notebooks/40.15_План_исполнения_сравнения_моделей_сердца.md",
+    "owned_document_sections": "MATLAB_TRKG4_real_subjects/output/exploratory/heart_mesh_volume_block_20260916/owned_document_sections.json",
+    "plan_lines_read_sequentially": 746,
+    "owned_section_entries_read": 3,
+    "dynamic_report_40_18_read": false,
+    "calculation_run": false,
+    "source_or_report_edited": false
+  },
+  "inputs": [
+    {
+      "path": "Colab Notebooks/40.15_План_исполнения_сравнения_моделей_сердца.md",
+      "role": "full reader-facing plan",
+      "hash_algorithm": "git_blob_sha1",
+      "hash": "ac293db0a2692585d5bf359e55937367aa3cabc6"
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/output/exploratory/heart_mesh_volume_block_20260916/owned_document_sections.json",
+      "role": "new owned document sections",
+      "hash_algorithm": "git_blob_sha1",
+      "hash": "1f25066374d1884d4b8cfb547c312142f2b6bbda"
+    },
+    {
+      "path": "output/exploratory/heart_mesh_volume_block_20260916/code_review.json",
+      "role": "preceding code review context",
+      "hash_algorithm": "git_blob_sha1",
+      "hash": "3deaad459dab7bf5d0864c9f7ecb26ef489e6873"
+    }
+  ],
+  "release_gate": {
+    "language": "reviewed_with_findings",
+    "scientific_status": "consistent_as_stated",
+    "computational_validation": "not_run",
+    "technical_validation": "not_run",
+    "release_ready": false
+  },
+  "confirmed_passes": [
+    {
+      "check": "protocol_scope",
+      "status": "pass",
+      "evidence": "Новый контракт явно задаёт 25 новых решений и сравнение 30 состояний; он не выдаёт эти числа за научный результат."
+    },
+    {
+      "check": "quadrature_claim",
+      "status": "pass",
+      "evidence": "План прямо указывает, что одинаковые 16 384 точек интегрирования не доказывают ни сходимость квадратуры, ни достаточную точность."
+    },
+    {
+      "check": "scientific_status",
+      "status": "pass",
+      "evidence": "План отделяет протокол и ограничения от результатов, а состояние выполнения, таблицы и выводы относит к продолжению 40.18; причинные объяснения численных различий не навязываются."
+    },
+    {
+      "check": "formula_definitions",
+      "status": "pass",
+      "evidence": "Определения переменных для S_V и связанных величин следуют после формулы через «где»; математический смысл симметричных и односторонних оценок сохранён."
+    },
+    {
+      "check": "sequence_and_terms",
+      "status": "pass_with_note",
+      "evidence": "Последовательность статической геометрической чувствительности, проверки двух FEM-сеток и последующих задач регистрации изложена последовательно; 4D-регистрация и фазовые расчёты отделены от текущего блока."
+    }
+  ],
+  "findings": [
+    {
+      "id": "PLR-L1",
+      "severity": "low",
+      "status": "actionable",
+      "type": "language",
+      "policy_check": "language.ru.reader-facing-clarity",
+      "location": "owned_document_sections.json, entry «Colab Notebooks/00.00_Карта_проекта.md»",
+      "text": "при одинаковой подробности интегрирования",
+      "issue": "Оборот звучит неестественно и не сообщает, какая величина фактически фиксируется.",
+      "suggested_wording": "при одинаковом числе точек интегрирования"
+    },
+    {
+      "id": "PLR-L2",
+      "severity": "low",
+      "status": "actionable",
+      "type": "language",
+      "policy_check": "language.ru.reader-facing-clarity",
+      "location": "40.15, строки 727–734, контракт второго блока",
+      "text": "пять объёмных состояний индивидуальной формы, сферы и эллипсоида",
+      "issue": "Состав пяти состояний не перечислен в самом контракте, поэтому читателю приходится восстанавливать его из соседнего текста.",
+      "suggested_wording": "базовое состояние и состояния с изменением объёма −1%, −0,5%, +0,5% и +1%"
+    },
+    {
+      "id": "PLR-L3",
+      "severity": "low",
+      "status": "provenance_wording",
+      "type": "status_language",
+      "policy_check": "language.ru.reader-facing-clarity",
+      "location": "owned_document_sections.json, entry «MATLAB_TRKG4_real_subjects/docs/PIPELINE_FOR_NOTEBOOKS.md»",
+      "text": "25 новых решений дополняют пять ранее сохранённых исходных состояний индивидуальной формы",
+      "issue": "В протокольном описании настоящее время может читаться как утверждение о завершённом результате; численность и статус выполнения должны оставаться в 40.18.",
+      "suggested_wording": "предусмотрены 25 новых решений, которые должны дополнить пять ранее сохранённых исходных состояний индивидуальной формы"
+    },
+    {
+      "id": "PLR-L4",
+      "severity": "low",
+      "status": "actionable",
+      "type": "language",
+      "policy_check": "language.ru.reader-facing-clarity",
+      "location": "owned_document_sections.json, entry «MATLAB_TRKG4_real_subjects/docs/PIPELINE_FOR_NOTEBOOKS.md»",
+      "text": "Геометрические ошибки разности двух симметричных состояний и каждого одностороннего приращения",
+      "issue": "Неясно, относится ли «разность» к симметричному приращению или к отдельной ошибке; это затрудняет чтение QC.",
+      "suggested_wording": "Геометрическую ошибку симметричного приращения, рассчитанного по разности двух состояний, и ошибку каждого одностороннего приращения"
+    },
+    {
+      "id": "PLR-L5",
+      "severity": "low",
+      "status": "actionable",
+      "type": "language",
+      "policy_check": "language.ru.reader-facing-clarity",
+      "location": "owned_document_sections.json, entry «MATLAB_TRKG4_real_subjects/docs/PIPELINE_FOR_NOTEBOOKS.md»",
+      "text": "его версия и точка подготовки включаются в контрольные суммы плана",
+      "issue": "Термин «точка подготовки» не определён и может означать файл, команду или момент времени.",
+      "suggested_wording": "его версию и файл (или точку входа) подготовки включают в контрольные суммы плана"
+    },
+    {
+      "id": "PLR-L6",
+      "severity": "low",
+      "status": "actionable",
+      "type": "terminology",
+      "policy_check": "language.ru.reader-facing-clarity",
+      "location": "40.15, разделы о поверхностной квадратуре, строки около 271, 291 и 303",
+      "text": "площадочная выборка",
+      "issue": "Термин не определён при первом употреблении и может быть понят как выборка площадей, а не точек квадратуры на поверхности.",
+      "suggested_wording": "выборка точек поверхностной квадратуры (далее — площадочная выборка)"
+    },
+    {
+      "id": "PLR-L7",
+      "severity": "low",
+      "status": "temporal_clarity",
+      "type": "status_language",
+      "policy_check": "language.ru.reader-facing-clarity",
+      "location": "40.15, абзац о следующем расчёте с увеличением числа точек, строки 674–680",
+      "text": "Следующий расчёт увеличивает число точек...",
+      "issue": "В полном финальном плане этот абзац читается как будущее действие, хотя ниже уже описан блок с q=16 384; временную роль абзаца лучше пометить как исторический план предыдущей итерации или обновить формулировку.",
+      "suggested_wording": "В предыдущей итерации планировалось увеличить число точек..."
+    }
+  ],
+  "scope_notes": [
+    "Замечания относятся к ясности, терминологии и размещению статуса; научные утверждения не переписывались и не расширялись.",
+    "Результаты 25 решений, их численные значения и состояние выполнения в динамический отчёт не переносились; 40.18 не читался.",
+    "Проверка кода, CLI и численной воспроизводимости не входила в этот языковой sidecar; для этого используется code_review.json и владельческие проверки."
+  ],
+  "next_action": "После любых изменений в плане или owned_document_sections.json этот hash-bound аудит недействителен и должен быть выполнен заново; до устранения замечаний release_ready не устанавливать."
+}

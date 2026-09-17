@@ -1,0 +1,125 @@
+{
+  "status": "numerical_checks_not_physical_validation",
+  "tests_passed": 30,
+  "tests_failed": 0,
+  "tests_incomplete": 0,
+  "tag": "auditfix_20260908",
+  "contact_z_ohm_m2": 0.00015915494309189532,
+  "tissue_names": [
+    "soft_tissue",
+    "lungs",
+    "heart",
+    "bones"
+  ],
+  "grid_checks": [
+    {
+      "L_mm": 50,
+      "Z_ohm": 101.13596163496814,
+      "saved_Z_ohm": 101.135961634968,
+      "abs_difference_ohm": 1.4210854715202004E-13
+    },
+    {
+      "L_mm": 60,
+      "Z_ohm": 101.45571464608857,
+      "saved_Z_ohm": 101.455714646089,
+      "abs_difference_ohm": 4.4053649617126212E-13
+    },
+    {
+      "L_mm": 70,
+      "Z_ohm": 90.730495846892069,
+      "saved_Z_ohm": 90.7304958468921,
+      "abs_difference_ohm": 2.8421709430404007E-14
+    },
+    {
+      "L_mm": 80,
+      "Z_ohm": 71.173173799664369,
+      "saved_Z_ohm": 71.1731737996644,
+      "abs_difference_ohm": 2.8421709430404007E-14
+    },
+    {
+      "L_mm": 90,
+      "Z_ohm": 69.1496365269393,
+      "saved_Z_ohm": 69.1496365269393,
+      "abs_difference_ohm": 0
+    },
+    {
+      "L_mm": 110,
+      "Z_ohm": 64.426095017339293,
+      "saved_Z_ohm": 64.4260950173393,
+      "abs_difference_ohm": 1.4210854715202004E-14
+    },
+    {
+      "L_mm": 120,
+      "Z_ohm": 61.929860286182546,
+      "saved_Z_ohm": 61.9298602861825,
+      "abs_difference_ohm": 4.2632564145606011E-14
+    },
+    {
+      "L_mm": 130,
+      "Z_ohm": 58.700626939040561,
+      "saved_Z_ohm": 58.7006269390406,
+      "abs_difference_ohm": 4.2632564145606011E-14
+    },
+    {
+      "L_mm": 140,
+      "Z_ohm": 56.056805142251129,
+      "saved_Z_ohm": 56.0568051422511,
+      "abs_difference_ohm": 2.8421709430404007E-14
+    }
+  ],
+  "homogeneous_checks": [
+    {
+      "L_mm": 50,
+      "rho_ohm_m": 5.5521664546649,
+      "finite_body_CEM_ohm": 95.066188437226046,
+      "nominal_planar_point_ohm": 94.256505187085068,
+      "difference_ohm": 0.80968325014097786,
+      "difference_percent": 0.85902108139261912
+    },
+    {
+      "L_mm": 60,
+      "rho_ohm_m": 5.5521664546649,
+      "finite_body_CEM_ohm": 93.444996592567207,
+      "nominal_planar_point_ohm": 78.547087655904221,
+      "difference_ohm": 14.897908936662986,
+      "difference_percent": 18.966850816833734
+    },
+    {
+      "L_mm": 90,
+      "rho_ohm_m": 5.5521664546649,
+      "finite_body_CEM_ohm": 56.998008514491048,
+      "nominal_planar_point_ohm": 52.364725103936152,
+      "difference_ohm": 4.6332834105548955,
+      "difference_percent": 8.84810032203649
+    },
+    {
+      "L_mm": 140,
+      "rho_ohm_m": 5.5521664546649,
+      "finite_body_CEM_ohm": 42.061700700746783,
+      "nominal_planar_point_ohm": 33.663037566816094,
+      "difference_ohm": 8.39866313393069,
+      "difference_percent": 24.94921356179043
+    }
+  ],
+  "contact_sweep": [
+    {
+      "factor": 0.1,
+      "Z_ohm": 68.944712340705891,
+      "difference_ohm": -0.2049241862334128
+    },
+    {
+      "factor": 10,
+      "Z_ohm": 69.120419797362132,
+      "difference_ohm": -0.029216729577171918
+    }
+  ],
+  "max_patch_centroid_rebuild_error_mm": 6.6385380760160557E-13,
+  "max_patch_centroid_offset_mm": 4.0023911387707827,
+  "max_patch_area_rebuild_error_mm2": 4.2632564145606011E-14,
+  "reciprocity_90mm_difference_ohm": 5.6843418860808015E-14,
+  "complete": true,
+  "forward_max_difference_ohm": 4.4053649617126212E-13,
+  "homogeneous_interpretation": "Finite curved body, CEM patches and discretisation remain; difference from planar point electrodes is NOT pure curvature or FEM error.",
+  "mesh_convergence_tested": false,
+  "contact_sweep_interpretation": "Synthetic factor changes; no measured contact uncertainty."
+}

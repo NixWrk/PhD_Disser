@@ -1,0 +1,81 @@
+{
+  "status": "helpers_frozen_numerical_qc_passed",
+  "frozen_utc": "2026-09-08T19:23:05.672318+00:00",
+  "files_sha256": {
+    "full_scan_green.m": "4ad044e77540029088551aa824a701144e8ce4ca368a75a81e1332219cb08186",
+    "full_scan_cem_transfer.m": "9174debfb93f6f76ab4336d21165a642aaf21f1010d78efef982525836abffa0",
+    "verify_full_scan_cem.m": "d25eb3ccc435c0374b0de5de787777964e53732d735dfe265598280cd57aee91",
+    "diagnose_full_scan_ground.m": "eb2bc3b3691604a33aaae52c7dc5cd3c54d23ab60b9ca1ba702ff2a873268d97",
+    "CEM_HELPERS.md": "93c04dfc97e915c1c3dc51db7a99a514fee6f240400e3016a4c14d897b883be0"
+  },
+  "report": "tools/full_pose_scan/cem_qc/20260908_221856/report.json",
+  "report_sha256": "0b06665ae694c091b1c5599731764fc85eb9776bb70d18f293e838904dc92adb",
+  "numerical_checks": {
+    "actual_fit_full_eidors_cases": 9,
+    "shifted_qc_valid_full_eidors_cases": 3,
+    "ground_on_electrode_cases": 2,
+    "fixed_rho_ohm_m": [
+      5.5521664546649,
+      30.7069468090815
+    ],
+    "max_full_eidors_vs_published_fit_error_ohm": 4.405364961712621e-13,
+    "max_helper_vs_published_fit_error_ohm": 1.4426611016915558e-08,
+    "max_helper_vs_full_eidors_regular_and_shifted_error_ohm": 1.4426582595206128e-08,
+    "max_helper_vs_full_eidors_grounded_error_ohm": 1.6778365363734338e-08,
+    "max_reciprocity_error_ohm": 5.826450433232822e-13,
+    "max_old_single_error_ohm": 1.3771727111588916e-05,
+    "raw_RMSE_at_fit_ohm": 7.287877750155083,
+    "cache_checks": {
+      "reused_exactly": true,
+      "identity_sigma_order_rejected_readonly": true,
+      "content_corruption_rejected": true,
+      "read_seconds": 0.0180478
+    },
+    "tiling_checks": {
+      "oversize_rejected_before_allocation": true,
+      "bulk_factor_reused": true,
+      "requested_order_preserved": true,
+      "subset_error_ohm": 2.7284841053187847e-12
+    }
+  },
+  "benchmark": {
+    "candidate_nodes": 508,
+    "non_ground_rhs": 507,
+    "assembly_seconds": 1.9394652,
+    "factor_seconds": 1.1315651,
+    "green_solve_seconds": 10.2725883,
+    "warm_local_seconds_per_grid": 0.0011311927777777778,
+    "note": "Small QC union; timing depends on concurrent load and does not certify full scan duration."
+  },
+  "memory_strategy": {
+    "max_nodes_per_group": 15000,
+    "green_bytes_per_max_group": 1800000000,
+    "guard": "full_scan:greenMemoryGuard before loading/allocating Green",
+    "grouping": "Adjacent geometry blocks; split further at whole-configuration boundaries if needed. Every patch node must belong to that group union.",
+    "exactness": "Each group selects the inverse of the same full-volume grounded K; no artificial tile boundary or rank truncation.",
+    "reuse": "Same identity across groups, distinct ordered-node cache paths; persistent bulk factor keyed by actual model/sigma/operator context; clear full_scan_green releases it.",
+    "limitation": "Green payload bounded; total MATLAB and worker memory remains caller responsibility."
+  },
+  "relevant_original_sources_unchanged": {
+    "src/trkg4_config.m": "8cd12d316f4ed684578bf3702b9dcb560cbde6fe55df5a79b6c0cbc378409d79",
+    "src/trkg4_subject_registry.m": "d222615d04700a04de2775a7e91c13a669dc7d84599a52a26b1811fcdf69ec1c",
+    "src/trkg4_get_subject.m": "9068bc4152fbec126915159de9bc833b0b83387e2d7f1259a37f5c92ed409909",
+    "src/trkg4_make_4electrode_stimulation.m": "6b5519681711307338d2a1ea00baa89bc295cdd2e280a514ae4095433c6b8358",
+    "src/trkg4_scale_fmdl_to_si.m": "77450a9bec1048082c51d2ff7f3cb7278db723ccd7e04cf1a4217320902d0ce4",
+    "src/trkg4_load_nik_inhale_data.m": "c5385ab5c28be2489f00a57d28946770393c75bd85128ba1762dd34ee3f1983c",
+    "src/trkg4_electrode_diagnostics.m": "c82c7855d66d590eafe17a3b00a82ab283cf0743839e365749d2bb8471e9b47e",
+    "src/trkg4_green_fingerprint.m": "050ffe2b235d252522dc3830de971355bbbd3172118a1585f7f86910fa14583c",
+    "src/trkg4_file_sha256.m": "3c3fa6b685c5775a8763080d07c190cc0efcbeb95fbbc028545063db911d8f53",
+    "src/trkg4_prepare_runtime.m": "90ea5bd372bd372f4f1bfa049add65f5595f3c6250e6b7f548b4785a28a9a0ac",
+    "src/run_trkg4_inverse_inhale.m": "4c3c617388a41c458d6435b3082fc1d66463fdfae340954f36b1d0e9ef31b57c",
+    "src/run_trkg4_fast_cem_refine.m": "a6c99db759cd9686cd68c76d9c4758aecc2acae65731a2f2f8e9c11794477f06",
+    "vendor_stl_eidors/electrode_faces_by_area.m": "e9b35bb28e9ae2fd40f06f88d76055cfc43620c2afe47756c3a2538f0cbcafde",
+    "vendor_stl_eidors/electrode_patch_context.m": "8965cf9e4f7a30916d3f14296b5eee43db4c33d70f72af0cfc8eb5ecafde20f2"
+  },
+  "concurrent_unrelated_original_source_changes": [],
+  "original_model_fit_comparison_centres_unchanged": true,
+  "production_src_vendor_old_artifacts_modified_by_this_task": false,
+  "full_scan_started_by_this_task": false,
+  "reproduction_matlab": "addpath('tools/full_pose_scan'); report=verify_full_scan_cem;",
+  "limits": "Numerical equivalence on listed cases, not independent physical validation. Test shifts are Cartesian centre offsets, not main u/v projection."
+}

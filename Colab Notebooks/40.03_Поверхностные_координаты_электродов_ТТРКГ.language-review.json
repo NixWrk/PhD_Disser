@@ -1,0 +1,52 @@
+{
+  "status": "language_review_passed",
+  "language": "ru",
+  "reviewed_at": "2026-09-03",
+  "artifact": {
+    "path": "Colab Notebooks/40.03_Поверхностные_координаты_электродов_ТТРКГ.ipynb",
+    "sha256": "e730f16d56ec5952f84f5605ea9ad92985fd818631c83d64a637daa01c424f60"
+  },
+  "checks": {
+    "language.ru.hash-bound-final-review": "passed",
+    "language.ru.encoding": "passed_utf8",
+    "language.ru.natural-prose": "passed",
+    "language.ru.intro-variation": "passed",
+    "language.ru.reader-facing-clarity": "passed",
+    "language.ru.formula-where": "passed",
+    "language.ru.claim-status-and-limitations": "passed"
+  },
+  "execution": {
+    "cells": 9,
+    "code_cells": 2,
+    "code_cells_executed": 2,
+    "errors": 0,
+    "saved_png_outputs": 0,
+    "embedded_picker_output": "saved_iframe_with_fallback_link",
+    "arm_mesh_scenarios_referenced": 16,
+    "arm_electrode_patches_referenced": 64,
+    "surface_path_maximum_centre_difference_mm": 7.85,
+    "surface_path_forward_fem_solve_performed": false,
+    "picker_python_tests": "8_passed",
+    "landmark_loader_matlab_tests": "12_passed",
+    "surface_coordinate_matlab_tests": "16_passed",
+    "picker_browser_page_errors": 0
+  },
+  "attestation": {
+    "full_reader_visible_text_read_sequentially_after_last_byte_change": true,
+    "scientific_headings_checked": true,
+    "technical_terms_and_scope_checked": true,
+    "derived_analytical_objects_defined_before_use": true,
+    "validation_scope_not_strengthened": true,
+    "open_language_findings": 0,
+    "whole_external_body_surface_scope_explicit": true,
+    "ttrkg_only_scope_explicit": true,
+    "explicit_points_primary_mode_explicit": true,
+    "symmetric_paths_optional_mode_explicit": true,
+    "equal_surface_path_distances_not_xyz_reflection": true,
+    "arm_placement_declared_specific_profile": true,
+    "browser_centres_declared_preliminary": true,
+    "anatomical_layers_and_visual_only_shading_explained": true,
+    "author_landmark_selection_declared_pending": true,
+    "interactive_picker_embedded_in_notebook": true
+  }
+}

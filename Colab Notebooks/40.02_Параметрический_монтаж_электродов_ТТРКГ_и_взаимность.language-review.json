@@ -1,0 +1,35 @@
+{
+  "artifact": "40.02_Параметрический_монтаж_электродов_ТТРКГ_и_взаимность.ipynb",
+  "artifact_sha256": "0492302fb9bbf3280023169fdbf03adc30e13daee4b15138c1d99a4a37fdc2b1",
+  "reviewed_at": "2026-09-07T14:43:59+03:00",
+  "review_kind": "russian_scientific_prose_and_saved_output_consistency",
+  "review_status": "passed",
+  "review_scope": {
+    "reader_visible_text_reviewed": true,
+    "changed_path_and_output_cells_rechecked_after_relocation": true,
+    "arm_specific_montage": true,
+    "general_surface_picker_delegated_to_40_03": true
+  },
+  "execution": {
+    "cells": 23,
+    "code_cells": 10,
+    "code_cells_executed": 10,
+    "errors": 0,
+    "saved_png_outputs": 6
+  },
+  "scientific_content": {
+    "matlab_scenarios": 16,
+    "electrode_patches": 64,
+    "static_four_contact_preview_saved_as_png": true,
+    "interactive_arm_viewer": {
+      "mode": "sibling_html_iframe_with_static_preview",
+      "path": "40.02_Интерактивная_визуализация_электродов_на_руках.html",
+      "sha256": "17c18b4b1f2a14dd7d5d65aec04999bbf6fd75c3d4b6b6977733b83ac9ae69ec",
+      "bytes": 447925,
+      "saved_iframe_outputs": 1,
+      "fallback_link_present": true
+    }
+  },
+  "language_findings": [],
+  "conclusion": "Статический рисунок сохранён в ноутбуке. Интерактивный HTML скопирован рядом с 40.02, а сохранённый iframe и резервная ссылка используют имя соседнего файла."
+}

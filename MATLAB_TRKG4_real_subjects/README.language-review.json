@@ -1,0 +1,28 @@
+{
+  "status": "language_review_passed",
+  "language": "ru",
+  "reviewed_at": "2026-09-08",
+  "artifact": {
+    "path": "MATLAB_TRKG4_real_subjects/README.md",
+    "sha256": "a20ebafd92077a36763f59067f7a09f7d0281dcb79ec23cc57b1c238ba3c64d1"
+  },
+  "checks": {
+    "language.ru.hash-bound-final-review": "passed",
+    "language.ru.encoding": "passed_utf8",
+    "language.ru.natural-prose": "passed",
+    "language.ru.intro-variation": "passed",
+    "language.ru.reader-facing-clarity": "passed",
+    "language.ru.formula-where": "passed",
+    "language.ru.claim-status-and-limitations": "passed"
+  },
+  "attestation": {
+    "full_text_read_sequentially_after_last_byte_change": true,
+    "scientific_headings_checked": true,
+    "technical_terms_and_scope_checked": true,
+    "claim_status_and_limitations_preserved": true,
+    "open_language_findings": 0,
+    "notebook_40_03_declared_general_surface_report": true,
+    "notebook_40_02_declared_arm_specific_test": true,
+    "yaroslav_profile_scope_and_limitations_checked": true
+  }
+}

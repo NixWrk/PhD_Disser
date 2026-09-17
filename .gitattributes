@@ -95,3 +95,152 @@ MATLAB_TRKG4_real_subjects/tools/lateral_fat_inverse_analysis.py -text
 MATLAB_TRKG4_real_subjects/tools/lateral_fat_3d.py -text
 MATLAB_TRKG4_real_subjects/tools/verify_lateral_fat_inverse.py -text
 MATLAB_TRKG4_real_subjects/notebooks/lateral_fat_inverse_results.py -text
+
+# Preserve the recorded bytes of source snapshots and QC records published 2026-09-17.
+"Colab Notebooks/40.02_Параметрический_монтаж_электродов_ТТРКГ_и_взаимность.language-review.json" -text
+"Colab Notebooks/40.03_Поверхностные_координаты_электродов_ТТРКГ.language-review.json" -text
+"Colab Notebooks/40.06_Карты_чувствительности.language-review.json" -text
+"Colab Notebooks/README.language-review.json" -text
+"Colab Notebooks/archive/private/20260914_baseline_consolidation_before/build_transverse_geometry_report.py" -text
+"Colab Notebooks/archive/private/20260914_c01_migration_before/build_geometry_reduction_report.py" -text
+"Colab Notebooks/archive/private/20260914_c01_migration_before/build_geometry_validation_report.py" -text
+"Colab Notebooks/archive/private/20260914_c01_migration_before/build_halfspace_report.py" -text
+"Colab Notebooks/archive/private/20260914_c01_migration_before/build_transverse_geometry_report.py" -text
+"Colab Notebooks/archive/private/20260914_c01_migration_before/build_trkg4_geometry_scan_report.py" -text
+"Colab Notebooks/archive/private/20260914_c01_migration_before/execute_geometry_reduction_report.py" -text
+"Colab Notebooks/archive/private/20260914_c01_migration_before/halfspace_report_text.py" -text
+"Colab Notebooks/archive/private/20260914_c01_migration_before/revise_2010_geometry.py" -text
+"Colab Notebooks/archive/private/20260914_c01_migration_before/update_scientific_report.py" -text
+"Colab Notebooks/archive/private/20260915_c01_3d_overview_before/build_c01_reports.py" -text
+"Colab Notebooks/archive/private/20260915_c01_3d_overview_before/c01_report_text.py" -text
+"Colab Notebooks/archive/private/20260915_c01_3d_overview_before/verify_c01_reports.py" -text
+"Colab Notebooks/archive/private/20260915_c01_sensitivity_restore_before/build_c01_reports.py" -text
+"Colab Notebooks/archive/private/20260915_c01_sensitivity_restore_before/c01_report_tables.py" -text
+"Colab Notebooks/archive/private/20260915_c01_sensitivity_restore_before/c01_report_text.py" -text
+"Colab Notebooks/audits/2026-09-07/checks.json" -text
+"Colab Notebooks/audits/2026-09-07/language_review.json" -text
+"Colab Notebooks/audits/2026-09-07/snapshot.json" -text
+"Colab Notebooks/audits/2026-09-07/verification.json" -text
+"Colab Notebooks/audits/2026-09-14/breath-execution.json" -text
+"Colab Notebooks/audits/2026-09-14/legacy-execution.json" -text
+"Colab Notebooks/audits/2026-09-14/model-execution.json" -text
+"Colab Notebooks/audits/2026-09-14/notebook-execution-inventory.json" -text
+"Colab Notebooks/audits/2026-09-14/overlay-execution.json" -text
+"Colab Notebooks/audits/2026-09-14/portable-path-audit.json" -text
+"Colab Notebooks/audits/2026-09-14/reader-rebuild-audit.json" -text
+"Colab Notebooks/audits/2026-09-14/signal-execution.json" -text
+"Colab Notebooks/cardiac_4d_segmentation/results/nix_cardiac_cycle_fat_20260916/summary.json" -text
+"Colab Notebooks/cardiac_4d_segmentation/results/prepare_reduced_geometry.py" -text
+"Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/audit_affine.py" -text
+"Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/method_comparison_final/source_used/cardiac_function_analysis.py" -text
+"Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/method_comparison_final/source_used/heart_additional_ellipsoid_methods.py" -text
+"Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/method_comparison_final/source_used/heart_additional_sphere_methods.py" -text
+"Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/method_comparison_final/source_used/heart_construction_variants.py" -text
+"Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/method_comparison_final/source_used/heart_ct_overlays.py" -text
+"Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/method_comparison_final/source_used/heart_reduced_geometry.py" -text
+"Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/method_comparison_final/source_used/run_heart_method_comparison.py" -text
+"Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/method_comparison_final/source_used/run_reduced_heart_geometry.py" -text
+"Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/method_ellipsoid_01/source_heart_additional_ellipsoid_methods.py" -text
+"Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/method_ellipsoid_iou_02/source_heart_additional_ellipsoid_methods.py" -text
+"Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/method_ellipsoid_overlap_02/source_heart_additional_ellipsoid_methods.py" -text
+"Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/method_ellipsoid_overlap_03/source_heart_additional_ellipsoid_methods.py" -text
+"Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/method_ellipsoid_surface_02/source_heart_additional_ellipsoid_methods.py" -text
+"Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/method_reader_01/scoped_commit_preserve_vendor.py" -text
+"Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/method_reader_01/source_before_eol_normalization/heart_additional_ellipsoid_methods.py" -text
+"Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/method_surface_full/source_used/cardiac_function_analysis.py" -text
+"Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/method_surface_full/source_used/heart_additional_ellipsoid_methods.py" -text
+"Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/method_surface_full/source_used/heart_additional_sphere_methods.py" -text
+"Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/method_surface_full/source_used/heart_construction_variants.py" -text
+"Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/method_surface_full/source_used/heart_ct_overlays.py" -text
+"Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/method_surface_full/source_used/heart_reduced_geometry.py" -text
+"Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/method_surface_full/source_used/run_heart_method_comparison.py" -text
+"Colab Notebooks/cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/method_surface_full/source_used/run_reduced_heart_geometry.py" -text
+"MATLAB_TRKG4_real_subjects/README.language-review.json" -text
+"MATLAB_TRKG4_real_subjects/docs/SURFACE_ELECTRODE_COORDINATES.language-review.json" -text
+"MATLAB_TRKG4_real_subjects/notebooks/audit_2026_09_08/driver_checks.json" -text
+"MATLAB_TRKG4_real_subjects/notebooks/audit_2026_09_08/nonlinear_checks.json" -text
+"MATLAB_TRKG4_real_subjects/notebooks/audit_2026_09_08/report_checks.json" -text
+"MATLAB_TRKG4_real_subjects/notebooks/audit_2026_09_08/source_hashes.json" -text
+"MATLAB_TRKG4_real_subjects/notebooks/audit_fixes_2026_09_08/canonical_report_execution.json" -text
+"MATLAB_TRKG4_real_subjects/notebooks/audit_fixes_2026_09_08/compare_fixed_rho_h_auditfix_20260908.json" -text
+"MATLAB_TRKG4_real_subjects/notebooks/audit_fixes_2026_09_08/compare_fixed_rho_h_auditfix_nojac_smoke.json" -text
+"MATLAB_TRKG4_real_subjects/notebooks/audit_fixes_2026_09_08/compare_fixed_rho_h_disjoint_restartable_manifest90.json" -text
+"MATLAB_TRKG4_real_subjects/notebooks/audit_fixes_2026_09_08/driver_matlab_integration.json" -text
+"MATLAB_TRKG4_real_subjects/notebooks/audit_fixes_2026_09_08/final_contact_geometry_checks.json" -text
+"MATLAB_TRKG4_real_subjects/notebooks/audit_fixes_2026_09_08/final_provenance_check.json" -text
+"MATLAB_TRKG4_real_subjects/notebooks/audit_fixes_2026_09_08/final_visual_qa.json" -text
+"MATLAB_TRKG4_real_subjects/notebooks/audit_fixes_2026_09_08/report_checks_auditfix_20260908_minimal.json" -text
+"MATLAB_TRKG4_real_subjects/notebooks/audit_fixes_2026_09_08/report_checks_auditfix_nojac_smoke_minimal.json" -text
+"MATLAB_TRKG4_real_subjects/notebooks/audit_fixes_2026_09_08/report_checks_disjoint_restartable_manifest90_minimal.json" -text
+"MATLAB_TRKG4_real_subjects/notebooks/audit_fixes_2026_09_08/restart_edges_review.json" -text
+"MATLAB_TRKG4_real_subjects/notebooks/audit_fixes_2026_09_08/resume_after_code_change_check.json" -text
+"MATLAB_TRKG4_real_subjects/notebooks/audit_fixes_2026_09_08/resume_fix_applied.json" -text
+"MATLAB_TRKG4_real_subjects/notebooks/audit_fixes_2026_09_08/source_used_auditfix_20260908.json" -text
+"MATLAB_TRKG4_real_subjects/notebooks/review_current_2026_09_08/current_checks.json" -text
+"MATLAB_TRKG4_real_subjects/notebooks/review_current_2026_09_08/evidence_summary.json" -text
+"MATLAB_TRKG4_real_subjects/notebooks/search_map_2026_09_08/browser_checks.json" -text
+"MATLAB_TRKG4_real_subjects/notebooks/search_map_2026_09_08/final_visual_checks.json" -text
+"MATLAB_TRKG4_real_subjects/notebooks/search_map_2026_09_08/search_map_checks_auditfix_20260908.json" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/baseline_model_comparison_20260914/finalize_narrative_sources.py" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/baseline_model_comparison_20260914/revise_narrative_20260915.py" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/c01_real_resistivity_20260915/run_inversion.py" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/c01_real_resistivity_20260915/run_pulse.py" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/halfspace_bem_20260914/report_generator_initial_draft.py" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/halfspace_documentation_20260914/before/build_transverse_geometry_report.py" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/halfspace_documentation_20260914/update_documentation.py" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/halfspace_reader_revision_20260914/before/build_transverse_geometry_report.py" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/halfspace_reader_revision_20260914/update_documentation.py" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/heart_fractional_electrical_20260915/finalize_micro_pilot.py" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/heart_fractional_electrical_20260915/source_used/heart_fractional_electrical_pilot.py" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/heart_fractional_electrical_20260915/source_used/heart_fractional_materials.py" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/heart_fractional_electrical_20260915/source_used/heart_replacement_electrical_pilot.py" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/heart_fractional_electrical_20260915/source_used/run_electrode_sensitivity.py" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/heart_fractional_electrical_20260915/source_used/run_heart_fractional_electrical_pilot.m" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/heart_fractional_electrical_20260915/source_used/trkg4_cem_contact_matrix.m" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/heart_fractional_materials_20260915/source_used/heart_fractional_materials.py" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/heart_fractional_materials_20260915/source_used/test_heart_fractional_materials.py" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/heart_fractional_materials_20260915/verify_fractional_results.py" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/heart_individual_stage1_20260916/L1_export_monitor/failed_nodes_and_faces_source.m" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/heart_library_fits_20260915/ct_fullsurface_32768_02/code_snapshot/heart_additional_ellipsoid_methods.py" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/heart_library_fits_20260915/ct_fullsurface_32768_02/code_snapshot/heart_additional_sphere_methods.py" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/heart_library_fits_20260915/ct_fullsurface_32768_02/code_snapshot/heart_construction_variants.py" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/heart_library_fits_20260915/ct_fullsurface_32768_02/code_snapshot/heart_library_fits.py" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/heart_library_fits_20260915/ct_fullsurface_32768_02/code_snapshot/heart_library_geometry_comparison.py" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/heart_library_fits_20260915/ct_fullsurface_32768_02/code_snapshot/heart_reduced_geometry.py" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/heart_library_fits_20260915/ct_fullsurface_32768_02/code_snapshot/run_heart_library_fits.m" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/heart_library_fits_20260915/ct_fullsurface_32768_02/code_snapshot/run_heart_method_comparison.py" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/heart_replacement_electrical_20260915/audit_candidate_perturbations.py" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/heart_replacement_electrical_20260915/finalize_pilot.py" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/heart_replacement_electrical_20260915/source_used/heart_replacement_electrical_pilot.py" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/heart_replacement_electrical_20260915/source_used/run_electrode_sensitivity.py" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/heart_replacement_electrical_20260915/source_used/run_heart_replacement_electrical_pilot.m" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/heart_replacement_electrical_20260915/source_used/trkg4_cem_contact_matrix.m" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/heart_replacement_electrical_20260915/verify_pilot_results.py" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/heart_sphere_methods_20260914/add_code_map.py" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/heart_sphere_methods_20260914/complete_code_map.py" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/heart_sphere_methods_20260914/prepare_code_map_commit.py" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/heart_sphere_methods_20260914/revise_joint_question.py" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/heart_sphere_methods_20260914/scoped_commit.py" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/heart_sphere_methods_20260914/select_reduced_model_sources.py" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/heart_sphere_methods_20260914/snapshot_code_map.py" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/heart_sphere_methods_20260914/verify_code_map.py" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/heart_sphere_methods_20260914/verify_joint_question.py" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/notebook_2010_revision_20260914/before/build_transverse_geometry_report.py" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/notebook_2010_revision_20260914/before/build_trkg4_inverse_report.py" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/notebook_2010_revision_20260914/before/shared_transverse_section.py" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/notebook_2010_revision_20260914/before/synchronize_transverse_sections.py" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/notebook_2010_revision_20260914/render_check.py" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/notebook_2010_revision_20260914/update_crosslinks.py" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/notebook_2010_revision_20260914/verify_revision.py" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/notebook_2010_revision_20260914/verify_runtime.py" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/rfbr_library_audit_20260915/Demo.m" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/rfbr_library_audit_20260915/hyperellipsoidfit.m" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/transverse_consistency_20260914/documentation_before/build_transverse_geometry_report.py" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/transverse_consistency_20260914/documentation_before/build_trkg4_inverse_report.py" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/transverse_consistency_20260914/render_check.py" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/transverse_consistency_20260914/verify_consistency.py" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/transverse_documentation_20260914/before/build_transverse_geometry_report.py" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/transverse_documentation_20260914/render_documentation.py" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/transverse_documentation_20260914/update_documentation.py" -text
+"MATLAB_TRKG4_real_subjects/output/exploratory/transverse_documentation_20260914/verify_documentation.py" -text
+"MATLAB_TRKG4_real_subjects/tools/full_pose_scan/cem_helper_source_baseline.json" -text

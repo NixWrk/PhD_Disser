@@ -1,0 +1,81 @@
+{
+  "date": "2026-09-17",
+  "purpose": "Подготовка публикации существующего научного корпуса; не научная валидация методики.",
+  "branch": "Калмыков",
+  "base_commit": "41fbaaca3ac0fbdcc221c6960302e287de7f41c9",
+  "previous_local_commits_ahead_of_origin": 48,
+  "structural_validation": {
+    "notebooks": 95,
+    "python_ast": 129,
+    "json": 67,
+    "failures": []
+  },
+  "tests": [
+    {
+      "cwd": "Colab Notebooks",
+      "command": "python -B -X utf8 -m pytest -q tests",
+      "passed": 45,
+      "failed": 0
+    },
+    {
+      "cwd": "Colab Notebooks/cardiac_4d_segmentation",
+      "command": "python -B -X utf8 -m pytest -q tests",
+      "passed": 187,
+      "subtests_passed": 84,
+      "failed": 0
+    },
+    {
+      "cwd": "MATLAB_TRKG4_real_subjects",
+      "command": "python -B -X utf8 -m pytest -q tests",
+      "environment": {
+        "PYTHONPATH": "output/exploratory/arm_sigma_20260908/python_solver_deps"
+      },
+      "passed": 380,
+      "failed": 3,
+      "subtests_passed": 37,
+      "retry": {
+        "environment": {
+          "PYTHONUTF8": "1"
+        },
+        "passed": 2,
+        "tests": [
+          "tests/test_build_arm_electrode_report.py::test_cli_allows_omitted_optional_layers_and_reports_bad_path",
+          "tests/test_surface_landmark_picker.py::test_cli_help_exposes_target_faces"
+        ]
+      },
+      "remaining_failure": "tests/test_inverse_report_contract.py::test_builder_tracks_real_main_schema_and_guards_optional_cells"
+    },
+    {
+      "cwd": ".",
+      "command": "python -B -X utf8 -m pytest -q tools/tests",
+      "passed": 9,
+      "failed": 0
+    }
+  ],
+  "breath_geometry": {
+    "pytest": "Не собран: отсутствуют пакет breathgeom и SimpleITK в системном окружении; версия Python 3.13.6 вне объявленного диапазона >=3.11,<3.13.",
+    "ruff": {
+      "command": "python -B -X utf8 -m ruff check . --output-format concise",
+      "errors": 103
+    },
+    "mypy": {
+      "command": "python -B -X utf8 -m mypy src --no-error-summary",
+      "errors": 7,
+      "files": [
+        "src/breathgeom/measure/wall.py",
+        "src/breathgeom/benchmark.py"
+      ]
+    }
+  },
+  "limitations": [
+    "Полный повторный расчёт ноутбуков и FEM не выполнялся.",
+    "Отсутствие ошибок формата и синтаксиса не подтверждает корректность физической модели.",
+    "Сохранённые исторические скрипты могут требовать прежних результатов, внешних данных и локальной настройки путей.",
+    "Проверки тестов относятся к текущему доступному локальному окружению; полностью воспроизводимое чистое окружение не разворачивалось."
+  ],
+  "preservation": {
+    "new_source_and_qc_files_with_preserved_crlf": 147,
+    "raw_medical_files_in_new_selection": false,
+    "newly_selected_secret_pattern_matches": 0
+  }
+}

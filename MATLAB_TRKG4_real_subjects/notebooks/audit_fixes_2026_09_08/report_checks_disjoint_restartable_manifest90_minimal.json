@@ -1,0 +1,129 @@
+{
+  "tag": "disjoint_restartable_manifest90",
+  "historical_files_hidden": true,
+  "scope": "all code cells; no DICOM; no FEM solve",
+  "cells": [
+    {
+      "cell": 3,
+      "status": "passed",
+      "seconds": 1.4323413000092842
+    },
+    {
+      "cell": 5,
+      "status": "passed",
+      "seconds": 0.0020687999785877764
+    },
+    {
+      "cell": 6,
+      "status": "passed",
+      "seconds": 1.8127651000395417
+    },
+    {
+      "cell": 9,
+      "status": "passed",
+      "seconds": 0.8877158000250347
+    },
+    {
+      "cell": 11,
+      "status": "passed",
+      "seconds": 1.9213214999763295
+    },
+    {
+      "cell": 13,
+      "status": "passed",
+      "seconds": 0.8145839999779128
+    },
+    {
+      "cell": 15,
+      "status": "passed",
+      "seconds": 0.7627240999718197
+    },
+    {
+      "cell": 17,
+      "status": "passed",
+      "seconds": 0.08478659996762872
+    },
+    {
+      "cell": 19,
+      "status": "passed",
+      "seconds": 0.0770077999914065
+    },
+    {
+      "cell": 22,
+      "status": "passed",
+      "seconds": 0.001129999989643693
+    },
+    {
+      "cell": 23,
+      "status": "passed",
+      "seconds": 0.18288310000207275
+    },
+    {
+      "cell": 25,
+      "status": "passed",
+      "seconds": 0.0006194000015966594
+    },
+    {
+      "cell": 27,
+      "status": "passed",
+      "seconds": 0.0024657000321894884
+    },
+    {
+      "cell": 29,
+      "status": "passed",
+      "seconds": 0.07080399995902553
+    },
+    {
+      "cell": 30,
+      "status": "passed",
+      "seconds": 0.04992839996702969
+    },
+    {
+      "cell": 32,
+      "status": "passed",
+      "seconds": 0.10694880003575236
+    },
+    {
+      "cell": 34,
+      "status": "passed",
+      "seconds": 0.04399370000464842
+    },
+    {
+      "cell": 36,
+      "status": "passed",
+      "seconds": 0.001871999993454665
+    },
+    {
+      "cell": 38,
+      "status": "passed",
+      "seconds": 0.0007246999884955585
+    },
+    {
+      "cell": 40,
+      "status": "passed",
+      "seconds": 0.0040142000070773065
+    },
+    {
+      "cell": 41,
+      "status": "passed",
+      "seconds": 0.0005635999841615558
+    },
+    {
+      "cell": 44,
+      "status": "passed",
+      "seconds": 0.0006318999803625047
+    },
+    {
+      "cell": 45,
+      "status": "passed",
+      "seconds": 0.00012969999806955457
+    },
+    {
+      "cell": 47,
+      "status": "passed",
+      "seconds": 0.0006945000495761633
+    }
+  ],
+  "homogeneous_relative_error": 2.220446049250313e-16,
+  "generator_sha256": "99fde99b4a7e11a3db1c102168235c37879536d61914830d7755460783bd5d16"
+}

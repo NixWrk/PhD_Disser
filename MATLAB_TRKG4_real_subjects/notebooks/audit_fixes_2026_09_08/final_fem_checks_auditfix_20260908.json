@@ -1,0 +1,34 @@
+{
+  "result_tag": "auditfix_20260908",
+  "status": "numerical_checks_not_physical_validation",
+  "forward_max_abs_difference_ohm": 4.4053649617126212E-13,
+  "reciprocity": [
+    {
+      "L_mm": 50,
+      "direct_ohm": 101.13596163496814,
+      "reciprocal_ohm": 101.1359616349682,
+      "abs_difference_ohm": 5.6843418860808015E-14
+    },
+    {
+      "L_mm": 90,
+      "direct_ohm": 69.1496365269393,
+      "reciprocal_ohm": 69.149636526939361,
+      "abs_difference_ohm": 5.6843418860808015E-14
+    },
+    {
+      "L_mm": 140,
+      "direct_ohm": 56.056805142251129,
+      "reciprocal_ohm": 56.056805142251058,
+      "abs_difference_ohm": 7.1054273576010019E-14
+    }
+  ],
+  "outward_normal_failures": 0,
+  "mesh": {
+    "nodes": 153415,
+    "tetrahedra": 721943,
+    "negative_or_zero_signed_volume": 0,
+    "min_tetra_volume_mm3": 2.8708579928130956E-7,
+    "total_volume_l": 20.170762958333334,
+    "mesh_convergence_tested": false
+  }
+}

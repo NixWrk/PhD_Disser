@@ -1,0 +1,9 @@
+{
+  "scope": "Real MATLAB batch output parsed by current Python driver",
+  "statuses": [
+    "invalid_geometry",
+    "evaluated"
+  ],
+  "best_valid_evaluation": 2,
+  "model_fingerprint_agrees": true
+}

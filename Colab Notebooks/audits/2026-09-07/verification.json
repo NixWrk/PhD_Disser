@@ -1,0 +1,20 @@
+{
+  "created_at_utc": "2026-09-07T15:02:50.740793+00:00",
+  "artifact": "Colab Notebooks/AUDIT_2026-09-07_Методика_и_приоритеты.md",
+  "artifact_sha256": "b6f6debb5219c9a3394f7425c920555545c1989fadd5ecf351d4c53d5b22e54c",
+  "issue_count": 34,
+  "severity_counts": {
+    "К1": 10,
+    "К2": 15,
+    "К3": 7,
+    "К4": 2
+  },
+  "canonical_numbered_links": 56,
+  "unresolved_references": [],
+  "missing_local_targets": [],
+  "baseline_source_files_checked": 408,
+  "baseline_sources_changed_since_snapshot": [],
+  "report_word_count": 9001,
+  "report_line_count": 645,
+  "interpretation": "Technical document verification and snapshot comparison only; scientific issues remain open."
+}

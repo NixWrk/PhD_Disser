@@ -1,0 +1,21 @@
+{
+  "case_count": 46,
+  "repetitions": 3,
+  "mesh_faces": 155120,
+  "context_seconds": 0.1150469,
+  "context_bytes": 3.9659273E+7,
+  "all_node_face_and_qc_checks_passed": true,
+  "median_canonical_builder_seconds": 0.0461325,
+  "median_local_builder_seconds": 0.0218126,
+  "median_canonical_qc_seconds": 0.1742679,
+  "median_local_qc_seconds": 0.000649,
+  "successful_builder_fallbacks": 6,
+  "accepted_cases": 33,
+  "pose_count": 2.381321E+6,
+  "local_options": {
+    "initial_radius": 9.4868329805051381
+  },
+  "first_attempt_successes": 1,
+  "median_successful_local_attempts": 2,
+  "mean_local_builder_seconds": 0.030195276086956525
+}

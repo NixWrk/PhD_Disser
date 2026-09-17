@@ -1,0 +1,108 @@
+{
+  "schema": "canonical_patch_shape_compatibility_v1",
+  "passed": true,
+  "historical_result_tag": "auditfix_20260908",
+  "old_builder_sha256": "e9b35bb28e9ae2fd40f06f88d76055cfc43620c2afe47756c3a2538f0cbcafde",
+  "new_builder_sha256": "65759b1ab0e2e5a177bd55dcc49c26c25ed1cee63a8e1b278384f3ab43ccd3b7",
+  "sizes_mm": [
+    50,
+    60,
+    70,
+    80,
+    90,
+    110,
+    120,
+    130,
+    140
+  ],
+  "induced_face_counts": [
+    [
+      60,
+      41,
+      29,
+      34
+    ],
+    [
+      76,
+      44,
+      27,
+      42
+    ],
+    [
+      60,
+      54,
+      25,
+      29
+    ],
+    [
+      49,
+      56,
+      22,
+      45
+    ],
+    [
+      52,
+      59,
+      32,
+      49
+    ],
+    [
+      47,
+      67,
+      38,
+      61
+    ],
+    [
+      47,
+      76,
+      42,
+      60
+    ],
+    [
+      44,
+      71,
+      26,
+      67
+    ],
+    [
+      51,
+      60,
+      29,
+      77
+    ]
+  ],
+  "published_contacts_identical": true,
+  "comparison": "All nine canonical contact node sets and induced faces are exactly identical before and after the shape-only fix.",
+  "independent_full_CEM_before_shape_fix_max_difference_ohm": 1.442654706806934E-8,
+  "scope": "Numerical compatibility of the saved best; new singleton cases are covered by separate shape regression tests.",
+  "dependencies": [
+    {
+      "path": "notebooks\\full_scan_2026_09_08\\patch_shape_reference\\electrode_faces_by_area.original.txt",
+      "sha256": "e9b35bb28e9ae2fd40f06f88d76055cfc43620c2afe47756c3a2538f0cbcafde"
+    },
+    {
+      "path": "notebooks\\full_scan_2026_09_08\\patch_shape_reference\\legacy_electrode_faces_by_area_before_shape.m",
+      "sha256": "86099a497cd075c5356dfd8b54916dead79f5fafeae8fb039a046e94fbe26419"
+    },
+    {
+      "path": "notebooks\\full_scan_2026_09_08\\verify_trkg4_patch_shape_compatibility.m",
+      "sha256": "00c7a12059b3f647a5768d31e8937211580308060377264150809d3f906f9cf0"
+    },
+    {
+      "path": "notebooks\\full_scan_2026_09_08\\patch_shape_tests.json",
+      "sha256": "f548e9236c98b0d49cedeca7569e7224fb5744614b91c110a3076596abce7f4d"
+    },
+    {
+      "path": "output\\nik_trkg4_right_rib_050mm_full_v5_1mm_local2mm.mat",
+      "sha256": "2168afe5f8d13ef5d6ef26f7640d889fc5cb2af0174ebc3afcb6e345f50ab923"
+    },
+    {
+      "path": "output\\nik_trkg4_inverse_inhale_electrodes_auditfix_20260908.csv",
+      "sha256": "fbbd5cb8a366b36ef5a1d286d9c5852bc9c6ea3b0011d041bcbf2d19179a2634"
+    },
+    {
+      "path": "output\\full_pose_scan_fullscan_smoke06\\independent_best_qc.json",
+      "sha256": "35bcd38e7627db415961986503edcb4802567bf7c44d4d6844776bb79abd5e88"
+    }
+  ]
+}

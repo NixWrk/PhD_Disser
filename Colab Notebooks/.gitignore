@@ -70,6 +70,7 @@ archive/private/**
 !archive/private/**/*.m
 !archive/private/**/*.py
 !archive/private/**/*.ipynb
+!archive/private/**/*.md
 archive/private/**/__pycache__/
 archive/private/**/.ipynb_checkpoints/
 

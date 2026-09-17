@@ -1,0 +1,259 @@
+{
+  "scope": "read-only review of current implementation, isolated numerical experiments",
+  "source_hashes": {
+    "src\\run_trkg4_inverse_inhale.m": "4c3c617388a41c458d6435b3082fc1d66463fdfae340954f36b1d0e9ef31b57c",
+    "src\\trkg4_config.m": "8cd12d316f4ed684578bf3702b9dcb560cbde6fe55df5a79b6c0cbc378409d79",
+    "src\\trkg4_load_nik_inhale_data.m": "c5385ab5c28be2489f00a57d28946770393c75bd85128ba1762dd34ee3f1983c",
+    "src\\trkg4_finite_step_diagnostics.m": "784e95b64d6aeb0cf1c0bf84ea38044f00f7886ed5821048f68825a2617b865f",
+    "vendor_stl_eidors\\assign_tissues_from_stl.m": "79faf015b8301dfff8fa16451746d9b3a4ea58f2b830523f14c410cc6e607b5e",
+    "vendor_stl_eidors\\electrode_faces_by_area.m": "e9b35bb28e9ae2fd40f06f88d76055cfc43620c2afe47756c3a2538f0cbcafde",
+    "data\\nik\\experimental\\nik_breath_hold_levels.csv": "ce91422afcc07676746a6518b41ec3ee56de4ab224e8bf6355c831907269c569"
+  },
+  "aggregate_transfer": {
+    "rows": 10,
+    "max_difference_ohm": 7.549516567451064e-15,
+    "kept_sizes_mm": [
+      50,
+      60,
+      70,
+      80,
+      90,
+      110,
+      120,
+      130,
+      140
+    ],
+    "raw_signal_reaggregation_performed": false
+  },
+  "python_tests_passed": 62,
+  "matlab_tests_passed": 30,
+  "current_notebook_cells_passed": 24,
+  "fem_solves_completed": 16,
+  "fem": {
+    "status": "numerical_checks_not_physical_validation",
+    "tests_passed": 30,
+    "tests_failed": 0,
+    "tests_incomplete": 0,
+    "tag": "auditfix_20260908",
+    "contact_z_ohm_m2": 0.00015915494309189532,
+    "tissue_names": [
+      "soft_tissue",
+      "lungs",
+      "heart",
+      "bones"
+    ],
+    "grid_checks": [
+      {
+        "L_mm": 50,
+        "Z_ohm": 101.13596163496814,
+        "saved_Z_ohm": 101.135961634968,
+        "abs_difference_ohm": 1.4210854715202004e-13
+      },
+      {
+        "L_mm": 60,
+        "Z_ohm": 101.45571464608857,
+        "saved_Z_ohm": 101.455714646089,
+        "abs_difference_ohm": 4.405364961712621e-13
+      },
+      {
+        "L_mm": 70,
+        "Z_ohm": 90.73049584689207,
+        "saved_Z_ohm": 90.7304958468921,
+        "abs_difference_ohm": 2.842170943040401e-14
+      },
+      {
+        "L_mm": 80,
+        "Z_ohm": 71.17317379966437,
+        "saved_Z_ohm": 71.1731737996644,
+        "abs_difference_ohm": 2.842170943040401e-14
+      },
+      {
+        "L_mm": 90,
+        "Z_ohm": 69.1496365269393,
+        "saved_Z_ohm": 69.1496365269393,
+        "abs_difference_ohm": 0
+      },
+      {
+        "L_mm": 110,
+        "Z_ohm": 64.42609501733929,
+        "saved_Z_ohm": 64.4260950173393,
+        "abs_difference_ohm": 1.4210854715202004e-14
+      },
+      {
+        "L_mm": 120,
+        "Z_ohm": 61.929860286182546,
+        "saved_Z_ohm": 61.9298602861825,
+        "abs_difference_ohm": 4.263256414560601e-14
+      },
+      {
+        "L_mm": 130,
+        "Z_ohm": 58.70062693904056,
+        "saved_Z_ohm": 58.7006269390406,
+        "abs_difference_ohm": 4.263256414560601e-14
+      },
+      {
+        "L_mm": 140,
+        "Z_ohm": 56.05680514225113,
+        "saved_Z_ohm": 56.0568051422511,
+        "abs_difference_ohm": 2.842170943040401e-14
+      }
+    ],
+    "homogeneous_checks": [
+      {
+        "L_mm": 50,
+        "rho_ohm_m": 5.5521664546649,
+        "finite_body_CEM_ohm": 95.06618843722605,
+        "nominal_planar_point_ohm": 94.25650518708507,
+        "difference_ohm": 0.8096832501409779,
+        "difference_percent": 0.8590210813926191
+      },
+      {
+        "L_mm": 60,
+        "rho_ohm_m": 5.5521664546649,
+        "finite_body_CEM_ohm": 93.44499659256721,
+        "nominal_planar_point_ohm": 78.54708765590422,
+        "difference_ohm": 14.897908936662986,
+        "difference_percent": 18.966850816833734
+      },
+      {
+        "L_mm": 90,
+        "rho_ohm_m": 5.5521664546649,
+        "finite_body_CEM_ohm": 56.99800851449105,
+        "nominal_planar_point_ohm": 52.36472510393615,
+        "difference_ohm": 4.6332834105548955,
+        "difference_percent": 8.84810032203649
+      },
+      {
+        "L_mm": 140,
+        "rho_ohm_m": 5.5521664546649,
+        "finite_body_CEM_ohm": 42.06170070074678,
+        "nominal_planar_point_ohm": 33.663037566816094,
+        "difference_ohm": 8.39866313393069,
+        "difference_percent": 24.94921356179043
+      }
+    ],
+    "contact_sweep": [
+      {
+        "factor": 0.1,
+        "Z_ohm": 68.94471234070589,
+        "difference_ohm": -0.2049241862334128
+      },
+      {
+        "factor": 10,
+        "Z_ohm": 69.12041979736213,
+        "difference_ohm": -0.029216729577171918
+      }
+    ],
+    "max_patch_centroid_rebuild_error_mm": 6.638538076016056e-13,
+    "max_patch_centroid_offset_mm": 4.002391138770783,
+    "max_patch_area_rebuild_error_mm2": 4.263256414560601e-14,
+    "reciprocity_90mm_difference_ohm": 5.684341886080802e-14,
+    "complete": true,
+    "forward_max_difference_ohm": 4.405364961712621e-13,
+    "homogeneous_interpretation": "Finite curved body, CEM patches and discretisation remain; difference from planar point electrodes is NOT pure curvature or FEM error.",
+    "mesh_convergence_tested": false,
+    "contact_sweep_interpretation": "Synthetic factor changes; no measured contact uncertainty."
+  },
+  "report_metrics": {
+    "direct_error_table": [
+      {
+        "модель": "обычная двухслойная, h=h_c",
+        "RMS, Ом": 10.506645588432812,
+        "MAE, Ом": 9.690222077091688,
+        "bias, Ом": -5.972485004497808,
+        "max |ошибка|, Ом": 14.821974406233295,
+        "наклон Z(L), Ом/мм": -0.480967953452148
+      },
+      {
+        "модель": "адаптированная h(s)",
+        "RMS, Ом": 10.31706303500514,
+        "MAE, Ом": 9.509956329225231,
+        "bias, Ом": -5.609967033167507,
+        "max |ошибка|, Ом": 14.639149505688025,
+        "наклон Z(L), Ом/мм": -0.47531778058628454
+      },
+      {
+        "модель": "CT/FEM",
+        "RMS, Ом": 7.287877749640615,
+        "MAE, Ом": 5.141731633448233,
+        "bias, Ом": 0.14870775992959137,
+        "max |ошибка|, Ом": 15.446961634968005,
+        "наклон Z(L), Ом/мм": -0.525052046467021
+      }
+    ],
+    "calibrated_table": [
+      {
+        "модель": "обычная, h=h_c, подгонка ρ₁ρ₂",
+        "RMS, Ом": 8.912024317918357,
+        "MAE, Ом": 6.941998111765676,
+        "bias, Ом": -0.7066610666711794,
+        "max |ошибка|, Ом": 20.808335757886653,
+        "наклон Z(L), Ом/мм": -0.4933318296651292,
+        "ρ₁, Ом·м": 5.87494747392211,
+        "ρ₂, Ом·м": 39.99999999999999,
+        "h, мм": 30.42960955851457
+      },
+      {
+        "модель": "обычная, подгонка ρ₁ρ₂h",
+        "RMS, Ом": 6.234993981628415,
+        "MAE, Ом": 4.523594406352303,
+        "bias, Ом": 0.09926696356198209,
+        "max |ошибка|, Ом": 12.385946241884284,
+        "наклон Z(L), Ом/мм": -0.44279119449093896,
+        "ρ₁, Ом·м": 2.000000000067638,
+        "ρ₂, Ом·м": 12.947182138085516,
+        "h, мм": 4.338108883569519
+      },
+      {
+        "модель": "адаптированная, подгонка ρ₁ρ₂",
+        "RMS, Ом": 8.890561929776984,
+        "MAE, Ом": 6.899678845708215,
+        "bias, Ом": -0.6084157083104853,
+        "max |ошибка|, Ом": 20.322377171360174,
+        "наклон Z(L), Ом/мм": -0.48058231396108125,
+        "ρ₁, Ом·м": 5.8370480151710264,
+        "ρ₂, Ом·м": 39.999999999999766,
+        "h, мм": null
+      },
+      {
+        "модель": "CT/FEM",
+        "RMS, Ом": 7.287877749640615,
+        "MAE, Ом": 5.141731633448233,
+        "bias, Ом": 0.14870775992959137,
+        "max |ошибка|, Ом": 15.446961634968005,
+        "наклон Z(L), Ом/мм": -0.525052046467021,
+        "ρ₁, Ом·м": 5.5521664546649,
+        "ρ₂, Ом·м": 30.7069468090815,
+        "h, мм": 30.42960955851457
+      }
+    ],
+    "objective_parts": [
+      {
+        "часть критерия": "средняя функция Хьюбера по Z",
+        "вклад": 17.078571960506522
+      },
+      {
+        "часть критерия": "штраф наклона",
+        "вклад": 0.3963648107940837
+      },
+      {
+        "часть критерия": "априорный штраф по h",
+        "вклад": 4.893531133120536
+      },
+      {
+        "часть критерия": "выход h за 7–30 мм",
+        "вклад": 0.47031223174254383
+      },
+      {
+        "часть критерия": "априорный штраф по rho2",
+        "вклад": 1.228448369322796
+      }
+    ]
+  },
+  "planar_2L_3L_max_difference_ohm": 8.526512829121202e-14,
+  "notes": [
+    "Python test count comes from the pytest command in this task.",
+    "The first MATLAB review launch passed 30 tests then failed on an incorrect CSV name in the review script; the corrected launch completed all FEM checks. Both outputs are retained in current_matlab.log.",
+    "No new geometry optimisation, raw-signal processing or experimental validation."
+  ]
+}

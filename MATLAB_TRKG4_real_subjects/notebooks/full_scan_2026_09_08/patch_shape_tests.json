@@ -1,0 +1,130 @@
+{
+  "passed": true,
+  "new_builder_sha256": "65759b1ab0e2e5a177bd55dcc49c26c25ed1cee63a8e1b278384f3ab43ccd3b7",
+  "old_builder_sha256": "e9b35bb28e9ae2fd40f06f88d76055cfc43620c2afe47756c3a2538f0cbcafde",
+  "test_count": 20,
+  "tests": [
+    {
+      "name": "test_electrode_faces_by_area_single_owned/testSingleOwnedFaceSharedFirstNode",
+      "passed": true,
+      "failed": false,
+      "incomplete": false
+    },
+    {
+      "name": "test_electrode_faces_by_area_single_owned/testSingleOwnedFaceSharedSecondNode",
+      "passed": true,
+      "failed": false,
+      "incomplete": false
+    },
+    {
+      "name": "test_electrode_faces_by_area_single_owned/testSingleOwnedFaceSharedThirdNode",
+      "passed": true,
+      "failed": false,
+      "incomplete": false
+    },
+    {
+      "name": "test_electrode_faces_by_area_single_owned/testSingleBoundaryFaceAccepted",
+      "passed": true,
+      "failed": false,
+      "incomplete": false
+    },
+    {
+      "name": "test_electrode_faces_by_area_single_owned/testOneOwnedFacePerElectrodeAccepted",
+      "passed": true,
+      "failed": false,
+      "incomplete": false
+    },
+    {
+      "name": "test_electrode_faces_by_area_single_owned/testSingleBoundaryFaceNoSecondOwner",
+      "passed": true,
+      "failed": false,
+      "incomplete": false
+    },
+    {
+      "name": "test_trkg4_local_exact_patches/testLargePlaneUsesLocalAndMatchesCanonical",
+      "passed": true,
+      "failed": false,
+      "incomplete": false
+    },
+    {
+      "name": "test_trkg4_local_exact_patches/testTiesPreserveOrderingOnLocalPath",
+      "passed": true,
+      "failed": false,
+      "incomplete": false
+    },
+    {
+      "name": "test_trkg4_local_exact_patches/testSingleLocalTriangleUsesSafeFallback",
+      "passed": true,
+      "failed": false,
+      "incomplete": false
+    },
+    {
+      "name": "test_trkg4_local_exact_patches/testTiesAndFacePermutationsMatchCanonical",
+      "passed": true,
+      "failed": false,
+      "incomplete": false
+    },
+    {
+      "name": "test_trkg4_local_exact_patches/testIrregularMeshUsesInducedAreaStopping",
+      "passed": true,
+      "failed": false,
+      "incomplete": false
+    },
+    {
+      "name": "test_trkg4_local_exact_patches/testNearbyCompetingElectrodesRemainDisjoint",
+      "passed": true,
+      "failed": false,
+      "incomplete": false
+    },
+    {
+      "name": "test_trkg4_local_exact_patches/testNoSeedFailureMatchesCanonical",
+      "passed": true,
+      "failed": false,
+      "incomplete": false
+    },
+    {
+      "name": "test_trkg4_local_exact_patches/testPatchTooSmallFailureMatchesCanonical",
+      "passed": true,
+      "failed": false,
+      "incomplete": false
+    },
+    {
+      "name": "test_trkg4_local_exact_patches/testTinyRadiusGrowthAndForcedFallback",
+      "passed": true,
+      "failed": false,
+      "incomplete": false
+    },
+    {
+      "name": "test_trkg4_local_projected_qc/testAreaCentroidAndProjectedProofMatchCanonical",
+      "passed": true,
+      "failed": false,
+      "incomplete": false
+    },
+    {
+      "name": "test_trkg4_local_projected_qc/testBadProjectionHintFallsBackInsteadOfFalseRejection",
+      "passed": true,
+      "failed": false,
+      "incomplete": false
+    },
+    {
+      "name": "test_trkg4_local_projected_qc/testThresholdEqualityAndCrossing",
+      "passed": true,
+      "failed": false,
+      "incomplete": false
+    },
+    {
+      "name": "test_trkg4_local_projected_qc/testInducedMismatchAndIndexErrorRemainTechnical",
+      "passed": true,
+      "failed": false,
+      "incomplete": false
+    },
+    {
+      "name": "test_trkg4_local_projected_qc/testStandardWrapperPreservesStatusesAndStats",
+      "passed": true,
+      "failed": false,
+      "incomplete": false
+    }
+  ],
+  "log_file": "notebooks/full_scan_2026_09_08/patch_shape_tests.log",
+  "baseline_log_file": "notebooks/full_scan_2026_09_08/builder_shape_fix_20260908/before_tests.log"
+}

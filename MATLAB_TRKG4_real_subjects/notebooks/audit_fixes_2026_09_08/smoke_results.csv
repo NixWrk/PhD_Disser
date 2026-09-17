@@ -1,0 +1,3 @@
+batch_row,rho_soft_ohm_m,rho_lungs_ohm_m,centre_u_mm,centre_v_mm,phi_deg,objective,fem_slope_ohm_per_mm,h_centre_mm,status,failure_code,version,fingerprint
+1,5.3646664546649,24.7069468090815,5.87975438606791,26.6547663507263,-6.875,Inf,NaN,NaN,invalid_geometry,trkg4:electrodeDiagnostics,trkg4-inverse-auditfix-20260908-v1,66257fca37830c42fc78cfd9dc09b4a89c85626063b179d49b24041537277d6a
+2,5.3646664546649,24.7069468090815,1.87975438606791,10.6547663507263,-6.875,70.1450696326395,-0.417861242887342,31.1033785118049,evaluated,,trkg4-inverse-auditfix-20260908-v1,66257fca37830c42fc78cfd9dc09b4a89c85626063b179d49b24041537277d6a

@@ -1,0 +1,24 @@
+[
+  {
+    "boundary_face": 141917,
+    "owner_tetra": 702908,
+    "centroid_dot_mm3": -1.8459006838611458E-6,
+    "global_tolerance_mm3": 5.9604644775390625E-6,
+    "opposite_vertex_determinant_mm3": -7.3836027780771474E-6,
+    "local_operation_scale_mm3": 1.9988830482512157,
+    "local_operation_tolerance_mm3": 2.2204460492503131E-14,
+    "tetra_volume_mm3": 1.230600463012858E-6,
+    "longest_face_edge_mm": 1.7320508075688772
+  },
+  {
+    "boundary_face": 148297,
+    "owner_tetra": 709151,
+    "centroid_dot_mm3": -4.30628702474678E-7,
+    "global_tolerance_mm3": 5.9604644775390625E-6,
+    "opposite_vertex_determinant_mm3": -1.7225147956878573E-6,
+    "local_operation_scale_mm3": 1.7225147956878573E-6,
+    "local_operation_tolerance_mm3": 2.2204460492503131E-14,
+    "tetra_volume_mm3": 2.8708579928130956E-7,
+    "longest_face_edge_mm": 2.23606797749979
+  }
+]

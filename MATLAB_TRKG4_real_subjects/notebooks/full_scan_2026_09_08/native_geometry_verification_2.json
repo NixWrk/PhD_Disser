@@ -1,0 +1,30 @@
+{
+  "synthetic_cases": 11,
+  "poses": 2,
+  "assemblies": 18,
+  "native_valid": 0,
+  "native_invalid": 1,
+  "native_fallback": 17,
+  "resolved_valid": 9,
+  "native_serial_seconds": 0.3474601,
+  "native_openmp8_seconds": 0.1234996,
+  "canonical_seconds": 4.9034935999999991,
+  "wrapper_seconds": 3.3764659000000008,
+  "matlab_fallback_seconds": 3.2839407,
+  "all_exact": true,
+  "openmp_deterministic": true,
+  "full_sweep_run": false,
+  "fem_run": false,
+  "failure_values": [
+    3,
+    12,
+    13,
+    17
+  ],
+  "failure_counts": [
+    1,
+    5,
+    4,
+    8
+  ]
+}

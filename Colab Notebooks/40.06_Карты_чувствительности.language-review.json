@@ -1,0 +1,56 @@
+{
+  "language": "ru",
+  "review_status": "passed",
+  "review_type": "final_full_text_model_review",
+  "reviewed_utc": "2026-09-10T07:47:05.885716+00:00",
+  "skill": "C:/Users/ELVIS_NIX/.codex/skills/russian-scientific-prose/SKILL.md",
+  "reviewed_after_last_text_edit": true,
+  "all_reader_visible_text_read_in_sequence": true,
+  "figures_and_labels_reviewed": true,
+  "artifact_sha256": {
+    "Colab Notebooks/40.06_Карты_чувствительности_и_подготовка_новых_комбинаций.ipynb": "861d4163997b42a8d953d25e19b9cb75769582212625d819765eed8f4871f63d",
+    "Colab Notebooks/40.06_Карты_чувствительности_и_подготовка_новых_комбинаций.html": "fb9af16b5942449c14f978f261f473f9e2f6dc1b75baba9bac7d7165dceaf9fd",
+    "MATLAB_TRKG4_real_subjects/output/exploratory/electrode_sensitivity_20260910/report_revision_20260910/reader_text.md": "d3844a9f3dcc8b9f889c696c993421db497fce1d4155efb08ff77a3307f553f6"
+  },
+  "figure_sha256": {
+    "figures/figure_01.png": "e63fc3854511fdabf76d1df81bb4147fc1a2dd2de24722f03be1f39d212f8227",
+    "figures/figure_02.png": "ce1454caee9e185e9e4b460ffc6d3052d670d67087dce1a21743d964f6abd115",
+    "figures/figure_03.png": "986ce4225608103d56669e7d96ead81de1725623e9fc3256159224295528a8fe",
+    "figures/figure_04.png": "bc27bc9c216265fefca5b54b2b70c6497234049c8c0f6d752a08976b16b352af",
+    "figures/figure_05.png": "f5942996d75c8111d9cca7070d4aefbf27ef05322246d6f9783dd32f66244d86",
+    "figures/figure_06.png": "87fd4478f80ded6b58cd2adca3990bf002c54f4e01520b0e55763dc97d2c7128",
+    "figures/figure_07.png": "355493c18c3d711a2510aaa86a85ed820fea6dc1e8a557e145e54a6c137944ff",
+    "figures/figure_08.png": "e0fe106dabe3dff088e62c59bb2421eb4b2ef540015c77bc15c90afadd29f465",
+    "figures/figure_09.png": "c6ecedfedad7cb8521ef2eeeeba34ef826bfd0108c8120ce0d16b50f350ba06b",
+    "figures/figure_10.png": "e39cabadeeb7605cce93ba980f7e441c6587093618756b086a8f1cd8dd50bd8b"
+  },
+  "scope": "All notebook Markdown, displayed interpretations, seven rendered tables, ten figure captions and labels, bibliography and appendix; HTML contains the same reader content. Final full sequential reading after the last wording and formula-punctuation changes.",
+  "checks": {
+    "language.ru.hash-bound-final-review": "passed",
+    "language.ru.encoding": "passed",
+    "language.ru.formula-where": "passed",
+    "language.ru.reader-facing-clarity": "passed",
+    "language.ru.natural-prose": "passed",
+    "language.ru.intro-variation": "passed"
+  },
+  "attestation": {
+    "scientific_headings": true,
+    "technical_terminology_and_scope": true,
+    "derived_objects_defined": true,
+    "meaningful_distinctions_preserved": true,
+    "claims_and_uncertainty_preserved": true
+  },
+  "resolved_findings": [
+    "Removed conversational framing from the research objective.",
+    "Distinguished the magnitude of a signed density from its algebraic value.",
+    "Separated the direct-versus-linear discrepancy from the linear-system residual.",
+    "Explained volume-weighted averaging and effective local-probe weights.",
+    "Distinguished channel dependence from noise-dependent practical identifiability.",
+    "Corrected crowded plot ticks, overlapping legend and clipped coordinate labels.",
+    "Unified formula punctuation before symbol definitions."
+  ],
+  "findings": [],
+  "scientific_status": "exploratory_hypothesis_not_validated",
+  "physical_validation": "not_evaluated",
+  "mesh_convergence": "not_evaluated"
+}

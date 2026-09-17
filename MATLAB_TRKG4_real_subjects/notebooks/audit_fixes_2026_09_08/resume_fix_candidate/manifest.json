@@ -1,0 +1,319 @@
+{
+  "base_sha256": {
+    "tools/run_restartable_inverse_search.py": "f4fe9c3a99c32d036ca0a87bcad01bc56b36d5df13fd5ecf45b7492fe4291900",
+    "tests/test_restartable_inverse_search.py": "a031240e4deb417a6fa13b9259673baab762010cdce3b7436df60ad692c8b791"
+  },
+  "protected_source_sha256": {
+    "tools/add_arm_extensions.py": "87fab19e1740d660dfb14996d13cbd410d362636e524a41f02bb68c11d82a631",
+    "tools/analyze_stl.py": "18522247a7ad6c4bd7b5db3e23c6d803153762197499168367ef4edd30aefd3e",
+    "tools/analyze_stl_vtk.py": "81dfe6bde718fe2f61e1117cbd98b77ab185a444e1a31133bf80099b0d0fd3c5",
+    "tools/blender_analyze_stl.py": "b3ff17126b559fa38c4667ed5d29e1ee04f8080e223f78660eb484b04848ff21",
+    "tools/blender_check_containment.py": "1492fb17bd1dabe89af1d6611f302483b87d6b303ecaf24da26d74cb76f48825",
+    "tools/blender_compare_stl.py": "d6bc74202962628a9179d2d01b478d5ee8fea9944bfcfe751fdd2de1467a9e4e",
+    "tools/blender_convex_lungs_stl.py": "a72d1d50c252be2b21a028b1a5a899054731d6e811420c2492f548b5f06c3a52",
+    "tools/blender_intersect_stl.py": "71f56b0d615f866c5051f9c9b535af70c3a8855f404268c53872388dc1aa0aef",
+    "tools/blender_render_stl.py": "be9a330d0fbad0fbd26cef7b12eefc84c95b0779562f8f5521ac7948bdd5f410",
+    "tools/blender_split_lungs_stl.py": "8003fc52bd6cdb250d44b62953d9830d2c164ffcadd7d8ec5232935ea5d3e252",
+    "tools/blender_topology_generators.py": "db6189622be48766502fd22dbabf51cc8c89a91198ff4cc39aa54466d560b472",
+    "tools/blender_voxel_remesh_stl.py": "ed30b4644bbd3c59d15680898db2e76d6a2f02e8b650b3dc1eb5f4ed5efb6a7b",
+    "tools/build_arm_electrode_report.py": "821f3ab07efc896139f2901d9a762b5868d49dc0b8c1a2a69a986a44a5f54c6f",
+    "tools/build_surface_landmark_picker.py": "1452266cc13523f005e4ed23660f55ae82140e106f9f1ddcc5ca2df47064c667",
+    "tools/check_containment_vtk.py": "edf6812ecff6315c45786caa25e7f286d786b3457195e0c3d50d9d9ca109f7c9",
+    "tools/check_msh_quality.py": "07eb0de6d50846f79edc181701e4c097ac338fc8b6cf8852ea1094942dd107ae",
+    "tools/combine_stl.py": "931dd480008af98d5f6efd4dc9ee62ae4450b7100c5bc5f06ef38790c5eafb64",
+    "tools/decimate_stl.py": "5345ee1ccc2cbd6f019f25698aac603162f88a48841b910aa3383d89987a89b7",
+    "tools/diagnose_legacy_patch_builder.m": "02d994cf96515edb89c52d9b16803df976342e2cabab55597eeaae27ce938aca",
+    "tools/extract_largest_stl.py": "48ae41de5fba1934d28e19c651e682859dd7514d424c24d84c3435abc6f384f8",
+    "tools/gmsh_arm_parameter_mesh.py": "caff6c598e5746cbc3993bddeb16bb7ef23a8a23935cabc8087af28da0c6d635",
+    "tools/gmsh_stl_to_msh_robust.py": "40032357a6be85f234c828e662a7632291dc905472dc5a37d76cf02c726d55eb",
+    "tools/prepare_arm_parameter_surface.py": "b4c7f9eee23aea6b8e92acf850d7ddabb43307ee57ba39dd79d834e0878304fc",
+    "tools/refine_stl_electrode_strip.py": "3782c74160f880154020d8d66a241c09b7d3c20749d6627b3ccb9c88fdf61bc9",
+    "tools/refine_stl_surface_edges.py": "fe3fcd78af0a73aa4f1343704b05ce858056cdd6b7f8aea6b966da250e3e1247",
+    "tools/remesh_stl_uniform.py": "d8254cbb5f36eb01872e2d93452a9867a1d272fc4d0ef50eafbed2dd135694ae",
+    "tools/remove_degenerate_tetrahedra.py": "95c9eeba82ffdc66b3f40876093eb2d8a066d344fcbd2bd35befa90830047989",
+    "tools/run_restartable_inverse_search.py": "f4fe9c3a99c32d036ca0a87bcad01bc56b36d5df13fd5ecf45b7492fe4291900",
+    "tools/run_trkg4_inverse_evaluation_batch.m": "d763323ebfc2b8f363e22d5e218e8386e21364766fb69b7263d834694ac4f122",
+    "tools/scan_body_closing.py": "a37f7ecbe8948068a71238c9661a1471f01782e5bce08212ecc07b2409f003f1",
+    "tools/solid_fill_stl.py": "30968cf115b1b78af212860ce155a9c23786c59359fd56f1079e05e120a31297",
+    "tools/verify_arm_parameter_mesh_acceptance.py": "3258e0060eadafe0f048dac400d417238b963b7e51b23445db7b485e8937ca0f",
+    "src/check_trkg4_patch_overlap_v5.m": "fe4c0b44009ff03828e50b6c993a53cfa3be9872149e882d877a6938bc6bcafb",
+    "src/check_trkg4_ttrkg_electrode_geometry.m": "dcf086ae538de45c0bd5c9bc19ec3f331f27f5294b1d05e8b9c9449d1aad2fe5",
+    "src/run_trkg4_arm_electrode_tests.m": "23f532328191d373ef10e70577d42f96a75ac6fb4245fa17cbe1619e6b7c3903",
+    "src/run_trkg4_batch.m": "50cca1e3a6c93a69a779b276387c7cb8bea9be34cc6699a807507daa550974dc",
+    "src/run_trkg4_electrode_systems.m": "333f9c44d196e893753bd1df5da7a72ee19fb116b691647483cef9f1a1079915",
+    "src/run_trkg4_fast_cem_refine.m": "a6c99db759cd9686cd68c76d9c4758aecc2acae65731a2f2f8e9c11794477f06",
+    "src/run_trkg4_fast_pem_scan.m": "8ae302f943c289401401ddda5700cb9d064b6071ff10efb503bb16d46580d1e2",
+    "src/run_trkg4_forward_subject.m": "5a612cc4f926de54891c1b04494bfa474ba28ebb2da6d793f51533686e63871a",
+    "src/run_trkg4_inverse_inhale.m": "4c3c617388a41c458d6435b3082fc1d66463fdfae340954f36b1d0e9ef31b57c",
+    "src/run_trkg4_notebook_pipeline.m": "c99f3b344ec1031f622909c58b684a3ad9dfd84c97bfce73120129cb51ff1abd",
+    "src/run_trkg4_surface_coordinate_validation.m": "1cbfc8a872b4df69347afb75929081263e9448786f82f19e72a51f1b69421409",
+    "src/trkg4_absolute_path.m": "e8ade5301d0aad9d58cc5b6f933de69bd7c5cc188d7be83d1227d94838985e3f",
+    "src/trkg4_apply_overrides.m": "404f0f03997373ede6cc3045ac93dd6fe0ab5e440fb4d4de67d3f36a2679f28b",
+    "src/trkg4_arm_montage_spec.m": "577e0c76db6cc26b115b1ae9aae0db4ac8e84cf57010ca6b806d9b4d48aa259d",
+    "src/trkg4_arm_surface_centres.m": "bb3d67dca2e063a0c479dafe94d651f0435a0cf25e4665e943697a3614388b82",
+    "src/trkg4_boundary_normals.m": "348e3a1927898e7fda45d3e53abd739daa6379f8245c33a081dc0c2a501c3040",
+    "src/trkg4_build_arm_cross_section_electrodes.m": "f9e76195627e888b3a88ec0337adf3a4fa47ae72a3b37571189c0b0610caffbd",
+    "src/trkg4_build_arm_electrodes.m": "818ba8c7abd64c88ed6e5c9e944bd711af517f208a3bee4d2302384828b498fe",
+    "src/trkg4_build_eidors_model_from_stl.m": "b0216de371be9b39cbd4cd893d93f959772f523576e02f80ff367615e8037ca7",
+    "src/trkg4_config.m": "8cd12d316f4ed684578bf3702b9dcb560cbde6fe55df5a79b6c0cbc378409d79",
+    "src/trkg4_electrode_diagnostics.m": "c82c7855d66d590eafe17a3b00a82ab283cf0743839e365749d2bb8471e9b47e",
+    "src/trkg4_file_sha256.m": "3c3fa6b685c5775a8763080d07c190cc0efcbeb95fbbc028545063db911d8f53",
+    "src/trkg4_finite_step_diagnostics.m": "784e95b64d6aeb0cf1c0bf84ea38044f00f7886ed5821048f68825a2617b865f",
+    "src/trkg4_get_subject.m": "9068bc4152fbec126915159de9bc833b0b83387e2d7f1259a37f5c92ed409909",
+    "src/trkg4_green_fingerprint.m": "050ffe2b235d252522dc3830de971355bbbd3172118a1585f7f86910fa14583c",
+    "src/trkg4_inverse_identity.m": "4e5e27b50fd14207f43c23ef68c0aa2829de6518c59dcb6ea11416a377f8ba9d",
+    "src/trkg4_load_electrode_centres.m": "00cbe5412dcdc8c2ab0b9efbfa97fc027a09441773f7e02521c38151554d4f2b",
+    "src/trkg4_load_nik_inhale_data.m": "c5385ab5c28be2489f00a57d28946770393c75bd85128ba1762dd34ee3f1983c",
+    "src/trkg4_load_surface_landmarks.m": "97079cb81b2d0f1d83407711a7a46e75703e87366391b0af89bee62b2f5132ed",
+    "src/trkg4_make_4electrode_stimulation.m": "6b5519681711307338d2a1ea00baa89bc295cdd2e280a514ae4095433c6b8358",
+    "src/trkg4_make_reciprocity_stimulation.m": "3aa1c6055efbbe7ff5c4d9fa5e60cf9680d03c2c275515aff249010b0e47c5aa",
+    "src/trkg4_prepare_runtime.m": "90ea5bd372bd372f4f1bfa049add65f5595f3c6250e6b7f548b4785a28a9a0ac",
+    "src/trkg4_result_summary.m": "0af20d2945530a85fcf387b807dac301f473f69321e7538d0b3f60645070c03e",
+    "src/trkg4_sample_surface_path.m": "ad6688706e519bad09d80acc7679d0c7edfdecf34a59bfd39c9b847345b398be",
+    "src/trkg4_scale_fmdl_to_si.m": "77450a9bec1048082c51d2ff7f3cb7278db723ccd7e04cf1a4217320902d0ce4",
+    "src/trkg4_snap_electrode_centres.m": "882e82979dd0eea5c2b1ed14c30fa3060aefbc03471e069ba73b0eb6f06e690b",
+    "src/trkg4_subject_registry.m": "d222615d04700a04de2775a7e91c13a669dc7d84599a52a26b1811fcdf69ec1c",
+    "src/trkg4_surface_montage_centres.m": "71588858f4a2db5f849eef2174648db0ff51afe26a8a6a255238a00127ec46cb",
+    "src/trkg4_surface_path.m": "8e39aefc0d07dd361ba75bf14338b412c53fd189099a3a17257d930c4e82f888",
+    "src/trkg4_validate_inverse_contract.m": "7b02b3dff04fdfb8db0d3aeacd3e385f4d054537589b6ad765a7b7e5015af1ae",
+    "vendor_stl_eidors/assign_tissues_from_stl.m": "79faf015b8301dfff8fa16451746d9b3a4ea58f2b830523f14c410cc6e607b5e",
+    "vendor_stl_eidors/electrode_faces_by_area.m": "e9b35bb28e9ae2fd40f06f88d76055cfc43620c2afe47756c3a2538f0cbcafde",
+    "vendor_stl_eidors/electrode_faces_by_area_fast.m": "1d255bf54a3b30bc6963e3e1bea105e8b2e65b22901a59a62aee192b995b2348",
+    "vendor_stl_eidors/electrode_faces_by_area_legacy.m": "29282bc34fd87a11b92225bf8d64510f6c3a27dee1e8e496653e08047e0f1764",
+    "vendor_stl_eidors/electrode_faces_by_area_legacy_fast.m": "ec7f2faaca9b2f0aec2abf8c3f087e5483cac075b7bcab1092f48e5aa58bd500",
+    "vendor_stl_eidors/electrode_patch_context.m": "8965cf9e4f7a30916d3f14296b5eee43db4c33d70f72af0cfc8eb5ecafde20f2",
+    "vendor_stl_eidors/element_centroids.m": "05bbc7d0084a7317e75391d6712e83626ce4ae6d0e2d50e79c8a92a770918fab",
+    "vendor_stl_eidors/itis_conductivity.m": "a0bca64008987e03a76ce4f08b4a441ef7cc321bb91ae3adadcf04c5871b7cfc",
+    "vendor_stl_eidors/points_in_closed_surface.m": "f07c8078538e3840cd309d262054173b0dffd64104dbd482209ddc32ec8a2210",
+    "vendor_stl_eidors/print_itis_conductivities.m": "ab496f20fb7bb2c5871b57da87c507eb66ff28b48469f19c28d640133da70b9d",
+    "vendor_stl_eidors/start_parallel_pool.m": "a5ce738b129edb832255f2267b032b10b046b0d52fe3b03eac3e98ca94c18e96",
+    "vendor_stl_eidors/stl_mesh_cache_key.m": "fc780a40fc3ebbfb74ddd957032987ab579a6dce064d76ad2e7355bf835fbdfd",
+    "vendor_stl_eidors/validate_stl_inputs.m": "6a279da1c725830d12e1b257394d4f0b6f66a996d55e25c9c44cc811d47fb8f3",
+    "tests/test_add_arm_extensions.py": "e62478abbb3ee9d4bb07fd2834e10b2e61ff20dbddfdb3d56b2707b34686f360",
+    "tests/test_build_arm_electrode_report.py": "c530526f3cfec674e4b590db2edd6f661e8b6bdeebd245754ec7d28e896c1033",
+    "tests/test_inverse_report_contract.py": "5c8474678080db19669eea6ce852e7f21db51af801dc3bbc6699d7c62446d479",
+    "tests/test_restartable_inverse_search.py": "a031240e4deb417a6fa13b9259673baab762010cdce3b7436df60ad692c8b791",
+    "tests/test_surface_landmark_picker.py": "a7c62d9d043abcd08e7832405fdaf9f2e0db633b3b0cea360c246194c0edd599",
+    "tests/test_surface_landmark_picker_layers.py": "1bd7e7fbc3c6d0f5d03408f499c0b7fd25bc227ebddfee59219ffb141c4703f7",
+    "tests/test_trkg4_arm_electrode_model.m": "180424fdb18d8f50257b9b03f1132964129adc5109c35aa987e9ee4b86cb0191",
+    "tests/test_trkg4_arm_surface_centres.m": "91e40424bc55ebc2915d9e11bd5b82fc8c0c481b3d919a9dd368cc0111865c39",
+    "tests/test_trkg4_arm_surface_cylinder.m": "c7d24802a548f48e04429c4a9530017b52be89496edcb7dc535f23a8d3b74038",
+    "tests/test_trkg4_boundary_normals.m": "4247dee19f6fe797dda68aad5fdba6d7eaa41b27ec3f22ccc99f2df1c21e507b",
+    "tests/test_trkg4_electrode_diagnostics.m": "46dc237cc6a01c071cbbe7ea201fe087c79cf4e300b6bc8533a8ced25162fe7a",
+    "tests/test_trkg4_finite_step_diagnostics.m": "b7f627fe4e276679dbcf7c4c0648aa7fb901c541a4a61a70e41f74879c139915",
+    "tests/test_trkg4_green_cache_contract.m": "6974d93518211cf8f052a3bc6d39496e5c4bfe0705f32a46aea450ccb1c8b45b",
+    "tests/test_trkg4_green_fingerprint.m": "a18aacb02eb7a139c7fa4b76007bbfe19df47e9036c63fc7f0022b5cc1bf26a0",
+    "tests/test_trkg4_inverse_contract.m": "ab61bfa519c532a33e46cd34ef9728bf224039a39c183bddbbcecec0e7c365f3",
+    "tests/test_trkg4_legacy_electrode_patches.m": "d5aea37edf700355fc17f6d5127a650111218b9cef2016eccf0a0e1aac1c8b20",
+    "tests/test_trkg4_legacy_fast_electrode_patches.m": "56c694e0ef7d4a301a495fd8b781484d33bceea79d3e2230d4e5966e19666d35",
+    "tests/test_trkg4_load_surface_landmarks.m": "2f4a38f906b489c171ee37e80e09425a0b045e7ca662cf75330dc4d07a8bb54c",
+    "tests/test_trkg4_nik_inhale_data.m": "a8d995d5a8d01128ed7f85bfb78248c0862eb76fbdfe8be094435335f92c68d5",
+    "tests/test_trkg4_surface_path.m": "fc7a49bdd22553cd3a9aa076f71b399d6794fba32697af065dc36b919c77f6f2"
+  },
+  "source_archive": "notebooks/audit_fixes_2026_09_08/source_used_auditfix_20260908.zip",
+  "source_archive_sha256": "d57e270dfef251982ed897764c96a562f0f8ffc084107a1323c5383a7b579ec9",
+  "status": "candidate_verified_not_integrated",
+  "created_utc": "2026-09-08T13:26:33.957367+00:00",
+  "apply_map": {
+    "run_restartable_inverse_search.py": "tools/run_restartable_inverse_search.py",
+    "test_restartable_inverse_search.py": "tests/test_restartable_inverse_search.py"
+  },
+  "candidate_sha256": {
+    "run_restartable_inverse_search.py": "ca026f9c2ee607f639339b15f87c968ecfe48312fefb12021530614897b1004a",
+    "test_restartable_inverse_search.py": "dd3ba69eef5063ba0a3877cc32666aa7e47a7c158e00d9420d0ba4f2bdd8bc0e"
+  },
+  "apply_conditions": [
+    "Do not apply while the current 100-evaluation FEM run uses frozen sources.",
+    "Before applying, verify BOTH active files against base_sha256 and candidate files against candidate_sha256. Stop if any mismatch.",
+    "Only copy the two apply_map files; do not alter MATLAB/vendor code or rewrite existing run identities/artifacts.",
+    "The shipping test SCRIPT points to ROOT/tools/run_restartable_inverse_search.py; do not run the deeply nested candidate driver as a production entry point."
+  ],
+  "implementation": {
+    "changed_existing_functions": [
+      "load_resume_state",
+      "main"
+    ],
+    "added_driver_lines": 183,
+    "all_existing_function_signatures_unchanged": true,
+    "evaluate_finalise_allowlist_and_contract_helpers_unchanged": true,
+    "new_checkpoint": "output/.restartable_<tag>_state.json",
+    "atomic_commit": "flush + fsync + os.replace of one identified/checksummed JSON, then atomic CSV/identity/summary projections.",
+    "state": "run_id, revision, model/data/code/seed identity, full accepted history, current step, pending fixed pass points/cursor/before-objective.",
+    "transition": "Commit running state before withdrawing the old contract and materialising new history. --no-resume commits a new run_id with empty history.",
+    "recovery": "Recover a projection only if its hash equals this checkpoint or the recorded previous projection. Unknown CSV/identity changes fail closed. Complete publication additionally verifies contract/summary hashes and all existing contract checks.",
+    "interrupted_batch": "A batch interrupted before the atomic commit may be evaluated again (at most 1/5 points per disjoint/legacy_fast process). Committed rows are recovered without duplicate accepted history.",
+    "partial_finalisation": "An uncommitted final publication is withdrawn on resume and finalised again for the saved valid best.",
+    "migration": "No automatic migration across code identity changes. This candidate changes Python code identity; the existing rejection of history from different code/model/data remains enabled.",
+    "state_nonfinite_encoding": {
+      "wire_values": [
+        "nan",
+        "inf",
+        "-inf"
+      ],
+      "fields": [
+        "pending.before",
+        "history[].objective",
+        "history[].fem_slope_ohm_per_mm",
+        "history[].h_centre_mm"
+      ],
+      "policy": "Quoted strings in these internal numeric fields only; restored to floats before existing semantic validation and CSV projection. Identity/status/failure_code stay untouched.",
+      "strict_json": "Checkpoint serialization and canonical checksum use allow_nan=False; checkpoint reader rejects non-standard JSON constants through parse_constant.",
+      "evaluated_finite_guard": "Unchanged: a decoded non-finite evaluated objective is rejected even with a matching checkpoint checksum.",
+      "public_csv": "Unchanged numeric header/values, including nan and signed inf; byte equality checked across checkpoint recovery."
+    }
+  },
+  "verification": {
+    "test_result": "52 passed in 23.64s",
+    "syntax": "compile() of both shipping files succeeded without production pycache",
+    "protected_sources_unchanged": 105,
+    "source_archive_unchanged": true,
+    "original_test_functions_preserved": true,
+    "physical_model_or_FEM_runs_modified": false,
+    "model_validation": "Mock-only software checks, not physical validation.",
+    "before_after_five_scenarios": {
+      "before": {
+        "uninterrupted_5_to_15": 15,
+        "extend_interrupt_3": "EvaluationContractError: Final MATLAB contract driver artifact hash does not match: nik_trkg4_inverse_direct_search_history_mock_edges.csv.",
+        "no_resume_interrupt_0": "ResumeIdentityError: Summary and identity sidecar do not match.",
+        "no_resume_interrupt_2": "EvaluationContractError: Final MATLAB contract driver artifact hash does not match: nik_trkg4_inverse_direct_search_history_mock_edges.csv.",
+        "restored_step": [
+          0.75,
+          3.0,
+          10.0,
+          10.0,
+          5.0
+        ],
+        "next_point": [
+          4.25,
+          20.0,
+          -0.25,
+          2.0,
+          3.0
+        ],
+        "step_then_finish": "complete"
+      },
+      "after": {
+        "uninterrupted_5_to_15": 15,
+        "extend_interrupt_3": "complete",
+        "no_resume_interrupt_0": "complete",
+        "no_resume_interrupt_2": "complete",
+        "restored_step": [
+          0.09375,
+          0.375,
+          1.25,
+          1.25,
+          0.625
+        ],
+        "next_point": [
+          4.90625,
+          20.0,
+          -0.25,
+          2.0,
+          3.0
+        ],
+        "step_then_finish": "complete"
+      }
+    },
+    "eight_uninterrupted_trajectories_and_minima_equal": [
+      {
+        "mode": "disjoint",
+        "seeds": 1,
+        "budget": 20,
+        "rows": 20,
+        "trajectory_sha256": "c253990ffbe03314571733c4367e57cac320ac1b1aff9d7f346af9cc8fefa9ae",
+        "minimum": 1.0
+      },
+      {
+        "mode": "disjoint",
+        "seeds": 1,
+        "budget": 100,
+        "rows": 59,
+        "trajectory_sha256": "a8542430b00ef89ecfc27e68d5ab280464204560a92adb751f256d76d4ed55a1",
+        "minimum": 0.5
+      },
+      {
+        "mode": "disjoint",
+        "seeds": 3,
+        "budget": 20,
+        "rows": 20,
+        "trajectory_sha256": "6ca2a59b06152f270ea3670de7bd8fcc0b19ee313eaa4986f8d694f76c80add7",
+        "minimum": 1.0
+      },
+      {
+        "mode": "disjoint",
+        "seeds": 3,
+        "budget": 100,
+        "rows": 61,
+        "trajectory_sha256": "f7eb90f2a2a60c3e8a0004e78ec35913fb9de6f17363fb285b4d69843c02cf84",
+        "minimum": 0.5
+      },
+      {
+        "mode": "legacy_fast",
+        "seeds": 1,
+        "budget": 20,
+        "rows": 20,
+        "trajectory_sha256": "c253990ffbe03314571733c4367e57cac320ac1b1aff9d7f346af9cc8fefa9ae",
+        "minimum": 1.0
+      },
+      {
+        "mode": "legacy_fast",
+        "seeds": 1,
+        "budget": 100,
+        "rows": 59,
+        "trajectory_sha256": "a8542430b00ef89ecfc27e68d5ab280464204560a92adb751f256d76d4ed55a1",
+        "minimum": 0.5
+      },
+      {
+        "mode": "legacy_fast",
+        "seeds": 3,
+        "budget": 20,
+        "rows": 20,
+        "trajectory_sha256": "6ca2a59b06152f270ea3670de7bd8fcc0b19ee313eaa4986f8d694f76c80add7",
+        "minimum": 1.0
+      },
+      {
+        "mode": "legacy_fast",
+        "seeds": 3,
+        "budget": 100,
+        "rows": 61,
+        "trajectory_sha256": "f7eb90f2a2a60c3e8a0004e78ec35913fb9de6f17363fb285b4d69843c02cf84",
+        "minimum": 0.5
+      }
+    ],
+    "additional_tests": [
+      "partial pass after best improves; same pending candidates and reduced step",
+      "before/after checkpoint commit and before/after CSV publication",
+      "transition commit before old publication withdrawal",
+      "interruption before final complete checkpoint",
+      "unknown history/sidecar/checkpoint/data/code/seed rejected",
+      "invalid-only history never finalised; artifact list preserved",
+      "strict JSON seed checkpoint before first evaluation; resumed seed arithmetic and identity",
+      "strict JSON invalid_geometry NaN/+Infinity/-Infinity metrics; reversible floats, identical CSV bytes, committed refusal retained and only evaluated best finalised",
+      "NaN/Infinity/-Infinity raw JSON constants rejected before any writes",
+      "matching-checksum checkpoints with encoded non-finite evaluated objectives rejected",
+      "unencoded non-finite field outside the explicit numeric fields rejected before atomic commit"
+    ],
+    "reproduce_from_project_root_python": [
+      "import pathlib, shutil, subprocess, sys, tempfile",
+      "candidate = pathlib.Path('notebooks/audit_fixes_2026_09_08/resume_fix_candidate')",
+      "stage = pathlib.Path(tempfile.mkdtemp(prefix='trkg4_resume_verify_'))",
+      "for folder, name in [('tools','run_restartable_inverse_search.py'), ('tests','test_restartable_inverse_search.py')]:",
+      "    (stage / folder).mkdir()",
+      "    shutil.copyfile(candidate / name, stage / folder / name)",
+      "subprocess.run([sys.executable, '-X', 'utf8', '-B', '-m', 'pytest', 'tests/test_restartable_inverse_search.py', '-q', '-p', 'no:cacheprovider'], cwd=stage, check=True)"
+    ],
+    "python": "C:/PC/Python/python.exe -X utf8 -B",
+    "fixture_ROOT_policy": "ROOT/OUT and root keyword defaults are monkeypatched in the tests only.",
+    "strict_json_regression_before_fix": "3 failed, 49 deselected in 0.43s: strict parser rejected Infinity in seed state, NaN/Infinity in invalid_geometry state.",
+    "strict_json_new_tests": 10,
+    "tested_candidate_bytes_match_shipping": true,
+    "source_freeze_after_tests": {
+      "checked_utc": "2026-09-08T13:41:33.695593+00:00",
+      "base_files_unchanged": 2,
+      "protected_sources_unchanged": 105,
+      "source_archive_unchanged": true,
+      "production_or_FEM_writes": false
+    }
+  },
+  "updated_utc": "2026-09-08T13:41:33.695593+00:00"
+}

@@ -1,0 +1,5 @@
+{
+  "status": "changed_driver_identity_rejected_as_designed",
+  "reason": "Checkpoint identity does not match the current model, data, code, run tag, or MATLAB engine fingerprint. Start a new run with a new tag or use --no-resume.",
+  "history_unchanged": true
+}

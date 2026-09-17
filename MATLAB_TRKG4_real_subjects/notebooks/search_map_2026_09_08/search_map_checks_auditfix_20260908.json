@@ -1,0 +1,148 @@
+{
+  "result_tag": "auditfix_20260908",
+  "evaluations": 100,
+  "valid_evaluations": 85,
+  "rejected_evaluations": 15,
+  "centres": 22,
+  "valid_centres": 18,
+  "rejected_only_centres": 4,
+  "distinct_poses": 45,
+  "best_evaluation": 94,
+  "best_objective": 24.0672285054864,
+  "best_rmse_ohm": 7.28787774964065,
+  "search_span_uv_mm": {
+    "centre_u_mm": 30.0,
+    "centre_v_mm": 20.0
+  },
+  "colour_range": [
+    24.0672285054864,
+    126.16346671049
+  ],
+  "colour_metric": "minimum_observed_composite_objective_per_uv",
+  "interpolation": false,
+  "fixed_rho_spatial_scan": false,
+  "new_fem_evaluations": 0,
+  "duplicate_key_rounding_mm": 1e-08,
+  "original_exact_float_uv_keys": 23,
+  "verified_contract_files": [
+    "output/nik_trkg4_right_rib_050mm_full_v5_1mm_local2mm.mat",
+    "data/nik/stl/lungs_solid_v3_volume_fill.stl",
+    "data/nik/experimental/nik_breath_hold_levels.csv",
+    "data/nik/electrodes/electrodes_4_right_rib_140mm_xyz_mm.csv",
+    "src/check_trkg4_patch_overlap_v5.m",
+    "src/check_trkg4_ttrkg_electrode_geometry.m",
+    "src/run_trkg4_arm_electrode_tests.m",
+    "src/run_trkg4_batch.m",
+    "src/run_trkg4_electrode_systems.m",
+    "src/run_trkg4_fast_cem_refine.m",
+    "src/run_trkg4_fast_pem_scan.m",
+    "src/run_trkg4_forward_subject.m",
+    "src/run_trkg4_inverse_inhale.m",
+    "src/run_trkg4_notebook_pipeline.m",
+    "src/run_trkg4_surface_coordinate_validation.m",
+    "src/trkg4_absolute_path.m",
+    "src/trkg4_apply_overrides.m",
+    "src/trkg4_arm_montage_spec.m",
+    "src/trkg4_arm_surface_centres.m",
+    "src/trkg4_boundary_normals.m",
+    "src/trkg4_build_arm_cross_section_electrodes.m",
+    "src/trkg4_build_arm_electrodes.m",
+    "src/trkg4_build_eidors_model_from_stl.m",
+    "src/trkg4_config.m",
+    "src/trkg4_electrode_diagnostics.m",
+    "src/trkg4_file_sha256.m",
+    "src/trkg4_finite_step_diagnostics.m",
+    "src/trkg4_get_subject.m",
+    "src/trkg4_green_fingerprint.m",
+    "src/trkg4_inverse_identity.m",
+    "src/trkg4_load_electrode_centres.m",
+    "src/trkg4_load_nik_inhale_data.m",
+    "src/trkg4_load_surface_landmarks.m",
+    "src/trkg4_make_4electrode_stimulation.m",
+    "src/trkg4_make_reciprocity_stimulation.m",
+    "src/trkg4_prepare_runtime.m",
+    "src/trkg4_result_summary.m",
+    "src/trkg4_sample_surface_path.m",
+    "src/trkg4_scale_fmdl_to_si.m",
+    "src/trkg4_snap_electrode_centres.m",
+    "src/trkg4_subject_registry.m",
+    "src/trkg4_surface_montage_centres.m",
+    "src/trkg4_surface_path.m",
+    "src/trkg4_validate_inverse_contract.m",
+    "vendor_stl_eidors/assign_tissues_from_stl.m",
+    "vendor_stl_eidors/electrode_faces_by_area.m",
+    "vendor_stl_eidors/electrode_faces_by_area_fast.m",
+    "vendor_stl_eidors/electrode_faces_by_area_legacy.m",
+    "vendor_stl_eidors/electrode_faces_by_area_legacy_fast.m",
+    "vendor_stl_eidors/electrode_patch_context.m",
+    "vendor_stl_eidors/element_centroids.m",
+    "vendor_stl_eidors/itis_conductivity.m",
+    "vendor_stl_eidors/points_in_closed_surface.m",
+    "vendor_stl_eidors/print_itis_conductivities.m",
+    "vendor_stl_eidors/start_parallel_pool.m",
+    "vendor_stl_eidors/stl_mesh_cache_key.m",
+    "vendor_stl_eidors/validate_stl_inputs.m",
+    "output/nik_trkg4_inverse_inhale_comparison_auditfix_20260908.csv",
+    "output/nik_trkg4_inverse_inhale_depth_curve_auditfix_20260908.csv",
+    "output/nik_trkg4_inverse_inhale_jacobian_auditfix_20260908.csv",
+    "output/nik_trkg4_inverse_inhale_parameter_sensitivity_auditfix_20260908.csv",
+    "output/nik_trkg4_inverse_inhale_jacobian_diagnostics_auditfix_20260908.json",
+    "output/nik_trkg4_inverse_inhale_fit_summary_auditfix_20260908.csv",
+    "output/nik_trkg4_inverse_inhale_electrodes_auditfix_20260908.csv",
+    "output/nik_trkg4_inverse_inhale_grid_geometry_auditfix_20260908.csv",
+    "output/nik_trkg4_inverse_inhale_history_auditfix_20260908.csv",
+    "output/nik_trkg4_inverse_inhale_auditfix_20260908.mat",
+    "output/nik_trkg4_inverse_direct_search_history_auditfix_20260908.csv",
+    "output/nik_trkg4_inverse_direct_search_summary_auditfix_20260908.json"
+  ],
+  "geometry_checks": {
+    "result_tag": "auditfix_20260908",
+    "contract_validated": true,
+    "fem_recomputed": false,
+    "rows": 100,
+    "h_max_error_mm": 4.618527782440651e-14,
+    "best_xyz_max_error_mm": 3.126388037344441e-13,
+    "best_axis_max_error": 3.3306690738754696e-16,
+    "boundary_faces": 155120
+  },
+  "anatomical_display_layers": [
+    {
+      "path": "data/nik/stl/lungs_solid_v3_volume_fill.stl",
+      "sha256": "cdca46ef66b8df559e6e990bff943cb654c3bfbb0589188e22e8a1cb241fcfd6",
+      "source_triangles": 120000,
+      "display_triangles": 45000
+    },
+    {
+      "path": "data/nik/stl/bones.stl",
+      "sha256": "8ca51e9412c34534d55831dd739f73365773e1a4913733b62318f4ee51bea5e2",
+      "source_triangles": 125414,
+      "display_triangles": 45000
+    }
+  ],
+  "files": [
+    {
+      "path": "output/nik_trkg4_inverse_inhale_contract_auditfix_20260908.json",
+      "sha256": "8c2d03afe6b040dcca1fc8169be6c3f961379afb80441a52030b61934e34eefa"
+    },
+    {
+      "path": "notebooks/search_map_2026_09_08/search_points_auditfix_20260908.csv",
+      "sha256": "00acf2c128f9f8441f0e1e9ca295322a673b518698f7930ebefc2daa6195c71e"
+    },
+    {
+      "path": "notebooks/search_map_2026_09_08/search_surface_auditfix_20260908.mat",
+      "sha256": "ae2ccc61d05e73b7f0889a425b9f5a41d7ebd293cd677f833c3222c9c6e48a46"
+    },
+    {
+      "path": "notebooks/search_map_2026_09_08/build_search_map.py",
+      "sha256": "782745a3b76f466fc05a4eec4f9f20ff08cbbf053fdc644e316d611d4c92e4f1"
+    },
+    {
+      "path": "notebooks/search_map_2026_09_08/search_map_auditfix_20260908.html",
+      "sha256": "634a0602e1a7c1a381a1296d4d747e682668fdad8a2ef6228592fb58ad3b43fd"
+    },
+    {
+      "path": "notebooks/search_map_2026_09_08/search_map_auditfix_20260908.png",
+      "sha256": "8fb53c8bb93f433368fbdfafe1c0518e67ee1a11dc6c64d7c42de56430cf5389"
+    }
+  ]
+}

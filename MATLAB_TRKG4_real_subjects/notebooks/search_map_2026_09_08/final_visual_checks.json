@@ -1,0 +1,10 @@
+{
+  "static_preview": "visually_reviewed",
+  "browser_render": "visually_reviewed",
+  "browser_checks_current": true,
+  "artifact_hashes_match": true,
+  "centres": 22,
+  "valid_centres": 18,
+  "new_fem_evaluations": 0,
+  "preview_sha256": "d442a3cbb3f795178ab8d826beb6ee80be020f06a9ad45a3d12f7dd6d8a3ba64"
+}

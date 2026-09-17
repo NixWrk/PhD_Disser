@@ -1,0 +1,12 @@
+{
+  "source_and_artifact_hashes": "passed",
+  "MATLAB_sources_unchanged_since_run": true,
+  "optional_git_diff_check": {
+    "status": "two_cosmetic_blank_lines_at_EOF",
+    "files": [
+      "src/run_trkg4_notebook_pipeline.m:293",
+      "src/trkg4_electrode_diagnostics.m:371"
+    ],
+    "action": "Exact FEM source bytes retained to preserve the published source hashes; no executable defect."
+  }
+}

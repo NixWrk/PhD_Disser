@@ -1,0 +1,38 @@
+{
+  "rho": [
+    5.5521664546649,
+    30.7069468090815
+  ],
+  "cases": [
+    {
+      "ground_electrode": 0,
+      "ground_node": 1,
+      "scaled": 56.1021012738168,
+      "unscaled": 56.102101205152451,
+      "full": 56.102101205002405,
+      "scaled_error": 6.8814394182936667E-8,
+      "unscaled_error": 1.5004530951046036E-10,
+      "bulk_backward": 8.973643827672926E-19
+    },
+    {
+      "ground_electrode": 1,
+      "ground_node": 41429,
+      "scaled": 56.10210155327465,
+      "unscaled": 56.102101097719554,
+      "full": 56.102101098106942,
+      "scaled_error": 4.5516770796893979E-7,
+      "unscaled_error": -3.8738789953640662E-10,
+      "bulk_backward": 8.4377915679171576E-19
+    },
+    {
+      "ground_electrode": 2,
+      "ground_node": 34817,
+      "scaled": 56.102101479423588,
+      "unscaled": 56.102101141213986,
+      "full": 56.10210112443562,
+      "scaled_error": 3.5498796790989218E-7,
+      "unscaled_error": 1.6778365363734338E-8,
+      "bulk_backward": 8.6226398316998036E-19
+    }
+  ]
+}

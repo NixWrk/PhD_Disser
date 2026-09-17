@@ -1,0 +1,29 @@
+{
+  "initial": {
+    "traces": 10,
+    "centres": 18,
+    "rejectedOnly": 4,
+    "range": [
+      -191.609640798794,
+      -127.609640798794
+    ],
+    "canvases": 1,
+    "bodyTriangles": 155120
+  },
+  "whole": {
+    "traces": 10,
+    "centres": 18,
+    "rejectedOnly": 4,
+    "range": [
+      -381.5,
+      362.5
+    ],
+    "canvases": 1,
+    "bodyTriangles": 155120
+  },
+  "bones_toggle_passed": true,
+  "electrodes_toggle_passed": true,
+  "tooltip_checked": "Оценка №61 · J = 126.163u = 12.880 мм; v = 10.655 ммφ = 3.125°; ρ₁ = 5.365; ρ₂ = 30.707 Ом·мh до вершины лёгкого = 29.118 ммXYZ = (-159.294, -26.686, -138.520) ммВ этом центре: 1 допустимых; 0 отклонённых оценок",
+  "page_errors": [],
+  "html_sha256": "634a0602e1a7c1a381a1296d4d747e682668fdad8a2ef6228592fb58ad3b43fd"
+}

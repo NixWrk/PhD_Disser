@@ -1,0 +1,39 @@
+{
+  "arbitrary_matlab_failure_returned_as_objective": [
+    {
+      "evaluation": 1,
+      "rho_soft_ohm_m": 5.0,
+      "rho_lungs_ohm_m": 20.0,
+      "centre_u_mm": 0.0,
+      "centre_v_mm": 0.0,
+      "phi_deg": 0.0,
+      "objective": 1000000000000.0,
+      "fem_slope_ohm_per_mm": NaN,
+      "h_centre_mm": NaN
+    }
+  ],
+  "incompatible_history_accepted_and_finalised": true,
+  "new_summary_after_wrong_history_resume": {
+    "tag": "same_tag",
+    "patch_builder_mode": "disjoint",
+    "data_selection": "manifest",
+    "evaluation_budget": 5,
+    "function_evaluations": 5,
+    "objective": 1.0,
+    "rho_soft_ohm_m": 5.0,
+    "rho_lungs_ohm_m": 20.0,
+    "centre_u_mm": 0.0,
+    "centre_v_mm": 0.0,
+    "phi_deg": 0.0,
+    "fem_slope_ohm_per_mm": -0.5,
+    "h_centre_mm": 15.0,
+    "final_step": [
+      0.75,
+      3.0,
+      10.0,
+      10.0,
+      5.0
+    ],
+    "status": "budget_reached"
+  }
+}

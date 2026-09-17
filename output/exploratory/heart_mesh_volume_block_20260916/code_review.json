@@ -1,0 +1,89 @@
+{
+  "schema": "heart_mesh_volume_block_code_review_v1",
+  "reviewed_at": "2026-09-16",
+  "scope": "read-only review of the sealed preparation, mesh comparer, and matched three-form summary helper",
+  "source_edits": false,
+  "fem_launched": false,
+  "corrected_assessment": {
+    "geometry_mesh_binding": "confirmed",
+    "detail": "geometry_mesh is assigned from base[source_prepared] before the refined branch. The branch reassigns only mesh and updates the electrical mesh/contact metadata.",
+    "heart_volume_and_centroid": "confirmed_original_union",
+    "detail_2": "The h5py read uses geometry_mesh, so TetrahedralHeart, nominal_volume_ml, nominal_centre_m, and analytic state volumes remain based on the original base tetra union, including for refined L1 preparation.",
+    "denominator_consequence": "The prior warning that L1 recomputed the analytic volume/centroid from refined tetrahedra is withdrawn. With the same base plan, the analytic denominator is shared exactly; the refined mesh changes query/electrical discretization only."
+  },
+  "verified": {
+    "refined_branch": [
+      "Original source hash is checked before the branch.",
+      "The refined export is checked against that original source and its prepared/contact hashes are bound in the plan.",
+      "Fine query tetrahedra are selected from the refined mesh, while the individual heart classifier receives the original TetrahedralHeart.",
+      "Baseline individual identity is checked against refined mesh tissue labels; exporter/refinement provenance carries inherited labels and parent-volume preservation checks."
+    ],
+    "mesh_comparison": [
+      "Each coarse/fine pair requires the same geometry, parameterisation, deformation, frequency, rho, conductivity, 5 mm electrode model, ground, and physical contact id/areas/centres.",
+      "Fine refinement status, original source/contact hashes, prepared/contact artifacts, node/surface/contact flags, embedding error, matrix error, and artifact hashes are checked.",
+      "The denominator is 2*step*baseline_analytic_volume_ml; Sminus and Splus use the matching one-sided dV denominator.",
+      "The three-form helper requires complete five-state pairs at q=16384 and emits all geometry_qc rows.",
+      "The current three-form helper seals and compares candidate_parameters.json hashes across sphere/ellipsoid coarse/fine runs."
+    ]
+  },
+  "findings": [
+    {
+      "id": "R1",
+      "severity": "operational",
+      "status": "mitigated_by_run_gate",
+      "file": "MATLAB_TRKG4_real_subjects/tools/heart_individual_electrical_stage.py",
+      "location": "lines 78-119 and 225-227",
+      "finding": "The intermediate ready status is written by the frozen stage before the thin wrapper appends its implementation hashes and rewrites plan.sha256.",
+      "action": "The stated monitored(wrapper) exit0 gate is sufficient; do not trigger assembly from the intermediate status file."
+    },
+    {
+      "id": "R2",
+      "severity": "diagnostic",
+      "status": "pending_user_addition",
+      "file": "MATLAB_TRKG4_real_subjects/tools/summarize_heart_volume_mesh_block.py",
+      "location": "lines 10 and 105",
+      "finding": "Geometry QC rows are included, but the current shape_errors metric list contains electrical Sminus/derivative/Splus only. Directional material slopes are not yet represented in that table.",
+      "action": "Add raw material Sminus=(M0-Mminus)/dV and Splus=(Mplus-M0)/dV with the same nominal-volume dV; report values without inventing an acceptance cutoff. Re-seal the helper hash afterward."
+    },
+    {
+      "id": "R3",
+      "severity": "residual_provenance",
+      "status": "not_blocking_under_sealed_export_chain",
+      "file": "MATLAB_TRKG4_real_subjects/tools/compare_heart_mesh_levels.py",
+      "location": "fine refinement validation and state comparison",
+      "finding": "The comparer does not independently load and compare L0/L1 tissue label arrays. It relies on the sealed exporter/refinement record plus the preparation baseline identity check.",
+      "action": "Accept this for the current sealed chain only when the refinement report has passed inherited-label and per-parent-volume checks; keep original_geometric_source_sha256 and union_is_not_convex_hull visible in QC."
+    },
+    {
+      "id": "R4",
+      "severity": "residual_provenance",
+      "status": "not_blocking_for_shared_base_runs",
+      "file": "MATLAB_TRKG4_real_subjects/tools/summarize_heart_volume_mesh_block.py",
+      "location": "lines 69-77",
+      "finding": "Cross-form checks explicitly cover source hashes, frequency, rho, conductivity, contact, electrode model, and nominal volume. They do not independently repeat ground_zero_based, deformation, parameter, or solver criteria across forms.",
+      "action": "No change is required when all forms are prepared from the same sealed base plan; if any form was prepared independently, verify these fields before interpreting shape errors."
+    }
+  ],
+  "required_postconditions": {
+    "per_shape": "status=complete and compared_completed=5",
+    "quadrature": "coarse_points_per_tet=[16384] and fine_points_per_tet=[16384]",
+    "pair_commands": [
+      "C:/PC/Python/python.exe -B MATLAB_TRKG4_real_subjects/tools/compare_heart_mesh_levels.py --coarse <L0_individual_q16384> --fine <L1_individual_q16384> --output <comparison_individual>",
+      "C:/PC/Python/python.exe -B MATLAB_TRKG4_real_subjects/tools/compare_heart_mesh_levels.py --coarse <L0_sphere_q16384> --fine <L1_sphere_q16384> --output <comparison_sphere>",
+      "C:/PC/Python/python.exe -B MATLAB_TRKG4_real_subjects/tools/compare_heart_mesh_levels.py --coarse <L0_ellipsoid_q16384> --fine <L1_ellipsoid_q16384> --output <comparison_ellipsoid>"
+    ],
+    "final_summary_command": "C:/PC/Python/python.exe -B MATLAB_TRKG4_real_subjects/tools/summarize_heart_volume_mesh_block.py --block output/exploratory/heart_mesh_volume_block_20260916 --reference-individual <L0_individual_q16384> --output output/exploratory/heart_mesh_volume_block_20260916/summary"
+  },
+  "limitations": [
+    "One coarse/fine pair is a comparison and does not certify spatial convergence.",
+    "Directional electrical asymmetry is diagnostic; no physical cause is assigned.",
+    "The summary compares individual against sphere/ellipsoid at each mesh level; the pair comparer itself intentionally rejects different geometry values."
+  ],
+  "reviewed_files": [
+    "MATLAB_TRKG4_real_subjects/tools/heart_individual_electrical_stage.py",
+    "MATLAB_TRKG4_real_subjects/tools/prepare_heart_geometry_block.py",
+    "MATLAB_TRKG4_real_subjects/tools/compare_heart_mesh_levels.py",
+    "MATLAB_TRKG4_real_subjects/tools/summarize_heart_volume_mesh_block.py",
+    "MATLAB_TRKG4_real_subjects/src/trkg4_export_heart_refinement.m"
+  ]
+}

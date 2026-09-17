@@ -1,0 +1,18 @@
+{
+  "status": "applied_after_frozen_run_completed",
+  "changes": [
+    {
+      "path": "tools/run_restartable_inverse_search.py",
+      "before_sha256": "f4fe9c3a99c32d036ca0a87bcad01bc56b36d5df13fd5ecf45b7492fe4291900",
+      "after_sha256": "ca026f9c2ee607f639339b15f87c968ecfe48312fefb12021530614897b1004a"
+    },
+    {
+      "path": "tests/test_restartable_inverse_search.py",
+      "before_sha256": "a031240e4deb417a6fa13b9259673baab762010cdce3b7436df60ad692c8b791",
+      "after_sha256": "dd3ba69eef5063ba0a3877cc32666aa7e47a7c158e00d9420d0ba4f2bdd8bc0e"
+    }
+  ],
+  "FEM_sources_changed": false,
+  "search_identities_rewritten": false,
+  "numerical_run_source_archive": "source_used_auditfix_20260908.zip"
+}
