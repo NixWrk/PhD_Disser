@@ -50,6 +50,9 @@ Colab Notebooks/audits/**/*.local.json
 Colab Notebooks/audits/**/*.local.txt
 Colab Notebooks/audits/**/.protected-inputs.local.json
 
+# Local HTML copies of subject-linked CT surfaces and landmark exports.
+Colab Notebooks/results/ct_capsule_viewer.local/
+
 # Machine-specific HnL bindings and Windows thumbnail caches are not source files.
 HnL/config/*.local.json
 Thumbs.db

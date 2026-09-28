@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>__TITLE__ · метки капсул</title>
+<style>
+:root{font-family:system-ui,"Segoe UI",sans-serif;color:#17333a;background:#eef3f4}*{box-sizing:border-box}body{margin:0}
+header{background:#fff;border-bottom:1px solid #dce6e8;padding:14px 22px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+header a{color:#087b91;text-decoration:none;font-weight:600}h1{font-size:1.25rem;margin:0}header small{color:#6b8086}
+main{display:grid;grid-template-columns:minmax(0,1fr) 330px;height:calc(100vh - 72px);min-height:600px}
+.stage{position:relative;min-width:0;background:#f7f9fa}#surface-plot{width:100%;height:100%}
+.viewbar{position:absolute;left:16px;top:16px;z-index:2;display:flex;gap:5px;flex-wrap:wrap;max-width:75%}
+button,input,textarea{font:inherit}button{cursor:pointer;background:#fff;border:1px solid #ccdadf;border-radius:8px;padding:7px 10px;color:#17333a}
+button:hover,button:focus{border-color:#128ba0}button.primary{background:#097e91;color:white;border-color:#097e91}
+aside{background:white;border-left:1px solid #dce6e8;padding:19px;overflow:auto}aside p{color:#526b73;line-height:1.5;font-size:.88rem}
+h2{font-size:1rem;margin:18px 0 9px}label{display:block;font-size:.86rem;font-weight:600;margin:10px 0 4px}
+input,textarea{width:100%;border:1px solid #ccdce0;border-radius:8px;padding:8px;background:#fff}textarea{min-height:60px;resize:vertical}
+.row{display:flex;gap:7px;margin-top:11px}.row button{flex:1}#status{background:#edf6f8;border-radius:8px;padding:10px;margin:15px 0;min-height:38px}
+#points{list-style:none;padding:0;margin:8px 0}#points li{border:1px solid #dce6e8;border-radius:8px;margin:7px 0;padding:8px;font-size:.84rem}
+#points li strong{display:block}#points li code{font-size:.78rem;color:#43616a}#points li button{float:right;padding:2px 7px;color:#a52b2b}
+.fineprint{border-top:1px solid #dce6e8;padding-top:12px;margin-top:20px}code{overflow-wrap:anywhere}
+@media(max-width:850px){main{display:block;height:auto}.stage{height:60vh;min-height:470px}aside{border-left:0;border-top:1px solid #dce6e8}.viewbar{max-width:calc(100% - 32px)}}
+</style></head><body>
+<header><a href="index.html">← Все поверхности</a><h1>__TITLE__ · метки капсул</h1><small>Исходный STL: <code>__SOURCE__</code></small></header>
+<main><div class="stage"><div class="viewbar" aria-label="Ракурсы по осям STL"><button data-view="xp">+X</button><button data-view="xm">−X</button><button data-view="yp">+Y</button><button data-view="ym">−Y</button><button data-view="zp">+Z</button><button data-view="zm">−Z</button></div>
+__PLOT__
+</div><aside>
+<p>Вращение — перетаскивание. Масштаб — колесо мыши. Щелчок по поверхности предлагает координату точки; сверяйте место с капсулой на КТ.</p>
+<label for="name">Имя метки / родинка</label><input id="name" placeholder="Например: грудь слева 1" autocomplete="off">
+<label for="note">Примечание</label><textarea id="note" placeholder="Ориентир, уверенность, сомнения"></textarea>
+<div id="status" role="status">Загрузка поверхности…</div>
+<div class="row"><button id="undo">Отменить последнюю</button><button id="clear">Очистить</button></div>
+<h2>Выбранные точки (<span id="count">0</span>)</h2><ol id="points"></ol>
+<div class="row"><button id="save-json" class="primary">Скачать JSON</button><button id="save-csv">Скачать CSV</button></div>
+<label for="import-json">Продолжить разметку из JSON</label><input id="import-json" type="file" accept=".json,application/json">
+<p class="fineprint">Освещение рельефа рассчитано по нормалям STL. Координаты записываются в исходной системе XYZ файла STL. Единицы предположительно мм; соответствие DICOM и положение центра капсулы отдельно не проверены. Щелчок выбирает точку поверхности, а не центр капсулы в объёме.</p>
+</aside></main>
+<script id="surface-meta" type="application/json">__META__</script>
+<script>__APP_JS__</script>
+</body></html>
