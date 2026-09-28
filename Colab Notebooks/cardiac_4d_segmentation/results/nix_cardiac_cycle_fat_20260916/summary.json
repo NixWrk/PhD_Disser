@@ -18740,5 +18740,14 @@
       ]
     }
   },
-  "parameter_selection_note": "The author requested a higher muscle resistivity; the assistant selected 5 ohm m within the registered interval. The sealed plan wording User-selected refers to the requested change, not an author-specified numerical value."
+  "parameter_selection_note": "The author requested a higher muscle resistivity; the assistant selected 5 ohm m within the registered interval. The sealed plan wording User-selected refers to the requested change, not an author-specified numerical value.",
+  "historical_hodograph_reference": {
+    "source_sha256": "973704070f9943ddbb83c3f196ca16b9b83fc4ceb4f2784be5cf089fe7a4d2f8",
+    "source_figures": [
+      27,
+      29,
+      31
+    ],
+    "comparison_status": "different anatomical target and coordinate frame; qualitative only"
+  }
 }

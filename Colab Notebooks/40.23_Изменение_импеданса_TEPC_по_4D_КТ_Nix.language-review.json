@@ -4,9 +4,9 @@
   "status": "passed_for_exploratory_reader_report",
   "full_text_model_review": true,
   "review_after_last_reader_edit": true,
-  "review_date": "2026-09-17",
-  "reader_text_sha256": "2c21b712117be58df3219c620becaeeff414b3c08c296d21d14cb0f368024b2b",
-  "semantic_review_scope": "Complete final notebook reader text, all eight tables and six figures, including final axis labels. Checked scientific headings, terminology, definitions, source scope, temporal window, whole-heart material scenarios, selected muscle background, fat mapping and limits of inference.",
+  "review_date": "2026-09-25",
+  "reader_text_sha256": "836aca10db2fb060ec3ef23dd0bbb00745858dd4f681d474f7946f09e3dc42f6",
+  "semantic_review_scope": "Complete final notebook reader text and previous full-text review; final axis-sign correction checked against original RFBR Figure 25. Distinguishes plane comparison from unverified patient-side polarity, and whole-heart geometric centre from equivalent blood-sphere electrical centre.",
   "checks": {
     "language.ru.hash-bound-final-review": "passed",
     "language.ru.encoding": "passed",
@@ -18,15 +18,15 @@
   "artifacts": [
     {
       "path": "Colab Notebooks/40.23_Изменение_импеданса_TEPC_по_4D_КТ_Nix.ipynb",
-      "sha256": "a9974d8a0afe6c22a86c9998802bb65519112d938470583892ac1c0a7843d3a0"
+      "sha256": "3a834b6ac0903805a72da34dffff7d5e710411758a6c9862e20f2b1aae26d2e7"
     },
     {
       "path": "Colab Notebooks/40.23_Изменение_импеданса_TEPC_по_4D_КТ_Nix.html",
-      "sha256": "dfc49ce6607a0277bef6838b8a79c23bc789e662ec4358bea527ab4d37951784"
+      "sha256": "435d782541e9cbd3ace921f562245016ea8c012d49cabe927279d1c1a9cba82b"
     },
     {
       "path": "Colab Notebooks/cardiac_4d_segmentation/heart_cardiac_cycle_fat_report.py",
-      "sha256": "8975698fec0310a60826b8f756443034a9a67bd16be2106a324d7961b34d1482"
+      "sha256": "a1a5aabe314627d43a556d36367371bb6352eb63c757485acadc6bb33dd83c15"
     },
     {
       "path": "Colab Notebooks/cardiac_4d_segmentation/results/nix_cardiac_cycle_fat_20260916/absolute_cycle.png",
@@ -42,18 +42,30 @@
     },
     {
       "path": "Colab Notebooks/cardiac_4d_segmentation/results/nix_cardiac_cycle_fat_20260916/geometry.png",
-      "sha256": "70b9b207222683d59f8b17a03245882ce7d05ad0b152c4e323433b5f44abae68"
+      "sha256": "d5dfa57e502980e13e052a84d79c7c2825084dacee5746c245f5b8f515fa5100"
     },
     {
       "path": "Colab Notebooks/cardiac_4d_segmentation/results/nix_cardiac_cycle_fat_20260916/montages.png",
       "sha256": "ef32b4d3f864b35718bff5161db30d20bc8a962b0ee865f349180f479f59a57f"
     },
     {
+      "path": "Colab Notebooks/cardiac_4d_segmentation/results/nix_cardiac_cycle_fat_20260916/rfbr_xy_hodographs.png",
+      "sha256": "81be5eb5223604be584102c8c55152b8724e2c06361c099fad0ddead9a537a4d"
+    },
+    {
+      "path": "Colab Notebooks/cardiac_4d_segmentation/results/nix_cardiac_cycle_fat_20260916/rfbr_xy_source.json",
+      "sha256": "69905881e41bbe4084d9a5c0b1cc35600a82092a52bee03d20c11d644c6957b7"
+    },
+    {
       "path": "Colab Notebooks/cardiac_4d_segmentation/results/nix_cardiac_cycle_fat_20260916/scenario_matrix.png",
       "sha256": "b0049fab3b234209428f18857a993a12fcc5c720a0d14e68935fd7cdca94430b"
+    },
+    {
+      "path": "Colab Notebooks/cardiac_4d_segmentation/results/nix_cardiac_cycle_fat_20260916/summary.json",
+      "sha256": "1d0d67edff2d347e2744e6b5248170ea6ec8c718f2bcbf7bb22a842b99c93ece"
     }
   ],
   "computational_status": "336 independently solved phase/montage/scenario combinations; residual, current balance, reciprocity, export identities and completion hashes checked; notebook executed; HTML input code excluded.",
-  "scientific_status": "Exploratory direct-model comparison. Physical validation and spatial convergence for the new material assignment not established. No chamber-only segmentation or validated stroke-volume estimate.",
+  "scientific_status": "Exploratory direct-model comparison; RFBR XY plane match is an interpretation of Figure 25 and its x-axis patient-side sign is unverified. Volunteer pairing, physical validation and stroke-volume inference remain open.",
   "physical_validation": false
 }

@@ -1,0 +1,22 @@
+[
+  {
+    "path": "Colab Notebooks\\40.23_Изменение_импеданса_TEPC_по_4D_КТ_Nix.ipynb",
+    "sha256": "a9974d8a0afe6c22a86c9998802bb65519112d938470583892ac1c0a7843d3a0"
+  },
+  {
+    "path": "Colab Notebooks\\40.23_Изменение_импеданса_TEPC_по_4D_КТ_Nix.html",
+    "sha256": "dfc49ce6607a0277bef6838b8a79c23bc789e662ec4358bea527ab4d37951784"
+  },
+  {
+    "path": "Colab Notebooks\\40.23_Изменение_импеданса_TEPC_по_4D_КТ_Nix.language-review.json",
+    "sha256": "75d835c0136fc58a016ed3405a9bc79f4732857b25ba57dfd2d947ae6d9c84e1"
+  },
+  {
+    "path": "Colab Notebooks\\cardiac_4d_segmentation\\results\\nix_cardiac_cycle_fat_20260916\\geometry.png",
+    "sha256": "70b9b207222683d59f8b17a03245882ce7d05ad0b152c4e323433b5f44abae68"
+  },
+  {
+    "path": "Colab Notebooks\\cardiac_4d_segmentation\\heart_cardiac_cycle_fat_report.py",
+    "sha256": "8975698fec0310a60826b8f756443034a9a67bd16be2106a324d7961b34d1482"
+  }
+]

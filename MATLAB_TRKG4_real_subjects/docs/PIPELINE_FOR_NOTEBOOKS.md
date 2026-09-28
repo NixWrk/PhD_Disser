@@ -1620,7 +1620,7 @@ TEPC-2–TEPC-7 и дополнительного ТТРКГ на руках. В
 prepare_cardiac_cycle_fat.py --config CONFIG
 cardiac_cycle_fat_electrical.py prepare --config CONFIG --output RUN/electrical
 cardiac_cycle_fat_electrical.py run --output RUN/electrical
-heart_cardiac_cycle_fat_report.py --run RUN
+heart_cardiac_cycle_fat_report.py --run RUN --rfbr-pdf LOCAL_RFBR_2021_PDF
 ```
 
-Первые два модуля находятся в `tools/`, модуль отчёта — в `Colab Notebooks/cardiac_4d_segmentation/`. CONFIG хранит локальные пути к прежнему прогону, сегментации и новой папке материалов. Оркестратор вызывает новый EIDORS-экспортёр `src/run_cardiac_cycle_fat_export.m`. Итоговый потребитель — прежний ноутбук 40.23, обновляемый только после всех 336 решений. Сводка `electrical/summary.json` получает статус `complete` после численных проверок; этот статус не означает физическую валидацию.
+Первые два модуля находятся в `tools/`, модуль отчёта — в `Colab Notebooks/cardiac_4d_segmentation/`. CONFIG хранит локальные пути к прежнему прогону, сегментации и новой папке материалов. Оркестратор вызывает новый EIDORS-экспортёр `src/run_cardiac_cycle_fat_export.m`. Итоговый потребитель — прежний ноутбук 40.23, обновляемый только после всех 336 решений. Для рисунка 2 нужен локальный первичный отчёт «Отчет РФФИ 2021 v2.1.pdf» из фиксированного корпуса; генератор проверяет его SHA-256, вырезает три панели XY (рис. 27, 29, 31) и фиксирует номера страниц и координаты вырезок. Отчёт показывает отдельно собственную плоскость XY КТ и фронтальную проекцию XZ, сопоставимую по направлениям осей с XY РФФИ. Сводка `electrical/summary.json` получает статус `complete` после численных проверок; этот статус не означает физическую валидацию.

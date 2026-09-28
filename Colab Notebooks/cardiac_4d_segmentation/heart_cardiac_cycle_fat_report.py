@@ -15,6 +15,10 @@ RESULTS=ROOT/'Colab Notebooks/cardiac_4d_segmentation/results/nix_cardiac_cycle_
 TITLE='40.23_Изменение_импеданса_TEPC_по_4D_КТ_Nix'
 
 def read(p):return json.loads(Path(p).read_text(encoding='utf-8-sig'))
+def write_json(p, value):
+    with Path(p).open('w', encoding='utf-8', newline='\n') as stream:
+        json.dump(value, stream, ensure_ascii=False, indent=2)
+        stream.write('\n')
 def label(m):return 'ТТРКГ' if m=='ttrkg' else m.replace('_','-').upper()
 def fmt(x,n=3):return f'{x:.{n}f}'.replace('.',',')
 def table(headers,rows):
@@ -24,6 +28,72 @@ def table(headers,rows):
 def save(fig,name):
     fig.savefig(RESULTS/name,dpi=150,bbox_inches='tight');plt.close(fig);display(Image(filename=str(RESULTS/name)))
 def load():return read(RESULTS/'summary.json')
+
+
+def geometry_figure(d):
+    states=d['geometry']
+    phase=np.array([s['rr_percent'] for s in states],dtype=float)
+    volume=np.array([s['mask_volume_ml'] for s in states],dtype=float)
+    centre=np.array([s['center_fem_mm'] for s in states],dtype=float)
+    shift=centre-centre[0]
+    fig,axes=plt.subplots(2,2,figsize=(13,9),constrained_layout=True)
+    axes[0,0].plot(phase,volume,'o-',color='#ad1457')
+    axes[0,0].set(xlabel='Исходная фаза, % R–R',ylabel='Объём наблюдаемой маски, мл',title='Объём маски')
+    for j,name in enumerate(('x: влево','y: кзади','z: к голове')):
+        axes[0,1].plot(phase,shift[:,j],'o-',label=name)
+    axes[0,1].legend(ncol=3,fontsize=9)
+    axes[0,1].set(xlabel='Исходная фаза, % R–R',ylabel='Смещение от первой фазы, мм',title='Координаты центра')
+    for ax in axes[0]:
+        ax.axvline(100,ls='--',color='gray',lw=1)
+        ax.grid(alpha=.25)
+    projections=[(axes[1,0],shift[:,0],shift[:,1],
+                  'КТ: плоскость XY, поперечная','x: влево, мм','y: кзади, мм'),
+                 (axes[1,1],-shift[:,0],shift[:,2],
+                  'КТ: фронтальная плоскость XZ','−x: вправо, мм','z: к голове, мм')]
+    for ax,x,y,title,xlabel,ylabel in projections:
+        ax.plot(x[:11],y[:11],'-',color='#64748b',lw=1)
+        ax.plot(x[10:],y[10:],':',color='#64748b',lw=1)
+        colours=ax.scatter(x[:11],y[:11],c=phase[:11],cmap='viridis',vmin=0,vmax=121,s=44,zorder=3)
+        ax.scatter(x[0],y[0],marker='s',facecolors='none',edgecolors='black',s=115,zorder=4)
+        ax.scatter(x[-1],y[-1],marker='x',color='#b91c1c',s=70,zorder=4)
+        ax.annotate('14%',(x[0],y[0]),xytext=(6,7),textcoords='offset points',fontsize=9)
+        ax.annotate('121%',(x[-1],y[-1]),xytext=(6,-14),textcoords='offset points',fontsize=9)
+        ax.set(title=title,xlabel=xlabel,ylabel=ylabel)
+        ax.set_aspect('equal',adjustable='datalim')
+        ax.grid(alpha=.25)
+    fig.colorbar(colours,ax=list(axes[1]),label='Метка фазы, % R–R',shrink=.8)
+    fig.savefig(RESULTS/'geometry.png',dpi=170,bbox_inches='tight')
+    plt.close(fig)
+    return shift
+
+
+def rfbr_xy_figure(pdf_path):
+    import fitz
+    path=Path(pdf_path)
+    source=read(ROOT/'MATLAB_TRKG4_real_subjects/docs/HEART_SPHERE_SOURCE_CORPUS_20260914.json')
+    record=next(s for s in source['sources'] if s['source_id']=='rfbr_2021')
+    digest=hashlib.sha256(path.read_bytes()).hexdigest()
+    assert digest==record['sha256'],'RFBR source PDF differs from the selected primary source'
+    # Pixel bounds refer to the primary PDF rendered at two pixels per point.
+    panels=[(50,(230,1082,640,1418),27),
+            (52,(280,70,570,395),29),
+            (53,(240,75,600,405),31)]
+    fig,axes=plt.subplots(1,3,figsize=(13,4.2),constrained_layout=True)
+    with fitz.open(path) as doc:
+        for volunteer,(ax,(page,bounds,figure_number)) in enumerate(zip(axes,panels),start=1):
+            clip=fitz.Rect(*(value/2 for value in bounds))
+            pix=doc[page-1].get_pixmap(matrix=fitz.Matrix(2,2),clip=clip,alpha=False)
+            img=np.frombuffer(pix.samples,dtype=np.uint8).reshape(pix.height,pix.width,pix.n)
+            ax.imshow(img)
+            ax.set(title=f'Доброволец {volunteer} · рис. {figure_number}',xticks=[],yticks=[])
+            for spine in ax.spines.values():spine.set_visible(False)
+    fig.savefig(RESULTS/'rfbr_xy_hodographs.png',dpi=165,bbox_inches='tight')
+    plt.close(fig)
+    details={'source':'Отчет РФФИ 2021 v2.1.pdf','source_sha256':digest,
+             'panels':[{'pdf_page':page,'source_figure':figure,'rendered_2x_crop_px':list(box)} for page,box,figure in panels],
+             'extraction':'Original smoothed XY panels cropped from three-plane figures; no digitization or coordinate registration.'}
+    write_json(RESULTS/'rfbr_xy_source.json', details)
+    return details
 
 def intro():
     d=load()
@@ -47,7 +117,12 @@ def intro():
     display(Image(filename=str(RESULTS/'fat_ct_overlay.png')))
     display(Markdown('**Рисунок 1.** Три ортогональных сечения статической КТ через центр первой сердечной маски. Оранжевым показан автоматический жир, красным — контур наблюдаемой сердечной области. Изображение позволяет визуально оценить пространственное совмещение; оно не заменяет независимую ручную верификацию сегментации. Объём всей исходной маски жира и объём жира внутри прежнего FEM-фона могут различаться вследствие границ модели и приоритета других материалов.'))
     display(Image(filename=str(RESULTS/'geometry.png')))
-    display(Markdown('**Рисунок 2.** Объём наблюдаемой маски и смещение её центра сохранены из исходной геометрической подготовки: эти входы не менялись при добавлении жира и смене проводимостей. Пунктир соответствует исходной фазовой отметке 100% R–R. На электрических графиках ниже используется другая ось — время от первой доступной фазы. Одновременное изменение объёма и координат не позволяет приписывать весь электрический отклик только объёму.'))
+    centre=np.array([v['center_fem_mm'] for v in d['geometry']])
+    span=np.ptp(centre,axis=0)
+    display(Markdown(f'**Рисунок 2а.** Верхние панели показывают объём маски и смещения её объёмного центра от первой доступной фазы (14% R–R). Внизу слева — запрошенная траектория в плоскости XY собственной системы FEM: +x направлено влево, +y — кзади. Размах координат составляет {fmt(span[0],2)} мм по x и {fmt(span[1],2)} мм по y. Внизу справа — фронтальная проекция XZ с осью −x вправо и z к голове; её размахи {fmt(span[0],2)} и {fmt(span[2],2)} мм. Она соответствует принятой фронтальной интерпретации плоскости XY схемы РФФИ; знак поперечной оси отчёта относительно пациента не установлен. Квадрат обозначает первую доступную фазу, крест — фазу 121% R–R за пределами исходного окна 822 мс; пунктир от предпоследней точки не замыкает цикл. Цвет показывает фазовую метку, линии только соединяют дискретные оценки. Вертикальный пунктир верхних графиков обозначает исходную метку 100% R–R.'))
+    display(Image(filename=str(RESULTS/'rfbr_xy_hodographs.png')))
+    display(Markdown('**Рисунок 2б.** Фрагменты плоскости XY из сглаженных трёхплоскостных годографов трёх добровольцев в [отчёте РФФИ 2021, разд. 5.3, рис. 27, 29, 31 (PDF с. 50, 52, 53)](zotero://open-pdf/library/items/3NAQJNXQ?page=50). В источнике восстановлены положения центра *эквивалентной сферы крови* по пяти каналам радиального электроимпедансного картирования и 25 интервалам цикла. Панели представляют неизменённые фрагменты рисунков источника; координаты с них не оцифровывались.'))
+    display(Markdown('**Сопоставление.** На схеме рис. 25 РФФИ ось x направлена вправо по изображению, y — вверх, z показана в перспективе вне XY; отдельного определения знака x относительно правой стороны пациента в отчёте не найдено (PDF с. 49). У нашей FEM +x направлено влево, +y — кзади, +z — к голове. При фронтальной интерпретации схемы сопоставимым *по типу плоскости* является правый нижний график КТ (−Δx, Δz), а не левый график КТ (Δx, Δy), несмотря на одинаковые буквы «XY». Возможное отражение поперечной оси РФФИ требует независимой регистрации; кривые не находятся в одной доказанной ориентированной системе. В нашей фронтальной проекции к метке 43% R–R центр сместился относительно первой доступной фазы примерно на 3,0 мм вправо и 2,3 мм к голове, затем приблизился к исходному положению. Масштаб движения на обеих иллюстрациях — миллиметры, но три исторические кривые различаются по очертанию. Их нельзя наложить количественно: исследованы разные люди и разные анатомические объекты; в РФФИ отсчёт отмечен R-зубцом, а первая доступная фаза нашей КТ соответствует 14% R–R. Положение цветных меток физиологических событий из РФФИ нельзя переносить на нашу кривую без независимой разметки. Текущая 4D-КТ показывает движение центра маски целого сердца, но пока не проверяет восстановление центра крови или диагностическую трактовку изгибов годографа.'))
     display(Image(filename=str(RESULTS/'montages.png')))
     table(['Сборка','Фактические площади четырёх контактов, мм²'],[[label(c['id']),'; '.join(fmt(a,2) for a in c['areas_mm2'])] for c in d['contacts']])
     display(Markdown('Для всех контактов сохранён удельный контактный импеданс **0,000159155 Ом·м²**. Он унаследован из прежней постановки и не измерен индивидуально. Размер диска 5 мм и фактическая площадь его дискретного представления указаны раздельно. Изменение контактов не является фактором этого сравнения.'))
@@ -129,7 +204,7 @@ def checks():
         ['Изменение интеграла жира между 4096 и 16384 точками, мл',fmt(qc['fat_quadrature_volume_difference_ml'])]])
     display(Markdown('Все решения проверяются по невязке, восстановлению токов и взаимности. Доли материалов интегрируются общими точками внутри каждого тетраэдра: пересечение жира с сердцем вычисляется совместно, а не произведением независимо усреднённых долей. Совпадение интегралов и матриц не доказывает пространственную сходимость FEM или физическую точность.\n\nОсновные ограничения: автоматическая и обрезанная сердечная маска; статический жир; неизменяемый фон вместо механики тканей; мышечные свойства всего остаточного фона; два условных представления всей сердечной области; действительная скалярная проводимость; фиксированные контакты. Эти расчёты не отделяют изменение объёма от перемещения и деформации и не дают независимо валидированного ударного объёма.'))
 
-def publish(run):
+def publish(run,rfbr_pdf):
     run=Path(run);p=read(run/'electrical/plan.json');summary=read(run/'electrical/summary.json');geo=read(run/'materials/geometry.json')
     assert summary['status']=='complete' and summary['completed']==summary['required']==336
     pairs={(r['scenario'],r['id'],r['montage']) for r in summary['solutions']};assert len(pairs)==336
@@ -166,7 +241,7 @@ def publish(run):
             values[montage]=u.tolist()
         d['first_phase_potentials_mV_at_1mA'][scenario['id']]=values
     d['parameter_selection_note']='The author requested a higher muscle resistivity; the assistant selected 5 ohm m within the registered interval. The sealed plan wording User-selected refers to the requested change, not an author-specified numerical value.'
-    (RESULTS/'summary.json').write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+    write_json(RESULTS/'summary.json', d)
     import csv
     z0={(r['scenario'],r['montage']):r['Z_ohm'] for r in summary['solutions'] if r['id']=='phase_00'}
     with (RESULTS/'impedance_by_phase.csv').open('w',encoding='utf-8',newline='') as stream:
@@ -176,7 +251,10 @@ def publish(run):
             writer.writerow(dict(scenario=r['scenario'],phase=r['id'],montage=r['montage'],rr_percent=r['rr_percent'],
                 Z_ohm=r['Z_ohm'],delta_Z_from_phase00_ohm=r['Z_ohm']-z0[(r['scenario'],r['montage'])],max_relative_residual=r['max_relative_residual']))
     shutil.copy2(ROOT/'Colab Notebooks/cardiac_4d_segmentation/results/nix_cardiac_cycle_20260916/montages.png',RESULTS/'montages.png')
-    shutil.copy2(ROOT/'Colab Notebooks/cardiac_4d_segmentation/results/nix_cardiac_cycle_20260916/geometry.png',RESULTS/'geometry.png')
+    geometry_figure(d)
+    reference=rfbr_xy_figure(rfbr_pdf)
+    d['historical_hodograph_reference']={'source_sha256':reference['source_sha256'],'source_figures':[27,29,31],'comparison_status':'different anatomical target and coordinate frame; qualitative only'}
+    write_json(RESULTS/'summary.json', d)
     ct_overlay(run,geo)
     import nbformat
     from nbclient import NotebookClient
@@ -226,4 +304,5 @@ def ct_overlay(run,geo):
     fig.savefig(RESULTS/'fat_ct_overlay.png',dpi=150,bbox_inches='tight');plt.close(fig)
 
 if __name__=='__main__':
-    ap=argparse.ArgumentParser();ap.add_argument('--run',required=True,type=Path);publish(ap.parse_args().run)
+    ap=argparse.ArgumentParser();ap.add_argument('--run',required=True,type=Path);ap.add_argument('--rfbr-pdf',required=True,type=Path)
+    args=ap.parse_args();publish(args.run,args.rfbr_pdf)

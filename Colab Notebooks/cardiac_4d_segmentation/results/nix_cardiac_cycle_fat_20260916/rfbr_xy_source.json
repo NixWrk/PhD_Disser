@@ -1,0 +1,37 @@
+{
+  "source": "Отчет РФФИ 2021 v2.1.pdf",
+  "source_sha256": "973704070f9943ddbb83c3f196ca16b9b83fc4ceb4f2784be5cf089fe7a4d2f8",
+  "panels": [
+    {
+      "pdf_page": 50,
+      "source_figure": 27,
+      "rendered_2x_crop_px": [
+        230,
+        1082,
+        640,
+        1418
+      ]
+    },
+    {
+      "pdf_page": 52,
+      "source_figure": 29,
+      "rendered_2x_crop_px": [
+        280,
+        70,
+        570,
+        395
+      ]
+    },
+    {
+      "pdf_page": 53,
+      "source_figure": 31,
+      "rendered_2x_crop_px": [
+        240,
+        75,
+        600,
+        405
+      ]
+    }
+  ],
+  "extraction": "Original smoothed XY panels cropped from three-plane figures; no digitization or coordinate registration."
+}
