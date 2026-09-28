@@ -1,0 +1,63 @@
+{
+  "skill": "russian-scientific-prose",
+  "mode": "transform_and_audit",
+  "status": "passed_for_exploratory_reader_report",
+  "review_date": "2026-09-28",
+  "full_text_model_review": true,
+  "review_after_last_reader_edit": true,
+  "reader_text_sha256": "163d09db94cd46aff9fd1949fe47fc94cee65e6f65f29e61ca63d4f232d86409",
+  "semantic_review_scope": "All final markdown cells in reading order, glossary, result tables and captions; visually inspected full-method matrix, CT hodographs and RFBR source hodographs. Checked numerical claims against the 1740-row aggregate and the PDF tables 23, 24, 34.",
+  "checks": {
+    "language.ru.encoding": "passed",
+    "language.ru.reader-facing-clarity": "passed",
+    "scientific.provenance": "passed",
+    "scientific.coordinate-sign-qualification": "passed",
+    "scientific.rfbr-nonpaired-comparison": "passed",
+    "html.source-code-excluded": "passed"
+  },
+  "open_language_findings": [],
+  "physical_validation": false,
+  "paired_rfbr_comparison": false,
+  "artifacts": [
+    {
+      "path": "Colab Notebooks/cardiac_4d_segmentation/21.12_Полное_сравнение_аппроксимаций_на_исторической_4D_КТ.ipynb",
+      "sha256": "61d24fd631b03a48f4de6988949edacafbf5c6149d54e3c2cead6962180c1903"
+    },
+    {
+      "path": "Colab Notebooks/cardiac_4d_segmentation/21.12_Полное_сравнение_аппроксимаций_на_исторической_4D_КТ.html",
+      "sha256": "e680f5bbd2275a98f9b70c7bcc14f2c6dcf08ed2aa279bf9356fe82f9dfec74a"
+    },
+    {
+      "path": "Colab Notebooks/cardiac_4d_segmentation/build_old_approximation_report.py",
+      "sha256": "73686b651f3ada71618b3e91498ab0515634da25e38cd05f2555a6bf30de5e3e"
+    },
+    {
+      "path": "Colab Notebooks/cardiac_4d_segmentation/summarize_old_approximation_sweep.py",
+      "sha256": "72b9265759c28c2adb1c9778b77b422eefa49791ff850b7fe102c11bfb465d9a"
+    },
+    {
+      "path": "Colab Notebooks/cardiac_4d_segmentation/score_old_library_fits.py",
+      "sha256": "4b5132b655cafb0ff71516a51477f94da525ed15f443de80436cc325e234b334"
+    },
+    {
+      "path": "Colab Notebooks/cardiac_4d_segmentation/run_old_approximation_sweep.py",
+      "sha256": "f27caec3c1e1be62db704213583829b702a5e33a2d0225f36dad4c7190902959"
+    },
+    {
+      "path": "Colab Notebooks/cardiac_4d_segmentation/export_old_surface_clouds.py",
+      "sha256": "ff447fd370bec5778f9387ab47c6dda93a3f728c3c2e682fe95a63680308265a"
+    },
+    {
+      "path": "Colab Notebooks/cardiac_4d_segmentation/results/old_approximation_sweep_20260925/aggregate/summary.json",
+      "sha256": "5452fa113ad8469d1a6863c30ad0268c8b51f49190ae05ed6ff862085f18029d"
+    },
+    {
+      "path": "Colab Notebooks/cardiac_4d_segmentation/results/old_approximation_sweep_20260925/aggregate/figures/all_methods_matrix.png",
+      "sha256": "e4bdddb3100c3d6d186b0181f050492e1bfb22ec129b4e22a0c0fd72059ba970"
+    },
+    {
+      "path": "Colab Notebooks/cardiac_4d_segmentation/results/old_approximation_sweep_20260925/aggregate/figures/selected_frontal_hodographs.png",
+      "sha256": "cc428c36fe6899f301eb44552c7be4d78b3d8d1142aa7c88442a378b98162133"
+    }
+  ]
+}

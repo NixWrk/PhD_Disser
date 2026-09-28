@@ -1,0 +1,57 @@
+{
+  "skill": "russian-scientific-prose",
+  "mode": "transform_and_audit",
+  "status": "passed_for_exploratory_reader_report",
+  "full_text_model_review": true,
+  "review_after_last_reader_edit": true,
+  "review_date": "2026-09-25",
+  "reader_text_sha256": "81c2ba1369adca3df06202545092552ee9da55bef3aeecd7cfcf107c169fa413",
+  "semantic_review_scope": "Complete final notebook text, all captions and two numeric tables; visually checked individual and cohort hodographs and component panels. Source Figure 25 inspected directly. Verified geometry definitions, phase origin, plane-versus-axis-sign distinction, provenance and limits of TotalSegmentator validation.",
+  "checks": {
+    "language.ru.encoding": "passed",
+    "language.ru.formula-where": "passed",
+    "language.ru.reader-facing-clarity": "passed",
+    "scientific.provenance": "passed",
+    "scientific.coordinate-sign-qualification": "passed",
+    "scientific.no-patient-identity-claim": "passed",
+    "html.source-code-excluded": "passed"
+  },
+  "open_language_findings": [],
+  "scientific_status": "Three twenty-phase exploratory CT series with automatically segmented whole-heart and four-chamber blood masks; historical RFBR volunteer pairing and RFBR x-axis polarity relative to patient not established. Geometric centroid accuracy and electrical centre validation remain open.",
+  "physical_validation": false,
+  "paired_rfbr_comparison": false,
+  "artifacts": [
+    {
+      "path": "Colab Notebooks/cardiac_4d_segmentation/21.11_Годографы_центров_на_исторической_4D_КТ.ipynb",
+      "sha256": "afaeca6c54278f09ac7aa96131747b0e0e7e4734390a5a2c6e6cb52f0f4958fc"
+    },
+    {
+      "path": "Colab Notebooks/cardiac_4d_segmentation/21.11_Годографы_центров_на_исторической_4D_КТ.html",
+      "sha256": "d89639a5e900dd68c622e560a58743ed20dd97582bc36dc39a81e2a3e33c3e9e"
+    },
+    {
+      "path": "Colab Notebooks/cardiac_4d_segmentation/COORDINATE_CONVENTIONS_HODOGRAPHS.md",
+      "sha256": "b40a401d400acfec9036fec753b46affc420d7759853d0fe9f24c53128cc37a8"
+    },
+    {
+      "path": "Colab Notebooks/cardiac_4d_segmentation/build_old_ct_hodographs.py",
+      "sha256": "9b3438726274f76a244aab09a3cfb8c7dc06fef3d21980e94c369fd7eff713ca"
+    },
+    {
+      "path": "Colab Notebooks/cardiac_4d_segmentation/plot_old_hodograph_cohort.py",
+      "sha256": "6a311afdd4983b082988fecd3fd6ad5a218b9db32930a941eadba6bf47cb9233"
+    },
+    {
+      "path": "Colab Notebooks/cardiac_4d_segmentation/results/old_hodographs_20260925/cohort_frontal.png",
+      "sha256": "8754cac2ba72e95c17f46a97e34e2eb65b107a0e48c87e135d9d301d4f4e98f3"
+    },
+    {
+      "path": "Colab Notebooks/cardiac_4d_segmentation/results/old_hodographs_20260925/historical_01_sequence_02/hodographs.png",
+      "sha256": "d2eeaf4cd56ea1a77f78d553a59b09633e206b1c6e63b5995ef6f77992c10239"
+    },
+    {
+      "path": "Colab Notebooks/cardiac_4d_segmentation/results/old_hodographs_20260925/historical_01_sequence_02/components.png",
+      "sha256": "3c9af5d051d3bd73a445d481b9166c5ffe32b25c50cb0a608c83ec692a248a6a"
+    }
+  ]
+}
