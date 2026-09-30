@@ -1,0 +1,131 @@
+{
+  "schema": "mp03_nix_ts2_reference_qc_v1",
+  "subject_alias": "nix",
+  "reference_role": "registration-independent automatic phase mask; not manual anatomical truth",
+  "status": "ts2_accepted_by_author_for_relative_computational_comparison_only",
+  "phase_ids": [
+    "phase_00",
+    "phase_01",
+    "phase_03",
+    "phase_07",
+    "phase_10"
+  ],
+  "totalsegmentator_version": "2.18.0",
+  "ts2_segmentation_manifest_sha256": "ad1317508635254fe4e5fdc48068b9ce885af36a81edd5ccad9630a74c887c4e",
+  "ts2_qc_manifest_sha256": "0a7026e23233aadd753536d9cc5599162c991a369836851ba3779081735a3bce",
+  "conversion_manifest_sha256": "22a944f9faf2592b0227fb8354cfb71bf3462de7d2e0dea76ac774ec2ecbf0d6",
+  "prior_fem_plan_sha256": "38e50d2713e25ac5eb761e3086037f04d6bf5da8ae2f0d0d28d77da235121ce4",
+  "paired_fem_plan_sha256": "048c537b96e9378f1f7ffa6faaf679291015b6a5ab20498b531fa8aac855590e",
+  "fem_reuse_reason": "same byte-identical TSv2 masks and frozen FEM plans; no changed model input",
+  "rows": [
+    {
+      "phase": "phase_00",
+      "ct_sha256": "ae317aba2a3d1c97163d81bca1465b8bbc82eba7f240e99c93a8dfced6c12a1c",
+      "ts2_mask_sha256": "f07990cd5ff46ea5858b47d72be8d138e5d32851f1fcc4f0349ce9414bb0bdcc",
+      "raw_ts2_mask_sha256": "46c750f85bdc625c7857b1a80ff6067017b278b1009394029681aee6e9733e13",
+      "derived_product_added_voxels": 0,
+      "derived_product_removed_voxels": 32,
+      "ts2_volume_ml": 624.2556036376952,
+      "ts2_connected_components": 1,
+      "ts2_largest_component_fraction": 1.0,
+      "ts2_touches_superior_fov": true,
+      "ts2_source_qc_status": "pending_manual_review"
+    },
+    {
+      "phase": "phase_01",
+      "ct_sha256": "74ad524913a6e8927c2b80a32f57ba125e59a97071b998daef4e80d6d454e1df",
+      "ts2_mask_sha256": "86c5bd9518eb9bf379a95cb84accc450f3b6bd407faa805b3ea6c97c7c2df8ca",
+      "raw_ts2_mask_sha256": "6c67cf1bf4b1f516b60cf023ead0f32a6143c8a02c524f88bbace6f1bbd774e4",
+      "derived_product_added_voxels": 0,
+      "derived_product_removed_voxels": 44,
+      "ts2_volume_ml": 596.9820373535155,
+      "ts2_connected_components": 1,
+      "ts2_largest_component_fraction": 1.0,
+      "ts2_touches_superior_fov": true,
+      "ts2_source_qc_status": "pending_manual_review",
+      "identity_dice_to_ts2": 0.9300198835784681,
+      "greedy_dice_to_ts2": 0.9489721555143624,
+      "greedy_minus_identity_dice": 0.018952271935894327,
+      "transported_volume_ml": 601.5073596191405,
+      "transported_minus_ts2_volume_ml": 4.52532226562505,
+      "greedy_surface_vs_ts2": {
+        "assd_mm": 0.9773456315074849,
+        "hd95_mm": 3.75,
+        "surface_dice_2mm": 0.8742826701777029,
+        "surface_tolerance_mm": 2.0
+      }
+    },
+    {
+      "phase": "phase_03",
+      "ct_sha256": "ef8653b31a6527f20d7dc70b4bc9457485a64338e2531928ec0cf7909a6bfcb8",
+      "ts2_mask_sha256": "b2110bc5406d5dde8fcf3649b002aa4e1ad83634f7d5c1451465ee40578be299",
+      "raw_ts2_mask_sha256": "78fa7cdc3dd891a580157a9abf8f4d41a65c45011f6ce98c1f14723ce452f811",
+      "derived_product_added_voxels": 0,
+      "derived_product_removed_voxels": 20,
+      "ts2_volume_ml": 573.116018218994,
+      "ts2_connected_components": 1,
+      "ts2_largest_component_fraction": 1.0,
+      "ts2_touches_superior_fov": true,
+      "ts2_source_qc_status": "pending_manual_review",
+      "identity_dice_to_ts2": 0.8521290068326857,
+      "greedy_dice_to_ts2": 0.9009886549001722,
+      "greedy_minus_identity_dice": 0.04885964806748655,
+      "transported_volume_ml": 574.7913986206054,
+      "transported_minus_ts2_volume_ml": 1.6753804016113918,
+      "greedy_surface_vs_ts2": {
+        "assd_mm": 1.8796514895457235,
+        "hd95_mm": 7.303496727809564,
+        "surface_dice_2mm": 0.7199267941958255,
+        "surface_tolerance_mm": 2.0
+      }
+    },
+    {
+      "phase": "phase_07",
+      "ct_sha256": "0c9c557a57348bc01e7c553aea460d882146b8b79bd0e0caf5c55381faeb3d47",
+      "ts2_mask_sha256": "741544744c01623df15a1a5a53a7353afdd01672f32e0ea55f56ea8d22d8bc29",
+      "raw_ts2_mask_sha256": "fa96d3b47998221413309889f897bb39f4dc75dc4aa8670d48e76dae01683842",
+      "derived_product_added_voxels": 0,
+      "derived_product_removed_voxels": 36,
+      "ts2_volume_ml": 673.3713969421385,
+      "ts2_connected_components": 1,
+      "ts2_largest_component_fraction": 1.0,
+      "ts2_touches_superior_fov": true,
+      "ts2_source_qc_status": "pending_manual_review",
+      "identity_dice_to_ts2": 0.926537679800537,
+      "greedy_dice_to_ts2": 0.9590451936086628,
+      "greedy_minus_identity_dice": 0.032507513808125776,
+      "transported_volume_ml": 651.2686854553222,
+      "transported_minus_ts2_volume_ml": -22.10271148681636,
+      "greedy_surface_vs_ts2": {
+        "assd_mm": 0.8258575858846583,
+        "hd95_mm": 2.7605001952771167,
+        "surface_dice_2mm": 0.9047270798852123,
+        "surface_tolerance_mm": 2.0
+      }
+    },
+    {
+      "phase": "phase_10",
+      "ct_sha256": "8987e62b53c15e46ad81e859ac0a93750265bb9de1193c8b6bcbb8e2541af655",
+      "ts2_mask_sha256": "10c539cc1f898576a962e613988903ae01879840888cfd39a9f1178f50946820",
+      "raw_ts2_mask_sha256": "1bd0924affc26c812a36c5e9f1e840a4948c1796648b44d0daba7c4cecd8a4dd",
+      "derived_product_added_voxels": 0,
+      "derived_product_removed_voxels": 64,
+      "ts2_volume_ml": 646.1234761047363,
+      "ts2_connected_components": 1,
+      "ts2_largest_component_fraction": 1.0,
+      "ts2_touches_superior_fov": true,
+      "ts2_source_qc_status": "pending_manual_review",
+      "identity_dice_to_ts2": 0.9624941276762151,
+      "greedy_dice_to_ts2": 0.9625941930357226,
+      "greedy_minus_identity_dice": 0.00010006535950746187,
+      "transported_volume_ml": 625.450315093994,
+      "transported_minus_ts2_volume_ml": -20.673161010742206,
+      "greedy_surface_vs_ts2": {
+        "assd_mm": 0.7209093354392255,
+        "hd95_mm": 2.500390594487189,
+        "surface_dice_2mm": 0.9207597067977347,
+        "surface_tolerance_mm": 2.0
+      }
+    }
+  ]
+}
