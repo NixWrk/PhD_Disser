@@ -1,0 +1,156 @@
+{
+  "status": "rigid_ct_pilot_not_validated",
+  "subject_alias": "georg",
+  "phase_ids": [
+    "phase_00.nii.gz",
+    "phase_01.nii.gz",
+    "phase_02.nii.gz",
+    "phase_03.nii.gz",
+    "phase_04.nii.gz",
+    "phase_05.nii.gz",
+    "phase_06.nii.gz",
+    "phase_07.nii.gz",
+    "phase_08.nii.gz",
+    "phase_09.nii.gz",
+    "phase_10.nii.gz",
+    "phase_11.nii.gz",
+    "phase_12.nii.gz",
+    "phase_13.nii.gz",
+    "phase_14.nii.gz"
+  ],
+  "reference": "phase_00",
+  "target": "phase_07",
+  "phase_timing": "not inferred from filename; ED/ES unassigned",
+  "input_kind": "measured CT reconstruction; TotalSegmentator v2 auto masks",
+  "independent_anatomical_reference": false,
+  "input_sha256": {
+    "reference_ct": "f432bbe067e8303e3baacd7d6df8faeb717e5c2a50efd55dc1f4794d6534e073",
+    "target_ct": "84daabe9740014a22624bb2ee65a93b422e2b033fb072204cc72a1ef842b5d5d",
+    "reference_mask": "0372ac0ccedc729d1061e02492fce60d818cacbeba6f5a93cf3a4a160f5ad76b",
+    "target_mask": "5189516ddd1d7e24ff67e2a43a2a37c6136d6db59d973a91075988c3f790b60c"
+  },
+  "software": {
+    "python": "3.13.6",
+    "numpy": "2.4.3",
+    "scipy": "1.17.1",
+    "monai_physio_available": false
+  },
+  "coordinate_qc": {
+    "convention": "NIfTI RAS millimetres",
+    "shape_ijk": [
+      512,
+      512,
+      256
+    ],
+    "axis_vectors_ras_mm": [
+      [
+        0.0,
+        -0.45898398756980896,
+        0.0
+      ],
+      [
+        -0.45898398756980896,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.625
+      ]
+    ],
+    "voxel_spacing_mm": [
+      0.45898398756980896,
+      0.45898398756980896,
+      0.625
+    ],
+    "all_ct_phases_same_fov_affine": true,
+    "selected_masks_same_fov_affine": true,
+    "crop_start_ijk": [
+      61,
+      41,
+      21
+    ],
+    "crop_stop_ijk_exclusive": [
+      475,
+      482,
+      256
+    ],
+    "crop_touches_image_boundary": true,
+    "reference_mask_touches_image_boundary": false,
+    "target_mask_touches_image_boundary": false
+  },
+  "registration": {
+    "method": "CT intensity rigid translation Powell MSE coarse ROI",
+    "shift_ijk_voxels_reference_to_target": [
+      0.14091594795784437,
+      -0.26914214684752646,
+      0.4539004525535345
+    ],
+    "shift_ras_mm_reference_to_target": [
+      0.12353193578317678,
+      -0.0646781637058711,
+      0.2836877828459591
+    ],
+    "coarse_step_ijk": [
+      5,
+      5,
+      4
+    ],
+    "objective_initial": 346.3609924316406,
+    "objective_final": 334.09320068359375,
+    "optimizer_success": true,
+    "translation_at_search_bound": false,
+    "jacobian_determinant": 1.0,
+    "nonpositive_jacobian_fraction": 0.0,
+    "deformable_field_checked": false
+  },
+  "geometry": {
+    "reference_auto_mask": {
+      "volume_ml": 715.3725927583698,
+      "voxel_face_area_mm2": 91139.22993152105,
+      "voxels": 5433219
+    },
+    "target_auto_mask": {
+      "volume_ml": 686.1766134570705,
+      "voxel_face_area_mm2": 89404.33358258821,
+      "voxels": 5211477
+    },
+    "stationary_vs_target": {
+      "dice_vs_auto_mask": 0.9489815397264516,
+      "center_difference_mm": 0.5868365114254528,
+      "volume_difference_ml": 29.195979301299303,
+      "volume_difference_percent_of_target": 4.254878223582281,
+      "voxel_face_area_difference_mm2": 1734.8963489328453,
+      "surface_assd_mm": 0.9508514425026369,
+      "surface_hd95_mm": 3.3316079947132695
+    },
+    "translated_vs_target": {
+      "dice_vs_auto_mask": 0.9489815397264516,
+      "center_difference_mm": 0.5868365114254528,
+      "volume_difference_ml": 29.195979301299303,
+      "volume_difference_percent_of_target": 4.254878223582281,
+      "voxel_face_area_difference_mm2": 1734.8963489328453,
+      "surface_assd_mm": 0.9508514425026369,
+      "surface_hd95_mm": 3.3316079947132695
+    },
+    "same_surface_qc": {
+      "reference_mesh_stride_ijk": [
+        2,
+        2,
+        2
+      ],
+      "vertex_count": 89925,
+      "triangle_count": 179854,
+      "same_vertex_ids_and_faces_all_targets": true,
+      "stationary_mean_target_surface_distance_mm": 1.076486222891337,
+      "translated_mean_target_surface_distance_mm": 1.1112643100137747,
+      "translated_p95_target_surface_distance_mm": 3.5476333778374287,
+      "translated_vertices_outside_crop_fraction": 0.0,
+      "mesh_and_mask_interpolation": "coarse marching cubes reference mesh, continuous translation; separate nearest-neighbor mask"
+    },
+    "translated_mask_volume_retained_in_crop_fraction": 1.0
+  },
+  "mp04_status": "rigid same-vertex surface pilot only; deformable all-phase geometry blocked until field QC",
+  "interpretation": "Within-series auto-mask consistency only. The same algorithm generated both masks; no independent registration, segmentation, motion, ED/ES, or FEM validation."
+}

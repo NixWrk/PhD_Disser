@@ -1,0 +1,260 @@
+{
+  "schema": "mp01_nvsegment_old_benchmark_v1",
+  "method": "Pretrained NVIDIA NV-Segment-CTMR with explicit chamber/myocardium prompts via MONAI Physio on OLD CT phases 0% and 40%",
+  "reference_status": "Direct contours are unblinded, unaccepted candidate annotations",
+  "phases": {
+    "phase_00": {
+      "ct_sha256": "f9e961138aac8f9a57957988c5c36bbf3bb72a1660d1ae4c692ee6096b27ce25",
+      "nv_labelmap_sha256": "d98cfcc92886aed71d423a3b9790ffdd539bfad5bed18743f56075dfa54f65d6",
+      "classes": {
+        "LV": {
+          "nv_volume_ml": 87.61171336795685,
+          "project_ts_volume_ml": 145.8327085728379,
+          "nv_vs_project_ts": {
+            "dice": 0.7488703069219158,
+            "assd_mm": 3.8069062075920455,
+            "hd95_mm": 9.884934087859401,
+            "a_minus_b_volume_ml": -58.22099520488105
+          },
+          "nv_top_fov_voxels": 0,
+          "candidate_direct_volume_ml": 148.97833817964968,
+          "nv_vs_candidate_direct": {
+            "dice": 0.7271119684912788,
+            "assd_mm": 4.299520933549269,
+            "hd95_mm": 10.221280732400567,
+            "a_minus_b_volume_ml": -61.36662481169282
+          },
+          "ts_vs_candidate_direct": {
+            "dice": 0.905419608944271,
+            "assd_mm": 1.6328480795439722,
+            "hd95_mm": 4.63287938067099,
+            "a_minus_b_volume_ml": -3.145629606811773
+          }
+        },
+        "RV": {
+          "nv_volume_ml": 144.38350403669827,
+          "project_ts_volume_ml": 196.48159609332745,
+          "nv_vs_project_ts": {
+            "dice": 0.8031242564712638,
+            "assd_mm": 3.2606693310526396,
+            "hd95_mm": 12.270680935660174,
+            "a_minus_b_volume_ml": -52.09809205662919
+          },
+          "nv_top_fov_voxels": 0,
+          "candidate_direct_volume_ml": 171.34061010531497,
+          "nv_vs_candidate_direct": {
+            "dice": 0.7631750508436143,
+            "assd_mm": 3.6843795329860636,
+            "hd95_mm": 11.039685362285345,
+            "a_minus_b_volume_ml": -26.957106068616678
+          },
+          "ts_vs_candidate_direct": {
+            "dice": 0.8323000634103838,
+            "assd_mm": 2.3387275026713237,
+            "hd95_mm": 5.694408827233685,
+            "a_minus_b_volume_ml": 25.140985988012513
+          }
+        },
+        "LA": {
+          "nv_volume_ml": 51.103616693736,
+          "project_ts_volume_ml": 41.97659252518079,
+          "nv_vs_project_ts": {
+            "dice": 0.8498101144120758,
+            "assd_mm": 1.8807765945250636,
+            "hd95_mm": 7.618387750975742,
+            "a_minus_b_volume_ml": 9.127024168555211
+          },
+          "nv_top_fov_voxels": 0,
+          "candidate_direct_volume_ml": 41.3233038728415,
+          "nv_vs_candidate_direct": {
+            "dice": 0.6874757939581719,
+            "assd_mm": 3.550096207426572,
+            "hd95_mm": 8.589116365198423,
+            "a_minus_b_volume_ml": 9.780312820894498
+          },
+          "ts_vs_candidate_direct": {
+            "dice": 0.7336466796481569,
+            "assd_mm": 2.8486348218619155,
+            "hd95_mm": 7.078197662069209,
+            "a_minus_b_volume_ml": 0.6532886523392871
+          }
+        },
+        "RA": {
+          "nv_volume_ml": 103.28728508924183,
+          "project_ts_volume_ml": 62.04955755527697,
+          "nv_vs_project_ts": {
+            "dice": 0.7146501038558603,
+            "assd_mm": 5.349275047534631,
+            "hd95_mm": 22.2812990232472,
+            "a_minus_b_volume_ml": 41.237727533964865
+          },
+          "nv_top_fov_voxels": 0,
+          "candidate_direct_volume_ml": 49.97714122643178,
+          "nv_vs_candidate_direct": {
+            "dice": 0.621740177652563,
+            "assd_mm": 6.576879788471097,
+            "hd95_mm": 23.786038531279175,
+            "a_minus_b_volume_ml": 53.310143862810044
+          },
+          "ts_vs_candidate_direct": {
+            "dice": 0.8601328074292276,
+            "assd_mm": 1.4494139452019987,
+            "hd95_mm": 3.7820951414497115,
+            "a_minus_b_volume_ml": 12.072416328845183
+          }
+        },
+        "myocardium": {
+          "nv_volume_ml": 97.75278918607638,
+          "project_ts_volume_ml": 123.52301295994651,
+          "nv_vs_project_ts": {
+            "dice": 0.6680805027122397,
+            "assd_mm": 2.4482645539816876,
+            "hd95_mm": 9.048226279121105,
+            "a_minus_b_volume_ml": -25.770223773870132
+          },
+          "nv_top_fov_voxels": 0
+        }
+      }
+    },
+    "phase_08": {
+      "ct_sha256": "93ef048a81f50490f25b68a70a8ed2d2b1e098970dcda0868e782f36c3116075",
+      "nv_labelmap_sha256": "62a2b96fd95578568ee4a4a89ea607ea7efb45620ee699484d60bbd1751b4fc9",
+      "classes": {
+        "LV": {
+          "nv_volume_ml": 43.4252377388441,
+          "project_ts_volume_ml": 61.78667599140756,
+          "nv_vs_project_ts": {
+            "dice": 0.7941479803940331,
+            "assd_mm": 2.465051813892514,
+            "hd95_mm": 6.634528181778114,
+            "a_minus_b_volume_ml": -18.361438252563456
+          },
+          "nv_top_fov_voxels": 0,
+          "candidate_direct_volume_ml": 48.49325869676044,
+          "nv_vs_candidate_direct": {
+            "dice": 0.8052866331181278,
+            "assd_mm": 2.214677529800689,
+            "hd95_mm": 5.9443055749624705,
+            "a_minus_b_volume_ml": -5.068020957916335
+          },
+          "ts_vs_candidate_direct": {
+            "dice": 0.8278363012065914,
+            "assd_mm": 1.9785554110362553,
+            "hd95_mm": 5.21893570618297,
+            "a_minus_b_volume_ml": 13.29341729464712
+          }
+        },
+        "RV": {
+          "nv_volume_ml": 100.60757110520285,
+          "project_ts_volume_ml": 107.3899154530335,
+          "nv_vs_project_ts": {
+            "dice": 0.8734786513711633,
+            "assd_mm": 3.3559407359225664,
+            "hd95_mm": 12.508945958414207,
+            "a_minus_b_volume_ml": -6.782344347830646
+          },
+          "nv_top_fov_voxels": 0,
+          "candidate_direct_volume_ml": 87.22801814920278,
+          "nv_vs_candidate_direct": {
+            "dice": 0.7967673832062342,
+            "assd_mm": 4.32262422402802,
+            "hd95_mm": 10.43787141236594,
+            "a_minus_b_volume_ml": 13.379552956000074
+          },
+          "ts_vs_candidate_direct": {
+            "dice": 0.8613864516184657,
+            "assd_mm": 1.7270216894897732,
+            "hd95_mm": 4.384778381010252,
+            "a_minus_b_volume_ml": 20.16189730383072
+          }
+        },
+        "LA": {
+          "nv_volume_ml": 83.09965895150049,
+          "project_ts_volume_ml": 90.20808830302445,
+          "nv_vs_project_ts": {
+            "dice": 0.9171897641784975,
+            "assd_mm": 1.1882329959823144,
+            "hd95_mm": 3.0262975525967355,
+            "a_minus_b_volume_ml": -7.108429351523973
+          },
+          "nv_top_fov_voxels": 0,
+          "candidate_direct_volume_ml": 75.27250021790803,
+          "nv_vs_candidate_direct": {
+            "dice": 0.856380010595091,
+            "assd_mm": 2.0057663412707956,
+            "hd95_mm": 4.914093939087067,
+            "a_minus_b_volume_ml": 7.8271587335924515
+          },
+          "ts_vs_candidate_direct": {
+            "dice": 0.860112418415529,
+            "assd_mm": 2.0201127404691683,
+            "hd95_mm": 4.869832953590731,
+            "a_minus_b_volume_ml": 14.935588085116423
+          }
+        },
+        "RA": {
+          "nv_volume_ml": 121.92167271024842,
+          "project_ts_volume_ml": 128.88803415278764,
+          "nv_vs_project_ts": {
+            "dice": 0.8794358822256961,
+            "assd_mm": 1.7788557610732165,
+            "hd95_mm": 5.3500372945163015,
+            "a_minus_b_volume_ml": -6.96636144253923
+          },
+          "nv_top_fov_voxels": 0,
+          "candidate_direct_volume_ml": 109.59532397715492,
+          "nv_vs_candidate_direct": {
+            "dice": 0.8229046878170871,
+            "assd_mm": 2.6339940569432527,
+            "hd95_mm": 7.0909361814621,
+            "a_minus_b_volume_ml": 12.3263487330935
+          },
+          "ts_vs_candidate_direct": {
+            "dice": 0.875390204489433,
+            "assd_mm": 1.9195256838728592,
+            "hd95_mm": 5.308054358393573,
+            "a_minus_b_volume_ml": 19.29271017563273
+          }
+        },
+        "myocardium": {
+          "nv_volume_ml": 96.03119460396994,
+          "project_ts_volume_ml": 107.88044126476429,
+          "nv_vs_project_ts": {
+            "dice": 0.8432148646758226,
+            "assd_mm": 1.315802411292778,
+            "hd95_mm": 3.811557772027687,
+            "a_minus_b_volume_ml": -11.849246660794346
+          },
+          "nv_top_fov_voxels": 0
+        }
+      }
+    }
+  },
+  "volume_changes_00_to_08": {
+    "LV": {
+      "nv_delta_ml": -44.18647562911275,
+      "project_ts_delta_ml": -84.04603258143034,
+      "candidate_direct_delta_ml": -100.48507948288923
+    },
+    "RV": {
+      "nv_delta_ml": -43.77593293149542,
+      "project_ts_delta_ml": -89.09168064029396,
+      "candidate_direct_delta_ml": -84.11259195611218
+    },
+    "LA": {
+      "nv_delta_ml": 31.996042257764486,
+      "project_ts_delta_ml": 48.23149577784366,
+      "candidate_direct_delta_ml": 33.94919634506653
+    },
+    "RA": {
+      "nv_delta_ml": 18.63438762100658,
+      "project_ts_delta_ml": 66.83847659751066,
+      "candidate_direct_delta_ml": 59.618182750723136
+    },
+    "myocardium": {
+      "nv_delta_ml": -1.721594582106448,
+      "project_ts_delta_ml": -15.642571695182227
+    }
+  },
+  "decision": "not_admitted_as_replacement_for_quantitative_chamber_dynamics_on_this_case"
+}

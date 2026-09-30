@@ -1,0 +1,165 @@
+{
+  "schema": "mp01_nix_full_cycle_v1",
+  "subject_alias": "nix",
+  "phase_count": 12,
+  "method": "MONAI Physio 2026.09.1 full TotalSegmentator wrapper; five tasks; no contrast postprocessing",
+  "outputs": [
+    {
+      "phase": "phase_00",
+      "ct_sha256": "ae317aba2a3d1c97163d81bca1465b8bbc82eba7f240e99c93a8dfced6c12a1c",
+      "labelmap_sha256": "99ef411bb12a83235185c83ae59ef17d3082bcf08f4354f8eff96adb2efdd091",
+      "highres_label_voxels": {
+        "highres_myocardium": 372908,
+        "highres_atrium_left": 119441,
+        "highres_ventricle_left": 353307,
+        "highres_atrium_right": 169917,
+        "highres_ventricle_right": 538585
+      },
+      "local_run_name": "mp01_02_full_official_assets_nix_phase00"
+    },
+    {
+      "phase": "phase_01",
+      "ct_sha256": "74ad524913a6e8927c2b80a32f57ba125e59a97071b998daef4e80d6d454e1df",
+      "labelmap_sha256": "8cbba494a83c2a371fa7a393301548177dae38e0bbb406d74e2289195a8ffd95",
+      "highres_label_voxels": {
+        "highres_myocardium": 317319,
+        "highres_atrium_left": 170740,
+        "highres_ventricle_left": 300365,
+        "highres_atrium_right": 235855,
+        "highres_ventricle_right": 441119
+      },
+      "local_run_name": "mp01_nix_phase_01_full"
+    },
+    {
+      "phase": "phase_02",
+      "ct_sha256": "bca8fa1d330e02350179f3175132fe4844e9d3beb676ae1c9ac4f9d96342f4d4",
+      "labelmap_sha256": "d98b54f1993e41c40584afd48ffc802edb8d1109b9dc0794e38ffe7986463d38",
+      "highres_label_voxels": {
+        "highres_myocardium": 280718,
+        "highres_atrium_left": 202093,
+        "highres_ventricle_left": 256025,
+        "highres_atrium_right": 286282,
+        "highres_ventricle_right": 368226
+      },
+      "local_run_name": "mp01_nix_phase_02_full"
+    },
+    {
+      "phase": "phase_03",
+      "ct_sha256": "ef8653b31a6527f20d7dc70b4bc9457485a64338e2531928ec0cf7909a6bfcb8",
+      "labelmap_sha256": "a9f89f63747394ae3754ffb94481760a866d33fe668de87e608f36b24169583a",
+      "highres_label_voxels": {
+        "highres_myocardium": 271451,
+        "highres_atrium_left": 245872,
+        "highres_ventricle_left": 243835,
+        "highres_atrium_right": 310919,
+        "highres_ventricle_right": 339844
+      },
+      "local_run_name": "mp01_nix_phase_03_full"
+    },
+    {
+      "phase": "phase_04",
+      "ct_sha256": "30608765ddd46233a3c0a05c2b0acf13d2305b470e59fd91624d148ee8d17310",
+      "labelmap_sha256": "3e3a5eefa18e240d24aca4f37b1893e1121434fca451a474d93e1e4e83a4bbd6",
+      "highres_label_voxels": {
+        "highres_myocardium": 286283,
+        "highres_atrium_left": 217147,
+        "highres_ventricle_left": 263162,
+        "highres_atrium_right": 316149,
+        "highres_ventricle_right": 363556
+      },
+      "local_run_name": "mp01_nix_phase_04_full"
+    },
+    {
+      "phase": "phase_05",
+      "ct_sha256": "59c0a83d00e42ef85b9da3f86df2dc9ab76813298b0ddcbd1fbbb2ceb26d0fc6",
+      "labelmap_sha256": "dc70af3329e791aefa6c3b46a83257dcdd750683f718c117465f338967c7f57a",
+      "highres_label_voxels": {
+        "highres_myocardium": 359948,
+        "highres_atrium_left": 155588,
+        "highres_ventricle_left": 324374,
+        "highres_atrium_right": 202290,
+        "highres_ventricle_right": 501174
+      },
+      "local_run_name": "mp01_nix_phase_05_full"
+    },
+    {
+      "phase": "phase_06",
+      "ct_sha256": "48d152488857015fd52b592a09f9d587ef19973f53f9f7a5a0ac981ac1c471ca",
+      "labelmap_sha256": "4577392b2be71a1ca92dc05abf47f3bf3c0fff5c70386847e177152638595a51",
+      "highres_label_voxels": {
+        "highres_myocardium": 398361,
+        "highres_atrium_left": 156590,
+        "highres_ventricle_left": 390883,
+        "highres_atrium_right": 196035,
+        "highres_ventricle_right": 556269
+      },
+      "local_run_name": "mp01_nix_phase_06_full"
+    },
+    {
+      "phase": "phase_07",
+      "ct_sha256": "0c9c557a57348bc01e7c553aea460d882146b8b79bd0e0caf5c55381faeb3d47",
+      "labelmap_sha256": "65a179fe2aefda6a9c07141e64d7cc32ecdcef4214855c2c6bdb49dac60ddc47",
+      "highres_label_voxels": {
+        "highres_myocardium": 409372,
+        "highres_atrium_left": 149705,
+        "highres_ventricle_left": 400700,
+        "highres_atrium_right": 183520,
+        "highres_ventricle_right": 584148
+      },
+      "local_run_name": "mp01_nix_phase_07_full"
+    },
+    {
+      "phase": "phase_08",
+      "ct_sha256": "18a689fee99a5658e4f59deb0e6371a7103749665ee5e38f598ccfa3e6cff511",
+      "labelmap_sha256": "48c3aac4efc2f1c0c756fe622c615d3882c5025e8fc8852f49f232e2aa786156",
+      "highres_label_voxels": {
+        "highres_myocardium": 429488,
+        "highres_atrium_left": 104011,
+        "highres_ventricle_left": 414388,
+        "highres_atrium_right": 135056,
+        "highres_ventricle_right": 617976
+      },
+      "local_run_name": "mp01_nix_phase_08_full"
+    },
+    {
+      "phase": "phase_09",
+      "ct_sha256": "f0588fe0e62220ca6ac811dd80e2ac561516f00e17afc9ce5e67f54d8468af77",
+      "labelmap_sha256": "58562ff5001e2b6852c8ef0c41df9d40010e21463ebc214e30d097412e21fd90",
+      "highres_label_voxels": {
+        "highres_myocardium": 434695,
+        "highres_atrium_left": 93712,
+        "highres_ventricle_left": 418792,
+        "highres_atrium_right": 121115,
+        "highres_ventricle_right": 629490
+      },
+      "local_run_name": "mp01_nix_phase_09_full"
+    },
+    {
+      "phase": "phase_10",
+      "ct_sha256": "8987e62b53c15e46ad81e859ac0a93750265bb9de1193c8b6bcbb8e2541af655",
+      "labelmap_sha256": "d221c62fe66c707e77e3a162f794286a29293b79af9fecd293edabcb2f4e4b1a",
+      "highres_label_voxels": {
+        "highres_myocardium": 392989,
+        "highres_atrium_left": 116044,
+        "highres_ventricle_left": 384671,
+        "highres_atrium_right": 174356,
+        "highres_ventricle_right": 553521
+      },
+      "local_run_name": "mp01_nix_phase_10_full"
+    },
+    {
+      "phase": "phase_11",
+      "ct_sha256": "97df88b66c1387f0a38a7859437ffb829ec6d50a65c76abe61c031cb2a5a89b6",
+      "labelmap_sha256": "f1083ac4b2580d51bc5e002a2ded02f86a70d547f86605e2a184503452fe7771",
+      "highres_label_voxels": {
+        "highres_myocardium": 346641,
+        "highres_atrium_left": 141243,
+        "highres_ventricle_left": 311531,
+        "highres_atrium_right": 188788,
+        "highres_ventricle_right": 505213
+      },
+      "local_run_name": "mp01_nix_phase_11_full"
+    }
+  ],
+  "interpretation": "Technical execution only; anatomical accuracy is not inferred from completion"
+}

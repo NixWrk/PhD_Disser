@@ -1,0 +1,106 @@
+{
+  "schema": "mp08_09_preflight_v1",
+  "run_date": "2026-09-28",
+  "subject_pseudonym": "georg",
+  "package_state": {
+    "nibabel": {
+      "available": true,
+      "version": "5.3.3"
+    },
+    "trimesh": {
+      "available": true,
+      "version": "4.11.3"
+    },
+    "pyvista": {
+      "available": true,
+      "version": "0.46.4"
+    },
+    "itk": {
+      "available": false,
+      "version": null
+    },
+    "monai_physio": {
+      "available": false,
+      "version": null
+    },
+    "pxr": {
+      "available": false,
+      "version": null
+    }
+  },
+  "basis": "external conversion manifest, NIfTI headers, one existing STL; no image pixels read",
+  "conversion_status": "converted_pending_image_qc",
+  "phase_tag": "NominalPercentageOfCardiacPhase",
+  "phase_count": 15,
+  "phase_ids": [
+    "phase_00",
+    "phase_01",
+    "phase_02",
+    "phase_03",
+    "phase_04",
+    "phase_05",
+    "phase_06",
+    "phase_07",
+    "phase_08",
+    "phase_09",
+    "phase_10",
+    "phase_11",
+    "phase_12",
+    "phase_13",
+    "phase_14"
+  ],
+  "phase_tag_values": [
+    "23.000000",
+    "33.000000",
+    "43.000000",
+    "53.000000",
+    "63.000000",
+    "73.000000",
+    "83.000000",
+    "93.000000",
+    "103.000000",
+    "113.000000",
+    "123.000000",
+    "134.000000",
+    "144.000000",
+    "154.000000",
+    "164.000000"
+  ],
+  "same_grid": true,
+  "all_manifest_geometry_agrees": true,
+  "all_header_units_mm": false,
+  "header_spatial_units": [
+    "unknown"
+  ],
+  "any_sform_qform_disagreement": false,
+  "reference_geometry": {
+    "phase": "phase_00",
+    "shape": [
+      512,
+      512,
+      256
+    ],
+    "spacing_mm_from_affine": [
+      0.458984,
+      0.458984,
+      0.625
+    ],
+    "axis_codes": "PLS",
+    "spatial_unit_header": "unknown",
+    "sform_code": 1,
+    "qform_code": 1,
+    "sform_qform_agree": true,
+    "manifest_geometry_agrees": true
+  },
+  "mesh_preflight": {
+    "available": true,
+    "readable": true,
+    "triangles": 719662,
+    "within_ct_fov": true
+  },
+  "distinct_high_resolution_reference_supplied": false,
+  "registration_qc_accepted": false,
+  "mp08_reconstruction_ready": false,
+  "mp09_patient_animation_ready": false,
+  "interpretation": "Header/mesh preflight only; no motion, image quality, registration, or anatomical validation"
+}

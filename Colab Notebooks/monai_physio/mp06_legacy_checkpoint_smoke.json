@@ -1,0 +1,27 @@
+{
+  "schema": "mp06_legacy_checkpoint_smoke_v1",
+  "source_release": "MONAI Physio / PhysioTwin4D 2026.07.3",
+  "source_checkpoint_sha256": "55bf8180f356faf78214182e35f55118bbe92d55215954e3dfed89a776120fb3",
+  "source_template_sha256": "297169d6f0b0cc060d8d4c28ff1b20bee731617f8ac2d93d37ae84841831f761",
+  "source_edges_sha256": {
+    "shared_edge_index.pt": "aaf1b66fa2a4204b77ca99a7cbbcca46b64f9b89e0dbd5c73ab3b0b7eaeff636",
+    "shared_edge_features.pt": "3833b18965845c309b21dfb3e1b58e19428bd83dbefb3988aa58a170a8326da2"
+  },
+  "adapter": "metadata field rename and template filename copy only; network weights unchanged",
+  "n_points": 167240,
+  "n_pca_coefficients": 15,
+  "train_subject_count": 28,
+  "predictions_for_mean_pca": {
+    "0.0": {
+      "mean_displacement_norm_mm": 0.14569604396820068,
+      "p95_displacement_norm_mm": 0.6521029472351074,
+      "max_displacement_norm_mm": 5.35215950012207
+    },
+    "0.5": {
+      "mean_displacement_norm_mm": 0.3918355405330658,
+      "p95_displacement_norm_mm": 1.0589388608932495,
+      "max_displacement_norm_mm": 2.295689582824707
+    }
+  },
+  "interpretation": "Technical inference on the source mean template, not patient-specific or validated"
+}

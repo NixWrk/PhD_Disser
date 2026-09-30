@@ -1,0 +1,282 @@
+{
+  "schema": "mp09_nix_usd_visual_qc_v1",
+  "subject_alias": "nix",
+  "source": "existing independently segmented whole-heart STL in products_v2",
+  "usd_relative_path": "runs/mp09_nix_observed_auto_phases.usdc",
+  "usd_sha256": "34b7c2dbba5d7e1db7c77a849979fcf8919999297c7461317f79c4e88fad152e",
+  "phase_count": 12,
+  "phase_indices_are_not_ecg_timing": true,
+  "coordinate_conversion": "source RAS xyz mm -> USD (x,z,-y) m, Y-up",
+  "between_phase_interpolation_validated": false,
+  "topology_correspondence_between_phases": false,
+  "independent_anatomical_validation": false,
+  "registration_field_used": false,
+  "omniverse_render_verified": false,
+  "interpretation": "Observed auto-surface visual-QC artifact; no validated movement or FEM admission",
+  "phases": [
+    {
+      "phase": "phase_00",
+      "source_stl_sha256": "f640ffaedfb65b90acfe98d71ce56122e0bb6670249f19ed111f8a01c1624db1",
+      "vertices": 921108,
+      "faces": 307036,
+      "source_bounds_mm": [
+        [
+          -83.209,
+          53.838
+        ],
+        [
+          -44.684,
+          70.16
+        ],
+        [
+          -209.003,
+          -77.753
+        ]
+      ],
+      "usd_centroid_error_m": 8.628046473800996e-11,
+      "usd_bounds_error_m": 7.271766661043344e-09
+    },
+    {
+      "phase": "phase_01",
+      "source_stl_sha256": "110d29dd7e4402144dfeb93a8ba04a5344312c2ff7a6e8869f8d11a3dc1e34a8",
+      "vertices": 933066,
+      "faces": 311022,
+      "source_bounds_mm": [
+        [
+          -83.209,
+          55.369
+        ],
+        [
+          -46.215,
+          70.16
+        ],
+        [
+          -205.878,
+          -77.753
+        ]
+      ],
+      "usd_centroid_error_m": 2.8732245872422672e-11,
+      "usd_bounds_error_m": 4.649162305137011e-09
+    },
+    {
+      "phase": "phase_02",
+      "source_stl_sha256": "4fb5802e26f72607139fe75f78e7e3f38e9909b40d5e07c1738dd03c88131a16",
+      "vertices": 914292,
+      "faces": 304764,
+      "source_bounds_mm": [
+        [
+          -81.678,
+          55.369
+        ],
+        [
+          -47.746,
+          70.16
+        ],
+        [
+          -205.878,
+          -77.753
+        ]
+      ],
+      "usd_centroid_error_m": 7.096885027515271e-11,
+      "usd_bounds_error_m": 4.649162305137011e-09
+    },
+    {
+      "phase": "phase_03",
+      "source_stl_sha256": "c16fd95af87c376f9b0a680011fa980c7fe6975bec6536fe4b81576c54ede87c",
+      "vertices": 930612,
+      "faces": 310204,
+      "source_bounds_mm": [
+        [
+          -81.678,
+          55.369
+        ],
+        [
+          -46.215,
+          70.16
+        ],
+        [
+          -204.628,
+          -77.753
+        ]
+      ],
+      "usd_centroid_error_m": 5.680253211040341e-11,
+      "usd_bounds_error_m": 3.4570694085189757e-09
+    },
+    {
+      "phase": "phase_04",
+      "source_stl_sha256": "a9c223171c1c64263bab2381d386f308bb7fc102517e60f92585312dac37762a",
+      "vertices": 933534,
+      "faces": 311178,
+      "source_bounds_mm": [
+        [
+          -81.678,
+          55.369
+        ],
+        [
+          -46.215,
+          70.16
+        ],
+        [
+          -205.878,
+          -77.753
+        ]
+      ],
+      "usd_centroid_error_m": 4.39155397807797e-11,
+      "usd_bounds_error_m": 4.649162305137011e-09
+    },
+    {
+      "phase": "phase_05",
+      "source_stl_sha256": "d280d38f0ed18d151203250c4860bd67079ff29c457c7d248b5b8a434dc4862f",
+      "vertices": 924594,
+      "faces": 308198,
+      "source_bounds_mm": [
+        [
+          -83.209,
+          55.369
+        ],
+        [
+          -44.684,
+          70.16
+        ],
+        [
+          -207.753,
+          -77.753
+        ]
+      ],
+      "usd_centroid_error_m": 2.2229800224101427e-11,
+      "usd_bounds_error_m": 6.437301636186277e-09
+    },
+    {
+      "phase": "phase_06",
+      "source_stl_sha256": "28d08de0bd92a41222c3dbd6a010773b13794f284c650f3afeaf7a29baf910c8",
+      "vertices": 941742,
+      "faces": 313914,
+      "source_bounds_mm": [
+        [
+          -83.209,
+          53.838
+        ],
+        [
+          -44.684,
+          70.16
+        ],
+        [
+          -207.753,
+          -77.753
+        ]
+      ],
+      "usd_centroid_error_m": 4.173131920495582e-11,
+      "usd_bounds_error_m": 6.437301636186277e-09
+    },
+    {
+      "phase": "phase_07",
+      "source_stl_sha256": "680f565219ece6e6b826c841aecafdc31d62ae3b15dd75f1898583999b7dff46",
+      "vertices": 939858,
+      "faces": 313286,
+      "source_bounds_mm": [
+        [
+          -83.209,
+          52.307
+        ],
+        [
+          -44.684,
+          70.16
+        ],
+        [
+          -209.003,
+          -77.753
+        ]
+      ],
+      "usd_centroid_error_m": 6.797925493235102e-11,
+      "usd_bounds_error_m": 7.271766661043344e-09
+    },
+    {
+      "phase": "phase_08",
+      "source_stl_sha256": "b8bfcd68e0ee5949da17528221ae29dedefb7b28a6e30dc515a041ba45485b8d",
+      "vertices": 921042,
+      "faces": 307014,
+      "source_bounds_mm": [
+        [
+          -83.209,
+          52.307
+        ],
+        [
+          -44.684,
+          71.691
+        ],
+        [
+          -209.003,
+          -77.753
+        ]
+      ],
+      "usd_centroid_error_m": 6.186823233257642e-11,
+      "usd_bounds_error_m": 7.271766661043344e-09
+    },
+    {
+      "phase": "phase_09",
+      "source_stl_sha256": "8877e236dab719656d03787fafdc4c5fbbceac8496ea442e9a191b7a52c0acc2",
+      "vertices": 922692,
+      "faces": 307564,
+      "source_bounds_mm": [
+        [
+          -83.209,
+          52.307
+        ],
+        [
+          -44.684,
+          70.16
+        ],
+        [
+          -209.003,
+          -77.753
+        ]
+      ],
+      "usd_centroid_error_m": 6.758669146571962e-11,
+      "usd_bounds_error_m": 7.271766661043344e-09
+    },
+    {
+      "phase": "phase_10",
+      "source_stl_sha256": "716e1ee01ad2ae258ef6b2a8a1fa965b8475be8fa9b6112aa587df420c3a534c",
+      "vertices": 940470,
+      "faces": 313490,
+      "source_bounds_mm": [
+        [
+          -83.209,
+          53.838
+        ],
+        [
+          -46.215,
+          70.16
+        ],
+        [
+          -209.003,
+          -77.753
+        ]
+      ],
+      "usd_centroid_error_m": 6.544593998572494e-11,
+      "usd_bounds_error_m": 7.271766661043344e-09
+    },
+    {
+      "phase": "phase_11",
+      "source_stl_sha256": "6bf9b3fcaad60c840e52de59fd589275b30b075071c33420f5b45adf30dbd45a",
+      "vertices": 923358,
+      "faces": 307786,
+      "source_bounds_mm": [
+        [
+          -83.209,
+          55.369
+        ],
+        [
+          -44.684,
+          70.16
+        ],
+        [
+          -207.753,
+          -77.753
+        ]
+      ],
+      "usd_centroid_error_m": 4.840791458585199e-11,
+      "usd_bounds_error_m": 6.437301636186277e-09
+    }
+  ]
+}

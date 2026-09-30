@@ -1,0 +1,649 @@
+{
+  "schema": "mp01_nix_cycle_qc_v1",
+  "subject_alias": "nix",
+  "phase_count": 12,
+  "reference_semantics": "Project TotalSegmentator v2 is a second automatic implementation, not anatomical ground truth",
+  "per_phase": [
+    {
+      "phase": "phase_00",
+      "classes": {
+        "myocardium": {
+          "monai_volume_ml": 136.6198895263672,
+          "project_ts_volume_ml": 135.38524444580077,
+          "monai_minus_ts_ml": 1.2346450805664062,
+          "dice_monai_vs_ts": 0.9814693593877535,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        },
+        "LA": {
+          "monai_volume_ml": 43.758825836181636,
+          "project_ts_volume_ml": 43.84272308349609,
+          "monai_minus_ts_ml": -0.08389724731445312,
+          "dice_monai_vs_ts": 0.9881519461672612,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        },
+        "LV": {
+          "monai_volume_ml": 129.43879806518552,
+          "project_ts_volume_ml": 129.46627532958982,
+          "monai_minus_ts_ml": -0.02747726440429687,
+          "dice_monai_vs_ts": 0.9920092148031171,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        },
+        "RA": {
+          "monai_volume_ml": 62.25139114379882,
+          "project_ts_volume_ml": 62.42358200073242,
+          "monai_minus_ts_ml": -0.17219085693359373,
+          "dice_monai_vs_ts": 0.9887336028962339,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        },
+        "RV": {
+          "monai_volume_ml": 197.31789932250976,
+          "project_ts_volume_ml": 200.8686946105957,
+          "monai_minus_ts_ml": -3.5507952880859373,
+          "dice_monai_vs_ts": 0.9835600103785025,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        }
+      }
+    },
+    {
+      "phase": "phase_01",
+      "classes": {
+        "myocardium": {
+          "monai_volume_ml": 116.25410751342773,
+          "project_ts_volume_ml": 114.6999934387207,
+          "monai_minus_ts_ml": 1.5541140747070312,
+          "dice_monai_vs_ts": 0.9806978470675576,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        },
+        "LA": {
+          "monai_volume_ml": 62.552908325195304,
+          "project_ts_volume_ml": 62.485131072998044,
+          "monai_minus_ts_ml": 0.06777725219726562,
+          "dice_monai_vs_ts": 0.9901522143600111,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        },
+        "LV": {
+          "monai_volume_ml": 110.04278030395507,
+          "project_ts_volume_ml": 110.22046661376952,
+          "monai_minus_ts_ml": -0.1776863098144531,
+          "dice_monai_vs_ts": 0.9918714602929068,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        },
+        "RA": {
+          "monai_volume_ml": 86.40866928100586,
+          "project_ts_volume_ml": 85.54991317749023,
+          "monai_minus_ts_ml": 0.8587561035156249,
+          "dice_monai_vs_ts": 0.9849243447544134,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        },
+        "RV": {
+          "monai_volume_ml": 161.6099119567871,
+          "project_ts_volume_ml": 164.54155288696288,
+          "monai_minus_ts_ml": -2.931640930175781,
+          "dice_monai_vs_ts": 0.9832090222861251,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        }
+      }
+    },
+    {
+      "phase": "phase_02",
+      "classes": {
+        "myocardium": {
+          "monai_volume_ml": 102.84483612060546,
+          "project_ts_volume_ml": 101.17714935302733,
+          "monai_minus_ts_ml": 1.6676867675781248,
+          "dice_monai_vs_ts": 0.9804088463665682,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        },
+        "LA": {
+          "monai_volume_ml": 74.03950393676757,
+          "project_ts_volume_ml": 74.21352661132812,
+          "monai_minus_ts_ml": -0.17402267456054685,
+          "dice_monai_vs_ts": 0.9899100728758146,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        },
+        "LV": {
+          "monai_volume_ml": 93.79822158813475,
+          "project_ts_volume_ml": 94.2653350830078,
+          "monai_minus_ts_ml": -0.4671134948730468,
+          "dice_monai_vs_ts": 0.9908927092972288,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        },
+        "RA": {
+          "monai_volume_ml": 104.8832827758789,
+          "project_ts_volume_ml": 105.30203628540038,
+          "monai_minus_ts_ml": -0.4187535095214843,
+          "dice_monai_vs_ts": 0.9899582888129307,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        },
+        "RV": {
+          "monai_volume_ml": 134.90457550048828,
+          "project_ts_volume_ml": 136.88257217407227,
+          "monai_minus_ts_ml": -1.9779966735839842,
+          "dice_monai_vs_ts": 0.9844591434128955,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        }
+      }
+    },
+    {
+      "phase": "phase_03",
+      "classes": {
+        "myocardium": {
+          "monai_volume_ml": 99.44974533081054,
+          "project_ts_volume_ml": 97.81613037109375,
+          "monai_minus_ts_ml": 1.6336149597167968,
+          "dice_monai_vs_ts": 0.9796097265634431,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        },
+        "LA": {
+          "monai_volume_ml": 90.07853271484375,
+          "project_ts_volume_ml": 90.10967361450194,
+          "monai_minus_ts_ml": -0.031140899658203124,
+          "dice_monai_vs_ts": 0.9914177488517351,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        },
+        "LV": {
+          "monai_volume_ml": 89.33225021362304,
+          "project_ts_volume_ml": 89.73818099975585,
+          "monai_minus_ts_ml": -0.40593078613281247,
+          "dice_monai_vs_ts": 0.9906296928257818,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        },
+        "RA": {
+          "monai_volume_ml": 113.90938095092773,
+          "project_ts_volume_ml": 114.44500442504882,
+          "monai_minus_ts_ml": -0.5356234741210937,
+          "dice_monai_vs_ts": 0.9905150008021819,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        },
+        "RV": {
+          "monai_volume_ml": 124.50644592285155,
+          "project_ts_volume_ml": 126.16863723754882,
+          "monai_minus_ts_ml": -1.6621913146972656,
+          "dice_monai_vs_ts": 0.9846673243450619,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        }
+      }
+    },
+    {
+      "phase": "phase_04",
+      "classes": {
+        "myocardium": {
+          "monai_volume_ml": 104.88364913940428,
+          "project_ts_volume_ml": 103.67611495971678,
+          "monai_minus_ts_ml": 1.2075341796874999,
+          "dice_monai_vs_ts": 0.9803572996996153,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        },
+        "LA": {
+          "monai_volume_ml": 79.55474044799804,
+          "project_ts_volume_ml": 79.68846313476561,
+          "monai_minus_ts_ml": -0.13372268676757812,
+          "dice_monai_vs_ts": 0.9911401811535019,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        },
+        "LV": {
+          "monai_volume_ml": 96.41295806884764,
+          "project_ts_volume_ml": 96.8093634033203,
+          "monai_minus_ts_ml": -0.3964053344726562,
+          "dice_monai_vs_ts": 0.9910505379157613,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        },
+        "RA": {
+          "monai_volume_ml": 115.82546218872069,
+          "project_ts_volume_ml": 116.05663757324218,
+          "monai_minus_ts_ml": -0.23117538452148437,
+          "dice_monai_vs_ts": 0.9909800309355393,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        },
+        "RV": {
+          "monai_volume_ml": 133.19365783691404,
+          "project_ts_volume_ml": 135.24492721557615,
+          "monai_minus_ts_ml": -2.0512693786621092,
+          "dice_monai_vs_ts": 0.9836565849291194,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        }
+      }
+    },
+    {
+      "phase": "phase_05",
+      "classes": {
+        "myocardium": {
+          "monai_volume_ml": 131.87181823730467,
+          "project_ts_volume_ml": 130.24296600341796,
+          "monai_minus_ts_ml": 1.6288522338867186,
+          "dice_monai_vs_ts": 0.9811419386400168,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        },
+        "LA": {
+          "monai_volume_ml": 57.00176818847656,
+          "project_ts_volume_ml": 56.57312286376953,
+          "monai_minus_ts_ml": 0.4286453247070312,
+          "dice_monai_vs_ts": 0.9872841170816049,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        },
+        "LV": {
+          "monai_volume_ml": 118.83880218505858,
+          "project_ts_volume_ml": 119.55357742309569,
+          "monai_minus_ts_ml": -0.7147752380371093,
+          "dice_monai_vs_ts": 0.9910941925529315,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        },
+        "RA": {
+          "monai_volume_ml": 74.11167755126952,
+          "project_ts_volume_ml": 74.09226028442382,
+          "monai_minus_ts_ml": 0.019417266845703125,
+          "dice_monai_vs_ts": 0.9883444121158785,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        },
+        "RV": {
+          "monai_volume_ml": 183.61187347412107,
+          "project_ts_volume_ml": 186.43030807495114,
+          "monai_minus_ts_ml": -2.818434600830078,
+          "dice_monai_vs_ts": 0.9829838590710674,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        }
+      }
+    },
+    {
+      "phase": "phase_06",
+      "classes": {
+        "myocardium": {
+          "monai_volume_ml": 145.94494033813476,
+          "project_ts_volume_ml": 144.3875289916992,
+          "monai_minus_ts_ml": 1.5574113464355468,
+          "dice_monai_vs_ts": 0.9821886226751515,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        },
+        "LA": {
+          "monai_volume_ml": 57.36886444091797,
+          "project_ts_volume_ml": 57.715077972412104,
+          "monai_minus_ts_ml": -0.3462135314941406,
+          "dice_monai_vs_ts": 0.989867091126144,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        },
+        "LV": {
+          "monai_volume_ml": 143.20527389526367,
+          "project_ts_volume_ml": 143.32617385864256,
+          "monai_minus_ts_ml": -0.12089996337890624,
+          "dice_monai_vs_ts": 0.9926402896831079,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        },
+        "RA": {
+          "monai_volume_ml": 71.82007369995117,
+          "project_ts_volume_ml": 71.91166458129882,
+          "monai_minus_ts_ml": -0.09159088134765624,
+          "dice_monai_vs_ts": 0.9899316884176182,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        },
+        "RV": {
+          "monai_volume_ml": 203.79667190551757,
+          "project_ts_volume_ml": 208.42274414062499,
+          "monai_minus_ts_ml": -4.626072235107421,
+          "dice_monai_vs_ts": 0.9809938986726391,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        }
+      }
+    },
+    {
+      "phase": "phase_07",
+      "classes": {
+        "myocardium": {
+          "monai_volume_ml": 149.97896911621092,
+          "project_ts_volume_ml": 148.61682952880858,
+          "monai_minus_ts_ml": 1.3621395874023436,
+          "dice_monai_vs_ts": 0.9824251005489395,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        },
+        "LA": {
+          "monai_volume_ml": 54.84645156860351,
+          "project_ts_volume_ml": 55.06517059326171,
+          "monai_minus_ts_ml": -0.21871902465820312,
+          "dice_monai_vs_ts": 0.9894235801164639,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        },
+        "LV": {
+          "monai_volume_ml": 146.80186462402344,
+          "project_ts_volume_ml": 146.86451278686522,
+          "monai_minus_ts_ml": -0.06264816284179688,
+          "dice_monai_vs_ts": 0.9927904078366109,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        },
+        "RA": {
+          "monai_volume_ml": 67.23503417968749,
+          "project_ts_volume_ml": 67.38267868041991,
+          "monai_minus_ts_ml": -0.14764450073242186,
+          "dice_monai_vs_ts": 0.9893126280810901,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        },
+        "RV": {
+          "monai_volume_ml": 214.0105206298828,
+          "project_ts_volume_ml": 218.46806564331052,
+          "monai_minus_ts_ml": -4.457545013427734,
+          "dice_monai_vs_ts": 0.9824653546955728,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        }
+      }
+    },
+    {
+      "phase": "phase_08",
+      "classes": {
+        "myocardium": {
+          "monai_volume_ml": 157.34873779296873,
+          "project_ts_volume_ml": 155.78986099243164,
+          "monai_minus_ts_ml": 1.5588768005371092,
+          "dice_monai_vs_ts": 0.9823439461531892,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        },
+        "LA": {
+          "monai_volume_ml": 38.105836639404295,
+          "project_ts_volume_ml": 38.28352294921875,
+          "monai_minus_ts_ml": -0.1776863098144531,
+          "dice_monai_vs_ts": 0.9876694787225369,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        },
+        "LV": {
+          "monai_volume_ml": 151.8166485595703,
+          "project_ts_volume_ml": 151.742276763916,
+          "monai_minus_ts_ml": 0.07437179565429687,
+          "dice_monai_vs_ts": 0.9926150140060079,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        },
+        "RA": {
+          "monai_volume_ml": 49.479592285156244,
+          "project_ts_volume_ml": 49.80272491455078,
+          "monai_minus_ts_ml": -0.32313262939453125,
+          "dice_monai_vs_ts": 0.9858447050488203,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        },
+        "RV": {
+          "monai_volume_ml": 226.40386596679684,
+          "project_ts_volume_ml": 233.25926025390623,
+          "monai_minus_ts_ml": -6.855394287109374,
+          "dice_monai_vs_ts": 0.9769866673467956,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        }
+      }
+    },
+    {
+      "phase": "phase_09",
+      "classes": {
+        "myocardium": {
+          "monai_volume_ml": 159.25639266967772,
+          "project_ts_volume_ml": 157.3538668823242,
+          "monai_minus_ts_ml": 1.9025257873535155,
+          "dice_monai_vs_ts": 0.9822690891081547,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        },
+        "LA": {
+          "monai_volume_ml": 34.332658691406245,
+          "project_ts_volume_ml": 34.60083679199219,
+          "monai_minus_ts_ml": -0.2681781005859375,
+          "dice_monai_vs_ts": 0.9875741406067305,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        },
+        "LV": {
+          "monai_volume_ml": 153.43011352539062,
+          "project_ts_volume_ml": 153.70158889770508,
+          "monai_minus_ts_ml": -0.2714753723144531,
+          "dice_monai_vs_ts": 0.9925935645483553,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        },
+        "RA": {
+          "monai_volume_ml": 44.372118377685545,
+          "project_ts_volume_ml": 44.54357650756835,
+          "monai_minus_ts_ml": -0.17145812988281248,
+          "dice_monai_vs_ts": 0.9861309116679989,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        },
+        "RV": {
+          "monai_volume_ml": 230.6221755981445,
+          "project_ts_volume_ml": 236.8477909851074,
+          "monai_minus_ts_ml": -6.2256153869628905,
+          "dice_monai_vs_ts": 0.9795364008486073,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        }
+      }
+    },
+    {
+      "phase": "phase_10",
+      "classes": {
+        "myocardium": {
+          "monai_volume_ml": 143.9768354797363,
+          "project_ts_volume_ml": 142.49672683715818,
+          "monai_minus_ts_ml": 1.480108642578125,
+          "dice_monai_vs_ts": 0.9822236545608475,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        },
+        "LA": {
+          "monai_volume_ml": 42.51428894042969,
+          "project_ts_volume_ml": 42.56997619628906,
+          "monai_minus_ts_ml": -0.05568725585937499,
+          "dice_monai_vs_ts": 0.988176024801929,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        },
+        "LV": {
+          "monai_volume_ml": 140.9294236755371,
+          "project_ts_volume_ml": 141.11993270874024,
+          "monai_minus_ts_ml": -0.19050903320312498,
+          "dice_monai_vs_ts": 0.9925571076374727,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        },
+        "RA": {
+          "monai_volume_ml": 63.877678833007806,
+          "project_ts_volume_ml": 63.87987701416015,
+          "monai_minus_ts_ml": -0.00219818115234375,
+          "dice_monai_vs_ts": 0.9890800016058822,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        },
+        "RV": {
+          "monai_volume_ml": 202.78990493774413,
+          "project_ts_volume_ml": 206.57590560913084,
+          "monai_minus_ts_ml": -3.7860006713867183,
+          "dice_monai_vs_ts": 0.9836849905492869,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        }
+      }
+    },
+    {
+      "phase": "phase_11",
+      "classes": {
+        "myocardium": {
+          "monai_volume_ml": 126.99661880493163,
+          "project_ts_volume_ml": 125.39414474487303,
+          "monai_minus_ts_ml": 1.6024740600585936,
+          "dice_monai_vs_ts": 0.9822821044319415,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        },
+        "LA": {
+          "monai_volume_ml": 51.74628341674804,
+          "project_ts_volume_ml": 51.725034332275385,
+          "monai_minus_ts_ml": 0.02124908447265625,
+          "dice_monai_vs_ts": 0.9882660359454445,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        },
+        "LV": {
+          "monai_volume_ml": 114.13359542846679,
+          "project_ts_volume_ml": 114.40104080200194,
+          "monai_minus_ts_ml": -0.26744537353515624,
+          "dice_monai_vs_ts": 0.9918466411880883,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        },
+        "RA": {
+          "monai_volume_ml": 69.16503723144531,
+          "project_ts_volume_ml": 69.38741989135741,
+          "monai_minus_ts_ml": -0.22238265991210934,
+          "dice_monai_vs_ts": 0.9894151773083402,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        },
+        "RV": {
+          "monai_volume_ml": 185.0916157531738,
+          "project_ts_volume_ml": 187.49056411743163,
+          "monai_minus_ts_ml": -2.398948364257812,
+          "dice_monai_vs_ts": 0.9859426101355591,
+          "monai_top_fov_voxels": 0,
+          "project_ts_top_fov_voxels": 0
+        }
+      }
+    }
+  ],
+  "summary": {
+    "myocardium": {
+      "dice_min": 0.9796097265634431,
+      "dice_mean": 0.9814514612669315,
+      "dice_max": 0.9824251005489395,
+      "max_abs_volume_difference_ml": 1.9025257873535155,
+      "monai_phases_touching_top_fov": 0,
+      "project_ts_phases_touching_top_fov": 0
+    },
+    "LA": {
+      "dice_min": 0.9872841170816049,
+      "dice_mean": 0.9890860526507649,
+      "dice_max": 0.9914177488517351,
+      "max_abs_volume_difference_ml": 0.4286453247070312,
+      "monai_phases_touching_top_fov": 0,
+      "project_ts_phases_touching_top_fov": 0
+    },
+    "LV": {
+      "dice_min": 0.9906296928257818,
+      "dice_mean": 0.9918825693822809,
+      "dice_max": 0.9927904078366109,
+      "max_abs_volume_difference_ml": 0.7147752380371093,
+      "monai_phases_touching_top_fov": 0,
+      "project_ts_phases_touching_top_fov": 0
+    },
+    "RA": {
+      "dice_min": 0.9849243447544134,
+      "dice_mean": 0.988597566037244,
+      "dice_max": 0.9909800309355393,
+      "max_abs_volume_difference_ml": 0.8587561035156249,
+      "monai_phases_touching_top_fov": 0,
+      "project_ts_phases_touching_top_fov": 0
+    },
+    "RV": {
+      "dice_min": 0.9769866673467956,
+      "dice_mean": 0.9826788222226027,
+      "dice_max": 0.9859426101355591,
+      "max_abs_volume_difference_ml": 6.855394287109374,
+      "monai_phases_touching_top_fov": 0,
+      "project_ts_phases_touching_top_fov": 0
+    }
+  },
+  "volume_dynamics": {
+    "myocardium": {
+      "monai_range_ml": [
+        99.44974533081054,
+        159.25639266967772
+      ],
+      "project_ts_range_ml": [
+        97.81613037109375,
+        157.3538668823242
+      ],
+      "max_abs_difference_of_phase00_referenced_changes_ml": 0.6678807067870878
+    },
+    "LA": {
+      "monai_range_ml": [
+        34.332658691406245,
+        90.07853271484375
+      ],
+      "project_ts_range_ml": [
+        34.60083679199219,
+        90.10967361450194
+      ],
+      "max_abs_difference_of_phase00_referenced_changes_ml": 0.5125425720214878
+    },
+    "LV": {
+      "monai_range_ml": [
+        89.33225021362304,
+        153.43011352539062
+      ],
+      "project_ts_range_ml": [
+        89.73818099975585,
+        153.70158889770508
+      ],
+      "max_abs_difference_of_phase00_referenced_changes_ml": 0.6872979736328091
+    },
+    "RA": {
+      "monai_range_ml": [
+        44.372118377685545,
+        115.82546218872069
+      ],
+      "project_ts_range_ml": [
+        44.54357650756835,
+        116.05663757324218
+      ],
+      "max_abs_difference_of_phase00_referenced_changes_ml": 1.0309469604492278
+    },
+    "RV": {
+      "monai_range_ml": [
+        124.50644592285155,
+        230.6221755981445
+      ],
+      "project_ts_range_ml": [
+        126.16863723754882,
+        236.8477909851074
+      ],
+      "max_abs_difference_of_phase00_referenced_changes_ml": 3.3045989990234546
+    }
+  },
+  "independent_manual_validation": false,
+  "decision": "technical_agreement_only"
+}

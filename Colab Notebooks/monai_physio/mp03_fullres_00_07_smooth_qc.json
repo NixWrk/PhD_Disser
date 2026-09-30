@@ -1,0 +1,155 @@
+{
+  "status": "one_pair_monai_physio_greedy_candidate_unvalidated",
+  "subject_alias": "georg",
+  "moving_reference": "phase_00",
+  "fixed_target": "phase_07",
+  "input_sha256": {
+    "reference_ct": "f432bbe067e8303e3baacd7d6df8faeb717e5c2a50efd55dc1f4794d6534e073",
+    "target_ct": "84daabe9740014a22624bb2ee65a93b422e2b033fb072204cc72a1ef842b5d5d",
+    "reference_mask": "0372ac0ccedc729d1061e02492fce60d818cacbeba6f5a93cf3a4a160f5ad76b",
+    "target_mask": "5189516ddd1d7e24ff67e2a43a2a37c6136d6db59d973a91075988c3f790b60c"
+  },
+  "unit_evidence": {
+    "nifti_header_space_units": "unknown",
+    "conversion_manifest_spacing_mm": [
+      0.458984,
+      0.458984,
+      0.625
+    ],
+    "manifest_coordinate_system": "NIfTI RAS+",
+    "itk_transform_system": "LPS millimetres"
+  },
+  "method": {
+    "api": "monai_physio.RegisterImagesGreedy.register",
+    "backend": "picsl_greedy in-memory Python extension",
+    "transform_type": "Deformable (Greedy affine initialization + displacement)",
+    "metric": "CC/WNCC 2x2x2",
+    "iterations_per_level": [
+      12,
+      6,
+      3
+    ],
+    "deformable_smoothing": "3.0vox 1.0vox",
+    "masks_used_to_fit": false,
+    "mask_role": "source mask defines crop; target mask evaluation only",
+    "fixed_to_moving": "target LPS point -> source LPS point; pullback for image/mask resampling",
+    "moving_to_fixed": "source LPS point -> target LPS point; pushforward for vertices",
+    "loss_reported_by_api": 0.32979878620105
+  },
+  "software": {
+    "python": "3.13.6",
+    "monai_physio": "2026.09.1",
+    "itk": "5.4.7",
+    "picsl_greedy_module": "not_exposed",
+    "script_sha256": "eec1ccf263d6f35c07b617a53357b4ee7227c70e8533d266f2c2cddc213f0691"
+  },
+  "grid_qc": {
+    "full_shape_ijk": [
+      512,
+      512,
+      256
+    ],
+    "crop_start_ijk": [
+      61,
+      41,
+      21
+    ],
+    "crop_stop_ijk_exclusive": [
+      475,
+      482,
+      256
+    ],
+    "stride_ijk": [
+      1,
+      1,
+      1
+    ],
+    "crop_source_only": true,
+    "crop_margin_mm": 25.0,
+    "evaluation_shape_ijk": [
+      414,
+      441,
+      235
+    ],
+    "evaluation_spacing_mm": [
+      0.45898398756980896,
+      0.45898398756980896,
+      0.625
+    ],
+    "source_mask_touches_full_fov": false,
+    "target_mask_touches_full_fov": false,
+    "crop_touches_full_fov": true
+  },
+  "field_qc": {
+    "field_direction": "fixed target -> moving reference, LPS mm",
+    "field_array_axes": "z,y,x,component_LPS_xyz",
+    "local_field_saved": true,
+    "local_field_relative_path": "runs/mp03_fullres_00_07_smooth_field.npz",
+    "local_field_sha256": "9a3456682e786565c4479c8a8d64e984f09b05bb0d3ceedf6147d9788cf500f9",
+    "forward_inverse_point_error_mm": {
+      "median": 0.0099953267417954,
+      "maximum": 0.02680552302726456
+    },
+    "jacobian_of_pullback": {
+      "minimum": 0.4659585654735565,
+      "p01": 0.8006709814071655,
+      "median": 1.0010100603103638,
+      "p99": 1.214146614074707,
+      "maximum": 1.6545003652572632,
+      "nonpositive_fraction": 0.0
+    },
+    "pullback_samples_outside_moving_crop_fraction": 0.0015341141767290394,
+    "displacement_magnitude_mm": {
+      "p50": 0.5719252824783325,
+      "p95": 1.561343789100647
+    }
+  },
+  "mask_qc": {
+    "stationary": {
+      "dice_vs_auto_mask": 0.9489815397264516,
+      "center_difference_mm": 0.5868365114254528,
+      "volume_difference_ml": 29.195979301299303,
+      "volume_difference_percent_of_target": 4.254878223582281,
+      "voxel_face_area_difference_mm2": 1734.8963489328453,
+      "surface_assd_mm": 0.9508514425026369,
+      "surface_hd95_mm": 3.3316079947132695
+    },
+    "rigid": {
+      "dice_vs_auto_mask": 0.9489815397264516,
+      "center_difference_mm": 0.5868365114254528,
+      "volume_difference_ml": 29.195979301299303,
+      "volume_difference_percent_of_target": 4.254878223582281,
+      "voxel_face_area_difference_mm2": 1734.8963489328453,
+      "surface_assd_mm": 0.9508514425026369,
+      "surface_hd95_mm": 3.3316079947132695
+    },
+    "greedy": {
+      "dice_vs_auto_mask": 0.9594995848663976,
+      "center_difference_mm": 0.4013475895511032,
+      "volume_difference_ml": 5.734863374766064,
+      "volume_difference_percent_of_target": 0.835770742152353,
+      "voxel_face_area_difference_mm2": 8075.517191880994,
+      "surface_assd_mm": 0.7024901433285728,
+      "surface_hd95_mm": 2.54178407832874
+    }
+  },
+  "ct_mse_hu2_in_dilated_union_mask": {
+    "stationary": 5087.751953125,
+    "rigid": 4757.84375,
+    "greedy": 1596.0953369140625
+  },
+  "same_surface_qc": {
+    "vertex_count": 359829,
+    "triangle_count": 719662,
+    "same_vertices_and_faces_for_all_three_candidates": true,
+    "mean_distance_mm": {
+      "stationary": 1.084492613397772,
+      "rigid": 1.0938398852445679,
+      "greedy": 0.7599590539263166
+    },
+    "greedy_p95_distance_mm": 2.698385061361144,
+    "greedy_vertices_outside_crop_fraction": 0.0
+  },
+  "independent_anatomical_reference": false,
+  "interpretation": "Technical one-pair comparison on the native CT voxel grid in a cropped ROI; automatic target mask is not an independent anatomical reference. No ED/ES, EF, SV, FEM or full-4D claim."
+}

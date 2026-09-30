@@ -1,0 +1,129 @@
+{
+  "schema": "mp01_old_full_cycle_v1",
+  "case_alias": "historical_01_sequence_02",
+  "phase_count": 20,
+  "method": "MONAI Physio 2026.09.1 full TotalSegmentator wrapper; five tasks, no contrast postprocessing",
+  "outputs": [
+    {
+      "phase": "phase_00",
+      "ct_sha256": "f9e961138aac8f9a57957988c5c36bbf3bb72a1660d1ae4c692ee6096b27ce25",
+      "labelmap_sha256": "4bddf37136551f8c5e795d6e9d66963141e9e19ffc0b484d84182a10d89b6f18",
+      "local_run_name": "mp01_old_phase00_full"
+    },
+    {
+      "phase": "phase_01",
+      "ct_sha256": "44e5d3fc89abcc02ebcde58aa3673d8e6011eda4d9813c7b131565cf808c10df",
+      "labelmap_sha256": "85770978ff88a781bb4fb14144909c30191d939c26269d906c8bf9e3ac54e669",
+      "local_run_name": "mp01_old_phase01_full"
+    },
+    {
+      "phase": "phase_02",
+      "ct_sha256": "70d709b319bd91847e25658c2bc2b35ab86c291cd18b1070c6c1a61d85f89092",
+      "labelmap_sha256": "23c146d7923122e32d534ba20fc9f66a958c6abcca812013130d5ebb3a6f4067",
+      "local_run_name": "mp01_old_phase02_full"
+    },
+    {
+      "phase": "phase_03",
+      "ct_sha256": "d3899f60d309bb2e45e82b80bba8e0c65b06ba221d84729a5eae374f65c46abe",
+      "labelmap_sha256": "73fa45b6be122a3bd9b0a4b917790aa9d1e8246acf8c7fa2c999e2114f798fdd",
+      "local_run_name": "mp01_old_phase03_full"
+    },
+    {
+      "phase": "phase_04",
+      "ct_sha256": "5fba1d54356732740af1fdd78cf44daf798b7a84af9f470fa01dc4808a2d30c0",
+      "labelmap_sha256": "aee943951256643031b817646948a29ff6c6b10c707580d593a0ec47bf920502",
+      "local_run_name": "mp01_old_phase04_full"
+    },
+    {
+      "phase": "phase_05",
+      "ct_sha256": "701365be9759c4b04c163c9685cdc343d09cbce31ed0eb62f419528acc798323",
+      "labelmap_sha256": "9740f329815ac3fe217bb8a9f55637b44c63950515b18413af65e025bcb1c5c1",
+      "local_run_name": "mp01_old_phase05_full"
+    },
+    {
+      "phase": "phase_06",
+      "ct_sha256": "a6e0c03f423ecca01908f78eb11fc2a571409f0a21b22686374ebca6edb40995",
+      "labelmap_sha256": "7e3660a7ae7a6dd6e26d8c8c0b89b2f3e3ec39e36b90d897d6a5d4a05f6d0910",
+      "local_run_name": "mp01_old_phase06_full"
+    },
+    {
+      "phase": "phase_07",
+      "ct_sha256": "a5a868b24ccec31c89ead599db0c816158ff02fc755e69a38b46fdea12c7a442",
+      "labelmap_sha256": "4fa15be250588f7f282ee51e5460dbb735de039e63f12b72b67a8383bfc4ff36",
+      "local_run_name": "mp01_old_phase07_full"
+    },
+    {
+      "phase": "phase_08",
+      "ct_sha256": "93ef048a81f50490f25b68a70a8ed2d2b1e098970dcda0868e782f36c3116075",
+      "labelmap_sha256": "2ff18fab93e75a20cde887fab21a73cd7ac84fe368c8a73aca84496144bc6e9a",
+      "local_run_name": "mp01_old_phase08_full"
+    },
+    {
+      "phase": "phase_09",
+      "ct_sha256": "7007b2bcbb39bb77053d0f118ff042d5d5c22ed5d32fe30c1886c3f87d617ea8",
+      "labelmap_sha256": "56364933c70a443a583af2661e06f49029764bd84ac17556eb4a51ad2a862a4e",
+      "local_run_name": "mp01_old_phase09_full"
+    },
+    {
+      "phase": "phase_10",
+      "ct_sha256": "b02e062c9cec46e0c81c267a53a3303de729198bfb57a6b0a1b16c8a1a931ff7",
+      "labelmap_sha256": "8a053c25bdec4965776849b5c96fb7dd5435a26239adfe37fe11530fe08c02a6",
+      "local_run_name": "mp01_old_phase10_full"
+    },
+    {
+      "phase": "phase_11",
+      "ct_sha256": "e3beeb06f4d2be5a7a454b95b161dfdef7b550d9eeca222421a080c371ca6f7b",
+      "labelmap_sha256": "5e1a45aa6f1f35e32e52d94e136d63208fea1555c5a3fcdff1d0aeeb9ff8755f",
+      "local_run_name": "mp01_old_phase11_full"
+    },
+    {
+      "phase": "phase_12",
+      "ct_sha256": "e70421e897c72f391d537ed55838557b2280ec85940c883fcc89a407504a4d44",
+      "labelmap_sha256": "495dc0c7e913e349062e3b68f34ceb95cdbe8954f7917bc1bb71390ae84772f4",
+      "local_run_name": "mp01_old_phase12_full"
+    },
+    {
+      "phase": "phase_13",
+      "ct_sha256": "66d7f643da89801528cc2d498e01a15bbb24b3370cfca3526e49b0e1e7bcfbb0",
+      "labelmap_sha256": "fe6e35b825952ee284ed21f758439954ff168f1c5e9e3db36861b76c42d2978e",
+      "local_run_name": "mp01_old_phase13_full"
+    },
+    {
+      "phase": "phase_14",
+      "ct_sha256": "e044e65d21965a2e9272a8b12d6d52c08b9cdda833b7ec84f31da9934c916ef1",
+      "labelmap_sha256": "d5827743591925ada8ea5395c59c6dc256669e6828d25b305b3db3d261b75c96",
+      "local_run_name": "mp01_old_phase14_full"
+    },
+    {
+      "phase": "phase_15",
+      "ct_sha256": "c994ddd014e452b3344f065b516372476d66b4560e62f09ca51a1cefd9a1f7b0",
+      "labelmap_sha256": "dbd83cf88df0dcaab30a6f54d8413c448a34440958073ce7daf49bc2d8cb4932",
+      "local_run_name": "mp01_old_phase15_full"
+    },
+    {
+      "phase": "phase_16",
+      "ct_sha256": "5561d24179f00da7cf3233d5b4d306f7d34376ea4a23e3da66c6e6f496eefe51",
+      "labelmap_sha256": "acf7a8f4e0c0daf920e4282540531b479a3f67493d1c19d02be6b7989e56464a",
+      "local_run_name": "mp01_old_phase16_full"
+    },
+    {
+      "phase": "phase_17",
+      "ct_sha256": "0fe21ae20810dbcf8a9e2acd5e8bbfd074cc72f5b96f4b6b9e5b586a981e75b7",
+      "labelmap_sha256": "2c36cd378ecbf4363c3a670b3d22e113c3f6770bf40cc6cf89a20b055ce40716",
+      "local_run_name": "mp01_old_phase17_full"
+    },
+    {
+      "phase": "phase_18",
+      "ct_sha256": "990d177a564e65ae15717876c552b44d5533332ac9f8ad92ccac38047ae59233",
+      "labelmap_sha256": "d10b21146c43b0345aa431a3947485f9d135198afa3fe6a84c9d23b73f4d7e80",
+      "local_run_name": "mp01_old_phase18_full"
+    },
+    {
+      "phase": "phase_19",
+      "ct_sha256": "46c60192723b65a457f997e6254ab836926dff04edc7b9a70969cadedbc43b93",
+      "labelmap_sha256": "aa59a8c1f760c446ca5f2bcb1eb21c3ac09004da973bcf69040c2e6fd4c2cc0b",
+      "local_run_name": "mp01_old_phase19_full"
+    }
+  ],
+  "interpretation": "Technical completion; anatomical accuracy must be reviewed separately"
+}

@@ -1,0 +1,15 @@
+{
+  "schema": "mp01_nv_heart_qc_v1",
+  "phase": "phase_08",
+  "nv_volume_ml": 602.974798982112,
+  "ts_volume_ml": 563.9279375878842,
+  "nv_vs_ts": {
+    "dice": 0.9385158936077101,
+    "assd_mm": 1.1439792059982188,
+    "hd95_mm": 3.1707085704872977,
+    "a_minus_b_volume_ml": 39.04686139422772
+  },
+  "nv_top_fov_voxels": 0,
+  "ts_top_fov_voxels": 0,
+  "reference_status": "Two automatic masks; no independent accepted outer-heart contour"
+}
