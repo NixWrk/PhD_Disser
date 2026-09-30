@@ -1,0 +1,292 @@
+{
+  "schema": "mp02_nix_coordinate_check_v1",
+  "subject_alias": "nix",
+  "static_dynamic_same_dicom_frame": true,
+  "dicom_fov": {
+    "301": {
+      "dicom_instances": 241,
+      "unique_slice_centres": 241,
+      "z_centres_lps_mm_min_max": [
+        -267.364,
+        32.636
+      ]
+    },
+    "307": {
+      "dicom_instances": 3072,
+      "unique_slice_centres": 256,
+      "z_centres_lps_mm_min_max": [
+        -237.44,
+        -78.065
+      ]
+    }
+  },
+  "static_superior_extent_beyond_dynamic_mm": 110.701,
+  "static_bones_stl_sha256": "8ca51e9412c34534d55831dd739f73365773e1a4913733b62318f4ee51bea5e2",
+  "fixed_coordinate_map_ras_to_fem_mm": [
+    [
+      -1.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      -1.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "hu_threshold": 250,
+  "display_sampling_stride_ijk": [
+    2,
+    2,
+    2
+  ],
+  "no_heart_mask_used": true,
+  "no_optimized_registration": true,
+  "interpretation": "Static bone STL to phase CT high-HU boundary distance; mixes contour, threshold, breathing, and position errors; not an independent registration error bound",
+  "rows": [
+    {
+      "phase": "phase_00",
+      "ct_sha256": "ae317aba2a3d1c97163d81bca1465b8bbc82eba7f240e99c93a8dfced6c12a1c",
+      "ct_hu_boundary_points": 93966,
+      "static_surface_samples": 4718,
+      "distance_p50_p90_p95_mm": [
+        1.0265808608747953,
+        1.6166167440914816,
+        1.8182667854306924
+      ],
+      "z_bands": [
+        {
+          "z_fem_mm": [
+            -220,
+            -180
+          ],
+          "static_samples": 1262,
+          "distance_p50_p95_mm": [
+            1.0700242836584086,
+            1.956597607526346
+          ]
+        },
+        {
+          "z_fem_mm": [
+            -180,
+            -140
+          ],
+          "static_samples": 1577,
+          "distance_p50_p95_mm": [
+            1.0226661036583697,
+            1.7738185473153978
+          ]
+        },
+        {
+          "z_fem_mm": [
+            -140,
+            -95
+          ],
+          "static_samples": 1879,
+          "distance_p50_p95_mm": [
+            1.0093080261395058,
+            1.7787978492768963
+          ]
+        }
+      ]
+    },
+    {
+      "phase": "phase_01",
+      "ct_sha256": "74ad524913a6e8927c2b80a32f57ba125e59a97071b998daef4e80d6d454e1df",
+      "ct_hu_boundary_points": 93729,
+      "static_surface_samples": 4718,
+      "distance_p50_p90_p95_mm": [
+        1.03508948781078,
+        1.6064908216358886,
+        1.8000192965805042
+      ],
+      "z_bands": [
+        {
+          "z_fem_mm": [
+            -220,
+            -180
+          ],
+          "static_samples": 1262,
+          "distance_p50_p95_mm": [
+            1.0855908351798824,
+            1.949960296669786
+          ]
+        },
+        {
+          "z_fem_mm": [
+            -180,
+            -140
+          ],
+          "static_samples": 1577,
+          "distance_p50_p95_mm": [
+            1.029360002821482,
+            1.77267746380515
+          ]
+        },
+        {
+          "z_fem_mm": [
+            -140,
+            -95
+          ],
+          "static_samples": 1879,
+          "distance_p50_p95_mm": [
+            1.010303202291171,
+            1.7418006545027573
+          ]
+        }
+      ]
+    },
+    {
+      "phase": "phase_03",
+      "ct_sha256": "ef8653b31a6527f20d7dc70b4bc9457485a64338e2531928ec0cf7909a6bfcb8",
+      "ct_hu_boundary_points": 93904,
+      "static_surface_samples": 4718,
+      "distance_p50_p90_p95_mm": [
+        1.028519745825344,
+        1.6070592764043565,
+        1.810369628987641
+      ],
+      "z_bands": [
+        {
+          "z_fem_mm": [
+            -220,
+            -180
+          ],
+          "static_samples": 1262,
+          "distance_p50_p95_mm": [
+            1.0596566666110436,
+            2.0053869370499475
+          ]
+        },
+        {
+          "z_fem_mm": [
+            -180,
+            -140
+          ],
+          "static_samples": 1577,
+          "distance_p50_p95_mm": [
+            1.0245980379918795,
+            1.770224212208327
+          ]
+        },
+        {
+          "z_fem_mm": [
+            -140,
+            -95
+          ],
+          "static_samples": 1879,
+          "distance_p50_p95_mm": [
+            1.0152818745939742,
+            1.7501270628835082
+          ]
+        }
+      ]
+    },
+    {
+      "phase": "phase_07",
+      "ct_sha256": "0c9c557a57348bc01e7c553aea460d882146b8b79bd0e0caf5c55381faeb3d47",
+      "ct_hu_boundary_points": 93776,
+      "static_surface_samples": 4718,
+      "distance_p50_p90_p95_mm": [
+        1.0334996839386679,
+        1.612702869599241,
+        1.813613811058199
+      ],
+      "z_bands": [
+        {
+          "z_fem_mm": [
+            -220,
+            -180
+          ],
+          "static_samples": 1262,
+          "distance_p50_p95_mm": [
+            1.0874185170008186,
+            2.0075856643949823
+          ]
+        },
+        {
+          "z_fem_mm": [
+            -180,
+            -140
+          ],
+          "static_samples": 1577,
+          "distance_p50_p95_mm": [
+            1.0264777153354643,
+            1.7954648819579295
+          ]
+        },
+        {
+          "z_fem_mm": [
+            -140,
+            -95
+          ],
+          "static_samples": 1879,
+          "distance_p50_p95_mm": [
+            1.0109067561376326,
+            1.7350236422319902
+          ]
+        }
+      ]
+    },
+    {
+      "phase": "phase_10",
+      "ct_sha256": "8987e62b53c15e46ad81e859ac0a93750265bb9de1193c8b6bcbb8e2541af655",
+      "ct_hu_boundary_points": 93723,
+      "static_surface_samples": 4718,
+      "distance_p50_p90_p95_mm": [
+        1.0249436131657512,
+        1.6106473342757406,
+        1.8069785053546594
+      ],
+      "z_bands": [
+        {
+          "z_fem_mm": [
+            -220,
+            -180
+          ],
+          "static_samples": 1262,
+          "distance_p50_p95_mm": [
+            1.0682223121044254,
+            2.0147684248717144
+          ]
+        },
+        {
+          "z_fem_mm": [
+            -180,
+            -140
+          ],
+          "static_samples": 1577,
+          "distance_p50_p95_mm": [
+            1.0228241436201053,
+            1.7406698974798664
+          ]
+        },
+        {
+          "z_fem_mm": [
+            -140,
+            -95
+          ],
+          "static_samples": 1879,
+          "distance_p50_p95_mm": [
+            1.0039790563141886,
+            1.7506083869900575
+          ]
+        }
+      ]
+    }
+  ]
+}

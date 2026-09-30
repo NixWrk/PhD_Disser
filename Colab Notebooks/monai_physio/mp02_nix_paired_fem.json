@@ -1,0 +1,370 @@
+{
+  "schema": "mp02_nix_paired_fem_v1",
+  "status": "exploratory_hypothesis_not_validated",
+  "phase_count": 4,
+  "montages": [
+    "tepc_2",
+    "tepc_3",
+    "tepc_4",
+    "tepc_5",
+    "tepc_6",
+    "tepc_7"
+  ],
+  "same_mesh_background_contacts_conductivities_frequency": true,
+  "source_plan_sha256": "38e50d2713e25ac5eb761e3086037f04d6bf5da8ae2f0d0d28d77da235121ce4",
+  "new_plan_sha256": "048c537b96e9378f1f7ffa6faaf679291015b6a5ab20498b531fa8aac855590e",
+  "independent_phase_anatomy": false,
+  "independent_ct_to_fem_error_bound": false,
+  "phase_details": {
+    "phase_01": {
+      "transported_vs_observed_dice": 0.9489721555143624,
+      "saved_registration_dice": 0.9489837435031022,
+      "transported_voxels": 1641832,
+      "observed_voxels": 1629480,
+      "fraction": {
+        "mask_volume_ml": 601.5073596191405,
+        "material_volume_ml": 601.5184146001518,
+        "volume_error_percent": 0.0018378795927365132,
+        "selected_tetrahedra": 7901
+      },
+      "field_sha256": "c5b5e67069f7ba01b2030fe941b3e962d106fe9394ac77b8e20e55a2b26abf72",
+      "transported_mask_sha256": "8cdaa09400ad8f3fadc76173631973104a82082aad94ac46afc2edd5d7c26fa5",
+      "transported_fraction_sha256": "c0fc610a7554975667de94ed17c3b7c9a9e2fcafcfe1453804f1cb4d85ed67bf"
+    },
+    "phase_03": {
+      "transported_vs_observed_dice": 0.9009886549001722,
+      "saved_registration_dice": 0.9011217153002835,
+      "transported_voxels": 1568910,
+      "observed_voxels": 1564337,
+      "fraction": {
+        "mask_volume_ml": 574.7913986206054,
+        "material_volume_ml": 574.7755213472938,
+        "volume_error_percent": -0.0027622670328297794,
+        "selected_tetrahedra": 7719
+      },
+      "field_sha256": "8608e5fed4b04c797a3cb4694a60784ce5cb79960904bb939dd5e198097368ee",
+      "transported_mask_sha256": "4938271d82d38b3cf875bacfcc2db99f276228729975a4f0f9aaf2d1f7c97d74",
+      "transported_fraction_sha256": "59126bc5ed122a41accdb1f51660f3669f3a1721f02a40b5ca6a8d3921bd4f0a"
+    },
+    "phase_07": {
+      "transported_vs_observed_dice": 0.9590451936086628,
+      "saved_registration_dice": 0.9590451936086628,
+      "transported_voxels": 1777657,
+      "observed_voxels": 1837987,
+      "fraction": {
+        "mask_volume_ml": 651.2686854553222,
+        "material_volume_ml": 651.2770724837158,
+        "volume_error_percent": 0.0012877985048120877,
+        "selected_tetrahedra": 7997
+      },
+      "field_sha256": "4291b54e8c3375fbb1dfef5c78a2347bc6bae5ebf8ec986c63ce7fb8926c78d6",
+      "transported_mask_sha256": "da4ebba039fc8572ac60fcc37aee75d877ce40fa144b16902d552b30799d87e3",
+      "transported_fraction_sha256": "a7ee8605e5bdc4d7e54205eeeb735604255a0cb3ee8c63664edbea9bcba18078"
+    },
+    "phase_10": {
+      "transported_vs_observed_dice": 0.9625941930357226,
+      "saved_registration_dice": 0.9626049531611134,
+      "transported_voxels": 1707185,
+      "observed_voxels": 1763613,
+      "fraction": {
+        "mask_volume_ml": 625.450315093994,
+        "material_volume_ml": 625.4401462475328,
+        "volume_error_percent": -0.0016258440064476076,
+        "selected_tetrahedra": 7926
+      },
+      "field_sha256": "1a8055cb96eefde57119df12142d9d9f5d296576aa20f2612521dce09d77efae",
+      "transported_mask_sha256": "a6caa56db19434952ce470d4ae2a72034f20a03851781cd6754530cde6e3da98",
+      "transported_fraction_sha256": "0ae3f3125e388135beb2989bbe5a3d2eb0a754ac1976ba04d6691acb294c97be"
+    }
+  },
+  "rows": [
+    {
+      "phase": "phase_01",
+      "montage": "tepc_2",
+      "observed_Z_ohm": 167.5661723504425,
+      "transported_Z_ohm": 167.42539043433612,
+      "difference_Z_ohm": -0.14078191610639124,
+      "difference_Z_percent": -0.08401571399027034,
+      "observed_delta_Z_ohm": 0.6003397997857007,
+      "transported_delta_Z_ohm": 0.4595578836793095,
+      "max_relative_residual": 1.658624022515353e-11,
+      "reciprocity_absolute_ohm": 1.3415899502433604e-09
+    },
+    {
+      "phase": "phase_01",
+      "montage": "tepc_3",
+      "observed_Z_ohm": 44.62005274473138,
+      "transported_Z_ohm": 44.61556404701673,
+      "difference_Z_ohm": -0.004488697714648993,
+      "difference_Z_percent": -0.010059821623987225,
+      "observed_delta_Z_ohm": 0.021937470513194057,
+      "transported_delta_Z_ohm": 0.017448772798545065,
+      "max_relative_residual": 4.845522565306693e-11,
+      "reciprocity_absolute_ohm": 3.2099478630698286e-10
+    },
+    {
+      "phase": "phase_01",
+      "montage": "tepc_4",
+      "observed_Z_ohm": 97.86311777267676,
+      "transported_Z_ohm": 97.59607431784653,
+      "difference_Z_ohm": -0.2670434548302296,
+      "difference_Z_percent": -0.27287446068347904,
+      "observed_delta_Z_ohm": 0.6914741567137668,
+      "transported_delta_Z_ohm": 0.42443070188353715,
+      "max_relative_residual": 2.086142631442808e-11,
+      "reciprocity_absolute_ohm": 3.5780090001935605e-10
+    },
+    {
+      "phase": "phase_01",
+      "montage": "tepc_5",
+      "observed_Z_ohm": 106.03146824650162,
+      "transported_Z_ohm": 105.56491566879919,
+      "difference_Z_ohm": -0.46655257770242997,
+      "difference_Z_percent": -0.4400133143660616,
+      "observed_delta_Z_ohm": 1.124728817513116,
+      "transported_delta_Z_ohm": 0.6581762398106861,
+      "max_relative_residual": 1.3751825819240576e-11,
+      "reciprocity_absolute_ohm": 2.0722268345707562e-10
+    },
+    {
+      "phase": "phase_01",
+      "montage": "tepc_6",
+      "observed_Z_ohm": 17.94311491458634,
+      "transported_Z_ohm": 17.88557493797355,
+      "difference_Z_ohm": -0.057539976612787314,
+      "difference_Z_percent": -0.32067997606152454,
+      "observed_delta_Z_ohm": 0.2345353658792071,
+      "transported_delta_Z_ohm": 0.17699538926641978,
+      "max_relative_residual": 7.367227533278523e-12,
+      "reciprocity_absolute_ohm": 7.30508986634959e-11
+    },
+    {
+      "phase": "phase_01",
+      "montage": "tepc_7",
+      "observed_Z_ohm": 1.9041857703050233,
+      "transported_Z_ohm": 1.8950519959604017,
+      "difference_Z_ohm": -0.009133774344621592,
+      "difference_Z_percent": -0.47966823862770974,
+      "observed_delta_Z_ohm": 0.016895410789334875,
+      "transported_delta_Z_ohm": 0.007761636444713282,
+      "max_relative_residual": 7.999213038511694e-12,
+      "reciprocity_absolute_ohm": 2.6340263303836764e-11
+    },
+    {
+      "phase": "phase_03",
+      "montage": "tepc_2",
+      "observed_Z_ohm": 168.11186889004608,
+      "transported_Z_ohm": 168.0000639092993,
+      "difference_Z_ohm": -0.11180498074676848,
+      "difference_Z_percent": -0.06650629814834476,
+      "observed_delta_Z_ohm": 1.1460363393892692,
+      "transported_delta_Z_ohm": 1.0342313586425007,
+      "max_relative_residual": 1.9374932408637627e-11,
+      "reciprocity_absolute_ohm": 9.833058811636874e-10
+    },
+    {
+      "phase": "phase_03",
+      "montage": "tepc_3",
+      "observed_Z_ohm": 44.70268612081564,
+      "transported_Z_ohm": 44.699865602646696,
+      "difference_Z_ohm": -0.002820518168945796,
+      "difference_Z_percent": -0.006309504894902573,
+      "observed_delta_Z_ohm": 0.10457084659745419,
+      "transported_delta_Z_ohm": 0.1017503284285084,
+      "max_relative_residual": 5.0276382869092496e-11,
+      "reciprocity_absolute_ohm": 3.780655788432341e-10
+    },
+    {
+      "phase": "phase_03",
+      "montage": "tepc_4",
+      "observed_Z_ohm": 98.67971494221405,
+      "transported_Z_ohm": 98.27862813265925,
+      "difference_Z_ohm": -0.4010868095547977,
+      "difference_Z_percent": -0.4064531497579523,
+      "observed_delta_Z_ohm": 1.5080713262510557,
+      "transported_delta_Z_ohm": 1.106984516696258,
+      "max_relative_residual": 2.8300964369381082e-11,
+      "reciprocity_absolute_ohm": 2.262368070660159e-10
+    },
+    {
+      "phase": "phase_03",
+      "montage": "tepc_5",
+      "observed_Z_ohm": 107.1930317912665,
+      "transported_Z_ohm": 106.39504905969318,
+      "difference_Z_ohm": -0.7979827315733274,
+      "difference_Z_percent": -0.7444352662094801,
+      "observed_delta_Z_ohm": 2.2862923622780045,
+      "transported_delta_Z_ohm": 1.488309630704677,
+      "max_relative_residual": 1.5738746470919027e-11,
+      "reciprocity_absolute_ohm": 6.346567715809215e-11
+    },
+    {
+      "phase": "phase_03",
+      "montage": "tepc_6",
+      "observed_Z_ohm": 18.170979160725963,
+      "transported_Z_ohm": 18.082456097746054,
+      "difference_Z_ohm": -0.08852306297990964,
+      "difference_Z_percent": -0.48716726928640086,
+      "observed_delta_Z_ohm": 0.4623996120188316,
+      "transported_delta_Z_ohm": 0.373876549038922,
+      "max_relative_residual": 9.323797481520536e-12,
+      "reciprocity_absolute_ohm": 2.4306601176249387e-10
+    },
+    {
+      "phase": "phase_03",
+      "montage": "tepc_7",
+      "observed_Z_ohm": 1.9096344807342085,
+      "transported_Z_ohm": 1.9018901290174508,
+      "difference_Z_ohm": -0.007744351716757691,
+      "difference_Z_percent": -0.40554104960338666,
+      "observed_delta_Z_ohm": 0.02234412121852003,
+      "transported_delta_Z_ohm": 0.014599769501762339,
+      "max_relative_residual": 5.066561496388009e-12,
+      "reciprocity_absolute_ohm": 3.9892533720831125e-12
+    },
+    {
+      "phase": "phase_07",
+      "montage": "tepc_2",
+      "observed_Z_ohm": 166.63178358110667,
+      "transported_Z_ohm": 166.7593908668299,
+      "difference_Z_ohm": 0.12760728572322932,
+      "difference_Z_percent": 0.0765803995977259,
+      "observed_delta_Z_ohm": -0.33404896955013896,
+      "transported_delta_Z_ohm": -0.20644168382690964,
+      "max_relative_residual": 2.07070634633831e-11,
+      "reciprocity_absolute_ohm": 4.2010128709080163e-10
+    },
+    {
+      "phase": "phase_07",
+      "montage": "tepc_3",
+      "observed_Z_ohm": 44.394847001955526,
+      "transported_Z_ohm": 44.48696575004995,
+      "difference_Z_ohm": 0.09211874809442122,
+      "difference_Z_percent": 0.20749873986583067,
+      "observed_delta_Z_ohm": -0.20326827226266175,
+      "transported_delta_Z_ohm": -0.11114952416824053,
+      "max_relative_residual": 5.061415232026385e-11,
+      "reciprocity_absolute_ohm": 4.85343321088294e-10
+    },
+    {
+      "phase": "phase_07",
+      "montage": "tepc_4",
+      "observed_Z_ohm": 97.02813217388973,
+      "transported_Z_ohm": 97.10638432305886,
+      "difference_Z_ohm": 0.07825214916913126,
+      "difference_Z_percent": 0.08064892873428817,
+      "observed_delta_Z_ohm": -0.14351144207326172,
+      "transported_delta_Z_ohm": -0.06525929290413046,
+      "max_relative_residual": 2.4482735665957396e-11,
+      "reciprocity_absolute_ohm": 3.744133891814272e-10
+    },
+    {
+      "phase": "phase_07",
+      "montage": "tepc_5",
+      "observed_Z_ohm": 104.74420456612549,
+      "transported_Z_ohm": 104.94880419635031,
+      "difference_Z_ohm": 0.20459963022481986,
+      "difference_Z_percent": 0.1953326497368694,
+      "observed_delta_Z_ohm": -0.1625348628630121,
+      "transported_delta_Z_ohm": 0.04206476736180775,
+      "max_relative_residual": 8.468718333596701e-12,
+      "reciprocity_absolute_ohm": 1.9034018805541564e-10
+    },
+    {
+      "phase": "phase_07",
+      "montage": "tepc_6",
+      "observed_Z_ohm": 17.440839452418782,
+      "transported_Z_ohm": 17.620766880281025,
+      "difference_Z_ohm": 0.1799274278622427,
+      "difference_Z_percent": 1.031644310201419,
+      "observed_delta_Z_ohm": -0.2677400962883496,
+      "transported_delta_Z_ohm": -0.08781266842610691,
+      "max_relative_residual": 7.930207512265419e-12,
+      "reciprocity_absolute_ohm": 1.2441603303159354e-11
+    },
+    {
+      "phase": "phase_07",
+      "montage": "tepc_7",
+      "observed_Z_ohm": 1.8345794365172328,
+      "transported_Z_ohm": 1.8659107900694236,
+      "difference_Z_ohm": 0.031331353552190855,
+      "difference_Z_percent": 1.707822126888674,
+      "observed_delta_Z_ohm": -0.0527109229984557,
+      "transported_delta_Z_ohm": -0.021379569446264846,
+      "max_relative_residual": 5.194931230789761e-12,
+      "reciprocity_absolute_ohm": 8.393685746455049e-11
+    },
+    {
+      "phase": "phase_10",
+      "montage": "tepc_2",
+      "observed_Z_ohm": 166.82945306403735,
+      "transported_Z_ohm": 166.97613481930182,
+      "difference_Z_ohm": 0.14668175526446703,
+      "difference_Z_percent": 0.08792317697532902,
+      "observed_delta_Z_ohm": -0.13637948661946098,
+      "transported_delta_Z_ohm": 0.010302268645006052,
+      "max_relative_residual": 1.684101476450933e-11,
+      "reciprocity_absolute_ohm": 8.292033726320369e-10
+    },
+    {
+      "phase": "phase_10",
+      "montage": "tepc_3",
+      "observed_Z_ohm": 44.499488227000356,
+      "transported_Z_ohm": 44.59257879314642,
+      "difference_Z_ohm": 0.09309056614606703,
+      "difference_Z_percent": 0.20919468932135657,
+      "observed_delta_Z_ohm": -0.09862704721783189,
+      "transported_delta_Z_ohm": -0.005536481071764854,
+      "max_relative_residual": 4.186228439698128e-11,
+      "reciprocity_absolute_ohm": 9.635598985369143e-10
+    },
+    {
+      "phase": "phase_10",
+      "montage": "tepc_4",
+      "observed_Z_ohm": 97.05278896563343,
+      "transported_Z_ohm": 97.16894972993919,
+      "difference_Z_ohm": 0.11616076430576072,
+      "difference_Z_percent": 0.11968822899761641,
+      "observed_delta_Z_ohm": -0.11885465032956688,
+      "transported_delta_Z_ohm": -0.002693886023806158,
+      "max_relative_residual": 2.1153206165115214e-11,
+      "reciprocity_absolute_ohm": 7.275815505636274e-10
+    },
+    {
+      "phase": "phase_10",
+      "montage": "tepc_5",
+      "observed_Z_ohm": 104.6580173895668,
+      "transported_Z_ohm": 104.9271653425582,
+      "difference_Z_ohm": 0.26914795299140337,
+      "difference_Z_percent": 0.2571689773078334,
+      "observed_delta_Z_ohm": -0.24872203942170756,
+      "transported_delta_Z_ohm": 0.02042591356969581,
+      "max_relative_residual": 8.920697602119151e-12,
+      "reciprocity_absolute_ohm": 1.5708678802184295e-10
+    },
+    {
+      "phase": "phase_10",
+      "montage": "tepc_6",
+      "observed_Z_ohm": 17.54257176528178,
+      "transported_Z_ohm": 17.697635206682207,
+      "difference_Z_ohm": 0.15506344140042572,
+      "difference_Z_percent": 0.8839265044781476,
+      "observed_delta_Z_ohm": -0.16600778342534994,
+      "transported_delta_Z_ohm": -0.010944342024924225,
+      "max_relative_residual": 1.0549547404432692e-11,
+      "reciprocity_absolute_ohm": 9.995204663937329e-11
+    },
+    {
+      "phase": "phase_10",
+      "montage": "tepc_7",
+      "observed_Z_ohm": 1.863487196506525,
+      "transported_Z_ohm": 1.8869164549324617,
+      "difference_Z_ohm": 0.023429258425936794,
+      "difference_Z_percent": 1.257280354265893,
+      "observed_delta_Z_ohm": -0.02380316300916352,
+      "transported_delta_Z_ohm": -0.00037390458322672515,
+      "max_relative_residual": 4.947932076782842e-12,
+      "reciprocity_absolute_ohm": 1.17048593040181e-11
+    }
+  ]
+}

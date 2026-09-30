@@ -1,0 +1,22 @@
+{
+  "schema": "mp02_nix_paired_fem_verification_v1",
+  "subject_alias": "nix",
+  "fixed_fields_equal": {
+    "source_prepared_sha256": true,
+    "background_mat_sha256": true,
+    "contacts": true,
+    "conductivity_by_tissue_id": true,
+    "frequency_hz": true,
+    "criteria": true,
+    "node_count": true,
+    "element_count": true,
+    "ground_zero_based": true,
+    "contact_parameters": true
+  },
+  "baseline_quadrature_exact": true,
+  "new_plan_sha256": "048c537b96e9378f1f7ffa6faaf679291015b6a5ab20498b531fa8aac855590e",
+  "completed_solutions": 24,
+  "max_heterogeneous_matrix_relative_error": 2.140952943881021e-16,
+  "max_solver_relative_residual": 5.061415232026385e-11,
+  "max_reciprocity_absolute_ohm": 1.3415899502433604e-09
+}
