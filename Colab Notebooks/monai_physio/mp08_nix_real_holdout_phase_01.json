@@ -1,0 +1,109 @@
+{
+  "schema": "mp08_nix_real_holdout_v1",
+  "status": "real_ct_retrospective_resolution_holdout_completed",
+  "subject_pseudonym": "nix",
+  "reference_phase": "phase_00",
+  "target_phase": "phase_01",
+  "input_sha256": {
+    "reference_ct": "ae317aba2a3d1c97163d81bca1465b8bbc82eba7f240e99c93a8dfced6c12a1c",
+    "target_ct": "74ad524913a6e8927c2b80a32f57ba125e59a97071b998daef4e80d6d454e1df",
+    "reference_mask": "f07990cd5ff46ea5858b47d72be8d138e5d32851f1fcc4f0349ce9414bb0bdcc"
+  },
+  "input_kind": "real cardiac 4D CT; target deliberately blurred and decimated 2x for fitting",
+  "target_native_used_for_fitting": false,
+  "independent_high_resolution_acquisition": false,
+  "crop_from": "phase_00 automatic whole_heart mask plus 25 mm; no target mask",
+  "crop_start_ijk": [
+    143,
+    165,
+    6
+  ],
+  "crop_stop_exclusive_ijk": [
+    359,
+    410,
+    256
+  ],
+  "native_shape_ijk": [
+    216,
+    245,
+    250
+  ],
+  "native_spacing_mm": [
+    0.765625,
+    0.765625,
+    0.625
+  ],
+  "lowres_shape_ijk": [
+    108,
+    123,
+    125
+  ],
+  "lowres_spacing_mm": [
+    1.53125,
+    1.53125,
+    1.25
+  ],
+  "nifti_header_spatial_units": "unknown",
+  "millimetres_basis": "external DICOM conversion manifest",
+  "software": {
+    "monai_physio": "2026.9.1",
+    "itk": "5.4.7"
+  },
+  "workflow": {
+    "api": "WorkflowReconstructHighres4DCT.process",
+    "registrar": "RegisterImagesGreedy CC deformable",
+    "iterations": [
+      12,
+      6,
+      3
+    ],
+    "smoothing": "3.0vox 1.0vox",
+    "composite_mode": "reference",
+    "upsample_to_fixed_resolution": true,
+    "output_size_xyz": [
+      216,
+      246,
+      204
+    ],
+    "output_spacing_xyz_mm": [
+      0.765625,
+      0.765625,
+      0.765625
+    ],
+    "registration_loss": 0.36156210459497595
+  },
+  "metric_region": "phase_00 whole_heart voxels within fixed 25 mm crop",
+  "metrics_hu": {
+    "stationary_reference": {
+      "voxels": 1703924,
+      "mae_hu": 26.578141395977756,
+      "rmse_hu": 40.678668236268315,
+      "bias_hu": 0.7393281625236806,
+      "p95_absolute_error_hu": 76.0
+    },
+    "linear_lowres": {
+      "voxels": 1703924,
+      "mae_hu": 13.068331885674946,
+      "rmse_hu": 31.580175680585185,
+      "bias_hu": -2.318417926569326,
+      "p95_absolute_error_hu": 32.3387710571289
+    },
+    "monai_mp08": {
+      "voxels": 1703924,
+      "mae_hu": 25.260927128620413,
+      "rmse_hu": 45.02043560247139,
+      "bias_hu": -4.343908783236904,
+      "p95_absolute_error_hu": 68.43237511515613
+    }
+  },
+  "mae_ratio_monai_over_linear": 1.9329878786067998,
+  "better_than_linear_on_heart_roi": false,
+  "local_artifacts": [
+    "mp08_phase_01_review.png",
+    "mp08_phase_01_reconstructed.nii.gz"
+  ],
+  "interpretation": "Retrospective resolution holdout on real CT; no independent highres scan, anatomical ground truth, or clinical validation",
+  "parameter_selection_history": "Greedy schedule/smoothing reused from earlier MP-03 Nix work; phase 07 was previously inspected there. No tuning during this MP-08 run, but not a completely blind protocol.",
+  "finalized_implementation_sha256": "065574ebccf288044b0305eda3182f75dd590ea9ce064a9897bd88ce79ec4738",
+  "implementation_note": "Finalized script hash recorded after runs; subsequent edits added report metadata only, not reconstruction or metric logic."
+}

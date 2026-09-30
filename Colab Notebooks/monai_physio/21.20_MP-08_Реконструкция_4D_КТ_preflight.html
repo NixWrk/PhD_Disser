@@ -7801,8 +7801,8 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="21.20-/-MP-08.-%D0%A0%D0%B5%D0%BA%D0%BE%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%86%D0%B8%D1%8F-4D-%D0%9A%D0%A2:-%D0%BF%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BA%D0%B0-%D0%B2%D1%85%D0%BE%D0%B4%D0%BE%D0%B2">21.20 / MP-08. Реконструкция 4D-КТ: проверка входов<a class="anchor-link" href="#21.20-/-MP-08.-%D0%A0%D0%B5%D0%BA%D0%BE%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%86%D0%B8%D1%8F-4D-%D0%9A%D0%A2:-%D0%BF%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BA%D0%B0-%D0%B2%D1%85%D0%BE%D0%B4%D0%BE%D0%B2">¶</a></h1><p><strong>Статус: технический preflight реальных файлов и ограниченный синтетический API smoke; пациентская реконструкция не выполнялась.</strong> Проверяемый вопрос: существует ли реальная многофазная КТ с согласованной геометрией и независимая опорная КТ большего разрешения, а также прошла ли регистрация MP-03 QC. Положительный результат будущего опыта означал бы уменьшение заранее выбранных ошибок фазовых геометрических измерений относительно исходных фаз при независимом контроле. Отрицательный результат — отсутствие выигрыша, артефакты или неприемлемое искажение. Пороги нужно определить до расчёта.</p>
-<p>Первичный метод: <a href="https://project-monai.github.io/monai-physio/tutorials.html#tutorial-3-reconstruct-high-resolution-4d-ct">MONAI Physio Tutorial 3</a> и <a href="https://project-monai.github.io/monai-physio/api/workflows.html#high-resolution-4d-ct-reconstruction">WorkflowReconstructHighres4DCT</a>. Workflow регистрирует фазы к опорному изображению и реконструирует их на его сетке. Название high-resolution само по себе не подтверждает добавление измеренной пространственной информации.</p>
+<h1 id="21.20-/-MP-08.-%D0%A0%D0%B5%D0%BA%D0%BE%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%86%D0%B8%D1%8F-4D-%D0%9A%D0%A2:-%D0%BF%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BA%D0%B0-%D0%BD%D0%B0-%D0%9D%D0%B8%D0%BA%D0%B5">21.20 / MP-08. Реконструкция 4D-КТ: проверка на Нике<a class="anchor-link" href="#21.20-/-MP-08.-%D0%A0%D0%B5%D0%BA%D0%BE%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%86%D0%B8%D1%8F-4D-%D0%9A%D0%A2:-%D0%BF%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BA%D0%B0-%D0%BD%D0%B0-%D0%9D%D0%B8%D0%BA%D0%B5">¶</a></h1><p><strong>Статус 01.10.2026: реальная ретроспективная проверка выполнена; по MAE в области сердца на двух удержанных фазах выигрыша относительно простой интерполяции нет.</strong> Оригиналы фаз 01 и 07 использованы только как контроль после реконструкции из уменьшенных копий. Отдельной независимой highres-съёмки и независимой анатомической разметки нет. Синтетический API smoke и preflight ниже сохранены как история.</p>
+<p>Первичный метод: <a href="https://project-monai.github.io/monai-physio/tutorials.html#tutorial-3-reconstruct-high-resolution-4d-ct">MONAI Physio Tutorial 3</a> и <a href="https://project-monai.github.io/monai-physio/api/workflows.html#high-resolution-4d-ct-reconstruction">WorkflowReconstructHighres4DCT</a>. Название high-resolution само по себе не подтверждает добавление измеренной пространственной информации.</p>
 </div>
 </div>
 </div>
@@ -7812,7 +7812,43 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="%D0%9E%D1%81%D0%BD%D0%BE%D0%B2%D0%BD%D0%BE%D0%B9-MP-08-preflight-%D0%BD%D0%B0-%D0%9D%D0%B8%D0%BA%D0%B5">Основной MP-08 preflight на Нике<a class="anchor-link" href="#%D0%9E%D1%81%D0%BD%D0%BE%D0%B2%D0%BD%D0%BE%D0%B9-MP-08-preflight-%D0%BD%D0%B0-%D0%9D%D0%B8%D0%BA%D0%B5">¶</a></h2><p><a href="mp08_09_nix_preflight_results.json">Read-only повтор</a> выполнен на 12 реальных фазах Ника. Все заголовки имеют общую сетку <code>512×512×256</code>, шаг по affine <code>0,765625×0,765625×0,625</code> мм, согласованные sform/qform и манифест конверсии. Единицы заголовка NIfTI — <code>unknown</code>; миллиметры следуют из DICOM-конверсии. Отдельная опора более высокого разрешения не предъявлена. <a href="mp03_nix_fullres_report.md">Регистрация 00→01/07</a> технически рассчитана, но не принята по независимой анатомии и FOV. Поэтому реконструкция пациентской 4D-КТ не выполнялась. Старый preflight Георга ниже оставлен как исторический материал.</p>
+<h2 id="%D0%98%D1%81%D1%85%D0%BE%D0%B4%D0%BD%D1%8B%D0%B9-preflight-%D0%9D%D0%B8%D0%BA%D0%B0-(28.09.2026)">Исходный preflight Ника (28.09.2026)<a class="anchor-link" href="#%D0%98%D1%81%D1%85%D0%BE%D0%B4%D0%BD%D1%8B%D0%B9-preflight-%D0%9D%D0%B8%D0%BA%D0%B0-(28.09.2026)">¶</a></h2><p><a href="mp08_09_nix_preflight_results.json">Read-only проверка заголовков</a> установила общую сетку <code>512×512×256</code>, шаг по affine <code>0,765625×0,765625×0,625</code> мм и согласованные sform/qform. В NIfTI единицы <code>unknown</code>; миллиметры следуют из DICOM-манифеста. Отдельной независимой highres-опоры нет. На момент preflight пациентская реконструкция ещё не выполнялась; последующий реальный опыт приведён ниже. Старый preflight Георга сохранён как исторический материал.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=mp08-nix-real-holdout">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="%D0%A0%D0%B5%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9-%D0%BE%D0%BF%D1%8B%D1%82:-%D1%83%D0%B4%D0%B5%D1%80%D0%B6%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5-%D0%B8%D1%81%D1%85%D0%BE%D0%B4%D0%BD%D0%BE%D0%B5-%D1%80%D0%B0%D0%B7%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5-%D1%84%D0%B0%D0%B7-01-%D0%B8-07-(01.10.2026)">Реальный опыт: удержанное исходное разрешение фаз 01 и 07 (01.10.2026)<a class="anchor-link" href="#%D0%A0%D0%B5%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9-%D0%BE%D0%BF%D1%8B%D1%82:-%D1%83%D0%B4%D0%B5%D1%80%D0%B6%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5-%D0%B8%D1%81%D1%85%D0%BE%D0%B4%D0%BD%D0%BE%D0%B5-%D1%80%D0%B0%D0%B7%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5-%D1%84%D0%B0%D0%B7-01-%D0%B8-07-(01.10.2026)">¶</a></h2><p><strong>Измеренный вычислительный результат.</strong> Фаза 00 — реальная опора на исходной сетке. Фазы 01 и 07 по отдельности сглажены (σ=0,8 вокселя) и уменьшены в 2 раза по каждой оси. В MONAI Physio MP-08 передана только уменьшенная целевая фаза; её оригинал прочитан после расчёта для оценки. Crop и область оценки определены только автоматической маской <code>whole_heart</code> фазы 00. Алгоритм: Greedy CC, <code>[12,6,3]</code>, сглаживание <code>3.0vox 1.0vox</code>, <code>composite_mode=reference</code>. Сравнение на одинаковой исходной сетке и в 1 703 924 вокселях маски фазы 00.</p>
+<table>
+<thead>
+<tr>
+<th>Фаза</th>
+<th style="text-align:right">MAE обычной линейной интерполяции, HU</th>
+<th style="text-align:right">MAE MP-08, HU</th>
+<th>Вывод по MAE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01</td>
+<td style="text-align:right">13,07</td>
+<td style="text-align:right">25,26</td>
+<td>MP-08 хуже в 1,93 раза</td>
+</tr>
+<tr>
+<td>07</td>
+<td style="text-align:right">12,14</td>
+<td style="text-align:right">21,74</td>
+<td>MP-08 хуже в 1,79 раза</td>
+</tr>
+</tbody>
+</table>
+<p>Для фазы 07 RMSE интерполяции 29,65 HU, MP-08 29,32 HU; это отдельная метрика с иным выводом. Изображение MP-08 выглядит резче, но детали не совпадают с удержанной КТ настолько хорошо, чтобы улучшить MAE. <a href="mp08_nix_real_holdout_report.md">Полный отчёт</a>, <a href="mp08_nix_real_holdout.py">код</a>, <a href="mp08_nix_real_holdout_phase_01.json">пофазные агрегаты 01</a> и <a href="mp08_nix_real_holdout_phase_07.json">07</a>. Локальные изображения и реконструированные объёмы находятся в исключённом из Git <code>runs/mp08_nix_real_holdout/</code>.</p>
+<p><strong>Ограничение:</strong> это реальная КТ с искусственным понижением разрешения для слепой проверки оригинала целевой фазы, а не независимое второе высокоразрешающее сканирование. Анатомическая правильность и польза для УО/ФВ не установлены. Отрицательный вывод относится к выбранным фазам, режиму <code>reference</code> и MAE в данной области; другие режимы здесь не оценены. Настройки Greedy взяты из предыдущего MP-03, где фазу 07 уже просматривали: исходные пиксели цели не входили в этот расчёт, но выбор параметров не был полностью слепым.</p>
 </div>
 </div>
 </div>
@@ -7846,8 +7882,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="%D0%A1%D0%BB%D0%B5%D0%B4%D1%83%D1%8E%D1%89%D0%B8%D0%B9-%D0%B2%D1%8B%D1%87%D0%B8%D1%81%D0%BB%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9-%D0%BE%D0%BF%D1%8B%D1%82-%D0%BF%D0%BE%D1%81%D0%BB%D0%B5-QC">Следующий вычислительный опыт после QC<a class="anchor-link" href="#%D0%A1%D0%BB%D0%B5%D0%B4%D1%83%D1%8E%D1%89%D0%B8%D0%B9-%D0%B2%D1%8B%D1%87%D0%B8%D1%81%D0%BB%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9-%D0%BE%D0%BF%D1%8B%D1%82-%D0%BF%D0%BE%D1%81%D0%BB%D0%B5-QC">¶</a></h2><p>Зафиксировать опорную фазу и её выбор, дыхательное состояние, реальную временную ось, версию MONAI Physio и регистратора, исходные контрольные суммы во внешнем локальном журнале. На малой заранее выбранной паре фаз сравнить исходное изображение, простое пересэмплирование без деформации и регистрационную реконструкцию на одной и той же сетке. Отдельно оценить складки и направление поля, обратную согласованность, сохранность HU и границ, объёмы и расстояния поверхностей; затем выполнить слепой визуальный QC. Измерение на уже использованных при регистрации изображениях не является независимой валидацией. До выяснения ошибок сегментации, регистрации и временного сопоставления не переносить результат в УО/ФВ или FEM/ТТРКГ.</p>
-<p><strong>Источники погрешности:</strong> неодинаковая фаза дыхания/контраст, движение и артефакты исходной КТ, интерполяция, регистрация, выбор референса, сегментация и нарушение соответствия двух сердечных интервалов. Их распределение и независимость не заданы. Кодовый самоконтроль заголовков не оценивает эти компоненты.</p>
+<h2 id="%D0%94%D0%B0%D0%BB%D1%8C%D0%BD%D0%B5%D0%B9%D1%88%D0%B0%D1%8F-%D0%BF%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BA%D0%B0">Дальнейшая проверка<a class="anchor-link" href="#%D0%94%D0%B0%D0%BB%D1%8C%D0%BD%D0%B5%D0%B9%D1%88%D0%B0%D1%8F-%D0%BF%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BA%D0%B0">¶</a></h2><p>Для оценки именно переноса высокочастотной информации нужен отдельный highres-том Ника того же состояния или иной независимый референс. Затем заранее задать метрики для границ, HU и анатомических структур и повторить сравнение с интерполяцией. Текущий отрицательный результат по MAE не является оценкой качества УО/ФВ.</p>
 </div>
 </div>
 </div>
