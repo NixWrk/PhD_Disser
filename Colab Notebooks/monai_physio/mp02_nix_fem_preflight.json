@@ -1,5 +1,5 @@
 {
-  "schema": "mp02_nix_fem_preflight_v1",
+  "schema": "mp02_nix_fem_preflight_v2",
   "subject_alias": "nix",
   "source_phase": "phase_00",
   "target_phases": [
@@ -58,13 +58,17 @@
       "mask_hash_matches_fem_state": true
     }
   },
+  "upper_fov_contact": {
+    "observed": true,
+    "interpretation": "The 4D CT covers less anatomy than the static CT (author clarification, 30.09.2026)",
+    "independent_blocker_for_comparison": false
+  },
   "independent_same_phase_manual_heart_reference_available": false,
   "anatomically_accepted_geometry": false,
   "transfer_to_new_fem_comparison": "blocked",
   "new_fem_z_or_delta_z_computed": false,
   "reasons": [
     "No accepted independent manual anatomy for the dynamic target phases",
-    "Automatic heart region touches the upper CT field-of-view boundary",
     "CT-to-FEM coordinate map has no independent registration error bound",
     "Existing FEM states use separate observed automatic masks, not the new transported surface"
   ]

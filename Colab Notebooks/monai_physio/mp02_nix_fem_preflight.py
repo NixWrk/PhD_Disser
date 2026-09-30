@@ -66,7 +66,7 @@ def audit(fem_root):
         for phase, qc in candidates.items()
     }
     out = {
-        "schema": "mp02_nix_fem_preflight_v1",
+        "schema": "mp02_nix_fem_preflight_v2",
         "subject_alias": "nix",
         "source_phase": "phase_00",
         "target_phases": ["phase_01", "phase_07"],
@@ -95,13 +95,17 @@ def audit(fem_root):
             "independent_registration_error_bound_mm": None,
         },
         "candidate_fields": fields,
+        "upper_fov_contact": {
+            "observed": True,
+            "interpretation": "The 4D CT covers less anatomy than the static CT (author clarification, 30.09.2026)",
+            "independent_blocker_for_comparison": False,
+        },
         "independent_same_phase_manual_heart_reference_available": False,
         "anatomically_accepted_geometry": False,
         "transfer_to_new_fem_comparison": "blocked",
         "new_fem_z_or_delta_z_computed": False,
         "reasons": [
             "No accepted independent manual anatomy for the dynamic target phases",
-            "Automatic heart region touches the upper CT field-of-view boundary",
             "CT-to-FEM coordinate map has no independent registration error bound",
             "Existing FEM states use separate observed automatic masks, not the new transported surface",
         ],
