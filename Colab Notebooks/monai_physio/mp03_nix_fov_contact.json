@@ -1,0 +1,913 @@
+{
+  "schema": "mp03_nix_fov_contact_v1",
+  "subject_alias": "nix",
+  "basis": "original 12 CT phases and pre-existing automatic whole-heart masks on same native grid",
+  "field_of_view_shape_ijk": [
+    512,
+    512,
+    256
+  ],
+  "axis_codes": [
+    "P",
+    "L",
+    "S"
+  ],
+  "voxel_spacing_mm": [
+    0.765625,
+    0.765625,
+    0.625
+  ],
+  "superior_boundary_index_k": 255,
+  "phase_count": 12,
+  "all_phases_contact_superior_face": true,
+  "blood_pool_or_myocardium_contacts_superior_face": false,
+  "other_faces_contact_in_any_phase": false,
+  "contact_counts_min_max": [
+    863,
+    1323
+  ],
+  "max_contact_phase": "phase_01",
+  "shared_display_crop_ij_exclusive": [
+    [
+      210,
+      242
+    ],
+    [
+      347,
+      355
+    ]
+  ],
+  "figures_in_ignored_runs": [
+    "runs/mp03_nix_fov_contact/contact_all_12_phases.png",
+    "runs/mp03_nix_fov_contact/contact_overview.png"
+  ],
+  "outside_anatomy_observed": false,
+  "independent_anatomical_reference": false,
+  "interpretation": "Whole-heart auto-mask reaches superior acquired CT face in every phase; separate blood-pool and myocardium masks do not; anatomy outside FOV cannot be directly measured",
+  "phases": [
+    {
+      "phase": "phase_00",
+      "nominal_phase_tag": "14",
+      "ct_sha256": "ae317aba2a3d1c97163d81bca1465b8bbc82eba7f240e99c93a8dfced6c12a1c",
+      "mask_sha256": "f07990cd5ff46ea5858b47d72be8d138e5d32851f1fcc4f0349ce9414bb0bdcc",
+      "mask_voxels": 1703924,
+      "boundary_contact_voxels": {
+        "i_first": 0,
+        "i_last": 0,
+        "j_first": 0,
+        "j_last": 0,
+        "k_first_inferior": 0,
+        "k_last_superior": 863
+      },
+      "superior_contact_area_mm2": 505.875,
+      "superior_contact_bbox_ij_inclusive": [
+        [
+          247,
+          283
+        ],
+        [
+          311,
+          317
+        ]
+      ],
+      "superior_contact_bbox_ras_mm": [
+        [
+          -37.65,
+          -33.58,
+          -78.07
+        ],
+        [
+          -11.62,
+          15.42,
+          -78.07
+        ]
+      ],
+      "superior_contact_components": 4,
+      "largest_superior_component_voxels": 767,
+      "last_16_slice_mask_area_voxels": [
+        2971,
+        2971,
+        2699,
+        2699,
+        2699,
+        2463,
+        2463,
+        2259,
+        2259,
+        2093,
+        2093,
+        2093,
+        1737,
+        1737,
+        863,
+        863
+      ],
+      "separate_masks": {
+        "blood_pool": {
+          "sha256": "41d991de57f938f4c6ee55fe366e9e69163d0864d537b9eb26d795a44646a963",
+          "superior_face_voxels": 0,
+          "highest_occupied_k": 228,
+          "distance_from_highest_voxel_to_last_slice_mm": 16.875
+        },
+        "myocardium": {
+          "sha256": "468b97db3256c609b2fba2b89796d4f024318f490347e819556044a94fa80f23",
+          "superior_face_voxels": 0,
+          "highest_occupied_k": 188,
+          "distance_from_highest_voxel_to_last_slice_mm": 41.875
+        }
+      }
+    },
+    {
+      "phase": "phase_01",
+      "nominal_phase_tag": "23",
+      "ct_sha256": "74ad524913a6e8927c2b80a32f57ba125e59a97071b998daef4e80d6d454e1df",
+      "mask_sha256": "86c5bd9518eb9bf379a95cb84accc450f3b6bd407faa805b3ea6c97c7c2df8ca",
+      "mask_voxels": 1629480,
+      "boundary_contact_voxels": {
+        "i_first": 0,
+        "i_last": 0,
+        "j_first": 0,
+        "j_last": 0,
+        "k_first_inferior": 0,
+        "k_last_superior": 1323
+      },
+      "superior_contact_area_mm2": 775.518,
+      "superior_contact_bbox_ij_inclusive": [
+        [
+          247,
+          283
+        ],
+        [
+          311,
+          319
+        ]
+      ],
+      "superior_contact_bbox_ras_mm": [
+        [
+          -39.19,
+          -33.58,
+          -78.07
+        ],
+        [
+          -11.62,
+          15.42,
+          -78.07
+        ]
+      ],
+      "superior_contact_components": 1,
+      "largest_superior_component_voxels": 1323,
+      "last_16_slice_mask_area_voxels": [
+        3197,
+        3197,
+        2893,
+        2893,
+        2893,
+        2601,
+        2601,
+        2391,
+        2391,
+        2163,
+        2163,
+        2163,
+        1951,
+        1951,
+        1323,
+        1323
+      ],
+      "separate_masks": {
+        "blood_pool": {
+          "sha256": "27137e5aca9711444b72f96877b1b82e9ec1a96b03fb62f8eafb0bf66533110b",
+          "superior_face_voxels": 0,
+          "highest_occupied_k": 221,
+          "distance_from_highest_voxel_to_last_slice_mm": 21.25
+        },
+        "myocardium": {
+          "sha256": "8c90015897510f011536443822ec18d8167b7e146788f7c96eed4527fae525f7",
+          "superior_face_voxels": 0,
+          "highest_occupied_k": 183,
+          "distance_from_highest_voxel_to_last_slice_mm": 45.0
+        }
+      }
+    },
+    {
+      "phase": "phase_02",
+      "nominal_phase_tag": "33",
+      "ct_sha256": "bca8fa1d330e02350179f3175132fe4844e9d3beb676ae1c9ac4f9d96342f4d4",
+      "mask_sha256": "04901c7b437bd67628c97c3eca0e375870bcb7f0a0568610b4edda2801b09916",
+      "mask_voxels": 1555427,
+      "boundary_contact_voxels": {
+        "i_first": 0,
+        "i_last": 0,
+        "j_first": 0,
+        "j_last": 0,
+        "k_first_inferior": 0,
+        "k_last_superior": 1017
+      },
+      "superior_contact_area_mm2": 596.147,
+      "superior_contact_bbox_ij_inclusive": [
+        [
+          249,
+          287
+        ],
+        [
+          311,
+          319
+        ]
+      ],
+      "superior_contact_bbox_ras_mm": [
+        [
+          -39.19,
+          -33.58,
+          -78.07
+        ],
+        [
+          -14.69,
+          13.89,
+          -78.07
+        ]
+      ],
+      "superior_contact_components": 2,
+      "largest_superior_component_voxels": 585,
+      "last_16_slice_mask_area_voxels": [
+        2931,
+        2931,
+        2581,
+        2581,
+        2581,
+        2259,
+        2259,
+        2057,
+        2057,
+        1911,
+        1911,
+        1911,
+        1695,
+        1695,
+        1017,
+        1017
+      ],
+      "separate_masks": {
+        "blood_pool": {
+          "sha256": "a856c2782e140ff8a04d746108c853dd2e24f9a8946503960664990ed32aa439",
+          "superior_face_voxels": 0,
+          "highest_occupied_k": 212,
+          "distance_from_highest_voxel_to_last_slice_mm": 26.875
+        },
+        "myocardium": {
+          "sha256": "8dd50db461963c9ab46c56bc671df9287db3b92be8e4777b0d356670e167d540",
+          "superior_face_voxels": 0,
+          "highest_occupied_k": 179,
+          "distance_from_highest_voxel_to_last_slice_mm": 47.5
+        }
+      }
+    },
+    {
+      "phase": "phase_03",
+      "nominal_phase_tag": "43",
+      "ct_sha256": "ef8653b31a6527f20d7dc70b4bc9457485a64338e2531928ec0cf7909a6bfcb8",
+      "mask_sha256": "b2110bc5406d5dde8fcf3649b002aa4e1ad83634f7d5c1451465ee40578be299",
+      "mask_voxels": 1564337,
+      "boundary_contact_voxels": {
+        "i_first": 0,
+        "i_last": 0,
+        "j_first": 0,
+        "j_last": 0,
+        "k_first_inferior": 0,
+        "k_last_superior": 1125
+      },
+      "superior_contact_area_mm2": 659.454,
+      "superior_contact_bbox_ij_inclusive": [
+        [
+          251,
+          287
+        ],
+        [
+          309,
+          319
+        ]
+      ],
+      "superior_contact_bbox_ras_mm": [
+        [
+          -39.19,
+          -32.05,
+          -78.07
+        ],
+        [
+          -14.69,
+          12.36,
+          -78.07
+        ]
+      ],
+      "superior_contact_components": 1,
+      "largest_superior_component_voxels": 1125,
+      "last_16_slice_mask_area_voxels": [
+        2775,
+        2775,
+        2389,
+        2389,
+        2389,
+        2173,
+        2173,
+        2011,
+        2011,
+        1881,
+        1881,
+        1881,
+        1699,
+        1699,
+        1125,
+        1125
+      ],
+      "separate_masks": {
+        "blood_pool": {
+          "sha256": "3c610aa9d0000b1d06eeb3e823b71021fbf1cbc43cb3f36166ec26ac061f59c5",
+          "superior_face_voxels": 0,
+          "highest_occupied_k": 210,
+          "distance_from_highest_voxel_to_last_slice_mm": 28.125
+        },
+        "myocardium": {
+          "sha256": "7e77896d1821d78ce6f4f916df977db85a20140f2317370cfe4d060a706226ea",
+          "superior_face_voxels": 0,
+          "highest_occupied_k": 179,
+          "distance_from_highest_voxel_to_last_slice_mm": 47.5
+        }
+      }
+    },
+    {
+      "phase": "phase_04",
+      "nominal_phase_tag": "53",
+      "ct_sha256": "30608765ddd46233a3c0a05c2b0acf13d2305b470e59fd91624d148ee8d17310",
+      "mask_sha256": "ebae57ee95457ea089ac221cc6cfa5f137c333baf7c50ad16b96dec7919299c8",
+      "mask_voxels": 1589154,
+      "boundary_contact_voxels": {
+        "i_first": 0,
+        "i_last": 0,
+        "j_first": 0,
+        "j_last": 0,
+        "k_first_inferior": 0,
+        "k_last_superior": 1155
+      },
+      "superior_contact_area_mm2": 677.04,
+      "superior_contact_bbox_ij_inclusive": [
+        [
+          251,
+          285
+        ],
+        [
+          309,
+          319
+        ]
+      ],
+      "superior_contact_bbox_ras_mm": [
+        [
+          -39.19,
+          -32.05,
+          -78.07
+        ],
+        [
+          -13.15,
+          12.36,
+          -78.07
+        ]
+      ],
+      "superior_contact_components": 1,
+      "largest_superior_component_voxels": 1155,
+      "last_16_slice_mask_area_voxels": [
+        2889,
+        2889,
+        2549,
+        2549,
+        2549,
+        2279,
+        2279,
+        2067,
+        2067,
+        1873,
+        1873,
+        1873,
+        1687,
+        1687,
+        1155,
+        1155
+      ],
+      "separate_masks": {
+        "blood_pool": {
+          "sha256": "0a6482366ed84e0c884e05d7fd586982c01f95efd40a37397a6910ea887f3c68",
+          "superior_face_voxels": 0,
+          "highest_occupied_k": 214,
+          "distance_from_highest_voxel_to_last_slice_mm": 25.625
+        },
+        "myocardium": {
+          "sha256": "7c9b7a3d9524633082ed67c5a9bd02db8a82f12cc93971c29244d7395da141e7",
+          "superior_face_voxels": 0,
+          "highest_occupied_k": 181,
+          "distance_from_highest_voxel_to_last_slice_mm": 46.25
+        }
+      }
+    },
+    {
+      "phase": "phase_05",
+      "nominal_phase_tag": "62",
+      "ct_sha256": "59c0a83d00e42ef85b9da3f86df2dc9ab76813298b0ddcbd1fbbb2ceb26d0fc6",
+      "mask_sha256": "eb72fcfea0310353460d8b8699c129f575086dc579450786b33afcd00ab2d2c4",
+      "mask_voxels": 1694691,
+      "boundary_contact_voxels": {
+        "i_first": 0,
+        "i_last": 0,
+        "j_first": 0,
+        "j_last": 0,
+        "k_first_inferior": 0,
+        "k_last_superior": 1309
+      },
+      "superior_contact_area_mm2": 767.312,
+      "superior_contact_bbox_ij_inclusive": [
+        [
+          249,
+          281
+        ],
+        [
+          309,
+          319
+        ]
+      ],
+      "superior_contact_bbox_ras_mm": [
+        [
+          -39.19,
+          -32.05,
+          -78.07
+        ],
+        [
+          -10.09,
+          13.89,
+          -78.07
+        ]
+      ],
+      "superior_contact_components": 1,
+      "largest_superior_component_voxels": 1309,
+      "last_16_slice_mask_area_voxels": [
+        3233,
+        3233,
+        2855,
+        2855,
+        2855,
+        2545,
+        2545,
+        2269,
+        2269,
+        2045,
+        2045,
+        2045,
+        1839,
+        1839,
+        1309,
+        1309
+      ],
+      "separate_masks": {
+        "blood_pool": {
+          "sha256": "9aa358c905642841df0ba6ad44d0c09c10c7d7ec9b7332a68f1af1f1ac895d0e",
+          "superior_face_voxels": 0,
+          "highest_occupied_k": 224,
+          "distance_from_highest_voxel_to_last_slice_mm": 19.375
+        },
+        "myocardium": {
+          "sha256": "1b81cf682594a3c27655201268b515d42c23ecfcf3ee2e3062c1c1b671269787",
+          "superior_face_voxels": 0,
+          "highest_occupied_k": 189,
+          "distance_from_highest_voxel_to_last_slice_mm": 41.25
+        }
+      }
+    },
+    {
+      "phase": "phase_06",
+      "nominal_phase_tag": "72",
+      "ct_sha256": "48d152488857015fd52b592a09f9d587ef19973f53f9f7a5a0ac981ac1c471ca",
+      "mask_sha256": "5b161ca2e28940c9da45ce7181804aa7a1ea6e2c5ab3e0d6923b4f5e921953b8",
+      "mask_voxels": 1817954,
+      "boundary_contact_voxels": {
+        "i_first": 0,
+        "i_last": 0,
+        "j_first": 0,
+        "j_last": 0,
+        "k_first_inferior": 0,
+        "k_last_superior": 1247
+      },
+      "superior_contact_area_mm2": 730.969,
+      "superior_contact_bbox_ij_inclusive": [
+        [
+          245,
+          279
+        ],
+        [
+          309,
+          317
+        ]
+      ],
+      "superior_contact_bbox_ras_mm": [
+        [
+          -37.65,
+          -32.05,
+          -78.07
+        ],
+        [
+          -8.56,
+          16.95,
+          -78.07
+        ]
+      ],
+      "superior_contact_components": 1,
+      "largest_superior_component_voxels": 1247,
+      "last_16_slice_mask_area_voxels": [
+        3085,
+        3085,
+        2847,
+        2847,
+        2847,
+        2567,
+        2567,
+        2327,
+        2327,
+        2121,
+        2121,
+        2121,
+        1913,
+        1913,
+        1247,
+        1247
+      ],
+      "separate_masks": {
+        "blood_pool": {
+          "sha256": "e5452cb4c00bdb17560644aaefc2ad4ca1e8a4b11063f6adacd6f3cd8e560f19",
+          "superior_face_voxels": 0,
+          "highest_occupied_k": 231,
+          "distance_from_highest_voxel_to_last_slice_mm": 15.0
+        },
+        "myocardium": {
+          "sha256": "842790952e4aca83ca60b061bfc7cd14bbd2077be1b0ca7324b67bc30817c766",
+          "superior_face_voxels": 0,
+          "highest_occupied_k": 195,
+          "distance_from_highest_voxel_to_last_slice_mm": 37.5
+        }
+      }
+    },
+    {
+      "phase": "phase_07",
+      "nominal_phase_tag": "82",
+      "ct_sha256": "0c9c557a57348bc01e7c553aea460d882146b8b79bd0e0caf5c55381faeb3d47",
+      "mask_sha256": "741544744c01623df15a1a5a53a7353afdd01672f32e0ea55f56ea8d22d8bc29",
+      "mask_voxels": 1837987,
+      "boundary_contact_voxels": {
+        "i_first": 0,
+        "i_last": 0,
+        "j_first": 0,
+        "j_last": 0,
+        "k_first_inferior": 0,
+        "k_last_superior": 1135
+      },
+      "superior_contact_area_mm2": 665.316,
+      "superior_contact_bbox_ij_inclusive": [
+        [
+          249,
+          279
+        ],
+        [
+          307,
+          319
+        ]
+      ],
+      "superior_contact_bbox_ras_mm": [
+        [
+          -39.19,
+          -30.52,
+          -78.07
+        ],
+        [
+          -8.56,
+          13.89,
+          -78.07
+        ]
+      ],
+      "superior_contact_components": 1,
+      "largest_superior_component_voxels": 1135,
+      "last_16_slice_mask_area_voxels": [
+        2827,
+        2827,
+        2649,
+        2649,
+        2649,
+        2445,
+        2445,
+        2221,
+        2221,
+        2077,
+        2077,
+        2077,
+        1821,
+        1821,
+        1135,
+        1135
+      ],
+      "separate_masks": {
+        "blood_pool": {
+          "sha256": "5bc0fa567320949d80a1447679c1ccf281fab2092c223d0a23cb995481dad1c2",
+          "superior_face_voxels": 0,
+          "highest_occupied_k": 232,
+          "distance_from_highest_voxel_to_last_slice_mm": 14.375
+        },
+        "myocardium": {
+          "sha256": "af2faa981739446c085cfec6c64c6b1edac662d8391d3a72369983df34f502b1",
+          "superior_face_voxels": 0,
+          "highest_occupied_k": 197,
+          "distance_from_highest_voxel_to_last_slice_mm": 36.25
+        }
+      }
+    },
+    {
+      "phase": "phase_08",
+      "nominal_phase_tag": "92",
+      "ct_sha256": "18a689fee99a5658e4f59deb0e6371a7103749665ee5e38f598ccfa3e6cff511",
+      "mask_sha256": "58f1a2b5286349f333302f1e48235b53927591f21768fa0a6f566f66e5d41349",
+      "mask_voxels": 1826259,
+      "boundary_contact_voxels": {
+        "i_first": 0,
+        "i_last": 0,
+        "j_first": 0,
+        "j_last": 0,
+        "k_first_inferior": 0,
+        "k_last_superior": 1205
+      },
+      "superior_contact_area_mm2": 706.349,
+      "superior_contact_bbox_ij_inclusive": [
+        [
+          249,
+          277
+        ],
+        [
+          307,
+          319
+        ]
+      ],
+      "superior_contact_bbox_ras_mm": [
+        [
+          -39.19,
+          -30.52,
+          -78.07
+        ],
+        [
+          -7.03,
+          13.89,
+          -78.07
+        ]
+      ],
+      "superior_contact_components": 1,
+      "largest_superior_component_voxels": 1205,
+      "last_16_slice_mask_area_voxels": [
+        2767,
+        2767,
+        2563,
+        2563,
+        2563,
+        2397,
+        2397,
+        2199,
+        2199,
+        1997,
+        1997,
+        1997,
+        1763,
+        1763,
+        1205,
+        1205
+      ],
+      "separate_masks": {
+        "blood_pool": {
+          "sha256": "064570672048f95bf90f95f3a0cd74bcec7d6e173053362aea00d2deb4532f14",
+          "superior_face_voxels": 0,
+          "highest_occupied_k": 237,
+          "distance_from_highest_voxel_to_last_slice_mm": 11.25
+        },
+        "myocardium": {
+          "sha256": "6eaf3a1cd8751a6f6182cfc5f43152a18f946d976ab917569b49cc69d77131e0",
+          "superior_face_voxels": 0,
+          "highest_occupied_k": 199,
+          "distance_from_highest_voxel_to_last_slice_mm": 35.0
+        }
+      }
+    },
+    {
+      "phase": "phase_09",
+      "nominal_phase_tag": "101",
+      "ct_sha256": "f0588fe0e62220ca6ac811dd80e2ac561516f00e17afc9ce5e67f54d8468af77",
+      "mask_sha256": "cac54dc510d168ab45d45ec806a42d5b9cfc934f46d3f72af8f5129c6efc7524",
+      "mask_voxels": 1830462,
+      "boundary_contact_voxels": {
+        "i_first": 0,
+        "i_last": 0,
+        "j_first": 0,
+        "j_last": 0,
+        "k_first_inferior": 0,
+        "k_last_superior": 1229
+      },
+      "superior_contact_area_mm2": 720.417,
+      "superior_contact_bbox_ij_inclusive": [
+        [
+          251,
+          279
+        ],
+        [
+          307,
+          319
+        ]
+      ],
+      "superior_contact_bbox_ras_mm": [
+        [
+          -39.19,
+          -30.52,
+          -78.07
+        ],
+        [
+          -8.56,
+          12.36,
+          -78.07
+        ]
+      ],
+      "superior_contact_components": 1,
+      "largest_superior_component_voxels": 1229,
+      "last_16_slice_mask_area_voxels": [
+        2993,
+        2993,
+        2737,
+        2737,
+        2737,
+        2499,
+        2499,
+        2249,
+        2249,
+        2057,
+        2057,
+        2057,
+        1795,
+        1795,
+        1229,
+        1229
+      ],
+      "separate_masks": {
+        "blood_pool": {
+          "sha256": "00f4d00faecba356b44adf10dc51fcf4486c8e2794bec55283c3e07de544ab89",
+          "superior_face_voxels": 0,
+          "highest_occupied_k": 235,
+          "distance_from_highest_voxel_to_last_slice_mm": 12.5
+        },
+        "myocardium": {
+          "sha256": "a784c669b2c9cc63d6dff2119a7bc36e90c849b285f07a5d97e4c06aeca8fac9",
+          "superior_face_voxels": 0,
+          "highest_occupied_k": 195,
+          "distance_from_highest_voxel_to_last_slice_mm": 37.5
+        }
+      }
+    },
+    {
+      "phase": "phase_10",
+      "nominal_phase_tag": "111",
+      "ct_sha256": "8987e62b53c15e46ad81e859ac0a93750265bb9de1193c8b6bcbb8e2541af655",
+      "mask_sha256": "10c539cc1f898576a962e613988903ae01879840888cfd39a9f1178f50946820",
+      "mask_voxels": 1763613,
+      "boundary_contact_voxels": {
+        "i_first": 0,
+        "i_last": 0,
+        "j_first": 0,
+        "j_last": 0,
+        "k_first_inferior": 0,
+        "k_last_superior": 1175
+      },
+      "superior_contact_area_mm2": 688.763,
+      "superior_contact_bbox_ij_inclusive": [
+        [
+          253,
+          279
+        ],
+        [
+          307,
+          319
+        ]
+      ],
+      "superior_contact_bbox_ras_mm": [
+        [
+          -39.19,
+          -30.52,
+          -78.07
+        ],
+        [
+          -8.56,
+          10.82,
+          -78.07
+        ]
+      ],
+      "superior_contact_components": 1,
+      "largest_superior_component_voxels": 1175,
+      "last_16_slice_mask_area_voxels": [
+        3077,
+        3077,
+        2769,
+        2769,
+        2769,
+        2487,
+        2487,
+        2275,
+        2275,
+        2031,
+        2031,
+        2031,
+        1749,
+        1749,
+        1175,
+        1175
+      ],
+      "separate_masks": {
+        "blood_pool": {
+          "sha256": "325018828fe59a47de53d9049ebd249d3d0993385e269d4bc84d1b9f20ec2dc9",
+          "superior_face_voxels": 0,
+          "highest_occupied_k": 231,
+          "distance_from_highest_voxel_to_last_slice_mm": 15.0
+        },
+        "myocardium": {
+          "sha256": "212cf52f63f981e3f7515f4c28b9e2b1f8b1bda83f7b9a8b93e7b7b51cc2f74b",
+          "superior_face_voxels": 0,
+          "highest_occupied_k": 191,
+          "distance_from_highest_voxel_to_last_slice_mm": 40.0
+        }
+      }
+    },
+    {
+      "phase": "phase_11",
+      "nominal_phase_tag": "121",
+      "ct_sha256": "97df88b66c1387f0a38a7859437ffb829ec6d50a65c76abe61c031cb2a5a89b6",
+      "mask_sha256": "26d60e6c30dc45fb8461011a22a7d55a7e9cbc270134392f05803d76253da415",
+      "mask_voxels": 1657970,
+      "boundary_contact_voxels": {
+        "i_first": 0,
+        "i_last": 0,
+        "j_first": 0,
+        "j_last": 0,
+        "k_first_inferior": 0,
+        "k_last_superior": 889
+      },
+      "superior_contact_area_mm2": 521.115,
+      "superior_contact_bbox_ij_inclusive": [
+        [
+          251,
+          283
+        ],
+        [
+          307,
+          319
+        ]
+      ],
+      "superior_contact_bbox_ras_mm": [
+        [
+          -39.19,
+          -30.52,
+          -78.07
+        ],
+        [
+          -11.62,
+          12.36,
+          -78.07
+        ]
+      ],
+      "superior_contact_components": 1,
+      "largest_superior_component_voxels": 889,
+      "last_16_slice_mask_area_voxels": [
+        3061,
+        3061,
+        2753,
+        2753,
+        2753,
+        2483,
+        2483,
+        2203,
+        2203,
+        1951,
+        1951,
+        1951,
+        1629,
+        1629,
+        889,
+        889
+      ],
+      "separate_masks": {
+        "blood_pool": {
+          "sha256": "d16b163d370492ba7d2f207ede4a99a0b1c32fdda837986880913c2c24015b35",
+          "superior_face_voxels": 0,
+          "highest_occupied_k": 222,
+          "distance_from_highest_voxel_to_last_slice_mm": 20.625
+        },
+        "myocardium": {
+          "sha256": "2c6bb98ff1b7039eee14cb3b0524c77b58244dd32f378574ef24a11214567d11",
+          "superior_face_voxels": 0,
+          "highest_occupied_k": 186,
+          "distance_from_highest_voxel_to_last_slice_mm": 43.125
+        }
+      }
+    }
+  ]
+}
