@@ -1,13 +1,24 @@
 {
-  "schema": "mp03_nix_fov_3d_v1",
+  "schema": "mp03_nix_fov_3d_v2",
   "subject_alias": "nix",
   "html_in_ignored_runs": "runs/mp03_nix_fov_contact/contact_3d_12_phases.html",
-  "html_sha256": "63c012ad50915911fa8c81fc5bb1253dfa667cc24bed230455119af103df400b",
+  "html_sha256": "b4850e00af97802739dfd2a09a47860ef83c8c9939f0a69efed641973e33609c",
   "preview_in_ignored_runs": "runs/mp03_nix_fov_contact/contact_3d_phase_01.png",
   "phase_count": 12,
   "initial_phase": "phase_01",
   "superior_ct_voxel_face_z_ras_mm": -77.7525,
-  "blue_plane_is_local_display_window_not_full_fov_extent": true,
+  "soft_tissues_from_monai_fused_labels": {
+    "Жировая клетчатка": [
+      134,
+      135,
+      137
+    ],
+    "Скелетные мышцы": [
+      136
+    ]
+  },
+  "soft_tissues_are_cropped_and_downsampled_for_display": true,
+  "artificial_boundary_plane_removed": true,
   "red_cap_is_observed_contact_not_extrapolation": true,
   "decimation_display_only": true,
   "original_stl_and_contact_masks_read_only": true,
@@ -17,6 +28,56 @@
       "phase": "phase_00",
       "superior_contact_voxels": 863,
       "structures": {
+        "Жировая клетчатка": {
+          "label_ids": [
+            134,
+            135,
+            137
+          ],
+          "sampled_voxels": 46939,
+          "display_triangles": 8763,
+          "crop_ijk_exclusive": [
+            [
+              135,
+              170,
+              44
+            ],
+            [
+              360,
+              406,
+              256
+            ]
+          ],
+          "display_stride_ijk": [
+            3,
+            3,
+            2
+          ]
+        },
+        "Скелетные мышцы": {
+          "label_ids": [
+            136
+          ],
+          "sampled_voxels": 36778,
+          "display_triangles": 5274,
+          "crop_ijk_exclusive": [
+            [
+              135,
+              170,
+              44
+            ],
+            [
+              360,
+              406,
+              256
+            ]
+          ],
+          "display_stride_ijk": [
+            3,
+            3,
+            2
+          ]
+        },
         "whole_heart": {
           "source_stl_sha256": "f640ffaedfb65b90acfe98d71ce56122e0bb6670249f19ed111f8a01c1624db1",
           "source_triangles": 307036,
@@ -80,6 +141,56 @@
       "phase": "phase_01",
       "superior_contact_voxels": 1323,
       "structures": {
+        "Жировая клетчатка": {
+          "label_ids": [
+            134,
+            135,
+            137
+          ],
+          "sampled_voxels": 47083,
+          "display_triangles": 8747,
+          "crop_ijk_exclusive": [
+            [
+              135,
+              170,
+              44
+            ],
+            [
+              360,
+              406,
+              256
+            ]
+          ],
+          "display_stride_ijk": [
+            3,
+            3,
+            2
+          ]
+        },
+        "Скелетные мышцы": {
+          "label_ids": [
+            136
+          ],
+          "sampled_voxels": 36467,
+          "display_triangles": 5235,
+          "crop_ijk_exclusive": [
+            [
+              135,
+              170,
+              44
+            ],
+            [
+              360,
+              406,
+              256
+            ]
+          ],
+          "display_stride_ijk": [
+            3,
+            3,
+            2
+          ]
+        },
         "whole_heart": {
           "source_stl_sha256": "110d29dd7e4402144dfeb93a8ba04a5344312c2ff7a6e8869f8d11a3dc1e34a8",
           "source_triangles": 311022,
@@ -143,6 +254,56 @@
       "phase": "phase_02",
       "superior_contact_voxels": 1017,
       "structures": {
+        "Жировая клетчатка": {
+          "label_ids": [
+            134,
+            135,
+            137
+          ],
+          "sampled_voxels": 48144,
+          "display_triangles": 9057,
+          "crop_ijk_exclusive": [
+            [
+              135,
+              170,
+              44
+            ],
+            [
+              360,
+              406,
+              256
+            ]
+          ],
+          "display_stride_ijk": [
+            3,
+            3,
+            2
+          ]
+        },
+        "Скелетные мышцы": {
+          "label_ids": [
+            136
+          ],
+          "sampled_voxels": 36547,
+          "display_triangles": 5227,
+          "crop_ijk_exclusive": [
+            [
+              135,
+              170,
+              44
+            ],
+            [
+              360,
+              406,
+              256
+            ]
+          ],
+          "display_stride_ijk": [
+            3,
+            3,
+            2
+          ]
+        },
         "whole_heart": {
           "source_stl_sha256": "4fb5802e26f72607139fe75f78e7e3f38e9909b40d5e07c1738dd03c88131a16",
           "source_triangles": 304764,
@@ -206,6 +367,56 @@
       "phase": "phase_03",
       "superior_contact_voxels": 1125,
       "structures": {
+        "Жировая клетчатка": {
+          "label_ids": [
+            134,
+            135,
+            137
+          ],
+          "sampled_voxels": 47999,
+          "display_triangles": 8976,
+          "crop_ijk_exclusive": [
+            [
+              135,
+              170,
+              44
+            ],
+            [
+              360,
+              406,
+              256
+            ]
+          ],
+          "display_stride_ijk": [
+            3,
+            3,
+            2
+          ]
+        },
+        "Скелетные мышцы": {
+          "label_ids": [
+            136
+          ],
+          "sampled_voxels": 36469,
+          "display_triangles": 5223,
+          "crop_ijk_exclusive": [
+            [
+              135,
+              170,
+              44
+            ],
+            [
+              360,
+              406,
+              256
+            ]
+          ],
+          "display_stride_ijk": [
+            3,
+            3,
+            2
+          ]
+        },
         "whole_heart": {
           "source_stl_sha256": "c16fd95af87c376f9b0a680011fa980c7fe6975bec6536fe4b81576c54ede87c",
           "source_triangles": 310204,
@@ -269,6 +480,56 @@
       "phase": "phase_04",
       "superior_contact_voxels": 1155,
       "structures": {
+        "Жировая клетчатка": {
+          "label_ids": [
+            134,
+            135,
+            137
+          ],
+          "sampled_voxels": 47514,
+          "display_triangles": 8896,
+          "crop_ijk_exclusive": [
+            [
+              135,
+              170,
+              44
+            ],
+            [
+              360,
+              406,
+              256
+            ]
+          ],
+          "display_stride_ijk": [
+            3,
+            3,
+            2
+          ]
+        },
+        "Скелетные мышцы": {
+          "label_ids": [
+            136
+          ],
+          "sampled_voxels": 36586,
+          "display_triangles": 5230,
+          "crop_ijk_exclusive": [
+            [
+              135,
+              170,
+              44
+            ],
+            [
+              360,
+              406,
+              256
+            ]
+          ],
+          "display_stride_ijk": [
+            3,
+            3,
+            2
+          ]
+        },
         "whole_heart": {
           "source_stl_sha256": "a9c223171c1c64263bab2381d386f308bb7fc102517e60f92585312dac37762a",
           "source_triangles": 311178,
@@ -332,6 +593,56 @@
       "phase": "phase_05",
       "superior_contact_voxels": 1309,
       "structures": {
+        "Жировая клетчатка": {
+          "label_ids": [
+            134,
+            135,
+            137
+          ],
+          "sampled_voxels": 47326,
+          "display_triangles": 8954,
+          "crop_ijk_exclusive": [
+            [
+              135,
+              170,
+              44
+            ],
+            [
+              360,
+              406,
+              256
+            ]
+          ],
+          "display_stride_ijk": [
+            3,
+            3,
+            2
+          ]
+        },
+        "Скелетные мышцы": {
+          "label_ids": [
+            136
+          ],
+          "sampled_voxels": 36464,
+          "display_triangles": 5216,
+          "crop_ijk_exclusive": [
+            [
+              135,
+              170,
+              44
+            ],
+            [
+              360,
+              406,
+              256
+            ]
+          ],
+          "display_stride_ijk": [
+            3,
+            3,
+            2
+          ]
+        },
         "whole_heart": {
           "source_stl_sha256": "d280d38f0ed18d151203250c4860bd67079ff29c457c7d248b5b8a434dc4862f",
           "source_triangles": 308198,
@@ -395,6 +706,56 @@
       "phase": "phase_06",
       "superior_contact_voxels": 1247,
       "structures": {
+        "Жировая клетчатка": {
+          "label_ids": [
+            134,
+            135,
+            137
+          ],
+          "sampled_voxels": 47198,
+          "display_triangles": 8834,
+          "crop_ijk_exclusive": [
+            [
+              135,
+              170,
+              44
+            ],
+            [
+              360,
+              406,
+              256
+            ]
+          ],
+          "display_stride_ijk": [
+            3,
+            3,
+            2
+          ]
+        },
+        "Скелетные мышцы": {
+          "label_ids": [
+            136
+          ],
+          "sampled_voxels": 36617,
+          "display_triangles": 5233,
+          "crop_ijk_exclusive": [
+            [
+              135,
+              170,
+              44
+            ],
+            [
+              360,
+              406,
+              256
+            ]
+          ],
+          "display_stride_ijk": [
+            3,
+            3,
+            2
+          ]
+        },
         "whole_heart": {
           "source_stl_sha256": "28d08de0bd92a41222c3dbd6a010773b13794f284c650f3afeaf7a29baf910c8",
           "source_triangles": 313914,
@@ -458,6 +819,56 @@
       "phase": "phase_07",
       "superior_contact_voxels": 1135,
       "structures": {
+        "Жировая клетчатка": {
+          "label_ids": [
+            134,
+            135,
+            137
+          ],
+          "sampled_voxels": 47313,
+          "display_triangles": 8827,
+          "crop_ijk_exclusive": [
+            [
+              135,
+              170,
+              44
+            ],
+            [
+              360,
+              406,
+              256
+            ]
+          ],
+          "display_stride_ijk": [
+            3,
+            3,
+            2
+          ]
+        },
+        "Скелетные мышцы": {
+          "label_ids": [
+            136
+          ],
+          "sampled_voxels": 36584,
+          "display_triangles": 5232,
+          "crop_ijk_exclusive": [
+            [
+              135,
+              170,
+              44
+            ],
+            [
+              360,
+              406,
+              256
+            ]
+          ],
+          "display_stride_ijk": [
+            3,
+            3,
+            2
+          ]
+        },
         "whole_heart": {
           "source_stl_sha256": "680f565219ece6e6b826c841aecafdc31d62ae3b15dd75f1898583999b7dff46",
           "source_triangles": 313286,
@@ -521,6 +932,56 @@
       "phase": "phase_08",
       "superior_contact_voxels": 1205,
       "structures": {
+        "Жировая клетчатка": {
+          "label_ids": [
+            134,
+            135,
+            137
+          ],
+          "sampled_voxels": 47809,
+          "display_triangles": 9017,
+          "crop_ijk_exclusive": [
+            [
+              135,
+              170,
+              44
+            ],
+            [
+              360,
+              406,
+              256
+            ]
+          ],
+          "display_stride_ijk": [
+            3,
+            3,
+            2
+          ]
+        },
+        "Скелетные мышцы": {
+          "label_ids": [
+            136
+          ],
+          "sampled_voxels": 36605,
+          "display_triangles": 5224,
+          "crop_ijk_exclusive": [
+            [
+              135,
+              170,
+              44
+            ],
+            [
+              360,
+              406,
+              256
+            ]
+          ],
+          "display_stride_ijk": [
+            3,
+            3,
+            2
+          ]
+        },
         "whole_heart": {
           "source_stl_sha256": "b8bfcd68e0ee5949da17528221ae29dedefb7b28a6e30dc515a041ba45485b8d",
           "source_triangles": 307014,
@@ -584,6 +1045,56 @@
       "phase": "phase_09",
       "superior_contact_voxels": 1229,
       "structures": {
+        "Жировая клетчатка": {
+          "label_ids": [
+            134,
+            135,
+            137
+          ],
+          "sampled_voxels": 47297,
+          "display_triangles": 8882,
+          "crop_ijk_exclusive": [
+            [
+              135,
+              170,
+              44
+            ],
+            [
+              360,
+              406,
+              256
+            ]
+          ],
+          "display_stride_ijk": [
+            3,
+            3,
+            2
+          ]
+        },
+        "Скелетные мышцы": {
+          "label_ids": [
+            136
+          ],
+          "sampled_voxels": 36614,
+          "display_triangles": 5224,
+          "crop_ijk_exclusive": [
+            [
+              135,
+              170,
+              44
+            ],
+            [
+              360,
+              406,
+              256
+            ]
+          ],
+          "display_stride_ijk": [
+            3,
+            3,
+            2
+          ]
+        },
         "whole_heart": {
           "source_stl_sha256": "8877e236dab719656d03787fafdc4c5fbbceac8496ea442e9a191b7a52c0acc2",
           "source_triangles": 307564,
@@ -647,6 +1158,56 @@
       "phase": "phase_10",
       "superior_contact_voxels": 1175,
       "structures": {
+        "Жировая клетчатка": {
+          "label_ids": [
+            134,
+            135,
+            137
+          ],
+          "sampled_voxels": 47520,
+          "display_triangles": 8911,
+          "crop_ijk_exclusive": [
+            [
+              135,
+              170,
+              44
+            ],
+            [
+              360,
+              406,
+              256
+            ]
+          ],
+          "display_stride_ijk": [
+            3,
+            3,
+            2
+          ]
+        },
+        "Скелетные мышцы": {
+          "label_ids": [
+            136
+          ],
+          "sampled_voxels": 36596,
+          "display_triangles": 5236,
+          "crop_ijk_exclusive": [
+            [
+              135,
+              170,
+              44
+            ],
+            [
+              360,
+              406,
+              256
+            ]
+          ],
+          "display_stride_ijk": [
+            3,
+            3,
+            2
+          ]
+        },
         "whole_heart": {
           "source_stl_sha256": "716e1ee01ad2ae258ef6b2a8a1fa965b8475be8fa9b6112aa587df420c3a534c",
           "source_triangles": 313490,
@@ -710,6 +1271,56 @@
       "phase": "phase_11",
       "superior_contact_voxels": 889,
       "structures": {
+        "Жировая клетчатка": {
+          "label_ids": [
+            134,
+            135,
+            137
+          ],
+          "sampled_voxels": 46737,
+          "display_triangles": 8587,
+          "crop_ijk_exclusive": [
+            [
+              135,
+              170,
+              44
+            ],
+            [
+              360,
+              406,
+              256
+            ]
+          ],
+          "display_stride_ijk": [
+            3,
+            3,
+            2
+          ]
+        },
+        "Скелетные мышцы": {
+          "label_ids": [
+            136
+          ],
+          "sampled_voxels": 36724,
+          "display_triangles": 5262,
+          "crop_ijk_exclusive": [
+            [
+              135,
+              170,
+              44
+            ],
+            [
+              360,
+              406,
+              256
+            ]
+          ],
+          "display_stride_ijk": [
+            3,
+            3,
+            2
+          ]
+        },
         "whole_heart": {
           "source_stl_sha256": "6bf9b3fcaad60c840e52de59fd589275b30b075071c33420f5b45adf30dbd45a",
           "source_triangles": 307786,

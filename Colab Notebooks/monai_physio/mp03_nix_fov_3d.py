@@ -17,6 +17,7 @@ import numpy as np
 import plotly.graph_objects as go
 import pyvista as pv
 import trimesh
+from skimage.measure import marching_cubes
 
 
 HERE = Path(__file__).resolve().parent
@@ -25,6 +26,10 @@ STRUCTURES = (
     ("whole_heart", "#aeb4bf", 0.32, 0.94),
     ("blood_pool", "#00b5d1", 0.37, 0.97),
     ("myocardium", "#12a666", 0.82, 0.95),
+)
+SOFT_TISSUES = (
+    ("Жировая клетчатка", (134, 135, 137), "#db9b59", 0.10),
+    ("Скелетные мышцы", (136,), "#bc667b", 0.16),
 )
 
 
@@ -89,21 +94,40 @@ def contact_cap(mask_path: Path, affine: np.ndarray) -> tuple[pv.PolyData, int]:
     return pv.PolyData(points, packed), int(len(ij))
 
 
-def plane(z_limit: float) -> tuple[go.Mesh3d, go.Scatter3d]:
-    # A local window of the actual superior CT plane; not the entire FOV.
-    x = np.array([-100.0, 75.0, 75.0, -100.0])
-    y = np.array([-65.0, -65.0, 95.0, 95.0])
-    z = np.full(4, z_limit)
-    fill = go.Mesh3d(x=x, y=y, z=z, i=[0, 0], j=[1, 2], k=[2, 3],
-                     color="#5688f2", opacity=0.15,
-                     name="Плоскость верхнего края КТ", showlegend=True,
-                     hoverinfo="skip")
-    outline = go.Scatter3d(x=np.append(x, x[0]), y=np.append(y, y[0]),
-                           z=np.append(z, z[0]), mode="lines",
-                           line=dict(color="#2750b0", width=6),
-                           name="Контур плоскости", showlegend=False,
-                           hoverinfo="skip")
-    return fill, outline
+def soft_tissue_surfaces(path: Path, affine: np.ndarray) -> list[tuple[pv.PolyData, dict]]:
+    """Display-only surfaces from MONAI's fused labels around the upper thorax."""
+    image = nib.load(str(path))
+    if image.shape != (512, 512, 256) or not np.allclose(image.affine, affine):
+        raise ValueError("Soft-tissue labelmap grid mismatch")
+    labels = np.asarray(image.dataobj)
+    # A fixed upper-thorax crop and stride keep the interactive HTML tractable.
+    start = np.array([135, 170, 44])
+    stop = np.array([360, 406, 256])
+    stride = np.array([3, 3, 2])
+    sampled = labels[start[0]:stop[0]:stride[0],
+                     start[1]:stop[1]:stride[1],
+                     start[2]:stop[2]:stride[2]]
+    result = []
+    for name, label_ids, _, _ in SOFT_TISSUES:
+        binary = np.isin(sampled, label_ids)
+        if binary.sum() < 100:
+            raise ValueError(f"No {name} voxels in upper thorax")
+        # Pad for a closed display surface at the selected local crop boundaries.
+        vertices, triangles, _, _ = marching_cubes(
+            np.pad(binary.astype(np.uint8), 1), level=0.5)
+        ijk = start + (vertices - 1) * stride
+        points = nib.affines.apply_affine(affine, ijk)
+        faces = np.column_stack((np.full(len(triangles), 3), triangles)).ravel()
+        dense = pv.PolyData(points, faces).clean()
+        sparse = dense.decimate(0.90)
+        result.append((sparse, {
+            "label_ids": list(label_ids),
+            "sampled_voxels": int(binary.sum()),
+            "display_triangles": int(sparse.n_cells),
+            "crop_ijk_exclusive": [start.tolist(), stop.tolist()],
+            "display_stride_ijk": stride.tolist(),
+        }))
+    return result
 
 
 def main() -> None:
@@ -124,9 +148,18 @@ def main() -> None:
     for index in range(12):
         phase = f"phase_{index:02d}"
         phase_dir = products / phase
+        run_name = ("mp01_02_full_official_assets_nix_phase00" if index == 0
+                    else f"mp01_nix_{phase}_full")
+        label_path = HERE / "runs" / run_name / "mp01_02_monai_fused_labelmap.nii.gz"
         traces = []
         sources = {}
         prepared = {}
+        tissues = soft_tissue_surfaces(label_path, affine)
+        for (name, _, color, opacity), (mesh, meta) in zip(SOFT_TISSUES, tissues):
+            traces.append(plotly_mesh(mesh, name, color, opacity))
+            sources[name] = meta
+        if index == 1:
+            prepared_tissues = {name: mesh for (name, *_), (mesh, _) in zip(SOFT_TISSUES, tissues)}
         for name, color, opacity, reduction in STRUCTURES:
             mesh, meta = prepare_surface(phase_dir / f"{name}.stl", reduction)
             traces.append(plotly_mesh(mesh, name, color, opacity))
@@ -143,18 +176,17 @@ def main() -> None:
             raise ValueError(f"Inner mask unexpectedly reaches CT limit in {phase}")
         traces.append(plotly_mesh(cap, "Контакт на верхней грани", "#e60026", 1.0))
         if index == 1:
-            preview_meshes = (prepared, cap)
+            preview_meshes = (prepared_tissues, prepared, cap)
         all_phases.append(traces)
         rows.append({"phase": phase, "superior_contact_voxels": count,
                      "structures": sources})
-        print(f"{phase}: 3 surfaces and red cap prepared", flush=True)
+        print(f"{phase}: soft tissues, 3 heart surfaces and red cap prepared", flush=True)
 
-    upper, outline = plane(z_limit)
     first = 1
-    frames = [go.Frame(name=f"{i:02d}", data=traces, traces=[2, 3, 4, 5],
+    frames = [go.Frame(name=f"{i:02d}", data=traces, traces=list(range(len(traces))),
                        layout=go.Layout(title_text=f"Ник · фаза {i:02d} · красным контакт наружной маски с верхним краем КТ"))
               for i, traces in enumerate(all_phases)]
-    fig = go.Figure(data=[upper, outline, *all_phases[first]], frames=frames)
+    fig = go.Figure(data=all_phases[first], frames=frames)
     steps = [dict(method="animate", label=f"{i:02d}",
                   args=[[f"{i:02d}"], dict(mode="immediate", frame=dict(duration=0, redraw=True),
                                              transition=dict(duration=0))]) for i in range(12)]
@@ -173,7 +205,7 @@ def main() -> None:
             camera=dict(eye=dict(x=-1.35, y=1.65, z=0.95),
                         projection=dict(type="orthographic")),
         ),
-        annotations=[dict(text="Вращайте мышью. Фазы дискретны; красная площадка — наблюдаемая маска на границе, а не ткань выше КТ.",
+        annotations=[dict(text="Мягкие ткани: автоматические метки, полупрозрачны и обрезаны для обзора. Красное — маска на последнем срезе; выше КТ данных нет.",
                           x=0.5, y=0.0, xref="paper", yref="paper", showarrow=False,
                           font=dict(size=13, color="#263238"))],
     )
@@ -184,15 +216,13 @@ def main() -> None:
         raise ValueError("Self-contained 3D HTML seems incomplete")
     if preview_meshes is None:
         raise RuntimeError("Phase 01 preview geometry was not retained")
-    preview, red_cap = preview_meshes
+    soft_preview, preview, red_cap = preview_meshes
     preview_path = OUTPUT / "contact_3d_phase_01.png"
     plotter = pv.Plotter(off_screen=True, window_size=(1600, 1050))
     plotter.set_background("#ffffff")
     plotter.enable_depth_peeling(number_of_peels=20)
-    display_plane = pv.Plane(center=(-12.5, 15.0, z_limit), direction=(0, 0, 1),
-                             i_size=175.0, j_size=160.0)
-    plotter.add_mesh(display_plane, color="#5688f2", opacity=0.10,
-                     show_edges=True, edge_color="#2852b4", line_width=2)
+    plotter.add_mesh(soft_preview["Жировая клетчатка"], color="#db9b59", opacity=0.10)
+    plotter.add_mesh(soft_preview["Скелетные мышцы"], color="#bc667b", opacity=0.16)
     plotter.add_mesh(preview["whole_heart"], color="#aeb4bf", opacity=0.20, smooth_shading=True)
     plotter.add_mesh(preview["blood_pool"], color="#00b5d1", opacity=0.30, smooth_shading=True)
     plotter.add_mesh(preview["myocardium"], color="#12a666", opacity=0.75, smooth_shading=True)
@@ -204,7 +234,7 @@ def main() -> None:
     if preview_path.stat().st_size < 10_000:
         raise ValueError("3D preview image seems incomplete")
     summary = {
-        "schema": "mp03_nix_fov_3d_v1",
+        "schema": "mp03_nix_fov_3d_v2",
         "subject_alias": "nix",
         "html_in_ignored_runs": "runs/mp03_nix_fov_contact/" + destination.name,
         "html_sha256": sha256(destination),
@@ -212,7 +242,9 @@ def main() -> None:
         "phase_count": len(rows),
         "initial_phase": "phase_01",
         "superior_ct_voxel_face_z_ras_mm": round(z_limit, 4),
-        "blue_plane_is_local_display_window_not_full_fov_extent": True,
+        "soft_tissues_from_monai_fused_labels": {name: list(ids) for name, ids, _, _ in SOFT_TISSUES},
+        "soft_tissues_are_cropped_and_downsampled_for_display": True,
+        "artificial_boundary_plane_removed": True,
         "red_cap_is_observed_contact_not_extrapolation": True,
         "decimation_display_only": True,
         "original_stl_and_contact_masks_read_only": True,
