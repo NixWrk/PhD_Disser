@@ -1,0 +1,27 @@
+{
+  "schema": "monai_physio_interactive_visualization_review_v1",
+  "date": "2026-10-01",
+  "scope": "MP06, MP07, MP09 and MP10 visualizations after the earlier language reviews",
+  "scientific_status": "visual_qc_only; no change to published numerical comparisons or anatomical validation",
+  "language_review": "New Russian sections read in context: phase/stage and model/observed distinctions, LPS/RAS units, display decimation and absent measured timing stated explicitly; prior scientific prose retained.",
+  "technical_review": {
+    "nbformat_validate": "passed_all_four",
+    "tracked_notebook_outputs": "empty; no individual geometry committed",
+    "tracked_html": "exported without code inputs or individual geometry",
+    "local_execution": "MP06, MP07, MP09 and MP10 executed on saved Nix surfaces; interactive Plotly HTML present in ignored runs/ or local temporary directory",
+    "display_mesh": "decimated only for interactive display; quantitative analyses use original full meshes",
+    "temporal_status": "discrete frames; display speed is not measured physiological time"
+  },
+  "current_artifact_sha256": {
+    "Дыхательное_движение_по_одной_КТ.md": "2cc82fdf99f4e27b6192014f455e92de48e04ba6021e418e782b121c28957dfa",
+    "21.18_MP06_Суррогат_движения.ipynb": "c4f308699241d712353ece8ed3747b16e4826bf8b58d28b910f32ad14ced48a4",
+    "21.18_MP06_Суррогат_движения.html": "60438e38f1c97a6476212bc4155f1826d4b8de876e39b74266289c48a1487d00",
+    "21.19_MP07_Прогноз_по_одной_КТ.ipynb": "5f3c365f7a0166e4ea015bd1214dd8bb017a7d6aca1bbdc236bdd19d688a7130",
+    "21.19_MP07_Прогноз_по_одной_КТ.html": "bc70759e335f2394ecac6480c64851877300a0cb2b1973747081b5d93dc096fe",
+    "21.21_MP-09_USD_Omniverse_preflight.ipynb": "0de29e6c1adb0d5cc262a7b7f7a62288b294e1d367732f5fe0730b1a6ddcf325",
+    "21.21_MP-09_USD_Omniverse_preflight.html": "b3cb5ffc4c5bd9825a5c820dca0e1f9d94072e56b750a9fac8929f593a9a6b79",
+    "21.22_MP10_Дыхательное_движение_лёгких_и_сердца.ipynb": "92d179e9042fd2e52e0ffc0fd8f3cccade72dfd6dff735651ca1514b1007a5d1",
+    "21.22_MP10_Дыхательное_движение_лёгких_и_сердца.html": "68580b939844fcfad49d4fa0b7e0807f455474b0122ebb520bf9dfaa9f9e8156"
+  },
+  "remaining_scope": "MP01-MP04, MP05 and MP08 have no new interactive 3D viewer in this revision; their existing scientific results are unchanged."
+}

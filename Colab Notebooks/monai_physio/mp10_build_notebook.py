@@ -78,6 +78,34 @@ weighted_model = (table["Ориентиры"] * table["Модель: средн�
 print(f"Всего {total} ориентир; взвешенная средняя ошибка: {weighted_static:.2f} → {weighted_model:.2f} мм")
 print("Объём открытых лёгочных поверхностей модели не интерпретируется")'''
 
+NIX_MOTION = '''import os
+from pathlib import Path
+from IPython.display import HTML, display
+from mp_visualize_motion import motion_figure
+
+scenario_dir = Path(os.environ["MONAI_PHYSIO_MP10_NIX_DIR"]) / "scenarios"
+stages = ["0.00", "0.50", "0.70", "0.90"]
+frames = [
+    (stage, {
+        "Лёгкие": scenario_dir / f"lung_stage_{stage}.vtp",
+        "Сердце": scenario_dir / f"heart_stage_{stage}.vtp",
+    })
+    for stage in stages
+]
+figure = motion_figure(
+    frames,
+    title="Ник: условное дыхательное движение лёгких и сердца",
+    subtitle="Дискретные стадии модели; парного выдоха нет. Сердце перенесено полем лёгких.",
+    colors={"Лёгкие": "#5caac3", "Сердце": "#d75864"},
+    opacity={"Лёгкие": 0.35, "Сердце": 0.95},
+    initial_index=2,  # 0.70 — опорная стадия входной КТ
+)
+display(HTML(figure.to_html(full_html=False, include_plotlyjs=True)))
+# Для локального просмотра без Jupyter: HTML содержит индивидуальную геометрию.
+output = Path(os.environ["MONAI_PHYSIO_MP10_NIX_DIR"]) / "nix_breathing_interactive_3d.html"
+figure.write_html(str(output), include_plotlyjs=True)
+print("Локальный интерактивный HTML:", output)'''
+
 
 def main() -> None:
     source = SOURCE.read_text(encoding="utf-8")
@@ -93,6 +121,8 @@ def main() -> None:
             cells.append(nbformat.v4.new_code_cell(NIX_TABLE))
         elif part.startswith("## Проверка на трёх открытых парах вдох–выдох"):
             cells.append(nbformat.v4.new_code_cell(OPEN_TABLE))
+        elif part.startswith("## Интерактивная трёхмерная визуализация"):
+            cells.append(nbformat.v4.new_code_cell(NIX_MOTION))
 
     notebook = nbformat.v4.new_notebook(
         cells=cells,

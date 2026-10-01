@@ -1,9 +1,9 @@
 {
   "schema": "russian_scientific_prose_review_v1",
   "reviewed_at": "2026-10-01",
-  "source_document_sha256": "b987a1920abda85f567e4d11a396433c4b6c92a7db409d5d571b6f197bd8557b",
-  "reader_notebook_sha256": "7dfa8a1b31ae6229ac16bb93d864300537fba77fbd7cf7b56ab77241d471f5a9",
-  "reader_html_sha256": "7ad1f28c2b228a51ad42600d226a668b02dabcabb4c31a69ab3fccbbc007536c",
+  "source_document_sha256": "2cc82fdf99f4e27b6192014f455e92de48e04ba6021e418e782b121c28957dfa",
+  "reader_notebook_sha256": "92d179e9042fd2e52e0ffc0fd8f3cccade72dfd6dff735651ca1514b1007a5d1",
+  "reader_html_sha256": "68580b939844fcfad49d4fa0b7e0807f455474b0122ebb520bf9dfaa9f9e8156",
   "review_scope": "Sequential full-text model review of the Russian protocol; notebook Markdown is identical to that protocol, and HTML excludes code inputs.",
   "language_status": "passed",
   "checked": [
@@ -13,5 +13,6 @@
     "separation of model outputs, observed data, assumptions, and validation",
     "Russian grammar, punctuation, and reader-facing clarity"
   ],
-  "open_language_findings": []
+  "open_language_findings": [],
+  "visualization_revision": "Added interactive 3D local-output cell; new Russian visualization section reviewed with explicit temporal, display and provenance limits."
 }
