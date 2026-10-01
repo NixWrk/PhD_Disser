@@ -32,6 +32,13 @@ nix_scenario = local_report("MONAI_PHYSIO_MP10_NIX_DIR", "scenarios/scenario_rep
 open_fit = local_report("MONAI_PHYSIO_MP10_L2R_DIR", "fit_lung_inhale/fit_report.json")
 open_scenario = local_report("MONAI_PHYSIO_MP10_L2R_DIR", "scenarios/scenario_report.json")
 open_evaluation = local_report("MONAI_PHYSIO_MP10_L2R_DIR", "evaluation.json")
+open_cases = [("0001", open_fit, open_scenario, open_evaluation)]
+for case in ("0002", "0003"):
+    fit = local_report("MONAI_PHYSIO_MP10_L2R_BATCH_DIR", f"fit_{case}/fit_report.json")
+    scenario = local_report("MONAI_PHYSIO_MP10_L2R_BATCH_DIR", f"scenarios_{case}/scenario_report.json")
+    evaluation = local_report("MONAI_PHYSIO_MP10_L2R_BATCH_DIR", f"evaluation_{case}.json")
+    assert fit["subject_alias"] == scenario["subject_alias"] == evaluation["pair_alias"] == f"l2r_{case}"
+    open_cases.append((case, fit, scenario, evaluation))
 assert nix_fit["subject_alias"] == nix_scenario["subject_alias"] == "nix"
 assert open_fit["subject_alias"] == open_scenario["subject_alias"] == "l2r_0001"
 print("Прочитаны локальные отчёты; изображения и маски не загружались")'''
@@ -48,24 +55,28 @@ display(pd.DataFrame(rows).round(3))
 print("Внутренняя ошибка подгонки, мм:", round(nix_fit["nearest_vertex_mean_mm_stride8"], 3))
 print("Это расчётный сценарий; парного выдоха Ника для проверки нет")'''
 
-OPEN_TABLE = '''stage = {float(item["stage"]): item for item in open_scenario["stages"]}
-landmark_rows = []
-for s in sorted(stage):
-    result = stage[s]["landmarks"]
-    landmark_rows.append({
-        "Стадия": s,
-        "Число ориентиров": result["count"],
-        "Средняя ошибка, мм": result["predicted_tre_mean_mm"],
-        "Медиана ошибки, мм": result["predicted_tre_median_mm"],
+OPEN_TABLE = '''rows = []
+for case, fit, scenario, evaluation in open_cases:
+    stage = {float(item["stage"]): item for item in scenario["stages"]}
+    control = stage[0.7]["landmarks"]
+    candidate = stage[0.0]["landmarks"]
+    assert evaluation["modeled_lung_volume_status"] == "not_evaluated_non_watertight_mesh"
+    rows.append({
+        "Случай": case,
+        "Ориентиры": candidate["count"],
+        "Контроль: средняя ошибка, мм": control["static_tre_mean_mm"],
+        "Модель: средняя ошибка, мм": candidate["predicted_tre_mean_mm"],
+        "Изменение ошибки, мм": candidate["predicted_tre_mean_mm"] - control["static_tre_mean_mm"],
+        "Сердце: маски, мм": evaluation["observed_heart_centroid_shift_norm_mm"],
+        "Сердце: модель, мм": evaluation["modeled_heart_centroid_shift_norm_mm"],
     })
-display(pd.DataFrame(landmark_rows).round(3))
-print("Неподвижный контроль, средняя ошибка, мм:",
-      round(stage[0.0]["landmarks"]["static_tre_mean_mm"], 3))
-print("Измеренное изменение объёма по маскам лёгких, мл:",
-      round(open_evaluation["observed_lung_volume_change_ml"], 1))
-print("Открытые края поверхности модели:", open_evaluation["lung_mesh_open_edges_source"])
-assert open_evaluation["modeled_lung_volume_status"] == "not_evaluated_non_watertight_mesh"
-print("Объём поверхности модели не интерпретируется")'''
+table = pd.DataFrame(rows)
+display(table.round(2))
+total = table["Ориентиры"].sum()
+weighted_static = (table["Ориентиры"] * table["Контроль: средняя ошибка, мм"]).sum() / total
+weighted_model = (table["Ориентиры"] * table["Модель: средняя ошибка, мм"]).sum() / total
+print(f"Всего {total} ориентир; взвешенная средняя ошибка: {weighted_static:.2f} → {weighted_model:.2f} мм")
+print("Объём открытых лёгочных поверхностей модели не интерпретируется")'''
 
 
 def main() -> None:
@@ -80,7 +91,7 @@ def main() -> None:
             cells.append(nbformat.v4.new_code_cell(SETUP))
         elif part.startswith("## Результат для КТ Ника"):
             cells.append(nbformat.v4.new_code_cell(NIX_TABLE))
-        elif part.startswith("## Проверка на открытой паре вдох–выдох"):
+        elif part.startswith("## Проверка на трёх открытых парах вдох–выдох"):
             cells.append(nbformat.v4.new_code_cell(OPEN_TABLE))
 
     notebook = nbformat.v4.new_notebook(

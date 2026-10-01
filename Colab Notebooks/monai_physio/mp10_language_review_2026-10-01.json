@@ -1,9 +1,9 @@
 {
   "schema": "russian_scientific_prose_review_v1",
   "reviewed_at": "2026-10-01",
-  "source_document_sha256": "9fa05809bc59ed70ea9fac08e3bb45161806b3da4b857bc6cc73abcf03cd8785",
-  "reader_notebook_sha256": "d2b6f0cfcd46c17a0216f5cdefaa0ec3ac5eb78bab190917fb23d5608c9887e6",
-  "reader_html_sha256": "b31db98eb8b6703a5b9cf54a474a629c68f18432705545e0f81c3a8495d28a74",
+  "source_document_sha256": "b987a1920abda85f567e4d11a396433c4b6c92a7db409d5d571b6f197bd8557b",
+  "reader_notebook_sha256": "7dfa8a1b31ae6229ac16bb93d864300537fba77fbd7cf7b56ab77241d471f5a9",
+  "reader_html_sha256": "7ad1f28c2b228a51ad42600d226a668b02dabcabb4c31a69ab3fccbbc007536c",
   "review_scope": "Sequential full-text model review of the Russian protocol; notebook Markdown is identical to that protocol, and HTML excludes code inputs.",
   "language_status": "passed",
   "checked": [
