@@ -1,9 +1,9 @@
 {
   "schema": "russian_scientific_prose_review_v1",
   "reviewed_at": "2026-10-01",
-  "source_document_sha256": "871688eb8b29deb873d88af10040ff36e5f07251e68946c5775013e35c51ab29",
-  "reader_notebook_sha256": "526f460bb1abc927ef06e78afc1ba09cb1494b44c2b194539366d1d8babb9b5e",
-  "reader_html_sha256": "0289433e0a3c7650b73a77c2b70ca881f0f374adf33287ada3aa3ec54cdb5016",
+  "source_document_sha256": "004b022fdd9e71f2fbc89acf7e134a4991d36e45a190da9a99422acff9893143",
+  "reader_notebook_sha256": "778bb081cd099d5e9f49868ed463202d5d98ad7ef81ebab2b2eb236bff56b7b4",
+  "reader_html_sha256": "2d73419571b996f9e81f2ff94fb215f01cb741a59061fd26c2f0604d77264f01",
   "review_scope": "Sequential full-text model review of the Russian protocol; notebook Markdown is identical to that protocol, and HTML excludes code inputs.",
   "language_status": "passed",
   "checked": [
@@ -14,5 +14,6 @@
     "Russian grammar, punctuation, and reader-facing clarity"
   ],
   "open_language_findings": [],
-  "visualization_revision": "3D scene includes CT-derived lung target overlay and quantitative Z-span discrepancy; the new Russian wording was reviewed for source, units, model/observation distinction and limits."
+  "visualization_revision": "3D scene includes CT-derived lung target overlay and quantitative Z-span discrepancy; the new Russian wording was reviewed for source, units, model/observation distinction and limits.",
+  "stage_mapping_revision": "Reviewed new Russian prose distinguishing measured inspiration, published g070 reference, arbitrary numerical stage, and invalid predictive interpretation."
 }

@@ -1,8 +1,10 @@
 """Compute lung and coupled-heart respiratory scenarios from one segmented CT.
 
-The published lung model is used without retraining. Stage 0.7 is an explicit
-technical anchor, not an inferred breathing state of the patient's CT. All
-individual outputs remain in the caller's local output directory.
+The published lung model is used without retraining. Stage 0.7 is its g070
+technical reference, not an inferred breathing state of the patient's CT.
+In particular, fitting a deep-inspiration CT to that reference does not yield
+a calibrated inspiration-to-expiration forecast. All individual outputs remain
+in the caller's local output directory.
 """
 
 from __future__ import annotations

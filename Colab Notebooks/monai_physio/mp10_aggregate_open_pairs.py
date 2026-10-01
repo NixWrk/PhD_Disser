@@ -68,8 +68,9 @@ def main() -> None:
     weighted = lambda key: sum(row["landmark_count"] * row[key] for row in rows) / total
     report = {
         "schema": "mp10_open_pair_landmark_summary_v1",
-        "status": "three_case_exploratory_transfer_check_not_general_validation",
+        "status": "invalid_stage_calibration_exploratory_screen_not_predictive_validation",
         "assumed_stage_mapping": "inhale=0.7, exhale=0.0; no independent stage calibration",
+        "reference_phase_audit": "The published lung model uses g070 as its fitted reference; the project fitted inhale CT to that anchor, despite tutorial documentation identifying g070 as end-exhale. This screen cannot establish prediction accuracy.",
         "case_count": len(rows),
         "landmark_count": total,
         "improved_case_count_stage_0": sum(row["tre_change_model_minus_static_mm"] < 0 for row in rows),
