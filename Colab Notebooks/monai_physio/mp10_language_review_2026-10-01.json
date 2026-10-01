@@ -1,0 +1,17 @@
+{
+  "schema": "russian_scientific_prose_review_v1",
+  "reviewed_at": "2026-10-01",
+  "source_document_sha256": "9fa05809bc59ed70ea9fac08e3bb45161806b3da4b857bc6cc73abcf03cd8785",
+  "reader_notebook_sha256": "d2b6f0cfcd46c17a0216f5cdefaa0ec3ac5eb78bab190917fb23d5608c9887e6",
+  "reader_html_sha256": "b31db98eb8b6703a5b9cf54a474a629c68f18432705545e0f81c3a8495d28a74",
+  "review_scope": "Sequential full-text model review of the Russian protocol; notebook Markdown is identical to that protocol, and HTML excludes code inputs.",
+  "language_status": "passed",
+  "checked": [
+    "scientific headings and narrative order",
+    "terms, units, and referents",
+    "definitions and provenance of derived quantities",
+    "separation of model outputs, observed data, assumptions, and validation",
+    "Russian grammar, punctuation, and reader-facing clarity"
+  ],
+  "open_language_findings": []
+}
