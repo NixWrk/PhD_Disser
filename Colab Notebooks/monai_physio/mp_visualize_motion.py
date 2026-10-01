@@ -39,7 +39,7 @@ def motion_figure(
     ras_organs: set[str] | None = None,
     initial_index: int = 0,
 ) -> go.Figure:
-    """Build a rotatable Plotly sequence with a fixed camera and physical axes.
+    """Build a rotatable Plotly sequence with persistent camera and physical axes.
 
     With corresponding meshes, reduced vertices are mapped once to original
     nodes and the same indices are used in every frame. For independent meshes,
@@ -118,11 +118,13 @@ def motion_figure(
         width=950, height=760,
         margin=dict(l=0, r=0, t=85, b=0),
         scene=dict(
+            uirevision="preserve-user-camera-across-frames",
             xaxis=dict(title=f"{coordinate_system} X, мм", range=axis_range[0]),
             yaxis=dict(title=f"{coordinate_system} Y, мм", range=axis_range[1]),
             zaxis=dict(title=f"{coordinate_system} Z, мм", range=axis_range[2]),
             aspectmode="data",
         ),
+        uirevision="preserve-user-view-across-frames",
         legend=dict(x=0.01, y=0.99),
         updatemenus=[dict(type="buttons", direction="left", x=0.02, y=0.02,
                           buttons=[

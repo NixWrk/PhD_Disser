@@ -87,7 +87,8 @@ scenario_dir = Path(os.environ["MONAI_PHYSIO_MP10_NIX_DIR"]) / "scenarios"
 stages = ["0.00", "0.50", "0.70", "0.90"]
 frames = [
     (stage, {
-        "Лёгкие": scenario_dir / f"lung_stage_{stage}.vtp",
+        "Контур лёгких по КТ": scenario_dir.parent / "fit_lung" / "lung_target_surface.vtp",
+        "Модель лёгких": scenario_dir / f"lung_stage_{stage}.vtp",
         "Сердце": scenario_dir / f"heart_stage_{stage}.vtp",
     })
     for stage in stages
@@ -95,9 +96,9 @@ frames = [
 figure = motion_figure(
     frames,
     title="Ник: условное дыхательное движение лёгких и сердца",
-    subtitle="Дискретные стадии модели; парного выдоха нет. Сердце перенесено полем лёгких.",
-    colors={"Лёгкие": "#5caac3", "Сердце": "#d75864"},
-    opacity={"Лёгкие": 0.35, "Сердце": 0.95},
+    subtitle="Серый — исходная маска КТ; голубой — подогнанная модель. Выдох Ника не измерен.",
+    colors={"Контур лёгких по КТ": "#78808d", "Модель лёгких": "#5caac3", "Сердце": "#d75864"},
+    opacity={"Контур лёгких по КТ": 0.16, "Модель лёгких": 0.48, "Сердце": 0.95},
     initial_index=2,  # 0.70 — опорная стадия входной КТ
 )
 display(HTML(figure.to_html(full_html=False, include_plotlyjs=True)))

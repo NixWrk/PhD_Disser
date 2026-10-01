@@ -1,9 +1,9 @@
 {
   "schema": "russian_scientific_prose_review_v1",
   "reviewed_at": "2026-10-01",
-  "source_document_sha256": "2cc82fdf99f4e27b6192014f455e92de48e04ba6021e418e782b121c28957dfa",
-  "reader_notebook_sha256": "92d179e9042fd2e52e0ffc0fd8f3cccade72dfd6dff735651ca1514b1007a5d1",
-  "reader_html_sha256": "68580b939844fcfad49d4fa0b7e0807f455474b0122ebb520bf9dfaa9f9e8156",
+  "source_document_sha256": "871688eb8b29deb873d88af10040ff36e5f07251e68946c5775013e35c51ab29",
+  "reader_notebook_sha256": "526f460bb1abc927ef06e78afc1ba09cb1494b44c2b194539366d1d8babb9b5e",
+  "reader_html_sha256": "0289433e0a3c7650b73a77c2b70ca881f0f374adf33287ada3aa3ec54cdb5016",
   "review_scope": "Sequential full-text model review of the Russian protocol; notebook Markdown is identical to that protocol, and HTML excludes code inputs.",
   "language_status": "passed",
   "checked": [
@@ -14,5 +14,5 @@
     "Russian grammar, punctuation, and reader-facing clarity"
   ],
   "open_language_findings": [],
-  "visualization_revision": "Added interactive 3D local-output cell; new Russian visualization section reviewed with explicit temporal, display and provenance limits."
+  "visualization_revision": "3D scene includes CT-derived lung target overlay and quantitative Z-span discrepancy; the new Russian wording was reviewed for source, units, model/observation distinction and limits."
 }
