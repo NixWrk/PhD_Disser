@@ -1,9 +1,9 @@
 {
   "schema": "russian_scientific_prose_review_v1",
   "reviewed_at": "2026-10-01",
-  "source_document_sha256": "2e154b4ee10fe7a680a092e6a33fde551253badd7f25eb6f9b9f28731f2283ef",
-  "reader_notebook_sha256": "8a35c29ec484297dadd586b4af4338d6e610c35eb55efa8076f602cbb9c66ec2",
-  "reader_html_sha256": "d4ad8cc6fab3b4a78b5f51d559d06a139e7dcff3754a6445c1ef49c595407ada",
+  "source_document_sha256": "726ebb278df2f055d697bef7f6aa4abc5a8e649c28083d3fd83b5ebc197c3486",
+  "reader_notebook_sha256": "bc8ebad214e6f85e74f310292bdd23ee4223615160f10157dfa4c06dace430bb",
+  "reader_html_sha256": "a1879f119cea8c5fdb7c3873461e3bc0a51932222d6f01a7109a8114d591ecd8",
   "review_scope": "Sequential full-text model review of the Russian protocol; notebook Markdown is identical to that protocol, and HTML excludes code inputs.",
   "language_status": "passed",
   "checked": [
@@ -14,7 +14,7 @@
     "Russian grammar, punctuation, and reader-facing clarity"
   ],
   "open_language_findings": [],
-  "visualization_revision": "The new ten-phase TCIA 3D scenes compare separately segmented observed lung and heart surfaces with network-warped source surfaces. Russian prose distinguishes these from historical conditional Nix stages and states that the camera is preserved during phase changes.",
+  "visualization_revision": "The ten-phase TCIA 3D scenes display measured CT and prediction side by side on common physical axes with the source contour in grey. Russian prose and labels distinguish the public case from Nix's confirmed deep-inspiration CT, quantify the 16.4% versus 2.8% change, and state camera persistence during phase changes.",
   "stage_mapping_revision": "Reviewed Russian prose distinguishing observed g000-g090 CT labels, the published g070 reference, the direct phase-to-network-stage mapping, and the invalid historical inspiration-to-g070 assumption.",
   "tcia_validation_revision": "Reviewed input and target separation, automatic-contour status, one-subject dependence, units, static control, volume and heart-motion discrepancies, PCA training overlap, and the restriction against FEM or individual Nix transfer."
 }
