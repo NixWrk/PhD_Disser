@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import re
+import textwrap
 from pathlib import Path
 
 import nbformat
@@ -27,21 +28,28 @@ def local_report(variable, relative_name):
         raise FileNotFoundError(path)
     return json.loads(path.read_text(encoding="utf-8"))
 
-nix_fit = local_report("MONAI_PHYSIO_MP10_NIX_DIR", "fit_lung/fit_report.json")
-nix_scenario = local_report("MONAI_PHYSIO_MP10_NIX_DIR", "scenarios/scenario_report.json")
-open_fit = local_report("MONAI_PHYSIO_MP10_L2R_DIR", "fit_lung_inhale/fit_report.json")
-open_scenario = local_report("MONAI_PHYSIO_MP10_L2R_DIR", "scenarios/scenario_report.json")
-open_evaluation = local_report("MONAI_PHYSIO_MP10_L2R_DIR", "evaluation.json")
-open_cases = [("0001", open_fit, open_scenario, open_evaluation)]
-for case in ("0002", "0003"):
-    fit = local_report("MONAI_PHYSIO_MP10_L2R_BATCH_DIR", f"fit_{case}/fit_report.json")
-    scenario = local_report("MONAI_PHYSIO_MP10_L2R_BATCH_DIR", f"scenarios_{case}/scenario_report.json")
-    evaluation = local_report("MONAI_PHYSIO_MP10_L2R_BATCH_DIR", f"evaluation_{case}.json")
-    assert fit["subject_alias"] == scenario["subject_alias"] == evaluation["pair_alias"] == f"l2r_{case}"
-    open_cases.append((case, fit, scenario, evaluation))
-assert nix_fit["subject_alias"] == nix_scenario["subject_alias"] == "nix"
-assert open_fit["subject_alias"] == open_scenario["subject_alias"] == "l2r_0001"
-print("Прочитаны локальные отчёты; изображения и маски не загружались")'''
+legacy_vars = (
+    "MONAI_PHYSIO_MP10_NIX_DIR", "MONAI_PHYSIO_MP10_L2R_DIR",
+    "MONAI_PHYSIO_MP10_L2R_BATCH_DIR",
+)
+if all(os.environ.get(name) for name in legacy_vars):
+    nix_fit = local_report("MONAI_PHYSIO_MP10_NIX_DIR", "fit_lung/fit_report.json")
+    nix_scenario = local_report("MONAI_PHYSIO_MP10_NIX_DIR", "scenarios/scenario_report.json")
+    open_fit = local_report("MONAI_PHYSIO_MP10_L2R_DIR", "fit_lung_inhale/fit_report.json")
+    open_scenario = local_report("MONAI_PHYSIO_MP10_L2R_DIR", "scenarios/scenario_report.json")
+    open_evaluation = local_report("MONAI_PHYSIO_MP10_L2R_DIR", "evaluation.json")
+    open_cases = [("0001", open_fit, open_scenario, open_evaluation)]
+    for case in ("0002", "0003"):
+        fit = local_report("MONAI_PHYSIO_MP10_L2R_BATCH_DIR", f"fit_{case}/fit_report.json")
+        scenario = local_report("MONAI_PHYSIO_MP10_L2R_BATCH_DIR", f"scenarios_{case}/scenario_report.json")
+        evaluation = local_report("MONAI_PHYSIO_MP10_L2R_BATCH_DIR", f"evaluation_{case}.json")
+        assert fit["subject_alias"] == scenario["subject_alias"] == evaluation["pair_alias"] == f"l2r_{case}"
+        open_cases.append((case, fit, scenario, evaluation))
+    assert nix_fit["subject_alias"] == nix_scenario["subject_alias"] == "nix"
+    assert open_fit["subject_alias"] == open_scenario["subject_alias"] == "l2r_0001"
+    print("Прочитаны локальные отчёты исторического опыта")
+else:
+    print("Исторические локальные отчёты пропущены: не заданы три переменные MP10")'''
 
 NIX_TABLE = '''rows = []
 for item in nix_scenario["stages"]:
@@ -109,6 +117,49 @@ output = Path(os.environ["MONAI_PHYSIO_MP10_NIX_DIR"]) / "nix_breathing_interact
 figure.write_html(str(output), include_plotlyjs=True)
 print("Локальный интерактивный HTML:", output)'''
 
+TCIA_TABLE = '''from pathlib import Path
+import json
+import pandas as pd
+from IPython.display import display
+
+summary_path = Path("mp10_tcia_phase_validation_2026-10-01.json")
+if not summary_path.is_file():
+    summary_path = Path("Colab Notebooks/monai_physio") / summary_path
+summary = json.loads(summary_path.read_text(encoding="utf-8"))
+rows = []
+for source, experiment in summary["experiments"].items():
+    rows.append({
+        "Вход": source,
+        "Целевых фаз": experiment["target_phase_count"],
+        "Лёгкие без движения, мм": experiment["mean_lung_surface_static_mm"],
+        "Лёгкие с полем сети, мм": experiment["mean_lung_surface_ct_warp_mm"],
+        "Фаз с улучшением лёгких": experiment["lung_surface_improved_phase_count"],
+        "Сердце без движения, мм": experiment["mean_heart_surface_static_mm"],
+        "Сердце с полем лёгких, мм": experiment["mean_heart_surface_predicted_mm"],
+    })
+display(pd.DataFrame(rows).round(3))
+display(pd.DataFrame({
+    "Фаза": sorted(summary["experiments"]["g000"]["phase_results"]),
+    "КТ, л": [summary["experiments"]["g000"]["phase_results"][p]["observed_lung_volume_ml"] / 1000
+               for p in sorted(summary["experiments"]["g000"]["phase_results"])],
+    "Прогноз из g000, л": [summary["experiments"]["g000"]["phase_results"][p]["predicted_lung_volume_ml"] / 1000
+                         for p in sorted(summary["experiments"]["g000"]["phase_results"])],
+}).round(3))'''
+
+TCIA_VISUAL = '''import os
+from pathlib import Path
+from IPython.display import HTML, display
+
+run_root = os.environ.get("MONAI_PHYSIO_MP10_TCIA_RUN_DIR")
+if run_root:
+    view_path = Path(run_root) / "g000_input_prediction_vs_ct_3d.html"
+    if not view_path.is_file():
+        raise FileNotFoundError(view_path)
+    display(HTML(view_path.read_text(encoding="utf-8")))
+    print("Локальный 3D-файл:", view_path)
+else:
+    print("Для интерактивного 3D задайте MONAI_PHYSIO_MP10_TCIA_RUN_DIR")'''
+
 
 def main() -> None:
     source = SOURCE.read_text(encoding="utf-8")
@@ -121,11 +172,24 @@ def main() -> None:
         if part.startswith("## Выполненный расчёт и источники входов"):
             cells.append(nbformat.v4.new_code_cell(SETUP))
         elif part.startswith("## Результат для КТ Ника"):
-            cells.append(nbformat.v4.new_code_cell(NIX_TABLE))
+            cells.append(nbformat.v4.new_code_cell(
+                "if 'nix_fit' in globals():\n" + textwrap.indent(NIX_TABLE, "    ")
+                + "\nelse:\n    print('Исторический локальный отчёт Ника не подключён')"
+            ))
         elif part.startswith("## Проверка на трёх открытых парах вдох–выдох"):
-            cells.append(nbformat.v4.new_code_cell(OPEN_TABLE))
+            cells.append(nbformat.v4.new_code_cell(
+                "if 'open_cases' in globals():\n" + textwrap.indent(OPEN_TABLE, "    ")
+                + "\nelse:\n    print('Исторические отчёты Learn2Reg не подключены')"
+            ))
+        elif part.startswith("## Проверка на десяти фазах дыхательной КТ"):
+            cells.append(nbformat.v4.new_code_cell(TCIA_TABLE))
+            cells.append(nbformat.v4.new_code_cell(TCIA_VISUAL))
         elif part.startswith("## Интерактивная трёхмерная визуализация"):
-            cells.append(nbformat.v4.new_code_cell(NIX_MOTION))
+            cells.append(nbformat.v4.new_code_cell(
+                "if os.environ.get('MONAI_PHYSIO_MP10_NIX_DIR'):\n"
+                + textwrap.indent(NIX_MOTION, "    ")
+                + "\nelse:\n    print('Локальная 3D-геометрия Ника не подключена')"
+            ))
 
     notebook = nbformat.v4.new_notebook(
         cells=cells,
@@ -139,7 +203,8 @@ def main() -> None:
         },
     )
     nbformat.validate(notebook)
-    nbformat.write(notebook, NOTEBOOK)
+    with NOTEBOOK.open("w", encoding="utf-8", newline="\n") as stream:
+        nbformat.write(notebook, stream)
     print(f"Created {NOTEBOOK.name}: {len(cells)} cells")
 
 

@@ -7796,23 +7796,25 @@ a.anchor-link {
 <!-- End of mermaid configuration --></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=024d9403">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7dee6b3a">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="%D0%9F%D1%80%D0%BE%D0%B3%D0%BD%D0%BE%D0%B7-%D0%B4%D1%8B%D1%85%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D0%B3%D0%BE-%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D1%8F-%D0%B0%D0%BD%D0%B0%D1%82%D0%BE%D0%BC%D0%B8%D0%B8-%D0%BF%D0%BE-%D0%BE%D0%B4%D0%BD%D0%BE%D0%B9-%D0%9A%D0%A2">Прогноз дыхательного изменения анатомии по одной КТ<a class="anchor-link" href="#%D0%9F%D1%80%D0%BE%D0%B3%D0%BD%D0%BE%D0%B7-%D0%B4%D1%8B%D1%85%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D0%B3%D0%BE-%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D1%8F-%D0%B0%D0%BD%D0%B0%D1%82%D0%BE%D0%BC%D0%B8%D0%B8-%D0%BF%D0%BE-%D0%BE%D0%B4%D0%BD%D0%BE%D0%B9-%D0%9A%D0%A2">¶</a></h1><p><strong>Статус после аудита соответствия дыхательных стадий:</strong> выполнен технический
-расчёт лёгких и связанного с ними положения сердца по одной КТ Ника без
-обучения модели. На трёх открытых парах рассчитаны ошибки для 281 ориентира,
-но исходный вдох был без доказательства принят за опорную стадию сети <code>0,7</code>.
-Поэтому этот опыт <strong>не оценивает прогностическую точность готовой сети</strong> и не
-устанавливает дыхательные фазы Ника. Числа ниже сохранены как результат опыта
-с ошибочно заданной привязкой, а не как основание отвергать саму сеть.</p>
+<h1 id="%D0%9F%D1%80%D0%BE%D0%B3%D0%BD%D0%BE%D0%B7-%D0%B4%D1%8B%D1%85%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D0%B3%D0%BE-%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D1%8F-%D0%B0%D0%BD%D0%B0%D1%82%D0%BE%D0%BC%D0%B8%D0%B8-%D0%BF%D0%BE-%D0%BE%D0%B4%D0%BD%D0%BE%D0%B9-%D0%9A%D0%A2">Прогноз дыхательного изменения анатомии по одной КТ<a class="anchor-link" href="#%D0%9F%D1%80%D0%BE%D0%B3%D0%BD%D0%BE%D0%B7-%D0%B4%D1%8B%D1%85%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D0%B3%D0%BE-%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D1%8F-%D0%B0%D0%BD%D0%B0%D1%82%D0%BE%D0%BC%D0%B8%D0%B8-%D0%BF%D0%BE-%D0%BE%D0%B4%D0%BD%D0%BE%D0%B9-%D0%9A%D0%A2">¶</a></h1><p><strong>Статус на 1 октября 2026 года:</strong> готовая модель проверена на десяти
+дыхательных фазах одного открытого случая TCIA с известными метками кадров.
+При входе из фазы большого объёма лёгких перенос исходного контура полем сети
+слегка уменьшил среднюю ошибку поверхности в восьми из девяти целевых фаз,
+но сильно занизил изменение объёма лёгких и смещение сердца. В опорной фазе
+модели улучшение получено только в двух из девяти фаз. Проверка пока не даёт
+оснований использовать результат как количественную дыхательную геометрию
+Ника или вход в FEM. Предыдущий опыт на Нике и трёх парах Learn2Reg сохранён
+ниже как история ошибочной привязки вдоха к опорной стадии сети.</p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=133af734">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a79eddd7">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7839,7 +7841,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cb8ec203">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d9388467">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7887,7 +7889,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d35fee58">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cabdf049">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7928,7 +7930,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8fbc49c7">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=db2d1282">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7958,7 +7960,7 @@ FEM допустима лишь как явно обозначенный сце�
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=88928d20">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6ce67c68">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8032,9 +8034,9 @@ Tutorial 3</a>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs jp-mod-noInput" id="cell-id=694af4c3">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs jp-mod-noInput" id="cell-id=f3fb10bd">
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=db6214b2">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5015f183">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8091,9 +8093,9 @@ Tutorial 3</a>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs jp-mod-noInput" id="cell-id=e9421074">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs jp-mod-noInput" id="cell-id=bc0aef2f">
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6126fa77">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=89813640">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8180,9 +8182,149 @@ Tutorial 3</a>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs jp-mod-noInput" id="cell-id=2cabe263">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs jp-mod-noInput" id="cell-id=5c324571">
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=91870130">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d52eb222">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="%D0%9F%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BA%D0%B0-%D0%BD%D0%B0-%D0%B4%D0%B5%D1%81%D1%8F%D1%82%D0%B8-%D1%84%D0%B0%D0%B7%D0%B0%D1%85-%D0%B4%D1%8B%D1%85%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D0%B9-%D0%9A%D0%A2">Проверка на десяти фазах дыхательной КТ<a class="anchor-link" href="#%D0%9F%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BA%D0%B0-%D0%BD%D0%B0-%D0%B4%D0%B5%D1%81%D1%8F%D1%82%D0%B8-%D1%84%D0%B0%D0%B7%D0%B0%D1%85-%D0%B4%D1%8B%D1%85%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D0%B9-%D0%9A%D0%A2">¶</a></h2><p><strong>Исходные данные и производные маски.</strong> Использован открытый случай <code>100_HM10395</code> из фазового
+набора TCIA 4D-Lung, поставляемого вместе с учебным примером MONAI Physio
+<code>2026.07.1</code>. Все десять томов <code>g000–g090</code> относятся к одному человеку;
+пространственный шаг КТ равен <code>0,9766 × 0,9766 × 3,0 мм</code>. Для каждого тома
+отдельно получены автоматические маски пяти долей лёгких и сердца с помощью
+TotalSegmentator v2. Целевые фазы не участвовали в подгонке входной анатомии.
+Доля цикла из имени кадра непосредственно передавалась в готовую сеть:
+<code>g000 → 0,0</code>, <code>g050 → 0,5</code>, <code>g070 → 0,7</code> и так далее. Стадия не выбиралась
+по сходству с удержанной КТ. Объём лёгких по маскам имеет минимум <code>3,99 л</code>
+в <code>g050</code> и максимум <code>4,78 л</code> в <code>g000</code>; поэтому обозначение <code>g070</code> следует
+понимать прежде всего как опорную стадию опубликованной модели, а не как
+точный момент максимального выдоха в этом случае.</p>
+<p><strong>Модель и сравнение.</strong> Выполнены два опыта с единственной входной КТ:
+от опубликованной опоры <code>g070</code> и от кадра с большим объёмом лёгких <code>g000</code>.
+Последний опыт проверяет пригодность готовой сети к входу со вдоха, что
+выходит за протокол её исходной подгонки. Из входной маски аффинным ICP и
+шестью компонентами модели формы получены параметры лёгких. Сеть получила
+эти параметры и числовую стадию; она не получала целевую КТ. Поле сети
+перенесено на <strong>исходную поверхность по КТ</strong>, чтобы сохранить индивидуальную
+анатомию. Сердце перенесено тем же распространённым полем; отдельная сеть
+движения сердца в опыте не применялась.</p>
+<p>Основной показатель формы — среднее симметричное расстояние до ближайшей
+точки между прогнозной и отдельно сегментированной целевой поверхностью,
+в миллиметрах. Для одинаковой вычислительной нагрузки в обеих сравниваемых
+поверхностях использована каждая четвёртая вершина. Контроль повторяет
+исходную маску без движения. Объём целевых лёгких измерен подсчётом вокселей,
+а объём прогноза — по перенесённой замкнутой поверхности исходной КТ.
+Смещения центров масок сердца сравниваются в одной физической системе LPS.
+Ни одна из этих метрик не является ошибкой анатомических ориентиров.</p>
+<table>
+<thead>
+<tr>
+<th>Вход</th>
+<th style="text-align:right">Целевых фаз</th>
+<th style="text-align:right">Поверхность лёгких: без движения → сеть, мм</th>
+<th style="text-align:right">Улучшенных фаз</th>
+<th style="text-align:right">Поверхность сердца: без движения → поле лёгких, мм</th>
+<th style="text-align:right">Центр сердца: без движения → поле лёгких, мм</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>g070</code>, опора модели</td>
+<td style="text-align:right">9</td>
+<td style="text-align:right">2,27 → 2,34</td>
+<td style="text-align:right">2/9</td>
+<td style="text-align:right">2,37 → 2,35</td>
+<td style="text-align:right">3,32 → 3,15</td>
+</tr>
+<tr>
+<td><code>g000</code>, фаза большого объёма</td>
+<td style="text-align:right">9</td>
+<td style="text-align:right">3,18 → 2,95</td>
+<td style="text-align:right">8/9</td>
+<td style="text-align:right">2,80 → 2,75</td>
+<td style="text-align:right">4,91 → 4,58</td>
+</tr>
+</tbody>
+</table>
+<p>Средние значения приведены <strong>по фазам одного случая</strong>, поэтому девять кадров
+не образуют девять независимых добровольцев. При входе <code>g000</code> улучшение
+поверхности в <code>g010</code> составляет лишь <code>0,02 мм</code>, а в <code>g090</code> ошибка возрастает
+на <code>1,11 мм</code>. Даже там, где контур становится ближе к целевой КТ, амплитуда
+объёмного движения остаётся недостаточной:</p>
+<table>
+<thead>
+<tr>
+<th>Переход</th>
+<th style="text-align:right">Изменение объёма по КТ, мл</th>
+<th style="text-align:right">Изменение объёма по прогнозу, мл</th>
+<th style="text-align:right">Ошибка объёма в целевой фазе, мл</th>
+<th style="text-align:right">Центр сердца: наблюдаемое → рассчитанное смещение, мм</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>g070 → g000</code></td>
+<td style="text-align:right">+604</td>
+<td style="text-align:right">+167</td>
+<td style="text-align:right">−438</td>
+<td style="text-align:right">6,83 → 0,65</td>
+</tr>
+<tr>
+<td><code>g000 → g050</code></td>
+<td style="text-align:right">−785</td>
+<td style="text-align:right">−134</td>
+<td style="text-align:right">+651</td>
+<td style="text-align:right">6,41 → 0,55</td>
+</tr>
+<tr>
+<td><code>g000 → g070</code></td>
+<td style="text-align:right">−604</td>
+<td style="text-align:right">−181</td>
+<td style="text-align:right">+423</td>
+<td style="text-align:right">6,83 → 0,67</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Измеренный и рассчитанный объём лёгких в десяти фазах" src="mp10_tcia_volume_curves_2026-10-01.png"/></p>
+<p><strong>Ограничение доказательности.</strong> В учебном коде случай 100 исключён из
+обучения сети движения, но его опорный кадр <code>g070</code> не исключён из построения
+модели формы лёгких. Состав обучающего набора опубликованного checkpoint не
+проверен независимо. Контуры целевых фаз автоматические; принятой ручной
+разметки лёгких и сердца для этой проверки нет. Подгонка поверхности на
+исходной фазе имеет внутреннюю среднюю ошибку <code>5,48 мм</code> для <code>g070</code> и
+<code>5,57 мм</code> для <code>g000</code>. Сама подогнанная сетка открыта по 18 рёбрам, поэтому
+её объём не использован: объёмные показатели относятся только к замкнутой
+поверхности исходной КТ, перенесённой полем. Опыт с <code>g000</code> не доказывает
+переносимость на глубокий вдох с задержкой у Ника. У Ника нет независимо
+подтверждённой парной КТ выдоха для расчёта ошибки его индивидуального
+прогноза.</p>
+<p><strong>Вывод для текущей методики:</strong> готовая сеть показывает слабую полезную
+составляющую движения контура при некоторых фазах, но в этом опыте не
+воспроизводит фактическую амплитуду изменения объёма лёгких и положения
+сердца. Полученную дыхательную геометрию нельзя считать проверенным входом
+для FEM или источником количественной поправки к ТТРКГ. Следующая проверка
+готовой модели должна охватить другие независимо снятые фазовые случаи и
+ручной контроль анатомии; обучение собственной сети в этот этап не входит.
+Полная численная сводка всех десяти фаз содержится в
+<a href="mp10_tcia_phase_validation_2026-10-01.json"><code>mp10_tcia_phase_validation_2026-10-01.json</code></a>.</p>
+<p>Два самостоятельных интерактивных вида сопоставляют реальные контуры лёгких
+и сердца с расчётными для всех десяти фаз:
+<a href="runs/tcia_validation/g000_input_prediction_vs_ct_3d.html">вход <code>g000</code></a> и
+<a href="runs/tcia_validation/g070_prediction_vs_ct_3d.html">вход <code>g070</code></a>.
+Ползунок и воспроизведение переключают только измеренные дискретные кадры;
+межфазовая интерполяция в изображении отсутствует. После поворота модели
+камера сохраняет ракурс при переключении и воспроизведении, что проверено в
+локальном браузере. Эти HTML содержат геометрию открытого пациента и
+хранятся в локальном каталоге вне Git.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs jp-mod-noInput" id="cell-id=5db907b6">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs jp-mod-noInput" id="cell-id=ff0ec9ae">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ce51a28a">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8214,9 +8356,9 @@ HTML только в локальном каталоге опыта. Он сод
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs jp-mod-noInput" id="cell-id=6a367ddd">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs jp-mod-noInput" id="cell-id=b7d3b206">
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9ebe9026">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=469125f3">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8230,27 +8372,38 @@ HTML только в локальном каталоге опыта. Он сод
 трёхмерную визуализацию и формирование ноутбука. Локальные отчёты JSON содержат
 хэши входов, сетку, параметры поля и отдельные метрики; пути к медицинским
 данным и сами изображения не включаются в Git. Ноутбук <code>21.22</code> связывает
-протокол с таблицами результатов и кодом их чтения. Для выполнения его
-аналитических ячеек нужно задать три локальные переменные окружения:
+протокол с таблицами результатов и кодом их чтения. Для повторного чтения
+исторических локальных отчётов нужно задать три переменные окружения:
 <code>MONAI_PHYSIO_MP10_NIX_DIR</code> указывает на папку с <code>fit_lung/</code> и <code>scenarios/</code>,
 <code>MONAI_PHYSIO_MP10_L2R_DIR</code> — на папку первого открытого случая с
 <code>fit_lung_inhale/</code>, <code>scenarios/</code> и <code>evaluation.json</code>, а
 <code>MONAI_PHYSIO_MP10_L2R_BATCH_DIR</code> — на папку отчётов случаев 0002 и 0003.
-Адреса исходных КТ, масок и весов передаются скриптам аргументами командной
-строки и не записаны в ноутбуке.</p>
-<p>Следующий проверочный шаг — подтвердить фактические состояния дыхания в
-историческом <code>OLD</code> и расширить независимую проверку на случаи DIR-Lab; в
-использованном архиве Learn2Reg ручные ориентиры имеются у трёх разобранных
-обучающих случаев. Перед изменением модели следует отдельно устранить
-ошибку подгонки поверхности, определить соответствие стадий дыханию и проверить
-топологию выходной геометрии. Только если эти проверки дадут приемлемое
-улучшение относительно неподвижного контроля, рассчитывать сценарии для
-Георга, Адама и Ярослава и оценивать пригодность для FEM.</p>
+Без этих переменных ноутбук всё равно показывает новую сводку десятифазного
+опыта. Адреса исходных КТ, масок и весов передаются скриптам аргументами
+командной строки и не записаны в ноутбуке.</p>
+<p>Исправленный десятифазный опыт воспроизводится скриптами
+<code>mp10_segment_tcia_phases.py</code>, <code>mp10_fit_lung_to_ct.py</code>,
+<code>mp10_lung_heart_scenarios.py</code>, <code>mp10_evaluate_tcia_phases.py</code>,
+<code>mp10_summarize_tcia.py</code>, <code>mp10_plot_tcia_summary.py</code> и
+<code>mp10_visualize_tcia_phases.py</code>. Они последовательно сегментируют все
+фазы, подгоняют одну входную КТ, рассчитывают сеть по заранее заданным
+стадиям, переносят исходные контуры и сравнивают их с удержанными КТ.
+Новая аналитическая ячейка ноутбука читает обезличенную сводку из этой папки;
+для показа локального 3D нужно задать
+<code>MONAI_PHYSIO_MP10_TCIA_RUN_DIR</code> как путь к <code>runs/tcia_validation</code>.
+Индивидуальные тома, маски, поля и поверхности остаются в исключённой из Git
+рабочей папке.</p>
+<p>Следующий проверочный шаг — проверить готовую сеть на других случаях с
+известными дыхательными фазами и оценить чувствительность результата к
+автоматической сегментации. Для применения к Нику необходимо установить
+соответствие его задержки глубокого вдоха входной стадии модели и получить
+независимый контроль целевой анатомии. До этих проверок сценарии для Георга,
+Адама и Ярослава остаются иллюстрациями, а не расчётной геометрией для FEM.</p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0fa03cef">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2d1c4121">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>

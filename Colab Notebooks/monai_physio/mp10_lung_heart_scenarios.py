@@ -83,6 +83,10 @@ def main() -> None:
     parser.add_argument("--model-dir", type=Path, required=True)
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--alias", required=True)
+    parser.add_argument("--anchor-stage", type=float, default=0.7)
+    parser.add_argument("--source-phase", default="unverified")
+    parser.add_argument("--save-fields", action="store_true")
+    parser.add_argument("--stages", nargs="+", type=float, default=[0.0, 0.5, 0.7, 0.9])
     parser.add_argument("--source-landmarks", type=Path)
     parser.add_argument("--target-landmarks", type=Path)
     parser.add_argument("--landmark-grid", type=Path)
@@ -92,8 +96,12 @@ def main() -> None:
     ):
         raise ValueError("Both landmark files and their NIfTI grid must be supplied together")
     args.output_dir.mkdir(parents=True, exist_ok=True)
-    anchor = 0.7
-    stages = [0.0, 0.5, 0.7, 0.9]
+    anchor = args.anchor_stage
+    stages = args.stages
+    if any(not 0.0 <= stage < 1.0 for stage in stages) or len(stages) != len(set(stages)):
+        raise ValueError("Stages must be unique fractions in [0, 1)")
+    if anchor not in stages:
+        raise ValueError("The source stage must be one of the evaluated stages")
     sigma_mm = 15.0
     offset_mm = 3.0
     transition_mm = 5.0
@@ -149,6 +157,15 @@ def main() -> None:
             lung_mask, offset_mm, transition_mm, falloff_mm,
         )
         field = restricted.GetDisplacementField()
+        if args.save_fields:
+            serializable = itk.image_from_array(
+                itk.array_from_image(field).astype(np.float32), is_vector=True
+            )
+            serializable.CopyInformation(field)
+            itk.imwrite(
+                serializable, str(args.output_dir / f"field_stage_{stage:.2f}.mha"),
+                compression=True,
+            )
         if stage == anchor:
             anchor_heart_field = field
         results.append({
@@ -220,7 +237,13 @@ def main() -> None:
         "model_checkpoint_sha256": sha256(args.model_dir / "mgn_stage_model.pt"),
         "fit_status": fit_report["status"],
         "stage_anchor": anchor,
-        "stage_anchor_assumption": "g070 is a technical reference, not a confirmed deep-inspiration stage",
+        "source_phase": args.source_phase,
+        "saved_deformation_fields": args.save_fields,
+        "stage_anchor_assumption": (
+            "g070 is the published model reference; supplied CT phase must be checked"
+            if anchor == 0.7 else
+            "non-reference CT phase fitted to a g070-trained shape model; out-of-protocol application"
+        ),
         "respiratory_sigma_mm": sigma_mm,
         "direction_offset_mm": offset_mm,
         "direction_transition_mm": transition_mm,
@@ -229,7 +252,7 @@ def main() -> None:
         "field_grid_spacing_mm": [float(x) for x in reference_image.GetSpacing()],
         "cardiac_stage": "fixed; no cardiac network added",
         "stages": summary,
-        "validation": "No same-subject held-out expiration CT; no predictive accuracy estimate",
+        "validation": "This report contains model scenarios only; evaluate target CT in a separate held-out comparison",
     }
     (args.output_dir / "scenario_report.json").write_text(
         json.dumps(report, ensure_ascii=False, indent=2, allow_nan=False) + "\n",
