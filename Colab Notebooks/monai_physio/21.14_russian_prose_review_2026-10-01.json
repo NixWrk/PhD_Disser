@@ -1,0 +1,31 @@
+{
+  "schema": "russian_scientific_prose_hash_bound_review_v1",
+  "date": "2026-10-01",
+  "artifacts": {
+    "notebook": {
+      "path": "21.14_Протокол_прогноза_сердца_по_одной_КТ.ipynb",
+      "sha256": "35a5cfba5c7274edbfef10e6ca62987b9d485e6e46d5956392eb8c2213427364"
+    },
+    "reader_html": {
+      "path": "21.14_Протокол_прогноза_сердца_по_одной_КТ.html",
+      "sha256": "07373526acc6babd0756f555c4949523c1752934eb2a81594aaeb22252aa815e"
+    }
+  },
+  "semantic_inventory": {
+    "scientific_question": "Добавляет ли готовая модель движения точность относительно неподвижной подогнанной формы на других реально снятых фазах Ника?",
+    "individual_input": "Автоматическая маска TotalSegmentator v2 из КТ фазы 00 и её номинальная отметка R–R; пиксели КТ не входят непосредственно в подгонку формы и сетевой вывод.",
+    "comparison": "Восемь удержанных фаз 01–08: прогноз и неподвижная подогнанная форма сравниваются с отдельно построенными автоматическими поверхностями.",
+    "metric": "Симметричная средняя дистанция до ближайших вершин, миллиметры; зависит от дискретизации и не прослеживает соответствующие анатомические точки.",
+    "result": "Средние дистанции 4,509 и 4,483 мм; четыре улучшения и четыре ухудшения; исходная ошибка подгонки 4,384 мм.",
+    "uncertainty": "Различие анатомического определения шаблона и маски, автоматический характер контрольных контуров, номинальная временная шкала и один доброволец."
+  },
+  "checks": {
+    "language.ru.hash-bound-final-review": "passed: full reader-visible text reviewed sequentially after final title edit; notebook and HTML hashes refreshed",
+    "language.ru.reader-facing-clarity": "passed: direct scientific headings, defined control and derived distance, precise terms, explicit scope and meaningful contrasts",
+    "language.ru.encoding": "passed: UTF-8 notebook and HTML",
+    "nbformat_validation": "passed",
+    "html_input_code_excluded": "passed: notebook has no executable cells and HTML was exported with input exclusion",
+    "numerical_claims": "checked against mp06_nix_one_ct_forecast_report.md and saved full-vertex evaluation"
+  },
+  "open_language_findings": []
+}

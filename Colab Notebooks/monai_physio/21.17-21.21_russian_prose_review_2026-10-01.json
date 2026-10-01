@@ -1,0 +1,72 @@
+{
+  "schema": "russian_scientific_prose_hash_bound_review_v1",
+  "date": "2026-10-01",
+  "scope": "five MONAI Physio MP05-MP09 notebooks and corresponding HTML only",
+  "authority": "russian-scientific-prose skill; Colab Notebooks/AGENTS.md",
+  "semantic_inventory": "MP05 real automatic-mask PCA compression plus synthetic API test; MP06 ready network forecast on Nix; MP07 separate 11-phase Dice static-mask baseline and 8-phase paired nearest-vertex forecast comparison; MP08 real CT retrospective low-resolution holdout on phases 01 and 07; MP09 technical USD export of 12 observed auto-segmented phases",
+  "language_review": {
+    "check_id": "language.ru.hash-bound-final-review",
+    "status": "passed",
+    "method": "model read every markdown cell sequentially after final edits in file order 21.17 through 21.21, checked scientific headings, terminology, definitions, claims, uncertainty, tables, transitions and reader-facing phrasing; HTML rendered text matched by headings and table values",
+    "findings_open": []
+  },
+  "technical_review": {
+    "nbformat_validate": "passed_all_five",
+    "html_export": "nbconvert without execution; no input code or prompt; cell count, headings and table contents checked",
+    "source_code_and_outputs": "all five source notebooks contain markdown cells only; no code or output cells altered"
+  },
+  "computational_review": "not_rerun; numerical values checked against existing reports and JSON, no new numerical experiment",
+  "scientific_review": "editorial consistency only; no independent anatomical validation or clinical claim",
+  "artifacts": [
+    {
+      "notebook": "21.17_MP05_Статистическая_модель_формы.ipynb",
+      "notebook_sha256": "9be8b187178e8957f059ee9cc294c147f9a3dff7c9fde14b7abbd208fd3183f6",
+      "markdown_full_text_sha256": "4696ef1753e0e0a60cf78dcd5c856662ea4f95a30c13a3720d16d240f9efb4fb",
+      "html": "21.17_MP05_Статистическая_модель_формы.html",
+      "html_sha256": "facde1d30026895363201afcae643b7e5890efa733110456c98751b54539063b",
+      "html_visible_text_sha256": "0aa6b74b8482fa2ae0822f621ec40c1bfed1116731c94dda370cfa1a1745391f",
+      "markdown_cells": 6,
+      "html_tables": 2
+    },
+    {
+      "notebook": "21.18_MP06_Суррогат_движения.ipynb",
+      "notebook_sha256": "d8ab43704fa076c7d9bc4eb464237d7de208959e6f481bcba61f753d7c1dd701",
+      "markdown_full_text_sha256": "e09cd7824c0fe64f39a840e0362ec715c863dd1bb9a93cb4c41239de169c95a0",
+      "html": "21.18_MP06_Суррогат_движения.html",
+      "html_sha256": "4e2a6ec96f25d153b273eed304d41d87816024aba19186acebf2eff64c5adccd",
+      "html_visible_text_sha256": "4ec6dfbc2127c3e5ef498ad3a6bfc990266cabe273f38ff8597ded2b482373e3",
+      "markdown_cells": 6,
+      "html_tables": 1
+    },
+    {
+      "notebook": "21.19_MP07_Прогноз_по_одной_КТ.ipynb",
+      "notebook_sha256": "9de45b045660cce7aacb5a0cc7a1016de1a38314b4fea25d6c267e86a074c86b",
+      "markdown_full_text_sha256": "b1d77054fbdefca483f145d3aa08e134ea2db9a6f1cc380e111cad98b5295d2e",
+      "html": "21.19_MP07_Прогноз_по_одной_КТ.html",
+      "html_sha256": "f4ea0ceb4b2d89545d9c7de66c0ebb0ed64c19a65b6c26425d8ec473c3199b98",
+      "html_visible_text_sha256": "18524c55565ff38b11d6371e257e0c47f6fa0dae38569ac4665298bea3fd3d2b",
+      "markdown_cells": 6,
+      "html_tables": 2
+    },
+    {
+      "notebook": "21.20_MP-08_Реконструкция_4D_КТ_preflight.ipynb",
+      "notebook_sha256": "d5d9bc98cb933fd33fd14bb5f1ec7a29f5cdfd7439a74c8da32935b77385f886",
+      "markdown_full_text_sha256": "4525a09aa751eba4adbaf4a31c61a6a9febec3b810f7be4628f74ad07b892ccf",
+      "html": "21.20_MP-08_Реконструкция_4D_КТ_preflight.html",
+      "html_sha256": "0a6c6a9c113911ea1968b6dec8fd3499b8afb80513e2017636d67081449a7073",
+      "html_visible_text_sha256": "f99d5b9afa4e6b58398191b372185acaed23e50007c25bc288676ed54db4be24",
+      "markdown_cells": 6,
+      "html_tables": 1
+    },
+    {
+      "notebook": "21.21_MP-09_USD_Omniverse_preflight.ipynb",
+      "notebook_sha256": "fb94ff181061167765ad26c5471db7500158781432ef1746bbe1c351ddc878f1",
+      "markdown_full_text_sha256": "a94834dc2ca582a2462cfd2d7dc91e7b46fa7b827c88c0b7583c8b701b697da8",
+      "html": "21.21_MP-09_USD_Omniverse_preflight.html",
+      "html_sha256": "94e81813a70b66a6a9515dcae22274d86a68c1def910fa50ed26e93d2566db95",
+      "html_visible_text_sha256": "79779b56373c7eb1234e51b6670aaaf598a9d03e577323925acf51cd5cc114a0",
+      "markdown_cells": 5,
+      "html_tables": 0
+    }
+  ]
+}

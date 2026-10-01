@@ -1,0 +1,80 @@
+{
+  "record_type": "hash_bound_russian_scientific_prose_review",
+  "created_utc": "2026-10-01T07:10:40+00:00",
+  "scope": "Only four MP01–MP04 notebooks and their corresponding HTML exports; no execution or scientific recalculation.",
+  "authority": "russian-scientific-prose skill: references/russian-prose.md; policy/languages/ru/ru.yaml; Colab Notebooks/AGENTS.md",
+  "review_method": "После последней правки заголовков проверены по порядку все читательские тексты четырёх HTML и Markdown-ячейки; код, результаты и метрики не пересчитывались. Хэши notebook и HTML — SHA-256 байтов файлов; reader_text — SHA-256 UTF-8 текста элемента main, извлечённого BeautifulSoup через get_text(\" \", strip=True).",
+  "language_checks": [
+    "language.ru.hash-bound-final-review",
+    "language.ru.reader-facing-clarity",
+    "language.ru.encoding",
+    "language.ru.formula-where"
+  ],
+  "semantic_review_attestation": {
+    "scientific_headings": "checked",
+    "technical_terminology_and_scope": "checked",
+    "derived_objects_inputs_construction_independence_role": "checked",
+    "direct_classification_and_meaningful_contrasts": "checked",
+    "idiomatic_register_referents_cohesion": "checked",
+    "facts_assumptions_model_results_limits_preserved": "checked",
+    "unresolved_findings": []
+  },
+  "technical_status": "nbformat valid; code cells and outputs unchanged from HEAD; relative links resolve; HTML has no code input; no notebook execution",
+  "computational_status": "not_run; existing numerical results only, with source reports cited",
+  "scientific_status": "claims checked against cited local reports; no independent anatomical validation established",
+  "language_status": "passed_for_recorded_hashes_only",
+  "artifacts": [
+    {
+      "notebook": "20.18_MP01_Сопоставление_масок_MONAI_Physio.ipynb",
+      "notebook_sha256": "bbf97d6f46bcd614f917131745d9a6e3df619b9efefcb7be1b3a18f52f004271",
+      "html": "20.18_MP01_Сопоставление_масок_MONAI_Physio.html",
+      "html_sha256": "3d9256214bc4036490e384643acbeb50e75d0d66c9b35c647a72f3fca69c5e11",
+      "reader_text_sha256": "ebda9e337f039f4184eab7964f430b2a067b2c8ab9ff5ec07b4a26d112966016",
+      "semantic_inventory": {
+        "question": "Согласие автоматических сердечных масок MONAI Physio и отдельного TotalSegmentator v2.",
+        "evidence": "Фаза 00 Ника, 12 фаз Ника, 20 фаз исторической КТ; маски, хэши, Dice и объёмы из существующих отчётов.",
+        "uncertainty": "Нет независимого принятого анатомического контура; прямые исторические контуры не ослеплены.",
+        "conclusion": "Техническая альтернативность обёртки; преимущество анатомической точности не показано."
+      }
+    },
+    {
+      "notebook": "20.19_MP02_Маска_поверхность_FEM.ipynb",
+      "notebook_sha256": "72c3bdf8902ff2ecf9ed34a13214d56b5931da7aa2ea9d238766a4e52fc7ea4f",
+      "html": "20.19_MP02_Маска_поверхность_FEM.html",
+      "html_sha256": "d0283f1af143a2be183a01e3140ded0ac6068e32acc0b194f870b0c9c6d667ea",
+      "reader_text_sha256": "07e57ff72d051fd7ef42fd510899002c3499acb32db06d165fe24e4555c71868",
+      "semantic_inventory": {
+        "question": "Топология поверхности и чувствительность модельного электрического ответа к способу задания сердечной области.",
+        "evidence": "Геометрический пилот highres; 24 сочетания четырёх фаз Ника и шести монтажей в одной FEM-постановке.",
+        "uncertainty": "Нет анатомического допуска фазовых масок и независимой границы ошибки карты КТ→FEM; сеточная сходимость эффекта не проверена.",
+        "conclusion": "Новый highres-кандидат имеет четыре поверхностные компоненты; модельный фазовый контраст меняет знак в трёх сочетаниях."
+      }
+    },
+    {
+      "notebook": "21.15_MP03_Регистрация_фаз_4D_КТ.ipynb",
+      "notebook_sha256": "0f86cf33daadb74ba714252e29fc8c2621ace72e5f66ff0add8b74b2ca70feff",
+      "html": "21.15_MP03_Регистрация_фаз_4D_КТ.html",
+      "html_sha256": "3d9a453895f6df2bc87488b01b18904da59b61115fca0d4d788a70c8cd089cd2",
+      "reader_text_sha256": "ea0f4b92343c3200416f422d82a025c0af09d6b6a1357967d9be1debd0993b2e",
+      "semantic_inventory": {
+        "question": "Внутренняя согласованность и техническая допустимость регистрации 4D-КТ.",
+        "evidence": "11 полноразрешённых пар Ника; отдельный фазовый контроль TSv2; исторические уменьшенные и полноразрешённые пары Георга.",
+        "uncertainty": "Положительный дискретный якобиан и совпадение с автоматической маской не доказывают истинное движение.",
+        "conclusion": "Технические поля-кандидаты, включая отрицательный результат складок и почти нулевой выигрыш фазы 10; анатомический допуск не получен."
+      }
+    },
+    {
+      "notebook": "21.16_MP04_Согласованная_4D_геометрия.ipynb",
+      "notebook_sha256": "e146ae35809134717a3108f2e1dd9062c5087d760628dbe0fb5b82bc6779a784",
+      "html": "21.16_MP04_Согласованная_4D_геометрия.html",
+      "html_sha256": "53213ed8302367f19f1b83d932b5aeeec5632b41ec8a33f0688edc5cdc77518c",
+      "reader_text_sha256": "4e86adbbc20fe1fb7cfd7701cf9c6b29e1de5d3197865a6f9005ad644836444c",
+      "semantic_inventory": {
+        "question": "Сохранение индексов и связности одной поверхности при переносе между фазами.",
+        "evidence": "11 перенесённых поверхностей Ника; исторические две пары Георга на двух сетках.",
+        "uncertainty": "Совпадение индексов вершин не является прослеживанием одних анатомических точек; часть метрик ухудшается.",
+        "conclusion": "Согласованность представления получена, но анатомическая и FEM-пригодность не доказаны."
+      }
+    }
+  ]
+}

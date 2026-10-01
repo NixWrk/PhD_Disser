@@ -7801,8 +7801,10 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="21.15-%E2%80%94-MP-03.-%D0%A0%D0%B5%D0%B3%D0%B8%D1%81%D1%82%D1%80%D0%B0%D1%86%D0%B8%D1%8F-%D1%84%D0%B0%D0%B7-4D-%D0%9A%D0%A2">21.15 — MP-03. Регистрация фаз 4D-КТ<a class="anchor-link" href="#21.15-%E2%80%94-MP-03.-%D0%A0%D0%B5%D0%B3%D0%B8%D1%81%D1%82%D1%80%D0%B0%D1%86%D0%B8%D1%8F-%D1%84%D0%B0%D0%B7-4D-%D0%9A%D0%A2">¶</a></h1><p><strong>Статус: ограниченный прямой pilot MONAI Physio Greedy на двух парах одной КТ.</strong> Исполнены <code>phase_00 → phase_01</code> и <code>phase_00 → phase_07</code> Георга, не все 15 фаз. Это кандидатные поля и внутренний QC, без независимой анатомической валидации и без передачи в FEM/УО/ФВ.</p>
-<p>Связи: <a href="README.md">план ветки</a>, <a href="mp03_04_monai_pair.py">парный код Greedy</a>, <a href="mp03_04_pilot.py">жёсткий контроль</a>, <a href="mp03_04_report.md">полный отчёт</a>, <a href="21.16_MP04_%D0%A1%D0%BE%D0%B3%D0%BB%D0%B0%D1%81%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%B0%D1%8F_4D_%D0%B3%D0%B5%D0%BE%D0%BC%D0%B5%D1%82%D1%80%D0%B8%D1%8F.ipynb">MP-04</a>, <a href="https://project-monai.github.io/monai-physio/api/registration/greedy.html">официальный API Greedy</a>.</p>
+<h1 id="%D0%A0%D0%B5%D0%B3%D0%B8%D1%81%D1%82%D1%80%D0%B0%D1%86%D0%B8%D1%8F-%D1%84%D0%B0%D0%B7-4D-%D0%9A%D0%A2-%D0%B8-%D0%BA%D0%BE%D0%BD%D1%82%D1%80%D0%BE%D0%BB%D1%8C-%D0%BF%D0%BE%D0%BB%D1%8F-%D0%B4%D0%B5%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D0%B8%D0%B8">Регистрация фаз 4D-КТ и контроль поля деформации<a class="anchor-link" href="#%D0%A0%D0%B5%D0%B3%D0%B8%D1%81%D1%82%D1%80%D0%B0%D1%86%D0%B8%D1%8F-%D1%84%D0%B0%D0%B7-4D-%D0%9A%D0%A2-%D0%B8-%D0%BA%D0%BE%D0%BD%D1%82%D1%80%D0%BE%D0%BB%D1%8C-%D0%BF%D0%BE%D0%BB%D1%8F-%D0%B4%D0%B5%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D0%B8%D0%B8">¶</a></h1><h2 id="%D0%98%D1%81%D1%81%D0%BB%D0%B5%D0%B4%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D1%81%D0%BA%D0%B8%D0%B9-%D0%B2%D0%BE%D0%BF%D1%80%D0%BE%D1%81">Исследовательский вопрос<a class="anchor-link" href="#%D0%98%D1%81%D1%81%D0%BB%D0%B5%D0%B4%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D1%81%D0%BA%D0%B8%D0%B9-%D0%B2%D0%BE%D0%BF%D1%80%D0%BE%D1%81">¶</a></h2><p>Проверяется, может ли алгоритм <code>RegisterImagesGreedy</code> из MONAI Physio перенести форму сердца из фазы 00 в остальные фазы 4D-КТ при сохранении допустимой геометрии. Регистрация строится по интенсивностям КТ. Отдельная автоматическая маска TotalSegmentator v2 (TSv2) целевой фазы используется <strong>после расчёта поля</strong> как контроль совпадения, а не как цель подгонки. Такой контроль независим от поля регистрации, но не является ручной проверкой истинной анатомии.</p>
+<p>Основной индивидуальный опыт выполнен на <strong>Нике</strong>: сначала две пары на исходной сетке, затем все <strong>11 переходов</strong> из фазы 00. Ранний опыт на <strong>Георге</strong> (две пары на уменьшенной и исходной сетках) сохранён ниже как исторический методический пилот. Результаты разных людей, сеток и настроек сглаживания не объединяются в одну оценку точности.</p>
+<p>Dice — перекрытие бинарных масок, ASSD — среднее симметрическое расстояние их поверхностей, HD95 — 95-й процентиль симметрических расстояний. Определитель якобиана <code>det J</code> описывает локальное изменение объёма отображения; неположительное значение на проверенном узле указывает на складку или потерю ориентации. Положительность на дискретных узлах не гарантирует её между ними.</p>
+<p><a href="mp03_04_monai_pair.py">Код парной регистрации</a>, <a href="mp03_nix_full_cycle_report.md">пофазный отчёт Ника</a>, <a href="mp03_04_report.md">отчёт по Георгу</a> и <a href="21.16_MP04_%D0%A1%D0%BE%D0%B3%D0%BB%D0%B0%D1%81%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%B0%D1%8F_4D_%D0%B3%D0%B5%D0%BE%D0%BC%D0%B5%D1%82%D1%80%D0%B8%D1%8F.ipynb">следующий этап переноса поверхности</a> фиксируют происхождение результатов.</p>
 </div>
 </div>
 </div>
@@ -7812,43 +7814,43 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="%D0%9E%D1%81%D0%BD%D0%BE%D0%B2%D0%BD%D0%BE%D0%B9-%D1%80%D0%B0%D1%81%D1%87%D1%91%D1%82-%D0%BD%D0%B0-%D0%9D%D0%B8%D0%BA%D0%B5:-%D0%B8%D1%81%D1%85%D0%BE%D0%B4%D0%BD%D0%B0%D1%8F-%D1%81%D0%B5%D1%82%D0%BA%D0%B0-4D-%D0%9A%D0%A2,-28.09.2026">Основной расчёт на Нике: исходная сетка 4D-КТ, 28.09.2026<a class="anchor-link" href="#%D0%9E%D1%81%D0%BD%D0%BE%D0%B2%D0%BD%D0%BE%D0%B9-%D1%80%D0%B0%D1%81%D1%87%D1%91%D1%82-%D0%BD%D0%B0-%D0%9D%D0%B8%D0%BA%D0%B5:-%D0%B8%D1%81%D1%85%D0%BE%D0%B4%D0%BD%D0%B0%D1%8F-%D1%81%D0%B5%D1%82%D0%BA%D0%B0-4D-%D0%9A%D0%A2,-28.09.2026">¶</a></h2><p><strong>Статус:</strong> прямой технический расчёт на реальных фазах 00, 01 и 07 Ника, без независимой анатомической валидации. Предыдущие разделы о Георге сохранены как исторический пилот; основным индивидуальным результатом теперь является <a href="mp03_nix_fullres_report.md">отчёт Ника</a>. <a href="mp03_nix_reference_inventory.md">Инвентаризация проектов Inobitec</a> подтверждает связь одного SPJ с 12 фазами DICOM, но не наличие принятой ручной разметки этих фаз.</p>
-<p>КТ и автоматические <code>whole_heart</code> имеют исходную сетку <code>512×512×256</code>, шаг <code>0,765625×0,765625×0,625</code> мм. Crop <code>216×245×250</code> определён только по маске 00 с запасом 25 мм; CT-оптимизация не использовала целевую маску. Пары 00→01 и 00→07 обработаны Greedy без прореживания. В обоих полях итоговый sampled det J положителен после выбора сглаженного варианта 07; несглаженный 07 отклонён из-за 115 складок внутри auto-маски.</p>
+<h2 id="%D0%98%D1%81%D1%85%D0%BE%D0%B4%D0%BD%D0%BE%D0%B5-%D1%80%D0%B0%D0%B7%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5:-%D0%BF%D0%B0%D1%80%D1%8B-%D0%9D%D0%B8%D0%BA%D0%B0-00%E2%86%9201-%D0%B8-00%E2%86%9207">Исходное разрешение: пары Ника 00→01 и 00→07<a class="anchor-link" href="#%D0%98%D1%81%D1%85%D0%BE%D0%B4%D0%BD%D0%BE%D0%B5-%D1%80%D0%B0%D0%B7%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5:-%D0%BF%D0%B0%D1%80%D1%8B-%D0%9D%D0%B8%D0%BA%D0%B0-00%E2%86%9201-%D0%B8-00%E2%86%9207">¶</a></h2><p>КТ и автоматические маски <code>whole_heart</code> Ника имеют общую сетку <code>512×512×256</code> с шагом <code>0,765625×0,765625×0,625 мм</code>. Для регистрации использована исходная плотность вокселей. Область расчёта <code>216×245×250</code> выбрана <strong>только по маске 00</strong> с запасом 25 мм; целевая маска не определяла границы этой области (crop) и не входила в функцию регистрации. Миллиметры и NIfTI RAS проверены по манифесту конверсии при <code>unknown</code> в заголовке единиц; поля ITK заданы в LPS, мм. Фазам не назначены принятые фазы конца диастолы и систолы (ED/ES); дыхательное состояние не подтверждено.</p>
 <table>
 <thead>
 <tr>
-<th>Пара</th>
-<th style="text-align:right">Dice неподвижно → Greedy против auto-цели</th>
-<th style="text-align:right">ASSD, мм</th>
-<th style="text-align:right">Минимум det J</th>
+<th>Поле и вариант</th>
+<th style="text-align:right">Dice к отдельной маске: неподвижно → поле</th>
+<th style="text-align:right">ASSD, мм: неподвижно → поле</th>
+<th style="text-align:right">Минимум <code>det J</code></th>
 <th>Решение</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>00→01</td>
+<td>00→01, исходное сглаживание</td>
 <td style="text-align:right">0,93002 → 0,95304</td>
 <td style="text-align:right">1,395 → 0,888</td>
 <td style="text-align:right">0,179</td>
-<td>Технический кандидат; повтор выявил небольшую межзапускную вариацию</td>
+<td>технический кандидат</td>
 </tr>
 <tr>
 <td>00→07, исходное сглаживание</td>
 <td style="text-align:right">0,92654 → 0,96280</td>
 <td style="text-align:right">1,538 → 0,745</td>
 <td style="text-align:right">−0,082</td>
-<td>Отклонён: 115 складок</td>
+<td>отклонён: 115 неположительных узлов</td>
 </tr>
 <tr>
 <td>00→07, усиленное сглаживание</td>
 <td style="text-align:right">0,92654 → 0,95905</td>
 <td style="text-align:right">1,538 → 0,826</td>
 <td style="text-align:right">0,547</td>
-<td>Технический кандидат</td>
+<td>технический кандидат</td>
 </tr>
 </tbody>
 </table>
-<p>На верхнем срезе всех трёх фаз наружная маска <code>whole_heart</code> касается границы FOV. Последующая <a href="mp03_nix_fov_contact_report.md">проверка трёх масок на всех фазах</a> показала, что <code>blood_pool</code> и <code>myocardium</code> границы не касаются. По уточнению автора, 4D-КТ имеет меньший охват, чем статическая КТ; это касание само по себе не является проблемой. Маски TotalSegmentator v2 являются независимыми по фазе автоматическими выходами, но <strong>не независимой ручной анатомической разметкой</strong>. Геометрию нельзя допускать к FEM по одному улучшению Dice. Все плотные поля и изображения просмотра остаются локально в <code>runs/</code>.</p>
+<p>Усиленное сглаживание устранило найденные складки на узлах проверенного crop ценой небольшого ухудшения Dice относительно отвергнутого варианта. Повтор 00→01 с теми же настройками дал близкий, но не побитово одинаковый результат. Таблица описывает <strong>внутреннее согласие с автоматической целевой маской</strong>, а не точность движения сердца.</p>
+<p>Маска <code>whole_heart</code> касается верхнего края КТ, потому что анатомический охват 4D-серии меньше статической. Отдельные <code>blood_pool</code> и <code>myocardium</code> верхней грани не достигают. Это касание само по себе не считается ошибкой или запретом расчёта в наблюдаемой области. <a href="mp03_nix_fullres_report.md">Полный отчёт двух пар</a>, <a href="mp03_nix_fov_contact_report.md">проверка охвата</a> и <a href="mp03_nix_reference_inventory.md">инвентаризация референса</a> содержат QC и границы интерпретации.</p>
 </div>
 </div>
 </div>
@@ -7858,8 +7860,9 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="%D0%94%D0%BE%D0%BF%D0%BE%D0%BB%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5-30.09.2026:-%D0%B2%D1%81%D0%B5-%D1%84%D0%B0%D0%B7%D1%8B-%D0%9D%D0%B8%D0%BA%D0%B0-%D0%BD%D0%B0-%D0%B8%D1%81%D1%85%D0%BE%D0%B4%D0%BD%D0%BE%D0%B9-%D1%81%D0%B5%D1%82%D0%BA%D0%B5">Дополнение 30.09.2026: все фазы Ника на исходной сетке<a class="anchor-link" href="#%D0%94%D0%BE%D0%BF%D0%BE%D0%BB%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5-30.09.2026:-%D0%B2%D1%81%D0%B5-%D1%84%D0%B0%D0%B7%D1%8B-%D0%9D%D0%B8%D0%BA%D0%B0-%D0%BD%D0%B0-%D0%B8%D1%81%D1%85%D0%BE%D0%B4%D0%BD%D0%BE%D0%B9-%D1%81%D0%B5%D1%82%D0%BA%D0%B5">¶</a></h2><p><a href="mp03_nix_full_cycle_report.md">Полный внутренний экран</a> охватывает 11 пар <code>phase_00→phase_01…11</code> на исходном разрешении <code>512×512×256</code>, с одинаковым сглаживанием <code>3.0vox 1.0vox</code>. Dice к отдельным автоматическим целевым маскам вырос во всех парах в среднем на <code>0,0282</code>; минимум измеренного det J <code>0,410</code>, неположительных узлов в сохранённых полях нет. Почти нулевой выигрыш фазы 10 (<code>+0,0001</code> Dice) и остаточный Dice <code>0,901</code> фазы 03 записаны как ограничения. Старое поле 00→07 со 115 складками не включено.</p>
-<p>Автоматические маски используются только для внутреннего QC. Независимой принятой ручной фазовой разметки нет. <code>whole_heart</code> касается верхнего края FOV во всех фазах из-за меньшего охвата 4D-КТ по сравнению со статической; <a href="mp03_nix_fov_contact_report.md">пофазная и вращаемая 3D-визуализация</a> показывает это касание, которое само по себе не блокирует расчёт. Отдельные <code>blood_pool</code> и <code>myocardium</code> края не достигают. Без независимой анатомической проверки и оценки ошибки карты КТ→FEM поля не получили <strong>анатомического допуска</strong> и результаты не считаются измеренной точностью движения сердца. Позднее четыре поля использованы только в <a href="mp02_nix_paired_fem_report.md">исследовательском парном FEM-опыте</a>. <a href="mp03_nix_full_cycle.json">Пофазные обезличенные показатели</a> сохраняют хэши и параметры.</p>
+<h2 id="%D0%92%D1%81%D0%B5-%D1%86%D0%B5%D0%BB%D0%B5%D0%B2%D1%8B%D0%B5-%D1%84%D0%B0%D0%B7%D1%8B-%D0%9D%D0%B8%D0%BA%D0%B0">Все целевые фазы Ника<a class="anchor-link" href="#%D0%92%D1%81%D0%B5-%D1%86%D0%B5%D0%BB%D0%B5%D0%B2%D1%8B%D0%B5-%D1%84%D0%B0%D0%B7%D1%8B-%D0%9D%D0%B8%D0%BA%D0%B0">¶</a></h2><p>На исходной сетке выполнены <strong>11 пар <code>phase_00→phase_01…11</code></strong> с одинаковым сглаживанием <code>3.0vox 1.0vox</code>. Область расчёта определялась исходной маской 00 с запасом 25 мм; отдельные целевые маски служили контролем. Средний прирост Dice относительно неподвижной маски составил <strong>0,0282</strong>; на всех проверенных узлах сохранённых полей <code>det J&gt;0</code>, наименьшее измеренное значение — <strong>0,410</strong>. Это технический QC, а не независимая анатомическая валидация.</p>
+<p>На фазе 10 прирост Dice всего <strong>0,0001</strong>. У фазы 03 после регистрации Dice остаётся около <strong>0,901</strong>, а 95-й процентиль расстояния перенесённых вершин до отдельной автоматической поверхности достигает <strong>7,016 мм</strong>. Эти отрицательные и ограничивающие наблюдения важны при дальнейшем использовании поля. Таблица всех фаз, параметры и хэши — в <a href="mp03_nix_full_cycle_report.md">пофазном отчёте</a> и <a href="mp03_nix_full_cycle.json">агрегате</a>. Ранее отвергнутое поле 00→07 со 115 складками в общий ряд не включено; прежняя пара 00→01 пересчитана с единым более сильным сглаживанием.</p>
+<p>Ни одно поле не получило <strong>анатомического допуска</strong>. Позднее четыре технических поля были применены только в <a href="mp02_nix_paired_fem_report.md">исследовательском парном FEM-сравнении</a>. Оно оценивает чувствительность модельного импеданса, а не истинность движения и не функции сердца.</p>
 </div>
 </div>
 </div>
@@ -7869,16 +7872,50 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="%D0%A4%D0%B0%D0%B7%D0%BE%D0%B2%D1%8B%D0%B9-%D0%BA%D0%BE%D0%BD%D1%82%D1%80%D0%BE%D0%BB%D1%8C-%D0%9D%D0%B8%D0%BA%D0%B0-%D0%BF%D0%BE-TotalSegmentator-v2">Фазовый контроль Ника по TotalSegmentator v2<a class="anchor-link" href="#%D0%A4%D0%B0%D0%B7%D0%BE%D0%B2%D1%8B%D0%B9-%D0%BA%D0%BE%D0%BD%D1%82%D1%80%D0%BE%D0%BB%D1%8C-%D0%9D%D0%B8%D0%BA%D0%B0-%D0%BF%D0%BE-TotalSegmentator-v2">¶</a></h2><p>[РЕШЕНИЕ АВТОРА, 30.09.2026] Для этого опыта использовать отдельные фазовые
-маски TSv2 как контроль переноса маски 00. <a href="mp03_nix_ts2_reference_report.md">Полный QC</a>
-проверил грид исходной КТ, хэши и происхождение масок, а также Dice и метрики
-поверхности для фаз 01, 03, 07 и 10. На полной сетке Greedy повысил Dice
-относительно неподвижной маски на фазах 01, 03 и 07; на 10 выигрыш минимален.
-По фазе 03 остаётся наибольшее расхождение поверхности (HD95 7,30 мм).</p>
-<p>[ГРАНИЦА ВЫВОДА] Маски TSv2 независимы от поля Greedy, но оба варианта
-автоматические. Оценка анатомической точности относительно ручной разметки
-остаётся открытой. Связанный <a href="mp02_nix_paired_fem_report.md">парный FEM-результат</a>
-использует именно эти фазовые маски и прежнюю фиксированную постановку.</p>
+<h2 id="%D0%A4%D0%B0%D0%B7%D0%BE%D0%B2%D1%8B%D0%B5-%D0%BC%D0%B0%D1%81%D0%BA%D0%B8-TSv2-%D0%BA%D0%B0%D0%BA-%D0%BA%D0%BE%D0%BD%D1%82%D1%80%D0%BE%D0%BB%D1%8C-%D0%BD%D0%B0-%D0%BF%D0%BE%D0%BB%D0%BD%D0%BE%D0%BC-%D1%80%D0%B0%D0%B7%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B8">Фазовые маски TSv2 как контроль на полном разрешении<a class="anchor-link" href="#%D0%A4%D0%B0%D0%B7%D0%BE%D0%B2%D1%8B%D0%B5-%D0%BC%D0%B0%D1%81%D0%BA%D0%B8-TSv2-%D0%BA%D0%B0%D0%BA-%D0%BA%D0%BE%D0%BD%D1%82%D1%80%D0%BE%D0%BB%D1%8C-%D0%BD%D0%B0-%D0%BF%D0%BE%D0%BB%D0%BD%D0%BE%D0%BC-%D1%80%D0%B0%D0%B7%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B8">¶</a></h2><p>По решению автора отдельно полученные маски <code>whole_heart</code> TSv2 приняты как <strong>автоматический контроль переноса фазы 00</strong>. Для фаз 00, 01, 03, 07 и 10 проверены происхождение, бинарность, соответствие исходной КТ по сетке и аффинной матрице, а также хэши использованных в FEM масок. Вариант <code>products_v2</code> удаляет из прямого выхода TSv2 лишь небольшие отдельные фрагменты; он не добавляет вокселей. <a href="mp03_nix_ts2_reference_report.md">Протокол фазового контроля</a> описывает эту обработку.</p>
+<table>
+<thead>
+<tr>
+<th>Целевая фаза</th>
+<th style="text-align:right">Dice без переноса</th>
+<th style="text-align:right">Dice после Greedy</th>
+<th style="text-align:right">ASSD после Greedy, мм</th>
+<th style="text-align:right">HD95 после Greedy, мм</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01</td>
+<td style="text-align:right">0,93002</td>
+<td style="text-align:right">0,94897</td>
+<td style="text-align:right">0,98</td>
+<td style="text-align:right">3,75</td>
+</tr>
+<tr>
+<td>03</td>
+<td style="text-align:right">0,85213</td>
+<td style="text-align:right">0,90099</td>
+<td style="text-align:right">1,88</td>
+<td style="text-align:right">7,30</td>
+</tr>
+<tr>
+<td>07</td>
+<td style="text-align:right">0,92654</td>
+<td style="text-align:right">0,95905</td>
+<td style="text-align:right">0,83</td>
+<td style="text-align:right">2,76</td>
+</tr>
+<tr>
+<td>10</td>
+<td style="text-align:right">0,96249</td>
+<td style="text-align:right">0,96259</td>
+<td style="text-align:right">0,72</td>
+<td style="text-align:right">2,50</td>
+</tr>
+</tbody>
+</table>
+<p>Фаза 03 остаётся наиболее расходящейся, а выигрыш 10 практически отсутствует. Оценка поверхности вычислена по полным бинарным объёмам, поэтому её HD95 <strong>7,30 мм</strong> для фазы 03 не следует смешивать с <strong>7,016 мм</strong> для выборки перенесённых вершин в общем 11-фазном QC: это разные геометрические объекты и правила измерения.</p>
+<p>Контрольная маска каждой фазы вычислена независимо от Greedy, но обе стороны сравнения автоматические. Их согласие не определяет абсолютную ошибку границы сердца. Совпадение хэшей с <a href="mp02_nix_paired_fem_report.md">парным FEM-опытом</a> подтверждает происхождение входов, но не превращает TSv2 в ручной анатомический референс.</p>
 </div>
 </div>
 </div>
@@ -7888,8 +7925,8 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="%D0%92%D1%85%D0%BE%D0%B4%D1%8B,-%D1%84%D0%B0%D0%B7%D1%8B-%D0%B8-%D0%B3%D0%B5%D0%BE%D0%BC%D0%B5%D1%82%D1%80%D0%B8%D1%8F">Входы, фазы и геометрия<a class="anchor-link" href="#%D0%92%D1%85%D0%BE%D0%B4%D1%8B,-%D1%84%D0%B0%D0%B7%D1%8B-%D0%B8-%D0%B3%D0%B5%D0%BE%D0%BC%D0%B5%D1%82%D1%80%D0%B8%D1%8F">¶</a></h2><p><strong>Факт о данных.</strong> CT HU-NIfTI и <code>whole_heart</code> маски TotalSegmentator v2 — существующие продукты Georg. Маски не являются независимым референсом. Исходные данные остаются локально. Для каждой пары SHA-256 входов сохранены в <a href="mp03_04_georg_00_01_monai_qc.json">01 QC</a> и <a href="mp03_04_georg_00_07_monai_qc.json">07 QC</a>. Номера фаз не означают ED/ES или подтверждённый общий R–R цикл; дыхательное состояние отдельно не подтверждено.</p>
-<p><strong>Контроль единиц.</strong> Заголовок NIfTI сообщает <code>unknown</code> для пространства. Миллиметры и RAS установлены по локальному <code>conversion_manifest.json</code> (<code>voxel_spacing_mm=[0.458984,0.458984,0.625]</code>, <code>affine_coordinate_system=NIfTI RAS+</code>) и сверены с affine. Все 15 CT имеют форму <code>512×512×256</code> и общий affine; выбранные маски им соответствуют. При подготовке ITK изображения переведены из RAS в LPS без изменения масштаба.</p>
+<h2 id="%D0%98%D1%81%D1%82%D0%BE%D1%80%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9-%D0%BF%D0%B8%D0%BB%D0%BE%D1%82-%D0%93%D0%B5%D0%BE%D1%80%D0%B3%D0%B0:-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D0%B5-%D0%B8-%D0%BC%D0%B0%D1%81%D1%88%D1%82%D0%B0%D0%B1">Исторический пилот Георга: данные и масштаб<a class="anchor-link" href="#%D0%98%D1%81%D1%82%D0%BE%D1%80%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9-%D0%BF%D0%B8%D0%BB%D0%BE%D1%82-%D0%93%D0%B5%D0%BE%D1%80%D0%B3%D0%B0:-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D0%B5-%D0%B8-%D0%BC%D0%B0%D1%81%D1%88%D1%82%D0%B0%D0%B1">¶</a></h2><p>Ниже сохранён первоначальный двухпарный расчёт на 4D-КТ <strong>Георга</strong>. Его результаты описывают проверку метода до перехода к основному опыту Ника; переносить их численно на Ника нельзя. Исходная серия Георга содержит 15 фаз. Для пар 00→01 и 00→07 использованы КТ в единицах Хаунсфилда (HU) и автоматические маски <code>whole_heart</code> TSv2. Их исходная сетка <code>512×512×256</code>, шаг <code>0,458984×0,458984×0,625 мм</code>. Пространственная единица NIfTI обозначена <code>unknown</code>; RAS и миллиметры проверены по локальному манифесту конверсии и аффинной матрице. В ITK использованы физические координаты LPS, мм. SHA входов сохранены в <a href="mp03_04_georg_00_01_monai_qc.json">агрегате 01</a> и <a href="mp03_04_georg_00_07_monai_qc.json">агрегате 07</a>.</p>
+<p>Для раннего сравнения сформирована общая <strong>уменьшенная</strong> сетка с шагом около <code>1,377×1,377×1,25 мм</code>. На ней оценены неподвижный, жёсткий и деформируемый варианты. Позднейший расчёт на исходной сетке приведён отдельно ниже. Номер фазы не подтверждает ED/ES, точное время события или единый принятый R–R цикл; дыхание отдельно не установлено.</p>
 </div>
 </div>
 </div>
@@ -7899,8 +7936,8 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="%D0%98%D1%81%D0%BF%D0%BE%D0%BB%D0%BD%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9-%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-%D0%B8-%D0%BD%D0%B0%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5">Исполненный метод и направление<a class="anchor-link" href="#%D0%98%D1%81%D0%BF%D0%BE%D0%BB%D0%BD%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9-%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-%D0%B8-%D0%BD%D0%B0%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5">¶</a></h2><p>Версия <code>monai_physio=2026.09.1</code>. Официальный <code>RegisterImagesGreedy.register</code> использует <code>picsl_greedy</code> как in-memory нативный Python-модуль; отдельный <code>greedy.exe</code> не нужен. CT открыты nibabel и переданы ITK в памяти; обход Unicode-пути через <code>subst</code> не понадобился. CUDA была доступна, однако Greedy исполнялся на CPU с четырьмя потоками. Установка окружения не выполнялась.</p>
-<p>Для каждой пары <code>fixed=цель</code>, <code>moving=phase_00</code>. Greedy: аффинная инициализация + деформируемый шаг, CC/WNCC, итерации <code>[12,6,3]</code>, сглаживание <code>2.0vox 0.5vox</code>. Маски определили общий crop 20 мм и использованы для оценки, <strong>не</strong> для подгонки. Шаг уменьшенной общей сетки около <code>1.377×1.377×1.25</code> мм. <code>fixed_to_moving</code> отображает физическую точку цели в источник (ITK LPS, мм) и нужен для pullback resampling маски/CT; <code>moving_to_fixed</code> переносит вершины источника в цель. В JSON сохранён контроль композиции этих преобразований.</p>
+<h2 id="%D0%9C%D0%B5%D1%82%D0%BE%D0%B4-%D1%80%D0%B5%D0%B3%D0%B8%D1%81%D1%82%D1%80%D0%B0%D1%86%D0%B8%D0%B8-%D0%BD%D0%B0-%D1%83%D0%BC%D0%B5%D0%BD%D1%8C%D1%88%D0%B5%D0%BD%D0%BD%D0%BE%D0%B9-%D1%81%D0%B5%D1%82%D0%BA%D0%B5-%D0%93%D0%B5%D0%BE%D1%80%D0%B3%D0%B0">Метод регистрации на уменьшенной сетке Георга<a class="anchor-link" href="#%D0%9C%D0%B5%D1%82%D0%BE%D0%B4-%D1%80%D0%B5%D0%B3%D0%B8%D1%81%D1%82%D1%80%D0%B0%D1%86%D0%B8%D0%B8-%D0%BD%D0%B0-%D1%83%D0%BC%D0%B5%D0%BD%D1%8C%D1%88%D0%B5%D0%BD%D0%BD%D0%BE%D0%B9-%D1%81%D0%B5%D1%82%D0%BA%D0%B5-%D0%93%D0%B5%D0%BE%D1%80%D0%B3%D0%B0">¶</a></h2><p>MONAI Physio версии <code>2026.09.1</code> вызвал модуль <code>picsl_greedy</code> в памяти на CPU. Для каждой пары <code>fixed</code> — целевая КТ, <code>moving</code> — фаза 00. Использованы аффинная инициализация, деформируемый шаг, метрика CC/WNCC, итерации <code>[12,6,3]</code> и сглаживание <code>2.0vox 0.5vox</code>. Маски определяли общий crop с запасом 20 мм и применялись для оценки; в подгонку поля они не входили.</p>
+<p>Отображение <code>fixed_to_moving</code> ведёт физическую точку цели в источник и нужно для переноса значения исходной КТ или маски на сетку цели (pullback). Обратное <code>moving_to_fixed</code> ведёт вершину исходной поверхности в целевую фазу. Направления нельзя менять местами. Поле задано в LPS, мм; при переходе из NIfTI RAS изменены знаки координат x и y без изменения масштаба. Контроль композиции двух отображений сохранён в парных JSON. Код расчёта — <a href="mp03_04_monai_pair.py">парный скрипт</a>.</p>
 </div>
 </div>
 </div>
@@ -7910,12 +7947,12 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="%D0%A1%D1%80%D0%B0%D0%B2%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5-%D0%BD%D0%B0-%D0%BE%D0%B4%D0%BD%D0%BE%D0%B9-%D1%83%D0%BC%D0%B5%D0%BD%D1%8C%D1%88%D0%B5%D0%BD%D0%BD%D0%BE%D0%B9-%D1%81%D0%B5%D1%82%D0%BA%D0%B5">Сравнение на одной уменьшенной сетке<a class="anchor-link" href="#%D0%A1%D1%80%D0%B0%D0%B2%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5-%D0%BD%D0%B0-%D0%BE%D0%B4%D0%BD%D0%BE%D0%B9-%D1%83%D0%BC%D0%B5%D0%BD%D1%8C%D1%88%D0%B5%D0%BD%D0%BD%D0%BE%D0%B9-%D1%81%D0%B5%D1%82%D0%BA%D0%B5">¶</a></h2><table>
+<h2 id="%D0%A0%D0%B5%D0%B7%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%82-%D1%80%D0%B5%D0%B3%D0%B8%D1%81%D1%82%D1%80%D0%B0%D1%86%D0%B8%D0%B8-%D0%93%D0%B5%D0%BE%D1%80%D0%B3%D0%B0-%D0%BD%D0%B0-%D1%83%D0%BC%D0%B5%D0%BD%D1%8C%D1%88%D0%B5%D0%BD%D0%BD%D0%BE%D0%B9-%D1%81%D0%B5%D1%82%D0%BA%D0%B5">Результат регистрации Георга на уменьшенной сетке<a class="anchor-link" href="#%D0%A0%D0%B5%D0%B7%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%82-%D1%80%D0%B5%D0%B3%D0%B8%D1%81%D1%82%D1%80%D0%B0%D1%86%D0%B8%D0%B8-%D0%93%D0%B5%D0%BE%D1%80%D0%B3%D0%B0-%D0%BD%D0%B0-%D1%83%D0%BC%D0%B5%D0%BD%D1%8C%D1%88%D0%B5%D0%BD%D0%BD%D0%BE%D0%B9-%D1%81%D0%B5%D1%82%D0%BA%D0%B5">¶</a></h2><table>
 <thead>
 <tr>
 <th>Цель</th>
 <th>Метод</th>
-<th style="text-align:right">Dice с отдельной auto mask</th>
+<th style="text-align:right">Dice к отдельной маске</th>
 <th style="text-align:right">Ошибка центра, мм</th>
 <th style="text-align:right">Разница объёма, мл</th>
 <th style="text-align:right">ASSD / HD95, мм</th>
@@ -7925,61 +7962,61 @@ a.anchor-link {
 <tbody>
 <tr>
 <td>01</td>
-<td>Неподвижный</td>
-<td style="text-align:right">0.96013</td>
-<td style="text-align:right">0.884</td>
-<td style="text-align:right">+17.773</td>
-<td style="text-align:right">0.902 / 2.754</td>
+<td>неподвижный</td>
+<td style="text-align:right">0,96013</td>
+<td style="text-align:right">0,884</td>
+<td style="text-align:right">+17,773</td>
+<td style="text-align:right">0,902 / 2,754</td>
 <td style="text-align:right">5394</td>
 </tr>
 <tr>
 <td>01</td>
-<td>Жёсткий</td>
-<td style="text-align:right">0.96013</td>
-<td style="text-align:right">0.884</td>
-<td style="text-align:right">+17.773</td>
-<td style="text-align:right">0.902 / 2.754</td>
+<td>жёсткий</td>
+<td style="text-align:right">0,96013</td>
+<td style="text-align:right">0,884</td>
+<td style="text-align:right">+17,773</td>
+<td style="text-align:right">0,902 / 2,754</td>
 <td style="text-align:right">4993</td>
 </tr>
 <tr>
 <td>01</td>
 <td>Greedy</td>
-<td style="text-align:right"><strong>0.97226</strong></td>
-<td style="text-align:right"><strong>0.475</strong></td>
-<td style="text-align:right"><strong>+2.725</strong></td>
-<td style="text-align:right"><strong>0.637 / 1.860</strong></td>
+<td style="text-align:right"><strong>0,97226</strong></td>
+<td style="text-align:right"><strong>0,475</strong></td>
+<td style="text-align:right"><strong>+2,725</strong></td>
+<td style="text-align:right"><strong>0,637 / 1,860</strong></td>
 <td style="text-align:right"><strong>1278</strong></td>
 </tr>
 <tr>
 <td>07</td>
-<td>Неподвижный</td>
-<td style="text-align:right">0.94869</td>
-<td style="text-align:right"><strong>0.595</strong></td>
-<td style="text-align:right">+29.198</td>
-<td style="text-align:right">1.145 / 3.750</td>
+<td>неподвижный</td>
+<td style="text-align:right">0,94869</td>
+<td style="text-align:right"><strong>0,595</strong></td>
+<td style="text-align:right">+29,198</td>
+<td style="text-align:right">1,145 / 3,750</td>
 <td style="text-align:right">7017</td>
 </tr>
 <tr>
 <td>07</td>
-<td>Жёсткий</td>
-<td style="text-align:right">0.94869</td>
-<td style="text-align:right"><strong>0.595</strong></td>
-<td style="text-align:right">+29.198</td>
-<td style="text-align:right">1.145 / 3.750</td>
+<td>жёсткий</td>
+<td style="text-align:right">0,94869</td>
+<td style="text-align:right"><strong>0,595</strong></td>
+<td style="text-align:right">+29,198</td>
+<td style="text-align:right">1,145 / 3,750</td>
 <td style="text-align:right">6498</td>
 </tr>
 <tr>
 <td>07</td>
 <td>Greedy</td>
-<td style="text-align:right"><strong>0.96713</strong></td>
-<td style="text-align:right">0.648</td>
-<td style="text-align:right"><strong>+2.266</strong></td>
-<td style="text-align:right"><strong>0.722 / 2.314</strong></td>
+<td style="text-align:right"><strong>0,96713</strong></td>
+<td style="text-align:right">0,648</td>
+<td style="text-align:right"><strong>+2,266</strong></td>
+<td style="text-align:right"><strong>0,722 / 2,314</strong></td>
 <td style="text-align:right"><strong>1605</strong></td>
 </tr>
 </tbody>
 </table>
-<p><strong>Результат модели:</strong> Greedy снизил CT-ошибку и расхождения масок на обеих парах. Для 07 ошибка центра стала <strong>больше</strong>. Эти числа измеряют согласие с отдельными автоматическими масками того же алгоритма, а не истинную ошибку движения. Старые полновоксельные значения жёсткого pilot не включены в эту таблицу из-за другого разрешения.</p>
+<p><code>CT-MSE</code> — средний квадрат разности интенсивностей КТ на области оценки; он измеряется в HU². Greedy уменьшил эту ошибку и расхождение автоматических масок в обеих парах. Для 07 ошибка центра <strong>выросла</strong> с 0,595 до 0,648 мм. Согласие с отдельной маской TSv2 не отделяет истинное движение от ошибки сегментации. Числа исходного разрешения сюда не добавлены из-за различия сеток.</p>
 </div>
 </div>
 </div>
@@ -7989,38 +8026,38 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="%D0%9F%D0%BE%D0%BB%D0%B5,-%D1%81%D0%BA%D0%BB%D0%B0%D0%B4%D0%BA%D0%B8-%D0%B8-FOV">Поле, складки и FOV<a class="anchor-link" href="#%D0%9F%D0%BE%D0%BB%D0%B5,-%D1%81%D0%BA%D0%BB%D0%B0%D0%B4%D0%BA%D0%B8-%D0%B8-FOV">¶</a></h2><p>Плотные pullback-поля записаны только локально в исключённые из Git <code>runs/mp03_04_greedy_field_00_01.npz</code> и <code>runs/mp03_04_greedy_field_00_07.npz</code>. Оси массива <code>z,y,x,component_LPS_xyz</code>; вектор смещения задан в мм. Хэши полей и параметры сетки находятся в парных JSON.</p>
+<h2 id="%D0%9A%D0%BE%D0%BD%D1%82%D1%80%D0%BE%D0%BB%D1%8C-%D0%BF%D0%BE%D0%BB%D1%8F-%D0%B8-%D0%BF%D0%BE%D0%B2%D1%82%D0%BE%D1%80%D1%8F%D0%B5%D0%BC%D0%BE%D1%81%D1%82%D0%B8-%D1%83-%D0%93%D0%B5%D0%BE%D1%80%D0%B3%D0%B0">Контроль поля и повторяемости у Георга<a class="anchor-link" href="#%D0%9A%D0%BE%D0%BD%D1%82%D1%80%D0%BE%D0%BB%D1%8C-%D0%BF%D0%BE%D0%BB%D1%8F-%D0%B8-%D0%BF%D0%BE%D0%B2%D1%82%D0%BE%D1%80%D1%8F%D0%B5%D0%BC%D0%BE%D1%81%D1%82%D0%B8-%D1%83-%D0%93%D0%B5%D0%BE%D1%80%D0%B3%D0%B0">¶</a></h2><p>Плотные поля <code>fixed_to_moving</code> хранятся локально в <code>runs/</code> как массивы с осями <code>z,y,x,component_LPS_xyz</code>; вектор смещения измеряется в миллиметрах. Контрольные суммы и физическая сетка записаны в парных агрегатах.</p>
 <table>
 <thead>
 <tr>
 <th>Цель</th>
-<th>det J: минимум / p01 / медиана / p99 / максимум</th>
-<th style="text-align:right">Доля det J ≤ 0</th>
+<th><code>det J</code>: минимум / p01 / медиана / p99 / максимум</th>
+<th style="text-align:right">Доля <code>det J≤0</code></th>
 <th style="text-align:right">P95 смещения, мм</th>
-<th style="text-align:right">Pullback за moving crop</th>
-<th style="text-align:right">Ошибка fwd→inv: медиана / макс, мм</th>
+<th style="text-align:right">Pullback вне исходного crop</th>
+<th style="text-align:right">Ошибка композиции: медиана / максимум, мм</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>01</td>
-<td>0.419 / 0.769 / 1.000 / 1.301 / 2.168</td>
+<td>0,419 / 0,769 / 1,000 / 1,301 / 2,168</td>
 <td style="text-align:right">0</td>
-<td style="text-align:right">1.951</td>
-<td style="text-align:right">0.223%</td>
-<td style="text-align:right">0.016 / 0.069</td>
+<td style="text-align:right">1,951</td>
+<td style="text-align:right">0,223%</td>
+<td style="text-align:right">0,016 / 0,069</td>
 </tr>
 <tr>
 <td>07</td>
-<td>0.347 / 0.702 / 1.000 / 1.357 / 1.983</td>
+<td>0,347 / 0,702 / 1,000 / 1,357 / 1,983</td>
 <td style="text-align:right">0</td>
-<td style="text-align:right">3.327</td>
-<td style="text-align:right">0.354%</td>
-<td style="text-align:right">0.025 / 0.089</td>
+<td style="text-align:right">3,327</td>
+<td style="text-align:right">0,354%</td>
+<td style="text-align:right">0,025 / 0,089</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Граница вывода:</strong> отсутствие складок подтверждено только в отсчётах уменьшенной сетки. Исходные маски лежат внутри полного FOV; crop доходит до верхней границы CT. Доли выхода относятся к crop. Первая пара при повторении с теми же параметрами дала близкие, но не одинаковые Dice (0.97219 и 0.97226) и минимум Якобиана (0.445 и 0.419); побитовая воспроизводимость backend не установлена.</p>
+<p>Неположительный <code>det J</code> не найден <strong>на узлах уменьшенной сетки</strong>. Проценты выхода относятся к crop, который доходит до верхней границы КТ, а не ко всему полю зрения. Повтор 00→01 с теми же параметрами дал близкие, но не одинаковые Dice (<strong>0,97219</strong> и <strong>0,97226</strong>) и минимумы якобиана (<strong>0,445</strong> и <strong>0,419</strong>); побитовая воспроизводимость программной реализации не установлена. Этот пилот не обосновывает отсутствие складок между узлами или на исходной сетке.</p>
 </div>
 </div>
 </div>
@@ -8031,8 +8068,8 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="%D0%92%D0%BE%D1%81%D0%BF%D1%80%D0%BE%D0%B8%D0%B7%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5-%D0%B8-%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5">Воспроизведение и решение<a class="anchor-link" href="#%D0%92%D0%BE%D1%81%D0%BF%D1%80%D0%BE%D0%B8%D0%B7%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5-%D0%B8-%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5">¶</a></h2><p>Запускать <strong>по одной паре</strong> из папки <code>monai_physio/</code>: <code>&lt;VENV_PYTHON&gt; -B mp03_04_monai_pair.py --phase-dir &lt;DERIVED&gt;/georg/phases --products-dir &lt;DERIVED&gt;/georg/products_v2 --conversion-manifest &lt;DERIVED&gt;/georg/phases/conversion_manifest.json --reference-phase phase_00 --target-phase phase_01 --rigid-qc mp03_04_georg_00_01_qc.json --output-json mp03_04_georg_00_01_monai_qc.json --field-output runs/mp03_04_greedy_field_00_01.npz</code>. Для пары 07 заменить идентификатор в target и именах двух выходов/rigid-QC. Локальный <code>&lt;DERIVED&gt;</code> не встраивать в ноутбук. Этот код сохраняет поле только в исключённой из Git папке.</p>
-<p><strong>Нерешённые вопросы:</strong> independent reference отсутствует, на исходном разрешении две пары проверены в следующем разделе; остаются независимая анатомия, границы, повторяемость, фазовое время и влияние на FEM. Две пары не доказывают пригодность для остальных фаз. Статус поля — кандидат, не <code>accepted</code>.</p>
+<h2 id="%D0%92%D0%BE%D1%81%D0%BF%D1%80%D0%BE%D0%B8%D0%B7%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5-%D0%B8-%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5-%D0%B4%D0%BB%D1%8F-%D0%93%D0%B5%D0%BE%D1%80%D0%B3%D0%B0">Воспроизведение и решение для Георга<a class="anchor-link" href="#%D0%92%D0%BE%D1%81%D0%BF%D1%80%D0%BE%D0%B8%D0%B7%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5-%D0%B8-%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5-%D0%B4%D0%BB%D1%8F-%D0%93%D0%B5%D0%BE%D1%80%D0%B3%D0%B0">¶</a></h2><p><a href="mp03_04_monai_pair.py">Парный скрипт</a> принимает локальные каталоги КТ, масок, манифест конверсии и имена выходных JSON и полей. Запуски 00→01 и 00→07 выполняются отдельно; поля и изображения записываются только в исключённый <code>runs/</code>. Вычисления сохранённых агрегатов можно сверить кодовой ячейкой выше, не раскрывая медицинские массивы. Для полноразрешённого варианта параметры приведены в <a href="mp03_fullres_report.md">отдельном отчёте</a>.</p>
+<p>Обе пары на уменьшенной сетке дали технически положительные поля, но независимого анатомического контура целевых фаз и принятой карты КТ Георга в его FEM-модель не было. Поэтому эти поля остались <strong>кандидатами</strong>, без допуска как индивидуальное движение сердца. Позднейший полноразрешённый опыт ниже проверяет часть прежних технических ограничений; он не заменяет анатомического референса.</p>
 </div>
 </div>
 </div>
@@ -8042,27 +8079,27 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="%D0%98%D1%81%D1%85%D0%BE%D0%B4%D0%BD%D0%BE%D0%B5-%D1%80%D0%B0%D0%B7%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5:-%D0%BE%D1%82%D0%B4%D0%B5%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9-%D0%BF%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9-%D0%BF%D1%80%D0%BE%D0%B3%D0%BE%D0%BD-28.09.2026">Исходное разрешение: отдельный проверенный прогон 28.09.2026<a class="anchor-link" href="#%D0%98%D1%81%D1%85%D0%BE%D0%B4%D0%BD%D0%BE%D0%B5-%D1%80%D0%B0%D0%B7%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5:-%D0%BE%D1%82%D0%B4%D0%B5%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9-%D0%BF%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9-%D0%BF%D1%80%D0%BE%D0%B3%D0%BE%D0%BD-28.09.2026">¶</a></h2><p><strong>Факт расчёта.</strong> На реальной 4D-КТ Георга заново исполнены <code>00→01</code> и <code>00→07</code> с исходным шагом <code>0,458984×0,458984×0,625</code> мм на crop <code>414×441×235</code> без прореживания. Crop определён только маской 00 с запасом 25 мм; автоматическая маска цели использована для внутренней оценки. Параметры, команды, локальные выходы и ограничения: <a href="mp03_fullres_report.md">полный отчёт</a>. Исходные медицинские массивы и поля остаются вне Git.</p>
+<h2 id="%D0%A0%D0%B5%D0%B3%D0%B8%D1%81%D1%82%D1%80%D0%B0%D1%86%D0%B8%D1%8F-%D0%93%D0%B5%D0%BE%D1%80%D0%B3%D0%B0-%D0%BD%D0%B0-%D0%B8%D1%81%D1%85%D0%BE%D0%B4%D0%BD%D0%BE%D0%BC-%D1%80%D0%B0%D0%B7%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B8">Регистрация Георга на исходном разрешении<a class="anchor-link" href="#%D0%A0%D0%B5%D0%B3%D0%B8%D1%81%D1%82%D1%80%D0%B0%D1%86%D0%B8%D1%8F-%D0%93%D0%B5%D0%BE%D1%80%D0%B3%D0%B0-%D0%BD%D0%B0-%D0%B8%D1%81%D1%85%D0%BE%D0%B4%D0%BD%D0%BE%D0%BC-%D1%80%D0%B0%D0%B7%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B8">¶</a></h2><p>Две пары Георга повторно зарегистрированы на исходном шаге <code>0,458984×0,458984×0,625 мм</code> без прореживания. Crop <code>414×441×235</code> определён по маске 00 с запасом 25 мм; целевая автоматическая маска служила только для внутренней оценки. <a href="mp03_fullres_report.md">Полный отчёт</a> фиксирует команды, хэши и правила отбора поля.</p>
 <table>
 <thead>
 <tr>
-<th>Поле</th>
-<th style="text-align:right">Dice auto-цели, неподвижно → зарегистрировано</th>
-<th style="text-align:right">ASSD, мм</th>
-<th style="text-align:right">CT-MSE, HU²</th>
-<th style="text-align:right">Минимум det J / число неположительных узлов</th>
+<th>Пара и вариант</th>
+<th style="text-align:right">Dice к отдельной автоматической маске: неподвижно → поле</th>
+<th style="text-align:right">ASSD, мм: неподвижно → поле</th>
+<th style="text-align:right">CT-MSE, HU²: неподвижно → поле</th>
+<th style="text-align:right">Минимум <code>det J</code> / неположительных узлов</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>00→01, стандартное сглаживание</td>
+<td>00→01, исходное сглаживание</td>
 <td style="text-align:right">0,95965 → 0,97043</td>
 <td style="text-align:right">0,732 → 0,502</td>
 <td style="text-align:right">4504 → 938</td>
 <td style="text-align:right">0,276 / 0</td>
 </tr>
 <tr>
-<td>00→07, стандартное сглаживание</td>
+<td>00→07, исходное сглаживание</td>
 <td style="text-align:right">0,94898 → 0,96074</td>
 <td style="text-align:right">0,951 → 0,676</td>
 <td style="text-align:right">5088 → 1348</td>
@@ -8077,7 +8114,7 @@ a.anchor-link {
 </tr>
 </tbody>
 </table>
-<p>Исходное поле 07 со складками отклонено. Более сглаженное поле устранило складки на узлах исходной сетки ценой небольшого ухудшения Dice/CT-MSE относительно первого варианта. У обоих технически положительных полей <strong>нет независимого анатомического допуска</strong>. <a href="mp03_manual_reference_inventory.md">Инвентаризация</a> не установила ручной референс для этих фаз, а слабый контраст ограничивает его получение. Улучшение относительно другой автоматической маски не доказывает точность перемещения сердца или пригодность для FEM.</p>
+<p>Первый вариант 07 <strong>отклонён из-за трёх складок</strong> на проверенной сетке. Усиленное сглаживание устранило их на узлах, но несколько ухудшило Dice и CT-MSE относительно отвергнутого поля. В обоих технически допустимых по дискретному якобиану вариантах площадь ступенчатой перенесённой маски хуже согласуется с целевой автоматической маской, чем до переноса; эту площадь нельзя выдавать за гладкую анатомическую площадь. Кроме того, принятое преобразование КТ→FEM Георга и независимые ручные фазовые маски отсутствуют. Поля не стали валидированной геометрией для FEM или функций сердца.</p>
 </div>
 </div>
 </div>
