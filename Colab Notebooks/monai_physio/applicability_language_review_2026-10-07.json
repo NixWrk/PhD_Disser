@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-07",
+  "authority": "russian-scientific-prose/policy/languages/ru/ru.yaml",
+  "check_id": "language.ru.hash-bound-final-review",
+  "review_mode": "sequential_full_text_model_review_after_last_edit",
+  "status": "passed_language_review_only",
+  "artifacts": [
+    {
+      "artifact": "RESULTS_2026-09-28.md",
+      "sha256": "deeca3587d832a21d12e02b0d2a440da3f886cad09e22a416e718b0ee4e71f1f"
+    },
+    {
+      "artifact": "README.md",
+      "sha256": "b10ccfd3aeb3f2891b5b0a61dffa20df97c716e70e8f350d4ae6cb6d221b725a"
+    }
+  ],
+  "reviewed": [
+    "scientific headings, reader labels and explained abbreviations",
+    "separate denominators for target volume error and breathing volume change error",
+    "explicit test coverage: three volume cases versus ten landmark cases",
+    "scope of segmentation agreement, registration, FEM sensitivity, statistical shape and single-CT forecasts",
+    "negative results and limits of clinical or anatomical applicability",
+    "syntax, punctuation, transitions, links and table structure"
+  ],
+  "open_language_findings": [],
+  "scientific_status": "partial_research_applicability_only"
+}

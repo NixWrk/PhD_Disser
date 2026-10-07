@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 from pathlib import Path
 
 import numpy as np
@@ -14,11 +15,17 @@ def main() -> None:
     parser.add_argument("--scenario-dir", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--alias", required=True)
+    parser.add_argument("--target-stage", type=float, default=0.0)
     args = parser.parse_args()
-    lung_reference = pv.read(str(args.scenario_dir / "lung_stage_0.70.vtp"))
-    heart_reference = pv.read(str(args.scenario_dir / "heart_stage_0.70.vtp"))
-    lung_moved = pv.read(str(args.scenario_dir / "lung_stage_0.00.vtp"))
-    heart_moved = pv.read(str(args.scenario_dir / "heart_stage_0.00.vtp"))
+    report = json.loads((args.scenario_dir / "scenario_report.json").read_text(encoding="utf-8"))
+    anchor = report["stage_anchor"]
+    stage = args.target_stage
+    if stage not in [item["stage"] for item in report["stages"]]:
+        raise ValueError("Target stage is not present in the saved scenario")
+    lung_reference = pv.read(str(args.scenario_dir / f"lung_stage_{anchor:.2f}.vtp"))
+    heart_reference = pv.read(str(args.scenario_dir / f"heart_stage_{anchor:.2f}.vtp"))
+    lung_moved = pv.read(str(args.scenario_dir / f"lung_stage_{stage:.2f}.vtp"))
+    heart_moved = pv.read(str(args.scenario_dir / f"heart_stage_{stage:.2f}.vtp"))
     if lung_reference.n_points != lung_moved.n_points or heart_reference.n_points != heart_moved.n_points:
         raise ValueError("Stage surfaces have incompatible point correspondence")
     lung_moved["displacement_mm"] = np.linalg.norm(
@@ -30,13 +37,13 @@ def main() -> None:
     plotter = pv.Plotter(shape=(1, 2), off_screen=True, window_size=(1600, 850))
     plotter.set_background("#f6f8fb")
     plotter.subplot(0, 0)
-    plotter.add_text(f"{args.alias}: input CT / model anchor 0.7", font_size=12, color="#263042")
+    plotter.add_text(f"{args.alias}: input {report['source_phase']} / anchor {anchor:.2f}", font_size=12, color="#263042")
     plotter.add_mesh(lung_reference, color="#5caac3", opacity=0.42, smooth_shading=True)
     plotter.add_mesh(heart_reference, color="#d75864", opacity=0.95, smooth_shading=True)
     plotter.view_isometric()
     camera = plotter.camera_position
     plotter.subplot(0, 1)
-    plotter.add_text("Model scenario 0.0, relative displacement (mm)", font_size=12, color="#263042")
+    plotter.add_text(f"Model scenario {stage:.2f}, relative displacement (mm)", font_size=12, color="#263042")
     plotter.add_mesh(lung_reference, color="#9da5b0", opacity=0.12)
     plotter.add_mesh(
         lung_moved, scalars="displacement_mm", cmap="viridis", clim=(0, 6.5),

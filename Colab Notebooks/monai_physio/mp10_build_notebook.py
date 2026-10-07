@@ -160,6 +160,32 @@ if run_root:
 else:
     print("Для интерактивного 3D задайте MONAI_PHYSIO_MP10_TCIA_RUN_DIR")'''
 
+DIRLAB_TABLE = '''from pathlib import Path
+import json
+import pandas as pd
+from IPython.display import display
+
+summary_path = Path("mp10_dirlab_4dct_summary_2026-10-01.json")
+if not summary_path.is_file():
+    summary_path = Path("Colab Notebooks/monai_physio") / summary_path
+summary = json.loads(summary_path.read_text(encoding="utf-8"))
+rows = []
+for item in summary["rows"]:
+    score = item["T50_to_T00_expert_300"]
+    rows.append({
+        "Случай": item["case"],
+        "Наблюдаемое смещение, мм": score["observed_displacement_mean_mm"],
+        "Предсказанное смещение, мм": score["predicted_displacement_mean_mm"],
+        "Без движения, мм": score["static_tre_mean_mm"],
+        "Ошибка прогноза, мм": score["predicted_tre_mean_mm"],
+    })
+display(pd.DataFrame(rows).round(2))
+print("Средняя ошибка по случаям:",
+      round(summary["extreme_case_mean_static_TRE_mm"], 2), "→",
+      round(summary["extreme_case_mean_predicted_TRE_mm"], 2), "мм")
+print("Проверка объёма по контрольным маскам проведена в случаях 1, 4 и 6;")
+print("анатомического допуска для FEM она не дала")'''
+
 
 def main() -> None:
     source = SOURCE.read_text(encoding="utf-8")
@@ -184,6 +210,8 @@ def main() -> None:
         elif part.startswith("## Проверка на десяти фазах дыхательной КТ"):
             cells.append(nbformat.v4.new_code_cell(TCIA_TABLE))
             cells.append(nbformat.v4.new_code_cell(TCIA_VISUAL))
+        elif part.startswith("## Проверка на десяти исследованиях DIR-Lab"):
+            cells.append(nbformat.v4.new_code_cell(DIRLAB_TABLE))
         elif part.startswith("## Интерактивная трёхмерная визуализация"):
             cells.append(nbformat.v4.new_code_cell(
                 "if os.environ.get('MONAI_PHYSIO_MP10_NIX_DIR'):\n"

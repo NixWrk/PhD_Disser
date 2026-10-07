@@ -83,20 +83,25 @@ def main() -> None:
     parser.add_argument("--model-dir", type=Path, required=True)
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--alias", required=True)
-    parser.add_argument("--anchor-stage", type=float, default=0.7)
+    parser.add_argument("--anchor-stage", type=float)
     parser.add_argument("--source-phase", default="unverified")
+    parser.add_argument("--allow-unverified-phase", action="store_true",
+                        help="Allow an explicitly anchored scenario with unknown acquisition phase; not a phase-verified prediction")
     parser.add_argument("--save-fields", action="store_true")
     parser.add_argument("--stages", nargs="+", type=float, default=[0.0, 0.5, 0.7, 0.9])
     parser.add_argument("--source-landmarks", type=Path)
     parser.add_argument("--target-landmarks", type=Path)
     parser.add_argument("--landmark-grid", type=Path)
     args = parser.parse_args()
+    from mp10_respiratory_phases import check_fit_phase, phase_contract
+    contract = phase_contract(args.source_phase, args.anchor_stage, args.stages,
+                              allow_unverified=args.allow_unverified_phase)
     if any((args.source_landmarks, args.target_landmarks, args.landmark_grid)) and not all(
         (args.source_landmarks, args.target_landmarks, args.landmark_grid)
     ):
         raise ValueError("Both landmark files and their NIfTI grid must be supplied together")
     args.output_dir.mkdir(parents=True, exist_ok=True)
-    anchor = args.anchor_stage
+    anchor = contract["source_stage"]
     stages = args.stages
     if any(not 0.0 <= stage < 1.0 for stage in stages) or len(stages) != len(set(stages)):
         raise ValueError("Stages must be unique fractions in [0, 1)")
@@ -108,6 +113,7 @@ def main() -> None:
     falloff_mm = 15.0
 
     fit_report = json.loads((args.fit_dir / "fit_report.json").read_text(encoding="utf-8"))
+    check_fit_phase(fit_report, args.source_phase)
     fitted_path = args.fit_dir / "lung_fitted_reference.vtp"
     coeff_path = args.fit_dir / "lung_pca_coefficients.json"
     reference_image = itk.imread(str(args.fit_dir / "ct_fit_grid.nii.gz"))
@@ -238,6 +244,11 @@ def main() -> None:
         "fit_status": fit_report["status"],
         "stage_anchor": anchor,
         "source_phase": args.source_phase,
+        "phase_contract": contract,
+        "source_phase_binding": (
+            "source phase recorded with CT hash in fit report"
+            if fit_report.get("source_phase") else "legacy fit: verify phase using input CT manifest and hash"
+        ),
         "saved_deformation_fields": args.save_fields,
         "stage_anchor_assumption": (
             "g070 is the published model reference; supplied CT phase must be checked"

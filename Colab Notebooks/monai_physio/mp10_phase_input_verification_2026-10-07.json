@@ -1,0 +1,665 @@
+{
+  "schema": "mp10_saved_phase_input_audit_v1",
+  "date": "2026-10-07",
+  "status": "published_phase_convention_checked_on_saved_inputs",
+  "scenario_count": 12,
+  "rows": [
+    {
+      "scenario": "dirlab_4dct/case_01/scenario_T70",
+      "scenario_report_sha256": "4ec3a019f9954f354cf0f35f7cdcbc70c204a35a4fd1f8560c74df9841dacda1",
+      "checkpoint_sha256": "63236731278bff534c703afb91fa169076ca9d37b29f23c754f5c3a430f1d3a3",
+      "phase_contract": {
+        "schema": "mp10_respiratory_phase_contract_v1",
+        "dataset": "dirlab",
+        "status": "published_acquisition_convention_verified",
+        "source_phase": "T70",
+        "source_stage": 0.7,
+        "stage_rule": "acquisition percentage / 100; no shift, inversion or outcome-based alignment",
+        "cycle_zero": "end_inhalation",
+        "end_exhalation_stage": 0.5,
+        "shape_model_reference_stage": 0.7,
+        "shape_model_reference_is_end_exhalation": false,
+        "source_matches_published_shape_reference": true,
+        "target_stages": [
+          0.0,
+          0.1,
+          0.2,
+          0.3,
+          0.4,
+          0.5,
+          0.7
+        ],
+        "checkpoint_physiological_manifest_present": false,
+        "individual_breathing_amplitude_verified": false,
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC5912888/",
+          "https://purehost.bath.ac.uk/ws/portalfiles/portal/287959945/EIT_Guided_by_DT_and_DL_final.pdf",
+          "https://med.emory.edu/departments/radiation-oncology/research-laboratories/deformable-image-registration/downloads-and-reference-data/4dct.html",
+          "https://github.com/Project-MONAI/monai-physio/blob/2026.09.1/tutorials/tutorial_09_lung_train_physicsnemo_mgn.py",
+          "https://github.com/Project-MONAI/monai-physio/blob/2026.09.1/data/TCIA-4DLung/convert.py"
+        ]
+      },
+      "evaluation_phase_to_stage": {
+        "T00": 0.0,
+        "T10": 0.1,
+        "T20": 0.2,
+        "T30": 0.3,
+        "T40": 0.4,
+        "T50": 0.5
+      },
+      "source_ct_phase_binding_hash_verified": true,
+      "existing_numeric_inputs_need_change": false
+    },
+    {
+      "scenario": "dirlab_4dct/case_02/scenario_T70",
+      "scenario_report_sha256": "f66e9f9d1f0113a99d3dd3e3667efceaf42e5228d785f3e69bfcdd42985306b7",
+      "checkpoint_sha256": "63236731278bff534c703afb91fa169076ca9d37b29f23c754f5c3a430f1d3a3",
+      "phase_contract": {
+        "schema": "mp10_respiratory_phase_contract_v1",
+        "dataset": "dirlab",
+        "status": "published_acquisition_convention_verified",
+        "source_phase": "T70",
+        "source_stage": 0.7,
+        "stage_rule": "acquisition percentage / 100; no shift, inversion or outcome-based alignment",
+        "cycle_zero": "end_inhalation",
+        "end_exhalation_stage": 0.5,
+        "shape_model_reference_stage": 0.7,
+        "shape_model_reference_is_end_exhalation": false,
+        "source_matches_published_shape_reference": true,
+        "target_stages": [
+          0.0,
+          0.1,
+          0.2,
+          0.3,
+          0.4,
+          0.5,
+          0.7
+        ],
+        "checkpoint_physiological_manifest_present": false,
+        "individual_breathing_amplitude_verified": false,
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC5912888/",
+          "https://purehost.bath.ac.uk/ws/portalfiles/portal/287959945/EIT_Guided_by_DT_and_DL_final.pdf",
+          "https://med.emory.edu/departments/radiation-oncology/research-laboratories/deformable-image-registration/downloads-and-reference-data/4dct.html",
+          "https://github.com/Project-MONAI/monai-physio/blob/2026.09.1/tutorials/tutorial_09_lung_train_physicsnemo_mgn.py",
+          "https://github.com/Project-MONAI/monai-physio/blob/2026.09.1/data/TCIA-4DLung/convert.py"
+        ]
+      },
+      "evaluation_phase_to_stage": {
+        "T00": 0.0,
+        "T10": 0.1,
+        "T20": 0.2,
+        "T30": 0.3,
+        "T40": 0.4,
+        "T50": 0.5
+      },
+      "source_ct_phase_binding_hash_verified": true,
+      "existing_numeric_inputs_need_change": false
+    },
+    {
+      "scenario": "dirlab_4dct/case_03/scenario_T70",
+      "scenario_report_sha256": "1287bb2edbfa28ddfbf143094d1f314a8f8b3bdb6c893a7bc15590e5affb5ba0",
+      "checkpoint_sha256": "63236731278bff534c703afb91fa169076ca9d37b29f23c754f5c3a430f1d3a3",
+      "phase_contract": {
+        "schema": "mp10_respiratory_phase_contract_v1",
+        "dataset": "dirlab",
+        "status": "published_acquisition_convention_verified",
+        "source_phase": "T70",
+        "source_stage": 0.7,
+        "stage_rule": "acquisition percentage / 100; no shift, inversion or outcome-based alignment",
+        "cycle_zero": "end_inhalation",
+        "end_exhalation_stage": 0.5,
+        "shape_model_reference_stage": 0.7,
+        "shape_model_reference_is_end_exhalation": false,
+        "source_matches_published_shape_reference": true,
+        "target_stages": [
+          0.0,
+          0.1,
+          0.2,
+          0.3,
+          0.4,
+          0.5,
+          0.7
+        ],
+        "checkpoint_physiological_manifest_present": false,
+        "individual_breathing_amplitude_verified": false,
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC5912888/",
+          "https://purehost.bath.ac.uk/ws/portalfiles/portal/287959945/EIT_Guided_by_DT_and_DL_final.pdf",
+          "https://med.emory.edu/departments/radiation-oncology/research-laboratories/deformable-image-registration/downloads-and-reference-data/4dct.html",
+          "https://github.com/Project-MONAI/monai-physio/blob/2026.09.1/tutorials/tutorial_09_lung_train_physicsnemo_mgn.py",
+          "https://github.com/Project-MONAI/monai-physio/blob/2026.09.1/data/TCIA-4DLung/convert.py"
+        ]
+      },
+      "evaluation_phase_to_stage": {
+        "T00": 0.0,
+        "T10": 0.1,
+        "T20": 0.2,
+        "T30": 0.3,
+        "T40": 0.4,
+        "T50": 0.5
+      },
+      "source_ct_phase_binding_hash_verified": true,
+      "existing_numeric_inputs_need_change": false
+    },
+    {
+      "scenario": "dirlab_4dct/case_04/scenario_T70",
+      "scenario_report_sha256": "f1cd433f41f5f35344a250cf91b5c3d7f21c5830b980e7f21eaaab884c44bbcd",
+      "checkpoint_sha256": "63236731278bff534c703afb91fa169076ca9d37b29f23c754f5c3a430f1d3a3",
+      "phase_contract": {
+        "schema": "mp10_respiratory_phase_contract_v1",
+        "dataset": "dirlab",
+        "status": "published_acquisition_convention_verified",
+        "source_phase": "T70",
+        "source_stage": 0.7,
+        "stage_rule": "acquisition percentage / 100; no shift, inversion or outcome-based alignment",
+        "cycle_zero": "end_inhalation",
+        "end_exhalation_stage": 0.5,
+        "shape_model_reference_stage": 0.7,
+        "shape_model_reference_is_end_exhalation": false,
+        "source_matches_published_shape_reference": true,
+        "target_stages": [
+          0.0,
+          0.1,
+          0.2,
+          0.3,
+          0.4,
+          0.5,
+          0.7
+        ],
+        "checkpoint_physiological_manifest_present": false,
+        "individual_breathing_amplitude_verified": false,
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC5912888/",
+          "https://purehost.bath.ac.uk/ws/portalfiles/portal/287959945/EIT_Guided_by_DT_and_DL_final.pdf",
+          "https://med.emory.edu/departments/radiation-oncology/research-laboratories/deformable-image-registration/downloads-and-reference-data/4dct.html",
+          "https://github.com/Project-MONAI/monai-physio/blob/2026.09.1/tutorials/tutorial_09_lung_train_physicsnemo_mgn.py",
+          "https://github.com/Project-MONAI/monai-physio/blob/2026.09.1/data/TCIA-4DLung/convert.py"
+        ]
+      },
+      "evaluation_phase_to_stage": {
+        "T00": 0.0,
+        "T10": 0.1,
+        "T20": 0.2,
+        "T30": 0.3,
+        "T40": 0.4,
+        "T50": 0.5
+      },
+      "source_ct_phase_binding_hash_verified": true,
+      "existing_numeric_inputs_need_change": false
+    },
+    {
+      "scenario": "dirlab_4dct/case_05/scenario_T70",
+      "scenario_report_sha256": "03e56673e13153737294b6da2bb78c00e1113e9c86dcb91b9638b8c76b7d95b9",
+      "checkpoint_sha256": "63236731278bff534c703afb91fa169076ca9d37b29f23c754f5c3a430f1d3a3",
+      "phase_contract": {
+        "schema": "mp10_respiratory_phase_contract_v1",
+        "dataset": "dirlab",
+        "status": "published_acquisition_convention_verified",
+        "source_phase": "T70",
+        "source_stage": 0.7,
+        "stage_rule": "acquisition percentage / 100; no shift, inversion or outcome-based alignment",
+        "cycle_zero": "end_inhalation",
+        "end_exhalation_stage": 0.5,
+        "shape_model_reference_stage": 0.7,
+        "shape_model_reference_is_end_exhalation": false,
+        "source_matches_published_shape_reference": true,
+        "target_stages": [
+          0.0,
+          0.1,
+          0.2,
+          0.3,
+          0.4,
+          0.5,
+          0.7
+        ],
+        "checkpoint_physiological_manifest_present": false,
+        "individual_breathing_amplitude_verified": false,
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC5912888/",
+          "https://purehost.bath.ac.uk/ws/portalfiles/portal/287959945/EIT_Guided_by_DT_and_DL_final.pdf",
+          "https://med.emory.edu/departments/radiation-oncology/research-laboratories/deformable-image-registration/downloads-and-reference-data/4dct.html",
+          "https://github.com/Project-MONAI/monai-physio/blob/2026.09.1/tutorials/tutorial_09_lung_train_physicsnemo_mgn.py",
+          "https://github.com/Project-MONAI/monai-physio/blob/2026.09.1/data/TCIA-4DLung/convert.py"
+        ]
+      },
+      "evaluation_phase_to_stage": {
+        "T00": 0.0,
+        "T10": 0.1,
+        "T20": 0.2,
+        "T30": 0.3,
+        "T40": 0.4,
+        "T50": 0.5
+      },
+      "source_ct_phase_binding_hash_verified": true,
+      "existing_numeric_inputs_need_change": false
+    },
+    {
+      "scenario": "dirlab_4dct/case_06/scenario_T70",
+      "scenario_report_sha256": "343c9f5591ba91fa97f72507ae385fc3eeb2b0c1a4853ee033f1eef2ffb0d0cb",
+      "checkpoint_sha256": "63236731278bff534c703afb91fa169076ca9d37b29f23c754f5c3a430f1d3a3",
+      "phase_contract": {
+        "schema": "mp10_respiratory_phase_contract_v1",
+        "dataset": "dirlab",
+        "status": "published_acquisition_convention_verified",
+        "source_phase": "T70",
+        "source_stage": 0.7,
+        "stage_rule": "acquisition percentage / 100; no shift, inversion or outcome-based alignment",
+        "cycle_zero": "end_inhalation",
+        "end_exhalation_stage": 0.5,
+        "shape_model_reference_stage": 0.7,
+        "shape_model_reference_is_end_exhalation": false,
+        "source_matches_published_shape_reference": true,
+        "target_stages": [
+          0.0,
+          0.1,
+          0.2,
+          0.3,
+          0.4,
+          0.5,
+          0.7
+        ],
+        "checkpoint_physiological_manifest_present": false,
+        "individual_breathing_amplitude_verified": false,
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC5912888/",
+          "https://purehost.bath.ac.uk/ws/portalfiles/portal/287959945/EIT_Guided_by_DT_and_DL_final.pdf",
+          "https://med.emory.edu/departments/radiation-oncology/research-laboratories/deformable-image-registration/downloads-and-reference-data/4dct.html",
+          "https://github.com/Project-MONAI/monai-physio/blob/2026.09.1/tutorials/tutorial_09_lung_train_physicsnemo_mgn.py",
+          "https://github.com/Project-MONAI/monai-physio/blob/2026.09.1/data/TCIA-4DLung/convert.py"
+        ]
+      },
+      "evaluation_phase_to_stage": {
+        "T00": 0.0,
+        "T10": 0.1,
+        "T20": 0.2,
+        "T30": 0.3,
+        "T40": 0.4,
+        "T50": 0.5
+      },
+      "source_ct_phase_binding_hash_verified": true,
+      "existing_numeric_inputs_need_change": false
+    },
+    {
+      "scenario": "dirlab_4dct/case_07/scenario_T70",
+      "scenario_report_sha256": "bd20a1e446fa08358d4106b5bf5aa62286c2d9ba762e90b355f71d61c92d1e53",
+      "checkpoint_sha256": "63236731278bff534c703afb91fa169076ca9d37b29f23c754f5c3a430f1d3a3",
+      "phase_contract": {
+        "schema": "mp10_respiratory_phase_contract_v1",
+        "dataset": "dirlab",
+        "status": "published_acquisition_convention_verified",
+        "source_phase": "T70",
+        "source_stage": 0.7,
+        "stage_rule": "acquisition percentage / 100; no shift, inversion or outcome-based alignment",
+        "cycle_zero": "end_inhalation",
+        "end_exhalation_stage": 0.5,
+        "shape_model_reference_stage": 0.7,
+        "shape_model_reference_is_end_exhalation": false,
+        "source_matches_published_shape_reference": true,
+        "target_stages": [
+          0.0,
+          0.1,
+          0.2,
+          0.3,
+          0.4,
+          0.5,
+          0.7
+        ],
+        "checkpoint_physiological_manifest_present": false,
+        "individual_breathing_amplitude_verified": false,
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC5912888/",
+          "https://purehost.bath.ac.uk/ws/portalfiles/portal/287959945/EIT_Guided_by_DT_and_DL_final.pdf",
+          "https://med.emory.edu/departments/radiation-oncology/research-laboratories/deformable-image-registration/downloads-and-reference-data/4dct.html",
+          "https://github.com/Project-MONAI/monai-physio/blob/2026.09.1/tutorials/tutorial_09_lung_train_physicsnemo_mgn.py",
+          "https://github.com/Project-MONAI/monai-physio/blob/2026.09.1/data/TCIA-4DLung/convert.py"
+        ]
+      },
+      "evaluation_phase_to_stage": {
+        "T00": 0.0,
+        "T10": 0.1,
+        "T20": 0.2,
+        "T30": 0.3,
+        "T40": 0.4,
+        "T50": 0.5
+      },
+      "source_ct_phase_binding_hash_verified": true,
+      "existing_numeric_inputs_need_change": false
+    },
+    {
+      "scenario": "dirlab_4dct/case_08/scenario_T70",
+      "scenario_report_sha256": "8c150db42983de74199a787922ab74b338b75639d187a5bd607736624f13a4c9",
+      "checkpoint_sha256": "63236731278bff534c703afb91fa169076ca9d37b29f23c754f5c3a430f1d3a3",
+      "phase_contract": {
+        "schema": "mp10_respiratory_phase_contract_v1",
+        "dataset": "dirlab",
+        "status": "published_acquisition_convention_verified",
+        "source_phase": "T70",
+        "source_stage": 0.7,
+        "stage_rule": "acquisition percentage / 100; no shift, inversion or outcome-based alignment",
+        "cycle_zero": "end_inhalation",
+        "end_exhalation_stage": 0.5,
+        "shape_model_reference_stage": 0.7,
+        "shape_model_reference_is_end_exhalation": false,
+        "source_matches_published_shape_reference": true,
+        "target_stages": [
+          0.0,
+          0.1,
+          0.2,
+          0.3,
+          0.4,
+          0.5,
+          0.7
+        ],
+        "checkpoint_physiological_manifest_present": false,
+        "individual_breathing_amplitude_verified": false,
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC5912888/",
+          "https://purehost.bath.ac.uk/ws/portalfiles/portal/287959945/EIT_Guided_by_DT_and_DL_final.pdf",
+          "https://med.emory.edu/departments/radiation-oncology/research-laboratories/deformable-image-registration/downloads-and-reference-data/4dct.html",
+          "https://github.com/Project-MONAI/monai-physio/blob/2026.09.1/tutorials/tutorial_09_lung_train_physicsnemo_mgn.py",
+          "https://github.com/Project-MONAI/monai-physio/blob/2026.09.1/data/TCIA-4DLung/convert.py"
+        ]
+      },
+      "evaluation_phase_to_stage": {
+        "T00": 0.0,
+        "T10": 0.1,
+        "T20": 0.2,
+        "T30": 0.3,
+        "T40": 0.4,
+        "T50": 0.5
+      },
+      "source_ct_phase_binding_hash_verified": true,
+      "existing_numeric_inputs_need_change": false
+    },
+    {
+      "scenario": "dirlab_4dct/case_09_zflip/scenario_T70",
+      "scenario_report_sha256": "5b0245553d831b89055f9d47ec635963513dc4c9ff2451fee86803d154035a71",
+      "checkpoint_sha256": "63236731278bff534c703afb91fa169076ca9d37b29f23c754f5c3a430f1d3a3",
+      "phase_contract": {
+        "schema": "mp10_respiratory_phase_contract_v1",
+        "dataset": "dirlab",
+        "status": "published_acquisition_convention_verified",
+        "source_phase": "T70",
+        "source_stage": 0.7,
+        "stage_rule": "acquisition percentage / 100; no shift, inversion or outcome-based alignment",
+        "cycle_zero": "end_inhalation",
+        "end_exhalation_stage": 0.5,
+        "shape_model_reference_stage": 0.7,
+        "shape_model_reference_is_end_exhalation": false,
+        "source_matches_published_shape_reference": true,
+        "target_stages": [
+          0.0,
+          0.1,
+          0.2,
+          0.3,
+          0.4,
+          0.5,
+          0.7
+        ],
+        "checkpoint_physiological_manifest_present": false,
+        "individual_breathing_amplitude_verified": false,
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC5912888/",
+          "https://purehost.bath.ac.uk/ws/portalfiles/portal/287959945/EIT_Guided_by_DT_and_DL_final.pdf",
+          "https://med.emory.edu/departments/radiation-oncology/research-laboratories/deformable-image-registration/downloads-and-reference-data/4dct.html",
+          "https://github.com/Project-MONAI/monai-physio/blob/2026.09.1/tutorials/tutorial_09_lung_train_physicsnemo_mgn.py",
+          "https://github.com/Project-MONAI/monai-physio/blob/2026.09.1/data/TCIA-4DLung/convert.py"
+        ]
+      },
+      "evaluation_phase_to_stage": {
+        "T00": 0.0,
+        "T10": 0.1,
+        "T20": 0.2,
+        "T30": 0.3,
+        "T40": 0.4,
+        "T50": 0.5
+      },
+      "source_ct_phase_binding_hash_verified": true,
+      "existing_numeric_inputs_need_change": false
+    },
+    {
+      "scenario": "dirlab_4dct/case_10/scenario_T70",
+      "scenario_report_sha256": "c01ef068004c328fa8b1a0b9b0dc7584a6a63581ae9933790780586375d68a15",
+      "checkpoint_sha256": "63236731278bff534c703afb91fa169076ca9d37b29f23c754f5c3a430f1d3a3",
+      "phase_contract": {
+        "schema": "mp10_respiratory_phase_contract_v1",
+        "dataset": "dirlab",
+        "status": "published_acquisition_convention_verified",
+        "source_phase": "T70",
+        "source_stage": 0.7,
+        "stage_rule": "acquisition percentage / 100; no shift, inversion or outcome-based alignment",
+        "cycle_zero": "end_inhalation",
+        "end_exhalation_stage": 0.5,
+        "shape_model_reference_stage": 0.7,
+        "shape_model_reference_is_end_exhalation": false,
+        "source_matches_published_shape_reference": true,
+        "target_stages": [
+          0.0,
+          0.1,
+          0.2,
+          0.3,
+          0.4,
+          0.5,
+          0.7
+        ],
+        "checkpoint_physiological_manifest_present": false,
+        "individual_breathing_amplitude_verified": false,
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC5912888/",
+          "https://purehost.bath.ac.uk/ws/portalfiles/portal/287959945/EIT_Guided_by_DT_and_DL_final.pdf",
+          "https://med.emory.edu/departments/radiation-oncology/research-laboratories/deformable-image-registration/downloads-and-reference-data/4dct.html",
+          "https://github.com/Project-MONAI/monai-physio/blob/2026.09.1/tutorials/tutorial_09_lung_train_physicsnemo_mgn.py",
+          "https://github.com/Project-MONAI/monai-physio/blob/2026.09.1/data/TCIA-4DLung/convert.py"
+        ]
+      },
+      "evaluation_phase_to_stage": {
+        "T00": 0.0,
+        "T10": 0.1,
+        "T20": 0.2,
+        "T30": 0.3,
+        "T40": 0.4,
+        "T50": 0.5
+      },
+      "source_ct_phase_binding_hash_verified": true,
+      "existing_numeric_inputs_need_change": false
+    },
+    {
+      "scenario": "tcia_validation/scenario_g070",
+      "scenario_report_sha256": "abb7e401e093138d31d799e898531dcc9255f5ea2b6de8857b3ccee84ecfa470",
+      "checkpoint_sha256": "63236731278bff534c703afb91fa169076ca9d37b29f23c754f5c3a430f1d3a3",
+      "phase_contract": {
+        "schema": "mp10_respiratory_phase_contract_v1",
+        "dataset": "tcia",
+        "status": "published_acquisition_convention_verified",
+        "source_phase": "g070",
+        "source_stage": 0.7,
+        "stage_rule": "acquisition percentage / 100; no shift, inversion or outcome-based alignment",
+        "cycle_zero": "end_inhalation",
+        "end_exhalation_stage": 0.5,
+        "shape_model_reference_stage": 0.7,
+        "shape_model_reference_is_end_exhalation": false,
+        "source_matches_published_shape_reference": true,
+        "target_stages": [
+          0.0,
+          0.1,
+          0.2,
+          0.3,
+          0.4,
+          0.5,
+          0.6,
+          0.7,
+          0.8,
+          0.9
+        ],
+        "checkpoint_physiological_manifest_present": false,
+        "individual_breathing_amplitude_verified": false,
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC5912888/",
+          "https://purehost.bath.ac.uk/ws/portalfiles/portal/287959945/EIT_Guided_by_DT_and_DL_final.pdf",
+          "https://med.emory.edu/departments/radiation-oncology/research-laboratories/deformable-image-registration/downloads-and-reference-data/4dct.html",
+          "https://github.com/Project-MONAI/monai-physio/blob/2026.09.1/tutorials/tutorial_09_lung_train_physicsnemo_mgn.py",
+          "https://github.com/Project-MONAI/monai-physio/blob/2026.09.1/data/TCIA-4DLung/convert.py"
+        ]
+      },
+      "evaluation_phase_to_stage": {
+        "g000": 0.0,
+        "g010": 0.1,
+        "g020": 0.2,
+        "g030": 0.3,
+        "g040": 0.4,
+        "g050": 0.5,
+        "g060": 0.6,
+        "g070": 0.7,
+        "g080": 0.8,
+        "g090": 0.9
+      },
+      "source_ct_phase_binding_hash_verified": true,
+      "existing_numeric_inputs_need_change": false
+    },
+    {
+      "scenario": "tcia_validation/scenario_g000",
+      "scenario_report_sha256": "72986cbaf1df7966201c4e82c534c4a2dca8eff99b173385bbdf43e4e1ae2ec5",
+      "checkpoint_sha256": "63236731278bff534c703afb91fa169076ca9d37b29f23c754f5c3a430f1d3a3",
+      "phase_contract": {
+        "schema": "mp10_respiratory_phase_contract_v1",
+        "dataset": "tcia",
+        "status": "published_acquisition_convention_verified",
+        "source_phase": "g000",
+        "source_stage": 0.0,
+        "stage_rule": "acquisition percentage / 100; no shift, inversion or outcome-based alignment",
+        "cycle_zero": "end_inhalation",
+        "end_exhalation_stage": 0.5,
+        "shape_model_reference_stage": 0.7,
+        "shape_model_reference_is_end_exhalation": false,
+        "source_matches_published_shape_reference": false,
+        "target_stages": [
+          0.0,
+          0.1,
+          0.2,
+          0.3,
+          0.4,
+          0.5,
+          0.6,
+          0.7,
+          0.8,
+          0.9
+        ],
+        "checkpoint_physiological_manifest_present": false,
+        "individual_breathing_amplitude_verified": false,
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC5912888/",
+          "https://purehost.bath.ac.uk/ws/portalfiles/portal/287959945/EIT_Guided_by_DT_and_DL_final.pdf",
+          "https://med.emory.edu/departments/radiation-oncology/research-laboratories/deformable-image-registration/downloads-and-reference-data/4dct.html",
+          "https://github.com/Project-MONAI/monai-physio/blob/2026.09.1/tutorials/tutorial_09_lung_train_physicsnemo_mgn.py",
+          "https://github.com/Project-MONAI/monai-physio/blob/2026.09.1/data/TCIA-4DLung/convert.py"
+        ]
+      },
+      "evaluation_phase_to_stage": {
+        "g000": 0.0,
+        "g010": 0.1,
+        "g020": 0.2,
+        "g030": 0.3,
+        "g040": 0.4,
+        "g050": 0.5,
+        "g060": 0.6,
+        "g070": 0.7,
+        "g080": 0.8,
+        "g090": 0.9
+      },
+      "source_ct_phase_binding_hash_verified": true,
+      "existing_numeric_inputs_need_change": false
+    }
+  ],
+  "numeric_network_inputs_changed": false,
+  "reason": "Existing Txx/100 and gPPP/100 inputs already match the published acquisition convention; g070 end-exhale wording is erroneous.",
+  "tcia_volume_qc_only_not_phase_selection": {
+    "observed_lung_volumes_ml": {
+      "g000": 4777.817391856222,
+      "g010": 4618.572072088369,
+      "g020": 4355.383530088835,
+      "g030": 4185.786234488726,
+      "g040": 4076.761445347677,
+      "g050": 3992.8440602774003,
+      "g060": 4011.5222521604774,
+      "g070": 4173.977886158233,
+      "g080": 4393.360803505515,
+      "g090": 4672.529385588839
+    },
+    "maximum_volume_phase": "g000",
+    "minimum_volume_phase": "g050",
+    "reference_g070_is_not_volume_extreme": true
+  },
+  "limitations": [
+    "Acquisition conventions are verified; exact checkpoint patient and physiological manifests are absent.",
+    "Equal breathing percentages do not imply equal lung volume, motion amplitude or deep-inspiration breath hold.",
+    "Fitting a non-g070 source remains outside the published shape fitting protocol."
+  ],
+  "numerical_verification": {
+    "landmark_evaluation_recomputed": true,
+    "neural_fields_recomputed": false,
+    "reason": "All saved neural stage inputs already equal the checked mapping; cached fields were reused",
+    "cases": [
+      {
+        "case": 1,
+        "all_landmark_metrics_unchanged": true,
+        "phase_contract_status": "published_acquisition_convention_verified",
+        "evaluation_sha256": "742527a44a810533aa72cfc55642a3ec0ba432cac24b2610215dd8f58b6f81c8"
+      },
+      {
+        "case": 2,
+        "all_landmark_metrics_unchanged": true,
+        "phase_contract_status": "published_acquisition_convention_verified",
+        "evaluation_sha256": "c0265f808a1a6d1ecb9e039ae06506760bad9882a5d2b92b157085bba537a710"
+      },
+      {
+        "case": 3,
+        "all_landmark_metrics_unchanged": true,
+        "phase_contract_status": "published_acquisition_convention_verified",
+        "evaluation_sha256": "d7b5569929e4ba8082e72fff2f8ebcbb8cde124a06b253dc59ce5dae02836c31"
+      },
+      {
+        "case": 4,
+        "all_landmark_metrics_unchanged": true,
+        "phase_contract_status": "published_acquisition_convention_verified",
+        "evaluation_sha256": "89c66eace1ac8e1f8a6e809724f340b9d7bd2c86bb80bc618c23f53feff9eeca"
+      },
+      {
+        "case": 5,
+        "all_landmark_metrics_unchanged": true,
+        "phase_contract_status": "published_acquisition_convention_verified",
+        "evaluation_sha256": "afb5a75e0459bb8a16d3e33ab26f164e3f8ff6feef049156e341366308186caa"
+      },
+      {
+        "case": 6,
+        "all_landmark_metrics_unchanged": true,
+        "phase_contract_status": "published_acquisition_convention_verified",
+        "evaluation_sha256": "839add908d295379802c07c839bcbc017768a482bd2598cf94be16bd450353b4"
+      },
+      {
+        "case": 7,
+        "all_landmark_metrics_unchanged": true,
+        "phase_contract_status": "published_acquisition_convention_verified",
+        "evaluation_sha256": "bdff2677b29dda435af93ab0c2ec000c0a78f1ebf4596d6ec23be8cbda608070"
+      },
+      {
+        "case": 8,
+        "all_landmark_metrics_unchanged": true,
+        "phase_contract_status": "published_acquisition_convention_verified",
+        "evaluation_sha256": "cf1a2d57312b485e4f6c446e93a28018c340ef4002b598a1eb48bf3872524989"
+      },
+      {
+        "case": 9,
+        "all_landmark_metrics_unchanged": true,
+        "phase_contract_status": "published_acquisition_convention_verified",
+        "evaluation_sha256": "6a106b8bcea9ef9191b6561647aadde1f8ffe8b50388a00fed22fb3345794a63"
+      },
+      {
+        "case": 10,
+        "all_landmark_metrics_unchanged": true,
+        "phase_contract_status": "published_acquisition_convention_verified",
+        "evaluation_sha256": "9f61fa51c9e0d684864a11be8d9fc7c03791ab63d515757e234f8bd04172d203"
+      }
+    ]
+  }
+}

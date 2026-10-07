@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-07",
+  "authority": "russian-scientific-prose/policy/languages/ru/ru.yaml",
+  "check_id": "language.ru.hash-bound-final-review",
+  "review_mode": "sequential_full_text_model_review_after_last_edit",
+  "status": "passed_language_review_only",
+  "artifacts": [
+    {
+      "artifact": "mp10_phase_input_correction_report.md",
+      "sha256": "9bfcd092ff9a416f114a95c156d06f857df5b0b6736eb217c79f3322ff6d038b"
+    },
+    {
+      "artifact": "mp10_dirlab_4dct_validation_report.md",
+      "sha256": "e7fcba1fd9d0801c3c001cb119914e73852e41d9c955ed7d7e7e1d1b43d8d408"
+    },
+    {
+      "artifact": "Дыхательное_движение_по_одной_КТ.md",
+      "sha256": "f3a36c9be7e7d9d9efb844552ab76a5e49623869ca214a2564bbaebf4eb310fc"
+    }
+  ],
+  "reviewed": [
+    "scientific headings, information hierarchy and captions",
+    "technical terminology and definitions of stages, displacement and reference metrics",
+    "clear scope: published acquisition convention versus missing checkpoint-specific manifest",
+    "expert landmarks versus automatic contours; numerical result versus anatomical validation",
+    "syntax, punctuation, meaningful distinctions and transitions"
+  ],
+  "open_language_findings": [],
+  "scientific_status": "anatomical_use_not_validated"
+}

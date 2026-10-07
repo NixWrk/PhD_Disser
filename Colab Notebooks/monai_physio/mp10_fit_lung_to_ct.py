@@ -47,7 +47,11 @@ def main() -> None:
     parser.add_argument("--model-dir", type=Path, required=True)
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--alias", required=True)
+    parser.add_argument("--source-phase", help="Confirmed acquisition label T00..T90 or g000..g090; record with the source CT hash")
     args = parser.parse_args()
+    if args.source_phase is not None:
+        from mp10_respiratory_phases import phase_stage
+        phase_stage(args.source_phase)
     args.output_dir.mkdir(parents=True, exist_ok=True)
 
     ct = nib.load(args.ct)
@@ -151,6 +155,7 @@ def main() -> None:
         "status": "technical_icp_pca_fit_pending_anatomical_validation",
         "registration_stages": ["affine_icp", "six_component_pca"],
         "source_ct_sha256": sha256(args.ct),
+        "source_phase": args.source_phase,
         "lobe_mask_sha256": mask_hashes,
         "pca_model_sha256": sha256(pca_path),
         "pca_mean_surface_sha256": sha256(mean_path),

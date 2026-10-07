@@ -1,0 +1,67 @@
+{
+  "audit_date": "2026-10-07",
+  "scope": "Previously executed DIR-Lab 4DCT and TCIA respiratory motion experiments",
+  "upstream_source_commit": "6822e3e3b3863c63fbc01f86f9c4676c4c47e596",
+  "checkpoint_sha256": "63236731278bff534c703afb91fa169076ca9d37b29f23c754f5c3a430f1d3a3",
+  "checkpoint_metadata": {
+    "features": "mean mesh xyz, six PCA shape coefficients, stage",
+    "mesh_points": 79978,
+    "epochs": 1500,
+    "patient_manifest_present": false,
+    "physiological_stage_definition_present": false
+  },
+  "release_asset": {
+    "url": "https://github.com/Project-MONAI/monai-physio/releases/download/2026.07.1/physicsnemo_mgn_lung_motion.zip",
+    "size_bytes": 58923868,
+    "created_at_UTC": "2026-09-17T15:24:40Z",
+    "updated_at_UTC": "2026-09-17T15:24:43Z",
+    "archive_sha256": "365d575e20e2fb03cd4940670816aaabc51c837779f61e48ff01977682283cdc",
+    "used_archive_matches_current_release_digest": true,
+    "published_releases_checked": 9,
+    "newer_public_ready_lung_checkpoint_found": false,
+    "evidence": "GitHub public release API queried on 2026-10-07",
+    "interpretation": "Release tag does not date checkpoint training"
+  },
+  "phase_input_audit": {
+    "published_parser": "TCIA gPPP -> integer PPP / 100",
+    "executed_parser": "DIR-Lab Txx -> integer xx / 100",
+    "numeric_input_format_matches": true,
+    "published_shape_fit_reference": "TCIA g070",
+    "executed_shape_fit_reference": "DIR-Lab T70",
+    "physiological_cross_dataset_correspondence_verified": true,
+    "conclusion": "Executed DIR-Lab and TCIA numeric inputs already match the published phase convention. No phase shift is justified. Equal percentage does not imply equal amplitude; exact checkpoint physiological metadata is absent.",
+    "verification_scope": "Published acquisition phase convention and public training parser; not individual amplitude or a missing checkpoint-specific physiological manifest",
+    "end_inhalation_stage": 0.0,
+    "end_exhalation_stage": 0.5,
+    "g070_end_exhale_tutorial_label": "contradicted by original TCIA acquisition convention and observed phase volumes"
+  },
+  "training_cohort_audit": {
+    "published_2026_09_1_driver_dataset": "TCIA 4D-Lung",
+    "published_motion_holdout": "100_HM10395",
+    "published_PCA_cohort_exclusion": "Chest-CT.mha, not 100_HM10395",
+    "DIRLab_in_published_2026_09_1_training_glob": false,
+    "historical_lung_tutorials_used_DIRLab": true,
+    "exact_downloaded_checkpoint_patient_list": "not supplied",
+    "DIRLab_independence_from_downloaded_checkpoint": "plausible_from_published_TCIA_workflow_but_not_proven",
+    "TCIA_100_independence": "held out of motion in published driver; not held out of PCA; exact checkpoint manifest absent"
+  },
+  "sources": [
+    "https://github.com/Project-MONAI/monai-physio/blob/2026.09.1/tutorials/tutorial_09_lung_train_physicsnemo_mgn.py",
+    "https://github.com/Project-MONAI/monai-physio/blob/2026.09.1/tutorials/tutorial_08_lung_fit_model_to_4d_patients.py",
+    "https://github.com/Project-MONAI/monai-physio/blob/2026.09.1/tutorials/tutorial_06_lung_create_statistical_model.py",
+    "https://github.com/Project-MONAI/monai-physio/blob/2026.09.1/tutorials/parameters_tcia_4d_lung.py",
+    "https://github.com/Project-MONAI/monai-physio/blob/2026.09.1/data/TCIA-4DLung/convert.py",
+    "https://api.github.com/repos/Project-MONAI/monai-physio/releases/tags/2026.07.1",
+    "https://github.com/Project-MONAI/monai-physio/releases/tag/2026.09.0",
+    "https://med.emory.edu/departments/radiation-oncology/research-laboratories/deformable-image-registration/downloads-and-reference-data/4dct.html",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC5912888/",
+    "https://purehost.bath.ac.uk/ws/portalfiles/portal/287959945/EIT_Guided_by_DT_and_DL_final.pdf"
+  ],
+  "required_evidence_for_stronger_claim": [
+    "Patient and physiological manifests tied to the downloaded checkpoint hash",
+    "Individual deep-inspiration breath-hold compatibility with free-breathing phase and published g070 shape-fitting protocol"
+  ],
+  "numerical_results_recomputed": true,
+  "reason": "Expert landmark evaluation recomputed on all ten DIR-Lab cases using the checked phase contract and existing neural fields; every metric remained identical. Neural inputs and fields did not change.",
+  "phase_input_verification": "mp10_phase_input_verification_2026-10-07.json"
+}

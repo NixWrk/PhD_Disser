@@ -1,0 +1,1468 @@
+{
+  "schema": "mp10_dirlab_4dct_ten_case_summary_v1",
+  "status": "published_phase_convention_verified_anatomical_use_not_validated",
+  "physiological_phase_correspondence_verified": true,
+  "phase_verification_scope": "published acquisition bins and stage parser; individual amplitude and exact checkpoint metadata are not verified",
+  "checkpoint_patient_overlap_verified": false,
+  "phase_training_audit": "mp10_phase_training_audit_2026-10-07.json",
+  "dataset": "Emory DIR-Lab 4DCT; 10 public cases; training overlap not verified",
+  "source_phase": "T70 CT and TotalSegmentator v2 source masks only",
+  "checkpoint_sha256": "63236731278bff534c703afb91fa169076ca9d37b29f23c754f5c3a430f1d3a3",
+  "temporal_rule": "Txx mapped directly to network stage xx/100, with T70 anchor; no outcome-dependent phase matching",
+  "reference": "300 paired expert lung landmarks T50 to T00 per case; 75 trajectories T00-T50; automatic target masks only for contour subset",
+  "case_count": 10,
+  "extreme_landmark_count": 3000,
+  "extreme_case_mean_static_TRE_mm": 8.461181267047882,
+  "extreme_case_mean_predicted_TRE_mm": 5.968098236448644,
+  "extreme_case_mean_predicted_displacement_mm": 3.5693750739097596,
+  "extreme_cases_improved": 10,
+  "extreme_cases_underpredicted_mean_displacement": 10,
+  "extreme_case_mean_predicted_to_observed_amplitude_ratio": 0.47134655421248894,
+  "case09_automated_orientation_failure": {
+    "initial_source_anatomy_qc_pass": false,
+    "initial_source_middle_lobe_ml": 0.44927977650308654,
+    "first_fit_error": "middle-lobe surface vanished on 2.5 mm fit grid",
+    "resolution": "source-only T70 lobe anatomy QC selects superior axis reversal; no target-phase images or landmarks used"
+  },
+  "rows": [
+    {
+      "case": 1,
+      "run_case_dir": "case_01",
+      "source_orientation": {
+        "right_is_high_index": false,
+        "posterior_is_high_row": true,
+        "superior_is_high_index": false,
+        "lung_asymmetry": -0.10171238555825676,
+        "sides_agree": true,
+        "automated_orientation_confident": true,
+        "air_peak_hu": -996.0
+      },
+      "source_anatomy_qc": {
+        "upper_minus_lower_z_voxels": 23.337430663517218,
+        "right_minus_left_x_voxels": 124.677585683193,
+        "source_only_anatomy_qc_pass": true
+      },
+      "T50_to_T00_expert_300": {
+        "landmark_count": 300,
+        "observed_displacement_mean_mm": 3.8924062198159763,
+        "predicted_displacement_mean_mm": 3.841758966445923,
+        "static_tre_mean_mm": 3.8924062198159763,
+        "predicted_tre_mean_mm": 1.8872975327164694,
+        "predicted_tre_median_mm": 1.6786380135453616,
+        "predicted_tre_p95_mm": 3.8120065402809655,
+        "mean_tre_change_predicted_minus_static_mm": -2.005108687099507,
+        "fraction_landmarks_improved": 0.8066666666666666
+      },
+      "sampled_75_by_phase": {
+        "T00": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 3.9133616688550745,
+          "predicted_displacement_mean_mm": 3.800227165222168,
+          "static_tre_mean_mm": 3.9133616688550745,
+          "predicted_tre_mean_mm": 1.9455560106069496,
+          "predicted_tre_median_mm": 1.7574613969294866,
+          "predicted_tre_p95_mm": 3.419242668207232,
+          "mean_tre_change_predicted_minus_static_mm": -1.967805658248125,
+          "fraction_landmarks_improved": 0.7866666666666666
+        },
+        "T10": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 3.886423758993914,
+          "predicted_displacement_mean_mm": 3.211174488067627,
+          "static_tre_mean_mm": 3.886423758993914,
+          "predicted_tre_mean_mm": 1.851328519691313,
+          "predicted_tre_median_mm": 1.4954559854145577,
+          "predicted_tre_p95_mm": 3.735515473833933,
+          "mean_tre_change_predicted_minus_static_mm": -2.035095239302601,
+          "fraction_landmarks_improved": 0.8533333333333334
+        },
+        "T20": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 2.9730483971476147,
+          "predicted_displacement_mean_mm": 2.177532196044922,
+          "static_tre_mean_mm": 2.9730483971476147,
+          "predicted_tre_mean_mm": 1.8430406953769298,
+          "predicted_tre_median_mm": 1.6326399308530977,
+          "predicted_tre_p95_mm": 4.0425822319486535,
+          "mean_tre_change_predicted_minus_static_mm": -1.1300077017706849,
+          "fraction_landmarks_improved": 0.76
+        },
+        "T30": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 2.0277593150948134,
+          "predicted_displacement_mean_mm": 1.2006832361221313,
+          "static_tre_mean_mm": 2.0277593150948134,
+          "predicted_tre_mean_mm": 1.8056879854873147,
+          "predicted_tre_median_mm": 1.7698912634938258,
+          "predicted_tre_p95_mm": 3.688983360160487,
+          "mean_tre_change_predicted_minus_static_mm": -0.22207132960749876,
+          "fraction_landmarks_improved": 0.5866666666666667
+        },
+        "T40": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 1.2312107370655068,
+          "predicted_displacement_mean_mm": 0.5072280764579773,
+          "static_tre_mean_mm": 1.2312107370655068,
+          "predicted_tre_mean_mm": 1.3154308587968797,
+          "predicted_tre_median_mm": 1.0889236535152016,
+          "predicted_tre_p95_mm": 2.6022479028387835,
+          "mean_tre_change_predicted_minus_static_mm": 0.08422012173137294,
+          "fraction_landmarks_improved": 0.38666666666666666
+        },
+        "T50": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 0.0,
+          "predicted_displacement_mean_mm": 0.0,
+          "static_tre_mean_mm": 0.0,
+          "predicted_tre_mean_mm": 0.0,
+          "predicted_tre_median_mm": 0.0,
+          "predicted_tre_p95_mm": 0.0,
+          "mean_tre_change_predicted_minus_static_mm": 0.0,
+          "fraction_landmarks_improved": 0.0
+        }
+      },
+      "conversion_manifest_sha256": "ca799e513e3e3b548f3dfa07006db45cc8d4f3c3626b15280836ef0d57b59268",
+      "source_segmentation_manifest_sha256": "ba7e11b0a795a6db9840eb163aa6a09328c5012a8a314146cfb9328892dd4905",
+      "fit_report_sha256": "d102698bb924d6ccc1512dcb420d691592698b19b8737c954c1eaa4be0101e42",
+      "scenario_report_sha256": "4ec3a019f9954f354cf0f35f7cdcbc70c204a35a4fd1f8560c74df9841dacda1",
+      "landmark_evaluation_sha256": "742527a44a810533aa72cfc55642a3ec0ba432cac24b2610215dd8f58b6f81c8",
+      "mask_evaluation": {
+        "source_lung_volume_ml": 2158.4059093247124,
+        "source_heart_volume_ml": 311.6425641338451,
+        "rows": [
+          {
+            "phase": "T50",
+            "model_stage": 0.5,
+            "organs": {
+              "lung": {
+                "observed_volume_ml": 2101.5073307182565,
+                "observed_volume_change_from_T70_ml": -56.898578606455885,
+                "predicted_volume_ml": 2125.939989877006,
+                "predicted_surface_open_edges": 0,
+                "field_coverage_fraction": 1.0,
+                "static_surface_error_mm": {
+                  "symmetric_mean_mm": 1.2709386424630564,
+                  "symmetric_rms_mm": 1.5270582866722016,
+                  "symmetric_p95_mm": 2.681585621068097,
+                  "predicted_to_observed_mean_mm": 1.2769303750752612,
+                  "observed_to_predicted_mean_mm": 1.2649025721427622
+                },
+                "predicted_surface_error_mm": {
+                  "symmetric_mean_mm": 1.2731990875239863,
+                  "symmetric_rms_mm": 1.4140606542223304,
+                  "symmetric_p95_mm": 2.3630796917733607,
+                  "predicted_to_observed_mean_mm": 1.2743320913779923,
+                  "observed_to_predicted_mean_mm": 1.2720576996519686
+                },
+                "target_mask_sha256": {
+                  "lung_upper_lobe_left": "f3efbda365bb0cdc5e630e01f95a9e1bfa1e86128f56e2d3e20193daa59db607",
+                  "lung_lower_lobe_left": "0e9f57534af35f143bab9782eae373221f96c0f8292804fdb79c75d02d805cc4",
+                  "lung_upper_lobe_right": "656d0913e77b414f13cca902c15b465e8004243d70116c6839abf14c334d5d99",
+                  "lung_middle_lobe_right": "85a581a1adfddad5a7d05217494c386944bd2d6d99bbb13d5a412fa12e71cf30",
+                  "lung_lower_lobe_right": "2895b13d55463f574fdc15bc7cdecc5c584116d1956d1e21bd0a641904436786"
+                },
+                "predicted_surface_sha256": "975301b6e9f14dfaa6ed65560848f31c7ead66397bd18395c54bd9ed3f64239d",
+                "predicted_volume_change_from_T70_ml": -32.465919447706256,
+                "predicted_volume_error_ml": 24.43265915874963
+              },
+              "heart": {
+                "observed_volume_ml": 324.9939359214447,
+                "observed_volume_change_from_T70_ml": 13.35137178759959,
+                "predicted_volume_ml": 310.9844708830651,
+                "predicted_surface_open_edges": 0,
+                "field_coverage_fraction": 1.0,
+                "static_surface_error_mm": {
+                  "symmetric_mean_mm": 1.699115220418137,
+                  "symmetric_rms_mm": 2.020575668971395,
+                  "symmetric_p95_mm": 3.7202224942018853,
+                  "predicted_to_observed_mean_mm": 1.6805904472536604,
+                  "observed_to_predicted_mean_mm": 1.7172317467554157
+                },
+                "predicted_surface_error_mm": {
+                  "symmetric_mean_mm": 1.7069603799076225,
+                  "symmetric_rms_mm": 2.0068941201013293,
+                  "symmetric_p95_mm": 3.5881886686475175,
+                  "predicted_to_observed_mean_mm": 1.6906193857659777,
+                  "observed_to_predicted_mean_mm": 1.7229412530938115
+                },
+                "target_mask_sha256": {
+                  "heart": "65b0b65f6913c15c7a2bce1dd0b245ccda5b7d3a68bb8db49e896427bb7d8544"
+                },
+                "predicted_surface_sha256": "2a81a7a361e1183c1aa072f59a4ef19049c34f6e19e89dc78912203f4c5dc5ed",
+                "predicted_volume_change_from_T70_ml": -0.6580932507799844,
+                "predicted_volume_error_ml": -14.009465038379574
+              }
+            }
+          },
+          {
+            "phase": "T00",
+            "model_stage": 0.0,
+            "organs": {
+              "lung": {
+                "observed_volume_ml": 2294.093106328922,
+                "observed_volume_change_from_T70_ml": 135.6871970042098,
+                "predicted_volume_ml": 2292.5781215237166,
+                "predicted_surface_open_edges": 0,
+                "field_coverage_fraction": 1.0,
+                "static_surface_error_mm": {
+                  "symmetric_mean_mm": 1.8642783159058658,
+                  "symmetric_rms_mm": 2.555015092776433,
+                  "symmetric_p95_mm": 5.865920001210225,
+                  "predicted_to_observed_mean_mm": 1.8050368474337932,
+                  "observed_to_predicted_mean_mm": 1.9216339498110975
+                },
+                "predicted_surface_error_mm": {
+                  "symmetric_mean_mm": 1.4382985413461546,
+                  "symmetric_rms_mm": 1.5863559939406902,
+                  "symmetric_p95_mm": 2.6422505125621916,
+                  "predicted_to_observed_mean_mm": 1.4221781582006463,
+                  "observed_to_predicted_mean_mm": 1.4539057640898265
+                },
+                "target_mask_sha256": {
+                  "lung_upper_lobe_left": "5839711ed064d8e15f61cd6a46de625d48940cd528a6a48607c68cd32a7c7b16",
+                  "lung_lower_lobe_left": "2455a883a3747f5a62c6be19ab09c488fe76dcc412f8b60f2c1a51339ec03df1",
+                  "lung_upper_lobe_right": "93011c7b50e13def37321bf0ddec44f99ffdba9914098a9ecd94146cabb4856b",
+                  "lung_middle_lobe_right": "fef540823c8e848f3825c54dc18579ee3c18f6bbb01568be5892040c7a25d9e9",
+                  "lung_lower_lobe_right": "8cac2c0e2b7c39feaf341ff7dba9ef74951c528e512f69bc8387d9325b3aba64"
+                },
+                "predicted_surface_sha256": "b8ddbc2ac5b723f2fdfd88178cc43fe7f2dce1ee10c144df1d3678507e9bb289",
+                "predicted_volume_change_from_T70_ml": 134.1722121990042,
+                "predicted_volume_error_ml": -1.5149848052055859
+              },
+              "heart": {
+                "observed_volume_ml": 331.39676079914835,
+                "observed_volume_change_from_T70_ml": 19.754196665303255,
+                "predicted_volume_ml": 298.7658669115319,
+                "predicted_surface_open_edges": 0,
+                "field_coverage_fraction": 1.0,
+                "static_surface_error_mm": {
+                  "symmetric_mean_mm": 2.1187993501274147,
+                  "symmetric_rms_mm": 2.5680797954867853,
+                  "symmetric_p95_mm": 5.184765684982531,
+                  "predicted_to_observed_mean_mm": 2.0631461701793907,
+                  "observed_to_predicted_mean_mm": 2.1724882202311577
+                },
+                "predicted_surface_error_mm": {
+                  "symmetric_mean_mm": 2.1950366072879426,
+                  "symmetric_rms_mm": 2.6225060645815486,
+                  "symmetric_p95_mm": 5.184767170326973,
+                  "predicted_to_observed_mean_mm": 2.1295118018679995,
+                  "observed_to_predicted_mean_mm": 2.258248678369053
+                },
+                "target_mask_sha256": {
+                  "heart": "2fa21e3426d9e28bd7e67ad3195469d8b6490d8b0d89daca31ad68af8525183a"
+                },
+                "predicted_surface_sha256": "2c590cfd93ef7cb58b8b5dcc2048aaac6063b89b15d4aed9e58ae71ada52598e",
+                "predicted_volume_change_from_T70_ml": -12.876697222313226,
+                "predicted_volume_error_ml": -32.63089388761648
+              }
+            }
+          }
+        ],
+        "evaluation_sha256": "fa26505e78b2373bd5524c5ca3ff2ebc5873e03bf5b176764681370884ee5c61"
+      }
+    },
+    {
+      "case": 2,
+      "run_case_dir": "case_02",
+      "source_orientation": {
+        "right_is_high_index": false,
+        "posterior_is_high_row": true,
+        "superior_is_high_index": false,
+        "lung_asymmetry": -0.05995842941389356,
+        "sides_agree": true,
+        "automated_orientation_confident": true,
+        "air_peak_hu": -994.0
+      },
+      "source_anatomy_qc": {
+        "upper_minus_lower_z_voxels": 27.916108447832357,
+        "right_minus_left_x_voxels": 125.78366148276123,
+        "source_only_anatomy_qc_pass": true
+      },
+      "T50_to_T00_expert_300": {
+        "landmark_count": 300,
+        "observed_displacement_mean_mm": 4.33784245401475,
+        "predicted_displacement_mean_mm": 2.5870490074157715,
+        "static_tre_mean_mm": 4.33784245401475,
+        "predicted_tre_mean_mm": 2.9489938724494893,
+        "predicted_tre_median_mm": 2.230509259050466,
+        "predicted_tre_p95_mm": 8.62339485466924,
+        "mean_tre_change_predicted_minus_static_mm": -1.3888485815652611,
+        "fraction_landmarks_improved": 0.72
+      },
+      "sampled_75_by_phase": {
+        "T00": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 4.648512366418603,
+          "predicted_displacement_mean_mm": 2.2739336490631104,
+          "static_tre_mean_mm": 4.648512366418603,
+          "predicted_tre_mean_mm": 3.4115025067123503,
+          "predicted_tre_median_mm": 2.2854442545692897,
+          "predicted_tre_p95_mm": 10.329825148218616,
+          "mean_tre_change_predicted_minus_static_mm": -1.2370098597062529,
+          "fraction_landmarks_improved": 0.72
+        },
+        "T10": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 3.247321956837019,
+          "predicted_displacement_mean_mm": 1.8893009424209595,
+          "static_tre_mean_mm": 3.247321956837019,
+          "predicted_tre_mean_mm": 2.4952599983495443,
+          "predicted_tre_median_mm": 1.9128440289175876,
+          "predicted_tre_p95_mm": 7.096931350700705,
+          "mean_tre_change_predicted_minus_static_mm": -0.7520619584874746,
+          "fraction_landmarks_improved": 0.7066666666666667
+        },
+        "T20": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 1.7367040873953647,
+          "predicted_displacement_mean_mm": 1.4146156311035156,
+          "static_tre_mean_mm": 1.7367040873953647,
+          "predicted_tre_mean_mm": 1.6451636221735082,
+          "predicted_tre_median_mm": 1.5653341100567861,
+          "predicted_tre_p95_mm": 3.9788904371699494,
+          "mean_tre_change_predicted_minus_static_mm": -0.09154046522185655,
+          "fraction_landmarks_improved": 0.49333333333333335
+        },
+        "T30": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 0.8695409830829448,
+          "predicted_displacement_mean_mm": 0.8653460741043091,
+          "static_tre_mean_mm": 0.8695409830829448,
+          "predicted_tre_mean_mm": 1.2731246750170158,
+          "predicted_tre_median_mm": 1.3314349763678002,
+          "predicted_tre_p95_mm": 2.3264564330784228,
+          "mean_tre_change_predicted_minus_static_mm": 0.40358369193407095,
+          "fraction_landmarks_improved": 0.22666666666666666
+        },
+        "T40": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 0.704762090386283,
+          "predicted_displacement_mean_mm": 0.38693442940711975,
+          "static_tre_mean_mm": 0.704762090386283,
+          "predicted_tre_mean_mm": 0.8957309328058034,
+          "predicted_tre_median_mm": 0.7912399167092006,
+          "predicted_tre_p95_mm": 2.469086677854446,
+          "mean_tre_change_predicted_minus_static_mm": 0.1909688424195204,
+          "fraction_landmarks_improved": 0.3466666666666667
+        },
+        "T50": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 0.0,
+          "predicted_displacement_mean_mm": 0.0,
+          "static_tre_mean_mm": 0.0,
+          "predicted_tre_mean_mm": 0.0,
+          "predicted_tre_median_mm": 0.0,
+          "predicted_tre_p95_mm": 0.0,
+          "mean_tre_change_predicted_minus_static_mm": 0.0,
+          "fraction_landmarks_improved": 0.0
+        }
+      },
+      "conversion_manifest_sha256": "906e73ebddd6fe3bbaa11f2c443c92f1ad1e5aad79ffaa17fd52fb6595b4c234",
+      "source_segmentation_manifest_sha256": "aa0d8d495ea035233b877950b9cb9485b4aab3e74ab0128b8ecd76570da87017",
+      "fit_report_sha256": "3ba66b65081d5915ea61a47fa41d8e517d2a9447dd42ccbb31ac74d76ad9ab65",
+      "scenario_report_sha256": "f66e9f9d1f0113a99d3dd3e3667efceaf42e5228d785f3e69bfcdd42985306b7",
+      "landmark_evaluation_sha256": "c0265f808a1a6d1ecb9e039ae06506760bad9882a5d2b92b157085bba537a710"
+    },
+    {
+      "case": 3,
+      "run_case_dir": "case_03",
+      "source_orientation": {
+        "right_is_high_index": false,
+        "posterior_is_high_row": true,
+        "superior_is_high_index": false,
+        "lung_asymmetry": -0.06381161912701502,
+        "sides_agree": true,
+        "automated_orientation_confident": true,
+        "air_peak_hu": -995.0
+      },
+      "source_anatomy_qc": {
+        "upper_minus_lower_z_voxels": 26.05656243027598,
+        "right_minus_left_x_voxels": 129.9705498061218,
+        "source_only_anatomy_qc_pass": true
+      },
+      "T50_to_T00_expert_300": {
+        "landmark_count": 300,
+        "observed_displacement_mean_mm": 6.942992820787408,
+        "predicted_displacement_mean_mm": 4.355363845825195,
+        "static_tre_mean_mm": 6.942992820787408,
+        "predicted_tre_mean_mm": 3.6589288411457193,
+        "predicted_tre_median_mm": 3.163708130378324,
+        "predicted_tre_p95_mm": 8.218137859296872,
+        "mean_tre_change_predicted_minus_static_mm": -3.284063979641689,
+        "fraction_landmarks_improved": 0.95
+      },
+      "sampled_75_by_phase": {
+        "T00": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 7.245774837569821,
+          "predicted_displacement_mean_mm": 4.2653117179870605,
+          "static_tre_mean_mm": 7.245774837569821,
+          "predicted_tre_mean_mm": 3.9880972420193035,
+          "predicted_tre_median_mm": 3.2813394294944223,
+          "predicted_tre_p95_mm": 9.583682624267485,
+          "mean_tre_change_predicted_minus_static_mm": -3.257677595550518,
+          "fraction_landmarks_improved": 0.9866666666666667
+        },
+        "T10": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 6.1259580658915445,
+          "predicted_displacement_mean_mm": 3.623649835586548,
+          "static_tre_mean_mm": 6.1259580658915445,
+          "predicted_tre_mean_mm": 3.5381910725347225,
+          "predicted_tre_median_mm": 2.921931588040048,
+          "predicted_tre_p95_mm": 8.05403764599529,
+          "mean_tre_change_predicted_minus_static_mm": -2.587766993356822,
+          "fraction_landmarks_improved": 0.9866666666666667
+        },
+        "T20": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 3.635288743620945,
+          "predicted_displacement_mean_mm": 2.4970362186431885,
+          "static_tre_mean_mm": 3.635288743620945,
+          "predicted_tre_mean_mm": 2.3083626410733937,
+          "predicted_tre_median_mm": 2.1256584160681795,
+          "predicted_tre_p95_mm": 4.2449308500100456,
+          "mean_tre_change_predicted_minus_static_mm": -1.3269261025475512,
+          "fraction_landmarks_improved": 0.8533333333333334
+        },
+        "T30": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 1.9941650370246777,
+          "predicted_displacement_mean_mm": 1.3289803266525269,
+          "static_tre_mean_mm": 1.9941650370246777,
+          "predicted_tre_mean_mm": 1.6828793130314887,
+          "predicted_tre_median_mm": 1.6513108679257278,
+          "predicted_tre_p95_mm": 3.3420523400065076,
+          "mean_tre_change_predicted_minus_static_mm": -0.311285723993189,
+          "fraction_landmarks_improved": 0.6533333333333333
+        },
+        "T40": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 1.1432621882903198,
+          "predicted_displacement_mean_mm": 0.538662850856781,
+          "static_tre_mean_mm": 1.1432621882903198,
+          "predicted_tre_mean_mm": 1.224177134159548,
+          "predicted_tre_median_mm": 1.0272737260188416,
+          "predicted_tre_p95_mm": 2.7375216733875525,
+          "mean_tre_change_predicted_minus_static_mm": 0.0809149458692282,
+          "fraction_landmarks_improved": 0.38666666666666666
+        },
+        "T50": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 0.0,
+          "predicted_displacement_mean_mm": 0.0,
+          "static_tre_mean_mm": 0.0,
+          "predicted_tre_mean_mm": 0.0,
+          "predicted_tre_median_mm": 0.0,
+          "predicted_tre_p95_mm": 0.0,
+          "mean_tre_change_predicted_minus_static_mm": 0.0,
+          "fraction_landmarks_improved": 0.0
+        }
+      },
+      "conversion_manifest_sha256": "e4fee8cc6238a88f43e26c81d0f84ee1301fe84f17f6e12ce296e784ceb1cb2c",
+      "source_segmentation_manifest_sha256": "805510142365050bbf5f88c3e96bb72a2d69188c9c88ab96b9f210e255c1100e",
+      "fit_report_sha256": "8bf0b551e2ad7faad36dfd02a393d7622c8ddc1ce26775f205fea15a438e0434",
+      "scenario_report_sha256": "1287bb2edbfa28ddfbf143094d1f314a8f8b3bdb6c893a7bc15590e5affb5ba0",
+      "landmark_evaluation_sha256": "d7b5569929e4ba8082e72fff2f8ebcbb8cde124a06b253dc59ce5dae02836c31"
+    },
+    {
+      "case": 4,
+      "run_case_dir": "case_04",
+      "source_orientation": {
+        "right_is_high_index": false,
+        "posterior_is_high_row": true,
+        "superior_is_high_index": false,
+        "lung_asymmetry": -0.16298529204655218,
+        "sides_agree": true,
+        "automated_orientation_confident": true,
+        "air_peak_hu": -994.0,
+        "automated_superior_is_high_index": false,
+        "source_only_superior_override": "auto"
+      },
+      "source_anatomy_qc": {
+        "upper_minus_lower_z_voxels": 25.88373718033165,
+        "right_minus_left_x_voxels": 125.02240539989793,
+        "source_only_anatomy_qc_pass": true
+      },
+      "T50_to_T00_expert_300": {
+        "landmark_count": 300,
+        "observed_displacement_mean_mm": 9.830147256419307,
+        "predicted_displacement_mean_mm": 5.98265266418457,
+        "static_tre_mean_mm": 9.830147256419307,
+        "predicted_tre_mean_mm": 4.796383959357874,
+        "predicted_tre_median_mm": 4.562092424938149,
+        "predicted_tre_p95_mm": 9.712642167794122,
+        "mean_tre_change_predicted_minus_static_mm": -5.033763297061434,
+        "fraction_landmarks_improved": 0.9766666666666667
+      },
+      "sampled_75_by_phase": {
+        "T00": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 9.689395358221134,
+          "predicted_displacement_mean_mm": 5.969117641448975,
+          "static_tre_mean_mm": 9.689395358221134,
+          "predicted_tre_mean_mm": 4.5636676977830355,
+          "predicted_tre_median_mm": 4.300159700955819,
+          "predicted_tre_p95_mm": 8.445244325780907,
+          "mean_tre_change_predicted_minus_static_mm": -5.125727660438098,
+          "fraction_landmarks_improved": 0.96
+        },
+        "T10": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 7.7739153632087135,
+          "predicted_displacement_mean_mm": 4.923574924468994,
+          "static_tre_mean_mm": 7.7739153632087135,
+          "predicted_tre_mean_mm": 3.796618954757708,
+          "predicted_tre_median_mm": 3.487519691111092,
+          "predicted_tre_p95_mm": 7.250777383848446,
+          "mean_tre_change_predicted_minus_static_mm": -3.9772964084510054,
+          "fraction_landmarks_improved": 0.96
+        },
+        "T20": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 4.832740187235098,
+          "predicted_displacement_mean_mm": 3.292478561401367,
+          "static_tre_mean_mm": 4.832740187235098,
+          "predicted_tre_mean_mm": 2.6940618227699646,
+          "predicted_tre_median_mm": 2.3890436059260374,
+          "predicted_tre_p95_mm": 5.886798048821967,
+          "mean_tre_change_predicted_minus_static_mm": -2.1386783644651333,
+          "fraction_landmarks_improved": 0.88
+        },
+        "T30": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 2.909733941312901,
+          "predicted_displacement_mean_mm": 1.8253928422927856,
+          "static_tre_mean_mm": 2.909733941312901,
+          "predicted_tre_mean_mm": 2.1382774584447013,
+          "predicted_tre_median_mm": 2.1115323937506276,
+          "predicted_tre_p95_mm": 3.929508364502641,
+          "mean_tre_change_predicted_minus_static_mm": -0.7714564828681998,
+          "fraction_landmarks_improved": 0.76
+        },
+        "T40": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 2.1140779097669022,
+          "predicted_displacement_mean_mm": 0.7666164040565491,
+          "static_tre_mean_mm": 2.1140779097669022,
+          "predicted_tre_mean_mm": 2.002934085048366,
+          "predicted_tre_median_mm": 1.6384484638350592,
+          "predicted_tre_p95_mm": 4.501825311366062,
+          "mean_tre_change_predicted_minus_static_mm": -0.11114382471853634,
+          "fraction_landmarks_improved": 0.5333333333333333
+        },
+        "T50": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 0.0,
+          "predicted_displacement_mean_mm": 0.0,
+          "static_tre_mean_mm": 0.0,
+          "predicted_tre_mean_mm": 0.0,
+          "predicted_tre_median_mm": 0.0,
+          "predicted_tre_p95_mm": 0.0,
+          "mean_tre_change_predicted_minus_static_mm": 0.0,
+          "fraction_landmarks_improved": 0.0
+        }
+      },
+      "conversion_manifest_sha256": "26da9205aec9af0a309ce5ac8e78e5ed641efd3322b475306eef0d51e07cba87",
+      "source_segmentation_manifest_sha256": "e983a8fca502dae4cd2f9567914aafa04342ed987eb40f021aec153a61a5bdf8",
+      "fit_report_sha256": "4c75139c8c5741422941ff74294d47e335d214a5689dd3d1607e9d37becc10c8",
+      "scenario_report_sha256": "f1cd433f41f5f35344a250cf91b5c3d7f21c5830b980e7f21eaaab884c44bbcd",
+      "landmark_evaluation_sha256": "89c66eace1ac8e1f8a6e809724f340b9d7bd2c86bb80bc618c23f53feff9eeca",
+      "mask_evaluation": {
+        "source_lung_volume_ml": 2457.2599547617197,
+        "source_heart_volume_ml": 577.9600498722509,
+        "rows": [
+          {
+            "phase": "T50",
+            "model_stage": 0.5,
+            "organs": {
+              "lung": {
+                "observed_volume_ml": 2511.4675515542294,
+                "observed_volume_change_from_T70_ml": 54.207596792509776,
+                "predicted_volume_ml": 2362.89007091815,
+                "predicted_surface_open_edges": 0,
+                "field_coverage_fraction": 1.0,
+                "static_surface_error_mm": {
+                  "symmetric_mean_mm": 1.4090044698386521,
+                  "symmetric_rms_mm": 1.655062229360497,
+                  "symmetric_p95_mm": 2.743520396341523,
+                  "predicted_to_observed_mean_mm": 1.3978700206934231,
+                  "observed_to_predicted_mean_mm": 1.4199550033889294
+                },
+                "predicted_surface_error_mm": {
+                  "symmetric_mean_mm": 2.202354237417764,
+                  "symmetric_rms_mm": 2.8107276497625446,
+                  "symmetric_p95_mm": 6.218597179493557,
+                  "predicted_to_observed_mean_mm": 2.150244910685341,
+                  "observed_to_predicted_mean_mm": 2.2536028374358716
+                },
+                "target_mask_sha256": {
+                  "lung_upper_lobe_left": "1cb6c4d4339419ac3854de015fc6b6aa13597b6b8ffc2672f5c7c8ad794ddaa2",
+                  "lung_lower_lobe_left": "8c5173cadec8835713d1284847cf5edcae80f0a02321d2ece2c1bf5e27c6b569",
+                  "lung_upper_lobe_right": "2a24125a1902e16e2a7d141ab82715323efc0a40569dd282dfaf8d883459beb3",
+                  "lung_middle_lobe_right": "70a0bd9de77fdda8163e67a40e0395f83d4baaedaedbb26db4288eba623cfacc",
+                  "lung_lower_lobe_right": "157ab366a6fd043a262ad23425aba9b74b99bb46818e88a800a65d597ecfa0d6"
+                },
+                "predicted_surface_sha256": "ba9948a8c15bc54956466298063e87c5b8f9e87a1159f552a84cd6a2b5ba980b",
+                "predicted_volume_change_from_T70_ml": -94.36988384356982,
+                "predicted_volume_error_ml": -148.5774806360796
+              },
+              "heart": {
+                "observed_volume_ml": 582.0142073380355,
+                "observed_volume_change_from_T70_ml": 4.054157465784556,
+                "predicted_volume_ml": 580.1416057444408,
+                "predicted_surface_open_edges": 0,
+                "field_coverage_fraction": 1.0,
+                "static_surface_error_mm": {
+                  "symmetric_mean_mm": 1.832033708439867,
+                  "symmetric_rms_mm": 2.114481867233709,
+                  "symmetric_p95_mm": 3.5545036599582693,
+                  "predicted_to_observed_mean_mm": 1.8115404323362883,
+                  "observed_to_predicted_mean_mm": 1.8521683573643226
+                },
+                "predicted_surface_error_mm": {
+                  "symmetric_mean_mm": 1.8947622281314633,
+                  "symmetric_rms_mm": 2.188482184555191,
+                  "symmetric_p95_mm": 3.827619112944288,
+                  "predicted_to_observed_mean_mm": 1.882554768207079,
+                  "observed_to_predicted_mean_mm": 1.9067560605765312
+                },
+                "target_mask_sha256": {
+                  "heart": "a5f34173c511596f9d6cc2a9b1bdf535caebd664b1461402411438e72f21d6f9"
+                },
+                "predicted_surface_sha256": "d28e427b02098ce70817027f0e27c1786f5468a7e39db8dbb8e4bb4880c0e52a",
+                "predicted_volume_change_from_T70_ml": 2.181555872189847,
+                "predicted_volume_error_ml": -1.872601593594709
+              }
+            }
+          },
+          {
+            "phase": "T00",
+            "model_stage": 0.0,
+            "organs": {
+              "lung": {
+                "observed_volume_ml": 2898.741741535792,
+                "observed_volume_change_from_T70_ml": 441.48178677407213,
+                "predicted_volume_ml": 2641.020726641033,
+                "predicted_surface_open_edges": 0,
+                "field_coverage_fraction": 1.0,
+                "static_surface_error_mm": {
+                  "symmetric_mean_mm": 3.708851836898148,
+                  "symmetric_rms_mm": 5.481243441166754,
+                  "symmetric_p95_mm": 13.000729726017866,
+                  "predicted_to_observed_mean_mm": 3.3832379645884236,
+                  "observed_to_predicted_mean_mm": 4.010457827676119
+                },
+                "predicted_surface_error_mm": {
+                  "symmetric_mean_mm": 2.581082089633826,
+                  "symmetric_rms_mm": 3.284918106321108,
+                  "symmetric_p95_mm": 6.975833193573355,
+                  "predicted_to_observed_mean_mm": 2.4491178245263776,
+                  "observed_to_predicted_mean_mm": 2.7033164792275226
+                },
+                "target_mask_sha256": {
+                  "lung_upper_lobe_left": "7b84dd2ed97c47488cb28a10d80218516584f09c037449398a15deb6eb9ec649",
+                  "lung_lower_lobe_left": "a21b723f971c43433bfcfda7301fbaeba41ad070606e4b7f92948942a38c3e74",
+                  "lung_upper_lobe_right": "d575167c3d92f42f1de59918e709613432d95c9500630d6b062e2bc2d3126566",
+                  "lung_middle_lobe_right": "57f0de2f4ffa5264bbc22aadc94e4a61cb91b36869f578294a0d9a58c18f568b",
+                  "lung_lower_lobe_right": "a5d37b703c99f74fd409cafb44aea27c6d2f86e91e9cd57fbcd8b9ff18cfdb17"
+                },
+                "predicted_surface_sha256": "ee48fcced1fd37cb62894eb82c53898406ef2881371bb91c2afc27dbe9cdd184",
+                "predicted_volume_change_from_T70_ml": 183.76077187931332,
+                "predicted_volume_error_ml": -257.7210148947588
+              },
+              "heart": {
+                "observed_volume_ml": 558.5256320362695,
+                "observed_volume_change_from_T70_ml": -19.434417835981435,
+                "predicted_volume_ml": 563.7721620265434,
+                "predicted_surface_open_edges": 0,
+                "field_coverage_fraction": 1.0,
+                "static_surface_error_mm": {
+                  "symmetric_mean_mm": 4.5008912686992195,
+                  "symmetric_rms_mm": 5.077593848749064,
+                  "symmetric_p95_mm": 8.829343592610442,
+                  "predicted_to_observed_mean_mm": 4.439231200020264,
+                  "observed_to_predicted_mean_mm": 4.5635780426532975
+                },
+                "predicted_surface_error_mm": {
+                  "symmetric_mean_mm": 4.270020305452052,
+                  "symmetric_rms_mm": 4.777811128955588,
+                  "symmetric_p95_mm": 8.057278572602817,
+                  "predicted_to_observed_mean_mm": 4.16654532295444,
+                  "observed_to_predicted_mean_mm": 4.375218255709016
+                },
+                "target_mask_sha256": {
+                  "heart": "27b26d799d9cfc3468da707d71c03b2b1428bd291939d5034cfeb0abfc700248"
+                },
+                "predicted_surface_sha256": "7b5b6c9a8c2563e628d5d468fa5379125dffb74477362838b1f18595bef0cd51",
+                "predicted_volume_change_from_T70_ml": -14.187887845707564,
+                "predicted_volume_error_ml": 5.246529990273871
+              }
+            }
+          }
+        ],
+        "evaluation_sha256": "0aa4c1f4210694138c9f747fc39bf586199aca104691969c7a7a8fd17f91b7c1"
+      }
+    },
+    {
+      "case": 5,
+      "run_case_dir": "case_05",
+      "source_orientation": {
+        "right_is_high_index": false,
+        "posterior_is_high_row": true,
+        "superior_is_high_index": false,
+        "lung_asymmetry": -0.09948397692596235,
+        "sides_agree": true,
+        "automated_orientation_confident": true,
+        "air_peak_hu": -994.0,
+        "automated_superior_is_high_index": true,
+        "source_only_superior_override": "false"
+      },
+      "source_anatomy_qc": {
+        "upper_minus_lower_z_voxels": 33.38291931456072,
+        "right_minus_left_x_voxels": 126.50783326393264,
+        "source_only_anatomy_qc_pass": true
+      },
+      "T50_to_T00_expert_300": {
+        "landmark_count": 300,
+        "observed_displacement_mean_mm": 7.476853258560301,
+        "predicted_displacement_mean_mm": 3.083019733428955,
+        "static_tre_mean_mm": 7.476853258560301,
+        "predicted_tre_mean_mm": 5.66474637965466,
+        "predicted_tre_median_mm": 3.9961156827034268,
+        "predicted_tre_p95_mm": 14.583148416865662,
+        "mean_tre_change_predicted_minus_static_mm": -1.8121068789056416,
+        "fraction_landmarks_improved": 0.68
+      },
+      "sampled_75_by_phase": {
+        "T00": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 7.405836344667302,
+          "predicted_displacement_mean_mm": 2.988353967666626,
+          "static_tre_mean_mm": 7.405836344667302,
+          "predicted_tre_mean_mm": 5.61400223094904,
+          "predicted_tre_median_mm": 4.024969861857368,
+          "predicted_tre_p95_mm": 13.889437781997653,
+          "mean_tre_change_predicted_minus_static_mm": -1.791834113718262,
+          "fraction_landmarks_improved": 0.7333333333333333
+        },
+        "T10": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 6.336267183329404,
+          "predicted_displacement_mean_mm": 2.3615915775299072,
+          "static_tre_mean_mm": 6.336267183329404,
+          "predicted_tre_mean_mm": 5.255622799253467,
+          "predicted_tre_median_mm": 3.648186244850269,
+          "predicted_tre_p95_mm": 14.142521066951552,
+          "mean_tre_change_predicted_minus_static_mm": -1.0806443840759377,
+          "fraction_landmarks_improved": 0.6
+        },
+        "T20": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 3.7537109530690524,
+          "predicted_displacement_mean_mm": 1.5965631008148193,
+          "static_tre_mean_mm": 3.7537109530690524,
+          "predicted_tre_mean_mm": 3.258639168949457,
+          "predicted_tre_median_mm": 2.4051041869601804,
+          "predicted_tre_p95_mm": 8.334456021120904,
+          "mean_tre_change_predicted_minus_static_mm": -0.4950717841195953,
+          "fraction_landmarks_improved": 0.56
+        },
+        "T30": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 2.5628699280024163,
+          "predicted_displacement_mean_mm": 0.9083120822906494,
+          "static_tre_mean_mm": 2.5628699280024163,
+          "predicted_tre_mean_mm": 2.3684823011972647,
+          "predicted_tre_median_mm": 1.61757046811857,
+          "predicted_tre_p95_mm": 5.087913590716022,
+          "mean_tre_change_predicted_minus_static_mm": -0.19438762680515165,
+          "fraction_landmarks_improved": 0.5333333333333333
+        },
+        "T40": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 1.3862834098620314,
+          "predicted_displacement_mean_mm": 0.41793638467788696,
+          "static_tre_mean_mm": 1.3862834098620314,
+          "predicted_tre_mean_mm": 1.5602148726912726,
+          "predicted_tre_median_mm": 1.0838240696336539,
+          "predicted_tre_p95_mm": 3.753656239050697,
+          "mean_tre_change_predicted_minus_static_mm": 0.1739314628292412,
+          "fraction_landmarks_improved": 0.32
+        },
+        "T50": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 0.0,
+          "predicted_displacement_mean_mm": 0.0,
+          "static_tre_mean_mm": 0.0,
+          "predicted_tre_mean_mm": 0.0,
+          "predicted_tre_median_mm": 0.0,
+          "predicted_tre_p95_mm": 0.0,
+          "mean_tre_change_predicted_minus_static_mm": 0.0,
+          "fraction_landmarks_improved": 0.0
+        }
+      },
+      "conversion_manifest_sha256": "db249923813bd7aca49c458c694919db2acf6f565c5bc391014094ef9031c40b",
+      "source_segmentation_manifest_sha256": "abcb2b87b67fbc2db3bb5c2a7b67e7b56b438b29e804d03881c628b641bcdac3",
+      "fit_report_sha256": "f4d5c67ec246cffd5b8ceedf4560123ce04abd4011d1bb9354e6fe920303af2c",
+      "scenario_report_sha256": "03e56673e13153737294b6da2bb78c00e1113e9c86dcb91b9638b8c76b7d95b9",
+      "landmark_evaluation_sha256": "afb5a75e0459bb8a16d3e33ab26f164e3f8ff6feef049156e341366308186caa"
+    },
+    {
+      "case": 6,
+      "run_case_dir": "case_06",
+      "source_orientation": {
+        "right_is_high_index": false,
+        "posterior_is_high_row": true,
+        "superior_is_high_index": false,
+        "lung_asymmetry": -0.126272017582755,
+        "sides_agree": true,
+        "automated_orientation_confident": true,
+        "air_peak_hu": -1024.0,
+        "automated_superior_is_high_index": false,
+        "source_only_superior_override": "auto"
+      },
+      "source_anatomy_qc": {
+        "upper_minus_lower_z_voxels": 31.40492173278161,
+        "right_minus_left_x_voxels": 150.82881036495883,
+        "source_only_anatomy_qc_pass": true
+      },
+      "T50_to_T00_expert_300": {
+        "landmark_count": 300,
+        "observed_displacement_mean_mm": 10.89102421124554,
+        "predicted_displacement_mean_mm": 4.271984577178955,
+        "static_tre_mean_mm": 10.89102421124554,
+        "predicted_tre_mean_mm": 7.562188718706848,
+        "predicted_tre_median_mm": 5.7895305528026135,
+        "predicted_tre_p95_mm": 19.393167337742096,
+        "mean_tre_change_predicted_minus_static_mm": -3.3288354925386923,
+        "fraction_landmarks_improved": 0.9266666666666666
+      },
+      "sampled_75_by_phase": {
+        "T00": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 11.77494344139046,
+          "predicted_displacement_mean_mm": 4.7335968017578125,
+          "static_tre_mean_mm": 11.77494344139046,
+          "predicted_tre_mean_mm": 8.050198009381363,
+          "predicted_tre_median_mm": 6.161122754777262,
+          "predicted_tre_p95_mm": 19.38146877022718,
+          "mean_tre_change_predicted_minus_static_mm": -3.7247454320090974,
+          "fraction_landmarks_improved": 0.9466666666666667
+        },
+        "T10": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 10.023136814789279,
+          "predicted_displacement_mean_mm": 3.6625163555145264,
+          "static_tre_mean_mm": 10.023136814789279,
+          "predicted_tre_mean_mm": 7.234631187198197,
+          "predicted_tre_median_mm": 5.744624191241772,
+          "predicted_tre_p95_mm": 16.566381162707252,
+          "mean_tre_change_predicted_minus_static_mm": -2.788505627591082,
+          "fraction_landmarks_improved": 0.9466666666666667
+        },
+        "T20": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 7.018933403798983,
+          "predicted_displacement_mean_mm": 2.749859571456909,
+          "static_tre_mean_mm": 7.018933403798983,
+          "predicted_tre_mean_mm": 5.157121503161925,
+          "predicted_tre_median_mm": 3.6172415476832422,
+          "predicted_tre_p95_mm": 13.167917596321294,
+          "mean_tre_change_predicted_minus_static_mm": -1.8618119006370586,
+          "fraction_landmarks_improved": 0.9333333333333333
+        },
+        "T30": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 4.663985196664426,
+          "predicted_displacement_mean_mm": 1.8846911191940308,
+          "static_tre_mean_mm": 4.663985196664426,
+          "predicted_tre_mean_mm": 3.523323958873159,
+          "predicted_tre_median_mm": 2.8090124899608395,
+          "predicted_tre_p95_mm": 8.914389299423014,
+          "mean_tre_change_predicted_minus_static_mm": -1.1406612377912673,
+          "fraction_landmarks_improved": 0.8933333333333333
+        },
+        "T40": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 2.1757398537545716,
+          "predicted_displacement_mean_mm": 0.8911193013191223,
+          "static_tre_mean_mm": 2.1757398537545716,
+          "predicted_tre_mean_mm": 1.988644048842246,
+          "predicted_tre_median_mm": 1.722015762233176,
+          "predicted_tre_p95_mm": 3.6163900377897833,
+          "mean_tre_change_predicted_minus_static_mm": -0.18709580491232547,
+          "fraction_landmarks_improved": 0.5733333333333334
+        },
+        "T50": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 0.0,
+          "predicted_displacement_mean_mm": 0.0,
+          "static_tre_mean_mm": 0.0,
+          "predicted_tre_mean_mm": 0.0,
+          "predicted_tre_median_mm": 0.0,
+          "predicted_tre_p95_mm": 0.0,
+          "mean_tre_change_predicted_minus_static_mm": 0.0,
+          "fraction_landmarks_improved": 0.0
+        }
+      },
+      "conversion_manifest_sha256": "b455b225ec729a23b99d10701b523fdde231550b482157758d96318fb7d74f63",
+      "source_segmentation_manifest_sha256": "fb4bab72a0d614e76a90ae88eb6667f2ea54e617c96fd31896ae6e901304eaf5",
+      "fit_report_sha256": "524bf8d0f2bd3f189880bc77c68a98ac99a2a190a39b403d6dcd4f217ede68cf",
+      "scenario_report_sha256": "343c9f5591ba91fa97f72507ae385fc3eeb2b0c1a4853ee033f1eef2ffb0d0cb",
+      "landmark_evaluation_sha256": "839add908d295379802c07c839bcbc017768a482bd2598cf94be16bd450353b4",
+      "mask_evaluation": {
+        "source_lung_volume_ml": 2525.989686258539,
+        "source_heart_volume_ml": 638.5535839183789,
+        "rows": [
+          {
+            "phase": "T50",
+            "model_stage": 0.5,
+            "organs": {
+              "lung": {
+                "observed_volume_ml": 2329.3392224080962,
+                "observed_volume_change_from_T70_ml": -196.65046385044297,
+                "predicted_volume_ml": 2551.1666756177156,
+                "predicted_surface_open_edges": 0,
+                "field_coverage_fraction": 1.0,
+                "static_surface_error_mm": {
+                  "symmetric_mean_mm": 2.581942160038538,
+                  "symmetric_rms_mm": 3.819388437416609,
+                  "symmetric_p95_mm": 9.542707834866881,
+                  "predicted_to_observed_mean_mm": 2.6602602128522284,
+                  "observed_to_predicted_mean_mm": 2.500307272483518
+                },
+                "predicted_surface_error_mm": {
+                  "symmetric_mean_mm": 2.8483902240523356,
+                  "symmetric_rms_mm": 4.26003803468989,
+                  "symmetric_p95_mm": 10.749512348085904,
+                  "predicted_to_observed_mean_mm": 2.9587124097653783,
+                  "observed_to_predicted_mean_mm": 2.733395801924237
+                },
+                "target_mask_sha256": {
+                  "lung_upper_lobe_left": "241cb7102f7d76d4c2ce979af95c6726498ef69782ece3e68432cbbf65280a4e",
+                  "lung_lower_lobe_left": "429972e7a75c62b19a050bf7c8b5fd5f3e8a0c16010310e2d38fd16d686092ce",
+                  "lung_upper_lobe_right": "038ef2680accce60f39178b7d954c4de8e749091a913cf7a1e769c531fcdad87",
+                  "lung_middle_lobe_right": "25c72423cdf17842d44ce2fc4c279424309180bdffa7c4604aa30408034a364b",
+                  "lung_lower_lobe_right": "f902cf81bc3aa8a9816d2328e7caf3c6e11694c3fbed2479d5b81c65eebf0666"
+                },
+                "predicted_surface_sha256": "8037ca28c37b4bda16bba5eddfe611409cdca5750b447352fbb15e549f101493",
+                "predicted_volume_change_from_T70_ml": 25.176989359176332,
+                "predicted_volume_error_ml": 221.8274532096193
+              },
+              "heart": {
+                "observed_volume_ml": 616.7952701348524,
+                "observed_volume_change_from_T70_ml": -21.758313783526432,
+                "predicted_volume_ml": null,
+                "predicted_surface_open_edges": 9,
+                "field_coverage_fraction": 1.0,
+                "static_surface_error_mm": {
+                  "symmetric_mean_mm": 1.646287121902964,
+                  "symmetric_rms_mm": 1.9108247379678478,
+                  "symmetric_p95_mm": 3.1644258152388383,
+                  "predicted_to_observed_mean_mm": 1.6743241248428207,
+                  "observed_to_predicted_mean_mm": 1.6180141891596238
+                },
+                "predicted_surface_error_mm": {
+                  "symmetric_mean_mm": 1.655981598190266,
+                  "symmetric_rms_mm": 1.9272567210193083,
+                  "symmetric_p95_mm": 3.1670475596777172,
+                  "predicted_to_observed_mean_mm": 1.689142751152803,
+                  "observed_to_predicted_mean_mm": 1.622541395989887
+                },
+                "target_mask_sha256": {
+                  "heart": "ca67509ee2238c4176ec5eb426fdb8cd94b4774ec8a1182ad72f5cf18b110f18"
+                },
+                "predicted_surface_sha256": "8b733792c6c1163f7aa747a3689477d4edd801ec65ee1d8876186e39cc59afc5"
+              }
+            }
+          },
+          {
+            "phase": "T00",
+            "model_stage": 0.0,
+            "organs": {
+              "lung": {
+                "observed_volume_ml": 2981.0066008500603,
+                "observed_volume_change_from_T70_ml": 455.0169145915211,
+                "predicted_volume_ml": 2702.6511581075943,
+                "predicted_surface_open_edges": 0,
+                "field_coverage_fraction": 1.0,
+                "static_surface_error_mm": {
+                  "symmetric_mean_mm": 3.7704512250623603,
+                  "symmetric_rms_mm": 5.319943338344942,
+                  "symmetric_p95_mm": 11.73183745948586,
+                  "predicted_to_observed_mean_mm": 3.3047435995656147,
+                  "observed_to_predicted_mean_mm": 4.184537333085051
+                },
+                "predicted_surface_error_mm": {
+                  "symmetric_mean_mm": 2.6810249201589476,
+                  "symmetric_rms_mm": 3.241063704706144,
+                  "symmetric_p95_mm": 6.179499648435285,
+                  "predicted_to_observed_mean_mm": 2.473356155205493,
+                  "observed_to_predicted_mean_mm": 2.865674571419717
+                },
+                "target_mask_sha256": {
+                  "lung_upper_lobe_left": "72395ae534d9fddb0f855ffa2761567fb5bf719738d22b86847303d371fe0aaf",
+                  "lung_lower_lobe_left": "ecfba14f4496519121d5248d99ac1272e143040c54a0451aed3e98064a053b7a",
+                  "lung_upper_lobe_right": "634a1479b48361d2e4c1182f6cb525684aaa7c6b28b55af1dc4d652ea902a2ae",
+                  "lung_middle_lobe_right": "be5a732f6e247da3059c7540d099c6a25180b636bb22ea797f1aeaadab90ce33",
+                  "lung_lower_lobe_right": "1279f88bb1ad50fe81a28fef1d8673bef912995254f5459b50c0adbd44c86ac2"
+                },
+                "predicted_surface_sha256": "1cd833491326ac2165a3fb8472ee9f9d8299fe8b3d3dd431089373b142a3ab99",
+                "predicted_volume_change_from_T70_ml": 176.66147184905503,
+                "predicted_volume_error_ml": -278.35544274246604
+              },
+              "heart": {
+                "observed_volume_ml": 655.7508846828505,
+                "observed_volume_change_from_T70_ml": 17.197300764471606,
+                "predicted_volume_ml": null,
+                "predicted_surface_open_edges": 9,
+                "field_coverage_fraction": 1.0,
+                "static_surface_error_mm": {
+                  "symmetric_mean_mm": 3.8373508767641824,
+                  "symmetric_rms_mm": 4.481210935770025,
+                  "symmetric_p95_mm": 7.91429153198618,
+                  "predicted_to_observed_mean_mm": 3.7536339983825524,
+                  "observed_to_predicted_mean_mm": 3.9196120152658462
+                },
+                "predicted_surface_error_mm": {
+                  "symmetric_mean_mm": 3.7771943219724537,
+                  "symmetric_rms_mm": 4.41357571290455,
+                  "symmetric_p95_mm": 7.807337796812413,
+                  "predicted_to_observed_mean_mm": 3.6904693354481153,
+                  "observed_to_predicted_mean_mm": 3.8624112610885093
+                },
+                "target_mask_sha256": {
+                  "heart": "2098b1a2cf0405f6f50b987ba9bcdbf298218adbaa6a42918d980af9030d814b"
+                },
+                "predicted_surface_sha256": "f60e1a3e4f0dc52ebcfcab8cf8e1a8a44f0cd3470394c12a0c59ffc3f8d97fe0"
+              }
+            }
+          }
+        ],
+        "evaluation_sha256": "52b7c29f3efd0a1d647ee7e514e4e5020c7916c404d651c2cdaaf665e9bd3486"
+      }
+    },
+    {
+      "case": 7,
+      "run_case_dir": "case_07",
+      "source_orientation": {
+        "right_is_high_index": false,
+        "posterior_is_high_row": true,
+        "superior_is_high_index": false,
+        "lung_asymmetry": -0.07275398427234381,
+        "sides_agree": false,
+        "automated_orientation_confident": false,
+        "air_peak_hu": -1024.0
+      },
+      "source_anatomy_qc": {
+        "upper_minus_lower_z_voxels": 23.90047342798718,
+        "right_minus_left_x_voxels": 153.9413509077761,
+        "source_only_anatomy_qc_pass": true
+      },
+      "T50_to_T00_expert_300": {
+        "landmark_count": 300,
+        "observed_displacement_mean_mm": 11.026219932523537,
+        "predicted_displacement_mean_mm": 4.148425579071045,
+        "static_tre_mean_mm": 11.026219932523537,
+        "predicted_tre_mean_mm": 7.63151847141656,
+        "predicted_tre_median_mm": 5.579392891566762,
+        "predicted_tre_p95_mm": 19.993274790066494,
+        "mean_tre_change_predicted_minus_static_mm": -3.394701461106977,
+        "fraction_landmarks_improved": 0.89
+      },
+      "sampled_75_by_phase": {
+        "T00": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 10.713218630620972,
+          "predicted_displacement_mean_mm": 3.863069772720337,
+          "static_tre_mean_mm": 10.713218630620972,
+          "predicted_tre_mean_mm": 7.6015106091793845,
+          "predicted_tre_median_mm": 5.747874796572704,
+          "predicted_tre_p95_mm": 19.266121338294568,
+          "mean_tre_change_predicted_minus_static_mm": -3.1117080214415873,
+          "fraction_landmarks_improved": 0.8533333333333334
+        },
+        "T10": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 9.238748971932566,
+          "predicted_displacement_mean_mm": 2.765363931655884,
+          "static_tre_mean_mm": 9.238748971932566,
+          "predicted_tre_mean_mm": 6.944174532638814,
+          "predicted_tre_median_mm": 5.203838183555087,
+          "predicted_tre_p95_mm": 15.595389406396652,
+          "mean_tre_change_predicted_minus_static_mm": -2.2945744392937515,
+          "fraction_landmarks_improved": 0.9066666666666666
+        },
+        "T20": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 6.342640932981102,
+          "predicted_displacement_mean_mm": 1.5525211095809937,
+          "static_tre_mean_mm": 6.342640932981102,
+          "predicted_tre_mean_mm": 5.14653065980824,
+          "predicted_tre_median_mm": 4.30184752927102,
+          "predicted_tre_p95_mm": 10.693724895975107,
+          "mean_tre_change_predicted_minus_static_mm": -1.1961102731728621,
+          "fraction_landmarks_improved": 0.9066666666666666
+        },
+        "T30": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 4.06316881964481,
+          "predicted_displacement_mean_mm": 0.7863330841064453,
+          "static_tre_mean_mm": 4.06316881964481,
+          "predicted_tre_mean_mm": 3.5253003027772167,
+          "predicted_tre_median_mm": 3.172367302506876,
+          "predicted_tre_p95_mm": 6.8660541424243675,
+          "mean_tre_change_predicted_minus_static_mm": -0.5378685168675932,
+          "fraction_landmarks_improved": 0.9466666666666667
+        },
+        "T40": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 2.6544343623872058,
+          "predicted_displacement_mean_mm": 0.342501163482666,
+          "static_tre_mean_mm": 2.6544343623872058,
+          "predicted_tre_mean_mm": 2.451815245833944,
+          "predicted_tre_median_mm": 2.3683443851852046,
+          "predicted_tre_p95_mm": 5.0692685324767535,
+          "mean_tre_change_predicted_minus_static_mm": -0.2026191165532616,
+          "fraction_landmarks_improved": 0.8266666666666667
+        },
+        "T50": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 0.0,
+          "predicted_displacement_mean_mm": 0.0,
+          "static_tre_mean_mm": 0.0,
+          "predicted_tre_mean_mm": 0.0,
+          "predicted_tre_median_mm": 0.0,
+          "predicted_tre_p95_mm": 0.0,
+          "mean_tre_change_predicted_minus_static_mm": 0.0,
+          "fraction_landmarks_improved": 0.0
+        }
+      },
+      "conversion_manifest_sha256": "b52f43b742bed96edf5c7a6c75f2b78808b1b113337a65c0fe82e507296c08e3",
+      "source_segmentation_manifest_sha256": "5b6bdebe7dc45c865f9a4bbe1556eae68f559501c888e6a7451c9aac1b48e1fe",
+      "fit_report_sha256": "9ec584d7e9f3640506dfec6893f9bd466fdd38fb4f2d9d6f6daa7dfc48e16633",
+      "scenario_report_sha256": "bd20a1e446fa08358d4106b5bf5aa62286c2d9ba762e90b355f71d61c92d1e53",
+      "landmark_evaluation_sha256": "bdff2677b29dda435af93ab0c2ec000c0a78f1ebf4596d6ec23be8cbda608070"
+    },
+    {
+      "case": 8,
+      "run_case_dir": "case_08",
+      "source_orientation": {
+        "right_is_high_index": false,
+        "posterior_is_high_row": true,
+        "superior_is_high_index": false,
+        "lung_asymmetry": -0.013802716150682194,
+        "sides_agree": false,
+        "automated_orientation_confident": false,
+        "air_peak_hu": -1024.0
+      },
+      "source_anatomy_qc": {
+        "upper_minus_lower_z_voxels": 26.27983242081676,
+        "right_minus_left_x_voxels": 128.46536679021267,
+        "source_only_anatomy_qc_pass": true
+      },
+      "T50_to_T00_expert_300": {
+        "landmark_count": 300,
+        "observed_displacement_mean_mm": 14.994680761939078,
+        "predicted_displacement_mean_mm": 4.002420902252197,
+        "static_tre_mean_mm": 14.994680761939078,
+        "predicted_tre_mean_mm": 11.872384783572494,
+        "predicted_tre_median_mm": 9.026783905075346,
+        "predicted_tre_p95_mm": 24.886501882002133,
+        "mean_tre_change_predicted_minus_static_mm": -3.1222959783665836,
+        "fraction_landmarks_improved": 0.84
+      },
+      "sampled_75_by_phase": {
+        "T00": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 16.000213008717996,
+          "predicted_displacement_mean_mm": 4.103271007537842,
+          "static_tre_mean_mm": 16.000213008717996,
+          "predicted_tre_mean_mm": 12.755234640817413,
+          "predicted_tre_median_mm": 10.24579000099186,
+          "predicted_tre_p95_mm": 27.492155797463827,
+          "mean_tre_change_predicted_minus_static_mm": -3.2449783679005826,
+          "fraction_landmarks_improved": 0.8133333333333334
+        },
+        "T10": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 15.00819992128673,
+          "predicted_displacement_mean_mm": 3.0505566596984863,
+          "static_tre_mean_mm": 15.00819992128673,
+          "predicted_tre_mean_mm": 12.467574690861134,
+          "predicted_tre_median_mm": 10.22955109280379,
+          "predicted_tre_p95_mm": 26.28449430088363,
+          "mean_tre_change_predicted_minus_static_mm": -2.5406252304255954,
+          "fraction_landmarks_improved": 0.84
+        },
+        "T20": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 9.833076532363622,
+          "predicted_displacement_mean_mm": 1.9577807188034058,
+          "static_tre_mean_mm": 9.833076532363622,
+          "predicted_tre_mean_mm": 8.233046208652347,
+          "predicted_tre_median_mm": 5.887215014844464,
+          "predicted_tre_p95_mm": 18.903646142040774,
+          "mean_tre_change_predicted_minus_static_mm": -1.600030323711275,
+          "fraction_landmarks_improved": 0.9066666666666666
+        },
+        "T30": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 5.385247790086083,
+          "predicted_displacement_mean_mm": 1.0457056760787964,
+          "static_tre_mean_mm": 5.385247790086083,
+          "predicted_tre_mean_mm": 4.609176286274863,
+          "predicted_tre_median_mm": 3.8856490809686455,
+          "predicted_tre_p95_mm": 10.158702900894609,
+          "mean_tre_change_predicted_minus_static_mm": -0.7760715038112203,
+          "fraction_landmarks_improved": 0.9066666666666666
+        },
+        "T40": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 3.0444605051385154,
+          "predicted_displacement_mean_mm": 0.41645291447639465,
+          "static_tre_mean_mm": 3.0444605051385154,
+          "predicted_tre_mean_mm": 2.8448459243340407,
+          "predicted_tre_median_mm": 2.193547281433327,
+          "predicted_tre_p95_mm": 6.906661285758584,
+          "mean_tre_change_predicted_minus_static_mm": -0.1996145808044747,
+          "fraction_landmarks_improved": 0.6933333333333334
+        },
+        "T50": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 0.0,
+          "predicted_displacement_mean_mm": 0.0,
+          "static_tre_mean_mm": 0.0,
+          "predicted_tre_mean_mm": 0.0,
+          "predicted_tre_median_mm": 0.0,
+          "predicted_tre_p95_mm": 0.0,
+          "mean_tre_change_predicted_minus_static_mm": 0.0,
+          "fraction_landmarks_improved": 0.0
+        }
+      },
+      "conversion_manifest_sha256": "adae4e4c26362901cab8da5080f54bb30713fd8f0d259f0d8f37008dbd7fdbc6",
+      "source_segmentation_manifest_sha256": "872e89ac163de5f13d50a45e7f64d29119443d71d76793f950028ab33536e631",
+      "fit_report_sha256": "b1c98fec7d18f63bbd850d7cfdcaa88d20ec70d9e004d9d04e45e21cf38ebda7",
+      "scenario_report_sha256": "8c150db42983de74199a787922ab74b338b75639d187a5bd607736624f13a4c9",
+      "landmark_evaluation_sha256": "cf1a2d57312b485e4f6c446e93a28018c340ef4002b598a1eb48bf3872524989"
+    },
+    {
+      "case": 9,
+      "run_case_dir": "case_09_zflip",
+      "source_orientation": {
+        "right_is_high_index": true,
+        "posterior_is_high_row": true,
+        "superior_is_high_index": false,
+        "lung_asymmetry": 0.11125495678283716,
+        "sides_agree": true,
+        "automated_orientation_confident": true,
+        "air_peak_hu": -1024.0,
+        "automated_superior_is_high_index": true,
+        "source_only_superior_override": "false"
+      },
+      "source_anatomy_qc": {
+        "upper_minus_lower_z_voxels": 17.90140943224101,
+        "right_minus_left_x_voxels": 126.2830528088736,
+        "source_only_anatomy_qc_pass": true
+      },
+      "T50_to_T00_expert_300": {
+        "landmark_count": 300,
+        "observed_displacement_mean_mm": 7.918263838803335,
+        "predicted_displacement_mean_mm": 2.0727903842926025,
+        "static_tre_mean_mm": 7.918263838803335,
+        "predicted_tre_mean_mm": 6.991210284451008,
+        "predicted_tre_median_mm": 7.165657930518378,
+        "predicted_tre_p95_mm": 12.744089686896192,
+        "mean_tre_change_predicted_minus_static_mm": -0.9270535543523266,
+        "fraction_landmarks_improved": 0.75
+      },
+      "sampled_75_by_phase": {
+        "T00": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 7.156680731877236,
+          "predicted_displacement_mean_mm": 2.0739457607269287,
+          "static_tre_mean_mm": 7.156680731877236,
+          "predicted_tre_mean_mm": 6.316105466026309,
+          "predicted_tre_median_mm": 5.909909995331369,
+          "predicted_tre_p95_mm": 11.984617604831328,
+          "mean_tre_change_predicted_minus_static_mm": -0.8405752658509265,
+          "fraction_landmarks_improved": 0.72
+        },
+        "T10": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 6.479554165951861,
+          "predicted_displacement_mean_mm": 1.9991064071655273,
+          "static_tre_mean_mm": 6.479554165951861,
+          "predicted_tre_mean_mm": 5.6739046278903285,
+          "predicted_tre_median_mm": 4.968145243482432,
+          "predicted_tre_p95_mm": 11.360789389023532,
+          "mean_tre_change_predicted_minus_static_mm": -0.8056495380615329,
+          "fraction_landmarks_improved": 0.7333333333333333
+        },
+        "T20": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 3.180021460926202,
+          "predicted_displacement_mean_mm": 1.821868896484375,
+          "static_tre_mean_mm": 3.180021460926202,
+          "predicted_tre_mean_mm": 2.8269170073025243,
+          "predicted_tre_median_mm": 2.72100198873394,
+          "predicted_tre_p95_mm": 4.950771831994158,
+          "mean_tre_change_predicted_minus_static_mm": -0.3531044536236778,
+          "fraction_landmarks_improved": 0.64
+        },
+        "T30": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 2.1264092954933265,
+          "predicted_displacement_mean_mm": 1.3565053939819336,
+          "static_tre_mean_mm": 2.1264092954933265,
+          "predicted_tre_mean_mm": 1.995057710007087,
+          "predicted_tre_median_mm": 1.80554501915071,
+          "predicted_tre_p95_mm": 4.49290927202733,
+          "mean_tre_change_predicted_minus_static_mm": -0.13135158548623949,
+          "fraction_landmarks_improved": 0.5333333333333333
+        },
+        "T40": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 1.265802295454778,
+          "predicted_displacement_mean_mm": 0.5526646971702576,
+          "static_tre_mean_mm": 1.265802295454778,
+          "predicted_tre_mean_mm": 1.4391040696925144,
+          "predicted_tre_median_mm": 1.1918970108765163,
+          "predicted_tre_p95_mm": 3.398304382700992,
+          "mean_tre_change_predicted_minus_static_mm": 0.1733017742377363,
+          "fraction_landmarks_improved": 0.3466666666666667
+        },
+        "T50": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 0.0,
+          "predicted_displacement_mean_mm": 0.0,
+          "static_tre_mean_mm": 0.0,
+          "predicted_tre_mean_mm": 0.0,
+          "predicted_tre_median_mm": 0.0,
+          "predicted_tre_p95_mm": 0.0,
+          "mean_tre_change_predicted_minus_static_mm": 0.0,
+          "fraction_landmarks_improved": 0.0
+        }
+      },
+      "conversion_manifest_sha256": "11cac1f61e3f8effc71eb9bd3d02e62057f325af1c95cd52f15a2b0f0184ba79",
+      "source_segmentation_manifest_sha256": "594e44ef40c6c1c7a5d141fd297b2ea262c57a5a0f550fd1d98ef28ecf1a263a",
+      "fit_report_sha256": "fbec4be6b539fe2570d892b3739b2b4cceb11e65935327f154bb6d84ecda5112",
+      "scenario_report_sha256": "5b0245553d831b89055f9d47ec635963513dc4c9ff2451fee86803d154035a71",
+      "landmark_evaluation_sha256": "6a106b8bcea9ef9191b6561647aadde1f8ffe8b50388a00fed22fb3345794a63"
+    },
+    {
+      "case": 10,
+      "run_case_dir": "case_10",
+      "source_orientation": {
+        "right_is_high_index": false,
+        "posterior_is_high_row": true,
+        "superior_is_high_index": false,
+        "lung_asymmetry": -0.1198130505123135,
+        "sides_agree": true,
+        "automated_orientation_confident": true,
+        "air_peak_hu": -1024.0,
+        "automated_superior_is_high_index": false,
+        "source_only_superior_override": "auto"
+      },
+      "source_anatomy_qc": {
+        "upper_minus_lower_z_voxels": 27.102805470498076,
+        "right_minus_left_x_voxels": 120.70300402905633,
+        "source_only_anatomy_qc_pass": true
+      },
+      "T50_to_T00_expert_300": {
+        "landmark_count": 300,
+        "observed_displacement_mean_mm": 7.301381916369587,
+        "predicted_displacement_mean_mm": 1.3482850790023804,
+        "static_tre_mean_mm": 7.301381916369587,
+        "predicted_tre_mean_mm": 6.667329521015316,
+        "predicted_tre_median_mm": 4.081107506638802,
+        "predicted_tre_p95_mm": 20.14708896284597,
+        "mean_tre_change_predicted_minus_static_mm": -0.6340523953542716,
+        "fraction_landmarks_improved": 0.8166666666666667
+      },
+      "sampled_75_by_phase": {
+        "T00": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 8.33054124865593,
+          "predicted_displacement_mean_mm": 1.3264883756637573,
+          "static_tre_mean_mm": 8.33054124865593,
+          "predicted_tre_mean_mm": 7.684319131615863,
+          "predicted_tre_median_mm": 6.3332621312275625,
+          "predicted_tre_p95_mm": 20.71943214118479,
+          "mean_tre_change_predicted_minus_static_mm": -0.6462221170400664,
+          "fraction_landmarks_improved": 0.8133333333333334
+        },
+        "T10": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 7.411263593546602,
+          "predicted_displacement_mean_mm": 1.1024971008300781,
+          "static_tre_mean_mm": 7.411263593546602,
+          "predicted_tre_mean_mm": 6.90574795096991,
+          "predicted_tre_median_mm": 4.483266776398118,
+          "predicted_tre_p95_mm": 18.508163116822676,
+          "mean_tre_change_predicted_minus_static_mm": -0.5055156425766922,
+          "fraction_landmarks_improved": 0.8266666666666667
+        },
+        "T20": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 5.2841569859123245,
+          "predicted_displacement_mean_mm": 0.8825865387916565,
+          "static_tre_mean_mm": 5.2841569859123245,
+          "predicted_tre_mean_mm": 4.951097252116977,
+          "predicted_tre_median_mm": 4.290232085882823,
+          "predicted_tre_p95_mm": 14.026689347274163,
+          "mean_tre_change_predicted_minus_static_mm": -0.3330597337953476,
+          "fraction_landmarks_improved": 0.76
+        },
+        "T30": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 3.093954566144991,
+          "predicted_displacement_mean_mm": 0.6345254182815552,
+          "static_tre_mean_mm": 3.093954566144991,
+          "predicted_tre_mean_mm": 2.989708537277937,
+          "predicted_tre_median_mm": 2.3346554900482843,
+          "predicted_tre_p95_mm": 6.784988248954454,
+          "mean_tre_change_predicted_minus_static_mm": -0.10424602886705392,
+          "fraction_landmarks_improved": 0.5866666666666667
+        },
+        "T40": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 1.6023857047178078,
+          "predicted_displacement_mean_mm": 0.3389689326286316,
+          "static_tre_mean_mm": 1.6023857047178078,
+          "predicted_tre_mean_mm": 1.6454764748630741,
+          "predicted_tre_median_mm": 1.4216758632172992,
+          "predicted_tre_p95_mm": 2.903282699942317,
+          "mean_tre_change_predicted_minus_static_mm": 0.0430907701452663,
+          "fraction_landmarks_improved": 0.4666666666666667
+        },
+        "T50": {
+          "landmark_count": 75,
+          "observed_displacement_mean_mm": 0.0,
+          "predicted_displacement_mean_mm": 0.0,
+          "static_tre_mean_mm": 0.0,
+          "predicted_tre_mean_mm": 0.0,
+          "predicted_tre_median_mm": 0.0,
+          "predicted_tre_p95_mm": 0.0,
+          "mean_tre_change_predicted_minus_static_mm": 0.0,
+          "fraction_landmarks_improved": 0.0
+        }
+      },
+      "conversion_manifest_sha256": "6eb2e4d70d6105dc3c62370e03ff042679bc4b3df3e2ddca263a0cf6c0227737",
+      "source_segmentation_manifest_sha256": "851c6f75c4262658d37b468c0acfa45c57422b47d082b8da04aabc7aec0415c3",
+      "fit_report_sha256": "f20bad2817d49d56912f2cd151009e6d332069f81a58c163b503fa304f9103ff",
+      "scenario_report_sha256": "c01ef068004c328fa8b1a0b9b0dc7584a6a63581ae9933790780586375d68a15",
+      "landmark_evaluation_sha256": "9f61fa51c9e0d684864a11be8d9fc7c03791ab63d515757e234f8bd04172d203"
+    }
+  ],
+  "limitations": [
+    "Landmark score covers the complete frozen network plus surface-to-volume displacement postprocessing, not isolated neural mesh vertices.",
+    "Fields at T50 landmark positions approximate displacement transfer from T70; no image-based temporal registration was performed.",
+    "Source shape fitting and target contour comparison use TotalSegmentator v2; manual contour validation is absent.",
+    "Case 5 and 9 superior-axis choices were corrected with source T70 lobe anatomy QC and must be counted as QC interventions.",
+    "The packaged checkpoint training manifest was not independently audited for case overlap.",
+    "The heart field is an extrapolation of lung motion, not a separately trained heart predictor."
+  ]
+}

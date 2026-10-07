@@ -1,0 +1,17 @@
+{
+  "artifact": "mp10_dirlab_4dct_validation_report.md",
+  "sha256": "e7fcba1fd9d0801c3c001cb119914e73852e41d9c955ed7d7e7e1d1b43d8d408",
+  "authority": "russian-scientific-prose/policy/languages/ru/ru.yaml",
+  "check_id": "language.ru.hash-bound-final-review",
+  "review_mode": "sequential_full_text_model_review_after_last_edit",
+  "status": "passed_language_review_only",
+  "reviewed": [
+    "scientific headings, information hierarchy and captions",
+    "technical terminology and definitions of stages, displacement and reference metrics",
+    "clear scope: published acquisition convention versus missing checkpoint-specific manifest",
+    "expert landmarks versus automatic contours; numerical result versus anatomical validation",
+    "syntax, punctuation, meaningful distinctions and transitions"
+  ],
+  "open_language_findings": [],
+  "review_date": "2026-10-07"
+}

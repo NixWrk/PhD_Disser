@@ -1,0 +1,793 @@
+{
+  "schema": "mp10_old_ct_preflight_v1",
+  "status": "preflight_only_no_motion_prediction_scored",
+  "source": "D mirror Enhanced DICOM headers; historical CSV used only to select series",
+  "study_count": 9,
+  "paired_dicom_available_count": 9,
+  "breath_hold_pairs": [
+    {
+      "study_alias": "3e371b0fb8db",
+      "acquisitions": [
+        {
+          "acquisition_index": 0,
+          "candidate_count": 1,
+          "candidate_series": [
+            {
+              "series_alias": "11b898056e29",
+              "found_on_D": true,
+              "direct_geometry": {
+                "frame_count_local": 781,
+                "diameter_mm_local": 220.312,
+                "slice_thickness_mm_local": 0.5,
+                "z_coverage_mm_local": 195.0,
+                "source_root_local": "D"
+              }
+            }
+          ]
+        },
+        {
+          "acquisition_index": 1,
+          "candidate_count": 1,
+          "candidate_series": [
+            {
+              "series_alias": "a565f86ab069",
+              "found_on_D": true,
+              "direct_geometry": {
+                "frame_count_local": 781,
+                "diameter_mm_local": 220.0,
+                "slice_thickness_mm_local": 0.5,
+                "z_coverage_mm_local": 195.0,
+                "source_root_local": "D"
+              }
+            }
+          ]
+        }
+      ],
+      "paired_dicom_available": true,
+      "breathing_phase_assignment": "unknown"
+    },
+    {
+      "study_alias": "47dae818cfe5",
+      "acquisitions": [
+        {
+          "acquisition_index": 0,
+          "candidate_count": 1,
+          "candidate_series": [
+            {
+              "series_alias": "ffe23308cc6c",
+              "found_on_D": true,
+              "direct_geometry": {
+                "frame_count_local": 647,
+                "diameter_mm_local": 220.312,
+                "slice_thickness_mm_local": 0.5,
+                "z_coverage_mm_local": 161.5,
+                "source_root_local": "D"
+              }
+            }
+          ]
+        },
+        {
+          "acquisition_index": 1,
+          "candidate_count": 1,
+          "candidate_series": [
+            {
+              "series_alias": "fb61576ec8ec",
+              "found_on_D": true,
+              "direct_geometry": {
+                "frame_count_local": 700,
+                "diameter_mm_local": 275.39,
+                "slice_thickness_mm_local": 0.5,
+                "z_coverage_mm_local": 174.75,
+                "source_root_local": "D"
+              }
+            }
+          ]
+        }
+      ],
+      "paired_dicom_available": true,
+      "breathing_phase_assignment": "unknown"
+    },
+    {
+      "study_alias": "64a19c8f1762",
+      "acquisitions": [
+        {
+          "acquisition_index": 0,
+          "candidate_count": 1,
+          "candidate_series": [
+            {
+              "series_alias": "03ace6bf5c07",
+              "found_on_D": true,
+              "direct_geometry": {
+                "frame_count_local": 891,
+                "diameter_mm_local": 209.375,
+                "slice_thickness_mm_local": 0.5,
+                "z_coverage_mm_local": 222.5,
+                "source_root_local": "D"
+              }
+            }
+          ]
+        },
+        {
+          "acquisition_index": 1,
+          "candidate_count": 1,
+          "candidate_series": [
+            {
+              "series_alias": "b668bb861463",
+              "found_on_D": true,
+              "direct_geometry": {
+                "frame_count_local": 893,
+                "diameter_mm_local": 210.0,
+                "slice_thickness_mm_local": 0.5,
+                "z_coverage_mm_local": 223.0,
+                "source_root_local": "D"
+              }
+            }
+          ]
+        }
+      ],
+      "paired_dicom_available": true,
+      "breathing_phase_assignment": "unknown"
+    },
+    {
+      "study_alias": "db9eebe31597",
+      "acquisitions": [
+        {
+          "acquisition_index": 0,
+          "candidate_count": 1,
+          "candidate_series": [
+            {
+              "series_alias": "8570b67e2fa2",
+              "found_on_D": true,
+              "direct_geometry": {
+                "frame_count_local": 977,
+                "diameter_mm_local": 290.625,
+                "slice_thickness_mm_local": 0.5,
+                "z_coverage_mm_local": 244.0,
+                "source_root_local": "D"
+              }
+            }
+          ]
+        },
+        {
+          "acquisition_index": 1,
+          "candidate_count": 1,
+          "candidate_series": [
+            {
+              "series_alias": "985d8ce35006",
+              "found_on_D": true,
+              "direct_geometry": {
+                "frame_count_local": 1007,
+                "diameter_mm_local": 290.625,
+                "slice_thickness_mm_local": 0.5,
+                "z_coverage_mm_local": 251.5,
+                "source_root_local": "D"
+              }
+            }
+          ]
+        }
+      ],
+      "paired_dicom_available": true,
+      "breathing_phase_assignment": "unknown"
+    },
+    {
+      "study_alias": "66a7947245d3",
+      "acquisitions": [
+        {
+          "acquisition_index": 0,
+          "candidate_count": 1,
+          "candidate_series": [
+            {
+              "series_alias": "4504c6ce37f6",
+              "found_on_D": true,
+              "direct_geometry": {
+                "frame_count_local": 931,
+                "diameter_mm_local": 202.5,
+                "slice_thickness_mm_local": 0.5,
+                "z_coverage_mm_local": 232.5,
+                "source_root_local": "D"
+              }
+            }
+          ]
+        },
+        {
+          "acquisition_index": 1,
+          "candidate_count": 1,
+          "candidate_series": [
+            {
+              "series_alias": "6efea1a1fc80",
+              "found_on_D": true,
+              "direct_geometry": {
+                "frame_count_local": 920,
+                "diameter_mm_local": 202.5,
+                "slice_thickness_mm_local": 0.5,
+                "z_coverage_mm_local": 229.75,
+                "source_root_local": "D"
+              }
+            }
+          ]
+        }
+      ],
+      "paired_dicom_available": true,
+      "breathing_phase_assignment": "unknown"
+    },
+    {
+      "study_alias": "a03c002eb707",
+      "acquisitions": [
+        {
+          "acquisition_index": 0,
+          "candidate_count": 1,
+          "candidate_series": [
+            {
+              "series_alias": "a3e29952046d",
+              "found_on_D": true,
+              "direct_geometry": {
+                "frame_count_local": 1023,
+                "diameter_mm_local": 198.75,
+                "slice_thickness_mm_local": 0.5,
+                "z_coverage_mm_local": 255.5,
+                "source_root_local": "D"
+              }
+            }
+          ]
+        },
+        {
+          "acquisition_index": 1,
+          "candidate_count": 1,
+          "candidate_series": [
+            {
+              "series_alias": "b3a55edc7c48",
+              "found_on_D": true,
+              "direct_geometry": {
+                "frame_count_local": 969,
+                "diameter_mm_local": 198.75,
+                "slice_thickness_mm_local": 0.5,
+                "z_coverage_mm_local": 242.0,
+                "source_root_local": "D"
+              }
+            }
+          ]
+        }
+      ],
+      "paired_dicom_available": true,
+      "breathing_phase_assignment": "unknown"
+    },
+    {
+      "study_alias": "cc0deb243175",
+      "acquisitions": [
+        {
+          "acquisition_index": 0,
+          "candidate_count": 1,
+          "candidate_series": [
+            {
+              "series_alias": "dee481ca49ab",
+              "found_on_D": true,
+              "direct_geometry": {
+                "frame_count_local": 1049,
+                "diameter_mm_local": 242.5,
+                "slice_thickness_mm_local": 0.5,
+                "z_coverage_mm_local": 262.0,
+                "source_root_local": "D"
+              }
+            }
+          ]
+        },
+        {
+          "acquisition_index": 1,
+          "candidate_count": 1,
+          "candidate_series": [
+            {
+              "series_alias": "0ae0b3318e99",
+              "found_on_D": true,
+              "direct_geometry": {
+                "frame_count_local": 1089,
+                "diameter_mm_local": 242.5,
+                "slice_thickness_mm_local": 0.5,
+                "z_coverage_mm_local": 272.0,
+                "source_root_local": "D"
+              }
+            }
+          ]
+        }
+      ],
+      "paired_dicom_available": true,
+      "breathing_phase_assignment": "unknown"
+    },
+    {
+      "study_alias": "0560c13fe7e6",
+      "acquisitions": [
+        {
+          "acquisition_index": 0,
+          "candidate_count": 1,
+          "candidate_series": [
+            {
+              "series_alias": "86a785911eda",
+              "found_on_D": true,
+              "direct_geometry": {
+                "frame_count_local": 957,
+                "diameter_mm_local": 251.25,
+                "slice_thickness_mm_local": 0.5,
+                "z_coverage_mm_local": 239.0,
+                "source_root_local": "D"
+              }
+            }
+          ]
+        },
+        {
+          "acquisition_index": 1,
+          "candidate_count": 1,
+          "candidate_series": [
+            {
+              "series_alias": "cf39c8d87eef",
+              "found_on_D": true,
+              "direct_geometry": {
+                "frame_count_local": 996,
+                "diameter_mm_local": 251.25,
+                "slice_thickness_mm_local": 0.5,
+                "z_coverage_mm_local": 248.75,
+                "source_root_local": "D"
+              }
+            }
+          ]
+        }
+      ],
+      "paired_dicom_available": true,
+      "breathing_phase_assignment": "unknown"
+    },
+    {
+      "study_alias": "7f914ef985b9",
+      "acquisitions": [
+        {
+          "acquisition_index": 0,
+          "candidate_count": 2,
+          "candidate_series": [
+            {
+              "series_alias": "3bafac237fee",
+              "found_on_D": true,
+              "direct_geometry": {
+                "frame_count_local": 917,
+                "diameter_mm_local": 220.0,
+                "slice_thickness_mm_local": 0.5,
+                "z_coverage_mm_local": 229.0,
+                "source_root_local": "D"
+              }
+            },
+            {
+              "series_alias": "0cc02096460e",
+              "found_on_D": true,
+              "direct_geometry": {
+                "frame_count_local": 917,
+                "diameter_mm_local": 220.0,
+                "slice_thickness_mm_local": 0.5,
+                "z_coverage_mm_local": 229.0,
+                "source_root_local": "D"
+              }
+            }
+          ]
+        },
+        {
+          "acquisition_index": 1,
+          "candidate_count": 1,
+          "candidate_series": [
+            {
+              "series_alias": "98c1ae69d462",
+              "found_on_D": true,
+              "direct_geometry": {
+                "frame_count_local": 939,
+                "diameter_mm_local": 220.0,
+                "slice_thickness_mm_local": 0.5,
+                "z_coverage_mm_local": 234.5,
+                "source_root_local": "D"
+              }
+            }
+          ]
+        }
+      ],
+      "paired_dicom_available": true,
+      "breathing_phase_assignment": "unknown"
+    }
+  ],
+  "existing_cardiac_series_lung_mask_qc": [
+    {
+      "cardiac_phase_index": 0,
+      "available": true,
+      "lung_voxels": 8189594,
+      "lung_boundary_voxels_by_axis_low_high": [
+        [
+          0,
+          0
+        ],
+        [
+          14522,
+          1317
+        ],
+        [
+          21405,
+          0
+        ]
+      ],
+      "lung_touches_boundary": true
+    },
+    {
+      "cardiac_phase_index": 1,
+      "available": true,
+      "lung_voxels": 8189090,
+      "lung_boundary_voxels_by_axis_low_high": [
+        [
+          0,
+          0
+        ],
+        [
+          14492,
+          1307
+        ],
+        [
+          21334,
+          0
+        ]
+      ],
+      "lung_touches_boundary": true
+    },
+    {
+      "cardiac_phase_index": 2,
+      "available": true,
+      "lung_voxels": 8189849,
+      "lung_boundary_voxels_by_axis_low_high": [
+        [
+          0,
+          0
+        ],
+        [
+          14473,
+          1303
+        ],
+        [
+          21223,
+          0
+        ]
+      ],
+      "lung_touches_boundary": true
+    },
+    {
+      "cardiac_phase_index": 3,
+      "available": true,
+      "lung_voxels": 8182666,
+      "lung_boundary_voxels_by_axis_low_high": [
+        [
+          0,
+          0
+        ],
+        [
+          14476,
+          1274
+        ],
+        [
+          21265,
+          0
+        ]
+      ],
+      "lung_touches_boundary": true
+    },
+    {
+      "cardiac_phase_index": 4,
+      "available": true,
+      "lung_voxels": 8176126,
+      "lung_boundary_voxels_by_axis_low_high": [
+        [
+          0,
+          0
+        ],
+        [
+          14424,
+          1265
+        ],
+        [
+          21298,
+          0
+        ]
+      ],
+      "lung_touches_boundary": true
+    },
+    {
+      "cardiac_phase_index": 5,
+      "available": true,
+      "lung_voxels": 8177668,
+      "lung_boundary_voxels_by_axis_low_high": [
+        [
+          0,
+          0
+        ],
+        [
+          14484,
+          1271
+        ],
+        [
+          21418,
+          0
+        ]
+      ],
+      "lung_touches_boundary": true
+    },
+    {
+      "cardiac_phase_index": 6,
+      "available": true,
+      "lung_voxels": 8185556,
+      "lung_boundary_voxels_by_axis_low_high": [
+        [
+          0,
+          0
+        ],
+        [
+          14443,
+          1252
+        ],
+        [
+          21535,
+          0
+        ]
+      ],
+      "lung_touches_boundary": true
+    },
+    {
+      "cardiac_phase_index": 7,
+      "available": true,
+      "lung_voxels": 8194667,
+      "lung_boundary_voxels_by_axis_low_high": [
+        [
+          0,
+          0
+        ],
+        [
+          14536,
+          1293
+        ],
+        [
+          21662,
+          0
+        ]
+      ],
+      "lung_touches_boundary": true
+    },
+    {
+      "cardiac_phase_index": 8,
+      "available": true,
+      "lung_voxels": 8203024,
+      "lung_boundary_voxels_by_axis_low_high": [
+        [
+          0,
+          0
+        ],
+        [
+          14570,
+          1312
+        ],
+        [
+          21830,
+          0
+        ]
+      ],
+      "lung_touches_boundary": true
+    },
+    {
+      "cardiac_phase_index": 9,
+      "available": true,
+      "lung_voxels": 8206548,
+      "lung_boundary_voxels_by_axis_low_high": [
+        [
+          0,
+          0
+        ],
+        [
+          14585,
+          1306
+        ],
+        [
+          21824,
+          0
+        ]
+      ],
+      "lung_touches_boundary": true
+    },
+    {
+      "cardiac_phase_index": 10,
+      "available": true,
+      "lung_voxels": 8199436,
+      "lung_boundary_voxels_by_axis_low_high": [
+        [
+          0,
+          0
+        ],
+        [
+          14539,
+          1304
+        ],
+        [
+          21783,
+          0
+        ]
+      ],
+      "lung_touches_boundary": true
+    },
+    {
+      "cardiac_phase_index": 11,
+      "available": true,
+      "lung_voxels": 8195198,
+      "lung_boundary_voxels_by_axis_low_high": [
+        [
+          0,
+          0
+        ],
+        [
+          14495,
+          1337
+        ],
+        [
+          21758,
+          0
+        ]
+      ],
+      "lung_touches_boundary": true
+    },
+    {
+      "cardiac_phase_index": 12,
+      "available": true,
+      "lung_voxels": 8185174,
+      "lung_boundary_voxels_by_axis_low_high": [
+        [
+          0,
+          0
+        ],
+        [
+          14468,
+          1322
+        ],
+        [
+          21759,
+          0
+        ]
+      ],
+      "lung_touches_boundary": true
+    },
+    {
+      "cardiac_phase_index": 13,
+      "available": true,
+      "lung_voxels": 8178806,
+      "lung_boundary_voxels_by_axis_low_high": [
+        [
+          0,
+          0
+        ],
+        [
+          14614,
+          1339
+        ],
+        [
+          21852,
+          0
+        ]
+      ],
+      "lung_touches_boundary": true
+    },
+    {
+      "cardiac_phase_index": 14,
+      "available": true,
+      "lung_voxels": 8175575,
+      "lung_boundary_voxels_by_axis_low_high": [
+        [
+          0,
+          0
+        ],
+        [
+          14599,
+          1331
+        ],
+        [
+          21878,
+          0
+        ]
+      ],
+      "lung_touches_boundary": true
+    },
+    {
+      "cardiac_phase_index": 15,
+      "available": true,
+      "lung_voxels": 8174648,
+      "lung_boundary_voxels_by_axis_low_high": [
+        [
+          0,
+          0
+        ],
+        [
+          14523,
+          1353
+        ],
+        [
+          21756,
+          0
+        ]
+      ],
+      "lung_touches_boundary": true
+    },
+    {
+      "cardiac_phase_index": 16,
+      "available": true,
+      "lung_voxels": 8175058,
+      "lung_boundary_voxels_by_axis_low_high": [
+        [
+          0,
+          0
+        ],
+        [
+          14507,
+          1328
+        ],
+        [
+          21771,
+          0
+        ]
+      ],
+      "lung_touches_boundary": true
+    },
+    {
+      "cardiac_phase_index": 17,
+      "available": true,
+      "lung_voxels": 8180255,
+      "lung_boundary_voxels_by_axis_low_high": [
+        [
+          0,
+          0
+        ],
+        [
+          14558,
+          1326
+        ],
+        [
+          21632,
+          0
+        ]
+      ],
+      "lung_touches_boundary": true
+    },
+    {
+      "cardiac_phase_index": 18,
+      "available": true,
+      "lung_voxels": 8187874,
+      "lung_boundary_voxels_by_axis_low_high": [
+        [
+          0,
+          0
+        ],
+        [
+          14498,
+          1321
+        ],
+        [
+          21514,
+          0
+        ]
+      ],
+      "lung_touches_boundary": true
+    },
+    {
+      "cardiac_phase_index": 19,
+      "available": true,
+      "lung_voxels": 8192748,
+      "lung_boundary_voxels_by_axis_low_high": [
+        [
+          0,
+          0
+        ],
+        [
+          14550,
+          1356
+        ],
+        [
+          21522,
+          0
+        ]
+      ],
+      "lung_touches_boundary": true
+    }
+  ],
+  "cardiac_series_boundary_contact_count": 20,
+  "decision": "No identifiable g070-equivalent reference or target respiratory stage; existing cardiac series has clipped lungs. Quantitative prediction error on OLD is not identifiable from these inputs."
+}

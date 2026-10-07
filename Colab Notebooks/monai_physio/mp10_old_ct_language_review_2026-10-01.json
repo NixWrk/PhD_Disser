@@ -1,0 +1,17 @@
+{
+  "schema": "russian_scientific_prose_final_review_v1",
+  "artifact": "mp10_old_ct_breathing_preflight_report.md",
+  "sha256": "10c736992e4450771606b18986d5fd48005d52a3b6c3825ecda9fbc9491d7d8d",
+  "review_mode": "full_sequential_model_review_after_final_edit",
+  "language_status": "pass",
+  "checks": {
+    "scientific_headings": "pass",
+    "terminology_and_scope": "pass",
+    "derived_objects_defined": "pass",
+    "direct_classification_and_meaningful_contrasts": "pass",
+    "evidence_and_uncertainty_preserved": "pass",
+    "reader_facing_clarity": "pass"
+  },
+  "findings": [],
+  "scientific_validation_status": "preflight_only; no model prediction accuracy estimated"
+}

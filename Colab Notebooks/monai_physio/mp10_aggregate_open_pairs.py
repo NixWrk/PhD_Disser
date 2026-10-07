@@ -70,7 +70,7 @@ def main() -> None:
         "schema": "mp10_open_pair_landmark_summary_v1",
         "status": "invalid_stage_calibration_exploratory_screen_not_predictive_validation",
         "assumed_stage_mapping": "inhale=0.7, exhale=0.0; no independent stage calibration",
-        "reference_phase_audit": "The published lung model uses g070 as its fitted reference; the project fitted inhale CT to that anchor, despite tutorial documentation identifying g070 as end-exhale. This screen cannot establish prediction accuracy.",
+        "reference_phase_audit": "The published model uses g070 as its fitted shape reference. The project wrongly anchored inhale at 0.7 and called 0.0 exhale; the documented cycle is end-inhale=0.0, end-exhale=0.5. This historical screen cannot establish prediction accuracy.",
         "case_count": len(rows),
         "landmark_count": total,
         "improved_case_count_stage_0": sum(row["tre_change_model_minus_static_mm"] < 0 for row in rows),

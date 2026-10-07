@@ -114,6 +114,11 @@ def main() -> None:
     parser.add_argument("--phases", nargs="+", default=["g000", "g050", "g070", "g090"])
     parser.add_argument("--source-phase", default="g070")
     args = parser.parse_args()
+    from mp10_respiratory_phases import phase_stage, validate_scenario
+    scenario_report = json.loads((args.scenario_dir / "scenario_report.json").read_text(encoding="utf-8"))
+    contract = validate_scenario(scenario_report, "tcia")
+    if scenario_report["source_phase"] != args.source_phase:
+        raise ValueError("Evaluation source phase disagrees with prediction source phase")
     source_phase = args.source_phase
     if source_phase not in args.phases:
         raise ValueError("The source phase must be included")
@@ -136,7 +141,7 @@ def main() -> None:
         if lung_meta[phase]["touches_ct_boundary"]:
             raise ValueError(f"Lung reaches acquired CT boundary in {phase}")
     source_fit = pv.read(str(args.fit_dir / "lung_fitted_reference.vtp")).points
-    source_stage = int(source_phase[1:]) / 100
+    source_stage = phase_stage(source_phase, "tcia")
     source_ct_surface = pv.read(str(args.output_dir / f"observed_lung_{source_phase}.vtp"))
     anchor_field_path = args.scenario_dir / f"field_stage_{source_stage:.2f}.mha"
     have_fields = anchor_field_path.is_file()
@@ -150,7 +155,7 @@ def main() -> None:
     source_heart_mesh = pv.read(str(args.scenario_dir / f"heart_stage_{source_stage:.2f}.vtp"))
     rows = []
     for phase in args.phases:
-        stage = int(phase[1:]) / 100
+        stage = phase_stage(phase, "tcia")
         predicted_lung = pv.read(str(args.scenario_dir / f"lung_stage_{stage:.2f}.vtp"))
         predicted_heart = pv.read(str(args.scenario_dir / f"heart_stage_{stage:.2f}.vtp"))
         target_lung = observed_lung[phase]
@@ -220,6 +225,7 @@ def main() -> None:
         "status": "phase_labelled_external_heldout_case_automatic_mask_validation",
         "case_id": "100_HM10395",
         "source_phase": source_phase,
+        "phase_contract": contract,
         "input_to_network": f"{source_phase} CT via TotalSegmentator lobe masks, affine ICP and six PCA coefficients",
         "target_use": "target CT and masks only for evaluation; no target fitting or phase selection",
         "model_stage_rule": "gPPP maps to stage PPP/100 from TCIA filenames; not inferred from lung volumes",

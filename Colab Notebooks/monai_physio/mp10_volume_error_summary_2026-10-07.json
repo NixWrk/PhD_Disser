@@ -1,0 +1,60 @@
+{
+  "schema": "mp10_lung_volume_error_summary_v1",
+  "date": "2026-10-07",
+  "units": "ml, percent",
+  "reference": "automatic per-phase TotalSegmentator v2 masks; no accepted independent manual contours",
+  "definitions": {
+    "target_volume_error_percent": "100 * abs(predicted target volume - observed target volume) / observed target volume",
+    "volume_reduction_error_percent": "100 * abs(predicted inhale-to-exhale reduction - observed reduction) / abs(observed reduction)",
+    "tcia_prediction_baseline": "observed source CT volume; final prediction is a warped watertight CT-derived surface",
+    "dirlab_prediction_baseline": "difference between two predicted phase surfaces from the same T70 source; common source offset cancels"
+  },
+  "tcia_one_case_inhale_input": {
+    "source_phase": "g000",
+    "target_phase": "g050",
+    "source_lung_volume_ml": 4777.817628974914,
+    "observed_target_lung_volume_ml": 3992.8440602774003,
+    "predicted_target_lung_volume_ml": 4643.425579263832,
+    "target_volume_error_ml": 650.581518986432,
+    "target_volume_error_percent_observed_volume": 16.293687135410774,
+    "observed_volume_reduction_ml": 784.9735686975141,
+    "predicted_volume_reduction_ml": 134.3920497110821,
+    "volume_reduction_error_percent_observed_reduction": 82.87941720966792
+  },
+  "dirlab_volume_case_count": 3,
+  "dirlab_landmark_case_count": 10,
+  "dirlab_volume_rows": [
+    {
+      "case": 1,
+      "source_phase": "T70",
+      "observed_T00_to_T50_volume_reduction_ml": 192.58577561066568,
+      "predicted_T00_to_T50_volume_reduction_ml": 166.63813164671046,
+      "volume_reduction_error_ml": 25.947643963955215,
+      "volume_reduction_error_percent_observed_reduction": 13.473292033992877,
+      "source_mask_evaluation_sha256": "fa26505e78b2373bd5524c5ca3ff2ebc5873e03bf5b176764681370884ee5c61"
+    },
+    {
+      "case": 4,
+      "source_phase": "T70",
+      "observed_T00_to_T50_volume_reduction_ml": 387.27418998156236,
+      "predicted_T00_to_T50_volume_reduction_ml": 278.13065572288315,
+      "volume_reduction_error_ml": 109.14353425867921,
+      "volume_reduction_error_percent_observed_reduction": 28.18249629903697,
+      "source_mask_evaluation_sha256": "0aa4c1f4210694138c9f747fc39bf586199aca104691969c7a7a8fd17f91b7c1"
+    },
+    {
+      "case": 6,
+      "source_phase": "T70",
+      "observed_T00_to_T50_volume_reduction_ml": 651.667378441964,
+      "predicted_T00_to_T50_volume_reduction_ml": 151.4844824898787,
+      "volume_reduction_error_ml": 500.18289595208535,
+      "volume_reduction_error_percent_observed_reduction": 76.75432475198396,
+      "source_mask_evaluation_sha256": "52b7c29f3efd0a1d647ee7e514e4e5020c7916c404d651c2cdaaf665e9bd3486"
+    }
+  ],
+  "source_aggregates_sha256": {
+    "mp10_tcia_phase_validation_2026-10-01.json": "70c1685502c4b7ce08973c9855c021f5196c374821174489231dd2207629f2cb",
+    "mp10_dirlab_4dct_summary_2026-10-01.json": "b4c1d4dba06d26f1d0d65e3f02b0c271b6e2b0671ac0a0ecb7c0651ce08bf014"
+  },
+  "scope": "lung volumes only; not heart chamber volume, stroke volume or ejection fraction"
+}
