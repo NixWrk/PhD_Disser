@@ -1,0 +1,150 @@
+{
+  "review_date": "2026-10-08",
+  "scope": "Scorpion v2, Georg: preserved first pass, two-layer identifiability, individual CT/FEM geometry and conditional inversion",
+  "artifact_inventory": [
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.20_Первый_проход_боковых_сборок_Scorpion_v2.ipynb",
+      "sha256": "5d8d6cd0c113bef1520834beb20df552d798d000a482527e6bf8e656bb86e7d7",
+      "bytes": 5491057
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.20_Первый_проход_боковых_сборок_Scorpion_v2.html",
+      "sha256": "ee708dbd524430fdc28623e957b4f308f985e665059307bac65a52699c8eee8b",
+      "bytes": 5598734
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.20_Первый_проход_боковых_сборок_Scorpion_v2.md",
+      "sha256": "2c852714a7f70f89cac1a4cea2898d6ad67112f9d07a2a99c22c0fad7eb91def",
+      "bytes": 10993
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.21_Множество_решений_двуслойной_модели_Scorpion_v2.ipynb",
+      "sha256": "4ad32b2f2935f84a8ca0c83dae095323858754dbabc7c1349a6d8e7b9fd8e75e",
+      "bytes": 6211557
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.21_Множество_решений_двуслойной_модели_Scorpion_v2.html",
+      "sha256": "207d4a64eab97ff0af7c29ae6461fbadee4260466746523c2272e549298ebefa",
+      "bytes": 6308264
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.21_Множество_решений_двуслойной_модели_Scorpion_v2.md",
+      "sha256": "bf3bb1dfc4d4c49d8a49288adcfa9767ecd408b752d45616612a5f0e7830ccfc",
+      "bytes": 20941
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/20.20_Индивидуальная_КТ_FEM_модель_Георгия_Scorpion_v2.ipynb",
+      "sha256": "af30fc25b24acc1f88625d5ccee3baa1869344826e3149b9bb1800e6f52813ce",
+      "bytes": 8003457
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/20.20_Индивидуальная_КТ_FEM_модель_Георгия_Scorpion_v2.html",
+      "sha256": "f3aaa5f5556c1e0dd8c64a0104e9d27c17234f6ee701e5a4d77c7866908d811e",
+      "bytes": 8131320
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/20.20_Индивидуальная_КТ_FEM_модель_Георгия_Scorpion_v2.md",
+      "sha256": "5c0401b5031a6d0f422504335ab53c988c2f62d8bc7fd221863f4cabbb41d31c",
+      "bytes": 20909
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.22_Сопротивления_тканей_в_КТ_FEM_модели_Георгия_Scorpion_v2.ipynb",
+      "sha256": "886f62ad336389883c4f50ab6a51fa89c86d8e198264aa6e2302e2cef3291c03",
+      "bytes": 5101140
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.22_Сопротивления_тканей_в_КТ_FEM_модели_Георгия_Scorpion_v2.html",
+      "sha256": "4ba89aea79b5cb58a07a570c403df06c1499d353d3143b18f38bf883e89bcad0",
+      "bytes": 5225956
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.22_Сопротивления_тканей_в_КТ_FEM_модели_Георгия_Scorpion_v2.md",
+      "sha256": "7254545eedf9ae9187759db478a79d2c7da87016feb39cbca58fb01a86117fe3",
+      "bytes": 15769
+    }
+  ],
+  "language": {
+    "status": "passed",
+    "reviewer": "Codex; semantic model review",
+    "mode": "full_text_final_pass",
+    "language": "ru",
+    "policy": "russian-scientific-prose/shared/policy/languages/ru.md",
+    "review_sequence": [
+      "final narrative and equations in reader order",
+      "all final tables including preserved pilot",
+      "all figure titles, legends, axes, units and captions",
+      "rendered mathematical notation and interactive scenes"
+    ],
+    "performed_after_last_reader_change": true,
+    "bound_to_artifact_inventory": true,
+    "automatic_linter_used_as_substitute": false,
+    "open_findings": []
+  },
+  "technical": {
+    "status": "passed_for_saved_reader_exports",
+    "notebooks": [
+      {
+        "notebook": "Colab Notebooks/scorpion_v2/33.20_Первый_проход_боковых_сборок_Scorpion_v2.ipynb",
+        "executed_cells": 1,
+        "plotly_figures": 10,
+        "errors": 0,
+        "html_source_inputs": 0
+      },
+      {
+        "notebook": "Colab Notebooks/scorpion_v2/33.21_Множество_решений_двуслойной_модели_Scorpion_v2.ipynb",
+        "executed_cells": 10,
+        "plotly_figures": 8,
+        "errors": 0,
+        "html_source_inputs": 0
+      },
+      {
+        "notebook": "Colab Notebooks/scorpion_v2/20.20_Индивидуальная_КТ_FEM_модель_Георгия_Scorpion_v2.ipynb",
+        "executed_cells": 6,
+        "plotly_figures": 4,
+        "errors": 0,
+        "html_source_inputs": 0
+      },
+      {
+        "notebook": "Colab Notebooks/scorpion_v2/33.22_Сопротивления_тканей_в_КТ_FEM_модели_Георгия_Scorpion_v2.ipynb",
+        "executed_cells": 5,
+        "plotly_figures": 3,
+        "errors": 0,
+        "html_source_inputs": 0
+      }
+    ],
+    "python_sources_parse": true,
+    "browser_visual_review": true
+  },
+  "computational": {
+    "status": "passed_within_declared_numerical_checks",
+    "mathematical_tests": {
+      "passed": 8,
+      "failed": 0
+    },
+    "two_layer_verification_sha256": "a730d9f2c7ec48e6618d3390378f8112032262fb27387cb83f2350bf1e5ad839",
+    "fem_plan_sha256": "fd041990284567dd5cdcf7a584389ea6192560cede6e1737bf7119ea96a33455",
+    "fem_integration_validation_sha256": "53b90b0d654b6e74d1117d0425a2eeecf918fdd33b83272591ea9cc8aec7fbf5",
+    "fem_fitted_cases_passed_1024_to_4096": 12,
+    "weak_family_sha256": "771218a75a431e9bcec026706211330c47cfb90685015cd5dfdffaced852d16b",
+    "weak_family_points_passed": 16,
+    "global_spatial_mesh_convergence": "not_established"
+  },
+  "scientific": {
+    "status": "exploratory_hypothesis_not_validated",
+    "individual_tissue_parameters_identified": false,
+    "independent_segmentation_validation": false,
+    "lateral_pose_recovered": false,
+    "stroke_volume_ejection_fraction_computed": false,
+    "area_cross_and_tepc_fem_comparisons": "separate_following_stages",
+    "limitations": [
+      "candidate breathing and ECG annotation",
+      "sequential-session comparability assumption",
+      "unmeasured electrode position and contact area",
+      "fixed inspiratory CT for both states",
+      "fixed whole-heart myocardium and cortical-bone properties",
+      "scalar real conductivity",
+      "unknown full experimental and model discrepancy"
+    ]
+  },
+  "overall_release_decision": "not_assessed; research state preserved, no independent validation claim"
+}
