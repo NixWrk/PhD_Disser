@@ -56,3 +56,14 @@ Colab Notebooks/results/ct_capsule_viewer.local/
 # Machine-specific HnL bindings and Windows thumbnail caches are not source files.
 HnL/config/*.local.json
 Thumbs.db
+
+# Primary experimental signals, photos and subject-linked processing stay local.
+/Experiments/*/raw/
+/Experiments/*/photos/
+/Experiments/*/attachments/
+/Experiments/*/metadata/
+/Experiments/*/annotations/
+/Experiments/*/derived/
+/Experiments/**/*.local.*
+# Original Scorpion v2 upload; retained unchanged alongside the extracted copy.
+/Георг_05_10_26.zip
