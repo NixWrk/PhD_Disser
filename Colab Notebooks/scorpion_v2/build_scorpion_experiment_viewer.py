@@ -133,7 +133,7 @@ def widget(out=OUT):
     payload['records']=read(out/'display_signals.local.json')
     ui='''<div id="experiment-viewer" style="border:1px solid #aaa;padding:12px">
 <p><label>Запись: <select id="experiment-record"></select></label></p>
-<p><label>Глобальная гипотеза: <select id="experiment-channel"><option value="1">Основной боковой монтаж — канал 1</option><option value="2">Основной боковой монтаж — канал 2</option></select></label></p>
+<p><label>Вариант нумерации подключения: <select id="experiment-channel"><option value="1">Основная боковая ось — BEI1; перпендикулярная ось креста — BEI2</option><option value="2">Основная боковая ось — BEI2; перпендикулярная ось креста — BEI1</option></select></label></p>
 <p id="experiment-description"></p><p id="experiment-localisation" style="color:#904018"></p>
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:8px"><div id="experiment-ct"></div><div id="experiment-signals"></div></div>
 <div id="experiment-ecg-detail"></div></div>'''
@@ -196,7 +196,11 @@ def cells():
 геометрии, а не измерены в новой сессии; площадь контактов на руках неизвестна.
 
 В записях креста оба импедансных канала боковые. Для основной размерной серии
-сохранены две глобальные гипотезы нумерации каналов. Переключатель меняет
+сохранены два варианта нумерации каналов: BEI1 — основная ось, BEI2 —
+перпендикулярная ось креста, либо обратное назначение. Эти варианты
+обозначают неизвестную нумерацию подключения, а не разные физиологические
+механизмы. Назначение сохраняется во всём основном размерном ряду.
+Переключатель меняет
 условные подписи и цвета электродов, а сами сигналы каждого поля сохраняются.
 Для теста, отдельной записи «верт» и ТЕПС/АЕПС это подтверждение нумерации
 не распространяется. В «верт» показывается только номинальное направление
@@ -206,7 +210,11 @@ def cells():
 на руке по Metshein et al. (EMBC 2021). Схемы источника проверены в
 [протоколе](../../Experiments/scorpion_v2_georg/PROTOCOL.md), однако они не
 задают координаты данной сессии. Для этих записей доступен просмотр сигналов;
-электроды на КТ не нанесены до восстановления индивидуальной установки.''')
+электроды на КТ не нанесены до восстановления индивидуальной установки.
+Для такого восстановления подготовлен [инструмент ручного размещения ТЕПС](../../MATLAB_TRKG4_real_subjects/output/exploratory/georg_tepc_manual_20261009/georg_tepc_picker.html).
+Он позволяет отдельно разметить ТЕПС 2–7 на КТ Георгия и сохранить координаты
+с их происхождением в JSON и CSV. Ручной экспорт ещё не является
+подтверждением точности установки или готовым FEM-расчётом.''')
     code('from IPython.display import display, HTML\nfrom build_scorpion_experiment_viewer import verify, widget, recording_table\nfrom build_georg_fem_reports import table\ncontract = verify()')
     md('''## Совместный просмотр КТ и зарегистрированных сигналов
 

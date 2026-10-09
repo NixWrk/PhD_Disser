@@ -32,3 +32,6 @@ data/*/source_manifest.json
 
 *.asv
 *.m~
+
+# Local CT placement scene and manual coordinates; rebuild from the source tool.
+output/exploratory/georg_tepc_manual_*/

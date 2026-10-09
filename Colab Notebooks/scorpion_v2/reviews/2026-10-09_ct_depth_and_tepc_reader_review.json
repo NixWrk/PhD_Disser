@@ -1,0 +1,169 @@
+{
+  "review_date": "2026-10-09",
+  "scope": "Common-axis CT section and directional lung depth; manual Georg TEPC placement; numerical-channel explanation",
+  "artifact_inventory": [
+    {
+      "path": "Colab Notebooks/scorpion_v2/10.00_Эксперимент_и_сигналы_Георгия_Scorpion_v2.ipynb",
+      "sha256": "ea776c45e3d73d41aff3294f1d6f2a33df02de68baecc6ba4be03eae19257500",
+      "bytes": 15812182
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/10.00_Эксперимент_и_сигналы_Георгия_Scorpion_v2.html",
+      "sha256": "b881418e03141feb9cb4763cd07d249de6a540499bca630eb138e42e9fffb304",
+      "bytes": 15945507
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/10.00_Эксперимент_и_сигналы_Георгия_Scorpion_v2.md",
+      "sha256": "11b7cfbe11f3e55d86299d4b045c79118fd628817e18fec3c34dbd33952210cb",
+      "bytes": 11747
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/20.20_Индивидуальная_КТ_FEM_модель_Георгия_Scorpion_v2.ipynb",
+      "sha256": "cf73f22196c5173319329cf299e139f47bf51b58d342d4191579f3cd0d5507e0",
+      "bytes": 12369767
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/20.20_Индивидуальная_КТ_FEM_модель_Георгия_Scorpion_v2.html",
+      "sha256": "80d2170904a41a1fb4a70939a7cf5b2e99889a2a23607e0b009e2f6eb742a21e",
+      "bytes": 12491075
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/20.20_Индивидуальная_КТ_FEM_модель_Георгия_Scorpion_v2.md",
+      "sha256": "73767f88ce1afda432d2081316b219c563ef943ef3e5ae8da8fd6211a970834d",
+      "bytes": 18311
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.21_Множество_решений_двуслойной_модели_Scorpion_v2.ipynb",
+      "sha256": "cc867aeef638db76d58c22c0f87454982e0a714068284866d86b161fa0d47a8d",
+      "bytes": 9798881
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.21_Множество_решений_двуслойной_модели_Scorpion_v2.html",
+      "sha256": "32c26a9e1ca4e214ff36092e7cbb0a16b8213267b74ea00f4ad2e62896c7f292",
+      "bytes": 9923190
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.21_Множество_решений_двуслойной_модели_Scorpion_v2.md",
+      "sha256": "72438b741595459db0ea9d3468c7d83f5065a9cc1966127c365d65843bafdba7",
+      "bytes": 19742
+    }
+  ],
+  "documentation_inventory": [
+    {
+      "path": "Colab Notebooks/scorpion_v2/README.md",
+      "sha256": "a678dac988a19f3dd8ba8b39d087335c00008b7a51fd2dd72b2f2989617ce1de"
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/docs/PIPELINE_FOR_NOTEBOOKS.md",
+      "sha256": "bb1e8e4ddfac072c773a2a45d3da4753b224d5152de4d7bc44e560b78a4a6bb5"
+    }
+  ],
+  "renderer_inventory": [
+    {
+      "path": "Colab Notebooks/scorpion_v2/experiment_view.js",
+      "sha256": "0fa17245e58949a959acb386439f895948567d5fa914143e3246e74b6f4b9fe5"
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/solution_surfaces_view.js",
+      "sha256": "6fb502e43a1d3f6cb2b2b450d8731e17d23eb59863b72d4516c8e3eb72554629"
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/tools/build_surface_landmark_picker.py",
+      "sha256": "2d30d05b7b90ea5a1c70ededc084cc75bebb9d61fc519835beee5d9bf5778510"
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/tools/build_georg_tepc_picker.py",
+      "sha256": "fb1886ab8a5082c89a8ffcba6cc1ded61bdee8a9d717db533e19c71bbea4a09e"
+    }
+  ],
+  "local_picker": {
+    "path": "MATLAB_TRKG4_real_subjects/output/exploratory/georg_tepc_manual_20261009/georg_tepc_picker.html",
+    "sha256": "79f4f126810ed9f7b57e0b9366bc41a09f0cc4a25f7681424a123d064226c922",
+    "tracked": false
+  },
+  "language": {
+    "status": "passed",
+    "reviewer": "Codex model",
+    "method": "Sequential semantic model reading of all final reader prose, formulas, tables, figure labels, renderer strings, and the entire visible TEPC interface; hashing and extraction did not substitute for the model pass",
+    "registered_checks": [
+      "language.ru.hash-bound-final-review",
+      "language.ru.encoding",
+      "language.ru.formula-where",
+      "language.ru.reader-facing-clarity"
+    ],
+    "scientific_headings_checked": true,
+    "terminology_and_scope_checked": true,
+    "derived_objects_defined": true,
+    "meaningful_contrasts_checked": true,
+    "findings": []
+  },
+  "technical": {
+    "status": "passed",
+    "readers": [
+      {
+        "stem": "10.00_Эксперимент_и_сигналы_Георгия_Scorpion_v2",
+        "executed_code_cells": 3,
+        "errors": 0,
+        "code_excluded": true,
+        "html_prose_matches_notebook": true
+      },
+      {
+        "stem": "20.20_Индивидуальная_КТ_FEM_модель_Георгия_Scorpion_v2",
+        "executed_code_cells": 5,
+        "errors": 0,
+        "code_excluded": true,
+        "html_prose_matches_notebook": true
+      },
+      {
+        "stem": "33.21_Множество_решений_двуслойной_модели_Scorpion_v2",
+        "executed_code_cells": 6,
+        "errors": 0,
+        "code_excluded": true,
+        "html_prose_matches_notebook": true
+      }
+    ],
+    "html_prose_checked_against_every_markdown_cell": true,
+    "ct_png_bytes_match_notebook": true
+  },
+  "computational": {
+    "status": "passed",
+    "tests_passed": 28,
+    "picker_tests_repeated_after_last_change": 8,
+    "synthetic_lung_boundary_checked": true,
+    "incomplete_field_not_assigned_zero": true,
+    "contralateral_lung_not_substituted": true,
+    "primary_numerical_manifests_unchanged": true,
+    "new_fem_executed": false,
+    "ct_profile": {
+      "points": 141,
+      "depth_min_mm": 42.0,
+      "depth_max_mm": 101.0,
+      "depth_at_centre_mm": 73.0,
+      "sampling_mm": 0.5
+    }
+  },
+  "browser": {
+    "manual_four_surface_points_selected": true,
+    "rotation_does_not_place_point": true,
+    "all_six_recording_names_verified": true,
+    "all_four_reference_layers_available": true,
+    "camera_rotation_zoom_pan_preserved_on_montage_change": true,
+    "old_points_cleared_on_montage_change": true,
+    "json_and_csv_blob_contents_checked": true,
+    "coordinate_frame": "LPS",
+    "coordinate_units": "mm",
+    "native_download_requests_triggered": true,
+    "disk_download_completion_observed": false,
+    "download_observation_limit": "In-app browser did not deliver a download event; exact JSON/CSV blob payloads were inspected through the UI diagnostic attribute"
+  },
+  "scientific": {
+    "status": "exploratory_not_independently_validated",
+    "observed_anatomical_profile_at_illustrative_pose": true,
+    "ct_segmentation_is_automatic": true,
+    "profile_is_electrical_equivalent_h": false,
+    "actual_georg_tepc_positions_not_chosen": true,
+    "raw_ct_stl_and_signals_not_committed": true,
+    "numeric_channel_mapping_not_confirmed": true,
+    "new_fem_electrical_results_not_claimed": true
+  }
+}

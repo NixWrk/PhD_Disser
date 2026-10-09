@@ -59,6 +59,7 @@ REFERENCE_STYLES = {
     "bones": ("Скелет", "#c49a6c", 0.92),
     "lungs": ("Лёгкие", "#67b7c7", 0.58),
     "heart": ("Сердце", "#d84a4a", 1.0),
+    "fat": ("Жир", "#e0ab28", 0.35),
 }
 
 BODY_SHADE_COLORSCALE = [
@@ -528,7 +529,7 @@ def _mesh_trace(layer: DisplayLayer) -> Any:
         lighting = {"ambient": 1.0, "diffuse": 0.0, "specular": 0.0,
                     "roughness": 1.0, "fresnel": 0.0}
     return go.Mesh3d(
-        legendrank={"body": 0, "bones": 1, "lungs": 2, "heart": 3}[layer.key],
+        legendrank={"body": 0, "bones": 1, "lungs": 2, "heart": 3, "fat": 4}[layer.key],
         x=vertices[:, 0], y=vertices[:, 1], z=vertices[:, 2],
         i=faces[:, 0], j=faces[:, 1], k=faces[:, 2],
         name=layer.label, meta=f"layer_{layer.key}", **appearance,
@@ -653,6 +654,7 @@ _SCRIPT_TEMPLATE = r"""
   "use strict";
   const graphId = __GRAPH_ID__;
   const sourceBasename = __SOURCE_BASENAME__;
+  const exportContext = __EXPORT_CONTEXT__;
   const minimumGuidePoints = 2;
   const electrodeOrder = ["I_plus", "V_plus", "V_minus", "I_minus"];
   const state = { mode: "explicit_points", right: [], left: [], preliminaryCenters: null, symmetry: null, explicitHistory: [] };
@@ -684,6 +686,9 @@ _SCRIPT_TEMPLATE = r"""
   let pendingClickPoint = null;
   let pressedPair = null;
   let pointCommittedInGesture = false;
+  let surfaceHover = null;
+  let pressedSurface = null;
+  let lastPointer = null;
   const pairPanel = document.getElementById("paired-controls");
   const pairAxisInput = document.getElementById("pair-plane-axis");
   const pairOffsetInput = document.getElementById("pair-plane-offset");
@@ -874,6 +879,8 @@ _SCRIPT_TEMPLATE = r"""
       ? centresReady
       : guidesReady && centresReady && state.symmetry !== null;
     downloadButton.disabled = !ready;
+    const csvButton = document.getElementById("download-csv");
+    if (csvButton) csvButton.disabled = !ready;
     if (!ready && !status.classList.contains("error")) {
       if (state.mode !== "symmetric_paths") {
         const selected = state.preliminaryCenters
@@ -1102,7 +1109,7 @@ _SCRIPT_TEMPLATE = r"""
     renderPointLists();
     setStatus("Добавлена точка " + state[activeSide].length + " на стороне " + (activeSide === "right" ? "I+/V+" : "I-/V-") + ": " + formatPoint(rounded), false);
   }
-  function downloadJson() {
+  function downloadJson(format = "json") {
     const montageIdInput = document.getElementById("montage-id");
     const montageId = montageIdInput.value.trim();
     if (!/^[a-z][a-z0-9_-]{0,63}$/.test(montageId)) {
@@ -1145,16 +1152,30 @@ _SCRIPT_TEMPLATE = r"""
         ? "preliminary_polyline_interpolation; exact_centres_resolved_by_MATLAB"
         : "preliminary_surface_selection; exact_centres_resolved_by_MATLAB"
     };
-    const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+    if (exportContext) {
+      const selected = document.getElementById("recording-id").value;
+      const recording = exportContext.recordings.find(r => r.id === selected);
+      payload.measurement_context = { ...exportContext, recordings: undefined, recording,
+        bei_channel: document.getElementById("bei-channel").value || null,
+        operator: document.getElementById("placement-operator").value.trim() || null,
+        reconstruction_notes: document.getElementById("placement-notes").value.trim(),
+        created_utc: new Date().toISOString(), status: "manual_reconstruction_pending_confirmation" };
+    }
+    const frame = exportContext ? exportContext.physical_coordinate_frame : "source_STL";
+    const csv = ["electrode,x_mm,y_mm,z_mm,coordinate_frame", ...electrodeOrder.map(name =>
+      [name, ...state.preliminaryCenters[name], frame].join(","))].join("\r\n")+"\r\n";
+    const blob = new Blob([format === "csv" ? csv : JSON.stringify(payload, null, 2)],
+      { type: format === "csv" ? "text/csv;charset=utf-8" : "application/json" });
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
-    link.download = montageId + ".json";
+    link.download = montageId + "." + format;
     document.body.appendChild(link);
     link.click();
     link.remove();
     window.setTimeout(function () { URL.revokeObjectURL(url); }, 0);
-    setStatus("Запрошено скачивание " + montageId + ".json. Проверьте файл в загрузках браузера. Для следующего варианта измените координаты и имя; каждый JSON содержит все четыре электрода. Скачивание ещё не включает вариант в FEM-расчёт.", false);
+    graph.dataset.lastExport = JSON.stringify({filename: link.download, payload, csv});
+    setStatus("Запрошено скачивание " + link.download + ". Проверьте файл в загрузках браузера. JSON содержит координаты и происхождение; CSV — таблицу центров. Сохраните оба файла для одного варианта. Скачивание ещё не включает вариант в FEM-расчёт.", false);
   }
   document.getElementById("mode-explicit").addEventListener("click", function () {
     setPlacementMode("explicit_points");
@@ -1211,7 +1232,23 @@ _SCRIPT_TEMPLATE = r"""
     renderPointLists();
     setStatus("Обе направляющие очищены.", false);
   });
-  downloadButton.addEventListener("click", downloadJson);
+  downloadButton.addEventListener("click", () => downloadJson("json"));
+  const csvButton = document.getElementById("download-csv");
+  if (csvButton) csvButton.addEventListener("click", () => downloadJson("csv"));
+  if (exportContext) {
+    const select = document.getElementById("recording-id");
+    const chooseRecording = () => {
+      document.getElementById("clear-explicit").click();
+      document.getElementById("montage-id").value = exportContext.recordings.find(r => r.id === select.value).montage_id;
+      document.getElementById("bei-channel").value = "";
+      document.getElementById("placement-notes").value = "";
+    };
+    select.addEventListener("change", chooseRecording);
+    chooseRecording();
+  }
+  graph.on("plotly_relayout", event => {
+    if (event["scene.camera"]) graph.dataset.camera = JSON.stringify(event["scene.camera"]);
+  });
   function layerIsVisible(key) {
     const index = traceIndex("layer_" + key);
     if (index < 0) return false;
@@ -1250,7 +1287,7 @@ _SCRIPT_TEMPLATE = r"""
   }
   function appendInternalLayersWhenHidden(states) {
     if (internalLayersAreHidden()) {
-      ["bones", "lungs", "heart"].forEach(function (key) {
+      ["bones", "lungs", "heart", "fat"].forEach(function (key) {
         states.push({ key: key, visible: true });
       });
     }
@@ -1297,7 +1334,8 @@ _SCRIPT_TEMPLATE = r"""
       { key: "body", visible: true, opacity: 1.0 },
       { key: "bones", visible: false, opacity: 0.92 },
       { key: "lungs", visible: false, opacity: 0.58 },
-      { key: "heart", visible: false, opacity: 1.0 }
+      { key: "heart", visible: false, opacity: 1.0 },
+      { key: "fat", visible: false, opacity: 0.35 }
     ]);
   });
   document.getElementById("view-anatomy").addEventListener("click", function () {
@@ -1305,7 +1343,8 @@ _SCRIPT_TEMPLATE = r"""
       { key: "body", visible: true, opacity: 0.20 },
       { key: "bones", visible: true, opacity: 0.92 },
       { key: "lungs", visible: true, opacity: 0.58 },
-      { key: "heart", visible: true, opacity: 1.0 }
+      { key: "heart", visible: true, opacity: 1.0 },
+      { key: "fat", visible: true, opacity: 0.35 }
     ]);
   });
   function acceptPointClick(point) {
@@ -1325,19 +1364,26 @@ _SCRIPT_TEMPLATE = r"""
         const point = event && event.points && event.points.find(p =>
           p.data && (p.data.meta === "layer_body" || p.data.meta === "surface_pick_proxy"));
         const xyz = pointFromClick(point);
+        const pixel = event && event.event ? [event.event.clientX, event.event.clientY] : lastPointer;
+        surfaceHover = xyz && pixel ? {point, pixel} : null;
         if (xyz) previewPairAt(xyz);
         else if (!previewBusy) clearPairHover();
       });
       graph.on("plotly_unhover", function () {
+        surfaceHover = null;
         if (!previewBusy) clearPairHover();
       });
       graph.addEventListener("pointerdown", event => {
         mouseDownAt = [event.clientX, event.clientY]; dragging = false; suppressClickAfterDrag = false;
         pendingClickPoint = null; pointCommittedInGesture = false;
+        pressedSurface = event.target.tagName === 'CANVAS' && surfaceHover &&
+          Math.hypot(event.clientX-surfaceHover.pixel[0],event.clientY-surfaceHover.pixel[1]) <= 6
+          ? surfaceHover.point : null;
         pressedPair = state.mode === "mirrored_pairs" && !previewBusy &&
           event.target.tagName === "CANVAS" ? hoverPair : null;
       }, true);
       graph.addEventListener("pointermove", event => {
+        lastPointer = [event.clientX, event.clientY];
         if (mouseDownAt && Math.hypot(event.clientX - mouseDownAt[0], event.clientY - mouseDownAt[1]) > 4) {
           dragging = true; suppressClickAfterDrag = true; clearPairHover();
         }
@@ -1357,7 +1403,10 @@ _SCRIPT_TEMPLATE = r"""
           return;
         }
         // Some Plotly versions emit plotly_click on press, before a drag is known.
-        const point = pendingClickPoint;
+        // Mesh3d does not emit plotly_click consistently in every renderer.
+        // Use the visible hover hit only for a click at that same screen position.
+        const point = pendingClickPoint || pressedSurface;
+        pressedSurface = null;
         pendingClickPoint = null;
         if (point && !suppressClickAfterDrag && !pointCommittedInGesture) acceptPointClick(point);
       }, true);
@@ -1415,13 +1464,14 @@ def _layer_controls(layers: list[DisplayLayer]) -> str:
 
 def _layer_report_table(layers: list[DisplayLayer]) -> str:
     rows = []
+    labels={'applied':'Облегчена','not_needed':'Без упрощения','skipped':'Без упрощения'}
     for layer in layers:
         rows.append(
             "<tr>"
             f"<td>{html_lib.escape(layer.label)}</td>"
             f"<td><code>{html_lib.escape(layer.source_basename)}</code></td>"
             f"<td>{len(layer.mesh.vertices):,}</td><td>{len(layer.mesh.faces):,}</td>"
-            f"<td>{html_lib.escape(str(layer.decimation_report['status']))}</td>"
+            f"<td>{html_lib.escape(labels.get(layer.decimation_report['status'],str(layer.decimation_report['status'])))}</td>"
             "</tr>"
         )
     return (
@@ -1431,9 +1481,15 @@ def _layer_report_table(layers: list[DisplayLayer]) -> str:
     )
 
 
-def render_picker_html(body: DisplayLayer, references: list[DisplayLayer]) -> str:
+def render_picker_html(body: DisplayLayer, references: list[DisplayLayer], *, export_context=None) -> str:
     layers = [body, *references]
     figure = _plotly_figure(body, references)
+    title = export_context['title'] if export_context else 'Инструмент монтажа электродов ТТРКГ'
+    if export_context:
+        figure.update_layout(title=title, scene=dict(xaxis_title='x LPS, мм',
+            yaxis_title='y LPS, мм', zaxis_title='z LPS, мм'))
+        for trace in figure.data:
+            if trace.meta == 'preliminary_electrode_centers': trace.name='Выбранные центры электродов'
     _, pio = _require_plotly()
     config = {"responsive": True, "displaylogo": False, "scrollZoom": True}
     try:
@@ -1456,6 +1512,7 @@ def render_picker_html(body: DisplayLayer, references: list[DisplayLayer]) -> st
         _SCRIPT_TEMPLATE
         .replace("__GRAPH_ID__", _json_script_literal(graph_id))
         .replace("__SOURCE_BASENAME__", _json_script_literal(basename))
+        .replace("__EXPORT_CONTEXT__", json.dumps(export_context, ensure_ascii=False).replace('</', '<\\/'))
     )
     processing_report = {
         "schema": SCHEMA,
@@ -1479,7 +1536,7 @@ def render_picker_html(body: DisplayLayer, references: list[DisplayLayer]) -> st
         }
     }
     status_json = html_lib.escape(json.dumps(processing_report, ensure_ascii=False))
-    return (
+    result = (
         "<!doctype html>\n<html lang=\"ru\">\n<head>\n"
         '<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n'
         "<title>Инструмент монтажа электродов ТТРКГ</title>\n"
@@ -1585,6 +1642,37 @@ def render_picker_html(body: DisplayLayer, references: list[DisplayLayer]) -> st
         f'<script type="application/json" id="mesh-processing-report">{status_json}</script>\n'
         f"<script>{script}</script>\n</body>\n</html>\n"
     )
+    if export_context:
+        options=''.join(f'<option value="{html_lib.escape(r["id"])}">{html_lib.escape(r["label"])}</option>'
+            for r in export_context['recordings'])
+        context_panel=(f'<section class="montage-controls"><h2>Связь с экспериментом</h2>'
+            f'<p>{html_lib.escape(export_context["description"])}</p>'
+            f'<label>Запись: <select id="recording-id">{options}</select></label> '
+            '<label>Импедансный канал: <select id="bei-channel"><option value="">Не установлен</option>'
+            '<option value="BEI1">BEI1</option><option value="BEI2">BEI2</option></select></label>'
+            '<p><label>Автор реконструкции: <input id="placement-operator"></label></p>'
+            '<p><label>Основание выбора и неопределённость: <input id="placement-notes" size="80"></label></p>'
+            '<p>Для каждого монтажа поставьте четыре точки вручную. I+ и I− — токовые, V+ и V− — '
+            'измерительные; полярность и номер канала проверьте по подключению. Координаты — LPS, мм: '
+            '+x влево, +y назад, +z к голове относительно испытуемого. Центры выбраны на облегчённой '
+            'поверхности; перед FEM их необходимо спроецировать на исходную расчётную поверхность. '
+            'Форму, площадь контактов и контактное сопротивление этот экспорт не задаёт. '
+            'Смена записи очищает точки, сохраняя ракурс. Перезагрузка удаляет несохранённые точки.</p></section>')
+        result=result.replace('<h1>Инструмент монтажа электродов ТТРКГ</h1>',
+            '<h1>'+html_lib.escape(title)+'</h1>'+context_panel)
+        result=result.replace('<title>Инструмент монтажа электродов ТТРКГ</title>',
+            '<title>'+html_lib.escape(title)+'</title>')
+        result=re.sub(r'<p class="warning"><strong>Внимание:</strong>.*?</p>',
+            '<p class="warning">Выбранные координаты представляют ручную реконструкцию положения на КТ '
+            'другой сессии. Точность такой реконструкции пока не установлена.</p>',result,count=1,flags=re.S)
+        result=result.replace('</style>', '#mode-paired,#mode-symmetric,#multiple-montages-help{display:none}</style>')
+        result=result.replace('<button id="download-json" type="button" disabled>Скачать JSON</button>',
+            '<button id="download-json" type="button" disabled>Скачать JSON</button> '
+            '<button id="download-csv" type="button" disabled>Скачать CSV</button>')
+        result=result.replace('value="ttrkg_001"','value="'+export_context['recordings'][0]['montage_id']+'"')
+        result=result.replace('Например: ttrkg_001, ttrkg_002, ttrkg_003. Для каждого варианта используйте отдельное имя файла.',
+            'Для альтернативного положения добавьте к имени суффикс, например _v2. Каждый файл содержит четыре центра.')
+    return result
 
 
 def _prepare_layer(
@@ -1619,6 +1707,8 @@ def build_picker_html(
     bones_stl: Path | str | None = None,
     lungs_stl: Path | str | None = None,
     heart_stl: Path | str | None = None,
+    fat_stl: Path | str | None = None,
+    export_context: dict | None = None,
     reference_target_faces: int = DEFAULT_REFERENCE_TARGET_FACES,
 ) -> dict[str, Any]:
     source = Path(input_stl)
@@ -1628,7 +1718,7 @@ def build_picker_html(
     )
     references: list[DisplayLayer] = []
     reports: dict[str, Any] = {"body": body_report}
-    for key, value in (("bones", bones_stl), ("lungs", lungs_stl), ("heart", heart_stl)):
+    for key, value in (("bones", bones_stl), ("lungs", lungs_stl), ("heart", heart_stl), ("fat", fat_stl)):
         if value is None:
             continue
         label, color, opacity = REFERENCE_STYLES[key]
@@ -1638,7 +1728,7 @@ def build_picker_html(
         references.append(layer)
         reports[key] = report
     target.parent.mkdir(parents=True, exist_ok=True)
-    target.write_text(render_picker_html(body, references), encoding="utf-8")
+    target.write_text(render_picker_html(body, references, export_context=export_context), encoding="utf-8")
     return {
         "source_basename": source.name,
         "output_html_basename": target.name,

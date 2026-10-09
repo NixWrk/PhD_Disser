@@ -7,6 +7,7 @@ from bs4 import BeautifulSoup
 import nbformat
 import numpy as np
 import trimesh
+from nbconvert.filters import markdown2html
 
 from lateral_pilot import ROOT, EXPERIMENT, read, save, sha, DiskModel
 from lateral_identifiability import vector, SIZES
@@ -119,9 +120,17 @@ def run():
         assert not any(o.output_type=='error' for c in codes for o in c.outputs)
         soup=BeautifulSoup((folder/(stem+'.html')).read_text(encoding='utf-8'),'html.parser')
         assert not soup.select('.jp-CodeCell .jp-InputArea') and not soup.select('.highlight')
+        for anchor in soup.select('.anchor-link'):anchor.decompose()
+        actual=' '.join(soup.get_text(' ',strip=True).split())
+        for cell in nb.cells:
+            if cell.cell_type!='markdown':continue
+            expected_soup=BeautifulSoup(markdown2html(cell.source),'html.parser')
+            for anchor in expected_soup.select('.anchor-link'):anchor.decompose()
+            expected=expected_soup.get_text(' ',strip=True)
+            assert ' '.join(expected.split()) in actual, f'Stale HTML prose: {stem}, cell {cell.id}'
         markdown='\n\n'.join(c.source for c in nb.cells if c.cell_type=='markdown')+'\n'
         assert (folder/(stem+'.md')).read_text(encoding='utf-8')==markdown
-        technical.append(dict(stem=stem,executed_cells=len(codes),errors=0,code_excluded=True))
+        technical.append(dict(stem=stem,executed_cells=len(codes),errors=0,code_excluded=True,html_prose_matches_notebook=True))
         for ext in ('.ipynb','.html','.md'):
             p=folder/(stem+ext)
             inventory.append(dict(path=p.relative_to(ROOT).as_posix(),sha256=sha(p),bytes=p.stat().st_size))
