@@ -1710,6 +1710,7 @@ def build_picker_html(
     fat_stl: Path | str | None = None,
     export_context: dict | None = None,
     reference_target_faces: int = DEFAULT_REFERENCE_TARGET_FACES,
+    fat_target_faces: int | None = None,
 ) -> dict[str, Any]:
     source = Path(input_stl)
     target = Path(output_html)
@@ -1723,7 +1724,8 @@ def build_picker_html(
             continue
         label, color, opacity = REFERENCE_STYLES[key]
         layer, report = _prepare_layer(
-            key, label, color, opacity, Path(value), reference_target_faces
+            key, label, color, opacity, Path(value),
+            fat_target_faces if key == 'fat' and fat_target_faces is not None else reference_target_faces
         )
         references.append(layer)
         reports[key] = report

@@ -1,0 +1,374 @@
+{
+  "review_date": "2026-10-09",
+  "scope": "Author-confirmed channel transitions 004–007, updated experiment viewer, critical channel audit, bounded two-layer recalculation and Georg TEPC picker",
+  "artifact_inventory": [
+    {
+      "path": "Colab Notebooks/scorpion_v2/10.00_Эксперимент_и_сигналы_Георгия_Scorpion_v2.ipynb",
+      "sha256": "630653b203cd19f8cc8bce00fa24b394510d7dc8792c7fd6561e93756957dd67",
+      "sha256_lf_normalized": "28eb168e924b490fbd0c0b62833971b99b8b91118e98cfdb1534a0bce7f3908f",
+      "bytes": 55354854
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/10.00_Эксперимент_и_сигналы_Георгия_Scorpion_v2.html",
+      "sha256": "31f63a0ee2a7e985e4f114f1122beb30b3aad1f501e62e2b2c359de682bcbcf5",
+      "sha256_lf_normalized": "5e7eed11256a81c4f4f0ad9d34c7bb4e8c5b74c7724fdd44a6bec1f627a187b4",
+      "bytes": 55484681
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/10.00_Эксперимент_и_сигналы_Георгия_Scorpion_v2.md",
+      "sha256": "a7f4d75dcbe4db57d532934b107db2a4b05698246879dd6b0bdd5310c7430c8b",
+      "sha256_lf_normalized": "f81d81f7942e1fa9df9093f9b66948cb66fb30c893f6f1b9357bb7e600e4be88",
+      "bytes": 21547
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/10.30_Критическая_проверка_назначения_каналов_Scorpion_v2.ipynb",
+      "sha256": "4f7b2c7609fc9ca88e8ca3b7aa56f8e1341617177ef85398e0b055e1e6ba05b7",
+      "sha256_lf_normalized": "d7fa4fc07c2a82fe1663be8b11405319ce8d356c746bb58960e15183688645f4",
+      "bytes": 22708405
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/10.30_Критическая_проверка_назначения_каналов_Scorpion_v2.html",
+      "sha256": "a129ed5e3b3ea9f7a0fc40d37fefadd3bbf8fc240b7767ec67c3b4b080a61f87",
+      "sha256_lf_normalized": "289c5e94a3f2bac979fd7b6a8fa59e7018eee9e27716030d4c7a8bc6d26dc906",
+      "bytes": 22538405
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/10.30_Критическая_проверка_назначения_каналов_Scorpion_v2.md",
+      "sha256": "253c3577bb02579a2f57efa3cee1794afa85da696eda0be1b86e9dee9e772334",
+      "sha256_lf_normalized": "a86cb319402e1bc2805f7999af7f44a0a80e1736c261a58f958e6b52c2ece067",
+      "bytes": 21105
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.21_Множество_решений_двуслойной_модели_Scorpion_v2.ipynb",
+      "sha256": "245b76bebf19aa098e76b866dfad51454e7c77bb102ea00f393edff1d6203d3e",
+      "sha256_lf_normalized": "65bebeb19a7d5973b0b1b05d9cdd0db91bf74886551f8790fb83ced1c26875a3",
+      "bytes": 18924735
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.21_Множество_решений_двуслойной_модели_Scorpion_v2.html",
+      "sha256": "3d508106f83400ab805ae2c1224672756a87665561e8052dd054aafa421b6e02",
+      "sha256_lf_normalized": "6758474663a5222d9d9183645ed95bccd63e08276db26c2e0eff90363db3f398",
+      "bytes": 18885181
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.21_Множество_решений_двуслойной_модели_Scorpion_v2.md",
+      "sha256": "fe78531d0dc337c7ca5b5df9ebfd30b0a0842cee0df53cb8b7150c2c9f176919",
+      "sha256_lf_normalized": "d12566d1849be7d44c78c445464fbf704a61096bb0179aec469cee7f42206cc5",
+      "bytes": 32522
+    }
+  ],
+  "source_inventory": [
+    {
+      "path": "Colab Notebooks/scorpion_v2/build_scorpion_experiment_viewer.py",
+      "sha256": "8deebdd2ffcf025d83c90f4b6f97dbe17ac1a5a2910322ee465147744ae12386",
+      "sha256_lf_normalized": "68f6b6e0b44a1183f33c5f66a3f612e61930a574b4b71b9e69692d40c4820358",
+      "bytes": 43445
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/experiment_view.js",
+      "sha256": "1d00d06c4e9e205ec87b515a23cda578e86f2033bb802be622dd9b229e483d6f",
+      "sha256_lf_normalized": "1d00d06c4e9e205ec87b515a23cda578e86f2033bb802be622dd9b229e483d6f",
+      "bytes": 12815
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/build_channel_assignment_report.py",
+      "sha256": "811070a86a567c3b57df72f9795fc72d796414578728bc9b0ce1397785bb45da",
+      "sha256_lf_normalized": "5dcd23840f91e7980d80bc4a940563a6fab960d98dc16c56e7632f1c0723b21d",
+      "bytes": 36012
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/test_channel_assignment.py",
+      "sha256": "36bae62137db240ca027a8c4830d61e54904c0814778322e6643c4508f642240",
+      "sha256_lf_normalized": "5fc71ad81217748c76e6f18a3dfcb29fb4e9a19128df020e854a229f667a4e5d",
+      "bytes": 1639
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/lateral_solution_surfaces.py",
+      "sha256": "71a7efea6bf1fd599495621d32fc75257395825784fb220aee5d24920451eb5a",
+      "sha256_lf_normalized": "71a7efea6bf1fd599495621d32fc75257395825784fb220aee5d24920451eb5a",
+      "bytes": 7337
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/build_lateral_solution_surfaces_report.py",
+      "sha256": "bcaf8f2d8e94789493f6c9c4a234c535b7d31501dea727fd0550142296a0198b",
+      "sha256_lf_normalized": "31b5b496c4df8b47c792829779f5f00d3da73616a0dc5a77e1ab61f3cb647a3d",
+      "bytes": 42880
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/test_lateral_surfaces_and_viewer.py",
+      "sha256": "03ff8e4c6dfdaeb5502a9c60924d7428f3aa5af79c28ce7d0ef82988f7108cd6",
+      "sha256_lf_normalized": "03ff8e4c6dfdaeb5502a9c60924d7428f3aa5af79c28ce7d0ef82988f7108cd6",
+      "bytes": 7134
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/verify_scorpion_revision.py",
+      "sha256": "ab54060b41ab504ee54a8e568ab65635825dbdbca59c0218d2061bf6acfefb86",
+      "sha256_lf_normalized": "ab54060b41ab504ee54a8e568ab65635825dbdbca59c0218d2061bf6acfefb86",
+      "bytes": 13883
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/README.md",
+      "sha256": "315bb1ae26f801dcd315de8508d9fb9743ac1972e3c1ad47a1b584c8804a2250",
+      "sha256_lf_normalized": "706fc295abb911e3b3115dc8b5dbbe4c37978a7f7bcadb5e2e452137fb346bf2",
+      "bytes": 9382
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "a6faf198bb7b0f45836dd8bbb86d2d42ac8be30fe1585c432793599266f060a8",
+      "sha256_lf_normalized": "b86c11df87b7611b8bf52d6f6efc14d87ec754ddc64c0efe622b777c6b71c70e",
+      "bytes": 88768
+    },
+    {
+      "path": "Experiments/AGENTS.md",
+      "sha256": "93a4eedbcd90337c56fb61c4e6b084b144619d0bfb4d9906f412197fa1888c08",
+      "sha256_lf_normalized": "b775bb3b04147da580bdb2922e277daa650cdfd5f2648f379dd005ddd1baa511",
+      "bytes": 13302
+    },
+    {
+      "path": "Experiments/scorpion_v2_georg/PROTOCOL.md",
+      "sha256": "bba50a13fb0cc4c3cd9e349d51b4e2639b48aab0d5bea1ad6cf857be701fae5d",
+      "sha256_lf_normalized": "0bf956e7754bfc20925daea87d52e4bd5b9ceec9af92f6ac3abe5b6dcaf101e4",
+      "bytes": 31280
+    },
+    {
+      "path": "Experiments/scorpion_v2_georg/RECORDINGS.md",
+      "sha256": "9cc3b7640bcfd6a2216987f4d90f43d95ec8d2676cde14421372e81c44c22cb9",
+      "sha256_lf_normalized": "82ffdf20ef656f7ad9c9d8c5cd94f69a52d0ef0fa4bbd9795edd53f7aa370731",
+      "bytes": 11063
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/tools/build_georg_tepc_picker.py",
+      "sha256": "157c31b16eaed3ee574f5c1ad3022650ef8a71965d499340572dfbf028d0f834",
+      "sha256_lf_normalized": "157c31b16eaed3ee574f5c1ad3022650ef8a71965d499340572dfbf028d0f834",
+      "bytes": 5323
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/tools/build_surface_landmark_picker.py",
+      "sha256": "b0dde1de37b3c82203a23d279291494d13645d594393e60fbaaf8b8014afe16f",
+      "sha256_lf_normalized": "c8cf6445bbf431e5abd26b0b3709ede4149273606572667e56ca0b24c9d30c89",
+      "bytes": 96508
+    },
+    {
+      "path": ".gitattributes",
+      "sha256": "65111c701382003525dacb8a2cf57884c3a27a20c26afc5e07ec50617a83fc64",
+      "sha256_lf_normalized": "65111c701382003525dacb8a2cf57884c3a27a20c26afc5e07ec50617a83fc64",
+      "bytes": 23317
+    }
+  ],
+  "reader_extractions": [
+    {
+      "path": "MATLAB_TRKG4_real_subjects/output/exploratory/scorpion_georg_geometry_20261009/10.00_full_reader_text.local.txt",
+      "sha256": "2524c493e9f9877a73b489f1521aee42f41f5d3f393f5d778e72dc5941f5e98a",
+      "sha256_lf_normalized": "d31d77615514ba327a7930d28700ec51c8c823bf2aec65d066a34dcb679eb433",
+      "bytes": 25111
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/output/exploratory/scorpion_georg_geometry_20261009/10.30_full_reader_text.local.txt",
+      "sha256": "c1c367568539fe6f19023b09b7f285d2fa4df103360427bd53bdcc6d75005c6f",
+      "sha256_lf_normalized": "fe79d7b3d65dfed7e4182042dec4c87970cdf8c6294023bef7e4363e5449ac8e",
+      "bytes": 27859
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/output/exploratory/scorpion_georg_geometry_20261009/33.21_full_reader_text.local.txt",
+      "sha256": "c7edcb9cdf3962b41586d82a2f3c30d7d6991322953931b5c95f6554edad2647",
+      "sha256_lf_normalized": "a620f7022075a5aa4f5db9850f192fea16e6d93cac61ffe20b1554880bfe4c74",
+      "bytes": 51333
+    }
+  ],
+  "language": {
+    "status": "passed",
+    "reviewer": "Codex model",
+    "method": "Sequential semantic reading of complete final reader prose, equations, captions, tables and plot labels for 10.00, 10.30 and 33.21; final viewer UI strings read in source and browser. README and RECORDINGS read in full; PROTOCOL read in full before its final paragraph correction, which was read again afterward; amended agent-instruction blocks reviewed. The unchanged dynamic BEI overview retains the prior complete review. Automatic extraction only exposed reader text; it did not perform proofreading.",
+    "registered_checks": [
+      "language.ru.hash-bound-final-review",
+      "language.ru.encoding",
+      "language.ru.formula-where",
+      "language.ru.natural-prose",
+      "language.ru.reader-facing-clarity"
+    ],
+    "derived_objects_defined": true,
+    "author_confirmation_distinguished_from_inference": true,
+    "findings": [],
+    "reader_bytes_changed_after_review": false
+  },
+  "technical": {
+    "status": "passed",
+    "reader_checks": [
+      {
+        "stem": "10.00_Эксперимент_и_сигналы_Георгия_Scorpion_v2",
+        "executed_cells": 4,
+        "errors": 0,
+        "code_excluded": true,
+        "html_prose_matches_notebook": true
+      },
+      {
+        "stem": "10.30_Критическая_проверка_назначения_каналов_Scorpion_v2",
+        "executed_cells": 8,
+        "errors": 0,
+        "code_excluded": true,
+        "html_prose_matches_notebook": true
+      },
+      {
+        "stem": "33.21_Множество_решений_двуслойной_модели_Scorpion_v2",
+        "executed_cells": 7,
+        "errors": 0,
+        "code_excluded": true,
+        "html_prose_matches_notebook": true
+      }
+    ],
+    "standalone_code_free_html": true,
+    "markdown_matches_notebook": true,
+    "hash_bound_reader_and_producer_bytes_preserved_in_git": true
+  },
+  "computational": {
+    "status": "passed",
+    "verification_command": "python -X utf8 verify_scorpion_revision.py",
+    "unit_tests": {
+      "command": "python -X utf8 -m unittest test_channel_assignment.py test_lateral_surfaces_and_viewer.py test_experiment_signal_display.py",
+      "passed": 14,
+      "failed": 0
+    },
+    "verification": {
+      "primary_numerical_manifest_unchanged": true,
+      "additional_manifest_verified": true,
+      "active_bounded_surface_manifest_verified": true,
+      "experiment_viewer_manifest_verified": true,
+      "bei_overview": {
+        "records": 18,
+        "fields": 36,
+        "compared_inverse_levels": 72,
+        "maximum_median_difference_ohm": 0.0,
+        "negative_absolute_samples": 0,
+        "nonfinite_samples": 0,
+        "all_stage_extrema_preserved": true,
+        "filters_applied": false,
+        "annotations_modified": false
+      },
+      "maximum_cloud_rss_difference_ohm2": 5.002220859751105e-12,
+      "maximum_scalar_residual_ohm": 4.0898839870351367e-11,
+      "actual_joins_full_circle_inside_source": true,
+      "current_contacts_top_and_opposite_bottom": true,
+      "lateral_axis_longitudinal": true,
+      "old_fem_transferred": false,
+      "new_fem_executed": false,
+      "skin_alignment": {
+        "compared_lung_boundaries": 141,
+        "maximum_boundary_difference_mm": 0.0,
+        "ray_distances_preserved": true,
+        "depth_scaling_applied": false,
+        "depth_landmarks_verified": [
+          {
+            "label": "A",
+            "s_mm": -70,
+            "depth_mm": 42.0,
+            "colour": "#b12a90"
+          },
+          {
+            "label": "M",
+            "s_mm": -35,
+            "depth_mm": 58.0,
+            "colour": "#4575b4"
+          },
+          {
+            "label": "Центр",
+            "s_mm": 0,
+            "depth_mm": 73.0,
+            "colour": "#30343b"
+          },
+          {
+            "label": "N",
+            "s_mm": 35,
+            "depth_mm": 84.0,
+            "colour": "#19955b"
+          },
+          {
+            "label": "B",
+            "s_mm": 70,
+            "depth_mm": 101.0,
+            "colour": "#d26b13"
+          }
+        ]
+      }
+    },
+    "confirmed_reference_row_channels": {
+      "004": 2,
+      "007": 1,
+      "008": 1,
+      "009": 1,
+      "010": 1
+    },
+    "record_005_lateral_channel": 2,
+    "record_006_horizontal_channel": 1,
+    "record_006_vertical_channel": 2
+  },
+  "browser": {
+    "status": "passed",
+    "viewer": {
+      "independent_channels_curves_and_plots_verified": true,
+      "individual_visibility_survives_master_toggle": true,
+      "visibility_survives_record_and_filter_changes": true,
+      "raw_equals_selected_when_filters_disabled": true,
+      "montages_001_002_005_006_007_checked": true,
+      "camera_rotation_zoom_and_pan_preserved_on_record_filter_and_history_changes": true
+    },
+    "surfaces": {
+      "independent_h_controls_verified": true,
+      "independent_state_selection_verified": true,
+      "flat_first_and_third_plots_rendered": true
+    },
+    "channel_audit": {
+      "three_figures_and_five_tables_rendered": true,
+      "ecg_record_selector_verified": true
+    },
+    "tepc_picker": {
+      "scene_and_controls_rendered": true,
+      "export_not_exercised_in_browser": true,
+      "individual_positions_not_accepted": true
+    }
+  },
+  "scientific": {
+    "status": "exploratory_not_independently_validated",
+    "direct_author_confirmation": [
+      "004",
+      "005",
+      "006",
+      "007"
+    ],
+    "late_block_continuity": "protocol assumption for 008–011",
+    "unknown_channel_roles": [
+      "001",
+      "002",
+      "003",
+      "012",
+      "013",
+      "014",
+      "015",
+      "016",
+      "017",
+      "018"
+    ],
+    "record_001_montage": "1×1 on arms and horizontal 140 mm lateral",
+    "single_U_top_angle": "unconfirmed visualization scenario for 001/002",
+    "ecg_uses_same_U_as_corresponding_BEI": true,
+    "cross_axes_inherited_from_previous_record": true,
+    "cross_ecg_quality_not_used_to_assign_axes": true,
+    "candidate_breathing_intervals_not_accepted": true,
+    "confirmed_inspiration_fit": {
+      "relative_residual_percent": 10.535898,
+      "rho1_at_lower_bound": true,
+      "condition_number_log_J": 8120.034
+    },
+    "confirmed_expiration_fit": {
+      "relative_residual_percent": 9.744487,
+      "rho1_at_lower_bound": true,
+      "condition_number_log_J": 8158.603
+    },
+    "main_140_observation_closer_than_cross_to_four_size_prediction": true,
+    "stable_tissue_parameters_not_established": true,
+    "effective_h_not_validated_as_anatomical_CT_depth": true,
+    "full_new_FEM_pose_scan_not_executed": true,
+    "stroke_volume_and_ejection_fraction_not_validated": true,
+    "raw_medical_inputs_not_committed": true
+  },
+  "previous_reviews": "Historical reviews remain scoped to their recorded hashes; this review binds the changed reader and source bytes. LF-normalized hashes record Git text normalization without replacing worktree hashes."
+}

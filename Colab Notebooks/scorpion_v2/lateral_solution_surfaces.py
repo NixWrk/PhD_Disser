@@ -16,18 +16,23 @@ H=np.r_[.5,np.arange(1.,101.)]
 
 
 def definition(channel):
+    """3: author-confirmed transition; 1/2: former constant-number counterfactuals."""
     items=[]
+    default=1 if channel==3 else channel
     def add(record,size,label,reference=False,source_channel=None):
-        items.append(dict(key=record+'_'+str(source_channel or channel),record_id='SCV2-G-'+record,
-            size_mm=size,label=label,reference=reference,channel=source_channel or channel))
+        ch=source_channel or default
+        items.append(dict(key=record+'_'+str(ch),record_id='SCV2-G-'+record,
+            size_mm=size,label=label,reference=reference,channel=ch))
     for size,rid in zip(SIZES,IDS):
-        add(rid[-3:],int(size),f'{int(size)} мм · {rid[-3:]} · основной ряд',True)
+        ch=2 if channel==3 and rid.endswith('004') else default
+        add(rid[-3:],int(size),f'{int(size)} мм · {rid[-3:]} · основной ряд',True,ch)
     for record,label in [('002','1×1 на руках'),('003','2×2 на руках')]:
-        add(record,140,f'140 мм · {record} · {label}')
-    for ch in (1,2):add('005',140,f'140 мм · 005 · канал {ch}, роль не установлена',source_channel=ch)
+        add(record,140,f'140 мм · {record} · {label} · кандидат роли',source_channel=2 if channel==3 else default)
+    add('005',140,'140 мм · 005 · вертикальная боковая, BEI2',source_channel=2)
     for record,size in [('006',140),('011',60)]:
-        add(record,size,f'{size} мм · {record} · основная ось креста')
-        add(record,size,f'{size} мм · {record} · поперечная ось креста',source_channel=3-channel)
+        ch=1 if channel==3 else default
+        add(record,size,f'{size} мм · {record} · горизонтальная ось креста',source_channel=ch)
+        add(record,size,f'{size} мм · {record} · вертикальная ось креста',source_channel=3-ch)
     return items
 
 
@@ -71,7 +76,7 @@ def run(out=OUT):
     with threadpool_limits(3):
         bank=KernelBank(h=H,q=q)
         np.savez_compressed(out/'kernel.local.npz',h=H,q=q,f=bank.f,bounds=bounds)
-        for channel in (1,2):
+        for channel in (3,1,2):
             items=definition(channel)
             for state in ('inhale','exhale'):
                 y=[]
@@ -103,6 +108,13 @@ def run(out=OUT):
         registry_sha256=sha(registry),producer_sha256=sha(__file__),
         dependencies={n:sha(Path(__file__).with_name(n)) for n in ['lateral_pilot.py','lateral_identifiability.py','lateral_admissible_sets.py']},
         annotations_accepted=False,parameters_transferred_to_cardiac_function=False))
+    contract=read(out/'input_contract.local.json')
+    contract.update(role_source='author confirmation 2026-10-09',
+        reference_channels={'004':2,'007':1,'008':1,'009':1,'010':1},
+        direct_author_role_records=['004','005','006','007'],
+        late_block_number_continuity_is_protocol_assumption=True,
+        previous_constant_number_cases_are_counterfactual=True)
+    save(out/'input_contract.local.json',contract)
     numerical_names=['kernel.local.npz','results.local.json','input_contract.local.json']
     numerical_names.extend(case['key']+'.npz' for case in cases)
     # Reader files have their own manifest and change on re-export.

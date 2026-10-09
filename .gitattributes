@@ -34,8 +34,12 @@
 "Colab Notebooks/scorpion_v2/20.20_*" -text -whitespace
 "Colab Notebooks/scorpion_v2/33.22_*" -text -whitespace
 "Colab Notebooks/scorpion_v2/10.00_*" -text -whitespace
+"Colab Notebooks/scorpion_v2/10.30_*" -text -whitespace
 "Colab Notebooks/archive/legacy/scorpion_v2/2026-10-09_e799fdb/33.21_*" -text -whitespace
 "Colab Notebooks/scorpion_v2/build_lateral_identifiability_report.py" -text whitespace=trailing-space,space-before-tab,cr-at-eol
+"Colab Notebooks/scorpion_v2/build_scorpion_experiment_viewer.py" -text whitespace=trailing-space,space-before-tab,cr-at-eol
+"Colab Notebooks/scorpion_v2/build_channel_assignment_report.py" -text whitespace=trailing-space,space-before-tab,cr-at-eol
+"MATLAB_TRKG4_real_subjects/tools/build_surface_landmark_picker.py" -text whitespace=trailing-space,space-before-tab,cr-at-eol
 
 # This self-contained interactive report exceeds the normal GitHub blob limit.
 MATLAB_TRKG4_real_subjects/output/exploratory/scan_localization_20260910/localization_and_layers.html filter=lfs diff=lfs merge=lfs -text

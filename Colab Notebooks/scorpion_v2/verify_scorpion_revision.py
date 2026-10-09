@@ -22,6 +22,7 @@ from build_lateral_solution_surfaces_report import verify as verify_surfaces
 from build_scorpion_experiment_viewer import STEM as EXPERIMENT_VIEW, verify as verify_viewer
 from bei_breathing_overview import OUT as BEI_OUT, verify as verify_bei
 from lateral_solution_surfaces import OUT as SURFACES
+from build_channel_assignment_report import STEM as CHANNEL_REPORT, verify as verify_channels
 
 
 def verify_skin_alignment():
@@ -70,7 +71,7 @@ def extract_reader_text():
         elif isinstance(value,list):
             for item in value:yield from labels(item)
     folder=Path(__file__).parent
-    for stem in (EXPERIMENT_VIEW,STEM,GEOMETRY,INVERSE):
+    for stem in (EXPERIMENT_VIEW,CHANNEL_REPORT,STEM,GEOMETRY,INVERSE):
         chunks=[]
         for cell in nbformat.read(folder/(stem+'.ipynb'),as_version=4).cells:
             if cell.cell_type=='markdown':chunks.append(cell.source)
@@ -127,7 +128,7 @@ def run():
     manifest=read(primary/'manifest.local.json')
     assert all(sha(primary/name)==expected for name,expected in manifest['outputs'].items())
     verify_additional(ADDITIONAL)
-    verify_surfaces();verify_viewer()
+    verify_surfaces();verify_viewer();verify_channels()
     bei_overview=verify_bei_overview()
     scalar_error=0.;cloud_error=0.
     for case in read(ADDITIONAL/'results.local.json'):
@@ -185,7 +186,7 @@ def run():
     assert surface.is_watertight and surface.is_volume and len(surface.split())==1
     inventory=[];technical=[]
     folder=Path(__file__).parent
-    for stem in (EXPERIMENT_VIEW,STEM,GEOMETRY,INVERSE):
+    for stem in (EXPERIMENT_VIEW,CHANNEL_REPORT,STEM,GEOMETRY,INVERSE):
         nb=nbformat.read(folder/(stem+'.ipynb'),as_version=4)
         codes=[c for c in nb.cells if c.cell_type=='code']
         assert all(c.execution_count is not None for c in codes)

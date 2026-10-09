@@ -22,12 +22,12 @@ def sha(path):
         return hashlib.file_digest(f, 'sha256').hexdigest()
 
 
-def mask_surface(path, target):
+def mask_surface(path, target, step_size=1):
     image = nib.load(path)
     values = np.asanyarray(image.dataobj) > 0
     if not values.any():
         raise ValueError(f'Empty anatomical mask: {path.name}')
-    vertices, faces, _, _ = marching_cubes(values.astype(np.uint8), level=.5)
+    vertices, faces, _, _ = marching_cubes(values.astype(np.uint8), level=.5, step_size=step_size)
     ras = nib.affines.apply_affine(image.affine, vertices)
     lps = ras * [-1., -1., 1.]
     trimesh.Trimesh(lps, faces, process=False).export(target)
@@ -49,12 +49,13 @@ def build(geometry=GEOMETRY, segmentation=SEGMENTATION, out=OUT, target_faces=20
         if image.shape != ct.shape or not np.allclose(image.affine, ct.affine, atol=1e-5, rtol=0):
             raise ValueError('Mask and full CT coordinate frames differ')
         references[name] = out/(name+'_lps.stl')
-        mask_surface(source, references[name])
+        mask_surface(source, references[name], step_size=3 if name == 'fat' else 1)
         inputs[name] = sha(source)
     context = dict(title='Георгий: размещение электродов ТЕПС на КТ',
         description='ТЕПС 2–7 связаны с записями 012–017 Scorpion v2 от 05.10.2026. '
             'КТ получена на глубоком вдохе в другой сессии. Сердце, лёгкие, кости и жир — '
             'автоматические маски TotalSegmentator; независимая точность не установлена. '
+            'Жир отображается с шагом три вокселя без последующего схлопывания треугольников. '
             'Руки — цилиндры обхватом 37 см, включая искусственное продолжение за пределы поля КТ. '
             'Точки Ника и иллюстративные боковые контакты сюда не перенесены.',
         subject_pseudonym='Georg', experiment='scorpion_v2_georg', experiment_date='2026-10-05',
@@ -67,7 +68,10 @@ def build(geometry=GEOMETRY, segmentation=SEGMENTATION, out=OUT, target_faces=20
             montage_id=f'georg_tepc_{n}') for n in range(2, 8)])
     report = build_picker_html(body, out/'georg_tepc_picker.html', target_faces,
         bones_stl=references['bone'], lungs_stl=references['lung'], heart_stl=references['heart'],
-        fat_stl=references['fat'], reference_target_faces=10000, export_context=context)
+        fat_stl=references['fat'], reference_target_faces=10000,
+        fat_target_faces=len(trimesh.load(references['fat'], force='mesh').faces), export_context=context)
+    if report['layers']['fat']['decimation']['status'] != 'not_needed':
+        raise ValueError('Fat display must not undergo triangle-collapse decimation')
     report.update(input_sha256=inputs, ct_sha256=context['ct_sha256'],
         builder_sha256=sha(__file__), picker_sha256=sha(Path(__file__).with_name('build_surface_landmark_picker.py')),
         geometry_is_individually_localized=False, electrode_positions_exported=False,

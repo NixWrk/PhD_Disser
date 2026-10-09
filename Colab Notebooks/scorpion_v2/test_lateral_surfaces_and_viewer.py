@@ -31,10 +31,17 @@ class SurfaceChecks(unittest.TestCase):
     def test_record_roles_are_global_and_both_cross_axes_are_retained(self):
         for channel in (1,2):
             items=definition(channel)
-            self.assertEqual(len(items),13)
+            self.assertEqual(len(items),12)
             self.assertTrue(all(i['channel']==channel for i in items if i['reference']))
             for rid in ('SCV2-G-006','SCV2-G-011'):
                 self.assertEqual({i['channel'] for i in items if i['record_id']==rid},{1,2})
+
+    def test_confirmed_transition_uses_actual_field_and_excludes_ttrkg_005(self):
+        items=definition(3)
+        ref={i['record_id'][-3:]:i['channel'] for i in items if i['reference']}
+        self.assertEqual(ref,{'004':2,'007':1,'008':1,'009':1,'010':1})
+        self.assertEqual([i['channel'] for i in items if i['record_id'].endswith('005')],[2])
+        self.assertEqual(next(i['channel'] for i in items if i['record_id'].endswith('006') and 'горизонтальная' in i['label']),1)
 
     def test_saved_surfaces_and_intersections_respect_bounds_and_forward_model(self):
         with np.load(OUT/'kernel.local.npz') as a:
@@ -101,6 +108,10 @@ class DisplayChecks(unittest.TestCase):
             if rid in ('006','011'):
                 self.assertEqual(len(r['montage']['lateral']),4)
                 self.assertEqual(len(r['montage']['perpendicular']),4)
+            if rid in ('001','002'):
+                self.assertEqual([len(g) for g in r['montage']['arm']],[1,1,1,1])
+                self.assertEqual(len(r['montage']['lateral']),4)
+                self.assertFalse(r['montage']['single_U_angle_author_confirmed'])
             self.assertEqual(len(r['detail_t']),5*r['fs'])
             np.testing.assert_allclose(np.diff(r['detail_t']),1/r['fs'],atol=1e-6)
             self.assertEqual(r['psd_frequency_hz'][0],0.)

@@ -14,7 +14,7 @@ from experiment_signal_display import ecg_variants, spectrum, phase_intervals
 FOLDER=Path(__file__).parent
 OUT=EXPERIMENT/'derived/exploratory/10.00_experiment_view_20261009'
 STEM='10.00_Эксперимент_и_сигналы_Георгия_Scorpion_v2'
-PRIMARY={'002':140,'003':140,'004':140,'007':120,'008':100,'009':80,'010':60}
+PRIMARY={'001':140,'002':140,'003':140,'004':140,'007':120,'008':100,'009':80,'010':60}
 SEGMENTATION=ROOT/'MATLAB_TRKG4_real_subjects/output/exploratory/scorpion_georg_fem_20261008/segmentation'
 TISSUES={'fat':('Жир','#dba832',.20,None),'bone':('Кости','#c8b69b',.85,12000),
         'lung':('Лёгкие','#49aebc',.35,10000),'heart':('Сердце','#c52b47',.90,6000)}
@@ -97,14 +97,43 @@ def montage(record,contacts,source):
             result['mapping']='cross'
         else:
             result['arm']=contacts['ttrkg_2x2' if rid=='003' else 'ttrkg_1x4']
-            result['mapping']='horizontal' if rid!='005' else 'unknown_vertical'
-            if rid=='002':
-                # A displayed single-potential scenario, not recovered acquisition coordinates.
-                result['arm']=[g[2:3] if i in (1,2) else g[:1] for i,g in enumerate(result['arm'])]
+            result['mapping']='horizontal' if rid not in ('001','005') else ('test_horizontal' if rid=='001' else 'vertical')
+            if rid in ('001','002'):
+                # Top U is an explicit display scenario until the author confirms its angle.
+                result['arm']=[g[1:2] if i in (1,2) else g[:1] for i,g in enumerate(result['arm'])]
+                result['single_U_angle_author_confirmed']=False
             if rid=='005':
                 result['perpendicular']=transverse_centres(source,size,contacts['lateral']['y_mm'],contacts['lateral']['z_mm'])
                 result['lateral']=[]
     return result
+
+
+def verify_montages(records,contacts):
+    """Verify every displayed nominal montage against its geometry, not acquisition."""
+    body=trimesh.load(GEOMETRY/'body_embedded_arms_370mm.stl',force='mesh')
+    maximum=0.;points=0
+    for record in records:
+        rid=record['record_id'][-3:];m=record['montage']
+        if rid in ('001','002'):
+            assert [len(g) for g in m['arm']]==[1,1,1,1]
+            for i,g in enumerate(m['arm']):
+                np.testing.assert_allclose(g,contacts['ttrkg_1x4'][i][1:2] if i in (1,2) else contacts['ttrkg_1x4'][i][:1],atol=1e-12)
+        elif rid=='003':
+            np.testing.assert_allclose(m['arm'],contacts['ttrkg_2x2'],atol=1e-12)
+        elif rid in ('004','005','007','008','009','010'):
+            for a,b in zip(m['arm'],contacts['ttrkg_1x4']):np.testing.assert_allclose(a,b,atol=1e-12)
+        else:assert not m['arm']
+        if rid in PRIMARY or rid in ('006','011'):
+            size=PRIMARY.get(rid,60 if rid=='011' else 140)
+            np.testing.assert_allclose(m['lateral'],contacts['lateral']['centres_by_size_mm'][contacts['sizes_mm'].index(size)],atol=1e-12)
+            np.testing.assert_allclose(np.array(m['lateral'])[:,2],contacts['lateral']['z_mm']+np.array([-size/2,-size/4,size/4,size/2]),atol=1e-8)
+        if int(rid)>=12:assert not m['lateral'] and not m['perpendicular'] and m['mapping']=='unknown'
+        p=m['lateral']+m['perpendicular']+[p for group in m['arm'] for p in group]
+        if p:
+            _,distance,_=body.nearest.on_surface(np.array(p));maximum=max(maximum,float(distance.max()));points+=len(p)
+    if maximum>.02:raise ValueError('Displayed contact is not on the corrected exterior')
+    return dict(records_checked=len(records),contact_centres_checked=points,
+        maximum_contact_distance_mm=maximum,actual_localisation_validated=False)
 
 
 def run(out=OUT):
@@ -173,6 +202,7 @@ def run(out=OUT):
             montage=montage(record,contacts,source)))
         sources.append(dict(record_id=record['record_id'],source_sha256=record['source_sha256'],cache_sha256=sha(cache_path)))
     if len(records)!=18:raise ValueError('Expected eighteen independent recordings')
+    montage_checks=verify_montages(records,contacts)
     save(out/'display_signals.local.json',records)
     save(out/'contract.local.json',dict(producer_sha256=sha(__file__),summary_sha256=sha(summary_path),
         annotations_sha256=sha(annotation_path),geometry_contacts_sha256=sha(GEOMETRY/'contacts.local.json'),
@@ -190,7 +220,11 @@ def run(out=OUT):
         ct_section_provenance_sha256=sha(GEOMETRY/'section_provenance.local.json'),
         ecg_filter_variants='00 raw; 10 notches; 01 bandpass; 11 notches then bandpass; whole-record filtering before display sampling',
         spectrum='Welch PSD, Hann 8 s windows (short records: whole record), 50% overlap, constant detrend; mV²/Hz; full Nyquist range',
-        numerical_channel_assignment_confirmed=False,annotations_modified=False,annotations_accepted=False,
+        channel_roles_author_confirmed_records=['004','005','006','007'],
+        channel_roles_still_unknown_records=['001','002','003','012','013','014','015','016','017','018'],
+        late_block_continuity_is_protocol_assumption=True,annotations_modified=False,annotations_accepted=False,
+        montage_checks=montage_checks,single_U_angle_author_confirmed=False,
+        ECG_and_BEI_same_index_share_U_author_confirmation='2026-10-09',
         CT_is_separate_session=True,display_mesh_is_not_FEM_mesh=True,display_faces=len(faces)))
     save(out/'manifest.local.json',dict(outputs={name:sha(out/name) for name in
         ['display_geometry.local.npz','display_signals.local.json','contract.local.json']}))
@@ -216,6 +250,7 @@ def verify(out=OUT):
         if sha(SEGMENTATION/(name+'.nii.gz'))!=digest:raise ValueError('Viewer mask changed: '+name)
     if c['tissue_surface_checks']['fat']['maximum_distance_to_source_vertices_mm']>3.:
         raise ValueError('Fat display surface has failed geometric QC')
+    verify_montages(read(out/'display_signals.local.json'),read(GEOMETRY/'contacts.local.json'))
     return c
 
 
@@ -229,15 +264,21 @@ def widget(out=OUT):
     payload['records']=read(out/'display_signals.local.json')
     ui='''<div id="experiment-viewer" style="border:1px solid #aaa;padding:12px">
 <p><label>Запись: <select id="experiment-record"></select></label></p>
-<p><label>Вариант нумерации подключения: <select id="experiment-channel"><option value="1">Основная боковая ось — BEI1; перпендикулярная ось креста — BEI2</option><option value="2">Основная боковая ось — BEI2; перпендикулярная ось креста — BEI1</option></select></label></p>
+<p><label>История подключения: <select id="experiment-channel"><option value="0">Подтверждение автора: 004–007 и продолжение размерного ряда</option><option value="1">Прежний сценарий: постоянно боковая BEI1</option><option value="2">Прежний сценарий: постоянно боковая BEI2</option><option value="3">Диагностика: боковая BEI2 в 004–005 → BEI1 с 006</option><option value="4">Диагностика: боковая BEI1 в 004–005 → BEI2 с 006</option></select></label></p>
 <p id="experiment-description"></p><p id="experiment-localisation" style="color:#904018"></p>
 <fieldset><legend>Фильтры ЭКГ — независимое включение этапов</legend>
 <label><input type="checkbox" id="experiment-notch" checked> Режекторы 50/100/150 Гц, Q = 30</label><br>
 <label><input type="checkbox" id="experiment-band" checked> Полосовой фильтр Баттерворта (N = 4), 0,5–40 Гц</label>
 <p>Обработка всей записи в прямом и обратном направлениях, без фазового сдвига. Режекторы подавляют сетевые частоты; полосовой фильтр ослабляет медленное смещение и высокочастотные компоненты. Оба отключены — исходная ЭКГ.</p>
 <p id="experiment-filter-description"></p></fieldset>
+<fieldset><legend>Видимость сигналов</legend>
+<label><input type="checkbox" id="experiment-show-channel-1" checked> Канал 1 на всех графиках сигналов</label>
+<label><input type="checkbox" id="experiment-show-channel-2" checked> Канал 2 на всех графиках сигналов</label>
+<p>Ниже можно отдельно скрыть каждый график и каждую его кривую. Выбор сохраняется при смене записи и фильтров. Эти настройки не назначают электродам номера каналов.</p>
+<div id="experiment-visibility-controls" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:8px"></div>
+</fieldset>
 <p id="experiment-phase-description"></p>
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:8px"><div id="experiment-ct"></div><div id="experiment-signals"></div></div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:8px"><div id="experiment-ct"></div><div id="experiment-signals"><div id="experiment-bei-raw"></div><div id="experiment-bei-slow"></div><div id="experiment-bei-pulse"></div><div id="experiment-ecg-overview"></div></div></div>
 <p>В легенде КТ можно независимо включать жир, кости, лёгкие и сердце. Маски получены автоматически; точность границ не подтверждена.</p>
 <div id="experiment-ecg-detail"></div><div id="experiment-ecg-spectrum"></div></div>'''
     return ui+'<script>'+get_plotlyjs()+'</script><script>const experimentPayload='+json.dumps(payload,separators=(',',':'),allow_nan=False)+';'+(FOLDER/'experiment_view.js').read_text(encoding='utf-8')+'</script>'
@@ -273,8 +314,12 @@ def cells():
 которые автор определил как ЭКГ. На Scorpion базовая и пульсовая составляющие
 не записываются отдельно. Монтаж и последовательность проб известны из
 сообщений автора и имён файлов; фотографии данной установки отсутствуют.
-Фактические координаты электродов и номера каналов их подключения пока
+Фактические координаты электродов пока
 не установлены.
+По уточнению автора от 09.10.2026 EMG1 и EMG2 снимались с тех же
+измерительных электродов U, что соответственно BEI1 и BEI2.
+Качество ЭКГ поэтому может служить дополнительным признаком монтажа;
+его диагностическая пригодность проверяется в 10.30.
 
 КТ Георга получена в отдельной сессии на глубоком вдохе с задержкой дыхания.
 Показанная наружная поверхность служит анатомической основой сценария,
@@ -313,20 +358,34 @@ def cells():
 контакта через 90° на каждой руке. Для 2×2 обе пары — токовая I и
 измерительная U — расположены сверху и снизу: по уточнению автора
 от 09.10.2026 измерительная пара также повёрнута на 90°.
-В варианте 1×1 показан один измерительный контакт спереди — его угловое
-положение не подтверждено. Осевые расстояния перенесены из прежнего сценария
+Для 001 и 002 показан монтаж 1×1: единственный U перемещён на верхнюю
+сторону цилиндра, на ту же угловую ось, что I. Это исправленный сценарий;
+угол U у 1×1 пока не подтверждён автором. Тест 001 по уточнению
+от 09.10.2026 выполнен с 1×1 и горизонтальной боковой сборкой 140 мм.
+Осевые расстояния перенесены из прежнего сценария
 геометрии, а не измерены в новой сессии; площадь контактов на руках неизвестна.
 
-В записях креста оба импедансных канала боковые. Для основной размерной серии
-сохранены два варианта нумерации каналов: BEI1 — основная ось, BEI2 —
-перпендикулярная ось креста, либо обратное назначение. Эти варианты
-обозначают неизвестную нумерацию подключения, а не разные физиологические
-механизмы. Назначение сохраняется во всём основном размерном ряду.
-Переключатель меняет
-условные подписи и цвета электродов, а сами сигналы каждого поля сохраняются.
-Для теста, отдельной записи «верт» и ТЕПС/АЕПС это подтверждение нумерации
-не распространяется. В «верт» показывается только номинальное направление
-сборки без назначения её каналу.
+По окончательному уточнению автора от 09.10.2026 в 004 и 005 ТТРКГ
+занимает канал 1. В 004 горизонтальная боковая сборка — канал 2;
+в 005 на канале 2 она вертикальная. При переходе 005 → 006 вертикальная
+сборка остаётся на месте и канале 2, а канал 1 ТТРКГ переносится на
+горизонтальную боковую ось. В 007 канал 2 становится ТТРКГ,
+горизонтальная боковая 120 мм записывается каналом 1.
+Это подтверждение автора по памяти, а не назначение по величине BEI.
+Продолжение этой схемы в 008–010 и переход 010 → 011 приняты по
+ранее сообщённому постоянству монтажа внутри позднего блока.
+Назначение осей креста наследуется из предыдущей записи; качество
+ЭКГ самого креста для этого не используется. EMG1/EMG2 сняты с U соответствующих BEI1/BEI2.
+Назначение 001–003 и ТЕПС/АЕПС этим уточнением не установлено.
+
+
+В просмотре по умолчанию используется это назначение. Прежние варианты
+доступны как диагностические сценарии и не заменяют подтверждение автора.
+Переключатель меняет цвета электродов; исходные поля сигналов сохраняются.
+Для 001–003 в основном варианте электроды серые, поскольку номера не
+подтверждены. В 005 показаны вертикальная BEI2 и контакты ТТРКГ1.
+Сопоставление сигналов приведено в
+[10.30](10.30_Критическая_проверка_назначения_каналов_Scorpion_v2.html).
 
 ТЕПС — торсовые электродные конфигурации, АЕПС — электродная конфигурация
 на руке по Metshein et al. (EMBC 2021). Схемы источника проверены в
@@ -343,11 +402,21 @@ def cells():
 **Рисунок 1.** Выбор одной из 18 записей одновременно обновляет монтаж
 и графики. Синий цвет соответствует каналу 1, оранжевый — каналу 2;
 в геометрии неизвестного подключения используются серые маркеры.
+Назначение креста 006: горизонтальная ось — канал 1, сохранённая
+вертикальная — канал 2, по уточнению автора о переходе через 005.
+Для 011 назначение перенесено из 010 по постоянству позднего блока;
+качество ЭКГ креста для назначения не используется.
 Ракурс, масштаб и смещение КТ сохраняются при переключении записей,
 вариантов подключения, фильтров и видимости тканевых слоёв.
 
 Справа расположены четыре отдельных графика: общий BEI в Ом,
 расчётный базовый импеданс в Ом, пульсовая полоса в мОм и ЭКГ в мВ.
+В блоке видимости можно отключить канал сразу на всех графиках сигналов,
+а также отдельно каждый график и каждую его кривую. Канальный переключатель
+скрывает и исходную, и выбранную ЭКГ данного канала в её фрагменте и спектре.
+После повторного включения сохраняется отдельный выбор кривых. Выбор
+видимости и ракурс КТ сохраняются при смене записи и фильтров; скрытие
+сигнала не меняет гипотезу подключения или исходные отсчёты.
 Базовый импеданс здесь определён как результат фильтра нижних частот
 Баттерворта с частотой среза 0,5 Гц; пульсовая полоса — как результат
 полосовой фильтрации 0,7–12 Гц. Параметр порядка N = 4, обработка
@@ -379,6 +448,8 @@ def cells():
 окне. Частота f показана от нуля до половины частоты отсчётов; меньший
 диапазон можно выбрать масштабированием. Спектр не является амплитудным
 спектром одного сердечного цикла.
+В сравнении ЭКГ и спектров сплошная линия соответствует исходной ЭКГ,
+штриховая — выбранным фильтрам; цвет обозначает приборный канал.
 
 Цветные интервалы на всех четырёх обзорных графиках и фрагменте ЭКГ
 обозначают спокойное дыхание, задержку на вдохе, усиленное дыхание и
