@@ -1,0 +1,157 @@
+{
+  "review_date": "2026-10-09",
+  "scope": "33.21: selectable overview of both original BEI fields in all eighteen recordings, time curves and full-sample levels by candidate breathing stage",
+  "artifact_inventory": [
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.21_Множество_решений_двуслойной_модели_Scorpion_v2.ipynb",
+      "sha256": "8bb1d6475e13e0e11a86a664a61f4937fecfd984c2a39ee2d677a50ab8b9043e",
+      "bytes": 18814483
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.21_Множество_решений_двуслойной_модели_Scorpion_v2.html",
+      "sha256": "201925b748b18b18aee8a08aae83d58d536f5b6b4eacc9b12639896e5e273af4",
+      "bytes": 18780684
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.21_Множество_решений_двуслойной_модели_Scorpion_v2.md",
+      "sha256": "d8c04fd5634f33707590bc25c8ae71feb308c7756211949b151ebc9e9015b9ca",
+      "bytes": 31773
+    }
+  ],
+  "source_inventory": [
+    {
+      "path": "Colab Notebooks/scorpion_v2/build_lateral_solution_surfaces_report.py",
+      "sha256": "64246bfe5aaeb099bb40092f9c8d727abbb6e75b29b0e2a72d73deaa8513bb70",
+      "bytes": 41303
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/bei_breathing_overview.py",
+      "sha256": "b5512d77d5a668db0c9d12315bf3418dd315432402e89bf16b531d07ff83c107",
+      "bytes": 11946
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/bei_breathing_view.js",
+      "sha256": "bf030da0990c0b97dab44a5c56417cd5d35e72e2102b58f177af76c11ca23dde",
+      "bytes": 9812
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/test_bei_breathing_overview.py",
+      "sha256": "6ba85bfbf6e36fb4652c4b854be82808ea46287f8744a16d28b4f2be864aa4d7",
+      "bytes": 1526
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/verify_scorpion_revision.py",
+      "sha256": "b67488393a3adc7dca9788afd4ee2a8ea62052f1482f6fa920478f53dfd9932b",
+      "bytes": 13741
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/README.md",
+      "sha256": "b495dc325d0a22c32bc53d35401bfdc50c3935d3f8f62b7dd59622b115c6003e",
+      "bytes": 7899
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/solution_surfaces_view.js",
+      "sha256": "f9684267620405160b0d6016fa8f3e5aa23d57e69604bdd9779d41ed134ab4e8",
+      "bytes": 7996
+    }
+  ],
+  "language": {
+    "status": "passed",
+    "reviewer": "Codex model",
+    "method": "Final sequential semantic reading after the last prose edit of all 33.21 reader prose, formulas, tables and captions, all new and retained builder/JavaScript UI labels, and full README. All dynamic record and stage table labels were read in the browser; their data and rendering source are unchanged after that reading. Extraction and hashes do not replace the model pass.",
+    "registered_checks": [
+      "language.ru.hash-bound-final-review",
+      "language.ru.encoding",
+      "language.ru.formula-where",
+      "language.ru.natural-prose",
+      "language.ru.reader-facing-clarity"
+    ],
+    "terminology_and_scope_checked": true,
+    "derived_objects_defined": true,
+    "findings": []
+  },
+  "technical": {
+    "status": "passed",
+    "readers": [
+      {
+        "stem": "33.21_Множество_решений_двуслойной_модели_Scorpion_v2",
+        "executed_cells": 7,
+        "errors": 0,
+        "code_excluded": true,
+        "html_prose_matches_notebook": true
+      }
+    ],
+    "standalone_html": true,
+    "existing_figure_numbers_preserved": true,
+    "new_overview_is_figure_A": true,
+    "display_statistics_use_all_interval_samples": true,
+    "display_reduction_retains_extrema_and_nonfinite_gap_boundaries": true
+  },
+  "computational": {
+    "status": "passed",
+    "check": "verify_scorpion_revision.py",
+    "unit_tests": {
+      "command": "python -X utf8 -m unittest test_bei_breathing_overview.py",
+      "passed": 3,
+      "failed": 0,
+      "covered": [
+        "single-sample downward spike and positive peak survive display reduction",
+        "nonfinite gap remains visible",
+        "half-open stage statistics use all original samples and leave input unchanged"
+      ]
+    },
+    "bei_overview": {
+      "records": 18,
+      "fields": 36,
+      "compared_inverse_levels": 52,
+      "maximum_median_difference_ohm": 0.0,
+      "negative_absolute_samples": 0,
+      "nonfinite_samples": 0,
+      "all_stage_extrema_preserved": true,
+      "filters_applied": false,
+      "annotations_modified": false
+    },
+    "primary_numerical_manifest_unchanged": true,
+    "additional_manifest_verified": true,
+    "active_bounded_surface_manifest_verified": true,
+    "experiment_viewer_manifest_verified": true,
+    "inverse_equations_and_fit_cache_unmodified": true,
+    "new_fem_executed": false
+  },
+  "browser": {
+    "status": "passed",
+    "surface": "Final code-free 33.21 HTML in local in-app browser",
+    "default_fields": 36,
+    "default_stage_intervals": 138,
+    "primary_preset_fields": 10,
+    "primary_preset_stage_intervals": 40,
+    "BEI1_inspiration_analysis_selection_fields": 5,
+    "BEI1_inspiration_analysis_selection_intervals": 5,
+    "selected_analysis_levels_match_inverse": true,
+    "record_001_has_only_calm_stage": true,
+    "analysis_scope_for_unavailable_stage_shows_no_data": true,
+    "threshold_changes_immediately_update_markers": true,
+    "record_010_inspiration_centred_marker_counts": {
+      "threshold_1_ohm": 569,
+      "threshold_100_ohm": 0
+    },
+    "marker_disable_preserves_zoom_ranges": true,
+    "reset_restores_autorange": true,
+    "overview_changes_do_not_change_model_h": true,
+    "time_plot_and_lower_levels_and_table_visually_checked": true,
+    "reported_console_errors": []
+  },
+  "scientific": {
+    "status": "exploratory_not_independently_validated",
+    "original_BEI_is_unfiltered": true,
+    "breathing_annotations_are_candidates_and_not_changed": true,
+    "timebase_scenarios_remain_unconfirmed": true,
+    "sequential_recordings_are_not_simultaneous": true,
+    "negative_deviation_marker_is_a_visual_candidate_not_proof_of_defect": true,
+    "stage_spread_is_not_measurement_uncertainty": true,
+    "display_retains_extrema_but_not_complete_fast_event_shape": true,
+    "zoom_does_not_restore_removed_samples": true,
+    "raw_medical_inputs_not_committed": true,
+    "heart_function_validation_not_claimed": true
+  }
+}

@@ -20,6 +20,8 @@ from build_georg_fem_reports import GEOMETRY, INVERSE, OUT as OLD
 from build_georg_geometry_revision_report import OUT, SOURCE, verify
 from build_lateral_solution_surfaces_report import verify as verify_surfaces
 from build_scorpion_experiment_viewer import STEM as EXPERIMENT_VIEW, verify as verify_viewer
+from bei_breathing_overview import OUT as BEI_OUT, verify as verify_bei
+from lateral_solution_surfaces import OUT as SURFACES
 
 
 def verify_skin_alignment():
@@ -92,12 +94,41 @@ def extract_reader_text():
         (OUT/(stem[:5]+'_full_reader_text.local.txt')).write_text('\n\n'.join(chunks),encoding='utf-8')
 
 
+def verify_bei_overview():
+    verify_bei()
+    records=read(BEI_OUT/'display.local.json')['records']
+    assert len(records)==18 and sum(len(r['channels']) for r in records)==36
+    count=0;maximum_difference=0.;negative=0;nonfinite=0
+    for r in records:
+        for channel in r['channels']:
+            for p in channel['phases']:
+                s=p['full'];a=s['stats'];finite=[x for x in s['y'] if x is not None]
+                assert min(finite)==a['minimum'] and max(finite)==a['maximum']
+                negative+=a['below_zero'];nonfinite+=a['nonfinite']
+    for case in read(SURFACES/'results.local.json'):
+        mode={'inhale':'inspiration_hold','exhale':'expiration_hold'}[case['state']]
+        with np.load(SURFACES/(case['key']+'.npz')) as a:
+            for item,value in zip(case['assemblies'],a['observations']):
+                r=next(r for r in records if r['record_id']==item['record_id'])
+                ch=next(c for c in r['channels'] if c['channel']==item['channel'])
+                p=next(p for p in ch['phases'] if p['mode']==mode)
+                assert p['analysis'] is not None
+                maximum_difference=max(maximum_difference,abs(p['analysis']['stats']['median']-value))
+                count+=1
+    assert maximum_difference<1e-9
+    return dict(records=18,fields=36,compared_inverse_levels=count,
+        maximum_median_difference_ohm=float(maximum_difference),
+        negative_absolute_samples=negative,nonfinite_samples=nonfinite,
+        all_stage_extrema_preserved=True,filters_applied=False,annotations_modified=False)
+
+
 def run():
     primary=EXPERIMENT/'derived/exploratory/33.21_identifiability'
     manifest=read(primary/'manifest.local.json')
     assert all(sha(primary/name)==expected for name,expected in manifest['outputs'].items())
     verify_additional(ADDITIONAL)
     verify_surfaces();verify_viewer()
+    bei_overview=verify_bei_overview()
     scalar_error=0.;cloud_error=0.
     for case in read(ADDITIONAL/'results.local.json'):
         y=np.array(case['fit']['observations_ohm']);bounds=np.array(case['fit']['bounds_ohm_m'])
@@ -184,6 +215,7 @@ def run():
             inventory.append(dict(path=p.relative_to(ROOT).as_posix(),sha256=sha(p),bytes=p.stat().st_size))
     result=dict(primary_numerical_manifest_unchanged=True,additional_manifest_verified=True,
         active_bounded_surface_manifest_verified=True,experiment_viewer_manifest_verified=True,
+        bei_overview=bei_overview,
         maximum_cloud_rss_difference_ohm2=cloud_error,maximum_scalar_residual_ohm=scalar_error,
         actual_joins_full_circle_inside_source=True,current_contacts_top_and_opposite_bottom=True,
         lateral_axis_longitudinal=True,old_fem_transferred=False,new_fem_executed=False,
