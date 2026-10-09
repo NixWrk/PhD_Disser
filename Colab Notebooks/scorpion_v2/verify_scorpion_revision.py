@@ -1,5 +1,7 @@
 """Verify saved numerical data, montage coordinates and executed reader artifacts."""
 from pathlib import Path
+import base64
+import hashlib
 import json
 import re
 
@@ -18,6 +20,35 @@ from build_georg_fem_reports import GEOMETRY, INVERSE, OUT as OLD
 from build_georg_geometry_revision_report import OUT, SOURCE, verify
 from build_lateral_solution_surfaces_report import verify as verify_surfaces
 from build_scorpion_experiment_viewer import STEM as EXPERIMENT_VIEW, verify as verify_viewer
+
+
+def verify_skin_alignment():
+    """Check preserved ray distances and the original first lung boundary."""
+    depth=read(OUT/'lung_depth_profile.local.json')
+    provenance=read(OUT/'ct_skin_aligned_section_provenance.local.json')
+    assert provenance['depth_profile_sha256']==sha(OUT/'lung_depth_profile.local.json')
+    assert provenance['surface_sha256']==sha(SOURCE)
+    assert provenance['producer_sha256']==sha(Path(__file__).with_name('lung_depth_profile.py'))
+    assert provenance['builder_sha256']==sha(Path(__file__).with_name('build_georg_geometry_revision_report.py'))
+    assert provenance['ct_sha256']==sha(OLD/'segmentation/static_ct.nii.gz')
+    for name,digest in provenance['mask_sha256'].items():
+        assert digest==sha(OLD/'segmentation'/(name+'.nii.gz'))
+    assert provenance['image_sha256']==sha(OUT/'ct_skin_aligned_section.png')
+    with np.load(OUT/'ct_skin_aligned_section.local.npz') as aligned:
+        np.testing.assert_array_equal(aligned['s_mm'],depth['s_mm'])
+        np.testing.assert_allclose(aligned['x_lps_mm']-aligned['skin_x_lps_mm'][:,None],
+            np.broadcast_to(aligned['depth_mm'],aligned['x_lps_mm'].shape),atol=1e-12)
+        np.testing.assert_allclose(np.diff(aligned['depth_mm']),.5,atol=1e-12)
+        assert not np.any(aligned['valid']&(aligned['x_lps_mm']>0))
+        found=[]
+        for i,expected in enumerate(depth['depth_mm']):
+            first=np.flatnonzero(aligned['valid'][i]&(aligned['labels'][i]==1))
+            if expected is not None:
+                assert len(first) and aligned['valid'][i,:first[0]+1].all()
+                found.append(aligned['depth_mm'][first[0]]-expected)
+        np.testing.assert_allclose(found,0,atol=1e-12)
+    return dict(compared_lung_boundaries=len(found),maximum_boundary_difference_mm=float(max(map(abs,found))),
+        ray_distances_preserved=True,depth_scaling_applied=False)
 
 
 def extract_reader_text():
@@ -92,6 +123,7 @@ def run():
                 pair=[r for r in comparisons if (r['area'],r['channel'],r['state'])==(area,ch,state)]
                 assert len(pair)==2
                 assert pair[0]['four_size_prediction_140_ohm']==pair[1]['four_size_prediction_140_ohm']
+    skin_alignment=verify_skin_alignment()
     g=verify(OUT);c=read(OUT/'contacts.local.json');radius=g['radius_mm']
     source=trimesh.load(SOURCE,force='mesh');angles=np.arange(256)*2*np.pi/256
     for key,j in g['joins'].items():
@@ -125,6 +157,13 @@ def run():
         assert not any(o.output_type=='error' for c in codes for o in c.outputs)
         soup=BeautifulSoup((folder/(stem+'.html')).read_text(encoding='utf-8'),'html.parser')
         assert not soup.select('.jp-CodeCell .jp-InputArea') and not soup.select('.highlight')
+        if stem==GEOMETRY:
+            image_sha=sha(OUT/'ct_skin_aligned_section.png')
+            pngs=[o.get('data',{}).get('image/png','') for c in codes for o in c.outputs]
+            assert image_sha in [hashlib.sha256(base64.b64decode(p)).hexdigest() for p in pngs if p]
+            images=[i.get('src','') for i in soup.select('img')]
+            assert image_sha in [hashlib.sha256(base64.b64decode(s.split(',',1)[1])).hexdigest()
+                for s in images if s.startswith('data:image/png;base64,')]
         for anchor in soup.select('.anchor-link'):anchor.decompose()
         actual=' '.join(soup.get_text(' ',strip=True).split())
         for cell in nb.cells:
@@ -144,6 +183,7 @@ def run():
         maximum_cloud_rss_difference_ohm2=cloud_error,maximum_scalar_residual_ohm=scalar_error,
         actual_joins_full_circle_inside_source=True,current_contacts_top_and_opposite_bottom=True,
         lateral_axis_longitudinal=True,old_fem_transferred=False,new_fem_executed=False,
+        skin_alignment=skin_alignment,
         reader_checks=technical,artifact_inventory=inventory)
     save(OUT/'revision_verification.local.json',result)
     save(OUT/'review_inventory.local.json',inventory)

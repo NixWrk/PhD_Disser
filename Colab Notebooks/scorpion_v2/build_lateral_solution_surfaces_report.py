@@ -46,15 +46,20 @@ def widget(out=OUT):
             case.update({key:a[key].tolist() for key in a.files})
         case['label']=f"Основная боковая ось — BEI{case['channel']} · {STATES[case['state']].lower()}"
     script=(FOLDER/'solution_surfaces_view.js').read_text(encoding='utf-8')
-    controls='''<div id="solution-viewer" style="padding:12px;border:1px solid #aaa">
-<label>Гипотеза подключения и дыхание: <select id="solution-case"></select></label>
-<p><label>Толщина h: <input id="solution-h" type="range" min="0" max="100" value="20" step="1">
-<b id="solution-h-label"></b></label> · <label><input id="solution-pairs" type="checkbox" checked>Попарные пересечения</label></p>
-<p><button id="solution-all">Все боковые монтажи</button> <button id="solution-main">Только основной ряд</button></p>
-<div id="solution-assemblies" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:5px"></div>
-<p id="solution-status"></p>
-<div id="solution-curves"></div><div id="solution-surfaces"></div><div id="solution-slice"></div>
-</div>'''
+    panels=[]
+    for index,(plot_id,title) in enumerate(zip(['solution-curves','solution-surfaces','solution-slice'],
+            ['Кривые при заданной толщине','Поверхности решений','Выбираемый срез'])):
+        plane='<label><input data-control="plane" type="checkbox" checked> Плоскость выбранного h</label>' if index==1 else ''
+        h_label='Уровень плоскости h' if index==1 else 'Толщина h'
+        panels.append(f'''<section id="solution-panel-{index}" style="padding:12px;border:1px solid #aaa;margin:14px 0">
+<h3>{title}: отдельные настройки</h3>
+<label>Гипотеза подключения и дыхание: <select data-control="case"></select></label>
+<p><label>{h_label}: <input data-control="h" type="range" min="0" max="100" value="20" step="1">
+<b data-control="h-label"></b></label> · <label><input data-control="pairs" type="checkbox" checked> Попарные пересечения</label> {plane}</p>
+<p><button data-control="all">Все боковые монтажи</button> <button data-control="main">Только основной ряд</button></p>
+<div data-control="assemblies" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:5px"></div>
+<p data-control="status"></p><div id="{plot_id}"></div></section>''')
+    controls='<div id="solution-viewer">'+''.join(panels)+'</div>'
     return controls+'<script>'+get_plotlyjs()+'</script><script>const solutionPayload='+json.dumps(payload,separators=(',',':'),allow_nan=False)+';'+script+'</script>'
 
 
@@ -203,15 +208,22 @@ L и h в вычислительной модели переведены в ме
 уровней означало бы совпадение поверхностей. Ориентация в однородной плоской
 модели ничего не меняет, поэтому расхождение осей креста нельзя объяснить
 только её средствами.''')
-    md('''## Три согласованных представления решений
+    md('''## Три самостоятельных представления решений
 
-**Рисунки 1–3.** Общие переключатели задают гипотезу подключения, дыхательное
-состояние, толщину и отображаемые сборки. Первый график показывает все кривые
+**Рисунки 1–3.** У каждого графика собственные переключатели гипотезы
+подключения, дыхательного состояния, толщины, сборок и пересечений.
+Настройки одного графика не меняют два других. Это позволяет одновременно
+сравнивать разные состояния, варианты подключения и значения h.
+Первый график показывает все кривые
 ρ₁(ρ₂) на выбранном уровне h в трёхмерных координатах. Второй показывает
 поверхности и уточнённые попарные пересечения по всей сетке h. Третий —
-двумерный срез при том же h. По умолчанию h = 20 мм; это иллюстративный
-сценарий, а не выбранная по КТ толщина. Ракурс и масштаб сохраняются при
-изменении параметров.
+двумерный срез при независимо выбранном h. На втором графике настройка h
+задаёт только уровень отдельной переключаемой плоскости сечения;
+поверхности охватывают всю сетку h. По умолчанию на всех графиках h = 20 мм; это иллюстративный
+сценарий, а не выбранная по КТ толщина. Ракурс и масштаб каждого графика
+сохраняются при изменении его параметров. Выбор видимых сборок меняет
+отображение; сохранённый совместный минимум всегда относится ко всему
+основному ряду из пяти размеров и не пересчитывается по видимому подмножеству.
 
 Основной ряд включает пять размеров 60–140 мм с монтажом ТТРКГ 1×4.
 Дополнительно показаны повторные 140 мм при 1×1 и 2×2 на руках, оба канала

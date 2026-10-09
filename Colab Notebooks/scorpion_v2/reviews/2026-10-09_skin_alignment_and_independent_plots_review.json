@@ -1,0 +1,159 @@
+{
+  "review_date": "2026-10-09",
+  "scope": "20.20: skin-relative CT panel preserving sampled tissue depths; 33.21: three plots with independent settings",
+  "artifact_inventory": [
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.21_Множество_решений_двуслойной_модели_Scorpion_v2.ipynb",
+      "sha256": "c1e47fad087d18294151f9e97f7dc60e31bce287c84b798ffa4a46c54a8486b1",
+      "bytes": 9802481
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.21_Множество_решений_двуслойной_модели_Scorpion_v2.html",
+      "sha256": "4e569711cdf1952cb57edea889562a1a48ba5b5652129ecc8287848941de5eb9",
+      "bytes": 9926485
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.21_Множество_решений_двуслойной_модели_Scorpion_v2.md",
+      "sha256": "6c86d04286282e2b328828977770806dc4436dd735c27a6e48794bc35acb159b",
+      "bytes": 20706
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/20.20_Индивидуальная_КТ_FEM_модель_Георгия_Scorpion_v2.ipynb",
+      "sha256": "d204c657086c2b5d86be6d24fddd3aac59dde97fe2552e29eeb830aa08ca346b",
+      "bytes": 12606310
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/20.20_Индивидуальная_КТ_FEM_модель_Георгия_Scorpion_v2.html",
+      "sha256": "f32613fee541dace55635acc8974ad21a49b85d5ff3d17ebfbc8915bb85a8a7c",
+      "bytes": 12727720
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/20.20_Индивидуальная_КТ_FEM_модель_Георгия_Scorpion_v2.md",
+      "sha256": "21c4ab5e5669655c16d730f0c873954ad90e8dbb61a7e52b4e15c61c5441e636",
+      "bytes": 19997
+    }
+  ],
+  "documentation_inventory": [
+    {
+      "path": "Colab Notebooks/scorpion_v2/README.md",
+      "sha256": "a41cb0f2fae58831f28ce8aa8fe8a7cf70a770d5eaf5ee91a2607e67e3f057b1",
+      "bytes": 6560
+    }
+  ],
+  "source_inventory": [
+    {
+      "path": "Colab Notebooks/scorpion_v2/build_georg_geometry_revision_report.py",
+      "sha256": "1af23c95c096313eedcfd7191f4fa6e533dd59323a264d8645fcbaa7c435c6ee",
+      "bytes": 35256
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/lung_depth_profile.py",
+      "sha256": "6aba4f11353808eab28d77dc37870da570a7219c92de3dc36e8b783d181a698e",
+      "bytes": 4282
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/test_lung_depth_profile.py",
+      "sha256": "5291e3e0193f7889057a61c067861ec404d844f60f929a2eeaa31aa24e3e018e",
+      "bytes": 2711
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/build_lateral_solution_surfaces_report.py",
+      "sha256": "53babc4491ddfd7dc7575456b9dd641db993210f6aba6e9b5bbf2c64614950aa",
+      "bytes": 28863
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/solution_surfaces_view.js",
+      "sha256": "f92fb801139908bfa0fa5e3bd6d5919d49551f395ce89ead60db7e4679b85e97",
+      "bytes": 7520
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/verify_scorpion_revision.py",
+      "sha256": "3648ee7a5348606f129e1d158f705a0c6005c40007439d653c28d92fa2017ca0",
+      "bytes": 11654
+    }
+  ],
+  "language": {
+    "status": "passed",
+    "reviewer": "Codex model",
+    "method": "Final sequential semantic reading after the last reader edit of complete 20.20 and 33.21 prose, formulas, tables, figure labels, complete final renderer strings and README; extraction and hashes do not substitute for the model pass",
+    "registered_checks": [
+      "language.ru.hash-bound-final-review",
+      "language.ru.encoding",
+      "language.ru.formula-where",
+      "language.ru.natural-prose",
+      "language.ru.intro-variation",
+      "language.ru.reader-facing-clarity"
+    ],
+    "scientific_headings_checked": true,
+    "terminology_and_scope_checked": true,
+    "derived_objects_defined": true,
+    "meaningful_contrasts_checked": true,
+    "findings": []
+  },
+  "technical": {
+    "status": "passed",
+    "readers": [
+      {
+        "stem": "33.21_Множество_решений_двуслойной_модели_Scorpion_v2",
+        "executed_cells": 6,
+        "errors": 0,
+        "code_excluded": true,
+        "html_prose_matches_notebook": true
+      },
+      {
+        "stem": "20.20_Индивидуальная_КТ_FEM_модель_Георгия_Scorpion_v2",
+        "executed_cells": 6,
+        "errors": 0,
+        "code_excluded": true,
+        "html_prose_matches_notebook": true
+      }
+    ],
+    "skin_aligned_image_identical_in_notebook_and_HTML": true,
+    "original_CT_section_image_and_10_00_reader_bytes_unchanged": true,
+    "ct_and_mask_affines_checked": true,
+    "ten_00_reference_refresh": "Local provenance reference rebound after producer extension; original CT image, CT and mask inputs and display arrays verified unchanged"
+  },
+  "computational": {
+    "status": "passed",
+    "tests_passed": 10,
+    "test_files": [
+      "test_lung_depth_profile.py",
+      "test_lateral_surfaces_and_viewer.py"
+    ],
+    "synthetic_variable_skin_layer_thickness_preserved": true,
+    "missing_CT_and_right_half_space_checked": true,
+    "skin_alignment": {
+      "compared_lung_boundaries": 141,
+      "maximum_boundary_difference_mm": 0.0,
+      "ray_distances_preserved": true,
+      "depth_scaling_applied": false
+    },
+    "primary_and_bounded_inverse_manifests_verified": true,
+    "maximum_cloud_rss_difference_ohm2": 5.002220859751105e-12,
+    "maximum_scalar_residual_ohm": 4.0898839870351367e-11,
+    "new_fem_executed": false
+  },
+  "browser": {
+    "status": "passed",
+    "three_independent_case_and_h_settings_checked": true,
+    "assembly_and_pair_visibility_independent": true,
+    "surface_slice_plane_independently_toggled": true,
+    "both_3D_camera_rotation_zoom_pan_preserved": true,
+    "twod_slice_zoom_preserved": true,
+    "final_CT_panel_rendered": true,
+    "final_PNG_all_labels_visually_read": true,
+    "reported_errors": []
+  },
+  "scientific": {
+    "status": "exploratory_not_independently_validated",
+    "CT_panel_preserves_depths_along_positive_x_LPS": true,
+    "local_normal_thickness_not_claimed": true,
+    "no_conversion_to_electrical_h": true,
+    "automatic_masks_unvalidated": true,
+    "actual_electrode_pose_unrecovered": true,
+    "visible_subset_does_not_refit_five_size_minimum": true,
+    "inverse_parameters_unchanged": true,
+    "heart_function_validation_not_claimed": true,
+    "raw_medical_inputs_not_committed": true
+  }
+}

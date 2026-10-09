@@ -85,7 +85,7 @@ def prepare_sections(out=OUT):
     ijk=nib.affines.apply_affine(transform,xyz)
     image=map_coordinates(hu,ijk.T,order=0,mode='constant',cval=-1024).reshape(xx.shape)
     mask=map_coordinates(labels,ijk.T,order=0,mode='constant',cval=0).reshape(xx.shape)
-    from lung_depth_profile import profile
+    from lung_depth_profile import profile,skin_aligned_section
     source=trimesh.load(SOURCE,force='mesh')
     lung=nib.load(OLD/'segmentation/lung.nii.gz')
     depth=profile(source,np.asanyarray(lung.dataobj)>0,lung.affine,y,
@@ -120,6 +120,39 @@ def prepare_sections(out=OUT):
     fig.legend(handles=[Patch(color=c,label=n) for c,n in zip(colours,['Лёгкие','Кости','Сердце','Жир'])],
         loc='lower center',ncol=4,bbox_to_anchor=(.5,-.02))
     fig.savefig(out/'ct_longitudinal_sections.png',dpi=180,bbox_inches='tight');plt.close(fig)
+    aligned=skin_aligned_section(depth,hu,labels,ct.affine,ray_step_mm=.5)
+    np.savez_compressed(out/'ct_skin_aligned_section.local.npz',**aligned)
+    fig,ax=plt.subplots(figsize=(11,7.5),constrained_layout=True)
+    s,d=aligned['s_mm'],aligned['depth_mm'];valid=aligned['valid'].T
+    extent=[s[0]-.5,s[-1]+.5,d[-1]+.25,-.25]
+    ax.set_facecolor('#e5e7eb')
+    ax.imshow(np.ma.masked_where(~valid,aligned['hu'].T),extent=extent,origin='upper',
+        cmap='gray',vmin=-700,vmax=300,aspect='equal',interpolation='nearest')
+    ax.imshow(np.ma.masked_where(~valid|(aligned['labels'].T==0),aligned['labels'].T),
+        extent=extent,origin='upper',cmap=ListedColormap(colours),vmin=1,vmax=4,
+        alpha=.5,aspect='equal',interpolation='nearest')
+    ax.axhline(0,color='white',lw=2)
+    ax.plot(s,depth['depth_mm'],color='#00efff',lw=1.8,label='Первая граница лёгкого')
+    for offset,label in [(-70,'A'),(-35,'M'),(0,'Центр'),(35,'N'),(70,'B')]:
+        ax.axvline(offset,color='white',alpha=.55,lw=.8,ls='--')
+        ax.plot(offset,0,'o',color='white',markeredgecolor='black',clip_on=False)
+        ax.annotate(label,(offset,0),xytext=(0,9),textcoords='offset points',ha='center',clip_on=False)
+    ax.set(xlim=(-74,74),ylim=(d[-1],0),xlabel='s — смещение вдоль оси сборки, мм',
+        ylabel='d — глубина от наружной поверхности вдоль +x LPS, мм',
+        title='Сборка 140 мм: КТ с выровненной наружной поверхностью\nРасстояния по глубине сохранены')
+    ax.set_title(ax.get_title(),pad=34)
+    fig.legend(handles=[Patch(color=c,label=n) for c,n in zip(colours,['Лёгкие','Кости','Сердце','Жир'])],
+        loc='lower center',ncol=4,bbox_to_anchor=(.5,-.105))
+    fig.savefig(out/'ct_skin_aligned_section.png',dpi=180,bbox_inches='tight');plt.close(fig)
+    write(out/'ct_skin_aligned_section_provenance.local.json',dict(
+        ct_sha256=sha(OLD/'segmentation/static_ct.nii.gz'),
+        mask_sha256={n:sha(OLD/'segmentation'/(n+'.nii.gz')) for n in ['heart','lung','bone','fat']},
+        surface_sha256=sha(SOURCE),depth_profile_sha256=sha(out/'lung_depth_profile.local.json'),
+        producer_sha256=sha(Path(__file__).with_name('lung_depth_profile.py')),builder_sha256=sha(__file__),
+        image_sha256=sha(out/'ct_skin_aligned_section.png'),plane_y_lps_mm=y,
+        mapping='d=x_LPS-x_skin(s); independent translation of each +X ray, no scaling of depths or s',
+        ray_step_mm=.5,axis_step_mm=depth['axis_step_mm'],limit='right half-space x_LPS<=0; missing CT not labelled as background',
+        uses_automatic_masks=True,anatomical_accuracy_validated=False,is_electrical_equivalent_h=False))
     fig,ax=plt.subplots(figsize=(11,4.5),constrained_layout=True)
     ax.plot(depth['s_mm'],depth['depth_mm'],color='#247bb5',lw=2)
     for offset,label in [(-70,'A'),(-35,'M'),(0,'Центр'),(35,'N'),(70,'B')]:
@@ -240,6 +273,18 @@ def build(out=OUT):
        'Направление выбрано для сопоставления с принятой проекцией электродов. '
        'Оно не является локальной нормалью к коже или кратчайшим расстоянием до лёгкого.')
     code("display(Image(filename=str(OUT/'ct_longitudinal_sections.png')))")
+    md('**Рисунок 2, дополнительная панель.** КТ и те же тканевые маски после выравнивания '
+       'наружной поверхности. Для каждого смещения s начало луча перенесено на наружную '
+       'STL-поверхность, а глубина d равна разности координаты x LPS и координаты поверхности '
+       'на этом уровне. Перенос не растягивает луч: расстояния между границами и толщины '
+       'анатомических элементов вдоль +x LPS сохранены с шагом 0,5 мм. '
+       'Ось s, шаг 1 мм и общий центр совпадают с рисунком 3. Белая горизонтальная линия '
+       'соответствует нулевой глубине, голубая — первой границе маски правого лёгкого. '
+       'Серые области вне доступного КТ или за срединной плоскостью x LPS = 0 не интерпретируются '
+       'как мягкие ткани. Маски остаются автоматическими; расстояния зависят от их точности '
+       'и обработки наружной поверхности. Это выровненное изображение реальной неоднородной '
+       'анатомии в выбранном сценарии, а не плоская двуслойная модель или оценка электрической h.')
+    code("display(Image(filename=str(OUT/'ct_skin_aligned_section.png')))")
     md('**Рисунок 3.** Профиль анатомического расстояния до маски лёгкого вдоль общей оси сборок. '
        'Смещение s отсчитывается вдоль z LPS от иллюстративного центра на уровне −210 мм: '
        'от −70 до +70 мм с шагом 1 мм. Положительное направление s соответствует направлению к голове. '
