@@ -1,10 +1,20 @@
 """Display filtering preserves the raw record and isolates known frequency effects."""
 import unittest
 import numpy as np
-from experiment_signal_display import ecg_variants, spectrum, phase_intervals
+from experiment_signal_display import ecg_variants, spectrum, phase_intervals, pack_full_samples, unpack_full_samples
 
 
 class SignalDisplayChecks(unittest.TestCase):
+    def test_full_sample_payload_preserves_time_precision_and_isolated_extrema(self):
+        t=np.arange(81063)/1000
+        x=np.sin(t);x[17003]=-123.45678901234567;x[17004]=987.6543210987654
+        fields={'time_s':t,'bei_raw_1':x,'ecg_00_1':x*1e-5}
+        restored=unpack_full_samples(pack_full_samples(fields))
+        for key,value in fields.items():np.testing.assert_array_equal(restored[key],value)
+        self.assertEqual(restored['bei_raw_1'][17003],x[17003])
+        p=pack_full_samples(fields);p['uncompressed_sha256']='0'*64
+        with self.assertRaises(ValueError):unpack_full_samples(p)
+
     def test_filters_can_be_disabled_and_match_the_existing_default(self):
         from scorpion_qc import ecg_filter
         for fs in (400,1000):

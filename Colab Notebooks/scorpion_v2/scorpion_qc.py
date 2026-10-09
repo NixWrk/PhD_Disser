@@ -58,6 +58,30 @@ def write_json(path, obj):
     Path(path).write_text(json.dumps(obj, ensure_ascii=False, indent=2, allow_nan=False) + '\n', encoding='utf-8')
 
 
+def channel_assignment(record_id):
+    """Author-confirmed roles, separately from acceptance of signal annotations."""
+    number = int(record_id.rsplit('-', 1)[-1])
+    roles = {1: ('ttrkg', 'lateral_horizontal'),
+             2: ('ttrkg', 'lateral_horizontal'),
+             3: ('ttrkg', 'lateral_horizontal'),
+             4: ('ttrkg', 'lateral_horizontal'),
+             5: ('ttrkg', 'lateral_vertical'),
+             6: ('lateral_horizontal', 'lateral_vertical'),
+             7: ('lateral_horizontal', 'ttrkg')}
+    if number in roles:
+        status = 'author_confirmed_2026-10-09'
+    elif 8 <= number <= 11:
+        roles[number] = ('lateral_horizontal', 'lateral_vertical' if number == 11 else 'ttrkg')
+        status = 'late_block_continuity_protocol_assumption'
+    else:
+        roles[number] = ('unknown', 'unknown')
+        status = 'numeric_assignment_unresolved'
+    return dict(physical_channel_roles=dict(zip(('1', '2'), roles[number])),
+                status=status, source='author clarification 2026-10-09',
+                cross_axes_inherited_from_previous_record=True,
+                ecg_quality_does_not_assign_cross_axis=True)
+
+
 def zero_phase(sos, x, fs, padding_s):
     return signal.sosfiltfilt(sos, x, padlen=min(int(padding_s * fs), len(x) - 1))
 
@@ -368,29 +392,21 @@ def render_record(stats, out, annotation):
         'event_kind':'QRS_dominant_extremum_candidate_R_not_confirmed',
         'qrs_samples_by_channel':{str(ch):a[f'qrs_samples_{ch}'].astype(int).tolist() for ch in (1,2)},
         'breathing_candidate':annotation or {},
-        'physical_channel_roles':{'1':'unknown','2':'unknown'},
-        'channel_mapping_constraints':annotation.get('channel_mapping_constraints', {}) if annotation else {},
-        'channel_role_scenarios':annotation.get('channel_role_scenarios', {}) if annotation else {},
+        'physical_channel_roles':channel_assignment(rid)['physical_channel_roles'],
+        'channel_mapping_constraints':channel_assignment(rid),
         'filters':PARAMS,'reviewer':'','comments':'',
     }
-    if rid in ('SCV2-G-006','SCV2-G-011'):
-        editor['physical_channel_roles']={'1':'lateral_direction_unknown','2':'lateral_direction_unknown'}
     payload=json.dumps(editor,ensure_ascii=False).replace('</','<\\/')
     controls=''.join(f'<label>{title}<input id="b{i}" type="number" step="0.1" value="{times[i] if len(times)>i else ""}"></label>'
                      for i,title in enumerate(['Конец спокойного','Конец задержки на вдохе','Конец усиленного']))
     observed=html.escape(annotation.get('observed_features','Не размечено') if annotation else 'Не размечено')
-    hypothesis=html.escape(json.dumps(annotation.get('channel_role_hypothesis',{}) if annotation else {},ensure_ascii=False))
-    scenarios=html.escape(json.dumps(annotation.get('channel_role_scenarios',{}) if annotation else {},ensure_ascii=False))
     role_options='<option value="unknown">Не установлено</option><option value="ttrkg">ТТРКГ</option><option value="lateral_horizontal">Боковая горизонтальная</option><option value="lateral_vertical">Боковая вертикальная</option><option value="lateral_direction_unknown">Боковая, направление неизвестно</option><option value="TEPC">ТЕПС</option><option value="AEPC">АЕПС</option>'
     page='''<!doctype html><html lang="ru"><meta charset="utf-8"><title>Просмотр Scorpion v2</title>
 <style>body{font:15px system-ui;margin:22px;color:#172033}a{color:#2459b5}.note{background:#fff7dd;padding:12px;border-radius:8px}.controls{display:flex;gap:12px;flex-wrap:wrap}label{display:grid;gap:4px}input,select,button{font:inherit;padding:7px;border:1px solid #b5bfce;border-radius:6px}textarea{width:95%;height:60px}h2{font-size:19px}.table{overflow:auto}table{border-collapse:collapse}td,th{padding:6px;border-bottom:1px solid #ddd}</style>
 <script src="plotly.min.js"></script><a href="index.html">← Все записи</a>
 <p class="note">Кандидатная разметка. Частота отсчётов не подтверждена по файлу. Полосы BEI разделяют частоты, а не ткани. Края ±5 с для BEI и ±1 с для ЭКГ требуют отдельного внимания. Подтверждённых R-зубцов и физиологических заключений здесь нет.</p>'''
     page+=graph+f'<h2>Кандидат дыхательной разметки</h2><p>{observed}</p><div class="controls">{controls}</div>'
-    if annotation and annotation.get('channel_role_scenarios'):
-        page+=f'<p>По подтверждению автора горизонтальная сборка и ТТРКГ сохраняли свои каналы во всём горизонтальном ряду. В кресте канал ТТРКГ подключён к вертикальной сборке, горизонтальный сохранён. Числовое назначение не установлено; два общих для серии сценария: {scenarios}. Прежняя гипотеза смены каналов отвергнута. Выбор ниже остаётся кандидатом и требует согласования со всей серией.</p>'
-    else:
-        page+=f'<p>Гипотеза по согласованности записей: {hypothesis}. Она не подтверждает подключение.</p>'
+    page+='<p>Уточнение автора от 09.10.2026: 004 — ТТРКГ1 / горизонтальная2; 005 — ТТРКГ1 / вертикальная2; 006 — горизонтальная1 / сохранённая вертикальная2; 007 — горизонтальная1 / ТТРКГ2. Продолжение в 008–011 принято по протоколу позднего блока. В 001–003 автор подтвердил ТТРКГ1 и боковую горизонтальную2. Номера ТЕПС/АЕПС остаются неизвестными. В кресте оси наследуются из предыдущей записи; качество ЭКГ их не назначает.</p>'
     page+=f'<p>Назначение каналов для ручного уточнения:</p><div class="controls"><label>Канал 1<select id="role1">{role_options}</select></label><label>Канал 2<select id="role2">{role_options}</select></label></div>'
     page+='''<h2>Проверка событий ЭКГ</h2><p>Увеличьте участок ЭКГ. В режиме редактирования щелчок по кривой добавляет или удаляет ближайший QRS-кандидат. События не становятся принятыми автоматически.</p><div class="controls"><label>Канал событий<select id="eventCh"><option value="1">ЭКГ1</option><option value="2">ЭКГ2</option></select></label><label>Режим<select id="editMode"><option value="view">Просмотр</option><option value="add">Добавить событие</option><option value="remove">Удалить событие рядом</option></select></label><label>Автор проверки<input id="reviewer"></label><button id="export">Скачать исправленную кандидатную разметку JSON</button></div><p><textarea id="comments" placeholder="Основания границ, неоднозначные участки, сведения о подключении"></textarea></p>'''
     page+='<script>const annotation='+payload+';const ecgIds='+json.dumps(ecg_trace_ids)+';const markerIds='+json.dumps(marker_ids)+';const fs='+str(fs)+';const n='+str(n)+';'
@@ -420,7 +436,12 @@ document.getElementById('export').onclick=()=>{
  result.breathing_candidate.status='pending_manual_review';
  result.breathing_candidate.author_accepted=false;
  result.comments=document.getElementById('comments').value;
- result.physical_channel_roles={'1':document.getElementById('role1').value,'2':document.getElementById('role2').value};
+ let roles={'1':document.getElementById('role1').value,'2':document.getElementById('role2').value};
+ if(JSON.stringify(roles)!==JSON.stringify(result.physical_channel_roles)){
+  result.prior_channel_mapping_constraints=result.channel_mapping_constraints;
+  result.channel_mapping_constraints={physical_channel_roles:roles,status:'manual_candidate_edit',source:result.reviewer||'unspecified'};
+ }
+ result.physical_channel_roles=roles;
  result.edited_in_browser=true;
  let blob=new Blob([JSON.stringify(result,null,2)],{type:'application/json'});
  let link=document.createElement('a');link.href=URL.createObjectURL(blob);
@@ -455,7 +476,7 @@ def render_index(summary,out,annotations):
             html.escape(annotations.get(rid,{}).get('confidence','не размечено'))])+'</tr>')
     text='''<!doctype html><html lang="ru"><meta charset="utf-8"><title>Scorpion v2 — просмотр и разметка</title><style>body{font:15px system-ui;margin:28px;color:#172033;max-width:1500px}table{border-collapse:collapse;width:100%}td,th{padding:9px;border:1px solid #dbe1e8;text-align:left}th{background:#f3f6fa}a{color:#2459b5}.note{background:#fff4ce;padding:16px;border-radius:8px}li{margin:8px 0}code{background:#f3f6fa;padding:2px 5px}</style>
 <h1>Scorpion v2 — просмотр сигналов и кандидатная разметка</h1><p>Георг · BMSTU · 05.10.2026 · 18 TXT. BIN — настройки программы, в анализ сигналов не включены.</p>
-<p class="note">Все результаты остаются кандидатными. Автор подтвердил постоянное распределение ролей каналов в горизонтальном ряду; в кресте канал ТТРКГ заменён вертикальной сборкой, горизонтальный сохранён. Числовые номера ролей ещё не установлены. Прежняя гипотеза смены каналов отвергнута. Для 005 и 006 показаны сценарии 1000 и 400 Гц. Частотное разложение BEI не разделяет ткани. QRS-кандидаты не являются принятой R-разметкой.</p>
+<p class="note">Разметка дыхания и QRS остаётся кандидатной. Назначение 004–007 уточнено автором 09.10.2026: боковое поле BEI2 в 004, вертикальное BEI2 в 005, горизонтальное BEI1 и вертикальное BEI2 в 006, боковое BEI1 и ТТРКГ BEI2 в 007. Продолжение схемы в 008–011 — допущение по протоколу. В 001–003 подтверждены ТТРКГ1 и боковая горизонтальная2; номера ТЕПС/АЕПС не установлены. Для 005 и 006 сохранены сценарии 1000 и 400 Гц. Частотное разложение BEI не разделяет ткани. QRS-кандидаты не являются принятой R-разметкой.</p>
 <h2>Фильтры и сохранённые данные</h2><ul><li>ЭКГ: режекторы 50, 100 и 150 Гц, Q=30 каждый, затем Баттерворт 4 порядка 0,5–40 Гц; детектор QRS использует полосу 5–25 Гц. Прежний вариант только с 50 Гц сохранён для сравнения. <a href="harmonics_review.html">Проверка гармоник и влияния на QRS</a>.</li><li>BEI: медленная составляющая НЧ 0,5 Гц; кандидат пульсовой составляющей 0,7–12 Гц; дополнительный остаток сохраняется. Сумма медленной, полосовой и дополнительной составляющих воспроизводит исходный BEI.</li><li>Фильтрация вперёд и назад, без введения временного сдвига от однопроходного фильтра. Это не устраняет неизвестные задержки прибора. BEI: дополнение 5 с и предостережение для краёв ±5 с; ЭКГ: дополнение 3 с и исключение краёв ±1 с из детектора.</li><li>NPZ содержит все исходные столбцы, полную временную сетку и вычисленные составляющие. В HTML используются min/max-превью сырых кривых и отображение отфильтрованных сигналов после антиалиасного прореживания; расчёты выполняются на полной сетке.</li></ul>
 <p>Общее описание автора: спокойное дыхание → задержка на вдохе → усиленное дыхание → задержка на выдохе. Цветные зоны — реконструкция по форме сигнала и этому порядку; неоднозначные границы требуют проверки автора. В каждой записи можно увеличить сигналы, исправить границы, отредактировать QRS и скачать кандидатный JSON.</p>
 <p>Время от начала каждого TXT условное, абсолютная синхронизация разных файлов не назначена. Флаги — основания для просмотра, а не доказанные аппаратные или физиологические диагнозы. <a href="sampling_review.html">Отдельная проверка исходных сигналов, временной шкалы и повторов 140 мм</a>.</p>
@@ -591,8 +612,9 @@ def main():
                            'event_kind':'QRS_dominant_extremum_candidate_R_not_confirmed',
                            'qrs_samples_by_channel':events,'selected_ecg_channel_candidate':stats['selected_ecg_channel_candidate'],
                            'breathing':annotations.get(stats['record_id'],{}),
-                           'physical_channel_mapping_status':'relative_roles_author_confirmed_numeric_assignment_unresolved' if annotations.get(stats['record_id'],{}).get('channel_mapping_constraints') else 'numeric_assignment_unresolved',
-                           'channel_role_scenarios':annotations.get(stats['record_id'],{}).get('channel_role_scenarios',{})})
+                           'physical_channel_mapping_status':channel_assignment(stats['record_id'])['status'],
+                           'physical_channel_roles':channel_assignment(stats['record_id'])['physical_channel_roles'],
+                           'channel_mapping_constraints':channel_assignment(stats['record_id'])})
         render_record(stats,out,annotations.get(stats['record_id']))
     artifact={'owner':'11.20','status':STATUS,'code_sha256':summary['code_sha256'],
               'filters':PARAMS,'breathing_source_sha256':sha256_file(annotation_source) if annotation_source.exists() else None,

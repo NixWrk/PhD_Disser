@@ -1,0 +1,429 @@
+{
+  "review_date": "2026-10-10",
+  "scope": "Confirmed 001–003 roles, colours by physical derivation, lossless full-sample 10.00, per-line explanations in 33.21, ready HTML TEPC picker, and synchronized historical/current documentation",
+  "reader_inventory": [
+    {
+      "path": "Colab Notebooks/scorpion_v2/10.00_Эксперимент_и_сигналы_Георгия_Scorpion_v2.ipynb",
+      "bytes": 196576839,
+      "sha256": "826abd59d726e6dbb0b2072201676be76808087116ea5cbe5311e0fef2734723",
+      "sha256_lf": "4a190ea45e3a0e7198c26cd30dab7238642b6b66e5954c02bc3d92d8e164abe9"
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/10.00_Эксперимент_и_сигналы_Георгия_Scorpion_v2.html",
+      "bytes": 196704977,
+      "sha256": "0cbb5602301756fc9ac0b45b8421ab9b21b92c1eca4e5817e863fcc25e52cd02",
+      "sha256_lf": "4dcd80f4d658763591b58cc495ce1edeade460d5585e82ef49c5d1c36b24a5a8"
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/10.00_Эксперимент_и_сигналы_Георгия_Scorpion_v2.md",
+      "bytes": 23475,
+      "sha256": "d78d4daa7ec98c6d782ab7b59998ca0a5d0b93b5fae8f866d6a7e79e5f2007d4",
+      "sha256_lf": "a8f3553aa5c9d4fdd5630438dfb475a75bc761029cb1731c8a3765564a0d1535"
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/10.30_Критическая_проверка_назначения_каналов_Scorpion_v2.ipynb",
+      "bytes": 22708931,
+      "sha256": "de1f0311d595f11b87b09617d427f4d98b82d4c60b22b4f311e742cdf678a41a",
+      "sha256_lf": "6c0d7a017e37fd46da9308b2e8b739e51466ca07ab8bfcbc3e862072230c2abd"
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/10.30_Критическая_проверка_назначения_каналов_Scorpion_v2.html",
+      "bytes": 22538895,
+      "sha256": "342a4d42f054503dd978b11276a80f31e48c5bf28bf269de2b8edbc6fcc87e5a",
+      "sha256_lf": "9d947fa00be34b9976be5e877328498e636ff663e9f2787f3779e75d8dcf86ec"
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/10.30_Критическая_проверка_назначения_каналов_Scorpion_v2.md",
+      "bytes": 21587,
+      "sha256": "c03a3b7077669ed7ed9d54eafbdef5d3b1477b0e5a08c3263aefbd8468c71bc5",
+      "sha256_lf": "8c944b1f2a28b08b878877dd109c2cda0023d673744aece2c762ea71f0e62055"
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/20.20_Индивидуальная_КТ_FEM_модель_Георгия_Scorpion_v2.ipynb",
+      "bytes": 12650367,
+      "sha256": "9261c1ed2a17f7825a9c3f11c4e02ed1a4d976b5db5974c55a9c859f2187cde9",
+      "sha256_lf": "2c2f826851afd35eb2fe4d6aacd4e7ff2d96b59524fcb11202dd4cc86d843ea8"
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/20.20_Индивидуальная_КТ_FEM_модель_Георгия_Scorpion_v2.html",
+      "bytes": 12771861,
+      "sha256": "e7181d6b475c6a121565bf0a72ffd514d4e0c87fb2ed53ec1bd2b709de3dfd06",
+      "sha256_lf": "ac2d2278bec33b2767a6cd1db8a0849a72774d1158b1b0394726dafd41d193fe"
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/20.20_Индивидуальная_КТ_FEM_модель_Георгия_Scorpion_v2.md",
+      "bytes": 21166,
+      "sha256": "f02b920c9ffa14a9e3193201c08d78caba56c307094769262e25c5958b8288a5",
+      "sha256_lf": "1154654c82cfd500b4f3d8ceea85c0f436a028406c70ec9013d2884152c4948f"
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.20_Первый_проход_боковых_сборок_Scorpion_v2.ipynb",
+      "bytes": 5492073,
+      "sha256": "1d42674fcb55b387c6c0b7ca6910cf7cb9aa8bb27da3763f84b109edad8916f2",
+      "sha256_lf": "8a316d236c29a8dbf3b247ca1b5c416264552c26209b7b9035d4bcdf3447dbbd"
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.20_Первый_проход_боковых_сборок_Scorpion_v2.html",
+      "bytes": 5599317,
+      "sha256": "7a99c0574b634f6f84c0e6b2f31108c8012a2c06cc3204fa68dfa3341ea98516",
+      "sha256_lf": "2c522f257a820db198f4698137ba160c825d403bd9989bf5f49c26765dbcd703"
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.20_Первый_проход_боковых_сборок_Scorpion_v2.md",
+      "bytes": 11437,
+      "sha256": "ec25fe50f20369757e794b0340aa5a98c428148866c9d65cc156d66b28734eeb",
+      "sha256_lf": "f43bf7f4169fbacf6e0c2f1b530a51ffc61024b785093ea262ff6e097a7087c1"
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.21_Множество_решений_двуслойной_модели_Scorpion_v2.ipynb",
+      "bytes": 18932947,
+      "sha256": "f395c8fa4114165e13e44e6fd3edf0dc71ec944b9fdab0148575a97e3649a2b3",
+      "sha256_lf": "08e132f73eb622866ac0f6c649fce8e371635b9473c81fc0a556921adb6205aa"
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.21_Множество_решений_двуслойной_модели_Scorpion_v2.html",
+      "bytes": 18892880,
+      "sha256": "31e16bb0f04badc7c487dbd743c8da4c387fd4987e93530c17420ba243356df6",
+      "sha256_lf": "e77dbf6dcc57c2f01db4bb5070a9b668986d0e00b422b42cd7cbdae04fc8ef6d"
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.21_Множество_решений_двуслойной_модели_Scorpion_v2.md",
+      "bytes": 32633,
+      "sha256": "93756674d4cd8605b4ad258231ae74dc04812bd0e74e7af9ceb3972c74897aa7",
+      "sha256_lf": "28f578c166ea5597cc2b3f100a72bf03ed0437ab7c65311300bfd4f151c44a9e"
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/20.21_Размещение_ТЕПС_Георгия_Scorpion_v2.html",
+      "bytes": 24940617,
+      "sha256": "b853b4abef326d896f5f915665a85b97043d742914736a582aa256ecadba47e3",
+      "sha256_lf": "02c77ec4b9536072c0c56882ed36681eef436cef1223fffd6e99210a2c8504e5"
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/11.20_Просмотр_и_разметка_Scorpion_v2.md",
+      "bytes": 16749,
+      "sha256": "14e542d909de240e80816f5d47d311992896bb6bf4eeff0e23d8098bc422f7ea",
+      "sha256_lf": "14e542d909de240e80816f5d47d311992896bb6bf4eeff0e23d8098bc422f7ea"
+    },
+    {
+      "path": "Colab Notebooks/00.00_Карта_проекта.md",
+      "bytes": 38752,
+      "sha256": "be4dca323ed5a3ce43326e77f971b41c20e249b1c9430b91478577e6bd1734b5",
+      "sha256_lf": "be4dca323ed5a3ce43326e77f971b41c20e249b1c9430b91478577e6bd1734b5"
+    },
+    {
+      "path": "Experiments/scorpion_v2_georg/README.md",
+      "bytes": 23733,
+      "sha256": "4508d7bf9c812539a25e52fa0565fbaca24d8b567242cac1da37e5c201519a1c",
+      "sha256_lf": "4508d7bf9c812539a25e52fa0565fbaca24d8b567242cac1da37e5c201519a1c"
+    },
+    {
+      "path": "Experiments/scorpion_v2_georg/PROTOCOL.md",
+      "bytes": 31223,
+      "sha256": "f01b174916c58e3e8e2a13bd52a263b585f7fc0c97b5838bf5e6decb5d34eded",
+      "sha256_lf": "f01b174916c58e3e8e2a13bd52a263b585f7fc0c97b5838bf5e6decb5d34eded"
+    },
+    {
+      "path": "Experiments/scorpion_v2_georg/RECORDINGS.md",
+      "bytes": 11325,
+      "sha256": "80650aa4be1429009584a5d3164355935e4554f7263ee79c19c40218e5e699cb",
+      "sha256_lf": "80650aa4be1429009584a5d3164355935e4554f7263ee79c19c40218e5e699cb"
+    }
+  ],
+  "source_inventory": [
+    {
+      "path": "Colab Notebooks/scorpion_v2/scorpion_qc.py",
+      "bytes": 53230,
+      "sha256": "9474b069f4e7adb79608627b942edabfe4798faa5557544728883b1458c14edf",
+      "sha256_lf": "9474b069f4e7adb79608627b942edabfe4798faa5557544728883b1458c14edf"
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/experiment_signal_display.py",
+      "bytes": 3065,
+      "sha256": "1f321e5095b99cd9cee3e37bfdbae0d8d56b9a024e748e7ff27825c22e8bf1ae",
+      "sha256_lf": "1f321e5095b99cd9cee3e37bfdbae0d8d56b9a024e748e7ff27825c22e8bf1ae"
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/experiment_view.js",
+      "bytes": 15766,
+      "sha256": "4ebf8757704ba9efb6e09d2e684f98166b62b2fde06339e7ce113439db920829",
+      "sha256_lf": "4ebf8757704ba9efb6e09d2e684f98166b62b2fde06339e7ce113439db920829"
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/build_scorpion_experiment_viewer.py",
+      "bytes": 45563,
+      "sha256": "cd81084c920a421301f6031ea1c856188bfb1e2547ac8d0e3725e02651ee4bc9",
+      "sha256_lf": "cd81084c920a421301f6031ea1c856188bfb1e2547ac8d0e3725e02651ee4bc9"
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/build_channel_assignment_report.py",
+      "bytes": 36210,
+      "sha256": "8dcf9b82add6fef205f87a20737fe6bc07a0f7d24b1d0e7863a28bfbafd3d39e",
+      "sha256_lf": "8dcf9b82add6fef205f87a20737fe6bc07a0f7d24b1d0e7863a28bfbafd3d39e"
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/build_lateral_solution_surfaces_report.py",
+      "bytes": 43311,
+      "sha256": "e6609780547dd9d442769ebe388d5de0194684dc48fc62c1d740682b11f57741",
+      "sha256_lf": "e6609780547dd9d442769ebe388d5de0194684dc48fc62c1d740682b11f57741"
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/solution_surfaces_view.js",
+      "bytes": 10379,
+      "sha256": "c481cf6f23817aa189fed8c07bccfd3997b7e866e78c1bfc4fc72fa27089a351",
+      "sha256_lf": "c481cf6f23817aa189fed8c07bccfd3997b7e866e78c1bfc4fc72fa27089a351"
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/bei_breathing_overview.py",
+      "bytes": 11982,
+      "sha256": "bf81e2fdd4d04434735daf299a225adc6c3463926b6328dfb73edc96f0872cc2",
+      "sha256_lf": "bf81e2fdd4d04434735daf299a225adc6c3463926b6328dfb73edc96f0872cc2"
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/bei_breathing_view.js",
+      "bytes": 11351,
+      "sha256": "a4ae594cff9910cd8504bc7842ce361f8b748233693648628b0925368daa4476",
+      "sha256_lf": "a4ae594cff9910cd8504bc7842ce361f8b748233693648628b0925368daa4476"
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/lateral_solution_surfaces.py",
+      "bytes": 7758,
+      "sha256": "8511d8c299190740749b2e97b299ac99e6679f586faee94b135607890bb3a853",
+      "sha256_lf": "8511d8c299190740749b2e97b299ac99e6679f586faee94b135607890bb3a853"
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/lateral_pilot_report.py",
+      "bytes": 27721,
+      "sha256": "3c7a5f065a2194bce96d452a213047a0e47c606820e26102911c387bcfb3c6b8",
+      "sha256_lf": "3c7a5f065a2194bce96d452a213047a0e47c606820e26102911c387bcfb3c6b8"
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/build_pilot_saved_report.py",
+      "bytes": 7778,
+      "sha256": "9daa87989aca7b231733d7ce0fda1c67e44f7b078eafa90ec428d03583b072ef",
+      "sha256_lf": "9daa87989aca7b231733d7ce0fda1c67e44f7b078eafa90ec428d03583b072ef"
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/build_georg_geometry_revision_report.py",
+      "bytes": 37330,
+      "sha256": "b1ab8955de51f6c8f6e68c9d107197058f141f385866ce84c14563506a3c0b83",
+      "sha256_lf": "b1ab8955de51f6c8f6e68c9d107197058f141f385866ce84c14563506a3c0b83"
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/test_channel_assignment.py",
+      "bytes": 2539,
+      "sha256": "7f60375316ec0400ec076a42eafae6ee32844742d0a8d21e8bef938b712744d4",
+      "sha256_lf": "683da2d05c592eee2446ad9bb493b48d7608428ca0f06be5f5abc0f24540937e"
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/test_experiment_signal_display.py",
+      "bytes": 2990,
+      "sha256": "2a5b68b4fa4b9cf1e46e74448cb8fb141f0bc86bf729be467b7ddb5bc41f6701",
+      "sha256_lf": "2a5b68b4fa4b9cf1e46e74448cb8fb141f0bc86bf729be467b7ddb5bc41f6701"
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/verify_scorpion_revision.py",
+      "bytes": 15285,
+      "sha256": "2fd1796879785ef2c1bfed24ec502900b9f2d43611b3f4b906788b9f80ff5cc3",
+      "sha256_lf": "2fd1796879785ef2c1bfed24ec502900b9f2d43611b3f4b906788b9f80ff5cc3"
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/tools/build_georg_tepc_picker.py",
+      "bytes": 5496,
+      "sha256": "8599116c59054166196a7f9a2a0b744f9adbebfe160b55938735f2200a08327f",
+      "sha256_lf": "8599116c59054166196a7f9a2a0b744f9adbebfe160b55938735f2200a08327f"
+    }
+  ],
+  "inventory_sha256": "54ed222248559afbaf22208d7fe6b03169feeddc1ea44b57def5080b89ad8a64",
+  "language": {
+    "status": "passed",
+    "reviewer": "Codex model",
+    "method": "final sequential semantic full-text review after final edits; notebook prose, tables, plot labels, visible HTML controls and dynamic JavaScript explanations",
+    "policy": "russian-scientific-prose/SKILL.md; references/russian-prose.md; shared/policy/languages/ru.md; shared/release-gate.md",
+    "checks": [
+      "scope and source status",
+      "definitions of derived quantities",
+      "units and formula referents",
+      "author confirmation versus assumptions",
+      "natural Russian scientific prose",
+      "decimal commas in numerical reader tables",
+      "clear line/surface/marker explanations",
+      "negative results and validation limits preserved"
+    ],
+    "findings": [],
+    "reader_bytes_frozen": true
+  },
+  "technical": {
+    "status": "passed",
+    "reader_checks": [
+      {
+        "stem": "10.00_Эксперимент_и_сигналы_Георгия_Scorpion_v2",
+        "executed_cells": 4,
+        "errors": 0,
+        "code_excluded": true
+      },
+      {
+        "stem": "10.30_Критическая_проверка_назначения_каналов_Scorpion_v2",
+        "executed_cells": 8,
+        "errors": 0,
+        "code_excluded": true
+      },
+      {
+        "stem": "20.20_Индивидуальная_КТ_FEM_модель_Георгия_Scorpion_v2",
+        "executed_cells": 6,
+        "errors": 0,
+        "code_excluded": true
+      },
+      {
+        "stem": "33.20_Первый_проход_боковых_сборок_Scorpion_v2",
+        "executed_cells": 1,
+        "errors": 0,
+        "code_excluded": true
+      },
+      {
+        "stem": "33.21_Множество_решений_двуслойной_модели_Scorpion_v2",
+        "executed_cells": 7,
+        "errors": 0,
+        "code_excluded": true
+      }
+    ],
+    "unittest_checks": 19,
+    "pytest_signal_checks": 3,
+    "javascript_syntax_checks": 3,
+    "standalone_tepc_html": true,
+    "large_10_00_html_and_notebook_git_lfs": true,
+    "tepc_source_inputs_not_in_commit": true
+  },
+  "computational": {
+    "status": "passed_internal_checks",
+    "signal_recalculation": {
+      "record_timebase_scenarios": 20,
+      "arrays_unchanged": 740,
+      "statistics_unchanged": true,
+      "filters_unchanged": true,
+      "breathing_decisions_unchanged": true,
+      "qrs_candidates_unchanged": true,
+      "role_revision_only": true
+    },
+    "full_sample_display": {
+      "records": 18,
+      "fields": 270,
+      "field_samples": 18807240,
+      "all_original_samples_preserved": true,
+      "float64_lossless": true,
+      "extra_smoothing": false
+    },
+    "bei_levels": {
+      "records": 18,
+      "fields": 36,
+      "compared_inverse_levels": 72,
+      "maximum_median_difference_ohm": 0.0,
+      "negative_absolute_samples": 0,
+      "nonfinite_samples": 0,
+      "all_stage_extrema_preserved": true,
+      "filters_applied": false,
+      "annotations_modified": false
+    },
+    "maximum_scalar_residual_ohm": 4.0898839870351367e-11,
+    "maximum_cloud_rss_difference_ohm2": 5.002220859751105e-12,
+    "skin_alignment": {
+      "compared_lung_boundaries": 141,
+      "maximum_boundary_difference_mm": 0.0,
+      "ray_distances_preserved": true,
+      "depth_scaling_applied": false,
+      "depth_landmarks_verified": [
+        {
+          "label": "A",
+          "s_mm": -70,
+          "depth_mm": 42.0,
+          "colour": "#b12a90"
+        },
+        {
+          "label": "M",
+          "s_mm": -35,
+          "depth_mm": 58.0,
+          "colour": "#4575b4"
+        },
+        {
+          "label": "Центр",
+          "s_mm": 0,
+          "depth_mm": 73.0,
+          "colour": "#30343b"
+        },
+        {
+          "label": "N",
+          "s_mm": 35,
+          "depth_mm": 84.0,
+          "colour": "#19955b"
+        },
+        {
+          "label": "B",
+          "s_mm": 70,
+          "depth_mm": 101.0,
+          "colour": "#d26b13"
+        }
+      ]
+    },
+    "six_bounded_cases_recalculated": true,
+    "historical_33_20_numerical_figure_traces_unchanged": true
+  },
+  "browser": {
+    "status": "passed",
+    "viewer": {
+      "colors_by_derivation": true,
+      "early_roles_confirmed": true,
+      "channel_swap_colors_preserved": true,
+      "all_samples_default": true,
+      "explicit_optional_preview": true,
+      "filters_can_be_disabled": true,
+      "visibility_switches": true,
+      "camera_rotation_zoom_pan_preserved": true
+    },
+    "surfaces": {
+      "each_line_explained": true,
+      "three_independent_controls": true,
+      "h_step_buttons": true,
+      "explanations_update_with_slice": true,
+      "camera_preserved": true,
+      "bei_fields_explained": 36
+    },
+    "tepc": {
+      "standalone_html_loaded": true,
+      "recordings": 6,
+      "json_csv_controls_present": true,
+      "author_positions_not_set": true,
+      "coordinate_export_checked_with_test_points": true,
+      "camera_preserved": true
+    },
+    "tepc_native_mouse_selection": true,
+    "tepc_json_csv_coordinates_match": true,
+    "exported_points_are_test_fixture_not_actual_electrode_positions": true,
+    "page_errors": []
+  },
+  "scientific": {
+    "status": "exploratory_not_independently_validated",
+    "direct_author_role_records": [
+      "001",
+      "002",
+      "003",
+      "004",
+      "005",
+      "006",
+      "007"
+    ],
+    "late_block_008_011_continuity_is_assumption": true,
+    "tepc_aepc_channel_numbers_unresolved": true,
+    "single_U_top_angle_is_unconfirmed_scenario": true,
+    "candidate_breathing_and_QRS_annotations_not_accepted": true,
+    "automatic_tissue_masks_not_independently_validated": true,
+    "confirmed_inhale_residual_percent": 10.535898,
+    "confirmed_exhale_residual_percent": 9.744487,
+    "rho1_at_lower_bound": true,
+    "stable_tissue_parameters_not_established": true,
+    "effective_h_not_validated_as_anatomical_depth": true,
+    "new_full_FEM_pose_scan_not_executed": true,
+    "stroke_volume_and_ejection_fraction_not_validated": true,
+    "primary_TXT_BIN_CT_masks_and_meshes_not_committed": true,
+    "full_plotted_BEI_and_ECG_samples_embedded_in_authorized_reader_exports": true
+  },
+  "release_scope": "Research artifacts for review; not validation or completion of the cardiac methodology"
+}

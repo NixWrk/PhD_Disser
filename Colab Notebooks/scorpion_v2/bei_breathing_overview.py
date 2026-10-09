@@ -165,6 +165,7 @@ def widget(out=OUT):
 <p>На нижнем графике точки — медианы этапов в исходных омах. Вертикальные отрезки показывают выбранный размах или межквартильный диапазон. Это вариабельность записанных значений, не доверительный интервал. Линии соединяют этапы одной записи и не означают непрерывную временную шкалу.</p>
 <div id="bei-levels"></div>
 <p>Таблица использует все отсчёты выбранных интервалов; масштабирование графика её не пересчитывает. «Ниже нуля» относится к исходному BEI. Неконечные значения не соединяются линией.</p>
+<div data-control="line-key"></div>
 <div data-control="table" style="max-height:360px;overflow:auto"></div>
 </section>'''
     return ui+'<script>'+get_plotlyjs()+'</script><script>const beiReviewPayload='+json.dumps(payload, separators=(',', ':'), allow_nan=False)+';'+(FOLDER/'bei_breathing_view.js').read_text(encoding='utf-8')+'</script>'

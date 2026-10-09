@@ -56,6 +56,20 @@ function layout(index){
  else {result.xaxis=axis('ρ₂, Ом·м',D.bounds[1]);result.yaxis=axis('ρ₁, Ом·м',D.bounds[0]);}
  return result;
 }
+function lineKey(){
+ const cc=D.cases[ci],table=document.createElement('table');table.style.borderCollapse='collapse';
+ const row=(values,color=null)=>{const tr=document.createElement('tr');values.forEach((v,i)=>{const td=document.createElement('td');td.textContent=v;td.style.cssText='padding:6px;border:1px solid #ccc';if(i===0&&color)td.style.color=color;tr.append(td);});table.append(tr);};
+ row(['Цвет и вид','Наблюдение','Что означает линия, поверхность или метка']);
+ cc.assemblies.forEach((item,i)=>{
+  const kind=index===1?'Поверхность':item.reference?'Сплошная толстая линия':'Штриховая линия';
+  row([kind+(enabled[i]?' · показана':' · скрыта'),item.label+' · BEI'+item.channel+' · Z = '+fmt(cc.observations[i])+' Ом',
+   'Решения Zмод(ρ₁, ρ₂, h) = Zнабл'+(index===1?' по всей сетке h.':' при h = '+fmt(D.h[hi])+' мм.')+' '+(item.reference?'Входит в совместную подгонку пяти размеров.':'Дополнительное наблюдение; не входит в совместную подгонку.')],colors[i]);
+ });
+ row(['Чёрные точки',control('pairs').checked?'Попарные пересечения показаны':'Попарные пересечения скрыты','Совпадение решений двух наблюдений'+(index===1?' в пространстве ρ₁, ρ₂, h.':' при выбранном h.')+' Не означает согласия всех сборок.'],'#222');
+ row([index===1?'Красный ромб':'Красный круг','Минимум невязки основного ряда',index===1?'Совместный минимум пяти размеров по ρ₁, ρ₂ и h.':'Сеточный минимум пяти размеров по ρ₁ и ρ₂ при h = '+fmt(D.h[hi])+' мм. Не является точным общим пересечением.'],'#ce1b35');
+ if(index===1)row(['Серая плоскость',control('plane').checked?'Показана':'Скрыта','h = '+fmt(D.h[hi])+' мм; только ориентир выбранного среза, не множество допустимых решений.'],'#777');
+ control('line-key').replaceChildren(table);
+}
 async function update(){
  if(!ready)return;
  control('h-label').textContent=fmt(D.h[hi])+' мм';
@@ -70,6 +84,7 @@ async function update(){
  if(index===1)plot.dataset.camera=JSON.stringify(plot._fullLayout.scene.camera);
  const cc=D.cases[ci],fit=cc.fit;
  control('status').textContent=cc.label+'; h = '+fmt(D.h[hi])+' мм. Совместная невязка пяти размеров: '+fmt(fit.residual_percent)+'%. Пересечения относятся только к указанным парам.';
+ lineKey();
 }
 async function init(){
  checks();await Plotly.newPlot(plot,data()[index],layout(index),{responsive:true,displaylogo:false});

@@ -68,7 +68,7 @@ def widget(out=OUT):
 <b data-control="h-label"></b></label> · <label><input data-control="pairs" type="checkbox" checked> Попарные пересечения</label> {plane}</p>
 <p><button data-control="all">Все боковые монтажи</button> <button data-control="main">Только основной ряд</button></p>
 <div data-control="assemblies" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:5px"></div>
-<p data-control="status"></p><p data-control="key">{key}</p><div id="{plot_id}"></div></section>''')
+<p data-control="status"></p><p data-control="key">{key}</p><div id="{plot_id}"></div><div data-control="line-key"></div></section>''')
     controls='<div id="solution-viewer">'+''.join(panels)+'</div>'
     return controls+'<script>'+get_plotlyjs()+'</script><script>const solutionPayload='+json.dumps(payload,separators=(',',':'),allow_nan=False)+';'+script+'</script>'
 
@@ -90,14 +90,18 @@ def stability_plot(out=OUT):
     out=Path(out)
     with np.load(out/'kernel.local.npz') as a:h=a['h']
     fig=go.Figure()
-    for case in read(out/'results.local.json'):
+    colors=['#155da0','#ef8531','#3b9746','#b34444','#8154a4','#824c22']
+    keys=[]
+    for i,case in enumerate(read(out/'results.local.json')):
         with np.load(out/(case['key']+'.npz')) as a:rss=a['profile_rss']
+        label=HISTORIES[case['channel']]+', '+STATES[case['state']].lower()
         fig.add_trace(go.Scatter(x=h,y=rss/case['fit']['rss'],mode='lines',
-            name=HISTORIES[case['channel']]+', '+STATES[case['state']].lower()))
-    fig.add_hline(y=1.10,line_dash='dot',annotation_text='Условный прирост RSS 10%')
+            name=label,line=dict(color=colors[i])))
+        keys.append(f'<tr><td style="color:{colors[i]};padding:6px">Сплошная линия: {label}</td><td>Минимум RSS по ρ₁ и ρ₂ при каждом h, делённый на совместный минимум RSS этого сценария.</td></tr>')
+    fig.add_hline(y=1.10,line_dash='dot',line_color='#777',annotation_text='Условный прирост RSS 10%')
     fig.update_layout(template='plotly_white',title='Рисунок 4. Минимальная невязка при фиксированной h',
         xaxis_title='h, мм',yaxis_title='RSS(h) / RSSₘᵢₙ',height=480,legend=dict(orientation='h',y=-.2))
-    return fig.to_html(full_html=False,include_plotlyjs=False)
+    return fig.to_html(full_html=False,include_plotlyjs=False)+'<table>'+''.join(keys)+'<tr><td>Серая точечная горизонталь 1,10</td><td>Условный прирост RSS на 10%; не доверительная граница и не критерий физиологической достоверности.</td></tr></table>'
 
 
 def cross_table(out=OUT):
@@ -229,8 +233,9 @@ BEI всех 18 записей. В верхней панели можно сра
 Первым показан пересчёт по этому назначению. Два прежних постоянных
 сценария сохранены для сравнения с ошибочной нумерацией. Их минимумы
 не используются вместо результата по подтверждённому переходу.
-Для 002–003 дополнительные боковые наблюдения на BEI2 остаются
-кандидатной реконструкцией; они не входят в совместную подгонку.
+Для 001–003 автор подтвердил ТТРКГ1 и боковую горизонтальную BEI2.
+Наблюдения 002–003 остаются дополнительными: они получены с другими
+монтажами на руках и не входят в совместную подгонку основного ряда.
 В 005 показано только боковое BEI2: ТТРКГ1 исключена из множества
 боковых решений. Основная горизонтальная ось и вертикальная ось креста
 различаются явно, независимо от номера канала.
@@ -316,7 +321,7 @@ L и h в вычислительной модели переведены в ме
 подключения. Они не являются независимыми подтверждениями модели.
 
 Основной ряд включает пять размеров 60–140 мм с монтажом ТТРКГ 1×4.
-Дополнительно показаны кандидатные боковые наблюдения 140 мм при 1×1
+Дополнительно показаны боковые наблюдения 140 мм при 1×1
 и 2×2 на руках, вертикальная BEI2 записи 005 и обе оси крестов 140 и 60 мм.
 BEI1 записи 005 не включается: по уточнению автора это ТТРКГ.
 Дополнительные наблюдения служат проверкой и не участвуют в совместной

@@ -23,6 +23,8 @@ from build_scorpion_experiment_viewer import STEM as EXPERIMENT_VIEW, verify as 
 from bei_breathing_overview import OUT as BEI_OUT, verify as verify_bei
 from lateral_solution_surfaces import OUT as SURFACES
 from build_channel_assignment_report import STEM as CHANNEL_REPORT, verify as verify_channels
+from build_scorpion_experiment_viewer import OUT as VIEWER
+from experiment_signal_display import unpack_full_samples, ecg_variants
 
 
 def verify_skin_alignment():
@@ -123,6 +125,26 @@ def verify_bei_overview():
         all_stage_extrema_preserved=True,filters_applied=False,annotations_modified=False)
 
 
+def verify_full_sample_viewer():
+    summary=read(EXPERIMENT/'derived/scorpion_review/summary.local.json')['records']
+    fields=0;samples=0
+    for r in read(VIEWER/'display_signals.local.json'):
+        source=next(s for s in summary if s['record_id']==r['record_id'] and s['fs_hz_scenario']==r['fs'])
+        decoded=unpack_full_samples(r['full_samples'])
+        with np.load(EXPERIMENT/'derived/scorpion_review'/(source['key']+'.npz')) as a:
+            expected={'time_s':a['time_s']}
+            for ch in (1,2):
+                for kind,scale in [('bei_raw',1),('bei_slow',1),('bei_pulse_band',1000)]:
+                    expected[f'{kind}_{ch}']=a[f'{kind}_{ch}']*scale
+                for key,y in ecg_variants(a[f'ecg_raw_{ch}'],r['fs']).items():expected[f'ecg_{key}_{ch}']=y
+            assert set(expected)==set(decoded)
+            for name,y in expected.items():
+                np.testing.assert_array_equal(decoded[name],y);fields+=1;samples+=len(y)
+            assert r['full_samples']['rows']==len(a['time_s'])
+    return dict(records=18,fields=fields,field_samples=samples,all_original_samples_preserved=True,
+                float64_lossless=True,extra_smoothing=False)
+
+
 def run():
     primary=EXPERIMENT/'derived/exploratory/33.21_identifiability'
     manifest=read(primary/'manifest.local.json')
@@ -130,6 +152,7 @@ def run():
     verify_additional(ADDITIONAL)
     verify_surfaces();verify_viewer();verify_channels()
     bei_overview=verify_bei_overview()
+    full_samples=verify_full_sample_viewer()
     scalar_error=0.;cloud_error=0.
     for case in read(ADDITIONAL/'results.local.json'):
         y=np.array(case['fit']['observations_ohm']);bounds=np.array(case['fit']['bounds_ohm_m'])
@@ -216,7 +239,7 @@ def run():
             inventory.append(dict(path=p.relative_to(ROOT).as_posix(),sha256=sha(p),bytes=p.stat().st_size))
     result=dict(primary_numerical_manifest_unchanged=True,additional_manifest_verified=True,
         active_bounded_surface_manifest_verified=True,experiment_viewer_manifest_verified=True,
-        bei_overview=bei_overview,
+        bei_overview=bei_overview,full_sample_display=full_samples,
         maximum_cloud_rss_difference_ohm2=cloud_error,maximum_scalar_residual_ohm=scalar_error,
         actual_joins_full_circle_inside_source=True,current_contacts_top_and_opposite_bottom=True,
         lateral_axis_longitudinal=True,old_fem_transferred=False,new_fem_executed=False,

@@ -35,6 +35,10 @@
 "Colab Notebooks/scorpion_v2/33.22_*" -text -whitespace
 "Colab Notebooks/scorpion_v2/10.00_*" -text -whitespace
 "Colab Notebooks/scorpion_v2/10.30_*" -text -whitespace
+"Colab Notebooks/scorpion_v2/20.21_*" -text -whitespace
+# Full-resolution signals make these standalone reports exceed 100 MiB.
+"Colab Notebooks/scorpion_v2/10.00_*.html" filter=lfs diff=lfs merge=lfs -text -whitespace
+"Colab Notebooks/scorpion_v2/10.00_*.ipynb" filter=lfs diff=lfs merge=lfs -text -whitespace
 "Colab Notebooks/archive/legacy/scorpion_v2/2026-10-09_e799fdb/33.21_*" -text -whitespace
 "Colab Notebooks/scorpion_v2/build_lateral_identifiability_report.py" -text whitespace=trailing-space,space-before-tab,cr-at-eol
 "Colab Notebooks/scorpion_v2/build_scorpion_experiment_viewer.py" -text whitespace=trailing-space,space-before-tab,cr-at-eol

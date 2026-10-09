@@ -77,6 +77,15 @@ async function update(){
  const table=document.createElement('table');table.style.borderCollapse='collapse';
  const addRow=(values,tag)=>{const tr=document.createElement('tr');values.forEach(v=>{const td=document.createElement(tag);td.textContent=String(v);td.style.padding='5px';td.style.border='1px solid #ccc';tr.append(td);});table.append(tr);};
  addRow(headers,'th');rows.forEach(row=>addRow(row,'td'));control('table').replaceChildren(table);
+ const key=document.createElement('table');key.style.borderCollapse='collapse';
+ items.forEach(({r,i,channel})=>{
+  const tr=document.createElement('tr'),label=document.createElement('td'),meaning=document.createElement('td');
+  label.textContent=r.label+' · BEI'+channel;label.style.color=colour(i);
+  meaning.textContent=(channel===1?'Сплошная линия, круглые метки':'Штриховая линия, ромбовидные метки')+'; слева '+(centred?'BEI за вычетом медианы каждого выбранного этапа':'исходный BEI')+'. Справа — медианы этапов; '+(spread==='range'?'усы показывают минимум и максимум':spread==='iqr'?'усы показывают квартили 25 и 75%':'усы отключены')+'.';
+  for(const td of [label,meaning]){td.style.padding='6px';td.style.border='1px solid #ccc';tr.append(td);}key.append(tr);
+ });
+ const caption=document.createElement('p');caption.textContent='Пояснения каждой выбранной линии на обоих графиках. Красные треугольники — отображённые отсчёты ниже медианы этапа на выбранный порог; это кандидаты нисходящих отклонений, а не доказанные дефекты. Серая точечная горизонталь — ноль текущей шкалы.';
+ control('line-key').replaceChildren(caption,key);
  control('status').textContent=items.length?'Показано полей: '+items.length+'; интервалов: '+rows.length+'. '+(mode==='all'?'Время каждой записи отсчитывается отдельно; записи не одновременны. ':'Этапы совмещены по кандидатному началу; длительности сохранены. ')+(control('analysis').checked?'Использованы обрезанные кандидатные интервалы расчёта уровней. ':'Показаны полные кандидатные этапы; их медианы могут отличаться от расчётных уровней 33.21.'):'Нет данных для выбранных записей, полей и интервалов.';
  control('phase-key').textContent=single?'Цветной фон — кандидатные этапы дыхания; серые полосы — неоднозначность границ из 11.20.':'При нескольких записях фон этапов не накладывается: их границы различаются. Для проверки границ оставьте одну запись.';
  time.dataset.fieldCount=String(items.length);time.dataset.intervalCount=String(rows.length);time.dataset.phase=mode;time.dataset.scale=control('scale').value;

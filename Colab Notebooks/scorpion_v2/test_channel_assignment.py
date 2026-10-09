@@ -1,9 +1,22 @@
 import unittest
 from copy import deepcopy
 from build_channel_assignment_report import hypotheses, values
+from scorpion_qc import channel_assignment
+from lateral_solution_surfaces import definition
 
 
 class AssignmentDiagnostics(unittest.TestCase):
+    def test_qc_roles_agree_with_active_inverse_and_keep_unknowns(self):
+        for item in definition(3):
+            roles = channel_assignment(item['record_id'])['physical_channel_roles']
+            self.assertTrue(roles[str(item['channel'])].startswith('lateral_'))
+        for number in ('001', '002', '003'):
+            self.assertEqual(channel_assignment('SCV2-G-'+number)['physical_channel_roles'],
+                             {'1':'ttrkg','2':'lateral_horizontal'})
+        self.assertEqual(channel_assignment('SCV2-G-006')['status'], 'author_confirmed_2026-10-09')
+        self.assertEqual(channel_assignment('SCV2-G-011')['status'], 'late_block_continuity_protocol_assumption')
+        self.assertEqual(channel_assignment('SCV2-G-012')['physical_channel_roles'], {'1':'unknown','2':'unknown'})
+
     def test_switch_restores_synthetic_constant_reference_without_relabeling_input(self):
         records=[]
         for rid,lateral in zip(['004','007','008','009','010'],[80.,90.,100.,110.,120.]):

@@ -27,7 +27,7 @@ def definition(channel):
         ch=2 if channel==3 and rid.endswith('004') else default
         add(rid[-3:],int(size),f'{int(size)} мм · {rid[-3:]} · основной ряд',True,ch)
     for record,label in [('002','1×1 на руках'),('003','2×2 на руках')]:
-        add(record,140,f'140 мм · {record} · {label} · кандидат роли',source_channel=2 if channel==3 else default)
+        add(record,140,f'140 мм · {record} · {label} · дополнительное наблюдение',source_channel=2 if channel==3 else default)
     add('005',140,'140 мм · 005 · вертикальная боковая, BEI2',source_channel=2)
     for record,size in [('006',140),('011',60)]:
         ch=1 if channel==3 else default
@@ -68,6 +68,11 @@ def pair_intersections(model,q,f,observations,sizes,bounds,h):
 def run(out=OUT):
     out=Path(out);out.mkdir(parents=True,exist_ok=True)
     observations,_,input_contract=prepare(EXPERIMENT)
+    input_contract['assumptions'] = [a for a in input_contract['assumptions']
+        if not a.startswith('Two global numerical channel assignments')]
+    input_contract['assumptions'].append(
+        'Author-confirmed 001–007 roles and 004–007 transition; 008–011 continue the late-block protocol. '
+        'Former constant-number cases are counterfactual diagnostics.')
     registry=ROOT/'MATLAB_TRKG4_real_subjects/configs/tissue_literature_v2.json'
     compartments=read(registry)['screening_profiles']['100000']['compartments']
     bounds=np.array([compartments[k]['rho_bounds_ohm_m'] for k in ('soft','lung_unspecified')])
@@ -111,7 +116,7 @@ def run(out=OUT):
     contract=read(out/'input_contract.local.json')
     contract.update(role_source='author confirmation 2026-10-09',
         reference_channels={'004':2,'007':1,'008':1,'009':1,'010':1},
-        direct_author_role_records=['004','005','006','007'],
+        direct_author_role_records=['001','002','003','004','005','006','007'],
         late_block_number_continuity_is_protocol_assumption=True,
         previous_constant_number_cases_are_counterfactual=True)
     save(out/'input_contract.local.json',contract)

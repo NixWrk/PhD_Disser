@@ -15,6 +15,7 @@ ROOT = Path(__file__).resolve().parents[2]
 GEOMETRY = ROOT/'MATLAB_TRKG4_real_subjects/output/exploratory/scorpion_georg_geometry_20261009'
 SEGMENTATION = ROOT/'MATLAB_TRKG4_real_subjects/output/exploratory/scorpion_georg_fem_20261008/segmentation'
 OUT = ROOT/'MATLAB_TRKG4_real_subjects/output/exploratory/georg_tepc_manual_20261009'
+READER_HTML = ROOT/'Colab Notebooks/scorpion_v2/20.21_Размещение_ТЕПС_Георгия_Scorpion_v2.html'
 
 
 def sha(path):
@@ -72,12 +73,13 @@ def build(geometry=GEOMETRY, segmentation=SEGMENTATION, out=OUT, target_faces=20
         fat_target_faces=len(trimesh.load(references['fat'], force='mesh').faces), export_context=context)
     if report['layers']['fat']['decimation']['status'] != 'not_needed':
         raise ValueError('Fat display must not undergo triangle-collapse decimation')
+    READER_HTML.write_bytes((out/'georg_tepc_picker.html').read_bytes())
     report.update(input_sha256=inputs, ct_sha256=context['ct_sha256'],
         builder_sha256=sha(__file__), picker_sha256=sha(Path(__file__).with_name('build_surface_landmark_picker.py')),
         geometry_is_individually_localized=False, electrode_positions_exported=False,
         html_sha256=sha(out/'georg_tepc_picker.html'))
     (out/'picker_provenance.local.json').write_text(json.dumps(report, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
-    print(out/'georg_tepc_picker.html', flush=True)
+    print(READER_HTML, flush=True)
     return out
 
 

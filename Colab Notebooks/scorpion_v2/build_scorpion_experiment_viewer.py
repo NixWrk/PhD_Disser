@@ -9,7 +9,8 @@ from plotly.offline import get_plotlyjs
 from lateral_pilot import ROOT, EXPERIMENT, read, save, sha
 from build_georg_fem_reports import export, table
 from build_georg_geometry_revision_report import OUT as GEOMETRY, SOURCE, verify as verify_geometry
-from experiment_signal_display import ecg_variants, spectrum, phase_intervals
+from experiment_signal_display import ecg_variants, spectrum, phase_intervals, pack_full_samples
+from scorpion_qc import channel_assignment
 
 FOLDER=Path(__file__).parent
 OUT=EXPERIMENT/'derived/exploratory/10.00_experiment_view_20261009'
@@ -85,7 +86,7 @@ def transverse_centres(source,size,y,z):
 
 
 def montage(record,contacts,source):
-    """Channel numbers are assigned in the viewer under one global hypothesis."""
+    """Nominal geometry is independent of the record's physical channel roles."""
     rid=record['record_id'][-3:]
     result={'lateral':[],'perpendicular':[],'arm':[],'mapping':'unknown'}
     sizes=contacts['sizes_mm']
@@ -178,10 +179,11 @@ def run(out=OUT):
         if annotation['source_sha256']!=record['source_sha256']:raise ValueError('Annotation source mismatch')
         cache_path=review/(record['key']+'.npz')
         with np.load(cache_path) as a:
-            t=a['time_s'];traces=[]
+            t=a['time_s'];traces=[];full_fields={'time_s':t}
             for row,kind,scale in [(1,'bei_raw',1),(2,'bei_slow',1),(3,'bei_pulse_band',1000)]:
                 for channel in (1,2):
                     y=a[f'{kind}_{channel}']*scale;idx=extrema_indices(y)
+                    full_fields[f'{kind}_{channel}']=y
                     traces.append(dict(row=row,channel=channel,kind=kind,t=np.round(t[idx],6).tolist(),y=np.round(y[idx],7).tolist()))
             breathing=annotation['breathing'];boundaries=breathing.get('boundaries_samples',[])
             start=(boundaries[0]/fs+6) if boundaries else max(0.,float(t[-1])/2-2.5)
@@ -191,12 +193,15 @@ def run(out=OUT):
                 full=ecg_variants(a[f'ecg_raw_{channel}'],fs)
                 np.testing.assert_allclose(full['11'],a[f'ecg_filtered_{channel}'],rtol=1e-10,atol=1e-10)
                 for key,y in full.items():
+                    full_fields[f'ecg_{key}_{channel}']=y
                     idx=extrema_indices(y);freq,psd=spectrum(y,fs)
                     variants[key].append(dict(channel=channel,t=np.round(t[idx],6).tolist(),y=np.round(y[idx],7).tolist(),
                         detail_y=np.round(y[first:last],7).tolist(),psd=psd.tolist()))
         records.append(dict(record_id=record['record_id'],label=rid+' · '+record['montage_label'],fs=fs,
             duration=float(t[-1]),timebase_status=record['timebase_status'],traces=traces,ecg_variants=variants,
             detail_t=np.round(t[first:last],6).tolist(),psd_frequency_hz=freq.tolist(),
+            full_samples=pack_full_samples(full_fields),detail_indices=[first,last],
+            channel_assignment=channel_assignment(record['record_id']),
             breathing={**{k:breathing.get(k) for k in ('boundaries_samples','boundary_uncertainty_ranges_samples','single_mode','author_accepted')},
                 'phases':phase_intervals(breathing,fs,float(t[-1]))},
             montage=montage(record,contacts,source)))
@@ -207,7 +212,7 @@ def run(out=OUT):
     save(out/'contract.local.json',dict(producer_sha256=sha(__file__),summary_sha256=sha(summary_path),
         annotations_sha256=sha(annotation_path),geometry_contacts_sha256=sha(GEOMETRY/'contacts.local.json'),
         geometry_surface_sha256=sha(GEOMETRY/'body_embedded_arms_370mm.stl'),sources=sources,
-        decimation='900 chronological buckets per overview trace; minima and maxima retained; 5 s ECG detail unthinned',
+        decimation='Default: every original sample, lossless gzip float64; optional 900-bucket min/max overview; ECG detail always unthinned',
         filters=summary['filters'],coordinates_are_scenarios=True,actual_electrode_localisation_recovered=False,
         signal_display_producer_sha256=sha(FOLDER/'experiment_signal_display.py'),
         viewer_js_sha256=sha(FOLDER/'experiment_view.js'),
@@ -220,8 +225,8 @@ def run(out=OUT):
         ct_section_provenance_sha256=sha(GEOMETRY/'section_provenance.local.json'),
         ecg_filter_variants='00 raw; 10 notches; 01 bandpass; 11 notches then bandpass; whole-record filtering before display sampling',
         spectrum='Welch PSD, Hann 8 s windows (short records: whole record), 50% overlap, constant detrend; mV²/Hz; full Nyquist range',
-        channel_roles_author_confirmed_records=['004','005','006','007'],
-        channel_roles_still_unknown_records=['001','002','003','012','013','014','015','016','017','018'],
+        channel_roles_author_confirmed_records=['001','002','003','004','005','006','007'],
+        channel_roles_still_unknown_records=['012','013','014','015','016','017','018'],
         late_block_continuity_is_protocol_assumption=True,annotations_modified=False,annotations_accepted=False,
         montage_checks=montage_checks,single_U_angle_author_confirmed=False,
         ECG_and_BEI_same_index_share_U_author_confirmation='2026-10-09',
@@ -264,8 +269,9 @@ def widget(out=OUT):
     payload['records']=read(out/'display_signals.local.json')
     ui='''<div id="experiment-viewer" style="border:1px solid #aaa;padding:12px">
 <p><label>Запись: <select id="experiment-record"></select></label></p>
-<p><label>История подключения: <select id="experiment-channel"><option value="0">Подтверждение автора: 004–007 и продолжение размерного ряда</option><option value="1">Прежний сценарий: постоянно боковая BEI1</option><option value="2">Прежний сценарий: постоянно боковая BEI2</option><option value="3">Диагностика: боковая BEI2 в 004–005 → BEI1 с 006</option><option value="4">Диагностика: боковая BEI1 в 004–005 → BEI2 с 006</option></select></label></p>
+<p><label>История подключения: <select id="experiment-channel"><option value="0">Подтверждение автора: 001–007 и продолжение размерного ряда</option><option value="1">Прежний сценарий: постоянно боковая BEI1</option><option value="2">Прежний сценарий: постоянно боковая BEI2</option><option value="3">Диагностика: боковая BEI2 в 004–005 → BEI1 с 006</option><option value="4">Диагностика: боковая BEI1 в 004–005 → BEI2 с 006</option></select></label></p>
 <p id="experiment-description"></p><p id="experiment-localisation" style="color:#904018"></p>
+<p><label>Отсчёты обзорных графиков: <select id="experiment-sampling"><option value="full">Все отсчёты — без прореживания</option><option value="extrema">Быстрый обзор — минимумы и максимумы 900 интервалов</option></select></label></p>
 <fieldset><legend>Фильтры ЭКГ — независимое включение этапов</legend>
 <label><input type="checkbox" id="experiment-notch" checked> Режекторы 50/100/150 Гц, Q = 30</label><br>
 <label><input type="checkbox" id="experiment-band" checked> Полосовой фильтр Баттерворта (N = 4), 0,5–40 Гц</label>
@@ -376,14 +382,17 @@ def cells():
 ранее сообщённому постоянству монтажа внутри позднего блока.
 Назначение осей креста наследуется из предыдущей записи; качество
 ЭКГ самого креста для этого не используется. EMG1/EMG2 сняты с U соответствующих BEI1/BEI2.
-Назначение 001–003 и ТЕПС/АЕПС этим уточнением не установлено.
+Отдельным уточнением автора подтверждено: в 001–003 ТТРКГ — канал 1,
+боковая горизонтальная сборка — канал 2. Номера ТЕПС/АЕПС пока не установлены.
 
 
 В просмотре по умолчанию используется это назначение. Прежние варианты
 доступны как диагностические сценарии и не заменяют подтверждение автора.
-Переключатель меняет цвета электродов; исходные поля сигналов сохраняются.
-Для 001–003 в основном варианте электроды серые, поскольку номера не
-подтверждены. В 005 показаны вертикальная BEI2 и контакты ТТРКГ1.
+Переключатель меняет диагностическое назначение сигналов; исходные поля
+сохраняются. Цвет задан по отведению и сохраняется при смене номера канала:
+ТТРКГ — синий, боковая горизонтальная сборка — оранжевый, вертикальная —
+фиолетовый. Электроды на КТ окрашены по типу номинального монтажа;
+его геометрия не зависит от гипотезы о номере гнезда прибора. В 005 показаны вертикальная BEI2 и контакты ТТРКГ1.
 Сопоставление сигналов приведено в
 [10.30](10.30_Критическая_проверка_назначения_каналов_Scorpion_v2.html).
 
@@ -392,7 +401,7 @@ def cells():
 [протоколе](../../Experiments/scorpion_v2_georg/PROTOCOL.md), однако они не
 задают координаты данной сессии. Для этих записей доступен просмотр сигналов;
 электроды на КТ не нанесены до восстановления индивидуальной установки.
-Для такого восстановления подготовлен [инструмент ручного размещения ТЕПС](../../MATLAB_TRKG4_real_subjects/output/exploratory/georg_tepc_manual_20261009/georg_tepc_picker.html).
+Для такого восстановления подготовлен [инструмент ручного размещения ТЕПС](20.21_Размещение_ТЕПС_Георгия_Scorpion_v2.html).
 Он позволяет отдельно разметить ТЕПС 2–7 на КТ Георгия и сохранить координаты
 с их происхождением в JSON и CSV. Ручной экспорт ещё не является
 подтверждением точности установки или готовым FEM-расчётом.''')
@@ -400,8 +409,10 @@ def cells():
     md('''## Совместный просмотр КТ и зарегистрированных сигналов
 
 **Рисунок 1.** Выбор одной из 18 записей одновременно обновляет монтаж
-и графики. Синий цвет соответствует каналу 1, оранжевый — каналу 2;
-в геометрии неизвестного подключения используются серые маркеры.
+и графики. Цвет соответствует отведению: ТТРКГ — синий, боковая
+горизонтальная сборка — оранжевый, вертикальная — фиолетовый.
+Сигналы ТЕПС/АЕПС с неизвестным назначением каналов имеют нейтральный
+цвет и подпись «Неустановленное отведение». Номер канала указан отдельно.
 Назначение креста 006: горизонтальная ось — канал 1, сохранённая
 вертикальная — канал 2, по уточнению автора о переходе через 005.
 Для 011 назначение перенесено из 010 по постоянству позднего блока;
@@ -436,8 +447,17 @@ def cells():
 возвращает исходную ЭКГ. Каждый вариант рассчитан по всей записи до
 выбора фрагмента, с дополнением краёв на 3 с; возможные краевые эффекты
 следует учитывать. Переключение не изменяет исходные данные и разметку.
-На обзорных линиях сохраняются минимум и максимум каждого из 900 временных
-интервалов; пульсовую форму следует проверять в полном просмотре этапа 11.20.
+По умолчанию обзорные линии содержат все отсчёты на исходной временной
+сетке, без прореживания, интерполяции и дополнительного сглаживания.
+Полные массивы сохранены в HTML без потерь в формате float64 с gzip-сжатием;
+при открытии записи проверяется их контрольная сумма. Рабочая частота
+составляет 1000 Гц, для 005–006 — 400 Гц в явно указанном сценарии.
+Отдельный быстрый режим сохраняет минимум и максимум каждого из 900
+интервалов. Он уменьшает число отображаемых точек; увеличение масштаба
+в нём не восстанавливает пропущенные отсчёты. Для проверки формы
+сигнала следует выбрать режим всех отсчётов. Фрагмент ЭКГ 5 с всегда
+показывается без прореживания. Плотная линия за всю запись сама по себе
+не характеризует качество; форму нужно оценивать при увеличении.
 Нижний временной график содержит пятисекундный фрагмент исходной и выбранной ЭКГ
 без прореживания. При наличии кандидатной первой границы его начало выбрано
 через 6 с после неё, иначе — около середины записи.
@@ -449,7 +469,8 @@ def cells():
 диапазон можно выбрать масштабированием. Спектр не является амплитудным
 спектром одного сердечного цикла.
 В сравнении ЭКГ и спектров сплошная линия соответствует исходной ЭКГ,
-штриховая — выбранным фильтрам; цвет обозначает приборный канал.
+штриховая — выбранным фильтрам; цвет обозначает отведение, номер канала
+указан в подписи каждой кривой.
 
 Цветные интервалы на всех четырёх обзорных графиках и фрагменте ЭКГ
 обозначают спокойное дыхание, задержку на вдохе, усиленное дыхание и

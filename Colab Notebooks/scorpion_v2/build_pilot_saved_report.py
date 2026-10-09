@@ -19,10 +19,14 @@ def build():
     nb.cells = [c for c in nb.cells if c.cell_type == 'markdown' and not c.source.startswith('## Сохранённые результаты')]
     for cell in nb.cells:
         if cell.source.startswith('# 33.20.'):
-            history = 'Сохранённый первый проход. Его литературные ограничения не используются в расширенной проверке 33.21 и индивидуальной КТ/FEM-инверсии 33.22.'
-            cell.source = cell.source.replace('\n\n'+history, '')
+            history = 'Исторический первый проход до уточнения каналов от 09.10.2026. Прежняя постоянная нумерация не соответствует сообщённому переходу 004–007. Рабочий пересчёт находится в [33.21](33.21_Множество_решений_двуслойной_модели_Scorpion_v2.html); результаты этого первого прохода не передаются в коррекцию ТТРКГ.'
+            old_history = 'Сохранённый первый проход. Его литературные ограничения не используются в расширенной проверке 33.21 и индивидуальной КТ/FEM-инверсии 33.22.'
+            cell.source = cell.source.replace('\n\n'+old_history, '').replace('\n\n'+history, '')
             marker = '**Статус: разработка методики; исследовательские сценарии без независимой валидации.**'
             cell.source = cell.source.replace(marker, marker+'\n\n'+history)
+        cell.source = cell.source.replace(
+            'Роли импедансных каналов постоянны во всём горизонтальном ряду, но их числовое назначение не восстановлено: расчёт сохраняет два общих сценария.',
+            'В этой исторической постановке принималась постоянная нумерация ролей во всём горизонтальном ряду и сохранялись два общих сценария. Уточнение автора от 09.10.2026 заменило это допущение; исходные результаты ниже сохранены для сопоставления.')
         cell.source = cell.source.replace(
             'Полный индивидуальный результат находится только в исключённом из Git `Experiments/scorpion_v2_georg/derived/exploratory/33.20_lateral_pilot/`.',
             'Сохранённые таблицы и графики приведены ниже. Полные производные массивы находятся в исключённом из Git `Experiments/scorpion_v2_georg/derived/exploratory/33.20_lateral_pilot/`.')
@@ -67,6 +71,7 @@ start = page.find("h2")
 content = str(start) + "".join(str(node) for node in start.next_siblings)
 content = content.replace("inhale", "вдох").replace("exhale", "выдох")
 content = content.replace("RMSE, Ом", "Среднеквадратичная невязка, Ом")
+content = content.replace("Подтверждённое автором постоянство ролей сохраняется: перестановка каналов между записями не вводится ради подгонки.", "В этой исторической редакции принималась постоянная нумерация ролей. Уточнение автора от 09.10.2026 заменило это допущение; исправленный размерный ряд используется в 33.21.")
 display(HTML("<script>" + get_plotlyjs() + "</script>" + content))'''))
     nb.metadata.kernelspec = dict(name='python3', display_name='Python 3', language='python')
     NotebookClient(nb, timeout=120, kernel_name='python3', resources={'metadata': {'path': str(folder)}}).execute()
