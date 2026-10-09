@@ -1,0 +1,151 @@
+{
+  "review_date": "2026-10-09",
+  "scope": "Active bounded solution surfaces and CT-linked overview of the eighteen Georg Scorpion recordings",
+  "artifact_inventory": [
+    {
+      "path": "Colab Notebooks/scorpion_v2/10.00_Эксперимент_и_сигналы_Георгия_Scorpion_v2.ipynb",
+      "sha256": "bbd654142c95ff5bd93af5ee197900c980b28b8e3a5c80e1f400756ca73dc1ed",
+      "bytes": 15810968
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/10.00_Эксперимент_и_сигналы_Георгия_Scorpion_v2.html",
+      "sha256": "cddedf5651b3c399a922f885dee1ca78ae9c1a9bf1447373cdd329ddbd7b090c",
+      "bytes": 15944354
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/10.00_Эксперимент_и_сигналы_Георгия_Scorpion_v2.md",
+      "sha256": "7938bad4cac67bba2a83229d4d8b0384274b6b8a7b3efeb857a8f70d0e63b909",
+      "bytes": 10722
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.21_Множество_решений_двуслойной_модели_Scorpion_v2.ipynb",
+      "sha256": "79e4912cbf8a5c945e62318e4cfd09c119c4c3eabd4df98265737a055ab33633",
+      "bytes": 9798059
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.21_Множество_решений_двуслойной_модели_Scorpion_v2.html",
+      "sha256": "d079e30ca1166ada153d1de3ff3087756010f7b9392af6c4ac90da5cf22c7ae9",
+      "bytes": 9922441
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.21_Множество_решений_двуслойной_модели_Scorpion_v2.md",
+      "sha256": "397a260fa3d320c110adb1deeb02066937d9e80dedd67b09798c16bbcf8e2b9e",
+      "bytes": 19181
+    }
+  ],
+  "inventory_frozen_before_final_model_reviews": true,
+  "historical_review": "2026-10-09_final_reader_review.json remains historical for 33.21; archived bytes match it exactly. Unchanged 20.20 and 33.22 retain their earlier review.",
+  "renderer_inventory": [
+    {
+      "path": "Colab Notebooks/scorpion_v2/solution_surfaces_view.js",
+      "sha256": "6fb502e43a1d3f6cb2b2b450d8731e17d23eb59863b72d4516c8e3eb72554629"
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/experiment_view.js",
+      "sha256": "0fa17245e58949a959acb386439f895948567d5fa914143e3246e74b6f4b9fe5"
+    }
+  ],
+  "language": {
+    "status": "passed",
+    "reviewer": "Codex model",
+    "method": "Semantic sequential full-text model review of the final notebook prose, equations, every table, and all static/dynamic UI strings in both renderer sources; extraction exposed the text and did not review it",
+    "registered_checks": [
+      "language.ru.hash-bound-final-review",
+      "language.ru.encoding",
+      "language.ru.formula-where",
+      "language.ru.natural-prose",
+      "language.ru.intro-variation",
+      "language.ru.reader-facing-clarity"
+    ],
+    "coverage": [
+      "Complete notebook-order prose and equations of 10.00 and 33.21",
+      "All 18 recording rows, 52 lateral-observation rows, four joint-fit rows and eight 140-mm comparison rows",
+      "All controls, legends, axes, hover labels and conditional localisation messages from the two JS templates",
+      "Direct scientific headings; defined solution curves/surfaces, RSS, relative residual and log-parameter Jacobian condition",
+      "Measured inputs, geometry scenarios, candidate annotations, literary bounds and physiological-validation limits remain distinct",
+      "Equivalent Markdown and code-free HTML reader exports"
+    ],
+    "reader_text_sha256": {
+      "10.00": "a07d3940500448bb6a70f4cad26f15698052134d535911c3ca72e80c4848b288",
+      "33.21": "f2a57ddace7023f369d3d9e546ed6995ff394271c707fdcbe6950a7bc766ca6b"
+    },
+    "semantic_reverse_translation_check": true,
+    "findings": [],
+    "reader_bytes_changed_after_review": false
+  },
+  "technical": {
+    "status": "passed",
+    "reader_checks": [
+      {
+        "stem": "10.00_Эксперимент_и_сигналы_Георгия_Scorpion_v2",
+        "executed_cells": 3,
+        "errors": 0,
+        "code_excluded": true
+      },
+      {
+        "stem": "33.21_Множество_решений_двуслойной_модели_Scorpion_v2",
+        "executed_cells": 6,
+        "errors": 0,
+        "code_excluded": true
+      }
+    ],
+    "python_sources_parse": true,
+    "archive_bytes_preserved": true,
+    "browser": {
+      "rendered_without_console_errors": true,
+      "all_18_recordings_checked": true,
+      "CT_and_signal_record_identifiers_match": true,
+      "unknown_TEPC_AEPC_show_no_invented_contacts": true,
+      "curves_surfaces_slice_share_h_and_visibility": true,
+      "changed_camera_rotation_and_scale_preserved_on_h_and_case_changes": true,
+      "surface_camera_pan_preserved_on_h_and_case_changes": true,
+      "CT_camera_preserved_on_all_18_record_and_global_channel_changes": true,
+      "animation": "not applicable; viewers use selectors, no phase animation"
+    }
+  },
+  "computational": {
+    "status": "passed_within_declared_numerical_checks",
+    "registered_checks": [
+      "test_lateral_pilot.py",
+      "test_lateral_identifiability.py",
+      "test_lateral_revision.py",
+      "test_lateral_surfaces_and_viewer.py",
+      "verify_scorpion_revision.py"
+    ],
+    "tests_passed": 18,
+    "tests_failed": 0,
+    "verification_sha256": "dcedba8129bcfef8ca4fd6349998859be439101e931adcbd420153a4e7eec89b",
+    "active_surface_manifest_sha256": "1b97abdea3fb45cea624dc0e950c11cbfe1ea5881d8689e04b4aeba21a8ce7a6",
+    "viewer_manifest_sha256": "f5f513648f3aff405c107d89b953152a460ff583e3d3ef124a0204c8b219d0f1",
+    "maximum_refined_pair_residual_ohm": 7.702283255639486e-12,
+    "original_wide_numerical_manifest_unchanged": true,
+    "synthetic_pair_intersections_forward_verified": true,
+    "saved_curve_and_intersection_bounds_verified": true,
+    "overview_extrema_and_unthinned_detail_timebase_verified": true
+  },
+  "scientific": {
+    "status": "exploratory_hypothesis_not_validated",
+    "active_bounds_are_literature_informed": true,
+    "individual_physiological_norms_validated": false,
+    "wide_parameters_used_as_current": false,
+    "individual_tissue_parameters_identified": false,
+    "pairwise_intersections_are_common_all_assembly_solution": false,
+    "numeric_channel_roles_selected_by_fit": false,
+    "auxiliary_observations_in_primary_joint_fit": false,
+    "cross_replacement_accepted": false,
+    "breathing_and_ECG_annotation_accepted": false,
+    "CT_recording_coordinates_recovered": false,
+    "full_surface_pose_FEM_search_completed": false,
+    "stroke_volume_or_ejection_fraction_computed": false,
+    "limitations": [
+      "Unknown full experimental error and model discrepancy",
+      "Literature bounds are not individually validated tissue norms",
+      "Finite h/q display grids may miss tangent or between-grid roots",
+      "Sequential-record physiological comparability is an assumption",
+      "CT is a separate session; displayed coordinates and arm contact angles are scenarios",
+      "TEPC/AEPC positions for this acquisition are not localised",
+      "Corrected FEM inversion, complete pose search and compartment-area sensitivity work remain pending"
+    ]
+  },
+  "overall_release_decision": "not assessed; scientific artifacts preserved with explicit exploratory limitations"
+}

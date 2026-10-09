@@ -33,6 +33,8 @@
 "Colab Notebooks/scorpion_v2/33.21_*" -text -whitespace
 "Colab Notebooks/scorpion_v2/20.20_*" -text -whitespace
 "Colab Notebooks/scorpion_v2/33.22_*" -text -whitespace
+"Colab Notebooks/scorpion_v2/10.00_*" -text -whitespace
+"Colab Notebooks/archive/legacy/scorpion_v2/2026-10-09_e799fdb/33.21_*" -text -whitespace
 "Colab Notebooks/scorpion_v2/build_lateral_identifiability_report.py" -text whitespace=trailing-space,space-before-tab,cr-at-eol
 
 # This self-contained interactive report exceeds the normal GitHub blob limit.

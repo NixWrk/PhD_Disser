@@ -1,0 +1,89 @@
+"""Physical substitution and display-data invariants for active Scorpion readers."""
+import unittest
+from pathlib import Path
+import numpy as np
+from lateral_pilot import DiskModel, read
+from lateral_identifiability import SIZES, KernelBank
+from lateral_solution_surfaces import pair_intersections, definition, OUT
+from build_scorpion_experiment_viewer import extrema_indices, OUT as VIEW
+
+
+class SurfaceChecks(unittest.TestCase):
+    def test_known_synthetic_solution_is_recovered_by_pairwise_roots(self):
+        h=20.;truth=np.array([4.,15.]);q=np.geomspace(.09,18.,120)
+        model=DiskModel(SIZES,h,radial=2,angular=8,terms=2048)
+        y=model.evaluate(truth)[0]
+        bank=KernelBank(h=[h],q=q)
+        rows=np.asarray(pair_intersections(model,q,bank.f[0],y,SIZES,np.array([[1.3,42],[3.6,25]]),h))
+        self.assertGreaterEqual(len(rows),10)
+        nearest=min(rows,key=lambda p:np.linalg.norm(p[2:4]-truth))
+        np.testing.assert_allclose(nearest[2:4],truth,rtol=1e-9)
+        self.assertLess(rows[:,5].max(),1e-7)
+
+    def test_equal_size_unequal_observations_do_not_produce_intersections(self):
+        q=np.geomspace(.09,18.,60);bank=KernelBank(h=[20],q=q)
+        model=DiskModel(SIZES,20,radial=2,angular=8,terms=2048)
+        y=np.r_[model.evaluate([4,15])[0],25.,30.]
+        rows=pair_intersections(model,q,bank.f[0],y,[*SIZES,140,140],np.array([[1.3,42],[3.6,25]]),20)
+        self.assertFalse(any(int(r[0])==5 and int(r[1])==6 for r in rows))
+
+    def test_record_roles_are_global_and_both_cross_axes_are_retained(self):
+        for channel in (1,2):
+            items=definition(channel)
+            self.assertEqual(len(items),13)
+            self.assertTrue(all(i['channel']==channel for i in items if i['reference']))
+            for rid in ('SCV2-G-006','SCV2-G-011'):
+                self.assertEqual({i['channel'] for i in items if i['record_id']==rid},{1,2})
+
+    def test_saved_surfaces_and_intersections_respect_bounds_and_forward_model(self):
+        with np.load(OUT/'kernel.local.npz') as a:
+            h,q,f,bounds=[a[k] for k in ('h','q','f','bounds')]
+        for case in read(OUT/'results.local.json'):
+            self.assertTrue(np.all(np.array(case['fit']['parameters'][:2])>=bounds[:,0]))
+            self.assertTrue(np.all(np.array(case['fit']['parameters'][:2])<=bounds[:,1]))
+            with np.load(OUT/(case['key']+'.npz')) as a:
+                y=a['observations'];roots=a['intersections']
+            for row in roots[::max(1,len(roots)//12)]:
+                self.assertTrue(np.all(row[2:4]>=bounds[:,0]-1e-9))
+                self.assertTrue(np.all(row[2:4]<=bounds[:,1]+1e-9))
+                model=DiskModel(SIZES,row[4],radial=2,angular=8,terms=2048)
+                predicted=model.evaluate(row[2:4])[0]
+                for index in row[:2].astype(int):
+                    k=list(SIZES).index(case['assemblies'][index]['size_mm'])
+                    self.assertAlmostEqual(predicted[k],y[index],places=7)
+            for ih in (0,20,70):
+                for k in range(5):
+                    r1=y[k]/f[ih,k];r2=q*r1
+                    valid=np.where((r1>=bounds[0,0])&(r1<=bounds[0,1])&(r2>=bounds[1,0])&(r2<=bounds[1,1]))[0]
+                    for j in valid[::max(1,len(valid)//2)]:
+                        z=DiskModel([SIZES[k]],h[ih],radial=2,angular=8,terms=2048).evaluate([r1[j],r2[j]])[0][0]
+                        self.assertAlmostEqual(z,y[k],places=7)
+
+
+class DisplayChecks(unittest.TestCase):
+    def test_overview_retains_extrema_and_preserves_time_order(self):
+        y=np.zeros(2000);y[432]=-17;y[433]=29;y[1800]=6
+        idx=extrema_indices(y,12)
+        self.assertIn(432,idx);self.assertIn(433,idx);self.assertIn(1800,idx)
+        self.assertTrue(np.all(np.diff(idx)>0))
+        self.assertEqual(idx[0],0);self.assertEqual(idx[-1],len(y)-1)
+
+    def test_saved_viewer_contains_all_records_and_no_invented_TEPC_positions(self):
+        records=read(VIEW/'display_signals.local.json')
+        self.assertEqual([r['record_id'][-3:] for r in records],[f'{i:03}' for i in range(1,19)])
+        for r in records:
+            rid=r['record_id'][-3:]
+            self.assertEqual(r['fs'],400 if rid in ('005','006') else 1000)
+            self.assertEqual(len(r['traces']),8);self.assertEqual(len(r['detail']),4)
+            if int(rid)>=12:
+                self.assertEqual(r['montage']['mapping'],'unknown')
+                self.assertFalse(r['montage']['lateral'] or r['montage']['arm'])
+            if rid in ('006','011'):
+                self.assertEqual(len(r['montage']['lateral']),4)
+                self.assertEqual(len(r['montage']['perpendicular']),4)
+            for t in r['detail']:
+                self.assertEqual(len(t['t']),5*r['fs'])
+                np.testing.assert_allclose(np.diff(t['t']),1/r['fs'],atol=1e-6)
+
+
+if __name__=='__main__':unittest.main()

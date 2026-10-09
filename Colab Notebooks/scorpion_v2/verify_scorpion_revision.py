@@ -15,6 +15,8 @@ from lateral_admissible_sets_report import verify_additional
 from build_lateral_identifiability_report import STEM
 from build_georg_fem_reports import GEOMETRY, INVERSE, OUT as OLD
 from build_georg_geometry_revision_report import OUT, SOURCE, verify
+from build_lateral_solution_surfaces_report import verify as verify_surfaces
+from build_scorpion_experiment_viewer import STEM as EXPERIMENT_VIEW, verify as verify_viewer
 
 
 def extract_reader_text():
@@ -30,7 +32,7 @@ def extract_reader_text():
         elif isinstance(value,list):
             for item in value:yield from labels(item)
     folder=Path(__file__).parent
-    for stem in (STEM,GEOMETRY,INVERSE):
+    for stem in (EXPERIMENT_VIEW,STEM,GEOMETRY,INVERSE):
         chunks=[]
         for cell in nbformat.read(folder/(stem+'.ipynb'),as_version=4).cells:
             if cell.cell_type=='markdown':chunks.append(cell.source)
@@ -59,6 +61,7 @@ def run():
     manifest=read(primary/'manifest.local.json')
     assert all(sha(primary/name)==expected for name,expected in manifest['outputs'].items())
     verify_additional(ADDITIONAL)
+    verify_surfaces();verify_viewer()
     scalar_error=0.;cloud_error=0.
     for case in read(ADDITIONAL/'results.local.json'):
         y=np.array(case['fit']['observations_ohm']);bounds=np.array(case['fit']['bounds_ohm_m'])
@@ -109,7 +112,7 @@ def run():
     assert surface.is_watertight and surface.is_volume and len(surface.split())==1
     inventory=[];technical=[]
     folder=Path(__file__).parent
-    for stem in (STEM,GEOMETRY,INVERSE):
+    for stem in (EXPERIMENT_VIEW,STEM,GEOMETRY,INVERSE):
         nb=nbformat.read(folder/(stem+'.ipynb'),as_version=4)
         codes=[c for c in nb.cells if c.cell_type=='code']
         assert all(c.execution_count is not None for c in codes)
@@ -123,6 +126,7 @@ def run():
             p=folder/(stem+ext)
             inventory.append(dict(path=p.relative_to(ROOT).as_posix(),sha256=sha(p),bytes=p.stat().st_size))
     result=dict(primary_numerical_manifest_unchanged=True,additional_manifest_verified=True,
+        active_bounded_surface_manifest_verified=True,experiment_viewer_manifest_verified=True,
         maximum_cloud_rss_difference_ohm2=cloud_error,maximum_scalar_residual_ohm=scalar_error,
         actual_joins_full_circle_inside_source=True,current_contacts_top_and_opposite_bottom=True,
         lateral_axis_longitudinal=True,old_fem_transferred=False,new_fem_executed=False,
