@@ -1,0 +1,184 @@
+{
+  "review_date": "2026-10-09",
+  "scope": "10.00: rotated U in 2x2, impedance components, switchable ECG processing and spectra, candidate breathing intervals, four CT tissues and common-axis section",
+  "artifact_inventory": [
+    {
+      "path": "Colab Notebooks/scorpion_v2/10.00_Эксперимент_и_сигналы_Георгия_Scorpion_v2.ipynb",
+      "sha256": "16aaa5752c0613958b094d3d22e592f5da465a5c3f7a12901fb3fcf0123ec6eb",
+      "bytes": 36335429
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/10.00_Эксперимент_и_сигналы_Георгия_Scorpion_v2.html",
+      "sha256": "15f3bae9577ebd8646a4b896b4de49c7feb018fdf7b000c052032fb2d581167b",
+      "bytes": 36466051
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/10.00_Эксперимент_и_сигналы_Георгия_Scorpion_v2.md",
+      "sha256": "47cf584cdb0e66a04ea8a8c8b067b2b7a9b2a2758d97c34d573560dd02522ea0",
+      "bytes": 16695
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/20.20_Индивидуальная_КТ_FEM_модель_Георгия_Scorpion_v2.ipynb",
+      "sha256": "fdb189d5f7cf7cc20e1190f61450c95989dae5634a5dd18e3552538fe2e14972",
+      "bytes": 12369820
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/20.20_Индивидуальная_КТ_FEM_модель_Георгия_Scorpion_v2.html",
+      "sha256": "8d4add6fb4f7e29248641a393c0222ca5097a5378f1ebca91a1ddb81c8489ee6",
+      "bytes": 12491129
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/20.20_Индивидуальная_КТ_FEM_модель_Георгия_Scorpion_v2.md",
+      "sha256": "4eb27cbca53105854918dff776c2ff1fd14c09e408317ec1f4342231dd9ac65f",
+      "bytes": 18370
+    }
+  ],
+  "documentation_inventory": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "94beec61f5819bb30a3f894c40da42914b64ada44723c44a43ef306ec6e40b6e",
+      "bytes": 86793
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/AGENTS.md",
+      "sha256": "9592154f07c0371ea215d408b2ff61a157e3e9e5406009aedca0a4830e8fd0ad",
+      "bytes": 21397
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/README.md",
+      "sha256": "273f47278b40f535f4ff2fdcada966827fd2a3fc4ae8b23006bffacc5ef77f48",
+      "bytes": 6172
+    }
+  ],
+  "source_inventory": [
+    {
+      "path": "Colab Notebooks/scorpion_v2/build_scorpion_experiment_viewer.py",
+      "sha256": "a8480163b048ce32a3b8191e93ba63b1e93dae53cae3ad4fe393a9cfdb85d014",
+      "bytes": 32257
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/experiment_view.js",
+      "sha256": "e70eeecb0af1bce294d687440854da28b7eb081dad2ac4049a10c0de3b70c2df",
+      "bytes": 10788
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/experiment_signal_display.py",
+      "sha256": "9057ce7ff136805b7a2055a9d3be3327b26905d61df3064e1592af496ff1fa52",
+      "bytes": 1793
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/build_georg_geometry_revision_report.py",
+      "sha256": "671d1ac72c0d48101bf14c6447a2f76f2ba1cdfb65a2ab91cf00dfa259683969",
+      "bytes": 30625
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/verify_scorpion_revision.py",
+      "sha256": "e5870f503209bf0e1aa1a1a7bd7c92579d7851ad9ba219cbcfd29b6639f3d755",
+      "bytes": 9135
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/test_lateral_surfaces_and_viewer.py",
+      "sha256": "555a45f5d1991349eba9ed4aad2cdc2a5691b2eb331409ffc694b3ff89ccdca9",
+      "bytes": 5453
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/test_experiment_signal_display.py",
+      "sha256": "51541504592f1cd0d96c0e2a3397a935a63dcc49ae922a017b896f816cb64472",
+      "bytes": 2342
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/tools/scorpion_georg_geometry_revision.py",
+      "sha256": "b314333e568f8f5e2cc44ca4388ce769ae7413c5210d547899ae38299963028c",
+      "bytes": 9307
+    }
+  ],
+  "language": {
+    "status": "passed",
+    "reviewer": "Codex model",
+    "method": "Final sequential semantic reading of complete 10.00 and 20.20 reader prose, tables, figure labels, complete final renderer strings and documentation; extraction and hashes do not substitute for the model pass",
+    "registered_checks": [
+      "language.ru.hash-bound-final-review",
+      "language.ru.encoding",
+      "language.ru.formula-where",
+      "language.ru.natural-prose",
+      "language.ru.intro-variation",
+      "language.ru.reader-facing-clarity"
+    ],
+    "scientific_headings_checked": true,
+    "terminology_and_scope_checked": true,
+    "derived_objects_defined": true,
+    "meaningful_contrasts_checked": true,
+    "findings": []
+  },
+  "technical": {
+    "status": "passed",
+    "readers": [
+      {
+        "stem": "10.00_Эксперимент_и_сигналы_Георгия_Scorpion_v2",
+        "executed_cells": 4,
+        "errors": 0,
+        "code_excluded": true,
+        "html_prose_matches_notebook": true
+      },
+      {
+        "stem": "20.20_Индивидуальная_КТ_FEM_модель_Георгия_Scorpion_v2",
+        "executed_cells": 5,
+        "errors": 0,
+        "code_excluded": true,
+        "html_prose_matches_notebook": true
+      }
+    ],
+    "code_excluded": true,
+    "html_prose_matches_every_notebook_markdown_cell": true,
+    "ct_section_identical_bytes_in_both_notebooks_and_html": true,
+    "tissue_affines_checked_against_CT": true,
+    "display_tissue_faces": {
+      "fat": 17680,
+      "bone": 12000,
+      "lung": 10000,
+      "heart": 6000
+    }
+  },
+  "computational": {
+    "status": "passed",
+    "tests_passed": 10,
+    "test_files": [
+      "test_experiment_signal_display.py",
+      "test_lateral_surfaces_and_viewer.py"
+    ],
+    "synthetic_notch_and_bandpass_effects_checked": true,
+    "PSD_density_integral_checked": true,
+    "all_filters_disabled_returns_raw_signal_exactly": true,
+    "default_matches_existing_cache": true,
+    "unchanged_primary_and_inverse_manifests_verified": true,
+    "geometry_current_and_potential_pairs_top_bottom_verified": true,
+    "source_annotations_unchanged": true,
+    "new_fem_executed": false
+  },
+  "browser": {
+    "all_18_records_checked": true,
+    "all_four_ECG_stage_combinations_checked": true,
+    "candidate_phases_on_all_impedance_and_ECG_overview_rows": true,
+    "candidate_phase_on_ECG_detail": true,
+    "final_phase_labels_fit_without_overlap": true,
+    "CT_section_rendered": true,
+    "four_tissue_layers_independently_toggled": true,
+    "tissue_visibility_preserved_on_record_change": true,
+    "camera_rotation_zoom_pan_preserved": true,
+    "final_export_rechecked_after_caption_layout_change": true,
+    "Nyquist_ranges_400Hz_and_1000Hz_checked": true,
+    "reported_errors": []
+  },
+  "scientific": {
+    "status": "exploratory_not_independently_validated",
+    "baseline_and_pulse_are_frequency_components": true,
+    "unplotted_BEI_remainder_retained_in_11_20": true,
+    "ECG_filters_are_display_options_not_accepted_QRS_processing": true,
+    "breathing_annotations_remain_unaccepted": true,
+    "CT_masks_are_automatic": true,
+    "actual_electrode_coordinates_unrecovered": true,
+    "U_pair_top_bottom_orientation_author_confirmed": true,
+    "independent_heart_function_validation_not_claimed": true,
+    "raw_medical_inputs_not_committed": true
+  }
+}

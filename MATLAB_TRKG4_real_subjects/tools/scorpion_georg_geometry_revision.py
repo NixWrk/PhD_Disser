@@ -93,7 +93,9 @@ def arm_groups(surface, original, joins, current_count=1, potential_count=4):
         arm, join = original[key], joins[key]
         direction = -1 if arm['direction'] == 'negative_axis' else 1
         for distance, count in [(120., current_count), (20., potential_count)]:
-            angles = (np.pi/2 if distance == 120. else 0.)+np.arange(count)*2*np.pi/count
+            # Author correction: in 2x2 both I and U lie on the top/bottom axis.
+            rotation = np.pi/2 if distance == 120. or potential_count == 2 else 0.
+            angles = rotation+np.arange(count)*2*np.pi/count
             # Retain the original crop-plane distance reference explicitly.
             xyz = np.array([[arm['cut_coordinate']+direction*distance,
                 join['centre_yz_mm'][0]+RADIUS*np.cos(theta),
@@ -149,8 +151,8 @@ def run(source, out=OUT):
         ttrkg_1x4=arm_groups(checked, original, joins),
         ttrkg_2x2=arm_groups(checked, original, joins, 2, 2),
         diameter_mm=5., current_contact_rotation_rad=float(np.pi/2),
-        user_confirmation='2026-10-09: 1x4 current on top; 2x2 additional diametrically opposite bottom contact',
-        potential_pair_rotation_is_scenario=True,
+        user_confirmation='2026-10-09: 1x4 current on top; both current and potential pairs of 2x2 rotated by 90 degrees, top/bottom',
+        potential_pair_rotation_rad=float(np.pi/2), potential_pair_rotation_is_scenario=False,
         groups_are_equipotential=True, electrode_projection_tolerance_mm=.02)
     write(out/'contacts.local.json', contacts)
     write(out/'geometry.local.json', dict(status='geometry_revision_not_yet_fem_recomputed',

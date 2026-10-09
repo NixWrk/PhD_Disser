@@ -105,6 +105,11 @@ def run():
             np.testing.assert_allclose(xyz[:,1],yz[0],atol=.02)
             target=np.array([radius]) if montage=='1x4' else np.array([radius,-radius])
             np.testing.assert_allclose(xyz[:,2]-yz[1],target,atol=.02)
+    assert c['potential_pair_rotation_is_scenario'] is False
+    for key,index in [('left',1),('right',2)]:
+        yz=np.array(g['joins'][key]['centre_yz_mm']);xyz=np.array(c['ttrkg_2x2'][index])
+        np.testing.assert_allclose(xyz[:,1],yz[0],atol=.02)
+        np.testing.assert_allclose(xyz[:,2]-yz[1],[radius,-radius],atol=.02)
     centres=np.array(c['lateral']['centres_by_size_mm'])
     np.testing.assert_allclose(centres[:,:,1],c['lateral']['y_mm'],atol=1e-9)
     np.testing.assert_allclose(centres[:,:,2].mean(axis=1),c['lateral']['z_mm'],atol=1e-9)

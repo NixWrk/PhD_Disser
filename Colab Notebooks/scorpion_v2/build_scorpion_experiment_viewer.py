@@ -1,6 +1,7 @@
 """Executed experiment overview: nominal CT montages linked to cached signals."""
 from pathlib import Path
 import json
+import sys
 import numpy as np
 import pandas as pd
 import trimesh
@@ -8,11 +9,15 @@ from plotly.offline import get_plotlyjs
 from lateral_pilot import ROOT, EXPERIMENT, read, save, sha
 from build_georg_fem_reports import export, table
 from build_georg_geometry_revision_report import OUT as GEOMETRY, SOURCE, verify as verify_geometry
+from experiment_signal_display import ecg_variants, spectrum, phase_intervals
 
 FOLDER=Path(__file__).parent
 OUT=EXPERIMENT/'derived/exploratory/10.00_experiment_view_20261009'
 STEM='10.00_Эксперимент_и_сигналы_Георгия_Scorpion_v2'
 PRIMARY={'002':140,'003':140,'004':140,'007':120,'008':100,'009':80,'010':60}
+SEGMENTATION=ROOT/'MATLAB_TRKG4_real_subjects/output/exploratory/scorpion_georg_fem_20261008/segmentation'
+TISSUES={'fat':('Жир','#dba832',.20,12000),'bone':('Кости','#c8b69b',.85,12000),
+        'lung':('Лёгкие','#49aebc',.35,10000),'heart':('Сердце','#c52b47',.90,6000)}
 
 
 def extrema_indices(values,buckets=900):
@@ -70,9 +75,32 @@ def run(out=OUT):
     source=trimesh.load(SOURCE,force='mesh');contacts=read(GEOMETRY/'contacts.local.json')
     body=trimesh.load(GEOMETRY/'body_embedded_arms_370mm.stl',force='mesh')
     import pymeshlab
-    ms=pymeshlab.MeshSet();ms.add_mesh(pymeshlab.Mesh(body.vertices,body.faces))
-    ms.apply_filter('meshing_decimation_quadric_edge_collapse',targetfacenum=40000,preservenormal=True,preserveboundary=True)
-    mesh=ms.current_mesh();np.savez_compressed(out/'display_geometry.local.npz',vertices=mesh.vertex_matrix(),faces=mesh.face_matrix())
+    def decimate(mesh, count):
+        ms=pymeshlab.MeshSet();ms.add_mesh(pymeshlab.Mesh(mesh.vertices,mesh.faces))
+        ms.apply_filter('meshing_decimation_quadric_edge_collapse',targetfacenum=count,preservenormal=True,preserveboundary=True)
+        m=ms.current_mesh()
+        return m.vertex_matrix(),m.face_matrix()
+    vertices,faces=decimate(body,40000);display=dict(vertices=vertices,faces=faces)
+    sys.path.insert(0,str(ROOT/'MATLAB_TRKG4_real_subjects/tools'))
+    from build_georg_tepc_picker import mask_surface
+    import nibabel as nib
+    ct=nib.load(SEGMENTATION/'static_ct.nii.gz');mask_hashes={}
+    for name,(_,_,_,count) in TISSUES.items():
+        mask=SEGMENTATION/(name+'.nii.gz');image=nib.load(mask)
+        if image.shape!=ct.shape or not np.allclose(image.affine,ct.affine,atol=1e-5,rtol=0):
+            raise ValueError('Tissue mask and CT coordinate frames differ')
+        target=out/(name+'_lps.local.stl');mask_surface(mask,target)
+        v,f=decimate(trimesh.load(target,force='mesh'),count)
+        display[name+'_vertices']=v;display[name+'_faces']=f;mask_hashes[name]=sha(mask)
+    np.savez_compressed(out/'display_geometry.local.npz',**display)
+    section=GEOMETRY/'ct_longitudinal_sections.png'
+    if not section.exists():raise ValueError('Build the 20.20 CT section before the viewer')
+    section_provenance=read(GEOMETRY/'section_provenance.local.json')
+    if (section_provenance['mask_sha256']!=mask_hashes or
+        section_provenance['ct_sha256']!=sha(SEGMENTATION/'static_ct.nii.gz') or
+        section_provenance['plane_y_lps_mm']!=contacts['lateral']['y_mm'] or
+        section_provenance['builder_sha256']!=sha(FOLDER/'build_georg_geometry_revision_report.py')):
+        raise ValueError('20.20 section anatomy or plane is stale')
     records=[];sources=[]
     for record in summary['records']:
         rid=record['record_id'][-3:];fs=record['fs_hz_scenario']
@@ -84,20 +112,26 @@ def run(out=OUT):
         cache_path=review/(record['key']+'.npz')
         with np.load(cache_path) as a:
             t=a['time_s'];traces=[]
-            for row,kind,scale in [(1,'bei_raw',1),(1,'bei_slow',1),(2,'bei_pulse_band',1000),(3,'ecg_filtered',1)]:
+            for row,kind,scale in [(1,'bei_raw',1),(2,'bei_slow',1),(3,'bei_pulse_band',1000)]:
                 for channel in (1,2):
                     y=a[f'{kind}_{channel}']*scale;idx=extrema_indices(y)
                     traces.append(dict(row=row,channel=channel,kind=kind,t=np.round(t[idx],6).tolist(),y=np.round(y[idx],7).tolist()))
             breathing=annotation['breathing'];boundaries=breathing.get('boundaries_samples',[])
             start=(boundaries[0]/fs+6) if boundaries else max(0.,float(t[-1])/2-2.5)
             start=min(start,max(0.,float(t[-1])-5));first=int(round(start*fs));last=min(len(t),first+int(5*fs))
-            detail=[]
+            variants={key:[] for key in ('00','10','01','11')}
             for channel in (1,2):
-                for kind in ('ecg_raw','ecg_filtered'):
-                    detail.append(dict(channel=channel,kind=kind,t=np.round(t[first:last],6).tolist(),y=np.round(a[f'{kind}_{channel}'][first:last],7).tolist()))
+                full=ecg_variants(a[f'ecg_raw_{channel}'],fs)
+                np.testing.assert_allclose(full['11'],a[f'ecg_filtered_{channel}'],rtol=1e-10,atol=1e-10)
+                for key,y in full.items():
+                    idx=extrema_indices(y);freq,psd=spectrum(y,fs)
+                    variants[key].append(dict(channel=channel,t=np.round(t[idx],6).tolist(),y=np.round(y[idx],7).tolist(),
+                        detail_y=np.round(y[first:last],7).tolist(),psd=psd.tolist()))
         records.append(dict(record_id=record['record_id'],label=rid+' · '+record['montage_label'],fs=fs,
-            duration=float(t[-1]),timebase_status=record['timebase_status'],traces=traces,detail=detail,
-            breathing={k:breathing.get(k) for k in ('boundaries_samples','boundary_uncertainty_ranges_samples','single_mode','author_accepted')},
+            duration=float(t[-1]),timebase_status=record['timebase_status'],traces=traces,ecg_variants=variants,
+            detail_t=np.round(t[first:last],6).tolist(),psd_frequency_hz=freq.tolist(),
+            breathing={**{k:breathing.get(k) for k in ('boundaries_samples','boundary_uncertainty_ranges_samples','single_mode','author_accepted')},
+                'phases':phase_intervals(breathing,fs,float(t[-1]))},
             montage=montage(record,contacts,source)))
         sources.append(dict(record_id=record['record_id'],source_sha256=record['source_sha256'],cache_sha256=sha(cache_path)))
     if len(records)!=18:raise ValueError('Expected eighteen independent recordings')
@@ -107,8 +141,17 @@ def run(out=OUT):
         geometry_surface_sha256=sha(GEOMETRY/'body_embedded_arms_370mm.stl'),sources=sources,
         decimation='900 chronological buckets per overview trace; minima and maxima retained; 5 s ECG detail unthinned',
         filters=summary['filters'],coordinates_are_scenarios=True,actual_electrode_localisation_recovered=False,
+        signal_display_producer_sha256=sha(FOLDER/'experiment_signal_display.py'),
+        viewer_js_sha256=sha(FOLDER/'experiment_view.js'),
+        tissue_surface_producer_sha256=sha(ROOT/'MATLAB_TRKG4_real_subjects/tools/build_georg_tepc_picker.py'),
+        tissue_mask_sha256=mask_hashes,tissue_display_faces={name:len(display[name+'_faces']) for name in TISSUES},
+        ct_sha256=sha(SEGMENTATION/'static_ct.nii.gz'),
+        ct_section_sha256=sha(section),ct_section_plane_lps_y_mm=contacts['lateral']['y_mm'],
+        ct_section_provenance_sha256=sha(GEOMETRY/'section_provenance.local.json'),
+        ecg_filter_variants='00 raw; 10 notches; 01 bandpass; 11 notches then bandpass; whole-record filtering before display sampling',
+        spectrum='Welch PSD, Hann 8 s windows (short records: whole record), 50% overlap, constant detrend; mV²/Hz; full Nyquist range',
         numerical_channel_assignment_confirmed=False,annotations_modified=False,annotations_accepted=False,
-        CT_is_separate_session=True,display_mesh_is_not_FEM_mesh=True,display_faces=len(mesh.face_matrix())))
+        CT_is_separate_session=True,display_mesh_is_not_FEM_mesh=True,display_faces=len(faces)))
     save(out/'manifest.local.json',dict(outputs={name:sha(out/name) for name in
         ['display_geometry.local.npz','display_signals.local.json','contract.local.json']}))
     return out
@@ -123,6 +166,14 @@ def verify(out=OUT):
         (EXPERIMENT/'annotations/scorpion_review/annotations_candidates.local.json','annotations_sha256'),
         (GEOMETRY/'contacts.local.json','geometry_contacts_sha256'),(GEOMETRY/'body_embedded_arms_370mm.stl','geometry_surface_sha256')]:
         if sha(path)!=c[key]:raise ValueError('Viewer reference changed')
+    for path,key in [(FOLDER/'experiment_signal_display.py','signal_display_producer_sha256'),
+        (FOLDER/'experiment_view.js','viewer_js_sha256'),
+        (ROOT/'MATLAB_TRKG4_real_subjects/tools/build_georg_tepc_picker.py','tissue_surface_producer_sha256'),
+        (SEGMENTATION/'static_ct.nii.gz','ct_sha256'),(GEOMETRY/'ct_longitudinal_sections.png','ct_section_sha256'),
+        (GEOMETRY/'section_provenance.local.json','ct_section_provenance_sha256')]:
+        if sha(path)!=c[key]:raise ValueError('Viewer anatomy or filter dependency changed')
+    for name,digest in c['tissue_mask_sha256'].items():
+        if sha(SEGMENTATION/(name+'.nii.gz'))!=digest:raise ValueError('Viewer mask changed: '+name)
     return c
 
 
@@ -130,13 +181,23 @@ def widget(out=OUT):
     verify(out);out=Path(out)
     with np.load(out/'display_geometry.local.npz') as a:
         payload={'vertices':np.round(a['vertices'],5).tolist(),'faces':a['faces'].tolist()}
+        payload['tissues']=[dict(name=label,color=color,opacity=opacity,
+            vertices=np.round(a[name+'_vertices'],5).tolist(),faces=a[name+'_faces'].tolist())
+            for name,(label,color,opacity,_) in TISSUES.items()]
     payload['records']=read(out/'display_signals.local.json')
     ui='''<div id="experiment-viewer" style="border:1px solid #aaa;padding:12px">
 <p><label>Запись: <select id="experiment-record"></select></label></p>
 <p><label>Вариант нумерации подключения: <select id="experiment-channel"><option value="1">Основная боковая ось — BEI1; перпендикулярная ось креста — BEI2</option><option value="2">Основная боковая ось — BEI2; перпендикулярная ось креста — BEI1</option></select></label></p>
 <p id="experiment-description"></p><p id="experiment-localisation" style="color:#904018"></p>
+<fieldset><legend>Фильтры ЭКГ — независимое включение этапов</legend>
+<label><input type="checkbox" id="experiment-notch" checked> Режекторы 50/100/150 Гц, Q = 30</label><br>
+<label><input type="checkbox" id="experiment-band" checked> Полосовой фильтр Баттерворта (N = 4), 0,5–40 Гц</label>
+<p>Обработка всей записи в прямом и обратном направлениях, без фазового сдвига. Режекторы подавляют сетевые частоты; полосовой фильтр ослабляет медленное смещение и высокочастотные компоненты. Оба отключены — исходная ЭКГ.</p>
+<p id="experiment-filter-description"></p></fieldset>
+<p id="experiment-phase-description"></p>
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:8px"><div id="experiment-ct"></div><div id="experiment-signals"></div></div>
-<div id="experiment-ecg-detail"></div></div>'''
+<p>В легенде КТ можно независимо включать жир, кости, лёгкие и сердце. Маски получены автоматически; точность границ не подтверждена.</p>
+<div id="experiment-ecg-detail"></div><div id="experiment-ecg-spectrum"></div></div>'''
     return ui+'<script>'+get_plotlyjs()+'</script><script>const experimentPayload='+json.dumps(payload,separators=(',',':'),allow_nan=False)+';'+(FOLDER/'experiment_view.js').read_text(encoding='utf-8')+'</script>'
 
 
@@ -175,8 +236,12 @@ def cells():
 
 КТ Георга получена в отдельной сессии на глубоком вдохе с задержкой дыхания.
 Показанная наружная поверхность служит анатомической основой сценария,
-а не реконструкцией позы во время регистрации Scorpion. Для отображения
-сетка прорежена до 40 тысяч граней; расчётная FEM-сетка этим не изменена.
+а не реконструкцией позы во время регистрации Scorpion. Добавлены
+автоматические маски жира, костей, лёгких и сердца из TotalSegmentator;
+независимая точность их границ не установлена. Все поверхности приведены
+к одной системе координат КТ. Для отображения наружная сетка прорежена
+до 40 тысяч граней, тканевые — до 6–18 тысяч; эти сетки не используются
+для FEM-расчёта.
 
 По подтверждению автора центр всех размеров и осей креста один, на правой
 боковой поверхности грудной клетки. В сценарии он задан на уровне z = −210 мм
@@ -189,8 +254,9 @@ def cells():
 Руки представлены цилиндрами радиуса 58,887 мм по сообщённому обхвату 37 см
 на уровне токовых электродов обеих рук. Полное сечение цилиндров погружено
 в тело. Для 1×4 показан один верхний токовый контакт и четыре измерительных
-контакта через 90° на каждой руке. Для 2×2 добавлен нижний токовый контакт,
-измерительная пара остаётся спереди и сзади как рабочая гипотеза.
+контакта через 90° на каждой руке. Для 2×2 обе пары — токовая I и
+измерительная U — расположены сверху и снизу: по уточнению автора
+от 09.10.2026 измерительная пара также повёрнута на 90°.
 В варианте 1×1 показан один измерительный контакт спереди — его угловое
 положение не подтверждено. Осевые расстояния перенесены из прежнего сценария
 геометрии, а не измерены в новой сессии; площадь контактов на руках неизвестна.
@@ -221,21 +287,50 @@ def cells():
 **Рисунок 1.** Выбор одной из 18 записей одновременно обновляет монтаж
 и графики. Синий цвет соответствует каналу 1, оранжевый — каналу 2;
 в геометрии неизвестного подключения используются серые маркеры.
-Ракурс, масштаб и смещение КТ сохраняются при переключении записей и гипотез.
+Ракурс, масштаб и смещение КТ сохраняются при переключении записей,
+вариантов подключения, фильтров и видимости тканевых слоёв.
 
-Справа показаны исходный BEI и его медленная составляющая ниже 0,5 Гц,
-полосовая составляющая BEI 0,7–12 Гц в мОм и ЭКГ после режекторов
-50/100/150 Гц и полосового фильтра 0,5–40 Гц. Это частотное разделение,
-которое само по себе не выделяет сердце, лёгкие или мягкие ткани.
+Справа расположены четыре отдельных графика: общий BEI в Ом,
+расчётный базовый импеданс в Ом, пульсовая полоса в мОм и ЭКГ в мВ.
+Базовый импеданс здесь определён как результат фильтра нижних частот
+Баттерворта с частотой среза 0,5 Гц; пульсовая полоса — как результат
+полосовой фильтрации 0,7–12 Гц. Параметр порядка N = 4, обработка
+выполняется в прямом и обратном направлениях с дополнением краёв на 5 с.
+Базовая и пульсовая кривые не составляют полного разложения общего BEI:
+остаток, равный общему сигналу за вычетом этих двух составляющих,
+сохранён в обработке 11.20. Такое частотное разделение само по себе
+не выделяет сердце, лёгкие или мягкие ткани; пульсовая полоса может
+содержать и помехи.
+
+Два переключателя ЭКГ независимо включают группу режекторных фильтров
+50/100/150 Гц с добротностью Q = 30 и полосу Баттерворта 0,5–40 Гц
+с параметром порядка N = 4. Для полосового фильтра N = 4 соответствует
+восьмому порядку одного прохода; прямой и обратный проходы изменяют
+амплитудную характеристику и устраняют фазовый сдвиг. При включении обоих
+этапов сначала применяются режекторы, затем полоса. Отключение обоих
+возвращает исходную ЭКГ. Каждый вариант рассчитан по всей записи до
+выбора фрагмента, с дополнением краёв на 3 с; возможные краевые эффекты
+следует учитывать. Переключение не изменяет исходные данные и разметку.
 На обзорных линиях сохраняются минимум и максимум каждого из 900 временных
 интервалов; пульсовую форму следует проверять в полном просмотре этапа 11.20.
-Нижний график содержит пятисекундный фрагмент исходной и обработанной ЭКГ
+Нижний временной график содержит пятисекундный фрагмент исходной и выбранной ЭКГ
 без прореживания. При наличии кандидатной первой границы его начало выбрано
 через 6 с после неё, иначе — около середины записи.
 
+Отдельный спектральный график сравнивает исходную ЭКГ и выбранный вариант
+за всю запись. Спектральная плотность мощности S в мВ²/Гц оценена методом
+Уэлча: окно Ханна длиной 8 с, перекрытие 50%, удаление среднего в каждом
+окне. Частота f показана от нуля до половины частоты отсчётов; меньший
+диапазон можно выбрать масштабированием. Спектр не является амплитудным
+спектром одного сердечного цикла.
+
+Цветные интервалы на всех четырёх обзорных графиках и фрагменте ЭКГ
+обозначают спокойное дыхание, задержку на вдохе, усиленное дыхание и
+задержку на выдохе. Для тестовой записи показано только спокойное дыхание.
 Пунктирные границы и серые полосы — ранее подготовленная кандидатная
-реконструкция дыхательного протокола и неоднозначности её границ из 11.20.
-Она не принята автором и не является зарегистрированными командами прибора.
+реконструкция протокола и неоднозначности её границ из 11.20. Названия
+режимов следуют сообщённому автором порядку проб. Эта разметка не принята
+автором и не является зарегистрированными командами прибора.
 Распознавание зубцов и новая разметка в этом ноутбуке не выполняются.
 
 Рабочая шкала времени использует 400 Гц для записей «140 верт» и «140 крест»,
@@ -243,6 +338,18 @@ def cells():
 записей сохранено допущение о настройке по умолчанию. Шкала времени
 и частотная обработка зависят от этого допущения.''')
     code('display(HTML(widget()))')
+    md('''## Сечение КТ в плоскости бокового монтажа
+
+**Рисунок 2.** То же сечение, что в 20.20: плоскость y LPS = 0 мм
+содержит продольную ось боковых сборок. Слева показано полное сечение,
+справа — область сборки 140 мм с токовыми A, B и измерительными M, N.
+Цветом отмечены лёгкие, кости, сердце и жир; белая линия показывает
+наружную поверхность, голубая — первую границу маски лёгкого.
+Все размеры сборок имеют один номинальный центр. Здесь показан сценарий
+его положения; это сечение не задаёт плоскости ТЕПС/АЕПС и не заменяет
+восстановление фактического монтажа. Расстояние до лёгкого и эквивалентная
+толщина двуслойной модели рассматриваются раздельно в 20.20 и 33.21.''')
+    code("from IPython.display import Image\nfrom build_scorpion_experiment_viewer import GEOMETRY\ndisplay(Image(filename=str(GEOMETRY/'ct_longitudinal_sections.png')))")
     md('''## Состав доступных записей
 
 **Таблица 1.** Записи, рабочая временная шкала и статус анатомического размещения.

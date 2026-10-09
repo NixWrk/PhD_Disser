@@ -74,16 +74,25 @@ class DisplayChecks(unittest.TestCase):
         for r in records:
             rid=r['record_id'][-3:]
             self.assertEqual(r['fs'],400 if rid in ('005','006') else 1000)
-            self.assertEqual(len(r['traces']),8);self.assertEqual(len(r['detail']),4)
+            self.assertEqual(len(r['traces']),6)
+            self.assertEqual(set(r['ecg_variants']),{'00','10','01','11'})
+            self.assertEqual(len(r['breathing']['phases']),1 if rid=='001' else 4)
+            self.assertFalse(r['breathing']['author_accepted'])
             if int(rid)>=12:
                 self.assertEqual(r['montage']['mapping'],'unknown')
                 self.assertFalse(r['montage']['lateral'] or r['montage']['arm'])
             if rid in ('006','011'):
                 self.assertEqual(len(r['montage']['lateral']),4)
                 self.assertEqual(len(r['montage']['perpendicular']),4)
-            for t in r['detail']:
-                self.assertEqual(len(t['t']),5*r['fs'])
-                np.testing.assert_allclose(np.diff(t['t']),1/r['fs'],atol=1e-6)
+            self.assertEqual(len(r['detail_t']),5*r['fs'])
+            np.testing.assert_allclose(np.diff(r['detail_t']),1/r['fs'],atol=1e-6)
+            self.assertEqual(r['psd_frequency_hz'][0],0.)
+            self.assertEqual(r['psd_frequency_hz'][-1],r['fs']/2)
+            for variants in r['ecg_variants'].values():
+                for t in variants:
+                    self.assertEqual(len(t['detail_y']),len(r['detail_t']))
+                    self.assertEqual(len(t['psd']),len(r['psd_frequency_hz']))
+                    self.assertTrue(np.all(np.isfinite(t['psd'])))
 
 
 if __name__=='__main__':unittest.main()
