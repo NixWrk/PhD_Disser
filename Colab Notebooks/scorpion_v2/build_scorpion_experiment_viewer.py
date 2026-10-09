@@ -16,8 +16,50 @@ OUT=EXPERIMENT/'derived/exploratory/10.00_experiment_view_20261009'
 STEM='10.00_Эксперимент_и_сигналы_Георгия_Scorpion_v2'
 PRIMARY={'002':140,'003':140,'004':140,'007':120,'008':100,'009':80,'010':60}
 SEGMENTATION=ROOT/'MATLAB_TRKG4_real_subjects/output/exploratory/scorpion_georg_fem_20261008/segmentation'
-TISSUES={'fat':('Жир','#dba832',.20,12000),'bone':('Кости','#c8b69b',.85,12000),
+TISSUES={'fat':('Жир','#dba832',.20,None),'bone':('Кости','#c8b69b',.85,12000),
         'lung':('Лёгкие','#49aebc',.35,10000),'heart':('Сердце','#c52b47',.90,6000)}
+
+
+def decimate_display(mesh,count):
+    import pymeshlab
+    ms=pymeshlab.MeshSet();ms.add_mesh(pymeshlab.Mesh(mesh.vertices,mesh.faces))
+    options=dict(targetfacenum=count,preservenormal=True,preserveboundary=True)
+    ms.apply_filter('meshing_decimation_quadric_edge_collapse',**options)
+    m=ms.current_mesh()
+    return m.vertex_matrix(),m.face_matrix()
+
+
+def check_surface_samples(source,vertices,faces,tolerance_mm=3.):
+    """Reject spurious interior sheets; sampled distance is not a Hausdorff bound."""
+    from scipy.spatial import cKDTree
+    tri=vertices[faces]
+    points=np.concatenate([vertices,tri.mean(axis=1),(tri[:,0]+tri[:,1])/2,
+        (tri[:,1]+tri[:,2])/2,(tri[:,2]+tri[:,0])/2])
+    distance=cKDTree(source.vertices).query(points)[0]
+    maximum=float(distance.max())
+    if maximum>tolerance_mm:
+        raise ValueError(f'Display surface departs from source samples: {maximum:.3f} mm > {tolerance_mm} mm')
+    return dict(samples=len(points),maximum_distance_to_source_vertices_mm=maximum,
+        p95_distance_to_source_vertices_mm=float(np.quantile(distance,.95)),
+        tolerance_mm=tolerance_mm,checked_points='vertices, face centroids and three edge midpoints',
+        is_hausdorff_bound=False,is_segmentation_accuracy=False)
+
+
+def fat_display_surface(mask_path,source):
+    """Use a spatial CT grid instead of collapsing a thin anatomical shell."""
+    import nibabel as nib
+    from skimage.measure import marching_cubes
+    image=nib.load(mask_path)
+    vertices,faces,_,_=marching_cubes((np.asanyarray(image.dataobj)>0).astype(np.uint8),
+        level=.5,step_size=3)
+    vertices=nib.affines.apply_affine(image.affine,vertices)*[-1.,-1.,1.]
+    qc=check_surface_samples(source,vertices,faces)
+    qc.update(method='marching_cubes on original mask, no subsequent triangle collapse',
+        grid_step_voxels=3,grid_step_mm=(3*np.array(image.header.get_zooms())).tolist(),
+        faces=len(faces),maximum_edge_mm=float(np.linalg.norm(
+            vertices[faces[:,[1,2,0]]]-vertices[faces],axis=2).max()),
+        topology_preservation_claimed=False)
+    return vertices,faces,qc
 
 
 def extrema_indices(values,buckets=900):
@@ -74,23 +116,19 @@ def run(out=OUT):
         raise ValueError('Signal cache producer changed')
     source=trimesh.load(SOURCE,force='mesh');contacts=read(GEOMETRY/'contacts.local.json')
     body=trimesh.load(GEOMETRY/'body_embedded_arms_370mm.stl',force='mesh')
-    import pymeshlab
-    def decimate(mesh, count):
-        ms=pymeshlab.MeshSet();ms.add_mesh(pymeshlab.Mesh(mesh.vertices,mesh.faces))
-        ms.apply_filter('meshing_decimation_quadric_edge_collapse',targetfacenum=count,preservenormal=True,preserveboundary=True)
-        m=ms.current_mesh()
-        return m.vertex_matrix(),m.face_matrix()
-    vertices,faces=decimate(body,40000);display=dict(vertices=vertices,faces=faces)
+    vertices,faces=decimate_display(body,40000);display=dict(vertices=vertices,faces=faces)
     sys.path.insert(0,str(ROOT/'MATLAB_TRKG4_real_subjects/tools'))
     from build_georg_tepc_picker import mask_surface
     import nibabel as nib
-    ct=nib.load(SEGMENTATION/'static_ct.nii.gz');mask_hashes={}
+    ct=nib.load(SEGMENTATION/'static_ct.nii.gz');mask_hashes={};surface_checks={}
     for name,(_,_,_,count) in TISSUES.items():
         mask=SEGMENTATION/(name+'.nii.gz');image=nib.load(mask)
         if image.shape!=ct.shape or not np.allclose(image.affine,ct.affine,atol=1e-5,rtol=0):
             raise ValueError('Tissue mask and CT coordinate frames differ')
         target=out/(name+'_lps.local.stl');mask_surface(mask,target)
-        v,f=decimate(trimesh.load(target,force='mesh'),count)
+        original=trimesh.load(target,force='mesh')
+        if name=='fat':v,f,surface_checks[name]=fat_display_surface(mask,original)
+        else:v,f=decimate_display(original,count)
         display[name+'_vertices']=v;display[name+'_faces']=f;mask_hashes[name]=sha(mask)
     np.savez_compressed(out/'display_geometry.local.npz',**display)
     section=GEOMETRY/'ct_longitudinal_sections.png'
@@ -145,6 +183,8 @@ def run(out=OUT):
         viewer_js_sha256=sha(FOLDER/'experiment_view.js'),
         tissue_surface_producer_sha256=sha(ROOT/'MATLAB_TRKG4_real_subjects/tools/build_georg_tepc_picker.py'),
         tissue_mask_sha256=mask_hashes,tissue_display_faces={name:len(display[name+'_faces']) for name in TISSUES},
+        tissue_surface_checks=surface_checks,
+        fat_display_decimation='marching cubes, step 3 voxels; original mask unchanged; no triangle collapse',
         ct_sha256=sha(SEGMENTATION/'static_ct.nii.gz'),
         ct_section_sha256=sha(section),ct_section_plane_lps_y_mm=contacts['lateral']['y_mm'],
         ct_section_provenance_sha256=sha(GEOMETRY/'section_provenance.local.json'),
@@ -174,6 +214,8 @@ def verify(out=OUT):
         if sha(path)!=c[key]:raise ValueError('Viewer anatomy or filter dependency changed')
     for name,digest in c['tissue_mask_sha256'].items():
         if sha(SEGMENTATION/(name+'.nii.gz'))!=digest:raise ValueError('Viewer mask changed: '+name)
+    if c['tissue_surface_checks']['fat']['maximum_distance_to_source_vertices_mm']>3.:
+        raise ValueError('Fat display surface has failed geometric QC')
     return c
 
 
@@ -240,8 +282,22 @@ def cells():
 автоматические маски жира, костей, лёгких и сердца из TotalSegmentator;
 независимая точность их границ не установлена. Все поверхности приведены
 к одной системе координат КТ. Для отображения наружная сетка прорежена
-до 40 тысяч граней, тканевые — до 6–18 тысяч; эти сетки не используются
-для FEM-расчёта.
+до 40 тысяч граней, сетки костей, лёгких и сердца — до 6–12 тысяч.
+Эти сетки не используются для FEM-расчёта.
+
+В прежнем 3D-изображении жира упрощение поверхности создало ложные
+треугольные перегородки с рёбрами до 283 мм. В исходной поверхности
+маски таких перегородок не было. Теперь поверхность жира строится прямо
+из исходной маски с шагом три вокселя по каждой оси, без последующего
+схлопывания треугольников. Шаг равен 2,637 × 2,637 × 3,75 мм в координатах
+КТ; поверхность содержит около 547 тысяч граней. Мелкие детали и отдельные
+тонкие участки при таком отображении могут исчезать; их необходимо
+проверять на исходных сечениях. Дополнительно проверены вершины,
+центры граней и середины рёбер. Расстояние каждой проверенной точки
+до ближайшей вершины исходной поверхности не должно превышать 3 мм.
+Этот технический допуск относится к отображению; он не задаёт точность
+сегментации и не является оценкой максимальной ошибки всей поверхности.
+Исходная маска и сечение КТ не изменены.
 
 По подтверждению автора центр всех размеров и осей креста один, на правой
 боковой поверхности грудной клетки. В сценарии он задан на уровне z = −210 мм

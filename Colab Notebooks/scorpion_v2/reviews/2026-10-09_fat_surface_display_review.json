@@ -1,0 +1,124 @@
+{
+  "review_date": "2026-10-09",
+  "scope": "10.00: remove false interior sheets created by aggressive fat display-surface decimation",
+  "artifact_inventory": [
+    {
+      "path": "Colab Notebooks/scorpion_v2/10.00_Эксперимент_и_сигналы_Георгия_Scorpion_v2.ipynb",
+      "sha256": "75302643833311736402f466f2273e867203e581b6d4174637d3b9e0ca18e5e6",
+      "bytes": 55347135
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/10.00_Эксперимент_и_сигналы_Георгия_Scorpion_v2.html",
+      "sha256": "d6f43d27cbafbca4b644e3fa8381ac78c2c65be21e4565b4fadeb192a53395a4",
+      "bytes": 55477636
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/10.00_Эксперимент_и_сигналы_Георгия_Scorpion_v2.md",
+      "sha256": "ca88aa343fbea303572fb64fa24468534f978415eca9fa5ae78d515a8aa98772",
+      "bytes": 18343
+    }
+  ],
+  "source_inventory": [
+    {
+      "path": "Colab Notebooks/scorpion_v2/build_scorpion_experiment_viewer.py",
+      "sha256": "041a4f319507bb419420b25f1a1872f22e4b39946a4d86b7f3b02e0eac3e3b81",
+      "bytes": 36132
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/test_lateral_surfaces_and_viewer.py",
+      "sha256": "e5bdda17a85f97889e5059ec2d867bd8543c6899583a54e5380b680d162a4619",
+      "bytes": 6366
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/experiment_view.js",
+      "sha256": "e70eeecb0af1bce294d687440854da28b7eb081dad2ac4049a10c0de3b70c2df",
+      "bytes": 10788
+    }
+  ],
+  "language": {
+    "status": "passed",
+    "reviewer": "Codex model",
+    "method": "Final sequential semantic reading after the last reader edit of complete reader prose, tables, captions, all final renderer strings and UI labels; extraction and hashes do not substitute for the model pass",
+    "registered_checks": [
+      "language.ru.hash-bound-final-review",
+      "language.ru.encoding",
+      "language.ru.formula-where",
+      "language.ru.natural-prose",
+      "language.ru.intro-variation",
+      "language.ru.reader-facing-clarity"
+    ],
+    "scientific_headings_checked": true,
+    "terminology_and_scope_checked": true,
+    "derived_objects_defined": true,
+    "meaningful_contrasts_checked": true,
+    "findings": []
+  },
+  "technical": {
+    "status": "passed",
+    "readers": [
+      {
+        "stem": "10.00_Эксперимент_и_сигналы_Георгия_Scorpion_v2",
+        "executed_cells": 4,
+        "errors": 0,
+        "code_excluded": true,
+        "html_prose_matches_notebook": true
+      }
+    ],
+    "original_CT_section_image_unchanged": true,
+    "raw_masks_and_CT_unchanged": true,
+    "all_other_geometry_arrays_unchanged": true
+  },
+  "computational": {
+    "status": "passed",
+    "tests_passed": 11,
+    "test_files": [
+      "test_lateral_surfaces_and_viewer.py",
+      "test_experiment_signal_display.py"
+    ],
+    "synthetic_interior_fan_rejected": true,
+    "synthetic_original_wall_accepted": true,
+    "sampled_geometry_QC": {
+      "samples": 2463368,
+      "maximum_distance_to_source_vertices_mm": 2.4305708537522404,
+      "p95_distance_to_source_vertices_mm": 1.1645684700748389,
+      "tolerance_mm": 3.0,
+      "checked_points": "vertices, face centroids and three edge midpoints",
+      "is_hausdorff_bound": false,
+      "is_segmentation_accuracy": false,
+      "method": "marching_cubes on original mask, no subsequent triangle collapse",
+      "grid_step_voxels": 3,
+      "grid_step_mm": [
+        2.6367180347442627,
+        2.6367180347442627,
+        3.75
+      ],
+      "faces": 547470,
+      "maximum_edge_mm": 4.584188259086405,
+      "topology_preservation_claimed": false
+    },
+    "old_fat_maximum_edge_mm": 283.2057072966209,
+    "old_original_mask_surface_maximum_edge_mm": 1.5280672784247245,
+    "signals_and_annotations_unchanged": true,
+    "numerical_inverse_manifests_unchanged": true,
+    "new_fem_executed": false
+  },
+  "browser": {
+    "core_status": "passed",
+    "fat_layer_rendered_without_false_fan": true,
+    "other_tissues_toggled_off_for_inspection": true,
+    "camera_rotation_zoom_pan_preserved_on_record_change": true,
+    "reported_console_errors": [],
+    "optional_PNG_download": "not_verified: in-app browser download event timed out"
+  },
+  "scientific": {
+    "status": "exploratory_not_independently_validated",
+    "surface_is_display_only": true,
+    "mask_segmentation_unmodified": true,
+    "automatic_segmentation_accuracy_not_established": true,
+    "sampling_can_remove_small_or_thin_details": true,
+    "sampled_3mm_tolerance_is_not_Hausdorff_or_segmentation_error": true,
+    "actual_electrode_pose_unrecovered": true,
+    "heart_function_validation_not_claimed": true,
+    "raw_medical_inputs_not_committed": true
+  }
+}

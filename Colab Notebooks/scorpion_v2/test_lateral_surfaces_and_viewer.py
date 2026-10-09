@@ -2,10 +2,11 @@
 import unittest
 from pathlib import Path
 import numpy as np
+import trimesh
 from lateral_pilot import DiskModel, read
 from lateral_identifiability import SIZES, KernelBank
 from lateral_solution_surfaces import pair_intersections, definition, OUT
-from build_scorpion_experiment_viewer import extrema_indices, OUT as VIEW
+from build_scorpion_experiment_viewer import extrema_indices,check_surface_samples, OUT as VIEW
 
 
 class SurfaceChecks(unittest.TestCase):
@@ -61,6 +62,22 @@ class SurfaceChecks(unittest.TestCase):
 
 
 class DisplayChecks(unittest.TestCase):
+    def test_surface_qc_rejects_false_interior_fan_but_accepts_original_wall(self):
+        angles=np.arange(180)*2*np.pi/180
+        vertices=np.array([[30*np.cos(a),30*np.sin(a),z]
+            for z in np.arange(-30,31) for a in angles])
+        faces=[]
+        for i in range(60):
+            for j in range(180):
+                a=i*180+j;b=i*180+(j+1)%180;c=(i+1)*180+j;d=(i+1)*180+(j+1)%180
+                faces.extend([[a,b,c],[b,d,c]])
+        source=trimesh.Trimesh(vertices,np.array(faces),process=False)
+        self.assertLess(check_surface_samples(source,vertices,np.array(faces))['maximum_distance_to_source_vertices_mm'],1.)
+        broken=np.r_[vertices[:180],[[0,0,0]]]
+        fan=np.array([[j,(j+1)%180,180] for j in range(180)])
+        with self.assertRaisesRegex(ValueError,'departs from source'):
+            check_surface_samples(source,broken,fan)
+
     def test_overview_retains_extrema_and_preserves_time_order(self):
         y=np.zeros(2000);y[432]=-17;y[433]=29;y[1800]=6
         idx=extrema_indices(y,12)
