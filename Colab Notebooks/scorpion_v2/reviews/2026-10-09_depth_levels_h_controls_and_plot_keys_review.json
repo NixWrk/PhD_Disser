@@ -1,0 +1,181 @@
+{
+  "review_date": "2026-10-09",
+  "scope": "20.20: five horizontal lung-depth levels; 33.21: independent h arrows, planar first figure, full line and marker explanations",
+  "artifact_inventory": [
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.21_Множество_решений_двуслойной_модели_Scorpion_v2.ipynb",
+      "sha256": "1b94af032bcd78252a80a87b15203e9a300a09f2fec0e60de9139d0748e2015d",
+      "bytes": 9809777
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.21_Множество_решений_двуслойной_модели_Scorpion_v2.html",
+      "sha256": "136f4b64de39a1b3796402c23cc91a660563381cedc8c09d9c9b439182230760",
+      "bytes": 9933355
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.21_Множество_решений_двуслойной_модели_Scorpion_v2.md",
+      "sha256": "f32f180cd82f8518a70501607a2b5597a620f1d4ebd38a9fa13351c0880735bf",
+      "bytes": 24746
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/20.20_Индивидуальная_КТ_FEM_модель_Георгия_Scorpion_v2.ipynb",
+      "sha256": "7356f114eeaaa06ebf625b5083deef3f9a1e4c09c6c5a817c77bff786c0f25f3",
+      "bytes": 12650401
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/20.20_Индивидуальная_КТ_FEM_модель_Георгия_Scorpion_v2.html",
+      "sha256": "edbcf6bcf3373ed07ad0efc03dd1b408968918d84186f6ab05f32f96439a93ca",
+      "bytes": 12771811
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/20.20_Индивидуальная_КТ_FEM_модель_Георгия_Scorpion_v2.md",
+      "sha256": "6a39a26c6867422febc81cbebbee50f7cbfedf191e49a53338c1c240a481cbee",
+      "bytes": 21200
+    }
+  ],
+  "source_inventory": [
+    {
+      "path": "Colab Notebooks/scorpion_v2/build_georg_geometry_revision_report.py",
+      "sha256": "bc86c9debe3725ecb4054f94ad3eba11353e0e3d8c813908ebc6796a2993fe9d",
+      "bytes": 37364
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/build_lateral_solution_surfaces_report.py",
+      "sha256": "26b660813cf79f7524f36bbcb16d4e960dcbde12ffce121c5ab48cc43a98c0a9",
+      "bytes": 34212
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/solution_surfaces_view.js",
+      "sha256": "f9684267620405160b0d6016fa8f3e5aa23d57e69604bdd9779d41ed134ab4e8",
+      "bytes": 7996
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/verify_scorpion_revision.py",
+      "sha256": "4c6625e895fdf49b309b2398dbd022ba9f5adaa00a351f3a29faa84c1f6557c6",
+      "bytes": 11964
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/README.md",
+      "sha256": "1c1b23315fdf92c200d077215fec23eeaa70f81ac33e688d5016387940c747dc",
+      "bytes": 7216
+    }
+  ],
+  "language": {
+    "status": "passed",
+    "reviewer": "Codex model",
+    "method": "Final sequential semantic reading after the last reader edit of complete 20.20 and 33.21 prose, formulas, tables and captions; all final JavaScript and builder UI labels; full README; final image labels. Extraction, lint and hashes do not substitute for the model pass.",
+    "registered_checks": [
+      "language.ru.hash-bound-final-review",
+      "language.ru.encoding",
+      "language.ru.formula-where",
+      "language.ru.natural-prose",
+      "language.ru.intro-variation",
+      "language.ru.reader-facing-clarity"
+    ],
+    "scientific_headings_checked": true,
+    "terminology_and_scope_checked": true,
+    "derived_objects_defined": true,
+    "meaningful_contrasts_checked": true,
+    "findings": []
+  },
+  "technical": {
+    "status": "passed",
+    "readers": [
+      {
+        "stem": "33.21_Множество_решений_двуслойной_модели_Scorpion_v2",
+        "executed_cells": 6,
+        "errors": 0,
+        "code_excluded": true,
+        "html_prose_matches_notebook": true
+      },
+      {
+        "stem": "20.20_Индивидуальная_КТ_FEM_модель_Георгия_Scorpion_v2",
+        "executed_cells": 6,
+        "errors": 0,
+        "code_excluded": true,
+        "html_prose_matches_notebook": true
+      }
+    ],
+    "five_depth_labels_visually_legible": true,
+    "original_CT_section_image_unchanged": true,
+    "experiment_10_00_cache_update": "Only original-section producer provenance refreshed after rebuilding 20.20; original section image and all 10.00 reader bytes and display arrays unchanged"
+  },
+  "computational": {
+    "status": "passed",
+    "check": "verify_scorpion_revision.py",
+    "primary_numerical_manifest_unchanged": true,
+    "additional_manifest_verified": true,
+    "active_bounded_surface_manifest_verified": true,
+    "experiment_viewer_manifest_verified": true,
+    "maximum_cloud_rss_difference_ohm2": 5.002220859751105e-12,
+    "maximum_scalar_residual_ohm": 4.0898839870351367e-11,
+    "skin_alignment": {
+      "compared_lung_boundaries": 141,
+      "maximum_boundary_difference_mm": 0.0,
+      "ray_distances_preserved": true,
+      "depth_scaling_applied": false,
+      "depth_landmarks_verified": [
+        {
+          "label": "A",
+          "s_mm": -70,
+          "depth_mm": 42.0,
+          "colour": "#b12a90"
+        },
+        {
+          "label": "M",
+          "s_mm": -35,
+          "depth_mm": 58.0,
+          "colour": "#4575b4"
+        },
+        {
+          "label": "Центр",
+          "s_mm": 0,
+          "depth_mm": 73.0,
+          "colour": "#30343b"
+        },
+        {
+          "label": "N",
+          "s_mm": 35,
+          "depth_mm": 84.0,
+          "colour": "#19955b"
+        },
+        {
+          "label": "B",
+          "s_mm": 70,
+          "depth_mm": 101.0,
+          "colour": "#d26b13"
+        }
+      ]
+    },
+    "inverse_equations_and_fit_cache_unmodified": true,
+    "new_fem_executed": false
+  },
+  "browser": {
+    "status": "passed",
+    "surface": "Final code-free 33.21 HTML in local in-app browser",
+    "first_and_third_figures_are_planar": true,
+    "matched_flat_settings_identical_rendered_SVG_paths": 34,
+    "all_three_h_controls_checked": true,
+    "lower_endpoint_mm": 0.5,
+    "next_from_lower_endpoint_mm": 1,
+    "upper_endpoint_mm": 100,
+    "previous_from_upper_endpoint_mm": 99,
+    "arrows_disabled_at_corresponding_limits": true,
+    "own_h_case_and_visibility_changes_do_not_change_other_figures": true,
+    "flat_first_plot_zoom_preserved_after_h_button": true,
+    "surface_rotation_zoom_pan_camera_preserved_after_h_case_and_plane_changes": true,
+    "reported_console_errors": []
+  },
+  "scientific": {
+    "status": "exploratory_not_independently_validated",
+    "depths_are_directional_distances_from_surface_to_automatic_lung_mask": true,
+    "depths_are_not_electrical_equivalent_h": true,
+    "electrode_landmarks_refer_to_illustrative_140mm_pose": true,
+    "automatic_segmentation_accuracy_not_established": true,
+    "flat_figures_1_and_3_same_mathematical_set_at_matched_settings": true,
+    "pairwise_intersections_not_all_assembly_solution": true,
+    "minima_always_use_five_reference_sizes_regardless_of_visibility": true,
+    "heart_function_validation_not_claimed": true,
+    "raw_medical_inputs_not_committed": true
+  }
+}

@@ -34,6 +34,10 @@ def verify_skin_alignment():
     for name,digest in provenance['mask_sha256'].items():
         assert digest==sha(OLD/'segmentation'/(name+'.nii.gz'))
     assert provenance['image_sha256']==sha(OUT/'ct_skin_aligned_section.png')
+    landmarks=read(OUT/'lung_depth_landmarks.local.json')
+    assert [(p['label'],p['s_mm']) for p in landmarks]==[('A',-70),('M',-35),('Центр',0),('N',35),('B',70)]
+    for p in landmarks:
+        assert p['depth_mm']==depth['depth_mm'][depth['s_mm'].index(p['s_mm'])]
     with np.load(OUT/'ct_skin_aligned_section.local.npz') as aligned:
         np.testing.assert_array_equal(aligned['s_mm'],depth['s_mm'])
         np.testing.assert_allclose(aligned['x_lps_mm']-aligned['skin_x_lps_mm'][:,None],
@@ -48,7 +52,7 @@ def verify_skin_alignment():
                 found.append(aligned['depth_mm'][first[0]]-expected)
         np.testing.assert_allclose(found,0,atol=1e-12)
     return dict(compared_lung_boundaries=len(found),maximum_boundary_difference_mm=float(max(map(abs,found))),
-        ray_distances_preserved=True,depth_scaling_applied=False)
+        ray_distances_preserved=True,depth_scaling_applied=False,depth_landmarks_verified=landmarks)
 
 
 def extract_reader_text():

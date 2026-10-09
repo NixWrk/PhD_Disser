@@ -31,7 +31,7 @@ function data(){
  cc.assemblies.forEach((item,i)=>{
  const c=curve(item,hi),base={name:item.label,showlegend:false,visible:enabled[i],hovertemplate:'ρ₂=%{x:.4g}; ρ₁=%{y:.4g} Ом·м<extra>'+item.label+'</extra>'};
  const line={color:colors[i],width:item.reference?4:2,dash:item.reference?'solid':'dash'};
- curves.push({...base,type:'scatter3d',mode:'lines',x:c.x,y:c.y,z:c.x.map(()=>D.h[hi]),line});
+ curves.push({...base,type:'scatter',mode:'lines',x:c.x,y:c.y,line});
  slice.push({...base,type:'scatter',mode:'lines',x:c.x,y:c.y,line});
  const full=hg.map(j=>curve(item,j)),x=full.map(c=>qg.map(k=>c.x[k])),y=full.map(c=>qg.map(k=>c.y[k]));
  surfaces.push({...base,type:'surface',x,y,z:hg.map((j,n)=>qg.map((_,k)=>x[n][k]===null?null:D.h[j])),opacity:.38,colorscale:[[0,colors[i]],[1,colors[i]]],showscale:false,connectgaps:false,
@@ -39,43 +39,47 @@ function data(){
  });
  const show=control('pairs').checked,p=pairs(false),pa=pairs(true),pm={size:4,color:'#222'};
  const base={name:'Попарные пересечения',showlegend:false,visible:show,mode:'markers',marker:pm,hovertemplate:'%{text}<br>ρ₂=%{x:.4g}; ρ₁=%{y:.4g} Ом·м<extra></extra>'};
- curves.push({...base,type:'scatter3d',...p});surfaces.push({...base,type:'scatter3d',...pa});slice.push({...base,type:'scatter',x:p.x,y:p.y,text:p.text});
+ curves.push({...base,type:'scatter',x:p.x,y:p.y,text:p.text});surfaces.push({...base,type:'scatter3d',...pa});slice.push({...base,type:'scatter',x:p.x,y:p.y,text:p.text});
  const fit=cc.fit.parameters,fp=[cc.profile_rho1[hi],cc.profile_rho2[hi]],mark={color:'#ce1b35',size:7,symbol:'diamond'},name='Совместный минимум пяти размеров';
  surfaces.push({type:'scatter3d',mode:'markers',x:[fit[1]],y:[fit[0]],z:[fit[2]],name,showlegend:false,marker:mark,hovertemplate:name+'<br>ρ₂=%{x:.4g}; ρ₁=%{y:.4g} Ом·м<br>h=%{z:.4g} мм<extra></extra>'});
- const prof={mode:'markers',x:[fp[1]],y:[fp[0]],marker:mark,name:'Сеточный минимум при выбранном h',showlegend:false};
- curves.push({...prof,type:'scatter3d',z:[D.h[hi]]});slice.push({...prof,type:'scatter'});
+ const prof={mode:'markers',x:[fp[1]],y:[fp[0]],marker:{color:'#ce1b35',size:9,symbol:'circle'},name:'Сеточный минимум при выбранном h',showlegend:false,
+ hovertemplate:'Минимум невязки пяти размеров при h='+fmt(D.h[hi])+' мм<br>ρ₂=%{x:.4g}; ρ₁=%{y:.4g} Ом·м<extra></extra>'};
+ curves.push({...prof,type:'scatter'});slice.push({...prof,type:'scatter'});
  // The slice plane provides a geometric link without implying admissible parameters everywhere.
  surfaces.push({type:'surface',x:[[D.bounds[1][0],D.bounds[1][1]],[D.bounds[1][0],D.bounds[1][1]]],y:[[D.bounds[0][0],D.bounds[0][0]],[D.bounds[0][1],D.bounds[0][1]]],z:[[D.h[hi],D.h[hi]],[D.h[hi],D.h[hi]]],visible:index===1?control('plane').checked:true,opacity:.08,colorscale:[[0,'#aaa'],[1,'#aaa']],showscale:false,hoverinfo:'skip',name:'Плоскость выбранного h'});
  return [curves,surfaces,slice];
 }
 function layout(index){
  const axis=(title,range)=>({title:{text:title},range,autorange:false});
- const result={title:{text:['Рисунок 1. Кривые решений при заданном h','Рисунок 2. Поверхности решений и попарные пересечения','Рисунок 3. Срез поверхностей при заданном h'][index]},height:index===2?560:660,margin:{t:65,l:75,r:20,b:70},paper_bgcolor:'#fff',plot_bgcolor:'#fff',uirevision:'bounded-solutions-stable-'+index};
- if(index<2)result.scene={xaxis:axis('ρ₂, Ом·м',D.bounds[1]),yaxis:axis('ρ₁, Ом·м',D.bounds[0]),zaxis:axis('h, мм',[.5,100]),aspectmode:'cube',uirevision:'bounded-solutions-camera-'+index,camera:{eye:{x:1.4,y:1.4,z:1}}};
+ const result={title:{text:['Рисунок 1. Кривые решений при заданном h','Рисунок 2. Поверхности решений и попарные пересечения','Рисунок 3. Срез поверхностей при заданном h'][index]},height:index===1?660:560,margin:{t:65,l:75,r:20,b:70},paper_bgcolor:'#fff',plot_bgcolor:'#fff',uirevision:'bounded-solutions-stable-'+index};
+ if(index===1)result.scene={xaxis:axis('ρ₂, Ом·м',D.bounds[1]),yaxis:axis('ρ₁, Ом·м',D.bounds[0]),zaxis:axis('h, мм',[.5,100]),aspectmode:'cube',uirevision:'bounded-solutions-camera-'+index,camera:{eye:{x:1.4,y:1.4,z:1}}};
  else {result.xaxis=axis('ρ₂, Ом·м',D.bounds[1]);result.yaxis=axis('ρ₁, Ом·м',D.bounds[0]);}
  return result;
 }
 async function update(){
  if(!ready)return;
  control('h-label').textContent=fmt(D.h[hi])+' мм';
+ control('h-prev').disabled=hi===0;control('h-next').disabled=hi===D.h.length-1;
  const v=data()[index];
  // Only trace arrays change; scene.camera and axis ranges are untouched.
- const attrs={};for(const name of ['x','y','z','visible','text','name'])attrs[name]=v.map(t=>t[name]===undefined?null:t[name]);
+ const attrs={};for(const name of ['x','y','z','visible','text','name','hovertemplate'])attrs[name]=v.map(t=>t[name]===undefined?null:t[name]);
  await Plotly.restyle(plot,attrs);
  plot.dataset.visibleAssemblies=JSON.stringify(enabled);plot.dataset.sliceH=String(D.h[hi]);
  plot.dataset.case=String(ci);plot.dataset.pairsVisible=String(control('pairs').checked);
  if(index===1)plot.dataset.planeVisible=String(control('plane').checked);
- if(index<2)plot.dataset.camera=JSON.stringify(plot._fullLayout.scene.camera);
+ if(index===1)plot.dataset.camera=JSON.stringify(plot._fullLayout.scene.camera);
  const cc=D.cases[ci],fit=cc.fit;
  control('status').textContent=cc.label+'; h = '+fmt(D.h[hi])+' мм. Совместная невязка пяти размеров: '+fmt(fit.residual_percent)+'%. Пересечения относятся только к указанным парам.';
 }
 async function init(){
  checks();await Plotly.newPlot(plot,data()[index],layout(index),{responsive:true,displaylogo:false});
- if(index<2)plot.on('plotly_relayout',()=>{plot.dataset.camera=JSON.stringify(plot._fullLayout.scene.camera);});
+ if(index===1)plot.on('plotly_relayout',()=>{plot.dataset.camera=JSON.stringify(plot._fullLayout.scene.camera);});
  ready=true;await update();
  const refresh=()=>{queue=queue.then(update).catch(e=>{control('status').textContent='Ошибка представления: '+e.message;});};
  select.onchange=()=>{ci=Number(select.value);checks();refresh();};
  slider.onchange=()=>{hi=Number(slider.value);refresh();};
+ const stepH=delta=>{hi=Math.max(0,Math.min(D.h.length-1,Number(slider.value)+delta));slider.value=hi;refresh();};
+ control('h-prev').onclick=()=>stepH(-1);control('h-next').onclick=()=>stepH(1);
  slider.oninput=()=>{control('h-label').textContent=fmt(D.h[Number(slider.value)])+' мм';};
  control('pairs').onchange=refresh;if(index===1)control('plane').onchange=refresh;
  control('all').onclick=()=>{enabled.fill(true);checks();refresh();};

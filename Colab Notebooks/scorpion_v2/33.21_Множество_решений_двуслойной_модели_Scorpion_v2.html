@@ -7796,7 +7796,7 @@ a.anchor-link {
 <!-- End of mermaid configuration --></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=73f88a5d">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=79b6d36f">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7840,9 +7840,9 @@ BEI1 записывает основную ось креста, BEI2 — пер�
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs jp-mod-noInput" id="cell-id=c25b46d4">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs jp-mod-noInput" id="cell-id=17a44a00">
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=eabb2d91">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=33f627d8">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7880,7 +7880,7 @@ L и h в вычислительной модели переведены в ме
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7c9c6247">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3c30e709">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7889,16 +7889,26 @@ L и h в вычислительной модели переведены в ме
 подключения, дыхательного состояния, толщины, сборок и пересечений.
 Настройки одного графика не меняют два других. Это позволяет одновременно
 сравнивать разные состояния, варианты подключения и значения h.
-Первый график показывает все кривые
-ρ₁(ρ₂) на выбранном уровне h в трёхмерных координатах. Второй показывает
+Первый график показывает кривые ρ₁(ρ₂) при выбранном h на плоскости
+сопротивлений. Второй показывает
 поверхности и уточнённые попарные пересечения по всей сетке h. Третий —
 двумерный срез при независимо выбранном h. На втором графике настройка h
 задаёт только уровень отдельной переключаемой плоскости сечения;
 поверхности охватывают всю сетку h. По умолчанию на всех графиках h = 20 мм; это иллюстративный
-сценарий, а не выбранная по КТ толщина. Ракурс и масштаб каждого графика
-сохраняются при изменении его параметров. Выбор видимых сборок меняет
+сценарий, а не выбранная по КТ толщина. Кнопки ← и → перебирают соседние
+значения сетки h: 0,5 мм, затем 1–100 мм с шагом 1 мм. На границах области
+соответствующая кнопка отключена. Масштаб и смещение плоских графиков,
+а также камера трёхмерного графика сохраняются при изменении параметров. Выбор видимых сборок меняет
 отображение; сохранённый совместный минимум всегда относится ко всему
 основному ряду из пяти размеров и не пересчитывается по видимому подмножеству.</p>
+<p><strong>Различие рисунков 1 и 3.</strong> На рисунке 1 представлено решение уравнения
+каждой сборки при фиксированном h; на рисунке 3 — сечение тех же поверхностей
+решений плоскостью h = const. При одинаковых настройках это одно и то же
+математическое множество, поэтому линии и метки совпадают. Срез строится
+по исходным уравнениям на полной сетке q, без интерполяции прореженного
+трёхмерного изображения. Два плоских графика сохранены с независимыми
+настройками для сравнения разных h, дыхательных состояний или гипотез
+подключения. Они не являются независимыми подтверждениями модели.</p>
 <p>Основной ряд включает пять размеров 60–140 мм с монтажом ТТРКГ 1×4.
 Дополнительно показаны повторные 140 мм при 1×1 и 2×2 на руках, оба канала
 «верт» и обе оси крестов 140 и 60 мм. Для «верт» это две альтернативные
@@ -7906,15 +7916,35 @@ L и h в вычислительной модели переведены в ме
 как боковой. Их одновременное отображение не означает, что оба канала
 этой записи были боковыми. Эти дополнительные наблюдения служат
 проверкой; они не включены в совместную подгонку основного ряда.</p>
-<p>Чёрные точки удовлетворяют <strong>двум</strong> уравнениям. При наведении указаны пара и
-максимальное расхождение с пятью основными наблюдениями. Они не доказывают
-существования общего решения для всех сборок. Красный ромб — совместный
-минимум суммы квадратов невязок пяти размеров; красный маркер в срезе —
-сеточный минимум этой суммы при выбранном h.</p>
+<p><strong>Обозначения на рисунках 1–3.</strong> Цвет соответствует конкретному наблюдению;
+таким же цветом подписан его переключатель. Каждая линия воспроизводит
+уровень импеданса одной сборки в пределах принятых диапазонов сопротивлений.
+Она не является доверительной границей или траекторией изменения ткани.</p>
+<ul>
+<li>Сплошные более толстые линии на рисунках 1 и 3 относятся к пяти размерам
+основного ряда, использованным в совместной подгонке. Штриховые более
+тонкие линии — к дополнительным наблюдениям, использованным для проверки.</li>
+<li>Чёрные круглые метки удовлетворяют двум уравнениям соответствующей пары.
+На плоских графиках показаны пересечения при выбранном h, на рисунке 2 —
+по всей сетке h. При наведении указаны пара и максимальное расхождение
+с пятью основными наблюдениями. Попарное пересечение не доказывает
+существования общего решения для всех сборок.</li>
+<li>Красный круг на рисунках 1 и 3 — сеточный минимум суммы квадратов невязок
+пяти основных размеров при фиксированном h. Он обычно не лежит одновременно
+на всех линиях и не является точным решением каждого уравнения.</li>
+<li>Красный ромб на рисунке 2 — совместный минимум той же суммы при подборе
+всех трёх параметров ρ₁, ρ₂ и h. Это сохранённый результат полной подгонки,
+который не изменяется при скрытии отдельных наблюдений.</li>
+<li>Цветные полупрозрачные поверхности на рисунке 2 объединяют решения каждой
+сборки при разных h. Светло-серая плоскость показывает выбранный уровень h;
+её площадь не означает допустимость решений во всех точках этой плоскости.</li>
+</ul>
+<p>Минимумы невязки относятся ко всему основному ряду даже при его частичном
+скрытии. Формула суммы квадратов невязок приведена ниже.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=5a1edf48">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=726d98c9">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -7924,25 +7954,31 @@ L и h в вычислительной модели переведены в ме
 <div id="solution-viewer"><section id="solution-panel-0" style="padding:12px;border:1px solid #aaa;margin:14px 0">
 <h3>Кривые при заданной толщине: отдельные настройки</h3>
 <label>Гипотеза подключения и дыхание: <select data-control="case"></select></label>
-<p><label>Толщина h: <input data-control="h" max="100" min="0" step="1" type="range" value="20"/>
+<p><label>Толщина h: <button aria-label="Уменьшить h" data-control="h-prev" title="Предыдущее значение h" type="button">←</button>
+<input data-control="h" max="100" min="0" step="1" type="range" value="20"/>
+<button aria-label="Увеличить h" data-control="h-next" title="Следующее значение h" type="button">→</button>
 <b data-control="h-label"></b></label> · <label><input checked="" data-control="pairs" type="checkbox"/> Попарные пересечения</label> </p>
 <p><button data-control="all">Все боковые монтажи</button> <button data-control="main">Только основной ряд</button></p>
 <div data-control="assemblies" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:5px"></div>
-<p data-control="status"></p><div id="solution-curves"></div></section><section id="solution-panel-1" style="padding:12px;border:1px solid #aaa;margin:14px 0">
+<p data-control="status"></p><p data-control="key">Сплошные цветные линии — решения пяти основных наблюдений; штриховые — дополнительные наблюдения, не входящие в совместную подгонку. Чёрные точки — попарные пересечения при данном h; красный круг — сеточный минимум невязки пяти основных размеров при данном h.</p><div id="solution-curves"></div></section><section id="solution-panel-1" style="padding:12px;border:1px solid #aaa;margin:14px 0">
 <h3>Поверхности решений: отдельные настройки</h3>
 <label>Гипотеза подключения и дыхание: <select data-control="case"></select></label>
-<p><label>Уровень плоскости h: <input data-control="h" max="100" min="0" step="1" type="range" value="20"/>
+<p><label>Уровень плоскости h: <button aria-label="Уменьшить h" data-control="h-prev" title="Предыдущее значение h" type="button">←</button>
+<input data-control="h" max="100" min="0" step="1" type="range" value="20"/>
+<button aria-label="Увеличить h" data-control="h-next" title="Следующее значение h" type="button">→</button>
 <b data-control="h-label"></b></label> · <label><input checked="" data-control="pairs" type="checkbox"/> Попарные пересечения</label> <label><input checked="" data-control="plane" type="checkbox"/> Плоскость выбранного h</label></p>
 <p><button data-control="all">Все боковые монтажи</button> <button data-control="main">Только основной ряд</button></p>
 <div data-control="assemblies" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:5px"></div>
-<p data-control="status"></p><div id="solution-surfaces"></div></section><section id="solution-panel-2" style="padding:12px;border:1px solid #aaa;margin:14px 0">
+<p data-control="status"></p><p data-control="key">Цветные поверхности — решения отдельных наблюдений по всей сетке h. Чёрные точки — попарные пересечения поверхностей. Красный ромб — совместный минимум невязки пяти основных размеров по ρ₁, ρ₂ и h. Серая плоскость — выбранный уровень h.</p><div id="solution-surfaces"></div></section><section id="solution-panel-2" style="padding:12px;border:1px solid #aaa;margin:14px 0">
 <h3>Выбираемый срез: отдельные настройки</h3>
 <label>Гипотеза подключения и дыхание: <select data-control="case"></select></label>
-<p><label>Толщина h: <input data-control="h" max="100" min="0" step="1" type="range" value="20"/>
+<p><label>Толщина h: <button aria-label="Уменьшить h" data-control="h-prev" title="Предыдущее значение h" type="button">←</button>
+<input data-control="h" max="100" min="0" step="1" type="range" value="20"/>
+<button aria-label="Увеличить h" data-control="h-next" title="Следующее значение h" type="button">→</button>
 <b data-control="h-label"></b></label> · <label><input checked="" data-control="pairs" type="checkbox"/> Попарные пересечения</label> </p>
 <p><button data-control="all">Все боковые монтажи</button> <button data-control="main">Только основной ряд</button></p>
 <div data-control="assemblies" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:5px"></div>
-<p data-control="status"></p><div id="solution-slice"></div></section></div><script>/**
+<p data-control="status"></p><p data-control="key">Сплошные цветные линии — решения пяти основных наблюдений; штриховые — дополнительные наблюдения, не входящие в совместную подгонку. Чёрные точки — попарные пересечения при данном h; красный круг — сеточный минимум невязки пяти основных размеров при данном h.</p><div id="solution-slice"></div></section></div><script>/**
 * plotly.js v3.7.0
 * Copyright 2012-2026, Plotly, Inc.
 * All rights reserved.
@@ -11856,7 +11892,7 @@ function data(){
  cc.assemblies.forEach((item,i)=>{
  const c=curve(item,hi),base={name:item.label,showlegend:false,visible:enabled[i],hovertemplate:'ρ₂=%{x:.4g}; ρ₁=%{y:.4g} Ом·м<extra>'+item.label+'</extra>'};
  const line={color:colors[i],width:item.reference?4:2,dash:item.reference?'solid':'dash'};
- curves.push({...base,type:'scatter3d',mode:'lines',x:c.x,y:c.y,z:c.x.map(()=>D.h[hi]),line});
+ curves.push({...base,type:'scatter',mode:'lines',x:c.x,y:c.y,line});
  slice.push({...base,type:'scatter',mode:'lines',x:c.x,y:c.y,line});
  const full=hg.map(j=>curve(item,j)),x=full.map(c=>qg.map(k=>c.x[k])),y=full.map(c=>qg.map(k=>c.y[k]));
  surfaces.push({...base,type:'surface',x,y,z:hg.map((j,n)=>qg.map((_,k)=>x[n][k]===null?null:D.h[j])),opacity:.38,colorscale:[[0,colors[i]],[1,colors[i]]],showscale:false,connectgaps:false,
@@ -11864,43 +11900,47 @@ function data(){
  });
  const show=control('pairs').checked,p=pairs(false),pa=pairs(true),pm={size:4,color:'#222'};
  const base={name:'Попарные пересечения',showlegend:false,visible:show,mode:'markers',marker:pm,hovertemplate:'%{text}<br>ρ₂=%{x:.4g}; ρ₁=%{y:.4g} Ом·м<extra></extra>'};
- curves.push({...base,type:'scatter3d',...p});surfaces.push({...base,type:'scatter3d',...pa});slice.push({...base,type:'scatter',x:p.x,y:p.y,text:p.text});
+ curves.push({...base,type:'scatter',x:p.x,y:p.y,text:p.text});surfaces.push({...base,type:'scatter3d',...pa});slice.push({...base,type:'scatter',x:p.x,y:p.y,text:p.text});
  const fit=cc.fit.parameters,fp=[cc.profile_rho1[hi],cc.profile_rho2[hi]],mark={color:'#ce1b35',size:7,symbol:'diamond'},name='Совместный минимум пяти размеров';
  surfaces.push({type:'scatter3d',mode:'markers',x:[fit[1]],y:[fit[0]],z:[fit[2]],name,showlegend:false,marker:mark,hovertemplate:name+'<br>ρ₂=%{x:.4g}; ρ₁=%{y:.4g} Ом·м<br>h=%{z:.4g} мм<extra></extra>'});
- const prof={mode:'markers',x:[fp[1]],y:[fp[0]],marker:mark,name:'Сеточный минимум при выбранном h',showlegend:false};
- curves.push({...prof,type:'scatter3d',z:[D.h[hi]]});slice.push({...prof,type:'scatter'});
+ const prof={mode:'markers',x:[fp[1]],y:[fp[0]],marker:{color:'#ce1b35',size:9,symbol:'circle'},name:'Сеточный минимум при выбранном h',showlegend:false,
+ hovertemplate:'Минимум невязки пяти размеров при h='+fmt(D.h[hi])+' мм<br>ρ₂=%{x:.4g}; ρ₁=%{y:.4g} Ом·м<extra></extra>'};
+ curves.push({...prof,type:'scatter'});slice.push({...prof,type:'scatter'});
  // The slice plane provides a geometric link without implying admissible parameters everywhere.
  surfaces.push({type:'surface',x:[[D.bounds[1][0],D.bounds[1][1]],[D.bounds[1][0],D.bounds[1][1]]],y:[[D.bounds[0][0],D.bounds[0][0]],[D.bounds[0][1],D.bounds[0][1]]],z:[[D.h[hi],D.h[hi]],[D.h[hi],D.h[hi]]],visible:index===1?control('plane').checked:true,opacity:.08,colorscale:[[0,'#aaa'],[1,'#aaa']],showscale:false,hoverinfo:'skip',name:'Плоскость выбранного h'});
  return [curves,surfaces,slice];
 }
 function layout(index){
  const axis=(title,range)=>({title:{text:title},range,autorange:false});
- const result={title:{text:['Рисунок 1. Кривые решений при заданном h','Рисунок 2. Поверхности решений и попарные пересечения','Рисунок 3. Срез поверхностей при заданном h'][index]},height:index===2?560:660,margin:{t:65,l:75,r:20,b:70},paper_bgcolor:'#fff',plot_bgcolor:'#fff',uirevision:'bounded-solutions-stable-'+index};
- if(index<2)result.scene={xaxis:axis('ρ₂, Ом·м',D.bounds[1]),yaxis:axis('ρ₁, Ом·м',D.bounds[0]),zaxis:axis('h, мм',[.5,100]),aspectmode:'cube',uirevision:'bounded-solutions-camera-'+index,camera:{eye:{x:1.4,y:1.4,z:1}}};
+ const result={title:{text:['Рисунок 1. Кривые решений при заданном h','Рисунок 2. Поверхности решений и попарные пересечения','Рисунок 3. Срез поверхностей при заданном h'][index]},height:index===1?660:560,margin:{t:65,l:75,r:20,b:70},paper_bgcolor:'#fff',plot_bgcolor:'#fff',uirevision:'bounded-solutions-stable-'+index};
+ if(index===1)result.scene={xaxis:axis('ρ₂, Ом·м',D.bounds[1]),yaxis:axis('ρ₁, Ом·м',D.bounds[0]),zaxis:axis('h, мм',[.5,100]),aspectmode:'cube',uirevision:'bounded-solutions-camera-'+index,camera:{eye:{x:1.4,y:1.4,z:1}}};
  else {result.xaxis=axis('ρ₂, Ом·м',D.bounds[1]);result.yaxis=axis('ρ₁, Ом·м',D.bounds[0]);}
  return result;
 }
 async function update(){
  if(!ready)return;
  control('h-label').textContent=fmt(D.h[hi])+' мм';
+ control('h-prev').disabled=hi===0;control('h-next').disabled=hi===D.h.length-1;
  const v=data()[index];
  // Only trace arrays change; scene.camera and axis ranges are untouched.
- const attrs={};for(const name of ['x','y','z','visible','text','name'])attrs[name]=v.map(t=>t[name]===undefined?null:t[name]);
+ const attrs={};for(const name of ['x','y','z','visible','text','name','hovertemplate'])attrs[name]=v.map(t=>t[name]===undefined?null:t[name]);
  await Plotly.restyle(plot,attrs);
  plot.dataset.visibleAssemblies=JSON.stringify(enabled);plot.dataset.sliceH=String(D.h[hi]);
  plot.dataset.case=String(ci);plot.dataset.pairsVisible=String(control('pairs').checked);
  if(index===1)plot.dataset.planeVisible=String(control('plane').checked);
- if(index<2)plot.dataset.camera=JSON.stringify(plot._fullLayout.scene.camera);
+ if(index===1)plot.dataset.camera=JSON.stringify(plot._fullLayout.scene.camera);
  const cc=D.cases[ci],fit=cc.fit;
  control('status').textContent=cc.label+'; h = '+fmt(D.h[hi])+' мм. Совместная невязка пяти размеров: '+fmt(fit.residual_percent)+'%. Пересечения относятся только к указанным парам.';
 }
 async function init(){
  checks();await Plotly.newPlot(plot,data()[index],layout(index),{responsive:true,displaylogo:false});
- if(index<2)plot.on('plotly_relayout',()=>{plot.dataset.camera=JSON.stringify(plot._fullLayout.scene.camera);});
+ if(index===1)plot.on('plotly_relayout',()=>{plot.dataset.camera=JSON.stringify(plot._fullLayout.scene.camera);});
  ready=true;await update();
  const refresh=()=>{queue=queue.then(update).catch(e=>{control('status').textContent='Ошибка представления: '+e.message;});};
  select.onchange=()=>{ci=Number(select.value);checks();refresh();};
  slider.onchange=()=>{hi=Number(slider.value);refresh();};
+ const stepH=delta=>{hi=Math.max(0,Math.min(D.h.length-1,Number(slider.value)+delta));slider.value=hi;refresh();};
+ control('h-prev').onclick=()=>stepH(-1);control('h-next').onclick=()=>stepH(1);
  slider.oninput=()=>{control('h-label').textContent=fmt(D.h[Number(slider.value)])+' мм';};
  control('pairs').onchange=refresh;if(index===1)control('plane').onchange=refresh;
  control('all').onclick=()=>{enabled.fill(true);checks();refresh();};
@@ -11916,7 +11956,7 @@ for(let index=0;index<3;index++)createViewer(index);
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ff85a0f7">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4dd8d856">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11932,7 +11972,7 @@ for(let index=0;index<3;index++)createViewer(index);
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=fed80ba2">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=b1b42295">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -11941,59 +11981,59 @@ for(let index=0;index<3;index++)createViewer(index);
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
 <style type="text/css">
 </style>
-<table id="T_1bcac">
+<table id="T_ff496">
 <thead>
 <tr>
-<th class="col_heading level0 col0" id="T_1bcac_level0_col0">Боковой канал</th>
-<th class="col_heading level0 col1" id="T_1bcac_level0_col1">Дыхание</th>
-<th class="col_heading level0 col2" id="T_1bcac_level0_col2">ρ₁, Ом·м</th>
-<th class="col_heading level0 col3" id="T_1bcac_level0_col3">ρ₂, Ом·м</th>
-<th class="col_heading level0 col4" id="T_1bcac_level0_col4">h, мм</th>
-<th class="col_heading level0 col5" id="T_1bcac_level0_col5">Относительная невязка, %</th>
-<th class="col_heading level0 col6" id="T_1bcac_level0_col6">Параметры на границе</th>
-<th class="col_heading level0 col7" id="T_1bcac_level0_col7">κ(J) по логарифмам параметров</th>
+<th class="col_heading level0 col0" id="T_ff496_level0_col0">Боковой канал</th>
+<th class="col_heading level0 col1" id="T_ff496_level0_col1">Дыхание</th>
+<th class="col_heading level0 col2" id="T_ff496_level0_col2">ρ₁, Ом·м</th>
+<th class="col_heading level0 col3" id="T_ff496_level0_col3">ρ₂, Ом·м</th>
+<th class="col_heading level0 col4" id="T_ff496_level0_col4">h, мм</th>
+<th class="col_heading level0 col5" id="T_ff496_level0_col5">Относительная невязка, %</th>
+<th class="col_heading level0 col6" id="T_ff496_level0_col6">Параметры на границе</th>
+<th class="col_heading level0 col7" id="T_ff496_level0_col7">κ(J) по логарифмам параметров</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="data row0 col0" id="T_1bcac_row0_col0">1</td>
-<td class="data row0 col1" id="T_1bcac_row0_col1">Вдох</td>
-<td class="data row0 col2" id="T_1bcac_row0_col2">1,3774</td>
-<td class="data row0 col3" id="T_1bcac_row0_col3">15,432</td>
-<td class="data row0 col4" id="T_1bcac_row0_col4">1,8897</td>
-<td class="data row0 col5" id="T_1bcac_row0_col5">11,558</td>
-<td class="data row0 col6" id="T_1bcac_row0_col6">ρ₁</td>
-<td class="data row0 col7" id="T_1bcac_row0_col7">8988,8</td>
+<td class="data row0 col0" id="T_ff496_row0_col0">1</td>
+<td class="data row0 col1" id="T_ff496_row0_col1">Вдох</td>
+<td class="data row0 col2" id="T_ff496_row0_col2">1,3774</td>
+<td class="data row0 col3" id="T_ff496_row0_col3">15,432</td>
+<td class="data row0 col4" id="T_ff496_row0_col4">1,8897</td>
+<td class="data row0 col5" id="T_ff496_row0_col5">11,558</td>
+<td class="data row0 col6" id="T_ff496_row0_col6">ρ₁</td>
+<td class="data row0 col7" id="T_ff496_row0_col7">8988,8</td>
 </tr>
 <tr>
-<td class="data row1 col0" id="T_1bcac_row1_col0">1</td>
-<td class="data row1 col1" id="T_1bcac_row1_col1">Выдох</td>
-<td class="data row1 col2" id="T_1bcac_row1_col2">1,3774</td>
-<td class="data row1 col3" id="T_1bcac_row1_col3">14,921</td>
-<td class="data row1 col4" id="T_1bcac_row1_col4">1,8164</td>
-<td class="data row1 col5" id="T_1bcac_row1_col5">10,911</td>
-<td class="data row1 col6" id="T_1bcac_row1_col6">ρ₁</td>
-<td class="data row1 col7" id="T_1bcac_row1_col7">9316,9</td>
+<td class="data row1 col0" id="T_ff496_row1_col0">1</td>
+<td class="data row1 col1" id="T_ff496_row1_col1">Выдох</td>
+<td class="data row1 col2" id="T_ff496_row1_col2">1,3774</td>
+<td class="data row1 col3" id="T_ff496_row1_col3">14,921</td>
+<td class="data row1 col4" id="T_ff496_row1_col4">1,8164</td>
+<td class="data row1 col5" id="T_ff496_row1_col5">10,911</td>
+<td class="data row1 col6" id="T_ff496_row1_col6">ρ₁</td>
+<td class="data row1 col7" id="T_ff496_row1_col7">9316,9</td>
 </tr>
 <tr>
-<td class="data row2 col0" id="T_1bcac_row2_col0">2</td>
-<td class="data row2 col1" id="T_1bcac_row2_col1">Вдох</td>
-<td class="data row2 col2" id="T_1bcac_row2_col2">1,3774</td>
-<td class="data row2 col3" id="T_1bcac_row2_col3">24,074</td>
-<td class="data row2 col4" id="T_1bcac_row2_col4">5,1223</td>
-<td class="data row2 col5" id="T_1bcac_row2_col5">15,171</td>
-<td class="data row2 col6" id="T_1bcac_row2_col6">ρ₁, ρ₂</td>
-<td class="data row2 col7" id="T_1bcac_row2_col7">1867,1</td>
+<td class="data row2 col0" id="T_ff496_row2_col0">2</td>
+<td class="data row2 col1" id="T_ff496_row2_col1">Вдох</td>
+<td class="data row2 col2" id="T_ff496_row2_col2">1,3774</td>
+<td class="data row2 col3" id="T_ff496_row2_col3">24,074</td>
+<td class="data row2 col4" id="T_ff496_row2_col4">5,1223</td>
+<td class="data row2 col5" id="T_ff496_row2_col5">15,171</td>
+<td class="data row2 col6" id="T_ff496_row2_col6">ρ₁, ρ₂</td>
+<td class="data row2 col7" id="T_ff496_row2_col7">1867,1</td>
 </tr>
 <tr>
-<td class="data row3 col0" id="T_1bcac_row3_col0">2</td>
-<td class="data row3 col1" id="T_1bcac_row3_col1">Выдох</td>
-<td class="data row3 col2" id="T_1bcac_row3_col2">1,3774</td>
-<td class="data row3 col3" id="T_1bcac_row3_col3">24,074</td>
-<td class="data row3 col4" id="T_1bcac_row3_col4">5,2421</td>
-<td class="data row3 col5" id="T_1bcac_row3_col5">15,516</td>
-<td class="data row3 col6" id="T_1bcac_row3_col6">ρ₁, ρ₂</td>
-<td class="data row3 col7" id="T_1bcac_row3_col7">1697,3</td>
+<td class="data row3 col0" id="T_ff496_row3_col0">2</td>
+<td class="data row3 col1" id="T_ff496_row3_col1">Выдох</td>
+<td class="data row3 col2" id="T_ff496_row3_col2">1,3774</td>
+<td class="data row3 col3" id="T_ff496_row3_col3">24,074</td>
+<td class="data row3 col4" id="T_ff496_row3_col4">5,2421</td>
+<td class="data row3 col5" id="T_ff496_row3_col5">15,516</td>
+<td class="data row3 col6" id="T_ff496_row3_col6">ρ₁, ρ₂</td>
+<td class="data row3 col7" id="T_ff496_row3_col7">1697,3</td>
 </tr>
 </tbody>
 </table>
@@ -12002,7 +12042,7 @@ for(let index=0;index<3;index++)createViewer(index);
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9a0c5d53">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1cdeb537">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -12023,25 +12063,27 @@ for(let index=0;index<3;index++)createViewer(index);
 параметров в локальной линеаризации. У граничного минимума этот показатель
 не является доверительным интервалом и не учитывает ограничения оптимизации.</p>
 <p><strong>Рисунок 4.</strong> Профиль минимальной невязки при фиксированной h в тех же
-диапазонах сопротивлений. Минимизация по q выполнена на сетке; линия 1,10
-задаёт условный допуск 10% к RSS и не имеет статистической интерпретации.</p>
+диапазонах сопротивлений. Сплошные цветные линии относятся к четырём
+сочетаниям гипотезы канала и дыхательного состояния, указанным в легенде.
+Минимизация по q выполнена на сетке; горизонтальная точечная линия на уровне
+1,10 задаёт условный допуск 10% к RSS и не имеет статистической интерпретации.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=f2b2c164">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=90c53546">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<div style="height:480px; width:100%;"> <div class="plotly-graph-div" id="ec42222e-be83-4371-86b4-37ad4639cd03" style="height:100%; width:100%;"></div> <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("ec42222e-be83-4371-86b4-37ad4639cd03")) {                    Plotly.newPlot(                        "ec42222e-be83-4371-86b4-37ad4639cd03",                        [{"mode":"lines","name":"Канал 1, вдох","x":{"dtype":"f8","bdata":"AAAAAAAA4D8AAAAAAADwPwAAAAAAAABAAAAAAAAACEAAAAAAAAAQQAAAAAAAABRAAAAAAAAAGEAAAAAAAAAcQAAAAAAAACBAAAAAAAAAIkAAAAAAAAAkQAAAAAAAACZAAAAAAAAAKEAAAAAAAAAqQAAAAAAAACxAAAAAAAAALkAAAAAAAAAwQAAAAAAAADFAAAAAAAAAMkAAAAAAAAAzQAAAAAAAADRAAAAAAAAANUAAAAAAAAA2QAAAAAAAADdAAAAAAAAAOEAAAAAAAAA5QAAAAAAAADpAAAAAAAAAO0AAAAAAAAA8QAAAAAAAAD1AAAAAAAAAPkAAAAAAAAA\u002fQAAAAAAAAEBAAAAAAACAQEAAAAAAAABBQAAAAAAAgEFAAAAAAAAAQkAAAAAAAIBCQAAAAAAAAENAAAAAAACAQ0AAAAAAAABEQAAAAAAAgERAAAAAAAAARUAAAAAAAIBFQAAAAAAAAEZAAAAAAACARkAAAAAAAABHQAAAAAAAgEdAAAAAAAAASEAAAAAAAIBIQAAAAAAAAElAAAAAAACASUAAAAAAAABKQAAAAAAAgEpAAAAAAAAAS0AAAAAAAIBLQAAAAAAAAExAAAAAAACATEAAAAAAAABNQAAAAAAAgE1AAAAAAAAATkAAAAAAAIBOQAAAAAAAAE9AAAAAAACAT0AAAAAAAABQQAAAAAAAQFBAAAAAAACAUEAAAAAAAMBQQAAAAAAAAFFAAAAAAABAUUAAAAAAAIBRQAAAAAAAwFFAAAAAAAAAUkAAAAAAAEBSQAAAAAAAgFJAAAAAAADAUkAAAAAAAABTQAAAAAAAQFNAAAAAAACAU0AAAAAAAMBTQAAAAAAAAFRAAAAAAABAVEAAAAAAAIBUQAAAAAAAwFRAAAAAAAAAVUAAAAAAAEBVQAAAAAAAgFVAAAAAAADAVUAAAAAAAABWQAAAAAAAQFZAAAAAAACAVkAAAAAAAMBWQAAAAAAAAFdAAAAAAABAV0AAAAAAAIBXQAAAAAAAwFdAAAAAAAAAWEAAAAAAAEBYQAAAAAAAgFhAAAAAAADAWEAAAAAAAABZQA=="},"y":{"dtype":"f8","bdata":"QeG7+qTv\u002fT9HVm6jnbf1P4RgtH9nAPA\u002fUAYJ+f4E8D+RFRaBqAzwP7ZFq7veGfA\u002ffKJeTlYw8D845bF2pFLwP\u002fGpk+kLgfA\u002fvJ7Ta8+58D+roRqoHvrwP6JWFztpP\u002fE\u002fSBTItlSH8T\u002fhQjLlEdDxP+VIuVpsGPI\u002fTHMQfYJf8j9ELpwq16TyPzXr3rz35\u002fI\u002feY6OZdoo8z9wi1QiQ2fzPw8lV69Io\u002fM\u002fkbky6OHc8z9xPjCKLBT0PyNKxAfgUPQ\u002fguvEMU+U9D8Hv2eBxeP0P8kw8u61OPU\u002fgiehA2uR9T8HimOmT+\u002f1P8e5rFCfUfY\u002fMBhGrI239j\u002fFpgj7Yxv3Pw1b\u002fe8Pfvc\u002fg69H\u002fAfm9z+kFKF0ZEz4P0E7COSnrfg\u002f8a6ZuEMV+T\u002fJe9Nnh3H5P0TK+\u002f2V0\u002fk\u002fboheYQkv+j\u002fhrqpn1of6Pyks0rUv5vo\u002fDexxMcw1+z9tKheCo4f7P2pm7BdI3Ps\u002fMMClKyIo\u002fD9PtAUhhm\u002f8PzBeNo36t\u002fw\u002fqLOw6AgB\u002fT\u002fU7SvypET9P3SDjt38gf0\u002fZwwD5SK+\u002fT8LVuen\u002fvn9P8hyVPFKNf4\u002fSsLIQs9v\u002fj8G3j9Rn6P+P7Er2NqX1P4\u002f2P2gGMED\u002fz+TuHMqqzH\u002fP1czJmSpXv8\u002fDw+PyKmK\u002fz\u002f985XRnrX\u002fPxdq07x+3\u002f8\u002faHUmGXcDAECjuFmOVhUAQJhMpFKIJgBA2fhfCxM3AEBvRbkv\u002fUYAQOV1tQZNVgBAvuM4eAxlAEBiXV3sWHMAQFhXUmA4gQBA32yzT6yOAEAuht+BtpsAQAsc+\u002fpYqABAgw0j75W0AEA\u002fb4K3b8AAQPyICMnoywBAzL+xlMDWAEA6UnK9u+AAQFvvwaFZ6gBAUQGLEp7zAECYT+23jPwAQB5pqhIpBQFAwTiSfXYNAUDyc+0ueBUBQFj54zkxHQFA643dj6QkAUA9s9sB1SsBQOGTy0HFMgFAnDrP43c5AUA\u002fen1f7z8BQEwVGBEuRgFApNa3OjZMAUDha24FClIBQGPpXYKrVwFAtvbFqxxdAUCHsQZmX2IBQD\u002fo\u002fIN1ZwFAsZogTWJsAUD6QmJGKHEBQA=="},"type":"scatter"},{"mode":"lines","name":"Канал 1, выдох","x":{"dtype":"f8","bdata":"AAAAAAAA4D8AAAAAAADwPwAAAAAAAABAAAAAAAAACEAAAAAAAAAQQAAAAAAAABRAAAAAAAAAGEAAAAAAAAAcQAAAAAAAACBAAAAAAAAAIkAAAAAAAAAkQAAAAAAAACZAAAAAAAAAKEAAAAAAAAAqQAAAAAAAACxAAAAAAAAALkAAAAAAAAAwQAAAAAAAADFAAAAAAAAAMkAAAAAAAAAzQAAAAAAAADRAAAAAAAAANUAAAAAAAAA2QAAAAAAAADdAAAAAAAAAOEAAAAAAAAA5QAAAAAAAADpAAAAAAAAAO0AAAAAAAAA8QAAAAAAAAD1AAAAAAAAAPkAAAAAAAAA\u002fQAAAAAAAAEBAAAAAAACAQEAAAAAAAABBQAAAAAAAgEFAAAAAAAAAQkAAAAAAAIBCQAAAAAAAAENAAAAAAACAQ0AAAAAAAABEQAAAAAAAgERAAAAAAAAARUAAAAAAAIBFQAAAAAAAAEZAAAAAAACARkAAAAAAAABHQAAAAAAAgEdAAAAAAAAASEAAAAAAAIBIQAAAAAAAAElAAAAAAACASUAAAAAAAABKQAAAAAAAgEpAAAAAAAAAS0AAAAAAAIBLQAAAAAAAAExAAAAAAACATEAAAAAAAABNQAAAAAAAgE1AAAAAAAAATkAAAAAAAIBOQAAAAAAAAE9AAAAAAACAT0AAAAAAAABQQAAAAAAAQFBAAAAAAACAUEAAAAAAAMBQQAAAAAAAAFFAAAAAAABAUUAAAAAAAIBRQAAAAAAAwFFAAAAAAAAAUkAAAAAAAEBSQAAAAAAAgFJAAAAAAADAUkAAAAAAAABTQAAAAAAAQFNAAAAAAACAU0AAAAAAAMBTQAAAAAAAAFRAAAAAAABAVEAAAAAAAIBUQAAAAAAAwFRAAAAAAAAAVUAAAAAAAEBVQAAAAAAAgFVAAAAAAADAVUAAAAAAAABWQAAAAAAAQFZAAAAAAACAVkAAAAAAAMBWQAAAAAAAAFdAAAAAAABAV0AAAAAAAIBXQAAAAAAAwFdAAAAAAAAAWEAAAAAAAEBYQAAAAAAAgFhAAAAAAADAWEAAAAAAAABZQA=="},"y":{"dtype":"f8","bdata":"+u1IizD6\u002fT\u002fOcR7K0Gj1P9MJMKexAPA\u002fx6bImPUF8D8jhJWdlw7wP86o9SBuHfA\u002f8TlPClM28D9Mp4gz4FvwP2URRBUpjvA\u002fH3uoev3K8D9pUIrboQ\u002fxP\u002fhbU+0mWfE\u002fn4IqzC2l8T\u002fPK6Iw3vHxPyRS1pQHPvI\u002fcCy0qqWI8j9Vxu+LXtHyP9GcF225F\u002fM\u002fnL+NKHtb8z\u002f09HBGz5zzP1M1XOWB2\u002fM\u002fNKGxNrEX9D8UMk6PbVH0P2obN3\u002fKiPQ\u002f19vYQKPA9D8VpJ8dQwD1PwaiuxZYSvU\u002fpc0O00qd9T\u002f06VtH5\u002fT1P2YUepY7T\u002fY\u002fgskDdwys9j+ZGUMVagz3P5GwATpCcvc\u002fGBTdnS7Y9z8a5i7V0Df4P0ahBuA+ofg\u002f62UNUa\u002f++D+RFgUY+2X5PxbSlRkqwPk\u002ffod7tuYj+j9lCljK7Hv6P7ijDoWm1Po\u002fPAWMdqky+z+PwcUv8oH7PxiAuGmB0vs\u002f9R9g1fUl\u002fD9tZIXxY3T8PyjxgP\u002fquvw\u002fJ8hbiosB\u002fT+PFRAG7kj9P28dsNaKkP0\u002feMy2DqrO\u002fT\u002fo9dTwBQr+Py9zPk4GRP4\u002f+OElR5x9\u002fj\u002f+\u002fLIgkLb+P0OBZhOy7v4\u002fpJ+eN28i\u002fz9\u002fj1Pfz1H\u002fP308tWxxf\u002f8\u002fic7pSWKr\u002fz9rSwp\u002f\u002fdX\u002fPyBr1T6p\u002f\u002f8\u002fgufBNS0UAEAi\u002fbBBBCgAQOHdBeZWOwBAcLevcCNOAEAaIunaUl8AQMoxtutfbwBAEWtQ1NJ+AEBFZ\u002fGYsY0AQB7CyQwCnABAsmGI0cmpAEAJMkBXDrcAQPNFndzUwwBAViJqiyPQAECHE\u002f\u002fYDdwAQLrKuN6a5wBAILrMqMzyAECi0rVepf0AQLECATwnCAFAu60silQSAUCRznWbLxwBQC59csa6JQFAg+RdYvguAUCCcf3D6jcBQO9LUXVJQAFAW6pimSBIAUCySnuRsU8BQDUlNS3\u002fVgFA9+dvHQxeAUDaYZL12mQBQFciwyxuawFAtNYXH8hxAUATEbsO63cBQIVCCCXZfQFAo8udc5SDAUCTGmX1HokBQILgkI96jgFAX3aREqmTAUC2lP86rJgBQA=="},"type":"scatter"},{"mode":"lines","name":"Канал 2, вдох","x":{"dtype":"f8","bdata":"AAAAAAAA4D8AAAAAAADwPwAAAAAAAABAAAAAAAAACEAAAAAAAAAQQAAAAAAAABRAAAAAAAAAGEAAAAAAAAAcQAAAAAAAACBAAAAAAAAAIkAAAAAAAAAkQAAAAAAAACZAAAAAAAAAKEAAAAAAAAAqQAAAAAAAACxAAAAAAAAALkAAAAAAAAAwQAAAAAAAADFAAAAAAAAAMkAAAAAAAAAzQAAAAAAAADRAAAAAAAAANUAAAAAAAAA2QAAAAAAAADdAAAAAAAAAOEAAAAAAAAA5QAAAAAAAADpAAAAAAAAAO0AAAAAAAAA8QAAAAAAAAD1AAAAAAAAAPkAAAAAAAAA\u002fQAAAAAAAAEBAAAAAAACAQEAAAAAAAABBQAAAAAAAgEFAAAAAAAAAQkAAAAAAAIBCQAAAAAAAAENAAAAAAACAQ0AAAAAAAABEQAAAAAAAgERAAAAAAAAARUAAAAAAAIBFQAAAAAAAAEZAAAAAAACARkAAAAAAAABHQAAAAAAAgEdAAAAAAAAASEAAAAAAAIBIQAAAAAAAAElAAAAAAACASUAAAAAAAABKQAAAAAAAgEpAAAAAAAAAS0AAAAAAAIBLQAAAAAAAAExAAAAAAACATEAAAAAAAABNQAAAAAAAgE1AAAAAAAAATkAAAAAAAIBOQAAAAAAAAE9AAAAAAACAT0AAAAAAAABQQAAAAAAAQFBAAAAAAACAUEAAAAAAAMBQQAAAAAAAAFFAAAAAAABAUUAAAAAAAIBRQAAAAAAAwFFAAAAAAAAAUkAAAAAAAEBSQAAAAAAAgFJAAAAAAADAUkAAAAAAAABTQAAAAAAAQFNAAAAAAACAU0AAAAAAAMBTQAAAAAAAAFRAAAAAAABAVEAAAAAAAIBUQAAAAAAAwFRAAAAAAAAAVUAAAAAAAEBVQAAAAAAAgFVAAAAAAADAVUAAAAAAAABWQAAAAAAAQFZAAAAAAACAVkAAAAAAAMBWQAAAAAAAAFdAAAAAAABAV0AAAAAAAIBXQAAAAAAAwFdAAAAAAAAAWEAAAAAAAEBYQAAAAAAAgFhAAAAAAADAWEAAAAAAAABZQA=="},"y":{"dtype":"f8","bdata":"6WJ8+jUbFEBdmPDVIwISQCtUp0abvQpAGQSocua+AkCSXjv9JxL5P6QWEe5iNvA\u002fERvz310R8D\u002fkAtwztjDwP3qm7RlFY\u002fA\u002fW5bXWtio8D8bmTLwZQvxP4WEqwSujPE\u002frCmAwSYt8j9Mhch5vOzyP3zoTw+3z\u002fM\u002fPIS9RQ7R9D\u002fIvG\u002fgBPD1P9zhwBw9Kvc\u002fawudVA98+D8lZrjsoOT5P\u002f01aMWTWvs\u002fC2bRZ0Pd\u002fD\u002fD1qpp6G3+Pzhyos62AgBAsmMjFUrPAEAYcfa6AJwBQFcZ5uOlaQJAUi+9Lz81A0DhV3pYUQAEQGGs1qhoxQRAoBkSa6WHBUDuYxMb+0UGQIHwHurq\u002fwZA+pKAKWO1B0A8jCXmJWUIQJERrEwFDglAjcL4zNKyCUCvtRWPLFMKQFcDdkYs6wpAmplgGh6BC0A8pX4\u002fyQ0MQO6GITgCmQxAo4LqX\u002fYaDUBe6MmiepoNQOzzy2RTFA5ApBXPw0KIDkDf9JPMcfkOQKEPsRwUZQ9A19mAECTLD0BJQE4gKBcQQDVksXlBRxBAHxHLz0l0EEB++s+jYp8QQDikjE4WyRBA\u002fOGlx2XxEEA5YBk6VBgRQL7K3X+VPBFAl9UgRFhfEUAOMV1x4oARQM8lRbk6oRFAmpz+iWjAEUAENPLdc94RQCtOvxNl+xFAqPqLEEYWEkAXeMk0GjASQO1GRiX8SBJA0DI12\u002fNgEkDJ30RQCXgSQDQdH3FEjhJAtvh8Eq2jEkDzf2foSrgSQEb5TH8lzBJADsOfNkTfEkACY788rvESQFYC3MHiAhNAtDPcOmQTE0DPWs0nSSMTQJbwY5+aMhNAtp2SXl5BE0A6dzTwmU8TQBg7Hq1SXRNA4EKAvI1qE0BW74kUUHcTQDWlQXuegxNAwHCGh32PE0AoGDKi8ZoTQOPYUwf\u002fpRNAvUd9x6mwE0AM2xvJ9boTQP+L2snmxBNAl8EHYIDOE0DnXvz7xdcTQHhdgem64BNA4dUxUWLpE0Dfv9c5v\u002fETQKjAUt\u002fQ+RNANCcpCXMBFEBeJ9zQ0wgUQFvZocr1DxRAClSHbdsWFEBbTtAUhx0UQA=="},"type":"scatter"},{"mode":"lines","name":"Канал 2, выдох","x":{"dtype":"f8","bdata":"AAAAAAAA4D8AAAAAAADwPwAAAAAAAABAAAAAAAAACEAAAAAAAAAQQAAAAAAAABRAAAAAAAAAGEAAAAAAAAAcQAAAAAAAACBAAAAAAAAAIkAAAAAAAAAkQAAAAAAAACZAAAAAAAAAKEAAAAAAAAAqQAAAAAAAACxAAAAAAAAALkAAAAAAAAAwQAAAAAAAADFAAAAAAAAAMkAAAAAAAAAzQAAAAAAAADRAAAAAAAAANUAAAAAAAAA2QAAAAAAAADdAAAAAAAAAOEAAAAAAAAA5QAAAAAAAADpAAAAAAAAAO0AAAAAAAAA8QAAAAAAAAD1AAAAAAAAAPkAAAAAAAAA\u002fQAAAAAAAAEBAAAAAAACAQEAAAAAAAABBQAAAAAAAgEFAAAAAAAAAQkAAAAAAAIBCQAAAAAAAAENAAAAAAACAQ0AAAAAAAABEQAAAAAAAgERAAAAAAAAARUAAAAAAAIBFQAAAAAAAAEZAAAAAAACARkAAAAAAAABHQAAAAAAAgEdAAAAAAAAASEAAAAAAAIBIQAAAAAAAAElAAAAAAACASUAAAAAAAABKQAAAAAAAgEpAAAAAAAAAS0AAAAAAAIBLQAAAAAAAAExAAAAAAACATEAAAAAAAABNQAAAAAAAgE1AAAAAAAAATkAAAAAAAIBOQAAAAAAAAE9AAAAAAACAT0AAAAAAAABQQAAAAAAAQFBAAAAAAACAUEAAAAAAAMBQQAAAAAAAAFFAAAAAAABAUUAAAAAAAIBRQAAAAAAAwFFAAAAAAAAAUkAAAAAAAEBSQAAAAAAAgFJAAAAAAADAUkAAAAAAAABTQAAAAAAAQFNAAAAAAACAU0AAAAAAAMBTQAAAAAAAAFRAAAAAAABAVEAAAAAAAIBUQAAAAAAAwFRAAAAAAAAAVUAAAAAAAEBVQAAAAAAAgFVAAAAAAADAVUAAAAAAAABWQAAAAAAAQFZAAAAAAACAVkAAAAAAAMBWQAAAAAAAAFdAAAAAAABAV0AAAAAAAIBXQAAAAAAAwFdAAAAAAAAAWEAAAAAAAEBYQAAAAAAAgFhAAAAAAADAWEAAAAAAAABZQA=="},"y":{"dtype":"f8","bdata":"0xmDHCKHE0DymltTjJMRQPD5rGvjawpAaFuYrebRAkC+086fprL5P76P0Ro1y\u002fA\u002ffC67cD4O8D\u002f1urJd3ivwP3KUiQA4W\u002fA\u002frTf0Xf6b8D\u002fALSKwOvjwPykU1ON4cfE\u002fqzgnfzcI8j9vntA+ubzyP3l\u002f88Gyk\u002fM\u002fKZNzOVSH9D8m2lEEOpb1P\u002f2GvkBnwPY\u002fybYlgogD+D+F2a1mIVj5PyJwXCb7vvo\u002foTy7M9cv\u002fD+UIuxxma\u002f9P5KClFp0Mv8\u002f49GgCdxdAEBZyW2wRCMBQNWlV5IO5wFABpIizFusAkBkTWRInmwDQFdhjff+KgRApFaQmFXmBEBYkIxPm50FQJGgxlpSUAZAQkifg2b+BkBHpTyVFKgHQDPFOBJvTQhAMEaDKp7qCEBqQvdFYIQJQEg1gE06GQpABXoAwjynCkA8GAY4GDILQGewWI+VtQtANnKlFYk1DEDWUV4qSLAMQCNuVrYkJQ1A9lnepX6XDUDO0prvPAMOQEvkQ6upag5Aum22bU7PDkCBX\u002fjYqy8PQJEkOVsmig9AujYFC+PhD0CTYYy7bBsQQKujDMyDRBBADST8LZdqEEBvLgezVY8QQIYD2dzSshBALPFEjxPVEECnnofWHfYQQMUqm1DnFRFA9j9TeGUzEUD30T4R1U8RQNARJm49axFAmou5M6aFEUCd5GM8F58RQIbTAIGYtxFAw3i1BTLPEUAelUTK6+URQIGMZyer+xFA0v7BoPsPEkDUGYpEjSMSQMhhUytnNhJAkso0IZBIEkA49VfJDloSQJUbfprpahJAO0Jy3CZ7EkBzrUGmzIoSQDZ1Gd3gmRJAjhGtM2moEkCY+Q0qa7YSQKsN4A3swxJAoZvZ+vDQEkAtbYDbft0SQH2OF2qa6RJAxkF7QCD1EkCMkVMEFgATQE4TkoWnChNAFc136dgUE0CFmY4lrh4TQBYR0gErKBNAVEDDGlMxE0DgSWfjKToTQN\u002fYK9KyQhNA9CYG\u002fPFKE0Bgk8Rn6lITQEZuP9KeWhNACeAv2xFiE0DO0VgGRmkTQEtZqLw9cBNAYxhRTft2E0A4KNvugH0TQA=="},"type":"scatter"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scattermap":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermap"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"white","showlakes":true,"showland":true,"subunitcolor":"#C8D4E3"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"white","polar":{"angularaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""},"bgcolor":"white","radialaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"yaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"zaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"baxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"bgcolor":"white","caxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2}}},"shapes":[{"line":{"dash":"dot"},"type":"line","x0":0,"x1":1,"xref":"x domain","y0":1.1,"y1":1.1,"yref":"y"}],"annotations":[{"showarrow":false,"text":"Условный прирост RSS 10%","x":1,"xanchor":"right","xref":"x domain","y":1.1,"yanchor":"bottom","yref":"y"}],"legend":{"orientation":"h","y":-0.2},"title":{"text":"Рисунок 4. Минимальная невязка при фиксированной h"},"xaxis":{"title":{"text":"h, мм"}},"yaxis":{"title":{"text":"RSS(h) \u002f RSSₘᵢₙ"}},"height":480},                        {"responsive": true}                    )                };            </script> </div>
+<div style="height:480px; width:100%;"> <div class="plotly-graph-div" id="c21bbb81-b77b-4e4c-b241-a8847f26f51e" style="height:100%; width:100%;"></div> <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("c21bbb81-b77b-4e4c-b241-a8847f26f51e")) {                    Plotly.newPlot(                        "c21bbb81-b77b-4e4c-b241-a8847f26f51e",                        [{"mode":"lines","name":"Канал 1, вдох","x":{"dtype":"f8","bdata":"AAAAAAAA4D8AAAAAAADwPwAAAAAAAABAAAAAAAAACEAAAAAAAAAQQAAAAAAAABRAAAAAAAAAGEAAAAAAAAAcQAAAAAAAACBAAAAAAAAAIkAAAAAAAAAkQAAAAAAAACZAAAAAAAAAKEAAAAAAAAAqQAAAAAAAACxAAAAAAAAALkAAAAAAAAAwQAAAAAAAADFAAAAAAAAAMkAAAAAAAAAzQAAAAAAAADRAAAAAAAAANUAAAAAAAAA2QAAAAAAAADdAAAAAAAAAOEAAAAAAAAA5QAAAAAAAADpAAAAAAAAAO0AAAAAAAAA8QAAAAAAAAD1AAAAAAAAAPkAAAAAAAAA\u002fQAAAAAAAAEBAAAAAAACAQEAAAAAAAABBQAAAAAAAgEFAAAAAAAAAQkAAAAAAAIBCQAAAAAAAAENAAAAAAACAQ0AAAAAAAABEQAAAAAAAgERAAAAAAAAARUAAAAAAAIBFQAAAAAAAAEZAAAAAAACARkAAAAAAAABHQAAAAAAAgEdAAAAAAAAASEAAAAAAAIBIQAAAAAAAAElAAAAAAACASUAAAAAAAABKQAAAAAAAgEpAAAAAAAAAS0AAAAAAAIBLQAAAAAAAAExAAAAAAACATEAAAAAAAABNQAAAAAAAgE1AAAAAAAAATkAAAAAAAIBOQAAAAAAAAE9AAAAAAACAT0AAAAAAAABQQAAAAAAAQFBAAAAAAACAUEAAAAAAAMBQQAAAAAAAAFFAAAAAAABAUUAAAAAAAIBRQAAAAAAAwFFAAAAAAAAAUkAAAAAAAEBSQAAAAAAAgFJAAAAAAADAUkAAAAAAAABTQAAAAAAAQFNAAAAAAACAU0AAAAAAAMBTQAAAAAAAAFRAAAAAAABAVEAAAAAAAIBUQAAAAAAAwFRAAAAAAAAAVUAAAAAAAEBVQAAAAAAAgFVAAAAAAADAVUAAAAAAAABWQAAAAAAAQFZAAAAAAACAVkAAAAAAAMBWQAAAAAAAAFdAAAAAAABAV0AAAAAAAIBXQAAAAAAAwFdAAAAAAAAAWEAAAAAAAEBYQAAAAAAAgFhAAAAAAADAWEAAAAAAAABZQA=="},"y":{"dtype":"f8","bdata":"QeG7+qTv\u002fT9HVm6jnbf1P4RgtH9nAPA\u002fUAYJ+f4E8D+RFRaBqAzwP7ZFq7veGfA\u002ffKJeTlYw8D845bF2pFLwP\u002fGpk+kLgfA\u002fvJ7Ta8+58D+roRqoHvrwP6JWFztpP\u002fE\u002fSBTItlSH8T\u002fhQjLlEdDxP+VIuVpsGPI\u002fTHMQfYJf8j9ELpwq16TyPzXr3rz35\u002fI\u002feY6OZdoo8z9wi1QiQ2fzPw8lV69Io\u002fM\u002fkbky6OHc8z9xPjCKLBT0PyNKxAfgUPQ\u002fguvEMU+U9D8Hv2eBxeP0P8kw8u61OPU\u002fgiehA2uR9T8HimOmT+\u002f1P8e5rFCfUfY\u002fMBhGrI239j\u002fFpgj7Yxv3Pw1b\u002fe8Pfvc\u002fg69H\u002fAfm9z+kFKF0ZEz4P0E7COSnrfg\u002f8a6ZuEMV+T\u002fJe9Nnh3H5P0TK+\u002f2V0\u002fk\u002fboheYQkv+j\u002fhrqpn1of6Pyks0rUv5vo\u002fDexxMcw1+z9tKheCo4f7P2pm7BdI3Ps\u002fMMClKyIo\u002fD9PtAUhhm\u002f8PzBeNo36t\u002fw\u002fqLOw6AgB\u002fT\u002fU7SvypET9P3SDjt38gf0\u002fZwwD5SK+\u002fT8LVuen\u002fvn9P8hyVPFKNf4\u002fSsLIQs9v\u002fj8G3j9Rn6P+P7Er2NqX1P4\u002f2P2gGMED\u002fz+TuHMqqzH\u002fP1czJmSpXv8\u002fDw+PyKmK\u002fz\u002f985XRnrX\u002fPxdq07x+3\u002f8\u002faHUmGXcDAECjuFmOVhUAQJhMpFKIJgBA2fhfCxM3AEBvRbkv\u002fUYAQOV1tQZNVgBAvuM4eAxlAEBiXV3sWHMAQFhXUmA4gQBA32yzT6yOAEAuht+BtpsAQAsc+\u002fpYqABAgw0j75W0AEA\u002fb4K3b8AAQPyICMnoywBAzL+xlMDWAEA6UnK9u+AAQFvvwaFZ6gBAUQGLEp7zAECYT+23jPwAQB5pqhIpBQFAwTiSfXYNAUDyc+0ueBUBQFj54zkxHQFA643dj6QkAUA9s9sB1SsBQOGTy0HFMgFAnDrP43c5AUA\u002fen1f7z8BQEwVGBEuRgFApNa3OjZMAUDha24FClIBQGPpXYKrVwFAtvbFqxxdAUCHsQZmX2IBQD\u002fo\u002fIN1ZwFAsZogTWJsAUD6QmJGKHEBQA=="},"type":"scatter"},{"mode":"lines","name":"Канал 1, выдох","x":{"dtype":"f8","bdata":"AAAAAAAA4D8AAAAAAADwPwAAAAAAAABAAAAAAAAACEAAAAAAAAAQQAAAAAAAABRAAAAAAAAAGEAAAAAAAAAcQAAAAAAAACBAAAAAAAAAIkAAAAAAAAAkQAAAAAAAACZAAAAAAAAAKEAAAAAAAAAqQAAAAAAAACxAAAAAAAAALkAAAAAAAAAwQAAAAAAAADFAAAAAAAAAMkAAAAAAAAAzQAAAAAAAADRAAAAAAAAANUAAAAAAAAA2QAAAAAAAADdAAAAAAAAAOEAAAAAAAAA5QAAAAAAAADpAAAAAAAAAO0AAAAAAAAA8QAAAAAAAAD1AAAAAAAAAPkAAAAAAAAA\u002fQAAAAAAAAEBAAAAAAACAQEAAAAAAAABBQAAAAAAAgEFAAAAAAAAAQkAAAAAAAIBCQAAAAAAAAENAAAAAAACAQ0AAAAAAAABEQAAAAAAAgERAAAAAAAAARUAAAAAAAIBFQAAAAAAAAEZAAAAAAACARkAAAAAAAABHQAAAAAAAgEdAAAAAAAAASEAAAAAAAIBIQAAAAAAAAElAAAAAAACASUAAAAAAAABKQAAAAAAAgEpAAAAAAAAAS0AAAAAAAIBLQAAAAAAAAExAAAAAAACATEAAAAAAAABNQAAAAAAAgE1AAAAAAAAATkAAAAAAAIBOQAAAAAAAAE9AAAAAAACAT0AAAAAAAABQQAAAAAAAQFBAAAAAAACAUEAAAAAAAMBQQAAAAAAAAFFAAAAAAABAUUAAAAAAAIBRQAAAAAAAwFFAAAAAAAAAUkAAAAAAAEBSQAAAAAAAgFJAAAAAAADAUkAAAAAAAABTQAAAAAAAQFNAAAAAAACAU0AAAAAAAMBTQAAAAAAAAFRAAAAAAABAVEAAAAAAAIBUQAAAAAAAwFRAAAAAAAAAVUAAAAAAAEBVQAAAAAAAgFVAAAAAAADAVUAAAAAAAABWQAAAAAAAQFZAAAAAAACAVkAAAAAAAMBWQAAAAAAAAFdAAAAAAABAV0AAAAAAAIBXQAAAAAAAwFdAAAAAAAAAWEAAAAAAAEBYQAAAAAAAgFhAAAAAAADAWEAAAAAAAABZQA=="},"y":{"dtype":"f8","bdata":"+u1IizD6\u002fT\u002fOcR7K0Gj1P9MJMKexAPA\u002fx6bImPUF8D8jhJWdlw7wP86o9SBuHfA\u002f8TlPClM28D9Mp4gz4FvwP2URRBUpjvA\u002fH3uoev3K8D9pUIrboQ\u002fxP\u002fhbU+0mWfE\u002fn4IqzC2l8T\u002fPK6Iw3vHxPyRS1pQHPvI\u002fcCy0qqWI8j9Vxu+LXtHyP9GcF225F\u002fM\u002fnL+NKHtb8z\u002f09HBGz5zzP1M1XOWB2\u002fM\u002fNKGxNrEX9D8UMk6PbVH0P2obN3\u002fKiPQ\u002f19vYQKPA9D8VpJ8dQwD1PwaiuxZYSvU\u002fpc0O00qd9T\u002f06VtH5\u002fT1P2YUepY7T\u002fY\u002fgskDdwys9j+ZGUMVagz3P5GwATpCcvc\u002fGBTdnS7Y9z8a5i7V0Df4P0ahBuA+ofg\u002f62UNUa\u002f++D+RFgUY+2X5PxbSlRkqwPk\u002ffod7tuYj+j9lCljK7Hv6P7ijDoWm1Po\u002fPAWMdqky+z+PwcUv8oH7PxiAuGmB0vs\u002f9R9g1fUl\u002fD9tZIXxY3T8PyjxgP\u002fquvw\u002fJ8hbiosB\u002fT+PFRAG7kj9P28dsNaKkP0\u002feMy2DqrO\u002fT\u002fo9dTwBQr+Py9zPk4GRP4\u002f+OElR5x9\u002fj\u002f+\u002fLIgkLb+P0OBZhOy7v4\u002fpJ+eN28i\u002fz9\u002fj1Pfz1H\u002fP308tWxxf\u002f8\u002fic7pSWKr\u002fz9rSwp\u002f\u002fdX\u002fPyBr1T6p\u002f\u002f8\u002fgufBNS0UAEAi\u002fbBBBCgAQOHdBeZWOwBAcLevcCNOAEAaIunaUl8AQMoxtutfbwBAEWtQ1NJ+AEBFZ\u002fGYsY0AQB7CyQwCnABAsmGI0cmpAEAJMkBXDrcAQPNFndzUwwBAViJqiyPQAECHE\u002f\u002fYDdwAQLrKuN6a5wBAILrMqMzyAECi0rVepf0AQLECATwnCAFAu60silQSAUCRznWbLxwBQC59csa6JQFAg+RdYvguAUCCcf3D6jcBQO9LUXVJQAFAW6pimSBIAUCySnuRsU8BQDUlNS3\u002fVgFA9+dvHQxeAUDaYZL12mQBQFciwyxuawFAtNYXH8hxAUATEbsO63cBQIVCCCXZfQFAo8udc5SDAUCTGmX1HokBQILgkI96jgFAX3aREqmTAUC2lP86rJgBQA=="},"type":"scatter"},{"mode":"lines","name":"Канал 2, вдох","x":{"dtype":"f8","bdata":"AAAAAAAA4D8AAAAAAADwPwAAAAAAAABAAAAAAAAACEAAAAAAAAAQQAAAAAAAABRAAAAAAAAAGEAAAAAAAAAcQAAAAAAAACBAAAAAAAAAIkAAAAAAAAAkQAAAAAAAACZAAAAAAAAAKEAAAAAAAAAqQAAAAAAAACxAAAAAAAAALkAAAAAAAAAwQAAAAAAAADFAAAAAAAAAMkAAAAAAAAAzQAAAAAAAADRAAAAAAAAANUAAAAAAAAA2QAAAAAAAADdAAAAAAAAAOEAAAAAAAAA5QAAAAAAAADpAAAAAAAAAO0AAAAAAAAA8QAAAAAAAAD1AAAAAAAAAPkAAAAAAAAA\u002fQAAAAAAAAEBAAAAAAACAQEAAAAAAAABBQAAAAAAAgEFAAAAAAAAAQkAAAAAAAIBCQAAAAAAAAENAAAAAAACAQ0AAAAAAAABEQAAAAAAAgERAAAAAAAAARUAAAAAAAIBFQAAAAAAAAEZAAAAAAACARkAAAAAAAABHQAAAAAAAgEdAAAAAAAAASEAAAAAAAIBIQAAAAAAAAElAAAAAAACASUAAAAAAAABKQAAAAAAAgEpAAAAAAAAAS0AAAAAAAIBLQAAAAAAAAExAAAAAAACATEAAAAAAAABNQAAAAAAAgE1AAAAAAAAATkAAAAAAAIBOQAAAAAAAAE9AAAAAAACAT0AAAAAAAABQQAAAAAAAQFBAAAAAAACAUEAAAAAAAMBQQAAAAAAAAFFAAAAAAABAUUAAAAAAAIBRQAAAAAAAwFFAAAAAAAAAUkAAAAAAAEBSQAAAAAAAgFJAAAAAAADAUkAAAAAAAABTQAAAAAAAQFNAAAAAAACAU0AAAAAAAMBTQAAAAAAAAFRAAAAAAABAVEAAAAAAAIBUQAAAAAAAwFRAAAAAAAAAVUAAAAAAAEBVQAAAAAAAgFVAAAAAAADAVUAAAAAAAABWQAAAAAAAQFZAAAAAAACAVkAAAAAAAMBWQAAAAAAAAFdAAAAAAABAV0AAAAAAAIBXQAAAAAAAwFdAAAAAAAAAWEAAAAAAAEBYQAAAAAAAgFhAAAAAAADAWEAAAAAAAABZQA=="},"y":{"dtype":"f8","bdata":"6WJ8+jUbFEBdmPDVIwISQCtUp0abvQpAGQSocua+AkCSXjv9JxL5P6QWEe5iNvA\u002fERvz310R8D\u002fkAtwztjDwP3qm7RlFY\u002fA\u002fW5bXWtio8D8bmTLwZQvxP4WEqwSujPE\u002frCmAwSYt8j9Mhch5vOzyP3zoTw+3z\u002fM\u002fPIS9RQ7R9D\u002fIvG\u002fgBPD1P9zhwBw9Kvc\u002fawudVA98+D8lZrjsoOT5P\u002f01aMWTWvs\u002fC2bRZ0Pd\u002fD\u002fD1qpp6G3+Pzhyos62AgBAsmMjFUrPAEAYcfa6AJwBQFcZ5uOlaQJAUi+9Lz81A0DhV3pYUQAEQGGs1qhoxQRAoBkSa6WHBUDuYxMb+0UGQIHwHurq\u002fwZA+pKAKWO1B0A8jCXmJWUIQJERrEwFDglAjcL4zNKyCUCvtRWPLFMKQFcDdkYs6wpAmplgGh6BC0A8pX4\u002fyQ0MQO6GITgCmQxAo4LqX\u002fYaDUBe6MmiepoNQOzzy2RTFA5ApBXPw0KIDkDf9JPMcfkOQKEPsRwUZQ9A19mAECTLD0BJQE4gKBcQQDVksXlBRxBAHxHLz0l0EEB++s+jYp8QQDikjE4WyRBA\u002fOGlx2XxEEA5YBk6VBgRQL7K3X+VPBFAl9UgRFhfEUAOMV1x4oARQM8lRbk6oRFAmpz+iWjAEUAENPLdc94RQCtOvxNl+xFAqPqLEEYWEkAXeMk0GjASQO1GRiX8SBJA0DI12\u002fNgEkDJ30RQCXgSQDQdH3FEjhJAtvh8Eq2jEkDzf2foSrgSQEb5TH8lzBJADsOfNkTfEkACY788rvESQFYC3MHiAhNAtDPcOmQTE0DPWs0nSSMTQJbwY5+aMhNAtp2SXl5BE0A6dzTwmU8TQBg7Hq1SXRNA4EKAvI1qE0BW74kUUHcTQDWlQXuegxNAwHCGh32PE0AoGDKi8ZoTQOPYUwf\u002fpRNAvUd9x6mwE0AM2xvJ9boTQP+L2snmxBNAl8EHYIDOE0DnXvz7xdcTQHhdgem64BNA4dUxUWLpE0Dfv9c5v\u002fETQKjAUt\u002fQ+RNANCcpCXMBFEBeJ9zQ0wgUQFvZocr1DxRAClSHbdsWFEBbTtAUhx0UQA=="},"type":"scatter"},{"mode":"lines","name":"Канал 2, выдох","x":{"dtype":"f8","bdata":"AAAAAAAA4D8AAAAAAADwPwAAAAAAAABAAAAAAAAACEAAAAAAAAAQQAAAAAAAABRAAAAAAAAAGEAAAAAAAAAcQAAAAAAAACBAAAAAAAAAIkAAAAAAAAAkQAAAAAAAACZAAAAAAAAAKEAAAAAAAAAqQAAAAAAAACxAAAAAAAAALkAAAAAAAAAwQAAAAAAAADFAAAAAAAAAMkAAAAAAAAAzQAAAAAAAADRAAAAAAAAANUAAAAAAAAA2QAAAAAAAADdAAAAAAAAAOEAAAAAAAAA5QAAAAAAAADpAAAAAAAAAO0AAAAAAAAA8QAAAAAAAAD1AAAAAAAAAPkAAAAAAAAA\u002fQAAAAAAAAEBAAAAAAACAQEAAAAAAAABBQAAAAAAAgEFAAAAAAAAAQkAAAAAAAIBCQAAAAAAAAENAAAAAAACAQ0AAAAAAAABEQAAAAAAAgERAAAAAAAAARUAAAAAAAIBFQAAAAAAAAEZAAAAAAACARkAAAAAAAABHQAAAAAAAgEdAAAAAAAAASEAAAAAAAIBIQAAAAAAAAElAAAAAAACASUAAAAAAAABKQAAAAAAAgEpAAAAAAAAAS0AAAAAAAIBLQAAAAAAAAExAAAAAAACATEAAAAAAAABNQAAAAAAAgE1AAAAAAAAATkAAAAAAAIBOQAAAAAAAAE9AAAAAAACAT0AAAAAAAABQQAAAAAAAQFBAAAAAAACAUEAAAAAAAMBQQAAAAAAAAFFAAAAAAABAUUAAAAAAAIBRQAAAAAAAwFFAAAAAAAAAUkAAAAAAAEBSQAAAAAAAgFJAAAAAAADAUkAAAAAAAABTQAAAAAAAQFNAAAAAAACAU0AAAAAAAMBTQAAAAAAAAFRAAAAAAABAVEAAAAAAAIBUQAAAAAAAwFRAAAAAAAAAVUAAAAAAAEBVQAAAAAAAgFVAAAAAAADAVUAAAAAAAABWQAAAAAAAQFZAAAAAAACAVkAAAAAAAMBWQAAAAAAAAFdAAAAAAABAV0AAAAAAAIBXQAAAAAAAwFdAAAAAAAAAWEAAAAAAAEBYQAAAAAAAgFhAAAAAAADAWEAAAAAAAABZQA=="},"y":{"dtype":"f8","bdata":"0xmDHCKHE0DymltTjJMRQPD5rGvjawpAaFuYrebRAkC+086fprL5P76P0Ro1y\u002fA\u002ffC67cD4O8D\u002f1urJd3ivwP3KUiQA4W\u002fA\u002frTf0Xf6b8D\u002fALSKwOvjwPykU1ON4cfE\u002fqzgnfzcI8j9vntA+ubzyP3l\u002f88Gyk\u002fM\u002fKZNzOVSH9D8m2lEEOpb1P\u002f2GvkBnwPY\u002fybYlgogD+D+F2a1mIVj5PyJwXCb7vvo\u002foTy7M9cv\u002fD+UIuxxma\u002f9P5KClFp0Mv8\u002f49GgCdxdAEBZyW2wRCMBQNWlV5IO5wFABpIizFusAkBkTWRInmwDQFdhjff+KgRApFaQmFXmBEBYkIxPm50FQJGgxlpSUAZAQkifg2b+BkBHpTyVFKgHQDPFOBJvTQhAMEaDKp7qCEBqQvdFYIQJQEg1gE06GQpABXoAwjynCkA8GAY4GDILQGewWI+VtQtANnKlFYk1DEDWUV4qSLAMQCNuVrYkJQ1A9lnepX6XDUDO0prvPAMOQEvkQ6upag5Aum22bU7PDkCBX\u002fjYqy8PQJEkOVsmig9AujYFC+PhD0CTYYy7bBsQQKujDMyDRBBADST8LZdqEEBvLgezVY8QQIYD2dzSshBALPFEjxPVEECnnofWHfYQQMUqm1DnFRFA9j9TeGUzEUD30T4R1U8RQNARJm49axFAmou5M6aFEUCd5GM8F58RQIbTAIGYtxFAw3i1BTLPEUAelUTK6+URQIGMZyer+xFA0v7BoPsPEkDUGYpEjSMSQMhhUytnNhJAkso0IZBIEkA49VfJDloSQJUbfprpahJAO0Jy3CZ7EkBzrUGmzIoSQDZ1Gd3gmRJAjhGtM2moEkCY+Q0qa7YSQKsN4A3swxJAoZvZ+vDQEkAtbYDbft0SQH2OF2qa6RJAxkF7QCD1EkCMkVMEFgATQE4TkoWnChNAFc136dgUE0CFmY4lrh4TQBYR0gErKBNAVEDDGlMxE0DgSWfjKToTQN\u002fYK9KyQhNA9CYG\u002fPFKE0Bgk8Rn6lITQEZuP9KeWhNACeAv2xFiE0DO0VgGRmkTQEtZqLw9cBNAYxhRTft2E0A4KNvugH0TQA=="},"type":"scatter"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scattermap":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermap"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"white","showlakes":true,"showland":true,"subunitcolor":"#C8D4E3"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"white","polar":{"angularaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""},"bgcolor":"white","radialaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"yaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"zaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"baxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"bgcolor":"white","caxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2}}},"shapes":[{"line":{"dash":"dot"},"type":"line","x0":0,"x1":1,"xref":"x domain","y0":1.1,"y1":1.1,"yref":"y"}],"annotations":[{"showarrow":false,"text":"Условный прирост RSS 10%","x":1,"xanchor":"right","xref":"x domain","y":1.1,"yanchor":"bottom","yref":"y"}],"legend":{"orientation":"h","y":-0.2},"title":{"text":"Рисунок 4. Минимальная невязка при фиксированной h"},"xaxis":{"title":{"text":"h, мм"}},"yaxis":{"title":{"text":"RSS(h) \u002f RSSₘᵢₙ"}},"height":480},                        {"responsive": true}                    )                };            </script> </div>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=404f0ba3">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7ffb7d8d">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -12054,7 +12096,7 @@ for(let index=0;index<3;index++)createViewer(index);
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=7b902238">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=ba9ef3f8">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -12063,433 +12105,433 @@ for(let index=0;index<3;index++)createViewer(index);
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
 <style type="text/css">
 </style>
-<table id="T_eeb47">
+<table id="T_8dbd7">
 <thead>
 <tr>
-<th class="col_heading level0 col0" id="T_eeb47_level0_col0">Гипотеза бокового канала</th>
-<th class="col_heading level0 col1" id="T_eeb47_level0_col1">Дыхание</th>
-<th class="col_heading level0 col2" id="T_eeb47_level0_col2">Сборка и запись</th>
-<th class="col_heading level0 col3" id="T_eeb47_level0_col3">Поле BEI</th>
-<th class="col_heading level0 col4" id="T_eeb47_level0_col4">Медиана Z, Ом</th>
-<th class="col_heading level0 col5" id="T_eeb47_level0_col5">Основной размерный ряд</th>
+<th class="col_heading level0 col0" id="T_8dbd7_level0_col0">Гипотеза бокового канала</th>
+<th class="col_heading level0 col1" id="T_8dbd7_level0_col1">Дыхание</th>
+<th class="col_heading level0 col2" id="T_8dbd7_level0_col2">Сборка и запись</th>
+<th class="col_heading level0 col3" id="T_8dbd7_level0_col3">Поле BEI</th>
+<th class="col_heading level0 col4" id="T_8dbd7_level0_col4">Медиана Z, Ом</th>
+<th class="col_heading level0 col5" id="T_8dbd7_level0_col5">Основной размерный ряд</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="data row0 col0" id="T_eeb47_row0_col0">1</td>
-<td class="data row0 col1" id="T_eeb47_row0_col1">Вдох</td>
-<td class="data row0 col2" id="T_eeb47_row0_col2">60 мм · 010 · основной ряд</td>
-<td class="data row0 col3" id="T_eeb47_row0_col3">1</td>
-<td class="data row0 col4" id="T_eeb47_row0_col4">115,33</td>
-<td class="data row0 col5" id="T_eeb47_row0_col5">Да</td>
+<td class="data row0 col0" id="T_8dbd7_row0_col0">1</td>
+<td class="data row0 col1" id="T_8dbd7_row0_col1">Вдох</td>
+<td class="data row0 col2" id="T_8dbd7_row0_col2">60 мм · 010 · основной ряд</td>
+<td class="data row0 col3" id="T_8dbd7_row0_col3">1</td>
+<td class="data row0 col4" id="T_8dbd7_row0_col4">115,33</td>
+<td class="data row0 col5" id="T_8dbd7_row0_col5">Да</td>
 </tr>
 <tr>
-<td class="data row1 col0" id="T_eeb47_row1_col0">1</td>
-<td class="data row1 col1" id="T_eeb47_row1_col1">Вдох</td>
-<td class="data row1 col2" id="T_eeb47_row1_col2">80 мм · 009 · основной ряд</td>
-<td class="data row1 col3" id="T_eeb47_row1_col3">1</td>
-<td class="data row1 col4" id="T_eeb47_row1_col4">127,83</td>
-<td class="data row1 col5" id="T_eeb47_row1_col5">Да</td>
+<td class="data row1 col0" id="T_8dbd7_row1_col0">1</td>
+<td class="data row1 col1" id="T_8dbd7_row1_col1">Вдох</td>
+<td class="data row1 col2" id="T_8dbd7_row1_col2">80 мм · 009 · основной ряд</td>
+<td class="data row1 col3" id="T_8dbd7_row1_col3">1</td>
+<td class="data row1 col4" id="T_8dbd7_row1_col4">127,83</td>
+<td class="data row1 col5" id="T_8dbd7_row1_col5">Да</td>
 </tr>
 <tr>
-<td class="data row2 col0" id="T_eeb47_row2_col0">1</td>
-<td class="data row2 col1" id="T_eeb47_row2_col1">Вдох</td>
-<td class="data row2 col2" id="T_eeb47_row2_col2">100 мм · 008 · основной ряд</td>
-<td class="data row2 col3" id="T_eeb47_row2_col3">1</td>
-<td class="data row2 col4" id="T_eeb47_row2_col4">85,702</td>
-<td class="data row2 col5" id="T_eeb47_row2_col5">Да</td>
+<td class="data row2 col0" id="T_8dbd7_row2_col0">1</td>
+<td class="data row2 col1" id="T_8dbd7_row2_col1">Вдох</td>
+<td class="data row2 col2" id="T_8dbd7_row2_col2">100 мм · 008 · основной ряд</td>
+<td class="data row2 col3" id="T_8dbd7_row2_col3">1</td>
+<td class="data row2 col4" id="T_8dbd7_row2_col4">85,702</td>
+<td class="data row2 col5" id="T_8dbd7_row2_col5">Да</td>
 </tr>
 <tr>
-<td class="data row3 col0" id="T_eeb47_row3_col0">1</td>
-<td class="data row3 col1" id="T_eeb47_row3_col1">Вдох</td>
-<td class="data row3 col2" id="T_eeb47_row3_col2">120 мм · 007 · основной ряд</td>
-<td class="data row3 col3" id="T_eeb47_row3_col3">1</td>
-<td class="data row3 col4" id="T_eeb47_row3_col4">86,24</td>
-<td class="data row3 col5" id="T_eeb47_row3_col5">Да</td>
+<td class="data row3 col0" id="T_8dbd7_row3_col0">1</td>
+<td class="data row3 col1" id="T_8dbd7_row3_col1">Вдох</td>
+<td class="data row3 col2" id="T_8dbd7_row3_col2">120 мм · 007 · основной ряд</td>
+<td class="data row3 col3" id="T_8dbd7_row3_col3">1</td>
+<td class="data row3 col4" id="T_8dbd7_row3_col4">86,24</td>
+<td class="data row3 col5" id="T_8dbd7_row3_col5">Да</td>
 </tr>
 <tr>
-<td class="data row4 col0" id="T_eeb47_row4_col0">1</td>
-<td class="data row4 col1" id="T_eeb47_row4_col1">Вдох</td>
-<td class="data row4 col2" id="T_eeb47_row4_col2">140 мм · 004 · основной ряд</td>
-<td class="data row4 col3" id="T_eeb47_row4_col3">1</td>
-<td class="data row4 col4" id="T_eeb47_row4_col4">67,018</td>
-<td class="data row4 col5" id="T_eeb47_row4_col5">Да</td>
+<td class="data row4 col0" id="T_8dbd7_row4_col0">1</td>
+<td class="data row4 col1" id="T_8dbd7_row4_col1">Вдох</td>
+<td class="data row4 col2" id="T_8dbd7_row4_col2">140 мм · 004 · основной ряд</td>
+<td class="data row4 col3" id="T_8dbd7_row4_col3">1</td>
+<td class="data row4 col4" id="T_8dbd7_row4_col4">67,018</td>
+<td class="data row4 col5" id="T_8dbd7_row4_col5">Да</td>
 </tr>
 <tr>
-<td class="data row5 col0" id="T_eeb47_row5_col0">1</td>
-<td class="data row5 col1" id="T_eeb47_row5_col1">Вдох</td>
-<td class="data row5 col2" id="T_eeb47_row5_col2">140 мм · 002 · 1×1 на руках</td>
-<td class="data row5 col3" id="T_eeb47_row5_col3">1</td>
-<td class="data row5 col4" id="T_eeb47_row5_col4">72,48</td>
-<td class="data row5 col5" id="T_eeb47_row5_col5">Нет</td>
+<td class="data row5 col0" id="T_8dbd7_row5_col0">1</td>
+<td class="data row5 col1" id="T_8dbd7_row5_col1">Вдох</td>
+<td class="data row5 col2" id="T_8dbd7_row5_col2">140 мм · 002 · 1×1 на руках</td>
+<td class="data row5 col3" id="T_8dbd7_row5_col3">1</td>
+<td class="data row5 col4" id="T_8dbd7_row5_col4">72,48</td>
+<td class="data row5 col5" id="T_8dbd7_row5_col5">Нет</td>
 </tr>
 <tr>
-<td class="data row6 col0" id="T_eeb47_row6_col0">1</td>
-<td class="data row6 col1" id="T_eeb47_row6_col1">Вдох</td>
-<td class="data row6 col2" id="T_eeb47_row6_col2">140 мм · 003 · 2×2 на руках</td>
-<td class="data row6 col3" id="T_eeb47_row6_col3">1</td>
-<td class="data row6 col4" id="T_eeb47_row6_col4">63,73</td>
-<td class="data row6 col5" id="T_eeb47_row6_col5">Нет</td>
+<td class="data row6 col0" id="T_8dbd7_row6_col0">1</td>
+<td class="data row6 col1" id="T_8dbd7_row6_col1">Вдох</td>
+<td class="data row6 col2" id="T_8dbd7_row6_col2">140 мм · 003 · 2×2 на руках</td>
+<td class="data row6 col3" id="T_8dbd7_row6_col3">1</td>
+<td class="data row6 col4" id="T_8dbd7_row6_col4">63,73</td>
+<td class="data row6 col5" id="T_8dbd7_row6_col5">Нет</td>
 </tr>
 <tr>
-<td class="data row7 col0" id="T_eeb47_row7_col0">1</td>
-<td class="data row7 col1" id="T_eeb47_row7_col1">Вдох</td>
-<td class="data row7 col2" id="T_eeb47_row7_col2">140 мм · 005 · канал 1, роль не установлена</td>
-<td class="data row7 col3" id="T_eeb47_row7_col3">1</td>
-<td class="data row7 col4" id="T_eeb47_row7_col4">65,132</td>
-<td class="data row7 col5" id="T_eeb47_row7_col5">Нет</td>
+<td class="data row7 col0" id="T_8dbd7_row7_col0">1</td>
+<td class="data row7 col1" id="T_8dbd7_row7_col1">Вдох</td>
+<td class="data row7 col2" id="T_8dbd7_row7_col2">140 мм · 005 · канал 1, роль не установлена</td>
+<td class="data row7 col3" id="T_8dbd7_row7_col3">1</td>
+<td class="data row7 col4" id="T_8dbd7_row7_col4">65,132</td>
+<td class="data row7 col5" id="T_8dbd7_row7_col5">Нет</td>
 </tr>
 <tr>
-<td class="data row8 col0" id="T_eeb47_row8_col0">1</td>
-<td class="data row8 col1" id="T_eeb47_row8_col1">Вдох</td>
-<td class="data row8 col2" id="T_eeb47_row8_col2">140 мм · 005 · канал 2, роль не установлена</td>
-<td class="data row8 col3" id="T_eeb47_row8_col3">2</td>
-<td class="data row8 col4" id="T_eeb47_row8_col4">75,98</td>
-<td class="data row8 col5" id="T_eeb47_row8_col5">Нет</td>
+<td class="data row8 col0" id="T_8dbd7_row8_col0">1</td>
+<td class="data row8 col1" id="T_8dbd7_row8_col1">Вдох</td>
+<td class="data row8 col2" id="T_8dbd7_row8_col2">140 мм · 005 · канал 2, роль не установлена</td>
+<td class="data row8 col3" id="T_8dbd7_row8_col3">2</td>
+<td class="data row8 col4" id="T_8dbd7_row8_col4">75,98</td>
+<td class="data row8 col5" id="T_8dbd7_row8_col5">Нет</td>
 </tr>
 <tr>
-<td class="data row9 col0" id="T_eeb47_row9_col0">1</td>
-<td class="data row9 col1" id="T_eeb47_row9_col1">Вдох</td>
-<td class="data row9 col2" id="T_eeb47_row9_col2">140 мм · 006 · основная ось креста</td>
-<td class="data row9 col3" id="T_eeb47_row9_col3">1</td>
-<td class="data row9 col4" id="T_eeb47_row9_col4">76,818</td>
-<td class="data row9 col5" id="T_eeb47_row9_col5">Нет</td>
+<td class="data row9 col0" id="T_8dbd7_row9_col0">1</td>
+<td class="data row9 col1" id="T_8dbd7_row9_col1">Вдох</td>
+<td class="data row9 col2" id="T_8dbd7_row9_col2">140 мм · 006 · основная ось креста</td>
+<td class="data row9 col3" id="T_8dbd7_row9_col3">1</td>
+<td class="data row9 col4" id="T_8dbd7_row9_col4">76,818</td>
+<td class="data row9 col5" id="T_8dbd7_row9_col5">Нет</td>
 </tr>
 <tr>
-<td class="data row10 col0" id="T_eeb47_row10_col0">1</td>
-<td class="data row10 col1" id="T_eeb47_row10_col1">Вдох</td>
-<td class="data row10 col2" id="T_eeb47_row10_col2">140 мм · 006 · поперечная ось креста</td>
-<td class="data row10 col3" id="T_eeb47_row10_col3">2</td>
-<td class="data row10 col4" id="T_eeb47_row10_col4">81,515</td>
-<td class="data row10 col5" id="T_eeb47_row10_col5">Нет</td>
+<td class="data row10 col0" id="T_8dbd7_row10_col0">1</td>
+<td class="data row10 col1" id="T_8dbd7_row10_col1">Вдох</td>
+<td class="data row10 col2" id="T_8dbd7_row10_col2">140 мм · 006 · поперечная ось креста</td>
+<td class="data row10 col3" id="T_8dbd7_row10_col3">2</td>
+<td class="data row10 col4" id="T_8dbd7_row10_col4">81,515</td>
+<td class="data row10 col5" id="T_8dbd7_row10_col5">Нет</td>
 </tr>
 <tr>
-<td class="data row11 col0" id="T_eeb47_row11_col0">1</td>
-<td class="data row11 col1" id="T_eeb47_row11_col1">Вдох</td>
-<td class="data row11 col2" id="T_eeb47_row11_col2">60 мм · 011 · основная ось креста</td>
-<td class="data row11 col3" id="T_eeb47_row11_col3">1</td>
-<td class="data row11 col4" id="T_eeb47_row11_col4">97,172</td>
-<td class="data row11 col5" id="T_eeb47_row11_col5">Нет</td>
+<td class="data row11 col0" id="T_8dbd7_row11_col0">1</td>
+<td class="data row11 col1" id="T_8dbd7_row11_col1">Вдох</td>
+<td class="data row11 col2" id="T_8dbd7_row11_col2">60 мм · 011 · основная ось креста</td>
+<td class="data row11 col3" id="T_8dbd7_row11_col3">1</td>
+<td class="data row11 col4" id="T_8dbd7_row11_col4">97,172</td>
+<td class="data row11 col5" id="T_8dbd7_row11_col5">Нет</td>
 </tr>
 <tr>
-<td class="data row12 col0" id="T_eeb47_row12_col0">1</td>
-<td class="data row12 col1" id="T_eeb47_row12_col1">Вдох</td>
-<td class="data row12 col2" id="T_eeb47_row12_col2">60 мм · 011 · поперечная ось креста</td>
-<td class="data row12 col3" id="T_eeb47_row12_col3">2</td>
-<td class="data row12 col4" id="T_eeb47_row12_col4">68,824</td>
-<td class="data row12 col5" id="T_eeb47_row12_col5">Нет</td>
+<td class="data row12 col0" id="T_8dbd7_row12_col0">1</td>
+<td class="data row12 col1" id="T_8dbd7_row12_col1">Вдох</td>
+<td class="data row12 col2" id="T_8dbd7_row12_col2">60 мм · 011 · поперечная ось креста</td>
+<td class="data row12 col3" id="T_8dbd7_row12_col3">2</td>
+<td class="data row12 col4" id="T_8dbd7_row12_col4">68,824</td>
+<td class="data row12 col5" id="T_8dbd7_row12_col5">Нет</td>
 </tr>
 <tr>
-<td class="data row13 col0" id="T_eeb47_row13_col0">1</td>
-<td class="data row13 col1" id="T_eeb47_row13_col1">Выдох</td>
-<td class="data row13 col2" id="T_eeb47_row13_col2">60 мм · 010 · основной ряд</td>
-<td class="data row13 col3" id="T_eeb47_row13_col3">1</td>
-<td class="data row13 col4" id="T_eeb47_row13_col4">116,32</td>
-<td class="data row13 col5" id="T_eeb47_row13_col5">Да</td>
+<td class="data row13 col0" id="T_8dbd7_row13_col0">1</td>
+<td class="data row13 col1" id="T_8dbd7_row13_col1">Выдох</td>
+<td class="data row13 col2" id="T_8dbd7_row13_col2">60 мм · 010 · основной ряд</td>
+<td class="data row13 col3" id="T_8dbd7_row13_col3">1</td>
+<td class="data row13 col4" id="T_8dbd7_row13_col4">116,32</td>
+<td class="data row13 col5" id="T_8dbd7_row13_col5">Да</td>
 </tr>
 <tr>
-<td class="data row14 col0" id="T_eeb47_row14_col0">1</td>
-<td class="data row14 col1" id="T_eeb47_row14_col1">Выдох</td>
-<td class="data row14 col2" id="T_eeb47_row14_col2">80 мм · 009 · основной ряд</td>
-<td class="data row14 col3" id="T_eeb47_row14_col3">1</td>
-<td class="data row14 col4" id="T_eeb47_row14_col4">125,98</td>
-<td class="data row14 col5" id="T_eeb47_row14_col5">Да</td>
+<td class="data row14 col0" id="T_8dbd7_row14_col0">1</td>
+<td class="data row14 col1" id="T_8dbd7_row14_col1">Выдох</td>
+<td class="data row14 col2" id="T_8dbd7_row14_col2">80 мм · 009 · основной ряд</td>
+<td class="data row14 col3" id="T_8dbd7_row14_col3">1</td>
+<td class="data row14 col4" id="T_8dbd7_row14_col4">125,98</td>
+<td class="data row14 col5" id="T_8dbd7_row14_col5">Да</td>
 </tr>
 <tr>
-<td class="data row15 col0" id="T_eeb47_row15_col0">1</td>
-<td class="data row15 col1" id="T_eeb47_row15_col1">Выдох</td>
-<td class="data row15 col2" id="T_eeb47_row15_col2">100 мм · 008 · основной ряд</td>
-<td class="data row15 col3" id="T_eeb47_row15_col3">1</td>
-<td class="data row15 col4" id="T_eeb47_row15_col4">85,781</td>
-<td class="data row15 col5" id="T_eeb47_row15_col5">Да</td>
+<td class="data row15 col0" id="T_8dbd7_row15_col0">1</td>
+<td class="data row15 col1" id="T_8dbd7_row15_col1">Выдох</td>
+<td class="data row15 col2" id="T_8dbd7_row15_col2">100 мм · 008 · основной ряд</td>
+<td class="data row15 col3" id="T_8dbd7_row15_col3">1</td>
+<td class="data row15 col4" id="T_8dbd7_row15_col4">85,781</td>
+<td class="data row15 col5" id="T_8dbd7_row15_col5">Да</td>
 </tr>
 <tr>
-<td class="data row16 col0" id="T_eeb47_row16_col0">1</td>
-<td class="data row16 col1" id="T_eeb47_row16_col1">Выдох</td>
-<td class="data row16 col2" id="T_eeb47_row16_col2">120 мм · 007 · основной ряд</td>
-<td class="data row16 col3" id="T_eeb47_row16_col3">1</td>
-<td class="data row16 col4" id="T_eeb47_row16_col4">85,759</td>
-<td class="data row16 col5" id="T_eeb47_row16_col5">Да</td>
+<td class="data row16 col0" id="T_8dbd7_row16_col0">1</td>
+<td class="data row16 col1" id="T_8dbd7_row16_col1">Выдох</td>
+<td class="data row16 col2" id="T_8dbd7_row16_col2">120 мм · 007 · основной ряд</td>
+<td class="data row16 col3" id="T_8dbd7_row16_col3">1</td>
+<td class="data row16 col4" id="T_8dbd7_row16_col4">85,759</td>
+<td class="data row16 col5" id="T_8dbd7_row16_col5">Да</td>
 </tr>
 <tr>
-<td class="data row17 col0" id="T_eeb47_row17_col0">1</td>
-<td class="data row17 col1" id="T_eeb47_row17_col1">Выдох</td>
-<td class="data row17 col2" id="T_eeb47_row17_col2">140 мм · 004 · основной ряд</td>
-<td class="data row17 col3" id="T_eeb47_row17_col3">1</td>
-<td class="data row17 col4" id="T_eeb47_row17_col4">65,645</td>
-<td class="data row17 col5" id="T_eeb47_row17_col5">Да</td>
+<td class="data row17 col0" id="T_8dbd7_row17_col0">1</td>
+<td class="data row17 col1" id="T_8dbd7_row17_col1">Выдох</td>
+<td class="data row17 col2" id="T_8dbd7_row17_col2">140 мм · 004 · основной ряд</td>
+<td class="data row17 col3" id="T_8dbd7_row17_col3">1</td>
+<td class="data row17 col4" id="T_8dbd7_row17_col4">65,645</td>
+<td class="data row17 col5" id="T_8dbd7_row17_col5">Да</td>
 </tr>
 <tr>
-<td class="data row18 col0" id="T_eeb47_row18_col0">1</td>
-<td class="data row18 col1" id="T_eeb47_row18_col1">Выдох</td>
-<td class="data row18 col2" id="T_eeb47_row18_col2">140 мм · 002 · 1×1 на руках</td>
-<td class="data row18 col3" id="T_eeb47_row18_col3">1</td>
-<td class="data row18 col4" id="T_eeb47_row18_col4">71,725</td>
-<td class="data row18 col5" id="T_eeb47_row18_col5">Нет</td>
+<td class="data row18 col0" id="T_8dbd7_row18_col0">1</td>
+<td class="data row18 col1" id="T_8dbd7_row18_col1">Выдох</td>
+<td class="data row18 col2" id="T_8dbd7_row18_col2">140 мм · 002 · 1×1 на руках</td>
+<td class="data row18 col3" id="T_8dbd7_row18_col3">1</td>
+<td class="data row18 col4" id="T_8dbd7_row18_col4">71,725</td>
+<td class="data row18 col5" id="T_8dbd7_row18_col5">Нет</td>
 </tr>
 <tr>
-<td class="data row19 col0" id="T_eeb47_row19_col0">1</td>
-<td class="data row19 col1" id="T_eeb47_row19_col1">Выдох</td>
-<td class="data row19 col2" id="T_eeb47_row19_col2">140 мм · 003 · 2×2 на руках</td>
-<td class="data row19 col3" id="T_eeb47_row19_col3">1</td>
-<td class="data row19 col4" id="T_eeb47_row19_col4">62,662</td>
-<td class="data row19 col5" id="T_eeb47_row19_col5">Нет</td>
+<td class="data row19 col0" id="T_8dbd7_row19_col0">1</td>
+<td class="data row19 col1" id="T_8dbd7_row19_col1">Выдох</td>
+<td class="data row19 col2" id="T_8dbd7_row19_col2">140 мм · 003 · 2×2 на руках</td>
+<td class="data row19 col3" id="T_8dbd7_row19_col3">1</td>
+<td class="data row19 col4" id="T_8dbd7_row19_col4">62,662</td>
+<td class="data row19 col5" id="T_8dbd7_row19_col5">Нет</td>
 </tr>
 <tr>
-<td class="data row20 col0" id="T_eeb47_row20_col0">1</td>
-<td class="data row20 col1" id="T_eeb47_row20_col1">Выдох</td>
-<td class="data row20 col2" id="T_eeb47_row20_col2">140 мм · 005 · канал 1, роль не установлена</td>
-<td class="data row20 col3" id="T_eeb47_row20_col3">1</td>
-<td class="data row20 col4" id="T_eeb47_row20_col4">63,704</td>
-<td class="data row20 col5" id="T_eeb47_row20_col5">Нет</td>
+<td class="data row20 col0" id="T_8dbd7_row20_col0">1</td>
+<td class="data row20 col1" id="T_8dbd7_row20_col1">Выдох</td>
+<td class="data row20 col2" id="T_8dbd7_row20_col2">140 мм · 005 · канал 1, роль не установлена</td>
+<td class="data row20 col3" id="T_8dbd7_row20_col3">1</td>
+<td class="data row20 col4" id="T_8dbd7_row20_col4">63,704</td>
+<td class="data row20 col5" id="T_8dbd7_row20_col5">Нет</td>
 </tr>
 <tr>
-<td class="data row21 col0" id="T_eeb47_row21_col0">1</td>
-<td class="data row21 col1" id="T_eeb47_row21_col1">Выдох</td>
-<td class="data row21 col2" id="T_eeb47_row21_col2">140 мм · 005 · канал 2, роль не установлена</td>
-<td class="data row21 col3" id="T_eeb47_row21_col3">2</td>
-<td class="data row21 col4" id="T_eeb47_row21_col4">80,802</td>
-<td class="data row21 col5" id="T_eeb47_row21_col5">Нет</td>
+<td class="data row21 col0" id="T_8dbd7_row21_col0">1</td>
+<td class="data row21 col1" id="T_8dbd7_row21_col1">Выдох</td>
+<td class="data row21 col2" id="T_8dbd7_row21_col2">140 мм · 005 · канал 2, роль не установлена</td>
+<td class="data row21 col3" id="T_8dbd7_row21_col3">2</td>
+<td class="data row21 col4" id="T_8dbd7_row21_col4">80,802</td>
+<td class="data row21 col5" id="T_8dbd7_row21_col5">Нет</td>
 </tr>
 <tr>
-<td class="data row22 col0" id="T_eeb47_row22_col0">1</td>
-<td class="data row22 col1" id="T_eeb47_row22_col1">Выдох</td>
-<td class="data row22 col2" id="T_eeb47_row22_col2">140 мм · 006 · основная ось креста</td>
-<td class="data row22 col3" id="T_eeb47_row22_col3">1</td>
-<td class="data row22 col4" id="T_eeb47_row22_col4">75,932</td>
-<td class="data row22 col5" id="T_eeb47_row22_col5">Нет</td>
+<td class="data row22 col0" id="T_8dbd7_row22_col0">1</td>
+<td class="data row22 col1" id="T_8dbd7_row22_col1">Выдох</td>
+<td class="data row22 col2" id="T_8dbd7_row22_col2">140 мм · 006 · основная ось креста</td>
+<td class="data row22 col3" id="T_8dbd7_row22_col3">1</td>
+<td class="data row22 col4" id="T_8dbd7_row22_col4">75,932</td>
+<td class="data row22 col5" id="T_8dbd7_row22_col5">Нет</td>
 </tr>
 <tr>
-<td class="data row23 col0" id="T_eeb47_row23_col0">1</td>
-<td class="data row23 col1" id="T_eeb47_row23_col1">Выдох</td>
-<td class="data row23 col2" id="T_eeb47_row23_col2">140 мм · 006 · поперечная ось креста</td>
-<td class="data row23 col3" id="T_eeb47_row23_col3">2</td>
-<td class="data row23 col4" id="T_eeb47_row23_col4">84,086</td>
-<td class="data row23 col5" id="T_eeb47_row23_col5">Нет</td>
+<td class="data row23 col0" id="T_8dbd7_row23_col0">1</td>
+<td class="data row23 col1" id="T_8dbd7_row23_col1">Выдох</td>
+<td class="data row23 col2" id="T_8dbd7_row23_col2">140 мм · 006 · поперечная ось креста</td>
+<td class="data row23 col3" id="T_8dbd7_row23_col3">2</td>
+<td class="data row23 col4" id="T_8dbd7_row23_col4">84,086</td>
+<td class="data row23 col5" id="T_8dbd7_row23_col5">Нет</td>
 </tr>
 <tr>
-<td class="data row24 col0" id="T_eeb47_row24_col0">1</td>
-<td class="data row24 col1" id="T_eeb47_row24_col1">Выдох</td>
-<td class="data row24 col2" id="T_eeb47_row24_col2">60 мм · 011 · основная ось креста</td>
-<td class="data row24 col3" id="T_eeb47_row24_col3">1</td>
-<td class="data row24 col4" id="T_eeb47_row24_col4">96,568</td>
-<td class="data row24 col5" id="T_eeb47_row24_col5">Нет</td>
+<td class="data row24 col0" id="T_8dbd7_row24_col0">1</td>
+<td class="data row24 col1" id="T_8dbd7_row24_col1">Выдох</td>
+<td class="data row24 col2" id="T_8dbd7_row24_col2">60 мм · 011 · основная ось креста</td>
+<td class="data row24 col3" id="T_8dbd7_row24_col3">1</td>
+<td class="data row24 col4" id="T_8dbd7_row24_col4">96,568</td>
+<td class="data row24 col5" id="T_8dbd7_row24_col5">Нет</td>
 </tr>
 <tr>
-<td class="data row25 col0" id="T_eeb47_row25_col0">1</td>
-<td class="data row25 col1" id="T_eeb47_row25_col1">Выдох</td>
-<td class="data row25 col2" id="T_eeb47_row25_col2">60 мм · 011 · поперечная ось креста</td>
-<td class="data row25 col3" id="T_eeb47_row25_col3">2</td>
-<td class="data row25 col4" id="T_eeb47_row25_col4">67,053</td>
-<td class="data row25 col5" id="T_eeb47_row25_col5">Нет</td>
+<td class="data row25 col0" id="T_8dbd7_row25_col0">1</td>
+<td class="data row25 col1" id="T_8dbd7_row25_col1">Выдох</td>
+<td class="data row25 col2" id="T_8dbd7_row25_col2">60 мм · 011 · поперечная ось креста</td>
+<td class="data row25 col3" id="T_8dbd7_row25_col3">2</td>
+<td class="data row25 col4" id="T_8dbd7_row25_col4">67,053</td>
+<td class="data row25 col5" id="T_8dbd7_row25_col5">Нет</td>
 </tr>
 <tr>
-<td class="data row26 col0" id="T_eeb47_row26_col0">2</td>
-<td class="data row26 col1" id="T_eeb47_row26_col1">Вдох</td>
-<td class="data row26 col2" id="T_eeb47_row26_col2">60 мм · 010 · основной ряд</td>
-<td class="data row26 col3" id="T_eeb47_row26_col3">2</td>
-<td class="data row26 col4" id="T_eeb47_row26_col4">64,928</td>
-<td class="data row26 col5" id="T_eeb47_row26_col5">Да</td>
+<td class="data row26 col0" id="T_8dbd7_row26_col0">2</td>
+<td class="data row26 col1" id="T_8dbd7_row26_col1">Вдох</td>
+<td class="data row26 col2" id="T_8dbd7_row26_col2">60 мм · 010 · основной ряд</td>
+<td class="data row26 col3" id="T_8dbd7_row26_col3">2</td>
+<td class="data row26 col4" id="T_8dbd7_row26_col4">64,928</td>
+<td class="data row26 col5" id="T_8dbd7_row26_col5">Да</td>
 </tr>
 <tr>
-<td class="data row27 col0" id="T_eeb47_row27_col0">2</td>
-<td class="data row27 col1" id="T_eeb47_row27_col1">Вдох</td>
-<td class="data row27 col2" id="T_eeb47_row27_col2">80 мм · 009 · основной ряд</td>
-<td class="data row27 col3" id="T_eeb47_row27_col3">2</td>
-<td class="data row27 col4" id="T_eeb47_row27_col4">66,325</td>
-<td class="data row27 col5" id="T_eeb47_row27_col5">Да</td>
+<td class="data row27 col0" id="T_8dbd7_row27_col0">2</td>
+<td class="data row27 col1" id="T_8dbd7_row27_col1">Вдох</td>
+<td class="data row27 col2" id="T_8dbd7_row27_col2">80 мм · 009 · основной ряд</td>
+<td class="data row27 col3" id="T_8dbd7_row27_col3">2</td>
+<td class="data row27 col4" id="T_8dbd7_row27_col4">66,325</td>
+<td class="data row27 col5" id="T_8dbd7_row27_col5">Да</td>
 </tr>
 <tr>
-<td class="data row28 col0" id="T_eeb47_row28_col0">2</td>
-<td class="data row28 col1" id="T_eeb47_row28_col1">Вдох</td>
-<td class="data row28 col2" id="T_eeb47_row28_col2">100 мм · 008 · основной ряд</td>
-<td class="data row28 col3" id="T_eeb47_row28_col3">2</td>
-<td class="data row28 col4" id="T_eeb47_row28_col4">64,054</td>
-<td class="data row28 col5" id="T_eeb47_row28_col5">Да</td>
+<td class="data row28 col0" id="T_8dbd7_row28_col0">2</td>
+<td class="data row28 col1" id="T_8dbd7_row28_col1">Вдох</td>
+<td class="data row28 col2" id="T_8dbd7_row28_col2">100 мм · 008 · основной ряд</td>
+<td class="data row28 col3" id="T_8dbd7_row28_col3">2</td>
+<td class="data row28 col4" id="T_8dbd7_row28_col4">64,054</td>
+<td class="data row28 col5" id="T_8dbd7_row28_col5">Да</td>
 </tr>
 <tr>
-<td class="data row29 col0" id="T_eeb47_row29_col0">2</td>
-<td class="data row29 col1" id="T_eeb47_row29_col1">Вдох</td>
-<td class="data row29 col2" id="T_eeb47_row29_col2">120 мм · 007 · основной ряд</td>
-<td class="data row29 col3" id="T_eeb47_row29_col3">2</td>
-<td class="data row29 col4" id="T_eeb47_row29_col4">64,707</td>
-<td class="data row29 col5" id="T_eeb47_row29_col5">Да</td>
+<td class="data row29 col0" id="T_8dbd7_row29_col0">2</td>
+<td class="data row29 col1" id="T_8dbd7_row29_col1">Вдох</td>
+<td class="data row29 col2" id="T_8dbd7_row29_col2">120 мм · 007 · основной ряд</td>
+<td class="data row29 col3" id="T_8dbd7_row29_col3">2</td>
+<td class="data row29 col4" id="T_8dbd7_row29_col4">64,707</td>
+<td class="data row29 col5" id="T_8dbd7_row29_col5">Да</td>
 </tr>
 <tr>
-<td class="data row30 col0" id="T_eeb47_row30_col0">2</td>
-<td class="data row30 col1" id="T_eeb47_row30_col1">Вдох</td>
-<td class="data row30 col2" id="T_eeb47_row30_col2">140 мм · 004 · основной ряд</td>
-<td class="data row30 col3" id="T_eeb47_row30_col3">2</td>
-<td class="data row30 col4" id="T_eeb47_row30_col4">79,595</td>
-<td class="data row30 col5" id="T_eeb47_row30_col5">Да</td>
+<td class="data row30 col0" id="T_8dbd7_row30_col0">2</td>
+<td class="data row30 col1" id="T_8dbd7_row30_col1">Вдох</td>
+<td class="data row30 col2" id="T_8dbd7_row30_col2">140 мм · 004 · основной ряд</td>
+<td class="data row30 col3" id="T_8dbd7_row30_col3">2</td>
+<td class="data row30 col4" id="T_8dbd7_row30_col4">79,595</td>
+<td class="data row30 col5" id="T_8dbd7_row30_col5">Да</td>
 </tr>
 <tr>
-<td class="data row31 col0" id="T_eeb47_row31_col0">2</td>
-<td class="data row31 col1" id="T_eeb47_row31_col1">Вдох</td>
-<td class="data row31 col2" id="T_eeb47_row31_col2">140 мм · 002 · 1×1 на руках</td>
-<td class="data row31 col3" id="T_eeb47_row31_col3">2</td>
-<td class="data row31 col4" id="T_eeb47_row31_col4">79,427</td>
-<td class="data row31 col5" id="T_eeb47_row31_col5">Нет</td>
+<td class="data row31 col0" id="T_8dbd7_row31_col0">2</td>
+<td class="data row31 col1" id="T_8dbd7_row31_col1">Вдох</td>
+<td class="data row31 col2" id="T_8dbd7_row31_col2">140 мм · 002 · 1×1 на руках</td>
+<td class="data row31 col3" id="T_8dbd7_row31_col3">2</td>
+<td class="data row31 col4" id="T_8dbd7_row31_col4">79,427</td>
+<td class="data row31 col5" id="T_8dbd7_row31_col5">Нет</td>
 </tr>
 <tr>
-<td class="data row32 col0" id="T_eeb47_row32_col0">2</td>
-<td class="data row32 col1" id="T_eeb47_row32_col1">Вдох</td>
-<td class="data row32 col2" id="T_eeb47_row32_col2">140 мм · 003 · 2×2 на руках</td>
-<td class="data row32 col3" id="T_eeb47_row32_col3">2</td>
-<td class="data row32 col4" id="T_eeb47_row32_col4">80,953</td>
-<td class="data row32 col5" id="T_eeb47_row32_col5">Нет</td>
+<td class="data row32 col0" id="T_8dbd7_row32_col0">2</td>
+<td class="data row32 col1" id="T_8dbd7_row32_col1">Вдох</td>
+<td class="data row32 col2" id="T_8dbd7_row32_col2">140 мм · 003 · 2×2 на руках</td>
+<td class="data row32 col3" id="T_8dbd7_row32_col3">2</td>
+<td class="data row32 col4" id="T_8dbd7_row32_col4">80,953</td>
+<td class="data row32 col5" id="T_8dbd7_row32_col5">Нет</td>
 </tr>
 <tr>
-<td class="data row33 col0" id="T_eeb47_row33_col0">2</td>
-<td class="data row33 col1" id="T_eeb47_row33_col1">Вдох</td>
-<td class="data row33 col2" id="T_eeb47_row33_col2">140 мм · 005 · канал 1, роль не установлена</td>
-<td class="data row33 col3" id="T_eeb47_row33_col3">1</td>
-<td class="data row33 col4" id="T_eeb47_row33_col4">65,132</td>
-<td class="data row33 col5" id="T_eeb47_row33_col5">Нет</td>
+<td class="data row33 col0" id="T_8dbd7_row33_col0">2</td>
+<td class="data row33 col1" id="T_8dbd7_row33_col1">Вдох</td>
+<td class="data row33 col2" id="T_8dbd7_row33_col2">140 мм · 005 · канал 1, роль не установлена</td>
+<td class="data row33 col3" id="T_8dbd7_row33_col3">1</td>
+<td class="data row33 col4" id="T_8dbd7_row33_col4">65,132</td>
+<td class="data row33 col5" id="T_8dbd7_row33_col5">Нет</td>
 </tr>
 <tr>
-<td class="data row34 col0" id="T_eeb47_row34_col0">2</td>
-<td class="data row34 col1" id="T_eeb47_row34_col1">Вдох</td>
-<td class="data row34 col2" id="T_eeb47_row34_col2">140 мм · 005 · канал 2, роль не установлена</td>
-<td class="data row34 col3" id="T_eeb47_row34_col3">2</td>
-<td class="data row34 col4" id="T_eeb47_row34_col4">75,98</td>
-<td class="data row34 col5" id="T_eeb47_row34_col5">Нет</td>
+<td class="data row34 col0" id="T_8dbd7_row34_col0">2</td>
+<td class="data row34 col1" id="T_8dbd7_row34_col1">Вдох</td>
+<td class="data row34 col2" id="T_8dbd7_row34_col2">140 мм · 005 · канал 2, роль не установлена</td>
+<td class="data row34 col3" id="T_8dbd7_row34_col3">2</td>
+<td class="data row34 col4" id="T_8dbd7_row34_col4">75,98</td>
+<td class="data row34 col5" id="T_8dbd7_row34_col5">Нет</td>
 </tr>
 <tr>
-<td class="data row35 col0" id="T_eeb47_row35_col0">2</td>
-<td class="data row35 col1" id="T_eeb47_row35_col1">Вдох</td>
-<td class="data row35 col2" id="T_eeb47_row35_col2">140 мм · 006 · основная ось креста</td>
-<td class="data row35 col3" id="T_eeb47_row35_col3">2</td>
-<td class="data row35 col4" id="T_eeb47_row35_col4">81,515</td>
-<td class="data row35 col5" id="T_eeb47_row35_col5">Нет</td>
+<td class="data row35 col0" id="T_8dbd7_row35_col0">2</td>
+<td class="data row35 col1" id="T_8dbd7_row35_col1">Вдох</td>
+<td class="data row35 col2" id="T_8dbd7_row35_col2">140 мм · 006 · основная ось креста</td>
+<td class="data row35 col3" id="T_8dbd7_row35_col3">2</td>
+<td class="data row35 col4" id="T_8dbd7_row35_col4">81,515</td>
+<td class="data row35 col5" id="T_8dbd7_row35_col5">Нет</td>
 </tr>
 <tr>
-<td class="data row36 col0" id="T_eeb47_row36_col0">2</td>
-<td class="data row36 col1" id="T_eeb47_row36_col1">Вдох</td>
-<td class="data row36 col2" id="T_eeb47_row36_col2">140 мм · 006 · поперечная ось креста</td>
-<td class="data row36 col3" id="T_eeb47_row36_col3">1</td>
-<td class="data row36 col4" id="T_eeb47_row36_col4">76,818</td>
-<td class="data row36 col5" id="T_eeb47_row36_col5">Нет</td>
+<td class="data row36 col0" id="T_8dbd7_row36_col0">2</td>
+<td class="data row36 col1" id="T_8dbd7_row36_col1">Вдох</td>
+<td class="data row36 col2" id="T_8dbd7_row36_col2">140 мм · 006 · поперечная ось креста</td>
+<td class="data row36 col3" id="T_8dbd7_row36_col3">1</td>
+<td class="data row36 col4" id="T_8dbd7_row36_col4">76,818</td>
+<td class="data row36 col5" id="T_8dbd7_row36_col5">Нет</td>
 </tr>
 <tr>
-<td class="data row37 col0" id="T_eeb47_row37_col0">2</td>
-<td class="data row37 col1" id="T_eeb47_row37_col1">Вдох</td>
-<td class="data row37 col2" id="T_eeb47_row37_col2">60 мм · 011 · основная ось креста</td>
-<td class="data row37 col3" id="T_eeb47_row37_col3">2</td>
-<td class="data row37 col4" id="T_eeb47_row37_col4">68,824</td>
-<td class="data row37 col5" id="T_eeb47_row37_col5">Нет</td>
+<td class="data row37 col0" id="T_8dbd7_row37_col0">2</td>
+<td class="data row37 col1" id="T_8dbd7_row37_col1">Вдох</td>
+<td class="data row37 col2" id="T_8dbd7_row37_col2">60 мм · 011 · основная ось креста</td>
+<td class="data row37 col3" id="T_8dbd7_row37_col3">2</td>
+<td class="data row37 col4" id="T_8dbd7_row37_col4">68,824</td>
+<td class="data row37 col5" id="T_8dbd7_row37_col5">Нет</td>
 </tr>
 <tr>
-<td class="data row38 col0" id="T_eeb47_row38_col0">2</td>
-<td class="data row38 col1" id="T_eeb47_row38_col1">Вдох</td>
-<td class="data row38 col2" id="T_eeb47_row38_col2">60 мм · 011 · поперечная ось креста</td>
-<td class="data row38 col3" id="T_eeb47_row38_col3">1</td>
-<td class="data row38 col4" id="T_eeb47_row38_col4">97,172</td>
-<td class="data row38 col5" id="T_eeb47_row38_col5">Нет</td>
+<td class="data row38 col0" id="T_8dbd7_row38_col0">2</td>
+<td class="data row38 col1" id="T_8dbd7_row38_col1">Вдох</td>
+<td class="data row38 col2" id="T_8dbd7_row38_col2">60 мм · 011 · поперечная ось креста</td>
+<td class="data row38 col3" id="T_8dbd7_row38_col3">1</td>
+<td class="data row38 col4" id="T_8dbd7_row38_col4">97,172</td>
+<td class="data row38 col5" id="T_8dbd7_row38_col5">Нет</td>
 </tr>
 <tr>
-<td class="data row39 col0" id="T_eeb47_row39_col0">2</td>
-<td class="data row39 col1" id="T_eeb47_row39_col1">Выдох</td>
-<td class="data row39 col2" id="T_eeb47_row39_col2">60 мм · 010 · основной ряд</td>
-<td class="data row39 col3" id="T_eeb47_row39_col3">2</td>
-<td class="data row39 col4" id="T_eeb47_row39_col4">63,969</td>
-<td class="data row39 col5" id="T_eeb47_row39_col5">Да</td>
+<td class="data row39 col0" id="T_8dbd7_row39_col0">2</td>
+<td class="data row39 col1" id="T_8dbd7_row39_col1">Выдох</td>
+<td class="data row39 col2" id="T_8dbd7_row39_col2">60 мм · 010 · основной ряд</td>
+<td class="data row39 col3" id="T_8dbd7_row39_col3">2</td>
+<td class="data row39 col4" id="T_8dbd7_row39_col4">63,969</td>
+<td class="data row39 col5" id="T_8dbd7_row39_col5">Да</td>
 </tr>
 <tr>
-<td class="data row40 col0" id="T_eeb47_row40_col0">2</td>
-<td class="data row40 col1" id="T_eeb47_row40_col1">Выдох</td>
-<td class="data row40 col2" id="T_eeb47_row40_col2">80 мм · 009 · основной ряд</td>
-<td class="data row40 col3" id="T_eeb47_row40_col3">2</td>
-<td class="data row40 col4" id="T_eeb47_row40_col4">64,737</td>
-<td class="data row40 col5" id="T_eeb47_row40_col5">Да</td>
+<td class="data row40 col0" id="T_8dbd7_row40_col0">2</td>
+<td class="data row40 col1" id="T_8dbd7_row40_col1">Выдох</td>
+<td class="data row40 col2" id="T_8dbd7_row40_col2">80 мм · 009 · основной ряд</td>
+<td class="data row40 col3" id="T_8dbd7_row40_col3">2</td>
+<td class="data row40 col4" id="T_8dbd7_row40_col4">64,737</td>
+<td class="data row40 col5" id="T_8dbd7_row40_col5">Да</td>
 </tr>
 <tr>
-<td class="data row41 col0" id="T_eeb47_row41_col0">2</td>
-<td class="data row41 col1" id="T_eeb47_row41_col1">Выдох</td>
-<td class="data row41 col2" id="T_eeb47_row41_col2">100 мм · 008 · основной ряд</td>
-<td class="data row41 col3" id="T_eeb47_row41_col3">2</td>
-<td class="data row41 col4" id="T_eeb47_row41_col4">63,219</td>
-<td class="data row41 col5" id="T_eeb47_row41_col5">Да</td>
+<td class="data row41 col0" id="T_8dbd7_row41_col0">2</td>
+<td class="data row41 col1" id="T_8dbd7_row41_col1">Выдох</td>
+<td class="data row41 col2" id="T_8dbd7_row41_col2">100 мм · 008 · основной ряд</td>
+<td class="data row41 col3" id="T_8dbd7_row41_col3">2</td>
+<td class="data row41 col4" id="T_8dbd7_row41_col4">63,219</td>
+<td class="data row41 col5" id="T_8dbd7_row41_col5">Да</td>
 </tr>
 <tr>
-<td class="data row42 col0" id="T_eeb47_row42_col0">2</td>
-<td class="data row42 col1" id="T_eeb47_row42_col1">Выдох</td>
-<td class="data row42 col2" id="T_eeb47_row42_col2">120 мм · 007 · основной ряд</td>
-<td class="data row42 col3" id="T_eeb47_row42_col3">2</td>
-<td class="data row42 col4" id="T_eeb47_row42_col4">62,886</td>
-<td class="data row42 col5" id="T_eeb47_row42_col5">Да</td>
+<td class="data row42 col0" id="T_8dbd7_row42_col0">2</td>
+<td class="data row42 col1" id="T_8dbd7_row42_col1">Выдох</td>
+<td class="data row42 col2" id="T_8dbd7_row42_col2">120 мм · 007 · основной ряд</td>
+<td class="data row42 col3" id="T_8dbd7_row42_col3">2</td>
+<td class="data row42 col4" id="T_8dbd7_row42_col4">62,886</td>
+<td class="data row42 col5" id="T_8dbd7_row42_col5">Да</td>
 </tr>
 <tr>
-<td class="data row43 col0" id="T_eeb47_row43_col0">2</td>
-<td class="data row43 col1" id="T_eeb47_row43_col1">Выдох</td>
-<td class="data row43 col2" id="T_eeb47_row43_col2">140 мм · 004 · основной ряд</td>
-<td class="data row43 col3" id="T_eeb47_row43_col3">2</td>
-<td class="data row43 col4" id="T_eeb47_row43_col4">79,095</td>
-<td class="data row43 col5" id="T_eeb47_row43_col5">Да</td>
+<td class="data row43 col0" id="T_8dbd7_row43_col0">2</td>
+<td class="data row43 col1" id="T_8dbd7_row43_col1">Выдох</td>
+<td class="data row43 col2" id="T_8dbd7_row43_col2">140 мм · 004 · основной ряд</td>
+<td class="data row43 col3" id="T_8dbd7_row43_col3">2</td>
+<td class="data row43 col4" id="T_8dbd7_row43_col4">79,095</td>
+<td class="data row43 col5" id="T_8dbd7_row43_col5">Да</td>
 </tr>
 <tr>
-<td class="data row44 col0" id="T_eeb47_row44_col0">2</td>
-<td class="data row44 col1" id="T_eeb47_row44_col1">Выдох</td>
-<td class="data row44 col2" id="T_eeb47_row44_col2">140 мм · 002 · 1×1 на руках</td>
-<td class="data row44 col3" id="T_eeb47_row44_col3">2</td>
-<td class="data row44 col4" id="T_eeb47_row44_col4">79,412</td>
-<td class="data row44 col5" id="T_eeb47_row44_col5">Нет</td>
+<td class="data row44 col0" id="T_8dbd7_row44_col0">2</td>
+<td class="data row44 col1" id="T_8dbd7_row44_col1">Выдох</td>
+<td class="data row44 col2" id="T_8dbd7_row44_col2">140 мм · 002 · 1×1 на руках</td>
+<td class="data row44 col3" id="T_8dbd7_row44_col3">2</td>
+<td class="data row44 col4" id="T_8dbd7_row44_col4">79,412</td>
+<td class="data row44 col5" id="T_8dbd7_row44_col5">Нет</td>
 </tr>
 <tr>
-<td class="data row45 col0" id="T_eeb47_row45_col0">2</td>
-<td class="data row45 col1" id="T_eeb47_row45_col1">Выдох</td>
-<td class="data row45 col2" id="T_eeb47_row45_col2">140 мм · 003 · 2×2 на руках</td>
-<td class="data row45 col3" id="T_eeb47_row45_col3">2</td>
-<td class="data row45 col4" id="T_eeb47_row45_col4">80,507</td>
-<td class="data row45 col5" id="T_eeb47_row45_col5">Нет</td>
+<td class="data row45 col0" id="T_8dbd7_row45_col0">2</td>
+<td class="data row45 col1" id="T_8dbd7_row45_col1">Выдох</td>
+<td class="data row45 col2" id="T_8dbd7_row45_col2">140 мм · 003 · 2×2 на руках</td>
+<td class="data row45 col3" id="T_8dbd7_row45_col3">2</td>
+<td class="data row45 col4" id="T_8dbd7_row45_col4">80,507</td>
+<td class="data row45 col5" id="T_8dbd7_row45_col5">Нет</td>
 </tr>
 <tr>
-<td class="data row46 col0" id="T_eeb47_row46_col0">2</td>
-<td class="data row46 col1" id="T_eeb47_row46_col1">Выдох</td>
-<td class="data row46 col2" id="T_eeb47_row46_col2">140 мм · 005 · канал 1, роль не установлена</td>
-<td class="data row46 col3" id="T_eeb47_row46_col3">1</td>
-<td class="data row46 col4" id="T_eeb47_row46_col4">63,704</td>
-<td class="data row46 col5" id="T_eeb47_row46_col5">Нет</td>
+<td class="data row46 col0" id="T_8dbd7_row46_col0">2</td>
+<td class="data row46 col1" id="T_8dbd7_row46_col1">Выдох</td>
+<td class="data row46 col2" id="T_8dbd7_row46_col2">140 мм · 005 · канал 1, роль не установлена</td>
+<td class="data row46 col3" id="T_8dbd7_row46_col3">1</td>
+<td class="data row46 col4" id="T_8dbd7_row46_col4">63,704</td>
+<td class="data row46 col5" id="T_8dbd7_row46_col5">Нет</td>
 </tr>
 <tr>
-<td class="data row47 col0" id="T_eeb47_row47_col0">2</td>
-<td class="data row47 col1" id="T_eeb47_row47_col1">Выдох</td>
-<td class="data row47 col2" id="T_eeb47_row47_col2">140 мм · 005 · канал 2, роль не установлена</td>
-<td class="data row47 col3" id="T_eeb47_row47_col3">2</td>
-<td class="data row47 col4" id="T_eeb47_row47_col4">80,802</td>
-<td class="data row47 col5" id="T_eeb47_row47_col5">Нет</td>
+<td class="data row47 col0" id="T_8dbd7_row47_col0">2</td>
+<td class="data row47 col1" id="T_8dbd7_row47_col1">Выдох</td>
+<td class="data row47 col2" id="T_8dbd7_row47_col2">140 мм · 005 · канал 2, роль не установлена</td>
+<td class="data row47 col3" id="T_8dbd7_row47_col3">2</td>
+<td class="data row47 col4" id="T_8dbd7_row47_col4">80,802</td>
+<td class="data row47 col5" id="T_8dbd7_row47_col5">Нет</td>
 </tr>
 <tr>
-<td class="data row48 col0" id="T_eeb47_row48_col0">2</td>
-<td class="data row48 col1" id="T_eeb47_row48_col1">Выдох</td>
-<td class="data row48 col2" id="T_eeb47_row48_col2">140 мм · 006 · основная ось креста</td>
-<td class="data row48 col3" id="T_eeb47_row48_col3">2</td>
-<td class="data row48 col4" id="T_eeb47_row48_col4">84,086</td>
-<td class="data row48 col5" id="T_eeb47_row48_col5">Нет</td>
+<td class="data row48 col0" id="T_8dbd7_row48_col0">2</td>
+<td class="data row48 col1" id="T_8dbd7_row48_col1">Выдох</td>
+<td class="data row48 col2" id="T_8dbd7_row48_col2">140 мм · 006 · основная ось креста</td>
+<td class="data row48 col3" id="T_8dbd7_row48_col3">2</td>
+<td class="data row48 col4" id="T_8dbd7_row48_col4">84,086</td>
+<td class="data row48 col5" id="T_8dbd7_row48_col5">Нет</td>
 </tr>
 <tr>
-<td class="data row49 col0" id="T_eeb47_row49_col0">2</td>
-<td class="data row49 col1" id="T_eeb47_row49_col1">Выдох</td>
-<td class="data row49 col2" id="T_eeb47_row49_col2">140 мм · 006 · поперечная ось креста</td>
-<td class="data row49 col3" id="T_eeb47_row49_col3">1</td>
-<td class="data row49 col4" id="T_eeb47_row49_col4">75,932</td>
-<td class="data row49 col5" id="T_eeb47_row49_col5">Нет</td>
+<td class="data row49 col0" id="T_8dbd7_row49_col0">2</td>
+<td class="data row49 col1" id="T_8dbd7_row49_col1">Выдох</td>
+<td class="data row49 col2" id="T_8dbd7_row49_col2">140 мм · 006 · поперечная ось креста</td>
+<td class="data row49 col3" id="T_8dbd7_row49_col3">1</td>
+<td class="data row49 col4" id="T_8dbd7_row49_col4">75,932</td>
+<td class="data row49 col5" id="T_8dbd7_row49_col5">Нет</td>
 </tr>
 <tr>
-<td class="data row50 col0" id="T_eeb47_row50_col0">2</td>
-<td class="data row50 col1" id="T_eeb47_row50_col1">Выдох</td>
-<td class="data row50 col2" id="T_eeb47_row50_col2">60 мм · 011 · основная ось креста</td>
-<td class="data row50 col3" id="T_eeb47_row50_col3">2</td>
-<td class="data row50 col4" id="T_eeb47_row50_col4">67,053</td>
-<td class="data row50 col5" id="T_eeb47_row50_col5">Нет</td>
+<td class="data row50 col0" id="T_8dbd7_row50_col0">2</td>
+<td class="data row50 col1" id="T_8dbd7_row50_col1">Выдох</td>
+<td class="data row50 col2" id="T_8dbd7_row50_col2">60 мм · 011 · основная ось креста</td>
+<td class="data row50 col3" id="T_8dbd7_row50_col3">2</td>
+<td class="data row50 col4" id="T_8dbd7_row50_col4">67,053</td>
+<td class="data row50 col5" id="T_8dbd7_row50_col5">Нет</td>
 </tr>
 <tr>
-<td class="data row51 col0" id="T_eeb47_row51_col0">2</td>
-<td class="data row51 col1" id="T_eeb47_row51_col1">Выдох</td>
-<td class="data row51 col2" id="T_eeb47_row51_col2">60 мм · 011 · поперечная ось креста</td>
-<td class="data row51 col3" id="T_eeb47_row51_col3">1</td>
-<td class="data row51 col4" id="T_eeb47_row51_col4">96,568</td>
-<td class="data row51 col5" id="T_eeb47_row51_col5">Нет</td>
+<td class="data row51 col0" id="T_8dbd7_row51_col0">2</td>
+<td class="data row51 col1" id="T_8dbd7_row51_col1">Выдох</td>
+<td class="data row51 col2" id="T_8dbd7_row51_col2">60 мм · 011 · поперечная ось креста</td>
+<td class="data row51 col3" id="T_8dbd7_row51_col3">1</td>
+<td class="data row51 col4" id="T_8dbd7_row51_col4">96,568</td>
+<td class="data row51 col5" id="T_8dbd7_row51_col5">Нет</td>
 </tr>
 </tbody>
 </table>
@@ -12498,7 +12540,7 @@ for(let index=0;index<3;index++)createViewer(index);
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a0479728">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7910f1fb">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -12511,7 +12553,7 @@ for(let index=0;index<3;index++)createViewer(index);
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=dd1bf8d7">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=5098dbb0">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -12520,90 +12562,90 @@ for(let index=0;index<3;index++)createViewer(index);
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
 <style type="text/css">
 </style>
-<table id="T_5bac5">
+<table id="T_9525d">
 <thead>
 <tr>
-<th class="col_heading level0 col0" id="T_5bac5_level0_col0">Боковой канал</th>
-<th class="col_heading level0 col1" id="T_5bac5_level0_col1">Дыхание</th>
-<th class="col_heading level0 col2" id="T_5bac5_level0_col2">Вариант 140 мм</th>
-<th class="col_heading level0 col3" id="T_5bac5_level0_col3">Z₁₄₀, Ом</th>
-<th class="col_heading level0 col4" id="T_5bac5_level0_col4">Прогноз 140 мм по 60–120 мм, Ом</th>
-<th class="col_heading level0 col5" id="T_5bac5_level0_col5">Ошибка прогноза, Ом</th>
-<th class="col_heading level0 col6" id="T_5bac5_level0_col6">Невязка пяти размеров, %</th>
+<th class="col_heading level0 col0" id="T_9525d_level0_col0">Боковой канал</th>
+<th class="col_heading level0 col1" id="T_9525d_level0_col1">Дыхание</th>
+<th class="col_heading level0 col2" id="T_9525d_level0_col2">Вариант 140 мм</th>
+<th class="col_heading level0 col3" id="T_9525d_level0_col3">Z₁₄₀, Ом</th>
+<th class="col_heading level0 col4" id="T_9525d_level0_col4">Прогноз 140 мм по 60–120 мм, Ом</th>
+<th class="col_heading level0 col5" id="T_9525d_level0_col5">Ошибка прогноза, Ом</th>
+<th class="col_heading level0 col6" id="T_9525d_level0_col6">Невязка пяти размеров, %</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="data row0 col0" id="T_5bac5_row0_col0">1</td>
-<td class="data row0 col1" id="T_5bac5_row0_col1">Вдох</td>
-<td class="data row0 col2" id="T_5bac5_row0_col2">Основной ряд, запись 004</td>
-<td class="data row0 col3" id="T_5bac5_row0_col3">67,018</td>
-<td class="data row0 col4" id="T_5bac5_row0_col4">79,369</td>
-<td class="data row0 col5" id="T_5bac5_row0_col5">12,35</td>
-<td class="data row0 col6" id="T_5bac5_row0_col6">11,558</td>
+<td class="data row0 col0" id="T_9525d_row0_col0">1</td>
+<td class="data row0 col1" id="T_9525d_row0_col1">Вдох</td>
+<td class="data row0 col2" id="T_9525d_row0_col2">Основной ряд, запись 004</td>
+<td class="data row0 col3" id="T_9525d_row0_col3">67,018</td>
+<td class="data row0 col4" id="T_9525d_row0_col4">79,369</td>
+<td class="data row0 col5" id="T_9525d_row0_col5">12,35</td>
+<td class="data row0 col6" id="T_9525d_row0_col6">11,558</td>
 </tr>
 <tr>
-<td class="data row1 col0" id="T_5bac5_row1_col0">1</td>
-<td class="data row1 col1" id="T_5bac5_row1_col1">Вдох</td>
-<td class="data row1 col2" id="T_5bac5_row1_col2">Основная ось креста, запись 006</td>
-<td class="data row1 col3" id="T_5bac5_row1_col3">76,818</td>
-<td class="data row1 col4" id="T_5bac5_row1_col4">79,369</td>
-<td class="data row1 col5" id="T_5bac5_row1_col5">2,5512</td>
-<td class="data row1 col6" id="T_5bac5_row1_col6">10,616</td>
+<td class="data row1 col0" id="T_9525d_row1_col0">1</td>
+<td class="data row1 col1" id="T_9525d_row1_col1">Вдох</td>
+<td class="data row1 col2" id="T_9525d_row1_col2">Основная ось креста, запись 006</td>
+<td class="data row1 col3" id="T_9525d_row1_col3">76,818</td>
+<td class="data row1 col4" id="T_9525d_row1_col4">79,369</td>
+<td class="data row1 col5" id="T_9525d_row1_col5">2,5512</td>
+<td class="data row1 col6" id="T_9525d_row1_col6">10,616</td>
 </tr>
 <tr>
-<td class="data row2 col0" id="T_5bac5_row2_col0">1</td>
-<td class="data row2 col1" id="T_5bac5_row2_col1">Выдох</td>
-<td class="data row2 col2" id="T_5bac5_row2_col2">Основной ряд, запись 004</td>
-<td class="data row2 col3" id="T_5bac5_row2_col3">65,645</td>
-<td class="data row2 col4" id="T_5bac5_row2_col4">78,52</td>
-<td class="data row2 col5" id="T_5bac5_row2_col5">12,875</td>
-<td class="data row2 col6" id="T_5bac5_row2_col6">10,911</td>
+<td class="data row2 col0" id="T_9525d_row2_col0">1</td>
+<td class="data row2 col1" id="T_9525d_row2_col1">Выдох</td>
+<td class="data row2 col2" id="T_9525d_row2_col2">Основной ряд, запись 004</td>
+<td class="data row2 col3" id="T_9525d_row2_col3">65,645</td>
+<td class="data row2 col4" id="T_9525d_row2_col4">78,52</td>
+<td class="data row2 col5" id="T_9525d_row2_col5">12,875</td>
+<td class="data row2 col6" id="T_9525d_row2_col6">10,911</td>
 </tr>
 <tr>
-<td class="data row3 col0" id="T_5bac5_row3_col0">1</td>
-<td class="data row3 col1" id="T_5bac5_row3_col1">Выдох</td>
-<td class="data row3 col2" id="T_5bac5_row3_col2">Основная ось креста, запись 006</td>
-<td class="data row3 col3" id="T_5bac5_row3_col3">75,932</td>
-<td class="data row3 col4" id="T_5bac5_row3_col4">78,52</td>
-<td class="data row3 col5" id="T_5bac5_row3_col5">2,5878</td>
-<td class="data row3 col6" id="T_5bac5_row3_col6">9,8301</td>
+<td class="data row3 col0" id="T_9525d_row3_col0">1</td>
+<td class="data row3 col1" id="T_9525d_row3_col1">Выдох</td>
+<td class="data row3 col2" id="T_9525d_row3_col2">Основная ось креста, запись 006</td>
+<td class="data row3 col3" id="T_9525d_row3_col3">75,932</td>
+<td class="data row3 col4" id="T_9525d_row3_col4">78,52</td>
+<td class="data row3 col5" id="T_9525d_row3_col5">2,5878</td>
+<td class="data row3 col6" id="T_9525d_row3_col6">9,8301</td>
 </tr>
 <tr>
-<td class="data row4 col0" id="T_5bac5_row4_col0">2</td>
-<td class="data row4 col1" id="T_5bac5_row4_col1">Вдох</td>
-<td class="data row4 col2" id="T_5bac5_row4_col2">Основной ряд, запись 004</td>
-<td class="data row4 col3" id="T_5bac5_row4_col3">79,595</td>
-<td class="data row4 col4" id="T_5bac5_row4_col4">56,349</td>
-<td class="data row4 col5" id="T_5bac5_row4_col5">−23,247</td>
-<td class="data row4 col6" id="T_5bac5_row4_col6">15,171</td>
+<td class="data row4 col0" id="T_9525d_row4_col0">2</td>
+<td class="data row4 col1" id="T_9525d_row4_col1">Вдох</td>
+<td class="data row4 col2" id="T_9525d_row4_col2">Основной ряд, запись 004</td>
+<td class="data row4 col3" id="T_9525d_row4_col3">79,595</td>
+<td class="data row4 col4" id="T_9525d_row4_col4">56,349</td>
+<td class="data row4 col5" id="T_9525d_row4_col5">−23,247</td>
+<td class="data row4 col6" id="T_9525d_row4_col6">15,171</td>
 </tr>
 <tr>
-<td class="data row5 col0" id="T_5bac5_row5_col0">2</td>
-<td class="data row5 col1" id="T_5bac5_row5_col1">Вдох</td>
-<td class="data row5 col2" id="T_5bac5_row5_col2">Основная ось креста, запись 006</td>
-<td class="data row5 col3" id="T_5bac5_row5_col3">81,515</td>
-<td class="data row5 col4" id="T_5bac5_row5_col4">56,349</td>
-<td class="data row5 col5" id="T_5bac5_row5_col5">−25,166</td>
-<td class="data row5 col6" id="T_5bac5_row5_col6">16,178</td>
+<td class="data row5 col0" id="T_9525d_row5_col0">2</td>
+<td class="data row5 col1" id="T_9525d_row5_col1">Вдох</td>
+<td class="data row5 col2" id="T_9525d_row5_col2">Основная ось креста, запись 006</td>
+<td class="data row5 col3" id="T_9525d_row5_col3">81,515</td>
+<td class="data row5 col4" id="T_9525d_row5_col4">56,349</td>
+<td class="data row5 col5" id="T_9525d_row5_col5">−25,166</td>
+<td class="data row5 col6" id="T_9525d_row5_col6">16,178</td>
 </tr>
 <tr>
-<td class="data row6 col0" id="T_5bac5_row6_col0">2</td>
-<td class="data row6 col1" id="T_5bac5_row6_col1">Выдох</td>
-<td class="data row6 col2" id="T_5bac5_row6_col2">Основной ряд, запись 004</td>
-<td class="data row6 col3" id="T_5bac5_row6_col3">79,095</td>
-<td class="data row6 col4" id="T_5bac5_row6_col4">55,386</td>
-<td class="data row6 col5" id="T_5bac5_row6_col5">−23,709</td>
-<td class="data row6 col6" id="T_5bac5_row6_col6">15,516</td>
+<td class="data row6 col0" id="T_9525d_row6_col0">2</td>
+<td class="data row6 col1" id="T_9525d_row6_col1">Выдох</td>
+<td class="data row6 col2" id="T_9525d_row6_col2">Основной ряд, запись 004</td>
+<td class="data row6 col3" id="T_9525d_row6_col3">79,095</td>
+<td class="data row6 col4" id="T_9525d_row6_col4">55,386</td>
+<td class="data row6 col5" id="T_9525d_row6_col5">−23,709</td>
+<td class="data row6 col6" id="T_9525d_row6_col6">15,516</td>
 </tr>
 <tr>
-<td class="data row7 col0" id="T_5bac5_row7_col0">2</td>
-<td class="data row7 col1" id="T_5bac5_row7_col1">Выдох</td>
-<td class="data row7 col2" id="T_5bac5_row7_col2">Основная ось креста, запись 006</td>
-<td class="data row7 col3" id="T_5bac5_row7_col3">84,086</td>
-<td class="data row7 col4" id="T_5bac5_row7_col4">55,386</td>
-<td class="data row7 col5" id="T_5bac5_row7_col5">−28,7</td>
-<td class="data row7 col6" id="T_5bac5_row7_col6">18,183</td>
+<td class="data row7 col0" id="T_9525d_row7_col0">2</td>
+<td class="data row7 col1" id="T_9525d_row7_col1">Выдох</td>
+<td class="data row7 col2" id="T_9525d_row7_col2">Основная ось креста, запись 006</td>
+<td class="data row7 col3" id="T_9525d_row7_col3">84,086</td>
+<td class="data row7 col4" id="T_9525d_row7_col4">55,386</td>
+<td class="data row7 col5" id="T_9525d_row7_col5">−28,7</td>
+<td class="data row7 col6" id="T_9525d_row7_col6">18,183</td>
 </tr>
 </tbody>
 </table>
@@ -12612,7 +12654,7 @@ for(let index=0;index<3;index++)createViewer(index);
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=fc48252b">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=16823e1a">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>

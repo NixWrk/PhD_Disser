@@ -94,6 +94,10 @@ def prepare_sections(out=OUT):
         producer_sha256=sha(Path(__file__).with_name('lung_depth_profile.py')),
         builder_sha256=sha(__file__))
     write(out/'lung_depth_profile.local.json',depth)
+    landmarks=[dict(label=label,s_mm=offset,depth_mm=depth['depth_mm'][depth['s_mm'].index(offset)],colour=colour)
+        for offset,label,colour in [(-70,'A','#b12a90'),(-35,'M','#4575b4'),(0,'Центр','#30343b'),
+            (35,'N','#19955b'),(70,'B','#d26b13')]]
+    write(out/'lung_depth_landmarks.local.json',landmarks)
     pd.DataFrame({k:depth[k] for k in ['s_mm','z_lps_mm','skin_x_lps_mm','lung_x_lps_mm','depth_mm','flags']}).to_csv(
         out/'lung_depth_profile.local.csv',index=False)
     points=np.array(contacts['lateral']['centres_by_size_mm'][contacts['sizes_mm'].index(140)])
@@ -133,10 +137,16 @@ def prepare_sections(out=OUT):
         alpha=.5,aspect='equal',interpolation='nearest')
     ax.axhline(0,color='white',lw=2)
     ax.plot(s,depth['depth_mm'],color='#00efff',lw=1.8,label='Первая граница лёгкого')
-    for offset,label in [(-70,'A'),(-35,'M'),(0,'Центр'),(35,'N'),(70,'B')]:
+    for item in landmarks:
+        offset,label,value,colour=[item[k] for k in ('s_mm','label','depth_mm','colour')]
         ax.axvline(offset,color='white',alpha=.55,lw=.8,ls='--')
         ax.plot(offset,0,'o',color='white',markeredgecolor='black',clip_on=False)
         ax.annotate(label,(offset,0),xytext=(0,9),textcoords='offset points',ha='center',clip_on=False)
+        if value is not None:
+            ax.axhline(value,color=colour,lw=1,ls=(0,(6,4)))
+            ax.plot(offset,value,'o',mfc='white',mec=colour,ms=5)
+            ax.text(1.02,value,f'{label}: {number(value)} мм',transform=ax.get_yaxis_transform(),
+                va='center',color=colour,fontsize=10,clip_on=False)
     ax.set(xlim=(-74,74),ylim=(d[-1],0),xlabel='s — смещение вдоль оси сборки, мм',
         ylabel='d — глубина от наружной поверхности вдоль +x LPS, мм',
         title='Сборка 140 мм: КТ с выровненной наружной поверхностью\nРасстояния по глубине сохранены')
@@ -155,11 +165,14 @@ def prepare_sections(out=OUT):
         uses_automatic_masks=True,anatomical_accuracy_validated=False,is_electrical_equivalent_h=False))
     fig,ax=plt.subplots(figsize=(11,4.5),constrained_layout=True)
     ax.plot(depth['s_mm'],depth['depth_mm'],color='#247bb5',lw=2)
-    for offset,label in [(-70,'A'),(-35,'M'),(0,'Центр'),(35,'N'),(70,'B')]:
-        j=depth['s_mm'].index(offset);value=depth['depth_mm'][j]
+    for item in landmarks:
+        offset,label,value,colour=[item[k] for k in ('s_mm','label','depth_mm','colour')]
         ax.axvline(offset,color='#777',lw=.8,ls='--')
-        ax.plot(offset,value,'o',color='#247bb5')
-        ax.annotate(label,(offset,value),xytext=(0,12),textcoords='offset points',ha='center')
+        if value is not None:
+            ax.axhline(value,color=colour,lw=1,ls=(0,(6,4)))
+            ax.plot(offset,value,'o',color=colour)
+            ax.text(1.02,value,f'{label}: {number(value)} мм',transform=ax.get_yaxis_transform(),
+                va='center',color=colour,fontsize=10,clip_on=False)
     ax.set(xlabel='s — смещение вдоль оси сборки от общего центра, мм',
         ylabel='d — расстояние до маски лёгкого\nвдоль +x LPS, мм',xlim=(-74,74))
     ax.margins(y=.12)
@@ -280,6 +293,10 @@ def build(out=OUT):
        'анатомических элементов вдоль +x LPS сохранены с шагом 0,5 мм. '
        'Ось s, шаг 1 мм и общий центр совпадают с рисунком 3. Белая горизонтальная линия '
        'соответствует нулевой глубине, голубая — первой границе маски правого лёгкого. '
+       'Вертикальные штриховые линии задают положения A, M, центра, N и B вдоль оси сборки. '
+       'Цветные горизонтальные штриховые линии показывают глубину лёгкого в этих пяти положениях; '
+       'подписи справа содержат обозначение и расстояние в миллиметрах. Кружки на голубой границе '
+       'соединяют каждое положение с соответствующим уровнем глубины. '
        'Серые области вне доступного КТ или за срединной плоскостью x LPS = 0 не интерпретируются '
        'как мягкие ткани. Маски остаются автоматическими; расстояния зависят от их точности '
        'и обработки наружной поверхности. Это выровненное изображение реальной неоднородной '
@@ -297,7 +314,11 @@ def build(out=OUT):
        'Профиль построен независимо от импеданса и сопротивлений. Он показывает пространственную '
        'неоднородность анатомии при данном примере положения. Электрически эквивалентная толщина h '
        'двуслойной модели пока не определена через этот профиль: способ такого сведения требуется '
-       'проверить по индивидуальной конечноэлементной модели.')
+       'проверить по индивидуальной конечноэлементной модели. Сплошная синяя линия представляет '
+       'профиль d(s); вертикальные серые штриховые линии — положения электродов и центра. '
+       'Горизонтальные цветные штриховые линии и кружки отмечают значения d в этих положениях; '
+       'подписи справа показывают их в миллиметрах. При неопределённой глубине соответствующий '
+       'горизонтальный уровень не проводится.')
     code("display(Image(filename=str(OUT/'lung_depth_along_montage.png')))")
     md('## 5. Полный перерасчёт положения и сопротивлений\n\n'
        'Следующий этап — поиск общего центра по всей допустимой правой поверхности грудной клетки '
