@@ -136,7 +136,7 @@ def summary_table(cases):
     return pd.DataFrame(rows)
 
 
-def build(out,observations,cases,contract,verification):
+def build(out,observations,cases,contract,verification,review_out=None):
     out=Path(out);folder=Path(__file__).parent
     import matplotlib
     matplotlib.use('Agg')
@@ -191,7 +191,8 @@ def build(out,observations,cases,contract,verification):
        'Технические пределы обоих сопротивлений составляют 0,1–100 Ом·м согласно принятому решению автора. '
        'Автоматического расширения нет. Толщина исследуется в вычислительной области 0,5–100 мм. '
        'Границы этой области не являются анатомическим или доверительным интервалом. '
-       'Литературные диапазоны не ограничивают подгонку и используются для последующего сопоставления. '
+       'Литературные диапазоны не ограничивают основной поиск; отдельный ограниченный сценарий '
+       'приведён в разделе 6.1. '
        'Предыдущий проход 33.20 использовал литературные ограничения и сетку 5–60 мм; его результаты '
        'сохраняются как отдельный сценарий и не заменяют настоящий поиск.\n\n'
        'Критерий подгонки задаётся выражением\n\n'
@@ -215,7 +216,10 @@ def build(out,observations,cases,contract,verification):
        'Вертикальные отрезки характеризуют 5-й и 95-й процентили медианы при повторной выборке секундных блоков '
        'внутри той же задержки. Они отражают только внутризаписную вариабельность. Ошибки контакта, '
        'повторной установки и различия физиологического состояния между записями в них не включены.\n\n'
-       '**Рисунок 1.** Базовые импедансы пяти сборок на вдохе и выдохе при двух назначениях бокового канала.')
+       '**Рисунок 1.** Базовые импедансы пяти сборок на вдохе и выдохе при двух назначениях бокового канала. '
+       'Каждая модельная линия рассчитана при собственных ρ₁, ρ₂ и h из предшествующей таблицы '
+       'для соответствующих канала и состояния дыхания. Эта тройка постоянна для всех пяти размеров '
+       'данной линии; одна универсальная пара сопротивлений для четырёх линий не используется.')
     code('display(reader_table(summary_table(results)))\nshow(observation_figure(results))')
     md('## 5. Множество близких решений\n\n'
        'Каждая точка рисунков 2–5 представляет тройку сопротивлений и толщины, '
@@ -261,6 +265,12 @@ def build(out,observations,cases,contract,verification):
        'её наибольшего и наименьшего сингулярных чисел. Эта локальная диагностика '
        'рассматривается совместно с нелинейным множеством решений.')
     code("import pandas as pd\nrows=[]\nfor c in results:\n    q=np.array(c['bootstrap']['p05_p95_parameters'])\n    for j,name in enumerate(['ρ₁, Ом·м','ρ₂, Ом·м','h, мм']):\n        rows.append({'Канал':c['channel'],'Состояние':c['state'],'Параметр':name,'5-й процентиль':q[0,j],'95-й процентиль':q[1,j]})\ndisplay(reader_table(pd.DataFrame(rows).replace({'inhale':'Вдох','exhale':'Выдох'})))")
+    if review_out is None:
+        candidate=ROOT/'Experiments/scorpion_v2_georg/derived/exploratory/33.21_review_20261009'
+        review_out=candidate if (candidate/'manifest.local.json').exists() else None
+    if review_out is not None:
+        from lateral_admissible_sets_report import append_review
+        append_review(cells,review_out)
     md('## 7. Численная проверка и границы вывода\n\n'
        'При обоих назначениях канала совместная оценка трёх параметров не продемонстрировала '
        'устойчивости. Относительная невязка лучших вариантов составляет 10,20–11,55%. '
@@ -318,7 +328,9 @@ def build(out,observations,cases,contract,verification):
     (folder/(STEM+'.html')).write_text(html,encoding='utf-8')
     reader='\n\n'.join(c.source for c in nb.cells if c.cell_type=='markdown')
     (folder/(STEM+'.md')).write_text(reader+'\n',encoding='utf-8')
-    save(out/'reader_artifacts.local.json',dict(notebook_sha256=sha(path),
+    reader_out=Path(review_out) if review_out is not None else out
+    reader_name='33.21_reader_artifacts.local.json' if review_out is not None else 'reader_artifacts.local.json'
+    save(reader_out/reader_name,dict(notebook_sha256=sha(path),
         html_sha256=sha(folder/(STEM+'.html')),reader_text_sha256=sha(folder/(STEM+'.md')),
         executed_code_cells=sum(c.cell_type=='code' for c in nb.cells),code_excluded_from_html=True))
     print(path,flush=True)

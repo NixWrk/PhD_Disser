@@ -43,7 +43,14 @@ def table(frame):
     return frame.style.hide(axis='index').format(columns)
 
 
-def verify_inputs(out=OUT):
+def require_current_geometry(out,allow_superseded=False):
+    historical=Path(out).resolve()==OUT.resolve() or (Path(out)/'superseded_geometry.local.json').exists()
+    if historical and not allow_superseded:
+        raise ValueError('Historical geometry was superseded on 2026-10-09; recompute FEM for the corrected montage')
+
+
+def verify_inputs(out=OUT,allow_superseded=False):
+    require_current_geometry(out,allow_superseded)
     p=read(out/'plan.local.json')
     for entry in p['sources']:
         if sha(entry['path'])!=entry['sha256']:raise ValueError('Changed input: '+entry['path'])
@@ -182,7 +189,8 @@ def sensitivity_plot(out=OUT):
     return fig
 
 
-def cases(out=OUT):
+def cases(out=OUT,allow_superseded=False):
+    require_current_geometry(out,allow_superseded)
     p=read(out/'plan.local.json');rows=[]
     validation=read(out/'integration_validation.local.json')
     if validation['identity']['plan_sha256']!=sha(out/'plan.local.json'):raise ValueError('Stale validation')
@@ -279,7 +287,8 @@ def export(stem,cells,out=OUT):
     exp=HTMLExporter();exp.exclude_input=True;exp.exclude_input_prompt=True;exp.exclude_output_prompt=True
     html,_=exp.from_notebook_node(nb);(FOLDER/(stem+'.html')).write_text(html,encoding='utf-8')
     (FOLDER/(stem+'.md')).write_text('\n\n'.join(c.source for c in cells if c.cell_type=='markdown')+'\n',encoding='utf-8')
-    write(out/(stem[:5]+'_reader_artifacts.local.json'),dict(files=[dict(name=stem+ext,sha256=sha(FOLDER/(stem+ext)))
+    reader_out=ROOT/'MATLAB_TRKG4_real_subjects/output/exploratory/scorpion_georg_geometry_20261009' if Path(out).resolve()==OUT.resolve() else out
+    write(reader_out/(stem[:5]+'_reader_artifacts.local.json'),dict(files=[dict(name=stem+ext,sha256=sha(FOLDER/(stem+ext)))
         for ext in ('.ipynb','.html','.md')],executed_cells=sum(c.cell_type=='code' for c in nb.cells),code_excluded=True))
 
 
@@ -307,12 +316,15 @@ plan=verify_inputs()
 """
 
 
-def initialization(out):
+def initialization(out,allow_superseded=False):
     relative=Path(out).resolve().relative_to(ROOT).as_posix()
-    return INITIAL.replace('plan=verify_inputs()',f'OUT=ROOT/{relative!r}\nplan=verify_inputs(OUT)')
+    return INITIAL.replace('plan=verify_inputs()',f'OUT=ROOT/{relative!r}\nplan=verify_inputs(OUT,allow_superseded={allow_superseded!r})')
 
 
 def build_geometry(out=OUT):
+    if Path(out).resolve()==OUT.resolve() or (Path(out)/'superseded_geometry.local.json').exists():
+        from build_georg_geometry_revision_report import build
+        return build()
     plan=verify_inputs(out);records=prepare_anatomy_assets(out)
     prep=read(out/'preparation_qc.local.json');meshqc=read(out/'body_voxel2mm_hxt_qc.local.json')
     change=read(out/'voxel_geometry_comparison.local.json')
@@ -476,13 +488,19 @@ def build_geometry(out=OUT):
 
 
 def build_inverse(out=OUT):
-    rows=cases(out);cells,md,code=new_cells();residuals=[c['relative_residual_percent'] for c in rows]
+    rows=cases(out,allow_superseded=True);cells,md,code=new_cells();residuals=[c['relative_residual_percent'] for c in rows]
     md('# 33.22. Удельные сопротивления тканей в индивидуальной КТ/FEM-модели Георгия\n\n'
-       '**Статус: условные оценки в разработке методики.** Ни место монтажа, ни точность тканевых параметров '
+       '**Статус: исторический расчёт геометрии от 8 октября 2026 года.** '
+       '9 октября автор уточнил монтаж: боковые сборки направлены вдоль тела, токовые контакты '
+       'находятся сверху, а соединение цилиндров рук должно охватывать полное сечение. '
+       'Старая геометрия этим условиям не соответствовала. Все таблицы и рисунки этого ноутбука '
+       'сохраняют прежние численные результаты; они не относятся к исправленной геометрии 20.20 '
+       'и исключены из дальнейшей коррекции ТТРКГ. Новая сетка, полный поиск положения и инверсия '
+       'ещё не выполнены. Ни место монтажа, ни точность тканевых параметров '
        'не подтверждены независимыми данными.\n\n'
        '## 1. Что проверяется и почему\n\n'
        'Этап 33.21 показал неустойчивость совместной двуслойной оценки ρ₁, ρ₂ и h. '
-       'Здесь плоская модель заменена индивидуальной КТ/FEM-моделью этапа 20.20, содержащей сердце, '
+       'Здесь плоская модель заменена прежней КТ/FEM-моделью редакции 20.20 от 8 октября, содержащей сердце, '
        'лёгкие, кости, жир и оставшийся мягкотканный фон. Цель — найти условные сопротивления трёх '
        'свободных материалов и проверить, снимает ли анатомическая модель прежнюю неоднозначность. '
        'Конечноэлементное решение само по себе не подтверждает идентифицируемость.\n\n'
@@ -496,7 +514,9 @@ def build_inverse(out=OUT):
        'Два назначения бокового канала применяются ко всему ряду. '
        'Сопоставимость последовательных записей является допущением; полная экспериментальная ошибка неизвестна.\n\n'
        'Геометрия, маски, цилиндрические руки с обхватом 37 см, контакты 5 мм, группировка 1×4 '
-       'и контактный импеданс заданы в 20.20. Расчёт повторён для трёх предполагаемых положений '
+       'и контактный импеданс заданы в прежней редакции 20.20. Боковые контакты были направлены '
+       'по y LPS, токовые — вперёд; соединение рук имело недостаточное сечение. '
+       'Расчёт повторён для трёх предполагаемых положений '
        'общего центра: z = −180, −210 и −240 мм. '
        'Это проверка чувствительности к трём положениям, а не полный поиск установки на поверхности. '
        'Для вдоха и выдоха используется одна КТ-геометрия глубокого вдоха. '
@@ -507,7 +527,9 @@ def build_inverse(out=OUT):
        'ρ₁ после выделения жира не тождественно эффективному сопротивлению грудной стенки в 33.21. '
        'h здесь не оптимизируется: неоднородная анатомия представлена пространственными масками. '
        'Электрически эквивалентная h из этой модели пока не определена.\n\n'
-       'Сопротивления сердца и костей фиксированы по опорным значениям 20.20. '
+       'Сопротивления сердца и костей фиксированы по опорным значениям прежней редакции 20.20: '
+       f'{number(rows[0]["rho_ohm_m"][3],7)} и {number(rows[0]["rho_ohm_m"][2],7)} Ом·м соответственно. '
+       f'Удельный контактный импеданс равен {number(read(out/"plan.local.json")["contact_impedance_ohm_m2"],7)} Ом·м². '
        'Все пять размеров имеют одинаковый вес. Критерий задаётся выражением\n\n'
        '$$RSS(\\rho_1,\\rho_2,\\rho_{\\mathrm{ж}};P)=\\sum_L[Z_{\\mathrm{FEM},L}(\\rho_1,\\rho_2,\\rho_{\\mathrm{ж}};P)-Z_{\\mathrm{obs},L}]^2,$$\n\n'
        'где RSS — сумма квадратов остатков, Ом²; P — заданное положение и ориентация монтажа; '
@@ -526,7 +548,7 @@ def build_inverse(out=OUT):
        'верхний знак T обозначает транспонирование. Прямой источник подключён к A–B, '
        'взаимный — к M–N. Контактный импеданс при дифференцировании фиксирован. '
        'Эта формула дополнительно проверена прямым изменением каждого сопротивления.')
-    code(initialization(out)+'\nresults=cases(OUT)\ndisplay(table(inverse_table(results)))')
+    code(initialization(out,allow_superseded=True)+'\nresults=cases(OUT,allow_superseded=True)\ndisplay(table(inverse_table(results)))')
     md('## 4. Согласование с наблюдениями\n\n'
        f'Относительная норма остатков в двенадцати задачах составляет {number(min(residuals))}–{number(max(residuals))}%. '
        'На рисунке 1 показаны все сохранённые варианты. Различие кривых при перемещении центра '
@@ -592,7 +614,8 @@ def build_inverse(out=OUT):
        'формальное статистическое отвержение анатомической модели при неизвестной полной ошибке не выполняется.\n\n'
        '## 7. Решение о дальнейшем использовании\n\n'
        'Получены воспроизводимые условные тройки для двенадцати явно заданных задач. '
-       'Они служат материалом для проверки методики; индивидуальные ρ₁, ρ₂ и ρж для окончательной '
+       'Они служат историческим материалом для проверки реализации. После уточнения геометрии '
+       'их перенос запрещён; индивидуальные ρ₁, ρ₂ и ρж для окончательной '
        'коррекции ТТРКГ этим расчётом не утверждаются. Для выбора рабочей оценки требуются '
        'принятая разметка, уточнение положения и контактов, проверка сеточной сходимости '
        'и неопределённости фиксированных тканей. Полный многоразмерный ряд сохраняется.\n\n'

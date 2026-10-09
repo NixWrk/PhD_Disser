@@ -1,0 +1,145 @@
+{
+  "review_date": "2026-10-09",
+  "scope": "Scorpion v2, Georg: bounded two-layer families, cross 140-mm comparison, corrected CT geometry and explicitly historical FEM inversion",
+  "artifact_inventory": [
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.21_Множество_решений_двуслойной_модели_Scorpion_v2.ipynb",
+      "sha256": "50ced08c8ec4b45793a8b3e9da40769437a97265ad956ccbbf8ba33973f5ffa0",
+      "bytes": 7950510
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.21_Множество_решений_двуслойной_модели_Scorpion_v2.html",
+      "sha256": "4bb8692af7672d14864a40b52ca8ba07a36488673b33933f81b27b070e50ee6e",
+      "bytes": 7985001
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.21_Множество_решений_двуслойной_модели_Scorpion_v2.md",
+      "sha256": "1d40bf8487769753a6703a00e361d98c50e7649231d80f6cb4e1e7039d0b78b7",
+      "bytes": 29413
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/20.20_Индивидуальная_КТ_FEM_модель_Георгия_Scorpion_v2.ipynb",
+      "sha256": "0737699557b2e1716083524cbe7d7bf6854f666df58a20b38293efd8b2092a18",
+      "bytes": 12905883
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/20.20_Индивидуальная_КТ_FEM_модель_Георгия_Scorpion_v2.html",
+      "sha256": "aefce75e430463e477e83b0cf22ccc5abbece5c45d42f4b549e2820a9d425e58",
+      "bytes": 13026541
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/20.20_Индивидуальная_КТ_FEM_модель_Георгия_Scorpion_v2.md",
+      "sha256": "188e6ac0e479d79512722086e8291f494f46ea0968b7fdae082bf51634f415f4",
+      "bytes": 12472
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.22_Сопротивления_тканей_в_КТ_FEM_модели_Георгия_Scorpion_v2.ipynb",
+      "sha256": "2e7e9854018fb575ea21c06695040038ff4fb74e52520b672934ae36fa59b040",
+      "bytes": 5102564
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.22_Сопротивления_тканей_в_КТ_FEM_модели_Георгия_Scorpion_v2.html",
+      "sha256": "939d2434ad02973b4034490062fca17e41c439f289e3df53fb9cf8e5977d58a5",
+      "bytes": 5227336
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.22_Сопротивления_тканей_в_КТ_FEM_модели_Георгия_Scorpion_v2.md",
+      "sha256": "a2765d70435366fcdbb455c0b35d8aabc948c79edbb9b9879416c9224786c32a",
+      "bytes": 17149
+    }
+  ],
+  "inventory_frozen_before_final_model_reviews": true,
+  "previous_review": "2026-10-08_final_reader_review.json is historical; it does not approve the changed reader bytes or corrected geometry",
+  "language": {
+    "status": "passed",
+    "reviewer": "Codex model",
+    "method": "semantic and sequential full-text model review after final reader generation; automatic extraction only exposed text and did not perform proofreading",
+    "coverage": [
+      "all prose and equations in notebook order",
+      "every output table and column label",
+      "all Plotly titles, legends, axes and hover labels",
+      "both embedded CT and join-section images inspected visually",
+      "equivalent Markdown and code-free HTML exports"
+    ],
+    "reader_text_sha256": {
+      "33.21": "75552f6d179077b682a15622ad8a69284cded7f5e6794e5bd3fcdd0f71789efd",
+      "20.20": "1fdfe118e062874f5e7b46afaa43f4b2a309c098a66a33cd4c8dfb635b60fd35",
+      "33.22": "5e263466a759af1cf51136f7fc375d7fbecd178ec077f4ab249e5b735bb3bd44"
+    },
+    "findings": [],
+    "reader_bytes_changed_after_review": false
+  },
+  "technical": {
+    "status": "passed",
+    "reader_checks": [
+      {
+        "stem": "33.21_Множество_решений_двуслойной_модели_Scorpion_v2",
+        "executed_cells": 14,
+        "errors": 0,
+        "code_excluded": true
+      },
+      {
+        "stem": "20.20_Индивидуальная_КТ_FEM_модель_Георгия_Scorpion_v2",
+        "executed_cells": 5,
+        "errors": 0,
+        "code_excluded": true
+      },
+      {
+        "stem": "33.22_Сопротивления_тканей_в_КТ_FEM_модели_Георгия_Scorpion_v2",
+        "executed_cells": 5,
+        "errors": 0,
+        "code_excluded": true
+      }
+    ],
+    "python_sources_parse": true,
+    "browser_visual_review": true,
+    "phase_animation_camera_check": "not_applicable; these figures are static, with persistent 3D camera keys"
+  },
+  "computational": {
+    "status": "passed_within_declared_numerical_and_geometry_checks",
+    "registered_checks": [
+      "test_lateral_pilot.py",
+      "test_lateral_identifiability.py",
+      "test_lateral_revision.py",
+      "verify_scorpion_revision.py"
+    ],
+    "mathematical_and_geometry_tests": {
+      "passed": 12,
+      "failed": 0
+    },
+    "verification_sha256": "7cbe830fc5ad342f6435b4eb9ce3d0ac99a5b6807e46c152e5581a234b2969c8",
+    "primary_numerical_manifest_sha256": "9639dd6d2522022251d0e68e74bffd4eb6d50c9d4beb51f293fc69c2b288572f",
+    "primary_numerical_manifest_unchanged": true,
+    "additional_manifest_sha256": "1fec0ce004fa205a46056e3d0c87fb41c2bf8d06c29819f6a0870567d624941d",
+    "geometry_contract_sha256": "6b801d1820e4c0c308296223511df52e1d1e474dd8fc4b5e0ee1c34f13488404",
+    "maximum_scalar_residual_ohm": 4.0898839870351367e-11,
+    "maximum_cloud_rss_difference_ohm2": 5.002220859751105e-12,
+    "actual_joins_full_circle_inside_source": true,
+    "current_top_and_opposite_bottom_verified": true,
+    "lateral_longitudinal_axis_verified": true,
+    "corrected_geometry_fem_recomputed": false
+  },
+  "scientific": {
+    "status": "exploratory_hypothesis_not_validated",
+    "literature_bounds_are_individual_physiological_norms": false,
+    "two_resistivities_identified_by_one_scalar_observation": false,
+    "cross_140_replacement_accepted": false,
+    "channel_roles_selected_by_fit": false,
+    "old_fem_geometry_superseded": true,
+    "old_fem_parameters_transferred": false,
+    "individual_tissue_parameters_identified": false,
+    "full_surface_pose_search_performed": false,
+    "automatic_segmentation_independently_validated": false,
+    "stroke_volume_ejection_fraction_computed": false,
+    "limitations": [
+      "preliminary breathing and ECG annotation",
+      "sequential-record comparability assumption",
+      "unknown full experimental error and model discrepancy",
+      "unknown actual montage centre and contact area",
+      "geometric arm embedding is not validated anatomical localisation",
+      "potential-pair rotation is a scenario",
+      "fresh volume mesh, full pose inversion and convergence checks remain necessary"
+    ]
+  },
+  "overall_release_decision": "not_assessed; research revision preserved, no physiological or clinical validation claim"
+}
