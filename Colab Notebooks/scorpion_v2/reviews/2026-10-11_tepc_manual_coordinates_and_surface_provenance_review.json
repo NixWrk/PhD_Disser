@@ -1,0 +1,269 @@
+{
+  "date": "2026-10-11",
+  "scope": "Georg TEPC manual import and outer-surface provenance; no FEM recomputation",
+  "reader_inventory": [
+    {
+      "path": "Colab Notebooks/scorpion_v2/20.20_Индивидуальная_КТ_FEM_модель_Георгия_Scorpion_v2.md",
+      "bytes": 24686,
+      "sha256": "11623e92a4fad619f706a82223cde96ea3339616efa59f060976a6631b4795a0",
+      "sha256_lf": "a8527de7747fbc04c1c9dd2a55439a147295bccc6dbfd46aacda9226d43b80b9"
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/20.20_Индивидуальная_КТ_FEM_модель_Георгия_Scorpion_v2.ipynb",
+      "bytes": 12653959,
+      "sha256": "ce17f917289e35b31ced5435d7e3fec2c23b6e9fce082b6ef1bce8cde2e7d00a",
+      "sha256_lf": "02335a78452b78333426713cdabb2079dadf350e6dcbdf76667b4270269eabe9"
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/20.20_Индивидуальная_КТ_FEM_модель_Георгия_Scorpion_v2.html",
+      "bytes": 12775401,
+      "sha256": "9bf4d6f0023ad34e1c8e4ae8b0af9bcaf4bea9f90ff2e724b76a59f02eeb327f",
+      "sha256_lf": "44d86bbb71d9bd450b065d03464e5b4d93c59ac956cc528b702380e8f2bd520c"
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/20.21_Размещение_ТЕПС_Георгия_Scorpion_v2.html",
+      "bytes": 31238722,
+      "sha256": "46894e441485f194de0da6ba7bcb1c40ec58fc740fcf7bcff6386ec4947748d5",
+      "sha256_lf": "08b8ac366b4878310dd5f682ac911dabcdb2cdb0ed6b63a0f33a4aa492a62cee"
+    },
+    {
+      "path": "Experiments/scorpion_v2_georg/README.md",
+      "bytes": 25618,
+      "sha256": "e53f793cc152ed02f058378fc78f68662ccc28bfc7997a8af0fe1ad870a3d5da",
+      "sha256_lf": "e53f793cc152ed02f058378fc78f68662ccc28bfc7997a8af0fe1ad870a3d5da"
+    }
+  ],
+  "source_inventory": [
+    {
+      "path": "Colab Notebooks/scorpion_v2/build_georg_geometry_revision_report.py",
+      "bytes": 41100,
+      "sha256": "20e00b99aeddfc6e8ce4088a82ce3eaf340ba4cdff1bc109615b889ea5495407",
+      "sha256_lf": "20e00b99aeddfc6e8ce4088a82ce3eaf340ba4cdff1bc109615b889ea5495407"
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/tools/build_georg_tepc_picker.py",
+      "bytes": 7988,
+      "sha256": "caac0dac852493ed42a3fef7d999d948384b79d01f0a1d07defec42b1e8dadbd",
+      "sha256_lf": "caac0dac852493ed42a3fef7d999d948384b79d01f0a1d07defec42b1e8dadbd"
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/tools/build_surface_landmark_picker.py",
+      "bytes": 98776,
+      "sha256": "be37f9f8bb0f4259d65d3f50b014b6c5db75e58e95c83bbf2cf71376bc6db5c9",
+      "sha256_lf": "eb9e7d44ef586592fa39e8f1c445cff85bdff76376f7340d928c5655fc62c563"
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/tools/import_georg_tepc_landmarks.py",
+      "bytes": 6382,
+      "sha256": "ebb928560e5c699932f1b57e0236999dae555bc982be6b40b6d1b0c316872d27",
+      "sha256_lf": "ebb928560e5c699932f1b57e0236999dae555bc982be6b40b6d1b0c316872d27"
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/tests/test_georg_tepc_import.py",
+      "bytes": 2393,
+      "sha256": "d21632415caf95a6decf2307e8e9ae25cb32dc656b150eac0daf5a9a36c34888",
+      "sha256_lf": "d21632415caf95a6decf2307e8e9ae25cb32dc656b150eac0daf5a9a36c34888"
+    },
+    {
+      "path": "AGENTS.md",
+      "bytes": 90242,
+      "sha256": "0cfce526514cd159be3251dba496ee23765b50ee98052044d79363945dc55c79",
+      "sha256_lf": "0cfce526514cd159be3251dba496ee23765b50ee98052044d79363945dc55c79"
+    }
+  ],
+  "language": {
+    "status": "passed",
+    "mode": "final_full_text_semantic_model_review",
+    "full_reader_text_read_sequentially_after_last_change": true,
+    "scientific_headings_and_terminology_reviewed": true,
+    "derived_geometry_definitions_reviewed": true,
+    "direct_classification_and_scope_reviewed": true,
+    "claims_and_uncertainty_preserved": true,
+    "source": "russian-scientific-prose/SKILL.md",
+    "findings": []
+  },
+  "technical": {
+    "status": "passed",
+    "pytest_tests": 17,
+    "notebook_executed": true,
+    "reader_code_excluded": true,
+    "browser": {
+      "recordings": [
+        {
+          "montage": 2,
+          "recording": "012",
+          "coordinates_unchanged": true,
+          "camera_preserved": true,
+          "uncertainty_retained": true
+        },
+        {
+          "montage": 3,
+          "recording": "013",
+          "coordinates_unchanged": true,
+          "camera_preserved": true,
+          "uncertainty_retained": true
+        },
+        {
+          "montage": 4,
+          "recording": "014",
+          "coordinates_unchanged": true,
+          "camera_preserved": true,
+          "uncertainty_retained": true
+        },
+        {
+          "montage": 5,
+          "recording": "015",
+          "coordinates_unchanged": true,
+          "camera_preserved": true,
+          "uncertainty_retained": true
+        },
+        {
+          "montage": 6,
+          "recording": "016",
+          "coordinates_unchanged": true,
+          "camera_preserved": true,
+          "uncertainty_retained": true
+        },
+        {
+          "montage": 7,
+          "recording": "017",
+          "coordinates_unchanged": true,
+          "camera_preserved": true,
+          "uncertainty_retained": true
+        }
+      ],
+      "page_errors": [],
+      "body_faces": 178154
+    }
+  },
+  "computational": {
+    "status": "passed_internal_geometry_and_identity_checks",
+    "verification": {
+      "original_snapshots_equal": true,
+      "normalised_coordinates_equal": true,
+      "coordinates": 24,
+      "mappings_confirmed": true,
+      "fem_recomputed": false,
+      "max_projection_displacement_mm": 0.3333329999999961,
+      "unchanged_20_20_plotly_figures": 1,
+      "technical_status": "passed_internal_checks"
+    },
+    "audit": {
+      "body_sha256": "2f8e86ece48e2d3e57864f6181010c081296ed0d0582b41ca582ab52d92265fb",
+      "input": {
+        "vertices": 89079,
+        "faces": 178154,
+        "watertight": true,
+        "positive_volume": true,
+        "volume_ml": 39350.752830563004,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "euler_number": 2,
+        "self_intersecting_faces": 0
+      },
+      "html_display": {
+        "vertices": 10002,
+        "faces": 20000,
+        "watertight": true,
+        "positive_volume": true,
+        "volume_ml": 39257.03843177613,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "euler_number": 2,
+        "self_intersecting_faces": 0
+      },
+      "reduction": {
+        "requested_target_faces": 20000,
+        "status": "applied",
+        "method": "simplify_quadric_decimation(face_count=target)",
+        "error": null
+      },
+      "surface_distances_are_sample_statistics_not_certified_hausdorff": true,
+      "display_to_original": {
+        "sample_count": 10002,
+        "median_mm": 0.0721687836486663,
+        "p95_mm": 0.3038504925266589,
+        "p99_mm": 0.4347750282830671,
+        "maximum_mm": 0.9570516540916572,
+        "above_1mm": 0
+      },
+      "original_to_display": {
+        "sample_count": 11135,
+        "median_mm": 0.29327205408198426,
+        "p95_mm": 0.6482639261518266,
+        "p99_mm": 0.839157088634517,
+        "maximum_mm": 1.5857352213783433,
+        "above_1mm": 35
+      },
+      "coordinate_assignment_status": "filename_mapping_confirmed_by_author_2026-10-11",
+      "input_points_modified": false
+    },
+    "input_snapshots": [
+      {
+        "filename": "georg_tepc_2.json",
+        "sha256": "a2d58d8ad13980c2c50714c6d682a5a8db7a20f2d09315f3f39184a1053fc567",
+        "same_body_hash": true,
+        "coordinate_contract": [
+          true,
+          []
+        ]
+      },
+      {
+        "filename": "georg_tepc_3.json",
+        "sha256": "baab4b37f107ea801a0974f3b0ad1a9b39e8673221cf7b19f5833f121ec0b04d",
+        "same_body_hash": true,
+        "coordinate_contract": [
+          true,
+          []
+        ]
+      },
+      {
+        "filename": "georg_tepc_4.json",
+        "sha256": "065a5533df9348fbdc5d149949622df8d52977dc360aa059e30005bf8361eadd",
+        "same_body_hash": true,
+        "coordinate_contract": [
+          true,
+          []
+        ]
+      },
+      {
+        "filename": "georg_tepc_5.json",
+        "sha256": "cb85393dac0b703d13e17bc3a9525d4c77306ec52213fec011fc4b5f14d4a148",
+        "same_body_hash": true,
+        "coordinate_contract": [
+          true,
+          []
+        ]
+      },
+      {
+        "filename": "georg_tepc_6.json",
+        "sha256": "39ca345a4c9fdf2b9407a5b11f49212b3fd48e20b0ed0ce47fac4880a1496ab8",
+        "same_body_hash": true,
+        "coordinate_contract": [
+          true,
+          []
+        ]
+      },
+      {
+        "filename": "georg_tepc_7.json",
+        "sha256": "ff4796c2fad8378bfbc60f7da0567b7f623475d4a409619ca65744196d26eef6",
+        "same_body_hash": true,
+        "coordinate_contract": [
+          true,
+          []
+        ]
+      }
+    ]
+  },
+  "scientific": {
+    "status": "exploratory_not_independently_validated",
+    "filename_mapping_author_confirmed": true,
+    "selected_coordinates_preserved": true,
+    "projection_is_candidate_only": true,
+    "skin_accuracy_validated": false,
+    "manual_placement_error_quantified": false,
+    "bei_channels_and_signs_confirmed": false,
+    "new_fem_mesh_and_solve_completed": false,
+    "limitation": "Legacy outer STL was filled at 1 mm with 10 mm closing; topology does not prove CT skin fidelity. Removing display reduction does not repair the anatomical surface."
+  }
+}

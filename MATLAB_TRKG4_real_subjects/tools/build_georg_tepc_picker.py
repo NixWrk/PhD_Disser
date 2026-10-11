@@ -34,12 +34,15 @@ def mask_surface(path, target, step_size=1):
     trimesh.Trimesh(lps, faces, process=False).export(target)
 
 
-def build(geometry=GEOMETRY, segmentation=SEGMENTATION, out=OUT, target_faces=20000):
+def build(geometry=GEOMETRY, segmentation=SEGMENTATION, out=OUT, target_faces=None, landmarks=None):
     geometry, segmentation, out = map(Path, (geometry, segmentation, out))
     g = json.loads((geometry/'geometry.local.json').read_text(encoding='utf-8-sig'))
     body = geometry/'body_embedded_arms_370mm.stl'
     if sha(body) != g['surface_sha256']:
         raise ValueError('Corrected body surface hash mismatch')
+    body_faces = len(trimesh.load(body, force='mesh').faces)
+    if target_faces is None:
+        target_faces = body_faces
     out.mkdir(parents=True, exist_ok=True)
     inputs = {'body': sha(body)}
     references = {}
@@ -57,6 +60,9 @@ def build(geometry=GEOMETRY, segmentation=SEGMENTATION, out=OUT, target_faces=20
             'КТ получена на глубоком вдохе в другой сессии. Сердце, лёгкие, кости и жир — '
             'автоматические маски TotalSegmentator; независимая точность не установлена. '
             'Жир отображается с шагом три вокселя без последующего схлопывания треугольников. '
+            'Тело показано без дополнительного уменьшения числа треугольников. '
+            'Наружный контур унаследован из прежней STL-сегментации после объёмного заполнения '
+            'с шагом 1 мм и морфологического замыкания радиусом 10 мм; его соответствие коже не проверено. '
             'Руки — цилиндры обхватом 37 см, включая искусственное продолжение за пределы поля КТ. '
             'Точки Ника и иллюстративные боковые контакты сюда не перенесены.',
         subject_pseudonym='Georg', experiment='scorpion_v2_georg', experiment_date='2026-10-05',
@@ -67,6 +73,28 @@ def build(geometry=GEOMETRY, segmentation=SEGMENTATION, out=OUT, target_faces=20
         electrode_contact_area_mm2=None, contact_impedance_ohm_m2=None,
         recordings=[dict(id=f'{n+10:03d}', label=f'ТЕПС {n} · запись {n+10:03d}',
             montage_id=f'georg_tepc_{n}') for n in range(2, 8)])
+    context['body_display_decimated'] = target_faces < body_faces
+    if context['body_display_decimated']:
+        context['description'] = context['description'].replace(
+            'Тело показано без дополнительного уменьшения числа треугольников.',
+            'В этой версии число треугольников тела дополнительно уменьшено для предварительного просмотра.')
+    manual_hashes = {}
+    if landmarks is not None:
+        context['manual_reconstructions'] = {}
+        for n in range(2,8):
+            path = Path(landmarks)/f'georg_tepc_{n}.json'
+            data = json.loads(path.read_text(encoding='utf-8-sig'))
+            m = data['measurement_context']
+            if (m['body_sha256'] != inputs['body'] or m['ct_sha256'] != context['ct_sha256']
+                    or m['tissue_mask_sha256'] != context['tissue_mask_sha256']
+                    or m['recording']['id'] != f'{n+10:03d}'
+                    or m['physical_coordinate_frame'] != 'LPS'):
+                raise ValueError('Manual reconstruction geometry or recording mismatch')
+            context['manual_reconstructions'][m['recording']['id']] = dict(
+                centres=data['preliminary_electrode_centers_xyz_mm'],
+                notes=m['reconstruction_notes'], status=m['status'],
+                filename=path.name, source_sha256=data['import_provenance']['original_sha256'])
+            manual_hashes[path.name] = sha(path)
     report = build_picker_html(body, out/'georg_tepc_picker.html', target_faces,
         bones_stl=references['bone'], lungs_stl=references['lung'], heart_stl=references['heart'],
         fat_stl=references['fat'], reference_target_faces=10000,
@@ -76,7 +104,8 @@ def build(geometry=GEOMETRY, segmentation=SEGMENTATION, out=OUT, target_faces=20
     READER_HTML.write_bytes((out/'georg_tepc_picker.html').read_bytes())
     report.update(input_sha256=inputs, ct_sha256=context['ct_sha256'],
         builder_sha256=sha(__file__), picker_sha256=sha(Path(__file__).with_name('build_surface_landmark_picker.py')),
-        geometry_is_individually_localized=False, electrode_positions_exported=False,
+        geometry_is_individually_localized=False, electrode_positions_exported=bool(manual_hashes),
+        manual_reconstruction_sha256=manual_hashes, anatomical_placement_accuracy_validated=False,
         html_sha256=sha(out/'georg_tepc_picker.html'))
     (out/'picker_provenance.local.json').write_text(json.dumps(report, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
     print(READER_HTML, flush=True)
@@ -88,6 +117,8 @@ if __name__ == '__main__':
     p.add_argument('--geometry', type=Path, default=GEOMETRY)
     p.add_argument('--segmentation', type=Path, default=SEGMENTATION)
     p.add_argument('--out', type=Path, default=OUT)
-    p.add_argument('--target-faces', type=int, default=20000)
+    p.add_argument('--target-faces', type=int, default=None,
+        help='Optional preview reduction; default retains every body triangle')
+    p.add_argument('--landmarks', type=Path, default=None, help='Six normalised author reconstructions')
     args = p.parse_args()
-    build(args.geometry, args.segmentation, args.out, args.target_faces)
+    build(args.geometry, args.segmentation, args.out, args.target_faces, args.landmarks)

@@ -658,6 +658,7 @@ _SCRIPT_TEMPLATE = r"""
   const minimumGuidePoints = 2;
   const electrodeOrder = ["I_plus", "V_plus", "V_minus", "I_minus"];
   const state = { mode: "explicit_points", right: [], left: [], preliminaryCenters: null, symmetry: null, explicitHistory: [] };
+  let manualReconstructionSource = null;
   let activeSide = "right";
   let activeElectrode = "I_plus";
   let clickBusy = false;
@@ -943,6 +944,7 @@ _SCRIPT_TEMPLATE = r"""
     return points[points.length - 1].slice();
   }
   function clearPreliminaryCenters() {
+    manualReconstructionSource = null;
     state.preliminaryCenters = null;
     state.symmetry = null;
     preliminaryCentersList.replaceChildren();
@@ -1155,11 +1157,16 @@ _SCRIPT_TEMPLATE = r"""
     if (exportContext) {
       const selected = document.getElementById("recording-id").value;
       const recording = exportContext.recordings.find(r => r.id === selected);
-      payload.measurement_context = { ...exportContext, recordings: undefined, recording,
+      payload.measurement_context = { ...exportContext, recordings: undefined, manual_reconstructions: undefined, recording,
         bei_channel: document.getElementById("bei-channel").value || null,
         operator: document.getElementById("placement-operator").value.trim() || null,
         reconstruction_notes: document.getElementById("placement-notes").value.trim(),
-        created_utc: new Date().toISOString(), status: "manual_reconstruction_pending_confirmation" };
+        created_utc: new Date().toISOString(),
+        status: manualReconstructionSource ? manualReconstructionSource.status : "manual_reconstruction_pending_confirmation",
+        manual_reconstruction_source: manualReconstructionSource ? {
+          filename: manualReconstructionSource.filename, source_sha256: manualReconstructionSource.source_sha256,
+          selected_coordinates_changed: JSON.stringify(state.preliminaryCenters) !== JSON.stringify(manualReconstructionSource.centres)
+        } : null };
     }
     const frame = exportContext ? exportContext.physical_coordinate_frame : "source_STL";
     const csv = ["electrode,x_mm,y_mm,z_mm,coordinate_frame", ...electrodeOrder.map(name =>
@@ -1245,6 +1252,23 @@ _SCRIPT_TEMPLATE = r"""
     };
     select.addEventListener("change", chooseRecording);
     chooseRecording();
+    const loadManual = document.getElementById("load-manual-reconstruction");
+    if (loadManual) loadManual.addEventListener("click", async () => {
+      try {
+        const source = exportContext.manual_reconstructions[select.value];
+        if (!source) throw new Error("Для этой записи реконструкция не загружена.");
+        await setPlacementMode("explicit_points");
+        state.preliminaryCenters = JSON.parse(JSON.stringify(source.centres));
+        state.explicitHistory = electrodeOrder.slice();
+        manualReconstructionSource = source;
+        document.getElementById("placement-notes").value = source.notes;
+        document.getElementById("placement-operator").value = "Автор исследования";
+        renderPreliminaryCenters();
+        renderPointLists();
+        setActiveElectrode(null);
+        setStatus("Показаны исходные центры автора. Погрешность из-за дефектов поверхности пока не определена.", false);
+      } catch (error) { setStatus(error.message, true); }
+    });
   }
   graph.on("plotly_relayout", event => {
     if (event["scene.camera"]) graph.dataset.camera = JSON.stringify(event["scene.camera"]);
@@ -1466,11 +1490,13 @@ def _layer_report_table(layers: list[DisplayLayer]) -> str:
     rows = []
     labels={'applied':'Облегчена','not_needed':'Без упрощения','skipped':'Без упрощения'}
     for layer in layers:
+        vertex_count = format(len(layer.mesh.vertices), ',').replace(',', '\u202f')
+        face_count = format(len(layer.mesh.faces), ',').replace(',', '\u202f')
         rows.append(
             "<tr>"
             f"<td>{html_lib.escape(layer.label)}</td>"
             f"<td><code>{html_lib.escape(layer.source_basename)}</code></td>"
-            f"<td>{len(layer.mesh.vertices):,}</td><td>{len(layer.mesh.faces):,}</td>"
+            f"<td>{vertex_count}</td><td>{face_count}</td>"
             f"<td>{html_lib.escape(labels.get(layer.decimation_report['status'],str(layer.decimation_report['status'])))}</td>"
             "</tr>"
         )
@@ -1645,17 +1671,22 @@ def render_picker_html(body: DisplayLayer, references: list[DisplayLayer], *, ex
     if export_context:
         options=''.join(f'<option value="{html_lib.escape(r["id"])}">{html_lib.escape(r["label"])}</option>'
             for r in export_context['recordings'])
+        manual_button=('<button id="load-manual-reconstruction" type="button">Показать реконструкцию автора</button> '
+            if export_context.get('manual_reconstructions') else '')
+        placement_instruction = ('Для каждого монтажа загрузите реконструкцию автора или выберите четыре точки вручную. '
+            if export_context.get('manual_reconstructions') else 'Для каждого монтажа поставьте четыре точки вручную. ')
         context_panel=(f'<section class="montage-controls"><h2>Связь с экспериментом</h2>'
             f'<p>{html_lib.escape(export_context["description"])}</p>'
             f'<label>Запись: <select id="recording-id">{options}</select></label> '
+            f'{manual_button}'
             '<label>Импедансный канал: <select id="bei-channel"><option value="">Не установлен</option>'
             '<option value="BEI1">BEI1</option><option value="BEI2">BEI2</option></select></label>'
             '<p><label>Автор реконструкции: <input id="placement-operator"></label></p>'
             '<p><label>Основание выбора и неопределённость: <input id="placement-notes" size="80"></label></p>'
-            '<p>Для каждого монтажа поставьте четыре точки вручную. I+ и I− — токовые, V+ и V− — '
+            f'<p>{placement_instruction}I+ и I− — токовые, V+ и V− — '
             'измерительные; полярность и номер канала проверьте по подключению. Координаты — LPS, мм: '
-            '+x влево, +y назад, +z к голове относительно испытуемого. Центры выбраны на облегчённой '
-            'поверхности; перед FEM их необходимо спроецировать на исходную расчётную поверхность. '
+            '+x влево, +y назад, +z к голове относительно испытуемого. Перед FEM центры необходимо '
+            'проверить и спроецировать на исходную расчётную поверхность. '
             'Форму, площадь контактов и контактное сопротивление этот экспорт не задаёт. '
             'Смена записи очищает точки, сохраняя ракурс. Перезагрузка удаляет несохранённые точки.</p></section>')
         result=result.replace('<h1>Инструмент монтажа электродов ТТРКГ</h1>',
