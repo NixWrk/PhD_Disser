@@ -8,7 +8,7 @@ import trimesh
 from plotly.offline import get_plotlyjs
 from lateral_pilot import ROOT, EXPERIMENT, read, save, sha
 from build_georg_fem_reports import export, table
-from build_georg_geometry_revision_report import OUT as GEOMETRY, SOURCE, verify as verify_geometry
+from build_georg_geometry_revision_report import OUT as GEOMETRY, SEGMENTATION, SOURCE, verify as verify_geometry
 from experiment_signal_display import ecg_variants, spectrum, phase_intervals, pack_full_samples
 from scorpion_qc import channel_assignment
 
@@ -16,7 +16,6 @@ FOLDER=Path(__file__).parent
 OUT=EXPERIMENT/'derived/exploratory/10.00_experiment_view_20261009'
 STEM='10.00_Эксперимент_и_сигналы_Георгия_Scorpion_v2'
 PRIMARY={'001':140,'002':140,'003':140,'004':140,'007':120,'008':100,'009':80,'010':60}
-SEGMENTATION=ROOT/'MATLAB_TRKG4_real_subjects/output/exploratory/scorpion_georg_fem_20261008/segmentation'
 TISSUES={'fat':('Жир','#dba832',.20,None),'bone':('Кости','#c8b69b',.85,12000),
         'lung':('Лёгкие','#49aebc',.35,10000),'heart':('Сердце','#c52b47',.90,6000)}
 
@@ -88,7 +87,16 @@ def transverse_centres(source,size,y,z):
 def montage(record,contacts,source):
     """Nominal geometry is independent of the record's physical channel roles."""
     rid=record['record_id'][-3:]
-    result={'lateral':[],'perpendicular':[],'arm':[],'mapping':'unknown'}
+    result={'lateral':[],'perpendicular':[],'arm':[],'tepc':[],'mapping':'unknown'}
+    if 12<=int(rid)<=17:
+        path=GEOMETRY/'landmarks'/f'georg_tepc_{int(rid)-10}.json'
+        data=read(path)
+        if data['measurement_context']['recording']['id']!=rid:
+            raise ValueError('TEPC recording mapping changed')
+        result.update(tepc=[data['preliminary_electrode_centers_xyz_mm'][k]
+            for k in ['I_plus','V_plus','V_minus','I_minus']],mapping='tepc',
+            landmark_sha256=sha(path),author_reconstruction=True,
+            new_ct_projection=True,placement_accuracy_mm=None)
     sizes=contacts['sizes_mm']
     if rid in PRIMARY or rid in ('005','006','011'):
         size=PRIMARY.get(rid,60 if rid=='011' else 140)
@@ -128,8 +136,15 @@ def verify_montages(records,contacts):
             size=PRIMARY.get(rid,60 if rid=='011' else 140)
             np.testing.assert_allclose(m['lateral'],contacts['lateral']['centres_by_size_mm'][contacts['sizes_mm'].index(size)],atol=1e-12)
             np.testing.assert_allclose(np.array(m['lateral'])[:,2],contacts['lateral']['z_mm']+np.array([-size/2,-size/4,size/4,size/2]),atol=1e-8)
-        if int(rid)>=12:assert not m['lateral'] and not m['perpendicular'] and m['mapping']=='unknown'
-        p=m['lateral']+m['perpendicular']+[p for group in m['arm'] for p in group]
+        if 12<=int(rid)<=17:
+            assert not m['lateral'] and not m['perpendicular'] and m['mapping']=='tepc'
+            path=GEOMETRY/'landmarks'/f'georg_tepc_{int(rid)-10}.json'
+            assert sha(path)==m['landmark_sha256']
+            expected=read(path)['preliminary_electrode_centers_xyz_mm']
+            np.testing.assert_allclose(m['tepc'],[expected[k] for k in
+                ['I_plus','V_plus','V_minus','I_minus']],atol=1e-12)
+        elif int(rid)==18:assert m['mapping']=='unknown' and not m['tepc']
+        p=m['lateral']+m['perpendicular']+m['tepc']+[p for group in m['arm'] for p in group]
         if p:
             _,distance,_=body.nearest.on_surface(np.array(p));maximum=max(maximum,float(distance.max()));points+=len(p)
     if maximum>.02:raise ValueError('Displayed contact is not on the corrected exterior')
@@ -293,7 +308,8 @@ def widget(out=OUT):
 def recording_table(out=OUT):
     return pd.DataFrame([{'Запись':r['record_id'][-3:],'Монтаж по имени файла':r['label'].split(' · ',1)[1],
         'Рабочая частота отсчётов, Гц':r['fs'],'Последний отсчёт, с':r['duration'],
-        'Размещение на КТ':('Сценарий; координаты не измерены' if r['montage']['mapping']!='unknown' else 'Не локализовано')}
+        'Размещение на КТ':('Авторская реконструкция; проекция на новый контур' if r['montage']['mapping']=='tepc'
+            else 'Сценарий; координаты не измерены' if r['montage']['mapping']!='unknown' else 'Не локализовано')}
         for r in read(Path(out)/'display_signals.local.json')])
 
 
@@ -320,16 +336,20 @@ def cells():
 которые автор определил как ЭКГ. На Scorpion базовая и пульсовая составляющие
 не записываются отдельно. Монтаж и последовательность проб известны из
 сообщений автора и имён файлов; фотографии данной установки отсутствуют.
-Фактические координаты электродов пока
-не установлены.
+Для ТЕПС 2–7 автор передал реконструированные координаты четырёх контактов.
+Они перенесены на исправленный наружный контур ближайшей проекцией в
+исходной системе LPS; первоначальные координаты сохранены. Точность
+восстановления установки неизвестна. Для остальных монтажей показаны
+явно заданные геометрические сценарии.
 По уточнению автора от 09.10.2026 EMG1 и EMG2 снимались с тех же
 измерительных электродов U, что соответственно BEI1 и BEI2.
 Качество ЭКГ поэтому может служить дополнительным признаком монтажа;
 его диагностическая пригодность проверяется в 10.30.
 
 КТ Георга получена в отдельной сессии на глубоком вдохе с задержкой дыхания.
-Показанная наружная поверхность служит анатомической основой сценария,
-а не реконструкцией позы во время регистрации Scorpion. Добавлены
+Наружная поверхность заново построена по полному КТ и используется как
+общий геометрический вход последующих расчётов. Поза при регистрации
+Scorpion отдельно не восстановлена. Добавлены
 автоматические маски жира, костей, лёгких и сердца из TotalSegmentator;
 независимая точность их границ не установлена. Все поверхности приведены
 к одной системе координат КТ. Для отображения наружная сетка прорежена
@@ -399,18 +419,22 @@ def cells():
 ТЕПС — торсовые электродные конфигурации, АЕПС — электродная конфигурация
 на руке по Metshein et al. (EMBC 2021). Схемы источника проверены в
 [протоколе](../../Experiments/scorpion_v2_georg/PROTOCOL.md), однако они не
-задают координаты данной сессии. Для этих записей доступен просмотр сигналов;
-электроды на КТ не нанесены до восстановления индивидуальной установки.
-Для такого восстановления подготовлен [инструмент ручного размещения ТЕПС](20.21_Размещение_ТЕПС_Георгия_Scorpion_v2.html).
-Он позволяет отдельно разметить ТЕПС 2–7 на КТ Георгия и сохранить координаты
-с их происхождением в JSON и CSV. Ручной экспорт ещё не является
-подтверждением точности установки или готовым FEM-расчётом.''')
+задают координаты данной сессии. Для записей 012–017 на КТ показана авторская
+реконструкция ТЕПС 2–7 из шести переданных JSON. Соответствие записей
+установлено по именам файлов и подтверждено автором. Номера BEI-каналов
+для этих конфигураций остаются неизвестными. Для АЕПС 018 индивидуальных
+координат нет.
+[Инструмент размещения ТЕПС](20.21_Размещение_ТЕПС_Георгия_Scorpion_v2.html)
+открывает эти конфигурации на новом контуре и позволяет уточнить центры.
+Новый ручной экспорт потребует отдельной проверки и пересчёта контактов;
+сохранённые FEM-результаты относятся к версии координат, описанной в 20.20.''')
     code('from IPython.display import display, HTML\nfrom build_scorpion_experiment_viewer import verify, widget, recording_table\nfrom build_georg_fem_reports import table\ncontract = verify()')
     md('''## Совместный просмотр КТ и зарегистрированных сигналов
 
 **Рисунок 1.** Выбор одной из 18 записей одновременно обновляет монтаж
 и графики. Цвет соответствует отведению: ТТРКГ — синий, боковая
 горизонтальная сборка — оранжевый, вертикальная — фиолетовый.
+Центры авторской реконструкции ТЕПС показаны зелёным.
 Сигналы ТЕПС/АЕПС с неизвестным назначением каналов имеют нейтральный
 цвет и подпись «Неустановленное отведение». Номер канала указан отдельно.
 Назначение креста 006: горизонтальная ось — канал 1, сохранённая

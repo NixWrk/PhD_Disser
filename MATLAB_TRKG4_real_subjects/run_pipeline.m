@@ -13,6 +13,19 @@ addpath(fullfile(project_root, 'src'));
 addpath(fullfile(project_root, 'vendor_stl_eidors'));
 
 profile_index=find(cellfun(@(x)(ischar(x)||isstring(x)) && strcmpi(string(x),"Profile"),varargin),1);
+if ~isempty(profile_index) && profile_index < numel(varargin) && strcmpi(string(varargin{profile_index+1}),"georg_ct_model")
+    args=varargin;args(profile_index:profile_index+1)=[];
+    output_index=find(cellfun(@(x)(ischar(x)||isstring(x)) && strcmpi(string(x),"OutputDir"),args),1);
+    if isempty(output_index)
+        current=trkg4_georg_current_model(project_root);
+        if strcmp(current.status,'geometry_reference_checked')
+            fprintf('Shared Georg geometry selected; FEM precision unresolved. Forward results remain exploratory.\n');
+        end
+        args=[args,{'OutputDir',fullfile(project_root,current.fem_directory)}];
+    end
+    report=run_georg_ct_model(args{:});
+    return;
+end
 if ~isempty(profile_index) && profile_index < numel(varargin) && strcmpi(string(varargin{profile_index+1}),"lateral_fat_inverse")
     args=varargin;args(profile_index:profile_index+1)=[];
     report=run_lateral_fat_inverse(args{:});

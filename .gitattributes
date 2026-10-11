@@ -36,6 +36,9 @@
 "Colab Notebooks/scorpion_v2/10.00_*" -text -whitespace
 "Colab Notebooks/scorpion_v2/10.30_*" -text -whitespace
 "Colab Notebooks/scorpion_v2/20.21_*" -text -whitespace
+# Preserve executed shared-model sources: their exact bytes are hash-bound.
+"MATLAB_TRKG4_real_subjects/tools/georg_ct_model.py" -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+"MATLAB_TRKG4_real_subjects/run_pipeline.m" -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 # Full-resolution signals make these standalone reports exceed 100 MiB.
 "Colab Notebooks/scorpion_v2/10.00_*.html" filter=lfs diff=lfs merge=lfs -text -whitespace
 "Colab Notebooks/scorpion_v2/10.00_*.ipynb" filter=lfs diff=lfs merge=lfs -text -whitespace

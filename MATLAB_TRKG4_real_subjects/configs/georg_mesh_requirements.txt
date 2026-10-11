@@ -1,0 +1,3 @@
+# Tested local mesher for the CT-derived Georg exterior; installed in an
+# ignored run-specific directory, without replacing the global Python env.
+tetgen==0.8.3

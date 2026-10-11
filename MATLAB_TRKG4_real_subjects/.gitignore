@@ -35,3 +35,9 @@ data/*/source_manifest.json
 
 # Local CT placement scene and manual coordinates; rebuild from the source tool.
 output/exploratory/georg_tepc_manual_*/
+
+# Reconstructed subject anatomy, local solver runtime, and private verification files.
+# Reader exports are kept separately in Colab Notebooks/scorpion_v2.
+output/exploratory/georg_ct_model_*/
+output/exploratory/georg_tepc_picker_*/
+output/exploratory/georg_tepc_surface_audit_*/

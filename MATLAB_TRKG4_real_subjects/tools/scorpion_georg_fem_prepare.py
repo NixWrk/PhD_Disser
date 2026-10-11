@@ -18,6 +18,9 @@ import trimesh
 from scipy.io import savemat
 from scipy.spatial import cKDTree
 from scipy.stats import qmc
+from shapely.geometry import Polygon
+from shapely.strtree import STRtree
+from itertools import combinations
 
 import refine_surface_contact_mesh as refine
 refine.np=np
@@ -34,6 +37,58 @@ def sha(path):
 
 def read(path):return json.loads(Path(path).read_text(encoding='utf-8-sig'))
 def write(path,value):Path(path).write_text(json.dumps(value,ensure_ascii=False,indent=2,allow_nan=False)+'\n',encoding='utf-8')
+
+
+def coplanar_overlap_pairs(nodes,boundary):
+    """Independent planar-patch check, including nested triangle overlaps."""
+    tri=nodes[boundary];normal=np.cross(tri[:,1]-tri[:,0],tri[:,2]-tri[:,0])
+    normal/=np.linalg.norm(normal,axis=1)[:,None]
+    dominant=np.argmax(abs(normal),axis=1)
+    sign=np.where(normal[np.arange(len(normal)),dominant]<0,-1.,1.)
+    normal*=sign[:,None]
+    planes=np.round(np.c_[normal,np.einsum('ij,ij->i',normal,tri[:,0])],9)
+    _,group=np.unique(planes,axis=0,return_inverse=True)
+    order=np.argsort(group);boundaries=np.r_[0,np.flatnonzero(np.diff(group[order]))+1,len(order)]
+    overlaps=[]
+    for start,stop in zip(boundaries[:-1],boundaries[1:]):
+        if stop-start<2:continue
+        ids=order[start:stop];axes=[k for k in range(3) if k!=dominant[ids[0]]]
+        polygons=[Polygon(t[:,axes]) for t in tri[ids]]
+        pairs=STRtree(polygons).query(polygons,predicate='intersects')
+        for first,second in pairs.T:
+            if first>=second:continue
+            area=float(polygons[first].intersection(polygons[second]).area)
+            if area>1e-10:overlaps.append(dict(faces=[int(ids[first]),int(ids[second])],projected_overlap_mm2=area))
+    return overlaps
+
+
+def surface_intersection_check(nodes, boundary):
+    """Separate proper intersections from coplanar zero-area contacts.
+
+    MeshLab can flag disjoint triangulation edges touching on a planar patch.
+    Only pairs proved coplanar to 1e-9 mm with projected intersection area
+    <=1e-10 mm2 are exempted; all other candidates remain failures.
+    """
+    checker=pymeshlab.MeshSet()
+    checker.add_mesh(pymeshlab.Mesh(nodes,boundary.astype(np.int32)))
+    checker.compute_selection_by_self_intersections_per_face()
+    selected=np.flatnonzero(checker.current_mesh().face_selection_array())
+    harmless=[];proper=coplanar_overlap_pairs(nodes,boundary);paired=set()
+    if len(selected)>1000:return dict(candidate_faces=len(selected),proper_pairs=len(selected),zero_area_contacts=[])
+    for first,second in combinations(selected,2):
+        a,b=nodes[boundary[first]],nodes[boundary[second]]
+        if np.any(a.min(0)>b.max(0)+1e-9) or np.any(b.min(0)>a.max(0)+1e-9):continue
+        normal=np.cross(a[1]-a[0],a[2]-a[0]);normal/=np.linalg.norm(normal)
+        plane=float(np.max(np.abs((b-a[0])@normal)))
+        axes=[k for k in range(3) if k!=np.argmax(abs(normal))]
+        area=float(Polygon(a[:,axes]).intersection(Polygon(b[:,axes])).area)
+        pair=dict(faces=[int(first),int(second)],plane_distance_mm=plane,projected_overlap_mm2=area)
+        paired.update([first,second])
+        if plane<=1e-9 and area<=1e-10:harmless.append(pair)
+        else:proper.append(pair)
+    return dict(candidate_faces=len(selected),proper_pairs=len(proper)+len(set(selected)-paired),
+        zero_area_contacts=harmless,proper_intersections=proper,
+        coplanar_tolerance_mm=1e-9,overlap_area_tolerance_mm2=1e-10)
 
 
 def load_mesh(path,source_path=None):
@@ -80,19 +135,19 @@ def load_mesh(path,source_path=None):
     mismatch=abs(float(np.abs(v).sum())/source.volume-1)
     candidate=trimesh.Trimesh(nodes,boundary,process=False)
     boundary_tolerance=1.0 if removed_flat else 1e-3
-    checker=pymeshlab.MeshSet()
-    checker.add_mesh(pymeshlab.Mesh(nodes,boundary.astype(np.int32)))
-    checker.compute_selection_by_self_intersections_per_face()
-    intersections=checker.current_mesh().selected_face_number()
+    intersection_qc=surface_intersection_check(nodes,boundary)
+    intersections=intersection_qc['proper_pairs']
     if maximum>boundary_tolerance or mismatch>1e-6 or not candidate.is_watertight or intersections:
         write(path.with_name(path.stem+'_qc.local.json'),dict(accepted=False,node_zero_elements=sentinels,
             removed_machine_zero_tetrahedra=removed_flat,
             self_intersecting_boundary_faces=intersections,
+            boundary_intersection_qc=intersection_qc,
             max_boundary_distance_mm=maximum,relative_volume_mismatch=mismatch,watertight=candidate.is_watertight))
         raise ValueError('Filtered HXT candidate does not reproduce the source boundary')
     write(path.with_name(path.stem+'_qc.local.json'),dict(accepted=True,node_zero_elements=sentinels,
         removed_machine_zero_tetrahedra=removed_flat,
         self_intersecting_boundary_faces=intersections,boundary_scenario_tolerance_mm=boundary_tolerance,
+        boundary_intersection_qc=intersection_qc,
         removed_infinite_cell_sentinels=len(sentinels),unused_nodes_removed=len(tags)-len(nodes),
         max_boundary_distance_mm=maximum,relative_volume_mismatch=mismatch,watertight=True,
         rule='no node-zero or machine-zero cell solved; exterior, closure and volume checked against source',

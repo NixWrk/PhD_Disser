@@ -92,7 +92,7 @@ class DisplayChecks(unittest.TestCase):
         self.assertTrue(np.all(np.diff(idx)>0))
         self.assertEqual(idx[0],0);self.assertEqual(idx[-1],len(y)-1)
 
-    def test_saved_viewer_contains_all_records_and_no_invented_TEPC_positions(self):
+    def test_saved_viewer_contains_all_records_and_traceable_TEPC_positions(self):
         records=read(VIEW/'display_signals.local.json')
         self.assertEqual([r['record_id'][-3:] for r in records],[f'{i:03}' for i in range(1,19)])
         for r in records:
@@ -102,9 +102,14 @@ class DisplayChecks(unittest.TestCase):
             self.assertEqual(set(r['ecg_variants']),{'00','10','01','11'})
             self.assertEqual(len(r['breathing']['phases']),1 if rid=='001' else 4)
             self.assertFalse(r['breathing']['author_accepted'])
-            if int(rid)>=12:
-                self.assertEqual(r['montage']['mapping'],'unknown')
+            if 12<=int(rid)<=17:
+                self.assertEqual(r['montage']['mapping'],'tepc')
+                self.assertEqual(len(r['montage']['tepc']),4)
+                self.assertTrue(r['montage']['author_reconstruction'])
+                self.assertTrue(r['montage']['new_ct_projection'])
+                self.assertIsNone(r['montage']['placement_accuracy_mm'])
                 self.assertFalse(r['montage']['lateral'] or r['montage']['arm'])
+            elif rid=='018':self.assertEqual(r['montage']['mapping'],'unknown')
             if rid in ('006','011'):
                 self.assertEqual(len(r['montage']['lateral']),4)
                 self.assertEqual(len(r['montage']['perpendicular']),4)

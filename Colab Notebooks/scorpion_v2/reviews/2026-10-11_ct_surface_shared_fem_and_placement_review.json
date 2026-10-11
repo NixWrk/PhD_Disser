@@ -1,0 +1,359 @@
+{
+  "date": "2026-10-11",
+  "scope": "CT-derived exterior, cylinder joins, manual centre transfer, new finite-contact FEM, placement scenarios, shared future geometry, and experiment/result readers",
+  "reader_inventory": [
+    {
+      "path": "Colab Notebooks/scorpion_v2/10.00_Эксперимент_и_сигналы_Георгия_Scorpion_v2.html",
+      "bytes": 196795878,
+      "sha256": "5b3bce0ae02c8c1f0652a627cfb97e2d2bd211e5a32566863825bfcf670b5669",
+      "sha256_lf": "094edb9407062c701d84ca3c3cc052e0546bbaab5d1c0d4cd8eef9d817d4fc12"
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/10.00_Эксперимент_и_сигналы_Георгия_Scorpion_v2.ipynb",
+      "bytes": 196667920,
+      "sha256": "65dd81abc51a43ff9f9077b2887e72697ab46c67da4dfaeaee6ea62260893c47",
+      "sha256_lf": "83e5804aa471fd44437c4b555561ede5d991200cd414f9e79ac84294554ed7a5"
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/10.00_Эксперимент_и_сигналы_Георгия_Scorpion_v2.md",
+      "bytes": 24398,
+      "sha256": "461a4d65e11131db4bb6a144c944bcb095c9cd9e7cde10a05265e5bed3d1fc7d",
+      "sha256_lf": "4d02dcf76d5667b77192ef462ce2aad4987fc409d2a1ea8a0d4b1e9b739b0229"
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/20.20_Индивидуальная_КТ_FEM_модель_Георгия_Scorpion_v2.html",
+      "bytes": 29325985,
+      "sha256": "af3b4942357145a6ed8a743790c9333de3ccb43884e5080ba22e1771c121ead7",
+      "sha256_lf": "8db5944121a35c4453b11886b649bbf566587eb0a07e7af069769769a043585c"
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/20.20_Индивидуальная_КТ_FEM_модель_Георгия_Scorpion_v2.ipynb",
+      "bytes": 29553497,
+      "sha256": "a4861c3efec3a9b0c17a80ae274a9f6a0cc91582e83f440bff7647ce503f5dc3",
+      "sha256_lf": "fb6b61ec1a5d49955e39308bf80dc9b3c730a90cfbefcfa37f3d1568471941fd"
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/20.20_Индивидуальная_КТ_FEM_модель_Георгия_Scorpion_v2.md",
+      "bytes": 37523,
+      "sha256": "7857ebc0087313c98b7b53beb459e396e8ca7e350028958ff28400a137ea5aef",
+      "sha256_lf": "cef4ab8ab16e975b85b5211742a15e925beb80ab72e702599c537a1107157c18"
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/20.21_Размещение_ТЕПС_Георгия_Scorpion_v2.html",
+      "bytes": 30173899,
+      "sha256": "ee1d9384d83bba96977a54f5fb030516f8788abb51c98b26a6533018cbaa2c1e",
+      "sha256_lf": "0d99768911ee174945c62deac1d0574ecfc4cb45fb2fbbfec5b6f5341c0dc012"
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/README.md",
+      "bytes": 10854,
+      "sha256": "c9c77015700f5039abfb1aa72538691b485dec31590254b4efab292958e68001",
+      "sha256_lf": "24fa9318d6f9a953e72f7e550358c0dbd660e7f9801cc41799cd3db00d087986"
+    }
+  ],
+  "source_inventory": [
+    {
+      "path": "AGENTS.md",
+      "bytes": 93166,
+      "sha256": "643e5f4b644e98a7286784df0493223afdbb7995d48275f1094afd5729bb1f68",
+      "sha256_lf": "643e5f4b644e98a7286784df0493223afdbb7995d48275f1094afd5729bb1f68"
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/.gitignore",
+      "bytes": 1166,
+      "sha256": "0bd0806492844dd20d458eaefb950ee45cf20ac367a9674dea6877583caf8707",
+      "sha256_lf": "0bd0806492844dd20d458eaefb950ee45cf20ac367a9674dea6877583caf8707"
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/AGENTS.md",
+      "bytes": 23717,
+      "sha256": "2b5c63f9b7dde13d2f06131a69ee438f91b102789e3bf500fa3f01b8d41fe17e",
+      "sha256_lf": "dd2af8fd250b2b66e31475d71a2267f06cf136ee32f6d0b584d4b5f01758b494"
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/docs/PIPELINE_FOR_NOTEBOOKS.md",
+      "bytes": 165466,
+      "sha256": "0f7f161d0bc003da08e0777956a2882f960a7f8e8acb606e191f68b33ba68dcd",
+      "sha256_lf": "0f7f161d0bc003da08e0777956a2882f960a7f8e8acb606e191f68b33ba68dcd"
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/run_pipeline.m",
+      "bytes": 6657,
+      "sha256": "c90d12462a643c13716edfa3b36db1152dde9758e429d59a82781f2fda829925",
+      "sha256_lf": "4a83913f11870456680eaad304789c5f8bbedaf8552836cc4949102339cda950"
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/tools/georg_ct_model.py",
+      "bytes": 11592,
+      "sha256": "881431f4fc4930641f10fe58408a2e3328aa0ede4e21375b6addaa7556481fb2",
+      "sha256_lf": "5f7b92ac3a6b825fac9a34ad4991dab5266bbf3eced1733af6bfb0a338ab38f3"
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/tools/georg_ct_fem_prepare.py",
+      "bytes": 15725,
+      "sha256": "0fb12f75798545e3c667a73b664c40413690a847abf74f906b43ac99f51ff8fa",
+      "sha256_lf": "0fb12f75798545e3c667a73b664c40413690a847abf74f906b43ac99f51ff8fa"
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/tools/georg_model_contract.py",
+      "bytes": 13136,
+      "sha256": "bfd2ef6faa97d0c24866a3cf00dc7b243d012e9b2707f72015a91ab4679bcbef",
+      "sha256_lf": "bfd2ef6faa97d0c24866a3cf00dc7b243d012e9b2707f72015a91ab4679bcbef"
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/tools/scorpion_georg_fem_prepare.py",
+      "bytes": 19367,
+      "sha256": "25425d2c53671d76fac03894f0ca10842a6de0421f58378d8cc2d4bf359a057c",
+      "sha256_lf": "25425d2c53671d76fac03894f0ca10842a6de0421f58378d8cc2d4bf359a057c"
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/tools/build_georg_tepc_picker.py",
+      "bytes": 8821,
+      "sha256": "b1f0caac0a130b5de2673f4567295a0c4f8ed49a308d9dc207459620e59d72e4",
+      "sha256_lf": "b1f0caac0a130b5de2673f4567295a0c4f8ed49a308d9dc207459620e59d72e4"
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/src/run_georg_ct_model.m",
+      "bytes": 7984,
+      "sha256": "1bed5a99b589e878cff2cecef2f026f58c0c20c4929c980e9a2bff40253803f1",
+      "sha256_lf": "1bed5a99b589e878cff2cecef2f026f58c0c20c4929c980e9a2bff40253803f1"
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/src/trkg4_georg_current_model.m",
+      "bytes": 1025,
+      "sha256": "d24c3e9854603e2a08dbe87128f39ed67c3e5994b80b2858f97783a56265d768",
+      "sha256_lf": "d24c3e9854603e2a08dbe87128f39ed67c3e5994b80b2858f97783a56265d768"
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/configs/georg_mesh_requirements.txt",
+      "bytes": 162,
+      "sha256": "5887f1f61d7b8d2be1362c66fa1205ef3fdab3eaf68653394d3313a46ba51e51",
+      "sha256_lf": "5887f1f61d7b8d2be1362c66fa1205ef3fdab3eaf68653394d3313a46ba51e51"
+    },
+    {
+      "path": "tests/test_georg_shared_model.py",
+      "bytes": 3474,
+      "sha256": "9dba855c2a7c826d323e417e9f222801dd4274ccd9b632eba7d0b97bccba90e8",
+      "sha256_lf": "9dba855c2a7c826d323e417e9f222801dd4274ccd9b632eba7d0b97bccba90e8"
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/build_georg_geometry_revision_report.py",
+      "bytes": 66793,
+      "sha256": "0fe835229e4e8a811dfeee63cdfa4458bf46b3b88130e6bf587ac43ebcb41274",
+      "sha256_lf": "0fe835229e4e8a811dfeee63cdfa4458bf46b3b88130e6bf587ac43ebcb41274"
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/build_scorpion_experiment_viewer.py",
+      "bytes": 47501,
+      "sha256": "d507923c164078c08730a47a387ec51a2ccb28c7b93ab421ee49712c9749f654",
+      "sha256_lf": "d507923c164078c08730a47a387ec51a2ccb28c7b93ab421ee49712c9749f654"
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/experiment_view.js",
+      "bytes": 16175,
+      "sha256": "2ef9b54de191f31b2e928425f77499a1acfa8fbda8c6bae1c167c41dd2ef2bfa",
+      "sha256_lf": "2ef9b54de191f31b2e928425f77499a1acfa8fbda8c6bae1c167c41dd2ef2bfa"
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/test_lateral_surfaces_and_viewer.py",
+      "bytes": 7486,
+      "sha256": "b02ba01e56f80655632952ff553c2745bdc09ff9ad4ef81fdd4ffa0511765b41",
+      "sha256_lf": "b02ba01e56f80655632952ff553c2745bdc09ff9ad4ef81fdd4ffa0511765b41"
+    }
+  ],
+  "language": {
+    "status": "passed",
+    "mode": "final_full_text_semantic_model_review",
+    "full_reader_text_read_sequentially_after_last_change": true,
+    "final_reader_text_inventory": [
+      {
+        "reader": "10.00",
+        "text_sha256": "841e9e719efca8e11fa89138fe58cadf701beb1dc892b45398191f91439fdb4b",
+        "lines": 397
+      },
+      {
+        "reader": "20.20",
+        "text_sha256": "01e09638160f17c03ec174a215feed00013e88a35bc76bc63949dc8e29eac436",
+        "lines": 289
+      },
+      {
+        "reader": "20.21",
+        "text_sha256": "419519ef1a5cf85f0eec5d03d6d2d302a62eb9e1bcea874938ad210535cd27ae",
+        "lines": 518
+      }
+    ],
+    "dynamic_channel_filter_and_sampling_text_templates_reviewed": true,
+    "figure_captions_axes_legends_units_and_line_definitions_reviewed": true,
+    "claims_and_uncertainty_preserved": true,
+    "additional_source_prose_scope": "New shared-model sections in root/MATLAB AGENTS and pipeline documentation; unchanged historical sections not re-certified",
+    "source": "russian-scientific-prose/SKILL.md",
+    "checks": [
+      "language.ru.hash-bound-final-review",
+      "language.ru.reader-facing-clarity",
+      "language.ru.natural-prose",
+      "language.ru.formula-where",
+      "language.ru.encoding"
+    ],
+    "findings": []
+  },
+  "technical": {
+    "status": "passed",
+    "pytest_tests": 26,
+    "notebook_verification": [
+      {
+        "stem": "10.00",
+        "executed_code_cells": 4,
+        "error_outputs": 0,
+        "html_inputs_excluded": true
+      },
+      {
+        "stem": "20.20",
+        "executed_code_cells": 14,
+        "error_outputs": 0,
+        "html_inputs_excluded": true
+      }
+    ],
+    "browser": {
+      "experiment_records_checked": 18,
+      "full_sampling": true,
+      "lead_colors_and_manual_tepc_centres_checked": true,
+      "filter_channel_plot_and_tissue_controls_checked": true,
+      "camera_rotation_preserved": true,
+      "tepc_exports_checked": 6,
+      "actual_fem_patch_montages_checked": 6,
+      "uncaught_javascript_errors": 0
+    },
+    "frozen_artifact_hashes_verified": true,
+    "git_diff_check_passed": true,
+    "primary_medical_arrays_and_coordinate_json_not_in_commit": true
+  },
+  "computational": {
+    "status": "failed_requested_mesh_precision",
+    "geometry_and_cylinder_checks": "passed_internal_checks",
+    "contour_reproducibility": {
+      "bit_identical_files": [
+        "body_ct_surface.stl",
+        "body_ct_native.stl",
+        "body_mask.nii.gz"
+      ],
+      "final_producer_sha256": "881431f4fc4930641f10fe58408a2e3328aa0ede4e21375b6addaa7556481fb2",
+      "surface_sha256": "c56d6b9beecb19a2246a8bec89bb5d59239811cb0485ec3b5caed2f406d23239"
+    },
+    "visual_contour_review": {
+      "axial_slices": 280,
+      "atlas_pages": 18,
+      "table_separation_checked": true,
+      "small_superficial_protrusions_unresolved": true,
+      "independent_anatomical_validation": false
+    },
+    "original_centres_preserved": 24,
+    "maximum_surface_projection_correction_mm": 4.539414196999872,
+    "algebraic_and_derivative_checks": [
+      {
+        "mesh_parameter_mm": 8,
+        "cases": 19,
+        "maximum_linear_system_relative_residual": 1.3976882676509352e-09,
+        "maximum_reciprocity_error_ohm": 1.1368683772161603e-13,
+        "material_jacobian_relative_error": 3.6961724064156736e-09,
+        "eidors_assembly_relative_error": 4.075859679814239e-16
+      },
+      {
+        "mesh_parameter_mm": 6,
+        "cases": 163,
+        "maximum_linear_system_relative_residual": 5.388233825534439e-10,
+        "maximum_reciprocity_error_ohm": 1.7053025658242404e-13,
+        "material_jacobian_relative_error": 9.771520094236499e-09,
+        "eidors_assembly_relative_error": 4.968386793902275e-16
+      },
+      {
+        "mesh_parameter_mm": 4,
+        "cases": 19,
+        "maximum_linear_system_relative_residual": 4.7971802202823704e-08,
+        "maximum_reciprocity_error_ohm": 1.8474111129762605e-13,
+        "material_jacobian_relative_error": 6.638239975500383e-07,
+        "eidors_assembly_relative_error": 7.299928765850924e-16
+      }
+    ],
+    "mesh_comparisons": [
+      {
+        "pair_mm": [
+          8.0,
+          6.0
+        ],
+        "cases": 19,
+        "failed_cases": 17,
+        "tolerance": "0.02 Ohm + 0.5 percent of reference impedance",
+        "source_sha256": "140c6ee8d7ccb3f995dca07a50e056e309404d292266e166d9122793c57f3658"
+      },
+      {
+        "pair_mm": [
+          6.0,
+          4.0
+        ],
+        "cases": 19,
+        "failed_cases": 19,
+        "tolerance": "0.02 Ohm + 0.5 percent of reference impedance",
+        "source_sha256": "92d2a8913e35cd0e4cdd5ccb25ee1407ed1d8c594ea4a1507b2c6c06d56874f5"
+      }
+    ],
+    "selected_mesh_parameter_mm": 6,
+    "placement_series_cases": 163,
+    "additional_mesh_nominal_cases": 19,
+    "additional_mesh_shifted_cases": 0,
+    "tiny_positive_tetrahedra": {
+      "tiny_cells_verified": 120,
+      "decimal_precision": 80,
+      "maximum_relative_volume_error": 7.883456322527651e-12,
+      "relative_volume_tolerance": 1e-06,
+      "no_elements_removed": true
+    },
+    "python_and_matlab_strict_inverse_gates_verified": true,
+    "shared_pointer_sha256": "a49acabd06f174a9b3ee7e9fe49b3ea5728b260425944635c3844889c51bec3a",
+    "shared_file_count": 89,
+    "shared_status": "geometry_reference_checked",
+    "quantitative_inversion_allowed": false
+  },
+  "scientific": {
+    "status": "exploratory_not_independently_validated",
+    "new_exterior_and_new_fem_recomputed": true,
+    "common_geometry_selected_for_future_georg_calculations": true,
+    "notebooks_are_result_readers": true,
+    "four_internal_masks_are_automatic": true,
+    "independent_skin_and_tissue_boundary_accuracy_validated": false,
+    "individual_tissue_resistivities_estimated": false,
+    "physiological_and_card_function_validation": false,
+    "literature_frequency_hz": 100000,
+    "scalar_real_isotropic_conductivity_is_assumption": true,
+    "actual_contact_diameter_and_contact_impedance_measured": false,
+    "tepc_bei_channels_and_physical_polarity_confirmed": false,
+    "placement_amplitudes_are_confidence_intervals": false,
+    "rigid_global_translation_tested": false,
+    "lateral_global_localization_performed": false,
+    "shifted_case_mesh_precision_established": false,
+    "simultaneous_instrument_channel_excitation_validated": false,
+    "legacy_fem_inverse_excluded_from_future_correction": true,
+    "limitations": [
+      "Numerical tolerance failed on both mesh pairs; resistivity inversion and stroke-volume/ejection-fraction interpretation are withheld.",
+      "Local contact shifts and local material sensitivities do not establish joint identifiability of pose and tissue properties.",
+      "CT and signal registration are different sessions; automatic masks and artificial-arm material assignments remain assumptions.",
+      "Small superficial contour protrusions remain unidentified; geometric topology checks do not establish skin accuracy."
+    ]
+  },
+  "release_decision": "publish_exploratory_report_and_shared_geometry_with_explicit_failed_FEM_precision",
+  "repository_byte_preservation": {
+    "attributes_sha256": "c5576e7f8e33063adaae7130185bb6ca8a1fd3469d995b8e1cd9a83f55b4a3ba",
+    "executed_sources": [
+      {
+        "path": "MATLAB_TRKG4_real_subjects/run_pipeline.m",
+        "sha256": "c90d12462a643c13716edfa3b36db1152dde9758e429d59a82781f2fda829925",
+        "exact_executed_bytes_preserved": true
+      },
+      {
+        "path": "MATLAB_TRKG4_real_subjects/tools/georg_ct_model.py",
+        "sha256": "881431f4fc4930641f10fe58408a2e3328aa0ede4e21375b6addaa7556481fb2",
+        "exact_executed_bytes_preserved": true
+      }
+    ],
+    "original_frozen_inventory_unchanged": true
+  }
+}

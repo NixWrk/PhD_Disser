@@ -3,7 +3,7 @@ const D=experimentPayload,recordControl=document.getElementById('experiment-reco
 const ct=document.getElementById('experiment-ct'),signals=document.getElementById('experiment-signals');
 const notch=document.getElementById('experiment-notch'),band=document.getElementById('experiment-band');
 const channelVisible=[1,2].map(ch=>document.getElementById('experiment-show-channel-'+ch));
-const leadColors={ttrkg:'#176aaf',lateral_horizontal:'#e47823',lateral_vertical:'#8154a4',unknown:'#667085'};
+const leadColors={ttrkg:'#176aaf',lateral_horizontal:'#e47823',lateral_vertical:'#8154a4',tepc:'#25866c',unknown:'#667085'};
 const leadNames={ttrkg:'ТТРКГ',lateral_horizontal:'Боковая горизонтальная',lateral_vertical:'Боковая вертикальная',unknown:'Неустановленное отведение'};
 const sampling=document.getElementById('experiment-sampling');
 let sampleRecord=null,sampleFields=null;
@@ -28,7 +28,7 @@ const lateralChannel=()=>{
 function physicalRole(ch){
  const r=D.records[ri],m=r.montage;
  if(history===0)return r.channel_assignment.physical_channel_roles[String(ch)];
- if(m.mapping==='unknown')return 'unknown';
+ if(m.mapping==='unknown'||m.mapping==='tepc')return 'unknown';
  const lateral=lateralChannel();
  if(m.mapping==='cross')return ch===lateral?'lateral_horizontal':'lateral_vertical';
  if(m.mapping==='vertical')return ch===2?'lateral_vertical':'ttrkg';
@@ -65,7 +65,8 @@ function geometry(){
  add(m.lateral,'lateral_horizontal',['A','M','N','B'],'Боковая горизонтальная сборка');
  add(m.perpendicular,'lateral_vertical',['A′','M′','N′','B′'],'Боковая вертикальная сборка');
  const current=[],potential=[];m.arm.forEach((g,i)=>(i===0||i===3?current:potential).push(...g));
- add(current,'ttrkg',current.map(()=> 'I'),'Токовые контакты ТТРКГ');add(potential,'ttrkg',potential.map(()=> 'U'),'Измерительные контакты ТТРКГ');return traces;
+ add(current,'ttrkg',current.map(()=> 'I'),'Токовые контакты ТТРКГ');add(potential,'ttrkg',potential.map(()=> 'U'),'Измерительные контакты ТТРКГ');
+ add(m.tepc||[],'tepc',['I+','U+','U−','I−'],'ТЕПС: авторская реконструкция на новом контуре');return traces;
 }
 function curveData(chart){
  const r=D.records[ri];
@@ -100,7 +101,7 @@ function text(){
  charts.forEach(chart=>chart.curves.forEach(({ch,selected,input})=>{input.parentElement.style.color=leadColors[physicalRole(ch)];input.parentElement.lastChild.textContent=' '+leadNames[physicalRole(ch)]+' · канал '+ch+(chart.compare?(selected?' · выбранные фильтры':' · исходная ЭКГ'):'');}));
  const rid=Number(r.record_id.slice(-3));
  const roles=history===0?(rid===5?'005: ТТРКГ — канал 1; вертикальная боковая — канал 2. Подтверждение автора.':rid===6?'006: горизонтальная боковая — канал 1; сохранённая вертикальная — канал 2. Подтверждение автора.':(rid>=1&&rid<=4)||rid===7?'ТТРКГ — канал '+(3-channel)+'; боковая — канал '+channel+'. Подтверждение автора.':rid>=8&&rid<=11?'Продолжение схемы 007: боковая горизонтальная — канал 1; второй канал — '+(rid===11?'вертикальная ось креста.':'ТТРКГ.')+' Сохранение номера в этом блоке принято по описанию протокола.':'Номера ТЕПС/АЕПС не подтверждены; сигналы обозначены как неустановленные отведения.'):'Прежний диагностический сценарий; боковой канал '+channel+'.';
- document.getElementById('experiment-localisation').textContent=(m.mapping==='unknown'?'Монтаж не локализован на КТ. ':m.mapping==='test_horizontal'?'Тест: 1×1 на руках и горизонтальная боковая 140 мм. ':'Номинальная геометрия; координаты установки не измерены. ')+roles+((rid===1||rid===2)?' U сверху — сценарий с пока не подтверждённым углом.':'');
+ document.getElementById('experiment-localisation').textContent=(m.mapping==='unknown'?'Монтаж не локализован на КТ. ':m.mapping==='tepc'?'ТЕПС: ваша реконструкция перенесена на исправленный КТ-контур ближайшей проекцией. Точность установки неизвестна. ':m.mapping==='test_horizontal'?'Тест: 1×1 на руках и горизонтальная боковая 140 мм. ':'Номинальная геометрия; координаты установки не измерены. ')+roles+((rid===1||rid===2)?' U сверху — сценарий с пока не подтверждённым углом.':'');
  document.getElementById('experiment-filter-description').textContent='Сейчас: '+({'00':'все фильтры отключены — исходная ЭКГ','10':'только режекторы 50/100/150 Гц','01':'только полоса 0,5–40 Гц','11':'режекторы 50/100/150 Гц, затем полоса 0,5–40 Гц'}[filterKey()])+'.';
  const phases=r.breathing.phases.map((p,i)=>`<span style="background:${phaseColors[i]};padding:4px 7px">${p.label}</span>`).join(' → ');
  document.getElementById('experiment-phase-description').innerHTML=(phases||'Дыхательные режимы не размечены.')+'<br>Кандидатная разметка, не принята автором. Серые полосы: неоднозначность границ; пунктир: выбранная кандидатная граница.';

@@ -34,7 +34,15 @@ def mask_surface(path, target, step_size=1):
     trimesh.Trimesh(lps, faces, process=False).export(target)
 
 
-def build(geometry=GEOMETRY, segmentation=SEGMENTATION, out=OUT, target_faces=None, landmarks=None):
+def build(geometry=None, segmentation=None, out=OUT, target_faces=None, landmarks=None):
+    if geometry is None or segmentation is None:
+        from georg_model_contract import resolve
+        current,contract=resolve()
+        if geometry is None:geometry=current
+        if segmentation is None:
+            segmentation=ROOT/'MATLAB_TRKG4_real_subjects'/contract['segmentation_directory']
+        if landmarks is None and Path(geometry).resolve()==current.resolve():
+            landmarks=current/'landmarks'
     geometry, segmentation, out = map(Path, (geometry, segmentation, out))
     g = json.loads((geometry/'geometry.local.json').read_text(encoding='utf-8-sig'))
     body = geometry/'body_embedded_arms_370mm.stl'
@@ -61,8 +69,8 @@ def build(geometry=GEOMETRY, segmentation=SEGMENTATION, out=OUT, target_faces=No
             'автоматические маски TotalSegmentator; независимая точность не установлена. '
             'Жир отображается с шагом три вокселя без последующего схлопывания треугольников. '
             'Тело показано без дополнительного уменьшения числа треугольников. '
-            'Наружный контур унаследован из прежней STL-сегментации после объёмного заполнения '
-            'с шагом 1 мм и морфологического замыкания радиусом 10 мм; его соответствие коже не проверено. '
+            'Наружный контур заново выделен по полному КТ-тому с ограниченной очисткой внешних '
+            'фрагментов. Независимая анатомическая точность автоматического контура не установлена. '
             'Руки — цилиндры обхватом 37 см, включая искусственное продолжение за пределы поля КТ. '
             'Точки Ника и иллюстративные боковые контакты сюда не перенесены.',
         subject_pseudonym='Georg', experiment='scorpion_v2_georg', experiment_date='2026-10-05',
@@ -90,9 +98,13 @@ def build(geometry=GEOMETRY, segmentation=SEGMENTATION, out=OUT, target_faces=No
                     or m['recording']['id'] != f'{n+10:03d}'
                     or m['physical_coordinate_frame'] != 'LPS'):
                 raise ValueError('Manual reconstruction geometry or recording mismatch')
+            transfer = data.get('ct_transfer_provenance')
+            note = m['reconstruction_notes']
+            if transfer:
+                note += ' Показаны проекции исходных авторских центров на новый КТ-контур; исходные координаты сохранены отдельно.'
             context['manual_reconstructions'][m['recording']['id']] = dict(
                 centres=data['preliminary_electrode_centers_xyz_mm'],
-                notes=m['reconstruction_notes'], status=m['status'],
+                notes=note, status=m['status'],
                 filename=path.name, source_sha256=data['import_provenance']['original_sha256'])
             manual_hashes[path.name] = sha(path)
     report = build_picker_html(body, out/'georg_tepc_picker.html', target_faces,
@@ -114,8 +126,8 @@ def build(geometry=GEOMETRY, segmentation=SEGMENTATION, out=OUT, target_faces=No
 
 if __name__ == '__main__':
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument('--geometry', type=Path, default=GEOMETRY)
-    p.add_argument('--segmentation', type=Path, default=SEGMENTATION)
+    p.add_argument('--geometry', type=Path, default=None, help='Default: checked current Georg model contract')
+    p.add_argument('--segmentation', type=Path, default=None, help='Default: masks from the current Georg model')
     p.add_argument('--out', type=Path, default=OUT)
     p.add_argument('--target-faces', type=int, default=None,
         help='Optional preview reduction; default retains every body triangle')

@@ -1,6 +1,7 @@
 """Corrected geometry reader; deliberately performs no FEM inversion."""
 from pathlib import Path
 import argparse
+import sys
 
 import nibabel as nib
 import numpy as np
@@ -11,12 +12,20 @@ from scipy.ndimage import map_coordinates
 
 from build_georg_fem_reports import ROOT, OUT as OLD, GEOMETRY, new_cells, export, number, table, read, sha, write
 
-OUT=ROOT/'MATLAB_TRKG4_real_subjects/output/exploratory/scorpion_georg_geometry_20261009'
-SOURCE=ROOT/'MATLAB_TRKG4_real_subjects/data/georg/stl/body_solid_ct_1mm_r10_volume_fill.stl'
+sys.path.insert(0,str(ROOT/'MATLAB_TRKG4_real_subjects/tools'))
+from georg_model_contract import resolve as resolve_shared_model
+OUT=ROOT/'MATLAB_TRKG4_real_subjects/output/exploratory/georg_ct_model_20261011'
+SEGMENTATION=OLD/'segmentation'
+if (ROOT/'MATLAB_TRKG4_real_subjects/output/georg_current_model.local.json').is_file():
+    OUT,current_contract=resolve_shared_model()
+    SEGMENTATION=ROOT/'MATLAB_TRKG4_real_subjects'/current_contract['segmentation_directory']
+SOURCE=OUT/'body_ct_surface.stl'
 
 
 def verify(out=OUT):
     out=Path(out);g=read(out/'geometry.local.json')
+    current,_=resolve_shared_model()
+    if out.resolve()!=current.resolve():raise ValueError('Reader must use the current checked Georg model')
     if sha(SOURCE)!=g['source_sha256'] or sha(out/'body_embedded_arms_370mm.stl')!=g['surface_sha256']:
         raise ValueError('Geometry input hash mismatch')
     producer=ROOT/'MATLAB_TRKG4_real_subjects/tools/scorpion_georg_geometry_revision.py'
@@ -34,6 +43,17 @@ def join_table(g):
         'Площадь многоугольника, мм²':j['polygon_area_mm2'],
         'Доля сечения внутри тела, %':100*j['cross_section_covered_fraction']}
         for key,j in g['joins'].items()])
+
+
+def contour_table(out=OUT):
+    q=read(Path(out)/'contour_qc.local.json')
+    return pd.DataFrame([{'Показатель':name,'Значение':value} for name,value in [
+        ('Объём тела до добавления цилиндров, мл',q['native_volume_ml']),
+        ('Объём прежней поверхности, мл',q['legacy_volume_ml']),
+        ('Выборочное расстояние прежняя поверхность → новый КТ-контур, максимум, мм',q['legacy_to_ct']['max_mm']),
+        ('Выборочное расстояние новый КТ-контур → прежняя поверхность, максимум, мм',q['ct_to_legacy']['max_mm']),
+        ('Выборочное расстояние исходный контур → полигональная сетка, максимум, мм',q['simplification']['native_to_surface']['max_mm']),
+        ('Выборочное расстояние полигональная сетка → исходный контур, максимум, мм',q['simplification']['surface_to_native']['max_mm'])]])
 
 
 def scene(out=OUT):
@@ -71,11 +91,11 @@ def prepare_sections(out=OUT):
     from matplotlib.colors import ListedColormap
     from matplotlib.patches import Patch
     # The CT affine is RAS; displayed geometry is LPS.
-    ct=nib.load(OLD/'segmentation/static_ct.nii.gz');hu=np.asanyarray(ct.dataobj)
+    ct=nib.load(SEGMENTATION/'static_ct.nii.gz');hu=np.asanyarray(ct.dataobj)
     labels=np.zeros(ct.shape,dtype=np.uint8)
     colours=['#4097dd','#dbc790','#e76b6b','#e0ab28']
     for name,value in [('fat',4),('heart',3),('bone',2),('lung',1)]:
-        image=nib.load(OLD/'segmentation'/(name+'.nii.gz'))
+        image=nib.load(SEGMENTATION/(name+'.nii.gz'))
         np.testing.assert_allclose(image.affine,ct.affine,rtol=0,atol=1e-5)
         labels[np.asanyarray(image.dataobj)>0]=value
     contacts=read(out/'contacts.local.json');y=contacts['lateral']['y_mm']
@@ -87,10 +107,10 @@ def prepare_sections(out=OUT):
     mask=map_coordinates(labels,ijk.T,order=0,mode='constant',cval=0).reshape(xx.shape)
     from lung_depth_profile import profile,skin_aligned_section
     source=trimesh.load(SOURCE,force='mesh')
-    lung=nib.load(OLD/'segmentation/lung.nii.gz')
+    lung=nib.load(SEGMENTATION/'lung.nii.gz')
     depth=profile(source,np.asanyarray(lung.dataobj)>0,lung.affine,y,
         contacts['lateral']['z_mm'])
-    depth.update(surface_sha256=sha(SOURCE),lung_mask_sha256=sha(OLD/'segmentation/lung.nii.gz'),
+    depth.update(surface_sha256=sha(SOURCE),lung_mask_sha256=sha(SEGMENTATION/'lung.nii.gz'),
         producer_sha256=sha(Path(__file__).with_name('lung_depth_profile.py')),
         builder_sha256=sha(__file__))
     write(out/'lung_depth_profile.local.json',depth)
@@ -155,8 +175,8 @@ def prepare_sections(out=OUT):
         loc='lower center',ncol=4,bbox_to_anchor=(.5,-.105))
     fig.savefig(out/'ct_skin_aligned_section.png',dpi=180,bbox_inches='tight');plt.close(fig)
     write(out/'ct_skin_aligned_section_provenance.local.json',dict(
-        ct_sha256=sha(OLD/'segmentation/static_ct.nii.gz'),
-        mask_sha256={n:sha(OLD/'segmentation'/(n+'.nii.gz')) for n in ['heart','lung','bone','fat']},
+        ct_sha256=sha(SEGMENTATION/'static_ct.nii.gz'),
+        mask_sha256={n:sha(SEGMENTATION/(n+'.nii.gz')) for n in ['heart','lung','bone','fat']},
         surface_sha256=sha(SOURCE),depth_profile_sha256=sha(out/'lung_depth_profile.local.json'),
         producer_sha256=sha(Path(__file__).with_name('lung_depth_profile.py')),builder_sha256=sha(__file__),
         image_sha256=sha(out/'ct_skin_aligned_section.png'),plane_y_lps_mm=y,
@@ -195,42 +215,211 @@ def prepare_sections(out=OUT):
         ax.set(title=f"{'Правая' if key=='left' else 'Левая'} рука; x = {number(j['x_mm'])} мм",
             xlabel='y LPS, мм',ylabel='z LPS, мм');ax.set_aspect('equal');ax.grid(alpha=.2)
     fig.savefig(out/'full_cylinder_joins.png',dpi=180);plt.close(fig)
-    write(out/'section_provenance.local.json',dict(ct_sha256=sha(OLD/'segmentation/static_ct.nii.gz'),
-        mask_sha256={n:sha(OLD/'segmentation'/(n+'.nii.gz')) for n in ['heart','lung','bone','fat']},
+    write(out/'section_provenance.local.json',dict(ct_sha256=sha(SEGMENTATION/'static_ct.nii.gz'),
+        mask_sha256={n:sha(SEGMENTATION/(n+'.nii.gz')) for n in ['heart','lung','bone','fat']},
         plane_y_lps_mm=y,all_contacts_in_display_plane=True,poses_are_examples=True,
         interpolation='nearest-neighbour CT and masks',builder_sha256=sha(__file__)))
 
 
+def montage_name(case):
+    if case.startswith('TEPC'):return case.split('_')[0].replace('TEPC','ТЕПС ')
+    if case.startswith('TTRKG_'):return 'ТТРКГ '+case.split('_')[1].replace('x','×')
+    if case.startswith('reference_'):
+        _,size,lead=case.split('_')
+        return (f'Боковая {size} мм (ТТРКГ подключена)' if lead=='lateral' else
+            f'ТТРКГ 1×4 (боковая {size} мм подключена)')
+    raise ValueError('Unknown montage label: '+case)
+
+
+def model_results(out=OUT):
+    _,contract=resolve_shared_model()
+    fem=ROOT/'MATLAB_TRKG4_real_subjects'/contract['fem_directory']
+    rows=read(fem/'forward_results.local.json')
+    nominal=[r for r in rows if r['perturbation']=='nominal']
+    return pd.DataFrame([{'Монтаж':montage_name(r['id']),
+        'Z, Ом':r['Z_ohm'],'Невязка системы':r['linear_system_relative_residual'],
+        'Ошибка взаимности, Ом':r['reciprocity_error_ohm'],
+        'Разность интегрирования, Ом':r['quadrature_difference_ohm']} for r in nominal])
+
+
+def numerical_tables(out=OUT):
+    _,contract=resolve_shared_model();out=Path(out);sizes=contract['mesh_comparison_mm']
+    if contract.get('additional_mesh_comparison_mm'):
+        sizes=list(dict.fromkeys(sizes+contract['additional_mesh_comparison_mm']))
+    plans=[read(out/f'fem_h{h:g}'/'plan.local.json') for h in sizes]
+    mesh=pd.DataFrame([{'Ограничение объёма элемента, мм³':h**3/6,
+        'Узлы':p['nodes'],'Тетраэдры':p['tetrahedra'],
+        'Минимальный объём, мм³':p['min_tetrahedron_volume_mm3'],
+        'Объём модели, мл':p['volume_ml']} for h,p in zip(sizes,plans)])
+    refs=read(ROOT/'MATLAB_TRKG4_real_subjects'/contract['fem_directory']/'reference_materials.local.json')
+    material=pd.DataFrame({'Область':['Мягкотканный фон','Лёгкие','Кости','Сердце','Жир'],
+        'Опорное сопротивление, Ом·м':refs['rho_ohm_m']})
+    cases=read(out/'mesh_convergence.local.json')['cases']
+    convergence=pd.DataFrame([{'Монтаж':montage_name(r['id']),'Разность сеток, Ом':r['difference_ohm'],
+        'Принятый численный допуск, Ом':r['tolerance_ohm'],
+        'Критерий выполнен':'Да' if r['passed'] else 'Нет'} for r in cases])
+    frames=[mesh,material,convergence]
+    if contract.get('additional_mesh_comparison_mm'):
+        cases=read(out/'additional_mesh_comparison.local.json')['cases']
+        frames.append(pd.DataFrame([{'Монтаж':montage_name(r['id']),
+            'Сетка 6 мм — Z, Ом':r['coarse_ohm'],'Сетка 4 мм — Z, Ом':r['fine_ohm'],
+            'Разность сеток, Ом':r['difference_ohm'],
+            'Принятый численный допуск, Ом':r['tolerance_ohm'],
+            'Критерий выполнен':'Да' if r['passed'] else 'Нет'} for r in cases]))
+    return frames
+
+
+def mesh_history_table(out=OUT):
+    rows=read(Path(out)/'mesh_h8_h6_negative_comparison.local.json')
+    return pd.DataFrame([{'Монтаж':montage_name(r['id']),'Первая сетка, Ом':r['coarse_ohm'],
+        'Вторая сетка, Ом':r['fine_ohm'],'Разность, Ом':r['difference_ohm'],
+        'Численный допуск, Ом':r['tolerance_ohm'],
+        'Критерий выполнен':'Да' if r['passed'] else 'Нет'} for r in rows])
+
+
+def centre_transfer_table(out=OUT):
+    rows=read(Path(out)/'centre_transfer.local.json')
+    return pd.DataFrame([{'Монтаж':r['montage'].replace('TEPC','ТЕПС '),
+        'Контакт':r['contact'].replace('plus','+').replace('minus','−').replace('_',''),
+        'Поправка проекции, мм':r['displacement_mm']} for r in rows])
+
+
+def sensitivity_table(out=OUT):
+    _,contract=resolve_shared_model()
+    rows=read(ROOT/'MATLAB_TRKG4_real_subjects'/contract['fem_directory']/'forward_results.local.json')
+    names=['Фон','Лёгкие','Кости','Сердце','Жир']
+    return pd.DataFrame([dict({'Монтаж':r['id'].split('_')[0].replace('TEPC','ТЕПС ')},
+        **{name+' — J, Ом':value for name,value in zip(names,r['J_logrho_ohm'])})
+        for r in rows if r['perturbation']=='nominal'])
+
+
+def individual_position_table(out=OUT):
+    rows=read(Path(out)/'individual_position_uncertainty.local.json')
+    return pd.DataFrame([{'Монтаж':f'ТЕПС {r["montage"]}',
+        'Смещённый контакт':r['contact'].replace('plus','+').replace('minus','−').replace('_',''),
+        'Смещение по касательной, мм':r['shift_mm'],
+        'Изменение Z, Ом':r['difference_from_nominal_ohm']} for r in rows])
+
+
+def position_plot(out=OUT):
+    rows=read(Path(out)/'position_uncertainty.local.json');fig=go.Figure()
+    for n in range(2,8):
+        rr=[r for r in rows if r['montage']==n]
+        fig.add_trace(go.Scatter(x=[r['amplitude_mm'] for r in rr],
+            y=[r['max_abs_change_ohm'] for r in rr],mode='lines+markers',name=f'ТЕПС {n}',
+            hovertemplate='Смещение %{x} мм: |ΔZ| ≤ %{y:.4g} Ом в проверенных направлениях<extra>%{fullData.name}</extra>'))
+    fig.update_layout(template='plotly_white',height=520,title='Влияние совместных смещений контактов',
+        xaxis_title='Заданная амплитуда смещения вдоль касательной, мм',
+        yaxis_title='Максимальное |ΔZ| среди четырёх направлений, Ом')
+    return fig
+
+
+def patch_scene(out=OUT):
+    _,contract=resolve_shared_model()
+    fem=ROOT/'MATLAB_TRKG4_real_subjects'/contract['fem_directory']
+    mesh=trimesh.load(Path(out)/'body_embedded_arms_370mm.stl',force='mesh')
+    v,f=mesh.vertices,mesh.faces
+    fig=go.Figure(go.Mesh3d(x=v[:,0],y=v[:,1],z=v[:,2],i=f[:,0],j=f[:,1],k=f[:,2],
+        color='#c7c8c9',opacity=.2,name='Тело',hoverinfo='skip'))
+    buttons=[]
+    for n in range(2,8):
+        patches=read(fem/'scenarios'/f'TEPC{n}_nominal_patches.local.json')
+        for p,label in zip(patches,['I+','U+','U−','I−']):
+            v=np.asarray(p['vertices_lps_mm']);f=np.asarray(p['faces'])-1
+            fig.add_trace(go.Mesh3d(x=v[:,0],y=v[:,1],z=v[:,2],i=f[:,0],j=f[:,1],k=f[:,2],
+                name=f'ТЕПС {n}: {label}',color='#e77d29' if label.startswith('I') else '#287fb8',
+                opacity=1.,visible=n==2,showlegend=True))
+        mask=[True]+[case==n for case in range(2,8) for _ in range(4)]
+        buttons.append(dict(label=f'ТЕПС {n}',method='restyle',args=[{'visible':mask}]))
+    fig.update_layout(template='plotly_white',height=680,title='Расчётные контактные площадки ТЕПС',
+        scene=dict(aspectmode='data',xaxis_title='x LPS, мм',yaxis_title='y LPS, мм',zaxis_title='z LPS, мм',
+            uirevision='shared-georg-patches'),uirevision='shared-georg-patches',
+        updatemenus=[dict(buttons=buttons,direction='right',x=0,y=1.1)],legend=dict(orientation='h',y=-.05))
+    return fig
+
+
+def prepare_contour_image(out=OUT):
+    import matplotlib.pyplot as plt
+    ct=nib.load(SEGMENTATION/'static_ct.nii.gz');hu=np.asanyarray(ct.dataobj)
+    body=np.asanyarray(nib.load(Path(out)/'body_mask.nii.gz').dataobj)>0
+    fig,axes=plt.subplots(2,3,figsize=(13,8))
+    transfer=read(Path(out)/'centre_transfer.local.json')
+    for n,ax in zip(range(2,8),axes.flat):
+        point=next(r for r in transfer if r['montage']==f'TEPC{n}' and r['contact']=='V_plus')
+        xyz=np.array([point['original_lps_mm'],point['projected_lps_mm']])
+        vox=nib.affines.apply_affine(np.linalg.inv(ct.affine),xyz*[-1,-1,1]);k=int(round(vox[1,2]))
+        ax.imshow(hu[:,:,k],cmap='gray',vmin=-800,vmax=300)
+        ax.contour(body[:,:,k],levels=[.5],colors=['#12b6ac'],linewidths=.8)
+        ax.scatter(vox[0,1],vox[0,0],s=25,c='#ef7b25',label='Исходный центр U+')
+        ax.scatter(vox[1,1],vox[1,0],s=35,marker='+',c='#2366dc',label='Проекция на контур')
+        ax.set_title(f'ТЕПС {n}, срез через U+');ax.axis('off')
+    axes[0,0].legend(loc='lower left',fontsize=7);fig.tight_layout()
+    fig.savefig(Path(out)/'ct_contour_and_transfers.png',dpi=170);plt.close(fig)
+
+
 def build(out=OUT):
-    out=Path(out);g=verify(out);prepare_sections(out)
+    out=Path(out);g=verify(out);prepare_sections(out);prepare_contour_image(out)
+    _,model_contract=resolve_shared_model()
+    selected_plan=read(ROOT/'MATLAB_TRKG4_real_subjects'/model_contract['fem_directory']/'plan.local.json')
+    additional=model_contract.get('additional_mesh_comparison_mm')
+    additional_note=''
+    if additional:
+        comparison=read(out/'additional_mesh_comparison.local.json')['cases']
+        failed=sum(not r['passed'] for r in comparison)
+        largest=max(comparison,key=lambda r:r['difference_ohm']/abs(r['fine_ohm']))
+        additional_note=(f' Дополнительная проверка сеток с параметрами {number(additional[0],0)} '
+            f'и {number(additional[1],0)} мм также не выполнила допуск в {failed} из {len(comparison)} '
+            f'случаев. Наибольшее относительное расхождение — '
+            f'{number(100*largest["difference_ohm"]/abs(largest["fine_ohm"]),2)}% '
+            f'для монтажа «{montage_name(largest["id"])}». '
+            'Сценарии смещения на третьей сетке не пересчитывались.')
+    precision_note=('Численные критерии проверенных случаев выполнены. '
+        if model_contract['status']=='numerical_reference_checked' else
+        'Геометрические и алгебраические проверки выполнены; критерий сеточной точности не выполнен. '
+        'Геометрия закреплена как общий вход. Абсолютные FEM-импедансы остаются исследовательскими; '
+        'они не разрешают количественную инверсию сопротивлений. ')
     cells,md,code=new_cells()
     md('# 20.20. Исправленная индивидуальная геометрия КТ/FEM Георгия\n\n'
-       '**Редакция от 11 октября 2026 года. Геометрия исправлена 9 октября; новый FEM-расчёт не выполнен.** '
+       '**Редакция от 11 октября 2026 года. Наружный контур заново построен по КТ; выполнен новый прямой FEM-расчёт.** '
        'Автор уточнил ориентацию боковых сборок и токовых контактов и потребовал полного сечения '
        'соединения цилиндров рук с телом. Предыдущая геометрия этим условиям не соответствовала. '
        'Численные результаты 33.22 от 8 октября сохранены как исторический расчёт и не относятся '
-       'к настоящей геометрии.\n\n'
+       'к настоящей геометрии. '+precision_note+'\n\n'
        '## 1. Входы и последовательность\n\n'
-       'Для подготовки конечноэлементной модели (FEM) использованы прежняя наружная поверхность '
+       'Для подготовки конечноэлементной модели (FEM) использованы новая наружная поверхность '
        'полного статического КТ-тома и четыре маски: '
        'сердце, лёгкие, кости и жир. Остальной объём представляет мягкотканный фон. '
        'Маски получены автоматически TotalSegmentator 2.18; независимая точность границ не установлена. '
        'КТ снята на глубоком вдохе с задержкой дыхания и относится к другой сессии, чем Scorpion v2. '
        'Динамическая КТ сердца не подменяет полный том грудной клетки.\n\n'
-       'Наружная поверхность унаследована из прежней STL-сегментации. Перед присоединением рук '
-       'она была обработана объёмным заполнением с шагом 1 мм и морфологическим замыканием '
-       'радиусом 10 мм. Четыре внутренние тканевые маски выделены заново; соответствие '
-       'обработанного наружного контура коже по исходным срезам пока не проверено.\n\n'
+       'Контур выделен из КТ по порогу −450 HU. Тонкие внешние фрагменты удалены двумерным '
+       'размыканием радиусом два вокселя; затем в каждом срезе выбрана основная компонента, '
+       'выполнено замыкание радиусом один воксель и заполнение внутренних полостей. '
+       'Контур визуально сопоставлен с КТ на всех 280 аксиальных срезах: стол отделён от тела. '
+       'На отдельных срезах сохраняются небольшие поверхностные выступы, происхождение которых '
+       'не установлено; их влияние на локальный контакт и расчёт пока не отделено от других '
+       'источников погрешности. Это автоматическая реконструкция с геометрическим контролем; '
+       'независимая анатомическая точность не установлена. Прежнее замыкание радиусом 10 мм '
+       'не применяется. Четыре внутренние маски сохранены из полной автоматической сегментации.\n\n'
        'Порядок данного этапа: проверить сечения исходной поверхности → подобрать заглубление цилиндров '
-       '→ объединить объёмы и проверить поверхность → исправить контакты → показать сечения КТ вдоль '
-       'боковых сборок → подготовить полный поиск положения и новую FEM-инверсию. '
-       'Выполнены геометрические этапы; поиск положения и новая инверсия ещё не выполнены.')
+       '→ объединить объёмы и проверить поверхность → перенести центры и построить контакты '
+       '→ построить новые объёмные сетки → выполнить прямые FEM-расчёты и сценарии смещения. '
+       'Выполнены геометрические этапы, новая сетка, прямой расчёт и сценарии ошибки установки ТЕПС. '
+       'Полный поиск общего центра боковых сборок и новая инверсия сопротивлений ещё не выполнены.')
     relative=out.relative_to(ROOT).as_posix()
     code("from pathlib import Path\nimport sys\nfrom IPython.display import display,HTML,Image\nhere=Path.cwd()\n"
          "module_dir=next(p for p in [here,here/'scorpion_v2',here/'Colab Notebooks/scorpion_v2'] if (p/'build_georg_geometry_revision_report.py').exists())\n"
-         "sys.path.insert(0,str(module_dir.resolve()))\nfrom build_georg_geometry_revision_report import ROOT,verify,join_table,scene,table\n"
+         "sys.path.insert(0,str(module_dir.resolve()))\nfrom build_georg_geometry_revision_report import ROOT,verify,join_table,contour_table,scene,table,model_results,numerical_tables,mesh_history_table,centre_transfer_table,sensitivity_table,individual_position_table,position_plot,patch_scene\n"
          f"OUT=ROOT/{relative!r}\ng=verify(OUT)\n"
          "def show(fig): display(HTML(fig.to_html(full_html=False,include_plotlyjs=True,config={'displaylogo':False})))\n")
+    md('**Таблица 1.** Изменение наружного контура и влияние сокращения числа граней. '
+       'Расстояния вычислены по 15 тысячам воспроизводимо выбранных точек каждой поверхности. '
+       'Их максимум не является гарантированной максимальной ошибкой всей поверхности. '
+       'Опорная поверхность построена по исходной КТ-маске; упрощённая поверхность '
+       'используется сеточным генератором. После экспорта STL выполнена ограниченная '
+       'локальная коррекция пересекающихся граней с сохранением топологии. '
+       'Окончательный скрипт повторно дал побайтно совпадающие маску и поверхности.')
+    code('display(table(contour_table(OUT)))')
     md('## 2. Полное соединение цилиндров рук\n\n'
        'Автор сообщил обхват 37 см для обеих рук на уровне токовых электродов и принял цилиндрическую '
        'модель. Радиус равен 370/(2π) = 58,8873 мм; площадь поперечного сечения — 10 894,16 мм². '
@@ -241,7 +430,7 @@ def build(out=OUT):
        'помещается внутри тела, с геометрическим запасом 0,15 мм. Из допустимых кандидатов выбирается '
        'минимум суммы квадратов заглубления и сдвига центра относительно исходного среза. '
        'Это геометрическое правило, а не восстановление анатомического положения плеча.\n\n'
-       'Получены заглубления 22,5 мм справа и 16,5 мм слева; сдвиги центров представлены в таблице. '
+       '**Таблица 2.** Заглубления и сдвиги центров цилиндров относительно прежних срезов. '
        'Полное сечение находится внутри исходного объёма. Круг представлен 256-сторонним многоугольником; '
        'отличие его площади от площади круга составляет около 0,010%. При объединении добавлен внутренний '
        'нахлёст 0,5 мм. Цилиндры не выходят за исходные пределы по y и z; их продолжение по x '
@@ -284,7 +473,7 @@ def build(out=OUT):
        'Метки A и B обозначают токовые центры, M и N — измерительные. Показаны маски лёгких, костей, '
        'сердца и жира; отсутствие ткани в данном сечении не означает отсутствия её маски в объёме. '
        'Использована интерполяция ближайшего соседа. Геометрическая поверхность и КТ могут различаться '
-       'из-за обработки наружного контура; это расхождение ещё требует оценки. '
+       'из-за обработки наружного контура; выборочные расстояния поверхностей приведены в таблице 1. '
        'Голубая линия отмечает первое пересечение лучей вдоль +x LPS с маской правого лёгкого; '
        'пунктиром показаны расстояния от наружной поверхности до этой линии. '
        'Направление выбрано для сопоставления с принятой проекцией электродов. '
@@ -332,10 +521,10 @@ def build(out=OUT):
        'Поиск положения при одной фиксированной тройке сопротивлений не заменяет эту обратную задачу. '
        'Цель — карта невязки и допустимых тканевых параметров по всей области, с оценкой '
        'геометрической и электрической неоднозначности. Это план следующего расчёта, а не выполненный результат.\n\n'
-       'Новая поверхность требует новой объёмной сетки, повторного отображения четырёх тканевых масок, '
-       'контактных площадок CEM и всех пассивных электродов соответствующего монтажа. '
-       'Матрицы и оценки 8 октября повторно использовать нельзя. Необходимо проверить '
-       'сходимость по сетке и интегрированию, взаимность и производные, а затем повторить инверсию. '
+       'Для новой поверхности построены новые объёмные сетки и материальные матрицы четырёх '
+       'масок и фона. Контактные площадки и CEM-матрицы собраны заново для каждого проверяемого '
+       'положения. Матрицы и оценки 8 октября не использованы. Проверки двух сеток, интегрирования, '
+       'взаимности, сборки EIDORS и производных представлены ниже. Новая инверсия ещё требуется. '
        'Для двуслойного поиска в 33.21 приняты физиологически мотивированные литературные интервалы '
        'при 100 кГц. Их перенос на мягкотканный фон, лёгкое и жир FEM требует отдельного обоснования '
        'для каждого компартмента; прежние технические пределы 0,1–100 Ом·м не задают физиологический диапазон.\n\n'
@@ -344,47 +533,132 @@ def build(out=OUT):
        'сравнивать после проверки геометрии и независимо для токовых и измерительных площадок. '
        'Расчёт УО и ФВ здесь не выполнялся. Хэши поверхности, кода, КТ и масок сохранены '
        'в локальном паспорте; первичные массивы не включены в читательский экспорт.')
-    md('## 6. Ручное размещение электродов ТЕПС\n\n'
-       'Для Георгия подготовлен [интерактивный инструмент размещения электродов](20.21_Размещение_ТЕПС_Георгия_Scorpion_v2.html) '
-       'на основе того же инструмента, который использовался для Ника. '
-       'Он показывает исправленную наружную поверхность и четыре независимых слоя: сердце, лёгкие, '
-       'кости и жир. Руки имеют цилиндрическую форму по принятому допущению; их продолжение за пределы '
-       'поля КТ не является сегментированной анатомией.\n\n'
-       'Последовательность работы: выбрать ТЕПС 2–7 и соответствующую запись 012–017; указать канал, '
-       'если он известен; выбрать на поверхности четыре центра I+, V+, V−, I−; указать автора '
-       'реконструкции, её основание и неопределённость; сохранить JSON и CSV. '
-       'I обозначает токовые, V — измерительные электроды. Выбор схемы не задаёт координаты '
-       'автоматически. При переходе к следующей записи точки очищаются, а ракурс сохраняется. '
-       'Альтернативное положение можно сохранить под отдельным именем.\n\n'
-       'В JSON сохраняются связь с записью, номер канала либо его неизвестность, координаты LPS '
-       'в миллиметрах, контрольные суммы исходной геометрии и масок и статус ручной реконструкции. '
-       'CSV содержит таблицу четырёх центров; для воспроизводимости его следует сохранять вместе '
-       'с JSON. Знаки контактов необходимо проверить по подключению. Экспорт использует совместимую '
-       'с MATLAB схему четырёх поверхностных центров, а назначение ТЕПС указано в паспорте измерения. '
-       'Перед FEM центры должны быть проверены и повторно спроецированы на исходную расчётную '
-       'поверхность. Площади контактов и контактное сопротивление здесь не задаются. '
-       'Координаты Ника не перенесены.\n\n'
-       '11 октября автор передал шесть ручных реконструкций ТЕПС 2–7 и подтвердил соответствие '
-       'имён файлов записям 012–017. Внутри всех исходных файлов сохранилась метка записи 012; '
-       'в производных копиях связь исправлена по подтверждению автора. Исходные файлы и все '
-       '24 выбранных центра сохранены без изменения. Автор сообщил о дефектах поверхности, '
-       'затруднявших расстановку; погрешность ручного выбора пока неизвестна. '
-       'Кнопка «Показать реконструкцию автора» загружает четыре исходных центра выбранного монтажа '
-       'для просмотра и возможного уточнения. При смене записи они очищаются; ракурс сохраняется.\n\n'
-       'В прежнем HTML число граней тела было уменьшено со 178 154 до 20 000. Дополнительное '
-       'упрощение отключено в новой версии инструмента. Расстояния от 24 выбранных центров '
-       'до полной поверхности находятся в пределах 0–0,33 мм. Это величина поправки проекции, '
-       'а не оценка анатомической точности или погрешности ручной реконструкции. '
-       'Кандидатные проекции сохранены отдельно и не подменяют выбор автора.\n\n'
-       'Полная поверхность и её прежняя облегчённая версия замкнуты, имеют положительный объём '
-       'и не содержат самопересечений. По выборке вершин максимальное расстояние полной '
-       'поверхности до облегчённой составило 1,59 мм; это выборочная характеристика, не '
-       'гарантированная максимальная ошибка всей поверхности. Геометрическая целостность '
-       'не подтверждает соответствие контура коже. Перед новыми FEM-расчётами требуется '
-       'сопоставить наружный контур со срезами КТ в областях контактов, отделить дефекты '
-       'сегментации от изменений после заполнения и оценить влияние исправлений на центры '
-       'и контактные площадки. Номера каналов ТЕПС, полярность и фактические площади '
-       'контактов остаются открытыми.')
+    md('## 6. Перенос авторских центров на новый контур\n\n'
+       'Исходные 24 центра ТЕПС 2–7 сохранены. Для расчёта использованы их ближайшие проекции '
+       'на новый КТ-контур в той же системе LPS. Поправка проекции достигает 4,54 мм; '
+       'она не измеряет ошибку ручной реконструкции. Соответствие файлов записям 012–017 '
+       'подтверждено автором. Номер BEI и физическая полярность пока не подтверждены.\n\n'
+       '**Рисунок 4.** КТ-срезы через проекцию центра U+ каждого монтажа. Бирюзовая линия — '
+       'граница новой объёмной маски тела. Оранжевые кружки — исходные центры, синие крестики — '
+       'их проекции; обе точки показаны в координатах выбранного среза. Это проверка автоматического '
+       'переноса, а не доказательство точного воспроизведения установки во время записи.')
+    code("display(Image(filename=str(OUT/'ct_contour_and_transfers.png')))\ndisplay(table(centre_transfer_table(OUT)))")
+    md('## 7. Новый прямой FEM-расчёт\n\n'
+       'Геометрия и тканевое разбиение закреплены общим паспортом модели Георгия. Ноутбук читает '
+       'готовые результаты и не выполняет FEM. Все расчёты используют сердце, лёгкие, кости, '
+       'жир и оставшийся мягкотканный фон. Для искусственных продолжений рук принят мягкотканный '
+       'фон: их состав по КТ неизвестен. КТ соответствует глубокому вдоху.\n\n'
+       'Опорные сопротивления взяты из частотных значений Габриэля при 100 кГц в общем реестре: '
+       'фон заменён мышечной тканью, лёгкое соответствует вдоху, вся маска сердца — миокарду, '
+       'вся костная маска — кортикальной кости. Это литературные допущения прямого расчёта; '
+       'индивидуальные сопротивления Георгия ещё не восстановлены. Проводимость задана '
+       'скалярной действительной величиной; анизотропия и ёмкостная составляющая тканей '
+       'в этой постановке не учитываются.\n\n'
+       'Объёмные сетки построены TetGen по одной и той же проверенной полигональной границе. '
+       'Ограничения максимального объёма элементов указаны в таблице; '
+       'это параметры сеточного генератора, а не равномерный шаг сетки. Вокруг всех '
+       'проверяемых центров рёбра границы разделены до длины не более 0,7 мм. '
+       'Координаты исходной границы при этом сохранены. Тканевые доли каждого элемента '
+       'получены по 256 и 1024 точкам последовательности Соболя; их сумма равна единице. '
+       'Пересечения автоматических масок разрешены в порядке приоритета: лёгкие, кости, '
+       'сердце, жир, фон. Это правило назначения материала сохранено в паспорте.\n\n'
+       'Для каждого физического контакта принят диск диаметром 5 мм, площадь 19,635 мм². '
+       'Фактическая площадь неизвестна. Удельное контактное сопротивление CEM равно '
+       f'{number(selected_plan["contact_impedance_ohm_m2"],9)} Ом·м². Это прежний расчётный '
+       'сценарий проекта; параметр не измерен на Scorpion. Контакты одной электрической группы '
+       'эквипотенциальны. Для ТЕПС в модель включены четыре размеченных контакта. Неизвестный '
+       'дополнительный одновременный монтаж не добавлен произвольно; его присутствие потребует '
+       'отдельной CEM-постановки. Расчётный знак соответствует I+ → I− и U+ − U−. '
+       'В сценариях совместного подключения боковой сборки и ТТРКГ возбуждается одна '
+       'токовая пара; остальным электрическим группам задан нулевой суммарный ток. '
+       'Это постановка прямого расчёта. Её соответствие одновременному зондированию '
+       'двух каналов Scorpion отдельно не установлено.\n\n'
+       '**Таблица 3.** Импедансы шести ручных реконструкций в литературном сценарии и численные '
+       'проверки. Невязка относится к линейной системе FEM; ошибка взаимности — к перестановке '
+       'токовой и измерительной пар; разность интегрирования — к двум правилам отображения масок. '
+       'Эти проверки не подтверждают физическую адекватность тканей или приборной схемы.')
+    code("display(table(model_results(OUT)))")
+    md('**Таблица 4.** Сетки после локального сгущения, фактические опорные сопротивления '
+       'и сравнение импедансов. Принятый допуск сравнения сеток равен 0,02 Ом + 0,5% '
+       'от модуля импеданса более плотной сетки. Допуск сравнения интегрирования равен '
+       '0,02 Ом + 0,1%. Это критерии численной проверки данной постановки. '
+       'Сравнение двух сеток охватывает исходные ТЕПС, монтажи рук и иллюстративные '
+       'боковые сборки; оно не доказывает сходимость для любого нового положения.')
+    code("for frame in numerical_tables(OUT): display(table(frame))")
+    md('Первая пара сеток, с ограничениями объёма элемента 85,333 и 36 мм³, '
+       'не удовлетворила этому допуску в 17 из 19 исходных случаев. Наибольшее '
+       'относительное расхождение составило около 3,48% для ТЕПС 2. Площадки '
+       'контактов на двух сетках совпали: расхождение возникло при объёмной '
+       'дискретизации и отображении тканей. Этот отрицательный результат сохранён '
+       'в таблице 4; первая сетка не принята численным референсом.'+additional_note+'\n\n'
+       'На выбранной сетке выполнены 163 сценария: 150 для шести монтажей ТЕПС, '
+       'три монтажа на руках и десять сценариев пяти боковых размеров с ТТРКГ. '
+       'Для всех этих случаев ошибка площади каждого дискретного контакта не превышает 1,51%, '
+       'смещение центроида относительно заданного центра — 0,80 мм. '
+       'На выбранной сетке критерий сравнения интегрирования выполнен для всех исходных случаев; '
+       'на первой сетке его не выполнил ТЕПС 5. Алгебраические проверки не устраняют '
+       'выявленное расхождение объёмной дискретизации.')
+    if additional:
+        md('После локального сгущения третья сетка содержит 120 элементов объёмом менее '
+           '10⁻¹² мм³. Для каждого знак и объём повторно проверены по точным значениям '
+           'записанных координат с 80 десятичными знаками. Все объёмы положительны; '
+           'наибольшее относительное расхождение с вычислением двойной точности — '
+           '7,89·10⁻¹². Элементы сохранены, общий объём не изменился. Эта проверка '
+           'исключает ошибочное удаление малых положительных элементов, но не устанавливает '
+           'точность FEM-импеданса; она оценивается отдельными сеточными сравнениями.')
+    if model_contract['mesh_comparison_mm']!=[8,6]:code("display(table(mesh_history_table(OUT)))")
+    md('**Таблица 5.** Локальные чувствительности к свойствам пяти областей: '
+       'Jᵢ = ∂Z/∂ln ρᵢ, в Ом. При малом относительном изменении сопротивления '
+       'δρᵢ/ρᵢ ожидаемое изменение импеданса равно Jᵢ·δρᵢ/ρᵢ. Производные '
+       'вычислены при неизменных геометрии и свойствах остальных областей; '
+       'для одного исходного монтажа все пять производных проверены центральными '
+       'конечными разностями. Эти величины характеризуют выбранную прямую модель; '
+       'они не являются долями объёма или измеренными пульсовыми вкладами тканей.')
+    code("display(table(sensitivity_table(OUT)))")
+    condition=read(out/'material_sensitivity.local.json')['condition_number']
+    md('Для шести исходных ТЕПС матрица чувствительности к логарифмам сопротивлений '
+       f'фона, лёгких и жира имеет число обусловленности {number(condition,2)}. '
+       'Это локальная невзвешенная оценка при фиксированных положении, костях и сердце. '
+       'Она не доказывает идентифицируемость сопротивлений при неизвестной установке, '
+       'погрешности измерений и расхождении анатомической модели.')
+    md('**Рисунок 5.** Фактические граничные треугольники конечных контактов. Оранжевые площадки — '
+       'токовые I+ и I−, синие — измерительные U+ и U−. Кнопки выбирают монтаж; ракурс сохраняется. '
+       'Это площадки, использованные при сборке CEM, а не условные маркеры центров.')
+    code("show(patch_scene(OUT))")
+    md('## 8. Неопределённость установки\n\n'
+       'Для ТЕПС проверены совместные смещения всех четырёх контактов на 1, 3, 5 и 10 мм '
+       'в двух локальных касательных направлениях с обоими знаками. Каждый контакт повторно '
+       'спроецирован на поверхность; площадки и контактные матрицы пересобраны. Дополнительно '
+       'проверены отдельные продольные смещения каждого контакта на ±5 мм. Заданные амплитуды '
+       'не являются доверительными интервалами неизвестной погрешности ручной установки.\n\n'
+       'Все показанные смещения относятся к сетке, указанной общим паспортом модели. '
+       'Сходимость каждого смещённого положения на независимой сетке отдельно не доказана; '
+       'при незавершённой сеточной проверке эти зависимости показывают исследовательские '
+       'сценарии, а не гарантированный предел погрешности.\n\n'
+       'Для ТЕПС 5 наименьшее расстояние между исходными центрами равно 12,8 мм. '
+       'Отдельный сдвиг центра I− на +5 мм с повторной проекцией изменил Z '
+       'с 155,26 до 224,87 Ом, то есть на 69,62 Ом. Фактическое перемещение '
+       'спроецированного центра составило 5,20 мм. Этот пример показывает '
+       'необходимость учитывать ошибку отдельных контактов; величина не является '
+       'измеренной ошибкой установки или доказанным расхождением с записью.\n\n'
+       '**Рисунок 6.** Каждая цветная линия соответствует одному монтажу ТЕПС. Кружки показывают '
+       'наибольшее абсолютное изменение импеданса среди четырёх совместных направлений при '
+       'данной амплитуде; соединяющие сплошные отрезки служат для чтения дискретных результатов. '
+       'Между отмеченными амплитудами расчёты не выполнены. Легенда позволяет отключать монтажи. '
+       'Это чувствительность прямой модели при фиксированных литературных сопротивлениях; '
+       'она не заменяет совместную обратную задачу положения и свойств тканей.\n\n'
+       'Новая геометрия является общим входом дальнейших расчётов. Статус численной точности '
+       'сохраняется отдельно и проверяется до количественной инверсии. Полная локализация '
+       'боковых сборок, идентификация сопротивлений, сопоставление с принятыми фазами записей '
+       'и независимая проверка УО/ФВ остаются отдельными этапами.')
+    code("show(position_plot(OUT))")
+    md('**Таблица 6.** Разность импеданса при отдельном смещении каждого контакта '
+       'на ±5 мм относительно исходного монтажа. Смещение задаётся вдоль проекции '
+       'оси z LPS на локальную касательную плоскость, после чего центр возвращается '
+       'ближайшей проекцией на поверхность. Знак разности показывает направление '
+       'изменения Z. Совместный перенос и ошибка одного контакта проверяются раздельно: '
+       'они меняют взаимные расстояния и поле тока различным образом.')
+    code("display(table(individual_position_table(OUT)))")
     export(GEOMETRY,cells,out)
 
 
