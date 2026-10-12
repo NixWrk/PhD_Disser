@@ -1,0 +1,83 @@
+{
+  "date": "2026-10-12",
+  "scope": "One integrated Georg Scorpion v2 notebook and code-free HTML; source calculations preserved",
+  "reader_artifacts": [
+    {
+      "name": "33.27_Эксперимент_модели_и_проверки_Георгия_Scorpion_v2.ipynb",
+      "sha256": "7b9b853fa8b39d8ebd92f4a3f8d5086a95ce758a64d0e0fb0e2737323172a6b2"
+    },
+    {
+      "name": "33.27_Эксперимент_модели_и_проверки_Георгия_Scorpion_v2.html",
+      "sha256": "b4508cd0bbca7ed55d8f07943cd4afdaf13ca1dbb2b65797dff32ce71a7b7da5"
+    },
+    {
+      "name": "33.27_Эксперимент_модели_и_проверки_Георгия_Scorpion_v2.md",
+      "sha256": "298dceec741f9132fc58c7be495546adcfb76474276da24675da09da4cc1e938"
+    }
+  ],
+  "technical": {
+    "notebook_execution": "passed_18_cells",
+    "html_python_source_exclusion": "passed",
+    "toc_and_unique_dom_ids": "passed",
+    "source_viewer_images_and_widget": "byte_identical",
+    "interactive_camera_behavior": "not_verified_in_browser",
+    "overall_release_ready": false
+  },
+  "computational": {
+    "scope": "result redisplay and invariant transfer, no new inverse or FEM solve",
+    "source_contract_checks": "passed",
+    "numerical_figure_data_layout_pairs_equal_to_sources": 8,
+    "complete_numerical_tables_equal_to_sources": 11,
+    "primary_004_subset_rows_equal_to_full_table": 12,
+    "raw_full_signal_viewer_equal_to_source": true,
+    "fem_mesh_convergence": "failed_6_to_4_and_4_to_3_mm",
+    "quantitative_fem_inversion_allowed": false
+  },
+  "scientific": {
+    "status": "development_not_validated",
+    "claims_preserved": [
+      "Confirmed roles separated from unconfirmed late TTRKG variant and continuation assumptions",
+      "Historical 33.20 constant-channel results and 33.23 three-material search are not current estimates",
+      "Candidate pointwise median cycles are not arithmetic ensemble means or confidence intervals",
+      "Finite-disk Green model distinguished from CEM and independent prediction from same-data fit",
+      "Anatomical CT depth distinguished from effective h; range extended to 120 mm",
+      "Primary 004 error ranges explicitly scoped; all 180 forecasts retain training exclusions",
+      "Reference tissue derivatives are not fitted tissue pulse fractions",
+      "Four-material joint fit, matched-baseline TEPS sensitivities, heart sphere and validated SV/EF remain incomplete"
+    ]
+  },
+  "language": {
+    "status": "passed",
+    "reviewer": "Codex model",
+    "mode": "semantic_sequential_final_review",
+    "review_after_last_reader_byte_change": true,
+    "full_reader_narrative_reviewed": true,
+    "headings_paragraphs_formulas_captions_tables_and_transitions_reviewed": true,
+    "unique_reader_output_labels_reviewed": 394,
+    "additional_dynamic_widget_labels_reviewed": 40,
+    "ct_image_texts_visually_reviewed": 2,
+    "numeric_outputs_checked_against_source_reports": true,
+    "language_ru_reader_facing_clarity": "passed",
+    "scientific_headings_and_term_scope": "passed",
+    "derived_analytical_object_definitions": "passed",
+    "direct_classification_and_meaningful_contrasts": "passed",
+    "semantic_reverse_translation_check": "passed",
+    "formula_where_variables_and_units": "passed",
+    "reader_encoding": "utf8",
+    "findings": [],
+    "policy_rules": [
+      "rule.language.ru-final-review",
+      "rule.language.ru-draft-encoding",
+      "rule.language.ru-natural-prose",
+      "rule.language.ru-intro-variation",
+      "rule.language.ru-reader-facing-clarity",
+      "rule.language.ru-formula-where"
+    ],
+    "reviewed_text_sha256": "298dceec741f9132fc58c7be495546adcfb76474276da24675da09da4cc1e938"
+  },
+  "release": {
+    "status": "reader_artifact_assembled_with_open_interactive_check",
+    "methodology_validated": false,
+    "release_ready": false
+  }
+}
