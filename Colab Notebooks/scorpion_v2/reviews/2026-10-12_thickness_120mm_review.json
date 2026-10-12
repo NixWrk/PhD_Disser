@@ -1,0 +1,148 @@
+{
+  "schema": "georg_thickness_extension_review_v1",
+  "date": "2026-10-12",
+  "task_contract": {
+    "request": "Extend Georg thickness calculations to include 100–120 mm from author CT observation",
+    "completed": true
+  },
+  "reader_artifacts": [
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.26_Толщина_до_120_мм_и_проверка_прогноза_Георгия_Scorpion_v2.html",
+      "sha256": "e1c25ab8e8b005f68ae949876247327af53f1980b10f98409f8119b7a3ead320",
+      "bytes": 5325421
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.26_Толщина_до_120_мм_и_проверка_прогноза_Георгия_Scorpion_v2.ipynb",
+      "sha256": "f52bf062de18c7245269af9c31428faacd4611e14604b46ce568875513084909",
+      "bytes": 5241951
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.26_Толщина_до_120_мм_и_проверка_прогноза_Георгия_Scorpion_v2.md",
+      "sha256": "676ce824103d1419cd7c2af448ffe7fb751eec5d80c64913886ef0a479765ce4",
+      "bytes": 8043
+    }
+  ],
+  "producer_sha256": "923a611ca85e1624c9ea729fa64ab50fb47265775e96687411e5393fe5b58323",
+  "contract_sha256": "278ebf6fc6203eab449ab9f105d3bcf31445bfd05e003113a429a27a2b5b64a6",
+  "technical": {
+    "code_excluded": true,
+    "notebook_error_outputs": 0,
+    "interactive_browser_verified": false
+  },
+  "computational": {
+    "tests_passed": 3,
+    "test_source_sha256": "a158efdd40511af5aad45cb8f707a089c4abd558b224b27395d5648d3fa61015",
+    "h_grid_mm": [
+      5.0,
+      10.0,
+      15.0,
+      20.0,
+      25.0,
+      30.0,
+      35.0,
+      40.0,
+      45.0,
+      50.0,
+      55.0,
+      60.0,
+      65.0,
+      70.0,
+      75.0,
+      80.0,
+      85.0,
+      90.0,
+      95.0,
+      100.0,
+      105.0,
+      110.0,
+      115.0,
+      120.0
+    ],
+    "scenarios": {
+      "wide": [
+        "Профиль 5–120 мм",
+        5.0,
+        120.0
+      ],
+      "ct_profile": [
+        "Сценарий 40–120 мм",
+        40.0,
+        120.0
+      ],
+      "deep_band": [
+        "Сценарий 100–120 мм",
+        100.0,
+        120.0
+      ],
+      "h100": [
+        "Задано h = 100 мм",
+        100.0,
+        100.0
+      ],
+      "h110": [
+        "Задано h = 110 мм",
+        110.0,
+        110.0
+      ],
+      "h120": [
+        "Задано h = 120 мм",
+        120.0,
+        120.0
+      ]
+    },
+    "reference_140_records": [
+      "002",
+      "003",
+      "004"
+    ],
+    "baseline_rows": 36,
+    "withheld_forecasts": 180,
+    "synthetic_fixed_110mm_prediction": "passed",
+    "previous_5_to_60mm_profile_overlap": "passed",
+    "omitted_size_not_used_in_baseline_or_pulse_fit": true,
+    "previous_reader_hashes_unchanged": true
+  },
+  "scientific": {
+    "status": "exploratory_not_validated",
+    "CT_nominal_depth_summary_mm": [
+      41.5,
+      71.0,
+      100.5
+    ],
+    "CT_profile_is_not_equivalent_h": true,
+    "author_upper_depth_mm": [
+      100,
+      120
+    ],
+    "annotations_accepted": false,
+    "annotations_sha256": "b23610a3c1d01600f4f26edc8f183f7c545f42ac6c249d428af3d11c62d945d4",
+    "resistivity_bounds_unchanged": true,
+    "small_h_minimum_not_accepted_as_anatomy": true,
+    "individual_resistivities_released": false,
+    "common_FEM_precision_flags_unchanged": true
+  },
+  "language": {
+    "status": "passed",
+    "reviewer": "model",
+    "after_last_reader_change": true,
+    "mode": "semantic sequential full-reader review",
+    "coverage": [
+      "all prose",
+      "both complete tables",
+      "all plot labels and legends",
+      "new README paragraph"
+    ],
+    "checks": [
+      "language.ru.hash-bound-final-review",
+      "language.ru.encoding",
+      "language.ru.reader-facing-clarity",
+      "language.ru.natural-prose"
+    ],
+    "findings": []
+  },
+  "release_decision": {
+    "local_thickness_report_available": true,
+    "tissue_parameters_released_for_downstream": false,
+    "overall_method_validated": false
+  }
+}
