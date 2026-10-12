@@ -47,7 +47,7 @@
     ]
   },
   "language": {
-    "status": "passed",
+    "status": "superseded_reader_revision",
     "reviewer": "Codex model",
     "mode": "semantic_sequential_final_review",
     "review_after_last_reader_byte_change": true,
@@ -76,8 +76,9 @@
     "reviewed_text_sha256": "298dceec741f9132fc58c7be495546adcfb76474276da24675da09da4cc1e938"
   },
   "release": {
-    "status": "reader_artifact_assembled_with_open_interactive_check",
+    "status": "superseded_reader_revision",
     "methodology_validated": false,
     "release_ready": false
-  }
+  },
+  "superseded_by": "2026-10-12_standalone_physical_assemblies_review.json"
 }

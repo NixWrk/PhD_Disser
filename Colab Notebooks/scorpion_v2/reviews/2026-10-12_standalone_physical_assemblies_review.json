@@ -1,0 +1,84 @@
+{
+  "date": "2026-10-12",
+  "scope": "Standalone Georg Scorpion v2 reader organised by physical electrode assemblies",
+  "reader_artifacts": [
+    {
+      "name": "33.27_Эксперимент_модели_и_проверки_Георгия_Scorpion_v2.ipynb",
+      "sha256": "f59f32ec23729e9ae6d49b0b0a125f5b7be372efbff9008d207805f5dd236a6e"
+    },
+    {
+      "name": "33.27_Эксперимент_модели_и_проверки_Георгия_Scorpion_v2.html",
+      "sha256": "9293a358adb4071df35aff0e74bf89e30d2043321f17ac99856a8e3d1b1f4652"
+    },
+    {
+      "name": "33.27_Эксперимент_модели_и_проверки_Георгия_Scorpion_v2.md",
+      "sha256": "3f983c1e6acec5af59a5cf1980ef988f83068f64c0c38b9a1bbfa78dd12d6f76"
+    }
+  ],
+  "technical": {
+    "executed_cells": 18,
+    "execution_errors": 0,
+    "code_free_html": true,
+    "reader_links": "internal_only",
+    "main_lateral_selector": [
+      "Вдох",
+      "Выдох"
+    ],
+    "diagnostic_variants": "separate_collapsed_controls",
+    "state_switching": "passed_node_mock",
+    "camera_state_in_mock": "unchanged",
+    "camera_behavior_in_real_browser": "not_verified",
+    "reader_reexecution_requires_other_notebooks": false
+  },
+  "computational": {
+    "scope": "presentation revision; no tissue inverse or FEM recalculation",
+    "full_raw_signal_payload": "unchanged",
+    "full_geometry_payload": "unchanged",
+    "solution_values": "unchanged",
+    "numerical_figure_data_unchanged": 8,
+    "ct_images_identical": 2,
+    "fixed_h120_equals_full_profile_point": "exact_all_three_140mm_references",
+    "fem_mesh_convergence": "not_passed",
+    "quantitative_fem_inversion_allowed": false
+  },
+  "scientific": {
+    "status": "method_development_not_validated",
+    "two_layer_model_scope": "lateral_assemblies_only",
+    "ttrkg_model": "separate_individual_spatial_FEM",
+    "diagnostics_scope": "deliberate_wrong_input_substitution_not_a_TTRKG_model",
+    "working_lateral_records": [
+      "004",
+      "007",
+      "008",
+      "009",
+      "010"
+    ],
+    "008_010_role_assignment": "explicit_continuation_assumption",
+    "late_ttrkg_variant": "unresolved_1x1_or_1x4",
+    "h_definition": "effective_plane_layer_thickness_not_electrode_spacing_or_validated_CT_depth",
+    "h_profile_definition": "24_fixed_h_points_5_10_to_120_mm_with_rho_refit_at_each_point",
+    "fixed_h_definition": "rho_fit_with_h_constant_including_all_withheld_size_folds"
+  },
+  "language": {
+    "status": "passed",
+    "reviewer": "Codex model",
+    "mode": "semantic_full_text_final_review",
+    "review_after_last_reader_change": true,
+    "reviewed_prose_sha256": "3f983c1e6acec5af59a5cf1980ef988f83068f64c0c38b9a1bbfa78dd12d6f76",
+    "headings_paragraphs_formulas_tables_captions_and_transitions_reviewed": true,
+    "visible_and_dynamic_control_labels_reviewed": true,
+    "scientific_headings_and_technical_scope": "passed",
+    "derived_objects_defined": "passed",
+    "reader_facing_clarity": "passed",
+    "version_history_and_outgoing_notebook_references": "absent",
+    "physical_assembly_labels": "used_instead_of_recorded_channel_labels",
+    "encoding": "utf8",
+    "findings": []
+  },
+  "release": {
+    "reader_revision_completed": true,
+    "methodology_validated": false,
+    "release_ready": false,
+    "open_check": "camera_behavior_in_real_browser"
+  }
+}

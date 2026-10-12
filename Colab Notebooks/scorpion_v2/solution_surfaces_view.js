@@ -3,10 +3,17 @@ const D=solutionPayload, colors=['#155da0','#ef8531','#3b9746','#b34444','#8154a
 function createViewer(index){
 const root=document.getElementById('solution-panel-'+index),control=name=>root.querySelector('[data-control="'+name+'"]');
 const select=control('case'),slider=control('h'),box=control('assemblies');
+const diagnostic=control('diagnostic'),diagnosticSelect=control('diagnostic-case');
 const plot=document.getElementById(['solution-curves','solution-surfaces','solution-slice'][index]);
 let ci=0,hi=D.h.indexOf(20),enabled=D.cases[0].assemblies.map(()=>true),ready=false;
 let queue=Promise.resolve();slider.max=D.h.length-1;slider.value=hi;
-D.cases.forEach((c,i)=>select.add(new Option(c.label,i)));
+if(diagnostic){
+ D.cases.forEach((c,i)=>{
+  if(c.channel===3)select.add(new Option(c.state==='inhale'?'Вдох':'Выдох',i));
+  else diagnosticSelect.add(new Option(c.label,i));
+ });
+ ci=Number(select.value);diagnosticSelect.disabled=true;
+}else D.cases.forEach((c,i)=>select.add(new Option(c.label,i)));
 const fmt=v=>Number(v).toLocaleString('ru-RU',{maximumFractionDigits:4});
 function curve(item,hindex){
  const k=D.sizes.indexOf(item.size_mm),y=D.cases[ci].observations[D.cases[ci].assemblies.indexOf(item)];
@@ -62,7 +69,7 @@ function lineKey(){
  row(['Цвет и вид','Наблюдение','Что означает линия, поверхность или метка']);
  cc.assemblies.forEach((item,i)=>{
   const kind=index===1?'Поверхность':item.reference?'Сплошная толстая линия':'Штриховая линия';
-  row([kind+(enabled[i]?' · показана':' · скрыта'),item.label+' · BEI'+item.channel+' · Z = '+fmt(cc.observations[i])+' Ом',
+  row([kind+(enabled[i]?' · показана':' · скрыта'),item.label+(D.physical_lead_labels?'':' · BEI'+item.channel)+' · Z = '+fmt(cc.observations[i])+' Ом',
    'Решения Zмод(ρ₁, ρ₂, h) = Zнабл'+(index===1?' по всей сетке h.':' при h = '+fmt(D.h[hi])+' мм.')+' '+(item.reference?'Входит в совместную подгонку пяти размеров.':'Дополнительное наблюдение; не входит в совместную подгонку.')],colors[i]);
  });
  row(['Чёрные точки',control('pairs').checked?'Попарные пересечения показаны':'Попарные пересечения скрыты','Совпадение решений двух наблюдений'+(index===1?' в пространстве ρ₁, ρ₂, h.':' при выбранном h.')+' Не означает согласия всех сборок.'],'#222');
@@ -92,6 +99,13 @@ async function init(){
  ready=true;await update();
  const refresh=()=>{queue=queue.then(update).catch(e=>{control('status').textContent='Ошибка представления: '+e.message;});};
  select.onchange=()=>{ci=Number(select.value);checks();refresh();};
+ if(diagnostic){
+  const chooseCase=()=>{
+   select.disabled=diagnostic.checked;diagnosticSelect.disabled=!diagnostic.checked;
+   ci=Number(diagnostic.checked?diagnosticSelect.value:select.value);checks();refresh();
+  };
+  diagnostic.onchange=chooseCase;diagnosticSelect.onchange=chooseCase;
+ }
  slider.onchange=()=>{hi=Number(slider.value);refresh();};
  const stepH=delta=>{hi=Math.max(0,Math.min(D.h.length-1,Number(slider.value)+delta));slider.value=hi;refresh();};
  control('h-prev').onclick=()=>stepH(-1);control('h-next').onclick=()=>stepH(1);
