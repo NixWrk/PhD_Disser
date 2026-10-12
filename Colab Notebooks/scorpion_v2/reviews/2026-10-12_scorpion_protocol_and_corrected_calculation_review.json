@@ -1,0 +1,210 @@
+{
+  "schema": "scorpion_protocol_and_corrected_calculation_review_v1",
+  "date": "2026-10-12",
+  "reader_artifacts": [
+    {
+      "path": "Colab Notebooks/scorpion_v2/10.00_Эксперимент_и_сигналы_Георгия_Scorpion_v2.html",
+      "sha256": "0c7354e00f9de718f77705bdaee3d181474135a284eed10afd68df82c9d91d38",
+      "bytes": 198019067
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/10.00_Эксперимент_и_сигналы_Георгия_Scorpion_v2.ipynb",
+      "sha256": "ee309160588ad014558ae1f140ba8983a9266a4d4675aadebc60a8bdee40a704",
+      "bytes": 197906006
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/10.00_Эксперимент_и_сигналы_Георгия_Scorpion_v2.md",
+      "sha256": "e89c0a2fc7025944197f3b1c74a42514283384d8f7abf2174013eaefde432731",
+      "bytes": 30151
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/10.00_Эксперимент_и_сигналы_Георгия_Scorpion_v2_для_руководителя.html",
+      "sha256": "8f31705e24f6ff82ea66ce5c9bc6c9e747914fe0b3c7e6b9d421e049656aad73",
+      "bytes": 55335221
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.20_Первый_проход_боковых_сборок_Scorpion_v2.html",
+      "sha256": "a26204e9977bb8ecbf720536fdf7cb3e8ec591c2f43d2774418998fb38cd600e",
+      "bytes": 5615426
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.20_Первый_проход_боковых_сборок_Scorpion_v2.ipynb",
+      "sha256": "7897f6deaeb5ce36e3cdd82d179620e5589afe8cb25f097f85ceea1d4bb341e5",
+      "bytes": 5506358
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.20_Первый_проход_боковых_сборок_Scorpion_v2.md",
+      "sha256": "f2f77489ef37afb3809df2e3ff0908675dd87b56c9f420afdb75ff1ef5a393bb",
+      "bytes": 24309
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.20_Пояснение_расчёта_и_изменений_12_10_2026.md",
+      "sha256": "4b66cda74015cc314b2f998e24515af5a93095753aa11baa8499e00a1b350c63",
+      "bytes": 12705
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.21_Множество_решений_двуслойной_модели_Scorpion_v2.html",
+      "sha256": "e19bf9425a9e7a83a24284a0148675b5d735ba6e0a97c23d57f72baa8a0dcc37",
+      "bytes": 18893229
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.21_Множество_решений_двуслойной_модели_Scorpion_v2.ipynb",
+      "sha256": "a1d13c0a68cb60e0257c709e9ef6eb77233ceaf10280540b6461d896839c8ba4",
+      "bytes": 18933323
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.21_Множество_решений_двуслойной_модели_Scorpion_v2.md",
+      "sha256": "15cede58ddff90671244e26b935676f02eb252bb22a786ca9584ffa5df7a3a04",
+      "bytes": 32982
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.24_Пересчёт_боковых_сборок_и_проверка_прогноза_Георгия_Scorpion_v2.html",
+      "sha256": "20c3fd8943bf3c370dcc53a71a7dd3207c2e06cb4a4a679e1d5cc552cafe328b",
+      "bytes": 5407131
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.24_Пересчёт_боковых_сборок_и_проверка_прогноза_Георгия_Scorpion_v2.ipynb",
+      "sha256": "d1579fbba5ae00f22723edab3e33862befc2f182ad9656987615dc237d77d180",
+      "bytes": 5286681
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.24_Пересчёт_боковых_сборок_и_проверка_прогноза_Георгия_Scorpion_v2.md",
+      "sha256": "46c9047d77cadf439cbb9fae11fb7f6a3970cea956d8822f6d90f68cc31c2a18",
+      "bytes": 5215
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.25_Совместные_монтажи_и_готовность_подбора_тканей_Георгия_Scorpion_v2.html",
+      "sha256": "835bc855a5934c1daaeb8c9f726ce4d02ffe005017adc57febf9bd8bab43010a",
+      "bytes": 5210663
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.25_Совместные_монтажи_и_готовность_подбора_тканей_Георгия_Scorpion_v2.ipynb",
+      "sha256": "6478408df42455fa3c6333e36a14f9d1dc5c223868eec68199a4cd27ec293edd",
+      "bytes": 5088757
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.25_Совместные_монтажи_и_готовность_подбора_тканей_Георгия_Scorpion_v2.md",
+      "sha256": "82c4621c2e1e9086081cd126343ee2359f056b095485aac2189607d8dabbefb4",
+      "bytes": 10936
+    }
+  ],
+  "task_contract": {
+    "subject": "Georg",
+    "scope": "Protocol revision, separate comparisons, concise supervisor export, corrected planar inversion and paired FEM preflight",
+    "downstream_requested": [
+      "joint four-resistivity estimation",
+      "TEPS sensitivities at fitted baseline",
+      "equivalent heart replacement"
+    ],
+    "downstream_completed": false
+  },
+  "technical": {
+    "reader_source_excluded": true,
+    "notebook_error_outputs": 0,
+    "python_tests_passed": 18,
+    "matlab_tests_passed": 4,
+    "javascript_syntax": "passed",
+    "original_33_20_cells_and_outputs_preserved": true,
+    "interactive_render": "not verified: computer-use browser policy rejected file://",
+    "camera_preservation": "source reviewed; actual final scene not tested"
+  },
+  "computational": {
+    "paired_forward_cases": 17,
+    "finite_contact_qc_passed": true,
+    "own_source_quadrature_passed": true,
+    "mesh_controls": [
+      {
+        "Отведение": "ТТРКГ",
+        "Сетки, мм": "6 → 4",
+        "Первая сетка: Z, Ом": 95.11673387747963,
+        "Следующая сетка: Z, Ом": 96.99664567383823,
+        "Разность, Ом": 1.8799117963585985,
+        "Допуск, Ом": 0.5049832283691912,
+        "Критерий пройден": false
+      },
+      {
+        "Отведение": "Боковая 140 мм",
+        "Сетки, мм": "6 → 4",
+        "Первая сетка: Z, Ом": 61.23458228461572,
+        "Следующая сетка: Z, Ом": 62.01107121785223,
+        "Разность, Ом": 0.7764889332365144,
+        "Допуск, Ом": 0.3300553560892612,
+        "Критерий пройден": false
+      },
+      {
+        "Отведение": "ТТРКГ",
+        "Сетки, мм": "4 → 3",
+        "Первая сетка: Z, Ом": 96.99664567383823,
+        "Следующая сетка: Z, Ом": 95.61538753719773,
+        "Разность, Ом": 1.381258136640497,
+        "Допуск, Ом": 0.4980769376859887,
+        "Критерий пройден": false
+      },
+      {
+        "Отведение": "Боковая 140 мм",
+        "Сетки, мм": "4 → 3",
+        "Первая сетка: Z, Ом": 62.01107121785223,
+        "Следующая сетка: Z, Ом": 63.2396165873917,
+        "Разность, Ом": 1.228545369539468,
+        "Допуск, Ом": 0.3361980829369585,
+        "Критерий пройден": false
+      }
+    ],
+    "common_mesh_convergence_passed": false,
+    "common_integration_comparison_passed": false,
+    "quantitative_inversion_allowed": false,
+    "planar_withheld_pulse_error_primary_row_percent": [
+      39.421,
+      303.6
+    ]
+  },
+  "scientific": {
+    "late_ttrkg_variant_identified": false,
+    "late_scenarios": [
+      "1x1",
+      "1x4"
+    ],
+    "author_confirmed_TEPS_AEPS_channels": {
+      "TTRKG": 1,
+      "companion": 2
+    },
+    "tissues": {
+      "free": [
+        "soft_background",
+        "lung",
+        "heart",
+        "fat"
+      ],
+      "fixed": [
+        "bone"
+      ]
+    },
+    "independent_physiological_validation": false,
+    "fitted_tissue_parameters_released": false,
+    "annotations_accepted": false,
+    "annotations_sha256": "b23610a3c1d01600f4f26edc8f183f7c545f42ac6c249d428af3d11c62d945d4",
+    "viewer_annotation_sha256": "b23610a3c1d01600f4f26edc8f183f7c545f42ac6c249d428af3d11c62d945d4"
+  },
+  "language": {
+    "status": "partial",
+    "new_and_revised_reader_text_review": "passed",
+    "reviewer": "model",
+    "mode": "semantic sequential review after last reader changes",
+    "reviewed_scope": [
+      "complete 10.00 prose and control labels",
+      "supervisor prose and shared comparison labels",
+      "complete 33.20 explanation supplement",
+      "revised 33.21 prose",
+      "complete 33.24 prose, table and plot labels",
+      "complete 33.25 prose, table and plot labels"
+    ],
+    "historical_unchanged_outputs": "not certified by this language review",
+    "findings": []
+  },
+  "release_decision": {
+    "local_exploratory_reports_available": true,
+    "interactive_view_fully_verified": false,
+    "overall_request_completed": false,
+    "tissue_parameters_released_for_downstream": false
+  }
+}
