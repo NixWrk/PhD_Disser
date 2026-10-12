@@ -108,15 +108,24 @@ class DisplayChecks(unittest.TestCase):
                 self.assertTrue(r['montage']['author_reconstruction'])
                 self.assertTrue(r['montage']['new_ct_projection'])
                 self.assertIsNone(r['montage']['placement_accuracy_mm'])
-                self.assertFalse(r['montage']['lateral'] or r['montage']['arm'])
-            elif rid=='018':self.assertEqual(r['montage']['mapping'],'unknown')
+                self.assertFalse(r['montage']['lateral'])
+                self.assertEqual([len(g) for g in r['montage']['arm']],[1,1,1,1])
+                self.assertEqual(r['channel_assignment']['physical_channel_roles'],{'1':'ttrkg','2':'tepc'})
+            elif rid=='018':
+                self.assertEqual(r['montage']['mapping'],'aepc_unlocalized')
+                self.assertEqual([len(g) for g in r['montage']['arm']],[1,1,1,1])
+                self.assertEqual(r['channel_assignment']['physical_channel_roles'],{'1':'ttrkg','2':'aepc'})
             if rid in ('006','011'):
                 self.assertEqual(len(r['montage']['lateral']),4)
                 self.assertEqual(len(r['montage']['perpendicular']),4)
             if rid in ('001','002'):
                 self.assertEqual([len(g) for g in r['montage']['arm']],[1,1,1,1])
                 self.assertEqual(len(r['montage']['lateral']),4)
-                self.assertFalse(r['montage']['single_U_angle_author_confirmed'])
+                self.assertTrue(r['montage']['single_U_angle_author_confirmed'])
+            if rid in ('007','008','009','010'):
+                self.assertEqual(r['montage']['ttrkg_configuration']['status'],'unresolved_hypothesis')
+                self.assertEqual([len(g) for g in r['montage']['arm_alternatives']['1x1']],[1,1,1,1])
+                self.assertEqual([len(g) for g in r['montage']['arm_alternatives']['1x4']],[1,4,4,1])
             self.assertEqual(len(r['detail_t']),5*r['fs'])
             np.testing.assert_allclose(np.diff(r['detail_t']),1/r['fs'],atol=1e-6)
             self.assertEqual(r['psd_frequency_hz'][0],0.)

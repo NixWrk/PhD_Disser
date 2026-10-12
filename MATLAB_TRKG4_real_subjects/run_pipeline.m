@@ -13,6 +13,11 @@ addpath(fullfile(project_root, 'src'));
 addpath(fullfile(project_root, 'vendor_stl_eidors'));
 
 profile_index=find(cellfun(@(x)(ischar(x)||isstring(x)) && strcmpi(string(x),"Profile"),varargin),1);
+if ~isempty(profile_index) && profile_index < numel(varargin) && strcmpi(string(varargin{profile_index+1}),"georg_paired_montages")
+    args=varargin;args(profile_index:profile_index+1)=[];
+    report=run_georg_paired_montages(args{:});
+    return;
+end
 if ~isempty(profile_index) && profile_index < numel(varargin) && strcmpi(string(varargin{profile_index+1}),"georg_ct_model")
     args=varargin;args(profile_index:profile_index+1)=[];
     output_index=find(cellfun(@(x)(ischar(x)||isstring(x)) && strcmpi(string(x),"OutputDir"),args),1);

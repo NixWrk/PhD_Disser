@@ -3,9 +3,10 @@ const D=experimentPayload,recordControl=document.getElementById('experiment-reco
 const ct=document.getElementById('experiment-ct'),signals=document.getElementById('experiment-signals');
 const notch=document.getElementById('experiment-notch'),band=document.getElementById('experiment-band');
 const channelVisible=[1,2].map(ch=>document.getElementById('experiment-show-channel-'+ch));
-const leadColors={ttrkg:'#176aaf',lateral_horizontal:'#e47823',lateral_vertical:'#8154a4',tepc:'#25866c',unknown:'#667085'};
-const leadNames={ttrkg:'ТТРКГ',lateral_horizontal:'Боковая горизонтальная',lateral_vertical:'Боковая вертикальная',unknown:'Неустановленное отведение'};
+const leadColors={ttrkg:'#176aaf',lateral_horizontal:'#e47823',lateral_vertical:'#8154a4',tepc:'#25866c',aepc:'#bc7337',unknown:'#667085'};
+const leadNames={ttrkg:'ТТРКГ',lateral_horizontal:'Боковая горизонтальная',lateral_vertical:'Боковая вертикальная',tepc:'ТЕПС',aepc:'АЕПС',unknown:'Неустановленное отведение'};
 const sampling=document.getElementById('experiment-sampling');
+const armVariant=document.getElementById('experiment-ttrkg-variant');
 let sampleRecord=null,sampleFields=null;
 const phaseColors=['#d7ecd9','#d4e5ff','#f6ead0','#eadcf5'];
 const charts=[
@@ -27,7 +28,7 @@ const lateralChannel=()=>{
 };
 function physicalRole(ch){
  const r=D.records[ri],m=r.montage;
- if(history===0)return r.channel_assignment.physical_channel_roles[String(ch)];
+ if(history===0||m.mapping==='tepc'||m.mapping==='aepc_unlocalized')return r.channel_assignment.physical_channel_roles[String(ch)];
  if(m.mapping==='unknown'||m.mapping==='tepc')return 'unknown';
  const lateral=lateralChannel();
  if(m.mapping==='cross')return ch===lateral?'lateral_horizontal':'lateral_vertical';
@@ -36,7 +37,9 @@ function physicalRole(ch){
 }
 async function fullSamples(){
  const r=D.records[ri];if(sampleRecord===r.record_id)return;
- const p=r.full_samples,bytes=Uint8Array.from(atob(p.data),v=>v.charCodeAt(0));
+ const p=r.full_samples;
+ if(!p){sampleRecord=r.record_id;sampleFields=null;return;}
+ const bytes=Uint8Array.from(atob(p.data),v=>v.charCodeAt(0));
  const raw=await new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'))).arrayBuffer();
  if(raw.byteLength!==p.rows*p.fields.length*8)throw Error('Размер массива отсчётов не совпадает');
  const digest=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',raw)),v=>v.toString(16).padStart(2,'0')).join('');
@@ -64,7 +67,8 @@ function geometry(){
   marker:{size:7,color:leadColors[lead]},textposition:'top center',hovertemplate:name+'<br>x=%{x:.2f}; y=%{y:.2f}; z=%{z:.2f} мм<extra></extra>'});
  add(m.lateral,'lateral_horizontal',['A','M','N','B'],'Боковая горизонтальная сборка');
  add(m.perpendicular,'lateral_vertical',['A′','M′','N′','B′'],'Боковая вертикальная сборка');
- const current=[],potential=[];m.arm.forEach((g,i)=>(i===0||i===3?current:potential).push(...g));
+ const current=[],potential=[];const arms=m.arm_alternatives?m.arm_alternatives[armVariant.value]:m.arm;
+ arms.forEach((g,i)=>(i===0||i===3?current:potential).push(...g));
  add(current,'ttrkg',current.map(()=> 'I'),'Токовые контакты ТТРКГ');add(potential,'ttrkg',potential.map(()=> 'U'),'Измерительные контакты ТТРКГ');
  add(m.tepc||[],'tepc',['I+','U+','U−','I−'],'ТЕПС: авторская реконструкция на новом контуре');return traces;
 }
@@ -74,7 +78,10 @@ function curveData(chart){
   const key=selected?filterKey():'00',kind=chart.compare?(selected?'ecg_selected':'ecg_raw'):chart.kind;
   let x,y;
   if(chart.spectral){x=r.psd_frequency_hz;y=r.ecg_variants[key][ch-1].psd;}
-  else if(chart.compare){const [a,b]=r.detail_indices;x=sampleFields.time_s.subarray(a,b);y=sampleFields['ecg_'+key+'_'+ch].subarray(a,b);}
+  else if(chart.compare){
+   if(r.full_samples){const [a,b]=r.detail_indices;x=sampleFields.time_s.subarray(a,b);y=sampleFields['ecg_'+key+'_'+ch].subarray(a,b);}
+   else{x=r.detail_t;y=r.ecg_variants[key][ch-1].detail_y;}
+  }
   else if(sampling.value==='full'){x=sampleFields.time_s;y=sampleFields[kind==='ecg_selected'?'ecg_'+filterKey()+'_'+ch:kind+'_'+ch];}
   else if(kind==='ecg_selected'){const t=r.ecg_variants[filterKey()][ch-1];x=t.t;y=t.y;}
   else {const t=r.traces.find(t=>t.kind===kind&&t.channel===ch);x=t.t;y=t.y;}
@@ -97,11 +104,14 @@ function phaseDecor(window=null){
 }
 function text(){
  const r=D.records[ri],m=r.montage,channel=lateralChannel();
- document.getElementById('experiment-description').textContent=r.label+'; рабочая частота отсчётов '+r.fs+' Гц; последний отсчёт '+r.duration.toLocaleString('ru-RU',{maximumFractionDigits:3})+' с. Цвета отведений: ТТРКГ — синий; боковая горизонтальная — оранжевый; боковая вертикальная — фиолетовый. '+(sampling.value==='full'?'Отображаются все '+r.full_samples.rows+' отсчётов каждого сигнала.':'Быстрый обзор: сохранены экстремумы 900 временных интервалов. Увеличение не возвращает пропущенные отсчёты; для формы сигнала выберите все отсчёты.');
+ document.getElementById('experiment-description').textContent=r.label+'; рабочая частота отсчётов '+r.fs+' Гц; последний отсчёт '+r.duration.toLocaleString('ru-RU',{maximumFractionDigits:3})+' с. Цвета отведений: ТТРКГ — синий; боковая горизонтальная — оранжевый; боковая вертикальная — фиолетовый. '+(sampling.value==='full'?'Отображаются все '+r.full_samples.rows+' отсчётов каждого сигнала.':'Быстрый обзор: сохранены экстремумы 900 временных интервалов. Увеличение не возвращает пропущенные отсчёты. '+(r.full_samples?'Для формы сигнала выберите все отсчёты.':'Все отсчёты доступны в полном отчёте.'));
  charts.forEach(chart=>chart.curves.forEach(({ch,selected,input})=>{input.parentElement.style.color=leadColors[physicalRole(ch)];input.parentElement.lastChild.textContent=' '+leadNames[physicalRole(ch)]+' · канал '+ch+(chart.compare?(selected?' · выбранные фильтры':' · исходная ЭКГ'):'');}));
  const rid=Number(r.record_id.slice(-3));
- const roles=history===0?(rid===5?'005: ТТРКГ — канал 1; вертикальная боковая — канал 2. Подтверждение автора.':rid===6?'006: горизонтальная боковая — канал 1; сохранённая вертикальная — канал 2. Подтверждение автора.':(rid>=1&&rid<=4)||rid===7?'ТТРКГ — канал '+(3-channel)+'; боковая — канал '+channel+'. Подтверждение автора.':rid>=8&&rid<=11?'Продолжение схемы 007: боковая горизонтальная — канал 1; второй канал — '+(rid===11?'вертикальная ось креста.':'ТТРКГ.')+' Сохранение номера в этом блоке принято по описанию протокола.':'Номера ТЕПС/АЕПС не подтверждены; сигналы обозначены как неустановленные отведения.'):'Прежний диагностический сценарий; боковой канал '+channel+'.';
- document.getElementById('experiment-localisation').textContent=(m.mapping==='unknown'?'Монтаж не локализован на КТ. ':m.mapping==='tepc'?'ТЕПС: ваша реконструкция перенесена на исправленный КТ-контур ближайшей проекцией. Точность установки неизвестна. ':m.mapping==='test_horizontal'?'Тест: 1×1 на руках и горизонтальная боковая 140 мм. ':'Номинальная геометрия; координаты установки не измерены. ')+roles+((rid===1||rid===2)?' U сверху — сценарий с пока не подтверждённым углом.':'');
+ const roles=history===0||rid>=12?(rid>=12?'ТТРКГ 1×1 — канал 1; '+(rid===18?'АЕПС':'ТЕПС')+' — канал 2. Подтверждение автора 12.10.2026.':rid===5?'005: ТТРКГ — канал 1; поперечная боковая — канал 2.':rid===6?'006: продольная боковая — канал 1; сохранённая поперечная — канал 2.':(rid>=1&&rid<=4)||rid===7?'ТТРКГ — канал '+(3-channel)+'; боковая — канал '+channel+'. Подтверждение автора.':rid>=8&&rid<=11?'Боковая продольная — канал 1; второй канал — '+(rid===11?'поперечная ось креста.':'ТТРКГ.')+' Продолжение номера принято по протоколу.':''):'Прежний диагностический сценарий; боковой канал '+channel+'.';
+ const configuration=m.ttrkg_configuration;
+ const variant=configuration?(' ТТРКГ '+(m.arm_alternatives?armVariant.value:configuration.variant).replace('x','×')+(m.arm_alternatives?' — проверяемая гипотеза.':configuration.status==='author_confirmed'?' — подтверждение автора.':' — предположение по последовательности.')):'';
+ armVariant.disabled=!m.arm_alternatives;
+ document.getElementById('experiment-localisation').textContent=(m.mapping==='aepc_unlocalized'?'Координаты АЕПС пока не восстановлены; показаны контакты ТТРКГ. ':m.mapping==='tepc'?'ТЕПС: авторская реконструкция на исправленном КТ-контуре; точность установки неизвестна. ':'Номинальные координаты установки. ')+roles+variant;
  document.getElementById('experiment-filter-description').textContent='Сейчас: '+({'00':'все фильтры отключены — исходная ЭКГ','10':'только режекторы 50/100/150 Гц','01':'только полоса 0,5–40 Гц','11':'режекторы 50/100/150 Гц, затем полоса 0,5–40 Гц'}[filterKey()])+'.';
  const phases=r.breathing.phases.map((p,i)=>`<span style="background:${phaseColors[i]};padding:4px 7px">${p.label}</span>`).join(' → ');
  document.getElementById('experiment-phase-description').innerHTML=(phases||'Дыхательные режимы не размечены.')+'<br>Кандидатная разметка, не принята автором. Серые полосы: неоднозначность границ; пунктир: выбранная кандидатная граница.';
@@ -135,7 +145,7 @@ async function init(){
   xaxis:{title:{text:chart.spectral?'f, Гц':'t, с'}},yaxis:{title:{text:chart.unit},...(chart.spectral?{type:'log'}:{})},showlegend:false,margin:{t:80,b:55,l:80,r:15}},config);
  ct.on('plotly_relayout',()=>{ct.dataset.camera=JSON.stringify(ct._fullLayout.scene.camera);});ready=true;await update();
  const refresh=()=>{queue=queue.then(update).catch(e=>{document.getElementById('experiment-description').textContent='Ошибка представления: '+e.message;});};
- recordControl.onchange=()=>{ri=Number(recordControl.value);refresh();};channelControl.onchange=()=>{history=Number(channelControl.value);refresh();};notch.onchange=band.onchange=sampling.onchange=refresh;
+ recordControl.onchange=()=>{ri=Number(recordControl.value);refresh();};channelControl.onchange=()=>{history=Number(channelControl.value);refresh();};notch.onchange=band.onchange=sampling.onchange=armVariant.onchange=refresh;
  channelVisible.forEach(el=>el.onchange=refresh);charts.forEach(c=>{c.show.onchange=refresh;c.curves.forEach(t=>t.input.onchange=refresh);});
 }
 init().catch(e=>{document.getElementById('experiment-description').textContent='Ошибка представления: '+e.message;});

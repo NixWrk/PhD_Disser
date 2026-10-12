@@ -31,6 +31,8 @@
 # Preserve the bytes of Scorpion scientific notebooks and reader exports.
 "Colab Notebooks/scorpion_v2/33.20_*" -text -whitespace
 "Colab Notebooks/scorpion_v2/33.21_*" -text -whitespace
+"Colab Notebooks/scorpion_v2/33.24_*" -text -whitespace
+"Colab Notebooks/scorpion_v2/33.25_*" -text -whitespace
 "Colab Notebooks/scorpion_v2/20.20_*" -text -whitespace
 "Colab Notebooks/scorpion_v2/33.22_*" -text -whitespace
 "Colab Notebooks/scorpion_v2/10.00_*" -text -whitespace
