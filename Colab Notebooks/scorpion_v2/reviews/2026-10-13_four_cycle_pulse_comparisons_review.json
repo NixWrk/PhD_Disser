@@ -1,0 +1,117 @@
+{
+  "date": "2026-10-13",
+  "scope": "Four consecutive candidate ECG intervals during deep inspiration, Georg Scorpion v2",
+  "reader_artifacts": [
+    {
+      "name": "33.27_Эксперимент_модели_и_проверки_Георгия_Scorpion_v2.ipynb",
+      "sha256": "bf307e3928405534ccc35223921597dd272738645f9893b108eb2eb64728091b"
+    },
+    {
+      "name": "33.27_Эксперимент_модели_и_проверки_Георгия_Scorpion_v2.html",
+      "sha256": "ccbe2b48fb36eb800c8feba185ba4bff68e7211c6821655d3a23b2b5d13629ea"
+    },
+    {
+      "name": "33.27_Эксперимент_модели_и_проверки_Георгия_Scorpion_v2.md",
+      "sha256": "05f6a9202f3e7ce9acaf650ccb73714265e5a8c6b87e164adf1a304b83fc723d"
+    }
+  ],
+  "technical": {
+    "saved_code_cells": 22,
+    "freshly_executed_cells": 5,
+    "preserved_outputs_identical_to_HEAD": 17,
+    "error_outputs": 0,
+    "new_plotly_trace_counts": {
+      "lateral": 15,
+      "cross": 8,
+      "ttrkg": 45,
+      "tepc": 18
+    },
+    "code_free_html": true,
+    "full_rate_data_equal_to_verified_cache": true,
+    "prose_sha256": "be93f9d832534ba34a46543792779ee710f9e9fdfe8f48ca0e57def2733c8e4b",
+    "unit_tests_passed": 7,
+    "plots_present": [
+      "lateral",
+      "cross",
+      "ttrkg",
+      "tepc"
+    ],
+    "scale_control_specifications_verified": true,
+    "actual_browser_rendering": "not_verified",
+    "static_plot_previews": "four_groups_inspected"
+  },
+  "computational": {
+    "pulse_curves_by_group": {
+      "lateral": 5,
+      "cross": 4,
+      "ttrkg": 15,
+      "tepc": 6
+    },
+    "sampling_hz": {
+      "005_006": 400,
+      "other_records": 1000
+    },
+    "signal_source": "existing whole-record 0.7–12 Hz band",
+    "units": "milliohms; ECG millivolts; seconds",
+    "amplitude_normalization": false,
+    "time_warping": false,
+    "cycle_averaging": false,
+    "boundary_events_per_four_cycles": 5,
+    "baseline_or_FEM_recalculation": false,
+    "existing_signals_geometry_and_model_outputs": "17 code-cell outputs identical to published HEAD"
+  },
+  "scientific": {
+    "status": "exploratory_hypothesis_not_validated",
+    "annotations": "pending_manual_review preserved",
+    "main_lateral_records": [
+      "004",
+      "007",
+      "008",
+      "009",
+      "010"
+    ],
+    "008_010_assignment": "continuation_assumption",
+    "late_ttrkg_variant": "unresolved_1x1_or_1x4",
+    "tepc6_author_approximate_interval_s": [
+      22,
+      30
+    ],
+    "tepc6_display_interval_s": [
+      24.318,
+      28.383
+    ],
+    "author_end_time_interpretation": "301 interpreted as a typo for 30; communicated explicitly; selected window ends before either 30 or 30.1",
+    "tepc6_scope": "display only; no quantitative annotation replacement",
+    "cross60": "34.5–38.5 s; both ECG fields unreliable; no claimed four cycles",
+    "cross60_author_agreed": true,
+    "test001": "no reconstructed deep-inspiration hold; excluded from pulse comparison"
+  },
+  "language": {
+    "status": "passed",
+    "reviewer": "Codex model",
+    "mode": "semantic_full_text_final_review",
+    "review_after_last_reader_change": true,
+    "reviewed_prose_sha256": "05f6a9202f3e7ce9acaf650ccb73714265e5a8c6b87e164adf1a304b83fc723d",
+    "all_headings_paragraphs_formulas_captions_and_transitions_reviewed": true,
+    "tables_and_visible_controls_reviewed": true,
+    "plot_labels_and_new_scale_controls_reviewed": true,
+    "reader_facing_clarity": "passed",
+    "uncertainty_and_scientific_scope_preserved": true,
+    "encoding": "utf8",
+    "findings": [],
+    "normalized_prose_sha256": "be93f9d832534ba34a46543792779ee710f9e9fdfe8f48ca0e57def2733c8e4b"
+  },
+  "release": {
+    "reader_revision_completed": true,
+    "methodology_validated": false,
+    "release_ready": false,
+    "open_checks": [
+      "real_browser_camera_and_plot_interactions"
+    ]
+  },
+  "source_contract_sha256": "dfb4e2dfd5670483166e7d8eb4c4f92ca30b4c279cd589f5cb212e323704536d",
+  "code_sha256": {
+    "generator": "b02e60f6761004793dfc471d8d8e3cc298d0cfbaa58184fb09d321a9cc54348b",
+    "four_cycles": "ba30a456a3b1fe11be0d6b2ebea15970b451872181c8d623cf73746483542b97"
+  }
+}

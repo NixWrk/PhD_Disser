@@ -168,9 +168,11 @@ def lateral_widget():
 def sources():
     import lateral_thickness_extension as T
     import build_lateral_solution_surfaces_report as S
+    import four_cycle_comparisons as P4
     paths = [T.MODEL / 'ct_longitudinal_sections.png', T.MODEL / 'ct_skin_aligned_section.png',
              T.MODEL / 'lung_depth_profile.local.json', T.OUT / 'contract.local.json',
-             S.OUT / 'input_contract.local.json', S.OUT / 'results.local.json']
+             S.OUT / 'input_contract.local.json', S.OUT / 'results.local.json',
+             P4.OUT / 'contract.local.json', P4.OUT / 'segments.local.json', P4.AUTHOR_HINT]
     return [dict(path=path.relative_to(ROOT).as_posix(), sha256=sha(path)) for path in paths]
 
 
@@ -179,7 +181,7 @@ def cells():
     md(r'''# Эксперимент, модели и проверки Георгия: Scorpion v2
 
 **Георг — псевдоним участника. Регистрация: МГТУ, 05.10.2026.
-Частота зондирования: 100 кГц. Сводная редакция: 12.10.2026.**
+Частота зондирования: 100 кГц. Сводная редакция: 13.10.2026.**
 
 Цель разбора — установить, какие измерения можно использовать для оценки
 тканевых вкладов в ТТРКГ и какие проверки нужны перед расчётом функций сердца.
@@ -202,7 +204,8 @@ def cells():
 
 1. [Постановка и происхождение входов](#question)
 2. [Протокол, электроды и сигналы](#experiment)
-3. [Сравнение ТТРКГ и боковых сборок](#comparisons)
+3. [Сравнение ТТРКГ и боковых сборок](#comparisons),
+   [пульсовые сигналы на четырёх циклах](#four-cycles)
 4. [Геометрия КТ и толщина грудной стенки](#anatomy)
 5. [Двуслойная модель боковых сборок](#method)
 6. [Размерный ряд и выбор толщины слоя до 120 мм](#thickness)
@@ -221,11 +224,13 @@ from build_scorpion_integrated_report import (show_figure, show_table, protocol_
     experiment_widget, lateral_widget, recording_table)
 import build_scorpion_experiment_viewer as V
 import scorpion_comparisons as C
+import four_cycle_comparisons as P4
 import lateral_pilot_revision as R24
 import lateral_thickness_extension as R26
 import build_georg_paired_preflight_report as R25
 V.verify()
 C.verify()
+P4.verify()
 R24.verify()
 R26.verify()
 plan, forward, current = R25.verify()
@@ -379,6 +384,85 @@ display(HTML("""<style>
 он явно меняет соединение одних и тех же физических площадок.
 ''')
     code('show_figure(C.ecg_figure())')
+    md(r'''<a id="four-cycles"></a>
+### 3.4. Пульсовые сигналы на четырёх циклах при глубоком вдохе
+
+Пульсовая составляющая — часть общего импеданса, выделенная фильтром
+в полосе 0,7–12 Гц по всей записи. Она показана в миллиомах с сохранением
+знака и амплитуды. Под ней расположена ЭКГ, обработанная режекторами
+50, 100 и 150 Гц и фильтром 0,5–40 Гц. Для временной привязки используется
+отведение ЭКГ, выбранное при проверке конкретной записи; оно может относиться
+к другой одновременно установленной сборке.
+
+Четыре последовательных интервала между кандидатными событиями QRS
+ограничены пятью маркерами на ЭКГ. Из допустимых участков выбирается ближайший
+к середине кандидатной задержки на вдохе; все четыре интервала должны
+длиться от 0,45 до 1,8 с. Выбор не зависит от амплитуды импеданса.
+Первая граница совмещена с нулём времени; длительность циклов сохранена
+в секундах. Усреднение циклов, изменение знака и нормирование амплитуды
+не применяются. Кривые обрываются после четвёртого полного интервала,
+поэтому их длина по времени может различаться.
+
+**Статус сравнения.** Дыхательные интервалы и события QRS остаются
+кандидатной разметкой, без принятой ручной проверки R-зубцов. Отступы
+от неоднозначных границ задержки составляют 2 с, от краёв записи — 5 с.
+Разные сборки регистрировались последовательно: совмещение начала графиков
+служит сравнению формы, но не означает одновременность физиологических событий.
+Общий центр, контакт, состояние участника и соседние сборки могут влиять
+на различия между записями.
+
+**Рисунок 4а. Основной горизонтальный боковой ряд: 140, 120, 100, 80 и 60 мм.**
+Показаны записи 004, 007–010. Название «горизонтальная» соответствует
+основной оси в протоколе; на теле она направлена вдоль туловища.
+Для 008–010 сохранено допущение постоянства назначения монтажа после 007.
+В исходном виде видны все пять сборок. Кнопка подробного просмотра
+140–80 мм временно отключает 60 мм и увеличивает масштаб оси миллиомов;
+значения кривых остаются прежними.
+''')
+    code("show_figure(P4.figure('lateral'))")
+    md(r'''**Рисунок 4б. Кресты 140 и 60 мм: горизонтальная и вертикальная оси.**
+Две оси каждого креста записаны одновременно и показаны на общей шкале
+миллиомов внутри своего размера. Начальные масштабы 140 и 60 мм различаются;
+кнопка общей шкалы позволяет сравнить абсолютный размах между размерами.
+Для креста 140 мм выбраны четыре
+кандидатных цикла. В кресте 60 мм обе ЭКГ признаны ненадёжными, поэтому
+показан участок продолжительностью 4 с из середины кандидатной задержки
+на вдохе. Число сердечных циклов на этом участке не установлено;
+маркеры QRS и усреднение для него не строятся. Назначение осей креста
+60 мм принято по продолжению монтажа — допущение.
+''')
+    code("show_figure(P4.figure('cross'))")
+    md(r'''**Рисунок 4в. Все записи ТТРКГ с кандидатной задержкой на глубоком вдохе.**
+Показаны подтверждённые сборки 1×1, 2×2 и 1×4, повторные записи 1×1
+с ТЕПС и АЕПС, а также неопределённые варианты: предположительная 1×4
+в 005 и 1×1 либо 1×4 в 007–010. Запись 001 является коротким тестом
+без восстановленной задержки на глубоком вдохе и в это сравнение не входит.
+Легенда позволяет отдельно включать и отключать каждую запись вместе с её
+ЭКГ. Сопоставление сохраняет межзаписную изменчивость и не служит
+однозначной идентификацией позднего варианта ТТРКГ.
+
+Для ТТРКГ из записи 016 используется тот же участок, что для одновременно
+записанной ТЕПС-6: четыре цикла выбраны в ориентировочном интервале
+вдоха 22–30 с, указанном автором.
+''')
+    code("show_figure(P4.figure('ttrkg'))")
+    md(r'''**Рисунок 4г. ТЕПС-2–7 на глубоком вдохе.**
+Показаны все шесть монтажей из записей 012–017. Для ТЕПС-6 внутренний
+участок после отступов составляет только 27–29 с и не вмещает четырёх
+полных циклов. По уточнению автора задержка на вдохе занимает примерно
+22–30 с. В этом ориентировочном интервале для просмотра выбран участок
+24,318–28,383 с. Части за пределами внутреннего участка 27–29 с
+отмечены оранжевым фоном: они требуют отдельного контроля дыхательного
+состояния. Уточнение автора сохранено отдельно как экспертная оценка
+для просмотра; границы исходной кандидатной разметки не изменены.
+Малый уровень импеданса ТЕПС-7
+сохранён как наблюдение и сам по себе не доказывает отсутствие сигнала.
+
+Точные интервалы исходных записей и длительности четырёх циклов приведены
+в раскрываемой таблице. Полная дискретизация выбранных участков сохранена
+на всех четырёх графиках.
+''')
+    code("show_figure(P4.figure('tepc'))\nshow_table(P4.window_table(), 'Участки глубокого вдоха и кандидатные циклы', folded=True)")
     md(r'''<a id="anatomy"></a>
 ## 4. Геометрия КТ и толщина грудной стенки
 
@@ -833,15 +917,41 @@ $$E_L=100\frac{\|\widehat{\delta Z}_L-\delta Z_L^{\mathrm{набл}}\|_2}
     return items
 
 
-def main():
+def main(reuse_unchanged_outputs=False):
     from nbclient import NotebookClient
     from nbconvert import HTMLExporter
     OUT.mkdir(parents=True, exist_ok=True)
+    print('Checking reader inputs', flush=True)
     catalog = sources()
     report_cells = cells()
     book = nbformat.v4.new_notebook(cells=report_cells,
         metadata=dict(kernelspec=dict(name='python3', display_name='Python 3', language='python')))
     book_path = FOLDER / (STEM + '.ipynb')
+    reused = 0
+    reuse_source = None
+    if reuse_unchanged_outputs:
+        print('Reading saved model outputs', flush=True)
+        previous = nbformat.read(book_path, as_version=4)
+        reuse_source = sha(book_path)
+        old_inputs = {x['path']: x['sha256'] for x in previous.metadata.result_provenance.source_artifacts}
+        # Newly generated pulse views always execute. Only established model
+        # results with identical cell source and identical inputs are reusable.
+        import four_cycle_comparisons as P4
+        new_pulse_paths = {p.relative_to(ROOT).as_posix() for p in
+                           (P4.OUT / 'contract.local.json', P4.OUT / 'segments.local.json', P4.AUTHOR_HINT)}
+        if any(old_inputs.get(x['path']) != x['sha256'] for x in catalog if x['path'] not in new_pulse_paths):
+            raise ValueError('Cannot reuse outputs: established calculation inputs changed')
+        by_source = {c.source: c for c in previous.cells if c.cell_type == 'code' and
+                     c.execution_count is not None and not any(o.output_type == 'error' for o in c.outputs)}
+        for cell in book.cells:
+            if cell.cell_type == 'code' and cell.source in by_source and 'P4.' not in cell.source and \
+                    not cell.source.startswith('from pathlib import Path'):
+                old = by_source[cell.source]
+                cell.outputs = old.outputs
+                cell.execution_count = old.execution_count
+                cell.metadata.tags = ['skip-execution']
+                reused += 1
+        del previous, by_source
     book.metadata['result_provenance'] = dict(
         display_only_assembly=True,
         source_artifacts=catalog,
@@ -850,16 +960,26 @@ def main():
         two_layer_scope='lateral_assemblies_only',
         ttrkg_operator='individual_spatial_FEM',
         result_modules=['scorpion_comparisons', 'lateral_pilot_revision',
-                        'lateral_thickness_extension', 'build_georg_paired_preflight_report'],
+                        'lateral_thickness_extension', 'build_georg_paired_preflight_report',
+                        'four_cycle_comparisons'],
         annotation_status='candidate', quantitative_fem_inversion_allowed=False,
         interactive_camera_verified=False)
+    book.metadata.result_provenance['unchanged_outputs_reused'] = reused
+    book.metadata.result_provenance['reuse_source_notebook_sha256'] = reuse_source
+    print(f'Executing {sum(c.cell_type == "code" for c in book.cells) - reused} cells; preserving {reused} checked outputs', flush=True)
     NotebookClient(book, timeout=180, kernel_name='python3',
-                   resources={'metadata': {'path': str(FOLDER)}}).execute()
+                   resources={'metadata': {'path': str(FOLDER)}},
+                   on_cell_start=lambda cell, cell_index: print(f'Reader cell {cell_index + 1}', flush=True)).execute()
+    for cell in book.cells:
+        if cell.cell_type == 'code' and cell.metadata.get('tags') == ['skip-execution']:
+            del cell.metadata['tags']
     # Save each final artifact once; avoid reopening a large output during export.
     temporary_book = OUT / 'integrated_report.pending.ipynb'
+    print('Saving notebook', flush=True)
     nbformat.write(book, temporary_book)
     temporary_book.replace(book_path)
     exporter = HTMLExporter()
+    print('Exporting reader HTML', flush=True)
     exporter.exclude_input = exporter.exclude_input_prompt = exporter.exclude_output_prompt = True
     document, _ = exporter.from_notebook_node(book)
     temporary_html = OUT / 'integrated_report.pending.html'
@@ -880,4 +1000,8 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--reuse-unchanged-outputs', action='store_true')
+    args = parser.parse_args()
+    main(args.reuse_unchanged_outputs)
