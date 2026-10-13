@@ -1,0 +1,127 @@
+{
+  "date": "2026-10-13",
+  "scope": "Georg: equipment comparison in reported units and fixed-literature CT/FEM comparison at author-adopted approximate placement",
+  "reader_artifacts": [
+    {
+      "name": "33.27_Эксперимент_модели_и_проверки_Георгия_Scorpion_v2.ipynb",
+      "sha256": "9fc2d50cdd132b4692d87239460a6b577b1ae6d991c9bd39cadc88c16680cf3e"
+    },
+    {
+      "name": "33.27_Эксперимент_модели_и_проверки_Георгия_Scorpion_v2.html",
+      "sha256": "4894efe6d30996e261e28445b7cbba62768e197c2fbf8d354fa91796807110a9"
+    },
+    {
+      "name": "33.27_Эксперимент_модели_и_проверки_Георгия_Scorpion_v2.md",
+      "sha256": "1174c86318375acc9a633dcc72768a6ab6ec46de5c448b77b0e333b852baae16"
+    }
+  ],
+  "technical": {
+    "saved_code_cells": 27,
+    "fresh_code_cells": 20,
+    "reused_code_cells": 7,
+    "unchanged_plot_arrays": 13,
+    "unchanged_outputs": 7,
+    "new_plot_trace_counts": [
+      8,
+      8,
+      4,
+      30,
+      27,
+      13,
+      13
+    ],
+    "closed_notebook_tables": 20,
+    "closed_html_tables": 20,
+    "code_free_html": true,
+    "errors": 0,
+    "unit_tests_passed": 16,
+    "baseline_summaries": 48,
+    "four_cycle_segments": 19,
+    "fem_hold_comparisons": 44,
+    "actual_browser_rendering": "not_verified",
+    "static_preview": "comparison_preview.local.png inspected; mathematical curves and original scales preserved",
+    "HTML_and_Markdown_match_final_executed_notebook": true,
+    "export_file_lock_recovered": true
+  },
+  "computational": {
+    "source_contract_sha256": "c35732e2bb78f27214d414d84446b429cec14665963f7bc18326ebf12ea312b2",
+    "producer_sha256": "878539d253f3112de91442b2a3539b2a9f5f4fa3c578f1cecac376d92eb24e74",
+    "legacy_raw_hashes_checked": true,
+    "legacy_BASE_medians_reproduce_accepted_window_QC": true,
+    "legacy_breathing_and_ecg_annotations": "accepted_existing_artifacts",
+    "scorpion_annotations": "pending_manual_review_existing_artifacts",
+    "annotation_acceptance_changed": false,
+    "reported_RHEO_unit": "milliohm; no gain or sign change",
+    "legacy_pulse_reproduces_whole_record_filter": true,
+    "scorpion_pulse_arrays_identical_to_saved_physical_leads": true,
+    "FEM_recalculated": false,
+    "FEM_existing_paired_forward_provenance_verified": true,
+    "materials_or_pose_fitted": false,
+    "static_CT_does_not_predict_pulse_waveform": true
+  },
+  "scientific": {
+    "status": "method_development_not_validated",
+    "subject": "georg_only",
+    "instrument_sessions": [
+      "MGTU 2026-04-29",
+      "Scorpion 2026-10-05"
+    ],
+    "probe_frequency_hz": 100000,
+    "unknown_legacy_TTRKG_variant_explicit": true,
+    "lateral_sizes_mm": [
+      60,
+      80,
+      100,
+      120,
+      140
+    ],
+    "legacy_TTRKG_100mm_excluded": true,
+    "legacy_lateral_100mm_retained": true,
+    "CT_lateral_placement": "author-adopted illustrative region y=0,z=-210 mm; not fitted location",
+    "CT_TTRKG_placement": "cylindrical arms; author-adopted geometry",
+    "rho_ohm_m": [
+      2.763585998155971,
+      9.315252924705511,
+      48.09767352557847,
+      4.648809057547718,
+      23.040605218284004
+    ],
+    "lung_assignment": "Gabriel Lung (Inflated) at 100 kHz",
+    "own_drive_operator_used": true,
+    "equipment_only_effect_identified": false,
+    "individual_resistivities_estimated": false,
+    "coarse_FEM_mesh_precision_unresolved": true,
+    "integration_difference_is_not_total_uncertainty": true,
+    "scorpion_lateral_60mm_pulse_outlier_not_interpreted_as_valid_physiology": true,
+    "library_source": {
+      "title": "ITIS Tissue Properties Database V5.0",
+      "doi": "10.13099/VIP21000-05-0",
+      "url": "https://itis.swiss/virtual-population/tissue-properties/downloads/database-v5-0",
+      "source_version_verified": true
+    }
+  },
+  "language": {
+    "status": "passed",
+    "reviewer": "Codex model",
+    "mode": "semantic_full_text_final_review",
+    "review_after_last_reader_change": true,
+    "reviewed_prose_sha256": "1174c86318375acc9a633dcc72768a6ab6ec46de5c448b77b0e333b852baae16",
+    "normalized_prose_sha256": "2e6fbae2b587b0cb386bc9a2eae59abe9e1bf13acb10bbb11803d3ecb7c58170",
+    "all_headings_paragraphs_formulas_tables_captions_and_transitions_reviewed": true,
+    "all_reader_table_cells_and_controls_reviewed": true,
+    "scientific_headings_and_technical_scope_checked": true,
+    "derived_analytical_objects_defined": true,
+    "calques_and_formula_where_checked": true,
+    "open_findings": [],
+    "check_ids": [
+      "language.ru.hash-bound-final-review",
+      "language.ru.encoding",
+      "language.ru.natural-prose",
+      "language.ru.intro-variation",
+      "language.ru.reader-facing-clarity",
+      "language.ru.formula-where"
+    ]
+  },
+  "release_ready": false,
+  "release_ready_reason": "FEM and physiological validation remain unresolved; actual browser camera/rendering not verified. Report can be shared as an exploratory scientific artifact."
+}
