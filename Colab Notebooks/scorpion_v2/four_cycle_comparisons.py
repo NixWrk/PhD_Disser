@@ -14,7 +14,8 @@ from scorpion_comparisons import COLORS
 OUT = EXPERIMENT / 'derived/exploratory/four_cycles_20261013'
 AUTHOR_HINT = EXPERIMENT / 'annotations/scorpion_review/four_cycle_display_author_20261013.local.json'
 MAIN = {4: 140, 7: 120, 8: 100, 9: 80, 10: 60}
-GROUPS = ('lateral', 'cross', 'ttrkg', 'tepc')
+GROUPS = ('lateral', 'cross', 'ttrkg_variants', 'ttrkg', 'tepc')
+TTRKG_VARIANTS = (2, 4, 3)  # Confirmed 1x1 / 1x4 / 2x2, same lateral 140 mm.
 
 
 def choose_four(peaks, start, end, fs):
@@ -192,6 +193,7 @@ def selected_leads(group, item):
     return [lead for lead in item['leads'] if
             (group == 'lateral' and item['number'] in MAIN and lead['role'] == 'lateral_horizontal') or
             (group == 'cross' and item['number'] in (6, 11)) or
+            (group == 'ttrkg_variants' and item['number'] in TTRKG_VARIANTS and lead['role'] == 'ttrkg') or
             (group == 'ttrkg' and lead['role'] == 'ttrkg') or
             (group == 'tepc' and lead['role'] == 'tepc')]
 
@@ -199,13 +201,17 @@ def selected_leads(group, item):
 def figure(group):
     verify()
     segments = [s for s in read(OUT / 'segments.local.json') if selected_leads(group, s)]
+    if group == 'ttrkg_variants':
+        segments.sort(key=lambda s: TTRKG_VARIANTS.index(s['number']))
     cross = group == 'cross'
+    titles = ('Импеданс ТЕПС-2–7: пульсовая составляющая', 'Опорная ЭКГ для границ циклов') if group == 'tepc' else \
+             ('ТТРКГ 1×1, 1×4 и 2×2: пульсовая составляющая', 'Опорная ЭКГ для границ циклов') if group == 'ttrkg_variants' else None
     fig = make_subplots(rows=2, cols=2 if cross else 1, shared_xaxes=True,
         row_heights=[.64, .36], vertical_spacing=.11,
         subplot_titles=('Крест 140 мм · четыре кандидатных цикла',
                         'Крест 60 мм · 4 с; ЭКГ ненадёжна' if any(s['number'] == 11 for s in segments) else
                         'Крест 60 мм · график отложен: ЭКГ ненадёжна',
-                        'ЭКГ выбранного отведения', 'ЭКГ обеих осей') if cross else None)
+                        'ЭКГ выбранного отведения', 'ЭКГ обеих осей') if cross else titles)
     for i, item in enumerate(segments):
         col = 1 if not cross or item['number'] == 6 else 2
         leads = selected_leads(group, item)

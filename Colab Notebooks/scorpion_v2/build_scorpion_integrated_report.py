@@ -46,7 +46,7 @@ def show_figure(figure):
     display(HTML(figure.to_html(full_html=False, include_plotlyjs=False)))
 
 
-def show_table(frame, caption=None, folded=False):
+def show_table(frame, caption=None, folded=True):
     from IPython.display import display, HTML
     frame = frame.drop(columns=[c for c in frame if c in ('BEI-канал', 'BEI-каналы', 'Поле BEI')]).copy()
     frame = frame.map(physical_text).rename(columns={'Сценарий': 'Выбор толщины слоя',
@@ -54,10 +54,25 @@ def show_table(frame, caption=None, folded=False):
         'h по остальным, мм': 'Толщина h по остальным сборкам, мм'})
     content = table(frame).to_html()
     if folded:
-        content = '<details class="report-details"><summary>' + html.escape(caption) + '</summary>' + content + '</details>'
+        content = '<details class="report-details"><summary>' + html.escape(caption or 'Показать таблицу') + '</summary>' + content + '</details>'
     elif caption:
         content = '<p class="report-caption">' + html.escape(caption) + '</p>' + content
     display(HTML(content))
+
+
+def fold_markdown_tables(text):
+    """Render every Markdown table inside a closed native disclosure."""
+    from nbconvert.filters import markdown2html
+    titles = {'Вход или условие': 'Происхождение входов и условий',
+              'Следующий шаг': 'Дальнейшие этапы расчёта и условия завершения',
+              'Производный результат': 'Методы получения производных результатов'}
+    pattern = r'(?m)^\|[^\n]*\|\n\|[ \t|:-]+\|\n(?:\|[^\n]*\|(?:\n|$))+'
+    def render(match):
+        heading = match.group().split('\n', 1)[0].split('|')[1].strip()
+        title = titles.get(heading, 'Показать таблицу')
+        return '<details class="report-details"><summary>' + html.escape(title) + \
+            '</summary>\n' + str(markdown2html(match.group())) + '\n</details>\n'
+    return re.sub(pattern, render, text)
 
 
 def protocol_table():
@@ -198,7 +213,7 @@ def cells():
 сердечная сфера ещё не определены.
 
 Сначала рассматриваются измерения; затем — пределы выводов из каждой модели.
-Подробные таблицы свёрнуты, основные графики и результаты доступны сразу.
+Все таблицы свёрнуты по умолчанию, основные графики и результаты доступны сразу.
 
 **Содержание**
 
@@ -306,7 +321,7 @@ display(HTML("""<style>
 
 **Таблица 1.** Принятое назначение записей и отдельно отмеченные неопределённости.
 ''')
-    code('show_table(protocol_table())')
+    code("show_table(protocol_table(), 'Таблица 1. Назначение записей и неопределённости протокола')")
     md(r'''### 2.2. Совместный просмотр КТ и сигналов
 
 **Рисунок 1.** Выбор записи обновляет монтаж и зарегистрированные сигналы.
@@ -432,7 +447,18 @@ display(HTML("""<style>
 60 мм принято по продолжению монтажа — допущение.
 ''')
     code("show_figure(P4.figure('cross'))")
-    md(r'''**Рисунок 4в. Все записи ТТРКГ с кандидатной задержкой на глубоком вдохе.**
+    md(r'''**Рисунок 4в. Пульсовое сравнение трёх подтверждённых сборок ТТРКГ: 1×1, 1×4 и 2×2.**
+На отдельном графике показаны только записи 002, 004 и 003 соответственно.
+Во всех трёх случаях одновременно установлена номинальная боковая сборка
+140 мм. Сравниваются четыре последовательных кандидатных цикла на глубоком
+вдохе, с сохранением амплитуды в миллиомах и времени в секундах.
+Отведения пульсового импеданса относятся к ТТРКГ; нижняя панель содержит
+опорную ЭКГ выбранной записи. Физические позиции электродов на руках
+сохранены, менялось соединение контактных групп. Последовательность записей
+и возможные изменения состояния участника остаются ограничениями сравнения.
+''')
+    code("show_figure(P4.figure('ttrkg_variants'))")
+    md(r'''**Рисунок 4г. Все записи ТТРКГ с кандидатной задержкой на глубоком вдохе.**
 Показаны подтверждённые сборки 1×1, 2×2 и 1×4, повторные записи 1×1
 с ТЕПС и АЕПС, а также неопределённые варианты: предположительная 1×4
 в 005 и 1×1 либо 1×4 в 007–010. Запись 001 является коротким тестом
@@ -446,8 +472,12 @@ display(HTML("""<style>
 вдоха 22–30 с, указанном автором.
 ''')
     code("show_figure(P4.figure('ttrkg'))")
-    md(r'''**Рисунок 4г. ТЕПС-2–7 на глубоком вдохе.**
-Показаны все шесть монтажей из записей 012–017. Для ТЕПС-6 внутренний
+    md(r'''**Рисунок 4д. ТЕПС-2–7 на глубоком вдохе.**
+На верхней панели показан пульсовой импеданс самих ТЕПС-2–7 из записей
+012–017. Нижняя панель содержит опорную ЭКГ для границ циклов: для ТЕПС-3
+она снята с этой же сборки, для остальных пяти — с одновременно установленной
+ТТРКГ 1×1. Такая временная привязка не заменяет импеданс ТЕПС сигналом ТТРКГ.
+Для ТЕПС-6 внутренний
 участок после отступов составляет только 27–29 с и не вмещает четырёх
 полных циклов. По уточнению автора задержка на вдохе занимает примерно
 22–30 с. В этом ориентировочном интервале для просмотра выбран участок
@@ -460,7 +490,7 @@ display(HTML("""<style>
 
 Точные интервалы исходных записей и длительности четырёх циклов приведены
 в раскрываемой таблице. Полная дискретизация выбранных участков сохранена
-на всех четырёх графиках.
+на всех пульсовых графиках.
 ''')
     code("show_figure(P4.figure('tepc'))\nshow_table(P4.window_table(), 'Участки глубокого вдоха и кандидатные циклы', folded=True)")
     md(r'''<a id="anatomy"></a>
@@ -773,7 +803,7 @@ $$E_L=100\frac{\|\widehat{\delta Z}_L-\delta Z_L^{\mathrm{набл}}\|_2}
 сердце целиком — материалом миокарда. Это рабочие назначения,
 не измеренные параметры Георгия и не подобранная смесь крови и миокарда.
 ''')
-    code("show_table(R25.materials_table())\nshow_table(R25.comparison_table(), 'Таблица 7. Измеренные уровни и прямые ответы 17 парных монтажей', folded=True)")
+    code("show_table(R25.materials_table(), 'Таблица 6. Литературное опорное состояние при 100 кГц')\nshow_table(R25.comparison_table(), 'Таблица 7. Измеренные уровни и прямые ответы 17 парных монтажей', folded=True)")
     md(r'''Поза бокового монтажа в этой серии остаётся иллюстративной из КТ-раздела.
 Одна геометрия глубокого вдоха применяется и к выдоху как отдельное допущение.
 Разница между опорным прямым ответом и измерением ещё не является результатом
@@ -826,7 +856,7 @@ $$E_L=100\frac{\|\widehat{\delta Z}_L-\delta Z_L^{\mathrm{набл}}\|_2}
 **Таблица 10.** Сравнение варианта с плавающими площадками и только
 подключённых контактов на одной сетке 6 мм.
 ''')
-    code('show_table(R25.disconnected_pads_table())')
+    code("show_table(R25.disconnected_pads_table(), 'Таблица 10. Плавающие площадки и только подключённые контакты')")
     md(r'''Пространственная проверка выполнена для одного и того же парного монтажа
 002 при одинаковых масках и операторе на сетках 6, 4 и 3 мм.
 Критерий — 0,02 Ом + 0,5% модуля ответа следующей сетки; он сохранён
@@ -834,7 +864,7 @@ $$E_L=100\frac{\|\widehat{\delta Z}_L-\delta Z_L^{\mathrm{набл}}\|_2}
 
 **Таблица 11.** Разности ответов при сгущении сетки и заданные допуски.
 ''')
-    code('show_table(R25.mesh_control_table())')
+    code("show_table(R25.mesh_control_table(), 'Таблица 11. Разности ответов при сгущении сетки')")
     md(r'''Переход 6 → 4 мм даёт разность около 1,88 Ом для ТТРКГ
 при допуске 0,50 Ом и 0,78 Ом для боковой сборки при допуске 0,33 Ом.
 Переход 4 → 3 мм также не проходит: около 1,38 против 0,50 Ом
@@ -914,6 +944,9 @@ $$E_L=100\frac{\|\widehat{\delta Z}_L-\delta Z_L^{\mathrm{набл}}\|_2}
 абсолютные пути не зашиты в переносимый код.
 
 ''')
+    for item in items:
+        if item.cell_type == 'markdown':
+            item.source = fold_markdown_tables(item.source)
     return items
 
 
@@ -945,7 +978,7 @@ def main(reuse_unchanged_outputs=False):
                      c.execution_count is not None and not any(o.output_type == 'error' for o in c.outputs)}
         for cell in book.cells:
             if cell.cell_type == 'code' and cell.source in by_source and 'P4.' not in cell.source and \
-                    not cell.source.startswith('from pathlib import Path'):
+                    'show_table(' not in cell.source and not cell.source.startswith('from pathlib import Path'):
                 old = by_source[cell.source]
                 cell.outputs = old.outputs
                 cell.execution_count = old.execution_count
@@ -964,6 +997,7 @@ def main(reuse_unchanged_outputs=False):
                         'four_cycle_comparisons'],
         annotation_status='candidate', quantitative_fem_inversion_allowed=False,
         interactive_camera_verified=False)
+    book.metadata.result_provenance['tables_collapsed_by_default'] = True
     book.metadata.result_provenance['unchanged_outputs_reused'] = reused
     book.metadata.result_provenance['reuse_source_notebook_sha256'] = reuse_source
     print(f'Executing {sum(c.cell_type == "code" for c in book.cells) - reused} cells; preserving {reused} checked outputs', flush=True)

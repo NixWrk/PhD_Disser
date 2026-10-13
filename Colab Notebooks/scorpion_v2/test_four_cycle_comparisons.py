@@ -36,6 +36,8 @@ class SavedWindowChecks(unittest.TestCase):
         ttrkg = [(s['number'], p['channel']) for s in self.segments for p in selected_leads('ttrkg', s)]
         self.assertEqual(len(ttrkg), 15)
         self.assertEqual([n for n, ch in ttrkg if ch == 2], [7, 8, 9, 10])
+        self.assertEqual([(s['number'], p['channel']) for s in self.segments
+                          for p in selected_leads('ttrkg_variants', s)], [(2, 1), (3, 1), (4, 1)])
         self.assertEqual([(s['number'], p['channel']) for s in self.segments for p in selected_leads('tepc', s)],
                          [(n, 2) for n in range(12, 18)])
 
@@ -87,6 +89,25 @@ class SavedWindowChecks(unittest.TestCase):
         common = cross.layout.updatemenus[0].buttons[1].args[0]
         self.assertEqual(common['yaxis.range'], common['yaxis2.range'])
         self.assertNotEqual(cross.layout.yaxis.range, cross.layout.yaxis2.range)
+
+    def test_variant_plot_matches_three_confirmed_ttrkg_sources(self):
+        comparison = figure('ttrkg_variants')
+        pulses = [trace for trace in comparison.data if trace.yaxis == 'y']
+        self.assertEqual([t.name[:3] for t in pulses], ['002', '004', '003'])
+        for trace in pulses:
+            item = next(s for s in self.segments if s['number'] == int(trace.name[:3]))
+            lead = next(p for p in item['leads'] if p['channel'] == 1)
+            self.assertEqual(lead['role'], 'ttrkg')
+            np.testing.assert_array_equal(trace.y, lead['pulse_mohm'])
+
+    def test_tepc_plot_pulses_are_channel_two_even_with_ttrkg_ecg(self):
+        pulses = [trace for trace in figure('tepc').data if trace.yaxis == 'y']
+        self.assertEqual(len(pulses), 6)
+        for trace in pulses:
+            item = next(s for s in self.segments if s['number'] == int(trace.name[:3]))
+            lead = next(p for p in item['leads'] if p['channel'] == 2)
+            self.assertEqual(lead['role'], 'tepc')
+            np.testing.assert_array_equal(trace.y, lead['pulse_mohm'])
 
 
 if __name__ == '__main__':

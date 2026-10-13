@@ -1,0 +1,120 @@
+{
+  "date": "2026-10-13",
+  "scope": "Confirmed TTRKG assembly pulse comparison, TEPC lead clarification, all reader tables collapsed",
+  "reader_artifacts": [
+    {
+      "name": "33.27_Эксперимент_модели_и_проверки_Георгия_Scorpion_v2.ipynb",
+      "sha256": "7e656135e266c6b8e8407b2dcc0223cb57a793cec33a0fc01576d4674b79c01c"
+    },
+    {
+      "name": "33.27_Эксперимент_модели_и_проверки_Георгия_Scorpion_v2.html",
+      "sha256": "e6c6e916367f1ca77cd4948e140a2e9e606155406a1289ef611cc90e75154613"
+    },
+    {
+      "name": "33.27_Эксперимент_модели_и_проверки_Георгия_Scorpion_v2.md",
+      "sha256": "4a0b733a1f8a134700d793134d22a6f035fda39730cb9b9afd1879343361530a"
+    }
+  ],
+  "technical": {
+    "saved_code_cells": 23,
+    "fresh_code_cells": 16,
+    "reused_code_cells": 7,
+    "outputs_identical_to_published_version": 8,
+    "unchanged_figure_data": 12,
+    "closed_tables_html": 17,
+    "closed_tables_notebook": 17,
+    "table_values_and_rows_unchanged": true,
+    "pulse_groups_trace_counts": {
+      "lateral": 15,
+      "cross": 8,
+      "ttrkg_variants": 9,
+      "ttrkg": 45,
+      "tepc": 18
+    },
+    "code_free_html": true,
+    "errors": 0,
+    "unit_tests_passed": 9,
+    "table_disclosure_default": "details_without_open_attribute",
+    "actual_browser_rendering": "not_verified",
+    "static_previews": "new_variant_plot_and_TEPC_inspected"
+  },
+  "computational": {
+    "existing_figure_arrays_unchanged": 12,
+    "signal_and_window_payload_sha256": "9c0383f40819137210e42c1d441ee4452cf4e91d6dbe177858f9ab619e13264e",
+    "signal_and_window_payload_unchanged": true,
+    "baseline_or_FEM_recalculation": false,
+    "ttrkg_variants": {
+      "record_order": [
+        "002",
+        "004",
+        "003"
+      ],
+      "assembly_order": [
+        "1x1",
+        "1x4",
+        "2x2"
+      ],
+      "impedance_channel": 1,
+      "cycles_per_record": 4
+    },
+    "tepc_impedance_channel": 2,
+    "tepc_reference_ECG": {
+      "012": 1,
+      "013": 2,
+      "014": 1,
+      "015": 1,
+      "016": 1,
+      "017": 1
+    },
+    "all_six_TEPC_rendered_pulse_arrays_match_channel2_exactly": true
+  },
+  "scientific": {
+    "status": "method_development_not_validated",
+    "annotations_status": "pending_manual_review preserved",
+    "ttrkg_comparison": "three author-confirmed variants, same nominal lateral 140 mm; sequential records not simultaneous",
+    "ECG_reference_does_not_change_physical_pulse_lead": true,
+    "late_ttrkg_variant": "unresolved_1x1_or_1x4",
+    "TEPC6_author_approximate_interval_s": [
+      22,
+      30
+    ],
+    "TEPC6_display_interval_s": [
+      24.318,
+      28.383
+    ],
+    "cross60": "four seconds, unreliable ECG, four heart cycles not asserted"
+  },
+  "language": {
+    "status": "passed",
+    "reviewer": "Codex model",
+    "mode": "semantic_full_text_final_review",
+    "review_after_last_reader_change": true,
+    "reviewed_prose_sha256": "4a0b733a1f8a134700d793134d22a6f035fda39730cb9b9afd1879343361530a",
+    "normalized_prose_sha256": "b91bc2e53cc92586058d2e4590ae305fd354ce719e60c0d60746250ed0fedca2",
+    "all_headings_paragraphs_formulas_tables_captions_and_transitions_reviewed": true,
+    "visible_control_and_new_plot_labels_reviewed": true,
+    "reader_facing_clarity": "passed",
+    "scientific_scope_preserved": true,
+    "encoding": "utf8",
+    "findings": []
+  },
+  "format_policy": {
+    "file": "Colab Notebooks/AGENTS.md",
+    "decision_date": "2026-10-13",
+    "default": "all_scientific_tables_collapsed",
+    "covers": [
+      "Markdown tables",
+      "saved code-cell result tables"
+    ]
+  },
+  "release": {
+    "reader_revision_completed": true,
+    "methodology_validated": false,
+    "release_ready": false,
+    "open_check": "real_browser_camera_and_plot_interactions"
+  },
+  "code_sha256": {
+    "generator": "970010ad1264f952fbdac50afca695f051995cc7be15d3c3e7ef0932ecf2d52b",
+    "four_cycles": "f22e29336919998f7b383baf8e722f0a794ca1f9963f866938a5b06b66d3d726"
+  }
+}
