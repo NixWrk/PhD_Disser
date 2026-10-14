@@ -13,9 +13,39 @@ addpath(fullfile(project_root, 'src'));
 addpath(fullfile(project_root, 'vendor_stl_eidors'));
 
 profile_index=find(cellfun(@(x)(ischar(x)||isstring(x)) && strcmpi(string(x),"Profile"),varargin),1);
+if ~isempty(profile_index) && profile_index < numel(varargin) && strcmpi(string(varargin{profile_index+1}),"georg_quality_forward")
+    args=varargin;args(profile_index:profile_index+1)=[];
+    report=run_georg_quality_forward(args{:});
+    return;
+end
 if ~isempty(profile_index) && profile_index < numel(varargin) && strcmpi(string(varargin{profile_index+1}),"georg_paired_montages")
     args=varargin;args(profile_index:profile_index+1)=[];
     report=run_georg_paired_montages(args{:});
+    return;
+end
+if ~isempty(profile_index) && profile_index < numel(varargin) && strcmpi(string(varargin{profile_index+1}),"georg_lateral_nix_audit")
+    args=varargin;args(profile_index:profile_index+1)=[];
+    report=run_georg_lateral_nix_audit(args{:});
+    return;
+end
+if ~isempty(profile_index) && profile_index < numel(varargin) && strcmpi(string(varargin{profile_index+1}),"georg_lateral_inverse")
+    args=varargin;args(profile_index:profile_index+1)=[];
+    report=run_georg_lateral_inverse(args{:});
+    return;
+end
+if ~isempty(profile_index) && profile_index < numel(varargin) && strcmpi(string(varargin{profile_index+1}),"georg_lateral_numerical_audit")
+    args=varargin;args(profile_index:profile_index+1)=[];
+    report=run_georg_lateral_numerical_audit(args{:});
+    return;
+end
+if ~isempty(profile_index) && profile_index < numel(varargin) && strcmpi(string(varargin{profile_index+1}),"georg_lateral_source_audit")
+    args=varargin;args(profile_index:profile_index+1)=[];
+    report=run_georg_lateral_source_audit(args{:});
+    return;
+end
+if ~isempty(profile_index) && profile_index < numel(varargin) && strcmpi(string(varargin{profile_index+1}),"georg_cem_port_check")
+    args=varargin;args(profile_index:profile_index+1)=[];
+    report=run_georg_cem_port_check(args{:});
     return;
 end
 if ~isempty(profile_index) && profile_index < numel(varargin) && strcmpi(string(varargin{profile_index+1}),"georg_ct_model")

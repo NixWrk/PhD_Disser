@@ -1,0 +1,88 @@
+{
+  "schema": "georg_model_preparation_astra_review_v1",
+  "date": "2026-10-13",
+  "task_contract": {
+    "scope": "all stages of current Georg CT-FEM preparation, with relevant Nix comparison",
+    "implementation_fixes_required": false,
+    "new_FEM_required": false,
+    "historical_arrays_and_acceptance_unchanged": true
+  },
+  "inventory_sha256": "c1b780ada16b2e516196c42867719feee1191aa30e2e3a8c3a6099a6d66b2b7d",
+  "astra": {
+    "requested_model": "gpt-6-astra",
+    "agent_id": "01a13470-e805-7220-9d61-cd5c1e59726c",
+    "reused_previous_Astra_agent": true,
+    "completed": true,
+    "raw_report_sha256": "8babb10b3cd685908f85daae5dcaa7314847392e17fcf1662d71b97bda5c3049",
+    "findings": 9
+  },
+  "technical": {
+    "status": "passed",
+    "nbformat_valid": true,
+    "code_excluded_from_HTML": true,
+    "tables": 7,
+    "all_tables_closed": true,
+    "executed_reader_cells": 1,
+    "execution_mode": "exact reader cell executed in-process with IPython",
+    "errors": 0,
+    "all_local_source_links_exist": true,
+    "browser_visual_review": false,
+    "new_FEM_executed": false
+  },
+  "computational": {
+    "status": "passed_for_diagnostic_scope",
+    "shared_reference_matches": 91,
+    "executed_source_snapshots_checked": 16,
+    "sample_seed": 1729,
+    "sample_size_per_mesh": 10000,
+    "whole_mesh_volume_counts_checked": true,
+    "shape_and_affine_match_all_four_masks": true,
+    "empty_slice_failure_reproduced": true,
+    "physical_contacts_union": 12,
+    "global_stiffness_condition_number_computed": false,
+    "FEM_accuracy_accepted": false
+  },
+  "scientific": {
+    "status": "passed_for_audit_fidelity",
+    "confirmed_defects_separated_from_hypotheses": true,
+    "two_code_defects_not_declared_cause_of_completed_run_failure": true,
+    "mesh_and_material_mapping_errors_not_yet_separated_by_FEM": true,
+    "independent_anatomical_validation": false,
+    "individual_resistivities_validated": false
+  },
+  "language": {
+    "status": "passed",
+    "reviewer": "primary_assistant",
+    "mode": "semantic_sequential_full_reader_review",
+    "after_last_reader_change": true,
+    "all_reader_text_read": true,
+    "coverage": [
+      "all reader Markdown headings, paragraphs, formula definition and source labels",
+      "all seven collapsed tables including two executed outputs"
+    ],
+    "reader_text_sha256": "3227704fbb0ab77c2ee7b6be97c65344187305f7dea5683e002306e0bea0744b",
+    "encoding": "UTF-8",
+    "scientific_headings_and_terms_checked": true,
+    "derived_objects_defined": true,
+    "uncertainty_preserved": true,
+    "meaningful_contrasts_checked": true,
+    "idiomatic_register_and_translation_calques_checked": true
+  },
+  "reader_artifacts": [
+    {
+      "path": "Colab Notebooks/scorpion_v2/20.22_Аудит_подготовки_КТ_FEM_модели_Георгия_Scorpion_v2.ipynb",
+      "bytes": 53115,
+      "sha256": "e0f78a4b44eb53214943e4aedd9641e54406f21227d19be645c831ad03b35b04"
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/20.22_Аудит_подготовки_КТ_FEM_модели_Георгия_Scorpion_v2.html",
+      "bytes": 341771,
+      "sha256": "41fd0dda83ad2997c29d6afbe9c42f772ec0c706fa6704121fffb27f4ac63855"
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/20.22_Аудит_подготовки_КТ_FEM_модели_Георгия_Scorpion_v2.md",
+      "bytes": 45819,
+      "sha256": "17ba69a1ce0c202e75432b71c7a4a400e92a57d58152a8265ab3bf1445995cec"
+    }
+  ]
+}

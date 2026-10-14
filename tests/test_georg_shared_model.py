@@ -58,6 +58,26 @@ def test_checked_geometry_does_not_authorize_unconverged_inversion(tmp_path,monk
     with pytest.raises(ValueError,match='precision is unresolved'):resolve(pointer,require_converged=True)
 
 
+@pytest.mark.parametrize('key',['mesh_convergence_passed','integration_comparison_passed',
+                               'quantitative_inversion_allowed'])
+@pytest.mark.parametrize('invalid',[False,None,1,'true'])
+def test_numerical_status_requires_actual_boolean_flags(tmp_path,monkeypatch,key,invalid):
+    import georg_model_contract as module
+    monkeypatch.setattr(module,'PIPE',tmp_path)
+    contract=dict(status='numerical_reference_checked',model_directory='model',files=[],
+        mesh_convergence_passed=True,integration_comparison_passed=True,
+        quantitative_inversion_allowed=True)
+    pointer=tmp_path/'pointer.json'
+    pointer.write_text(json.dumps(contract))
+    assert resolve(pointer,require_converged=True)[0]==tmp_path/'model'
+    if invalid is None:contract.pop(key)
+    else:contract[key]=invalid
+    pointer.write_text(json.dumps(contract))
+    with pytest.raises(ValueError,match='precision is unresolved'):
+        resolve(pointer,require_converged=True)
+    assert resolve(pointer)[0]==tmp_path/'model'
+
+
 def test_surface_qc_rejects_positive_area_overlap():
     nodes=np.array([[0.,0.,0.],[2.,0.,0.],[0.,2.,0.],
         [.2,.2,0.],[1.,.2,0.],[.2,1.,0.]])

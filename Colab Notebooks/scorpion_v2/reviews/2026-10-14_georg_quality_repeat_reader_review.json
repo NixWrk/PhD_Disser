@@ -1,0 +1,77 @@
+{
+  "review_date": "2026-10-14",
+  "scope": "Final complete reader of notebook 33.29",
+  "language": "ru",
+  "skill": "russian-scientific-prose",
+  "artifacts": [
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.29_Повторный_FEM_подбор_с_контролем_сетки_Георгия_Scorpion_v2.ipynb",
+      "sha256": "753ff6a645f9378df79507879f68c64a2abfee1bec02972fac378f6acec4ff93"
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.29_Повторный_FEM_подбор_с_контролем_сетки_Георгия_Scorpion_v2.html",
+      "sha256": "e2a16fbabb535f0daaae288649af46dd6b35fbc64c56098c002a4c95645f3f0d"
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.29_Повторный_FEM_подбор_с_контролем_сетки_Георгия_Scorpion_v2.md",
+      "sha256": "b87cbb403124638e84a404d64aa85dc59542a35c9ddfec6e11d03417842973a3"
+    }
+  ],
+  "reader_corpus_sha256": "6b70ff683c975b960b8938005c6b7f2c9e2783cc224f35ebc80fde806a115161",
+  "language_review": {
+    "status": "passed",
+    "full_sequential_semantic_model_pass": true,
+    "all_markdown_tables_plot_labels_read": true,
+    "static_CT_image_labels_visually_read": true,
+    "scientific_headings_reviewed": true,
+    "technical_terminology_and_scope_reviewed": true,
+    "derived_quantities_defined": true,
+    "meaningful_contrasts_reviewed": true,
+    "claims_uncertainty_and_negative_results_preserved": true,
+    "open_findings": []
+  },
+  "technical_review": {
+    "status": "passed",
+    "notebook_valid": true,
+    "no_code_in_HTML": true,
+    "all_tables_collapsed": true,
+    "tables": 17,
+    "plots": 11,
+    "cells": 53,
+    "notebook_sha256": "753ff6a645f9378df79507879f68c64a2abfee1bec02972fac378f6acec4ff93",
+    "HTML_sha256": "e2a16fbabb535f0daaae288649af46dd6b35fbc64c56098c002a4c95645f3f0d",
+    "corpus_sha256": "6b70ff683c975b960b8938005c6b7f2c9e2783cc224f35ebc80fde806a115161",
+    "static_CT_figures": 1,
+    "browser_checked": true,
+    "tables_expand_and_collapse": true,
+    "formula_rendering_checked": true,
+    "numerical_plot_labels_checked": true,
+    "plot_legend_controls_checked": true,
+    "final_3D_rotation_and_fat_toggle_preserve_camera": true
+  },
+  "computational_review": {
+    "status": "completed_with_explicit_limitations",
+    "search_evaluations": 40,
+    "fresh_selected_checks": 1,
+    "selected_spatial_fraction_contact_tolerances_passed": true,
+    "complete_contact_refinement_coverage": false,
+    "additional_refinement_built": false,
+    "search_resolution_reached": false,
+    "global_mesh_convergence_proven": false,
+    "quantitative_result_accepted": false
+  },
+  "scientific_review": {
+    "status": "preliminary_not_validated",
+    "full_nine_parameter_identifiability_proven": false,
+    "physiological_validation": false,
+    "independent_review": "2026-10-14_georg_quality_repeat_astra_review.json"
+  },
+  "guard_tests": {
+    "python": 42,
+    "resume_archive": 3,
+    "MATLAB": 4,
+    "python_receipt_sha256": "d23147923b19fb0cc98b57e41f3541beece886ccbc9a3fefda67408bbfc1b1bc",
+    "resume_receipt_sha256": "5f57b7759eb1866d6fc872888212b277989a1e22e32fb3c9ce8395aeb3e6ca5b",
+    "MATLAB_receipt_sha256": "c9eb80d883df2cabc61e2e04d4b13c84624080f6c72896a62f30b65726d98984"
+  }
+}

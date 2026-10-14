@@ -1,0 +1,121 @@
+{
+  "schema": "scientific_notebook_review_v1",
+  "reviewed_at_utc": "2026-10-11T14:55:25.270517+00:00",
+  "task": "Joint Georg lateral FEM resistivities and electrode localization",
+  "review_scope": "Preliminary inputs, geometry candidates and executed numerical checks; requested inverse task unfinished",
+  "inventory_sha256": "c2fd4ea23bfe114e7ecb696215631ad26e3caad9947d075752c20f2d9335787a",
+  "artifact_inventory": {
+    "schema": "scientific_reader_inventory_v1",
+    "scope": "joint Georg lateral inputs and numerical checks; inverse unfinished",
+    "reader_files": [
+      {
+        "path": "Colab Notebooks/scorpion_v2/33.23_Совместная_локализация_боковых_сборок_Георгия_Scorpion_v2.html",
+        "sha256": "c680fc3e4680ead4d3ba97f1e3f170fdd06ad8bdaf9152e0591d50bc979f395b"
+      },
+      {
+        "path": "Colab Notebooks/scorpion_v2/33.23_Совместная_локализация_боковых_сборок_Георгия_Scorpion_v2.ipynb",
+        "sha256": "e986906029a77f4f7ce1dec2683aafebf42220691ca95e55b6ff54a0761e2573"
+      },
+      {
+        "path": "Colab Notebooks/scorpion_v2/33.23_Совместная_локализация_боковых_сборок_Георгия_Scorpion_v2.md",
+        "sha256": "457d4a27b67eb791c256080a397ce53f6f5a02a500456282010d565d5044d126"
+      },
+      {
+        "path": "Colab Notebooks/scorpion_v2/README.md",
+        "sha256": "9244785bef767bb4f181747b945f81f65838b4cbfa100c8a6ec565d468e6863b"
+      }
+    ],
+    "source_files": [
+      {
+        "path": "Colab Notebooks/scorpion_v2/build_georg_joint_lateral_report.py",
+        "sha256": "d1f860ccf03e07b341e06ed86c5a0c972a54b9ee1025c8f1a83cbee0e826aa28"
+      },
+      {
+        "path": "tests/test_georg_lateral_inputs.py",
+        "sha256": "0e7ba661862de8a9a3cd9dce708bcb0f09ec3f4304a1f2202875b5c185e8ff57"
+      },
+      {
+        "path": "MATLAB_TRKG4_real_subjects/src/run_georg_lateral_inverse.m",
+        "sha256": "f78cc50deee5fe6dbedd53c54db2f4d2bdd0772d4c63dd206c305cff4b4874b7"
+      },
+      {
+        "path": "MATLAB_TRKG4_real_subjects/src/run_georg_lateral_numerical_audit.m",
+        "sha256": "1511c19727bf8d9b76a23edfbe2460f27f97c9b894e49a831e24717d3909247d"
+      },
+      {
+        "path": "MATLAB_TRKG4_real_subjects/tools/georg_lateral_inverse_prepare.py",
+        "sha256": "db6eda4c4f06ee1f793bf49cba6a8f9c1c2657ce800b723f4c33dcde57964296"
+      },
+      {
+        "path": "MATLAB_TRKG4_real_subjects/tools/georg_lateral_refinement.py",
+        "sha256": "d590664b4aaa935105a676b1bb4a5d37bfc581ae17b9fb8d64594730e4b400e0"
+      }
+    ]
+  },
+  "technical": {
+    "status": "passed",
+    "python_tests": 13,
+    "executed_reader_code_cells": 4,
+    "error_outputs": 0,
+    "interactive_plots": 3,
+    "lateral_lead_traces": 13,
+    "code_excluded_from_html": true,
+    "browser_plot_toggle_verified": true,
+    "actual_camera_rotation_verified": true
+  },
+  "computational": {
+    "status": "failed_requested_mesh_precision",
+    "homogeneous_forward_cases": 6,
+    "additional_anatomical_forward_cases": 4,
+    "local_volume_meshes_tetrahedra": [
+      2865988,
+      5030323
+    ],
+    "local_3_to_2_mm_precision_passed": {
+      "140_mm": true,
+      "60_mm": false
+    },
+    "local_integration_256_to_1024_passed": true,
+    "joint_quantitative_optimization_executed": false,
+    "inverse_gate_verified": true,
+    "candidate_count": 319,
+    "candidate_pose_FEM_fits_executed": 0,
+    "global_pose_search_completed": false
+  },
+  "scientific": {
+    "status": "exploratory_incomplete",
+    "author_channel_roles_used": true,
+    "channel_permutations_fitted": false,
+    "hold_observations": 24,
+    "test_observations": 1,
+    "annotations_accepted": false,
+    "rho_parameters_estimated": false,
+    "electrode_pose_estimated": false,
+    "source_excitation_phase_unresolved": true,
+    "nominal_surface_spacing_parameterization_unvalidated": true,
+    "independent_anatomical_validation": false,
+    "physiological_validation": false,
+    "uncertainties": [
+      "mesh error",
+      "contact geometry",
+      "simultaneous source interpretation",
+      "breathing annotations",
+      "inter-record variability",
+      "CT-to-experiment registration",
+      "automatic segmentation and fixed bone/heart properties"
+    ]
+  },
+  "language": {
+    "status": "passed",
+    "skill": "russian-scientific-prose",
+    "check_id": "language.ru.hash-bound-final-review",
+    "reviewer": "Codex model",
+    "method": "Sequential semantic review of the entire final rendered reader, every caption, table, plot label and hover template, plus the full README after the final reader byte change",
+    "reader_text_sha256": "15fad701c2252dcf2d9cfc0828db481c67180582922d82bf834e386975ebc5fc",
+    "reader_text_lines": 156,
+    "all_reader_visible_text_reviewed": true,
+    "open_findings": []
+  },
+  "release_ready": false,
+  "reason": "The requested joint inverse result has not been computed; FEM precision gate remains failed"
+}

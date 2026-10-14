@@ -6,6 +6,11 @@ cfg=trkg4_config('georg');out=char(a.OutputDir);
 if ~isfile(fullfile(out,'plan.local.json')),out=fullfile(cfg.project_root,out);end
 plan=jsondecode(fileread(fullfile(out,'plan.local.json')));
 assert(strcmp(plan.schema,'georg_shared_ct_fem_v1')&&plan.frequency_hz==100000);
+if isfield(plan,'numerical_quadrature_points')
+ assert(isequal(double(plan.numerical_quadrature_points(:))',[256,1024]),...
+  'trkg4:legacyGeorgModel',...
+  'This legacy worker requires 256/1024. Use georg_quality_forward with explicit model, inputs and reference for the new model.');
+end
 for j=1:numel(plan.sources)
  assert(strcmp(trkg4_file_sha256(plan.sources(j).path),plan.sources(j).sha256),'Shared model input changed');
 end

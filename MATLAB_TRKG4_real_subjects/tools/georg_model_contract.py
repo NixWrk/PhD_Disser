@@ -18,7 +18,10 @@ def resolve(pointer=POINTER, require_converged=False):
     c=read(pointer)
     if c['status'] not in ['numerical_reference_checked','geometry_reference_checked']:
         raise ValueError('Georg model has not passed numerical checks')
-    if require_converged and c['status']!='numerical_reference_checked':
+    required=('mesh_convergence_passed','integration_comparison_passed',
+              'quantitative_inversion_allowed')
+    if require_converged and (c['status']!='numerical_reference_checked'
+            or any(c.get(key) is not True for key in required)):
         raise ValueError('Georg FEM precision is unresolved; quantitative inversion is not permitted')
     for item in c['files']:
         path=PIPE/item['path']

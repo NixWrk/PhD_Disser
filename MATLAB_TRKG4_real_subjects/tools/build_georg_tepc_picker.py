@@ -34,7 +34,7 @@ def mask_surface(path, target, step_size=1):
     trimesh.Trimesh(lps, faces, process=False).export(target)
 
 
-def build(geometry=None, segmentation=None, out=OUT, target_faces=None, landmarks=None):
+def build(geometry=None, segmentation=None, out=OUT, target_faces=None, landmarks=None, reader_output=None):
     if geometry is None or segmentation is None:
         from georg_model_contract import resolve
         current,contract=resolve()
@@ -113,14 +113,18 @@ def build(geometry=None, segmentation=None, out=OUT, target_faces=None, landmark
         fat_target_faces=len(trimesh.load(references['fat'], force='mesh').faces), export_context=context)
     if report['layers']['fat']['decimation']['status'] != 'not_needed':
         raise ValueError('Fat display must not undergo triangle-collapse decimation')
-    READER_HTML.write_bytes((out/'georg_tepc_picker.html').read_bytes())
+    # A local preview must not silently replace the canonical reader.
+    if reader_output is None and out.resolve() == OUT.resolve():
+        reader_output = READER_HTML
+    if reader_output is not None:
+        Path(reader_output).write_bytes((out/'georg_tepc_picker.html').read_bytes())
     report.update(input_sha256=inputs, ct_sha256=context['ct_sha256'],
         builder_sha256=sha(__file__), picker_sha256=sha(Path(__file__).with_name('build_surface_landmark_picker.py')),
         geometry_is_individually_localized=False, electrode_positions_exported=bool(manual_hashes),
         manual_reconstruction_sha256=manual_hashes, anatomical_placement_accuracy_validated=False,
         html_sha256=sha(out/'georg_tepc_picker.html'))
     (out/'picker_provenance.local.json').write_text(json.dumps(report, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
-    print(READER_HTML, flush=True)
+    print(reader_output or out/'georg_tepc_picker.html', flush=True)
     return out
 
 
@@ -132,5 +136,7 @@ if __name__ == '__main__':
     p.add_argument('--target-faces', type=int, default=None,
         help='Optional preview reduction; default retains every body triangle')
     p.add_argument('--landmarks', type=Path, default=None, help='Six normalised author reconstructions')
+    p.add_argument('--reader-output', type=Path, default=None,
+        help='Explicit reader copy; custom --out otherwise writes only its local HTML')
     args = p.parse_args()
-    build(args.geometry, args.segmentation, args.out, args.target_faces, args.landmarks)
+    build(args.geometry, args.segmentation, args.out, args.target_faces, args.landmarks, args.reader_output)

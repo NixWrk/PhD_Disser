@@ -1,0 +1,101 @@
+{
+  "schema": "georg_tenhour_astra_reader_review_v1",
+  "date": "2026-10-13",
+  "inventory_sha256": "81671cd8a75980dcd8961aa69ed36c6e5fad35f7f243411b2253b6f57d747a2a",
+  "reader_artifacts": [
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.28_Совместный_FEM_подбор_за_10_часов_Георгия_Scorpion_v2.ipynb",
+      "sha256": "1cbf51cb3836d3c3eea2b75859be3bd9b09988336232b39c3271a5830f0c6b9a",
+      "bytes": 8886080
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.28_Совместный_FEM_подбор_за_10_часов_Георгия_Scorpion_v2.html",
+      "sha256": "ce5f37d1167e7f40ee4f0b3b10040172fcfee569619991e30fa5599d4403e1dc",
+      "bytes": 8958146
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.28_Совместный_FEM_подбор_за_10_часов_Георгия_Scorpion_v2.md",
+      "sha256": "77b0d094a3fd09896c9bfaa8cf4955c953ac7a1df9db3ec72f2196944665f8f3",
+      "bytes": 42969
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/README.md",
+      "sha256": "8ba7cbbc99815bb5c1e4172f897b4d09afcd84d71daf29de69594b29098b90c0",
+      "bytes": 18341
+    }
+  ],
+  "task_contract": {
+    "scope": "Completed ten-hour calculation notebook and independent Astra audit",
+    "new_fem_required": false,
+    "parameter_acceptance_is_not_report_scope": true
+  },
+  "technical": {
+    "status": "passed",
+    "executed_code_cells": 14,
+    "errors": 0,
+    "interactive_charts": 11,
+    "embedded_CT_figures": 1,
+    "tables": 16,
+    "code_excluded": true,
+    "browser_checked": true,
+    "display_formulae": 3,
+    "camera_preserved_on_legend_toggle": true,
+    "minimum_chart_width_px": 1100,
+    "horizontal_scroll_checked": true
+  },
+  "computational": {
+    "saved_results_and_code_hashes_checked": true,
+    "RMSE_ohm": 32.72276690986416,
+    "combined_saved_states_RMSE_ohm": 31.61807293933554,
+    "original_contrast_RMSE_ohm": 1.8090358902136918,
+    "combined_contrast_RMSE_ohm": 8.22430633018248,
+    "integration_passed": true,
+    "spatial_check_failures": 24,
+    "level_2mm_check_completed": false,
+    "quantitative_result_accepted": false
+  },
+  "scientific": {
+    "report_fidelity": "passed",
+    "astra_independent_analysis_completed": true,
+    "derived_combination_not_substituted_for_original": true,
+    "combined_candidate_numerical_validation": false,
+    "individual_parameters_validated": false,
+    "global_nonidentifiability_not_claimed": true
+  },
+  "language": {
+    "status": "passed",
+    "reviewer": "primary_assistant",
+    "mode": "semantic_sequential_full_reader_review",
+    "after_last_reader_change": true,
+    "coverage": [
+      "all Markdown sections and formula definitions",
+      "all 16 output tables",
+      "all chart headings, legends, axes and hover text",
+      "CT figure labels",
+      "README"
+    ],
+    "checks": [
+      "language.ru.hash-bound-final-review",
+      "language.ru.encoding",
+      "language.ru.reader-facing-clarity",
+      "language.ru.natural-prose",
+      "language.ru.intro-variation",
+      "language.ru.formula-where"
+    ],
+    "scientific_headings_and_term_scope_reviewed": true,
+    "derived_quantities_defined": true,
+    "findings": []
+  },
+  "bibliography": {
+    "local_Zotero_checked": true,
+    "expected_Heart_Lung_library_available": false,
+    "available_API_has_other_collection_tree": true,
+    "existing_registry_and_project_reference_retained": true,
+    "new_external_literature_claims_added": false
+  },
+  "release_decision": {
+    "report_available_for_analysis": true,
+    "tissue_parameters_released_for_downstream_method": false,
+    "overall_inverse_research_goal_completed": false
+  }
+}

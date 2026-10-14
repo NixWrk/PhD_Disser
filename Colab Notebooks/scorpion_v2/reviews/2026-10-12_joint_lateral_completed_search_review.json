@@ -1,0 +1,94 @@
+{
+  "schema": "georg_joint_completed_search_report_review_v1",
+  "date": "2026-10-12",
+  "inventory_sha256": "e7084e2462165a373002e8cee395e717db303baaecc510856239e985ee569d08",
+  "reader_artifacts": [
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.23_Совместная_локализация_боковых_сборок_Георгия_Scorpion_v2.ipynb",
+      "sha256": "936cb30880de00fb200df1d5c38fcac82494aeb1057f5d1429a9776828015e7f",
+      "bytes": 6300654
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.23_Совместная_локализация_боковых_сборок_Георгия_Scorpion_v2.html",
+      "sha256": "de52267510a3c36bfa8ba27a0af3933ac716c43d024ba0358034f98d9e95e65d",
+      "bytes": 6392170
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.23_Совместная_локализация_боковых_сборок_Георгия_Scorpion_v2.md",
+      "sha256": "02c253236e6ea76454d2bf329b6164285370821381b5e3fbe6592aa562616706",
+      "bytes": 50161
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/README.md",
+      "sha256": "56915a57db1df9b7467abd5727681b6331bbef8b10993e0362a891ba2969d3dd",
+      "bytes": 12844
+    }
+  ],
+  "task_contract": {
+    "scope": "Russian progress report on completed limited joint search and approximate author centre",
+    "new_fem_required": false,
+    "parameter_acceptance_is_not_report_scope": true
+  },
+  "technical": {
+    "static_export": "passed",
+    "reader_errors": 0,
+    "plots": 8,
+    "tables": 8,
+    "code_excluded": true,
+    "browser": "partial",
+    "camera_and_legend_verified_before_author_marker_update": true,
+    "latest_marker_browser_view": "not_rechecked: browser policy rejected inaccessible-tab reload",
+    "latest_marker_and_line_checked_in_saved_plot_data": true
+  },
+  "computational": {
+    "evaluations": 80,
+    "fem_candidates": 70,
+    "invalid_geometry": 10,
+    "fresh_restore_evaluation": 81,
+    "best_optimization_evaluation": 78,
+    "RMSE_ohm": 26.591294317275715,
+    "quadrature_failures": 8,
+    "global_mesh_convergence": false,
+    "optimization_resolution_reached": false,
+    "quantitative_result_accepted": false
+  },
+  "scientific": {
+    "report_fidelity": "passed",
+    "individual_parameters_validated": false,
+    "unchanged_start_values_not_claimed_as_estimated": true,
+    "nonexistence_or_nonidentifiability_not_claimed": true,
+    "author_point_not_measured_or_used_in_fit": true,
+    "whole_heart_myocardium_and_fixed_bone_properties_are_assumptions": true
+  },
+  "language": {
+    "status": "passed",
+    "reviewer": "model",
+    "mode": "semantic_sequential_full_reader_review",
+    "after_last_reader_change": true,
+    "coverage": [
+      "all headings and paragraphs",
+      "all eight captions and tables",
+      "all plot titles and legends",
+      "axes and hover text",
+      "README"
+    ],
+    "checks": [
+      "language.ru.hash-bound-final-review",
+      "language.ru.encoding",
+      "language.ru.reader-facing-clarity",
+      "language.ru.natural-prose",
+      "language.ru.intro-variation",
+      "language.ru.formula-where"
+    ],
+    "scientific_headings_and_term_scope_reviewed": true,
+    "derived_quantities_defined": true,
+    "idiomatic_register_and_semantic_reverse_translation_reviewed": true,
+    "findings": []
+  },
+  "release_decision": {
+    "report_available_with_documented_limits": true,
+    "interactive_render_completely_verified": false,
+    "tissue_parameters_released_for_downstream_method": false,
+    "overall_inverse_research_goal_completed": false
+  }
+}

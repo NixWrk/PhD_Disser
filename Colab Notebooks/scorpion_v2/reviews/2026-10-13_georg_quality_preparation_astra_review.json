@@ -1,0 +1,40 @@
+{
+  "review_date": "2026-10-13",
+  "review_model_requested": "gpt-6-astra",
+  "agent_id": "01a13470-e805-7220-9d61-cd5c1e59726c",
+  "scope": "corrected preparation, full-CEM forward, isolated numerical checks, cache correctness; initial controls only",
+  "numerical_audit_sha256": "b5c07e55769487b07210631ae0a6cf98c49b35fac4a1a08f4f53e8f5e8c1f402",
+  "findings": [
+    {
+      "problem": "audit formerly bound current files without verifying executed identities",
+      "action": "executed worker/each plan/sources/prepared cache and inheritance lineage checked; regression tests added",
+      "resolved": true
+    },
+    {
+      "problem": "force_fresh formerly retained state cache",
+      "action": "clear state cache, last x, residual and reciprocity metrics before the final fresh best solve",
+      "resolved": true
+    },
+    {
+      "problem": "phase-cache hit can be evicted when the other slot is replaced",
+      "action": "read-only check: phase values identical to baseline exactly; avoid edits during frozen execution; performance issue only",
+      "numerical_error_found": false,
+      "resolved_for_numerical_correctness": true
+    }
+  ],
+  "scientific_findings": {
+    "spatial_maximum_ohm": 1.762049893989655,
+    "fraction_maximum_ohm": 1.092968928446254,
+    "total_maximum_ohm": 2.855018822435909,
+    "initial_24_rows_represent_12_unique_forward_conditions": true,
+    "bulk_and_tissue_representation_separately_failed": true,
+    "whole_window_and_global_mesh_convergence_not_proven": true,
+    "mask_total_volumes_do_not_explain_impedance_change": true,
+    "dominant_error_compartment_not_identified": true
+  },
+  "additional_selected_pose_tool": "MATLAB_TRKG4_real_subjects/tools/georg_quality_selected_refinement.py",
+  "selected_pose_tool_sha256": "2c8b320e707fce0a323c1cd460d6315bfc92b4a9079d6df150cd3e0cdd093d2c",
+  "selected_joint_and_final_controls_reviewed": false,
+  "physiological_validation": false,
+  "quantitative_result_accepted": false
+}

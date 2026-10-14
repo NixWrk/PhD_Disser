@@ -1,0 +1,69 @@
+{
+  "review_date": "2026-10-14",
+  "review_model_requested": "gpt-6-astra",
+  "agent_id": "01a13470-e805-7220-9d61-cd5c1e59726c",
+  "status": "completed_search_and_selected_controls_reviewed_with_limitations",
+  "scope": "corrected preparation, repeated 40-evaluation search, reader scientific claims",
+  "candidate_sources": [
+    {
+      "path": "MATLAB_TRKG4_real_subjects/output/exploratory/georg_quality_rebuild_20261013/contact_corrected_v2/inputs/joint_own_drive_independent_contact_master_v2_resume40_retry2/evaluation_0034.local.json",
+      "sha256": "f1602756f78a5c0ffa730195212bc740d96ea7eb113a9ba530893011e626231e"
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/output/exploratory/georg_quality_rebuild_20261013/contact_corrected_v2/inputs/joint_own_drive_independent_contact_master_v2_resume40_retry2/evaluation_0041.local.json",
+      "sha256": "a3666f85e4fae8d88317ba04cea1afadf5d9b42bdfe3f4f49b394f3f50e5a632"
+    }
+  ],
+  "findings": [
+    {
+      "problem": "Literature limits inherited into three-material FEM; author 09 October decision explicitly addresses two-layer inversion",
+      "action": "Report distinguishes restricted scenario from technical 0.1–100 ohm m search; executed inputs unchanged"
+    },
+    {
+      "problem": "Contact reader did not explicitly bind final parameters and pose",
+      "action": "Exact selected-candidate equality and initial contact source verification added"
+    },
+    {
+      "problem": "Displayed masks used a fixed directory",
+      "action": "Masks selected and SHA checked against executed material plan"
+    },
+    {
+      "problem": "CEM current sign convention could be ambiguous",
+      "action": "Outward normal and positive injected group current defined"
+    }
+  ],
+  "search_findings": {
+    "RMSE_parent24_ohm": 28.694074915149596,
+    "RMSE_extension40_ohm": 27.635243061016006,
+    "changed_parameter": "centre u: 0 to -10 mm; six selected resistivities unchanged",
+    "experimental_negative_respiratory_pairs": 8,
+    "total_respiratory_pairs": 12,
+    "model_positive_respiratory_pairs": 12,
+    "six_resistivity_jacobian_condition_approx": 194,
+    "background_fat_column_cosines_approx": [
+      0.983,
+      0.989
+    ],
+    "full_nine_parameter_identifiability_proven": false,
+    "fresh_best_Z_and_jacobian_max_difference": 0
+  },
+  "selected_controls_reviewed": true,
+  "HTML_visual_review_by_astra": false,
+  "quantitative_result_accepted": false,
+  "physiological_validation": false,
+  "selected_numerical_controls": {
+    "spatial_max_ohm": 0.2995555142048687,
+    "fraction_max_ohm": 0.20186562701044863,
+    "total_max_ohm": 0.23727644637301637,
+    "contact_max_ohm": 0.5273062831322193,
+    "contact_failed_values": 0,
+    "uncovered_contact_descriptions": 19,
+    "total_contact_descriptions": 168,
+    "global_convergence_proven": false
+  },
+  "review_limitations": [
+    "Astra checked small source hashes; large MAT caches not independently rehashed by Astra",
+    "Matrix entries not independently compared by Astra",
+    "MATLAB guards tested separately, not included in Astra scientific review"
+  ]
+}

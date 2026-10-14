@@ -38,7 +38,7 @@ def section_polygon(surface, x):
     return unary_union(polygons) if polygons else None
 
 
-def embedded_join(surface, arm, inward_grid=np.arange(.5, 110.5, 1.)):
+def embedded_join(surface, arm, inward_grid=np.arange(.5, 110.5, 1.), clearance_mm=.15):
     direction = -1 if arm['direction'] == 'negative_axis' else 1
     original = np.array([arm['center_y'], arm['center_z']])
     candidates = []
@@ -47,7 +47,7 @@ def embedded_join(surface, arm, inward_grid=np.arange(.5, 110.5, 1.)):
         polygon = section_polygon(surface, x)
         if polygon is None:
             continue
-        possible_centres = polygon.buffer(-(RADIUS+.15))
+        possible_centres = polygon.buffer(-(RADIUS+clearance_mm))
         if possible_centres.is_empty:
             continue
         chosen = nearest_points(possible_centres, Point(original))[0]
@@ -68,7 +68,7 @@ def embedded_join(surface, arm, inward_grid=np.arange(.5, 110.5, 1.)):
     chosen.update(candidate_count=len(candidates), search_step_mm=1., maximum_inset_mm=float(inward_grid[-1]),
         objective='minimum squared displacement from original cropped-arm cap centre',
         analytic_section_area_mm2=float(np.pi*RADIUS**2), radius_mm=float(RADIUS),
-        circular_boundary_segments=256, geometric_clearance_mm=.15)
+      circular_boundary_segments=256, geometric_clearance_mm=float(clearance_mm))
     return chosen
 
 
@@ -107,7 +107,7 @@ def arm_groups(surface, original, joins, current_count=1, potential_count=4):
     return [groups[0], groups[1], groups[3], groups[2]]
 
 
-def run(source, out=OUT):
+def run(source, out=OUT, clearance_mm=.15):
     source, out = Path(source), Path(out)
     out.mkdir(parents=True, exist_ok=True)
     base = load_surface(source)
@@ -116,7 +116,7 @@ def run(source, out=OUT):
     original = read(OLD/'arms_370mm.json')['arm_extension']
     joins, cylinders = {}, []
     for key, arm in original.items():
-        join = embedded_join(base, arm)
+        join = embedded_join(base, arm, clearance_mm=clearance_mm)
         direction = -1 if arm['direction'] == 'negative_axis' else 1
         far = arm['cut_coordinate']+direction*180.
         section = dict(side=key, axis_index=0, perpendicular=[1, 2],

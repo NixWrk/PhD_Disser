@@ -31,18 +31,23 @@ def body_mask(hu, threshold=-450):
     filled. This dataset-specific assumption is checked against all four
     tissue masks; it is unsuitable for disconnected limbs in another scan.
     """
-    labels, _ = ndi.label(hu > threshold)
+    labels, components = ndi.label(hu > threshold)
+    if not components:
+        raise ValueError('CT has no above-threshold body component')
     count = np.bincount(labels.ravel()); count[0] = 0
-    mask = labels == count.argmax()
+    mask = labels == (count[1:].argmax() + 1)
     del labels
     added = 0
     for k in range(mask.shape[2]):
         before = mask[:, :, k]
         # Padding prevents morphology from eroding the cropped arm boundary.
         opened = ndi.binary_opening(np.pad(before, 3), structure=disk(2))[3:-3, 3:-3]
-        ll, _ = ndi.label(opened)
+        ll, components = ndi.label(opened)
+        if not components:
+            mask[:, :, k] = False
+            continue
         sizes = np.bincount(ll.ravel()); sizes[0] = 0
-        opened = ll == sizes.argmax()
+        opened = ll == (sizes[1:].argmax() + 1)
         closed = ndi.binary_closing(np.pad(opened, 2), iterations=1)[2:-2, 2:-2]
         filled = ndi.binary_fill_holes(closed)
         added += int(np.count_nonzero(filled & ~before))
@@ -50,8 +55,8 @@ def body_mask(hu, threshold=-450):
     return mask, added
 
 
-def surface_from_mask(mask, affine):
-    v, f, _, _ = marching_cubes(np.pad(mask, 1).astype(np.uint8), .5)
+def surface_from_mask(mask, affine, level=.5):
+    v, f, _, _ = marching_cubes(np.pad(mask, 1).astype(np.uint8), level)
     lps = nib.affines.apply_affine(affine, v-1)*[-1, -1, 1]
     m = trimesh.Trimesh(lps, f, process=True)
     m.fix_normals()
