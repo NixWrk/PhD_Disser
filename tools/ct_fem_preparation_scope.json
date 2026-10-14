@@ -1,0 +1,218 @@
+{
+  "schema": "ct_fem_preparation_scope_v1",
+  "status": "implementation_handoff_ready_for_user_source_freeze",
+  "source_code_changed_during_handoff": false,
+  "checks_rerun_during_handoff": false,
+  "scope": "Generic preparation and its synthetic checks only. Live Georg main/post FEM runs are outside this status.",
+  "supported_stages": [
+    "validate",
+    "surface",
+    "remesh",
+    "mesh",
+    "materials",
+    "refine",
+    "cem_contacts_input",
+    "cem_contacts (MATLAB sidecar)"
+  ],
+  "component_scopes": [
+    "tools/ct_fem_body_distance_scope.json",
+    "tools/ct_fem_remesh_scope.json",
+    "tools/ct_fem_contacts_scope.json"
+  ],
+  "checks": {
+    "python": {
+      "suite": "tests/test_ct_fem_preparation.py",
+      "passed": 66,
+      "previous_writer_run_seconds": 16.0,
+      "independent_main_assistant_run_reported_seconds": 15.47,
+      "independent_run_provenance": "Main assistant tool-run handoff; test temp directory is not readable in this thread. No rerun."
+    },
+    "tiny_remesh": {
+      "status": "executed_and_checked_on_small_synthetic_shape",
+      "source_faces": 768,
+      "final_faces": 1770,
+      "full_scale_patient_remesh_executed": false
+    },
+    "tiny_TetGen": {
+      "status": "main_assistant_reported_backend_passed",
+      "test_source": "tests/test_ct_fem_tetgen.py",
+      "TetGen_version": "0.8.3",
+      "nodes": 2137,
+      "tetrahedra": 8348,
+      "minimum_mean_ratio": 0.13914,
+      "dependency_source": "Existing local python_mesh_deps runtime supplied by the main assistant",
+      "provenance": "Main assistant tool-run handoff and public test source inspected. Saved synthetic test temp directory is unreadable in this thread; stored mesh QC was not independently reread. No rerun.",
+      "mesh_QC_is_not_FEM_convergence": true
+    },
+    "MATLAB_CEM": {
+      "status": "saved_synthetic_runtime_evidence_verified",
+      "execution_owner": "Main assistant as recorded in docs/CT_FEM_PREPARATION_CODE_REVIEW_20261014.json",
+      "fixture_builder": "tests/prepare_ct_fem_matlab_fixture.py",
+      "checker": "MATLAB_TRKG4_real_subjects/tests/check_ct_fem_contacts_fixture.m",
+      "nodes": 9261,
+      "tetrahedra": 48000,
+      "physical_contact_counts": [
+        5,
+        5,
+        5,
+        4
+      ],
+      "canonical_contact_matrix_errors": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "grouped_energy_errors": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "Unicode_SI_ordered_polarity_floating_absent_mixed_z_checked": true,
+      "input_sha256": "873bd1e382fb51727cf4c88e643802e92e3814d0c8b5733f341a1274c2ed1117",
+      "manifest_sha256": "936a25fa11eef81e333c47ac7bc0fca79cd0b6f085341637ef66480af24ef628",
+      "verification": "Input, manifest and output product SHA verified; all 21 bound source-code files still match execution-time SHA. Saved checker JSON and log read. No execution repeated.",
+      "bulk_PDE_solve_executed": false
+    },
+    "saved_body_diagnostic": {
+      "status": "completed_diagnostic_preserving_negative_1_25mm_result",
+      "executed_source_bytes": "Complete diagnostic script and core archived before edits; archived SHA matches historical diag_v1 source SHA.",
+      "verification": "All 12 execution-time source/data entries verified using additive executed_sources_binding.local.json; original report untouched.",
+      "Russian_figure": "Rendered captions and layout reviewed; image/text hashes and complete plotter/core snapshots stored beside the ignored local figure.",
+      "topology_and_export_budgets_separate": true,
+      "example_topology_budget_mm": 1.25,
+      "example_export_budget_mm": 1.25,
+      "automatic_threshold_extension": false,
+      "new_real_case_budget_selected": false,
+      "pilot_3mm_executed": false,
+      "diagnostic_rerun_during_handoff": false,
+      "patient_coordinates_in_public_scope": false
+    }
+  },
+  "pending": [
+    "Author chooses an explicit body-correction research scenario; rejected 1.25mm pilot remains a negative result.",
+    "Patient-specific surface/remesh/mesh and actual finite-contact QC under that declared scenario.",
+    "Same-bulk-mesh direct versus inherited contacts, numerical convergence, reciprocity/solve residuals and derivative checks through the canonical FEM pipeline.",
+    "Canonical run_pipeline preparation routing and material/operator rule binding after the frozen numerical work."
+  ],
+  "source_freeze_inventory": [
+    {
+      "path": "tools/ct_fem_core.py",
+      "sha256": "ce0b078638ca2f57c7b6b863c3b3a2033bca4926ddcc3d030e7c1c7b38dbde0d"
+    },
+    {
+      "path": "tools/ct_fem_contacts.py",
+      "sha256": "3037b9a13daf23d448afd3af5fd407ed84723a572ea7763b491b201a090d8ca5"
+    },
+    {
+      "path": "tools/ct_fem_remesh.py",
+      "sha256": "6a0979f72d2d63343e772d7291d1223090835fb218dbf9ffa081f913a90a1e88"
+    },
+    {
+      "path": "tools/ct_fem_body_diagnostic.py",
+      "sha256": "55a7b71964bea36332233ce5bc47f1fe0e7745dd25c78177a3a9113d7bb938c0"
+    },
+    {
+      "path": "tools/prepare_ct_fem.py",
+      "sha256": "ab5e9fb9c6d00e5eff23c02a8ca041cbeeb1c7644da9a9b57ee6d6cced0e6dca"
+    },
+    {
+      "path": "configs/ct_fem_preparation.example.json",
+      "sha256": "3042fb5c30aa9ffd397f678c9dccf707524b50908140c9810914fc685b544f93"
+    },
+    {
+      "path": "tests/test_ct_fem_preparation.py",
+      "sha256": "4f02cf4d0cee766bf7ebc21f817e12ebb7ef292d7fa977a97fb2473ae2097ad8"
+    },
+    {
+      "path": "tests/test_ct_fem_tetgen.py",
+      "sha256": "5a1c2de68ca952cbe525b3329e6b8f63fa4cfce00161da0871b9961682c5d06b"
+    },
+    {
+      "path": "tests/prepare_ct_fem_matlab_fixture.py",
+      "sha256": "b0f8e84618ea9701ac44d5cf1eaf4a3233cd48d83062f7eeb8e086c0a8f33cd8"
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/src/run_ct_fem_contacts_prepare.m",
+      "sha256": "8214664c10b401a499cd36cf642776aeb15958e33d1137ebc0cad8949158bad3"
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/tests/check_ct_fem_contacts_fixture.m",
+      "sha256": "8dc7853d06f6ebd7c8ceb9025dabe2f96bdfe34e2040c0fda8ea8eff9ce9d01f"
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/tools/georg_ct_model.py",
+      "sha256": "6d13eac0520ce2bb5b3508d458c1b19485afeea5807fd8b22ed64087aa0eda99"
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/tools/georg_mesh_quality.py",
+      "sha256": "7892576f6d8d4fe4f53bee38c0b028868a01dd4db78ac7b1aae5e6f4d10eabe6"
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/tools/georg_quality_selected_refinement.py",
+      "sha256": "f34eb833c1fe4496781432ba9d3499946fcd8150bb7817ad77b6de88c878a353"
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/tools/georg_lateral_quadrature.py",
+      "sha256": "a60cf16b69e16306d57608ece422451484d7bef27c898162884192fe52fea76a"
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/tools/add_arm_extensions.py",
+      "sha256": "87fab19e1740d660dfb14996d13cbd410d362636e524a41f02bb68c11d82a631"
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/tools/scorpion_georg_geometry_revision.py",
+      "sha256": "a8308c89b1ca6b8618991da14904a61e2375dbde553cba19edbd76cdfce95c9b"
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/tools/georg_quality_mesh_prepare.py",
+      "sha256": "569f47f41740a00f6a744d96b3de5f57429e14f33eec2d2f5820cffe43d30485"
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/src/trkg4_file_sha256.m",
+      "sha256": "3c3fa6b685c5775a8763080d07c190cc0efcbeb95fbbc028545063db911d8f53"
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/src/trkg4_cem_contact_matrix.m",
+      "sha256": "2978a228cb3324ceaa3deea26914238c8b97f2a70643b6492dbef5d78eea9bf8"
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/src/trkg4_scale_fmdl_to_si.m",
+      "sha256": "77450a9bec1048082c51d2ff7f3cb7278db723ccd7e04cf1a4217320902d0ce4"
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/tools/trkg4_local_patch_context.m",
+      "sha256": "797fe724c7daab4aa4ed0017a0d402af9393dc4028112062c0ba5e41361d681a"
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/tools/trkg4_local_exact_patches.m",
+      "sha256": "7bc6e37d7a74600ed6dd563f998c020d96de65ed52161f8e1bb2f8b2b8df2953"
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/tools/trkg4_local_cached_subset.m",
+      "sha256": "a428f1c735f07aac2c2f3282f79baa971fa7bfa5910dc3d978a8d28221fd802c"
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/tools/trkg4_local_triangle_distance.m",
+      "sha256": "6590b263381c0b58236165d2831ff6ae52499d928c1bda8855ef68fc4b7fa89c"
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/vendor_stl_eidors/electrode_patch_context.m",
+      "sha256": "8965cf9e4f7a30916d3f14296b5eee43db4c33d70f72af0cfc8eb5ecafde20f2"
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/vendor_stl_eidors/electrode_faces_by_area.m",
+      "sha256": "65759b1ab0e2e5a177bd55dcc49c26c25ed1cee63a8e1b278384f3ab43ccd3b7"
+    }
+  ],
+  "source_freeze_applied_by_this_agent": false,
+  "main_post_sources_edited": false,
+  "author_fixture_or_checker_sources_edited": false,
+  "scientific_standard_or_CODE_REVIEW_edited": false,
+  "bulk_FEM_solve_executed_in_generic_checks": false,
+  "independent_anatomical_validation": false,
+  "quantitative_result_accepted": false,
+  "universal_validity_claimed": false,
+  "automatic_publication": false
+}

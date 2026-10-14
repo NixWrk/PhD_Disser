@@ -11,23 +11,25 @@ for k=1:size(starts,1)
  if v<value,best=starts(k,:);value=v;end
 end
 assert(isfinite(value),'trkg4:noAdmissibleInversePoint','No admissible starting pose');
-sweep=0;
+sweep=0;completed_sweeps=0;
 while count<budget&&any(step>=minstep)
- sweep=sweep+1;next=best;nextvalue=value;
+ sweep=sweep+1;next=best;nextvalue=value;sweep_complete=true;
  for j=1:numel(best)
   if step(j)<minstep(j),continue;end
   for sign=[-1,1]
-   if count>=budget,break;end
+   if count>=budget,sweep_complete=false;break;end
    q=best;q(j)=min(max(q(j)+sign*step(j),lb(j)),ub(j));
    if any(all(abs(evaluated-q)<1e-12,2)),continue;end
    v=evaluate(q);
    if v<nextvalue,next=q;nextvalue=v;end
   end
  end
- if nextvalue<value,best=next;value=nextvalue;else,step=step/2;end
+ if sweep_complete,completed_sweeps=completed_sweeps+1;end
+ if nextvalue<value,best=next;value=nextvalue;elseif sweep_complete,step=step/2;end
  fprintf('NIX PATTERN sweep=%d objective=%.8g evaluations=%d\n',sweep,value,count);
 end
-info=struct('evaluations',count,'sweeps',sweep,'resolution_reached',all(step<minstep),...
+info=struct('evaluations',count,'sweeps',sweep,'completed_sweeps',completed_sweeps,...
+ 'resolution_reached',all(step<minstep),...
  'budget_reached',count>=budget,'final_step',step,'global_minimum_certified',false);
 
  function v=evaluate(q)

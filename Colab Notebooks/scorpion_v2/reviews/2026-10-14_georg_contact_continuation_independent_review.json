@@ -1,0 +1,92 @@
+{
+  "date": "2026-10-14",
+  "review_agent": "Copernicus",
+  "agent_id": "01a139a1-ba2e-75b0-8424-53c729d46ad8",
+  "model": "inherited model; no Astra claim",
+  "scope": "stored observations, respiratory signs, preparation and runtime provenance",
+  "status": "inputs_numerical_provenance_and_current_code_reviewed_no_quantitative_acceptance",
+  "observations_unchanged": true,
+  "hold_observations": 24,
+  "initial_contact_descriptions_fully_refined": 168,
+  "initial_total_contact_descriptions": 168,
+  "mesh_nodes": 826136,
+  "mesh_tetrahedra": 4157156,
+  "bootstrap_sources_verified": 143,
+  "old_protocol_bytes_preserved": true,
+  "findings": [
+    {
+      "finding": "Opposite contrast conventions in separate reports; captions match code",
+      "meaning": "Does not explain measured-versus-model mismatch within report 33.29"
+    },
+    {
+      "finding": "No computational respiratory label swap established; cached window medians reproduce all hold levels",
+      "limitation": "Intervals remain unaccepted expert candidates; record 011 has low confidence"
+    },
+    {
+      "finding": "Repeated longitudinal 60 mm decreases by 18–20 ohm when recorded in the cross",
+      "limitation": "Does not establish drift, a recording defect or a particular source mechanism"
+    },
+    {
+      "finding": "Runtime adds the conditional material warm start to its working configuration",
+      "action": "Exact bootstrap configuration saved separately before the runtime update"
+    },
+    {
+      "finding": "Coverage is complete for the initial selected pose; movement can leave the refined region",
+      "action": "Final-pose coverage remains a separate required diagnostic"
+    }
+  ],
+  "final_results_reviewed": false,
+  "quantitative_result_accepted": false,
+  "physiological_validation": false,
+  "active_work_directory": "MATLAB_TRKG4_real_subjects/output/exploratory/georg_contact_continuation_20261014_v2",
+  "local_projection_at_old_centre": {
+    "scope": "fixed-centre linear diagnostic, not a nonlinear inverse solution",
+    "singular_values_ohm": [
+      260.0030022726072,
+      21.391480522319327,
+      0.01706897436018943
+    ],
+    "eta_logrho": [
+      -0.06493581484974072,
+      -251.79985767312115,
+      0.6302550775147608
+    ],
+    "residual_rms_ohm": 1.0733635304315037,
+    "residual_SSE_fraction": 0.3520459109055658,
+    "sign_mismatches": 2,
+    "step_outside_local_and_technical_domain": true
+  },
+  "warm_start_restart": {
+    "old_started_evaluations": 23,
+    "remaining_evaluations": 57,
+    "total_evaluation_budget": 80,
+    "maximum_absolute_logrho_snap": 3.3230218576818515e-10,
+    "old_outputs_preserved": true,
+    "physical_kernel_changed": false,
+    "objective_changed": false,
+    "original_deadlines_retained": true,
+    "new_fresh_results_pending": true
+  },
+  "current_confirmed_arm_montage_007_010": "1x1",
+  "cross_006_011_wires_removed_author_confirmed": true,
+  "additional_review": {
+    "agent": "Kierkegaard",
+    "same_point_controls_reuse_verified": true,
+    "reference_equivalence_only_three_provenance_fields": true,
+    "reference_gate_actual_original_SHA_preserved": true,
+    "reference_equivalence_tests": 4,
+    "canonical_CEM_route_runtime_cases": 4,
+    "canonical_CEM_matrix_errors": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "single_start_resume_shape_fixed": true,
+    "search_order_identity_before_resume_fixed": true,
+    "profile_checkpoints_added_after_interrupted_run_no_old_values_recovered": true,
+    "timebase_005_006_inverse_and_viewer_both_400_hz": true,
+    "raw_hold_medians_reproduced": 6,
+    "quantitative_result_accepted": false
+  }
+}

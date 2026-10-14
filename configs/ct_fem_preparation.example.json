@@ -1,0 +1,115 @@
+{
+  "schema": "ct_fem_preparation_v1",
+  "subject_alias": "synthetic_or_local_subject",
+  "coordinates": {"nifti_frame": "RAS", "geometry_frame": "LPS", "units": "mm"},
+  "inputs": {
+    "ct_intensity_units": "HU",
+    "ct_provenance": {"kind": "static_CT", "series": "REPLACE_with_selected_series", "breath_state": "REPLACE_from_confirmed_source_or_unknown", "independently_validated": false},
+    "ct": "../local_inputs/static_ct.nii.gz",
+    "masks": {
+      "lung": "../local_inputs/lung.nii.gz",
+      "bone": "../local_inputs/bone.nii.gz",
+      "heart": "../local_inputs/heart.nii.gz",
+      "fat": "../local_inputs/fat.nii.gz"
+    },
+    "mask_provenance": {"method": "declare_manual_or_automatic", "author_or_backend": "required", "independently_validated": false}
+  },
+  "body": {
+    "strategy": "HU_largest_component_per_slice",
+    "hu_threshold": -450,
+    "closing_iterations": 1,
+    "closing_connectivity": 1,
+    "surface_level": 0.49,
+    "maximum_changed_relative": 0.001,
+    "maximum_outside_body_voxels": {"lung": 0, "bone": 0, "heart": 0, "fat": 0}
+  },
+  "synthetic_cylinders": [],
+  "surface_qc": {
+    "sample_count": 15000,
+    "topology_correction": {
+      "reference": "HU_body_native_level_0.49",
+      "candidate": "closed_body_native_level_0.49",
+      "maximum_sampled_distance_mm": 1.25,
+      "bound_basis": "Illustrative conservative case budget; justify independently for the selected geometry. One 6-neighbour closing does not imply this boundary-distance bound."
+    },
+    "export_fidelity": {
+      "reference": "closed_body_native_level_0.49",
+      "candidate": "closed_body_exported_STL",
+      "maximum_sampled_distance_mm": 1.25,
+      "bound_basis": "Historical corrected-native to corrected-STL allowance; applies to export fidelity only, never to HU-mask topology changes."
+    },
+    "maximum_yz_extension_mm": 0.02
+  },
+  "mesh": {
+    "size_mm": 8.0,
+    "max_nodes": 1000000,
+    "max_tetrahedra": 6000000,
+    "steiner_limit": 500000,
+    "maximum_relative_volume_error": 0.003,
+    "maximum_sampled_surface_error_mm": 0.75,
+    "quality_limits": {"minimum_mean_ratio": 0.01, "maximum_edge_condition": 10000.0}
+  },
+  "remeshing": {
+    "global_edge_mm": 5.0,
+    "buffer_edge_mm": 2.8,
+    "contact_edge_mm": 1.4,
+    "iterations": 6,
+    "adaptive": false,
+    "smooth_vertices": false,
+    "feature_angle_deg": 170.0,
+    "split_edges": true,
+    "collapse_edges": true,
+    "swap_edges": true,
+    "reproject": true,
+    "per_operation_distance_mm": 0.2,
+    "maximum_sampled_distance_mm": 0.75,
+    "maximum_relative_volume_error": 0.003,
+    "maximum_projection_shift_mm": 1.0,
+    "maximum_yz_extension_mm": 0.02,
+    "sample_count": 15000,
+    "max_faces": 2000000,
+    "max_vertices": 1000000,
+    "selection": {
+      "physical_contact_ids": ["I_plus", "V_plus", "V_minus", "I_minus"],
+      "guides_lps_mm": [],
+      "buffer_radius_mm": 16.0,
+      "contact_radius_mm": 10.0,
+      "buffer_aabbs_lps_mm": [],
+      "contact_aabbs_lps_mm": []
+    }
+  },
+  "materials": {
+    "order": ["soft_background", "lung", "bone", "heart", "fat"],
+    "priority": ["lung", "bone", "heart", "fat", "background"],
+    "outside_ct": "soft_background",
+    "points": [1024, 4096],
+    "seed": 20261008
+  },
+  "contacts": {
+    "maximum_projection_mm": 1.0,
+    "physical_centres_lps_mm": {
+      "I_plus": {"raw_lps_mm": [0, 0, 0], "nominal_area_mm2": 19.634954084936208, "provenance": "REPLACE_with_source_and_role"},
+      "V_plus": {"raw_lps_mm": [0, 0, 10], "nominal_area_mm2": 19.634954084936208, "provenance": "REPLACE_with_source_and_role"},
+      "V_minus": {"raw_lps_mm": [0, 0, 20], "nominal_area_mm2": 19.634954084936208, "provenance": "REPLACE_with_source_and_role"},
+      "I_minus": {"raw_lps_mm": [0, 0, 30], "nominal_area_mm2": 19.634954084936208, "provenance": "REPLACE_with_source_and_role"}
+    },
+    "scenarios": [
+      {"id": "example_only", "present_contact_ids": ["I_plus", "V_plus", "V_minus", "I_minus"],
+       "groups": {"g1": ["I_plus"], "g2": ["V_plus"], "g3": ["V_minus"], "g4": ["I_minus"]},
+       "drive_groups": ["g1", "g4"], "measure_groups": ["g2", "g3"],
+       "inactive_contact_model": "individual_floating_CEM_assumption"}
+    ]
+  },
+  "cem_contacts": {
+    "patch_method": "collective_scalar_area_calls_select_matching_contacts_reject_mixed_overlap",
+    "physical_parameters": [
+      {"id": "I_plus", "z_contact_ohm_m2": 0.01, "z_contact_source": "Example assumption only; replace with declared experiment/scenario source"},
+      {"id": "V_plus", "z_contact_ohm_m2": 0.01, "z_contact_source": "Example assumption only; replace with declared experiment/scenario source"},
+      {"id": "V_minus", "z_contact_ohm_m2": 0.01, "z_contact_source": "Example assumption only; replace with declared experiment/scenario source"},
+      {"id": "I_minus", "z_contact_ohm_m2": 0.01, "z_contact_source": "Example assumption only; replace with declared experiment/scenario source"}
+    ]
+  },
+  "refinement": {"guides_lps_mm": [], "radius_mm": 6.0, "promotion_rounds": 2, "max_promoted": 10000},
+  "resources": {"max_ct_voxels": 100000000},
+  "electrical_context": {"frequency_hz": 100000, "frequency_provenance": "REPLACE_with_experiment_source", "contact_impedance_is_measured": false}
+}

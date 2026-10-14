@@ -1,0 +1,71 @@
+{
+  "date": "2026-10-14",
+  "scope": "current preparation route and independent synthetic checks; no physiological acceptance",
+  "python_preparation_tests": 66,
+  "tetgen_toy_backend": {
+    "version": "0.8.3",
+    "nodes": 2137,
+    "tetrahedra": 8348,
+    "minimum_mean_ratio": 0.13914,
+    "passed": true
+  },
+  "canonical_MATLAB_CEM": {
+    "status": "synthetic_CEM_preparation_checks_passed",
+    "scenario_count": 4,
+    "physical_counts": [
+      5,
+      5,
+      5,
+      4
+    ],
+    "original_Unicode_IDs_preserved": true,
+    "absent_candidate_excluded": true,
+    "drive_reversal_changes_only_ordered_port_pattern": true,
+    "floating_presence_checked": true,
+    "heterogeneous_contact_impedance_grouping_checked": true,
+    "canonical_contact_matrix_error": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "tied_energy_absolute_error": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "SI_mesh_identity_checked": true,
+    "FEM_was_run": false,
+    "physiological_validation": false,
+    "input_sha256": "068d98e5ebfe5b300aeb99b5def550ac1a7e52e60f0aaf1c18ab52dd650c8ecc",
+    "manifest_sha256": "0c299c8dae46d30ab4f53ac04d345a0781662bfa69adf758d6d52c1c0bab0039"
+  },
+  "search_order_tests": 2,
+  "reference_equivalence_tests": 4,
+  "full_patient_generic_surface_pilot_passed": false,
+  "patient_topology_budget_1p25mm_passed": false,
+  "quantitative_result_accepted": false,
+  "current_preparation_sources": [
+    {
+      "path": "tools/ct_fem_core.py",
+      "sha256": "ce0b078638ca2f57c7b6b863c3b3a2033bca4926ddcc3d030e7c1c7b38dbde0d"
+    },
+    {
+      "path": "tools/prepare_ct_fem.py",
+      "sha256": "ab5e9fb9c6d00e5eff23c02a8ca041cbeeb1c7644da9a9b57ee6d6cced0e6dca"
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/src/run_ct_fem_contacts_prepare.m",
+      "sha256": "8e16292dc13c813a76c7983db5c2ac805e68ff6bcb39071f26c1cdb8258061e4"
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/tests/check_ct_fem_contacts_fixture.m",
+      "sha256": "b0a2f313003e365f0244a50d8092df1db9bdd79fb2bcc61e02bf503e589d59b7"
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/run_pipeline.m",
+      "sha256": "565e5d85e3319425e86867e0cc18e0f24aa65a48df544fd5002af431ccd0fd90"
+    }
+  ]
+}

@@ -18,7 +18,10 @@ addParameter(p,'CentreHalfWidthMM',[30,30],@(x)isnumeric(x)&&numel(x)==2&&all(is
 addParameter(p,'AngleHalfWidthDeg',20,@(x)isscalar(x)&&isfinite(x)&&x>0&&x<=45);
 addParameter(p,'CheckCandidateFile','');
 addParameter(p,'WarmStartFile','');
+addParameter(p,'ProfileMaxEvaluations',100,@(x)isscalar(x)&&x>=4&&x==fix(x));
+addParameter(p,'ProfileMaxIterations',60,@(x)isscalar(x)&&x>=1&&x==fix(x));
 addParameter(p,'StartIndices',[],@(x)isnumeric(x)&&isvector(x)&&all(x>=1)&&all(x==fix(x))||isempty(x));
+addParameter(p,'JointParameterOrder',1:9,@(x)isnumeric(x)&&isequal(sort(reshape(x,1,[])),1:9));
 addParameter(p,'ExcitationScenario','own_drive',@(x)any(strcmp(x,{'own_drive','in_phase','opposite_phase','quadrature_magnitude'})));
 parse(p,varargin{:});a=p.Results;
 forward_check=~isempty(a.CheckCandidateFile);
@@ -164,6 +167,7 @@ starts=min(max(starts,lb),ub);
 C={};drive={};measure={};lastx=[];lastZ=[];lastJ=[];lastOwn=[];lastCounter=[];
 lastres=0;lastrec=0;evaluations=0;
 state_cache={[],[]};lastpose=[];lastpatchqc=[];
+profile_checkpoint_prefix='';
 if forward_check
  report=check_candidate();return;
 end
@@ -171,9 +175,23 @@ if strcmp(a.SearchMode,'nix_joint')
  assert(isempty(a.PoseIds),'PoseIds belongs to the discrete profile mode');
  report=joint_search();return;
 end
-opt=optimoptions('lsqnonlin','SpecifyObjectiveGradient',true,'Display','off',...
+if ~isempty(a.WarmStartFile)
+ warm=jsondecode(fileread(fullfile(root,char(a.WarmStartFile))));
+ if isfield(warm,'best'),warm=warm.best;end
+ assert(strcmp(warm.identity.observations_sha256,identity.observations_sha256),...
+  'Profile warm-start observations changed');
+ assert(numel(grid.poses)==1&&isequal(grid.poses(1).electrodes,warm.pose.electrodes),...
+  'Fixed-pose material warm start requires the same complete electrode coordinates');
+ starts=[reshape(warm.parameters(1:6),1,6);starts];
+ identity.warm_start_sha256=trkg4_file_sha256(fullfile(root,char(a.WarmStartFile)));
+end
+if ~isempty(a.StartIndices)
+ assert(numel(unique(a.StartIndices))==numel(a.StartIndices)&&max(a.StartIndices)<=size(starts,1));
+ starts=starts(a.StartIndices,:);
+end
+opt=optimoptions('lsqnonlin','SpecifyObjectiveGradient',true,'Display','iter',...
  'FunctionTolerance',1e-8,'StepTolerance',1e-6,'OptimalityTolerance',1e-6,...
- 'MaxIterations',60,'MaxFunctionEvaluations',100);
+ 'MaxIterations',a.ProfileMaxIterations,'MaxFunctionEvaluations',a.ProfileMaxEvaluations);
 dest=fullfile(out,['fits_' char(a.ExcitationScenario)]);if ~isfolder(dest),mkdir(dest);end
 rows=struct([]);geometry_failures=struct([]);
 for k=1:numel(grid.poses)
@@ -190,8 +208,9 @@ for k=1:numel(grid.poses)
  end
  lastx=[];lastZ=[];lastJ=[];lastOwn=[];lastCounter=[];lastres=0;lastrec=0;evaluations=0;
  state_cache={[],[]};
- solutions=zeros(2,6);values=zeros(2,1);flags=zeros(2,1);
- for start=1:2
+ profile_checkpoint_prefix=sprintf('pose_%04d',k);
+ solutions=zeros(size(starts,1),6);values=zeros(size(starts,1),1);flags=zeros(size(starts,1),1);
+ for start=1:size(starts,1)
   [x,value,~,flag]=lsqnonlin(@objective,starts(start,:),lb,ub,opt);
   solutions(start,:)=x;values(start)=value;flags(start)=flag;
  end
@@ -269,10 +288,25 @@ write_json(fullfile(out,['inverse_execution_' char(a.ExcitationScenario) '.local
     'Z',Z(ids),'J',J(ids,(state-1)*3+(1:3)),'Own',Own(ids),'Counter',Counter(ids),'res',lastres,'rec',lastrec);
   end
   lastx=x;lastZ=Z;lastJ=J;lastOwn=Own;lastCounter=Counter;evaluations=evaluations+1;residual=Z-O.Z_ohm;
+  if rule==2 && strcmp(a.SearchMode,'profile_grid') && ~isempty(profile_checkpoint_prefix)
+   checkpoint_file=fullfile(dest,sprintf('%s_evaluation_%04d.local.json',profile_checkpoint_prefix,evaluations));
+   assert(~isfile(checkpoint_file),'trkg4:profileCheckpointExists','Use a fresh profile output directory');
+   checkpoint=struct('schema','georg_completed_profile_evaluation_v1','identity',identity,...
+    'pose_id',pose.pose_id,'pose',pose,'parameters',reshape(x,1,6),...
+    'target_Z_ohm',O.Z_ohm,'predicted_Z_ohm',Z,'residual_ohm',residual,...
+    'jacobian_logrho',J,'own_drive_transfer_ohm',Own,'counter_drive_transfer_ohm',Counter,...
+    'RMSE_ohm',sqrt(mean(residual.^2)),'evaluation',evaluations,...
+    'maximum_system_residual_seen',lastres,'maximum_reciprocity_ohm_seen',lastrec,...
+    'status','completed_FEM_evaluation_not_an_accepted_fit','quantitative_result_accepted',false);
+   temporary_file=[checkpoint_file '.writing'];write_json(temporary_file,checkpoint);
+   movefile(temporary_file,checkpoint_file);
+  end
   if rule~=2,lastx=[];end
  end
 
  function result=joint_search()
+  identity.search_reordering_sha256=trkg4_file_sha256(which('trkg4_reordered_pattern_search'));
+  identity.joint_parameter_order=reshape(a.JointParameterOrder,9,1);
   addpath(fullfile(root,'tools','full_pose_scan'));
   projection=full_scan_context(pose_mm);
   identity.projection_sha256=trkg4_file_sha256(which('full_scan_project'));
@@ -348,6 +382,9 @@ write_json(fullfile(out,['inverse_execution_' char(a.ExcitationScenario) '.local
      'trkg4:staleResumeInput',['Resume dependency changed: ' name]);
    end
    previous_starts=previous_plan.starts;
+   if isvector(previous_starts)&&numel(previous_starts)==size(full_seeds,2)
+    previous_starts=reshape(previous_starts,1,[]);
+   end
    if ~isempty(a.StartIndices)&&isequal(previous_starts,full_seeds)
     previous_starts=previous_starts(a.StartIndices,:);
    end
@@ -387,14 +424,16 @@ write_json(fullfile(out,['inverse_execution_' char(a.ExcitationScenario) '.local
    'ct_cut_planes_z_mm',ct_z_limits,'lateral_cap_clearance_mm',3.7,...
    'angle_bounds_are_search_scenario',true,'confidence_interval',false);
   search_plan.author_centre=author;search_plan.projected_reference_centre_lps_mm=c0;
+  search_plan.parameter_evaluation_order=reshape(a.JointParameterOrder,1,9);
+  search_plan.identity=identity;
   search_plan.reference_projection_distance_mm=norm(c0-reference);
   search_plan.local_author_centre_search=~isempty(a.CentreFile);
   search_plan.included_start_indices=a.StartIndices;
   search_plan.full_original_starts=full_seeds;
   write_json(fullfile(dest,'plan.local.json'),search_plan);
   counter=0;bestvalue=Inf;bestrow=struct([]);
-  [best,value,info]=trkg4_bounded_pattern_search(@joint_objective,seeds,parameter_lower,parameter_upper,...
-   [.18,.25,.30,.18,.25,.30,10,10,5],[.005,.01,.01,.005,.01,.01,.5,.5,.5],a.MaxEvaluations);
+  [best,value,info]=trkg4_reordered_pattern_search(@joint_objective,seeds,parameter_lower,parameter_upper,...
+   [.18,.25,.30,.18,.25,.30,10,10,5],[.005,.01,.01,.005,.01,.01,.5,.5,.5],a.MaxEvaluations,a.JointParameterOrder);
   % Restore the best contact pose, then check quadrature at its fitted values.
   force_fresh=true;state_cache={[],[]};lastx=[];lastres=0;lastrec=0;
   value=joint_objective(best);

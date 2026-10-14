@@ -21,6 +21,13 @@ verifyError(t,@()trkg4_bounded_pattern_search(@(~)Inf,0,-1,1,.5,.1,10),...
  'trkg4:noAdmissibleInversePoint');
 end
 
+function test_incomplete_sweep_does_not_claim_resolution(t)
+[~,~,info]=trkg4_bounded_pattern_search(@(~)1,[0,0],[-1,-1],[1,1],...
+ [.2,.2],[.15,.15],3);
+verifyFalse(t,info.resolution_reached);verifyEqual(t,info.completed_sweeps,0);
+verifyEqual(t,info.final_step,[.2,.2]);
+end
+
 function value=geometry_objective(q)
 if q<0,value=Inf;else,value=(q-.5)^2;end
 end

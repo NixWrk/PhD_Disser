@@ -1,0 +1,24 @@
+{
+  "schema": "russian_scientific_prose_full_text_review_v1",
+  "artifact": "docs/CT_FEM_PREPARATION_STANDARD.md",
+  "artifact_sha256": "c70fd4ddaea4cd2e7faebb6a852364962b8899e4f03d175ff4e936d9938dccff",
+  "reviewed_utc": "2026-10-14T18:24:06.711594+00:00",
+  "reviewer": "main assistant",
+  "status": "passed",
+  "full_reader_visible_text_read_semantically_in_sequence_after_last_edit": true,
+  "automatic_linter_is_not_the_review": true,
+  "findings": [],
+  "checks": [
+    "scientific_headings",
+    "technical_terms_and_scope",
+    "LPS_RAS_coordinate_directions",
+    "ordered_port_polarity",
+    "derived_q_and_sigma_definitions",
+    "formula_where_explanations",
+    "fact_assumption_model_validation_distinction",
+    "idiomatic_register_and_semantic_preservation"
+  ],
+  "language_status_only": true,
+  "computational_acceptance_not_implied": true,
+  "source_rule": "russian-scientific-prose/rule.language.ru-final-review"
+}

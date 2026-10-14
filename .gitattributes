@@ -42,6 +42,7 @@
 "Colab Notebooks/scorpion_v2/33.23_*" -text -whitespace
 "Colab Notebooks/scorpion_v2/33.28_*" -text -whitespace
 "Colab Notebooks/scorpion_v2/33.29_*" -text -whitespace
+"Colab Notebooks/scorpion_v2/33.30_*" -text -whitespace
 "Colab Notebooks/scorpion_v2/20.22_*" -text -whitespace
 "Colab Notebooks/scorpion_v2/build_georg_*.py" -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 "Colab Notebooks/scorpion_v2/10.00_*" -text -whitespace
@@ -286,3 +287,12 @@ MATLAB_TRKG4_real_subjects/notebooks/lateral_fat_inverse_results.py -text
 "MATLAB_TRKG4_real_subjects/tools/full_pose_scan/cem_helper_source_baseline.json" -text
 # Historical executed sources retain the bytes recorded in result manifests.
 MATLAB_TRKG4_real_subjects/archive/executed_georg_quality_20261013/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+MATLAB_TRKG4_real_subjects/archive/executed_georg_continuation_20261014/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+MATLAB_TRKG4_real_subjects/archive/executed_ct_fem_body_20261014/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+# Preparation sources are recorded by their exact bytes in stage manifests.
+tools/ct_fem*.py -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+tools/prepare_ct_fem.py -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+tests/*ct_fem*.py -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+MATLAB_TRKG4_real_subjects/src/run_ct_fem_contacts_prepare.m -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+# Preserve the exact executed comparator recorded in the contact-check receipt.
+MATLAB_TRKG4_real_subjects/tools/georg_quality_equivalent_reference_contacts.py -text whitespace=blank-at-eol,-blank-at-eof,space-before-tab,cr-at-eol

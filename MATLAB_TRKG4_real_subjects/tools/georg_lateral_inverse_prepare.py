@@ -27,7 +27,9 @@ def montage_rows():
     rows = []
     for rid in range(1, 12):
         size = {7:120, 8:100, 9:80, 10:60, 11:60}.get(rid, 140)
-        arms = {1:'1x1', 2:'1x1', 3:'2x2'}.get(rid, '1x4')
+        # Direct author confirmation 14.10.2026 supersedes the filename 1x4
+        # labels for the late block; channels, axes and windows stay unchanged.
+        arms = {1:'1x1', 2:'1x1', 3:'2x2', 7:'1x1', 8:'1x1', 9:'1x1', 10:'1x1'}.get(rid, '1x4')
         axes = [(2, 'longitudinal')]
         if rid == 5:
             axes = [(2, 'perpendicular')]

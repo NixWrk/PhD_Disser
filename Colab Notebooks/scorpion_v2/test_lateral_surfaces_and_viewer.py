@@ -123,9 +123,10 @@ class DisplayChecks(unittest.TestCase):
                 self.assertEqual(len(r['montage']['lateral']),4)
                 self.assertTrue(r['montage']['single_U_angle_author_confirmed'])
             if rid in ('007','008','009','010'):
-                self.assertEqual(r['montage']['ttrkg_configuration']['status'],'unresolved_hypothesis')
-                self.assertEqual([len(g) for g in r['montage']['arm_alternatives']['1x1']],[1,1,1,1])
-                self.assertEqual([len(g) for g in r['montage']['arm_alternatives']['1x4']],[1,4,4,1])
+                self.assertEqual(r['montage']['ttrkg_configuration']['status'],'author_confirmed')
+                self.assertEqual(r['montage']['ttrkg_configuration']['variant'],'1x1')
+                self.assertEqual([len(g) for g in r['montage']['arm']],[1,1,1,1])
+                self.assertNotIn('arm_alternatives',r['montage'])
             self.assertEqual(len(r['detail_t']),5*r['fs'])
             np.testing.assert_allclose(np.diff(r['detail_t']),1/r['fs'],atol=1e-6)
             self.assertEqual(r['psd_frequency_hz'][0],0.)

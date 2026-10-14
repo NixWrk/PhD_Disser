@@ -1,0 +1,48 @@
+{
+  "date": "2026-10-14",
+  "review_agent": "Kierkegaard",
+  "agent_id": "01a13a99-f5cd-77f2-af05-6afd144fece3",
+  "model": "inherited; no Astra claim",
+  "scope": "static generic CEM input/physical presence/indices/SI/patch grouping/source integrity",
+  "status": "static_review_no_confirmed_findings_and_synthetic_MATLAB_checks_passed",
+  "verified": [
+    "scenario_specific_present_contacts_only",
+    "original_string_IDs_preserved",
+    "mixed_areas_canonical_collective_calls_and_overlap_rejection",
+    "induced_face_and_connectivity_QC",
+    "per_physical_SI_z_and_group_congruence",
+    "ordered_balanced_drive_measure_ports",
+    "row_major_mesh_array_SHA_and_boundary_order",
+    "pre_post_source_product_hash_checks"
+  ],
+  "runtime_check": {
+    "checker": "main assistant; independent static review retained above",
+    "fixture_builder": "tests/prepare_ct_fem_matlab_fixture.py",
+    "MATLAB_checker": "MATLAB_TRKG4_real_subjects/tests/check_ct_fem_contacts_fixture.m",
+    "nodes": 9261,
+    "tetrahedra": 48000,
+    "scenarios": 4,
+    "physical_counts": [5, 5, 5, 4],
+    "canonical_contact_matrix_absolute_errors": [0, 0, 0, 0],
+    "tied_energy_absolute_errors": [0, 0, 0, 0],
+    "original_Unicode_IDs_and_SI_arrays_checked": true,
+    "ordered_drive_reversal_checked": true,
+    "floating_and_absent_contacts_checked": true,
+    "input_sha256": "873bd1e382fb51727cf4c88e643802e92e3814d0c8b5733f341a1274c2ed1117",
+    "manifest_sha256": "936a25fa11eef81e333c47ac7bc0fca79cd0b6f085341637ef66480af24ef628",
+    "no_bulk_PDE_solve": true
+  },
+  "pending": ["patient_specific_contacts_and_bulk_FEM_checks", "canonical_preparation_profile_routing"],
+  "FEM_was_run": false,
+  "quantitative_result_accepted": false,
+  "sources": [
+    {
+      "path": "tools/ct_fem_contacts.py",
+      "sha256": "3037b9a13daf23d448afd3af5fd407ed84723a572ea7763b491b201a090d8ca5"
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/src/run_ct_fem_contacts_prepare.m",
+      "sha256": "8214664c10b401a499cd36cf642776aeb15958e33d1137ebc0cad8949158bad3"
+    }
+  ]
+}

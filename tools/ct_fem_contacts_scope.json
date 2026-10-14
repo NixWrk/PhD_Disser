@@ -1,0 +1,61 @@
+{
+  "schema": "ct_fem_contacts_scope_v1",
+  "status": "implemented_synthetic_MATLAB_contact_checks_passed",
+  "implementation": [
+    "tools/ct_fem_contacts.py",
+    "tools/prepare_ct_fem.py",
+    "MATLAB_TRKG4_real_subjects/src/run_ct_fem_contacts_prepare.m",
+    "tests/test_ct_fem_preparation.py"
+  ],
+  "python_command": "python -B tools/prepare_ct_fem.py cem_contacts_input --config <local.json> --input <completed-generic-mesh-or-materials-or-refinement-branch> --out <fresh-input-sidecar>",
+  "matlab_call": "run_ct_fem_contacts_prepare('<fresh-input-sidecar>/cem_contacts_input.local.json','<separate-fresh-CEM-output>')",
+  "matlab_path": "Caller exposes canonical src, tools, vendor_stl_eidors; helper resolution must match input SHA/path bindings. No archive path or automatic path mutation.",
+  "supported_preparation_stages": ["validate", "surface", "remesh", "mesh", "materials", "refine", "cem_contacts_input", "cem_contacts (MATLAB sidecar, synthetic runtime checked)"],
+  "continuation_contract": {
+    "immutable_effective_blocks": ["body", "synthetic_cylinders", "surface_qc", "contacts"],
+    "masks": "Same content SHA by role after validated surface; changed masks require fresh preparation. Same-byte local copies are allowed.",
+    "coverage_bounds": "Strict equality, including tightening; no new check claimed for an inherited surface.",
+    "executed_remesh": "Preserved except when a new remesh stage actually applies new settings.",
+    "executed_mesh_generation": "Preserved size, Steiner limit and boundary/volume acceptance settings; runtime caps remain applied checks.",
+    "executed_refinement": "Recorded explicitly; a new refinement can apply new guides/radius/resource bounds.",
+    "completed_settings": "Transitive completed_geometry_settings separate executed geometry from planned configuration values.",
+    "actual_contacts": "Bound parent metadata must match its declared centres, areas, provenance, scenarios and group order. No automatic rebuilding/reprojection across preparation stages."
+  },
+  "CEM_contract": {
+    "input": "Completed generic mesh artifact with passed fixed mesh QC, bound contact metadata, nodes/tets/boundary file and ordered-array SHA identities; no CT array reload or material integration in this stage.",
+    "physical_presence": "Each scenario requires present_contact_ids. Only these participate in patch ownership and CEM assembly. Unassigned present pads have individual floating ports with zero external current; absent candidate positions are not electrodes.",
+    "IDs": "Original strings retained as values in lists of scenario/group/pad records. No MATLAB struct-field encoding of IDs.",
+    "area_support": "Different nominal I/U areas supported by collective canonical calls at each unique area, selecting each pad's matching result. Mixed patches must be node-disjoint and pass QC; this conservative method may reject a feasible placement.",
+    "impedance_support": "Explicit positive per-physical z_contact in ohm m^2 plus source/assumption; canonical per-pad matrix then T-transpose K T for grouped potentials. Different z_contact inside a group are retained.",
+    "geometry": "Raw, original surface projection, source surface projection and actual FEM boundary projection remain distinct. Actual projection distance and source-to-FEM displacement bounded explicitly.",
+    "patch_QC": "Induced faces, node IDs, edge connectivity, actual/nominal area, area-weighted centroid, maximum vertex extent, node overlap, actual boundary IDs; no nearest-node replacement or threshold relaxation.",
+    "standard_5mm_bounds": {"maximum_relative_area_error": 0.12, "maximum_centroid_offset_mm": 1.0, "maximum_extent_mm": 3.7},
+    "other_areas": "Explicit per-case extent threshold and justification required; area/centroid upper limits retained.",
+    "matrix_QC": "SI geometry scaling, per-physical canonical contact matrix, grouped/floating ports, ordered plus/minus unit-current and readout patterns; symmetry and constant-vector-null checks. No bulk PDE solve.",
+    "outputs": ["cem_contacts.mat", "cem_contacts_qc.local.json", "cem_contacts_manifest.local.json"],
+    "success_status": "cem_contacts_prepared_not_validated",
+    "success_is_not": ["global mesh convergence", "independent anatomical validation", "inverse acceptance", "experimental or clinical validation", "publication", "run_pipeline routing"]
+  },
+  "checks_completed": [
+    {"kind": "Python synthetic suite", "command": "python -B -m pytest tests/test_ct_fem_preparation.py -q -p no:cacheprovider --basetemp <fresh-writable-temp>", "passed": 66, "independent_main_assistant_run_reported_seconds": 15.47, "rerun_during_handoff": false},
+    {"kind": "Negative continuation/input checks", "cases": "Contact centre/area/readout/group-order mismatch; changed masks outside source body with zero coverage bound; body/cylinder/surface QC and executed mesh/remesh changes; invalid physical presence, z source/value/IDs, nonstandard extent, relaxed area and failed/misbound mesh QC; rejection before output and preserved completed parent."},
+    {"kind": "Contract checks", "cases": "Original Unicode/nonidentifier string IDs; present4 versus absent candidate; only-present floating pad; candidate-centre duplicates allowed only in mutually exclusive scenarios, including remesh projection; mixed I/U area and per-physical z metadata; byte-identical mesh/contact copies and ordered node/tet/boundary SHA."},
+    {"kind": "Independent analytic contact-energy identity", "scope": "Three synthetic triangle pads with distinct area/z, two tied potentials and one floating port; constant null vector, energy and positivity. This does not execute the MATLAB adapter."},
+    {"kind": "Static MATLAB source inspection", "scope": "Canonical helper calls, SI scaling, ID lists, per-scenario presence, no solve/routing calls; supplemented by saved synthetic MATLAB evidence below."},
+    {"kind": "MATLAB synthetic contact runtime", "executed_by": "main assistant, as recorded in CODE_REVIEW runtime summary", "evidence_checked_by_this_agent": "Saved fixture checker JSON/log, input/manifest/product SHA and current SHA of all 21 bound source-code files; no rerun", "fixture_builder": "tests/prepare_ct_fem_matlab_fixture.py", "checker": "MATLAB_TRKG4_real_subjects/tests/check_ct_fem_contacts_fixture.m", "nodes": 9261, "tetrahedra": 48000, "scenario_physical_counts": [5, 5, 5, 4], "canonical_contact_matrix_errors": [0, 0, 0, 0], "grouped_energy_errors": [0, 0, 0, 0], "Unicode_SI_ordered_polarity_floating_absent_and_mixed_z_checked": true, "bulk_PDE_solve": false, "input_sha256": "873bd1e382fb51727cf4c88e643802e92e3814d0c8b5733f341a1274c2ed1117", "manifest_sha256": "936a25fa11eef81e333c47ac7bc0fca79cd0b6f085341637ef66480af24ef628"},
+    {"kind": "Protected existing source snapshot", "source_files": 145, "changed": 0, "scope": "Source code snapshot in this task; no raw-medical-data hash audit repeated."}
+  ],
+  "pending": [
+    "Same-bulk-mesh direct versus inherited contact comparison, reciprocity/solve residuals and derivative checks through canonical pipeline after frozen main/post.",
+    "Canonical run_pipeline routing and operator/material rule binding after frozen numerical checks; existing pipeline untouched."
+  ],
+  "FEM_was_run": false,
+  "MATLAB_was_run": true,
+  "TetGen_was_run": false,
+  "execution_flag_scope": "CEM synthetic fixture: MATLAB preparation/checker ran, no bulk FEM solve or TetGen. Separate mesh-backend checks are recorded in ct_fem_preparation_scope.json.",
+  "checks_rerun_by_this_agent_during_handoff": false,
+  "quantitative_result_accepted": false,
+  "universal_validity_claimed": false,
+  "automatic_publication": false,
+  "russian_standard_edited": false
+}

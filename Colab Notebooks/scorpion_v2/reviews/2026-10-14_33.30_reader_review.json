@@ -1,0 +1,51 @@
+{
+  "date": "2026-10-14",
+  "reviewer": "main assistant",
+  "skill": "russian-scientific-prose",
+  "status": "passed_reader_language_and_presentation",
+  "full_sequential_semantic_read_after_final_text_edit": true,
+  "reader_text_characters": 67504,
+  "reader_text_sha256": "e92a3bd88647cb1dd102b64a9e1ac69658376c150724b9b7f622fb80de00e776",
+  "plot_labels_sha256": "2541a41eb1535ba30cc61405214d690e62d64cc9673fe98279412bfca2c19adf",
+  "artifacts": [
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.30_Сгущение_у_всех_контактов_и_продолжение_подбора_Георгия_Scorpion_v2.ipynb",
+      "sha256": "091826c9957f031f14f199f6e34c0ae62fcf81a4224021c546cf2b34951a29d3"
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.30_Сгущение_у_всех_контактов_и_продолжение_подбора_Георгия_Scorpion_v2.html",
+      "sha256": "def1623a7bbadeca16e2c0a9a8dfc5e4ae191d58c39ad762abc71f90641bb0d7"
+    },
+    {
+      "path": "Colab Notebooks/scorpion_v2/33.30_Сгущение_у_всех_контактов_и_продолжение_подбора_Георгия_Scorpion_v2.md",
+      "sha256": "69d521e36f1c7a30925cb833c8bf2ca4bbef9c6111b7917a55cfd612195b112d"
+    }
+  ],
+  "scope": [
+    "all Markdown reader cells",
+    "all saved HTML tables in document order",
+    "plot axes, trace names and hover labels",
+    "terminology and factual qualification preservation"
+  ],
+  "language_review_is_not_scientific_acceptance": true,
+  "quantitative_result_accepted": false,
+  "joint_search_complete": false,
+  "mesh_convergence_passed": false,
+  "new_conditional_resistivities_available": false,
+  "browser_QA": {
+    "HTML_sha256": "def1623a7bbadeca16e2c0a9a8dfc5e4ae191d58c39ad762abc71f90641bb0d7",
+    "tables": 43,
+    "tables_collapsed_initially": true,
+    "plots": 17,
+    "rendered_MathJax_formulas": 17,
+    "visible_Python_inputs": 0,
+    "independent_legend_toggle_observed": true,
+    "rotated_3D_view_retained_after_legend_toggle_observed": true
+  },
+  "code_verification": {
+    "MATLAB_inverse_parse_errors": 0,
+    "reordered_search_tests_passed": 2,
+    "current_inverse_sha256": "464bae0729d14a6334468cfb2ea88c940c5114756b264f79146473f42a1989c5"
+  },
+  "model_review": "inherited reviewers; no current Astra claim"
+}

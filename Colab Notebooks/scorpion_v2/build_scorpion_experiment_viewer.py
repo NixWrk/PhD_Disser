@@ -91,9 +91,6 @@ def montage(record,contacts,source):
     result={'lateral':[],'perpendicular':[],'arm':arm_groups(contacts,configuration),
         'tepc':[],'mapping':'unknown','ttrkg_configuration':configuration,
         'single_U_angle_author_confirmed':True}
-    if configuration and configuration['status']=='unresolved_hypothesis':
-        result['arm_alternatives']={variant:arm_groups(contacts,ttrkg_configuration(record['record_id'],variant))
-            for variant in ('1x1','1x4')}
     if 12<=int(rid)<=17:
         path=GEOMETRY/'landmarks'/f'georg_tepc_{int(rid)-10}.json'
         data=read(path)
@@ -110,6 +107,8 @@ def montage(record,contacts,source):
         if rid in ('006','011'):
             result['perpendicular']=transverse_centres(source,size,contacts['lateral']['y_mm'],contacts['lateral']['z_mm'])
             result['mapping']='cross'
+            result.update(arm_wires_removed=True, arm_wires_confirmation_date='2026-10-14',
+                remaining_arm_pad_presence_confirmed=False)
         else:
             result['mapping']='horizontal' if rid not in ('001','005') else ('test_horizontal' if rid=='001' else 'vertical')
             if rid=='005':
@@ -210,7 +209,7 @@ def run(out=OUT):
                         detail_y=np.round(y[first:last],7).tolist(),psd=psd.tolist()))
         label=rid+' · '+record['montage_label']
         if rid in ('007','008','009','010'):
-            label=rid+' · боковая '+str(PRIMARY[rid])+' мм · ТТРКГ 1×1? / 1×4?'
+            label=rid+' · боковая '+str(PRIMARY[rid])+' мм · ТТРКГ 1×1 (подтверждено 14.10.2026)'
         records.append(dict(record_id=record['record_id'],label=label,source_montage_label=record['montage_label'],fs=fs,
             duration=float(t[-1]),timebase_status=record['timebase_status'],traces=traces,ecg_variants=variants,
             detail_t=np.round(t[first:last],6).tolist(),psd_frequency_hz=freq.tolist(),
@@ -242,7 +241,11 @@ def run(out=OUT):
         channel_roles_author_confirmed_records=['001','002','003','004','005','006','007','012','013','014','015','016','017','018'],
         channel_roles_still_unknown_records=[],
         protocol_revision_sha256=sha(FOLDER/'scorpion_protocol.py'),
-        late_block_ttrkg_variant_unresolved=True,late_block_ttrkg_scenarios=['1x1','1x4'],
+        late_block_ttrkg_variant_unresolved=False,late_block_ttrkg_scenarios=['1x1'],
+        late_block_ttrkg_confirmation_date='2026-10-14',
+        late_block_source_filename_labels_are_historical=True,
+        cross_arm_wires_removed_author_confirmation='2026-10-14',
+        remaining_cross_arm_pad_presence_confirmed=False,
         late_block_continuity_is_protocol_assumption=True,annotations_modified=False,annotations_accepted=False,
         montage_checks=montage_checks,single_U_angle_author_confirmed=True,
         ECG_and_BEI_same_index_share_U_author_confirmation='2026-10-09',
@@ -284,11 +287,13 @@ def widget(out=OUT):
             vertices=np.round(a[name+'_vertices'],5).tolist(),faces=a[name+'_faces'].tolist())
             for name,(label,color,opacity,_) in TISSUES.items()]
     payload['records']=read(out/'display_signals.local.json')
+    # The shared JS reads this ID; keep a fixed hidden value without a selector.
     ui='''<div id="experiment-viewer" style="border:1px solid #aaa;padding:12px">
 <p><label>Запись: <select id="experiment-record"></select></label></p>
 <p><label>История подключения: <select id="experiment-channel"><option value="0">Текущее назначение: подтверждения автора и допущения продолжения</option><option value="1">Прежний сценарий: постоянно боковая BEI1</option><option value="2">Прежний сценарий: постоянно боковая BEI2</option><option value="3">Диагностика: боковая BEI2 в 004–005 → BEI1 с 006</option><option value="4">Диагностика: боковая BEI1 в 004–005 → BEI2 с 006</option></select></label></p>
 <p id="experiment-description"></p><p id="experiment-localisation" style="color:#904018"></p>
-<p><label>ТТРКГ в 007–010: <select id="experiment-ttrkg-variant"><option value="1x1">1×1 — гипотеза автора</option><option value="1x4">1×4 — прежняя метка файлов</option></select></label> Вариант меняет только показ электродов; измеренные сигналы сохраняются.</p>
+<p>ТТРКГ в 007–010: <strong>1×1 — подтверждение автора 14.10.2026.</strong> Метка «1×4» в исходных именах файлов сохранена как историческая. В крестах 006/011 все провода с рук полностью сняты, по тому же подтверждению; наличие оставшихся наклеенных площадок не установлено.</p>
+<input type="hidden" id="experiment-ttrkg-variant" value="1x1">
 <p><label>Отсчёты обзорных графиков: <select id="experiment-sampling"><option value="full">Все отсчёты — без прореживания</option><option value="extrema">Быстрый обзор — минимумы и максимумы 900 интервалов</option></select></label></p>
 <fieldset><legend>Фильтры ЭКГ — независимое включение этапов</legend>
 <label><input type="checkbox" id="experiment-notch" checked> Режекторы 50/100/150 Гц, Q = 30</label><br>
@@ -309,7 +314,7 @@ def widget(out=OUT):
 
 
 def recording_table(out=OUT):
-    return pd.DataFrame([{'Запись':r['record_id'][-3:],'Исходная метка файла':r['source_montage_label'],
+    return pd.DataFrame([{'Запись':r['record_id'][-3:],'Историческая метка исходного файла':r['source_montage_label'],
         'Монтаж с уточнениями':r['label'].split(' · ',1)[1],
         'Рабочая частота отсчётов, Гц':r['fs'],'Последний отсчёт, с':r['duration'],
         'Размещение на КТ':('Авторская реконструкция; проекция на новый контур' if r['montage']['mapping']=='tepc'
@@ -388,7 +393,7 @@ Scorpion отдельно не восстановлена. Добавлены
 контакта через 90° на каждой руке. Для 2×2 обе пары — токовая I и
 измерительная U — расположены сверху и снизу: по уточнению автора
 от 09.10.2026 измерительная пара также повёрнута на 90°.
-Для 001 и 002 показан монтаж 1×1: единственный U находится на верхней
+Для 001, 002 и 007–010 показан монтаж 1×1: единственный U находится на верхней
 стороне цилиндра, на той же угловой оси, что I. Это исправленный сценарий;
 угол U у 1×1 подтверждён автором 12.10.2026. Тест 001 по уточнению
 от 09.10.2026 выполнен с 1×1 и горизонтальной боковой сборкой 140 мм.
@@ -410,6 +415,13 @@ Scorpion отдельно не восстановлена. Добавлены
 боковая горизонтальная сборка — канал 2. По подтверждению автора 12.10.2026
 в ТЕПС и АЕПС ТТРКГ 1×1 записана каналом 1; второй канал относится
 соответственно к ТЕПС и АЕПС.
+
+По прямому подтверждению автора от 14.10.2026 в 007–010 использовалась
+ТТРКГ 1×1. Метка «1×4» в исходных именах этих файлов является исторической;
+имена и записанные поля сохранены. В крестах 006 и 011 все провода с рук
+были полностью сняты. Это уточнение подключений не устанавливает,
+оставались ли наклеенные площадки на коже, и не меняет номера каналов,
+дыхательные интервалы или фильтрацию сигналов.
 
 
 В просмотре по умолчанию используется это назначение. Прежние варианты
@@ -531,11 +543,11 @@ Scorpion отдельно не восстановлена. Добавлены
 
 **Сравнение ТТРКГ.** 002 — 1×1, 003 — 2×2, 004 — 1×4 при боковой
 140 мм, по подтверждению автора. В 005 вариант 1×4 предполагается по
-последовательности. В 007–010 прежние имена файлов содержат 1×4, автор
-предполагает 1×1; знак вопроса сохраняет эту неопределённость. В 012–018
+последовательности. В 007–010 ТТРКГ 1×1 подтверждена автором 14.10.2026;
+метка 1×4 в исходных именах файлов сохранена как историческая. В 012–018
 подтверждены 1×1 и канал 1. Электроды на руках оставались в своих местах;
-менялись подключённые группы. Их отображение в 007–010 можно переключить
-между двумя гипотезами, не меняя измерений.
+менялись подключённые группы. В крестах 006/011 все провода с рук полностью
+сняты, по подтверждению автора от 14.10.2026. Измеренные сигналы сохранены.
 
 **Сравнение боковых сборок.** Показаны все размеры, повторные 140 мм,
 поперечные установки и обе оси креста. Историческая метка «горизонтальная»
@@ -545,7 +557,7 @@ Scorpion отдельно не восстановлена. Добавлены
 отведение; неизменность геометрии не устраняет эти различия.''')
     code("from scorpion_comparisons import comparison_figure, levels_table, ecg_figure\ndisplay(HTML(comparison_figure('ttrkg').to_html(full_html=False, include_plotlyjs=False)))\ndisplay(table(levels_table('ttrkg')))")
     code("display(HTML(comparison_figure('lateral').to_html(full_html=False, include_plotlyjs=False)))\ndisplay(table(levels_table('lateral')))")
-    md('''## Проверка варианта ТТРКГ по ЭКГ
+    md('''## Сопоставление подтверждённых вариантов ТТРКГ по ЭКГ
 
 Показана медианная форма ЭКГ на канале ТТРКГ в кандидатной задержке
 на вдохе. Используются прежние события QRS, полоса 0,5–40 Гц и режекторы
@@ -559,9 +571,11 @@ Scorpion отдельно не восстановлена. Добавлены
 0,99 против 0,93–0,94. Этот признак не определяет конфигурацию:
 положение и контакт, длительность циклов и состояние испытуемого
 также влияют на ЭКГ. Подтверждённые поздние записи 1×1 дают проверку
-вариабельности того же признака. Ни ЭКГ, ни базовый BEI пока не
-подтверждают исправление 007–010 на 1×1 однозначно; для нового FEM
-сохраняются оба сценария.
+вариабельности того же признака. Монтаж 1×1 в 007–010 установлен прямым
+подтверждением автора от 14.10.2026. Сходство ЭКГ с ранними 2×2 и 1×4
+не переопределяет это подтверждение и показывает ограничение распознавания
+монтажа по одной форме ЭКГ. В текущем просмотре используется подтверждённый
+1×1; прежняя метка 1×4 остаётся исторической.
 
 Частота зондирования 100 кГц подтверждена автором. Ток около 7000 мкА
 сообщён по памяти как приблизительный; автор подтвердил, что число

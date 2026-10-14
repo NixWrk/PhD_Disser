@@ -1,0 +1,220 @@
+{
+  "schema": "ct_fem_remesh_scope_v1",
+  "status": "implemented_with_tiny_synthetic_checks",
+  "entrypoint": "tools/prepare_ct_fem.py remesh --config <local.json> --input <completed-surface> --out <fresh-remesh>",
+  "implementation": [
+    "tools/ct_fem_remesh.py",
+    "tools/ct_fem_core.py",
+    "tools/prepare_ct_fem.py",
+    "configs/ct_fem_preparation.example.json",
+    "tests/test_ct_fem_preparation.py"
+  ],
+  "stage_contract": {
+    "input_stages": [
+      "surface",
+      "remesh"
+    ],
+    "mesh_accepts": [
+      "surface",
+      "remesh"
+    ],
+    "recipe_provenance": {
+      "source": "MATLAB_TRKG4_real_subjects/tools/georg_quality_mesh_prepare.py",
+      "lines": [
+        35,
+        93
+      ],
+      "reuse": "Same PyMeshLab operations; generic explicit region selection and additional exported-STL checks. Historical source unchanged."
+    },
+    "cfg_defaults": {
+      "edge_targets_mm": [
+        5,
+        2.8,
+        1.4
+      ],
+      "iterations_per_operation": 6,
+      "vertex_smoothing": false,
+      "adaptive": false,
+      "per_operation_distance_mm": 0.2,
+      "final_sampled_distance_mm": 0.75,
+      "maximum_relative_volume_error": 0.003,
+      "buffer_contact_selection_radii_mm": [
+        16,
+        10
+      ]
+    },
+    "selection": "Triangle-centroid union of explicitly selected physical-contact centres, explicit LPS/mm guides, and declared AABBs. No subject coordinates.",
+    "checks": [
+      "Every operation reopens and checks its exported STL; topology, watertightness, positive volume and self intersections.",
+      "Native checksurfdist plus bidirectional sampled distance to preceding exported surface.",
+      "Final bidirectional sampled distance and volume relative to original source exterior.",
+      "Y/Z protrusion against corrected-skin bounds when artificial cylinders are present; also retained for actual FEM boundary.",
+      "Physical inventory/groups/nominal areas preserved; raw, original projected, source projected and current projected centres remain distinct.",
+      "Source-contact file copied byte-for-byte; source/output surface SHA and contact projection shifts recorded."
+    ],
+    "sampled_distance_is_certified_Hausdorff_bound": false,
+    "automatic_repair": false,
+    "source_integrity": "New helper and historical recipe source SHA are included in preparation source snapshots.",
+    "limitations": [
+      "No strict wall-clock or peak-memory bound for the native remesher; face/vertex limits are checked at operation boundaries.",
+      "Regional selection is based on triangle centroids, not a proof of complete contact or sensitivity-volume coverage.",
+      "Successful surface QC does not establish FEM convergence or anatomical validity."
+    ]
+  },
+  "verification": {
+    "scope": "Historical tiny-remesh checks; current aggregate 66-test, MATLAB CEM and tiny TetGen status is in ct_fem_preparation_scope.json.",
+    "suite": "tests/test_ct_fem_preparation.py",
+    "passed": 29,
+    "FEM_executed": false,
+    "Tetgen_executed": false,
+    "MATLAB_executed": false,
+    "real_patient_CT_processed": false,
+    "smoke": {
+      "source_faces": 768,
+      "final_faces": 1770,
+      "relative_volume_error": 0,
+      "max_final_sampled_distance_mm": 1.7798229048217483e-15,
+      "operations": [
+        {
+          "name": "global",
+          "target_edge_mm": 5,
+          "faces": 768,
+          "selected_faces": 768,
+          "max_sampled_step_distance_mm": 1.7763568394002505e-15
+        },
+        {
+          "name": "buffer",
+          "target_edge_mm": 2.8,
+          "faces": 1162,
+          "selected_faces": 330,
+          "max_sampled_step_distance_mm": 1.7798229048217483e-15
+        },
+        {
+          "name": "contact",
+          "target_edge_mm": 1.4,
+          "faces": 1770,
+          "selected_faces": 232,
+          "max_sampled_step_distance_mm": 2.5121479338940403e-15
+        }
+      ]
+    },
+    "runtime_libraries": {
+      "numpy": "2.4.3",
+      "scipy": "1.17.1",
+      "nibabel": "5.3.3",
+      "trimesh": "4.11.3",
+      "pymeshlab": "2025.7.post1"
+    }
+  },
+  "canonical_CEM_adapter": {
+    "status": "historical_interface_study_superseded_by_new_sidecar",
+    "current_implementation_scope": "tools/ct_fem_contacts_scope.json",
+    "proposed_new_function_after_post": "[C,drive,measure,qc,patches] = trkg4_ct_fem_contact_layout(fmdl_mm, metadata, scenario_id, cfg)",
+    "intended_path": [
+      "Validate generic artifact SHA, LPS/mm geometry and physical inventory; bind current FEM mesh and boundary IDs.",
+      "Record projection onto actual FEM boundary separately from raw and remeshed-surface coordinates.",
+      "For the first supported version, require one common nominal area and explicit positive common z_contact in ohm*m^2 with provenance; reject absent values or heterogeneous unsupported parameters.",
+      "Build ALL physically present patches together, using trkg4_local_patch_context and trkg4_local_exact_patches (canonical full-builder fallback).",
+      "Preserve canonical node disjointness and induced-face area; combine disjoint physical patches into declared equipotential groups. Unconnected patches remain separate floating CEM groups with zero external current.",
+      "Use trkg4_scale_fmdl_to_si with explicit mm/scale_nodes_to_si=true, then trkg4_cem_contact_matrix. Preserve ordered drive and measurement group pairs.",
+      "Use existing EIDORS/material assembly and trkg4_lateral_cem_response for numerical checks; no Python copy of CEM or FEM physics.",
+      "After live post, add a new generic worker/profile through run_pipeline with explicit generic schema and cache identity; do not relabel the Georg worker as generic."
+    ],
+    "primary_interfaces": [
+      {
+        "path": "MATLAB_TRKG4_real_subjects/tools/trkg4_local_exact_patches.m",
+        "lines": [
+          1,
+          94
+        ],
+        "constraint": "Common scalar target area, collective ownership over all centres, canonical fallback."
+      },
+      {
+        "path": "MATLAB_TRKG4_real_subjects/vendor_stl_eidors/electrode_faces_by_area.m",
+        "lines": [
+          1,
+          75
+        ],
+        "constraint": "Node disjointness and induced-face area are physical patch invariants; separate calls for unequal areas cannot substitute for the collective builder."
+      },
+      {
+        "path": "MATLAB_TRKG4_real_subjects/src/trkg4_scale_fmdl_to_si.m",
+        "lines": [
+          1,
+          19
+        ],
+        "constraint": "Geometry converted to metres; require explicit mm units and model name. Contact impedance remains in SI."
+      },
+      {
+        "path": "MATLAB_TRKG4_real_subjects/src/trkg4_cem_contact_matrix.m",
+        "lines": [
+          1,
+          25
+        ],
+        "constraint": "Canonical contact surface matrix, not a complete FEM solve."
+      },
+      {
+        "path": "MATLAB_TRKG4_real_subjects/src/trkg4_lateral_cem_response.m",
+        "lines": [
+          1,
+          24
+        ],
+        "constraint": "Existing solve/readout/derivative kernel; no second implementation."
+      },
+      {
+        "path": "MATLAB_TRKG4_real_subjects/src/trkg4_georg_contact_inheritance.m",
+        "lines": [
+          1,
+          55
+        ],
+        "constraint": "Reusable boundary-map validation; physical contact-master identity must remain separate from pose/geometry reference."
+      },
+      {
+        "path": "MATLAB_TRKG4_real_subjects/src/trkg4_georg_physical_montages.m",
+        "lines": [
+          9,
+          81
+        ],
+        "constraint": "Georg/12-contact assembly cannot be treated as a generic interface."
+      },
+      {
+        "path": "MATLAB_TRKG4_real_subjects/src/run_georg_quality_forward.m",
+        "lines": [
+          10,
+          50
+        ],
+        "constraint": "Georg configuration, 100kHz and experiment-specific observations/pose. Requires a separate schema adapter/worker after post."
+      },
+      {
+        "path": "MATLAB_TRKG4_real_subjects/src/trkg4_georg_lateral_materials.m",
+        "lines": [
+          53,
+          69
+        ],
+        "constraint": "Reuse existing P1/EIDORS material assembly and rule identities; keep frequency/material provenance explicit."
+      }
+    ],
+    "still_required_after_post": [
+      "Canonical patch QC on actual FEM mesh: induced areas, centroid offsets, spatial extent, connectedness, nonempty patches and no shared physical nodes, with declared tolerances.",
+      "Synthetic grouped/floating layouts, drive/readout sign ordering and SI-scaling tests; agreement with canonical builder/EIDORS.",
+      "Exact patch-face inheritance and distinct contact/pose masters; direct-contact comparison on the same bulk mesh/materials.",
+      "Reciprocity, system residual, derivative checks and the separate inherited/remapped controls.",
+      "New run_pipeline routing and prepared-operator schema/cache checks after frozen post is complete."
+    ],
+    "heterogeneous_areas_supported": false,
+    "heterogeneous_contact_impedances_supported": false,
+    "CEM_adapter_ready": false,
+    "finite_area_metadata_is_validated_CEM": false,
+    "canonical_CEM_patch_QC_performed": false
+  },
+  "communication_provenance": {
+    "restart_status_origin": "agent message in conversation, not human-author confirmation",
+    "earlier_author_attribution_was_incorrect": true,
+    "standard_edited_by_this_task": false
+  },
+  "quantitative_result_accepted": false,
+  "global_mesh_convergence_proven": false,
+  "independent_anatomical_validation": false,
+  "universal_validity_claimed": false,
+  "automatic_publication": false
+}

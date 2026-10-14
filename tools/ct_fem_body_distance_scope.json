@@ -1,0 +1,55 @@
+{
+  "schema": "ct_fem_body_distance_scope_v1",
+  "status": "comparison_semantics_corrected_no_case_threshold_relaxation",
+  "implementation": ["tools/ct_fem_core.py", "tools/ct_fem_body_diagnostic.py", "configs/ct_fem_preparation.example.json", "tests/test_ct_fem_preparation.py"],
+  "historical_semantics": {
+    "source": "MATLAB_TRKG4_real_subjects/tools/georg_quality_contour.py",
+    "lines": [26, 40, 53, 54],
+    "comparison": "Native surface of the already closed mask at level .49 versus exported corrected STL; both endpoints after the one 6-neighbour closing.",
+    "limit_mm": 1.25,
+    "original_HU_to_closed_mask_was_not_checked_by_this_limit": true
+  },
+  "new_surface_qc_contract": {
+    "topology_correction": "HU-derived native mask surface at .49 to closed-mask native surface at .49, both directions; explicit maximum_sampled_distance_mm and bound_basis.",
+    "export_fidelity": "Closed-mask native surface to actual exported corrected STL, both directions; separate explicit maximum_sampled_distance_mm and bound_basis.",
+    "legacy_maximum_sampled_correction_mm": "Rejected for new surface construction as ambiguous; caller must migrate configuration explicitly. Diagnostic reader may inspect old failed pilots.",
+    "example_limits_mm": {"topology_correction": 1.25, "export_fidelity": 1.25},
+    "example_topology_bound": "Illustrative conservative budget, not a geometrically guaranteed consequence of one closing and not copied from the historical export tolerance.",
+    "failure_evidence": "body_correction_qc.local.json saved before distance rejection; failed stage cannot publish a completed preparation manifest.",
+    "remesh_and_mesh_bounds": "Existing separate per-operation remesh, final remesh and actual TetGen boundary checks retained.",
+    "one_closing_support_is_not_a_Hausdorff_bound": true,
+    "automatic_threshold_relaxation": false
+  },
+  "tests": {
+    "python_synthetic_passed": 66,
+    "new_cases": [
+      "A narrow through-channel: one closing and changed/body fraction below .001 delete boundary over 10mm from remaining surface; corrected STL export remains close to corrected native surface.",
+      "Export pass cannot accept failed topology-distance budget; explicit endpoint identities and rationale required; ambiguous legacy key rejected before output.",
+      "Real synthetic anisotropic STL serialization exceeds a deliberately strict export bound; separate QC evidence retained without completed stage publication.",
+      "Changed-voxel 6/26 connected components and stored closest-point/worst-location coordinates."
+    ],
+    "localization_plot": "Saved body masks and CT slices at worst local probe vertices; reviewed visually; no anatomical acceptance."
+  },
+  "real_diagnostic_scope": {
+    "input": "Explicit local saved before/after STL and masks from failed pilot; same deterministic 15000 area samples and additional declared nearby vertex probe.",
+    "sampling_is_not_certified_Hausdorff_maximum": true,
+    "saved_original_STL_and_closed_STL_both_have_euler_2": true,
+    "do_not_infer_surface_genus_change_from_voxel_Euler_change": true,
+    "patient_artifacts": "Local ignored output only; no patient coordinates or files copied into this public metadata.",
+    "executed_source_provenance": "Full execution-time ct_fem_body_diagnostic.py and ct_fem_core.py archived before edits. Snapshot SHA exactly matches diag_v1 source SHA; additive executed_sources_binding.local.json resolves changed code paths without rewriting the historical report.",
+    "Russian_plot_provenance": "Russian captions and rendered layout reviewed; image/text hashes and full plotter/core byte snapshots stored beside the local figure.",
+    "diagnostic_rerun_during_handoff": false,
+    "new_case_topology_bound_selected": false,
+    "real_pilot_accepted": false
+  },
+  "FEM_was_run": false,
+  "execution_flag_scope": "This saved-body diagnostic only; separate synthetic CEM/TetGen runtime checks are recorded in ct_fem_preparation_scope.json.",
+  "TetGen_was_run": false,
+  "MATLAB_was_run": false,
+  "full_scale_remesh_was_run": false,
+  "CEM_fixture_regenerated": false,
+  "existing_fixture_script_edited": false,
+  "scientific_standard_edited": false,
+  "frozen_main_post_kernels_edited": false,
+  "quantitative_result_accepted": false
+}
