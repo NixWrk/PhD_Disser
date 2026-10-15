@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-15",
+  "reviewer": "main assistant",
+  "skill": "russian-scientific-prose",
+  "status": "passed_reader_language_and_scope",
+  "full_sequential_semantic_read_after_final_text_edit": true,
+  "scope": [
+    "complete CT_FEM_PREPARATION_STANDARD.md",
+    "equations, units, code examples and source links"
+  ],
+  "artifact": {
+    "path": "docs/CT_FEM_PREPARATION_STANDARD.md",
+    "sha256": "854ef010649bf8cc99aabd9201bfb647c0dd9ec7874b75ab43becf3d1888ac54"
+  },
+  "new_content": [
+    "independent stronger Sobol integration without unchanged-parent reuse",
+    "paired respiratory contrast screen",
+    "point-scoped admission and selected-candidate rechecks",
+    "metal, gel and effective electrical contact area kept separate"
+  ],
+  "quantitative_result_accepted": false,
+  "language_review_is_not_scientific_acceptance": true
+}

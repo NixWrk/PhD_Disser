@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-15",
+  "reviewer": "main assistant",
+  "skill": "russian-scientific-prose",
+  "status": "passed_reader_language_and_scope",
+  "full_sequential_semantic_read_after_final_text_edit": true,
+  "scope": [
+    "entire final scientific prose in order",
+    "all 35 tables",
+    "all 8 figure captions, axes, legends and hover labels",
+    "equations, units, terminology, methodological conditions and limitations"
+  ],
+  "reader_text_sha256": "53f22d584926e35495f6d72219cd6d78af7ed9dff142a37b645b21e5e39edcb9",
+  "semantic_review_chunks": 8,
+  "findings_remaining": [],
+  "artifacts": [
+    {
+      "path": "Colab Notebooks\\scorpion_v2\\33.31_Численная_сходимость_и_совместный_подбор_Георгия_Scorpion_v2.ipynb",
+      "sha256": "47f7597b986062aa22770d55491326e877ae80d67b2454feb47b32bfc7a3fc59"
+    },
+    {
+      "path": "Colab Notebooks\\scorpion_v2\\33.31_Численная_сходимость_и_совместный_подбор_Георгия_Scorpion_v2.html",
+      "sha256": "cdfd41fe9e2e8e500623ef6b798f3aba4f064faed1ff18bca07b1161ed5701db"
+    },
+    {
+      "path": "Colab Notebooks\\scorpion_v2\\33.31_Численная_сходимость_и_совместный_подбор_Георгия_Scorpion_v2.md",
+      "sha256": "590d6b41d6005d9b0bdffa34a4a287a1cefcf32460604f2dbc9f83caa1365076"
+    }
+  ],
+  "technical": {
+    "notebook_code_cells_executed": 44,
+    "notebook_execution_errors": 0,
+    "synthetic_tests": 91,
+    "synthetic_subtests": 94,
+    "all_tables_collapsed_by_default": true,
+    "HTML_code_inputs_absent": true,
+    "plots": 8,
+    "camera_preserved_after_rotation_and_legend_change": true
+  },
+  "numerical_checks": "passed at the selected fixed point; mesh, fractions, contact discretization, stronger integration, independent scrambling, derivatives; all ten contact-comparison coefficient matrices decoded and bitwise identical",
+  "scientific_status": "exploratory; joint search interrupted before resolution and stationarity; resistivities and placement are not independently validated",
+  "quantitative_result_accepted": false,
+  "global_mesh_convergence_proven": false,
+  "language_review_is_not_scientific_acceptance": true,
+  "metadata_only_language_flag_changed_after_full_pass": true
+}

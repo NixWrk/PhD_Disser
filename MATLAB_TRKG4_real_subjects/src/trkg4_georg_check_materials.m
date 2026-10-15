@@ -3,6 +3,12 @@ function [cache,identity]=trkg4_georg_check_materials(cfg,base)
 % The same P1 integral-mean assembly as trkg4_georg_lateral_materials, with
 % explicitly named point counts; allows a stronger rule without renaming it.
 planfile=fullfile(base,'plan.local.json');plan=jsondecode(fileread(planfile));
+% Independent stronger rules own their actual material cache. Their complete
+% sampling/fraction/unit declaration is validated by the canonical assembler.
+if isfield(plan,'integration_stability')
+ [cache,identity]=trkg4_georg_lateral_materials(cfg,base);
+ return;
+end
 points=reshape(plan.numerical_quadrature_points,1,[]);
 fraction_files=arrayfun(@(q)fullfile(base,sprintf('fractions_q%d.mat',q)),points,'UniformOutput',false);
 fraction_hashes=cellfun(@trkg4_file_sha256,fraction_files,'UniformOutput',false);
