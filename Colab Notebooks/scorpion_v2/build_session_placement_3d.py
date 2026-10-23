@@ -16,7 +16,7 @@ STEM='20.41_3D_боковая_установка_Ника_и_Ярослава_Sc
 PREP=EXPERIMENT/'derived/exploratory/ct_preparation_3340'
 OUT=PREP/'viewer_3d'
 Y_OFFSETS=list(range(-20,11,5))
-DEFAULT_Y_OFFSET=-10  # Proposed review value; the author specified direction only.
+DEFAULT_Y_OFFSET=-15  # Working scenario after the author's further negative-Y correction.
 LAYERS={'body':('Грудная клетка','#d0c9c1',.22,45000),
         'lung':('Лёгкие','#419aba',.45,35000),
         'heart':('Сердце','#b91c1c',.65,18000),
@@ -194,8 +194,10 @@ button,select{font:inherit;padding:6px 12px;background:white;border:1px solid #9
 A и B — центры токовых контактов, M и N — центры измерительных.
 Размер примера отложен вдоль кожной кривой. Маркеры показывают центры,
 их размер на экране не задаёт физическую площадь контакта.</p>
-<p>Для просмотра предложено смещение −10 мм у обоих участников. Автор указал направление
-к отрицательному Y; величина и различия между участниками ещё уточняются.
+<p>Для расчётного сценария выбрано смещение −15 мм у обоих участников.
+24.10.2026 автор предложил сдвинуть сборку ещё к отрицательному Y и запустить расчёты.
+Величина −15 мм и одинаковое смещение у обоих — рабочие допущения;
+численного измерения положения это уточнение не задаёт.
 При смене Y заново выбрана кожная кривая по индивидуальной КТ; X следует наружному контуру,
 высота центра Z сохраняется. Положение Y округляется до ближайшей плоскости вокселей.
 Фактические координаты центра показаны в строке над сценой.</p>
@@ -235,6 +237,7 @@ update();
     write(OUT/'y_review_scenarios.local.json',dict(producer_sha256=sha(__file__),subjects=review,
         coordinate_system='LPS_mm',author_confirmed_direction='negative_Y',
         default_delta_y_mm=DEFAULT_Y_OFFSET,magnitude_confirmed=False,subject_scope_confirmed=False,
+        author_instruction_date='2026-10-24',author_requested_calculations=True,
         review_only=True,geometry_accepted_for_FEM=False))
     write(OUT/'manifest.local.json',dict(producer_sha256=sha(__file__),sources=manifest,
         y_review_sha256=sha(OUT/'y_review_scenarios.local.json'),
