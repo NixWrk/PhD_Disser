@@ -59,6 +59,8 @@ Thumbs.db
 
 # Primary experimental signals, photos and subject-linked processing stay local.
 /Experiments/*/raw/
+# Индивидуальные 3D-поверхности нового просмотра остаются локальными.
+/Colab Notebooks/scorpion_v2/20.41_3D_боковая_установка_Ника_и_Ярослава_Scorpion.html
 /Experiments/*/photos/
 /Experiments/*/attachments/
 /Experiments/*/metadata/

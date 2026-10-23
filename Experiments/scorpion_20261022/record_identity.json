@@ -1,0 +1,112 @@
+{
+  "schema": "scorpion_frozen_record_identity_v1",
+  "source_archive_sha256": "ba63f897704dde650a15330d5392d32c12ff1e82cdd72624e0110e45d06af8a5",
+  "basis": "Идентификаторы закреплены за исходными путями и SHA-256 при первичном просмотре 23.10.2026. Времена файлов не переопределяют записи.",
+  "records": [
+    {
+      "record_id": "SCV2-N-001",
+      "subject_id": "nik",
+      "raw_relative_path": "raw/Scorp_22_10_26/Ник/оба канала 140 2х2.txt",
+      "sha256": "6a60a6dfe7821f5c0f4fa8966c51c6b6a9f7cf409c71ab0d40323be2c884ccad",
+      "export_mtime_utc": "2026-10-22T08:04:44.176598+00:00"
+    },
+    {
+      "record_id": "SCV2-N-002",
+      "subject_id": "nik",
+      "raw_relative_path": "raw/Scorp_22_10_26/Ник/только ттркг 2х2.txt",
+      "sha256": "d485a97e3bc10046d430ebe28a25153c61803b76bae741cc2e7c3fdb1163e66a",
+      "export_mtime_utc": "2026-10-22T08:07:54.381725+00:00"
+    },
+    {
+      "record_id": "SCV2-N-003",
+      "subject_id": "nik",
+      "raw_relative_path": "raw/Scorp_22_10_26/Ник/только 140.txt",
+      "sha256": "4f8aec26399748794a338213fdc708554a14adad71cd2052d3de6e2a1978e145",
+      "export_mtime_utc": "2026-10-22T08:11:23.776419+00:00"
+    },
+    {
+      "record_id": "SCV2-N-004",
+      "subject_id": "nik",
+      "raw_relative_path": "raw/Scorp_22_10_26/Ник/попеременное откключение каналов 140 2х2.txt",
+      "sha256": "29084f30c8adef869c8bdad6f1fa0361771202080d769acc5f6c545a58920fc4",
+      "export_mtime_utc": "2026-10-22T08:14:59.004150+00:00"
+    },
+    {
+      "record_id": "SCV2-N-005",
+      "subject_id": "nik",
+      "raw_relative_path": "raw/Scorp_22_10_26/Ник/оба канала 100 2х2.txt",
+      "sha256": "62801e7138d75653b2b04b2b20fc9ce1d81ec758a4813b0574f20aa095bc5617",
+      "export_mtime_utc": "2026-10-22T08:22:45.231103+00:00"
+    },
+    {
+      "record_id": "SCV2-N-006",
+      "subject_id": "nik",
+      "raw_relative_path": "raw/Scorp_22_10_26/Ник/оба канала 60 2х2.txt",
+      "sha256": "2ecc20240c95ed166bfc398ded8a7c7eb235ed8b7b6881dd33a7c892188350f8",
+      "export_mtime_utc": "2026-10-22T08:30:02.724737+00:00"
+    },
+    {
+      "record_id": "SCV2-N-007",
+      "subject_id": "nik",
+      "raw_relative_path": "raw/Scorp_22_10_26/Ник/оба канала 60 1х1.txt",
+      "sha256": "382c705bc95aded8189df2895a5714e5de72e1470755c9f799ed1f4a319c03c3",
+      "export_mtime_utc": "2026-10-22T08:32:22.269978+00:00"
+    },
+    {
+      "record_id": "SCV2-N-008",
+      "subject_id": "nik",
+      "raw_relative_path": "raw/Scorp_22_10_26/Ник/оба канала 60 1х1 проыерка взаимности.txt",
+      "sha256": "1d0235b355b64690a61958e780e7fb5dc05d8517179dfc51fd41b749b430af7b",
+      "export_mtime_utc": "2026-10-22T08:34:20.845397+00:00"
+    },
+    {
+      "record_id": "SCV2-Y-001",
+      "subject_id": "yaroslav",
+      "raw_relative_path": "raw/Scorp_22_10_26/Ярослав/оба канала 140 2х2.txt",
+      "sha256": "9579856d18c438165353c07f542e93c8018d1d3970b695fd7d7fa9512f06ee56",
+      "export_mtime_utc": "2026-10-22T07:00:50.309627+00:00"
+    },
+    {
+      "record_id": "SCV2-Y-002",
+      "subject_id": "yaroslav",
+      "raw_relative_path": "raw/Scorp_22_10_26/Ярослав/Только ттркг 2х2.txt",
+      "sha256": "d69520cb11f9f42fb48fd909835764c8ee7a4861ad07b735e74297d2e391f3d6",
+      "export_mtime_utc": "2026-10-22T07:03:21.056165+00:00"
+    },
+    {
+      "record_id": "SCV2-Y-003",
+      "subject_id": "yaroslav",
+      "raw_relative_path": "raw/Scorp_22_10_26/Ярослав/только 140.txt",
+      "sha256": "14b0428c7428642bf9579204b220807e75f5de9b35190de5fe6b22af0326e5b3",
+      "export_mtime_utc": "2026-10-22T07:06:19.691603+00:00"
+    },
+    {
+      "record_id": "SCV2-Y-004",
+      "subject_id": "yaroslav",
+      "raw_relative_path": "raw/Scorp_22_10_26/Ярослав/попеременное отключение каналов 140 2х2.txt",
+      "sha256": "f0c17fbe6596ed5a07e6208e83c73d3edd5b563056e9213035a0947668b88849",
+      "export_mtime_utc": "2026-10-22T07:10:50.767060+00:00"
+    },
+    {
+      "record_id": "SCV2-Y-005",
+      "subject_id": "yaroslav",
+      "raw_relative_path": "raw/Scorp_22_10_26/Ярослав/оба канала 100 2х2.txt",
+      "sha256": "ad9d66da9b1b9d00cf3ebd17a46138cbd8651d1c98b6993fe5d5d624ff49cab3",
+      "export_mtime_utc": "2026-10-22T07:20:28.661117+00:00"
+    },
+    {
+      "record_id": "SCV2-Y-006",
+      "subject_id": "yaroslav",
+      "raw_relative_path": "raw/Scorp_22_10_26/Ярослав/оба канала 60 2х2.txt",
+      "sha256": "cac329611161b13ef0378a68301b703eedf3e50b437cd8aef4a537b6a5b46989",
+      "export_mtime_utc": "2026-10-22T07:28:07.643263+00:00"
+    },
+    {
+      "record_id": "SCV2-Y-007",
+      "subject_id": "yaroslav",
+      "raw_relative_path": "raw/Scorp_22_10_26/Ярослав/оба канала 60 1х1.txt",
+      "sha256": "1b3317c17de1ba593fb91f6d7d1c96f2c34aad2a2fea20224c6ce242baf6e57a",
+      "export_mtime_utc": "2026-10-22T07:32:41.706186+00:00"
+    }
+  ]
+}
