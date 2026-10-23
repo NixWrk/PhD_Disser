@@ -15,6 +15,8 @@ from session_20261022 import EXPERIMENT, SUBJECT_NAMES
 STEM='20.41_3D_боковая_установка_Ника_и_Ярослава_Scorpion'
 PREP=EXPERIMENT/'derived/exploratory/ct_preparation_3340'
 OUT=PREP/'viewer_3d'
+Y_OFFSETS=list(range(-20,11,5))
+DEFAULT_Y_OFFSET=-10  # Proposed review value; the author specified direction only.
 LAYERS={'body':('Грудная клетка','#d0c9c1',.22,45000),
         'lung':('Лёгкие','#419aba',.45,35000),
         'heart':('Сердце','#b91c1c',.65,18000),
@@ -38,16 +40,79 @@ def mask_mesh(path,limit):
     return reduce_mesh(trimesh.Trimesh(v,f,process=False),limit)
 
 
+def shifted_skin_scenarios(candidate,body_image,lung_image):
+    """Reproject each AP plane onto the own native skin, without changing masks."""
+    body_image=nib.as_closest_canonical(body_image)
+    lung_image=nib.as_closest_canonical(lung_image)
+    affine=body_image.affine
+    if (body_image.shape!=lung_image.shape or not np.allclose(affine,lung_image.affine)
+            or not np.allclose(affine[:3,:3],np.diag(np.diag(affine[:3,:3])),atol=1e-5)
+            or np.any(np.diag(affine[:3,:3])<=0)):
+        raise ValueError('Review requires matching axis-aligned own RAS masks')
+    body=np.asarray(body_image.dataobj)>0;lung=np.asarray(lung_image.dataobj)>0
+    x,y,z=[affine[a,3]+np.arange(body.shape[a])*affine[a,a] for a in range(3)]
+    reference=np.asarray(candidate['center']['lps_mm'])
+    k0=int(np.argmin(abs(z-reference[2])))
+    scenarios={}
+    for shift in Y_OFFSETS:
+        requested_y=reference[1]+shift
+        j=int(np.argmin(abs(y+requested_y)))  # LPS Y = -RAS Y.
+        if -requested_y<y[0] or -requested_y>y[-1]:
+            raise ValueError('Requested review plane outside CT')
+        points={}
+        for k in np.flatnonzero(abs(z-z[k0])<=100):
+            occupied=np.flatnonzero(body[:,j,k])
+            extent=np.flatnonzero(np.any(body[:,:,k],axis=1))
+            if not len(occupied) or not len(extent) or occupied[-1]==len(x)-1:continue
+            xmid=(x[extent[0]]+x[extent[-1]])/2
+            if not np.any(lung[:,j,k] & (x>xmid)):continue
+            # Same binary isolevel 0.49 as the source candidate surface.
+            points[k]=[-float(x[occupied[-1]]+.51*affine[0,0]),-float(y[j]),float(z[k])]
+        if k0 not in points:raise ValueError('No right lung-supported centre at requested Y')
+        first=last=k0
+        while first-1 in points:first-=1
+        while last+1 in points:last+=1
+        trace=np.asarray([points[k] for k in range(first,last+1)])
+        arc=np.r_[0.,np.linalg.norm(np.diff(trace,axis=0),axis=1).cumsum()]
+        arc-=arc[k0-first]
+        if arc[0]>-70 or arc[-1]<70:
+            raise ValueError('Review montage exceeds contiguous own skin trace')
+        contacts={}
+        for length in (140,100,60):
+            offsets=np.array([-length/2,-length/4,length/4,length/2])
+            contacts[length]=np.column_stack([np.interp(offsets,arc,trace[:,a]) for a in range(3)]).tolist()
+        scenarios[shift]=dict(requested_delta_y_mm=shift,requested_y_lps_mm=float(requested_y),
+            actual_delta_y_mm=float(points[k0][1]-reference[1]),center_lps_mm=points[k0],
+            longitudinal_trace_lps_mm=trace.tolist(),longitudinal_trace_arc_offsets_mm=arc.tolist(),
+            contacts_lps_mm=contacts)
+    if not np.allclose(scenarios[0]['center_lps_mm'],reference):
+        raise ValueError('Zero shift does not reproduce source candidate')
+    for length,pts in scenarios[0]['contacts_lps_mm'].items():
+        original=np.asarray(candidate['longitudinal_trace_lps_mm'])
+        arc=np.asarray(candidate['longitudinal_trace_arc_offsets_mm'])
+        offsets=np.array([-length/2,-length/4,length/4,length/2])
+        expected=np.column_stack([np.interp(offsets,arc,original[:,a]) for a in range(3)])
+        if not np.allclose(pts,expected):raise ValueError('Zero shift changed source contacts')
+    return scenarios
+
+
 def build():
     OUT.mkdir(parents=True,exist_ok=True)
     summary=read(PREP/'surface_and_candidate_summary.local.json')
-    fig=go.Figure();metadata=[];bounds=[];manifest=[]
+    fig=go.Figure();metadata=[];bounds=[];manifest=[];review={}
     for subject in ['nik','yaroslav']:
         base=PREP/subject/'body_surface_investigation/diagnostics'
         diagnostic=read(base/'body_surface_diagnostic.local.json')
         cfile=Path(summary['subjects'][subject]['candidate_json']['path']);candidate=read(cfile)
         if sha(cfile)!=summary['subjects'][subject]['candidate_json']['sha256']:
             raise ValueError('Candidate geometry changed')
+        body_source=Path(candidate['source_body']['path'])
+        lung_source=Path(diagnostic['inputs']['lung']['path'])
+        if sha(body_source)!=candidate['source_body']['sha256'] or sha(lung_source)!=diagnostic['inputs']['lung']['sha256']:
+            raise ValueError('Source review masks changed')
+        scenarios=shifted_skin_scenarios(candidate,nib.load(body_source),nib.load(lung_source))
+        review[subject]=dict(candidate_source=dict(path=str(cfile),sha256=sha(cfile)),
+            body_source=candidate['source_body'],lung_source=diagnostic['inputs']['lung'],scenarios=scenarios)
         for kind,(label,color,opacity,limit) in LAYERS.items():
             source=(base/'diagnostic_native_body.stl' if kind=='body' else
                     Path(diagnostic['inputs'][kind]['path']))
@@ -65,18 +130,17 @@ def build():
             metadata.append(dict(subject=subject,kind=kind))
             manifest.append(dict(subject=subject,kind=kind,source_path=str(source),source_sha256=sha(source),
                                  display_vertices=len(vertices),display_faces=len(faces),used_for_FEM=False))
-        trace=np.array(candidate['longitudinal_trace_lps_mm']);arc=np.array(candidate['longitudinal_trace_arc_offsets_mm'])
-        region=np.array([p['lps_mm'] for p in candidate['region_candidates']]);centre=np.array(candidate['center']['lps_mm'])
+        selected=scenarios[DEFAULT_Y_OFFSET]
+        region=np.array([p['lps_mm'] for p in candidate['region_candidates']]);centre=np.array(selected['center_lps_mm'])
         for kind,pts,color,size,label in [('region',region,'#0d9488',4,'Варианты центра'),
+                ('reference',np.array(candidate['center']['lps_mm'])[None,:],'#64748b',6,'Исходный центр'),
                 ('centre',centre[None,:],'#f59e0b',8,'Центр-кандидат')]:
             fig.add_trace(go.Scatter3d(x=pts[:,0],y=pts[:,1],z=pts[:,2],mode='markers',name=label,
                 marker=dict(color=color,size=size,line=dict(color='#172033',width=1)),showlegend=False,
                 visible=subject=='nik',hovertemplate=label+'<br>X=%{x:.1f}; Y=%{y:.1f}; Z=%{z:.1f} мм<extra></extra>'))
             metadata.append(dict(subject=subject,kind=kind))
         for length in [140,100,60]:
-            offsets=np.array([-length/2,-length/4,length/4,length/2])
-            if offsets.min()<arc.min() or offsets.max()>arc.max():raise ValueError('Contact beyond own skin trace')
-            pts=np.column_stack([np.interp(offsets,arc,trace[:,axis]) for axis in range(3)])
+            pts=np.array(selected['contacts_lps_mm'][length])
             fig.add_trace(go.Scatter3d(x=pts[:,0],y=pts[:,1],z=pts[:,2],mode='lines+markers+text',
                 text=['A','M','N','B'],customdata=['токовый','измерительный','измерительный','токовый'],textposition='top center',
                 textfont=dict(size=14,color='#111827'),marker=dict(size=7,color=['#dc2626','#1d4ed8','#1d4ed8','#dc2626'],line=dict(color='white',width=1)),
@@ -110,44 +174,70 @@ button,select{font:inherit;padding:6px 12px;background:white;border:1px solid #9
 <script>'''+get_plotlyjs()+'''</script><main>
 <h1>3D: боковые сборки Ника и Ярослава</h1>
 <p>Поверните модель мышью, увеличьте колесом; смещение — с зажатой правой кнопкой.
-Выбор участника, размера и видимости тканей сохраняет текущий ракурс.</p>
+Выбор участника, размера, смещения и видимости тканей сохраняет текущий ракурс.</p>
 <div class="controls"><label>Участник: <select id="subject"><option value="nik">Ник</option><option value="yaroslav">Ярослав</option></select></label>
 <label>Пример сборки: <select id="size"><option>140</option><option>100</option><option>60</option></select> мм</label>
 <button id="right">Вид справа</button><button id="front">Вид спереди</button><button id="oblique">Объёмный вид</button></div>
+<div class="controls"><label>Смещение Y: <select id="y-shift">'''+''.join(
+    f'<option value="{v}"'+(' selected' if v==DEFAULT_Y_OFFSET else '')+f'>{v:+d} мм</option>' for v in Y_OFFSETS)+'''</select></label>
+<button id="zero-shift">Исходное положение</button>
+<span>Минус Y — вперёд, плюс Y — назад. Выбор сохраняется отдельно для каждого участника.</span></div>
 <div class="layers"><label><input type="checkbox" data-layer="body" checked> Грудная клетка</label>
 <label><input type="checkbox" data-layer="lung" checked> Лёгкие</label>
 <label><input type="checkbox" data-layer="heart" checked> Сердце</label>
 <label><input type="checkbox" data-layer="bone"> Кости</label>
 <label><input type="checkbox" data-layer="fat"> Жир</label>
-<label><input type="checkbox" data-layer="region" checked> Область вариантов</label></div>
-<p id="status">Ник · пример 140 мм</p>'''+plot+'''
-<p>Жёлтый маркер — центр-кандидат; зелёные маркеры — варианты его смещения.
+<label><input type="checkbox" data-layer="region" checked> Исходная область вариантов</label></div>
+<p id="status" aria-live="polite"></p>'''+plot+'''
+<p>Жёлтый маркер — смещённый центр-кандидат; серый — исходный центр;
+зелёные маркеры — исходная область вариантов.
 A и B — центры токовых контактов, M и N — центры измерительных.
 Размер примера отложен вдоль кожной кривой. Маркеры показывают центры,
 их размер на экране не задаёт физическую площадь контакта.</p>
+<p>Для просмотра предложено смещение −10 мм у обоих участников. Автор указал направление
+к отрицательному Y; величина и различия между участниками ещё уточняются.
+При смене Y заново выбрана кожная кривая по индивидуальной КТ; X следует наружному контуру,
+высота центра Z сохраняется. Положение Y округляется до ближайшей плоскости вокселей.
+Фактические координаты центра показаны в строке над сценой.</p>
 <p class="hint">Это индивидуальная КТ-геометрия для проверки положения, а не принятая
 расчётная FEM-модель. Наружный контур не прошёл все стандартные проверки.
 Поверхности упрощены только для просмотра; маски автоматические и требуют экспертной оценки.
-Центр выбран по уровню маски сердца и середине переднезадней ширины тела,
+Исходный центр выбран по уровню маски сердца и середине переднезадней ширины тела,
 без подгонки импеданса. Фактическое положение боковой сборки ещё нужно уточнить.</p>
 </main><script>
 const metadata='''+json.dumps(metadata,ensure_ascii=False)+''';
-const graph=document.getElementById('ct-montage-3d');let savedCamera=null;
+const review='''+json.dumps({s:d['scenarios'] for s,d in review.items()},ensure_ascii=False)+''';
+const shifts={nik:'''+str(DEFAULT_Y_OFFSET)+''',yaroslav:'''+str(DEFAULT_Y_OFFSET)+'''};
+const graph=document.getElementById('ct-montage-3d');let savedCamera=null,redraw=Promise.resolve();
 graph.on('plotly_relayout',event=>{if(event['scene.camera'])savedCamera=JSON.parse(JSON.stringify(event['scene.camera']));});
 function update(){const subject=document.getElementById('subject').value,size=Number(document.getElementById('size').value);
+const shift=shifts[subject],scenario=review[subject][shift];document.getElementById('y-shift').value=String(shift);
 const layers={};document.querySelectorAll('[data-layer]').forEach(e=>layers[e.dataset.layer]=e.checked);
-const visible=metadata.map(m=>m.subject===subject&&(m.kind==='contacts'?m.length===size:(m.kind==='centre'||layers[m.kind]===true)));
-const camera=savedCamera?JSON.parse(JSON.stringify(savedCamera)):null;
-Plotly.restyle(graph,{visible:visible}).then(()=>camera?Plotly.relayout(graph,{'scene.camera':camera}):null);
-document.getElementById('status').textContent=(subject==='nik'?'Ник':'Ярослав')+' · пример '+size+' мм';}
+const visible=metadata.map(m=>m.subject===subject&&(m.kind==='contacts'?m.length===size:((m.kind==='centre'||m.kind==='reference')||layers[m.kind]===true)));
+const indices=[],x=[],y=[],z=[];metadata.forEach((m,index)=>{const p=m.subject===subject&&m.kind==='contacts'?scenario.contacts_lps_mm[m.length]:
+    (m.subject===subject&&m.kind==='centre'?[scenario.center_lps_mm]:null);
+    if(p){indices.push(index);x.push(p.map(v=>v[0]));y.push(p.map(v=>v[1]));z.push(p.map(v=>v[2]));}});
+redraw=redraw.then(()=>{const camera=savedCamera?JSON.parse(JSON.stringify(savedCamera)):null;
+    return Plotly.restyle(graph,{x:x,y:y,z:z},indices).then(()=>Plotly.restyle(graph,{visible:visible}))
+        .then(()=>camera?Plotly.relayout(graph,{'scene.camera':camera}):null);});
+document.getElementById('status').textContent=(subject==='nik'?'Ник':'Ярослав')+' · пример '+size+' мм · ΔY = '+shift+
+    ' мм · центр X / Y / Z = '+scenario.center_lps_mm.map(v=>v.toFixed(1)).join(' / ')+' мм (LPS)';}
 document.getElementById('subject').addEventListener('change',update);
 document.getElementById('size').addEventListener('change',update);
+document.getElementById('y-shift').addEventListener('change',event=>{shifts[document.getElementById('subject').value]=Number(event.target.value);update();});
+document.getElementById('zero-shift').addEventListener('click',()=>{shifts[document.getElementById('subject').value]=0;update();});
 document.querySelectorAll('[data-layer]').forEach(e=>e.addEventListener('change',update));
 for(const [id,eye] of Object.entries({right:{x:-2.4,y:0,z:.2},front:{x:0,y:-2.4,z:.2},oblique:{x:-2.1,y:-1.6,z:.65}})){
 document.getElementById(id).addEventListener('click',()=>Plotly.relayout(graph,{'scene.camera':{eye:eye,up:{x:0,y:0,z:1},center:{x:0,y:0,z:0}}}));}
+update();
 </script></html>'''
     output=Path(__file__).resolve().parent/(STEM+'.html');output.write_text(page,encoding='utf8')
+    write(OUT/'y_review_scenarios.local.json',dict(producer_sha256=sha(__file__),subjects=review,
+        coordinate_system='LPS_mm',author_confirmed_direction='negative_Y',
+        default_delta_y_mm=DEFAULT_Y_OFFSET,magnitude_confirmed=False,subject_scope_confirmed=False,
+        review_only=True,geometry_accepted_for_FEM=False))
     write(OUT/'manifest.local.json',dict(producer_sha256=sha(__file__),sources=manifest,
+        y_review_sha256=sha(OUT/'y_review_scenarios.local.json'),
         display_only=True,geometry_accepted_for_FEM=False,output_sha256=sha(output)))
     print(output.name,round(output.stat().st_size/2**20,2),'MiB')
     return output
