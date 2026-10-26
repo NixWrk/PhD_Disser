@@ -231,8 +231,16 @@ fingerprint без повторной факторизации. Для иног�
 
 ```powershell
 python -B MATLAB_TRKG4_real_subjects/tools/scorpion_fem_heart_pilot.py predict --forward "{base}/electrical/forward.local.json" --scenarios "{base}/heart_scenarios.local.json" --output "{base}/heart_linear_predictions.local.json"
-python -B MATLAB_TRKG4_real_subjects/tools/scorpion_fem_heart_pilot.py summarize --directory "{base}/heart_pilot" --output "{base}/heart_pilot_summary.local.json"
+python -B tools/scorpion_heart_pilot_summary.py --directory "{base}/heart_pilot" --output "{base}/heart_pilot_summary.local.json"
 ```
+
+Для сводки используется именно отдельный tracked reader
+`tools/scorpion_heart_pilot_summary.py`. MATLAB сохраняет единственный
+`answers` как объект, а несколько ответов — как список. Reader нормализует
+только scalar `answers` при `schema=scorpion_heart_forward_v1` в памяти,
+затем вызывает неизменённую арифметику исходного producer. Исходный producer,
+worker, планы и raw solve-паспорта остаются неизменными. Их прежний CLI
+`summarize` напрямую не применяется к singleton-паспортам.
 
 Сводка сохраняет отсутствующие/неуспешные варианты, воспроизведение baseline
 whole-heart, отличие номинальной сферы, q-разности и секущую
@@ -266,10 +274,15 @@ whole-heart, отличие номинальной сферы, q-разност�
 сохраняют перекрёстные передачи. Максимум q-разности по всей матрице не следует
 подписывать как ошибку только собственной ТТРКГ.
 
-При чтении сводка проверяет принадлежность каждого solve-паспорта текущему
-`plan.local.json` по `identity.plan_sha256`. В самой сводке нет отдельного
-поля `sources`: notebook binding должен сохранять SHA сводки и связывать её
-с SHA плана и завершёнными solve-паспортами. `exploratory_forward_complete`
+Tracked reader проверяет принадлежность каждого solve-паспорта текущим
+plan/baseline/reference/mesh/CEM, правильность variant, q, case и состояния,
+а также residual/reciprocity. Несовпадение новой blood-ветви с контрольным
+reference блокирует чтение, а не исправляется заменой чисел. Дополнительные
+поля сводки: `reader_normalization` (schema, policy, normalized_report_paths,
+sources_modified=false) и `sources[]` (kind, path, sha256). Fingerprint включает
+adapter, исходный producer и worker, план, baseline, reference и прочитанные
+solve-паспорта; SHA повторно проверяются после чтения. Notebook binding
+дополнительно сохраняет SHA самой сводки. `exploratory_forward_complete`
 означает наличие всех восьми вариантов; это не статус количественного принятия.
 
 ## Ресурсы, проверка кода и границы результата
@@ -297,6 +310,11 @@ end-to-end подготовку восьми вариантов и исходн�
 Они не запускают FEM. MATLAB `checkcode` проверяет синтаксис; это не выполнение
 канонической сборки. Реальные CT-прогнозы поручены родительскому процессу после
 завершения материалов и baseline.
+
+Дополнительные тесты `tests/test_scorpion_heart_summary_reader.py` проверяют
+одинаковый смысл scalar/list сводок, побитную неизменность исходных JSON,
+отказы при чужих plan/reference/CEM/baseline и сохранение неполного статуса.
+Совместный запуск двух тестовых модулей: 22 passed; MATLAB/FEM в нём не запускается.
 
 В текущем цикле все три реальные геометрические подготовки завершились;
 прочитаны финальные `plan.local.json`, проверены все их `source_files` и 24
