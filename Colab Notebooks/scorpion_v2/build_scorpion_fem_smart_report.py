@@ -130,11 +130,57 @@ def joint_grid_diagnostics(scan, observations):
                         euclidean_norm_ohm=float(np.linalg.norm(residual)),rms_ohm=float(np.sqrt(np.mean(residual**2)))))
                 metric="euclidean_norm_ohm" if scope=="primary_pair" else "rms_ohm"
                 minimum=min(sampled,key=lambda r:r[metric])
+                primary_ranges={}
+                if scope=="primary_pair":
+                    for i,role in enumerate(ROLES):
+                        modes=[p["L140_TT2x2"]["source_modes"][role] for p in points.values()]
+                        own_min=min(m["own_ohm"] for m in modes)
+                        module_min=min(m["module_min_ohm"] for m in modes)
+                        primary_ranges[role]=dict(own_min_ohm=own_min,own_max_ohm=max(m["own_ohm"] for m in modes),
+                            equal_amplitude_module_min_ohm=module_min,
+                            equal_amplitude_module_max_ohm=max(m["module_max_ohm"] for m in modes),
+                            observed_below_all_own=bool(observed[i]<own_min),
+                            observed_below_all_module_envelopes=bool(observed[i]<module_min))
                 output.append(dict(state=state,scope=scope,source_scenario=mode,selected_physical_phase=False,
                     row_labels=labels,observed_ohm=observed.tolist(),sampled_points=len(sampled),
                     metric=metric,minimum_on_sampled_grid=minimum,noise_weighted=False,
+                    primary_grid_ranges=primary_ranges,
                     continuous_rectangle_excluded=False,individual_parameters_established=False))
     return output
+
+
+def checked_lung_only_scenario(snap,base,subject,forward):
+    """Verify the saved contribution adapter against each own finite baseline pair."""
+    path=base/"heart_linear_predictions.local.json"
+    linear=snap.json(path)
+    if linear.get("schema")!="scorpion_heart_scenarios_v1" or linear["subject_alias"]!=subject:
+        raise ValueError("Linear contribution adapter identity mismatch")
+    expected_sources={str((base/"electrical/forward.local.json").resolve()),
+        str((base/"heart_scenarios.local.json").resolve()),
+        str((ROOT/"MATLAB_TRKG4_real_subjects/tools/scorpion_fem_heart_pilot.py").resolve())}
+    if {str(Path(r["path"]).resolve()) for r in linear["sources"]}!=expected_sources:
+        raise ValueError("Unexpected linear contribution source set")
+    for source in linear["sources"]:
+        if digest(source["path"])!=source["sha256"]:raise ValueError("Linear contribution source changed")
+    snap.json(base/"heart_scenarios.local.json")
+    by={(r["case_id"],r["rule"],r["state"]):r for r in records(forward["answers"])}
+    rows=records(linear["rows"])
+    if len(rows)*2!=len(by):raise ValueError("Incomplete finite inhale/exhale contribution pairs")
+    for row in rows:
+        inhale=by[(row["case_id"],row["rule"],"inhale")]
+        exhale=by[(row["case_id"],row["rule"],"exhale")]
+        ri=np.asarray(inhale["rho_ohm_m"]);re=np.asarray(exhale["rho_ohm_m"])
+        if not np.array_equal(ri[[0,2,3,4]],re[[0,2,3,4]]) or ri[1]==re[1]:
+            raise ValueError("Finite breathing scenario is not lung-only")
+        ti=np.asarray(inhale["transfer_matrix_ohm"]);te=np.asarray(exhale["transfer_matrix_ohm"])
+        if not np.array_equal(row["inhale_transfer_ohm"],ti) or not np.array_equal(row["exhale_transfer_ohm"],te) or not np.array_equal(row["exhale_minus_inhale_ohm"],te-ti):
+            raise ValueError("Finite contribution pair changed from own baseline")
+        if np.any(np.asarray(row["linear_background_only_ohm"])!=0) or not np.array_equal(row["linear_lung_only_ohm"],row["linear_delta_ohm"]):
+            raise ValueError("Inconsistent zero background contribution")
+    producer=ROOT/"MATLAB_TRKG4_real_subjects/tools/scorpion_fem_heart_pilot.py"
+    return dict(source_count=3,checked_finite_pairs=len(rows),only_lung_resistivity_changes=True,
+        background_only_zero_by_construction=True,producer_relative_path=producer.relative_to(ROOT).as_posix(),
+        producer_sha256=digest(producer),physiological_background_constancy_established=False)
 
 
 def center_identifiability(answers):
@@ -359,6 +405,20 @@ def collect(model_root):
         if sensitivity["subject_alias"] != subject or sensitivity["source"]["sha256"] != source_sha:
             raise ValueError("Stale or different-subject sensitivity")
         comparison, excluded = aggregate_comparisons(forward)
+        role_evidence=None
+        if subject=="georg":
+            inputs_path=base/"electrical_inputs.local.json"
+            inputs=snap.json(inputs_path)
+            if snap.sources[inputs_path.relative_to(snap.root).as_posix()]!=forward["identity"]["inputs_sha256"]:
+                raise ValueError("Observation role evidence changed after baseline")
+            evidence={r["record_id"]:r["role_evidence"] for r in inputs["observations"]}
+            selected=[evidence[f"SCV2-G-{k:03d}"] for k in range(7,11)]
+            if not all(e["ttrkg"]["variant"]=="1x1" and e["ttrkg"]["status"]=="author_confirmed" for e in selected):
+                raise ValueError("Late TT1x1 author confirmation missing")
+            if not all(e["status"]=="late_block_continuity_protocol_assumption" for e in selected[1:]):
+                raise ValueError("Late physical-role assumption status changed")
+            role_evidence=dict(tt1x1_007_010_author_confirmed=True,
+                physical_roles_008_010_are_connection_continuity_assumption=True)
         breathing = defaultdict(list)
         for row in records(forward.get("breathing_differences", [])):
             breathing[(row["case_id"], row["role"])].append(row)
@@ -400,6 +460,8 @@ def collect(model_root):
             segmentation=dict(tool="TotalSegmentator",version="2.18.0",individual_mask_anatomical_validation=False),
             mesh_qc={k:mesh[k] for k in ("nodes","tetrahedra","passed","mean_ratio_minimum","edge_condition_maximum")},
             comparison=comparison, excluded_observations_by_reason=excluded, breath=breath,
+            observation_role_evidence=role_evidence,
+            breathing_scenario_checks=checked_lung_only_scenario(snap,base,subject,forward),
             sensitivity=[dict(state=a["state"], subset=a["subset"], rule=a["rule"], row_labels=a["row_labels"],
                 matrix=a["matrices"]["dimensionless_signed_elasticity"],
                 quadrature=a["quadrature_control"]["matrices"]["dimensionless_signed_elasticity"]) for a in sensitivity["analyses"]],
@@ -702,7 +764,19 @@ F.assert_safe(S)
 импеданс — отношение напряжения к току, в омах.
 
 В реализации используются вещественные удельные сопротивления и проводимости
-σ=1/ρ. Комплексные проводимости тканей не используются. Для всех контактов
+σ=1/ρ. Комплексные проводимости тканей не используются.
+
+**Смешанные ткани внутри элемента.** В каждом тетраэдре fₖ — объёмная доля
+ткани k, fₖ≥0 и Σₖfₖ=1. Для линейных тетраэдральных элементов используется
+эффективная проводимость σeff=Σₖfₖ/ρₖ. Усредняется проводимость, а не
+арифметическое значение удельного сопротивления. Тканевые матрицы Kₖ
+учитывают доли ткани и геометрию элементов; объёмная матрица проводимости
+собирается как K=ΣₖKₖ/ρₖ. Это соответствует сохранённой сборке
+Fᵀdiag(fₖ)F с повторением весов для трёх компонент поля. Контактные члены
+полной электродной модели добавляются отдельно. При изменении ρ в авторской
+сетке сценариев индивидуальные тканевые доли и геометрия сохраняются.
+
+Для всех контактов
 трёх участников задано zcontact=0,01 Ом·м²; это рабочий CEM-сценарий,
 контактный импеданс независимо не измерен. Числа и основание назначения
 связаны с сохранённым контактным паспортом.
@@ -715,7 +789,11 @@ F.assert_safe(S)
 Для оценки вычислительной согласованности сопоставляются невязка линейной
 системы и взаимность с допусками 10⁻⁷, производные с центральной разностью
 по lnρ с шагом 0,001 и относительным допуском 10⁻⁴. Правила q1024/q4096
-относятся к интегрированию материалов внутри одной сетки. Их различие
+используют вложенные наборы из 1024 и 4096 точек Sobol для оценки fₖ внутри
+прежних линейных тетраэдров; первые 1024 точки входят в набор 4096.
+Число тетраэдров и узлов при этом не растёт. Такой контроль интегрирования
+не устраняет ошибку пространственной дискретизации и не доказывает сеточную
+сходимость по одной неизменной сетке. Различие правил
 проверяется для базовых уровней по критерию 0,02 Ом + 0,001·|Zq4096|.
 Таблица 1 показывает фактический охват сохранённых проверок.""")
     profiles=defaultdict(list)
@@ -749,6 +827,11 @@ F.assert_safe(S)
 сохраняется в агрегате. Разные размеры регистрировались последовательно.
 Время, контакт и состояние участника могут различаться между записями.
 
+У Георгия вариант ТТРКГ 1×1 в записях 007–010 подтверждён автором.
+При этом соответствие физических ролей отведений в записях 008–010
+остаётся допущением сохранения подключения; подтверждение варианта ТТРКГ
+не превращает это допущение в подтверждённый факт о ролях отведений.
+
 **Сценарий прямой модели.** Основной прогноз использует собственный источник
 отведения — own_drive. Фактическая относительная фаза двух источников и
 оператор демодуляции прибора не подтверждены. Поэтому невязка этого прогноза
@@ -774,8 +857,18 @@ F.assert_safe(S)
 Дыхательный контраст определяется как ΔZ=Zвыдох−Zвдох (2). Каждая разность
 формируется внутри одной записи и отведения до объединения повторений.
 Это сохраняет парность сравнения и отделяет контраст от абсолютного уровня.
-В FEM меняются сопротивления; исходная КТ глубокого вдоха остаётся неизменной.
-Следовательно, модельный выдох является условным материальным сценарием.""")
+В этом FEM-сценарии меняется только сопротивление лёгкого:
+9,315252925→3,681694081 Ом·м. Сопротивления фона, кости, целого сердца и жира
+фиксированы, исходная КТ глубокого вдоха остаётся неизменной. Следовательно,
+модельный выдох является условным материальным сценарием.
+Изолированный конечный ответ lung-only совпадает с тем же расчётом выдоха;
+background-only даёт нулевой контраст по конструкции сценария. Это не
+эмпирический результат «фон не меняется при дыхании». Поэтому идентичные
+задачи прямого расчёта повторно не решались: проверены сохранённые пары
+вдох/выдох и три источника расчёта вкладов каждого участника. Конечное
+изменение ответа и его локальная линейная аппроксимация различаются;
+равенство lung-only и полного конечного контраста не утверждает их равенства
+линейному прогнозу Jacobian.""")
     breath_text=[]
     for s in summary["subjects"]:
         v=next(v for v in s["breath"] if v["case_id"]=="L140_TT2x2" and v["role"]=="ttrkg")
@@ -896,7 +989,16 @@ Eij=Jlog,ij/Zi (4). Знаки Z и производных сохранены; �
             statements.append(f"{label}: измеренные [ТТРКГ; боковая] = [{observed}] Ом. Среди {primary['sampled_points']} точек минимальная норма двух невязок {p['euclidean_norm_ohm']:.6g} Ом при [ρфона; ρлёгкого]=[{p['rho_ohm_m'][0]:g}; {p['rho_ohm_m'][1]:g}] Ом·м, знаковые невязки [{residual}] Ом. По всем {len(all_cases['row_labels'])} наблюдениям минимум RMS {a['rms_ohm']:.6g} Ом при [{a['rho_ohm_m'][0]:g}; {a['rho_ohm_m'][1]:g}] Ом·м")
         joint_text.append(s["id"]+": "+"; ".join(statements)+".")
     if joint_text:
-        md("**Совместное сопоставление на сетке, own_drive.** "+"\n\n".join(joint_text)+"\n\nНевязка определена как модель минус измерение. Норма двух невязок равна √(rТТ²+rбок²), RMS — √(Σr²/n); все компоненты имеют одинаковый арифметический вес. Это описательные минимумы только среди рассчитанных точек, без модели шума, доверительных интервалов или оценки индивидуальных параметров. Они не исключают совпадение в непрерывном прямоугольнике сопротивлений. Для Ника данное сканирование не показало совместного согласия двух отведений с одним набором свойств. Сценарии φ=0 и φ=π приведены отдельно в таблице 5б; ни одна фаза не выбрана как режим прибора.")
+        md("**Совместное сопоставление на сетке, own_drive.** "+"\n\n".join(joint_text)+"\n\nНевязка определена как модель минус измерение. Норма двух невязок равна √(rТТ²+rбок²), RMS — √(Σr²/n); все компоненты имеют одинаковый арифметический вес. Это описательные минимумы только среди рассчитанных точек, без модели шума, доверительных интервалов или оценки индивидуальных параметров. Они не исключают совпадение в непрерывном прямоугольнике сопротивлений. Представленные совместные невязки не подтверждают согласия обоих отведений с одним набором свойств. Сценарии φ=0 и φ=π приведены отдельно в таблице 5б; ни одна фаза не выбрана как режим прибора.")
+        bounds=[]
+        for s in summary["subjects"]:
+            diagnostics=[d for d in s["material_range"]["scan"]["joint_grid_diagnostics"] if d["scope"]=="primary_pair" and d["source_scenario"]=="own_ohm"]
+            if not diagnostics:continue
+            r=diagnostics[0]["primary_grid_ranges"]["ttrkg"]
+            below_own=sum(d["primary_grid_ranges"]["ttrkg"]["observed_below_all_own"] for d in diagnostics)
+            below_module=sum(d["primary_grid_ranges"]["ttrkg"]["observed_below_all_module_envelopes"] for d in diagnostics)
+            bounds.append(f"{s['id']}: ТТРКГ own_drive {r['own_min_ohm']:.6f}–{r['own_max_ohm']:.6f} Ом; общий диапазон границ модуля при равных амплитудах и неизвестной фазе {r['equal_amplitude_module_min_ohm']:.6f}–{r['equal_amplitude_module_max_ohm']:.6f} Ом. Ниже всех own_drive-точек находятся {below_own} из 2 наблюдаемых уровней, ниже всех нижних фазовых границ — {below_module} из 2")
+        md("**Проверка первичного ТТРКГ на тех же точках.** "+"; ".join(bounds)+". Сравниваются отдельно измеренные вдох и выдох без назначения дыхательных состояний сценарным точкам. Если уровень ниже минимальной нижней границы, ни одна из рассчитанных точек при указанных равных токах его не покрывает. Это не исключает иные непрерывные параметры и не устанавливает реальный режим или демодуляцию прибора.")
     grid_text=[]
     for s in summary["subjects"]:
         data=s["material_range"]["scan"]
@@ -973,7 +1075,7 @@ def build(model_root, *, draft=False, execute=False, export_html=False):
     if asset.exists() and read(asset).get("schema")!="scorpion_fem_smart_reader_v1":
         raise ValueError("Asset name already occupied")
     asset.parent.mkdir(parents=True,exist_ok=True)
-    asset.write_text(json.dumps(summary,ensure_ascii=False,indent=2,allow_nan=False)+"\n",encoding="utf-8")
+    asset.write_text(json.dumps(summary,ensure_ascii=False,indent=2,allow_nan=False)+"\n",encoding="utf-8",newline="\n")
     book=notebook(summary,draft);book.metadata.source_summary_sha256=digest(asset)
     if execute:
         from nbclient import NotebookClient
@@ -989,7 +1091,7 @@ def build(model_root, *, draft=False, execute=False, export_html=False):
         book.metadata.executed_clean_local=True
     else:book.metadata.executed_clean_local=False
     payload=nbformat.writes(book);assert_safe(json.loads(payload))
-    target.write_text(payload,encoding="utf-8")
+    target.write_text(payload,encoding="utf-8",newline="\n")
     if export_html:
         from nbconvert import HTMLExporter
         exporter=HTMLExporter(template_name="lab",exclude_input=True,exclude_input_prompt=True,exclude_output_prompt=True)
@@ -1001,7 +1103,7 @@ def build(model_root, *, draft=False, execute=False, export_html=False):
         if re.search(r'<details[^>]*\bopen\b',rendered,re.I) or "F.show_figure(" in rendered or "import build_scorpion_fem_smart_report" in rendered:
             raise ValueError("Reader contains open table or source code")
         assert_safe(dict(reader=rendered))
-        (FOLDER/(STEM+".html")).write_text(rendered,encoding="utf-8")
+        (FOLDER/(STEM+".html")).write_text(rendered,encoding="utf-8",newline="\n")
     print(json.dumps(dict(notebook=target.name,draft=draft,executed=execute,
         heart_ready=summary["heart_results_completed"],range_ready=summary["material_range_completed"],
         final_inputs_complete=summary["final_inputs_complete"]),ensure_ascii=False))
