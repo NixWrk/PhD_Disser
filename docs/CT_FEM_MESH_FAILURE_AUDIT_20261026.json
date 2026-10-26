@@ -1,0 +1,2004 @@
+{
+  "schema": "ct_fem_mesh_failure_audit_v1",
+  "date": "2026-10-26",
+  "purpose": "Mesh-generation failure analysis; not an electrical solve or physiological validation",
+  "georg_original_producer_sha256": "bff3ad3f368e098c87c049e84cc67e158921408d88665080c7d5ea79e10549e9",
+  "georg_array_reproduction": {
+    "nodes_identical": true,
+    "oriented_elements_identical": true
+  },
+  "surface_diagnostics": {
+    "nik_skin": {
+      "source_sha256": "cfc21b9162d74a9bbb7a1d66a1e52bf1bf303c38ae900837a52169fa51eff0f7",
+      "vertices": 125002,
+      "faces": 250000,
+      "watertight": true,
+      "positive_volume": true,
+      "euler": 2,
+      "volume_ml": 19110.02775,
+      "surface_area_mm2": 440244.7049397349,
+      "edge_mm": {
+        "minimum": 0.7071067811865476,
+        "q001": 0.7071067811865476,
+        "q01": 0.7071067811865476,
+        "q05": 0.7071067811865476,
+        "median": 1.4142135623730951,
+        "q95": 5.656854249492381,
+        "maximum": 217.0829334609241
+      },
+      "face_area_mm2": {
+        "minimum": 0.21650635094610965,
+        "q001": 0.21650635094610965,
+        "q01": 0.3535533905932738,
+        "q05": 0.3535533905932738,
+        "median": 0.5,
+        "q95": 4.0,
+        "maximum": 6287.5
+      },
+      "triangle_min_angle_deg": {
+        "minimum": 0.018584423434339643,
+        "q001": 0.5066098897635043,
+        "q01": 2.202598161765967,
+        "q05": 6.721369339369459,
+        "median": 29.999999999999993,
+        "q95": 46.33221985386964,
+        "maximum": 60.00000000000001
+      },
+      "triangle_min_altitude_mm": {
+        "minimum": 0.01817881366751496,
+        "q001": 0.10846522890932808,
+        "q01": 0.24253562503633297,
+        "q05": 0.4082482904638631,
+        "median": 0.6666666666666667,
+        "q95": 1.3598002073001698,
+        "maximum": 85.51732885021298
+      },
+      "triangle_mean_ratio": {
+        "minimum": 0.0005617158448415363,
+        "q001": 0.014761615433781022,
+        "q01": 0.06437109974119001,
+        "q05": 0.18826639212705185,
+        "median": 0.7499999999999999,
+        "q95": 0.9447549859466604,
+        "maximum": 1.0000000000000002
+      },
+      "short_unique_edges": {
+        "1e-05": 0,
+        "0.0001": 0,
+        "0.001": 0,
+        "0.01": 0,
+        "0.1": 0
+      },
+      "small_angle_faces": {
+        "0.001": 0,
+        "0.01": 0,
+        "0.1": 23,
+        "1": 762,
+        "5": 8126
+      },
+      "zero_area_after_float32": 0,
+      "diagnostics_are_not_acceptance_thresholds": true,
+      "FEM_was_run": false
+    },
+    "nik_union": {
+      "source_sha256": "565fba773a199b9fddcde77e3f84f78d07928d3c6d38abd8d1d5a1bbe5c6e599",
+      "vertices": 120591,
+      "faces": 241178,
+      "watertight": true,
+      "positive_volume": true,
+      "euler": 2,
+      "volume_ml": 23159.1294602197,
+      "surface_area_mm2": 578679.2555461056,
+      "edge_mm": {
+        "minimum": 0.0012241863542239945,
+        "q001": 0.5487018324113362,
+        "q01": 0.7071067811865476,
+        "q05": 0.7071067811865476,
+        "median": 1.4142135623730951,
+        "q95": 6.041522986797286,
+        "maximum": 217.0829334609241
+      },
+      "face_area_mm2": {
+        "minimum": 7.187010285307724e-06,
+        "q001": 0.1230917255374005,
+        "q01": 0.3535533905932738,
+        "q05": 0.3535533905932738,
+        "median": 0.5,
+        "q95": 4.596194077712559,
+        "maximum": 6287.5
+      },
+      "triangle_min_angle_deg": {
+        "minimum": 1.8976067634857116e-05,
+        "q001": 0.14086874533947577,
+        "q01": 1.3066841941182898,
+        "q05": 5.768181186188243,
+        "median": 29.999999999999993,
+        "q95": 45.00000000000001,
+        "maximum": 60.00000000000001
+      },
+      "triangle_min_altitude_mm": {
+        "minimum": 6.228021102268754e-05,
+        "q001": 0.07106690545187015,
+        "q01": 0.23570226039551587,
+        "q05": 0.4082482904638631,
+        "median": 0.6666666666666667,
+        "q95": 1.407052941362897,
+        "maximum": 85.51732885021298
+      },
+      "triangle_mean_ratio": {
+        "minimum": 5.722518291109726e-07,
+        "q001": 0.004225895120674331,
+        "q01": 0.03825459822794617,
+        "q05": 0.17290515831410666,
+        "median": 0.7499999999999999,
+        "q95": 0.9421114395319917,
+        "maximum": 1.0000000000000002
+      },
+      "short_unique_edges": {
+        "1e-05": 0,
+        "0.0001": 0,
+        "0.001": 0,
+        "0.01": 7,
+        "0.1": 68
+      },
+      "small_angle_faces": {
+        "0.001": 12,
+        "0.01": 28,
+        "0.1": 181,
+        "1": 2059,
+        "5": 9764
+      },
+      "zero_area_after_float32": 0,
+      "diagnostics_are_not_acceptance_thresholds": true,
+      "FEM_was_run": false
+    },
+    "yaroslav_skin": {
+      "source_sha256": "7444d0a94bcc12f9bccc18812b4c8dbef395862e64de6c119eec8e25e80a67a1",
+      "vertices": 125001,
+      "faces": 249998,
+      "watertight": true,
+      "positive_volume": true,
+      "euler": 2,
+      "volume_ml": 19528.932,
+      "surface_area_mm2": 456622.66694427724,
+      "edge_mm": {
+        "minimum": 1.4142135623730951,
+        "q001": 1.4142135623730951,
+        "q01": 1.4142135623730951,
+        "q05": 1.4142135623730951,
+        "median": 2.0,
+        "q95": 2.8284271247461903,
+        "maximum": 106.47065323364932
+      },
+      "face_area_mm2": {
+        "minimum": 0.8660254037844386,
+        "q001": 0.8660254037844386,
+        "q01": 0.8660254037844386,
+        "q05": 0.8660254037844386,
+        "median": 1.4142135623730951,
+        "q95": 2.0,
+        "maximum": 1290.0
+      },
+      "triangle_min_angle_deg": {
+        "minimum": 0.090657803315698,
+        "q001": 1.275752882427061,
+        "q01": 14.036243467926484,
+        "q05": 29.999999999999993,
+        "median": 35.26438968275465,
+        "q95": 60.00000000000001,
+        "maximum": 60.00000000000001
+      },
+      "triangle_min_altitude_mm": {
+        "minimum": 0.10088665446106367,
+        "q001": 0.280056016805602,
+        "q01": 0.7071067811865476,
+        "q05": 0.7071067811865476,
+        "median": 1.224744871391589,
+        "q95": 1.414213562373095,
+        "maximum": 30.0
+      },
+      "triangle_mean_ratio": {
+        "minimum": 0.0027384202491207545,
+        "q001": 0.03669579839484345,
+        "q01": 0.37115374447904514,
+        "q05": 0.5999999999999999,
+        "median": 0.8164965809277261,
+        "q95": 0.9999999999999996,
+        "maximum": 1.0000000000000002
+      },
+      "short_unique_edges": {
+        "1e-05": 0,
+        "0.0001": 0,
+        "0.001": 0,
+        "0.01": 0,
+        "0.1": 0
+      },
+      "small_angle_faces": {
+        "0.001": 0,
+        "0.01": 0,
+        "0.1": 2,
+        "1": 196,
+        "5": 1016
+      },
+      "zero_area_after_float32": 0,
+      "diagnostics_are_not_acceptance_thresholds": true,
+      "FEM_was_run": false
+    },
+    "yaroslav_union": {
+      "source_sha256": "31253565cf8f9a55bbc72845511cad9eea8f966dce81a1e50820c1801ea124ad",
+      "vertices": 116835,
+      "faces": 233666,
+      "watertight": true,
+      "positive_volume": true,
+      "euler": 2,
+      "volume_ml": 23956.14365591964,
+      "surface_area_mm2": 605255.778867795,
+      "edge_mm": {
+        "minimum": 0.0007124808845339987,
+        "q001": 0.6531867400901579,
+        "q01": 1.4142135623730951,
+        "q05": 1.4142135623730951,
+        "median": 2.0,
+        "q95": 2.8284271247461903,
+        "maximum": 255.35000610351562
+      },
+      "face_area_mm2": {
+        "minimum": 9.536123980069533e-05,
+        "q001": 0.18045830942978147,
+        "q01": 0.8660254037844386,
+        "q05": 0.8660254037844386,
+        "median": 1.7320508075688772,
+        "q95": 2.0,
+        "maximum": 1290.0
+      },
+      "triangle_min_angle_deg": {
+        "minimum": 5.026399741058316e-05,
+        "q001": 0.19377195721832005,
+        "q01": 2.5612285904292174,
+        "q05": 29.999999999999993,
+        "median": 35.26438968275465,
+        "q95": 60.00000000000001,
+        "maximum": 60.00000000000001
+      },
+      "triangle_min_altitude_mm": {
+        "minimum": 0.0001798396393538516,
+        "q001": 0.15665208999759148,
+        "q01": 0.7071067811865476,
+        "q05": 0.7071067811865476,
+        "median": 1.224744871391589,
+        "q95": 1.414213562373095,
+        "maximum": 30.0
+      },
+      "triangle_mean_ratio": {
+        "minimum": 1.5194660337439411e-06,
+        "q001": 0.005857663730760376,
+        "q01": 0.07443822812173609,
+        "q05": 0.5999999999999999,
+        "median": 0.8164965809277261,
+        "q95": 0.9999999999999996,
+        "maximum": 1.0000000000000002
+      },
+      "short_unique_edges": {
+        "1e-05": 0,
+        "0.0001": 0,
+        "0.001": 1,
+        "0.01": 2,
+        "0.1": 30
+      },
+      "small_angle_faces": {
+        "0.001": 7,
+        "0.01": 25,
+        "0.1": 128,
+        "1": 1459,
+        "5": 2869
+      },
+      "zero_area_after_float32": 0,
+      "diagnostics_are_not_acceptance_thresholds": true,
+      "FEM_was_run": false
+    },
+    "georg_native": {
+      "source_sha256": "92996186cc3922d59231b8759f0eb5d4fc6d8643bec54fb0b14a96b7aca98526",
+      "vertices": 773101,
+      "faces": 1546198,
+      "watertight": true,
+      "positive_volume": true,
+      "euler": 2,
+      "volume_ml": 39114.53757785658,
+      "surface_area_mm2": 778711.7961393232,
+      "edge_mm": {
+        "minimum": 0.0010827089336712561,
+        "q001": 0.6090293788277567,
+        "q01": 0.6090401685165483,
+        "q05": 0.6090651194004651,
+        "median": 0.87890625,
+        "q95": 1.5280628901616133,
+        "maximum": 202.98694153150984
+      },
+      "face_area_mm2": {
+        "minimum": 9.319065217210113e-06,
+        "q001": 0.20829317341479128,
+        "q01": 0.20829790579051038,
+        "q05": 0.21680325242172224,
+        "median": 0.38623809814453125,
+        "q95": 0.54931640625,
+        "maximum": 146.68217590914136
+      },
+      "triangle_min_angle_deg": {
+        "minimum": 8.889911685728611e-05,
+        "q001": 1.4062436527425133,
+        "q01": 23.487874770915916,
+        "q05": 24.508558709919953,
+        "median": 35.112011184422194,
+        "q95": 47.99635885790671,
+        "maximum": 59.583322269791836
+      },
+      "triangle_min_altitude_mm": {
+        "minimum": 0.00018158313141797435,
+        "q001": 0.31059553295009107,
+        "q01": 0.3106009584955314,
+        "q05": 0.3733848612580033,
+        "median": 0.6214804851085249,
+        "q95": 0.7189709399878199,
+        "maximum": 1.4452818645793883
+      },
+      "triangle_mean_ratio": {
+        "minimum": 2.6874292766955167e-06,
+        "q001": 0.042493654924386386,
+        "q01": 0.48191768630554266,
+        "q05": 0.6411887572934273,
+        "median": 0.8149495712789359,
+        "q95": 0.9671396906885127,
+        "maximum": 0.9998912409984814
+      },
+      "short_unique_edges": {
+        "1e-05": 0,
+        "0.0001": 0,
+        "0.001": 0,
+        "0.01": 19,
+        "0.1": 133
+      },
+      "small_angle_faces": {
+        "0.001": 14,
+        "0.01": 45,
+        "0.1": 268,
+        "1": 1516,
+        "5": 2194
+      },
+      "zero_area_after_float32": 0,
+      "diagnostics_are_not_acceptance_thresholds": true,
+      "FEM_was_run": false
+    },
+    "georg_solved": {
+      "source_sha256": "8c3baee67a26c42f2b9795e228d78d09a96909e8962360c2083a52cd6ec3f1dc",
+      "vertices": 211559,
+      "faces": 423114,
+      "watertight": true,
+      "positive_volume": true,
+      "euler": 2,
+      "volume_ml": 39109.86617993984,
+      "surface_area_mm2": 757625.3963626112,
+      "edge_mm": {
+        "minimum": 0.02604982439557003,
+        "q001": 0.21990743540425364,
+        "q01": 0.40702266075289373,
+        "q05": 0.666509016845217,
+        "median": 1.6430111354793064,
+        "q95": 4.420841744534696,
+        "maximum": 9.896958412856497
+      },
+      "face_area_mm2": {
+        "minimum": 0.00017026322734636778,
+        "q001": 0.02796259368258075,
+        "q01": 0.09627599111324947,
+        "q05": 0.22701035500758507,
+        "median": 0.9824763278133399,
+        "q95": 7.205065284629805,
+        "maximum": 24.547867963454337
+      },
+      "triangle_min_angle_deg": {
+        "minimum": 0.17107208394468168,
+        "q001": 6.696628380188762,
+        "q01": 12.22253163186405,
+        "q05": 18.252564796612827,
+        "median": 37.993180343732426,
+        "q95": 54.78339490043768,
+        "maximum": 59.99954988352499
+      },
+      "triangle_min_altitude_mm": {
+        "minimum": 0.0008604658125876489,
+        "q001": 0.13031789325336798,
+        "q01": 0.25716589320350336,
+        "q05": 0.40241214232715344,
+        "median": 1.020295110862123,
+        "q95": 2.7910727054674562,
+        "maximum": 6.1343952835025055
+      },
+      "triangle_mean_ratio": {
+        "minimum": 0.004695221284726002,
+        "q001": 0.1891717404078718,
+        "q01": 0.33556862404586846,
+        "q05": 0.4920200221457264,
+        "median": 0.8479377172335483,
+        "q95": 0.991069214516511,
+        "maximum": 0.9999999999309075
+      },
+      "short_unique_edges": {
+        "1e-05": 0,
+        "0.0001": 0,
+        "0.001": 0,
+        "0.01": 0,
+        "0.1": 52
+      },
+      "small_angle_faces": {
+        "0.001": 0,
+        "0.01": 0,
+        "0.1": 0,
+        "1": 2,
+        "5": 152
+      },
+      "zero_area_after_float32": 0,
+      "diagnostics_are_not_acceptance_thresholds": true,
+      "FEM_was_run": false
+    }
+  },
+  "probes": [
+    {
+      "id": "georg_conditioned_replay_083",
+      "input": {
+        "source_sha256": "7e504c298b169590e98d290641263bf5d7692c28784bf33dceb1265521ab9ee9",
+        "tetgen_version": "0.8.3",
+        "settings": {
+          "plc": true,
+          "quality": true,
+          "verbose": 2,
+          "quiet": false,
+          "nobisect": false,
+          "steinerleft": 500000,
+          "opt_scheme": 1,
+          "smooth_maxiter": 0,
+          "nomergefacet": true,
+          "epsilon": 1e-10,
+          "minratio": 1.5,
+          "mindihedral": 8.0,
+          "fixedvolume": true,
+          "maxvolume": 85.33333333333333
+        }
+      },
+      "result": {
+        "status": "diagnostic_mesh_generated",
+        "elapsed_s": 22.18393970001489,
+        "nodes": 533155,
+        "tetrahedra": 2626012,
+        "shape_qc": {
+          "tetrahedra": 2626012,
+          "nodes": 533155,
+          "all_positive": true,
+          "volume_ml": 39109.86913261953,
+          "minimum_volume_mm3": 1.6379685399186295e-10,
+          "mean_ratio_minimum": 1.197934304042418e-06,
+          "mean_ratio_quantiles": [
+            0.261582008528889,
+            0.4302769192891441,
+            0.7707527387938248,
+            0.9390313491648001
+          ],
+          "edge_condition_maximum": 531477047.5847373,
+          "edge_condition_quantiles": [
+            3.4670798215345764,
+            9.26467433772888,
+            19.632944705169205
+          ],
+          "failing_mean_ratio": 64,
+          "failing_edge_condition": 47,
+          "quality_limits": {
+            "minimum_mean_ratio": 0.01,
+            "maximum_edge_condition": 10000.0
+          },
+          "limits_are_predeclared_numerical_screens": true,
+          "FEM_convergence_is_separate": true,
+          "passed": false
+        },
+        "FEM_was_run": false,
+        "quantitative_result_accepted": false
+      },
+      "evidence": [
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/mesh_failure_audit_20261026/georg_conditioned_replay_083/inputs.local.json",
+          "sha256": "81368842cbc01a76b7aa9b55b6d7ee0a6f008d162fbae58c708e6e3535945afa"
+        },
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/mesh_failure_audit_20261026/georg_conditioned_replay_083/result.local.json",
+          "sha256": "93abe33de1b17a5b1afb4c623b1a44558a63ab0974ab2c77a9c30dfa4950319e"
+        },
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/mesh_failure_audit_20261026/georg_conditioned_replay_083/stdout.local.log",
+          "sha256": "06e9e82eccb6221cb5a1d453d918d6026d04adbbf96f5c5fec2d022beb1a623c"
+        }
+      ]
+    },
+    {
+      "id": "georg_original_options_083",
+      "input": {
+        "source_sha256": "7e504c298b169590e98d290641263bf5d7692c28784bf33dceb1265521ab9ee9",
+        "tetgen_version": "0.8.3",
+        "settings": {
+          "plc": true,
+          "quality": true,
+          "verbose": 2,
+          "quiet": false,
+          "nobisect": false,
+          "steinerleft": 500000,
+          "opt_scheme": 7,
+          "smooth_maxiter": 7,
+          "nomergefacet": false,
+          "epsilon": 1e-08,
+          "minratio": 1.5,
+          "mindihedral": 8.0,
+          "fixedvolume": true,
+          "maxvolume": 85.33333333333333
+        }
+      },
+      "result": {
+        "status": "diagnostic_mesh_generated",
+        "elapsed_s": 37.926122300035786,
+        "nodes": 484655,
+        "tetrahedra": 2324597,
+        "shape_qc": {
+          "tetrahedra": 2324597,
+          "nodes": 484655,
+          "all_positive": true,
+          "volume_ml": 39109.866179939854,
+          "minimum_volume_mm3": 4.455271100687529e-06,
+          "mean_ratio_minimum": 0.011516965972788196,
+          "mean_ratio_quantiles": [
+            0.30336403430977754,
+            0.5139106950977735,
+            0.8302230626112709,
+            0.9612595142357091
+          ],
+          "edge_condition_maximum": 619.2995062465077,
+          "edge_condition_quantiles": [
+            3.102139896412034,
+            7.057940393195898,
+            15.273239808824679
+          ],
+          "failing_mean_ratio": 0,
+          "failing_edge_condition": 0,
+          "quality_limits": {
+            "minimum_mean_ratio": 0.01,
+            "maximum_edge_condition": 10000.0
+          },
+          "limits_are_predeclared_numerical_screens": true,
+          "FEM_convergence_is_separate": true,
+          "passed": true
+        },
+        "FEM_was_run": false,
+        "quantitative_result_accepted": false
+      },
+      "evidence": [
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/mesh_failure_audit_20261026/georg_original_options_083/inputs.local.json",
+          "sha256": "19416ed52630e11a3ae7a9f288d201f7aeb813d2fe1db6055663d5f5c3d95f9a"
+        },
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/mesh_failure_audit_20261026/georg_original_options_083/result.local.json",
+          "sha256": "2f227c01efddd23a01397740d9d3a0eaff7fe88b826ce5b94cd544f7598ba68a"
+        },
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/mesh_failure_audit_20261026/georg_original_options_083/stdout.local.log",
+          "sha256": "f8bf0503da5fd136adbba277cc82626eb824d4cc6e1189150ed5e075f8b83d31"
+        }
+      ]
+    },
+    {
+      "id": "nik_conditioned_merge_083",
+      "input": {
+        "source_sha256": "1f159f7f6d835944e3d3567d3b96657930596fd5f1151097137a012e60a8be59",
+        "tetgen_version": "0.8.3",
+        "settings": {
+          "plc": true,
+          "quality": true,
+          "verbose": 2,
+          "quiet": false,
+          "nobisect": false,
+          "steinerleft": 500000,
+          "opt_scheme": 1,
+          "smooth_maxiter": 0,
+          "nomergefacet": false,
+          "epsilon": 1e-10,
+          "minratio": 1.5,
+          "mindihedral": 8.0,
+          "fixedvolume": true,
+          "maxvolume": 85.33333333333333
+        }
+      },
+      "result": {
+        "status": "diagnostic_mesh_generated",
+        "elapsed_s": 18.264127200003713,
+        "nodes": 454195,
+        "tetrahedra": 2180383,
+        "shape_qc": {
+          "tetrahedra": 2180383,
+          "nodes": 454195,
+          "all_positive": true,
+          "volume_ml": 23155.833532206758,
+          "minimum_volume_mm3": 4.590880992998295e-09,
+          "mean_ratio_minimum": 0.0006169224574478557,
+          "mean_ratio_quantiles": [
+            0.24327951144857912,
+            0.40713413407230387,
+            0.7542632407947613,
+            0.9336374204632832
+          ],
+          "edge_condition_maximum": 14819.809997592485,
+          "edge_condition_quantiles": [
+            3.5790093518996766,
+            9.946006422772937,
+            21.309653100753927
+          ],
+          "failing_mean_ratio": 53,
+          "failing_edge_condition": 1,
+          "quality_limits": {
+            "minimum_mean_ratio": 0.01,
+            "maximum_edge_condition": 10000.0
+          },
+          "limits_are_predeclared_numerical_screens": true,
+          "FEM_convergence_is_separate": true,
+          "passed": false
+        },
+        "FEM_was_run": false,
+        "quantitative_result_accepted": false
+      },
+      "evidence": [
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/mesh_failure_audit_20261026/nik_conditioned_merge_083/inputs.local.json",
+          "sha256": "1751be905639c6a3f990fa8e5d6aae64e1293747382ca4f332c3d6adb4c656d1"
+        },
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/mesh_failure_audit_20261026/nik_conditioned_merge_083/result.local.json",
+          "sha256": "37b16b9be9b416294c5554b6c80705ffa85f779196be1e11ace7fccace9df26e"
+        },
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/mesh_failure_audit_20261026/nik_conditioned_merge_083/stdout.local.log",
+          "sha256": "98253e90dbf92894f630dcb57b883bb51eb4ded9311ed373ab4f182137605ca1"
+        }
+      ]
+    },
+    {
+      "id": "nik_global_quality_083",
+      "input": {
+        "source_sha256": "49776e959b073ad950ecc61f6c7a0c1834f78efd1f0b2f63aa036a9188800569",
+        "tetgen_version": "0.8.3",
+        "settings": {
+          "plc": true,
+          "quality": true,
+          "verbose": 2,
+          "quiet": false,
+          "nobisect": false,
+          "steinerleft": 500000,
+          "opt_scheme": 1,
+          "smooth_maxiter": 0,
+          "nomergefacet": true,
+          "epsilon": 1e-10,
+          "minratio": 1.5,
+          "mindihedral": 8.0,
+          "fixedvolume": true,
+          "maxvolume": 85.33333333333333
+        }
+      },
+      "result": {
+        "status": "diagnostic_mesh_generated",
+        "elapsed_s": 20.74834779999219,
+        "nodes": 519432,
+        "tetrahedra": 2486750,
+        "shape_qc": {
+          "tetrahedra": 2486750,
+          "nodes": 519432,
+          "all_positive": true,
+          "volume_ml": 23155.8806799394,
+          "minimum_volume_mm3": 1.0876382201197136e-09,
+          "mean_ratio_minimum": 5.133917138396082e-06,
+          "mean_ratio_quantiles": [
+            0.2264375147907689,
+            0.3935592221034178,
+            0.7476936042085953,
+            0.9316789744803488
+          ],
+          "edge_condition_maximum": 149052781.91609752,
+          "edge_condition_quantiles": [
+            3.640651903907284,
+            10.41453498301897,
+            23.023042378793715
+          ],
+          "failing_mean_ratio": 232,
+          "failing_edge_condition": 30,
+          "quality_limits": {
+            "minimum_mean_ratio": 0.01,
+            "maximum_edge_condition": 10000.0
+          },
+          "limits_are_predeclared_numerical_screens": true,
+          "FEM_convergence_is_separate": true,
+          "passed": false
+        },
+        "FEM_was_run": false,
+        "quantitative_result_accepted": false
+      },
+      "evidence": [
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/mesh_failure_audit_20261026/nik_global_quality_083/inputs.local.json",
+          "sha256": "ecf3c8a3e7687292f73e3981b907aab7cf1c40bfebe9afd030153039a616d105"
+        },
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/mesh_failure_audit_20261026/nik_global_quality_083/result.local.json",
+          "sha256": "1f4b6c01528754c010602551aaa7f6fece5df5af94796894bd2170f6ff29df91"
+        },
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/mesh_failure_audit_20261026/nik_global_quality_083/stdout.local.log",
+          "sha256": "dcd470e0ab137a492afedee7c00a1c1858aed9b5493d86bcbf8ed92e37d16004"
+        }
+      ]
+    },
+    {
+      "id": "nik_merge_eps8_083",
+      "input": {
+        "source_sha256": "1f159f7f6d835944e3d3567d3b96657930596fd5f1151097137a012e60a8be59",
+        "tetgen_version": "0.8.3",
+        "settings": {
+          "plc": true,
+          "quality": true,
+          "verbose": 2,
+          "quiet": false,
+          "nobisect": false,
+          "steinerleft": 500000,
+          "opt_scheme": 1,
+          "smooth_maxiter": 0,
+          "nomergefacet": false,
+          "epsilon": 1e-08,
+          "minratio": 1.5,
+          "mindihedral": 8.0,
+          "fixedvolume": true,
+          "maxvolume": 85.33333333333333
+        }
+      },
+      "result": {
+        "status": "diagnostic_mesh_generated",
+        "elapsed_s": 19.377812799997628,
+        "nodes": 453994,
+        "tetrahedra": 2179875,
+        "shape_qc": {
+          "tetrahedra": 2179875,
+          "nodes": 453994,
+          "all_positive": true,
+          "volume_ml": 23155.83360763058,
+          "minimum_volume_mm3": 1.9851029207470092e-08,
+          "mean_ratio_minimum": 0.0022502111639135544,
+          "mean_ratio_quantiles": [
+            0.24362954837325912,
+            0.40764039415064834,
+            0.7541103687724973,
+            0.9335158678280336
+          ],
+          "edge_condition_maximum": 7948.284746906131,
+          "edge_condition_quantiles": [
+            3.5799072277584294,
+            9.942254616974122,
+            21.31549021165909
+          ],
+          "failing_mean_ratio": 33,
+          "failing_edge_condition": 0,
+          "quality_limits": {
+            "minimum_mean_ratio": 0.01,
+            "maximum_edge_condition": 10000.0
+          },
+          "limits_are_predeclared_numerical_screens": true,
+          "FEM_convergence_is_separate": true,
+          "passed": false
+        },
+        "FEM_was_run": false,
+        "quantitative_result_accepted": false
+      },
+      "evidence": [
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/mesh_failure_audit_20261026/nik_merge_eps8_083/inputs.local.json",
+          "sha256": "775cdb198a12e7351a654192a1957fbdbb65a30f13461fbc967abe0563b4a7af"
+        },
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/mesh_failure_audit_20261026/nik_merge_eps8_083/result.local.json",
+          "sha256": "065d81c27100f24e177c3656b5035bcbe33cab081f023bb40a066c28cbb066b8"
+        },
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/mesh_failure_audit_20261026/nik_merge_eps8_083/stdout.local.log",
+          "sha256": "18a1a3987bc2b2e2274d2a4e40c1fc45e74592047b7177b8d3bc503689af562b"
+        }
+      ]
+    },
+    {
+      "id": "nik_original_eps1e-6_083",
+      "input": {
+        "source_sha256": "1f159f7f6d835944e3d3567d3b96657930596fd5f1151097137a012e60a8be59",
+        "tetgen_version": "0.8.3",
+        "settings": {
+          "plc": true,
+          "quality": true,
+          "verbose": 2,
+          "quiet": false,
+          "nobisect": false,
+          "steinerleft": 500000,
+          "opt_scheme": 7,
+          "smooth_maxiter": 7,
+          "nomergefacet": false,
+          "epsilon": 1e-06,
+          "minratio": 1.5,
+          "mindihedral": 8.0,
+          "fixedvolume": true,
+          "maxvolume": 85.33333333333333
+        }
+      },
+      "result": {
+        "status": "diagnostic_mesh_generated",
+        "elapsed_s": 36.94095740001649,
+        "nodes": 454131,
+        "tetrahedra": 2116215,
+        "shape_qc": {
+          "tetrahedra": 2116215,
+          "nodes": 454131,
+          "all_positive": true,
+          "volume_ml": 23155.834218742002,
+          "minimum_volume_mm3": 5.816850649624048e-09,
+          "mean_ratio_minimum": 0.0023764425846677247,
+          "mean_ratio_quantiles": [
+            0.27274834120747915,
+            0.4743323350984792,
+            0.8091254356044486,
+            0.95467811818319
+          ],
+          "edge_condition_maximum": 5696.266511312973,
+          "edge_condition_quantiles": [
+            3.237937423343897,
+            7.804218197548888,
+            17.05786895914596
+          ],
+          "failing_mean_ratio": 38,
+          "failing_edge_condition": 0,
+          "quality_limits": {
+            "minimum_mean_ratio": 0.01,
+            "maximum_edge_condition": 10000.0
+          },
+          "limits_are_predeclared_numerical_screens": true,
+          "FEM_convergence_is_separate": true,
+          "passed": false
+        },
+        "FEM_was_run": false,
+        "quantitative_result_accepted": false
+      },
+      "evidence": [
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/mesh_failure_audit_20261026/nik_original_eps1e-6_083/inputs.local.json",
+          "sha256": "94b5314137bf67fa1fc0b84a953dd52a66ca0899004f0eb646498d752a63e46b"
+        },
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/mesh_failure_audit_20261026/nik_original_eps1e-6_083/result.local.json",
+          "sha256": "b73783972769834830cc979b5a2bc4267c279a2ecca2b69223aa477bcbc22ecc"
+        },
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/mesh_failure_audit_20261026/nik_original_eps1e-6_083/stdout.local.log",
+          "sha256": "ad555c72a61a351c9efb3d230be566887af9295504e6eb735c1e8d95d9f6d1b2"
+        }
+      ]
+    },
+    {
+      "id": "nik_original_eps1e-7_083",
+      "input": {
+        "source_sha256": "1f159f7f6d835944e3d3567d3b96657930596fd5f1151097137a012e60a8be59",
+        "tetgen_version": "0.8.3",
+        "settings": {
+          "plc": true,
+          "quality": true,
+          "verbose": 2,
+          "quiet": false,
+          "nobisect": false,
+          "steinerleft": 500000,
+          "opt_scheme": 7,
+          "smooth_maxiter": 7,
+          "nomergefacet": false,
+          "epsilon": 1e-07,
+          "minratio": 1.5,
+          "mindihedral": 8.0,
+          "fixedvolume": true,
+          "maxvolume": 85.33333333333333
+        }
+      },
+      "result": {
+        "status": "diagnostic_mesh_generated",
+        "elapsed_s": 36.54406179999933,
+        "nodes": 453289,
+        "tetrahedra": 2110968,
+        "shape_qc": {
+          "tetrahedra": 2110968,
+          "nodes": 453289,
+          "all_positive": true,
+          "volume_ml": 23155.833644108843,
+          "minimum_volume_mm3": 3.969364373220133e-08,
+          "mean_ratio_minimum": 0.0023764425846677247,
+          "mean_ratio_quantiles": [
+            0.2719122649224267,
+            0.47457027732571194,
+            0.8094672968201271,
+            0.9547312650466963
+          ],
+          "edge_condition_maximum": 1922.3404213898084,
+          "edge_condition_quantiles": [
+            3.234878890907196,
+            7.7993443537468545,
+            17.1737187125591
+          ],
+          "failing_mean_ratio": 38,
+          "failing_edge_condition": 0,
+          "quality_limits": {
+            "minimum_mean_ratio": 0.01,
+            "maximum_edge_condition": 10000.0
+          },
+          "limits_are_predeclared_numerical_screens": true,
+          "FEM_convergence_is_separate": true,
+          "passed": false
+        },
+        "FEM_was_run": false,
+        "quantitative_result_accepted": false
+      },
+      "evidence": [
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/mesh_failure_audit_20261026/nik_original_eps1e-7_083/inputs.local.json",
+          "sha256": "9d973d8e32b016ef0dcf7d9a6c026eb28d9189b7d163e3b170b2d3ff288ab32d"
+        },
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/mesh_failure_audit_20261026/nik_original_eps1e-7_083/result.local.json",
+          "sha256": "49f86edaa9367ae6cf8fd12249f8f920bbae51357ba2530b50c03e0f91685219"
+        },
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/mesh_failure_audit_20261026/nik_original_eps1e-7_083/stdout.local.log",
+          "sha256": "ed668ef3fe8c31148ec36558e3a547c126c118a411019936752d2a10b7ebec64"
+        }
+      ]
+    },
+    {
+      "id": "nik_original_options_083",
+      "input": {
+        "source_sha256": "1f159f7f6d835944e3d3567d3b96657930596fd5f1151097137a012e60a8be59",
+        "tetgen_version": "0.8.3",
+        "settings": {
+          "plc": true,
+          "quality": true,
+          "verbose": 2,
+          "quiet": false,
+          "nobisect": false,
+          "steinerleft": 500000,
+          "opt_scheme": 7,
+          "smooth_maxiter": 7,
+          "nomergefacet": false,
+          "epsilon": 1e-08,
+          "minratio": 1.5,
+          "mindihedral": 8.0,
+          "fixedvolume": true,
+          "maxvolume": 85.33333333333333
+        }
+      },
+      "result": {
+        "status": "diagnostic_mesh_generated",
+        "elapsed_s": 34.340939400019124,
+        "nodes": 453994,
+        "tetrahedra": 2115146,
+        "shape_qc": {
+          "tetrahedra": 2115146,
+          "nodes": 453994,
+          "all_positive": true,
+          "volume_ml": 23155.833969520532,
+          "minimum_volume_mm3": 2.8913556682569464e-08,
+          "mean_ratio_minimum": 0.0023764425846677247,
+          "mean_ratio_quantiles": [
+            0.27339403834386,
+            0.47523917868679916,
+            0.8094071590315832,
+            0.9546730385454102
+          ],
+          "edge_condition_maximum": 1922.3404213898084,
+          "edge_condition_quantiles": [
+            3.2351830999360187,
+            7.784689113876836,
+            17.060223148919615
+          ],
+          "failing_mean_ratio": 30,
+          "failing_edge_condition": 0,
+          "quality_limits": {
+            "minimum_mean_ratio": 0.01,
+            "maximum_edge_condition": 10000.0
+          },
+          "limits_are_predeclared_numerical_screens": true,
+          "FEM_convergence_is_separate": true,
+          "passed": false
+        },
+        "FEM_was_run": false,
+        "quantitative_result_accepted": false
+      },
+      "evidence": [
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/mesh_failure_audit_20261026/nik_original_options_083/inputs.local.json",
+          "sha256": "f80e4f186079960e8ebe7025faf56a7a7c12820b73bbbff93418a9bd44bbb2fd"
+        },
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/mesh_failure_audit_20261026/nik_original_options_083/result.local.json",
+          "sha256": "e66852f37f4dfd22af4187e33bfdfa59c7a1682aea3082b05b76d452386ab2d4"
+        },
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/mesh_failure_audit_20261026/nik_original_options_083/stdout.local.log",
+          "sha256": "c6aad792b8d30c25f11346444c77300b64634960f1ddeaa5f3e85b5ab3fa7b5b"
+        }
+      ]
+    },
+    {
+      "id": "nik_plc_083",
+      "input": {
+        "source_sha256": "565fba773a199b9fddcde77e3f84f78d07928d3c6d38abd8d1d5a1bbe5c6e599",
+        "tetgen_version": "0.8.3",
+        "settings": {
+          "plc": true,
+          "quality": false,
+          "verbose": 2,
+          "quiet": false,
+          "nobisect": false,
+          "steinerleft": 500000,
+          "opt_scheme": 0,
+          "smooth_maxiter": 0,
+          "nomergefacet": true,
+          "epsilon": 1e-10
+        }
+      },
+      "result": {
+        "status": "diagnostic_mesh_generated",
+        "elapsed_s": 19.254131000023335,
+        "nodes": 120625,
+        "tetrahedra": 366498,
+        "shape_qc": {
+          "tetrahedra": 366498,
+          "nodes": 120625,
+          "all_positive": true,
+          "volume_ml": 23159.1294602197,
+          "minimum_volume_mm3": 8.614748049732649e-07,
+          "mean_ratio_minimum": 1.3423803070280165e-08,
+          "mean_ratio_quantiles": [
+            0.005250245557078964,
+            0.023947941556757057,
+            0.23307721756903244,
+            0.5399661642406598
+          ],
+          "edge_condition_maximum": 22309975293.932648,
+          "edge_condition_quantiles": [
+            17.06505436832591,
+            150.4783985939828,
+            614.2432117605397
+          ],
+          "failing_mean_ratio": 6941,
+          "failing_edge_condition": 697,
+          "quality_limits": {
+            "minimum_mean_ratio": 0.01,
+            "maximum_edge_condition": 10000.0
+          },
+          "limits_are_predeclared_numerical_screens": true,
+          "FEM_convergence_is_separate": true,
+          "passed": false
+        },
+        "FEM_was_run": false,
+        "quantitative_result_accepted": false
+      },
+      "evidence": [
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/mesh_failure_audit_20261026/nik_plc_083/inputs.local.json",
+          "sha256": "514d054b24b763ea5cecea165063fc1e5139c538c8ba6a24f9dbcda01d86dedc"
+        },
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/mesh_failure_audit_20261026/nik_plc_083/result.local.json",
+          "sha256": "bb6a7018a97dcc6a85de1be647e68d546ecf4d0487c3fc22d63923ee12894841"
+        },
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/mesh_failure_audit_20261026/nik_plc_083/stdout.local.log",
+          "sha256": "9f3c1e959a3389634f68fbe34c3ecca5f025dbef01ca0bebedf8f9fbfa5ae067"
+        }
+      ]
+    },
+    {
+      "id": "nik_quality_opt0_084",
+      "input": {
+        "source_sha256": "565fba773a199b9fddcde77e3f84f78d07928d3c6d38abd8d1d5a1bbe5c6e599",
+        "tetgen_version": "0.8.4",
+        "settings": {
+          "plc": true,
+          "quality": true,
+          "verbose": 2,
+          "quiet": false,
+          "nobisect": false,
+          "steinerleft": 500000,
+          "opt_scheme": 0,
+          "smooth_maxiter": 0,
+          "nomergefacet": true,
+          "epsilon": 1e-10,
+          "minratio": 1.5,
+          "mindihedral": 8.0,
+          "fixedvolume": true,
+          "maxvolume": 85.33333333333333
+        }
+      },
+      "result": {
+        "status": "timeout",
+        "timeout_s": 120.0,
+        "FEM_was_run": false
+      },
+      "evidence": [
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/mesh_failure_audit_20261026/nik_quality_opt0_084/inputs.local.json",
+          "sha256": "fe265c8d80d10c312bfa9ea78650ca70bcac4c7dad88a3842117bb4cf881f12b"
+        },
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/mesh_failure_audit_20261026/nik_quality_opt0_084/result.local.json",
+          "sha256": "c78e6d9cb4820502d7245105002101f326179cf5162f84b26e2481870a37c631"
+        },
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/mesh_failure_audit_20261026/nik_quality_opt0_084/stdout.local.log",
+          "sha256": "5cf68cfec3d45dca360c07bca10f1f9662aa617807ae0b3b1faa077297197239"
+        }
+      ]
+    },
+    {
+      "id": "nik_stronger_optimization_083",
+      "input": {
+        "source_sha256": "1f159f7f6d835944e3d3567d3b96657930596fd5f1151097137a012e60a8be59",
+        "tetgen_version": "0.8.3",
+        "settings": {
+          "plc": true,
+          "quality": true,
+          "verbose": 2,
+          "quiet": false,
+          "nobisect": false,
+          "steinerleft": 500000,
+          "opt_scheme": 7,
+          "smooth_maxiter": 7,
+          "nomergefacet": false,
+          "epsilon": 1e-08,
+          "opt_max_asp_ratio": 100.0,
+          "optmaxdihedral": 170.0,
+          "opt_iterations": 6,
+          "minratio": 1.5,
+          "mindihedral": 8.0,
+          "fixedvolume": true,
+          "maxvolume": 85.33333333333333
+        }
+      },
+      "result": {
+        "status": "diagnostic_mesh_generated",
+        "elapsed_s": 35.95663380000042,
+        "nodes": 453994,
+        "tetrahedra": 2110686,
+        "shape_qc": {
+          "tetrahedra": 2110686,
+          "nodes": 453994,
+          "all_positive": true,
+          "volume_ml": 23155.834031894366,
+          "minimum_volume_mm3": 2.8913556682569464e-08,
+          "mean_ratio_minimum": 0.0023764425846677247,
+          "mean_ratio_quantiles": [
+            0.2933027659068487,
+            0.47825856987916904,
+            0.80956545970404,
+            0.9547130461851401
+          ],
+          "edge_condition_maximum": 1922.3404213898084,
+          "edge_condition_quantiles": [
+            3.235131393692668,
+            7.714859400572503,
+            15.470116112993555
+          ],
+          "failing_mean_ratio": 29,
+          "failing_edge_condition": 0,
+          "quality_limits": {
+            "minimum_mean_ratio": 0.01,
+            "maximum_edge_condition": 10000.0
+          },
+          "limits_are_predeclared_numerical_screens": true,
+          "FEM_convergence_is_separate": true,
+          "passed": false
+        },
+        "FEM_was_run": false,
+        "quantitative_result_accepted": false
+      },
+      "evidence": [
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/mesh_failure_audit_20261026/nik_stronger_optimization_083/inputs.local.json",
+          "sha256": "2f3827ac9905d9bfacb0841fd8e0e4510eb9b3d7583463fa020d504752649eac"
+        },
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/mesh_failure_audit_20261026/nik_stronger_optimization_083/result.local.json",
+          "sha256": "9015bbfc59d3b4eb5a5a5d978ffe65805b9bf5f01ea3e8fda9389f78dff1dd62"
+        },
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/mesh_failure_audit_20261026/nik_stronger_optimization_083/stdout.local.log",
+          "sha256": "5c73bfe5d65c31e982c9de968fad9f990898857e04a8118f3aef3a24096b2f12"
+        }
+      ]
+    },
+    {
+      "id": "yaroslav_conditioned_merge_083",
+      "input": {
+        "source_sha256": "c249cce3cb6fceccadbc5afc16753f489f5977b194233a5c7cfea3406f202966",
+        "tetgen_version": "0.8.3",
+        "settings": {
+          "plc": true,
+          "quality": true,
+          "verbose": 2,
+          "quiet": false,
+          "nobisect": false,
+          "steinerleft": 500000,
+          "opt_scheme": 1,
+          "smooth_maxiter": 0,
+          "nomergefacet": false,
+          "epsilon": 1e-10,
+          "minratio": 1.5,
+          "mindihedral": 8.0,
+          "fixedvolume": true,
+          "maxvolume": 85.33333333333333
+        }
+      },
+      "result": {
+        "status": "diagnostic_mesh_generated",
+        "elapsed_s": 10.585908600012772,
+        "nodes": 282244,
+        "tetrahedra": 1384330,
+        "shape_qc": {
+          "tetrahedra": 1384330,
+          "nodes": 282244,
+          "all_positive": true,
+          "volume_ml": 23953.5230125012,
+          "minimum_volume_mm3": 1.4997635710615324e-05,
+          "mean_ratio_minimum": 0.004793511168356044,
+          "mean_ratio_quantiles": [
+            0.3129115615164835,
+            0.4689397900303633,
+            0.7793724410512015,
+            0.940640524320838
+          ],
+          "edge_condition_maximum": 1090.316460362647,
+          "edge_condition_quantiles": [
+            3.382020128762281,
+            8.212062297934258,
+            15.226776237124431
+          ],
+          "failing_mean_ratio": 3,
+          "failing_edge_condition": 0,
+          "quality_limits": {
+            "minimum_mean_ratio": 0.01,
+            "maximum_edge_condition": 10000.0
+          },
+          "limits_are_predeclared_numerical_screens": true,
+          "FEM_convergence_is_separate": true,
+          "passed": false
+        },
+        "FEM_was_run": false,
+        "quantitative_result_accepted": false
+      },
+      "evidence": [
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/mesh_failure_audit_20261026/yaroslav_conditioned_merge_083/inputs.local.json",
+          "sha256": "80224415923a25767a5799696f8b0b1a98e0d90a20a43c92dcc993b568274b93"
+        },
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/mesh_failure_audit_20261026/yaroslav_conditioned_merge_083/result.local.json",
+          "sha256": "419c1461cbaf8c34da51ac658b9165577034db5964455240dbcb30a997ec456b"
+        },
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/mesh_failure_audit_20261026/yaroslav_conditioned_merge_083/stdout.local.log",
+          "sha256": "52308c5c4a43d72e040ec2df02ec05b6a65ca17b03e7bb77e900b917f3a37563"
+        }
+      ]
+    },
+    {
+      "id": "yaroslav_global_quality_083",
+      "input": {
+        "source_sha256": "86f15030864fc226ef2553dd96b38f29650a91ed0562ab7c021ad69c9677cc88",
+        "tetgen_version": "0.8.3",
+        "settings": {
+          "plc": true,
+          "quality": true,
+          "verbose": 2,
+          "quiet": false,
+          "nobisect": false,
+          "steinerleft": 500000,
+          "opt_scheme": 1,
+          "smooth_maxiter": 0,
+          "nomergefacet": true,
+          "epsilon": 1e-10,
+          "minratio": 1.5,
+          "mindihedral": 8.0,
+          "fixedvolume": true,
+          "maxvolume": 85.33333333333333
+        }
+      },
+      "result": {
+        "status": "diagnostic_mesh_generated",
+        "elapsed_s": 14.541839699959382,
+        "nodes": 363743,
+        "tetrahedra": 1769907,
+        "shape_qc": {
+          "tetrahedra": 1769907,
+          "nodes": 363743,
+          "all_positive": true,
+          "volume_ml": 23953.563600071757,
+          "minimum_volume_mm3": 9.367646904905103e-09,
+          "mean_ratio_minimum": 0.0007642549230788061,
+          "mean_ratio_quantiles": [
+            0.26805782234001463,
+            0.4241752924885022,
+            0.7612975696577619,
+            0.9365975939025059
+          ],
+          "edge_condition_maximum": 19252.097873365987,
+          "edge_condition_quantiles": [
+            3.5332569055471086,
+            9.407688650205134,
+            18.61762749435913
+          ],
+          "failing_mean_ratio": 95,
+          "failing_edge_condition": 3,
+          "quality_limits": {
+            "minimum_mean_ratio": 0.01,
+            "maximum_edge_condition": 10000.0
+          },
+          "limits_are_predeclared_numerical_screens": true,
+          "FEM_convergence_is_separate": true,
+          "passed": false
+        },
+        "FEM_was_run": false,
+        "quantitative_result_accepted": false
+      },
+      "evidence": [
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/mesh_failure_audit_20261026/yaroslav_global_quality_083/inputs.local.json",
+          "sha256": "d2ef200628752a97c130b1f3f43c93d55ff6381d9ac769cc88ca35a221c5bb32"
+        },
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/mesh_failure_audit_20261026/yaroslav_global_quality_083/result.local.json",
+          "sha256": "cb6d298337588a7a0a2ef2fe0b34ea2565fadd6804176a3a8823c853f0db3867"
+        },
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/mesh_failure_audit_20261026/yaroslav_global_quality_083/stdout.local.log",
+          "sha256": "ab03a16bba0dffd6b7e09cf1be0710bd6cb0ff9a5b18253a2d196483f2e6cad4"
+        }
+      ]
+    },
+    {
+      "id": "yaroslav_original_options_083",
+      "input": {
+        "source_sha256": "c249cce3cb6fceccadbc5afc16753f489f5977b194233a5c7cfea3406f202966",
+        "tetgen_version": "0.8.3",
+        "settings": {
+          "plc": true,
+          "quality": true,
+          "verbose": 2,
+          "quiet": false,
+          "nobisect": false,
+          "steinerleft": 500000,
+          "opt_scheme": 7,
+          "smooth_maxiter": 7,
+          "nomergefacet": false,
+          "epsilon": 1e-08,
+          "minratio": 1.5,
+          "mindihedral": 8.0,
+          "fixedvolume": true,
+          "maxvolume": 85.33333333333333
+        }
+      },
+      "result": {
+        "status": "diagnostic_mesh_generated",
+        "elapsed_s": 21.558995600033086,
+        "nodes": 282558,
+        "tetrahedra": 1344966,
+        "shape_qc": {
+          "tetrahedra": 1344966,
+          "nodes": 282558,
+          "all_positive": true,
+          "volume_ml": 23953.523096583496,
+          "minimum_volume_mm3": 1.086105239569091e-05,
+          "mean_ratio_minimum": 0.027779117057713656,
+          "mean_ratio_quantiles": [
+            0.35719903946450615,
+            0.5441364073052051,
+            0.8333617427401303,
+            0.961656371538086
+          ],
+          "edge_condition_maximum": 456.6329683374768,
+          "edge_condition_quantiles": [
+            3.0716377155458026,
+            6.51696871627556,
+            11.974058708117017
+          ],
+          "failing_mean_ratio": 0,
+          "failing_edge_condition": 0,
+          "quality_limits": {
+            "minimum_mean_ratio": 0.01,
+            "maximum_edge_condition": 10000.0
+          },
+          "limits_are_predeclared_numerical_screens": true,
+          "FEM_convergence_is_separate": true,
+          "passed": true
+        },
+        "FEM_was_run": false,
+        "quantitative_result_accepted": false
+      },
+      "evidence": [
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/mesh_failure_audit_20261026/yaroslav_original_options_083/inputs.local.json",
+          "sha256": "eb2602f0fb97b95be6449cdd267050966a10537d29eef1b980ba6dd7457562b5"
+        },
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/mesh_failure_audit_20261026/yaroslav_original_options_083/result.local.json",
+          "sha256": "e90d19613452d7321118ae0b55af5b3fa445f6727ff47e780018f5ded460f869"
+        },
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/mesh_failure_audit_20261026/yaroslav_original_options_083/stdout.local.log",
+          "sha256": "e001d15299bc0d1ff8c12522f05c102ee83b8105cafa9ec923f12f0864c5e559"
+        }
+      ]
+    },
+    {
+      "id": "yaroslav_original_options_084",
+      "input": {
+        "source_sha256": "c249cce3cb6fceccadbc5afc16753f489f5977b194233a5c7cfea3406f202966",
+        "tetgen_version": "0.8.4",
+        "settings": {
+          "plc": true,
+          "quality": true,
+          "verbose": 2,
+          "quiet": false,
+          "nobisect": false,
+          "steinerleft": 500000,
+          "opt_scheme": 7,
+          "smooth_maxiter": 7,
+          "nomergefacet": false,
+          "epsilon": 1e-08,
+          "minratio": 1.5,
+          "mindihedral": 8.0,
+          "fixedvolume": true,
+          "maxvolume": 85.33333333333333
+        }
+      },
+      "result": {
+        "status": "diagnostic_mesh_generated",
+        "elapsed_s": 24.04843670001719,
+        "nodes": 282558,
+        "tetrahedra": 1344966,
+        "shape_qc": {
+          "tetrahedra": 1344966,
+          "nodes": 282558,
+          "all_positive": true,
+          "volume_ml": 23953.523096583496,
+          "minimum_volume_mm3": 1.086105239569091e-05,
+          "mean_ratio_minimum": 0.027779117057713656,
+          "mean_ratio_quantiles": [
+            0.35719903946450615,
+            0.5441364073052051,
+            0.8333617427401303,
+            0.961656371538086
+          ],
+          "edge_condition_maximum": 456.6329683374768,
+          "edge_condition_quantiles": [
+            3.0716377155458026,
+            6.51696871627556,
+            11.974058708117017
+          ],
+          "failing_mean_ratio": 0,
+          "failing_edge_condition": 0,
+          "quality_limits": {
+            "minimum_mean_ratio": 0.01,
+            "maximum_edge_condition": 10000.0
+          },
+          "limits_are_predeclared_numerical_screens": true,
+          "FEM_convergence_is_separate": true,
+          "passed": true
+        },
+        "FEM_was_run": false,
+        "quantitative_result_accepted": false
+      },
+      "evidence": [
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/mesh_failure_audit_20261026/yaroslav_original_options_084/inputs.local.json",
+          "sha256": "b229eac1b770d947e69579710ba90f56b1c61254b2328f8e89599f7667c2c4fb"
+        },
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/mesh_failure_audit_20261026/yaroslav_original_options_084/result.local.json",
+          "sha256": "889bad4b94be515b5c9eb7cae41dd499259124fa9ac7b0aaec267f65ed61b7ab"
+        },
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/mesh_failure_audit_20261026/yaroslav_original_options_084/stdout.local.log",
+          "sha256": "e138d4d962fa756ffb54a4335a3407d1ba83345635462676601300d421ffb888"
+        }
+      ]
+    }
+  ],
+  "tests": {
+    "preparation": 69,
+    "native_process_and_cumulative_geometry": 9,
+    "actual_synthetic_TetGen": 1,
+    "all_passed": true,
+    "real_TetGen_version": "0.8.3",
+    "projection_adjudication": 9,
+    "total_distinct_passed": 88
+  },
+  "source_code": [
+    {
+      "path": "tools/ct_fem_core.py",
+      "sha256": "fb1e8d20c1bfe4c3757cca513bf78f41b20d3d332084189b4e1ab9dd8402407c"
+    },
+    {
+      "path": "tools/ct_fem_remesh.py",
+      "sha256": "374823aba97d89f98fbb65df8d53b3a9a3215a4d4d1f6e27f168e30e0ad9abe9"
+    },
+    {
+      "path": "tools/ct_fem_tetgen.py",
+      "sha256": "c62e7c1c20bd6a6bc4e20358637caa7330feb43ceaaab907792be3b77054d2f8"
+    },
+    {
+      "path": "tools/probe_ct_tetgen.py",
+      "sha256": "b0a8113d8d53d784a5438f8c59cfa4c52cb77483b83f7e5a52eba547c94222ac"
+    },
+    {
+      "path": "tools/audit_ct_mesh_input.py",
+      "sha256": "14db11a03c5e4db0dd551d329fa01afc5fc433f7cfe65380fa63f96862f2bb20"
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/tools/scorpion_session_prepare.py",
+      "sha256": "10654fb7e867f2a111779c054e83df46554873567d74f9cde290d8300a18b33a"
+    },
+    {
+      "path": "configs/ct_fem_preparation.example.json",
+      "sha256": "bf50af6f0018e7ceea84d3961cebdd472dcc553c597a41d9410e16ab0b1b9ccb"
+    },
+    {
+      "path": "tools/ct_fem_surface_intersections.py",
+      "sha256": "7ca074dc51a4ede3f6ae61bc506e73557e2d9c7a083001edc29d9623363aa3dd"
+    }
+  ],
+  "universal_preparation_validated": false,
+  "FEM_was_run": false,
+  "quantitative_result_accepted": false,
+  "raw_medical_arrays_included": false,
+  "prior_canonical_runs": {
+    "nik": {
+      "configuration_sha256": "da795158d61d7b7416be4b5808e2f223343f3d34ab1951e78b9efcae6eaf4775",
+      "iterations": 12,
+      "tetgen_options": {
+        "opt_scheme": 7,
+        "smooth_maxiter": 7,
+        "nomergefacet": false,
+        "epsilon": 1e-08,
+        "opt_iterations": 3,
+        "opt_max_asp_ratio": 1000.0,
+        "optmaxdihedral": 177.0
+      },
+      "geometry_qc": {
+        "sampled_distances": {
+          "source_to_remeshed": {
+            "sample_count": 15000,
+            "max_mm": 0.41538211282242793,
+            "p95_mm": 0.18532459060772902,
+            "median_mm": 0.018096589214239046
+          },
+          "remeshed_to_source": {
+            "sample_count": 15000,
+            "max_mm": 0.4332935024332974,
+            "p95_mm": 0.1755650257813574,
+            "median_mm": 0.017234542274860144
+          }
+        },
+        "relative_volume_error": 0.00017415144957466655,
+        "maximum_sampled_distance_mm": 0.75,
+        "maximum_relative_volume_error": 0.003,
+        "source_surface_sha256": "565fba773a199b9fddcde77e3f84f78d07928d3c6d38abd8d1d5a1bbe5c6e599",
+        "exported_surface_sha256": "d67a3a06b8a9dafd2ce879ee57b572cecf4e316c9e0cb0e767a66cb2fd068faf",
+        "sampled_distance_is_not_certified_Hausdorff_bound": true
+      },
+      "failure": {
+        "status": "failed",
+        "error_type": "ValueError",
+        "error": "Mesh fails fixed shape/resource limits",
+        "complete_manifest_written": false,
+        "FEM_was_run": false,
+        "global_mesh_convergence_proven": false,
+        "independent_anatomical_validation": false,
+        "quantitative_result_accepted": false,
+        "automatic_publication": false
+      },
+      "process": {
+        "exit_code": 0,
+        "timed_out": false,
+        "elapsed_s": 33.04500919999555,
+        "maximum_seconds": 180,
+        "FEM_was_run": false
+      },
+      "source_snapshots": [
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/mesh_failure_audit_20261026/nik_v5/source_snapshots/374823aba97d89f98fbb65df8d53b3a9a3215a4d4d1f6e27f168e30e0ad9abe9_ct_fem_remesh.py",
+          "sha256": "374823aba97d89f98fbb65df8d53b3a9a3215a4d4d1f6e27f168e30e0ad9abe9"
+        },
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/mesh_failure_audit_20261026/nik_v5/source_snapshots/8240220b14a6c51504c28401c55fc82043350c89701bb6a3c8839d6dc77b6315_ct_fem_manual_surface.py",
+          "sha256": "8240220b14a6c51504c28401c55fc82043350c89701bb6a3c8839d6dc77b6315"
+        },
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/mesh_failure_audit_20261026/nik_v5/source_snapshots/c62e7c1c20bd6a6bc4e20358637caa7330feb43ceaaab907792be3b77054d2f8_ct_fem_tetgen.py",
+          "sha256": "c62e7c1c20bd6a6bc4e20358637caa7330feb43ceaaab907792be3b77054d2f8"
+        },
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/mesh_failure_audit_20261026/nik_v5/source_snapshots/cfb2de01565d7e8a56acd4dd805d6adf3c08dc7e768dea00afb76e8775dd3d68_ct_fem_core.py",
+          "sha256": "cfb2de01565d7e8a56acd4dd805d6adf3c08dc7e768dea00afb76e8775dd3d68"
+        }
+      ],
+      "complete_mesh_manifest_exists": false,
+      "FEM_was_run": false,
+      "shape_qc": {
+        "tetrahedra": 2046131,
+        "nodes": 438251,
+        "all_positive": true,
+        "volume_ml": 23155.093992264847,
+        "minimum_volume_mm3": 5.6893782461845015e-09,
+        "mean_ratio_minimum": 0.0028116206801533385,
+        "mean_ratio_quantiles": [
+          0.27268535715983705,
+          0.47623889980707695,
+          0.8109192496088476,
+          0.9552087491671133
+        ],
+        "edge_condition_maximum": 1606.6977967574883,
+        "edge_condition_quantiles": [
+          3.2243577804663417,
+          7.769468255619151,
+          17.051216481284136
+        ],
+        "failing_mean_ratio": 21,
+        "failing_edge_condition": 0,
+        "quality_limits": {
+          "minimum_mean_ratio": 0.01,
+          "maximum_edge_condition": 10000.0
+        },
+        "limits_are_predeclared_numerical_screens": true,
+        "FEM_convergence_is_separate": true,
+        "passed": false
+      }
+    },
+    "yaroslav": {
+      "configuration_sha256": "3935dac7fe3ed8615baccaa27579036bf5e39036cb6e125d6d45c75bc5a7686f",
+      "iterations": 6,
+      "tetgen_options": {
+        "opt_scheme": 7,
+        "smooth_maxiter": 7,
+        "nomergefacet": false,
+        "epsilon": 1e-08,
+        "opt_iterations": 3,
+        "opt_max_asp_ratio": 1000.0,
+        "optmaxdihedral": 177.0
+      },
+      "geometry_qc": {
+        "sampled_distances": {
+          "source_to_remeshed": {
+            "sample_count": 15000,
+            "max_mm": 0.343102903459702,
+            "p95_mm": 0.07125702010744497,
+            "median_mm": 0.0
+          },
+          "remeshed_to_source": {
+            "sample_count": 15000,
+            "max_mm": 0.3305461713336273,
+            "p95_mm": 0.07357705608167611,
+            "median_mm": 3.552713678800501e-15
+          }
+        },
+        "relative_volume_error": 0.00010886226372763819,
+        "maximum_sampled_distance_mm": 0.75,
+        "maximum_relative_volume_error": 0.003,
+        "source_surface_sha256": "31253565cf8f9a55bbc72845511cad9eea8f966dce81a1e50820c1801ea124ad",
+        "exported_surface_sha256": "c249cce3cb6fceccadbc5afc16753f489f5977b194233a5c7cfea3406f202966",
+        "sampled_distance_is_not_certified_Hausdorff_bound": true
+      },
+      "failure": {
+        "status": "failed",
+        "error_type": "ValueError",
+        "error": "Surface contains self intersections; no automatic repair/decimation",
+        "complete_manifest_written": false,
+        "FEM_was_run": false,
+        "global_mesh_convergence_proven": false,
+        "independent_anatomical_validation": false,
+        "quantitative_result_accepted": false,
+        "automatic_publication": false
+      },
+      "process": {
+        "exit_code": 0,
+        "timed_out": false,
+        "elapsed_s": 23.010838699992746,
+        "maximum_seconds": 180,
+        "FEM_was_run": false
+      },
+      "source_snapshots": [
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/mesh_failure_audit_20261026/yaroslav_v5/source_snapshots/374823aba97d89f98fbb65df8d53b3a9a3215a4d4d1f6e27f168e30e0ad9abe9_ct_fem_remesh.py",
+          "sha256": "374823aba97d89f98fbb65df8d53b3a9a3215a4d4d1f6e27f168e30e0ad9abe9"
+        },
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/mesh_failure_audit_20261026/yaroslav_v5/source_snapshots/8240220b14a6c51504c28401c55fc82043350c89701bb6a3c8839d6dc77b6315_ct_fem_manual_surface.py",
+          "sha256": "8240220b14a6c51504c28401c55fc82043350c89701bb6a3c8839d6dc77b6315"
+        },
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/mesh_failure_audit_20261026/yaroslav_v5/source_snapshots/c62e7c1c20bd6a6bc4e20358637caa7330feb43ceaaab907792be3b77054d2f8_ct_fem_tetgen.py",
+          "sha256": "c62e7c1c20bd6a6bc4e20358637caa7330feb43ceaaab907792be3b77054d2f8"
+        },
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/mesh_failure_audit_20261026/yaroslav_v5/source_snapshots/cfb2de01565d7e8a56acd4dd805d6adf3c08dc7e768dea00afb76e8775dd3d68_ct_fem_core.py",
+          "sha256": "cfb2de01565d7e8a56acd4dd805d6adf3c08dc7e768dea00afb76e8775dd3d68"
+        }
+      ],
+      "complete_mesh_manifest_exists": false,
+      "FEM_was_run": false,
+      "shape_qc": {
+        "tetrahedra": 1344966,
+        "nodes": 282558,
+        "all_positive": true,
+        "volume_ml": 23953.523096583496,
+        "minimum_volume_mm3": 1.086105239569091e-05,
+        "mean_ratio_minimum": 0.027779117057713656,
+        "mean_ratio_quantiles": [
+          0.35719903946450615,
+          0.5441364073052051,
+          0.8333617427401303,
+          0.961656371538086
+        ],
+        "edge_condition_maximum": 456.6329683374768,
+        "edge_condition_quantiles": [
+          3.0716377155458026,
+          6.51696871627556,
+          11.974058708117017
+        ],
+        "failing_mean_ratio": 0,
+        "failing_edge_condition": 0,
+        "quality_limits": {
+          "minimum_mean_ratio": 0.01,
+          "maximum_edge_condition": 10000.0
+        },
+        "limits_are_predeclared_numerical_screens": true,
+        "FEM_convergence_is_separate": true,
+        "passed": true
+      },
+      "boundary_self_intersection_checks": {
+        "False": {
+          "vertices": 125926,
+          "faces": 251848,
+          "watertight": true,
+          "detected_intersecting_faces": 147
+        },
+        "True": {
+          "vertices": 125926,
+          "faces": 251848,
+          "watertight": true,
+          "detected_intersecting_faces": 147
+        }
+      }
+    }
+  },
+  "boundary_detector_adjudication": {
+    "georg": {
+      "passed": true,
+      "watertight": true,
+      "positive_volume": true,
+      "connected_components": 1,
+      "self_intersecting_faces": 0,
+      "detector_selected_faces": 315,
+      "intersection_adjudication": {
+        "detector_selected_faces": 315,
+        "candidate_pairs": 176,
+        "dismissed_by_projection": 176,
+        "unresolved_pairs": 0,
+        "coordinates_modified": false,
+        "overlap_area_tolerance_mm2": 0.0,
+        "projection_shared_topology_only": true,
+        "passed": true
+      },
+      "volume_ml": 39109.86617993984,
+      "euler_number": 2,
+      "vertices": 211559,
+      "faces": 423114,
+      "FEM_was_run": false,
+      "global_mesh_convergence_proven": false,
+      "independent_anatomical_validation": false,
+      "quantitative_result_accepted": false,
+      "automatic_publication": false,
+      "projection_cross_check": {
+        "AABB_candidates": 176,
+        "positive_projected_overlap_pairs": 0,
+        "maximum_projected_overlap_mm2": 0.0,
+        "maximum_plane_distance_mm": 0.13652935424329413
+      }
+    },
+    "yaroslav": {
+      "passed": true,
+      "watertight": true,
+      "positive_volume": true,
+      "connected_components": 1,
+      "self_intersecting_faces": 0,
+      "detector_selected_faces": 147,
+      "intersection_adjudication": {
+        "detector_selected_faces": 147,
+        "candidate_pairs": 93,
+        "dismissed_by_projection": 93,
+        "unresolved_pairs": 0,
+        "coordinates_modified": false,
+        "overlap_area_tolerance_mm2": 0.0,
+        "projection_shared_topology_only": true,
+        "passed": true
+      },
+      "volume_ml": 23953.52309658349,
+      "euler_number": 2,
+      "vertices": 125926,
+      "faces": 251848,
+      "FEM_was_run": false,
+      "global_mesh_convergence_proven": false,
+      "independent_anatomical_validation": false,
+      "quantitative_result_accepted": false,
+      "automatic_publication": false,
+      "projection_cross_check": {
+        "AABB_candidates": 93,
+        "positive_projected_overlap_pairs": 0,
+        "maximum_projected_overlap_mm2": 0.0,
+        "maximum_plane_distance_mm": 6.596268886001021e-14
+      }
+    }
+  },
+  "original_detector_reference_check": {
+    "saved_boundary_STL": {
+      "intersecting_faces": 315,
+      "vertices": 211559,
+      "faces": 423114
+    },
+    "actual_mesh_boundary": {
+      "intersecting_faces": 315,
+      "vertices": 211559,
+      "faces": 423114
+    }
+  },
+  "final_runs": {
+    "georg": {
+      "status": "original_mesh_reproduced_identically",
+      "nodes_identical": true,
+      "oriented_elements_identical": true
+    },
+    "nik": {
+      "status": "refused_shape_QC",
+      "bad_mean_ratio_elements": 21,
+      "iterations": 12,
+      "evidence": {
+        "path": "Experiments/scorpion_20261022/derived/exploratory/mesh_failure_audit_20261026/nik_v5/mesh/tetgen_rejected_shape_qc.local.json",
+        "sha256": "fe0e23b6ca008c1c2b03af4a81a811e07f98ed0a2c3d5ea82880c1673cb66c32"
+      }
+    },
+    "yaroslav": {
+      "status": "prepared_not_validated",
+      "stage": "mesh",
+      "shape_and_boundary_QC": {
+        "tetrahedra": 1344966,
+        "nodes": 282558,
+        "all_positive": true,
+        "volume_ml": 23953.523096583496,
+        "minimum_volume_mm3": 1.086105239569091e-05,
+        "mean_ratio_minimum": 0.027779117057713656,
+        "mean_ratio_quantiles": [
+          0.35719903946450615,
+          0.5441364073052051,
+          0.8333617427401303,
+          0.961656371538086
+        ],
+        "edge_condition_maximum": 456.6329683374768,
+        "edge_condition_quantiles": [
+          3.0716377155458026,
+          6.51696871627556,
+          11.974058708117017
+        ],
+        "failing_mean_ratio": 0,
+        "failing_edge_condition": 0,
+        "quality_limits": {
+          "minimum_mean_ratio": 0.01,
+          "maximum_edge_condition": 10000.0
+        },
+        "limits_are_predeclared_numerical_screens": true,
+        "FEM_convergence_is_separate": true,
+        "passed": true,
+        "within_resource_limits": true,
+        "boundary_order_source": "computed_tetrahedral_boundary",
+        "outward_boundary_orientation_checked": true,
+        "FEM_was_run": false,
+        "global_mesh_convergence_proven": false,
+        "independent_anatomical_validation": false,
+        "quantitative_result_accepted": false,
+        "automatic_publication": false,
+        "tetgen_version": "0.8.3",
+        "boundary_distances": {
+          "input_to_solved": {
+            "sample_count": 15000,
+            "max_mm": 0.023431646705301252,
+            "p95_mm": 2.847716647714797e-14,
+            "median_mm": 0.0
+          },
+          "solved_to_input": {
+            "sample_count": 15000,
+            "max_mm": 0.029232573220992125,
+            "p95_mm": 2.842170943040401e-14,
+            "median_mm": 0.0
+          }
+        },
+        "relative_volume_error": 5.276593700864751e-07,
+        "actual_boundary_checked": true,
+        "actual_surface_qc": {
+          "passed": true,
+          "watertight": true,
+          "positive_volume": true,
+          "connected_components": 1,
+          "self_intersecting_faces": 0,
+          "detector_selected_faces": 147,
+          "intersection_adjudication": {
+            "detector_selected_faces": 147,
+            "candidate_pairs": 93,
+            "dismissed_by_projection": 93,
+            "unresolved_pairs": 0,
+            "coordinates_modified": false,
+            "overlap_area_tolerance_mm2": 0.0,
+            "projection_shared_topology_only": true,
+            "passed": true
+          },
+          "volume_ml": 23953.52309658349,
+          "euler_number": 2,
+          "vertices": 125926,
+          "faces": 251848,
+          "FEM_was_run": false,
+          "global_mesh_convergence_proven": false,
+          "independent_anatomical_validation": false,
+          "quantitative_result_accepted": false,
+          "automatic_publication": false
+        },
+        "original_boundary_distances": {
+          "original_to_solved": {
+            "sample_count": 15000,
+            "max_mm": 0.343102903459702,
+            "p95_mm": 0.07125702010741419,
+            "median_mm": 0.0
+          },
+          "solved_to_original": {
+            "sample_count": 15000,
+            "max_mm": 0.34753131875152754,
+            "p95_mm": 0.07071373931727841,
+            "median_mm": 3.552713678800501e-15
+          }
+        },
+        "relative_volume_error_to_original": 0.0001093898656554515,
+        "original_exterior_sha256": "31253565cf8f9a55bbc72845511cad9eea8f966dce81a1e50820c1801ea124ad",
+        "cumulative_geometry_checked": true,
+        "matrix_index_base": 1,
+        "coordinate_frame": "LPS",
+        "units": "mm",
+        "mesh_sha256": "3eb4a8ce55e834501c84126f851105e87e9002f3e00956062f08c96970e6089d"
+      },
+      "source_manifest": {
+        "path": "Experiments/scorpion_20261022/derived/exploratory/mesh_failure_audit_20261026/yaroslav_v7/mesh/preparation.local.json",
+        "sha256": "2652b7eedd24f8a93c021c3ea646b6f233cd2018747b0abbe74928f01c23d898"
+      },
+      "CEM_contacts_built": false,
+      "FEM_was_run": false
+    }
+  },
+  "wrapper_083_084_comparison": {
+    "subject": "yaroslav",
+    "nodes_identical": true,
+    "oriented_elements_identical": true,
+    "one_case_does_not_prove_all_runtime_equivalence": true
+  }
+}

@@ -112,9 +112,9 @@ def run(args):
         config=create_config(args.subject,sources,preflight,placement,out)
     else:
         config=out/'configuration.local.json'
-    # The standard mesh stage accepts an unmodified surface parent. Avoid
-    # lossy STL conditioning; TetGen may subdivide the original PLC boundary.
-    stages=['surface','mesh','materials','cem_contacts_input']
+    # The Boolean arm union is not yet a suitable TetGen surface. A failed
+    # conditioning stage must stop this subject, never fall back to raw STL.
+    stages=['surface','remesh','mesh','materials','cem_contacts_input']
     parent=None
     for stage in stages:
         target=out/stage

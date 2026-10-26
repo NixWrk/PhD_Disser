@@ -1,6 +1,13 @@
 {
   "schema": "ct_fem_remesh_scope_v1",
-  "status": "implemented_with_tiny_synthetic_checks",
+  "status": "revalidated_on_individual_surfaces_with_separate_volume_mesh_QC",
+  "revalidation_20261026": {
+    "audit": "docs/CT_FEM_MESH_FAILURE_AUDIT_20261026.json",
+    "MeshLab_local_operation_limit_is_not_whole_stage_limit": true,
+    "failed_stage_measurements_are_preserved": true,
+    "subject_launcher_cannot_fall_back_to_raw_Boolean_union": true,
+    "historical_test_results_below_are_not_a_universal_validity_claim": true
+  },
   "entrypoint": "tools/prepare_ct_fem.py remesh --config <local.json> --input <completed-surface> --out <fresh-remesh>",
   "implementation": [
     "tools/ct_fem_remesh.py",
@@ -36,6 +43,7 @@
       "vertex_smoothing": false,
       "adaptive": false,
       "per_operation_distance_mm": 0.2,
+      "maximum_stage_sampled_distance_mm": 0.75,
       "final_sampled_distance_mm": 0.75,
       "maximum_relative_volume_error": 0.003,
       "buffer_contact_selection_radii_mm": [

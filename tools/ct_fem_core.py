@@ -32,7 +32,7 @@ POINTS = (1024, 4096)
 SEED = 20261008
 CONTINUATION_STAGES = ("remesh", "mesh", "materials", "refine")
 MESH_GENERATION_KEYS = ("size_mm", "steiner_limit", "maximum_relative_volume_error",
-                        "maximum_sampled_surface_error_mm")
+                        "maximum_sampled_surface_error_mm", "tetgen_options")
 KERNEL_FILES = ["georg_ct_model.py", "georg_mesh_quality.py",
                 "georg_quality_selected_refinement.py", "georg_lateral_quadrature.py",
                 "add_arm_extensions.py", "scorpion_georg_geometry_revision.py", "georg_quality_mesh_prepare.py"]
@@ -146,6 +146,9 @@ def load_config(path):
         raise ValueError("Shape limits cannot be relaxed")
     for name in ["max_nodes", "max_tetrahedra", "steiner_limit"]:
         natural(cfg["mesh"][name], name)
+    positive(cfg["mesh"]["maximum_seconds"], "mesh.maximum_seconds")
+    from ct_fem_tetgen import validate_options
+    validate_options(cfg["mesh"])
     natural(cfg["resources"]["max_ct_voxels"], "max_ct_voxels")
     positive(cfg["electrical_context"]["frequency_hz"], "frequency_hz")
     cfg["_config_path"] = str(path)
@@ -383,10 +386,16 @@ def surface_qc(surface):
     ms.add_mesh(pymeshlab.Mesh(surface.vertices, surface.faces.astype(np.int32)))
     ms.compute_selection_by_self_intersections_per_face()
     intersections = ms.current_mesh().selected_face_number()
+    intersection_qc = None
     if intersections:
-        raise ValueError("Surface contains self intersections; no automatic repair/decimation")
+        from ct_fem_surface_intersections import adjudicate
+        selected = np.flatnonzero(ms.current_mesh().face_selection_array())
+        intersection_qc = adjudicate(surface, selected)
+        if not intersection_qc["passed"]:
+            raise ValueError("Surface contains unresolved self intersections; no automatic repair/decimation")
     return dict(passed=True, watertight=True, positive_volume=True, connected_components=1,
-                self_intersecting_faces=intersections, volume_ml=float(surface.volume/1000),
+                self_intersecting_faces=0, detector_selected_faces=intersections,
+                intersection_adjudication=intersection_qc, volume_ml=float(surface.volume/1000),
                 euler_number=int(surface.euler_number), vertices=len(surface.vertices), faces=len(surface.faces),
                 **FLAGS)
 
@@ -518,6 +527,8 @@ def artifact_sources(cfg, input_dir=None, previous_sources=None):
              *map(Path, cfg["inputs"]["masks"].values()), Path(__file__),
              Path(__file__).with_name("prepare_ct_fem.py"), *(LEGACY / n for n in KERNEL_FILES)]
     paths.append(Path(__file__).with_name("ct_fem_remesh.py"))
+    paths.append(Path(__file__).with_name("ct_fem_tetgen.py"))
+    paths.append(Path(__file__).with_name("ct_fem_surface_intersections.py"))
     if cfg['body']['strategy'] == 'author_STL_LPS':
         paths.extend([Path(cfg['body']['source_stl']), Path(__file__).with_name('ct_fem_manual_surface.py')])
     if input_dir is not None:
@@ -676,19 +687,20 @@ def finish_surface(cfg, out, skin, kernel, body_qc):
 
 
 def build_mesh(cfg, source, out):
-    import tetgen  # optional runtime dependency; never installed/started implicitly
+    from ct_fem_tetgen import generate
     surface = trimesh.load(source / "exterior.stl", force="mesh")
     surface_qc(surface)
-    engine = tetgen.TetGen(surface.vertices, surface.faces.astype(np.int32))
     settings = cfg["mesh"]
-    size = positive(settings["size_mm"], "size_mm")
-    nodes, tets, *_ = engine.tetrahedralize(plc=True, quality=True, minratio=1.5, mindihedral=8.,
-        fixedvolume=True, maxvolume=size**3/6, nobisect=False, steinerleft=settings["steiner_limit"],
-        opt_scheme=1, smooth_maxiter=0, nomergefacet=True, epsilon=1e-10)
+    positive(settings["size_mm"], "size_mm")
+    nodes, tets, version = generate(source / "exterior.stl", out, settings)
     kernel = kernels(); tets = kernel["orient"](nodes, tets)
-    boundary, qc = mesh_qc(nodes, tets, max_nodes=settings["max_nodes"], max_tetrahedra=settings["max_tetrahedra"])
+    try:
+        boundary, qc = mesh_qc(nodes, tets, max_nodes=settings["max_nodes"], max_tetrahedra=settings["max_tetrahedra"])
+    except ValueError:
+        write_new(out / "tetgen_rejected_shape_qc.local.json", kernel["quality"](nodes, tets))
+        raise
     solved = trimesh.Trimesh(nodes, boundary, process=True)
-    surface_qc(solved)
+    actual_surface_qc = surface_qc(solved)
     source_surface_qc = read(source / "surface_qc.local.json")
     if source_surface_qc.get("synthetic_cylinders"):
         from ct_fem_remesh import check_yz_bounds
@@ -698,10 +710,29 @@ def build_mesh(cfg, source, out):
     distance = dict(input_to_solved=kernel["sampled_distance"](surface, solved, n),
                     solved_to_input=kernel["sampled_distance"](solved, surface, n))
     error = abs(qc["volume_ml"]*1000/surface.volume-1)
-    if error > positive(settings["maximum_relative_volume_error"], "maximum_relative_volume_error") or max(d["max_mm"] for d in distance.values()) > positive(settings["maximum_sampled_surface_error_mm"], "maximum_sampled_surface_error_mm"):
+    contacts = read(source / "contacts.local.json")
+    reference_file = Path(contacts.get("original_projection_surface_path", contacts["projection_surface_path"]))
+    reference_sha = contacts.get("original_projection_surface_sha256", contacts["projection_surface_sha256"])
+    if sha(reference_file) != reference_sha:
+        raise ValueError("Original exterior identity changed before cumulative boundary QC")
+    reference = trimesh.load(reference_file, force="mesh")
+    reference_distance = dict(original_to_solved=kernel["sampled_distance"](reference, solved, n),
+                              solved_to_original=kernel["sampled_distance"](solved, reference, n))
+    reference_error = abs(qc["volume_ml"]*1000/reference.volume-1)
+    geometry_passed = (max(error, reference_error) <= settings["maximum_relative_volume_error"] and
+        max(d["max_mm"] for d in [*distance.values(), *reference_distance.values()]) <= settings["maximum_sampled_surface_error_mm"])
+    write_new(out / "tetgen_boundary_qc.local.json", dict(passed=geometry_passed,
+        boundary_distances=distance, relative_volume_error=error,
+        original_exterior_path=str(reference_file), original_exterior_sha256=reference_sha,
+        original_boundary_distances=reference_distance, relative_volume_error_to_original=reference_error,
+        sampled_distance_is_not_certified_Hausdorff_bound=True))
+    if not geometry_passed:
         raise ValueError("Actual TetGen boundary exceeds the declared geometry scenario")
-    qc.update(tetgen_version=tetgen.__version__, boundary_distances=distance,
-              relative_volume_error=error, actual_boundary_checked=True)
+    qc.update(tetgen_version=version, boundary_distances=distance,
+              relative_volume_error=error, actual_boundary_checked=True,
+              actual_surface_qc=actual_surface_qc,
+              original_boundary_distances=reference_distance, relative_volume_error_to_original=reference_error,
+              original_exterior_sha256=reference_sha, cumulative_geometry_checked=True)
     save_mesh(out, nodes, tets, boundary, qc)
     solved.export(out / "fem_boundary.stl")
     copy_contacts(source, out)

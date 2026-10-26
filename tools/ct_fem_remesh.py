@@ -19,7 +19,7 @@ import ct_fem_core as core
 def settings(cfg):
     value = cfg["remeshing"]
     for name in ["global_edge_mm", "buffer_edge_mm", "contact_edge_mm",
-                 "per_operation_distance_mm", "maximum_sampled_distance_mm",
+                 "per_operation_distance_mm", "maximum_stage_sampled_distance_mm", "maximum_sampled_distance_mm",
                  "maximum_relative_volume_error", "maximum_projection_shift_mm",
                  "maximum_yz_extension_mm"]:
         core.positive(value[name], name)
@@ -78,19 +78,29 @@ def checked_export(mesh, file, reference, value, kernel, skin_bounds=None):
         raise ValueError("Remesh surface resource limit exceeded")
     mesh.export(file)
     exported = trimesh.load(file, force="mesh")
-    qc = core.surface_qc(exported)
-    if exported.euler_number != reference.euler_number:
-        raise ValueError("Remesh changed exterior topology")
-    if skin_bounds is not None:
-        check_yz_bounds(exported, skin_bounds, value["maximum_yz_extension_mm"])
-    distances = dict(previous_to_exported=kernel["sampled_distance"](reference, exported, value["sample_count"]),
-                     exported_to_previous=kernel["sampled_distance"](exported, reference, value["sample_count"]))
-    if max(d["max_mm"] for d in distances.values()) > value["per_operation_distance_mm"]:
-        raise ValueError("Exported remesh operation exceeds the sampled per-operation distance")
-    qc.update(exported_surface_sha256=core.sha(file), sampled_operation_distances=distances,
-              relative_volume_error_to_previous=float(abs(exported.volume/reference.volume-1)),
+    qc = dict(exported_surface_sha256=core.sha(file),
+              local_filter_maxsurfdist_mm=value["per_operation_distance_mm"],
+              maximum_stage_sampled_distance_mm=value["maximum_stage_sampled_distance_mm"],
               sampled_distance_is_not_certified_Hausdorff_bound=True,
               yz_check_applied=skin_bounds is not None)
+    try:
+        qc.update(core.surface_qc(exported))
+        if exported.euler_number != reference.euler_number:
+            raise ValueError("Remesh changed exterior topology")
+        if skin_bounds is not None:
+            check_yz_bounds(exported, skin_bounds, value["maximum_yz_extension_mm"])
+        distances = dict(previous_to_exported=kernel["sampled_distance"](reference, exported, value["sample_count"]),
+                         exported_to_previous=kernel["sampled_distance"](exported, reference, value["sample_count"]))
+        qc.update(sampled_operation_distances=distances,
+                  relative_volume_error_to_previous=float(abs(exported.volume/reference.volume-1)))
+        # MeshLab's maxsurfdist controls local edits inside six iterations.
+        # A whole exported stage is a different geometric comparison.
+        if max(d["max_mm"] for d in distances.values()) > value["maximum_stage_sampled_distance_mm"]:
+            raise ValueError("Exported remesh stage exceeds its sampled stage-distance limit")
+    except Exception as error:
+        qc.update(passed=False, error_type=type(error).__name__, error=str(error))
+        core.write_new(file.with_name(file.stem+"_qc.local.json"), qc)
+        raise
     return exported, qc
 
 
@@ -193,6 +203,13 @@ def build(cfg, source, out):
     distances = dict(source_to_remeshed=kernel["sampled_distance"](original, final, value["sample_count"]),
                      remeshed_to_source=kernel["sampled_distance"](final, original, value["sample_count"]))
     error = float(abs(final.volume/original.volume-1))
+    core.write_new(out / "final_geometry_qc.local.json", dict(
+        sampled_distances=distances, relative_volume_error=error,
+        maximum_sampled_distance_mm=value["maximum_sampled_distance_mm"],
+        maximum_relative_volume_error=value["maximum_relative_volume_error"],
+        source_surface_sha256=core.sha(source / "exterior.stl"),
+        exported_surface_sha256=core.sha(out / "exterior.stl"),
+        sampled_distance_is_not_certified_Hausdorff_bound=True))
     if max(d["max_mm"] for d in distances.values()) > value["maximum_sampled_distance_mm"] or error > value["maximum_relative_volume_error"]:
         raise ValueError("Final exported remesh exceeds the declared distance/volume limits")
     if skin_bounds is not None:

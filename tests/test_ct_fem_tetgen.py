@@ -44,6 +44,7 @@ def test_actual_tetgen_boundary_and_material_provenance(tmp_path):
     result = core.prepare("mesh", config, mesh, surface)
     qc = core.read(mesh / "mesh_quality.local.json")
     assert qc["actual_boundary_checked"] and qc["tetgen_version"]
+    assert qc["actual_surface_qc"]["passed"] and qc["cumulative_geometry_checked"]
     assert qc["relative_volume_error"] <= cfg["mesh"]["maximum_relative_volume_error"]
     assert max(x["max_mm"] for x in qc["boundary_distances"].values()) <= cfg["mesh"]["maximum_sampled_surface_error_mm"]
     assert result["completed_geometry_settings"]["mesh_generation"]["size_mm"] == 5.

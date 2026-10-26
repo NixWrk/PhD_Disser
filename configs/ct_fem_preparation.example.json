@@ -45,6 +45,16 @@
     "max_nodes": 1000000,
     "max_tetrahedra": 6000000,
     "steiner_limit": 500000,
+    "maximum_seconds": 600,
+    "tetgen_options": {
+      "opt_scheme": 7,
+      "smooth_maxiter": 7,
+      "nomergefacet": false,
+      "epsilon": 1e-8,
+      "opt_iterations": 3,
+      "opt_max_asp_ratio": 1000.0,
+      "optmaxdihedral": 177.0
+    },
     "maximum_relative_volume_error": 0.003,
     "maximum_sampled_surface_error_mm": 0.75,
     "quality_limits": {"minimum_mean_ratio": 0.01, "maximum_edge_condition": 10000.0}
@@ -62,6 +72,7 @@
     "swap_edges": true,
     "reproject": true,
     "per_operation_distance_mm": 0.2,
+    "maximum_stage_sampled_distance_mm": 0.75,
     "maximum_sampled_distance_mm": 0.75,
     "maximum_relative_volume_error": 0.003,
     "maximum_projection_shift_mm": 1.0,

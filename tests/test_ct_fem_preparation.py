@@ -486,7 +486,8 @@ def test_real_tiny_remesh_cli_preserves_shape_and_contact_provenance(tmp_path):
     assert qc["relative_volume_error"] <= .003
     assert max(d["max_mm"] for d in qc["sampled_distances"].values()) <= .75
     for op in qc["operations"]:
-        assert max(d["max_mm"] for d in op["sampled_operation_distances"].values()) <= .2
+        assert max(d["max_mm"] for d in op["sampled_operation_distances"].values()) <= .75
+        assert op["local_filter_maxsurfdist_mm"] == .2
     assert core.sha(out / "exterior.stl") == core.sha(out / "remesh_02_contact.stl")
     assert core.sha(out / "source_contacts.local.json") == core.sha(source / "contacts.local.json")
     before = core.read(source / "contacts.local.json")["physical_contacts"]
@@ -508,7 +509,7 @@ def test_real_tiny_remesh_cli_preserves_shape_and_contact_provenance(tmp_path):
     assert again["physical_contacts"][0]["original_projected_lps_mm"] == after[0]["original_projected_lps_mm"]
 
 
-def test_remesh_yz_bounds_and_operation_distance_are_enforced(tmp_path):
+def test_remesh_yz_bounds_and_stage_distance_are_enforced(tmp_path):
     import ct_fem_remesh as remesh
     surface = trimesh.creation.box(extents=[20., 20., 20.])
     moved = surface.copy(); moved.apply_translation([0., .1, 0.])
@@ -516,8 +517,22 @@ def test_remesh_yz_bounds_and_operation_distance_are_enforced(tmp_path):
         remesh.check_yz_bounds(moved, surface.bounds, .02)
     path, cfg = fixture_config(tmp_path); value = remesh.settings(cfg)
     moved = surface.copy(); moved.apply_translation([1., 0., 0.])
-    with pytest.raises(ValueError, match="per-operation distance"):
+    with pytest.raises(ValueError, match="stage-distance limit"):
         remesh.checked_export(moved, tmp_path / "too_far.stl", surface, value, core.kernels())
+    failed = core.read(tmp_path / "too_far_qc.local.json")
+    assert failed["passed"] is False
+    assert failed["maximum_stage_sampled_distance_mm"] == .75
+    assert failed["sampled_operation_distances"]["previous_to_exported"]["max_mm"] > .75
+
+
+def test_local_filter_tolerance_is_not_the_whole_stage_budget(tmp_path):
+    import ct_fem_remesh as remesh
+    _, cfg = fixture_config(tmp_path); value = remesh.settings(cfg)
+    source = trimesh.creation.box(extents=[20., 20., 20.])
+    moved = source.copy(); moved.apply_translation([.4, 0., 0.])
+    _, qc = remesh.checked_export(moved, tmp_path / "stage.stl", source, value, core.kernels())
+    distance = max(d["max_mm"] for d in qc["sampled_operation_distances"].values())
+    assert value["per_operation_distance_mm"] < distance <= value["maximum_stage_sampled_distance_mm"]
 
 
 def test_mesh_accepts_completed_remesh_before_backend_without_running_tetgen(tmp_path, monkeypatch):

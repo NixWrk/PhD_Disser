@@ -1,6 +1,18 @@
 {
   "schema": "ct_fem_preparation_scope_v1",
-  "status": "implementation_handoff_ready_for_user_source_freeze",
+  "status": "revalidated_with_real_mesh_replay_and_explicit_subject_refusals",
+  "revalidation_20261026": {
+    "audit": "docs/CT_FEM_MESH_FAILURE_AUDIT_20261026.json",
+    "georg_original_nodes_and_elements_reproduced_identically": true,
+    "tetgen_optimization_settings_are_explicit": true,
+    "native_TetGen_time_budget_and_failure_evidence": true,
+    "cumulative_original_boundary_QC": true,
+    "detector_false_positives_adjudicated_without_geometry_repair": true,
+    "synthetic_checks_passed": 88,
+    "universal_preparation_validated": false,
+    "FEM_was_run": false,
+    "historical_handoff_fields_below_retain_their_original_scope": true
+  },
   "source_code_changed_during_handoff": false,
   "checks_rerun_during_handoff": false,
   "scope": "Generic preparation and its synthetic checks only. Live Georg main/post FEM runs are outside this status.",
