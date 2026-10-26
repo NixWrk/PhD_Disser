@@ -1,0 +1,592 @@
+{
+  "schema": "ct_fem_TS_mesh_verification_v1",
+  "code_commit": "6840038",
+  "tests": {
+    "passed": 114,
+    "failed": 0,
+    "scope": "Synthetic contracts and actual small TetGen fixture; no neural accuracy validation"
+  },
+  "FEM_was_run": false,
+  "independent_anatomical_validation": false,
+  "global_mesh_convergence_proven": false,
+  "cases": {
+    "georg": {
+      "status": "prepared_not_validated",
+      "local_artifact": "Experiments/scorpion_20261022/derived/exploratory/universal_meshing_20261026/georg_ct_pipeline_v2",
+      "pipeline_manifest_sha256": "00bd6367d1437c721c0e179f96f5e874a1d4f64e0884d849cfe5b6a7c912ee9e",
+      "mesh_manifest_sha256": "c33d6a5970e77a8ca09a6a66b3a38a682430c72de2e09ff967f37e1838fbbfaa",
+      "mesh_sha256": "765dd355bcdb9f9cd415f239ec5565ff89df2360fa2faf10dcf98666877827ed",
+      "CT_sha256": "eec96e0c6e10bfa84c1b72663f5aeb95269575eed9f37bb7bb5162b12676acb5",
+      "segmentation": {
+        "backend": "TotalSegmentator",
+        "version": "2.18.0",
+        "fresh_tasks": [
+          "body"
+        ],
+        "reused_tissues": true,
+        "body_mask_sha256": "1cf9031c0eff407c61e31050a0f2e4ea915e09c78e527ca0212bbc42eef51214"
+      },
+      "body_QC": {
+        "surface_level": 0.49,
+        "HU_threshold_fallback": false,
+        "manual_STL_fallback": false,
+        "morphology_applied": false,
+        "added_TS_tissue_voxels": 21413,
+        "added_relative": 0.0005915255137194527,
+        "isolated_TS_component_voxels": 22,
+        "excluded_material_voxels": {
+          "lung": 0,
+          "bone": 0,
+          "heart": 0,
+          "fat": 22
+        },
+        "internal_cavity_components": 9,
+        "internal_cavity_relative_volume": 2.592755669084732e-06,
+        "export_distances": {
+          "native_to_STL": {
+            "sample_count": 15000,
+            "max_mm": 1.430511474609375e-05,
+            "p95_mm": 1.2218952178955078e-05,
+            "median_mm": 2.742297243557785e-06
+          },
+          "STL_to_native": {
+            "sample_count": 15000,
+            "max_mm": 1.430511474609375e-05,
+            "p95_mm": 1.2218952178955078e-05,
+            "median_mm": 2.7394271455705166e-06
+          }
+        }
+      },
+      "mesh_QC": {
+        "nodes": 626347,
+        "tetrahedra": 2937524,
+        "all_positive": true,
+        "failing_mean_ratio": 0,
+        "failing_edge_condition": 0,
+        "mean_ratio_minimum": 0.013707902532994093,
+        "edge_condition_maximum": 471.1123607470466,
+        "relative_volume_error": 9.323105354397399e-08,
+        "boundary_distances": {
+          "input_to_solved": {
+            "sample_count": 15000,
+            "max_mm": 0.0387340033037166,
+            "p95_mm": 2.864289338439558e-14,
+            "median_mm": 0.0
+          },
+          "solved_to_input": {
+            "sample_count": 15000,
+            "max_mm": 0.03780392707283776,
+            "p95_mm": 2.864289338439558e-14,
+            "median_mm": 0.0
+          }
+        },
+        "original_boundary_distances": {
+          "original_to_solved": {
+            "sample_count": 15000,
+            "max_mm": 0.37742094439681945,
+            "p95_mm": 0.17540584764238237,
+            "median_mm": 0.02051571465988556
+          },
+          "solved_to_original": {
+            "sample_count": 15000,
+            "max_mm": 0.41938559215574855,
+            "p95_mm": 0.16303336129002138,
+            "median_mm": 0.01863441122342786
+          }
+        },
+        "relative_volume_error_to_original": 9.946719689213346e-05,
+        "surface_recovery_rounds": 1
+      }
+    },
+    "nik": {
+      "status": "prepared_not_validated",
+      "local_artifact": "Experiments/scorpion_20261022/derived/exploratory/universal_meshing_20261026/nik_ct_pipeline_v5",
+      "pipeline_manifest_sha256": "7ff344b2a3b4926e932338faf29ad8feae80565b49b84076c9f0f37b33a735be",
+      "mesh_manifest_sha256": "65cdefc5963fb4220fe662489e1d0b2f735790846d273bdf9a2653e2de20b0a5",
+      "mesh_sha256": "a523b6eaa3cd235bbb5c15c7e0a53ffc5ad0ae2c4f1b4475835657d098de6f2c",
+      "CT_sha256": "2d8a5a510f80df68b84cb12caddf35c6bb9e8b7624e58a262c81597c02e8440a",
+      "segmentation": {
+        "backend": "TotalSegmentator",
+        "version": "2.18.0",
+        "fresh_tasks": [
+          "body"
+        ],
+        "reused_tissues": true,
+        "body_mask_sha256": "6522a2019a0fb666b9bc27754ef5fa46641a6277443cc7eb208436c6db145b22"
+      },
+      "body_QC": {
+        "surface_level": 0.49,
+        "HU_threshold_fallback": false,
+        "manual_STL_fallback": false,
+        "morphology_applied": false,
+        "added_TS_tissue_voxels": 916,
+        "added_relative": 3.454744469221885e-05,
+        "isolated_TS_component_voxels": 0,
+        "excluded_material_voxels": {
+          "lung": 0,
+          "bone": 0,
+          "heart": 0,
+          "fat": 0
+        },
+        "internal_cavity_components": 0,
+        "internal_cavity_relative_volume": 0.0,
+        "export_distances": {
+          "native_to_STL": {
+            "sample_count": 15000,
+            "max_mm": 1.2218952178955078e-05,
+            "p95_mm": 1.2218952178955078e-05,
+            "median_mm": 2.090943058883422e-06
+          },
+          "STL_to_native": {
+            "sample_count": 15000,
+            "max_mm": 1.2218952178955078e-05,
+            "p95_mm": 1.2218952178955078e-05,
+            "median_mm": 2.083749972454098e-06
+          }
+        }
+      },
+      "mesh_QC": {
+        "nodes": 494051,
+        "tetrahedra": 2266380,
+        "all_positive": true,
+        "failing_mean_ratio": 0,
+        "failing_edge_condition": 0,
+        "mean_ratio_minimum": 0.013156287381379847,
+        "edge_condition_maximum": 493.6411293022813,
+        "relative_volume_error": 6.975826808419683e-07,
+        "boundary_distances": {
+          "input_to_solved": {
+            "sample_count": 15000,
+            "max_mm": 0.08661235876817819,
+            "p95_mm": 2.929642751054232e-14,
+            "median_mm": 0.0
+          },
+          "solved_to_input": {
+            "sample_count": 15000,
+            "max_mm": 0.04126573792114079,
+            "p95_mm": 2.8646462484030185e-14,
+            "median_mm": 0.0
+          }
+        },
+        "original_boundary_distances": {
+          "original_to_solved": {
+            "sample_count": 15000,
+            "max_mm": 0.42214736963202093,
+            "p95_mm": 0.16942843425204507,
+            "median_mm": 0.02139863358843063
+          },
+          "solved_to_original": {
+            "sample_count": 15000,
+            "max_mm": 0.3566120266993765,
+            "p95_mm": 0.15889032985213158,
+            "median_mm": 0.01969398356290931
+          }
+        },
+        "relative_volume_error_to_original": 0.00020684650216062916,
+        "surface_recovery_rounds": 2
+      }
+    },
+    "yaroslav": {
+      "status": "prepared_not_validated",
+      "local_artifact": "Experiments/scorpion_20261022/derived/exploratory/universal_meshing_20261026/yaroslav_ct_pipeline_v4",
+      "pipeline_manifest_sha256": "a44b3057c5424453806154e485c74250254b8cd70b86cc510e5de2d6f1784a74",
+      "mesh_manifest_sha256": "1e90bc65acce3d16a6305690814857f2d80ca53c7f0f5d90807671ff3084ee8f",
+      "mesh_sha256": "73c3f65ada43d8b7ad0b8a31d5bd248d37d517b7ab4252ab15be9d05c8f7309b",
+      "CT_sha256": "eba820691f47c43c0f5eabf51abbd0df329fa6c8ac0ba494507871110400a4a3",
+      "segmentation": {
+        "backend": "TotalSegmentator",
+        "version": "2.18.0",
+        "fresh_tasks": [
+          "body"
+        ],
+        "reused_tissues": true,
+        "body_mask_sha256": "79092aa2558c3382f6119515ab3af8753dbb13b20a00ee3ffcf50e898e248e63"
+      },
+      "body_QC": {
+        "surface_level": 0.49,
+        "HU_threshold_fallback": false,
+        "manual_STL_fallback": false,
+        "morphology_applied": false,
+        "added_TS_tissue_voxels": 4059,
+        "added_relative": 0.00019928860008817012,
+        "isolated_TS_component_voxels": 3866,
+        "excluded_material_voxels": {
+          "lung": 0,
+          "bone": 3725,
+          "heart": 0,
+          "fat": 141
+        },
+        "internal_cavity_components": 0,
+        "internal_cavity_relative_volume": 0.0,
+        "export_distances": {
+          "native_to_STL": {
+            "sample_count": 15000,
+            "max_mm": 1.430511474609375e-05,
+            "p95_mm": 1.2218952178955078e-05,
+            "median_mm": 1.4877332432661206e-06
+          },
+          "STL_to_native": {
+            "sample_count": 15000,
+            "max_mm": 1.430511474609375e-05,
+            "p95_mm": 1.2218952178955078e-05,
+            "median_mm": 1.4877332432661206e-06
+          }
+        }
+      },
+      "mesh_QC": {
+        "nodes": 471982,
+        "tetrahedra": 2178607,
+        "all_positive": true,
+        "failing_mean_ratio": 0,
+        "failing_edge_condition": 0,
+        "mean_ratio_minimum": 0.018434904940030535,
+        "edge_condition_maximum": 578.6951516450849,
+        "relative_volume_error": 6.057523611602278e-07,
+        "boundary_distances": {
+          "input_to_solved": {
+            "sample_count": 15000,
+            "max_mm": 0.04323280878696569,
+            "p95_mm": 2.929642751054232e-14,
+            "median_mm": 0.0
+          },
+          "solved_to_input": {
+            "sample_count": 15000,
+            "max_mm": 0.03806957334286665,
+            "p95_mm": 2.864289338439558e-14,
+            "median_mm": 0.0
+          }
+        },
+        "original_boundary_distances": {
+          "original_to_solved": {
+            "sample_count": 15000,
+            "max_mm": 0.46003342387016743,
+            "p95_mm": 0.17662702490879706,
+            "median_mm": 0.02077795967862714
+          },
+          "solved_to_original": {
+            "sample_count": 15000,
+            "max_mm": 0.41427335354822503,
+            "p95_mm": 0.16179465365144063,
+            "median_mm": 0.019328237645976472
+          }
+        },
+        "relative_volume_error_to_original": 0.00017099540100173893,
+        "surface_recovery_rounds": 2
+      }
+    }
+  },
+  "same_mesh_remesh_and_domain_policies": true,
+  "fixed_quality_limits": {
+    "minimum_mean_ratio": 0.01,
+    "maximum_edge_condition": 10000.0
+  },
+  "anatomical_STL_stage": {
+    "producer": "tools/segment_ct_to_stl.py",
+    "producer_sha256": "f9a93bc54bca4e9e599279df71d687bfcece0b56944796f77c2b40174ec60cf7",
+    "all_native_components_and_cavity_interfaces_preserved": true,
+    "volume_mesh_generated": false,
+    "FEM_was_run": false,
+    "cases": {
+      "georg": {
+        "status": "automatic_pending_anatomical_review",
+        "local_artifact": "Experiments/scorpion_20261022/derived/exploratory/universal_meshing_20261026/georg_segmented_STL_v1",
+        "manifest_sha256": "33058cbdf2675e006e41507b9698f1bb741666036ef25778755d0aa152458814",
+        "segmentation_version": "2.18.0",
+        "reused_tissue_masks": true,
+        "CT_sha256": "eec96e0c6e10bfa84c1b72663f5aeb95269575eed9f37bb7bb5162b12676acb5",
+        "products": {
+          "body": {
+            "mask_sha256": "b0fb94b726e6a2eaf5686b3bb2a6d168bb620aa6212965ac9038e19148585caf",
+            "STL_sha256": "3954d8d0eb71f3549a314cae26d24b3f3e26ab66a3efec441dc5c2b591a5de72",
+            "vertices": 780908,
+            "triangles": 1561812,
+            "connected_surface_components": 1,
+            "watertight": true,
+            "winding_consistent": true,
+            "signed_surface_volume_ml": 34959.93114759887,
+            "mask_voxels": 36199618,
+            "mask_volume_ml": 34954.16006084312,
+            "maximum_export_vertex_displacement_mm": 1.6655205914090136e-05,
+            "ordered_triangles_checked": true,
+            "surface_level": 0.49,
+            "coordinates": "LPS",
+            "units": "mm",
+            "all_components_and_cavity_interfaces_preserved": true
+          },
+          "lung": {
+            "mask_sha256": "389317f419d74254cafe66a41a17d86e0f3710e6e7bc5b199a5c31f7f161c2e3",
+            "STL_sha256": "571163a86b3333a720945b51182e39f4fbb4cbd04b1c5fb3cf24815c87505715",
+            "vertices": 460526,
+            "triangles": 921048,
+            "connected_surface_components": 2,
+            "watertight": true,
+            "winding_consistent": true,
+            "signed_surface_volume_ml": 6040.11867085221,
+            "mask_voxels": 6252674,
+            "mask_volume_ml": 6037.549009613089,
+            "maximum_export_vertex_displacement_mm": 1.6324274796127024e-05,
+            "ordered_triangles_checked": true,
+            "surface_level": 0.49,
+            "coordinates": "LPS",
+            "units": "mm",
+            "all_components_and_cavity_interfaces_preserved": true
+          },
+          "bone": {
+            "mask_sha256": "12e9161e090b9fa674bf009e45982c2d80259811e5bdbb3189100617c3e2bd53",
+            "STL_sha256": "ababb5d84ab223c2b99e6c5d73c00e64a09e8e75b4f5b95d67a031018d3e10e8",
+            "vertices": 699558,
+            "triangles": 1399324,
+            "connected_surface_components": 66,
+            "watertight": true,
+            "winding_consistent": true,
+            "signed_surface_volume_ml": 1441.5784799858027,
+            "mask_voxels": 1493871,
+            "mask_volume_ml": 1442.4739521906492,
+            "maximum_export_vertex_displacement_mm": 1.6655205914090136e-05,
+            "ordered_triangles_checked": true,
+            "surface_level": 0.49,
+            "coordinates": "LPS",
+            "units": "mm",
+            "all_components_and_cavity_interfaces_preserved": true
+          },
+          "heart": {
+            "mask_sha256": "4840660ae17df6296bffba5bfe184e882059f59656aa697c0f59c575ec1f174d",
+            "STL_sha256": "14a34aef01baba2cd16462a71ea5c14b2dca9a914e236f709c7ee1e07bb88841",
+            "vertices": 85994,
+            "triangles": 171988,
+            "connected_surface_components": 1,
+            "watertight": true,
+            "winding_consistent": true,
+            "signed_surface_volume_ml": 650.7780594025892,
+            "mask_voxels": 673636,
+            "mask_volume_ml": 650.4593658072887,
+            "maximum_export_vertex_displacement_mm": 7.864199877963372e-06,
+            "ordered_triangles_checked": true,
+            "surface_level": 0.49,
+            "coordinates": "LPS",
+            "units": "mm",
+            "all_components_and_cavity_interfaces_preserved": true
+          },
+          "fat": {
+            "mask_sha256": "ae93ba66d49046b030af57a50301df1a4e490e47092f671f5ef6028f555aadfd",
+            "STL_sha256": "2abb92f439a85a41e9b82ef2de421317fba976fd1577bb0529a1657248dabdb0",
+            "vertices": 2715760,
+            "triangles": 5418372,
+            "connected_surface_components": 3977,
+            "watertight": true,
+            "winding_consistent": true,
+            "signed_surface_volume_ml": 13375.682926888847,
+            "mask_voxels": 13811735,
+            "mask_volume_ml": 13336.538410652536,
+            "maximum_export_vertex_displacement_mm": 1.6655205914090136e-05,
+            "ordered_triangles_checked": true,
+            "surface_level": 0.49,
+            "coordinates": "LPS",
+            "units": "mm",
+            "all_components_and_cavity_interfaces_preserved": true
+          }
+        }
+      },
+      "nik": {
+        "status": "automatic_pending_anatomical_review",
+        "local_artifact": "Experiments/scorpion_20261022/derived/exploratory/universal_meshing_20261026/nik_segmented_STL_v1",
+        "manifest_sha256": "3f2c26b38f92896cbc5ce1ac9c6e5aba46b92af16dd611ecb21eb9fee1e905de",
+        "segmentation_version": "2.18.0",
+        "reused_tissue_masks": true,
+        "CT_sha256": "2d8a5a510f80df68b84cb12caddf35c6bb9e8b7624e58a262c81597c02e8440a",
+        "products": {
+          "body": {
+            "mask_sha256": "150b1509d79cca2ffbe4f9fa779c19b66da070d0e7febc561e9439b523c18f5f",
+            "STL_sha256": "767c81e1846aeff406b28b3da873ec51279907fc15b0235febd743c5cf955a68",
+            "vertices": 664256,
+            "triangles": 1328512,
+            "connected_surface_components": 1,
+            "watertight": true,
+            "winding_consistent": true,
+            "signed_surface_volume_ml": 19431.386713761018,
+            "mask_voxels": 26514254,
+            "mask_volume_ml": 19427.71113708496,
+            "maximum_export_vertex_displacement_mm": 1.2218952178955078e-05,
+            "ordered_triangles_checked": true,
+            "surface_level": 0.49,
+            "coordinates": "LPS",
+            "units": "mm",
+            "all_components_and_cavity_interfaces_preserved": true
+          },
+          "lung": {
+            "mask_sha256": "276d0acaaa619db96223cb8b3f2d255a1f30f00985d4f5ac8ed6c474c81d2ad0",
+            "STL_sha256": "e7249bbf34d7654345434a8d950e71a485485b24d9f90e36b9acd0161293ac4a",
+            "vertices": 427992,
+            "triangles": 856020,
+            "connected_surface_components": 1,
+            "watertight": true,
+            "winding_consistent": true,
+            "signed_surface_volume_ml": 4175.656635285394,
+            "mask_voxels": 5696187,
+            "mask_volume_ml": 4173.750301208496,
+            "maximum_export_vertex_displacement_mm": 5.7220458984375e-06,
+            "ordered_triangles_checked": true,
+            "surface_level": 0.49,
+            "coordinates": "LPS",
+            "units": "mm",
+            "all_components_and_cavity_interfaces_preserved": true
+          },
+          "bone": {
+            "mask_sha256": "1c5d6e7fc4503ba7c16175134b8560bbeb2187968a1205471d62d64998476cef",
+            "STL_sha256": "18b6e675c6331292e2978341418383169fcf71ab16d0aa4a7f8f0d2b4ff23141",
+            "vertices": 744536,
+            "triangles": 1489044,
+            "connected_surface_components": 93,
+            "watertight": true,
+            "winding_consistent": true,
+            "signed_surface_volume_ml": 1310.453100753291,
+            "mask_voxels": 1788378,
+            "mask_volume_ml": 1310.3929376220703,
+            "maximum_export_vertex_displacement_mm": 1.2218952178955078e-05,
+            "ordered_triangles_checked": true,
+            "surface_level": 0.49,
+            "coordinates": "LPS",
+            "units": "mm",
+            "all_components_and_cavity_interfaces_preserved": true
+          },
+          "heart": {
+            "mask_sha256": "f9a1219048b69cc22a558d792b884edcf47986e54b2f83218bb6f8ee6f80c6e3",
+            "STL_sha256": "5f626cb88ffe67dcb30d170f9beff4d6940168980050d4a55f8c62e13391444f",
+            "vertices": 93792,
+            "triangles": 187576,
+            "connected_surface_components": 4,
+            "watertight": true,
+            "winding_consistent": true,
+            "signed_surface_volume_ml": 578.7208277930845,
+            "mask_voxels": 789432,
+            "mask_volume_ml": 578.4381811523438,
+            "maximum_export_vertex_displacement_mm": 5.7220458984375e-06,
+            "ordered_triangles_checked": true,
+            "surface_level": 0.49,
+            "coordinates": "LPS",
+            "units": "mm",
+            "all_components_and_cavity_interfaces_preserved": true
+          },
+          "fat": {
+            "mask_sha256": "e04b8d09e6af900e9a118a2bb3c8d609e4d15d027471a6b8bb9450a557b54f7e",
+            "STL_sha256": "6aedabb6c13b3253700fd43398c1120ed9243cf6e9dad8fb866aa48db9dabca2",
+            "vertices": 1611894,
+            "triangles": 3223248,
+            "connected_surface_components": 298,
+            "watertight": true,
+            "winding_consistent": true,
+            "signed_surface_volume_ml": 3117.3472268682954,
+            "mask_voxels": 4245694,
+            "mask_volume_ml": 3110.9348431396484,
+            "maximum_export_vertex_displacement_mm": 1.2218952178955078e-05,
+            "ordered_triangles_checked": true,
+            "surface_level": 0.49,
+            "coordinates": "LPS",
+            "units": "mm",
+            "all_components_and_cavity_interfaces_preserved": true
+          }
+        }
+      },
+      "yaroslav": {
+        "status": "automatic_pending_anatomical_review",
+        "local_artifact": "Experiments/scorpion_20261022/derived/exploratory/universal_meshing_20261026/yaroslav_segmented_STL_v1",
+        "manifest_sha256": "d94110a6b60e94238923f5f2a3dcab676b9a9cc789e3ee948fe34201b7b4fe90",
+        "segmentation_version": "2.18.0",
+        "reused_tissue_masks": true,
+        "CT_sha256": "eba820691f47c43c0f5eabf51abbd0df329fa6c8ac0ba494507871110400a4a3",
+        "products": {
+          "body": {
+            "mask_sha256": "c92be560d43906a85edbcfbe5d546eabd306deab5ec802cbc6b7437d81b41688",
+            "STL_sha256": "ed13412a94320b4d517a7b3ddcdb677d0355f9d9e00b5d3da341f84197393df4",
+            "vertices": 560354,
+            "triangles": 1120704,
+            "connected_surface_components": 1,
+            "watertight": true,
+            "winding_consistent": true,
+            "signed_surface_volume_ml": 19670.62427036007,
+            "mask_voxels": 20367448,
+            "mask_volume_ml": 19666.700279071974,
+            "maximum_export_vertex_displacement_mm": 1.6655205914090136e-05,
+            "ordered_triangles_checked": true,
+            "surface_level": 0.49,
+            "coordinates": "LPS",
+            "units": "mm",
+            "all_components_and_cavity_interfaces_preserved": true
+          },
+          "lung": {
+            "mask_sha256": "52e3656d1609b7d0c955d902c765e4ddc8804a6c21c5170d312f097d815ffee0",
+            "STL_sha256": "c353b7f1ef4aad5828077afc67ec7a9d3e326900c2c455026749a02812473022",
+            "vertices": 391074,
+            "triangles": 782140,
+            "connected_surface_components": 7,
+            "watertight": true,
+            "winding_consistent": true,
+            "signed_surface_volume_ml": 4860.566054396007,
+            "mask_voxels": 5031425,
+            "mask_volume_ml": 4858.317421585155,
+            "maximum_export_vertex_displacement_mm": 1.6324274796127024e-05,
+            "ordered_triangles_checked": true,
+            "surface_level": 0.49,
+            "coordinates": "LPS",
+            "units": "mm",
+            "all_components_and_cavity_interfaces_preserved": true
+          },
+          "bone": {
+            "mask_sha256": "626511dfcb0123fda87914468648e1c127a8fcb4d6bb54472ad6c843eda4237b",
+            "STL_sha256": "a9ef2dd5a1ba16324e89f49eb36cddfc223db6671c040d59d1d29edd6a048c09",
+            "vertices": 685984,
+            "triangles": 1372184,
+            "connected_surface_components": 77,
+            "watertight": true,
+            "winding_consistent": true,
+            "signed_surface_volume_ml": 1551.4638142242666,
+            "mask_voxels": 1606888,
+            "mask_volume_ml": 1551.6025708295615,
+            "maximum_export_vertex_displacement_mm": 1.6324274796127024e-05,
+            "ordered_triangles_checked": true,
+            "surface_level": 0.49,
+            "coordinates": "LPS",
+            "units": "mm",
+            "all_components_and_cavity_interfaces_preserved": true
+          },
+          "heart": {
+            "mask_sha256": "aaab2c0f0f8eb467f5565ded703835161b96601c8eb053d9402d49509f07e0da",
+            "STL_sha256": "4931caf69763b0af6d2099b8bf90ef903ffad86bdfe79d67532321de13a204e9",
+            "vertices": 82022,
+            "triangles": 164048,
+            "connected_surface_components": 1,
+            "watertight": true,
+            "winding_consistent": true,
+            "signed_surface_volume_ml": 603.2471091068868,
+            "mask_voxels": 624442,
+            "mask_volume_ml": 602.957899078189,
+            "maximum_export_vertex_displacement_mm": 1.4480862273273673e-05,
+            "ordered_triangles_checked": true,
+            "surface_level": 0.49,
+            "coordinates": "LPS",
+            "units": "mm",
+            "all_components_and_cavity_interfaces_preserved": true
+          },
+          "fat": {
+            "mask_sha256": "317fcf1d5bf26dcee19c0bf3429a6f75d1c4601015f3bb6857a2e714b8a9b384",
+            "STL_sha256": "e3c6144571865df02d9a290323ecdd3951f136212f6c680602b271e06f3a507a",
+            "vertices": 1084026,
+            "triangles": 2167796,
+            "connected_surface_components": 310,
+            "watertight": true,
+            "winding_consistent": true,
+            "signed_surface_volume_ml": 1339.8797855840046,
+            "mask_voxels": 1387169,
+            "mask_volume_ml": 1339.4430642179616,
+            "maximum_export_vertex_displacement_mm": 1.6655205914090136e-05,
+            "ordered_triangles_checked": true,
+            "surface_level": 0.49,
+            "coordinates": "LPS",
+            "units": "mm",
+            "all_components_and_cavity_interfaces_preserved": true
+          }
+        }
+      }
+    }
+  }
+}
