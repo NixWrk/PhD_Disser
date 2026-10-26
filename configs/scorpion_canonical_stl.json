@@ -1,0 +1,270 @@
+{
+  "schema": "scorpion_canonical_STL_selection_v1",
+  "decision_date": "2026-10-26",
+  "selection_status": "author_selected_optimal_working_version",
+  "decision_source": "direct_author_instruction",
+  "method": {
+    "backend": "TotalSegmentator",
+    "version": "2.18.0",
+    "entry_point": "tools/segment_ct_to_stl.py",
+    "configuration_example": "configs/ct_fem_totalsegmentator.example.json",
+    "standard": "docs/CT_FEM_PREPARATION_STANDARD.md",
+    "coordinates": "LPS",
+    "units": "mm",
+    "surface_level": 0.49,
+    "native_CT_grid": true,
+    "preserve_all_components_and_cavity_interfaces": true,
+    "morphology_applied": false,
+    "domain_clipping_applied": false,
+    "synthetic_arms_added": false,
+    "electrodes_placed": false,
+    "implementation_sha256": {
+      "tools/segment_ct_to_stl.py": "f9a93bc54bca4e9e599279df71d687bfcece0b56944796f77c2b40174ec60cf7",
+      "tools/ct_fem_core.py": "9d2f249549e1e7be264b92d03274f6cd43813375ed0497dfb21ce239ea0fe735",
+      "tools/ct_fem_ct_pipeline.py": "93f3cae6c30823d974b9a805d86ddbbc626c83d12fcec6235930eddd4b0efe60",
+      "tools/ct_fem_totalsegmentator.py": "f57e5c54d401bf7ac444898bcad53cb8454e4e9149ec5becf35e631dc24d5b4f"
+    }
+  },
+  "subjects": [
+    {
+      "subject_alias": "georg",
+      "directory": "Experiments/scorpion_20261022/derived/exploratory/universal_meshing_20261026/georg_segmented_STL_v1",
+      "source_passport": "Experiments/scorpion_20261022/derived/exploratory/universal_meshing_20261026/georg_segmented_STL_v1/segmented_STL.local.json",
+      "source_passport_sha256": "33058cbdf2675e006e41507b9698f1bb741666036ef25778755d0aa152458814",
+      "FEM_preparation_directory": "Experiments/scorpion_20261022/derived/exploratory/universal_meshing_20261026/georg_ct_pipeline_v2",
+      "files": {
+        "body.stl": {
+          "sha256": "3954d8d0eb71f3549a314cae26d24b3f3e26ab66a3efec441dc5c2b591a5de72",
+          "bytes": 78090684
+        },
+        "lung.stl": {
+          "sha256": "571163a86b3333a720945b51182e39f4fbb4cbd04b1c5fb3cf24815c87505715",
+          "bytes": 46052484
+        },
+        "bone.stl": {
+          "sha256": "ababb5d84ab223c2b99e6c5d73c00e64a09e8e75b4f5b95d67a031018d3e10e8",
+          "bytes": 69966284
+        },
+        "heart.stl": {
+          "sha256": "14a34aef01baba2cd16462a71ea5c14b2dca9a914e236f709c7ee1e07bb88841",
+          "bytes": 8599484
+        },
+        "fat.stl": {
+          "sha256": "2abb92f439a85a41e9b82ef2de421317fba976fd1577bb0529a1657248dabdb0",
+          "bytes": 270918684
+        }
+      }
+    },
+    {
+      "subject_alias": "nik",
+      "directory": "Experiments/scorpion_20261022/derived/exploratory/universal_meshing_20261026/nik_segmented_STL_v1",
+      "source_passport": "Experiments/scorpion_20261022/derived/exploratory/universal_meshing_20261026/nik_segmented_STL_v1/segmented_STL.local.json",
+      "source_passport_sha256": "3f2c26b38f92896cbc5ce1ac9c6e5aba46b92af16dd611ecb21eb9fee1e905de",
+      "FEM_preparation_directory": "Experiments/scorpion_20261022/derived/exploratory/universal_meshing_20261026/nik_ct_pipeline_v5",
+      "files": {
+        "body.stl": {
+          "sha256": "767c81e1846aeff406b28b3da873ec51279907fc15b0235febd743c5cf955a68",
+          "bytes": 66425684
+        },
+        "lung.stl": {
+          "sha256": "e7249bbf34d7654345434a8d950e71a485485b24d9f90e36b9acd0161293ac4a",
+          "bytes": 42801084
+        },
+        "bone.stl": {
+          "sha256": "18b6e675c6331292e2978341418383169fcf71ab16d0aa4a7f8f0d2b4ff23141",
+          "bytes": 74452284
+        },
+        "heart.stl": {
+          "sha256": "5f626cb88ffe67dcb30d170f9beff4d6940168980050d4a55f8c62e13391444f",
+          "bytes": 9378884
+        },
+        "fat.stl": {
+          "sha256": "6aedabb6c13b3253700fd43398c1120ed9243cf6e9dad8fb866aa48db9dabca2",
+          "bytes": 161162484
+        }
+      }
+    },
+    {
+      "subject_alias": "yaroslav",
+      "directory": "Experiments/scorpion_20261022/derived/exploratory/universal_meshing_20261026/yaroslav_segmented_STL_v1",
+      "source_passport": "Experiments/scorpion_20261022/derived/exploratory/universal_meshing_20261026/yaroslav_segmented_STL_v1/segmented_STL.local.json",
+      "source_passport_sha256": "d94110a6b60e94238923f5f2a3dcab676b9a9cc789e3ee948fe34201b7b4fe90",
+      "FEM_preparation_directory": "Experiments/scorpion_20261022/derived/exploratory/universal_meshing_20261026/yaroslav_ct_pipeline_v4",
+      "files": {
+        "body.stl": {
+          "sha256": "ed13412a94320b4d517a7b3ddcdb677d0355f9d9e00b5d3da341f84197393df4",
+          "bytes": 56035284
+        },
+        "lung.stl": {
+          "sha256": "c353b7f1ef4aad5828077afc67ec7a9d3e326900c2c455026749a02812473022",
+          "bytes": 39107084
+        },
+        "bone.stl": {
+          "sha256": "a9ef2dd5a1ba16324e89f49eb36cddfc223db6671c040d59d1d29edd6a048c09",
+          "bytes": 68609284
+        },
+        "heart.stl": {
+          "sha256": "4931caf69763b0af6d2099b8bf90ef903ffad86bdfe79d67532321de13a204e9",
+          "bytes": 8202484
+        },
+        "fat.stl": {
+          "sha256": "e3c6144571865df02d9a290323ecdd3951f136212f6c680602b271e06f3a507a",
+          "bytes": 108389884
+        }
+      }
+    }
+  ],
+  "technical_FEM_surfaces_are_separate_products": true,
+  "independent_anatomical_validation": false,
+  "clinical_validation": false,
+  "raw_medical_arrays_committed": false,
+  "cleanup": {
+    "status": "completed_for_audited_paths",
+    "removed_STL_files": 1324,
+    "removed_bytes": 6413911389,
+    "preserved_canonical_STL_files": 15,
+    "preserved_technical_FEM_STL_files": 31,
+    "active_dependency_JSON_files_verified": 736,
+    "excluded_inaccessible_test_directories": [
+      "MATLAB_TRKG4_real_subjects/output/exploratory/georg_convergence_20261014/synthetic_pytest_v1",
+      "MATLAB_TRKG4_real_subjects/output/exploratory/georg_integration_stability_test_e2bfa626a75944919d1f72e2d5f60313",
+      "MATLAB_TRKG4_real_subjects/output/exploratory/georg_integration_stability_test_e7ef7d16de794e53bcaaa0ddef8f10f9"
+    ],
+    "receipts": [
+      {
+        "path": "Experiments/scorpion_20261022/derived/exploratory/universal_meshing_20261026/stl_cleanup_20261026.receipt.local.json",
+        "sha256": "878033c55d80cca97cff3e8856734ae0816b44d90b4f7869a3d4b7e78222718b"
+      },
+      {
+        "path": "Experiments/scorpion_20261022/derived/exploratory/universal_meshing_20261026/stl_cleanup_20261026.exact_files.receipt.local.json",
+        "sha256": "8332d888cb3f7238533405e79b0c1782f5d9b78fab784ff13c7f75f84b516635"
+      }
+    ]
+  },
+  "protected_technical_STL_dependencies": [
+    {
+      "path": "Experiments/scorpion_20261022/derived/exploratory/universal_meshing_20261026/georg_ct_pipeline_v2/body_totalsegmentator_LPS.stl",
+      "sha256": "08a4e0548fbd2b141381c5010d49112bd7ba05396a9e86e6b0c8862caace7e60"
+    },
+    {
+      "path": "Experiments/scorpion_20261022/derived/exploratory/universal_meshing_20261026/georg_ct_pipeline_v2/geometry/mesh/fem_boundary.stl",
+      "sha256": "771bd5e3bf9fa9eb3494a352cdee877c2a8f38a62d3775df313f6c6e0828a60d"
+    },
+    {
+      "path": "Experiments/scorpion_20261022/derived/exploratory/universal_meshing_20261026/georg_ct_pipeline_v2/geometry/mesh/recovery_01/exterior.stl",
+      "sha256": "b765b97c4e7fd9a6fe7e1575198ea523b05c39c99a70d4ffb442b976e2d66833"
+    },
+    {
+      "path": "Experiments/scorpion_20261022/derived/exploratory/universal_meshing_20261026/georg_ct_pipeline_v2/geometry/remesh/exterior.stl",
+      "sha256": "d6f95e45a7ed86f364d350e2e26b685db616ef946c03de8c15ec6b6aa9a9a550"
+    },
+    {
+      "path": "Experiments/scorpion_20261022/derived/exploratory/universal_meshing_20261026/georg_ct_pipeline_v2/geometry/remesh/remesh_00_global.stl",
+      "sha256": "45e1d632d7b6854cab27164f5b7acd9f800ba9b5d7104320d4c04c84dcddffce"
+    },
+    {
+      "path": "Experiments/scorpion_20261022/derived/exploratory/universal_meshing_20261026/georg_ct_pipeline_v2/geometry/remesh/remesh_01_buffer.stl",
+      "sha256": "9f4a8f813ab6204083177e59ba8eb806d04ec00a1e07e511d675cb94b978df61"
+    },
+    {
+      "path": "Experiments/scorpion_20261022/derived/exploratory/universal_meshing_20261026/georg_ct_pipeline_v2/geometry/remesh/remesh_02_contact.stl",
+      "sha256": "d6f95e45a7ed86f364d350e2e26b685db616ef946c03de8c15ec6b6aa9a9a550"
+    },
+    {
+      "path": "Experiments/scorpion_20261022/derived/exploratory/universal_meshing_20261026/georg_ct_pipeline_v2/geometry/surface/exterior.stl",
+      "sha256": "77957fd876ce27b716d3b4934c48f0435d9ab10ce3438a06fbc4784383e8d0df"
+    },
+    {
+      "path": "Experiments/scorpion_20261022/derived/exploratory/universal_meshing_20261026/georg_ct_pipeline_v2/geometry/surface/skin_regularized.stl",
+      "sha256": "08a4e0548fbd2b141381c5010d49112bd7ba05396a9e86e6b0c8862caace7e60"
+    },
+    {
+      "path": "Experiments/scorpion_20261022/derived/exploratory/universal_meshing_20261026/georg_ct_pipeline_v2/native_TS_all_interfaces.stl",
+      "sha256": "79f3b5122c39905973f64066028ff3627dc191ce234550b4bdcbd4a0e3a27f8d"
+    },
+    {
+      "path": "Experiments/scorpion_20261022/derived/exploratory/universal_meshing_20261026/nik_ct_pipeline_v5/body_totalsegmentator_LPS.stl",
+      "sha256": "abef2ba8f50b61306c5a8965995bf4520d3cbca9f47551d2ffd98e122420d883"
+    },
+    {
+      "path": "Experiments/scorpion_20261022/derived/exploratory/universal_meshing_20261026/nik_ct_pipeline_v5/geometry/mesh/fem_boundary.stl",
+      "sha256": "caf20a398c34a11cd6d7a359c8f5d7e4dd97e68c10b8d9d93fca5fe6135c836d"
+    },
+    {
+      "path": "Experiments/scorpion_20261022/derived/exploratory/universal_meshing_20261026/nik_ct_pipeline_v5/geometry/mesh/recovery_01/exterior.stl",
+      "sha256": "bcef6d3e8636c88cbcbfdc09d704ca4766846cdafa32a2f834e610d1ea6815cd"
+    },
+    {
+      "path": "Experiments/scorpion_20261022/derived/exploratory/universal_meshing_20261026/nik_ct_pipeline_v5/geometry/mesh/recovery_02/exterior.stl",
+      "sha256": "edb46907260a22ad77d27710a987b390fda7ac0fbb940c8f1a6ea4851d2f10c7"
+    },
+    {
+      "path": "Experiments/scorpion_20261022/derived/exploratory/universal_meshing_20261026/nik_ct_pipeline_v5/geometry/remesh/exterior.stl",
+      "sha256": "e4d11c0201d06f37af0abbd04bcf2ea04d212367383583e0f05125d80fafaf04"
+    },
+    {
+      "path": "Experiments/scorpion_20261022/derived/exploratory/universal_meshing_20261026/nik_ct_pipeline_v5/geometry/remesh/remesh_00_global.stl",
+      "sha256": "257d94d118383a837a5b351a28eafe45c14b0edbcbe27ad0a5e318f4305ec536"
+    },
+    {
+      "path": "Experiments/scorpion_20261022/derived/exploratory/universal_meshing_20261026/nik_ct_pipeline_v5/geometry/remesh/remesh_01_buffer.stl",
+      "sha256": "e4705d6f13d67b8186e0f7adc4e8fd110f95b103e9a562ed79297777125cdca9"
+    },
+    {
+      "path": "Experiments/scorpion_20261022/derived/exploratory/universal_meshing_20261026/nik_ct_pipeline_v5/geometry/remesh/remesh_02_contact.stl",
+      "sha256": "e4d11c0201d06f37af0abbd04bcf2ea04d212367383583e0f05125d80fafaf04"
+    },
+    {
+      "path": "Experiments/scorpion_20261022/derived/exploratory/universal_meshing_20261026/nik_ct_pipeline_v5/geometry/surface/exterior.stl",
+      "sha256": "1cdab17394d42f1dad6a044de953a99a85805a08a169bdb0255dde495def7621"
+    },
+    {
+      "path": "Experiments/scorpion_20261022/derived/exploratory/universal_meshing_20261026/nik_ct_pipeline_v5/geometry/surface/skin_regularized.stl",
+      "sha256": "abef2ba8f50b61306c5a8965995bf4520d3cbca9f47551d2ffd98e122420d883"
+    },
+    {
+      "path": "Experiments/scorpion_20261022/derived/exploratory/universal_meshing_20261026/yaroslav_ct_pipeline_v4/body_totalsegmentator_LPS.stl",
+      "sha256": "c4daf071ad193451f9b6fa3b80f76a46815f0f4e08d098e85ac7202d76cd405e"
+    },
+    {
+      "path": "Experiments/scorpion_20261022/derived/exploratory/universal_meshing_20261026/yaroslav_ct_pipeline_v4/geometry/mesh/fem_boundary.stl",
+      "sha256": "c3650baccc810d25f59bd8016b71ba71b909b331486c8ab74aa6cc3fc303aa66"
+    },
+    {
+      "path": "Experiments/scorpion_20261022/derived/exploratory/universal_meshing_20261026/yaroslav_ct_pipeline_v4/geometry/mesh/recovery_01/exterior.stl",
+      "sha256": "7468c08c2f7a8ddae62fd10b4942aaa66d28a4a0177b14273ec2f05577de1daa"
+    },
+    {
+      "path": "Experiments/scorpion_20261022/derived/exploratory/universal_meshing_20261026/yaroslav_ct_pipeline_v4/geometry/mesh/recovery_02/exterior.stl",
+      "sha256": "d12b3ff480954d74881cfad3305558dc3115ef140314fe7afa1255cb12a3f0ef"
+    },
+    {
+      "path": "Experiments/scorpion_20261022/derived/exploratory/universal_meshing_20261026/yaroslav_ct_pipeline_v4/geometry/remesh/exterior.stl",
+      "sha256": "0593ba62001e7b9b755d8b10a23549addcdd0a0ac2d73cd7d61c9cea3d09579f"
+    },
+    {
+      "path": "Experiments/scorpion_20261022/derived/exploratory/universal_meshing_20261026/yaroslav_ct_pipeline_v4/geometry/remesh/remesh_00_global.stl",
+      "sha256": "92c67ef9e8146121a9405885d7c6ad50d4d04695c2ce5554755ad65feea9aa3f"
+    },
+    {
+      "path": "Experiments/scorpion_20261022/derived/exploratory/universal_meshing_20261026/yaroslav_ct_pipeline_v4/geometry/remesh/remesh_01_buffer.stl",
+      "sha256": "bfc260ba574e3c1cf4da13ea0dc111759b46bbd323e9dad2f9c6eff74daf0936"
+    },
+    {
+      "path": "Experiments/scorpion_20261022/derived/exploratory/universal_meshing_20261026/yaroslav_ct_pipeline_v4/geometry/remesh/remesh_02_contact.stl",
+      "sha256": "0593ba62001e7b9b755d8b10a23549addcdd0a0ac2d73cd7d61c9cea3d09579f"
+    },
+    {
+      "path": "Experiments/scorpion_20261022/derived/exploratory/universal_meshing_20261026/yaroslav_ct_pipeline_v4/geometry/surface/exterior.stl",
+      "sha256": "66f600f7ef93bd2d6f94c1fb2acda7904ec42c0160c5973312e3448316ab2be5"
+    },
+    {
+      "path": "Experiments/scorpion_20261022/derived/exploratory/universal_meshing_20261026/yaroslav_ct_pipeline_v4/geometry/surface/skin_regularized.stl",
+      "sha256": "c4daf071ad193451f9b6fa3b80f76a46815f0f4e08d098e85ac7202d76cd405e"
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/output/exploratory/georg_quality_rebuild_20261013/geometry_v5/body_ct_surface.stl",
+      "sha256": "d6ed130854e09c10653f8585064279bb106007ef358196c23f556aabb5b937bd"
+    }
+  ]
+}
