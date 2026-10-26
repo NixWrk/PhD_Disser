@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>__NAME__: 3D-модель и электроды</title>
+<style>
+body{margin:0;font:15px/1.5 system-ui,sans-serif;color:#172033;background:white}
+main{padding:14px}h1{font-size:21px;margin:0 0 8px}
+.controls,.layers{display:flex;gap:10px 18px;align-items:center;flex-wrap:wrap;margin:10px 0}
+button,select{font:inherit;padding:6px 10px;border:1px solid #94a3b8;border-radius:5px;background:white;cursor:pointer}
+label{cursor:pointer}input[type=checkbox]{accent-color:#2563eb;margin-right:6px}
+.hint{font-size:13px;color:#475569;margin:7px 0}.red{color:#dc2626}.blue{color:#2563eb}
+#subject-geometry{width:100%;height:650px}#selection-status{font-weight:600}
+</style></head><body><main>
+<h1>__NAME__: собственная 3D-модель и расположение электродов</h1>
+<p class="hint">Вращение — мышью, масштаб — колесом, перемещение — правой кнопкой мыши.
+Переключение сборок и тканей сохраняет выбранный ракурс и масштаб.</p>
+<div class="controls"><label>Записанные сборки: <select id="montage">__OPTIONS__</select></label>
+<button data-view="oblique">Общий вид</button><button data-view="right">Справа</button><button data-view="front">Спереди</button>
+</div>
+<div class="layers">__LAYERS__</div>
+<div class="controls"><label><input type="checkbox" id="show-side" checked>Боковые электроды</label>
+<label><input type="checkbox" id="show-arm" checked>ТТРКГ на руках</label>
+<label><input type="checkbox" id="show-labels" checked>Подписи контактов</label>
+<label><input type="checkbox" id="show-inactive" checked>Неактивные нижние контакты 1×1</label>
+<label>Непрозрачность кожи: <input id="skin-opacity" type="range" min="0.05" max="0.7" step="0.05" value="0.25"></label></div>
+<p id="selection-status" aria-live="polite"></p>
+__PLOT__
+<p><span class="red">Красные — токовые I, A/B.</span> <span class="blue">Синие — измерительные U, M/N.</span>
+Серые нижние контакты 1×1 — физически оставленные плавающие площадки в рабочем сценарии.
+Круговые диски имеют номинальный диаметр 5 мм; маркеры и подписи увеличены для чтения.
+Линия A–M–N–B показывает порядок центров и не изображает провод.</p>
+<p class="hint">Наружная поверхность — собственный Inobitec STL с цилиндрами рук обхватом 37 см.
+Внутренние поверхности получены из собственных автоматических КТ-масок; целое сердце не разделено на кровь и миокард.
+Боковой сдвиг −15 мм по Y, привязка рук к срезу КТ и контактные диски — рабочие геометрические допущения.
+Показаны спроецированные центры из подготовленного входа расчёта.
+Диски служат для просмотра номинальной площади и не заменяют ещё не построенные CEM-грани.
+Поверхности упрощены только для отображения. Сцена не подтверждает точность установки или FEM.</p>
+</main><script>
+const metadata=__METADATA__;
+const graph=document.getElementById('subject-geometry');
+let redraw=Promise.resolve();
+function update(){
+  redraw=redraw.then(()=>{
+    const [size,variant]=document.getElementById('montage').value.split('_');
+    const labels=document.getElementById('show-labels').checked;
+    const showArm=document.getElementById('show-arm').checked,showSide=document.getElementById('show-side').checked;
+    const showInactive=document.getElementById('show-inactive').checked;
+    const layers={};document.querySelectorAll('[data-layer]').forEach(e=>layers[e.dataset.layer]=e.checked);
+    const visible=metadata.map(m=>m.kind==='layer'?layers[m.layer]:
+      m.montage==='side'?(showSide&&m.size===Number(size)):
+      (showArm&&(!(variant==='1x1'&&m.bottom)||showInactive)));
+    const centres=[],colors=[],texts=[];
+    metadata.forEach((m,index)=>{if(m.kind==='centre'){
+      centres.push(index);colors.push(variant==='1x1'&&m.bottom?'#94a3b8':m.color);
+      texts.push(labels?'markers+text':'markers');
+    }});
+    const disks=[],diskColors=[];
+    metadata.forEach((m,index)=>{if(m.kind==='disk'){
+      disks.push(index);diskColors.push(variant==='1x1'&&m.bottom?'#94a3b8':metadata[index+1].color);
+    }});
+    document.getElementById('selection-status').textContent='Боковая '+size+' мм · ТТРКГ '+variant.replace('x','×')+
+      ' · руки 37 см · ΔY = −15 мм'+(variant==='1x1'?' · работают верхние контакты ТТРКГ':' · работают верхние и нижние контакты ТТРКГ');
+    // Only trace attributes change here. Camera, axis ranges and uirevision
+    // stay fixed; view buttons below are the sole camera-changing controls.
+    return Plotly.restyle(graph,{visible:visible})
+      .then(()=>Plotly.restyle(graph,{'marker.color':colors,mode:texts},centres))
+      .then(()=>Plotly.restyle(graph,{color:diskColors},disks));
+  });
+  return redraw;
+}
+document.querySelectorAll('input[type=checkbox],#montage').forEach(e=>e.addEventListener('change',update));
+document.getElementById('skin-opacity').addEventListener('input',e=>{
+  const body=metadata.findIndex(m=>m.kind==='layer'&&m.layer==='body');
+  Plotly.restyle(graph,{opacity:Number(e.target.value)},[body]);
+});
+const views={oblique:{x:-1.75,y:-1.6,z:.85},right:{x:-2.3,y:0,z:.15},front:{x:0,y:-2.3,z:.15}};
+document.querySelectorAll('[data-view]').forEach(e=>e.addEventListener('click',()=>{
+  Plotly.relayout(graph,{'scene.camera':{eye:views[e.dataset.view],up:{x:0,y:0,z:1},center:{x:0,y:0,z:0}}});
+}));
+update();
+</script></body></html>

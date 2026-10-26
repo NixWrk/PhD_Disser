@@ -63,6 +63,12 @@ def geometry_image(subject):
     return path
 
 
+def geometry_widget(subject):
+    from IPython.display import HTML,display
+    from subject_geometry_3d import widget
+    display(HTML(widget(subject)))
+
+
 def literal_tissues(subject):
     root=model_root(subject);ref=read(root/'reference_materials.local.json')
     labels=['Мягкотканный фон: мышца','Лёгкое','Кость: кортикальная','Целое сердце: миокардиальный сценарий','Жир']

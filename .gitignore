@@ -61,6 +61,7 @@ Thumbs.db
 /Experiments/*/raw/
 # Индивидуальные 3D-поверхности нового просмотра остаются локальными.
 /Colab Notebooks/scorpion_v2/20.41_3D_боковая_установка_Ника_и_Ярослава_Scorpion.html
+/Colab Notebooks/scorpion_v2/33.4*_3D_*.local.html
 /Experiments/*/photos/
 /Experiments/*/attachments/
 /Experiments/*/metadata/
