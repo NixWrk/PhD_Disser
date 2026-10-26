@@ -63,9 +63,9 @@ def geometry_image(subject):
     return path
 
 
-def geometry_widget(subject):
+def experiment_widget(subject):
     from IPython.display import HTML,display
-    from subject_geometry_3d import widget
+    from session_experiment_view import widget
     display(HTML(widget(subject)))
 
 

@@ -1,0 +1,34 @@
+<div id="experiment-viewer" style="border:1px solid #aaa;padding:12px">
+<p><label>Запись: <select id="experiment-record"></select></label></p>
+<input type="hidden" id="experiment-channel" value="0">
+<input type="hidden" id="experiment-ttrkg-variant" value="2x2">
+<p id="experiment-description"></p><p id="experiment-localisation" style="color:#904018"></p>
+<p>ТТРКГ — синий цвет; боковая сборка — оранжевый. I и A/B — токовые контакты,
+U и M/N — измерительные. Серые контакты отключены от активных групп в выбранной схеме;
+их физическое наличие остаётся допущением. Размер маркеров на экране не задаёт площадь электрода.</p>
+<p><label>Отсчёты обзорных графиков: <select id="experiment-sampling">
+<option value="full">Все отсчёты — без прореживания</option>
+<option value="extrema">Быстрый обзор — минимумы и максимумы 900 интервалов</option>
+</select></label></p>
+<fieldset><legend>Фильтры ЭКГ — независимое включение этапов</legend>
+<label><input type="checkbox" id="experiment-notch" checked> Режекторы 50/100/150 Гц, Q = 30</label><br>
+<label><input type="checkbox" id="experiment-band" checked> Полосовой фильтр Баттерворта (N = 4), 0,5–40 Гц</label>
+<p>Фильтры применены ко всей записи в прямом и обратном направлениях.
+Оба отключены — исходная ЭКГ. Выбор фильтров меняет показ кривых и спектров;
+кандидатная разметка и расчётные результаты сохраняются.</p>
+<p id="experiment-filter-description"></p></fieldset>
+<fieldset><legend>Видимость сигналов</legend>
+<label><input type="checkbox" id="experiment-show-channel-1" checked><span id="experiment-lead-label-1">Первое отведение</span></label>
+<label><input type="checkbox" id="experiment-show-channel-2" checked><span id="experiment-lead-label-2">Второе отведение</span></label>
+<p>Настройки сохраняются при смене записи и фильтров и не меняют назначение сборок.</p>
+<div id="experiment-visibility-controls" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:8px"></div>
+</fieldset>
+<p id="experiment-phase-description"></p>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:8px">
+<div id="experiment-ct"></div><div id="experiment-signals"><div id="experiment-bei-raw"></div>
+<div id="experiment-bei-slow"></div><div id="experiment-bei-pulse"></div><div id="experiment-ecg-overview"></div></div></div>
+<p>В легенде КТ можно независимо включать наружную поверхность, жир, кости, лёгкие и сердце.
+Наружная поверхность — собственный STL Inobitec; внутренние маски получены автоматически по собственной КТ.
+Упрощены только поверхности для показа. Поворот мышью, масштаб колесом;
+смена записи и видимости тканей сохраняет ракурс и масштаб.</p>
+<div id="experiment-ecg-detail"></div><div id="experiment-ecg-spectrum"></div></div>

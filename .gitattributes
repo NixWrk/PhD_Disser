@@ -37,6 +37,10 @@
 "Colab Notebooks/scorpion_v2/33.27_*" -text -whitespace
 "Colab Notebooks/scorpion_v2/33.27_*.html" filter=lfs diff=lfs merge=lfs -text -whitespace
 "Colab Notebooks/scorpion_v2/33.27_*.ipynb" filter=lfs diff=lfs merge=lfs -text -whitespace
+"Colab Notebooks/scorpion_v2/33.41_*.html" filter=lfs diff=lfs merge=lfs -text -whitespace
+"Colab Notebooks/scorpion_v2/33.41_*.ipynb" filter=lfs diff=lfs merge=lfs -text -whitespace
+"Colab Notebooks/scorpion_v2/33.42_*.html" filter=lfs diff=lfs merge=lfs -text -whitespace
+"Colab Notebooks/scorpion_v2/33.42_*.ipynb" filter=lfs diff=lfs merge=lfs -text -whitespace
 "Colab Notebooks/scorpion_v2/20.20_*" -text -whitespace
 "Colab Notebooks/scorpion_v2/33.22_*" -text -whitespace
 "Colab Notebooks/scorpion_v2/33.23_*" -text -whitespace
