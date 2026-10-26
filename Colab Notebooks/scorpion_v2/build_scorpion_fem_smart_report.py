@@ -98,14 +98,8 @@ def scalar_transfers(t):
             for role, (i, j, other) in ROLES.items()}
 
 
-def source_scenarios(own, cross):
-    return dict(own_ohm=own, cross_ohm=cross, phi0_signed_ohm=own+cross,
-                phipi_signed_ohm=own-cross, module_min_ohm=abs(abs(own)-abs(cross)),
-                module_max_ohm=abs(own)+abs(cross))
-
-
 def joint_grid_diagnostics(scan, observations):
-    """Descriptive grid minima in ohms, with no noise weighting or phase selection."""
+    """Descriptive own-drive grid minima for confirmed time-division operation."""
     if not scan["ready"]:return []
     fine=[r for r in scan["rows"] if r["rule"]==4096]
     points=defaultdict(dict)
@@ -119,33 +113,28 @@ def joint_grid_diagnostics(scan, observations):
             if not all((r["case_id"],r["role"]) in obs for r in labels):
                 raise ValueError("Measured montage/role missing for joint grid comparison")
             observed=np.array([obs[(r["case_id"],r["role"])] for r in labels],float)
-            for mode in ("own_ohm","phi0_signed_ohm","phipi_signed_ohm"):
-                sampled=[]
-                for point,by_case in sorted(points.items()):
-                    if any(case not in by_case for case in chosen):raise ValueError("Incomplete joint grid point")
-                    model=np.array([by_case[r["case_id"]]["source_modes"][r["role"]][mode] for r in labels],float)
-                    residual=model-observed
-                    sampled.append(dict(point_id=point,rho_ohm_m=by_case[chosen[0]]["rho_ohm_m"],
-                        predicted_ohm=model.tolist(),residual_model_minus_observed_ohm=residual.tolist(),
-                        euclidean_norm_ohm=float(np.linalg.norm(residual)),rms_ohm=float(np.sqrt(np.mean(residual**2)))))
-                metric="euclidean_norm_ohm" if scope=="primary_pair" else "rms_ohm"
-                minimum=min(sampled,key=lambda r:r[metric])
-                primary_ranges={}
-                if scope=="primary_pair":
-                    for i,role in enumerate(ROLES):
-                        modes=[p["L140_TT2x2"]["source_modes"][role] for p in points.values()]
-                        own_min=min(m["own_ohm"] for m in modes)
-                        module_min=min(m["module_min_ohm"] for m in modes)
-                        primary_ranges[role]=dict(own_min_ohm=own_min,own_max_ohm=max(m["own_ohm"] for m in modes),
-                            equal_amplitude_module_min_ohm=module_min,
-                            equal_amplitude_module_max_ohm=max(m["module_max_ohm"] for m in modes),
-                            observed_below_all_own=bool(observed[i]<own_min),
-                            observed_below_all_module_envelopes=bool(observed[i]<module_min))
-                output.append(dict(state=state,scope=scope,source_scenario=mode,selected_physical_phase=False,
-                    row_labels=labels,observed_ohm=observed.tolist(),sampled_points=len(sampled),
-                    metric=metric,minimum_on_sampled_grid=minimum,noise_weighted=False,
-                    primary_grid_ranges=primary_ranges,
-                    continuous_rectangle_excluded=False,individual_parameters_established=False))
+            sampled=[]
+            for point,by_case in sorted(points.items()):
+                if any(case not in by_case for case in chosen):raise ValueError("Incomplete joint grid point")
+                model=np.array([by_case[r["case_id"]]["transfers"][r["role"]]["own_ohm"] for r in labels],float)
+                residual=model-observed
+                sampled.append(dict(point_id=point,rho_ohm_m=by_case[chosen[0]]["rho_ohm_m"],
+                    predicted_ohm=model.tolist(),residual_model_minus_observed_ohm=residual.tolist(),
+                    euclidean_norm_ohm=float(np.linalg.norm(residual)),rms_ohm=float(np.sqrt(np.mean(residual**2)))))
+            metric="euclidean_norm_ohm" if scope=="primary_pair" else "rms_ohm"
+            minimum=min(sampled,key=lambda r:r[metric])
+            primary_ranges={}
+            if scope=="primary_pair":
+                for i,role in enumerate(ROLES):
+                    values=[p["L140_TT2x2"]["transfers"][role]["own_ohm"] for p in points.values()]
+                    own_min=min(values)
+                    primary_ranges[role]=dict(own_min_ohm=own_min,own_max_ohm=max(values),
+                        observed_below_all_own=bool(observed[i]<own_min))
+            output.append(dict(state=state,scope=scope,response_operator="own_ohm",excitation_mode="time_division",
+                row_labels=labels,observed_ohm=observed.tolist(),sampled_points=len(sampled),
+                metric=metric,minimum_on_sampled_grid=minimum,noise_weighted=False,
+                primary_grid_ranges=primary_ranges,
+                continuous_rectangle_excluded=False,individual_parameters_established=False))
     return output
 
 
@@ -241,6 +230,24 @@ def aggregate_comparisons(forward):
     return result, dict(excluded)
 
 
+def heart_own_controls(rows):
+    by={(r["geometry"],r["rule"]):r for r in rows}
+    expected={(g,q) for g in ("wholeheart_ct","sphere_v095","sphere_v100","sphere_v105") for q in (1024,4096)}
+    if len(rows)!=8 or set(by)!=expected:raise ValueError("Incomplete own heart contrast controls")
+    controls={}
+    for role in ROLES:
+        get=lambda g,q:by[(g,q)]["transfers"][role]["own_ohm"]
+        shape=lambda q:get("sphere_v100",q)-get("wholeheart_ct",q)
+        volume=lambda q:get("sphere_v105",q)-get("sphere_v095",q)
+        controls[role]=dict(equal_volume_shape_effect_ohm=shape(4096),
+            minus_to_plus_volume_response_ohm=volume(4096),
+            sphere_v100_own_q_difference_ohm=get("sphere_v100",4096)-get("sphere_v100",1024),
+            wholeheart_own_q_difference_ohm=get("wholeheart_ct",4096)-get("wholeheart_ct",1024),
+            shape_contrast_q_difference_ohm=shape(4096)-shape(1024),
+            volume_contrast_q_difference_ohm=volume(4096)-volume(1024))
+    return controls
+
+
 def heart_results(snap, base, subject):
     directory = base/"heart_pilot"
     plan = snap.json(directory/"plan.local.json", optional=True)
@@ -283,16 +290,7 @@ def heart_results(snap, base, subject):
             if digest(source["path"])!=source["sha256"]:raise ValueError("Heart adapter source changed")
         result["adapter_status"]=adapter["status"]
     else:result["adapter_status"]="pending"
-    by={(r["geometry"],r["rule"]):r for r in result["rows"]}
-    result["own_controls"]={}
-    if result["ready"]:
-        for role in ROLES:
-            get=lambda g,q:by[(g,q)]["transfers"][role]["own_ohm"]
-            result["own_controls"][role]=dict(
-                equal_volume_shape_effect_ohm=get("sphere_v100",4096)-get("wholeheart_ct",4096),
-                minus_to_plus_volume_response_ohm=get("sphere_v105",4096)-get("sphere_v095",4096),
-                sphere_v100_own_q_difference_ohm=get("sphere_v100",4096)-get("sphere_v100",1024),
-                wholeheart_own_q_difference_ohm=get("wholeheart_ct",4096)-get("wholeheart_ct",1024))
+    result["own_controls"]=heart_own_controls(result["rows"]) if result["ready"] else {}
     return result
 
 
@@ -345,7 +343,6 @@ def range_results(snap, base, subject, action, baseline):
             raise ValueError("Material-range port order mismatch")
         result = dict(case_id=row["case_id"], rule=row["rule"], rho_ohm_m=rho,
             transfers=scalar_transfers(row["transfer_matrix_ohm"]))
-        result["source_modes"]={role:source_scenarios(v["own_ohm"],v["cross_ohm"]) for role,v in result["transfers"].items()}
         for key in ("variant", "geometry", "volume_ml", "volume_integrated_ml", "point_id", "row_id"):
             if key in row:
                 result[key] = row[key]
@@ -373,6 +370,18 @@ def range_results(snap, base, subject, action, baseline):
         volumes={r["id"]:r["volume_ml_by_material"][3] for r in pilot["geometry"]["rows"]}
         for row in out["rows"]:
             row["volume_integrated_ml"]=volumes[f"{row['geometry']}_q{row['rule']}"]
+        out["own_controls"]=heart_own_controls(out["rows"])
+        scan=snap.json(base/"material_range/scan/results/forward.local.json")
+        links=[]
+        for rule in (1024,4096):
+            whole=next(r for r in answers if r["geometry"]=="wholeheart_ct" and r["rule"]==rule)
+            matching=[r for r in records(scan["answers"]) if r["case_id"]==whole["case_id"] and
+                r["geometry"]=="wholeheart_ct" and r["rule"]==rule and r["rho_ohm_m"]==whole["rho_ohm_m"]]
+            if len(matching)!=1:raise ValueError("Matching own scan-center control missing")
+            a=np.asarray(whole["transfer_matrix_ohm"]);b=np.asarray(matching[0]["transfer_matrix_ohm"])
+            links.append(dict(rule=rule,transfer_matrix_exact=bool(np.array_equal(a,b)),
+                max_abs_transfer_difference_ohm=float(np.max(np.abs(a-b)))))
+        out["wholeheart_scan_center_links"]=links
     return out
 
 
@@ -431,11 +440,10 @@ def collect(model_root):
         primary = primary[0]
         exhale=next(r for r in records(forward["answers"]) if r["case_id"]=="L140_TT2x2" and r["state"]=="exhale" and r["rule"]==4096)
         transfers = scalar_transfers(primary["transfer_matrix_ohm"])
-        source_modes = {role: source_scenarios(v["own_ohm"], v["cross_ohm"]) for role, v in transfers.items()}
-        for role, mode in source_modes.items():
+        primary_comparison = {role: dict(v) for role, v in transfers.items()}
+        for role, control in primary_comparison.items():
             observations = [r for r in comparison if r["case_id"] == "L140_TT2x2" and r["state"] == "inhale" and r["role"] == role]
-            mode["observed_median_ohm"] = observations[0]["observed_median_ohm"] if observations else None
-            mode["below_model_module_min"] = (mode["observed_median_ohm"] < mode["module_min_ohm"]) if observations else None
+            control["observed_median_ohm"] = observations[0]["observed_median_ohm"] if observations else None
         j = np.asarray(primary["jacobian_logrho"], float)
         basis = {role: (.01*j[i, own, :]).tolist() for role, (i, own, _) in ROLES.items()}
         fd = forward["derivative_checks"]
@@ -465,7 +473,7 @@ def collect(model_root):
             sensitivity=[dict(state=a["state"], subset=a["subset"], rule=a["rule"], row_labels=a["row_labels"],
                 matrix=a["matrices"]["dimensionless_signed_elasticity"],
                 quadrature=a["quadrature_control"]["matrices"]["dimensionless_signed_elasticity"]) for a in sensitivity["analyses"]],
-            basis_delta_logrho=.01, basis_delta_Z_ohm=basis, primary_transfers=transfers, source_modes=source_modes,
+            basis_delta_logrho=.01, basis_delta_Z_ohm=basis, primary_transfers=transfers, primary_comparison=primary_comparison,
             qc=dict(system_checks=len(checks), max_relative_residual=max(r["system_relative_residual"] for r in checks),
                 max_reciprocity_ohm=max(r["reciprocity_ohm"] for r in checks),
                 integration_passed=forward["integration_passed"], fd_passed=fd["passed"],
@@ -481,7 +489,10 @@ def collect(model_root):
     summary = dict(schema="scorpion_fem_smart_reader_v1", generated_utc=datetime.now(timezone.utc).isoformat(),
         subjects=subjects, sources=[dict(relative_path=p, sha256=h) for p, h in sorted(snap.sources.items())],
         generator=dict(relative_path=Path(__file__).relative_to(ROOT).as_posix(), sha256=digest(__file__)),
-        frequency_hz=100000, own_drive_is_scenario=True, source_relative_phase="unknown",
+        frequency_hz=100000, own_drive_is_scenario=False, source_relative_phase="not_applicable_time_division",
+        author_overlay=dict(mode="time_division",author_confirmation="2026-10-26",phase_not_applicable=True,
+            confirmation_source="direct_author_confirmation",own_drive_matches_confirmed_mode=True,
+            cross_transfers_summed_into_prediction=False,original_source_reports_unchanged=True),
         heart_results_completed=sum(s["heart"]["completed"] for s in subjects), heart_results_expected=24,
         material_range_completed=sum(r["ready"] for s in subjects for r in s["material_range"].values()),
         material_range_expected=6, mesh_convergence=False, clinical_validation=False, stroke_volume_estimated=False,
@@ -514,12 +525,11 @@ def placement_table(summary):
          for s in summary["subjects"] for p in s["placement"]], "Таблица 2. Отказы переноса при прежнем допуске проекции 1 мм")
 
 
-def phases_table(summary):
-    return table_html(["Участник", "Отведение", "Измерение, Ом", "own, Ом", "cross, Ом", "φ=0, Ом", "φ=π, Ом", "Минимум модуля, Ом", "Максимум модуля, Ом"],
-        [[s["id"], ROLE_NAMES[role], m["observed_median_ohm"], m["own_ohm"], m["cross_ohm"],
-          m["phi0_signed_ohm"], m["phipi_signed_ohm"], m["module_min_ohm"], m["module_max_ohm"]]
-         for s in summary["subjects"] for role, m in s["source_modes"].items()],
-        "Таблица 3. Два равных тока: условные фазы для 140 мм и ТТРКГ 2×2 на вдохе")
+def drive_table(summary):
+    return table_html(["Участник", "Отведение", "Измерение, Ом", "Прогноз own_drive, Ом", "Перекрёстная передача cross, Ом"],
+        [[s["id"], ROLE_NAMES[role], m["observed_median_ohm"], m["own_ohm"], m["cross_ohm"]]
+         for s in summary["subjects"] for role, m in s["primary_comparison"].items()],
+        "Таблица 3. Временное разделение: собственный прогноз и отдельный контроль перекрёстных передач, 140 мм/ТТРКГ 2×2 на вдохе")
 
 
 def status_table(summary):
@@ -529,7 +539,7 @@ def status_table(summary):
 
 
 def range_tables(summary):
-    envelopes=[];center=[];joint=[]
+    levels=[];center=[];joint=[]
     for s in summary["subjects"]:
         scan=s["material_range"]["scan"]
         if not scan["ready"]:continue
@@ -538,13 +548,8 @@ def range_tables(summary):
             if r["rule"]==4096:groups[r["case_id"]].append(r)
         for case,values in sorted(groups.items()):
             for role in ROLES:
-                for mode in ("own_ohm","phi0_signed_ohm","phipi_signed_ohm"):
-                    z=[r["source_modes"][role][mode] for r in values]
-                    mode_name={"own_ohm":"own_drive","phi0_signed_ohm":"φ=0","phipi_signed_ohm":"φ=π"}[mode]
-                    envelopes.append([s["id"],case,ROLE_NAMES[role],mode_name,min(z),max(z),len(z)])
-                envelopes.append([s["id"],case,ROLE_NAMES[role],"Модуль при неизвестной φ",
-                    min(r["source_modes"][role]["module_min_ohm"] for r in values),
-                    max(r["source_modes"][role]["module_max_ohm"] for r in values),len(values)])
+                z=[r["transfers"][role]["own_ohm"] for r in values]
+                levels.append([s["id"],case,ROLE_NAMES[role],"own_drive · временное разделение",min(z),max(z),len(z)])
         for r in scan["center_identifiability"]["matrices"]:
             for key,label in (("all_four","Четыре rho"),("soft_lung_only","Фон и лёгкое; прочие фиксированы")):
                 d=r[key];center.append([s["id"],r["subset"],label,d["shape"][0],d["rank"],d["nullity"],
@@ -553,13 +558,13 @@ def range_tables(summary):
             m=d["minimum_on_sampled_grid"]
             joint.append([s["id"],{"inhale":"Вдох","exhale":"Выдох"}[d["state"]],
                 "Первичная пара" if d["scope"]=="primary_pair" else "Все монтажи",
-                {"own_ohm":"own_drive","phi0_signed_ohm":"φ=0","phipi_signed_ohm":"φ=π"}[d["source_scenario"]],
+                "own_drive · временное разделение",
                 m["rho_ohm_m"][0],m["rho_ohm_m"][1],"Норма 2" if d["scope"]=="primary_pair" else "RMS",
                 m[d["metric"]],len(d["row_labels"]),"; ".join(f"{v:+.6g}" for v in m["residual_model_minus_observed_ohm"])])
-    return table_html(["Участник","Монтаж","Отведение","Источник: сценарий","Z мин., Ом","Z макс., Ом","Точек"],envelopes,
-        "Таблица 5а. Новая сетка сопротивлений: диапазон условных прямых ответов")+table_html(
-        ["Участник","Наблюдаемое состояние","Набор","Источник: сценарий","ρфона точки минимума","ρлёгкого точки минимума","Метрика","Минимум, Ом","Число наблюдений","Знаковые невязки, Ом"],joint,
-        "Таблица 5б. Описательные совместные минимумы среди рассчитанных точек; без выбора фазы")+table_html(
+    return table_html(["Участник","Монтаж","Отведение","Режим возбуждения","Z мин., Ом","Z макс., Ом","Точек"],levels,
+        "Таблица 5а. Новая сетка сопротивлений: диапазон ответов при временном разделении каналов")+table_html(
+        ["Участник","Наблюдаемое состояние","Набор","Режим возбуждения","ρфона точки минимума","ρлёгкого точки минимума","Метрика","Минимум, Ом","Число наблюдений","Знаковые невязки, Ом"],joint,
+        "Таблица 5б. Описательные совместные минимумы среди рассчитанных точек при временном разделении")+table_html(
         ["Участник","Набор","Свободные параметры","Строк","Ранг","Нуль-мерность","Безразмерные сингулярные числа","Обусловленность"],center,
         "Таблица 6. Собственный Jacobian новой ветви в центре 2,5 / 7 / 1,35 Ом·м")
 
@@ -716,6 +721,13 @@ def notebook(summary, draft):
 данные между участниками не переносятся. Георгий, Ник и Ярослав — принятые
 проектом псевдонимы; ФИО и пространственные исходники не раскрываются.
 
+**Авторское решение о дальнейшей схеме.** Конечным входом методики принят
+сигнал ТТРКГ. Боковые сборки исключены из дальнейшей схемы определения
+тканевых ρ; их результаты сохраняются здесь как отрицательная диагностическая
+проверка и не предлагаются в качестве рабочей инверсии сопротивлений.
+Текущий вычислительный цикл сохраняет полный набор сравнений для разбора
+полученного отрицательного результата.
+
 Проверки численного решения и интегрирования пройдены в указанном ниже объёме.
 Совпадение с экспериментальными уровнями и практическая идентифицируемость
 параметров этим не установлены. Шесть пробных переносов электродов отклонены
@@ -724,7 +736,7 @@ def notebook(summary, draft):
 Все таблицы раскрываются по действию читателя.
 
 1. [Входы, прямая модель и контроль](#inputs)
-2. [Базовые уровни и два источника](#baseline)
+2. [Базовые уровни и временное разделение](#baseline)
 3. [Парное дыхательное различие](#breath)
 4. [Различимость сопротивлений](#svd)
 5. [Четыре тканевых возмущения](#basis)
@@ -819,7 +831,7 @@ Fᵀdiag(fₖ)F с повторением весов для трёх компо�
 остались непроверенными. Необходимость сгущения сетки данным отказом не установлена.
 Сценарные ±5 мм не являются доверительной погрешностью наклейки.""")
     md("""<a id="baseline"></a>
-## 2. Базовые уровни и неизвестная фаза двух источников
+## 2. Базовые уровни при временном разделении каналов
 
 **Экспериментальные наблюдения.** Сопоставляются сохранённые уровни на
 ретроспективно выделенных интервалах дыхательного протокола. Разметка остаётся
@@ -832,25 +844,27 @@ Fᵀdiag(fₖ)F с повторением весов для трёх компо�
 остаётся допущением сохранения подключения; подтверждение варианта ТТРКГ
 не превращает это допущение в подтверждённый факт о ролях отведений.
 
-**Сценарий прямой модели.** Основной прогноз использует собственный источник
-отведения — own_drive. Фактическая относительная фаза двух источников и
-оператор демодуляции прибора не подтверждены. Поэтому невязка этого прогноза
-не устанавливает единственную причину расхождения с измерением.
+**Подтверждённый режим прибора.** По прямому уточнению автора от 26.10.2026
+каналы Scorpion разделяются по времени. Относительная фаза одновременно
+действующих источников к этому режиму не применима. Основной прогноз
+использует собственный источник отведения — own_drive — и соответствует
+подтверждённому временному разделению. Сохранённые решения с отдельными
+правыми частями уже дают требуемые портовые ответы; пересчёт прямой задачи
+для этого уточнения не требуется. Геометрия, свойства тканей и контактные
+условия остаются заданными модельными предпосылками.
 Проверим отдельно размерную зависимость и варианты ТТРКГ.""")
-    residuals="; ".join(f"{s['id']}: "+", ".join(f"{ROLE_NAMES[role]} {s['source_modes'][role]['own_ohm']-s['source_modes'][role]['observed_median_ohm']:+.3f} Ом" for role in ROLES if s['source_modes'][role]['observed_median_ohm'] is not None) for s in summary["subjects"])
+    residuals="; ".join(f"{s['id']}: "+", ".join(f"{ROLE_NAMES[role]} {s['primary_comparison'][role]['own_ohm']-s['primary_comparison'][role]['observed_median_ohm']:+.3f} Ом" for role in ROLES if s['primary_comparison'][role]['observed_median_ohm'] is not None) for s in summary["subjects"])
     figure(1,"Сравнение на вдохе сохраняет различия размеров и группировки электродов", "fig_baseline",
-        "Измеренные медианные уровни и FEM-прогноз own_drive на вдохе. Столбцы — участники; верхний ряд — ТТРКГ, нижний — боковая сборка. Цвет различает вариант ТТРКГ, сплошные линии с кружками — наблюдение, пунктир с квадратами — модель. База указана по боковой сборке.",
-        "На рисунке 1 представлены условные прямые прогнозы без подгонки сопротивлений или усиления. Невязки первичного монтажа 140 мм/2×2: "+residuals+". Эти различия относятся к выбранным материалам, контактам и own_drive; совпадение формы размерной зависимости не заменяет проверки абсолютных уровней.")
-    md("""Сохранённые перекрёстные элементы позволяют отдельно рассмотреть два
-источника одинаковой амплитуды без нового FEM. Для каждого отведения a —
-собственный ответ, b — ответ от соседнего источника. При φ=0 знаковый ответ
-равен a+b, при φ=π — a−b; возможный модуль при неизвестной фазе лежит между
-||a|−|b|| и |a|+|b|. Это линейная модель двух источников с заданными токами (1).
-Она не определяет реальную демодуляцию. Сопоставление в таблице 3 относится
-к первичному монтажу 140 мм и ТТРКГ 2×2 на вдохе.""")
-    code("display(HTML(F.phases_table(S)))")
-    below=[s["id"] for s in summary["subjects"] if s["source_modes"]["ttrkg"]["below_model_module_min"]]
-    md(f"В таблице 3 число участников, у которых положительный измеренный уровень ТТРКГ ниже нижней модельной границы модуля: {len(below)} из 3. В этих случаях изменение одной фазы не устраняет расхождение в пределах рассматриваемой модели. Вывод условен при заданных материалах и равных токах; режим прибора им не установлен.")
+        "Измеренные медианные уровни и FEM-прогноз own_drive на вдохе при подтверждённом временном разделении каналов. Столбцы — участники; верхний ряд — ТТРКГ, нижний — боковая сборка. Цвет различает вариант ТТРКГ, сплошные линии с кружками — наблюдение, пунктир с квадратами — модель. База указана по боковой сборке.",
+        "На рисунке 1 представлены прямые прогнозы для заданных материалов и CEM без подгонки сопротивлений или усиления. Невязки первичного монтажа 140 мм/2×2: "+residuals+". Эти различия относятся к выбранным материалам, геометрии и контактам; совпадение формы размерной зависимости не заменяет проверки абсолютных уровней.")
+    md("""Для подтверждённого режима используются ZТТРКГ=T(2,1) и
+Zбок=T(4,3) (1), где T — сохранённая матрица портовых передач.
+Перекрёстные передачи T(2,3) и T(4,1) оставлены отдельно для контроля
+ответов и взаимосвязей портов. При временном разделении они не прибавляются
+к собственному ответу и не входят в основной прогноз измеряемого Z.
+Таблица 3 относится к первичному монтажу 140 мм и ТТРКГ 2×2 на вдохе.""")
+    code("display(HTML(F.drive_table(S)))")
+    md("Ненулевые перекрёстные передачи характеризуют ответ измерительной пары на ток соседней пары в модели. Они сохраняют самостоятельное диагностическое значение; основной ответ при подтверждённом временном разделении определяется своим источником.")
     md("""<a id="breath"></a>
 ## 3. Парное различие между вдохом и выдохом
 
@@ -875,7 +889,7 @@ background-only даёт нулевой контраст по конструкц
         mismatch=sum(v["observed_delta_ohm"]*v["predicted_delta_ohm"]<0 for v in s["breath"] if v["role"]=="lateral")
         breath_text.append(f"{s['id']}: первичный ТТРКГ — наблюдение {v['observed_delta_ohm']:+.4g} Ом, модель {v['predicted_delta_ohm']:+.4g} Ом; число боковых монтажей с различным знаком наблюдения и модели — {mismatch}")
     figure(2,"Проверим величину и знак парного контраста для каждого монтажа", "fig_breath",
-        "Парные дыхательные разности: наблюдение и условный FEM own_drive. Синий столбец — медиана парных разностей, оранжевый — модель. Категории обозначают базу боковой сборки в миллиметрах и вариант ТТРКГ.",
+        "Парные дыхательные разности: наблюдение и модельный lung-only контраст own_drive при временном разделении. Синий столбец — медиана парных разностей, оранжевый — модель. Категории обозначают базу боковой сборки в миллиметрах и вариант ТТРКГ.",
         "По рисунку 2: "+"; ".join(breath_text)+". Геометрическое изменение грудной клетки здесь не рассчитывалось. Ретроспективная разметка, последовательность монтажей и отсутствие оценки межсессионной неопределённости ограничивают количественную интерпретацию расхождения.")
     md("""<a id="svd"></a>
 ## 4. Локальная различимость четырёх сопротивлений
@@ -891,7 +905,11 @@ Eij=Jlog,ij/Zi (4). Знаки Z и производных сохранены; �
 Боковые строки, ТТРКГ и их совместный набор рассматриваются раздельно.
 Совместный набор объединяет все сохранённые монтажи одного участника и состояния.
 Одна пара ТТРКГ/боковой сборки даёт два наблюдения для четырёх rho.
-Формальный ранг при машинном пороге не доказывает практической определимости.""")
+Формальный ранг при машинном пороге не доказывает практической определимости.
+Эти сравнения служат диагностической проверкой; совместный набор с боковыми
+сборками не предлагается как дальнейшая рабочая схема определения ρ.
+Один сигнал ТТРКГ сам по себе также не идентифицирует четыре произвольных
+тканевых сопротивления без дополнительных ограничений и референсов.""")
     conditions="; ".join(f"{s['id']}: "+", ".join(f"{name} {next(v for v in s['sensitivity'] if v['state']=='inhale' and v['subset']==key)['matrix']['condition_number_full_parameter_space']:.3g}" for key,name in (("lateral","боковые"),("ttrkg","ТТРКГ"),("joint","совместно"))) for s in summary["subjects"])
     figure(3,"Сопоставим сингулярный спектр с наблюдаемым изменением матрицы при смене правила интегрирования", "fig_svd",
         "Сингулярные числа безразмерной E на вдохе, логарифмическая шкала. Сплошные линии — боковые, ТТРКГ и совместный набор; цветные пунктирные уровни — спектральная норма Eq4096−Eq1024 для соответствующего набора.",
@@ -944,8 +962,9 @@ Eij=Jlog,ij/Zi (4). Знаки Z и производных сохранены; �
 результатов новой ветви вычисляются при фоне 2,5, лёгком 7 и сердце 1,35 Ом·м.
 
 Новые прямые результаты принимаются только по собственным завершённым
-планам и SHA. Их own_drive, φ=0, φ=π и границы модуля следует сопоставлять
-раздельно, без подгонки усиления. До завершения прямых расчётов численные поля
+планам и SHA. Прогноз own_drive соответствует подтверждённому временному
+разделению каналов и сопоставляется без подгонки усиления.
+До завершения прямых расчётов численные поля
 остаются пустыми. Диапазон Z по такой сетке нельзя восстановить из контрольного
 расчёта при сопротивлении целого сердца 4,6488 Ом·м
 или линейной экстраполяцией. Таблица 4 показывает фактическую готовность.""")
@@ -981,24 +1000,23 @@ Eij=Jlog,ij/Zi (4). Знаки Z и производных сохранены; �
         if not diagnostics:continue
         statements=[]
         for state,label in (("inhale","вдох"),("exhale","выдох")):
-            primary=next(d for d in diagnostics if d["state"]==state and d["scope"]=="primary_pair" and d["source_scenario"]=="own_ohm")
-            all_cases=next(d for d in diagnostics if d["state"]==state and d["scope"]=="all_cases" and d["source_scenario"]=="own_ohm")
+            primary=next(d for d in diagnostics if d["state"]==state and d["scope"]=="primary_pair")
+            all_cases=next(d for d in diagnostics if d["state"]==state and d["scope"]=="all_cases")
             p=primary["minimum_on_sampled_grid"];a=all_cases["minimum_on_sampled_grid"]
             observed="; ".join(f"{v:.6f}" for v in primary["observed_ohm"])
             residual="; ".join(f"{v:+.6g}" for v in p["residual_model_minus_observed_ohm"])
             statements.append(f"{label}: измеренные [ТТРКГ; боковая] = [{observed}] Ом. Среди {primary['sampled_points']} точек минимальная норма двух невязок {p['euclidean_norm_ohm']:.6g} Ом при [ρфона; ρлёгкого]=[{p['rho_ohm_m'][0]:g}; {p['rho_ohm_m'][1]:g}] Ом·м, знаковые невязки [{residual}] Ом. По всем {len(all_cases['row_labels'])} наблюдениям минимум RMS {a['rms_ohm']:.6g} Ом при [{a['rho_ohm_m'][0]:g}; {a['rho_ohm_m'][1]:g}] Ом·м")
         joint_text.append(s["id"]+": "+"; ".join(statements)+".")
     if joint_text:
-        md("**Совместное сопоставление на сетке, own_drive.** "+"\n\n".join(joint_text)+"\n\nНевязка определена как модель минус измерение. Норма двух невязок равна √(rТТ²+rбок²), RMS — √(Σr²/n); все компоненты имеют одинаковый арифметический вес. Это описательные минимумы только среди рассчитанных точек, без модели шума, доверительных интервалов или оценки индивидуальных параметров. Они не исключают совпадение в непрерывном прямоугольнике сопротивлений. Представленные совместные невязки не подтверждают согласия обоих отведений с одним набором свойств. Сценарии φ=0 и φ=π приведены отдельно в таблице 5б; ни одна фаза не выбрана как режим прибора.")
+        md("**Совместное сопоставление на сетке, own_drive.** "+"\n\n".join(joint_text)+"\n\nНевязка определена как модель минус измерение. Норма двух невязок равна √(rТТ²+rбок²), RMS — √(Σr²/n); все компоненты имеют одинаковый арифметический вес. Это описательные минимумы только среди рассчитанных точек, без модели шума, доверительных интервалов или оценки индивидуальных параметров. Они не исключают совпадение в непрерывном прямоугольнике сопротивлений. Представленные совместные невязки не подтверждают согласия обоих отведений с одним набором свойств при выбранных тканевых свойствах, геометрии и контактах. Режим возбуждения соответствует подтверждённому временному разделению.")
         bounds=[]
         for s in summary["subjects"]:
-            diagnostics=[d for d in s["material_range"]["scan"]["joint_grid_diagnostics"] if d["scope"]=="primary_pair" and d["source_scenario"]=="own_ohm"]
+            diagnostics=[d for d in s["material_range"]["scan"]["joint_grid_diagnostics"] if d["scope"]=="primary_pair"]
             if not diagnostics:continue
             r=diagnostics[0]["primary_grid_ranges"]["ttrkg"]
             below_own=sum(d["primary_grid_ranges"]["ttrkg"]["observed_below_all_own"] for d in diagnostics)
-            below_module=sum(d["primary_grid_ranges"]["ttrkg"]["observed_below_all_module_envelopes"] for d in diagnostics)
-            bounds.append(f"{s['id']}: ТТРКГ own_drive {r['own_min_ohm']:.6f}–{r['own_max_ohm']:.6f} Ом; общий диапазон границ модуля при равных амплитудах и неизвестной фазе {r['equal_amplitude_module_min_ohm']:.6f}–{r['equal_amplitude_module_max_ohm']:.6f} Ом. Ниже всех own_drive-точек находятся {below_own} из 2 наблюдаемых уровней, ниже всех нижних фазовых границ — {below_module} из 2")
-        md("**Проверка первичного ТТРКГ на тех же точках.** "+"; ".join(bounds)+". Сравниваются отдельно измеренные вдох и выдох без назначения дыхательных состояний сценарным точкам. Если уровень ниже минимальной нижней границы, ни одна из рассчитанных точек при указанных равных токах его не покрывает. Это не исключает иные непрерывные параметры и не устанавливает реальный режим или демодуляцию прибора.")
+            bounds.append(f"{s['id']}: ТТРКГ own_drive {r['own_min_ohm']:.6f}–{r['own_max_ohm']:.6f} Ом. Ниже всех рассчитанных точек находятся {below_own} из 2 наблюдаемых уровней")
+        md("**Проверка первичного ТТРКГ на тех же точках.** "+"; ".join(bounds)+". Сравниваются отдельно измеренные вдох и выдох без назначения дыхательных состояний сценарным точкам. Если уровень ниже минимального прогноза, ни одна из рассчитанных точек его не покрывает. Это не исключает иные непрерывные параметры и не отменяет неопределённость геометрии, контактных условий и свойств тканей.")
     grid_text=[]
     for s in summary["subjects"]:
         data=s["material_range"]["scan"]
@@ -1007,15 +1025,17 @@ Eij=Jlog,ij/Zi (4). Знаки Z и производных сохранены; �
             grid_text.append(s["id"]+": "+", ".join(f"{ROLE_NAMES[role]} {min(r['transfers'][role]['own_ohm'] for r in values):.6g}–{max(r['transfers'][role]['own_ohm'] for r in values):.6g} Ом" for role in ROLES))
     grid_discussion=("На рассчитанных точках рисунка 6 диапазон own_drive составляет: "+"; ".join(grid_text)+". ") if grid_text else "Прямые расчёты диапазона ещё не завершены; рисунок 6 обозначает ожидаемые результаты. "
     figure(6,"Сравним фактически рассчитанную 15-точечную сетку с двумя наблюдаемыми дыхательными уровнями", "fig_material_grid",
-        "Новая сетка сопротивлений для 140 мм/ТТРКГ 2×2, q4096, ρцелого сердца=1,35 Ом·м. По оси X — ρлёгкого, три цветные линии соединяют пять рассчитанных точек при ρфона 2; 2,5; 3 Ом·м. Горизонтальные линии — измеренные медианы вдоха и выдоха. Жир и кость фиксированы; own_drive является сценарием.",
-        grid_discussion+"Каждая отмеченная точка является сохранённым прямым расчётом. Соединяющие отрезки организуют точки; дополнительные значения между ними не рассчитывались. Сценарным точкам не назначается состояние вдоха или выдоха: оба измеренных уровня показаны как отдельные ориентиры. Совпадение уровня с точкой не устанавливает единственность сопротивлений, фазу источников или индивидуальную физиологическую оценку.")
+        "Новая сетка сопротивлений для 140 мм/ТТРКГ 2×2, q4096, ρцелого сердца=1,35 Ом·м. По оси X — ρлёгкого, три цветные линии соединяют пять рассчитанных точек при ρфона 2; 2,5; 3 Ом·м. Горизонтальные линии — измеренные медианы вдоха и выдоха. Жир и кость фиксированы; own_drive соответствует подтверждённому временному разделению каналов.",
+        grid_discussion+"Каждая отмеченная точка является сохранённым прямым расчётом. Соединяющие отрезки организуют точки; дополнительные значения между ними не рассчитывались. Сценарным точкам свойств тканей не назначается состояние вдоха или выдоха: оба измеренных уровня показаны как отдельные ориентиры. Совпадение уровня с точкой не устанавливает единственность сопротивлений или индивидуальную физиологическую оценку.")
     blood_text=[]
     for s in summary["subjects"]:
         data=s["material_range"]["heart"]
         if not data["ready"]:continue
-        by={(r["geometry"],r["rule"]):r for r in data["rows"]}
-        get=lambda geometry,rule:by[(geometry,rule)]["transfers"]["ttrkg"]["own_ohm"]
-        blood_text.append(f"{s['id']}: ТТРКГ, сфера V₀ минус исходная маска {get('sphere_v100',4096)-get('wholeheart_ct',4096):+.6g} Ом; ответ между 0,95V₀ и 1,05V₀ {get('sphere_v105',4096)-get('sphere_v095',4096):+.6g} Ом; разность q4096−q1024 для ТТРКГ сферы V₀ {get('sphere_v100',4096)-get('sphere_v100',1024):+.6g} Ом")
+        c=data["own_controls"]["ttrkg"]
+        link=next(r for r in data["wholeheart_scan_center_links"] if r["rule"]==4096)
+        reproduction="точное совпадение" if link["transfer_matrix_exact"] else f"максимальное различие {link['max_abs_transfer_difference_ohm']:.6g} Ом"
+        fd="не выполнялась" if not data["derivative_checks"]["performed"] else "выполнена"
+        blood_text.append(f"{s['id']}: ТТРКГ, сфера V₀ минус исходная маска {c['equal_volume_shape_effect_ohm']:+.6g} Ом; ответ между 0,95V₀ и 1,05V₀ {c['minus_to_plus_volume_response_ohm']:+.6g} Ом. Разности q4096−q1024 для этих контрастов формы и объёма соответственно {c['shape_contrast_q_difference_ohm']:+.6g} и {c['volume_contrast_q_difference_ohm']:+.6g} Ом; для абсолютного Z сферы V₀ отдельно {c['sphere_v100_own_q_difference_ohm']:+.6g} Ом. Контроль исходной маски с центром сетки сопротивлений при q4096: {reproduction}; FD-проверка этой объёмной ветви {fd}")
     blood_discussion=("Сохранённые результаты рисунка 7: "+"; ".join(blood_text)+". ") if blood_text else "Прямые объёмные расчёты при 1,35 Ом·м ещё не завершены; численных объёмных выводов по этой ветви пока нет. "
     figure(7,"Рассмотрим геометрическое сравнение внутри нового фиксированного материального профиля", "fig_blood_sphere",
         "Объёмные ответы own_drive при ρфона=2,5, ρлёгкого=7 и ρцелого сердца=1,35 Ом·м. Кружки — сферы с тремя объёмами, звёзды — исходная маска целого сердца при тех же свойствах. Серый — q1024, красный — q4096. На оси X — интегрированный объём, мл.",
@@ -1025,14 +1045,25 @@ Eij=Jlog,ij/Zi (4). Знаки Z и производных сохранены; �
 
 **Модельный результат.** Индивидуальные прямые модели дают знаковые базовые
 ответы, локальные производные и условный дыхательный контраст при явно заданных
-материалах и источниках. Совместный набор монтажей улучшает обусловленность
-по сравнению с каждым отведением отдельно; слабое направление, связанное с
-сердцем, сохраняется. Количественная оценка четырёх тканевых сопротивлений
-по реальным данным пока не установлена.
+материалах и источниках. В диагностическом сравнении совместный набор монтажей
+улучшает обусловленность по сравнению с каждым отведением отдельно; слабое
+направление, связанное с сердцем, сохраняется. Надёжное индивидуальное
+определение тканевых ρ в проверенной постановке не получено. Этот результат
+ограничен рассмотренными моделями, измерениями и сценариями; универсальная
+теорема неприменимости боковых сборок для любых условий не утверждается.
+
+**Решение автора и граница его обоснования.** Конечным входом дальнейшей
+методики выбран только сигнал ТТРКГ. Боковые результаты сохраняются как
+отрицательная проверка и не становятся предлагаемой рабочей инверсией ρ.
+Это принятое направление разработки; его выбор сам по себе не валидирует
+оценку сердечной функции по ТТРКГ. Свойства тканей для этой ветви остаются
+сценарными либо референсными. Один сигнал или одна пара отведений не
+идентифицирует произвольно четыре тканевых ρ; дополнительные предпосылки
+и независимые проверки остаются необходимыми.
 
 **Экспериментальное сопоставление.** Абсолютные уровни и парные разности
-сопоставлены отдельно. Фаза источников, демодуляция, контакты, кандидатные
-дыхательные интервалы и состояние между последовательными монтажами
+сопоставлены отдельно. Контактные условия, геометрия, тканевые свойства,
+ретроспективно выделенные дыхательные интервалы и состояние между последовательными монтажами
 ограничивают объяснение невязок. Шесть отказов размещения не дают электрической
 оценки его погрешности. Сеточная сходимость и клиническая валидация не доказаны;
 УО/ФВ в этом вычислительном цикле не получены.
@@ -1047,10 +1078,10 @@ Eij=Jlog,ij/Zi (4). Знаки Z и производных сохранены; �
     for s in summary["subjects"]:
         diagnostics=s["material_range"]["scan"]["joint_grid_diagnostics"]
         if not diagnostics:continue
-        values=[next(d for d in diagnostics if d["state"]==state and d["scope"]=="primary_pair" and d["source_scenario"]=="own_ohm")["minimum_on_sampled_grid"]["euclidean_norm_ohm"] for state in ("inhale","exhale")]
+        values=[next(d for d in diagnostics if d["state"]==state and d["scope"]=="primary_pair")["minimum_on_sampled_grid"]["euclidean_norm_ohm"] for state in ("inhale","exhale")]
         range_conclusion.append(f"{s['id']}: минимальная норма двух невязок на сетке {values[0]:.6g} Ом для вдоха и {values[1]:.6g} Ом для выдоха")
     if range_conclusion:
-        md("**Совместность новой материальной сетки.** "+"; ".join(range_conclusion)+". Эти числа относятся к own_drive и 15 рассчитанным точкам; выбор иной неизвестной фазы и непрерывный подбор сопротивлений здесь не выполнялись. Снижение отдельной невязки нельзя принимать за согласие обоих отведений.")
+        md("**Совместность новой материальной сетки.** "+"; ".join(range_conclusion)+". Эти числа относятся к own_drive при подтверждённом временном разделении и 15 рассчитанным точкам; непрерывный подбор сопротивлений здесь не выполнялся. Снижение отдельной невязки нельзя принимать за согласие обоих отведений.")
     code("display(HTML(F.table_html(['Относительный источник','SHA-256'],[[r['relative_path'],r['sha256']] for r in S['sources']],'Таблица 7. Происхождение сохранённых агрегатов и прямых результатов')))")
     for cell in cells:
         if cell.cell_type=="markdown":
