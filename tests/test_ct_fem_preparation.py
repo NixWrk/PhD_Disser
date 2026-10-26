@@ -64,6 +64,38 @@ def test_empty_slices_and_air_do_not_turn_into_body():
         core.kernels()["body_mask"](np.full((8, 8, 8), -1000))
 
 
+def test_manual_stl_rasterisation_uses_world_LPS_and_native_grid():
+    from ct_fem_manual_surface import voxel_centres_inside
+    affine=np.array([[0,-.8,0,9.3],[1.1,0,0,-10.2],[0,0,1.3,-12.4],[0,0,0,1.]])
+    ct=nib.Nifti1Image(np.zeros((23,21,19),np.uint8),affine)
+    box=trimesh.creation.box(extents=[10.24,12.64,14.84])
+    observed=voxel_centres_inside(box,ct)
+    indices=np.stack(np.meshgrid(*[np.arange(n) for n in ct.shape],indexing='ij'),axis=-1)
+    points=nib.affines.apply_affine(affine,indices)*[-1,-1,1]
+    expected=np.all(abs(points)<np.array([5.12,6.32,7.42]),axis=-1)
+    np.testing.assert_array_equal(observed,expected)
+
+
+def test_manual_source_stays_unchanged_and_is_bound_to_artifact(tmp_path):
+    path,cfg=fixture_config(tmp_path)
+    source=tmp_path/'manual.stl';trimesh.creation.box(extents=[17.02,20.,20.]).export(source)
+    digest=core.sha(source)
+    cfg['body']=dict(strategy='author_STL_LPS',source_stl='manual.stl',source_stl_sha256=digest,
+        provenance='Synthetic manual-input contract test',units='mm',frame='LPS',
+        maximum_outside_body_voxels={k:0 for k in ['lung','bone','heart','fat']},
+        coverage_limits_basis='All synthetic tissue is inside the supplied box')
+    cfg['surface_qc']['manual_STL_export_maximum_sampled_distance_mm']=.001
+    write(path,cfg);out=tmp_path/'manual_surface'
+    core.prepare('surface',path,out)
+    manifest=core.verify_artifact(out)
+    assert manifest['sources'][str(source.resolve())]==digest
+    assert core.sha(out/'skin_regularized.stl')==digest==core.sha(source)
+    assert manifest['stage']=='surface' and not manifest['FEM_was_run']
+    with source.open('ab') as stream:stream.write(b'changed')
+    with pytest.raises(ValueError,match='source changed'):
+        core.load_config(path)
+
+
 def test_affine_mismatch_and_unknown_units_are_rejected(tmp_path):
     path, _ = fixture_config(tmp_path)
     cfg = core.load_config(path)

@@ -122,15 +122,20 @@ def load_config(path):
     cfg["inputs"]["ct"] = str((path.parent / cfg["inputs"]["ct"]).resolve())
     cfg["inputs"]["masks"] = {k: str((path.parent / v).resolve()) for k, v in cfg["inputs"]["masks"].items()}
     body = cfg["body"]
-    if body.get("strategy") != "HU_largest_component_per_slice":
+    if body.get("strategy") not in ("HU_largest_component_per_slice", "author_STL_LPS"):
         raise ValueError("Explicit supported HU body scenario required")
-    if body["closing_iterations"] != 1 or body["closing_connectivity"] != 1 or body["surface_level"] != .49:
-        raise ValueError("This version requires one 6-neighbour closing and surface level .49")
-    ratio = float(body["maximum_changed_relative"])
-    if not 0 <= ratio <= .001:
-        raise ValueError("Body regularization bound must be in [0, .001]")
-    if not math.isfinite(float(body["hu_threshold"])):
-        raise ValueError("HU threshold must be finite")
+    if body["strategy"] == "HU_largest_component_per_slice":
+        if body["closing_iterations"] != 1 or body["closing_connectivity"] != 1 or body["surface_level"] != .49:
+            raise ValueError("This version requires one 6-neighbour closing and surface level .49")
+        ratio = float(body["maximum_changed_relative"])
+        if not 0 <= ratio <= .001:
+            raise ValueError("Body regularization bound must be in [0, .001]")
+        if not math.isfinite(float(body["hu_threshold"])):
+            raise ValueError("HU threshold must be finite")
+    else:
+        body["source_stl"] = str((path.parent / body["source_stl"]).resolve())
+        from ct_fem_manual_surface import settings as manual_settings
+        manual_settings(cfg)
     coverage = body["maximum_outside_body_voxels"]
     if set(coverage) != {"lung", "bone", "heart", "fat"} or any(v != int(v) or v < 0 for v in coverage.values()):
         raise ValueError("Declare nonnegative outside-body voxel bounds for every tissue")
@@ -513,6 +518,8 @@ def artifact_sources(cfg, input_dir=None, previous_sources=None):
              *map(Path, cfg["inputs"]["masks"].values()), Path(__file__),
              Path(__file__).with_name("prepare_ct_fem.py"), *(LEGACY / n for n in KERNEL_FILES)]
     paths.append(Path(__file__).with_name("ct_fem_remesh.py"))
+    if cfg['body']['strategy'] == 'author_STL_LPS':
+        paths.extend([Path(cfg['body']['source_stl']), Path(__file__).with_name('ct_fem_manual_surface.py')])
     if input_dir is not None:
         paths.extend(p for p in Path(input_dir).rglob("*") if p.is_file())
     paths.extend(map(Path, previous_sources or {}))
@@ -580,6 +587,10 @@ def surface_distance_qc(topology, exported, settings):
 
 
 def build_surface(cfg, out, ct, hu, masks):
+    if cfg['body']['strategy'] == 'author_STL_LPS':
+        from ct_fem_manual_surface import build as manual_surface
+        skin, qc = manual_surface(cfg, out, ct, masks)
+        return finish_surface(cfg, out, skin, kernels(), qc)
     kernel = kernels(); settings = cfg["body"]; distance_settings = surface_distance_settings(cfg)
     original, added = kernel["body_mask"](hu, threshold=settings["hu_threshold"])
     mask = close_body_once(original)
@@ -620,6 +631,16 @@ def build_surface(cfg, out, ct, hu, masks):
         raise ValueError("Sampled topology-correction distance exceeds its explicit scenario bound; see body_correction_qc.local.json")
     if not distance_qc["export_fidelity"]["passed"]:
         raise ValueError("Regularized-native to exported-STL fidelity exceeds its separate bound; see body_correction_qc.local.json")
+    qc = dict(changed_voxels=int(change.sum()), changed_relative=ratio,
+        added_voxels=int(np.count_nonzero(mask & ~original)), removed_voxels=int(np.count_nonzero(original & ~mask)),
+        HU_hole_fill_added_voxels=added, tissue_coverage=losses, voxel_euler=topology,
+        topology_correction_qc=distance_qc["topology_correction"], export_fidelity_qc=distance_qc["export_fidelity"],
+        body_mask_assumption="Largest 3D component; largest opened component per axial slice; filled cavities")
+    return finish_surface(cfg, out, skin, kernel, qc)
+
+
+def finish_surface(cfg, out, skin, kernel, body_qc):
+    """One common full-section union and contact projection for both body inputs."""
     joins, cylinders = [], []
     for arm in cfg["synthetic_cylinders"]:
         join = full_section_join(skin, arm, kernel)
@@ -640,15 +661,13 @@ def build_surface(cfg, out, ct, hu, masks):
                       np.any(exterior.bounds[1, 1:] > skin.bounds[1, 1:]+tolerance)):
         raise ValueError("Synthetic cylinders protrude beyond the checked Y/Z extents")
     qc = surface_qc(exterior)
-    qc.update(changed_voxels=int(change.sum()), changed_relative=ratio,
-        added_voxels=int(np.count_nonzero(mask & ~original)), removed_voxels=int(np.count_nonzero(original & ~mask)),
-        HU_hole_fill_added_voxels=added, tissue_coverage=losses, voxel_euler=topology,
-        topology_correction_qc=distance_qc["topology_correction"], export_fidelity_qc=distance_qc["export_fidelity"],
+    qc.update(body_qc)
+    qc.update(
         sampled_distance_is_not_certified_Hausdorff_bound=True,
-        body_mask_assumption="Largest 3D component; largest opened component per axial slice; filled cavities",
         synthetic_cylinders=joins, skin_bounds_mm=skin.bounds.tolist(), pre_union_decimation=False,
-        surface_roles={"uncorrected_HU_contour": "body_before_regularization.stl",
-                       "corrected_CT_skin": "skin_regularized.stl", "computational_exterior": "exterior.stl"})
+        surface_roles=({"manual_author_skin": "skin_regularized.stl", "computational_exterior": "exterior.stl"}
+            if cfg['body']['strategy']=='author_STL_LPS' else
+            {"uncorrected_HU_contour": "body_before_regularization.stl", "corrected_CT_skin": "skin_regularized.stl", "computational_exterior": "exterior.stl"}))
     write_new(out / "surface_qc.local.json", qc)
     contacts = contact_metadata(exterior, cfg["contacts"])
     contacts.update(projection_surface_path=str(out / "exterior.stl"),
@@ -761,6 +780,8 @@ def prepare(stage, config_path, out, input_dir=None):
     if source is not None and (out.is_relative_to(source) or source.is_relative_to(out)):
         raise ValueError("Output must be separate from the input artifact")
     rawfiles = [Path(cfg["inputs"]["ct"]), *map(Path, cfg["inputs"]["masks"].values()), Path(config_path).resolve()]
+    if cfg['body']['strategy'] == 'author_STL_LPS':
+        rawfiles.append(Path(cfg['body']['source_stl']))
     if any(p.is_relative_to(out) for p in rawfiles):
         raise ValueError("Output cannot contain any source input")
     if source is not None:
@@ -792,7 +813,8 @@ def prepare(stage, config_path, out, input_dir=None):
         if stage in CONTINUATION_STAGES:
             contract = check_continuation_contract(stage, cfg, source, previous, sources)
     if stage == "surface":
-        surface_distance_settings(cfg)
+        if cfg['body']['strategy'] == 'HU_largest_component_per_slice':
+            surface_distance_settings(cfg)
     ct, hu, masks, labels, input_qc = load_inputs(cfg)
     if stage == "remesh":
         from ct_fem_remesh import settings

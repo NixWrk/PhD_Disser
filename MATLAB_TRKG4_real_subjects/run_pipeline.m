@@ -13,6 +13,10 @@ addpath(fullfile(project_root, 'src'));
 addpath(fullfile(project_root, 'vendor_stl_eidors'));
 
 profile_index=find(cellfun(@(x)(ischar(x)||isstring(x)) && strcmpi(string(x),"Profile"),varargin),1);
+if ~isempty(profile_index) && profile_index<numel(varargin) && strcmpi(string(varargin{profile_index+1}),"scorpion_session_fem")
+    args=varargin;args(profile_index:profile_index+1)=[];
+    report=run_scorpion_session_fem(args{:});return;
+end
 if ~isempty(profile_index) && profile_index < numel(varargin) && strcmpi(string(varargin{profile_index+1}),"ct_fem_contacts_prepare")
     args=varargin;args(profile_index:profile_index+1)=[];
     parser=inputParser;addParameter(parser,'InputFile','');addParameter(parser,'OutputDir','');
