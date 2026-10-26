@@ -1,6 +1,6 @@
 {
   "schema": "scorpion_fem_smart_reader_v1",
-  "generated_utc": "2026-10-26T15:42:15.861675+00:00",
+  "generated_utc": "2026-10-26T16:03:33.231370+00:00",
   "subjects": [
     {
       "id": "Георгий",
@@ -18692,7 +18692,7 @@
   ],
   "generator": {
     "relative_path": "Colab Notebooks/scorpion_v2/build_scorpion_fem_smart_report.py",
-    "sha256": "69596988e2b07c6733688a09ff20a291c098f0b3be372f8c41b5b024cb735533"
+    "sha256": "aa608500537999ca8ba3ccd3008c1d66ff2f844c5b90842dbbcfd5fe9a5ab0b0"
   },
   "frequency_hz": 100000,
   "own_drive_is_scenario": true,
