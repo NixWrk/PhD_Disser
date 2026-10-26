@@ -76,15 +76,17 @@ def test_manual_stl_rasterisation_uses_world_LPS_and_native_grid():
     np.testing.assert_array_equal(observed,expected)
 
 
-def test_manual_source_stays_unchanged_and_is_bound_to_artifact(tmp_path):
+@pytest.mark.parametrize('strategy', ['author_STL_LPS', 'supplied_STL_LPS'])
+def test_manual_source_stays_unchanged_and_is_bound_to_artifact(tmp_path, strategy):
     path,cfg=fixture_config(tmp_path)
     source=tmp_path/'manual.stl';trimesh.creation.box(extents=[17.02,20.,20.]).export(source)
     digest=core.sha(source)
-    cfg['body']=dict(strategy='author_STL_LPS',source_stl='manual.stl',source_stl_sha256=digest,
+    cfg['body']=dict(strategy=strategy,source_kind='synthetic_supplied_surface',source_stl='manual.stl',source_stl_sha256=digest,
         provenance='Synthetic manual-input contract test',units='mm',frame='LPS',
         maximum_outside_body_voxels={k:0 for k in ['lung','bone','heart','fat']},
         coverage_limits_basis='All synthetic tissue is inside the supplied box')
     cfg['surface_qc']['manual_STL_export_maximum_sampled_distance_mm']=.001
+    cfg['surface_qc']['supplied_STL_export_maximum_sampled_distance_mm']=.001
     write(path,cfg);out=tmp_path/'manual_surface'
     core.prepare('surface',path,out)
     manifest=core.verify_artifact(out)
@@ -481,7 +483,7 @@ def test_real_tiny_remesh_cli_preserves_shape_and_contact_provenance(tmp_path):
     assert core.verify_artifact(out)["stage"] == "remesh"
     qc = core.read(out / "surface_qc.local.json")
     assert qc["passed"] and not qc["vertex_smoothing"] and not qc["automatic_repair"]
-    assert [r["target_edge_mm"] for r in qc["operations"]] == [5., 2.8, 1.4]
+    assert [r["target_edge_mm"] for r in qc["operations"]] == [5., 2., .8]
     assert all(r["selected_faces"] > 0 for r in qc["operations"])
     assert qc["relative_volume_error"] <= .003
     assert max(d["max_mm"] for d in qc["sampled_distances"].values()) <= .75
@@ -751,7 +753,7 @@ def test_changed_executed_remesh_is_rejected_before_mesh_backend(tmp_path, monke
     assert not (tmp_path / "rejected_mesh").exists()
     complete = core.verify_artifact(parent)["completed_geometry_settings"]
     assert complete["body"] == cfg["body"] and complete["synthetic_cylinders"] == []
-    assert complete["remeshing"]["contact_edge_mm"] == 1.4
+    assert complete["remeshing"]["contact_edge_mm"] == .8
 
 
 @pytest.mark.parametrize("problem", ["failed", "units", "unbound_sha"])

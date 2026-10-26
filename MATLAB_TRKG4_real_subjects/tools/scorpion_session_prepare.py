@@ -1,4 +1,4 @@
-"""Prepare own manual-STL models through the common CT/FEM geometry stages."""
+"""Prepare Scorpion models through CT/TotalSegmentator v2 and common geometry stages."""
 from pathlib import Path
 import argparse
 import copy
@@ -34,19 +34,25 @@ def create_config(subject,sources,preflight,placement,out):
     source=sources[subject];surface=trimesh.load(source['source_stl']['path'],force='mesh')
     core.surface_qc(surface)
     arms=copy.deepcopy(source['cylinders']);joins=[core.full_section_join(surface,a) for a in arms]
-    cfg=core.read(preflight['subjects'][subject]['config']['path'])
-    # Resolve the existing local input paths before moving the configuration.
-    original=core.load_config(preflight['subjects'][subject]['config']['path'])
-    cfg['inputs']=original['inputs'];cfg['subject_alias']=subject
+    preflight_path=Path(preflight['subjects'][subject]['config']['path']).resolve()
+    original=core.read(preflight_path)
+    # A new run uses the current common algorithm. Only the explicitly chosen
+    # CT/masks/provenance are reused from preflight, never its planned recipe.
+    cfg=core.read(ROOT/'configs/ct_fem_preparation.example.json')
+    cfg['inputs']=copy.deepcopy(original['inputs']);cfg['subject_alias']=subject
+    cfg['inputs']['ct']=str((preflight_path.parent/cfg['inputs']['ct']).resolve())
+    cfg['inputs']['masks']={k:str((preflight_path.parent/v).resolve()) for k,v in cfg['inputs']['masks'].items()}
+    cfg['preflight_input_provenance']=dict(path=str(preflight_path),sha256=core.sha(preflight_path),
+        reused='CT, masks and their provenance only; fresh common preparation recipe')
     audit=core.read(out.parent/(subject+'_coverage_audit.local.json'))
     limits={k:(0 if k in ('lung','heart') else int(np.floor(v['total']*.05))) for k,v in audit.items()}
-    cfg['body']=dict(strategy='author_STL_LPS',source_stl=source['source_stl']['path'],
+    cfg['body']=dict(strategy='supplied_STL_LPS',source_kind='manual_Inobitec',source_stl=source['source_stl']['path'],
         source_stl_sha256=source['source_stl']['sha256'],units='mm',frame='LPS',
         provenance='Own Inobitec outer solid selected by the author on 2026-10-26; not an accepted clinical model',
         maximum_outside_body_voxels=limits,
         coverage_limits_basis='New author-selected manual computational domain. Lung and heart must be fully covered. Up to 5% of candidate bone/fat voxels may remain outside the domain as an explicit screening scenario, not segmentation accuracy or FEM error; original masks are unchanged. Observed exclusion is reported separately.')
     cfg['synthetic_cylinders']=arms
-    cfg['surface_qc']['manual_STL_export_maximum_sampled_distance_mm']=.001
+    cfg['surface_qc']['supplied_STL_export_maximum_sampled_distance_mm']=.001
     cfg['surface_qc']['sample_count']=15000
     physical={};area=float(np.pi*2.5**2)
     armgroups={}
@@ -105,7 +111,7 @@ def create_config(subject,sources,preflight,placement,out):
     return path
 
 
-def run(args):
+def run_legacy_manual(args):
     out=Path(args.out).resolve();out.parent.mkdir(parents=True,exist_ok=True)
     sources=core.read(args.sources);preflight=core.read(args.preflight);placement=core.read(args.placement)
     if not (out/'configuration.local.json').exists():
@@ -127,9 +133,38 @@ def run(args):
         parent=target
 
 
+def run(args):
+    if not args.ct_config:
+        if not args.legacy_manual_stl:
+            raise ValueError('Use --ct-config for the CT/TotalSegmentator v2 pipeline. Ready manual STL is only available with explicit --legacy-manual-stl for historical diagnostics.')
+        if not all((args.sources,args.preflight,args.placement,args.subject)):
+            raise ValueError('Legacy diagnostics require sources, preflight, placement and subject')
+        return run_legacy_manual(args)
+    if args.legacy_manual_stl:
+        raise ValueError('CT pipeline and legacy manual STL are distinct explicit inputs')
+    out=Path(args.out).resolve()
+    if not out.exists():
+        result=core.prepare_mesh_pipeline(args.ct_config,out)
+        parent=Path(result['mesh_directory'])
+    else:
+        result=core.read(out/'pipeline.local.json')
+        if result.get('segmentation_backend')!='TotalSegmentator_v2':
+            raise ValueError('A completed TotalSegmentator v2 pipeline is required')
+        parent=Path(result['mesh_directory']);core.verify_artifact(parent)
+    config=out/'geometry_configuration.local.json'
+    for stage in ['materials','cem_contacts_input']:
+        target=out/stage
+        if target.exists():core.verify_artifact(target)
+        else:core.prepare(stage,config,target,parent)
+        parent=target
+
+
 if __name__=='__main__':
     p=argparse.ArgumentParser(description=__doc__)
-    for name in ('sources','preflight','placement','out','subject'):p.add_argument('--'+name,required=True)
+    p.add_argument('--out',required=True)
+    p.add_argument('--ct-config',help='Local CT/TotalSegmentator v2 pipeline configuration')
+    p.add_argument('--legacy-manual-stl',action='store_true',help='Explicit historical geometry diagnostic only')
+    for name in ('sources','preflight','placement','subject'):p.add_argument('--'+name)
     args=p.parse_args()
     runtime=Path(args.out).resolve().parent/'runtime'
     if runtime.is_dir():sys.path.insert(0,str(runtime))

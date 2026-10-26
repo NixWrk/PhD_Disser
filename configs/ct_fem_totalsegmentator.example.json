@@ -1,0 +1,22 @@
+{
+  "schema": "ct_fem_ct_pipeline_v1",
+  "geometry_configuration": "ct_fem_preparation.example.json",
+  "segmentation": {
+    "python": "../local_runtime/Scripts/python.exe",
+    "version": "2.18.0",
+    "gpu": 0,
+    "weights_directory": "../local_weights",
+    "config_file": "../private_totalsegmentator/config.json",
+    "maximum_seconds": 1800
+  },
+  "body_domain": {
+    "include_TS_tissues": true,
+    "maximum_added_relative": 0.001,
+    "maximum_disconnected_relative": 0.001,
+    "maximum_internal_cavity_relative": 0.001,
+    "basis": "Computational solid includes all TS tissue voxels. More than 0.1 percent added to the raw TS body is rejected; this is a preparation screen, not anatomical accuracy."
+  },
+  "maximum_outside_body_voxels": {"lung": 0, "bone": 0, "heart": 0, "fat": 0},
+  "coverage_limits_basis": "All generated tissue masks must be covered by the computational body; no clipping.",
+  "contact_placement": []
+}

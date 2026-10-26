@@ -1,4 +1,4 @@
-"""Author-selected manual outer STL; shares the standard joins and FEM stages."""
+"""Supplied outer STL with explicit provenance; standard joins and FEM stages."""
 from pathlib import Path
 import shutil
 
@@ -38,12 +38,16 @@ def voxel_centres_inside(surface,ct):
 def settings(cfg):
     import ct_fem_core as core
     value=cfg['body']
-    if value['strategy']!='author_STL_LPS':raise ValueError('Explicit manual STL strategy required')
+    if value['strategy'] not in ('author_STL_LPS','supplied_STL_LPS'):
+        raise ValueError('Explicit supplied STL strategy required')
+    if value['strategy']=='supplied_STL_LPS' and not value.get('source_kind'):
+        raise ValueError('Supplied surface must declare manual, derived or other explicit source kind')
     if not value.get('provenance') or not value.get('coverage_limits_basis'):
         raise ValueError('Manual source provenance and outside-domain budget basis required')
     if value.get('units')!='mm' or value.get('frame')!='LPS':raise ValueError('Manual STL must explicitly declare LPS/mm')
     if core.sha(value['source_stl'])!=value['source_stl_sha256']:raise ValueError('Manual STL source changed')
-    core.positive(cfg['surface_qc']['manual_STL_export_maximum_sampled_distance_mm'],'manual export bound')
+    key='supplied_STL_export_maximum_sampled_distance_mm' if value['strategy']=='supplied_STL_LPS' else 'manual_STL_export_maximum_sampled_distance_mm'
+    core.positive(cfg['surface_qc'][key],'supplied STL export bound')
     return value
 
 
@@ -59,11 +63,12 @@ def build(cfg,out,ct,masks):
         CT_grid_voxelisation_only=True,source_surface_modified=False,
         tissue_coverage=coverage,coverage_limits=value['maximum_outside_body_voxels'],
         coverage_limits_basis=value['coverage_limits_basis'],source_QC=qc,**core.FLAGS)
-    core.write_new(out/'manual_surface_audit.local.json',audit)
+    prefix='supplied' if value['strategy']=='supplied_STL_LPS' else 'manual'
+    core.write_new(out/(prefix+'_surface_audit.local.json'),audit)
     if any(c['outside_after']>value['maximum_outside_body_voxels'][k] for k,c in coverage.items()):
-        raise ValueError('Tissue outside manual body exceeds declared domain budget; see manual_surface_audit.local.json')
+        raise ValueError('Tissue outside supplied body exceeds declared domain budget; see surface audit')
     image=nib.Nifti1Image(body.astype(np.uint8),ct.affine);image.header.set_xyzt_units('mm')
-    nib.save(image,out/'body_manual_STL_voxelisation.nii.gz')
+    nib.save(image,out/('body_'+prefix+'_STL_voxelisation.nii.gz'))
     # This compatibility filename carries the unchanged manual source, with
     # its role stated explicitly in QC; no HU morphological closing is done.
     shutil.copyfile(source,out/'skin_regularized.stl')
@@ -71,8 +76,10 @@ def build(cfg,out,ct,masks):
     if core.sha(out/'skin_regularized.stl')!=value['source_stl_sha256']:
         raise ValueError('Manual source export must preserve exact STL bytes')
     qc.update(tissue_coverage=coverage,changed_voxels=0,changed_relative=0.,added_voxels=0,removed_voxels=0,
-        HU_hole_fill_added_voxels=0,voxel_euler=None,body_mask_assumption='Author-selected manual Inobitec STL; voxelisation audits domain coverage only',
+        HU_hole_fill_added_voxels=0,voxel_euler=None,
+        body_mask_assumption='Supplied closed STL; voxelisation audits domain coverage only',
         topology_correction_qc=dict(applicable=False,reason='Unchanged author-selected STL; no HU contour correction'),
         export_fidelity_qc=dict(passed=True,identical_STL_bytes=True,maximum_distance_mm=0.),
-        manual_source_provenance=value['provenance'],manual_source_stl_sha256=value['source_stl_sha256'])
+        supplied_source_provenance=value['provenance'],supplied_source_stl_sha256=value['source_stl_sha256'],
+        source_kind=value.get('source_kind','manual_Inobitec_author_selected'))
     return exported,qc

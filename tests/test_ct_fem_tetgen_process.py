@@ -11,6 +11,7 @@ import trimesh
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools"))
 import ct_fem_core as core
 import ct_fem_tetgen as backend
+import ct_fem_mesh_recovery as recovery
 
 
 @pytest.mark.parametrize("failure", ["timeout", "native_error"])
@@ -77,7 +78,7 @@ def test_two_allowed_stage_displacements_cannot_double_the_original_budget(tmp_p
         projection_surface_path=str(source / "exterior.stl"),
         projection_surface_sha256=core.sha(source / "exterior.stl"),
         original_projection_surface_path=str(original), original_projection_surface_sha256=core.sha(original)))
-    monkeypatch.setattr(backend, "generate", lambda *args: (nodes+[.8, 0., 0.], tets, "test"))
+    monkeypatch.setattr(recovery, "generate", lambda *args: (nodes+[.8, 0., 0.], tets, "test"))
     out = tmp_path / "mesh"; out.mkdir()
     with pytest.raises(ValueError, match="boundary exceeds"):
         core.build_mesh(cfg, source, out)

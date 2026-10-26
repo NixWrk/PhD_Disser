@@ -51,3 +51,34 @@ def test_actual_tetgen_boundary_and_material_provenance(tmp_path):
     assert not result["FEM_was_run"] and not result["quantitative_result_accepted"]
     assert core.sha(mesh / "contacts.local.json") == core.sha(surface / "contacts.local.json")
     assert core.verify_artifact(mesh)["stage"] == "mesh"
+
+
+def test_actual_tiny_one_command_pipeline(tmp_path):
+    pytest.importorskip("tetgen")
+    from test_ct_fem_preparation import fixture_config
+    path, cfg = fixture_config(tmp_path)
+    cfg["mesh"]["size_mm"] = 5.
+    cfg["mesh"]["steiner_limit"] = 10000
+    # A closed planar fixture avoids testing the separate HU corner-
+    # approximation error with a tolerance chosen for full-sized anatomy.
+    import trimesh
+    solid = trimesh.creation.box(extents=[30., 30., 30.])
+    for _ in range(3):
+        solid = solid.subdivide()
+    source = tmp_path / "supplied_box.stl"; solid.export(source)
+    cfg["body"] = dict(strategy="author_STL_LPS", source_stl=str(source),
+        source_stl_sha256=core.sha(source), units="mm", frame="LPS",
+        provenance="Synthetic supplied planar solid; no anatomical claim",
+        maximum_outside_body_voxels={k: 0 for k in ("lung", "bone", "heart", "fat")},
+        coverage_limits_basis="All synthetic tissue is enclosed by the supplied solid")
+    cfg["surface_qc"]["manual_STL_export_maximum_sampled_distance_mm"] = .001
+    for row in cfg["contacts"]["physical_centres_lps_mm"].values():
+        row["raw_lps_mm"][0] = 15.1
+    core.write_new(tmp_path / "pipeline_config.json", cfg)
+    out = tmp_path / "pipeline"
+    result = core.prepare_mesh_pipeline(tmp_path / "pipeline_config.json", out)
+    assert result["geometry_and_shape_QC_passed"]
+    assert [stage["stage"] for stage in result["completed"]] == ["surface", "remesh", "mesh"]
+    assert not result["FEM_was_run"] and not result["CEM_contacts_built"]
+    assert core.verify_artifact(out / "mesh")["stage"] == "mesh"
+    assert core.read(out / "mesh/mesh_quality.local.json")["surface_recovery_rounds"] == 0

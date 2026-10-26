@@ -32,7 +32,7 @@ POINTS = (1024, 4096)
 SEED = 20261008
 CONTINUATION_STAGES = ("remesh", "mesh", "materials", "refine")
 MESH_GENERATION_KEYS = ("size_mm", "steiner_limit", "maximum_relative_volume_error",
-                        "maximum_sampled_surface_error_mm", "tetgen_options")
+                        "maximum_sampled_surface_error_mm", "tetgen_options", "quality_recovery")
 KERNEL_FILES = ["georg_ct_model.py", "georg_mesh_quality.py",
                 "georg_quality_selected_refinement.py", "georg_lateral_quadrature.py",
                 "add_arm_extensions.py", "scorpion_georg_geometry_revision.py", "georg_quality_mesh_prepare.py"]
@@ -122,8 +122,8 @@ def load_config(path):
     cfg["inputs"]["ct"] = str((path.parent / cfg["inputs"]["ct"]).resolve())
     cfg["inputs"]["masks"] = {k: str((path.parent / v).resolve()) for k, v in cfg["inputs"]["masks"].items()}
     body = cfg["body"]
-    if body.get("strategy") not in ("HU_largest_component_per_slice", "author_STL_LPS"):
-        raise ValueError("Explicit supported HU body scenario required")
+    if body.get("strategy") not in ("HU_largest_component_per_slice", "author_STL_LPS", "supplied_STL_LPS"):
+        raise ValueError("Explicit supported body-input strategy required")
     if body["strategy"] == "HU_largest_component_per_slice":
         if body["closing_iterations"] != 1 or body["closing_connectivity"] != 1 or body["surface_level"] != .49:
             raise ValueError("This version requires one 6-neighbour closing and surface level .49")
@@ -149,6 +149,8 @@ def load_config(path):
     positive(cfg["mesh"]["maximum_seconds"], "mesh.maximum_seconds")
     from ct_fem_tetgen import validate_options
     validate_options(cfg["mesh"])
+    from ct_fem_mesh_recovery import validate_settings
+    validate_settings(cfg["mesh"]["quality_recovery"])
     natural(cfg["resources"]["max_ct_voxels"], "max_ct_voxels")
     positive(cfg["electrical_context"]["frequency_hz"], "frequency_hz")
     cfg["_config_path"] = str(path)
@@ -529,10 +531,15 @@ def artifact_sources(cfg, input_dir=None, previous_sources=None):
     paths.append(Path(__file__).with_name("ct_fem_remesh.py"))
     paths.append(Path(__file__).with_name("ct_fem_tetgen.py"))
     paths.append(Path(__file__).with_name("ct_fem_surface_intersections.py"))
-    if cfg['body']['strategy'] == 'author_STL_LPS':
+    paths.append(Path(__file__).with_name("ct_fem_mesh_recovery.py"))
+    if cfg['body']['strategy'] in ('author_STL_LPS', 'supplied_STL_LPS'):
         paths.extend([Path(cfg['body']['source_stl']), Path(__file__).with_name('ct_fem_manual_surface.py')])
     if input_dir is not None:
         paths.extend(p for p in Path(input_dir).rglob("*") if p.is_file())
+    for path, digest in cfg.get('segmentation_sources', {}).items():
+        if sha(path) != digest:
+            raise ValueError('TotalSegmentator source changed: '+path)
+        paths.append(Path(path))
     paths.extend(map(Path, previous_sources or {}))
     return {str(p): sha(p) for p in dict.fromkeys(p.resolve() for p in paths)}
 
@@ -598,7 +605,7 @@ def surface_distance_qc(topology, exported, settings):
 
 
 def build_surface(cfg, out, ct, hu, masks):
-    if cfg['body']['strategy'] == 'author_STL_LPS':
+    if cfg['body']['strategy'] in ('author_STL_LPS', 'supplied_STL_LPS'):
         from ct_fem_manual_surface import build as manual_surface
         skin, qc = manual_surface(cfg, out, ct, masks)
         return finish_surface(cfg, out, skin, kernels(), qc)
@@ -676,8 +683,8 @@ def finish_surface(cfg, out, skin, kernel, body_qc):
     qc.update(
         sampled_distance_is_not_certified_Hausdorff_bound=True,
         synthetic_cylinders=joins, skin_bounds_mm=skin.bounds.tolist(), pre_union_decimation=False,
-        surface_roles=({"manual_author_skin": "skin_regularized.stl", "computational_exterior": "exterior.stl"}
-            if cfg['body']['strategy']=='author_STL_LPS' else
+        surface_roles=({"supplied_skin": "skin_regularized.stl", "computational_exterior": "exterior.stl"}
+            if cfg['body']['strategy'] in ('author_STL_LPS', 'supplied_STL_LPS') else
             {"uncorrected_HU_contour": "body_before_regularization.stl", "corrected_CT_skin": "skin_regularized.stl", "computational_exterior": "exterior.stl"}))
     write_new(out / "surface_qc.local.json", qc)
     contacts = contact_metadata(exterior, cfg["contacts"])
@@ -687,12 +694,12 @@ def finish_surface(cfg, out, skin, kernel, body_qc):
 
 
 def build_mesh(cfg, source, out):
-    from ct_fem_tetgen import generate
+    from ct_fem_mesh_recovery import generate_screened
     surface = trimesh.load(source / "exterior.stl", force="mesh")
     surface_qc(surface)
     settings = cfg["mesh"]
     positive(settings["size_mm"], "size_mm")
-    nodes, tets, version = generate(source / "exterior.stl", out, settings)
+    nodes, tets, version, surface, projected_contacts, recovery_rounds = generate_screened(cfg, source, out, surface)
     kernel = kernels(); tets = kernel["orient"](nodes, tets)
     try:
         boundary, qc = mesh_qc(nodes, tets, max_nodes=settings["max_nodes"], max_tetrahedra=settings["max_tetrahedra"])
@@ -731,11 +738,57 @@ def build_mesh(cfg, source, out):
     qc.update(tetgen_version=version, boundary_distances=distance,
               relative_volume_error=error, actual_boundary_checked=True,
               actual_surface_qc=actual_surface_qc,
+              surface_recovery_rounds=recovery_rounds,
               original_boundary_distances=reference_distance, relative_volume_error_to_original=reference_error,
               original_exterior_sha256=reference_sha, cumulative_geometry_checked=True)
     save_mesh(out, nodes, tets, boundary, qc)
     solved.export(out / "fem_boundary.stl")
-    copy_contacts(source, out)
+    if projected_contacts is None:
+        copy_contacts(source, out)
+    else:
+        shutil.copyfile(source / "contacts.local.json", out / "source_contacts.local.json")
+        write_new(out / "contacts.local.json", projected_contacts)
+
+
+def prepare_mesh_pipeline(config_path, out):
+    """One fresh geometry pipeline; failed stages never become later parents."""
+    config_path = Path(config_path).resolve(); out = Path(out).resolve()
+    if read(config_path).get('schema') == 'ct_fem_ct_pipeline_v1':
+        from ct_fem_ct_pipeline import prepare as prepare_ct_pipeline
+        return prepare_ct_pipeline(config_path,out)
+    cfg = load_config(config_path); digest = sha(config_path)
+    if out.exists():
+        raise ValueError("Mesh pipeline requires a fresh output directory")
+    out.mkdir(parents=True)
+    snapshots = out / "source_snapshots"; snapshots.mkdir()
+    code = {}
+    for path, checksum in artifact_sources(cfg).items():
+        if Path(path).suffix == ".py":
+            name = checksum+"_"+Path(path).name
+            shutil.copyfile(path, snapshots / name); code[name] = checksum
+    write_new(out / "pipeline_started.local.json", dict(configuration_path=str(config_path),
+        configuration_sha256=digest, source_snapshots=code, **FLAGS))
+    completed = []; parent = None
+    try:
+        for stage in ("surface", "remesh", "mesh"):
+            if sha(config_path) != digest:
+                raise ValueError("Pipeline configuration changed between stages")
+            print(f"CT preparation: {stage}", flush=True)
+            target = out / stage
+            result = prepare(stage, config_path, target, parent)
+            completed.append(dict(stage=stage, directory=str(target),
+                manifest_sha256=sha(target / "preparation.local.json"), status=result["status"]))
+            parent = target
+        verify_artifact(parent)
+        manifest = dict(stage="pipeline", status="prepared_not_validated", completed=completed,
+            configuration_sha256=digest, mesh_directory=str(parent), geometry_and_shape_QC_passed=True,
+            CEM_contacts_built=False, **FLAGS)
+        write_new(out / "pipeline.local.json", manifest)
+        return manifest
+    except BaseException as error:
+        write_new(out / "pipeline_failed.local.json", dict(status="failed", completed=completed,
+            error_type=type(error).__name__, error=str(error), **FLAGS))
+        raise
 
 
 def save_fractions(out, fractions, outside, report, identity):
@@ -811,7 +864,7 @@ def prepare(stage, config_path, out, input_dir=None):
     if source is not None and (out.is_relative_to(source) or source.is_relative_to(out)):
         raise ValueError("Output must be separate from the input artifact")
     rawfiles = [Path(cfg["inputs"]["ct"]), *map(Path, cfg["inputs"]["masks"].values()), Path(config_path).resolve()]
-    if cfg['body']['strategy'] == 'author_STL_LPS':
+    if cfg['body']['strategy'] in ('author_STL_LPS', 'supplied_STL_LPS'):
         rawfiles.append(Path(cfg['body']['source_stl']))
     if any(p.is_relative_to(out) for p in rawfiles):
         raise ValueError("Output cannot contain any source input")
