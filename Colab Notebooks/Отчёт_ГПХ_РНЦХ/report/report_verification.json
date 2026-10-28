@@ -1,12 +1,12 @@
 {
   "status": "documentation_checks_passed_not_scientific_validation",
-  "chapter_count": 16,
-  "word_count_whitespace": 49904,
-  "characters": 404265,
-  "numbered_equations": 121,
-  "tables": 58,
-  "figures": 22,
-  "local_links_checked_in_main_and_sources": 332,
+  "chapter_count": 17,
+  "word_count_whitespace": 54065,
+  "characters": 436494,
+  "numbered_equations": 130,
+  "tables": 64,
+  "figures": 25,
+  "local_links_checked_in_main_and_sources": 346,
   "broken_links": [],
   "duplicate_equation_numbers": [],
   "tables_not_collapsed": [],
@@ -26,9 +26,10 @@
     "13_pulmovista_tissue_correction.md": "2ad69c9c6f3f5ceed6fc053491d23b3a9c37456e1792274d629d19d791d607f0",
     "14_stl_volume_method.md": "9a2b1a5b0cc96714d6ecaf94d19a1de4e8a06cfbb71da51780945f27b4777f4a",
     "15_4d_whole_heart_approximation.md": "ee73a5f770ac077627238018e5c6dddde8aca275914c484ae24b54fd085e54da",
-    "16_single_ct_motion.md": "7afbd214c3dce2d7a04ec67f2a3e43e0a0b55a659bc9c68154112ad718d3c670"
+    "16_single_ct_motion.md": "7afbd214c3dce2d7a04ec67f2a3e43e0a0b55a659bc9c68154112ad718d3c670",
+    "17_shape_electrical_identifiability.md": "2d187afd97034f9b945548b93ffb66afe1088824782fba297035efcd6261f398"
   },
-  "report_sha256": "4bdd329691b11cd9e6a3f33fa2955c68330a992bc5bd9b28b5c3fefbd722c9ef",
+  "report_sha256": "df3c915bc5732ca3890b414a50f543afba33a0128d584e3c7645a4e33a75cd51",
   "limits": [
     "Empirical CT cross-person errors are distinct from electrical SV/EF accuracy",
     "No new FEM or synthetic observations in the empirical continuation",
@@ -48,7 +49,11 @@
     "Target EIT supplies rho and delta-rho only; corrected TT supplies geometry, while existing separate recordings remain unsynchronized",
     "Geometry-only EIT signals can leak into estimated tissue corrections; linear diagnostics do not establish measured tissue changes",
     "Five-parameter rankings use explicit diagnostic steps and one TT montage; full nonlinear interactions and matched multi-montage comparison are not completed",
-    "Historical spherical radius changes also moved its center via z=r+h; earlier electrode sweeps held cardiac geometry fixed"
+    "Historical spherical radius changes also moved its center via z=r+h; earlier electrode sweeps held cardiac geometry fixed",
+    "Chapter 17 compares 54 matched STL/G1/L1 states at two common conditional material sets: 42 new solves and 12 verified reused states",
+    "Seven-parameter EIT rank is a local algebraic result; practical identification, tissue values and SV/EF accuracy remain unvalidated",
+    "A single corrected TT scalar does not identify arbitrary volume and three position changes; geometry leakage into EIT tissue estimates alters the subsequent correction",
+    "Finite STL-to-shape transfer is a computed geometry experiment, not recorded physiological dynamics or independent clinical validation"
   ],
-  "figure_visual_review": "Previous approximation/timing figures and latest Nix direction, guarded chamber predictions and formula-error PNGs inspected; chapter 14 shape/material, measurement-residual and composition/normalization PNGs inspected; chapter 15 cycle_0_overview, cycle_0_dynamics_3 and cycle_0_trajectory_3 PNGs inspected and final copies verified by SHA256; chapter 16 six PNGs inspected and reader copies verified by SHA256; remaining appendix figures not individually visually reviewed"
+  "figure_visual_review": "Previous approximation/timing figures and latest Nix direction, guarded chamber predictions and formula-error PNGs inspected; chapter 14 shape/material, measurement-residual and composition/normalization PNGs inspected; chapter 15 cycle_0_overview, cycle_0_dynamics_3 and cycle_0_trajectory_3 PNGs inspected and final copies verified by SHA256; chapter 16 six PNGs inspected and reader copies verified by SHA256; chapter 17 three PNGs inspected and reader copies verified by SHA256; remaining appendix figures not individually visually reviewed"
 }

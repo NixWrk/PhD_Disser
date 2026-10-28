@@ -62,8 +62,12 @@ def main():
                    'Target EIT supplies rho and delta-rho only; corrected TT supplies geometry, while existing separate recordings remain unsynchronized',
                    'Geometry-only EIT signals can leak into estimated tissue corrections; linear diagnostics do not establish measured tissue changes',
                    'Five-parameter rankings use explicit diagnostic steps and one TT montage; full nonlinear interactions and matched multi-montage comparison are not completed',
-                   'Historical spherical radius changes also moved its center via z=r+h; earlier electrode sweeps held cardiac geometry fixed'],
-        'figure_visual_review': 'Previous approximation/timing figures and latest Nix direction, guarded chamber predictions and formula-error PNGs inspected; chapter 14 shape/material, measurement-residual and composition/normalization PNGs inspected; chapter 15 cycle_0_overview, cycle_0_dynamics_3 and cycle_0_trajectory_3 PNGs inspected and final copies verified by SHA256; chapter 16 six PNGs inspected and reader copies verified by SHA256; remaining appendix figures not individually visually reviewed',
+                   'Historical spherical radius changes also moved its center via z=r+h; earlier electrode sweeps held cardiac geometry fixed',
+                   'Chapter 17 compares 54 matched STL/G1/L1 states at two common conditional material sets: 42 new solves and 12 verified reused states',
+                   'Seven-parameter EIT rank is a local algebraic result; practical identification, tissue values and SV/EF accuracy remain unvalidated',
+                   'A single corrected TT scalar does not identify arbitrary volume and three position changes; geometry leakage into EIT tissue estimates alters the subsequent correction',
+                   'Finite STL-to-shape transfer is a computed geometry experiment, not recorded physiological dynamics or independent clinical validation'],
+        'figure_visual_review': 'Previous approximation/timing figures and latest Nix direction, guarded chamber predictions and formula-error PNGs inspected; chapter 14 shape/material, measurement-residual and composition/normalization PNGs inspected; chapter 15 cycle_0_overview, cycle_0_dynamics_3 and cycle_0_trajectory_3 PNGs inspected and final copies verified by SHA256; chapter 16 six PNGs inspected and reader copies verified by SHA256; chapter 17 three PNGs inspected and reader copies verified by SHA256; remaining appendix figures not individually visually reviewed',
     }
     (ROOT / 'report_verification.json').write_text(json.dumps(result, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
     print(json.dumps({k: v for k, v in result.items() if k not in ('source_chapter_sha256', 'limits')}, ensure_ascii=False))
