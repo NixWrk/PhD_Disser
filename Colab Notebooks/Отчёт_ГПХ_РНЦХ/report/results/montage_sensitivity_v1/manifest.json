@@ -1,0 +1,194 @@
+{
+  "schema": "heart_montage_results_public_v1",
+  "source_commit": "1e85f44ac9c37c4fd37ddd94428cbae0a7dccb9c",
+  "primary_states": 720,
+  "primary_reused_states": 54,
+  "additional_states": {
+    "volume_refinement": 18,
+    "linear_compensation": 36,
+    "newton_compensation": 36
+  },
+  "total_states": 810,
+  "files": {
+    "tables/derivatives.csv": {
+      "sha256": "25cdc8d8d7f12940638cb7baddf7bbbd7f2cd1fc17cd2671fbff9e42673a240e",
+      "bytes": 139065,
+      "source_alias": "analysis_v1/derivatives.csv",
+      "source_sha256": "7c7ebaf5d7a8f834389fbfd35e8bd5e0e5c41a87abdb84ffa4689cc94cbe1cd1",
+      "rows": 540
+    },
+    "tables/exclusion_error_budgets.csv": {
+      "sha256": "e90c0f98ba0a80c55804bb886a13b4864e7a2f993ca0aac22291cf29cdcf3d2e",
+      "bytes": 217686,
+      "source_alias": "analysis_v1/exclusion_error_budgets.csv",
+      "source_sha256": "8dce800214491a91497a7144a5e8bb21aba8a50c4628ca973eacdb9a2d87dd59",
+      "rows": 648
+    },
+    "tables/finite_volume_errors.csv": {
+      "sha256": "6e7c3339d922314880a89ebdb965551da4d2428f8ccf26d2bce5ba6aed03152f",
+      "bytes": 2310306,
+      "source_alias": "analysis_v1/finite_volume_errors.csv",
+      "source_sha256": "684fc62d29d0bb7fc5a30346d5d350e4751f83f1f17cf131e7f78a80e5d47c17",
+      "rows": 5292
+    },
+    "tables/identifiability.csv": {
+      "sha256": "2d083dd4cbbd6002ca28dd28629a49badf310e89a660c649bea4785a7941ae19",
+      "bytes": 436291,
+      "source_alias": "analysis_v1/identifiability.csv",
+      "source_sha256": "ca3e605b2e23952f1fd7884027e6557baa737d1725aa25b68d1cc29ab68cce91",
+      "rows": 384
+    },
+    "tables/joint_components.csv": {
+      "sha256": "2d3085df177487e9fe0f695caaa7aa7310dca7d8f4fe6203d26f847f001cd8d2",
+      "bytes": 20436,
+      "source_alias": "analysis_v1/joint_components.csv",
+      "source_sha256": "c7622081822a7e7acaf14813c77cb75e268437837324413e470f78466ced2411",
+      "rows": 252
+    },
+    "tables/joint_decomposition.csv": {
+      "sha256": "5d3e96bad23b3f0923bdc12992bd594ecab299a72e93dba00341c3f3ed2bb77e",
+      "bytes": 8390,
+      "source_alias": "analysis_v1/joint_decomposition.csv",
+      "source_sha256": "378a642b2a95ab90065f8275657309969a71ec142c5c90f9978d32735383b89f",
+      "rows": 36
+    },
+    "tables/omission_units.csv": {
+      "sha256": "56855c27e68014a6720c64f883d9a0f33264474eea0594b92e9dcebb76d52b7c",
+      "bytes": 28360,
+      "source_alias": "analysis_v1/omission_units.csv",
+      "source_sha256": "e301b465b3302dfcc075323ef4ca4d3d18d530e45eabf755d02a9ec5a586756e",
+      "rows": 216
+    },
+    "tables/quadrature_comparison.csv": {
+      "sha256": "cde8b0a512f0fd41c42f5dc03a1182e1a9cb510d1cd2c0858f4bf76de051087a",
+      "bytes": 22643,
+      "source_alias": "analysis_v1/quadrature_comparison.csv",
+      "source_sha256": "122621654bcf870380c1ca09547f53beacf9dfafe97d7f3a7913d4cd4f31397f",
+      "rows": 162
+    },
+    "tables/quadrature_derivatives.csv": {
+      "sha256": "31045abf8174a65031ffa0872e07b9849e6ae90639f8a6420fa4e894f51fde20",
+      "bytes": 109871,
+      "source_alias": "analysis_v1/quadrature_derivatives.csv",
+      "source_sha256": "a0788c95b6f27ca23ab5bcf402c6f4f0bdabc9458493b77a9febf3fd22fa47fc",
+      "rows": 252
+    },
+    "tables/restriction_finite_errors.csv": {
+      "sha256": "90a5595253a0f98248e4fedfa86d3bba108fd85a5d778b19f4b58269e8add80b",
+      "bytes": 666026,
+      "source_alias": "analysis_v1/restriction_finite_errors.csv",
+      "source_sha256": "f691181de2e789726a5aec6cca600ed1d23cd5397cfac3ddb15420b8062dade3",
+      "rows": 2736
+    },
+    "tables/restrictions.csv": {
+      "sha256": "54ebcdb942bc29d89649166a218e8d5302856a98ecfc7cfb62ac41127ec77c0d",
+      "bytes": 73004,
+      "source_alias": "analysis_v1/restrictions.csv",
+      "source_sha256": "4ef9e774e2962cd1af1a79c33c2a92b97202f1b756e927981ccdc50987c43f7d",
+      "rows": 144
+    },
+    "tables/rho_checks.csv": {
+      "sha256": "f6c3383766690246e02ce8492cb4e2fb9cecea1af548af00b997656b2064e196",
+      "bytes": 5151,
+      "source_alias": "analysis_v1/rho_checks.csv",
+      "source_sha256": "49cdde142c912d5b173039ee1307b62e70b0b45d343f4286d64167e1a9c7e1c8",
+      "rows": 36
+    },
+    "tables/step_changes.csv": {
+      "sha256": "d82b17f5ac67f3bdc9f87ec1c30828e96b23276b39e399c18d3e8929c707793e",
+      "bytes": 48649,
+      "source_alias": "analysis_v1/step_changes.csv",
+      "source_sha256": "caecd8d395d8031c4d2d6086612cdb2bc33ee78c37267d985e24489237746e2e",
+      "rows": 270
+    },
+    "tables/finite_compensation_initial.csv": {
+      "sha256": "4a652c8cf9c944e812daeb0769d8d78647e64c1a3a6a18fa15237e30acd2941e",
+      "bytes": 12603,
+      "source_alias": "compensation_v1/analysis_v1/finite_compensation.csv",
+      "source_sha256": "62c0caca1d6830acd855bbae69f90dbdaf463de788b1ef07e8c2a4e47a2507bf",
+      "rows": 36
+    },
+    "tables/finite_compensation_newton.csv": {
+      "sha256": "9aecb67d8d4712c4d876f676a485130273c9e0cb4b9afedfc985efe1201fe961",
+      "bytes": 13015,
+      "source_alias": "compensation_newton1/analysis_v1/finite_compensation.csv",
+      "source_sha256": "63eb5926cde4cd548c5357ece07bad717931f3167a5cc8fa64ad6876e2d8b588",
+      "rows": 36
+    },
+    "tables/volume_refinement.csv": {
+      "sha256": "6e939050d12ba90834a5da4f84ca8662012fbb91cb3e2cfdd1d4cdff6fbe37bb",
+      "bytes": 2457,
+      "source_alias": "quadrature_l1_q1024/analysis_v1/volume_refinement.csv",
+      "source_sha256": "12d2d5fe22078982f5f9d544c068708d604e05af730ff14d49764fecc6906576",
+      "rows": 12
+    },
+    "tables/anatomy_volume_transfer.csv": {
+      "sha256": "aa73b9aefbd25bb86160c5644e9a2265e3021ba4073700594b0c616349640e15",
+      "bytes": 5308,
+      "source_alias": "report_tables_v2/anatomy_volume_transfer.csv",
+      "source_sha256": "c332a72c98c66e2a2f72dbb5ba77c9e0d940122efca28377e5a825aa7bc8e27e",
+      "rows": 36
+    },
+    "tables.md": {
+      "sha256": "8d404f6e3d1039cb19536a8bb068601301d4c582401e0fc4df7119b8f5c1c97f",
+      "bytes": 5512,
+      "source_alias": "report_tables_v2/tables.md",
+      "source_sha256": "15d8c33b80f85d6c5eaca1f383c4925df0564d82703bf0812f0596168c09ea8d"
+    },
+    "figures/ch18_01_volume_step_quadrature.png": {
+      "sha256": "05fa16e5f79dd48296b4fb44a31fec9be91263c55dac65ab6c75ccc8667dd55a",
+      "bytes": 332183,
+      "source_alias": "figures_v1/ch18_01_volume_step_quadrature.png",
+      "source_sha256": "05fa16e5f79dd48296b4fb44a31fec9be91263c55dac65ab6c75ccc8667dd55a"
+    },
+    "figures/ch18_02_isolated_volume_errors.png": {
+      "sha256": "521811eaca2a30ec3a9ee0222a2ca1fbc5630e6b1362d7a47cf8e1568ddd24e0",
+      "bytes": 336149,
+      "source_alias": "figures_v1/ch18_02_isolated_volume_errors.png",
+      "source_sha256": "521811eaca2a30ec3a9ee0222a2ca1fbc5630e6b1362d7a47cf8e1568ddd24e0"
+    },
+    "figures/ch18_03_finite_compensation.png": {
+      "sha256": "514cdc68f3f4e039047a39cac94800356785a2346d06498202f1dbe056f6aacb",
+      "bytes": 194570,
+      "source_alias": "figures_v1/ch18_03_finite_compensation.png",
+      "source_sha256": "514cdc68f3f4e039047a39cac94800356785a2346d06498202f1dbe056f6aacb"
+    },
+    "tables/electrical_states.csv": {
+      "sha256": "f3bc2a7ab357f5a7b28be4d86a8ec30687d083fc073f9bb033331d4cb00e06bc",
+      "bytes": 425280,
+      "source_alias": "analysis_v1/dataset.local.json",
+      "source_sha256": "a146776a087c1b68c490ffdd610afc030db5f824198b4d2ceacc407b2222ff55",
+      "projection": "one row per montage; selected numeric fields and provenance hashes only; no local paths",
+      "rows": 720
+    }
+  },
+  "summary": {
+    "analytic_rho_finite_relative_error_max": {
+      "1.0": 7.177443647229304e-05,
+      "5.0": 0.001797577863843579
+    },
+    "newton_target_max_absolute_residual_ohm": 1.8004017476869194e-06,
+    "newton_other_max_absolute_residual_ohm": 2.6445156137810955e-05,
+    "newton_outside_prior_five_percent_rho_states": 6
+  },
+  "status": "conditional_FEM_results_not_experimental_SV_EF_validation",
+  "physical_validation": false,
+  "clinical_validation": false,
+  "SV_EF_estimated": false,
+  "measured_noise": null,
+  "simultaneous_measurements": false,
+  "source_paths_omitted": true,
+  "source_hashes_rechecked_by_analysis": true,
+  "code_sha256": {
+    "MATLAB_TRKG4_real_subjects/tools/heart_montage_analysis.py": "7fc451ca6b9ba7cc7a97ddd3cf90b33cf7a032c706759a0e6d5cc292a14fa117",
+    "MATLAB_TRKG4_real_subjects/tools/heart_montage_compensation.py": "c7668397a3abcc3fc20a9af3dc188252ef01edaf3cf718ad6d3eee8495dc5218",
+    "MATLAB_TRKG4_real_subjects/tools/heart_montage_compensation_refine.py": "69ea06fcfb589ee1bec5030aa35ddac877ae7a3082fd74cedf9f8196b22d2725",
+    "MATLAB_TRKG4_real_subjects/tools/heart_montage_figures.py": "81d9213e24962162ad2c4077991d59bc12acade2ddc1411894cd14f772c7a24c",
+    "MATLAB_TRKG4_real_subjects/tools/heart_montage_report_tables.py": "6e5a88d923a429a78ec1fe7f5768839ec80e3b9c527225f2a0cb4c1d9e26616b",
+    "MATLAB_TRKG4_real_subjects/tools/heart_montage_run_prepare.py": "dd69110fb566af32c2830474a8335a718bd35e36234cf551a927483afb2595d1",
+    "MATLAB_TRKG4_real_subjects/tools/heart_montage_saved_analysis.py": "3a1e1eb659d0ec934fc79aa032b4c99563f3ca3775f569c8992a5556a4b213e3",
+    "MATLAB_TRKG4_real_subjects/tools/heart_montage_study_prepare.py": "d216537d59fa2f35c668d093f2450676d37c3ef1e3148c33c3715a4ccb1381a1",
+    "MATLAB_TRKG4_real_subjects/tools/heart_montage_volume_refinement.py": "d766d6f9a6648d2cbef3e6e358ec737dfa9a952c662b357972eaac6fa931f554"
+  },
+  "text_export": "UTF-8, LF line endings; numeric values preserved; source hashes refer to original local bytes"
+}

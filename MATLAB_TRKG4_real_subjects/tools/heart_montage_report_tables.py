@@ -52,8 +52,8 @@ def main(analysis, compensation, newton, refinement, output):
     def add(key,number,title,headers,rows):
         numeric[key]=rows
         text=["<details>",f"<summary>Таблица 18.{number}. {title}</summary>","",
-              "| "+" | ".join(headers)+" |","|"+"|".join(["---"]*len(headers))+"|"]
-        text.extend("| "+" | ".join(fmt(v) for v in row)+" |" for row in rows)
+              "| "+" | ".join(h.replace("|", "\\|") for h in headers)+" |","|"+"|".join(["---"]*len(headers))+"|"]
+        text.extend("| "+" | ".join(fmt(v).replace("|", "\\|") for v in row)+" |" for row in rows)
         text.extend(["","</details>",""])
         sections.append("\n".join(text))
     rows=[]
