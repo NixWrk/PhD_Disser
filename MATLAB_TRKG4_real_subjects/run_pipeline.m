@@ -13,6 +13,41 @@ addpath(fullfile(project_root, 'src'));
 addpath(fullfile(project_root, 'vendor_stl_eidors'));
 
 profile_index=find(cellfun(@(x)(ischar(x)||isstring(x)) && strcmpi(string(x),"Profile"),varargin),1);
+if ~isempty(profile_index) && profile_index<numel(varargin) && strcmpi(string(varargin{profile_index+1}),"pulmovista_operator_audit")
+    args=varargin; args(profile_index:profile_index+1)=[];
+    parser=inputParser; addParameter(parser,'InputFile',''); parse(parser,args{:});
+    assert(~isempty(parser.Results.InputFile),'An explicit local InputFile is required');
+    addpath(fullfile(project_root,'tools'));
+    report=pulmovista_operator_audit(parser.Results.InputFile); return;
+end
+if ~isempty(profile_index) && profile_index<numel(varargin) && strcmpi(string(varargin{profile_index+1}),"heart_stl_effective_fit")
+    args=varargin; args(profile_index:profile_index+1)=[];
+    parser=inputParser; addParameter(parser,'InputFile',''); parse(parser,args{:});
+    assert(~isempty(parser.Results.InputFile),'An explicit local InputFile is required');
+    addpath(fullfile(project_root,'tools'));
+    report=heart_stl_effective_fit(parser.Results.InputFile); return;
+end
+if ~isempty(profile_index) && profile_index<numel(varargin) && strcmpi(string(varargin{profile_index+1}),"heart_stl_sign_check")
+    args=varargin; args(profile_index:profile_index+1)=[];
+    parser=inputParser; addParameter(parser,'InputFile',''); parse(parser,args{:});
+    assert(~isempty(parser.Results.InputFile),'An explicit local InputFile is required');
+    addpath(fullfile(project_root,'tools'));
+    report=heart_stl_sign_check(parser.Results.InputFile); return;
+end
+if ~isempty(profile_index) && profile_index<numel(varargin) && strcmpi(string(varargin{profile_index+1}),"heart_stl_electrical_check")
+    args=varargin; args(profile_index:profile_index+1)=[];
+    parser=inputParser; addParameter(parser,'InputFile',''); parse(parser,args{:});
+    assert(~isempty(parser.Results.InputFile),'An explicit local InputFile is required');
+    addpath(fullfile(project_root,'tools'));
+    report=heart_stl_electrical_check(parser.Results.InputFile); return;
+end
+if ~isempty(profile_index) && profile_index<numel(varargin) && strcmpi(string(varargin{profile_index+1}),"pulmovista_patient_check")
+    args=varargin; args(profile_index:profile_index+1)=[];
+    parser=inputParser; addParameter(parser,'InputFile',''); parse(parser,args{:});
+    assert(~isempty(parser.Results.InputFile),'An explicit local InputFile is required');
+    addpath(fullfile(project_root,'tools'));
+    report=pulmovista_patient_check(parser.Results.InputFile); return;
+end
 if ~isempty(profile_index) && profile_index<numel(varargin) && strcmpi(string(varargin{profile_index+1}),"scorpion_session_fem")
     args=varargin;args(profile_index:profile_index+1)=[];
     report=run_scorpion_session_fem(args{:});return;
