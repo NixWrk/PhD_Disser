@@ -160,7 +160,8 @@ def prepare_source(path: Path, assets: list, bibliography: list) -> str:
                         if re.match(r'^(?:- |\d+\. )', x.strip()))
     def reflow_math(match):
         body = match.group(1).strip()
-        if len(body) < 240 or r'\qquad' not in body or r'\begin' in body:
+        needs_split = len(body) >= 240 or (len(body) >= 180 and body.count(r'\qquad') >= 2)
+        if not needs_split or r'\qquad' not in body or r'\begin' in body:
             return match.group(0)
         tags = re.findall(r'\\tag\{[^}]+\}', body)
         body = re.sub(r'\\tag\{[^}]+\}', '', body).strip()
@@ -318,6 +319,10 @@ def main():
     def reference_key(ref):
         dois = re.findall(r'https?://(?:dx\.)?doi\.org/([^\s)<>]+)', ref)
         urls = re.findall(r'\]\(([^)]+)\)', ref)
+        if len(set(urls)) > 1:
+            # A compound project reference may cite several different files.
+            # Deduplicating by its first URL would silently discard the rest.
+            return 'compound:' + '|'.join(sorted(set(u.casefold() for u in urls)))
         return (dois[0].lower() if dois else urls[0].casefold() if urls
                 else re.sub(r'\W+', '', re.sub(r'^\d+\.\s*', '', ref)).lower())
     seen, references, reference_numbers = set(), [], {}
@@ -331,6 +336,7 @@ def main():
             references.append(f'{len(references) + 1}. {clean}')
             reference_numbers[key] = len(references)
     if references:
+        citation_map = []
         # Chapter-local [1–7] citations are renumbered before URL citations.
         for index, local_refs in enumerate(citation_sets):
             local_numbers = {}
@@ -338,6 +344,8 @@ def main():
                 m = re.match(r'^(\d+)\.', ref.strip())
                 if m:
                     local_numbers[int(m.group(1))] = reference_numbers[reference_key(ref)]
+            citation_map.append({'source': source_manifest[index]['file'],
+                                 'local_to_global': local_numbers})
             def renumber(m):
                 ids = []
                 for item in re.split(r'[,;]\s*', m.group(1)):
@@ -374,6 +382,8 @@ def main():
         parts = [re.sub(r'(?<!!)\[([^\]]+)\]\((https?://[^)]+)\)', citation, part)
                  for part in parts]
         parts.append('# Список использованных источников\n\n' + '\n\n'.join(references))
+        (ROOT / 'bibliography_map.json').write_text(json.dumps(
+            {'chapters': citation_map, 'references': references}, ensure_ascii=False, indent=2), encoding='utf-8')
     appendix = ROOT / 'appendices.md'
     if appendix.exists():
         parts.append(prepare_source(appendix, assets, bibliography))

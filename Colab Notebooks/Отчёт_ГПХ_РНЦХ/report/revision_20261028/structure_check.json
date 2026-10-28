@@ -1,0 +1,114 @@
+{
+  "chapters": [
+    {
+      "file": "01_literature.md",
+      "bytes": 77757,
+      "words": 5615,
+      "equations": 11,
+      "figures": 0,
+      "tables": 1,
+      "sha256": "8193e9aa743158ec5c97002fb8166c2349946ae4c728cbd541fc59d6c9414393"
+    },
+    {
+      "file": "02_alternatives.md",
+      "bytes": 40040,
+      "words": 2801,
+      "equations": 2,
+      "figures": 0,
+      "tables": 2,
+      "sha256": "9012e9b57b5725b1b98b2947e5df74989628e75d246d94d9af373292f8c17a3b"
+    },
+    {
+      "file": "03_patents.md",
+      "bytes": 43010,
+      "words": 2976,
+      "equations": 4,
+      "figures": 0,
+      "tables": 1,
+      "sha256": "f03c6408246348b9807f8015c7a064107a4b2ddb2e46a97e22c0123f4857d2d1"
+    },
+    {
+      "file": "04_problem.md",
+      "bytes": 39899,
+      "words": 2702,
+      "equations": 12,
+      "figures": 1,
+      "tables": 1,
+      "sha256": "26c79fcdfeaebdde1c685cb8d818f44fb766f84a4369b65b7462be96ca170dee"
+    },
+    {
+      "file": "05_experiments.md",
+      "bytes": 54590,
+      "words": 4086,
+      "equations": 8,
+      "figures": 2,
+      "tables": 5,
+      "sha256": "cc58eb25fdb41cccee1305cc99b3073b4d8ece0d6dc50ed26121a40810084b32"
+    },
+    {
+      "file": "06_anatomy.md",
+      "bytes": 52045,
+      "words": 4010,
+      "equations": 20,
+      "figures": 6,
+      "tables": 7,
+      "sha256": "d5a0971ef09f7d552f824680e13df11905fb4d76de02b86e16f4b19d0ba7b70a"
+    },
+    {
+      "file": "07_forward.md",
+      "bytes": 59557,
+      "words": 4357,
+      "equations": 25,
+      "figures": 3,
+      "tables": 5,
+      "sha256": "f691b60b8b62826fdc5273d7b555ff6f7b3e85ca325b30fa6bb2bf8ea43d49b6"
+    },
+    {
+      "file": "08_tissue.md",
+      "bytes": 61241,
+      "words": 4424,
+      "equations": 25,
+      "figures": 3,
+      "tables": 6,
+      "sha256": "cb6b7da02175870de3dadb53f6153806bdaec2d363e2e183a7a34bb83694867a"
+    },
+    {
+      "file": "09_heart_dynamics.md",
+      "bytes": 57027,
+      "words": 4486,
+      "equations": 19,
+      "figures": 5,
+      "tables": 7,
+      "sha256": "2eb1ce73ba1a99a3fc8917bc0da06217ec5aeac29cfeccc77cd74cf07dc340f3"
+    },
+    {
+      "file": "10_chambers.md",
+      "bytes": 67269,
+      "words": 5114,
+      "equations": 22,
+      "figures": 1,
+      "tables": 6,
+      "sha256": "b5f9fe810daa8d49d525fe0234f0977d053ec0da9a4b82223c30e45c02e1ff9f"
+    },
+    {
+      "file": "11_validation.md",
+      "bytes": 64049,
+      "words": 4560,
+      "equations": 5,
+      "figures": 0,
+      "tables": 4,
+      "sha256": "3c1a4f8454974ace1205f0aed05d8ad1c391a7e97219e648e1460794ea6f9217"
+    },
+    {
+      "file": "12_discussion.md",
+      "bytes": 51693,
+      "words": 3524,
+      "equations": 6,
+      "figures": 0,
+      "tables": 1,
+      "sha256": "1bfd83afa3f69177cf2874151579d80152aefc777b1b30535349003a66502232"
+    }
+  ],
+  "errors": [],
+  "scope": "Структура, формулы по номерам, локальные ссылки и отсутствие заглушек; не научная валидация"
+}

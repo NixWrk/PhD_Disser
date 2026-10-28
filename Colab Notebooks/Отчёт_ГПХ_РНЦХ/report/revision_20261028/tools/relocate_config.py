@@ -28,6 +28,12 @@ def main():
         for e in data['entries']:
             old, new = e['source_path'].replace('\\', '/'), e['archive_path']
             paths[normalized(old)] = new
+            mirror = e.get('mirror_check', {})
+            if (mirror.get('matches_canonical') is True and mirror.get('path')
+                    and mirror.get('sha256') == e.get('sha256')):
+                # A recorded byte-identical mirror is evidence for this exact
+                # alias only. Do not infer mappings for its unverified siblings.
+                paths[normalized(mirror['path'])] = new
             # A shared prefix is mapped only when its mapping is unambiguous.
             while '/' in new and '/' in old and not re.fullmatch(r'[A-Za-z]:', old):
                 old, new = old.rsplit('/', 1)[0], new.rsplit('/', 1)[0]

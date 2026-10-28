@@ -1,0 +1,661 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-10-28T17:28:42.787207+00:00",
+  "script": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261028/tools/prepare_reader_figures.py",
+  "script_sha256": "c20c22ec7745df0a6dc9d88e43cd3357e02ec2e8749d174fd0b6009d2611e432",
+  "scope": "reader rendering from saved arrays/masks; no FEM, filtering, segmentation or refitting",
+  "absolute_data_roots_exported": false,
+  "figures": [
+    {
+      "figure": "5.1",
+      "original": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/execution_20261026/signals/exploratory/selected_blocks_preview.png",
+      "original_sha256": "dc3c3605102beb823694f2670015b25f293d1af80ee437b086c3719f9ba777c3",
+      "edits": [
+        "Служебные идентификаторы заменены на Г, запись 012, блок 1/2",
+        "Оси, легенды и статус русифицированы",
+        "SD назван выборочным стандартным отклонением, не доверительным интервалом"
+      ],
+      "status": "rendered",
+      "reader_png": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261028/figures/reader/05_01_selected_blocks_preview.png",
+      "reader_sha256": "9410feec4a04d3f0d9d3be9f40cbd48ecb2062e91144f7e3d57d0561b4a9bea6",
+      "inputs": [
+        {
+          "path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/execution_20261026/signals/extract_signals.py",
+          "sha256": "313b54dd1430239b69af9ce7c27c6a282a84e93885ba29a45f66e3e5661add3b",
+          "bytes": 28038
+        },
+        {
+          "path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/execution_20261026/signals/exploratory/SCV2-G-012_inhale_block01.json",
+          "sha256": "b8243cd22064460ae9b02a9140eb48ff62ffc14365f3888c19b97b34ff3985d1",
+          "bytes": 6986
+        },
+        {
+          "path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/execution_20261026/signals/exploratory/SCV2-G-012_inhale_block01.npz",
+          "sha256": "70ad43bdcc77e669cb64bc027fce6f12b84741501915c70e7cfa4ac60e5ccbf2",
+          "bytes": 388927
+        },
+        {
+          "path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/execution_20261026/signals/exploratory/SCV2-G-012_inhale_block02.json",
+          "sha256": "77a3d55fcbd135461c2bcbf16f21f1c623270e68b56ddad1f61e524d8ebab426",
+          "bytes": 6994
+        },
+        {
+          "path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/execution_20261026/signals/exploratory/SCV2-G-012_inhale_block02.npz",
+          "sha256": "a998bd92130602d643f4e593b04d6f078d2c7a3c4197f7935ce3331f2423ecef",
+          "bytes": 378366
+        }
+      ],
+      "rendering": {
+        "visual_function": "render_preview",
+        "lines": [
+          317,
+          351
+        ],
+        "unchanged_arrays": "time, filtered ECG, saved pulse, median and SD; no filtering",
+        "cycle_pairs_source": "saved block JSON"
+      },
+      "visible_text": [
+        "27.0",
+        "27.5",
+        "28.0",
+        "28.5",
+        "29.0",
+        "29.5",
+        "30.0",
+        "30.5",
+        "31.0",
+        "31.5",
+        "ЭКГ, мВ",
+        "−0.1",
+        "0.0",
+        "0.1",
+        "0.2",
+        "0.3",
+        "0.4",
+        "0.5",
+        "Г, запись 012, блок 1\nКандидаты QRS; конец диастолы и систолы не установлен",
+        "32.0",
+        "32.5",
+        "33.0",
+        "33.5",
+        "34.0",
+        "34.5",
+        "35.0",
+        "Г, запись 012, блок 2\nКандидаты QRS; конец диастолы и систолы не установлен",
+        "Время от начала записи, с",
+        "Общий импеданс 0,7–12 Гц, мОм",
+        "−100",
+        "−75",
+        "−50",
+        "−25",
+        "0",
+        "25",
+        "50",
+        "75",
+        "ТТРКГ 1×1",
+        "ТЕПС-2",
+        "Фаза QRS–QRS, доля цикла\nМедиана ± выборочное стандартное отклонение",
+        "−0.2",
+        "0.6",
+        "0.8",
+        "1.0",
+        "1.2",
+        "Центрированный цикл, мОм",
+        "Исследовательский просмотр записей: разметка ожидает ручной проверки"
+      ],
+      "visual_review": {
+        "status": "inspected",
+        "sha256": "9410feec4a04d3f0d9d3be9f40cbd48ecb2062e91144f7e3d57d0561b4a9bea6",
+        "checks": [
+          "заголовки, оси, единицы и легенды",
+          "читаемость и отсутствие обрезки",
+          "соответствие исходной геометрии и численным рядам"
+        ]
+      },
+      "originals_unchanged": true
+    },
+    {
+      "figure": "5.2",
+      "original": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/pulmovista_check_20261028/local/patient_v3/ct_belt_section.png",
+      "original_sha256": "042f5f2b9d21b0e588b9e1d1181ef27edebb585320559e15483c3e21b7d56669",
+      "edits": [
+        "КТ Ника заменено на сечение тканевых масок Н",
+        "Сердце уточнено до сердечной маски",
+        "Сохранены исходный пояс, срез и границы; добавлено алгоритмическое происхождение"
+      ],
+      "status": "rendered",
+      "reader_png": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261028/figures/reader/05_02_ct_belt_section.png",
+      "reader_sha256": "6c0acdc9c3cc6ab66c3a659ad2fe11e0c047bebb13b20c0d641476d1a20d5ca8",
+      "inputs": [
+        {
+          "path": "MATLAB_TRKG4_real_subjects/tools/pulmovista_patient_figures.py",
+          "sha256": "ee1e5339e298519fc9622a3a43ed886b6955842af4b37400cd276919d1a25096",
+          "bytes": 5300
+        },
+        {
+          "path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/pulmovista_check_20261028/local/patient_config_v3.local.json",
+          "sha256": "99e4f52140f4b3c0d609efa8fb62f354f2290e9bdcddbf5eedd1bdd384734ce9",
+          "bytes": 25103
+        },
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/universal_meshing_20261026/nik_ct_pipeline_v5/heart_within_domain.nii.gz",
+          "sha256": "f9a1219048b69cc22a558d792b884edcf47986e54b2f83218bb6f8ee6f80c6e3",
+          "bytes": 362774
+        },
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/universal_meshing_20261026/nik_ct_pipeline_v5/fat_within_domain.nii.gz",
+          "sha256": "e04b8d09e6af900e9a118a2bb3c8d609e4d15d027471a6b8bb9450a557b54f7e",
+          "bytes": 1557813
+        },
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/universal_meshing_20261026/nik_ct_pipeline_v5/bone_within_domain.nii.gz",
+          "sha256": "1c5d6e7fc4503ba7c16175134b8560bbeb2187968a1205471d62d64998476cef",
+          "bytes": 809186
+        },
+        {
+          "path": "Experiments/scorpion_20261022/derived/exploratory/universal_meshing_20261026/nik_ct_pipeline_v5/lung_within_domain.nii.gz",
+          "sha256": "276d0acaaa619db96223cb8b3f2d255a1f30f00985d4f5ac8ed6c474c81d2ad0",
+          "bytes": 722174
+        },
+        {
+          "path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/pulmovista_check_20261028/local/patient_v3/electrode_centres_m.csv",
+          "sha256": "e3f2a15022b3ebd8ff0088a8c734b1b51f44239d8a14c72bc304d9868e7be79c",
+          "bytes": 767
+        }
+      ],
+      "rendering": {
+        "visual_block": "pulmovista_patient_figures.py:29–47",
+        "slice_index": 106,
+        "plane_mm": -134.49,
+        "display_label_order": [
+          "fat",
+          "heart",
+          "bone",
+          "lung"
+        ],
+        "geometry": "same affine, slice, crop, label priority and electrode centres"
+      },
+      "visible_text": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "LPS X, мм",
+        "LPS Y, мм",
+        "Сечение тканевых масок Н и расчётные центры пояса ЭИТ\nОколо z = -134.49 мм; голубой — лёгкие, красный — сердечная маска\nСерый — кости, жёлтый — жир; положение пояса алгоритмическое"
+      ],
+      "visual_review": {
+        "status": "inspected",
+        "sha256": "6c0acdc9c3cc6ab66c3a659ad2fe11e0c047bebb13b20c0d641476d1a20d5ca8",
+        "checks": [
+          "заголовки, оси, единицы и легенды",
+          "читаемость и отсутствие обрезки",
+          "соответствие исходной геометрии и численным рядам"
+        ]
+      },
+      "originals_unchanged": true
+    },
+    {
+      "figure": "6.2",
+      "original": "Colab Notebooks/cardiac_4d_segmentation/heart_rr_analysis/function_analysis/ct_review/nix_phase_09/overview.png",
+      "original_sha256": "d9bbadfce392cac737d2eaeb3fdf66b9cc3f1b192f1bf2002d2c2ff5f9b4aec6",
+      "edits": [
+        "NIX заменено на Н; phase_09 — на фаза 09",
+        "Сечения и названия камер русифицированы",
+        "Индексы RAS и окно HU сохранены; указан непринятый статус контуров"
+      ],
+      "status": "rendered",
+      "reader_png": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261028/figures/reader/06_02_phase09_overview.png",
+      "reader_sha256": "3da3bfa3b1416fa01f9f6f518216ff45a5635d690242dcbfc14bb176b34484ae",
+      "inputs": [
+        {
+          "path": "Colab Notebooks/cardiac_4d_segmentation/build_cardiac_ct_review.py",
+          "sha256": "1a61021d9051f7cd61e4bdd8677347abde07044c1f1007a0772db268b33e6968",
+          "bytes": 9803
+        },
+        {
+          "path": "Colab Notebooks/cardiac_4d_segmentation/pilot_blood_segmentation_manifest.local.json",
+          "sha256": "01f8837cee4481a31f0c0d8ff171a0bc939099038d0a6581d1097b4e95761581",
+          "bytes": 15143
+        },
+        {
+          "path": "Colab Notebooks/cardiac_4d_segmentation/heart_rr_analysis/function_analysis/ct_review/nix_phase_09/review_manifest.json",
+          "sha256": "6842eb96a73ad05800e62cec317b3701f819f0a4d5c5b1ee126a637e232db42d",
+          "bytes": 3649
+        },
+        {
+          "configuration_field": "Colab Notebooks/cardiac_4d_segmentation/pilot_blood_segmentation_manifest.local.json:phases[nix,phase_09].ct_path",
+          "sha256": "f0588fe0e62220ca6ac811dd80e2ac561516f00e17afc9ce5e67f54d8468af77",
+          "bytes": 67788621
+        },
+        {
+          "configuration_field": "Colab Notebooks/cardiac_4d_segmentation/pilot_blood_segmentation_manifest.local.json:phases[nix,phase_09].raw_masks.left_ventricle_blood",
+          "sha256": "a0c870402a05dd1e39d0ac5b26f37156c5fc1076def421a50808c7ed2ebaa80d",
+          "bytes": 341512
+        },
+        {
+          "configuration_field": "Colab Notebooks/cardiac_4d_segmentation/pilot_blood_segmentation_manifest.local.json:phases[nix,phase_09].raw_masks.right_ventricle_blood",
+          "sha256": "4dc343b86905b4f0189a5d2fd15b598c9c9d97240a3c52e2453cf24bb26eac3e",
+          "bytes": 391773
+        },
+        {
+          "configuration_field": "Colab Notebooks/cardiac_4d_segmentation/pilot_blood_segmentation_manifest.local.json:phases[nix,phase_09].raw_masks.left_atrium_blood",
+          "sha256": "e8667f860fccc9e77ceaffec2895ac64ac8d1688f2774e51c83bedaa502353a5",
+          "bytes": 313924
+        },
+        {
+          "configuration_field": "Colab Notebooks/cardiac_4d_segmentation/pilot_blood_segmentation_manifest.local.json:phases[nix,phase_09].raw_masks.right_atrium_blood",
+          "sha256": "a61ba39b27cfda8e8e40a9a85558fd7b6411f0303905912f056508bf400be0e8",
+          "bytes": 316807
+        }
+      ],
+      "rendering": {
+        "visual_block": "build_review: orthogonal overview and outline",
+        "source_hashes_match_review_manifest": true,
+        "crop_index_bounds": [
+          [
+            133,
+            191,
+            36
+          ],
+          [
+            312,
+            348,
+            248
+          ]
+        ],
+        "centre_RAS_indices": [
+          223,
+          277,
+          134
+        ],
+        "window_HU": {
+          "level": 60,
+          "width": 160
+        },
+        "mask_edits": 0,
+        "resampling": "canonical axis permutation/reflection only; no interpolation"
+      },
+      "visible_text": [
+        "−20",
+        "0",
+        "20",
+        "40",
+        "60",
+        "80",
+        "100",
+        "120",
+        "140",
+        "160",
+        "Аксиальное сечение, индекс RAS 134",
+        "Аксиальное сечение, индекс RAS 134\nИсходные автоматические контуры",
+        "−25",
+        "25",
+        "50",
+        "75",
+        "125",
+        "150",
+        "175",
+        "200",
+        "225",
+        "Фронтальное сечение, индекс RAS 277",
+        "Фронтальное сечение, индекс RAS 277\nИсходные автоматические контуры",
+        "Сагиттальное сечение, индекс RAS 223",
+        "Сагиттальное сечение, индекс RAS 223\nИсходные автоматические контуры",
+        "Н, фаза 09 | окно: уровень 60 / ширина 160 HU\nЛЖ — синий, ПЖ — красный, ЛП — голубой, ПП — оранжевый\nАвтоматические контуры; ручное принятие не выполнено"
+      ],
+      "visual_review": {
+        "status": "inspected",
+        "sha256": "3da3bfa3b1416fa01f9f6f518216ff45a5635d690242dcbfc14bb176b34484ae",
+        "checks": [
+          "заголовки, оси, единицы и легенды",
+          "читаемость и отсутствие обрезки",
+          "соответствие исходной геометрии и численным рядам"
+        ]
+      },
+      "originals_unchanged": true
+    },
+    {
+      "figure": "6.6",
+      "original": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/figures/ch16_center_displacement.png",
+      "original_sha256": "06cf40f5fd96a9c53b1539bc8a18fa707b7ddcded3223832f9011ba96b489663",
+      "edits": [
+        "Nik заменено на Н",
+        "FOV заменено на поле зрения; абляция — на парное сравнение",
+        "Легенда max/RMS русифицирована; данные и раздельные R–R сохранены"
+      ],
+      "status": "rendered",
+      "reader_png": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261028/figures/reader/06_06_center_displacement.png",
+      "reader_sha256": "e0161a0db073b69fad3e971b3c90ae0c97f9bb38aa9b6a31019468ef0fe7761c",
+      "inputs": [
+        {
+          "path": "Colab Notebooks/cardiac_4d_segmentation/check_whole_heart_motion.py",
+          "sha256": "b816381a7c12187cb0dcaa2fa89314943aaac27c3c697526622c7570ad81a1a5",
+          "bytes": 43663
+        },
+        {
+          "path": "Colab Notebooks/cardiac_4d_segmentation/results/nik_whole_heart_20261028/exploratory/full_geometry_v1/motion_geometry_v1/center_displacements.json",
+          "sha256": "36d47f62dfbd7be5faa46dc6aaf6b38730c6e17621de38cda0639cd965c888fc",
+          "bytes": 66119
+        },
+        {
+          "path": "Colab Notebooks/cardiac_4d_segmentation/results/nik_whole_heart_20261028/exploratory/full_geometry_v1/motion_geometry_v1/center_displacement_stats.json",
+          "sha256": "7e85ef4c6d11c77c73714f022e16d12abc8c691979fc670c4a5f1b56bb84f5b8",
+          "bytes": 23433
+        }
+      ],
+      "rendering": {
+        "visual_function": "draw_plots: first figure only",
+        "lines": [
+          381,
+          414
+        ],
+        "matrix": "144 saved true_displacement_mm values",
+        "coordinates": "saved target_rr_percent, not recomputed"
+      },
+      "visible_text": [
+        "0.0",
+        "2.1",
+        "3.5",
+        "4.2",
+        "3.0",
+        "2.3",
+        "1.6",
+        "0.8",
+        "0.5",
+        "1.3",
+        "1.4",
+        "1.0",
+        "0.3",
+        "1.1",
+        "1.7",
+        "2.4",
+        "2.2",
+        "1.9",
+        "0.9",
+        "2.9",
+        "3.8",
+        "3.3",
+        "2.0",
+        "3.7",
+        "4.5",
+        "4.0",
+        "2.6",
+        "3.4",
+        "3.1",
+        "1.8",
+        "2.5",
+        "1.2",
+        "0.6",
+        "Целевая фаза",
+        "00",
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06",
+        "07",
+        "08",
+        "09",
+        "10",
+        "11",
+        "Опорная фаза",
+        "Норма референсного смещения центра, мм",
+        "Исходная координата R–R, % (без замыкания циклов)",
+        "0",
+        "20",
+        "40",
+        "60",
+        "80",
+        "100",
+        "120",
+        "140",
+        "|c цели − c опоры|, мм",
+        "1.5",
+        "Опоры 00 и 09; циклы показаны раздельно",
+        "Опора 00: максимум 4.17; СКЗ 2.22 мм",
+        "Опора 09: максимум 4.24; СКЗ 2.23 мм",
+        "мм",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "Н • центроиды исследовательских масок: цикл 0 — 00–08; цикл 1 — 09–11",
+        "Среднеквадратичное смещение исключает самосравнение. Один участник; все 12 масок касаются верхней границы поля зрения.\nСмещение — референсный вход парного сравнения; восстановление движения по одной КТ не выполнено."
+      ],
+      "visual_review": {
+        "status": "inspected",
+        "sha256": "e0161a0db073b69fad3e971b3c90ae0c97f9bb38aa9b6a31019468ef0fe7761c",
+        "checks": [
+          "заголовки, оси, единицы и легенды",
+          "читаемость и отсутствие обрезки",
+          "соответствие исходной геометрии и численным рядам"
+        ]
+      },
+      "originals_unchanged": true
+    },
+    {
+      "figure": "7.2",
+      "original": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/pulmovista_check_20261028/local/stl_electrical_comparison/electrical_approximation.png",
+      "original_sha256": "c874d9de9f9cc32ce80c5db92648da14c506180fcb7d2b1fd091e5b9cb267ca2",
+      "edits": [
+        "КТ Ника заменено на КТ участника Н",
+        "RMSE заменено на СКО; методы STL/G1–G3b/L1–L2 сохранены",
+        "Числа взяты из сохранённой сводки без новой подгонки"
+      ],
+      "status": "rendered",
+      "reader_png": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261028/figures/reader/07_02_electrical_approximation.png",
+      "reader_sha256": "5690647835d6aa62a584a4df468b7bb56f97bbd93ed9167ad3346be0a1cd3d61",
+      "inputs": [
+        {
+          "path": "MATLAB_TRKG4_real_subjects/tools/heart_stl_electrical_summary.py",
+          "sha256": "4d08655a94a4077a317ba58a737044a1003860b545b28e9bc5f0c967bac28859",
+          "bytes": 6158
+        },
+        {
+          "path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/pulmovista_check_20261028/local/stl_electrical_comparison/summary.local.json",
+          "sha256": "994ad974d23b9969e25afe2e355c2b6b3ed6772823c064ca5ae36f0f5ae46164",
+          "bytes": 7740
+        }
+      ],
+      "rendering": {
+        "visual_block": "heart_stl_electrical_summary.py:81–96",
+        "plotted_values": "saved negative/positive probes, saved RMSE, saved material scenarios",
+        "refitting": false,
+        "volume_denominator": "target geometric volume, unchanged"
+      },
+      "visible_text": [
+        "Изменение заданного объёма, мл",
+        "−40",
+        "−30",
+        "−20",
+        "−10",
+        "0",
+        "10",
+        "20",
+        "30",
+        "40",
+        "Изменение ТТРКГ, мОм",
+        "−12.5",
+        "−10.0",
+        "−7.5",
+        "−5.0",
+        "−2.5",
+        "0.0",
+        "2.5",
+        "5.0",
+        "7.5",
+        "10.0",
+        "12.5",
+        "Одинаковое ΔV; ρ сердца = 4 Ом·м",
+        "STL",
+        "G1",
+        "G2",
+        "G3a",
+        "G3b",
+        "L1",
+        "L2",
+        "СКО приращений относительно STL, мОм",
+        "2",
+        "4",
+        "6",
+        "8",
+        "12",
+        "14",
+        "Расхождение при одинаковом ρ",
+        "Заданное ρ целого сердца, Ом·м",
+        "5",
+        "15",
+        "25",
+        "dZ/dV, мОм/мл",
+        "−0.75",
+        "−0.50",
+        "−0.25",
+        "0.00",
+        "0.25",
+        "0.50",
+        "0.75",
+        "1.00",
+        "1.25",
+        "1.50",
+        "Три сценария; одна STL и монтаж",
+        "Условные FEM-расчёты на КТ участника Н; пригодность сферы и точность УО не установлены"
+      ],
+      "visual_review": {
+        "status": "inspected",
+        "sha256": "5690647835d6aa62a584a4df468b7bb56f97bbd93ed9167ad3346be0a1cd3d61",
+        "checks": [
+          "заголовки, оси, единицы и легенды",
+          "читаемость и отсутствие обрезки",
+          "соответствие исходной геометрии и численным рядам"
+        ]
+      },
+      "originals_unchanged": true
+    },
+    {
+      "figure": "7.3",
+      "original": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/pulmovista_check_20261028/local/measurement_audit_v1/measurement_residuals.png",
+      "original_sha256": "3b8bb4d7de5a439b2ef497470f3b4664995db10a420e3c24a42d71af1a34f0a4",
+      "edits": [
+        "reader заменено на программу чтения",
+        "Все три вертикальные оси содержат мВ; сохранена условность шкалы",
+        "Ось индекса уточнена: электрические пары с отсчётом с нуля"
+      ],
+      "status": "rendered",
+      "reader_png": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261028/figures/reader/07_03_measurement_residuals.png",
+      "reader_sha256": "d7a6dfb6f4264667bfaa9bb0a5e7dae3c726c251be5b4ff0569e72955cd2b6f0",
+      "inputs": [
+        {
+          "path": "MATLAB_TRKG4_real_subjects/tools/pulmovista_measurement_audit.py",
+          "sha256": "82d43dac61c52062594818ed2cfc66fa18dad5e25ed2afac7bcda5eb3eeb9376",
+          "bytes": 24556
+        },
+        {
+          "path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/pulmovista_check_20261028/local/measurement_audit_v1/residual_rows.csv",
+          "sha256": "0f3186825c892e032ae65e8cf3a5f9a5aa7aa03315b8a40f2ed3c0ef01cb7348",
+          "bytes": 18618
+        },
+        {
+          "path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/pulmovista_check_20261028/local/measurement_audit_v1/measurement_pairs.csv",
+          "sha256": "1667f5c17c483ca2448914fb37da6f8f736306ce860d80e131b8bab816f29c32",
+          "bytes": 13438
+        }
+      ],
+      "rendering": {
+        "visual_block": "pulmovista_measurement_audit.py:198–209",
+        "calibration": "unchanged conditional reader scale",
+        "row_order": "0–207, unchanged",
+        "computed_operations": "saved columns; subtraction y-p and V-to-mV display multiplier only"
+      },
+      "visible_text": [
+        "Номер электрической пары в исходном порядке, отсчёт с нуля",
+        "Напряжение, мВ\nв условной шкале",
+        "Измерения в условной шкале программы чтения",
+        "Исходная высота пояса",
+        "Пояс на 20 мм ниже",
+        "Измерение − расчёт, мВ",
+        "Антисимметричная часть, мВ",
+        "Антисимметричная часть измеренного вектора"
+      ],
+      "visual_review": {
+        "status": "inspected",
+        "sha256": "d7a6dfb6f4264667bfaa9bb0a5e7dae3c726c251be5b4ff0569e72955cd2b6f0",
+        "checks": [
+          "заголовки, оси, единицы и легенды",
+          "читаемость и отсутствие обрезки",
+          "соответствие исходной геометрии и численным рядам"
+        ]
+      },
+      "originals_unchanged": true
+    },
+    {
+      "figure": "8.1",
+      "original": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/pulmovista_check_20261028/local/patient_v3/baseline_fit.png",
+      "original_sha256": "4bb48a1b693782b4e6069df771d39c791e7e54a74c7e23e28b1f903425f4cf31",
+      "edits": [
+        "Ник заменено на Н",
+        "Верхняя ось уточнена: напряжение, мВ",
+        "Подгонка не выполнялась: использованы сохранённые Vref и Vpred"
+      ],
+      "status": "rendered",
+      "reader_png": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261028/figures/reader/08_01_baseline_fit.png",
+      "reader_sha256": "f1a30147ff078e65eebae98ccd78d75e49645bab0f61b9036f221a15c69b541a",
+      "inputs": [
+        {
+          "path": "MATLAB_TRKG4_real_subjects/tools/pulmovista_patient_figures.py",
+          "sha256": "ee1e5339e298519fc9622a3a43ed886b6955842af4b37400cd276919d1a25096",
+          "bytes": 5300
+        },
+        {
+          "path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/pulmovista_check_20261028/local/patient_config_v3.local.json",
+          "sha256": "99e4f52140f4b3c0d609efa8fb62f354f2290e9bdcddbf5eedd1bdd384734ce9",
+          "bytes": 25103
+        },
+        {
+          "path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/pulmovista_check_20261028/local/patient_v3/reference_prediction.mat",
+          "sha256": "4df1978bdd85cf69bec3ebc2dd553d1e718a3489a403f6ef63d8aa0546a82a00",
+          "bytes": 9250
+        }
+      ],
+      "rendering": {
+        "visual_block": "pulmovista_patient_figures.py:15–27",
+        "relative_voltage_residual_pct": 32.436531300977066,
+        "new_fit": false,
+        "vectors": "Vref and Vpred from reference_prediction.mat"
+      },
+      "visible_text": [
+        "Напряжение, мВ",
+        "Н, запись 02, опорный участок 36–44 с: невязка 32.44%",
+        "Измерения после чтения EIDORS",
+        "Условная FEM-подгонка",
+        "Номер измерения (из 208)",
+        "Измерение − расчёт, мВ"
+      ],
+      "visual_review": {
+        "status": "inspected",
+        "sha256": "f1a30147ff078e65eebae98ccd78d75e49645bab0f61b9036f221a15c69b541a",
+        "checks": [
+          "заголовки, оси, единицы и легенды",
+          "читаемость и отсутствие обрезки",
+          "соответствие исходной геометрии и численным рядам"
+        ]
+      },
+      "originals_unchanged": true
+    }
+  ],
+  "visual_review_utc": "2026-10-28T17:30:29.941623+00:00"
+}
