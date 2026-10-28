@@ -1,0 +1,303 @@
+"""Build an editable scientific DOCX from the reviewed chapter sources.
+
+Uses python-docx for the style reference and deterministic OOXML finishing,
+and Pandoc for Markdown/LaTeX to native Word math. No research is recalculated.
+"""
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import re
+import shutil
+import subprocess
+from pathlib import Path
+from urllib.parse import unquote
+
+from docx import Document
+from docx.enum.text import WD_ALIGN_PARAGRAPH
+from docx.oxml import OxmlElement
+from docx.oxml.ns import qn
+from docx.shared import Cm, Pt, RGBColor
+
+ROOT = Path(__file__).resolve().parents[1]
+REPO = ROOT.parents[3]
+W = 'http://schemas.openxmlformats.org/wordprocessingml/2006/main'
+M = 'http://schemas.openxmlformats.org/officeDocument/2006/math'
+CHAPTERS = [
+    '01_literature.md', '02_alternatives.md', '03_patents.md',
+    '04_problem.md', '05_experiments.md', '06_anatomy.md',
+    '07_forward.md', '08_tissue.md', '09_heart_dynamics.md',
+    '10_chambers.md', '11_validation.md', '12_discussion.md',
+]
+
+
+def sha(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def font(style, size: float, bold=False):
+    style.font.name = 'Times New Roman'
+    style.font.size = Pt(size)
+    style.font.bold = bold
+    style.font.color.rgb = RGBColor(0, 0, 0)
+    fonts = style.element.get_or_add_rPr().get_or_add_rFonts()
+    for key in ['ascii', 'hAnsi', 'eastAsia', 'cs']:
+        fonts.set(qn('w:' + key), 'Times New Roman')
+    for key in ['asciiTheme', 'hAnsiTheme', 'eastAsiaTheme', 'cstheme']:
+        fonts.attrib.pop(qn('w:' + key), None)
+
+
+def reference_docx(path: Path):
+    doc = Document()
+    sec = doc.sections[0]
+    sec.page_width, sec.page_height = Cm(21), Cm(29.7)
+    sec.left_margin, sec.right_margin = Cm(3), Cm(1.5)
+    sec.top_margin = sec.bottom_margin = Cm(2)
+    sec.header_distance = sec.footer_distance = Cm(1.2)
+    sec.different_first_page_header_footer = True
+    for name in ['Normal', 'Body Text', 'First Paragraph']:
+        if name not in doc.styles:
+            doc.styles.add_style(name, 1)
+        font(doc.styles[name], 14)
+        pf = doc.styles[name].paragraph_format
+        pf.line_spacing = 1.5
+        pf.space_after = Pt(0)
+        pf.first_line_indent = Cm(1.25)
+        pf.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+        pf.widow_control = True
+    for name in ['Heading 1', 'Heading 2', 'Heading 3']:
+        font(doc.styles[name], 14, True)
+        pf = doc.styles[name].paragraph_format
+        pf.first_line_indent = Cm(0)
+        pf.space_before, pf.space_after = Pt(16), Pt(8)
+        pf.line_spacing = 1.15
+        pf.keep_with_next = True
+        pf.keep_together = True
+        pf.page_break_before = name == 'Heading 1'
+    font(doc.styles['Title'], 20, True)
+    doc.styles['Title'].paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    font(doc.styles['Subtitle'], 14)
+    doc.styles['Subtitle'].font.italic = False
+    doc.styles['Subtitle'].paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    font(doc.styles['Caption'], 12)
+    cp = doc.styles['Caption'].paragraph_format
+    cp.first_line_indent = Cm(0)
+    cp.line_spacing = 1.0
+    cp.space_before, cp.space_after = Pt(5), Pt(9)
+    cp.keep_together = True
+    for name in ['TOC Heading', 'TOC 1', 'TOC 2', 'Bibliography']:
+        if name not in doc.styles:
+            doc.styles.add_style(name, 1)
+        font(doc.styles[name], 12 if name != 'TOC Heading' else 14, name == 'TOC Heading')
+        doc.styles[name].paragraph_format.line_spacing = 1.05
+    for name in ['List Paragraph', 'List Bullet', 'List Number']:
+        font(doc.styles[name], 14)
+        doc.styles[name].paragraph_format.line_spacing = 1.25
+        doc.styles[name].paragraph_format.space_after = Pt(3)
+    footer = sec.footer.paragraphs[0]
+    footer.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    field = OxmlElement('w:fldSimple')
+    field.set(qn('w:instr'), 'PAGE')
+    footer._p.append(field)
+    doc.settings.element.append(OxmlElement('w:updateFields'))
+    doc.settings.element[-1].set(qn('w:val'), 'true')
+    lang = OxmlElement('w:lang')
+    lang.set(qn('w:val'), 'ru-RU')
+    doc.styles['Normal'].element.get_or_add_rPr().append(lang)
+    doc.save(path)
+
+
+def prepare_source(path: Path, assets: list, bibliography: list) -> str:
+    text = path.read_text(encoding='utf-8-sig')
+    # The source remains collapsible; the printed report always exposes tables.
+    text = re.sub(r'<summary>(.*?)</summary>', r'\n\n\1\n\n', text, flags=re.S)
+    text = re.sub(r'</?details\b[^>]*>', '', text)
+    match = re.search(r'^## Источники к главе[^\n]*\n', text, re.M)
+    if match:
+        refs = text[match.end():].strip()
+        bibliography.extend(re.split(r'\n(?=- |\d+\. )', refs))
+        text = text[:match.start()].rstrip()
+
+    def image_link(match):
+        alt, target = match.group(1), unquote(match.group(2).strip('<>'))
+        source = (path.parent / target).resolve()
+        if not source.is_file():
+            raise FileNotFoundError(f'Missing figure in {path.name}: {target}')
+        name = sha(source)[:12] + source.suffix.lower()
+        dest = ROOT / 'figures' / name
+        if not dest.exists():
+            shutil.copy2(source, dest)
+        try:
+            origin = source.relative_to(REPO).as_posix()
+        except ValueError:
+            origin = source.name
+        assets.append({'chapter': path.name, 'file': 'figures/' + name,
+                       'source': origin, 'sha256': sha(source), 'description': alt})
+        return f'![{alt}](figures/{name})'
+
+    text = re.sub(r'!\[([^\]]*)\]\(([^)]+)\)', image_link, text)
+
+    def ordinary_link(match):
+        label, target = match.group(1), match.group(2)
+        if re.match(r'(https?://|mailto:|#)', target):
+            return match.group(0)
+        source = (path.parent / unquote(target.strip('<>').split('#')[0])).resolve()
+        if not source.exists():
+            raise FileNotFoundError(f'Missing reference in {path.name}: {target}')
+        try:
+            relative = source.relative_to(REPO).as_posix()
+        except ValueError:
+            # Private absolute roots must not enter the reader document.
+            return label
+        return f'[{label}](<sources/repo/{relative}>)'
+
+    text = re.sub(r'(?<!!)\[([^\]]+)\]\(([^)]+)\)', ordinary_link, text)
+    # Pandoc's texmath does not consistently support \tag in OMML.
+    # Keep the number inside native math as \qquad\text{(N.k)}.
+    text = re.sub(r'\\tag\{([^}]+)\}', r'\\qquad\\text{(\1)}', text)
+    return text.strip()
+
+
+def finish_docx(path: Path):
+    doc = Document(path)
+    for p in doc.paragraphs:
+        text = p.text.strip()
+        if text == '[[TOC]]':
+            p.clear()
+            p.paragraph_format.first_line_indent = Cm(0)
+            field = OxmlElement('w:fldSimple')
+            field.set(qn('w:instr'), 'TOC \\o "1-2" \\h \\z \\u')
+            p._p.append(field)
+        elif text in ['Содержание', 'Реферат']:
+            p.style = doc.styles['TOC Heading']
+            p.paragraph_format.page_break_before = True
+        elif text.startswith('Рисунок '):
+            p.style = doc.styles['Caption']
+            p.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        elif text.startswith('Таблица '):
+            p.style = doc.styles['Caption']
+            p.paragraph_format.keep_with_next = True
+        if p._p.xpath('.//w:drawing'):
+            p.paragraph_format.first_line_indent = Cm(0)
+            p.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
+            p.paragraph_format.keep_with_next = True
+        if p._p.xpath('.//m:oMathPara'):
+            p.paragraph_format.first_line_indent = Cm(0)
+            p.paragraph_format.space_before = p.paragraph_format.space_after = Pt(6)
+            p.paragraph_format.line_spacing = 1.1
+    for shape in doc.inline_shapes:
+        scale = min(Cm(16.3) / shape.width, Cm(18) / shape.height, 1)
+        shape.width, shape.height = int(shape.width * scale), int(shape.height * scale)
+    for table in doc.tables:
+        table.autofit = False
+        table.style = 'Table Grid'
+        n = len(table.columns)
+        # Length weighting improves text-heavy columns without crushing numbers.
+        weights = []
+        for c in range(n):
+            lengths = [len(row.cells[c].text) for row in table.rows]
+            weights.append(max(8, min(80, sum(lengths) / len(lengths))) ** 0.5)
+        widths = [16.5 * x / sum(weights) for x in weights]
+        for col, width in zip(table.columns, widths):
+            col.width = Cm(width)
+        for ri, row in enumerate(table.rows):
+            if ri == 0:
+                row._tr.get_or_add_trPr().append(OxmlElement('w:tblHeader'))
+            for ci, cell in enumerate(row.cells):
+                cell.width = Cm(widths[ci])
+                for p in cell.paragraphs:
+                    pf = p.paragraph_format
+                    pf.first_line_indent = Cm(0)
+                    pf.line_spacing = 1.0
+                    pf.space_before = pf.space_after = Pt(3)
+                    pf.keep_with_next = False
+                    pf.alignment = WD_ALIGN_PARAGRAPH.LEFT
+                    for run in p.runs:
+                        run.font.name, run.font.size = 'Times New Roman', Pt(11)
+                        if ri == 0:
+                            run.font.bold = True
+                if ri == 0:
+                    shd = OxmlElement('w:shd')
+                    shd.set(qn('w:fill'), 'EDEDED')
+                    cell._tc.get_or_add_tcPr().append(shd)
+    # A simple title page; unknown legal and personal details are omitted.
+    title_lines = [
+        ('Отчёт ГПХ РНЦХ', 'Title'),
+        ('Разработка методики определения функций сердца по электроимпедансным измерениям', 'Title'),
+        ('Индивидуальная анатомия  тканевые параметры  динамика сердца', 'Subtitle'),
+        ('Научная редакция по состоянию на 28 октября 2026 года', 'Subtitle'),
+        ('Этап разработки и проверки методики', 'Subtitle'),
+    ]
+    first = doc.element.body[0]
+    for text, style in title_lines:
+        p = doc.add_paragraph(text, style)
+        p.paragraph_format.space_before = Pt(24)
+        p.paragraph_format.space_after = Pt(18)
+        first.addprevious(p._p)
+    doc.core_properties.title = title_lines[1][0]
+    doc.core_properties.subject = 'Отчёт о разработке методики'
+    doc.core_properties.author = ''
+    doc.core_properties.last_modified_by = ''
+    doc.core_properties.comments = ''
+    # Word/Pandoc templates may carry a blue rule on the Title style.
+    for root in [doc.styles.element, doc.element]:
+        for node in root.xpath('.//w:pBdr'):
+            node.getparent().remove(node)
+    doc.save(path)
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument('--output', type=Path, required=True)
+    ap.add_argument('--pandoc', default='pandoc')
+    ap.add_argument('--partial', action='store_true')
+    args = ap.parse_args()
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+    assets, bibliography, parts, source_manifest = [], [], [], []
+    paths = [ROOT / 'front_matter.md'] + [ROOT / 'chapters' / n for n in CHAPTERS] + [ROOT / 'conclusion.md']
+    for path in paths:
+        if not path.exists() and args.partial:
+            continue
+        if not path.exists():
+            raise FileNotFoundError(path)
+        parts.append(prepare_source(path, assets, bibliography))
+        source_manifest.append({'file': path.relative_to(ROOT).as_posix(), 'sha256': sha(path)})
+    seen, references = set(), []
+    for ref in bibliography:
+        if not ref.strip():
+            continue
+        dois = re.findall(r'https?://(?:dx\.)?doi\.org/([^\s)<>]+)', ref)
+        key = dois[0].lower() if dois else re.sub(r'\W+', '', ref).lower()
+        if key not in seen:
+            seen.add(key)
+            references.append(ref.strip())
+    if references:
+        parts.append('# Список использованных источников\n\n' + '\n\n'.join(references))
+    appendix = ROOT / 'appendices.md'
+    if appendix.exists():
+        parts.append(prepare_source(appendix, assets, bibliography))
+    combined = '\n\n'.join(parts) + '\n'
+    source = ROOT / 'report_for_word.md'
+    source.write_text(combined, encoding='utf-8')
+    ref = args.output.parent / 'reference_styles.docx'
+    reference_docx(ref)
+    command = [args.pandoc, str(source), '-f', 'markdown+tex_math_dollars-implicit_figures',
+               '--resource-path', str(ROOT), '--reference-doc', str(ref),
+               '-o', str(args.output)]
+    result = subprocess.run(command, capture_output=True, text=True, encoding='utf-8')
+    (args.output.parent / 'pandoc.log').write_text(result.stderr, encoding='utf-8')
+    if result.returncode:
+        raise RuntimeError(result.stderr)
+    if 'Could not convert TeX math' in result.stderr or 'Could not fetch resource' in result.stderr:
+        raise RuntimeError('Pandoc reported unsupported math or missing resources; inspect pandoc.log')
+    finish_docx(args.output)
+    receipt = {'sources': source_manifest, 'figures': assets, 'bibliography_entries': len(references),
+               'document_sha256_before_fields': sha(args.output), 'partial_build': args.partial}
+    (ROOT / 'build_manifest.json').write_text(json.dumps(receipt, ensure_ascii=False, indent=2), encoding='utf-8')
+    print(json.dumps({'output': str(args.output), 'sources': len(source_manifest),
+                      'figures': len(assets), 'references': len(references)}, ensure_ascii=False))
+
+
+if __name__ == '__main__':
+    main()

@@ -1,0 +1,92 @@
+{
+  "snapshot_date": "2026-10-28",
+  "head": "976eece0aa3b5c7731c612f83facd53c5e21244a",
+  "scope": "Источники редакции на этапе подготовки глав; не фиксация нового расчётного результата",
+  "chapters": [
+    {
+      "path": "chapters/01_problem.md",
+      "sha256": "9028e3f3bb57c8c7631dfbc08638c8c624be566a2b63dd5dddc44f55d27b8547",
+      "bytes": 29119
+    },
+    {
+      "path": "chapters/02_literature_patents.md",
+      "sha256": "816c86c15679d690c97212bf96cb76a60512b4e149c9b3b2cf0ef0684c0a9462",
+      "bytes": 63497
+    },
+    {
+      "path": "chapters/03_ct_reference.md",
+      "sha256": "733f34c9ca8a3864b905c6323a6aaecf77b606ea47e17e3596f653452e5dc564",
+      "bytes": 25991
+    },
+    {
+      "path": "chapters/04_signals.md",
+      "sha256": "520c7ce1736565adec55dd29fbf0784f1fad2704b6aa3e8d06ee8977cb292d82",
+      "bytes": 27362
+    },
+    {
+      "path": "chapters/05_lateral_hypothesis.md",
+      "sha256": "0c4fbc3df5f9889a6f1792ea90c30d1ff9041828be1af2e22cae7d124cc0947e",
+      "bytes": 22883
+    },
+    {
+      "path": "chapters/06_forward_fem.md",
+      "sha256": "6431ad9dd4e1c3991bb9e667423b52ba712b7898a374587ab900151c1ad3910e",
+      "bytes": 38261
+    },
+    {
+      "path": "chapters/07_inverse_single_phase.md",
+      "sha256": "b5e4bdd19d88d080d6f4fa46775b342d1f6d5784438dc30ff5a5a5ea3534d0d2",
+      "bytes": 34867
+    },
+    {
+      "path": "chapters/08_approximation_validation.md",
+      "sha256": "664a201021c88d3f08b726598fba10fe203a6179cb68acbdda9779473dea88c8",
+      "bytes": 27199
+    },
+    {
+      "path": "chapters/09_results_contract.md",
+      "sha256": "1d3434c5752e810996c202be06409f69e19fb60bd22dcf9087defd6eb1ebb410",
+      "bytes": 20629
+    },
+    {
+      "path": "chapters/10_empirical_chamber_signal.md",
+      "sha256": "c73416ddb342e4a466884812aced90d3b19d22f2cc5fa492c15fff80c2a62b69",
+      "bytes": 35631
+    },
+    {
+      "path": "chapters/11_chamber_timing.md",
+      "sha256": "39a0bbc11e984259e6bea07dd5072c312314c0f95a58b9d4c9a4f35c32ef8a87",
+      "bytes": 38635
+    },
+    {
+      "path": "chapters/12_nix_individual_validation.md",
+      "sha256": "56192755e15564adaa59f6b031573a36e876b9bdb949c904b006da0af0ad5193",
+      "bytes": 44858
+    },
+    {
+      "path": "chapters/13_pulmovista_tissue_correction.md",
+      "sha256": "2ad69c9c6f3f5ceed6fc053491d23b3a9c37456e1792274d629d19d791d607f0",
+      "bytes": 42968
+    },
+    {
+      "path": "chapters/14_stl_volume_method.md",
+      "sha256": "9a2b1a5b0cc96714d6ecaf94d19a1de4e8a06cfbb71da51780945f27b4777f4a",
+      "bytes": 111270
+    },
+    {
+      "path": "chapters/15_4d_whole_heart_approximation.md",
+      "sha256": "ee73a5f770ac077627238018e5c6dddde8aca275914c484ae24b54fd085e54da",
+      "bytes": 49544
+    },
+    {
+      "path": "chapters/16_single_ct_motion.md",
+      "sha256": "7afbd214c3dce2d7a04ec67f2a3e43e0a0b55a659bc9c68154112ad718d3c670",
+      "bytes": 72061
+    },
+    {
+      "path": "chapters/17_shape_electrical_identifiability.md",
+      "sha256": "54917c87c09294c1c9dbadede568f4cd8812b69198cfad4266f622ede24f6898",
+      "bytes": 30423
+    }
+  ]
+}
