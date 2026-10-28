@@ -110,6 +110,8 @@ def reference_docx(path: Path):
 
 def prepare_source(path: Path, assets: list, bibliography: list) -> str:
     text = path.read_text(encoding='utf-8-sig')
+    text = re.sub(r'\\\((.*?)\\\)', lambda m: '$' + m.group(1) + '$', text, flags=re.S)
+    text = re.sub(r'\\\[(.*?)\\\]', lambda m: '\n$$\n' + m.group(1) + '\n$$\n', text, flags=re.S)
     # The source remains collapsible; the printed report always exposes tables.
     text = re.sub(r'<summary>(.*?)</summary>', r'\n\n\1\n\n', text, flags=re.S)
     text = re.sub(r'</?details\b[^>]*>', '', text)
@@ -156,6 +158,30 @@ def prepare_source(path: Path, assets: list, bibliography: list) -> str:
     refs = re.sub(r'(?<!!)\[([^\]]+)\]\(([^)]+)\)', ordinary_link, refs)
     bibliography.extend(x for x in re.split(r'\n(?=- |\d+\. )', refs)
                         if re.match(r'^(?:- |\d+\. )', x.strip()))
+    def reflow_math(match):
+        body = match.group(1).strip()
+        if len(body) < 240 or r'\qquad' not in body or r'\begin' in body:
+            return match.group(0)
+        tags = re.findall(r'\\tag\{[^}]+\}', body)
+        body = re.sub(r'\\tag\{[^}]+\}', '', body).strip()
+        # Split only complete clauses, outside braces and paired delimiters.
+        depth = left = 0
+        cuts = []
+        for token in re.finditer(r'\\left|\\right|\\qquad|(?<!\\)[{}]', body):
+            t = token.group()
+            if t == '{': depth += 1
+            elif t == '}': depth -= 1
+            elif t == r'\left': left += 1
+            elif t == r'\right': left -= 1
+            elif depth == 0 and left == 0: cuts.append((token.start(), token.end()))
+        if not cuts:
+            return match.group(0)
+        pieces, start = [], 0
+        for a, b in cuts:
+            pieces.append(body[start:a].strip()); start = b
+        pieces.append(body[start:].strip())
+        return '\n$$\n\\begin{gathered}\n' + '\\\\\n'.join(pieces) + '\n\\end{gathered}\n' + ''.join(tags) + '\n$$\n'
+    text = re.sub(r'\$\$(.*?)\$\$', reflow_math, text, flags=re.S)
     # Pandoc's texmath does not consistently support \tag in OMML.
     # Keep the number inside native math as \qquad\text{(N.k)}.
     text = re.sub(r'\\tag\{([^}]+)\}', r'\\qquad\\text{(\1)}', text)
@@ -221,6 +247,15 @@ def finish_docx(path: Path):
                 row._tr.get_or_add_trPr().append(OxmlElement('w:tblHeader'))
             for ci, cell in enumerate(row.cells):
                 cell.width = Cm(widths[ci])
+                for math_run in cell._tc.xpath('.//m:r'):
+                    properties = math_run.find(qn('w:rPr'))
+                    if properties is None:
+                        properties = OxmlElement('w:rPr')
+                        math_run.insert(0, properties)
+                    size = properties.find(qn('w:sz'))
+                    if size is None:
+                        size = OxmlElement('w:sz'); properties.append(size)
+                    size.set(qn('w:val'), '22')
                 for p in cell.paragraphs:
                     pf = p.paragraph_format
                     pf.first_line_indent = Cm(0)
@@ -342,6 +377,7 @@ def main():
     appendix = ROOT / 'appendices.md'
     if appendix.exists():
         parts.append(prepare_source(appendix, assets, bibliography))
+        source_manifest.append({'file': appendix.relative_to(ROOT).as_posix(), 'sha256': sha(appendix)})
     combined = '\n\n'.join(parts) + '\n'
     source = ROOT / 'report_for_word.md'
     source.write_text(combined, encoding='utf-8')
