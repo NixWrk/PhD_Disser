@@ -103,6 +103,11 @@ def main(config_file):
         selected.append(start+np.flatnonzero(keep))
     ids = np.concatenate(selected)
     assert len(ids)>0
+    background_box=cfg.get('background_quadrature_box_mm')
+    if background_box is not None:
+        background_box=np.asarray(background_box,dtype=float)
+        assert background_box.shape==(2,3) and np.all(np.isfinite(background_box))
+        assert np.all(background_box[1]>background_box[0])
     # A conservative AABB selection is used, never a centroid-only boundary filter.
     masks = {}
     sources = {str(Path(config_file)):sha(config_file)}
@@ -131,6 +136,9 @@ def main(config_file):
           'probe_volume_basis':'same absolute increment for all shapes, fraction of original STL volume',
           'reference_STL_volume_ml':reference_volume_mm3/1000,
           'variants':[]}
+    if background_box is not None:
+        plan['background_quadrature_box_mm']=background_box.tolist()
+        plan['outside_background_quadrature_box']='frozen baseline centroid material, even inside new heart probe envelope'
     # Per-level point/background blocks are shared by candidates; geometry and
     # tissue fractions are evaluated jointly at exactly the same points.
     for q in levels:
@@ -152,6 +160,11 @@ def main(config_file):
                 hit=np.zeros(len(points),bool)
                 hit[valid]=masks[name][tuple(ijk[valid].T)]
                 bg[hit]=label
+            if background_box is not None:
+                vertices=nodes[elems[chunk]]
+                in_old_box=np.all(vertices.max(1)>=background_box[0],axis=1)&np.all(vertices.min(1)<=background_box[1],axis=1)
+                frozen=np.repeat(~in_old_box,q)
+                bg[frozen]=np.repeat(baseline[chunk],q)[frozen]
             for job,candidate in active:
                 lab=bg.copy()
                 if job['id'] in certified:
