@@ -114,9 +114,9 @@ def prepare_source(path: Path, assets: list, bibliography: list) -> str:
     text = re.sub(r'<summary>(.*?)</summary>', r'\n\n\1\n\n', text, flags=re.S)
     text = re.sub(r'</?details\b[^>]*>', '', text)
     match = re.search(r'^## Источники к главе[^\n]*\n', text, re.M)
+    refs = ''
     if match:
         refs = text[match.end():].strip()
-        bibliography.extend(re.split(r'\n(?=- |\d+\. )', refs))
         text = text[:match.start()].rstrip()
 
     def image_link(match):
@@ -150,9 +150,12 @@ def prepare_source(path: Path, assets: list, bibliography: list) -> str:
         except ValueError:
             # Private absolute roots must not enter the reader document.
             return label
-        return f'[{label}](<sources/repo/{relative}>)'
+        return f'[{label}](<workspace/{relative}>)'
 
     text = re.sub(r'(?<!!)\[([^\]]+)\]\(([^)]+)\)', ordinary_link, text)
+    refs = re.sub(r'(?<!!)\[([^\]]+)\]\(([^)]+)\)', ordinary_link, refs)
+    bibliography.extend(x for x in re.split(r'\n(?=- |\d+\. )', refs)
+                        if re.match(r'^(?:- |\d+\. )', x.strip()))
     # Pandoc's texmath does not consistently support \tag in OMML.
     # Keep the number inside native math as \qquad\text{(N.k)}.
     text = re.sub(r'\\tag\{([^}]+)\}', r'\\qquad\\text{(\1)}', text)
@@ -161,8 +164,20 @@ def prepare_source(path: Path, assets: list, bibliography: list) -> str:
 
 def finish_docx(path: Path):
     doc = Document(path)
+    in_bibliography = False
     for p in doc.paragraphs:
         text = p.text.strip()
+        if p.style.name == 'Heading 1':
+            in_bibliography = text == 'Список использованных источников'
+        elif in_bibliography:
+            p.style = doc.styles['Bibliography']
+            p.paragraph_format.left_indent = Cm(0.7)
+            p.paragraph_format.first_line_indent = Cm(-0.7)
+            p.paragraph_format.space_after = Pt(5)
+            p.paragraph_format.line_spacing = 1.1
+            p.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.LEFT
+            for run in p.runs:
+                run.font.size = Pt(12)
         if text == '[[TOC]]':
             p.clear()
             p.paragraph_format.first_line_indent = Cm(0)
@@ -225,7 +240,7 @@ def finish_docx(path: Path):
     title_lines = [
         ('Отчёт ГПХ РНЦХ', 'Title'),
         ('Разработка методики определения функций сердца по электроимпедансным измерениям', 'Title'),
-        ('Индивидуальная анатомия  тканевые параметры  динамика сердца', 'Subtitle'),
+        ('Индивидуальная анатомия и динамика сердца', 'Subtitle'),
         ('Научная редакция по состоянию на 28 октября 2026 года', 'Subtitle'),
         ('Этап разработки и проверки методики', 'Subtitle'),
     ]
@@ -254,25 +269,75 @@ def main():
     ap.add_argument('--partial', action='store_true')
     args = ap.parse_args()
     args.output.parent.mkdir(parents=True, exist_ok=True)
-    assets, bibliography, parts, source_manifest = [], [], [], []
+    assets, bibliography, parts, source_manifest, citation_sets = [], [], [], [], []
     paths = [ROOT / 'front_matter.md'] + [ROOT / 'chapters' / n for n in CHAPTERS] + [ROOT / 'conclusion.md']
     for path in paths:
         if not path.exists() and args.partial:
             continue
         if not path.exists():
             raise FileNotFoundError(path)
+        first_ref = len(bibliography)
         parts.append(prepare_source(path, assets, bibliography))
+        citation_sets.append(bibliography[first_ref:])
         source_manifest.append({'file': path.relative_to(ROOT).as_posix(), 'sha256': sha(path)})
-    seen, references = set(), []
+    def reference_key(ref):
+        dois = re.findall(r'https?://(?:dx\.)?doi\.org/([^\s)<>]+)', ref)
+        urls = re.findall(r'\]\(([^)]+)\)', ref)
+        return (dois[0].lower() if dois else urls[0].casefold() if urls
+                else re.sub(r'\W+', '', re.sub(r'^\d+\.\s*', '', ref)).lower())
+    seen, references, reference_numbers = set(), [], {}
     for ref in bibliography:
         if not ref.strip():
             continue
-        dois = re.findall(r'https?://(?:dx\.)?doi\.org/([^\s)<>]+)', ref)
-        key = dois[0].lower() if dois else re.sub(r'\W+', '', ref).lower()
+        key = reference_key(ref)
         if key not in seen:
             seen.add(key)
-            references.append(ref.strip())
+            clean = re.sub(r'^(?:\d+\.|-)\s+', '', ref.strip())
+            references.append(f'{len(references) + 1}. {clean}')
+            reference_numbers[key] = len(references)
     if references:
+        # Chapter-local [1–7] citations are renumbered before URL citations.
+        for index, local_refs in enumerate(citation_sets):
+            local_numbers = {}
+            for ref in local_refs:
+                m = re.match(r'^(\d+)\.', ref.strip())
+                if m:
+                    local_numbers[int(m.group(1))] = reference_numbers[reference_key(ref)]
+            def renumber(m):
+                ids = []
+                for item in re.split(r'[,;]\s*', m.group(1)):
+                    ends = re.split(r'[–—-]', item.strip())
+                    ids.extend(range(int(ends[0]), int(ends[-1])+1))
+                if not ids or not all(n in local_numbers for n in ids):
+                    return m.group(0)
+                mapped = [local_numbers[n] for n in ids]
+                if len(mapped) > 2 and mapped == list(range(mapped[0], mapped[-1]+1)):
+                    return f'[{mapped[0]}–{mapped[-1]}]'
+                return '[' + ', '.join(map(str, mapped)) + ']'
+            chunks = re.split(r'(\$\$.*?\$\$|\$[^$\n]+\$)', parts[index], flags=re.S)
+            for i in range(0, len(chunks), 2):
+                chunks[i] = re.sub(r'(?<![!\\])\[([0-9]+(?:\s*[,;–—-]\s*[0-9]+)*)\](?!\()', renumber, chunks[i])
+            parts[index] = ''.join(chunks)
+        # Preserve a readable citation even when a URL alias has no exact match.
+        url_index = {}
+        doi_index = {}
+        for number, ref in enumerate(references, 1):
+            for url in re.findall(r'https?://[^\s)<>]+', ref):
+                url_index[url.rstrip('/')] = number
+            for doi in re.findall(r'10\.\d{4,9}/[^\s)<>]+', ref):
+                doi_index[doi.lower().rstrip('.')] = number
+        def citation(m):
+            label, url = m.group(1), m.group(2)
+            number = url_index.get(url.rstrip('/'))
+            if number is None:
+                doi = re.search(r'10\.\d{4,9}/[^\s)<>]+', url)
+                if doi:
+                    number = doi_index.get(doi.group().lower().rstrip('.'))
+            pinpoint = re.search(r'(?:§|с\.|табл\.|рис\.|пункты?\b).*', label)
+            visible = (str(number) + (', ' + pinpoint.group() if pinpoint else '')) if number else label
+            return f'[\\[{visible}\\]]({url})'
+        parts = [re.sub(r'(?<!!)\[([^\]]+)\]\((https?://[^)]+)\)', citation, part)
+                 for part in parts]
         parts.append('# Список использованных источников\n\n' + '\n\n'.join(references))
     appendix = ROOT / 'appendices.md'
     if appendix.exists():

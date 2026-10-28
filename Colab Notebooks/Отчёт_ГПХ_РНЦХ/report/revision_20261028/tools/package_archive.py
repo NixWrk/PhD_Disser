@@ -42,7 +42,9 @@ def main():
     parser.add_argument('--tier', required=True,
                         choices=['core', 'optional_ct4d', 'optional_recompute', 'researchstate'])
     args = parser.parse_args()
-    data = json.loads(args.inventory.read_text(encoding='utf-8'))
+    inventory_bytes = args.inventory.read_bytes()
+    inventory_sha256 = hashlib.sha256(inventory_bytes).hexdigest()
+    data = json.loads(inventory_bytes)
     entries = [e for e in data['entries'] if e['delivery_tier'] == args.tier]
     args.outdir.mkdir(parents=True, exist_ok=True)
     dest = args.outdir / (args.tier + '.zip')
@@ -89,7 +91,7 @@ def main():
                 print(json.dumps({'tier': args.tier, 'written': i + 1, 'total': len(entries)}), flush=True)
         manifest = {
             'schema': 'gph_packaged_snapshot_v1', 'tier': args.tier,
-            'started_utc': started, 'inventory_sha256': digest(args.inventory),
+            'started_utc': started, 'inventory_sha256': inventory_sha256,
             'entries': included, 'excluded_changed_or_unreadable': excluded,
             'missing_sources': data['missing_sources'],
             'held_entries': [e for e in data['entries'] if e['delivery_tier'].startswith('hold_')],

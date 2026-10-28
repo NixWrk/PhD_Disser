@@ -29,6 +29,18 @@ try {
             $toc.Range.ParagraphFormat.SpaceBefore = 0
             $toc.Range.ParagraphFormat.SpaceAfter = 3
             $toc.Range.ParagraphFormat.Alignment = 0
+            $toc.Range.ParagraphFormat.FirstLineIndent = 0
+            $toc.Range.ParagraphFormat.LeftIndent = 0
+            $toc.Range.ParagraphFormat.RightIndent = 0
+            foreach ($paragraph in $toc.Range.Paragraphs) {
+                if ($paragraph.Range.Text.Trim().Length -eq 0) {
+                    $paragraph.Range.Font.Size = 1
+                    $paragraph.Format.SpaceBefore = 0
+                    $paragraph.Format.SpaceAfter = 0
+                    $paragraph.Format.LineSpacingRule = 4
+                    $paragraph.Format.LineSpacing = 1
+                }
+            }
         }
         $wordDocument.Repaginate()
         foreach ($toc in $wordDocument.TablesOfContents) { $toc.UpdatePageNumbers() }
