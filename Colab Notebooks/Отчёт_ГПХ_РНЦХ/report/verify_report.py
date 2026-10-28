@@ -57,8 +57,13 @@ def main():
                    'Static/dynamic cardiac definitions and registration remain unresolved; equivalent whole-heart form precedes the chamber-function transition',
                    'Chapter 15 compares 28 implemented 3D approximations plus control on 12 automatic masks of one person; all masks touch the superior CT field boundary',
                    'Exact volume and centroid in constrained approximations use target CT inputs and are not reconstruction accuracy',
-                   '432 single-anchor transformations still use target moments; geometric superiority does not establish electrical SV/EF accuracy'],
-        'figure_visual_review': 'Previous approximation/timing figures and latest Nix direction, guarded chamber predictions and formula-error PNGs inspected; chapter 14 shape/material, measurement-residual and composition/normalization PNGs inspected; chapter 15 cycle_0_overview, cycle_0_dynamics_3 and cycle_0_trajectory_3 PNGs inspected and final copies verified by SHA256; remaining appendix figures not individually visually reviewed',
+                   '432 single-anchor transformations still use target moments; geometric superiority does not establish electrical SV/EF accuracy',
+                   'Chapter 16 adds 864 fixed/moving geometry probes, 99 motion-law checks and 42 conditional FEM probes; target CT volumes remain known inputs in the geometry tests',
+                   'Target EIT supplies rho and delta-rho only; corrected TT supplies geometry, while existing separate recordings remain unsynchronized',
+                   'Geometry-only EIT signals can leak into estimated tissue corrections; linear diagnostics do not establish measured tissue changes',
+                   'Five-parameter rankings use explicit diagnostic steps and one TT montage; full nonlinear interactions and matched multi-montage comparison are not completed',
+                   'Historical spherical radius changes also moved its center via z=r+h; earlier electrode sweeps held cardiac geometry fixed'],
+        'figure_visual_review': 'Previous approximation/timing figures and latest Nix direction, guarded chamber predictions and formula-error PNGs inspected; chapter 14 shape/material, measurement-residual and composition/normalization PNGs inspected; chapter 15 cycle_0_overview, cycle_0_dynamics_3 and cycle_0_trajectory_3 PNGs inspected and final copies verified by SHA256; chapter 16 six PNGs inspected and reader copies verified by SHA256; remaining appendix figures not individually visually reviewed',
     }
     (ROOT / 'report_verification.json').write_text(json.dumps(result, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
     print(json.dumps({k: v for k, v in result.items() if k not in ('source_chapter_sha256', 'limits')}, ensure_ascii=False))

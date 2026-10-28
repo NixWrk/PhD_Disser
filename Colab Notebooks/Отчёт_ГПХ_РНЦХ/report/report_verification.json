@@ -1,22 +1,22 @@
 {
   "status": "documentation_checks_passed_not_scientific_validation",
-  "chapter_count": 15,
-  "word_count_whitespace": 43405,
-  "characters": 352286,
-  "numbered_equations": 109,
-  "tables": 52,
-  "figures": 15,
-  "local_links_checked_in_main_and_sources": 286,
+  "chapter_count": 16,
+  "word_count_whitespace": 49904,
+  "characters": 404265,
+  "numbered_equations": 121,
+  "tables": 58,
+  "figures": 22,
+  "local_links_checked_in_main_and_sources": 332,
   "broken_links": [],
   "duplicate_equation_numbers": [],
   "tables_not_collapsed": [],
   "source_chapter_sha256": {
-    "01_problem.md": "e91813b092487311f40a0805f00845b91b2d7703f073261c51c41aeff6e44f45",
+    "01_problem.md": "9028e3f3bb57c8c7631dfbc08638c8c624be566a2b63dd5dddc44f55d27b8547",
     "02_literature_patents.md": "816c86c15679d690c97212bf96cb76a60512b4e149c9b3b2cf0ef0684c0a9462",
     "03_ct_reference.md": "733f34c9ca8a3864b905c6323a6aaecf77b606ea47e17e3596f653452e5dc564",
     "04_signals.md": "520c7ce1736565adec55dd29fbf0784f1fad2704b6aa3e8d06ee8977cb292d82",
     "05_lateral_hypothesis.md": "0c4fbc3df5f9889a6f1792ea90c30d1ff9041828be1af2e22cae7d124cc0947e",
-    "06_forward_fem.md": "90c8da2d0970a830cf355052bf6667f30f4c68eaf781b786767d124f97a677eb",
+    "06_forward_fem.md": "6431ad9dd4e1c3991bb9e667423b52ba712b7898a374587ab900151c1ad3910e",
     "07_inverse_single_phase.md": "b5e4bdd19d88d080d6f4fa46775b342d1f6d5784438dc30ff5a5a5ea3534d0d2",
     "08_approximation_validation.md": "664a201021c88d3f08b726598fba10fe203a6179cb68acbdda9779473dea88c8",
     "09_results_contract.md": "1d3434c5752e810996c202be06409f69e19fb60bd22dcf9087defd6eb1ebb410",
@@ -25,9 +25,10 @@
     "12_nix_individual_validation.md": "56192755e15564adaa59f6b031573a36e876b9bdb949c904b006da0af0ad5193",
     "13_pulmovista_tissue_correction.md": "2ad69c9c6f3f5ceed6fc053491d23b3a9c37456e1792274d629d19d791d607f0",
     "14_stl_volume_method.md": "9a2b1a5b0cc96714d6ecaf94d19a1de4e8a06cfbb71da51780945f27b4777f4a",
-    "15_4d_whole_heart_approximation.md": "ee73a5f770ac077627238018e5c6dddde8aca275914c484ae24b54fd085e54da"
+    "15_4d_whole_heart_approximation.md": "ee73a5f770ac077627238018e5c6dddde8aca275914c484ae24b54fd085e54da",
+    "16_single_ct_motion.md": "7afbd214c3dce2d7a04ec67f2a3e43e0a0b55a659bc9c68154112ad718d3c670"
   },
-  "report_sha256": "2c31b120e8c6bb22f73f339971002bf237bebad542dd4cbe1dc3012aa7ea4a78",
+  "report_sha256": "4bdd329691b11cd9e6a3f33fa2955c68330a992bc5bd9b28b5c3fefbd722c9ef",
   "limits": [
     "Empirical CT cross-person errors are distinct from electrical SV/EF accuracy",
     "No new FEM or synthetic observations in the empirical continuation",
@@ -42,7 +43,12 @@
     "Static/dynamic cardiac definitions and registration remain unresolved; equivalent whole-heart form precedes the chamber-function transition",
     "Chapter 15 compares 28 implemented 3D approximations plus control on 12 automatic masks of one person; all masks touch the superior CT field boundary",
     "Exact volume and centroid in constrained approximations use target CT inputs and are not reconstruction accuracy",
-    "432 single-anchor transformations still use target moments; geometric superiority does not establish electrical SV/EF accuracy"
+    "432 single-anchor transformations still use target moments; geometric superiority does not establish electrical SV/EF accuracy",
+    "Chapter 16 adds 864 fixed/moving geometry probes, 99 motion-law checks and 42 conditional FEM probes; target CT volumes remain known inputs in the geometry tests",
+    "Target EIT supplies rho and delta-rho only; corrected TT supplies geometry, while existing separate recordings remain unsynchronized",
+    "Geometry-only EIT signals can leak into estimated tissue corrections; linear diagnostics do not establish measured tissue changes",
+    "Five-parameter rankings use explicit diagnostic steps and one TT montage; full nonlinear interactions and matched multi-montage comparison are not completed",
+    "Historical spherical radius changes also moved its center via z=r+h; earlier electrode sweeps held cardiac geometry fixed"
   ],
-  "figure_visual_review": "Previous approximation/timing figures and latest Nix direction, guarded chamber predictions and formula-error PNGs inspected; chapter 14 shape/material, measurement-residual and composition/normalization PNGs inspected; chapter 15 cycle_0_overview, cycle_0_dynamics_3 and cycle_0_trajectory_3 PNGs inspected and final copies verified by SHA256; remaining appendix figures not individually visually reviewed"
+  "figure_visual_review": "Previous approximation/timing figures and latest Nix direction, guarded chamber predictions and formula-error PNGs inspected; chapter 14 shape/material, measurement-residual and composition/normalization PNGs inspected; chapter 15 cycle_0_overview, cycle_0_dynamics_3 and cycle_0_trajectory_3 PNGs inspected and final copies verified by SHA256; chapter 16 six PNGs inspected and reader copies verified by SHA256; remaining appendix figures not individually visually reviewed"
 }
