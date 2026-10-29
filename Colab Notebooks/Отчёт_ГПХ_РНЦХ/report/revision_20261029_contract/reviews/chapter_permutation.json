@@ -1,0 +1,13 @@
+{
+  "mapping": {
+    "5": 7,
+    "6": 5,
+    "7": 6
+  },
+  "files": {
+    "05_experiments.md": "07_experiments.md",
+    "06_anatomy.md": "05_anatomy.md",
+    "07_forward.md": "06_forward.md"
+  },
+  "reason": "Анатомия → подготовка моделей → экспериментальные протоколы → результаты"
+}

@@ -70,3 +70,11 @@ Thumbs.db
 /Experiments/**/*.local.*
 # Original Scorpion v2 upload; retained unchanged alongside the extracted copy.
 /Георг_05_10_26.zip
+
+# Local report rendering caches and machine settings (sources and figures stay tracked).
+/.claude/settings.local.json
+/output/gph_concise_20261029/
+/output/gph_report_20261029/
+/Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_*/render/
+# Original supplied photographs remain local; prepared report illustrations are retained.
+/Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/figures/photos/

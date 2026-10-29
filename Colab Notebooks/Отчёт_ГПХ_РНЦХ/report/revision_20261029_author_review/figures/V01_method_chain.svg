@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="921.6pt" height="518.4pt" viewBox="0 0 921.6 518.4" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-28T18:31:11.627694</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 518.4 
+L 921.6 518.4 
+L 921.6 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 27.792 115.272 
+L 268.74 115.272 
+L 268.74 34.056 
+L 27.792 34.056 
+z
+" clip-path="url(#pb0068a33f9)" style="fill: #f0f5f8; stroke: #233d53; stroke-width: 1.25; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 338.58 115.272 
+L 579.528 115.272 
+L 579.528 34.056 
+L 338.58 34.056 
+z
+" clip-path="url(#pb0068a33f9)" style="fill: #f0f5f8; stroke: #233d53; stroke-width: 1.25; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 649.368 115.272 
+L 890.316 115.272 
+L 890.316 34.056 
+L 649.368 34.056 
+z
+" clip-path="url(#pb0068a33f9)" style="fill: #f0f5f8; stroke: #233d53; stroke-width: 1.25; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 27.792 270.936 
+L 268.74 270.936 
+L 268.74 172.8 
+L 27.792 172.8 
+z
+" clip-path="url(#pb0068a33f9)" style="fill: #f0f5f8; stroke: #233d53; stroke-width: 1.25; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 338.58 270.936 
+L 579.528 270.936 
+L 579.528 172.8 
+L 338.58 172.8 
+z
+" clip-path="url(#pb0068a33f9)" style="fill: #f0f5f8; stroke: #233d53; stroke-width: 1.25; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 649.368 270.936 
+L 890.316 270.936 
+L 890.316 172.8 
+L 649.368 172.8 
+z
+" clip-path="url(#pb0068a33f9)" style="fill: #f0f5f8; stroke: #233d53; stroke-width: 1.25; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 649.368 450.288 
+L 890.316 450.288 
+L 890.316 358.92 
+L 649.368 358.92 
+z
+" clip-path="url(#pb0068a33f9)" style="fill: #f0f5f8; stroke: #233d53; stroke-width: 1.25; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 338.58 450.288 
+L 579.528 450.288 
+L 579.528 358.92 
+L 338.58 358.92 
+z
+" clip-path="url(#pb0068a33f9)" style="fill: #f0f5f8; stroke: #233d53; stroke-width: 1.25; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 27.792 450.288 
+L 268.74 450.288 
+L 268.74 358.92 
+L 27.792 358.92 
+z
+" clip-path="url(#pb0068a33f9)" style="fill: #f4f5f6; stroke-dasharray: 4.625,2; stroke-dashoffset: 0; stroke: #59636d; stroke-width: 1.25; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 148.266 118.274102 
+Q 148.266 144.037789 148.266 168.292129 
+" clip-path="url(#pb0068a33f9)" style="fill: none; stroke: #233d53; stroke-width: 1.35; stroke-linecap: round"/>
+    <path d="M 151.066 162.692129 
+L 148.266 168.292129 
+L 145.466 162.692129 
+z
+" clip-path="url(#pb0068a33f9)" style="fill: #233d53; stroke: #233d53; stroke-width: 1.35; stroke-linecap: round"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 360.412566 116.755495 
+Q 312.389447 144.036314 265.678698 170.571606 
+" clip-path="url(#pb0068a33f9)" style="fill: none; stroke: #233d53; stroke-width: 1.35; stroke-linecap: round"/>
+    <path d="M 271.930908 170.240128 
+L 265.678698 170.571606 
+L 269.164842 165.370952 
+z
+" clip-path="url(#pb0068a33f9)" style="fill: #233d53; stroke: #233d53; stroke-width: 1.35; stroke-linecap: round"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 766.964601 116.126107 
+Q 672.938033 144.036287 580.358412 171.516966 
+" clip-path="url(#pb0068a33f9)" style="fill: none; stroke: #233d53; stroke-width: 1.35; stroke-linecap: round"/>
+    <path d="M 586.523668 172.607665 
+L 580.358412 171.516966 
+L 584.930125 167.239181 
+z
+" clip-path="url(#pb0068a33f9)" style="fill: #233d53; stroke: #233d53; stroke-width: 1.35; stroke-linecap: round"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 271.736675 221.868 
+Q 303.659014 221.868 334.072006 221.868 
+" clip-path="url(#pb0068a33f9)" style="fill: none; stroke: #233d53; stroke-width: 1.35; stroke-linecap: round"/>
+    <path d="M 328.472006 219.068 
+L 334.072006 221.868 
+L 328.472006 224.668 
+z
+" clip-path="url(#pb0068a33f9)" style="fill: #233d53; stroke: #233d53; stroke-width: 1.35; stroke-linecap: round"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 582.524675 221.868 
+Q 614.447014 221.868 644.860006 221.868 
+" clip-path="url(#pb0068a33f9)" style="fill: none; stroke: #233d53; stroke-width: 1.35; stroke-linecap: round"/>
+    <path d="M 639.260006 219.068 
+L 644.860006 221.868 
+L 639.260006 224.668 
+z
+" clip-path="url(#pb0068a33f9)" style="fill: #233d53; stroke: #233d53; stroke-width: 1.35; stroke-linecap: round"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 769.842 273.93521 
+Q 769.842 314.927248 769.842 354.40994 
+" clip-path="url(#pb0068a33f9)" style="fill: none; stroke: #233d53; stroke-width: 1.35; stroke-linecap: round"/>
+    <path d="M 772.642 348.80994 
+L 769.842 354.40994 
+L 767.042 348.80994 
+z
+" clip-path="url(#pb0068a33f9)" style="fill: #233d53; stroke: #233d53; stroke-width: 1.35; stroke-linecap: round"/>
+   </g>
+   <g id="patch_17">
+    <path d="M 646.371325 404.604 
+Q 614.448986 404.604 584.035994 404.604 
+" clip-path="url(#pb0068a33f9)" style="fill: none; stroke: #233d53; stroke-width: 1.35; stroke-linecap: round"/>
+    <path d="M 589.635994 407.404 
+L 584.035994 404.604 
+L 589.635994 401.804 
+z
+" clip-path="url(#pb0068a33f9)" style="fill: #233d53; stroke: #233d53; stroke-width: 1.35; stroke-linecap: round"/>
+   </g>
+   <g id="patch_18">
+    <path d="M 271.736675 404.604 
+Q 303.659014 404.604 334.072006 404.604 
+" clip-path="url(#pb0068a33f9)" style="fill: none; stroke-dasharray: 4.995,2.16; stroke-dashoffset: 0; stroke: #59636d; stroke-width: 1.35; stroke-linecap: round"/>
+    <path d="M 328.472006 401.804 
+L 334.072006 404.604 
+L 328.472006 407.404 
+z
+" clip-path="url(#pb0068a33f9)" style="fill: #59636d; stroke-dasharray: 4.995,2.16; stroke-dashoffset: 0; stroke: #59636d; stroke-width: 1.35; stroke-linecap: round"/>
+   </g>
+   <g id="patch_19">
+    <path d="M 148.266 355.92079 
+Q 148.266 314.928752 148.266 275.44606 
+" clip-path="url(#pb0068a33f9)" style="fill: none; stroke-dasharray: 4.995,2.16; stroke-dashoffset: 0; stroke: #59636d; stroke-width: 1.35; stroke-linecap: round"/>
+    <path d="M 145.466 281.04606 
+L 148.266 275.44606 
+L 151.066 281.04606 
+z
+" clip-path="url(#pb0068a33f9)" style="fill: #59636d; stroke-dasharray: 4.995,2.16; stroke-dashoffset: 0; stroke: #59636d; stroke-width: 1.35; stroke-linecap: round"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #152c3d" x="148.266" y="57.980681" transform="rotate(-0 148.266 57.980681)">Одна КТ-фаза</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 10.4px; font-family: 'DejaVu Sans'; fill: #152c3d" transform="translate(70.868875 86.346925)">Индивидуальная геометрия</text>
+    <text style="font-size: 10.4px; font-family: 'DejaVu Sans'; fill: #152c3d" transform="translate(93.089125 99.573125)">и тканевые области</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #152c3d" x="459.054" y="57.980681" transform="rotate(-0 459.054 57.980681)">Поясная ЭИТ</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 10.4px; font-family: 'DejaVu Sans'; fill: #152c3d" transform="translate(389.01325 86.346925)">Исходные электрические</text>
+    <text style="font-size: 10.4px; font-family: 'DejaVu Sans'; fill: #152c3d" transform="translate(372.924125 99.573125)">измерения и схема электродов</text>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #152c3d" x="769.842" y="57.980681" transform="rotate(-0 769.842 57.980681)">ТТРКГ и ЭКГ</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 10.4px; font-family: 'DejaVu Sans'; fill: #152c3d" transform="translate(707.0455 86.346925)">Импедансные сигналы</text>
+    <text style="font-size: 10.4px; font-family: 'DejaVu Sans'; fill: #152c3d" transform="translate(706.414188 99.573125)">и временные признаки</text>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #152c3d" x="148.266" y="196.724681" transform="rotate(-0 148.266 196.724681)">Прямая модель и ткани</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 10.4px; font-family: 'DejaVu Sans'; fill: #152c3d" transform="translate(85.855438 228.784725)">Геометрия и контакты</text>
+    <text style="font-size: 10.4px; font-family: 'DejaVu Sans'; fill: #152c3d" transform="translate(61.959813 242.010925)">Эффективные свойства тканей</text>
+    <text style="font-size: 10.4px; font-family: 'DejaVu Sans'; fill: #152c3d" transform="translate(66.182375 255.237125)">Чувствительности измерений</text>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #152c3d" x="459.054" y="196.724681" transform="rotate(-0 459.054 196.724681)">Разделение вкладов</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 10.4px; font-family: 'DejaVu Sans'; fill: #152c3d" transform="translate(372.528437 228.784725)">Сердце, мягкие ткани и лёгкое</text>
+    <text style="font-size: 10.4px; font-family: 'DejaVu Sans'; fill: #152c3d" transform="translate(385.342375 242.010925)">Согласование ЭИТ и ТТРКГ</text>
+    <text style="font-size: 10.4px; font-family: 'DejaVu Sans'; fill: #152c3d" transform="translate(392.335563 255.237125)">Проверка различимости</text>
+   </g>
+   <g id="text_11">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #152c3d" x="769.842" y="196.724681" transform="rotate(-0 769.842 196.724681)">Параметры целого сердца</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 10.4px; font-family: 'DejaVu Sans'; fill: #152c3d" transform="translate(682.903687 228.784725)">Объём, положение и движение</text>
+    <text style="font-size: 10.4px; font-family: 'DejaVu Sans'; fill: #152c3d" transform="translate(690.9775 242.010925)">Эффективная проводимость</text>
+    <text style="font-size: 10.4px; font-family: 'DejaVu Sans'; fill: #152c3d" transform="translate(699.400688 255.237125)">Оценка неоднозначности</text>
+   </g>
+   <g id="text_13">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #152c3d" x="769.842" y="382.844681" transform="rotate(-0 769.842 382.844681)">Динамика камер</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 10.4px; font-family: 'DejaVu Sans'; fill: #152c3d" transform="translate(689.952125 421.362925)">Преобразование параметров</text>
+    <text style="font-size: 10.4px; font-family: 'DejaVu Sans'; fill: #152c3d" transform="translate(675.834125 434.589125)">и определение механических фаз</text>
+   </g>
+   <g id="text_15">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #152c3d" x="459.054" y="382.844681" transform="rotate(-0 459.054 382.844681)">УО и ФВ</text>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 10.4px; font-family: 'DejaVu Sans'; fill: #152c3d" transform="translate(365.896 407.640775)">Диастолический и систолический</text>
+    <text style="font-size: 10.4px; font-family: 'DejaVu Sans'; fill: #152c3d" transform="translate(415.25375 421.11495)">объёмы камеры</text>
+    <text style="font-size: 10.4px; font-family: 'DejaVu Sans'; fill: #152c3d" transform="translate(366.746688 434.589125)">Ошибка и область применимости</text>
+   </g>
+   <g id="text_17">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #152c3d" x="148.266" y="383.2039" transform="rotate(-0 148.266 383.2039)">4D-КТ при разработке</text>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 10.4px; font-family: 'DejaVu Sans'; fill: #152c3d" transform="translate(82.610313 421.362925)">Проверочный референс</text>
+    <text style="font-size: 10.4px; font-family: 'DejaVu Sans'; fill: #152c3d" transform="translate(60.004938 434.589125)">Геометрия, движение и камеры</text>
+   </g>
+   <g id="text_19">
+    <g id="patch_20">
+     <path d="M 121.481625 321.767062 
+L 175.050375 321.767062 
+L 175.050375 308.088937 
+L 121.481625 308.088937 
+z
+" style="fill: #ffffff"/>
+    </g>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle" x="148.266" y="317.687375" transform="rotate(-0 148.266 317.687375)">проверка</text>
+   </g>
+   <g id="text_20">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #3e4750" x="460.8" y="487.462712" transform="rotate(-0 460.8 487.462712)">Пунктир — проверка при разработке. Остальные стрелки — исследуемые преобразования.</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pb0068a33f9">
+   <rect x="13.824" y="10.368" width="893.952" height="487.296"/>
+  </clipPath>
+ </defs>
+</svg>

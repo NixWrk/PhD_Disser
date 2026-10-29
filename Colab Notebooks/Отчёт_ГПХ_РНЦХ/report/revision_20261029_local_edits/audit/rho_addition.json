@@ -1,0 +1,1689 @@
+{
+  "schema_version": "rho-addition-1.0",
+  "date": "2026-10-29",
+  "scope": {
+    "write_targets": [
+      "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_local_edits/audit/rho_evidence.md",
+      "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_local_edits/audit/rho_addition.json"
+    ],
+    "no_report_chapter_edits": true,
+    "no_word_edits": true,
+    "no_FEM_or_inverse_calculations": true,
+    "author_requested_web_extension": true,
+    "language_profile": "vak",
+    "voice_profile": null,
+    "figure_mode": "without_figures",
+    "formatting_mode": "section_only",
+    "suggested_placement": "§3.1 перед §3.2; родитель уже включил сокращённую редакцию, проверенную без изменения главы.",
+    "new_bibliography_database_entries": false
+  },
+  "parent_summary": {
+    "RKM_frequency_hz": 100000,
+    "RKM_current_mA_approx": 7,
+    "RKM_current_source": "Both current Experiments/*/PROTOCOL.md; author confirmation",
+    "RKM_current_missing": false,
+    "EIT_frequency_hz": 79505,
+    "EIT_current_mA_as_reported": 7.234,
+    "ask_author_parallel": "Уточнение амплитудного/действующего значения уже задано родителем; нового запроса не требуется.",
+    "primary_2009_fulltext_unavailable": true,
+    "author_question_status": "Родитель уже уточняет только амплитудное/действующее значение; приблизительные 7 мА повторно не запрашивать, текст не блокировать."
+  },
+  "addition": {
+    "title_ru": "Литературные электрические свойства тканей",
+    "markdown": "Литературные свойства тканей сопоставляются с несущими частотами приборов: 100 кГц для реокардиомонитора и 79,505 кГц для поясной электроимпедансной томографии (ЭИТ). По подтверждённому протоколу ток реокардиомонитора составляет около 7 мА на источник; в заголовках ЭИТ указан ток 7,234 мА. Амплитудная конвенция этих значений независимо не установлена. В принятой линейной модели напряжение пропорционально току, а электрические свойства выбираются с учётом частоты и состояния ткани.\n\nЧастотные ориентиры в таблице получены по четырёхдисперсионной модели Gabriel, Lau и Gabriel, с коэффициентами сохранённой версии базы IT’IS V5.0. Это значения модели, а не непосредственные измерения тканей участников. Формула модели и коэффициенты основных тканей приведены в [первичной публикации 1996 года, формула (4), табл. 1](https://doi.org/10.1088/0031-9155/41/11/003); её авторы оговаривают повышенную неопределённость ниже 1 МГц. Значения при 100 кГц взяты из реестра проекта; при 79,505 кГц вычислена та же частотная функция. Здесь σ — проводимость, См/м; ρ = 1/σ — удельное сопротивление, Ом·м, в вещественной скалярной модели.\n\n<details>\n<summary>Таблица. Частотные ориентиры и низкочастотный разброс свойств тканей</summary>\n\n| Ткань или состояние | 100 кГц: σ / ρ | 79,505 кГц: σ / ρ | Низкочастотный разброс ρ до 1 МГц, Ом·м |\n|---|---:|---:|---:|\n| Скелетная мышца | 0,36185 / 2,764 | 0,35768 / 2,796 | 1,377–10,000 |\n| Жировая ткань | 0,043402 / 23,041 | 0,043359 / 23,063 | 4,646–41,690 |\n| Кровь | 0,70292 / 1,423 | 0,70191 / 1,425 | 1,058–2,309 |\n| Миокард | 0,21511 / 4,649 | 0,20833 / 4,800 | 1,290–9,650 |\n| Лёгкое, inflated | 0,10735 / 9,315 | 0,10573 / 9,458 | 14,286–24,074 |\n| Лёгкое, deflated* | 0,27161 / 3,682 | 0,26825 / 3,728 | 4,962–23,900 |\n| Компактная кость | 0,020791 / 48,098 | 0,020733 / 48,233 | 109,890–540,000 |\n| Губчатая кость | 0,083892 / 11,920 | 0,083718 / 11,945 | 5,000–166,667 |\n\nВ частотных столбцах сначала указана σ в См/м, затем ρ в Ом·м. Последний столбец воспроизводит категорию `Mixed` низкочастотного раздела базы. *Строка `deflated` проверена по архиву базы; в табл. 1 статьи 1996 года её нет.\n\n</details>\n\nНизкочастотные границы объединяют исследования с разными частотами, образцами и условиями; они не задают диапазон строго при 100 или 79,505 кГц, норму человека либо амплитуду пульсового изменения. В проекте объединение этих границ с частотными ориентирами используется только как сценарий неопределённости. Для смеси мышцы и жира получается 1,377–41,690 Ом·м, для объединённой области крови и миокарда — 1,058–9,650 Ом·м; эти интервалы не определяют индивидуальные эффективные свойства компартментов. Кровь и миокард сохраняют разные значения, поэтому единой маске сердца нельзя автоматически назначить сопротивление крови. Для начального сопоставления с КТ на глубоком вдохе рассматривается состояние `inflated`; `deflated` служит отдельным сравнительным состоянием того же лёгочного компартмента. Частотные ориентиры не подтверждают перенос индивидуальных базовых свойств и их изменений между приборами.",
+    "paragraphs_ru": [
+      "Литературные свойства тканей сопоставляются с несущими частотами приборов: 100 кГц для реокардиомонитора и 79,505 кГц для поясной электроимпедансной томографии (ЭИТ). По подтверждённому протоколу ток реокардиомонитора составляет около 7 мА на источник; в заголовках ЭИТ указан ток 7,234 мА. Амплитудная конвенция этих значений независимо не установлена. В принятой линейной модели напряжение пропорционально току, а электрические свойства выбираются с учётом частоты и состояния ткани.",
+      "Частотные ориентиры в таблице получены по четырёхдисперсионной модели Gabriel, Lau и Gabriel, с коэффициентами сохранённой версии базы IT’IS V5.0. Это значения модели, а не непосредственные измерения тканей участников. Формула модели и коэффициенты основных тканей приведены в [первичной публикации 1996 года, формула (4), табл. 1](https://doi.org/10.1088/0031-9155/41/11/003); её авторы оговаривают повышенную неопределённость ниже 1 МГц. Значения при 100 кГц взяты из реестра проекта; при 79,505 кГц вычислена та же частотная функция. Здесь σ — проводимость, См/м; ρ = 1/σ — удельное сопротивление, Ом·м, в вещественной скалярной модели.",
+      "Низкочастотные границы объединяют исследования с разными частотами, образцами и условиями; они не задают диапазон строго при 100 или 79,505 кГц, норму человека либо амплитуду пульсового изменения. В проекте объединение этих границ с частотными ориентирами используется только как сценарий неопределённости. Для смеси мышцы и жира получается 1,377–41,690 Ом·м, для объединённой области крови и миокарда — 1,058–9,650 Ом·м; эти интервалы не определяют индивидуальные эффективные свойства компартментов. Кровь и миокард сохраняют разные значения, поэтому единой маске сердца нельзя автоматически назначить сопротивление крови. Для начального сопоставления с КТ на глубоком вдохе рассматривается состояние `inflated`; `deflated` служит отдельным сравнительным состоянием того же лёгочного компартмента. Частотные ориентиры не подтверждают перенос индивидуальных базовых свойств и их изменений между приборами."
+    ],
+    "table_units": {
+      "sigma": "S/m",
+      "rho": "ohm*m"
+    },
+    "table_row_order": [
+      "muscle",
+      "fat",
+      "blood",
+      "myocardium",
+      "lung_inflated",
+      "lung_deflated",
+      "bone_cortical",
+      "bone_cancellous"
+    ],
+    "table_last_column_meaning": "LF Mixed min/max up to 1 MHz, not a fixed-frequency interval",
+    "table_rounding": "sigma 5 significant digits; rho 3 decimals",
+    "suggested_global_reference_number": null,
+    "suggested_global_table_number": null
+  },
+  "registry": {
+    "id": "itis_v5_tissue_reference_20260916_v2",
+    "sha256": "faf79c08cdf83a0717ed56ab88751b7cfeccbdf1167226ac363c08bd943936f3",
+    "source": {
+      "version": "ITIS V5.0",
+      "doi": "10.13099/VIP21000-05-0",
+      "url": "https://itis.swiss/assets/Downloads/TissueDb/Database-V5-0.zip",
+      "archive_sha256": "531adceeca8a108b0c6ec0fdb276381cba4f3f0627990e3bb66aaa6673a063c0",
+      "member": "Thermal_dielectric_acoustic_MR properties_database_V5.0(ASCII).txt",
+      "member_sha256": "d139ae961db460112345b43cd929042920390a1f2db3d462a2278b3be931c7e2"
+    },
+    "official_archive_rechecked_in_memory": true,
+    "relevant_ascii_fields_match_registry": true
+  },
+  "tissue_rows": [
+    {
+      "key": "muscle",
+      "label_ru": "Скелетная мышца",
+      "registry_tissue": "Muscle",
+      "source_assignment": "Muscles",
+      "registry_json_pointer": "/tissues/Muscle",
+      "ascii_locator": {
+        "member": "Thermal_dielectric_acoustic_MR properties_database_V5.0(ASCII).txt",
+        "line_1based": 74,
+        "coefficient_columns": "AB:AO",
+        "assignment_column": "AQ",
+        "LF_minmax_columns": "AU:AV"
+      },
+      "primary_1996_table1_row": "Muscle",
+      "primary_status": "table1_checked_at_printed_precision",
+      "sigma_rho_100000_hz": {
+        "sigma_S_m": 0.36184869972103617,
+        "rho_ohm_m": 2.763585998155971,
+        "relative_permittivity": 8089.153496916243
+      },
+      "sigma_rho_79505_hz": {
+        "sigma_S_m": 0.3576789614063912,
+        "rho_ohm_m": 2.795803242293052,
+        "relative_permittivity": 8671.275182696894
+      },
+      "low_frequency_up_to_1MHz_mixed": {
+        "mean_S_m": 0.461007526,
+        "sd_S_m": 0.243781754,
+        "sample_size": 24.0,
+        "min_S_m": 0.1,
+        "max_S_m": 0.726
+      },
+      "low_frequency_mixed_rho_bounds_ohm_m": [
+        1.3774104683195594,
+        10.0
+      ],
+      "screening_bounds_100000_hz_ohm_m": [
+        1.3774104683195594,
+        10.0
+      ],
+      "screening_bounds_79505_hz_ohm_m_derived": [
+        1.3774104683195594,
+        10.0
+      ],
+      "LF_reference_map_page_1based": 6,
+      "LF_extreme_to_individual_publication_verified": false,
+      "derived_frequency_status": "evaluation_of_existing_dispersion_function_not_measurement",
+      "physiological_population_interval": false
+    },
+    {
+      "key": "fat",
+      "label_ru": "Жировая ткань",
+      "registry_tissue": "Fat",
+      "source_assignment": "Fat (Average Infiltrated)",
+      "registry_json_pointer": "/tissues/Fat",
+      "ascii_locator": {
+        "member": "Thermal_dielectric_acoustic_MR properties_database_V5.0(ASCII).txt",
+        "line_1based": 47,
+        "coefficient_columns": "AB:AO",
+        "assignment_column": "AQ",
+        "LF_minmax_columns": "AU:AV"
+      },
+      "primary_1996_table1_row": "Fat (infiltrated)",
+      "primary_status": "table1_checked_at_printed_precision",
+      "sigma_rho_100000_hz": {
+        "sigma_S_m": 0.04340163769684506,
+        "rho_ohm_m": 23.040605218284004,
+        "relative_permittivity": 101.49326041483408
+      },
+      "sigma_rho_79505_hz": {
+        "sigma_S_m": 0.04335908748164572,
+        "rho_ohm_m": 23.063215996492286,
+        "relative_permittivity": 116.71263731838805
+      },
+      "low_frequency_up_to_1MHz_mixed": {
+        "mean_S_m": 0.077621273,
+        "sd_S_m": 0.093082005,
+        "sample_size": 91.0,
+        "min_S_m": 0.023986634,
+        "max_S_m": 0.215217391
+      },
+      "low_frequency_mixed_rho_bounds_ohm_m": [
+        4.646464653035404,
+        41.68988445815282
+      ],
+      "screening_bounds_100000_hz_ohm_m": [
+        4.646464653035404,
+        41.68988445815282
+      ],
+      "screening_bounds_79505_hz_ohm_m_derived": [
+        4.646464653035404,
+        41.68988445815282
+      ],
+      "LF_reference_map_page_1based": 5,
+      "LF_extreme_to_individual_publication_verified": false,
+      "derived_frequency_status": "evaluation_of_existing_dispersion_function_not_measurement",
+      "physiological_population_interval": false
+    },
+    {
+      "key": "blood",
+      "label_ru": "Кровь",
+      "registry_tissue": "Blood",
+      "source_assignment": "Blood",
+      "registry_json_pointer": "/tissues/Blood",
+      "ascii_locator": {
+        "member": "Thermal_dielectric_acoustic_MR properties_database_V5.0(ASCII).txt",
+        "line_1based": 7,
+        "coefficient_columns": "AB:AO",
+        "assignment_column": "AQ",
+        "LF_minmax_columns": "AU:AV"
+      },
+      "primary_1996_table1_row": "Blood",
+      "primary_status": "table1_checked_at_printed_precision",
+      "sigma_rho_100000_hz": {
+        "sigma_S_m": 0.7029217238456084,
+        "rho_ohm_m": 1.4226335110673614,
+        "relative_permittivity": 5120.009190103191
+      },
+      "sigma_rho_79505_hz": {
+        "sigma_S_m": 0.7019081174367537,
+        "rho_ohm_m": 1.4246878974014803,
+        "relative_permittivity": 5153.710467308767
+      },
+      "low_frequency_up_to_1MHz_mixed": {
+        "mean_S_m": 0.662459736,
+        "sd_S_m": 0.107254247,
+        "sample_size": 33.0,
+        "min_S_m": 0.433087917,
+        "max_S_m": 0.945572828
+      },
+      "low_frequency_mixed_rho_bounds_ohm_m": [
+        1.0575600000214898,
+        2.3089999991849233
+      ],
+      "screening_bounds_100000_hz_ohm_m": [
+        1.0575600000214898,
+        2.3089999991849233
+      ],
+      "screening_bounds_79505_hz_ohm_m_derived": [
+        1.0575600000214898,
+        2.3089999991849233
+      ],
+      "LF_reference_map_page_1based": 1,
+      "LF_extreme_to_individual_publication_verified": false,
+      "derived_frequency_status": "evaluation_of_existing_dispersion_function_not_measurement",
+      "physiological_population_interval": false
+    },
+    {
+      "key": "myocardium",
+      "label_ru": "Миокард",
+      "registry_tissue": "Heart Muscle",
+      "source_assignment": "Heart Muscle",
+      "registry_json_pointer": "/tissues/Heart Muscle",
+      "ascii_locator": {
+        "member": "Thermal_dielectric_acoustic_MR properties_database_V5.0(ASCII).txt",
+        "line_1based": 52,
+        "coefficient_columns": "AB:AO",
+        "assignment_column": "AQ",
+        "LF_minmax_columns": "AU:AV"
+      },
+      "primary_1996_table1_row": "Heart",
+      "primary_status": "table1_checked_at_printed_precision",
+      "sigma_rho_100000_hz": {
+        "sigma_S_m": 0.21510885640192495,
+        "rho_ohm_m": 4.648809057547718,
+        "relative_permittivity": 9845.82360087332
+      },
+      "sigma_rho_79505_hz": {
+        "sigma_S_m": 0.2083286102129663,
+        "rho_ohm_m": 4.800108823160384,
+        "relative_permittivity": 11726.180741755146
+      },
+      "low_frequency_up_to_1MHz_mixed": {
+        "mean_S_m": 0.385354162,
+        "sd_S_m": 0.153984276,
+        "sample_size": 55.0,
+        "min_S_m": 0.103626943,
+        "max_S_m": 0.775193798
+      },
+      "low_frequency_mixed_rho_bounds_ohm_m": [
+        1.2900000007482,
+        9.6500000004825
+      ],
+      "screening_bounds_100000_hz_ohm_m": [
+        1.2900000007482,
+        9.6500000004825
+      ],
+      "screening_bounds_79505_hz_ohm_m_derived": [
+        1.2900000007482,
+        9.6500000004825
+      ],
+      "LF_reference_map_page_1based": 5,
+      "LF_extreme_to_individual_publication_verified": false,
+      "derived_frequency_status": "evaluation_of_existing_dispersion_function_not_measurement",
+      "physiological_population_interval": false
+    },
+    {
+      "key": "lung_inflated",
+      "label_ru": "Лёгкое, inflated",
+      "registry_tissue": "Lung (Inflated)",
+      "source_assignment": "Lung (Inflated)",
+      "registry_json_pointer": "/tissues/Lung (Inflated)",
+      "ascii_locator": {
+        "member": "Thermal_dielectric_acoustic_MR properties_database_V5.0(ASCII).txt",
+        "line_1based": 66,
+        "coefficient_columns": "AB:AO",
+        "assignment_column": "AQ",
+        "LF_minmax_columns": "AU:AV"
+      },
+      "primary_1996_table1_row": "Lung (inflated)",
+      "primary_status": "table1_checked_at_printed_precision",
+      "sigma_rho_100000_hz": {
+        "sigma_S_m": 0.10735081570870107,
+        "rho_ohm_m": 9.315252924705511,
+        "relative_permittivity": 2581.294814859951
+      },
+      "sigma_rho_79505_hz": {
+        "sigma_S_m": 0.10572842391590886,
+        "rho_ohm_m": 9.458194522935008,
+        "relative_permittivity": 3028.5026032228475
+      },
+      "low_frequency_up_to_1MHz_mixed": {
+        "mean_S_m": 0.058283069,
+        "sd_S_m": null,
+        "sample_size": 120.0,
+        "min_S_m": 0.041538462,
+        "max_S_m": 0.07
+      },
+      "low_frequency_mixed_rho_bounds_ohm_m": [
+        14.285714285714285,
+        24.074073806584366
+      ],
+      "screening_bounds_100000_hz_ohm_m": [
+        9.315252924705511,
+        24.074073806584366
+      ],
+      "screening_bounds_79505_hz_ohm_m_derived": [
+        9.458194522935008,
+        24.074073806584366
+      ],
+      "LF_reference_map_page_1based": 6,
+      "LF_extreme_to_individual_publication_verified": false,
+      "derived_frequency_status": "evaluation_of_existing_dispersion_function_not_measurement",
+      "physiological_population_interval": false
+    },
+    {
+      "key": "lung_deflated",
+      "label_ru": "Лёгкое, deflated",
+      "registry_tissue": "Lung (Deflated)",
+      "source_assignment": "Lung (Deflated)",
+      "registry_json_pointer": "/tissues/Lung (Deflated)",
+      "ascii_locator": {
+        "member": "Thermal_dielectric_acoustic_MR properties_database_V5.0(ASCII).txt",
+        "line_1based": 65,
+        "coefficient_columns": "AB:AO",
+        "assignment_column": "AQ",
+        "LF_minmax_columns": "AU:AV"
+      },
+      "primary_1996_table1_row": null,
+      "primary_status": "not_present_in_1996_table1_database_only",
+      "sigma_rho_100000_hz": {
+        "sigma_S_m": 0.2716140934232484,
+        "rho_ohm_m": 3.681694080732876,
+        "relative_permittivity": 5145.254266370705
+      },
+      "sigma_rho_79505_hz": {
+        "sigma_S_m": 0.2682471033656456,
+        "rho_ohm_m": 3.7279060517455336,
+        "relative_permittivity": 6043.569451152851
+      },
+      "low_frequency_up_to_1MHz_mixed": {
+        "mean_S_m": 0.111089859,
+        "sd_S_m": 0.047213353,
+        "sample_size": 118.0,
+        "min_S_m": 0.041841004,
+        "max_S_m": 0.201538462
+      },
+      "low_frequency_mixed_rho_bounds_ohm_m": [
+        4.961832049705728,
+        23.90000010516
+      ],
+      "screening_bounds_100000_hz_ohm_m": [
+        3.681694080732876,
+        23.90000010516
+      ],
+      "screening_bounds_79505_hz_ohm_m_derived": [
+        3.7279060517455336,
+        23.90000010516
+      ],
+      "LF_reference_map_page_1based": 6,
+      "LF_extreme_to_individual_publication_verified": false,
+      "derived_frequency_status": "evaluation_of_existing_dispersion_function_not_measurement",
+      "physiological_population_interval": false
+    },
+    {
+      "key": "bone_cortical",
+      "label_ru": "Компактная кость",
+      "registry_tissue": "Bone (Cortical)",
+      "source_assignment": "Bone (Cortical)",
+      "registry_json_pointer": "/tissues/Bone (Cortical)",
+      "ascii_locator": {
+        "member": "Thermal_dielectric_acoustic_MR properties_database_V5.0(ASCII).txt",
+        "line_1based": 12,
+        "coefficient_columns": "AB:AO",
+        "assignment_column": "AQ",
+        "LF_minmax_columns": "AU:AV"
+      },
+      "primary_1996_table1_row": "Bone (cortical)",
+      "primary_status": "table1_checked_at_printed_precision",
+      "sigma_rho_100000_hz": {
+        "sigma_S_m": 0.02079102639898367,
+        "rho_ohm_m": 48.09767352557847,
+        "relative_permittivity": 227.6417864188272
+      },
+      "sigma_rho_79505_hz": {
+        "sigma_S_m": 0.02073268818396444,
+        "rho_ohm_m": 48.23301209794123,
+        "relative_permittivity": 237.71400213603803
+      },
+      "low_frequency_up_to_1MHz_mixed": {
+        "mean_S_m": 0.006301997,
+        "sd_S_m": 0.003380654,
+        "sample_size": 6.0,
+        "min_S_m": 0.001851852,
+        "max_S_m": 0.0091
+      },
+      "low_frequency_mixed_rho_bounds_ohm_m": [
+        109.89010989010988,
+        539.9999568000035
+      ],
+      "screening_bounds_100000_hz_ohm_m": [
+        48.09767352557847,
+        539.9999568000035
+      ],
+      "screening_bounds_79505_hz_ohm_m_derived": [
+        48.23301209794123,
+        539.9999568000035
+      ],
+      "LF_reference_map_page_1based": 1,
+      "LF_extreme_to_individual_publication_verified": false,
+      "derived_frequency_status": "evaluation_of_existing_dispersion_function_not_measurement",
+      "physiological_population_interval": false
+    },
+    {
+      "key": "bone_cancellous",
+      "label_ru": "Губчатая кость",
+      "registry_tissue": "Bone (Cancellous)",
+      "source_assignment": "Bone (Cancellous)",
+      "registry_json_pointer": "/tissues/Bone (Cancellous)",
+      "ascii_locator": {
+        "member": "Thermal_dielectric_acoustic_MR properties_database_V5.0(ASCII).txt",
+        "line_1based": 11,
+        "coefficient_columns": "AB:AO",
+        "assignment_column": "AQ",
+        "LF_minmax_columns": "AU:AV"
+      },
+      "primary_1996_table1_row": "Bone (cancellous)",
+      "primary_status": "table1_checked_at_printed_precision",
+      "sigma_rho_100000_hz": {
+        "sigma_S_m": 0.08389196472448021,
+        "rho_ohm_m": 11.920092744093209,
+        "relative_permittivity": 471.7063274785155
+      },
+      "sigma_rho_79505_hz": {
+        "sigma_S_m": 0.08371847353006834,
+        "rho_ohm_m": 11.944794951867342,
+        "relative_permittivity": 509.90150982877105
+      },
+      "low_frequency_up_to_1MHz_mixed": {
+        "mean_S_m": 0.080459528,
+        "sd_S_m": 0.094180264,
+        "sample_size": 5.0,
+        "min_S_m": 0.006,
+        "max_S_m": 0.2
+      },
+      "low_frequency_mixed_rho_bounds_ohm_m": [
+        5.0,
+        166.66666666666666
+      ],
+      "screening_bounds_100000_hz_ohm_m": [
+        5.0,
+        166.66666666666666
+      ],
+      "screening_bounds_79505_hz_ohm_m_derived": [
+        5.0,
+        166.66666666666666
+      ],
+      "LF_reference_map_page_1based": 1,
+      "LF_extreme_to_individual_publication_verified": false,
+      "derived_frequency_status": "evaluation_of_existing_dispersion_function_not_measurement",
+      "physiological_population_interval": false
+    }
+  ],
+  "aggregate_compartments": {
+    "soft": {
+      "members": [
+        "Muscle",
+        "Fat"
+      ],
+      "bounds_ohm_m": [
+        1.3774104683195594,
+        41.68988445815282
+      ],
+      "status": "project_screening_envelope_not_validated_mixture_property"
+    },
+    "heart": {
+      "members": [
+        "Blood",
+        "Heart Muscle"
+      ],
+      "bounds_ohm_m": [
+        1.0575600000214898,
+        9.6500000004825
+      ],
+      "status": "project_screening_envelope_not_blood_or_whole_heart_measurement",
+      "nominal_ohm_m": null
+    }
+  },
+  "derivations": [
+    {
+      "derivation_id": "DER-79505",
+      "type": "evaluation_of_existing_analytical_dispersion_function",
+      "frequency_hz": 79505,
+      "coefficient_source_id": "SRC-REG",
+      "formula_source_id": "SRC-G96",
+      "formula_locator": "equation (4), p. 2272; Table 1, p. 2291",
+      "implementation_source_id": "SRC-CODE",
+      "epsilon0_F_m": 8.8542e-12,
+      "angular_frequency": "2*pi*f",
+      "eps_complex": "ef + sig/(j*omega*eps0) + sum(del_n/(1+(j*omega*tau_n)**(1-alpha_n)))",
+      "sigma_formula": "-imag(eps_complex)*omega*eps0",
+      "rho_formula": "1/sigma",
+      "tau_scale_to_seconds": {
+        "ps": 1e-12,
+        "ns": 1e-09,
+        "us": 1e-06,
+        "ms": 0.001
+      },
+      "source_registry_not_modified": true,
+      "FEM_run": false,
+      "not_individual_frequency_transfer_validation": true
+    }
+  ],
+  "bibliography_candidates": [
+    {
+      "id": "RHO-G96-III",
+      "existing_number": null,
+      "zotero_item_key": "NG9JGZQZ",
+      "citation_key": "R09",
+      "doi": "10.1088/0031-9155/41/11/003",
+      "doi_url": "https://doi.org/10.1088/0031-9155/41/11/003",
+      "verified_metadata_url": "https://pubmed.ncbi.nlm.nih.gov/8938026/",
+      "gost_text": "Gabriel, S. The dielectric properties of biological tissues: III. Parametric models for the dielectric spectrum of tissues / S. Gabriel, R. W. Lau, C. Gabriel // Physics in Medicine and Biology. — 1996. — Vol. 41, no. 11. — P. 2271–2293. — DOI 10.1088/0031-9155/41/11/003.",
+      "fulltext_status": "Relevant fulltext sections and Table 1 checked via public copy; Zotero download unavailable.",
+      "action": "scientific_publication_candidate_for_parent_integration_only"
+    },
+    {
+      "id": "RHO-G09",
+      "existing_number": 5,
+      "zotero_item_key": "G84M4JR7",
+      "citation_key": "R10",
+      "doi": "10.1088/0031-9155/54/16/002",
+      "doi_url": "https://doi.org/10.1088/0031-9155/54/16/002",
+      "verified_metadata_url": "https://pubmed.ncbi.nlm.nih.gov/19636081/",
+      "gost_text": "Gabriel, C. Electrical conductivity of tissue at frequencies below 1 MHz / C. Gabriel, A. Peyman, E. H. Grant // Physics in Medicine and Biology. — 2009. — Vol. 54, no. 16. — P. 4863–4878. — DOI 10.1088/0031-9155/54/16/002.",
+      "fulltext_status": "Abstract and metadata verified; fulltext tables not checked; Zotero attachment HTTP 404; publisher web PDF denied.",
+      "action": "retain_existing_reference_without_duplicate; do_not_attribute_unread_table_values"
+    }
+  ],
+  "unresolved": [
+    {
+      "id": "GAP-CURRENT",
+      "status": "request_input",
+      "detail": "Peak/RMS convention of RKM nominal and EIT reported current."
+    },
+    {
+      "id": "GAP-G09-FULLTEXT",
+      "status": "unavailable_evidence",
+      "detail": "Fulltext tables of Gabriel 2009 not accessed; no numerical claim assigned to them."
+    },
+    {
+      "id": "GAP-LF-EXTREMES",
+      "status": "bounded",
+      "detail": "Official LF reference lists verified, but each database extreme is not mapped to an individually checked primary measurement."
+    },
+    {
+      "id": "GAP-DEFLATED",
+      "status": "bounded",
+      "detail": "Deflated coefficients verified in official database; no corresponding row in checked 1996 journal Table 1."
+    },
+    {
+      "id": "GAP-EIT-HEADERS",
+      "status": "bounded",
+      "detail": "EIT settings checked through author-reviewed corpus; raw headers not reread; D: unavailable, no switch to Z:."
+    }
+  ],
+  "evidence_bundle": {
+    "schema_version": "1.0",
+    "bundle_id": "RHO-ADDITION-20261029",
+    "task": {
+      "mode": "manuscript",
+      "request": "Компактное локальное дополнение о происхождении литературных электрических свойств тканей, с таблицей для фактических частот РКМ и ЭИТ.",
+      "input_scope": [
+        "SRC-REG",
+        "SRC-40-08",
+        "SRC-RKM-1",
+        "SRC-RKM-2",
+        "SRC-ACCEPTED",
+        "SRC-EIT",
+        "SRC-CH6",
+        "SRC-MODELS",
+        "SRC-CODE",
+        "SRC-G96",
+        "SRC-G09",
+        "SRC-ITIS-ASCII",
+        "SRC-ITIS-LFREF"
+      ],
+      "language": "ru",
+      "audience": "автор научного отчёта",
+      "figure_mode": "without_figures",
+      "formatting_mode": "section_only"
+    },
+    "sources": [
+      {
+        "source_id": "SRC-REG",
+        "title": "Версионированный реестр свойств тканей",
+        "content_hash": "faf79c08cdf83a0717ed56ab88751b7cfeccbdf1167226ac363c08bd943936f3",
+        "representation": "data",
+        "local_ref": "MATLAB_TRKG4_real_subjects/configs/tissue_literature_v2.json",
+        "version": "snapshot read 2026-10-29"
+      },
+      {
+        "source_id": "SRC-40-08",
+        "title": "Литературные диапазоны электрических свойств тканей",
+        "content_hash": "59aa8cef822ba9df3cd7a80a930f95c0c3afaf660ed0cdeaeb2c9968e8e62a98",
+        "representation": "markdown",
+        "local_ref": "Colab Notebooks/40.08_Литературные_диапазоны_электрических_свойств_тканей.md",
+        "version": "snapshot read 2026-10-29"
+      },
+      {
+        "source_id": "SRC-RKM-1",
+        "title": "Подтверждённый протокол РКМ первой актуальной сессии",
+        "content_hash": "30f8bd8f19e5f7c74ead1894059d1a30abc5e532270b4bb0677306ad0f497346",
+        "representation": "protocol",
+        "local_ref": "Experiments/scorpion_20261022/PROTOCOL.md",
+        "version": "snapshot read 2026-10-29"
+      },
+      {
+        "source_id": "SRC-RKM-2",
+        "title": "Протокол РКМ второй актуальной сессии",
+        "content_hash": "7211d32c903a590e75ea2736deec05c51c4b07cddb9e29926f0734c905fb6868",
+        "representation": "protocol",
+        "local_ref": "Experiments/scorpion_v2_georg/PROTOCOL.md",
+        "version": "snapshot read 2026-10-29"
+      },
+      {
+        "source_id": "SRC-ACCEPTED",
+        "title": "Принятый автором текст с идентификаторами абзацев",
+        "content_hash": "e31de1f986e86dc4c7f20d4b07c95c889ce05c01260898638dbc173b1ac49cde",
+        "representation": "markdown",
+        "local_ref": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/audit/author_accepted_text.md",
+        "version": "snapshot read 2026-10-29"
+      },
+      {
+        "source_id": "SRC-EIT",
+        "title": "Поясная ЭИТ: происхождение приборных параметров",
+        "content_hash": "0c92c5fd69a31b5c5f4f1b49ca2e051d7eef98e9bac3fafe3f81340260716736",
+        "representation": "markdown",
+        "local_ref": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/chapters/13_pulmovista_tissue_correction.md",
+        "version": "snapshot read 2026-10-29"
+      },
+      {
+        "source_id": "SRC-CH6",
+        "title": "Текущие тканевые результаты, read-only",
+        "content_hash": "187fc5ffead3caa93d31f5a1cbfbd58048f06551ac02a5218f5b1d185d09637b",
+        "representation": "markdown",
+        "local_ref": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/drafts/06_tissue_results.md",
+        "version": "snapshot read 2026-10-29"
+      },
+      {
+        "source_id": "SRC-MODELS",
+        "title": "Текущая математическая постановка, read-only",
+        "content_hash": "b20aaed7393cde70fe5984a9bdb62b594f3a6db4bb8861a74c026ca95b78ea4a",
+        "representation": "markdown",
+        "local_ref": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/drafts/03_models.md",
+        "version": "snapshot read 2026-10-29"
+      },
+      {
+        "source_id": "SRC-CODE",
+        "title": "Существующая реализация частотной функции",
+        "content_hash": "f52e2ac1cb84017909a80dcf20d30a3c8479a868e80311ae472ca3cd889c390a",
+        "representation": "text",
+        "local_ref": "MATLAB_TRKG4_real_subjects/tools/build_tissue_literature_registry.py",
+        "version": "snapshot read 2026-10-29"
+      },
+      {
+        "source_id": "SRC-G96",
+        "title": "Gabriel S., Lau R. W., Gabriel C. The dielectric properties of biological tissues: III (1996)",
+        "content_hash": null,
+        "representation": "pdf",
+        "local_ref": "https://mriquestions.com/uploads/3/4/5/7/34572113/s_gabriel_1996_phys._med._biol._41_003.pdf",
+        "version": "1996; full text and Table 1 read 2026-10-29; Zotero NG9JGZQZ / R09"
+      },
+      {
+        "source_id": "SRC-G09",
+        "title": "Gabriel C., Peyman A., Grant E. H. Electrical conductivity of tissue at frequencies below 1 MHz (2009)",
+        "content_hash": null,
+        "representation": "html",
+        "local_ref": "https://pubmed.ncbi.nlm.nih.gov/19636081/",
+        "version": "abstract and metadata only; read 2026-10-29; Zotero G84M4JR7 / R10"
+      },
+      {
+        "source_id": "SRC-ITIS-ASCII",
+        "title": "ITIS V5.0: original numeric table",
+        "content_hash": "d139ae961db460112345b43cd929042920390a1f2db3d462a2278b3be931c7e2",
+        "representation": "table",
+        "local_ref": "https://itis.swiss/assets/Downloads/TissueDb/Database-V5-0.zip#Thermal_dielectric_acoustic_MR properties_database_V5.0(ASCII).txt",
+        "version": "V5.0, 21.08.2025; archive hash verified; read in memory 2026-10-29"
+      },
+      {
+        "source_id": "SRC-ITIS-LFREF",
+        "title": "ITIS V5.0: reference map for low-frequency conductivities",
+        "content_hash": "a777114c65e1cf0d74ab68ceebeee471e482fc73a3d16c1231d1ca25d12872af",
+        "representation": "pdf",
+        "local_ref": "https://itis.swiss/assets/Downloads/TissueDb/Database-V5-0.zip#References_Low_Frequency_V5.0.pdf",
+        "version": "V5.0; pages 1, 5, 6 visually read 2026-10-29"
+      }
+    ],
+    "evidence": [
+      {
+        "evidence_id": "EV-RKM1",
+        "source_id": "SRC-RKM-1",
+        "locator": "lines 19–21",
+        "claim": "РКМ: 100 кГц, около 7000 мкА на источник.",
+        "support_type": "method",
+        "fragment": null,
+        "value": {
+          "frequency_hz": 100000,
+          "current_uA_approx": 7000
+        },
+        "unit": null,
+        "study_context": "Реокардиомонитор актуальной сессии; не переносится на иные приборы.",
+        "limitations": "Подтверждение автора; конвенция тока не уточнена.",
+        "verification_status": "verified"
+      },
+      {
+        "evidence_id": "EV-RKM2",
+        "source_id": "SRC-RKM-2",
+        "locator": "lines 33–36",
+        "claim": "РКМ: 100 кГц, около 7000 мкА на канал.",
+        "support_type": "method",
+        "fragment": null,
+        "value": {
+          "frequency_hz": 100000,
+          "current_uA_approx": 7000
+        },
+        "unit": null,
+        "study_context": null,
+        "limitations": "Подтверждение автора; вид токового значения не указан.",
+        "verification_status": "verified"
+      },
+      {
+        "evidence_id": "EV-EIT",
+        "source_id": "SRC-EIT",
+        "locator": "§13.5, line 225",
+        "claim": "Корпус сообщает 79,505 кГц и 7,234 мА из заголовков реальных ЭИТ-записей.",
+        "support_type": "method",
+        "fragment": null,
+        "value": {
+          "frequency_hz": 79505,
+          "current_mA": 7.234
+        },
+        "unit": null,
+        "study_context": null,
+        "limitations": "Первичные заголовки в этой сессии не перечитаны; физический смысл амплитуды независимо не подтверждён.",
+        "verification_status": "verified"
+      },
+      {
+        "evidence_id": "EV-EIT-CH6",
+        "source_id": "SRC-CH6",
+        "locator": "§6.3, line 48; §6.5, line 70",
+        "claim": "В текущем тексте сохранены частота и ток ЭИТ; перенос на 100 кГц РКМ не выполнен.",
+        "support_type": "limitation",
+        "fragment": null,
+        "value": null,
+        "unit": null,
+        "study_context": null,
+        "limitations": null,
+        "verification_status": "verified"
+      },
+      {
+        "evidence_id": "EV-CURRENT-CONVENTION",
+        "source_id": "SRC-ACCEPTED",
+        "locator": "p0777; p0906; p1341–p1345",
+        "claim": "Номинал РКМ и заголовки ЭИТ не заменяют установления токовой конвенции; вычислительная нормировка не является током прибора.",
+        "support_type": "limitation",
+        "fragment": null,
+        "value": null,
+        "unit": null,
+        "study_context": null,
+        "limitations": null,
+        "verification_status": "verified"
+      },
+      {
+        "evidence_id": "EV-LINEAR",
+        "source_id": "SRC-MODELS",
+        "locator": "§3.1–3.2, linear scalar forward problem",
+        "claim": "В принятой линейной прямой задаче напряжение масштабируется с током; тканевая проводимость задаётся отдельно.",
+        "support_type": "method",
+        "fragment": null,
+        "value": null,
+        "unit": null,
+        "study_context": null,
+        "limitations": "Принятая физическая модель, без новой проверки линейности прибора.",
+        "verification_status": "verified"
+      },
+      {
+        "evidence_id": "EV-G96-MODEL",
+        "source_id": "SRC-G96",
+        "locator": "p. 2272, equation (4); p. 2291, Table 1; p. 2273, §§3–4",
+        "claim": "Использована четырёхдисперсионная параметризация; таблица содержит коэффициенты семи строк предлагаемой таблицы, кроме deflated.",
+        "support_type": "method",
+        "fragment": null,
+        "value": null,
+        "unit": null,
+        "study_context": null,
+        "limitations": "Коэффициенты в статье округлены; полная параметризация неединственна.",
+        "verification_status": "verified"
+      },
+      {
+        "evidence_id": "EV-G96-BOUNDARY",
+        "source_id": "SRC-G96",
+        "locator": "§5, pp. 2292–2293",
+        "claim": "Авторы ограничивают уверенность применения модели ниже 1 МГц.",
+        "support_type": "limitation",
+        "fragment": null,
+        "value": null,
+        "unit": null,
+        "study_context": null,
+        "limitations": null,
+        "verification_status": "verified"
+      },
+      {
+        "evidence_id": "EV-G09-ABSTRACT",
+        "source_id": "SRC-G09",
+        "locator": "Abstract; bibliographic header",
+        "claim": "Работа сочетает обзор с измерениями тканей свиньи in vivo и жидкостей in vitro.",
+        "support_type": "context",
+        "fragment": null,
+        "value": null,
+        "unit": null,
+        "study_context": null,
+        "limitations": "Прочитан реферат, не таблицы полного текста.",
+        "verification_status": "verified"
+      },
+      {
+        "evidence_id": "EV-ARCHIVE",
+        "source_id": "SRC-ITIS-ASCII",
+        "locator": "ASCII table, columns AB:AO, AQ, AU:AV; archive/member sha256",
+        "claim": "Официальный числовой источник совпадает с закреплённой версией архива проекта.",
+        "support_type": "method",
+        "fragment": null,
+        "value": {
+          "archive_sha256": "531adceeca8a108b0c6ec0fdb276381cba4f3f0627990e3bb66aaa6673a063c0",
+          "member_sha256": "d139ae961db460112345b43cd929042920390a1f2db3d462a2278b3be931c7e2"
+        },
+        "unit": null,
+        "study_context": null,
+        "limitations": null,
+        "verification_status": "verified"
+      },
+      {
+        "evidence_id": "EV-LF-MEANING",
+        "source_id": "SRC-40-08",
+        "locator": "§Низкочастотный литературный разброс; §Рабочие диапазоны новых прямых расчётов",
+        "claim": "LF Mixed до 1 МГц и объединённая проектная оболочка являются разными объектами.",
+        "support_type": "limitation",
+        "fragment": null,
+        "value": null,
+        "unit": null,
+        "study_context": null,
+        "limitations": "Ни один из интервалов не является популяционной нормой, амплитудой цикла или индивидуальным измерением.",
+        "verification_status": "verified"
+      },
+      {
+        "evidence_id": "EV-LF-REFERENCES",
+        "source_id": "SRC-ITIS-LFREF",
+        "locator": "PDF pp. 1, 5, 6; rows Blood, Fat, Heart Muscle, Lung (Inflated/Deflated), Muscle",
+        "claim": "Низкочастотная сводка опирается на несколько публикаций, а не только на Gabriel 2009.",
+        "support_type": "context",
+        "fragment": null,
+        "value": null,
+        "unit": null,
+        "study_context": null,
+        "limitations": "Нужный список источников прочитан; публикация, давшая каждую крайнюю числовую границу, не установлена.",
+        "verification_status": "verified"
+      },
+      {
+        "evidence_id": "EV-FREQ-IMPLEMENTATION",
+        "source_id": "SRC-CODE",
+        "locator": "build(), frequency loop; epsilon0=8.8542e-12; four complex Cole-Cole terms",
+        "claim": "Функция частотной проводимости воспроизводится без FEM-решения.",
+        "support_type": "method",
+        "fragment": null,
+        "value": null,
+        "unit": null,
+        "study_context": null,
+        "limitations": "Новая частотная точка не является измерением или проверкой индивидуальной дисперсии.",
+        "verification_status": "verified"
+      },
+      {
+        "evidence_id": "EV-NUM-muscle",
+        "source_id": "SRC-REG",
+        "locator": "/tissues/Muscle/gabriel_at_frequency/100000; /low_frequency_mixed_rho_bounds_ohm_m",
+        "claim": "Сохранённые частотные и LF-значения строки Скелетная мышца.",
+        "support_type": "context",
+        "fragment": null,
+        "value": {
+          "at_100000": {
+            "sigma_S_m": 0.36184869972103617,
+            "rho_ohm_m": 2.763585998155971,
+            "relative_permittivity": 8089.153496916243
+          },
+          "lf_rho": [
+            1.3774104683195594,
+            10.0
+          ]
+        },
+        "unit": null,
+        "study_context": null,
+        "limitations": "LF-границы не относятся к одной фиксированной частоте; сопоставлены с официальным ASCII-источником.",
+        "verification_status": "verified"
+      },
+      {
+        "evidence_id": "EV-79-muscle",
+        "source_id": "SRC-REG",
+        "locator": "/tissues/Muscle/coefficients; derivation DER-79505",
+        "claim": "При 79,505 кГц вычислена частотная функция для Скелетная мышца.",
+        "support_type": "inferential",
+        "fragment": null,
+        "value": {
+          "sigma_S_m": 0.3576789614063912,
+          "rho_ohm_m": 2.795803242293052,
+          "relative_permittivity": 8671.275182696894
+        },
+        "unit": null,
+        "study_context": null,
+        "limitations": "Вычисление по неизменным коэффициентам; не индивидуальное измерение.",
+        "verification_status": "verified"
+      },
+      {
+        "evidence_id": "EV-NUM-fat",
+        "source_id": "SRC-REG",
+        "locator": "/tissues/Fat/gabriel_at_frequency/100000; /low_frequency_mixed_rho_bounds_ohm_m",
+        "claim": "Сохранённые частотные и LF-значения строки Жировая ткань.",
+        "support_type": "context",
+        "fragment": null,
+        "value": {
+          "at_100000": {
+            "sigma_S_m": 0.04340163769684506,
+            "rho_ohm_m": 23.040605218284004,
+            "relative_permittivity": 101.49326041483408
+          },
+          "lf_rho": [
+            4.646464653035404,
+            41.68988445815282
+          ]
+        },
+        "unit": null,
+        "study_context": null,
+        "limitations": "LF-границы не относятся к одной фиксированной частоте; сопоставлены с официальным ASCII-источником.",
+        "verification_status": "verified"
+      },
+      {
+        "evidence_id": "EV-79-fat",
+        "source_id": "SRC-REG",
+        "locator": "/tissues/Fat/coefficients; derivation DER-79505",
+        "claim": "При 79,505 кГц вычислена частотная функция для Жировая ткань.",
+        "support_type": "inferential",
+        "fragment": null,
+        "value": {
+          "sigma_S_m": 0.04335908748164572,
+          "rho_ohm_m": 23.063215996492286,
+          "relative_permittivity": 116.71263731838805
+        },
+        "unit": null,
+        "study_context": null,
+        "limitations": "Вычисление по неизменным коэффициентам; не индивидуальное измерение.",
+        "verification_status": "verified"
+      },
+      {
+        "evidence_id": "EV-NUM-blood",
+        "source_id": "SRC-REG",
+        "locator": "/tissues/Blood/gabriel_at_frequency/100000; /low_frequency_mixed_rho_bounds_ohm_m",
+        "claim": "Сохранённые частотные и LF-значения строки Кровь.",
+        "support_type": "context",
+        "fragment": null,
+        "value": {
+          "at_100000": {
+            "sigma_S_m": 0.7029217238456084,
+            "rho_ohm_m": 1.4226335110673614,
+            "relative_permittivity": 5120.009190103191
+          },
+          "lf_rho": [
+            1.0575600000214898,
+            2.3089999991849233
+          ]
+        },
+        "unit": null,
+        "study_context": null,
+        "limitations": "LF-границы не относятся к одной фиксированной частоте; сопоставлены с официальным ASCII-источником.",
+        "verification_status": "verified"
+      },
+      {
+        "evidence_id": "EV-79-blood",
+        "source_id": "SRC-REG",
+        "locator": "/tissues/Blood/coefficients; derivation DER-79505",
+        "claim": "При 79,505 кГц вычислена частотная функция для Кровь.",
+        "support_type": "inferential",
+        "fragment": null,
+        "value": {
+          "sigma_S_m": 0.7019081174367537,
+          "rho_ohm_m": 1.4246878974014803,
+          "relative_permittivity": 5153.710467308767
+        },
+        "unit": null,
+        "study_context": null,
+        "limitations": "Вычисление по неизменным коэффициентам; не индивидуальное измерение.",
+        "verification_status": "verified"
+      },
+      {
+        "evidence_id": "EV-NUM-myocardium",
+        "source_id": "SRC-REG",
+        "locator": "/tissues/Heart Muscle/gabriel_at_frequency/100000; /low_frequency_mixed_rho_bounds_ohm_m",
+        "claim": "Сохранённые частотные и LF-значения строки Миокард.",
+        "support_type": "context",
+        "fragment": null,
+        "value": {
+          "at_100000": {
+            "sigma_S_m": 0.21510885640192495,
+            "rho_ohm_m": 4.648809057547718,
+            "relative_permittivity": 9845.82360087332
+          },
+          "lf_rho": [
+            1.2900000007482,
+            9.6500000004825
+          ]
+        },
+        "unit": null,
+        "study_context": null,
+        "limitations": "LF-границы не относятся к одной фиксированной частоте; сопоставлены с официальным ASCII-источником.",
+        "verification_status": "verified"
+      },
+      {
+        "evidence_id": "EV-79-myocardium",
+        "source_id": "SRC-REG",
+        "locator": "/tissues/Heart Muscle/coefficients; derivation DER-79505",
+        "claim": "При 79,505 кГц вычислена частотная функция для Миокард.",
+        "support_type": "inferential",
+        "fragment": null,
+        "value": {
+          "sigma_S_m": 0.2083286102129663,
+          "rho_ohm_m": 4.800108823160384,
+          "relative_permittivity": 11726.180741755146
+        },
+        "unit": null,
+        "study_context": null,
+        "limitations": "Вычисление по неизменным коэффициентам; не индивидуальное измерение.",
+        "verification_status": "verified"
+      },
+      {
+        "evidence_id": "EV-NUM-lung_inflated",
+        "source_id": "SRC-REG",
+        "locator": "/tissues/Lung (Inflated)/gabriel_at_frequency/100000; /low_frequency_mixed_rho_bounds_ohm_m",
+        "claim": "Сохранённые частотные и LF-значения строки Лёгкое, inflated.",
+        "support_type": "context",
+        "fragment": null,
+        "value": {
+          "at_100000": {
+            "sigma_S_m": 0.10735081570870107,
+            "rho_ohm_m": 9.315252924705511,
+            "relative_permittivity": 2581.294814859951
+          },
+          "lf_rho": [
+            14.285714285714285,
+            24.074073806584366
+          ]
+        },
+        "unit": null,
+        "study_context": null,
+        "limitations": "LF-границы не относятся к одной фиксированной частоте; сопоставлены с официальным ASCII-источником.",
+        "verification_status": "verified"
+      },
+      {
+        "evidence_id": "EV-79-lung_inflated",
+        "source_id": "SRC-REG",
+        "locator": "/tissues/Lung (Inflated)/coefficients; derivation DER-79505",
+        "claim": "При 79,505 кГц вычислена частотная функция для Лёгкое, inflated.",
+        "support_type": "inferential",
+        "fragment": null,
+        "value": {
+          "sigma_S_m": 0.10572842391590886,
+          "rho_ohm_m": 9.458194522935008,
+          "relative_permittivity": 3028.5026032228475
+        },
+        "unit": null,
+        "study_context": null,
+        "limitations": "Вычисление по неизменным коэффициентам; не индивидуальное измерение.",
+        "verification_status": "verified"
+      },
+      {
+        "evidence_id": "EV-NUM-lung_deflated",
+        "source_id": "SRC-REG",
+        "locator": "/tissues/Lung (Deflated)/gabriel_at_frequency/100000; /low_frequency_mixed_rho_bounds_ohm_m",
+        "claim": "Сохранённые частотные и LF-значения строки Лёгкое, deflated.",
+        "support_type": "context",
+        "fragment": null,
+        "value": {
+          "at_100000": {
+            "sigma_S_m": 0.2716140934232484,
+            "rho_ohm_m": 3.681694080732876,
+            "relative_permittivity": 5145.254266370705
+          },
+          "lf_rho": [
+            4.961832049705728,
+            23.90000010516
+          ]
+        },
+        "unit": null,
+        "study_context": null,
+        "limitations": "LF-границы не относятся к одной фиксированной частоте; сопоставлены с официальным ASCII-источником.",
+        "verification_status": "verified"
+      },
+      {
+        "evidence_id": "EV-79-lung_deflated",
+        "source_id": "SRC-REG",
+        "locator": "/tissues/Lung (Deflated)/coefficients; derivation DER-79505",
+        "claim": "При 79,505 кГц вычислена частотная функция для Лёгкое, deflated.",
+        "support_type": "inferential",
+        "fragment": null,
+        "value": {
+          "sigma_S_m": 0.2682471033656456,
+          "rho_ohm_m": 3.7279060517455336,
+          "relative_permittivity": 6043.569451152851
+        },
+        "unit": null,
+        "study_context": null,
+        "limitations": "Вычисление по неизменным коэффициентам; не индивидуальное измерение.",
+        "verification_status": "verified"
+      },
+      {
+        "evidence_id": "EV-NUM-bone_cortical",
+        "source_id": "SRC-REG",
+        "locator": "/tissues/Bone (Cortical)/gabriel_at_frequency/100000; /low_frequency_mixed_rho_bounds_ohm_m",
+        "claim": "Сохранённые частотные и LF-значения строки Компактная кость.",
+        "support_type": "context",
+        "fragment": null,
+        "value": {
+          "at_100000": {
+            "sigma_S_m": 0.02079102639898367,
+            "rho_ohm_m": 48.09767352557847,
+            "relative_permittivity": 227.6417864188272
+          },
+          "lf_rho": [
+            109.89010989010988,
+            539.9999568000035
+          ]
+        },
+        "unit": null,
+        "study_context": null,
+        "limitations": "LF-границы не относятся к одной фиксированной частоте; сопоставлены с официальным ASCII-источником.",
+        "verification_status": "verified"
+      },
+      {
+        "evidence_id": "EV-79-bone_cortical",
+        "source_id": "SRC-REG",
+        "locator": "/tissues/Bone (Cortical)/coefficients; derivation DER-79505",
+        "claim": "При 79,505 кГц вычислена частотная функция для Компактная кость.",
+        "support_type": "inferential",
+        "fragment": null,
+        "value": {
+          "sigma_S_m": 0.02073268818396444,
+          "rho_ohm_m": 48.23301209794123,
+          "relative_permittivity": 237.71400213603803
+        },
+        "unit": null,
+        "study_context": null,
+        "limitations": "Вычисление по неизменным коэффициентам; не индивидуальное измерение.",
+        "verification_status": "verified"
+      },
+      {
+        "evidence_id": "EV-NUM-bone_cancellous",
+        "source_id": "SRC-REG",
+        "locator": "/tissues/Bone (Cancellous)/gabriel_at_frequency/100000; /low_frequency_mixed_rho_bounds_ohm_m",
+        "claim": "Сохранённые частотные и LF-значения строки Губчатая кость.",
+        "support_type": "context",
+        "fragment": null,
+        "value": {
+          "at_100000": {
+            "sigma_S_m": 0.08389196472448021,
+            "rho_ohm_m": 11.920092744093209,
+            "relative_permittivity": 471.7063274785155
+          },
+          "lf_rho": [
+            5.0,
+            166.66666666666666
+          ]
+        },
+        "unit": null,
+        "study_context": null,
+        "limitations": "LF-границы не относятся к одной фиксированной частоте; сопоставлены с официальным ASCII-источником.",
+        "verification_status": "verified"
+      },
+      {
+        "evidence_id": "EV-79-bone_cancellous",
+        "source_id": "SRC-REG",
+        "locator": "/tissues/Bone (Cancellous)/coefficients; derivation DER-79505",
+        "claim": "При 79,505 кГц вычислена частотная функция для Губчатая кость.",
+        "support_type": "inferential",
+        "fragment": null,
+        "value": {
+          "sigma_S_m": 0.08371847353006834,
+          "rho_ohm_m": 11.944794951867342,
+          "relative_permittivity": 509.90150982877105
+        },
+        "unit": null,
+        "study_context": null,
+        "limitations": "Вычисление по неизменным коэффициентам; не индивидуальное измерение.",
+        "verification_status": "verified"
+      },
+      {
+        "evidence_id": "EV-AGGREGATES",
+        "source_id": "SRC-REG",
+        "locator": "/screening_profiles/100000/compartments/soft; /heart",
+        "claim": "Проектные оболочки фона и объединённого сердца образованы крайними значениями компонентов.",
+        "support_type": "method",
+        "fragment": null,
+        "value": {
+          "soft_rho_ohm_m": [
+            1.3774104683195594,
+            41.68988445815282
+          ],
+          "heart_rho_ohm_m": [
+            1.0575600000214898,
+            9.6500000004825
+          ]
+        },
+        "unit": null,
+        "study_context": null,
+        "limitations": "Соглашение скрининга, без правила эффективной смеси и без индивидуальной валидации.",
+        "verification_status": "verified"
+      },
+      {
+        "evidence_id": "EV-INFLATED",
+        "source_id": "SRC-40-08",
+        "locator": "§Рабочие диапазоны новых прямых расчётов, paragraph about CT inspiration",
+        "claim": "Для КТ на вдохе основным сценарием назначено inflated.",
+        "support_type": "method",
+        "fragment": null,
+        "value": null,
+        "unit": null,
+        "study_context": null,
+        "limitations": "Соответствие конкретного вдоха состоянию базы является допущением; лёгкие остаются одним компартментом.",
+        "verification_status": "verified"
+      }
+    ],
+    "results": [],
+    "claims": [
+      {
+        "claim_id": "CL-TABLE-muscle",
+        "text": "Скелетная мышца: значения 100 и 79,505 кГц и отдельный LF-разброс.",
+        "output_section": "Таблица дополнения",
+        "claim_type": "numeric",
+        "certainty": "inferred",
+        "evidence_ids": [
+          "EV-NUM-muscle",
+          "EV-79-muscle",
+          "EV-G96-MODEL",
+          "EV-FREQ-IMPLEMENTATION",
+          "EV-ARCHIVE"
+        ],
+        "result_ids": [],
+        "status": "bounded",
+        "disposition": "keep_with_boundary",
+        "boundary": "Точечные значения модели; LF-диапазон неоднородных исследований; для deflated нет строки в проверенной статье 1996 года.",
+        "causal_basis": null
+      },
+      {
+        "claim_id": "CL-TABLE-fat",
+        "text": "Жировая ткань: значения 100 и 79,505 кГц и отдельный LF-разброс.",
+        "output_section": "Таблица дополнения",
+        "claim_type": "numeric",
+        "certainty": "inferred",
+        "evidence_ids": [
+          "EV-NUM-fat",
+          "EV-79-fat",
+          "EV-G96-MODEL",
+          "EV-FREQ-IMPLEMENTATION",
+          "EV-ARCHIVE"
+        ],
+        "result_ids": [],
+        "status": "bounded",
+        "disposition": "keep_with_boundary",
+        "boundary": "Точечные значения модели; LF-диапазон неоднородных исследований; для deflated нет строки в проверенной статье 1996 года.",
+        "causal_basis": null
+      },
+      {
+        "claim_id": "CL-TABLE-blood",
+        "text": "Кровь: значения 100 и 79,505 кГц и отдельный LF-разброс.",
+        "output_section": "Таблица дополнения",
+        "claim_type": "numeric",
+        "certainty": "inferred",
+        "evidence_ids": [
+          "EV-NUM-blood",
+          "EV-79-blood",
+          "EV-G96-MODEL",
+          "EV-FREQ-IMPLEMENTATION",
+          "EV-ARCHIVE"
+        ],
+        "result_ids": [],
+        "status": "bounded",
+        "disposition": "keep_with_boundary",
+        "boundary": "Точечные значения модели; LF-диапазон неоднородных исследований; для deflated нет строки в проверенной статье 1996 года.",
+        "causal_basis": null
+      },
+      {
+        "claim_id": "CL-TABLE-myocardium",
+        "text": "Миокард: значения 100 и 79,505 кГц и отдельный LF-разброс.",
+        "output_section": "Таблица дополнения",
+        "claim_type": "numeric",
+        "certainty": "inferred",
+        "evidence_ids": [
+          "EV-NUM-myocardium",
+          "EV-79-myocardium",
+          "EV-G96-MODEL",
+          "EV-FREQ-IMPLEMENTATION",
+          "EV-ARCHIVE"
+        ],
+        "result_ids": [],
+        "status": "bounded",
+        "disposition": "keep_with_boundary",
+        "boundary": "Точечные значения модели; LF-диапазон неоднородных исследований; для deflated нет строки в проверенной статье 1996 года.",
+        "causal_basis": null
+      },
+      {
+        "claim_id": "CL-TABLE-lung_inflated",
+        "text": "Лёгкое, inflated: значения 100 и 79,505 кГц и отдельный LF-разброс.",
+        "output_section": "Таблица дополнения",
+        "claim_type": "numeric",
+        "certainty": "inferred",
+        "evidence_ids": [
+          "EV-NUM-lung_inflated",
+          "EV-79-lung_inflated",
+          "EV-G96-MODEL",
+          "EV-FREQ-IMPLEMENTATION",
+          "EV-ARCHIVE"
+        ],
+        "result_ids": [],
+        "status": "bounded",
+        "disposition": "keep_with_boundary",
+        "boundary": "Точечные значения модели; LF-диапазон неоднородных исследований; для deflated нет строки в проверенной статье 1996 года.",
+        "causal_basis": null
+      },
+      {
+        "claim_id": "CL-TABLE-lung_deflated",
+        "text": "Лёгкое, deflated: значения 100 и 79,505 кГц и отдельный LF-разброс.",
+        "output_section": "Таблица дополнения",
+        "claim_type": "numeric",
+        "certainty": "inferred",
+        "evidence_ids": [
+          "EV-NUM-lung_deflated",
+          "EV-79-lung_deflated",
+          "EV-G96-MODEL",
+          "EV-FREQ-IMPLEMENTATION",
+          "EV-ARCHIVE"
+        ],
+        "result_ids": [],
+        "status": "bounded",
+        "disposition": "keep_with_boundary",
+        "boundary": "Точечные значения модели; LF-диапазон неоднородных исследований; для deflated нет строки в проверенной статье 1996 года.",
+        "causal_basis": null
+      },
+      {
+        "claim_id": "CL-TABLE-bone_cortical",
+        "text": "Компактная кость: значения 100 и 79,505 кГц и отдельный LF-разброс.",
+        "output_section": "Таблица дополнения",
+        "claim_type": "numeric",
+        "certainty": "inferred",
+        "evidence_ids": [
+          "EV-NUM-bone_cortical",
+          "EV-79-bone_cortical",
+          "EV-G96-MODEL",
+          "EV-FREQ-IMPLEMENTATION",
+          "EV-ARCHIVE"
+        ],
+        "result_ids": [],
+        "status": "bounded",
+        "disposition": "keep_with_boundary",
+        "boundary": "Точечные значения модели; LF-диапазон неоднородных исследований; для deflated нет строки в проверенной статье 1996 года.",
+        "causal_basis": null
+      },
+      {
+        "claim_id": "CL-TABLE-bone_cancellous",
+        "text": "Губчатая кость: значения 100 и 79,505 кГц и отдельный LF-разброс.",
+        "output_section": "Таблица дополнения",
+        "claim_type": "numeric",
+        "certainty": "inferred",
+        "evidence_ids": [
+          "EV-NUM-bone_cancellous",
+          "EV-79-bone_cancellous",
+          "EV-G96-MODEL",
+          "EV-FREQ-IMPLEMENTATION",
+          "EV-ARCHIVE"
+        ],
+        "result_ids": [],
+        "status": "bounded",
+        "disposition": "keep_with_boundary",
+        "boundary": "Точечные значения модели; LF-диапазон неоднородных исследований; для deflated нет строки в проверенной статье 1996 года.",
+        "causal_basis": null
+      },
+      {
+        "claim_id": "CL-RKM",
+        "text": "РКМ: 100 кГц и около 7 мА на источник.",
+        "output_section": "Предлагаемое дополнение",
+        "claim_type": "method",
+        "certainty": "inferred",
+        "evidence_ids": [
+          "EV-RKM1",
+          "EV-RKM2"
+        ],
+        "result_ids": [],
+        "status": "bounded",
+        "disposition": "keep_with_boundary",
+        "boundary": "Ток приблизительный, конвенция не установлена.",
+        "causal_basis": null
+      },
+      {
+        "claim_id": "CL-EIT",
+        "text": "ЭИТ: 79,505 кГц и 7,234 мА.",
+        "output_section": "Предлагаемое дополнение",
+        "claim_type": "method",
+        "certainty": "inferred",
+        "evidence_ids": [
+          "EV-EIT",
+          "EV-EIT-CH6"
+        ],
+        "result_ids": [],
+        "status": "bounded",
+        "disposition": "keep_with_boundary",
+        "boundary": "Сведения проверенного корпуса о заголовках; первичные файлы повторно не прочитаны.",
+        "causal_basis": null
+      },
+      {
+        "claim_id": "CL-LINEAR",
+        "text": "В линейной модели напряжение пропорционально току.",
+        "output_section": "Предлагаемое дополнение",
+        "claim_type": "method",
+        "certainty": "inferred",
+        "evidence_ids": [
+          "EV-LINEAR"
+        ],
+        "result_ids": [],
+        "status": "bounded",
+        "disposition": "keep_with_boundary",
+        "boundary": "Свойство модели, не результат новой приборной проверки.",
+        "causal_basis": null
+      },
+      {
+        "claim_id": "CL-CURRENT",
+        "text": "Амплитудная конвенция токов независимо не установлена.",
+        "output_section": "Предлагаемое дополнение",
+        "claim_type": "limitation",
+        "certainty": "direct",
+        "evidence_ids": [
+          "EV-CURRENT-CONVENTION"
+        ],
+        "result_ids": [],
+        "status": "supported",
+        "disposition": "keep",
+        "boundary": null,
+        "causal_basis": null
+      },
+      {
+        "claim_id": "CL-MODEL",
+        "text": "Частотные ориентиры являются вычислениями модели, применяемой ниже 1 МГц с ограничениями.",
+        "output_section": "Предлагаемое дополнение",
+        "claim_type": "method",
+        "certainty": "inferred",
+        "evidence_ids": [
+          "EV-G96-MODEL",
+          "EV-G96-BOUNDARY",
+          "EV-FREQ-IMPLEMENTATION"
+        ],
+        "result_ids": [],
+        "status": "bounded",
+        "disposition": "keep_with_boundary",
+        "boundary": "Не индивидуальные измерения.",
+        "causal_basis": null
+      },
+      {
+        "claim_id": "CL-LF",
+        "text": "LF-разброс нельзя назвать диапазоном, измеренным строго на частоте РКМ или ЭИТ.",
+        "output_section": "Предлагаемое дополнение",
+        "claim_type": "limitation",
+        "certainty": "direct",
+        "evidence_ids": [
+          "EV-LF-MEANING",
+          "EV-LF-REFERENCES"
+        ],
+        "result_ids": [],
+        "status": "supported",
+        "disposition": "keep",
+        "boundary": null,
+        "causal_basis": null
+      },
+      {
+        "claim_id": "CL-HEART",
+        "text": "Объединённое сердце не получает автоматически удельное сопротивление чистой крови.",
+        "output_section": "Предлагаемое дополнение",
+        "claim_type": "synthesis",
+        "certainty": "inferred",
+        "evidence_ids": [
+          "EV-AGGREGATES",
+          "EV-NUM-blood",
+          "EV-NUM-myocardium"
+        ],
+        "result_ids": [],
+        "status": "bounded",
+        "disposition": "keep_with_boundary",
+        "boundary": "Без правила смеси и пространственных долей эффективное свойство не задано.",
+        "causal_basis": null
+      },
+      {
+        "claim_id": "CL-AGGREGATES",
+        "text": "1,377–41,690 Ом·м для фона и 1,058–9,650 Ом·м для сердца — проектные оболочки.",
+        "output_section": "Предлагаемое дополнение",
+        "claim_type": "numeric",
+        "certainty": "inferred",
+        "evidence_ids": [
+          "EV-AGGREGATES"
+        ],
+        "result_ids": [],
+        "status": "bounded",
+        "disposition": "keep_with_boundary",
+        "boundary": "Сценарии неопределённости, не литературная норма компартмента.",
+        "causal_basis": null
+      },
+      {
+        "claim_id": "CL-INFLATED",
+        "text": "Для исходного сопоставления с КТ на глубоком вдохе используется сценарий inflated.",
+        "output_section": "Предлагаемое дополнение",
+        "claim_type": "method",
+        "certainty": "inferred",
+        "evidence_ids": [
+          "EV-INFLATED"
+        ],
+        "result_ids": [],
+        "status": "bounded",
+        "disposition": "keep_with_boundary",
+        "boundary": "Допущение соответствия состояния базы фактическому вдоху.",
+        "causal_basis": null
+      },
+      {
+        "claim_id": "CL-NO-TRANSFER",
+        "text": "Точечные литературные значения не подтверждают перенос индивидуальных базовых свойств и их изменений на другую частоту.",
+        "output_section": "Предлагаемое дополнение",
+        "claim_type": "limitation",
+        "certainty": "direct",
+        "evidence_ids": [
+          "EV-EIT-CH6",
+          "EV-FREQ-IMPLEMENTATION"
+        ],
+        "result_ids": [],
+        "status": "supported",
+        "disposition": "keep",
+        "boundary": null,
+        "causal_basis": null
+      }
+    ]
+  },
+  "validation": {
+    "evidence_bundle": {
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "counts": {
+        "sources": 13,
+        "evidence": 31,
+        "results": 0,
+        "claims": 18,
+        "supported_claims": 3,
+        "bounded_claims": 15,
+        "unsupported_claims": 0,
+        "conflicted_claims": 0
+      }
+    },
+    "frequency_reproduction_50000_100000_max_relative_difference": 4.0556189612991223e-16,
+    "reciprocal_LF_bounds_checked": true,
+    "russian_scientific_language_audit": {
+      "valid": true,
+      "counts": {
+        "errors": 0,
+        "warnings": 4,
+        "issues": 4
+      },
+      "issues": [
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "line": 6,
+          "match": "summary",
+          "message": "Translate the word or verify that it is a necessary introduced term or identifier."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "line": 6,
+          "match": "summary",
+          "message": "Translate the word or verify that it is a necessary introduced term or identifier."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "line": 14,
+          "match": "inflated",
+          "message": "Translate the word or verify that it is a necessary introduced term or identifier."
+        },
+        {
+          "code": "latin_prose",
+          "severity": "warning",
+          "line": 15,
+          "match": "deflated",
+          "message": "Translate the word or verify that it is a necessary introduced term or identifier."
+        }
+      ],
+      "limitations": "Surface-pattern audit only; it does not verify facts, terminology, syntax, cohesion, or scientific quality."
+    },
+    "AI_detector_or_model_used": false,
+    "manual_semantic_review": "Claims, numbers, units, frequency distinction, blood versus effective heart and source access status checked separately from language.",
+    "reviewed_language_warnings": [
+      {
+        "matches": [
+          "summary"
+        ],
+        "resolution": "HTML-разметка раскрываемой таблицы; не слово научной прозы."
+      },
+      {
+        "matches": [
+          "inflated",
+          "deflated"
+        ],
+        "resolution": "Точные исходные идентификаторы состояний базы; в интеграционной проверке предложены пояснительные русские подписи с сохранением идентификаторов."
+      }
+    ],
+    "readonly_author_review_drafts_unchanged_since_snapshot": true
+  },
+  "readonly_draft_snapshot_sha256": {
+    "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/drafts/00_front.md": "b893f638ae20826f85a88268a698004ce03fad05eb3b167319aee512676b8cb6",
+    "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/drafts/01_07_08_sources.md": "7ac0d49c5eebb70e198325bc997b3b91d080f11bcc9f5369f781321cc15b6929",
+    "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/drafts/01_literature.md": "118289c2bfae8080419b744bb493017a6dcba2910ead8c852399623dfbdee266",
+    "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/drafts/02_04_sources.md": "0e5270b56e20e16cfe8b5d1d5300d545ee6826d30ec8d047181bdd9f63ffe59b",
+    "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/drafts/02_materials.md": "039f0c2b1b26505ab9a0f51ae3a8546b63ab3015ad8a340274415665b82fb1be",
+    "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/drafts/03_models.md": "b20aaed7393cde70fe5984a9bdb62b594f3a6db4bb8861a74c026ca95b78ea4a",
+    "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/drafts/04_processing.md": "5da6d406e7b256586156ced97412c06e86c0dda51844f7555315024bee3acd16",
+    "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/drafts/05_model_results.md": "f9a81c04dfc16774f3e3343f4c977a070a9e0ab4ea788b98159b07de0dd37a34",
+    "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/drafts/06_tissue_results.md": "187fc5ffead3caa93d31f5a1cbfbd58048f06551ac02a5218f5b1d185d09637b",
+    "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/drafts/07_stroke_volume.md": "f4b77b98064be55cf74778bfb8ed9fe567124acd936443cbe4e031ca150ebc33",
+    "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/drafts/08_discussion.md": "2e4e393bfbc1f7b6c9a1b382d617b8425dcfe04eb84ffbc3c297135a1a8657e8",
+    "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/drafts/09_conclusion.md": "90bd88a7744c00d1d2d799d5522b3600dcd140ae5e0ccbf3e5a3c8e3d912fc2b",
+    "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/drafts/appendix_models.md": "1638f61da90ef706ab986a12cffec1886539e72d8a4deeac13eaa6e03b0edf1e",
+    "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/drafts/patents.md": "a3c9b4ebbd63362489763d30348fa51eaa6cbb08b02c09c5dc703fe4265f338e",
+    "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/drafts/sidecar03_05_06_sources.md": "3b5d035449682ce69b8e49c6bbf533b086f4dc7a970f1341906d66db1f9b0242"
+  },
+  "integration_review": {
+    "path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_local_edits/drafts/03_models.md",
+    "sha256_at_review": "3ce211bf106691195427a34fb506060863168260aae0b48c2efa593b10c5b96f",
+    "section": "§3.1 before §3.2",
+    "table_id": "tissue_electrical_properties",
+    "all_eight_rows_and_32_scalar_values_match_after_rounding": true,
+    "chapter_modified_by_this_agent": false,
+    "scientific_reference_key": "gabriel1996iii",
+    "scientific_bibliography_metadata_correct": true,
+    "database_is_footnote_not_scientific_bibliography_entry": true,
+    "LF_extremes_attributed_to_database_not_primary_paper": true,
+    "deflated_primary_table_absence_explicit_in_footnote": true,
+    "findings": [
+      {
+        "id": "RHO-TERM-01",
+        "priority": "terminology",
+        "location": "table rows and following paragraph",
+        "current": "Лёгкое, расправленное / Лёгкое, спавшееся",
+        "recommended": [
+          "Лёгкое, большее воздухонаполнение (Inflated)",
+          "Лёгкое, меньшее воздухонаполнение (Deflated)"
+        ],
+        "strict_source_label_alternative": [
+          "Лёгкое, состояние Inflated",
+          "Лёгкое, состояние Deflated"
+        ],
+        "basis": "Пояснительный перевод категорий; степень коллапса и соответствие концу выдоха участников не подтверждены."
+      },
+      {
+        "id": "RHO-LIMIT-02",
+        "priority": "scientific_boundary",
+        "location": "paragraph containing primary model reference",
+        "recommended_sentence": "Для частот ниже 1 МГц авторы модели отмечают повышенную неопределённость её оценок.",
+        "evidence_id": "EV-G96-BOUNDARY",
+        "locator": "Gabriel et al. 1996 III, §5, pp. 2292–2293"
+      },
+      {
+        "id": "RHO-ATTR-03",
+        "priority": "checked_no_error",
+        "detail": "LF Mixed bounds attributed to database; primary paper cited for equation and tissue coefficients; deflated exception explicit."
+      }
+    ]
+  }
+}

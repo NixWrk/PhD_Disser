@@ -1,0 +1,364 @@
+{
+  "schema": "local_figure_edits_v1",
+  "base_revision": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review",
+  "figure_count": 19,
+  "asset_mapping": {
+    "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/figures/V01_materials_sequence.png": {
+      "new_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_local_edits/figures/V01_materials_sequence_ct_anatomy.png",
+      "figure_number": 1,
+      "key": "materials_sequence",
+      "caption_text": "Схема получения исследовательских данных: индивидуальная КТ и сегментация, запись импеданса и ЭКГ, отдельные поясные измерения ЭИТ. Разные регистрации сохраняют собственные временные шкалы.",
+      "source_asset_sha256": "499361439fd9173c9cd3e8d83a1ae2ad5c1b7f96601c75ca866493ad5ea3883e",
+      "new_sha256": "c649fe6fbb09ddc3e5978de715883f2d4dde3ad0e3d817a962bcd664e210ef72",
+      "dimensions_px": [
+        2200,
+        1203
+      ],
+      "word_width_cm": 16.5,
+      "word_visible_height_cm": 9.022499999999999,
+      "basis": "По прямому уточнению автора неоднозначная фраза «Анатомическая опора» заменена на «Индивидуальная анатомия по КТ» в одном text-элементе исходного SVG (render_visuals.cjs:28). Все атрибуты и остальные элементы SVG неизменны; PNG заново отрисован из SVG. Исходный SVG воспроизвёл базовый PNG попиксельно, вне целевой строки пиксели новой схемы совпали.",
+      "display_multiplier": null,
+      "reproduction_check": "tools/materials_anatomy_check.json",
+      "new_svg_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_local_edits/figures/V01_materials_sequence_ct_anatomy.svg"
+    },
+    "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/figures/V07_cycle_processing.png": {
+      "new_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_local_edits/figures/V07_cycle_processing_display_minus1.png",
+      "figure_number": 10,
+      "key": "processing_cycles",
+      "caption_text": "Четыре сохранённых кандидатных цикла обычной записи 001 У1: ЭКГ с QRS-кандидатами и пульсовые сигналы одновременно подключённых ТТРКГ 2×2 и боковой сборки 140 мм. Время отсчитано от первого QRS-кандидата, импеданс показан в мОм после полосы 0,7–12 Гц. ЭКГ и ординаты меток QRS показаны с множителем −1 только при отображении; времена QRS-кандидатов сохранены.",
+      "source_asset_sha256": "5f1861db863c2a0103f06a43170ac17d5b4303733bee7ec51e5bc6c355d18662",
+      "new_sha256": "ee799366f43af51372e0d7a044c79364866fc698fbfcdc30faa4ed7607e06d94",
+      "dimensions_px": [
+        3060,
+        1700
+      ],
+      "word_width_cm": 16.5,
+      "word_visible_height_cm": 9.166666666666666,
+      "basis": "В сохранённой HTML-сцене 4 ординаты ЭКГ и всех пяти QRS-маркеров отрицательны в точках QRS; render_visuals.cjs:100–105 переносит их в верхнюю панель без смены знака. По прямому указанию автора применён display multiplier −1 к y ЭКГ и y маркеров; все x и оба импедансных ряда неизменны. Это соглашение отображения, а не установленная физическая полярность отведения.",
+      "display_multiplier": -1,
+      "reproduction_check": "tools/ecg_display_check.json"
+    },
+    "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/figures/V13_models_step_quadrature.png": {
+      "new_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_local_edits/figures/V13_models_step_quadrature_compartment_labels.png",
+      "figure_number": 13,
+      "key": "models_step_quadrature",
+      "caption_text": "Объёмная чувствительность STL, G1 и L1 при изменении объёмного шага и числа квадратурных точек на одной сетке. Столбцы соответствуют двум наборам опорных параметров тканей: слева для сердечного компартмента задано ρ_H = 4 Ом·м, справа используются условные параметры подгонки STL. Здесь ρ_H — эффективное удельное сопротивление сердечного компартмента. Цвет соответствует трём альтернативным монтажам. Горизонтальная шкала общая для всех панелей; q обозначает число квадратурных точек. На горизонтальной оси |ΔV| — полусумма модулей фактических отрицательной и положительной объёмных проб, V₀ — исходный номинальный объём STL; номинальные пробы составляют ±1; ±2,5 и ±5% от V₀.",
+      "source_asset_sha256": "ea7904c450ca33ca0e7dc6ccaa9055ac1375d059d7bb859bb46a7c82be08ec3c",
+      "new_sha256": "3b8e975a99cf0db20e0d25f4362e59eca5df175bf63728281cb566c2552cecfa",
+      "dimensions_px": [
+        2160,
+        1500
+      ],
+      "word_width_cm": 16.5,
+      "word_visible_height_cm": 11.458333333333334,
+      "basis": "heart_montage_figures.py и полные CSV из report/results/montage_sensitivity_v1 задают те же кривые/столбцы для diagnostic4 и commonSTLfit. В diagnostic4 параметр сердечного компартмента rho_heart_ohm_m равен 4 Ом·м; это условный параметр модели. Надпись «ρ сердца» уточнена до ρ_H; полное определение «сердечный компартмент, ρ_H = 4 Ом·м» дано в подписи. «Условные ρ из подгонки STL» заменено на «опорные ρ из подгонки STL»; условность сохранена в подписи. Подпись горизонтальной оси заменена на «Объёмная проба |ΔV| / V₀, %». CSV подтверждает номинальные ±1/±2,5/±5%; фактические x сохранены как полусумма модулей парных проб, без округления к делениям.",
+      "display_multiplier": null,
+      "reproduction_check": "tools/material_label_checks.json",
+      "axis_label_change": {
+        "label": "Объёмная проба |ΔV| / V₀, %",
+        "nominal_signed_percent_in_CSV": [
+          -5.0,
+          -2.5,
+          -1.0,
+          1.0,
+          2.5,
+          5.0
+        ],
+        "unchanged_display_x_formula": "100 * (minus_step + plus_step) / (2 * V0)",
+        "definition": "|ΔV| denotes the mean magnitude of the paired actual volume probes; nominal probes are ±1/±2.5/±5%. Actual x values are not rounded or snapped to nominal ticks."
+      }
+    },
+    "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/figures/V19_volume_rho_compensation.png": {
+      "new_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_local_edits/figures/V19_volume_rho_compensation_compartment_labels.png",
+      "figure_number": 15,
+      "key": "models_finite_compensation",
+      "caption_text": "Конечная компенсация объёмных проб ±1% изменением эффективного удельного сопротивления сердечного компартмента У1. Контур — чистая объёмная проба, заполнение — линейно выбранная компенсация, крест — результат одного уточнения Ньютона. Параметры подобраны по исходному монтажу и проверены в двух альтернативных. Столбцы соответствуют двум наборам опорных параметров тканей: слева для сердечного компартмента задано ρ_H = 4 Ом·м, справа используются условные параметры подгонки STL. Здесь ρ_H — эффективное удельное сопротивление сердечного компартмента.",
+      "source_asset_sha256": "3dd5115dcf5aee8fad80980a73b62cf984599854469176a038b5f7a4432451c1",
+      "new_sha256": "9467966a5c2ab947258bd1a609c2d24d5768794c91debbab8b6efe124b4b701e",
+      "dimensions_px": [
+        2460,
+        1710
+      ],
+      "word_width_cm": 16.5,
+      "word_visible_height_cm": 11.46951219512195,
+      "basis": "heart_montage_figures.py и полные CSV из report/results/montage_sensitivity_v1 задают те же кривые/столбцы для diagnostic4 и commonSTLfit. В diagnostic4 параметр сердечного компартмента rho_heart_ohm_m равен 4 Ом·м; это условный параметр модели. Надпись «ρ сердца» уточнена до ρ_H; полное определение «сердечный компартмент, ρ_H = 4 Ом·м» дано в подписи. «Условные ρ из подгонки STL» заменено на «опорные ρ из подгонки STL»; условность сохранена в подписи.",
+      "display_multiplier": null,
+      "reproduction_check": "tools/material_label_checks.json",
+      "title_label_change": {
+        "before": "изменением ρ сердца",
+        "after": "изменением ρ_H"
+      },
+      "caption_change": {
+        "before": "эффективного сопротивления сердца",
+        "after": "эффективного удельного сопротивления сердечного компартмента"
+      }
+    }
+  },
+  "unrendered_edits": [
+    {
+      "old_asset": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/figures/V13_geometry_controls.png",
+      "figure_number": 12,
+      "key": "models_geometry_comparison",
+      "new_path": null,
+      "status": "not_rendered_missing_saved_arrays",
+      "caption_text": "Геометрическое сравнение форм У1 на первом доступном R–R: объём, изменение объёма относительно исходного состояния, ошибка перемещения и коэффициент Dice. T0 — исходная маска, I1–I3 — индивидуальные преобразования, G1/G2/G3a — сферические варианты; линии соединяют доступные фазовые оценки. Под «опорой» в названиях панелей понимается исходное состояние — первая доступная фаза данного R–R.",
+      "proposed_label_changes": [
+        [
+          "Изменение объёма от опоры R–R",
+          "Изменение объёма от исходного состояния"
+        ],
+        [
+          "Ошибка перемещения от опоры",
+          "Ошибка перемещения от исходного состояния"
+        ]
+      ],
+      "source_code_locator": "Colab Notebooks/cardiac_4d_segmentation/summarize_nik_whole_heart_geometry.py:667–691",
+      "missing_inputs": "Нормализованные rows из summary.local.json, записываемого run() этого скрипта: первый R–R, T0/I1/I2/I3/G1/G2/G3a; volume_ml, anchor_volume_change_ml, anchor_displacement_error_mm, dice, optimization_acceptable, phase_id; список исходных фаз groups/manifest.phases.",
+      "basis": "Код явно строит приращения и ошибку перемещения относительно первой доступной фазы данного R–R. Исходная нормализованная таблица этого прогона не найдена; проверен код и сохранённый PNG. Один дополнительный проход по сохранённым HTML/Plotly JSON/выводам notebook и сопроводительному архиву не выявил достаточных встроенных численных данных. Уточнение термина дано в подписи; PNG не оцифровывался.",
+      "source_asset_sha256": "74a840699745a500611caed343338242601117238fe09dcf0241b97b41377d5f",
+      "embedded_data_check": "tools/embedded_figure_source_check.json"
+    },
+    {
+      "old_asset": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/figures/V17_models_electrical_factors.png",
+      "figure_number": 14,
+      "key": "models_electrical_factors",
+      "new_path": null,
+      "status": "not_rendered_missing_saved_arrays",
+      "caption_text": "Приращения ТТРКГ при одинаковых объёмных пробах разных форм сердца и отдельные сценарии эффективного сердечного сопротивления. Слева — объёмные пробы при одинаковом ρ; справа — сохранённые значения объёмной чувствительности для трёх сценариев ρ одной исходной STL и одного монтажа. Точки сценариев не задают непрерывного физиологического закона. В левой панели для сердечного компартмента задано ρ_H = 4 Ом·м; ρ_H — его эффективное удельное сопротивление.",
+      "proposed_label_changes": [
+        [
+          "Одинаковое ΔV; ρ сердца = 4 Ом·м",
+          "Одинаковое ΔV; ρ_H = 4 Ом·м"
+        ],
+        [
+          "Заданное ρ целого сердца, Ом·м",
+          "ρ_H сердечного компартмента, Ом·м"
+        ]
+      ],
+      "source_code_locator": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261028/tools/prepare_reader_figures.py:347–372",
+      "missing_inputs": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/pulmovista_check_20261028/local/stl_electrical_comparison/summary.local.json: shape_comparison, reference_volume_probe_ml, heart_material_scenarios.",
+      "basis": "Для левой панели сохранены отдельные пробы семи форм, для правой — три отдельные точки STL. Нужная сводка отсутствует. Публичная серия трёх форм STL/G1/L1 не заменяет эти семь форм и три сценарные точки. Один дополнительный проход по сохранённым HTML/Plotly JSON/выводам notebook и сопроводительному архиву не выявил достаточных встроенных численных данных. Уточнение термина дано в подписи; PNG не оцифровывался.",
+      "source_asset_sha256": "66b56a644ff15fa1fc0a2cb2cb26d08ab1e3af423550f49e0475dca00df2a4d8",
+      "embedded_data_check": "tools/embedded_figure_source_check.json"
+    },
+    {
+      "old_asset": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/figures/V22_ventricular_phase_reversal.png",
+      "figure_number": 19,
+      "key": "cardiac_phase_reversal",
+      "new_path": null,
+      "status": "not_rendered_missing_saved_arrays",
+      "caption_text": "Объёмы левого и правого желудочков У1 на отложенных фазах и контрпример близкого размаха при ошибочной фазовой последовательности. Известная исходная фаза составляет 14% R–R; временной зазор — 140 мс. Отрезки соединяют прогнозы исключённых блоков с разными калибровками и не задают траекторию одной фиксированной модели. Под «одной опорой» на рисунке понимается эта известная исходная фаза.",
+      "proposed_label_changes": [
+        [
+          "Одна опора: 14%; временной зазор: 140 мс",
+          "Исходная фаза: 14%; временной зазор: 140 мс"
+        ]
+      ],
+      "source_code_locator": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261028/tools/prepare_reader_chamber_figure.py:50–132",
+      "missing_inputs": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/execution_20261026/single_phase/nix_only/exploratory/predictions.csv; single_phase/ct_dataset/dataset.json; single_phase/nix_only/exploratory/window_indices.csv.",
+      "basis": "Код и provenance chamber_figure_edit.json фиксируют одну известную фазу 14% R–R и восемь отложенных фаз. Таблицы предсказаний и КТ для этого графика отсутствуют; доступных PNG недостаточно для воспроизведения. Один дополнительный проход по сохранённым HTML/Plotly JSON/выводам notebook и сопроводительному архиву не выявил достаточных встроенных численных данных. Уточнение термина дано в подписи; PNG не оцифровывался.",
+      "source_asset_sha256": "12bf1deff2ab8778610e9ebbd809ed5e7f39fba8b3032fdb8c2391adab71fd47",
+      "embedded_data_check": "tools/embedded_figure_source_check.json"
+    }
+  ],
+  "inspection": [
+    {
+      "number": 1,
+      "key": "materials_sequence",
+      "old_asset": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/figures/V01_materials_sequence.png",
+      "sha256": "499361439fd9173c9cd3e8d83a1ae2ad5c1b7f96601c75ca866493ad5ea3883e",
+      "status": "replacement_rendered",
+      "note": "Неоднозначная фраза заменена по уточнению автора на «Индивидуальная анатомия по КТ»; остальные элементы неизменны.",
+      "visually_inspected": true
+    },
+    {
+      "number": 2,
+      "key": "ct_segmentation",
+      "old_asset": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/figures/V03_ct_segmentation.png",
+      "sha256": "54cb9cc0fc28e2cf708f47190d70ff9dd0443d4d7bceb38ce0fcc2e63609ab71",
+      "status": "keep",
+      "note": "ЭКГ и целевые неоднозначные надписи отсутствуют; замена не требуется.",
+      "visually_inspected": true
+    },
+    {
+      "number": 3,
+      "key": "ct_model_preparation",
+      "old_asset": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/figures/V04_anatomical_surfaces.png",
+      "sha256": "077d0b469ca871df5060cb2130bac98e398fe518e86d375a134e191f7b8da005",
+      "status": "keep",
+      "note": "ЭКГ и целевые неоднозначные надписи отсутствуют; замена не требуется.",
+      "visually_inspected": true
+    },
+    {
+      "number": 4,
+      "key": "materials_electrodes",
+      "old_asset": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/figures/V02_measurement_setup.png",
+      "sha256": "2ee8548e3c4b80158ccb18ff9d2b3799e9eed93a599cdc48eb79331009b20c2b",
+      "status": "keep",
+      "note": "ЭКГ и целевые неоднозначные надписи отсутствуют; замена не требуется.",
+      "visually_inspected": true
+    },
+    {
+      "number": 5,
+      "key": "photo_lateral_detail",
+      "old_asset": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/figures/photos/photo03.png",
+      "sha256": "96f2bf699355c7431542327529778c9bc9503becb4305c1b3725d6fbe05a293b",
+      "status": "keep",
+      "note": "ЭКГ и целевые неоднозначные надписи отсутствуют; замена не требуется.",
+      "visually_inspected": true
+    },
+    {
+      "number": 6,
+      "key": "photo_tt_wide",
+      "old_asset": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/figures/photos/photo07.png",
+      "sha256": "d6ddc27f119f02f31c9968d4418d09fa5124ef0c48e62c6b008ea5327e141e3c",
+      "status": "keep",
+      "note": "ЭКГ и целевые неоднозначные надписи отсутствуют; замена не требуется.",
+      "visually_inspected": true
+    },
+    {
+      "number": 7,
+      "key": "photo_belt",
+      "old_asset": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/figures/photos/photo01.png",
+      "sha256": "7e7e4e9a761f04dd01614295efd550a1fd5a7e694eb1683013362e65d4aac4a3",
+      "status": "keep",
+      "note": "ЭКГ и целевые неоднозначные надписи отсутствуют; замена не требуется.",
+      "visually_inspected": true
+    },
+    {
+      "number": 8,
+      "key": "models_layered_geometry",
+      "old_asset": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/figures/V09_layered_model.png",
+      "sha256": "260826431fd0de8489b461a6089f77ea32e7ee5951126323a00881bedb48122d",
+      "status": "keep",
+      "note": "ЭКГ и целевые неоднозначные надписи отсутствуют; замена не требуется.",
+      "visually_inspected": true
+    },
+    {
+      "number": 9,
+      "key": "models_ct_fem_preparation",
+      "old_asset": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/figures/V04_fem_surface_contacts.png",
+      "sha256": "8587664e44dd2e2332a49937b46fa86b0a62b1c2ea35ba0591f17335357058ef",
+      "status": "keep",
+      "note": "ЭКГ и целевые неоднозначные надписи отсутствуют; замена не требуется.",
+      "visually_inspected": true
+    },
+    {
+      "number": 10,
+      "key": "processing_cycles",
+      "old_asset": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/figures/V07_cycle_processing.png",
+      "sha256": "5f1861db863c2a0103f06a43170ac17d5b4303733bee7ec51e5bc6c355d18662",
+      "status": "replacement_rendered",
+      "note": "Единственная ЭКГ среди 19 использованных рисунков; QRS направлены вниз в исходнике.",
+      "visually_inspected": true
+    },
+    {
+      "number": 11,
+      "key": "models_anatomy_contacts",
+      "old_asset": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/figures/V04_anatomical_model.png",
+      "sha256": "dfaf500992b1b88c39df24db5f0db5a78e25b4eeb75dba67ca661d023c59cc9f",
+      "status": "keep",
+      "note": "ЭКГ и целевые неоднозначные надписи отсутствуют; замена не требуется.",
+      "visually_inspected": true
+    },
+    {
+      "number": 12,
+      "key": "models_geometry_comparison",
+      "old_asset": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/figures/V13_geometry_controls.png",
+      "sha256": "74a840699745a500611caed343338242601117238fe09dcf0241b97b41377d5f",
+      "status": "needs_edit_missing_data",
+      "note": "Два названия панелей содержат неоднозначное «от опоры».",
+      "visually_inspected": true
+    },
+    {
+      "number": 13,
+      "key": "models_step_quadrature",
+      "old_asset": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/figures/V13_models_step_quadrature.png",
+      "sha256": "ea7904c450ca33ca0e7dc6ccaa9055ac1375d059d7bb859bb46a7c82be08ec3c",
+      "status": "replacement_rendered",
+      "note": "Три названия левого столбца: «ρ сердца = 4 Ом·м»; правый столбец — условные параметры STL.",
+      "visually_inspected": true
+    },
+    {
+      "number": 14,
+      "key": "models_electrical_factors",
+      "old_asset": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/figures/V17_models_electrical_factors.png",
+      "sha256": "66b56a644ff15fa1fc0a2cb2cb26d08ab1e3af423550f49e0475dca00df2a4d8",
+      "status": "needs_edit_missing_data",
+      "note": "Левый заголовок «ρ сердца = 4 Ом·м» и название оси ρ справа требуют определения компартмента.",
+      "visually_inspected": true
+    },
+    {
+      "number": 15,
+      "key": "models_finite_compensation",
+      "old_asset": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/figures/V19_volume_rho_compensation.png",
+      "sha256": "3dd5115dcf5aee8fad80980a73b62cf984599854469176a038b5f7a4432451c1",
+      "status": "replacement_rendered",
+      "note": "Три названия левого столбца: «ρ сердца = 4 Ом·м»; правый столбец — условные параметры STL.",
+      "visually_inspected": true
+    },
+    {
+      "number": 16,
+      "key": "tissue_eit_baseline",
+      "old_asset": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/figures/V14_eit_baseline_residual.png",
+      "sha256": "e06ea9b6558dea0b309b9133c0667e517f481cafd9d5d65f3c804e38e89fd294",
+      "status": "keep",
+      "note": "«Опорный участок 36–44 с» однозначно обозначает временной интервал базовой инверсии; сохранён.",
+      "visually_inspected": true
+    },
+    {
+      "number": 17,
+      "key": "tissue_pulse_projection",
+      "old_asset": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/figures/V15_tissue_contributions.png",
+      "sha256": "4659c59a8b03bc370c931fd473d2a63321608d99968d3f9087bd03453b5b3b8c",
+      "status": "keep",
+      "note": "ЭКГ и целевые неоднозначные надписи отсутствуют; замена не требуется.",
+      "visually_inspected": true
+    },
+    {
+      "number": 18,
+      "key": "tissue_geometry_mixing",
+      "old_asset": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/figures/V16_geometry_tissue_mixing.png",
+      "sha256": "4af36cf17afec3c917ed16c0e780e9ace0d255ea3a1d2b0bdebe4a17684d9230",
+      "status": "keep",
+      "note": "Д4/О-STL — идентификаторы сценариев; численный смысл и подпись сохранены.",
+      "visually_inspected": true
+    },
+    {
+      "number": 19,
+      "key": "cardiac_phase_reversal",
+      "old_asset": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/figures/V22_ventricular_phase_reversal.png",
+      "sha256": "12bf1deff2ab8778610e9ebbd809ed5e7f39fba8b3032fdb8c2391adab71fd47",
+      "status": "needs_edit_missing_data",
+      "note": "«Одна опора: 14%» следует назвать исходной фазой.",
+      "visually_inspected": true
+    }
+  ],
+  "embedded_source_check": {
+    "path": "tools/embedded_figure_source_check.json",
+    "passes": 1,
+    "repository_files": 1306,
+    "archive_entries": 27,
+    "potential_saved_data_files": 0,
+    "conclusion": "no_target_saved_numeric_payload_found"
+  },
+  "input_freeze": {
+    "file": "tools/figure_edits_inputs.json",
+    "protected_files": 369,
+    "all_hashes_unchanged": true
+  },
+  "scope": {
+    "figure_mode": "with_figures",
+    "formatting_mode": "existing_report_figure_layout",
+    "scientific_sources": "existing report assets, saved HTML/CSV and plotting code only",
+    "Word_written": false,
+    "shared_manifest_written": false,
+    "drafts_written": false,
+    "raw_signal_written": false,
+    "detector_run": false,
+    "FEM_run": false,
+    "TEPS_used": false,
+    "raster_plot_reflected": false,
+    "raster_plot_repainted": false
+  }
+}

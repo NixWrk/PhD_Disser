@@ -1,0 +1,38 @@
+[
+  {
+    "package": "matplotlib",
+    "version": "3.10.8",
+    "wheel": "matplotlib-3.10.8-cp312-cp312-win_amd64.whl",
+    "sha256": "dd80ecb295460a5d9d260df63c43f4afbdd832d725a531f008dad1664f458adf"
+  },
+  {
+    "package": "contourpy",
+    "version": "1.3.3",
+    "wheel": "contourpy-1.3.3-cp312-cp312-win_amd64.whl",
+    "sha256": "8153b8bfc11e1e4d75bcb0bff1db232f9e10b274e0929de9d608027e0d34ff8b"
+  },
+  {
+    "package": "cycler",
+    "version": "0.12.1",
+    "wheel": "cycler-0.12.1-py3-none-any.whl",
+    "sha256": "85cef7cff222d8644161529808465972e51340599459b8ac3ccbac5a854e0d30"
+  },
+  {
+    "package": "fonttools",
+    "version": "4.60.1",
+    "wheel": "fonttools-4.60.1-cp312-cp312-win_amd64.whl",
+    "sha256": "992775c9fbe2cf794786fa0ffca7f09f564ba3499b8fe9f2f80bd7197db60383"
+  },
+  {
+    "package": "kiwisolver",
+    "version": "1.4.9",
+    "wheel": "kiwisolver-1.4.9-cp312-cp312-win_amd64.whl",
+    "sha256": "f68208a520c3d86ea51acf688a3e3002615a7f0238002cccc17affecc86a8a54"
+  },
+  {
+    "package": "pyparsing",
+    "version": "3.2.5",
+    "wheel": "pyparsing-3.2.5-py3-none-any.whl",
+    "sha256": "e38a4f02064cf41fe6593d328d0512495ad1f3d8a91c4f73fc401b3079a59a5e"
+  }
+]

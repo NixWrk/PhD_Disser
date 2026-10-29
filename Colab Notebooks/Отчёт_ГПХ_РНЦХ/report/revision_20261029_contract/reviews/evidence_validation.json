@@ -1,0 +1,15 @@
+{
+  "valid": true,
+  "errors": [],
+  "warnings": [],
+  "counts": {
+    "sources": 9,
+    "evidence": 12,
+    "results": 2,
+    "claims": 12,
+    "supported_claims": 0,
+    "bounded_claims": 12,
+    "unsupported_claims": 0,
+    "conflicted_claims": 0
+  }
+}

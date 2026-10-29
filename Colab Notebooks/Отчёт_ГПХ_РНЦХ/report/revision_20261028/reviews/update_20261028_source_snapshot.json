@@ -1,0 +1,209 @@
+{
+  "source_head": "29b9a749dbb04cf020bfa01b702d07567a61e06e",
+  "controls": {
+    "corpus": "existing project materials only",
+    "figures": "with_figures",
+    "format": "existing report retained",
+    "new_FEM_runs": false
+  },
+  "new_result_files": [
+    {
+      "file": "tables/derivatives.csv",
+      "exists": true,
+      "sha256_match": true
+    },
+    {
+      "file": "tables/exclusion_error_budgets.csv",
+      "exists": true,
+      "sha256_match": true
+    },
+    {
+      "file": "tables/finite_volume_errors.csv",
+      "exists": true,
+      "sha256_match": true
+    },
+    {
+      "file": "tables/identifiability.csv",
+      "exists": true,
+      "sha256_match": true
+    },
+    {
+      "file": "tables/joint_components.csv",
+      "exists": true,
+      "sha256_match": true
+    },
+    {
+      "file": "tables/joint_decomposition.csv",
+      "exists": true,
+      "sha256_match": true
+    },
+    {
+      "file": "tables/omission_units.csv",
+      "exists": true,
+      "sha256_match": true
+    },
+    {
+      "file": "tables/quadrature_comparison.csv",
+      "exists": true,
+      "sha256_match": true
+    },
+    {
+      "file": "tables/quadrature_derivatives.csv",
+      "exists": true,
+      "sha256_match": true
+    },
+    {
+      "file": "tables/restriction_finite_errors.csv",
+      "exists": true,
+      "sha256_match": true
+    },
+    {
+      "file": "tables/restrictions.csv",
+      "exists": true,
+      "sha256_match": true
+    },
+    {
+      "file": "tables/rho_checks.csv",
+      "exists": true,
+      "sha256_match": true
+    },
+    {
+      "file": "tables/step_changes.csv",
+      "exists": true,
+      "sha256_match": true
+    },
+    {
+      "file": "tables/finite_compensation_initial.csv",
+      "exists": true,
+      "sha256_match": true
+    },
+    {
+      "file": "tables/finite_compensation_newton.csv",
+      "exists": true,
+      "sha256_match": true
+    },
+    {
+      "file": "tables/volume_refinement.csv",
+      "exists": true,
+      "sha256_match": true
+    },
+    {
+      "file": "tables/anatomy_volume_transfer.csv",
+      "exists": true,
+      "sha256_match": true
+    },
+    {
+      "file": "tables.md",
+      "exists": true,
+      "sha256_match": true
+    },
+    {
+      "file": "figures/ch18_01_volume_step_quadrature.png",
+      "exists": true,
+      "sha256_match": true
+    },
+    {
+      "file": "figures/ch18_02_isolated_volume_errors.png",
+      "exists": true,
+      "sha256_match": true
+    },
+    {
+      "file": "figures/ch18_03_finite_compensation.png",
+      "exists": true,
+      "sha256_match": true
+    },
+    {
+      "file": "tables/electrical_states.csv",
+      "exists": true,
+      "sha256_match": true
+    }
+  ],
+  "previous_figure_cache": [
+    {
+      "file": "figures/36893a49eaf9.png",
+      "sha256_match": true
+    },
+    {
+      "file": "figures/9410feec4a04.png",
+      "sha256_match": true
+    },
+    {
+      "file": "figures/6c0acdc9c3cc.png",
+      "sha256_match": true
+    },
+    {
+      "file": "figures/dfaf500992b1.png",
+      "sha256_match": true
+    },
+    {
+      "file": "figures/3da3bfa3b141.png",
+      "sha256_match": true
+    },
+    {
+      "file": "figures/27676a97e7a0.png",
+      "sha256_match": true
+    },
+    {
+      "file": "figures/ebd34193e582.png",
+      "sha256_match": true
+    },
+    {
+      "file": "figures/3bfc7639d8d7.png",
+      "sha256_match": true
+    },
+    {
+      "file": "figures/e0161a0db073.png",
+      "sha256_match": true
+    },
+    {
+      "file": "figures/dfaf500992b1.png",
+      "sha256_match": true
+    },
+    {
+      "file": "figures/5690647835d6.png",
+      "sha256_match": true
+    },
+    {
+      "file": "figures/d7a6dfb6f426.png",
+      "sha256_match": true
+    },
+    {
+      "file": "figures/f1a30147ff07.png",
+      "sha256_match": true
+    },
+    {
+      "file": "figures/ee60fc3b2861.png",
+      "sha256_match": true
+    },
+    {
+      "file": "figures/4af36cf17afe.png",
+      "sha256_match": true
+    },
+    {
+      "file": "figures/f8d466a2130b.png",
+      "sha256_match": true
+    },
+    {
+      "file": "figures/3cc03cbb636a.png",
+      "sha256_match": true
+    },
+    {
+      "file": "figures/102732f8e556.png",
+      "sha256_match": true
+    },
+    {
+      "file": "figures/90d0ce0e2841.png",
+      "sha256_match": true
+    },
+    {
+      "file": "figures/4af36cf17afe.png",
+      "sha256_match": true
+    },
+    {
+      "file": "figures/7d562bdb0da8.png",
+      "sha256_match": true
+    }
+  ],
+  "old_source_snapshot": "source_snapshot.json",
+  "old_build_receipt": "reviews/build_manifest_before_update_20261028.json"
+}

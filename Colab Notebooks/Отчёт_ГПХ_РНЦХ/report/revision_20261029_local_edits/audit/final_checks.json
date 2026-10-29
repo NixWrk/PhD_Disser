@@ -1,0 +1,25 @@
+{
+  "docx": "J:\\NIX\\WRK\\Code\\Kalmykov_PhD\\Colab Notebooks\\Отчёт_ГПХ_РНЦХ\\report\\revision_20261029_local_edits\\deliverables\\Отчёт_ГПХ_РНЦХ_20261029_точечная_правка.docx",
+  "sha256": "d069a8129c94ea9d4e1861b2dce09845baa96cf9794ad1f53e30ef56bf877ae5",
+  "source_snapshot_sha256": "725d8230579edd4fbdf978c3269c87a13916bb228a669ef875e10182941c666d",
+  "word": {
+    "media_count": 19,
+    "sequence_fields": {
+      "fig": 19,
+      "tab": 18,
+      "eq": 16
+    },
+    "reference_fields": 40,
+    "display_math": 10,
+    "track_changes": true,
+    "revisions": 0,
+    "footnotes": true
+  },
+  "pages": 104,
+  "main_from": 6,
+  "main_through": 86,
+  "main_pages": 81,
+  "bibliography_page": 87,
+  "appendix_page": 90,
+  "issues": []
+}

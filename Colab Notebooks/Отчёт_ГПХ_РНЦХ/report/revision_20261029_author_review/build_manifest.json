@@ -1,0 +1,905 @@
+{
+  "source_snapshot_sha256": "de535d36187a63563aa1e1ee5bde9b08982c0e8d07b0719e537801fa8b724f79",
+  "chapters": [
+    {
+      "path": "drafts\\00_front.md",
+      "sha256": "b893f638ae20826f85a88268a698004ce03fad05eb3b167319aee512676b8cb6"
+    },
+    {
+      "path": "drafts\\01_literature.md",
+      "sha256": "118289c2bfae8080419b744bb493017a6dcba2910ead8c852399623dfbdee266"
+    },
+    {
+      "path": "drafts\\02_materials.md",
+      "sha256": "039f0c2b1b26505ab9a0f51ae3a8546b63ab3015ad8a340274415665b82fb1be"
+    },
+    {
+      "path": "drafts\\03_models.md",
+      "sha256": "b20aaed7393cde70fe5984a9bdb62b594f3a6db4bb8861a74c026ca95b78ea4a"
+    },
+    {
+      "path": "drafts\\04_processing.md",
+      "sha256": "5da6d406e7b256586156ced97412c06e86c0dda51844f7555315024bee3acd16"
+    },
+    {
+      "path": "drafts\\05_model_results.md",
+      "sha256": "f9a81c04dfc16774f3e3343f4c977a070a9e0ab4ea788b98159b07de0dd37a34"
+    },
+    {
+      "path": "drafts\\06_tissue_results.md",
+      "sha256": "187fc5ffead3caa93d31f5a1cbfbd58048f06551ac02a5218f5b1d185d09637b"
+    },
+    {
+      "path": "drafts\\07_stroke_volume.md",
+      "sha256": "f4b77b98064be55cf74778bfb8ed9fe567124acd936443cbe4e031ca150ebc33"
+    },
+    {
+      "path": "drafts\\08_discussion.md",
+      "sha256": "2e4e393bfbc1f7b6c9a1b382d617b8425dcfe04eb84ffbc3c297135a1a8657e8"
+    },
+    {
+      "path": "drafts\\09_conclusion.md",
+      "sha256": "90bd88a7744c00d1d2d799d5522b3600dcd140ae5e0ccbf3e5a3c8e3d912fc2b"
+    },
+    {
+      "path": "drafts\\appendix_models.md",
+      "sha256": "1638f61da90ef706ab986a12cffec1886539e72d8a4deeac13eaa6e03b0edf1e"
+    }
+  ],
+  "main_words": 13735,
+  "figures": [
+    {
+      "key": "materials_sequence",
+      "number": 1,
+      "path": "J:\\NIX\\WRK\\Code\\Kalmykov_PhD\\Colab Notebooks\\Отчёт_ГПХ_РНЦХ\\report\\revision_20261029_author_review\\figures\\V01_materials_sequence.png",
+      "sha256": "499361439fd9173c9cd3e8d83a1ae2ad5c1b7f96601c75ca866493ad5ea3883e",
+      "source": {
+        "protocol": "AUTHOR_CONFIRMATIONS.md",
+        "blocks": [
+          "p0669–p0672",
+          "p0720–p0728"
+        ]
+      },
+      "caption": "Схема получения исследовательских данных: индивидуальная КТ и сегментация, запись импеданса и ЭКГ, отдельные поясные измерения ЭИТ. Разные регистрации сохраняют собственные временные шкалы.",
+      "word_crop": {},
+      "width_cm": 16.5,
+      "visible_height_cm": 9.022499999999999
+    },
+    {
+      "key": "ct_segmentation",
+      "number": 2,
+      "path": "J:\\NIX\\WRK\\Code\\Kalmykov_PhD\\Colab Notebooks\\Отчёт_ГПХ_РНЦХ\\report\\revision_20261029_author_review\\figures\\V03_ct_segmentation.png",
+      "sha256": "54cb9cc0fc28e2cf708f47190d70ff9dd0443d4d7bceb38ce0fcc2e63609ab71",
+      "source": {
+        "html": "Colab Notebooks/scorpion_v2/33.40_Ник_и_Ярослав_эксперимент_и_модели_Scorpion_22_10_2026.html",
+        "locator": {
+          "html_img_index_zero_based": 0,
+          "html_line": 14530,
+          "figure_caption": "Рисунок 23. Ник. КТ-сечение и кандидатные тканевые маски."
+        },
+        "sha256": "c6631301ee3c9c02835033d99621b71f6347153982291f7cd3bef4acec3e5878"
+      },
+      "caption": "КТ У1 и автоматические тканевые маски на аксиальном сечении вблизи центроида сердечной области. Показаны исходное сечение, лёгкие, жир и кости; розовый контур соответствует автоматической маске целого сердца. Координаты RAS приведены в миллиметрах.",
+      "word_crop": {},
+      "width_cm": 16.5,
+      "visible_height_cm": 15.62365879828326
+    },
+    {
+      "key": "ct_model_preparation",
+      "number": 3,
+      "path": "J:\\NIX\\WRK\\Code\\Kalmykov_PhD\\Colab Notebooks\\Отчёт_ГПХ_РНЦХ\\report\\revision_20261029_author_review\\figures\\V04_anatomical_surfaces.png",
+      "sha256": "077d0b469ca871df5060cb2130bac98e398fe518e86d375a134e191f7b8da005",
+      "source": {
+        "html": "Colab Notebooks/20.10_КТ_FEM_локализация_боковых_матриц_МГТУ.html",
+        "sha256": "95d7228d198b802360e752e5b2624ee91b89d6fe367a64b76a683869791fb4b2",
+        "div": "9970d5eb-f06a-4043-af74-8784fe289314",
+        "trace_indices": [
+          1,
+          2,
+          3
+        ]
+      },
+      "caption": "Пример пространственного представления сегментированной анатомии из сохранённой модели C01: поверхности лёгких, сердца и костей. Показаны только сохранённые тканевые поверхности; тело, модельные руки и электродные контакты исключены из отображения.",
+      "word_crop": {},
+      "width_cm": 16.5,
+      "visible_height_cm": 10.541666666666666
+    },
+    {
+      "key": "materials_electrodes",
+      "number": 4,
+      "path": "J:\\NIX\\WRK\\Code\\Kalmykov_PhD\\Colab Notebooks\\Отчёт_ГПХ_РНЦХ\\report\\revision_20261029_author_review\\figures\\V02_measurement_setup.png",
+      "sha256": "2ee8548e3c4b80158ccb18ff9d2b3799e9eed93a599cdc48eb79331009b20c2b",
+      "source": {
+        "protocol": "AUTHOR_CONFIRMATIONS.md",
+        "document_blocks": [
+          "p0730–p0777"
+        ],
+        "html": "H40 §1; H43 §2"
+      },
+      "caption": "Схема проведения исследований и измерительных конфигураций. Все процедуры выполняли лёжа на спине с вытянутыми за голову, не сцепленными руками. В исследовании участвовали три мужчины 25–30 лет: У1 и У3 — нормостеники, У2 — гиперстеник. Боковая сборка имеет токовые A, B и измерительные M, N контакты; варианты ТТРКГ различаются группировкой контактов на руках. Пояс ЭИТ располагали циркулярно вокруг грудной клетки приблизительно на уровне сосков либо непосредственно ниже этого уровня.",
+      "word_crop": {},
+      "width_cm": 16.5,
+      "visible_height_cm": 10.3425
+    },
+    {
+      "key": "photo_lateral_detail",
+      "number": 5,
+      "path": "J:\\NIX\\WRK\\Code\\Kalmykov_PhD\\Colab Notebooks\\Отчёт_ГПХ_РНЦХ\\report\\revision_20261029_author_review\\figures\\photos\\photo03.png",
+      "sha256": "96f2bf699355c7431542327529778c9bc9503becb4305c1b3725d6fbe05a293b",
+      "source": {
+        "type": "author photograph",
+        "original": "C:/Users/9838~1/AppData/Local/Temp/codex-clipboard-35279ec2-6975-4d2b-8290-16f39a12484e.png"
+      },
+      "caption": "Расположение четырёх контактов боковой тетраполярной сборки на грудной клетке. Фотография этапа подготовки к регистрации; номинальный размер сборки по снимку не определяется.",
+      "word_crop": {
+        "left": 0.28,
+        "right": 0.06,
+        "top": 0.2,
+        "bottom": 0.1
+      },
+      "width_cm": 16.5,
+      "visible_height_cm": 9.843750000000002
+    },
+    {
+      "key": "photo_tt_wide",
+      "number": 6,
+      "path": "J:\\NIX\\WRK\\Code\\Kalmykov_PhD\\Colab Notebooks\\Отчёт_ГПХ_РНЦХ\\report\\revision_20261029_author_review\\figures\\photos\\photo07.png",
+      "sha256": "d6ddc27f119f02f31c9968d4418d09fa5124ef0c48e62c6b008ea5327e141e3c",
+      "source": {
+        "type": "author photograph",
+        "original": "C:/Users/9838~1/AppData/Local/Temp/codex-clipboard-8b2568a5-6326-4aeb-853a-5b59369888f2.png"
+      },
+      "caption": "Расположение электродов отведения «рука–рука» и боковой сборки до регистрации. Поза во время измерения описана в §2.1.",
+      "word_crop": {
+        "top": 0.37,
+        "bottom": 0.24,
+        "left": 0.12,
+        "right": 0.11
+      },
+      "width_cm": 16.5,
+      "visible_height_cm": 11.142857142857144
+    },
+    {
+      "key": "photo_belt",
+      "number": 7,
+      "path": "J:\\NIX\\WRK\\Code\\Kalmykov_PhD\\Colab Notebooks\\Отчёт_ГПХ_РНЦХ\\report\\revision_20261029_author_review\\figures\\photos\\photo01.png",
+      "sha256": "7e7e4e9a761f04dd01614295efd550a1fd5a7e694eb1683013362e65d4aac4a3",
+      "source": {
+        "type": "author photograph",
+        "original": "C:/Users/9838~1/AppData/Local/Temp/codex-clipboard-6364ac9f-8b23-471a-a2bb-47d6cb6dbb91.png"
+      },
+      "caption": "Пояс ЭИТ и референсный электрод на этапе подготовки к регистрации. Поза во время измерения описана в §2.1.",
+      "word_crop": {
+        "top": 0.17,
+        "bottom": 0.26,
+        "left": 0.1,
+        "right": 0.1
+      },
+      "width_cm": 12.105263157894738,
+      "visible_height_cm": 11.5
+    },
+    {
+      "key": "models_layered_geometry",
+      "number": 8,
+      "path": "J:\\NIX\\WRK\\Code\\Kalmykov_PhD\\Colab Notebooks\\Отчёт_ГПХ_РНЦХ\\report\\revision_20261029_author_review\\figures\\V09_layered_model.png",
+      "sha256": "260826431fd0de8489b461a6089f77ea32e7ee5951126323a00881bedb48122d",
+      "source": {
+        "document_blocks": [
+          "p0730–p0732",
+          "p1572–p1583"
+        ],
+        "html": "Colab Notebooks/scorpion_v2/33.40_Ник_и_Ярослав_эксперимент_и_модели_Scorpion_22_10_2026.html",
+        "cell": "928c4f63"
+      },
+      "caption": "Схема однородного полупространства и двухслойной модели при одинаковом тетраполярном монтаже A–M–N–B. Внешняя токовая база равна L, внутренняя измерительная — L/2; наружный слой задаётся эффективными h и ρ₁, внутреннее полупространство — ρ₂. Контакты имеют конечные площадки.",
+      "word_crop": {},
+      "width_cm": 16.5,
+      "visible_height_cm": 9.3525
+    },
+    {
+      "key": "models_ct_fem_preparation",
+      "number": 9,
+      "path": "J:\\NIX\\WRK\\Code\\Kalmykov_PhD\\Colab Notebooks\\Отчёт_ГПХ_РНЦХ\\report\\revision_20261029_author_review\\figures\\V04_fem_surface_contacts.png",
+      "sha256": "8587664e44dd2e2332a49937b46fa86b0a62b1c2ea35ba0591f17335357058ef",
+      "source": {
+        "html": "Colab Notebooks/scorpion_v2/20.20_Индивидуальная_КТ_FEM_модель_Георгия_Scorpion_v2.html",
+        "div": "cad8863c-e390-45c2-a755-b48c103bdd7e",
+        "trace_indices": [
+          0,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "sha256": "af3b4942357145a6ed8a743790c9333de3ccb43884e5080ba22e1771c121ead7"
+      },
+      "caption": "Сохранённая расчётная поверхность У2 с центрами боковых контактов и группами ТТРКГ. Искусственные продолжения рук являются элементами модели и отличаются от подтверждённой позы регистрации с руками за головой. Показана внешняя поверхность; контактные площадки и внутренние тетраэдры этой сценой не разрешены.",
+      "word_crop": {},
+      "width_cm": 16.5,
+      "visible_height_cm": 10.541666666666666
+    },
+    {
+      "key": "processing_cycles",
+      "number": 10,
+      "path": "J:\\NIX\\WRK\\Code\\Kalmykov_PhD\\Colab Notebooks\\Отчёт_ГПХ_РНЦХ\\report\\revision_20261029_author_review\\figures\\V07_cycle_processing.png",
+      "sha256": "5f1861db863c2a0103f06a43170ac17d5b4303733bee7ec51e5bc6c355d18662",
+      "source": {
+        "html": "Colab Notebooks/scorpion_v2/33.40_Ник_и_Ярослав_эксперимент_и_модели_Scorpion_22_10_2026.html",
+        "figures": [
+          4,
+          5
+        ],
+        "divs": [
+          "ac851e3b-16f9-45ab-9d87-99633c31f5b4",
+          "c69a194f-331e-41a1-87b8-a77d4f9e101b"
+        ],
+        "trace_indices": [
+          [
+            1,
+            2,
+            0
+          ],
+          [
+            0
+          ]
+        ],
+        "scope": "ordinary TT 2x2 and lateral 140 mm; same stored time grid"
+      },
+      "caption": "Четыре сохранённых кандидатных цикла обычной записи 001 У1: ЭКГ с QRS-кандидатами и пульсовые сигналы одновременно подключённых ТТРКГ 2×2 и боковой сборки 140 мм. Время отсчитано от первого QRS-кандидата, импеданс показан в мОм после полосы 0,7–12 Гц.",
+      "word_crop": {},
+      "width_cm": 16.5,
+      "visible_height_cm": 9.166666666666666
+    },
+    {
+      "key": "models_anatomy_contacts",
+      "number": 11,
+      "path": "J:\\NIX\\WRK\\Code\\Kalmykov_PhD\\Colab Notebooks\\Отчёт_ГПХ_РНЦХ\\report\\revision_20261029_author_review\\figures\\V04_anatomical_model.png",
+      "sha256": "dfaf500992b1b88c39df24db5f0db5a78e25b4eeb75dba67ca661d023c59cc9f",
+      "source": {
+        "cached_png": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261028/figures/dfaf500992b1.png",
+        "document_figure": "6.1 / 7.1"
+      },
+      "caption": "Расчётная область У1: поверхности сердца, лёгких и тела с искусственным продолжением рук и площадками пояса ЭИТ. Продолжения рук и алгоритмическое положение пояса являются элементами модели; они не воспроизводят измеренную позу с руками за головой.",
+      "word_crop": {},
+      "width_cm": 15.68181818181818,
+      "visible_height_cm": 11.5
+    },
+    {
+      "key": "models_geometry_comparison",
+      "number": 12,
+      "path": "J:\\NIX\\WRK\\Code\\Kalmykov_PhD\\Colab Notebooks\\Отчёт_ГПХ_РНЦХ\\report\\revision_20261029_author_review\\figures\\V13_geometry_controls.png",
+      "sha256": "74a840699745a500611caed343338242601117238fe09dcf0241b97b41377d5f",
+      "source": {
+        "document": "author_snapshot.docx",
+        "figure": "6.3",
+        "cached_png": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261028/figures/27676a97e7a0.png",
+        "sha256": "27676a97e7a072f1c3f607ba791e35755d7de50538d0ef6023ef2bcd1d283a41"
+      },
+      "caption": "Геометрическое сравнение форм У1 на первом доступном R–R: объём, изменение объёма от опоры, ошибка перемещения и коэффициент Dice. T0 — исходная маска, I1–I3 — индивидуальные преобразования, G1/G2/G3a — сферические варианты; линии соединяют доступные фазовые оценки.",
+      "word_crop": {},
+      "width_cm": 16.5,
+      "visible_height_cm": 11.152777777777779
+    },
+    {
+      "key": "models_step_quadrature",
+      "number": 13,
+      "path": "J:\\NIX\\WRK\\Code\\Kalmykov_PhD\\Colab Notebooks\\Отчёт_ГПХ_РНЦХ\\report\\revision_20261029_author_review\\figures\\V13_models_step_quadrature.png",
+      "sha256": "ea7904c450ca33ca0e7dc6ccaa9055ac1375d059d7bb859bb46a7c82be08ec3c",
+      "source": {
+        "cached_png": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261028/figures/reader_montage/ch07_04_volume_step_quadrature.png",
+        "sha256": "05fa16e5f79dd48296b4fb44a31fec9be91263c55dac65ab6c75ccc8667dd55a"
+      },
+      "caption": "Объёмная чувствительность STL, G1 и L1 при изменении объёмного шага и числа квадратурных точек на одной сетке. Столбцы соответствуют двум материальным опорам; цвет — трём альтернативным монтажам. Горизонтальная шкала общая для всех панелей; обозначение q относится к числу квадратурных точек.",
+      "word_crop": {},
+      "width_cm": 16.5,
+      "visible_height_cm": 11.458333333333334
+    },
+    {
+      "key": "models_electrical_factors",
+      "number": 14,
+      "path": "J:\\NIX\\WRK\\Code\\Kalmykov_PhD\\Colab Notebooks\\Отчёт_ГПХ_РНЦХ\\report\\revision_20261029_author_review\\figures\\V17_models_electrical_factors.png",
+      "sha256": "66b56a644ff15fa1fc0a2cb2cb26d08ab1e3af423550f49e0475dca00df2a4d8",
+      "source": {
+        "cached_png": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261028/figures/reader/07_02_electrical_approximation.png",
+        "sha256": "5690647835d6aa62a584a4df468b7bb56f97bbd93ed9167ad3346be0a1cd3d61"
+      },
+      "caption": "Приращения ТТРКГ при одинаковых объёмных пробах разных форм сердца и отдельные сценарии эффективного сердечного сопротивления. Слева — объёмные пробы при одинаковом ρ; справа — сохранённые значения объёмной чувствительности для трёх сценариев ρ одной исходной STL и одного монтажа. Точки сценариев не задают непрерывного физиологического закона.",
+      "word_crop": {},
+      "width_cm": 16.5,
+      "visible_height_cm": 9.98918918918919
+    },
+    {
+      "key": "models_finite_compensation",
+      "number": 15,
+      "path": "J:\\NIX\\WRK\\Code\\Kalmykov_PhD\\Colab Notebooks\\Отчёт_ГПХ_РНЦХ\\report\\revision_20261029_author_review\\figures\\V19_volume_rho_compensation.png",
+      "sha256": "3dd5115dcf5aee8fad80980a73b62cf984599854469176a038b5f7a4432451c1",
+      "source": {
+        "document": "author_snapshot.docx",
+        "figure": "9.6",
+        "cached_png": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261028/figures/reader_montage/ch09_06_finite_compensation.png",
+        "sha256": "514cdc68f3f4e039047a39cac94800356785a2346d06498202f1dbe056f6aacb"
+      },
+      "caption": "Конечная компенсация объёмных проб ±1% изменением эффективного сопротивления сердца У1. Контур — чистая объёмная проба, заполнение — линейно выбранная компенсация, крест — результат одного уточнения Ньютона. Параметры подобраны по исходному монтажу и проверены в двух альтернативных.",
+      "word_crop": {},
+      "width_cm": 16.5,
+      "visible_height_cm": 11.46951219512195
+    },
+    {
+      "key": "tissue_eit_baseline",
+      "number": 16,
+      "path": "J:\\NIX\\WRK\\Code\\Kalmykov_PhD\\Colab Notebooks\\Отчёт_ГПХ_РНЦХ\\report\\revision_20261029_author_review\\figures\\V14_eit_baseline_residual.png",
+      "sha256": "e06ea9b6558dea0b309b9133c0667e517f481cafd9d5d65f3c804e38e89fd294",
+      "source": {
+        "document": "author_snapshot.docx",
+        "figure": "8.1",
+        "cached_png": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261028/figures/reader/08_01_baseline_fit.png",
+        "sha256": "f1a30147ff078e65eebae98ccd78d75e49645bab0f61b9036f221a15c69b541a"
+      },
+      "caption": "Исправленная базовая инверсия ЭИТ У1, запись 02, опорный участок 36–44 с. Синий — измеренный вектор в принятой шкале читателя, оранжевый — FEM-прогноз; снизу — знаковый остаток в мВ по 208 измерительным строкам. Вольтовая невязка составляет 32,4365%.",
+      "word_crop": {},
+      "width_cm": 16.5,
+      "visible_height_cm": 9.625
+    },
+    {
+      "key": "tissue_pulse_projection",
+      "number": 17,
+      "path": "J:\\NIX\\WRK\\Code\\Kalmykov_PhD\\Colab Notebooks\\Отчёт_ГПХ_РНЦХ\\report\\revision_20261029_author_review\\figures\\V15_tissue_contributions.png",
+      "sha256": "4659c59a8b03bc370c931fd473d2a63321608d99968d3f9087bd03453b5b3b8c",
+      "source": {
+        "document": "author_snapshot.docx",
+        "figure": "8.2",
+        "cached_png": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261028/figures/ee60fc3b2861.png",
+        "sha256": "ee60fc3b2861f022960a34108c2ca1b666c0df786fa69080a3d2eb9c1cde0518"
+      },
+      "caption": "Условные вклады мягкотканного фона, единого лёгочного компартмента и сердечной области в отведение «рука–рука» У1 на четырёх кандидатных плато. Время — внутри соответствующей записи ЭИТ, вклад — в мОм; полоса 0,7–3 Гц, частота модели 79,505 кГц.",
+      "word_crop": {},
+      "width_cm": 16.5,
+      "visible_height_cm": 11.47325581395349
+    },
+    {
+      "key": "tissue_geometry_mixing",
+      "number": 18,
+      "path": "J:\\NIX\\WRK\\Code\\Kalmykov_PhD\\Colab Notebooks\\Отчёт_ГПХ_РНЦХ\\report\\revision_20261029_author_review\\figures\\V16_geometry_tissue_mixing.png",
+      "sha256": "4af36cf17afec3c917ed16c0e780e9ace0d255ea3a1d2b0bdebe4a17684d9230",
+      "source": {
+        "document": "author_snapshot.docx",
+        "figure": "8.3 / 9.5",
+        "cached_png": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261028/figures/reader_motion/09_5_02_target_chain_volume_sensitivity.png",
+        "sha256": "4af36cf17afec3c917ed16c0e780e9ace0d255ea3a1d2b0bdebe4a17684d9230"
+      },
+      "caption": "Объёмный коэффициент ТТРКГ до и после тканевой инверсии геометрического сигнала. Серый — исходный коэффициент, зелёный — остаток при S2, оранжевый — при S3; S2 освобождает фон и лёгкое, S3 дополнительно сердце. Истинные изменения тканевых сопротивлений равны нулю.",
+      "word_crop": {},
+      "width_cm": 16.5,
+      "visible_height_cm": 11.48503937007874
+    },
+    {
+      "key": "cardiac_phase_reversal",
+      "number": 19,
+      "path": "J:\\NIX\\WRK\\Code\\Kalmykov_PhD\\Colab Notebooks\\Отчёт_ГПХ_РНЦХ\\report\\revision_20261029_author_review\\figures\\V22_ventricular_phase_reversal.png",
+      "sha256": "12bf1deff2ab8778610e9ebbd809ed5e7f39fba8b3032fdb8c2391adab71fd47",
+      "source": {
+        "cached_png": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/figures/V22_wrong_extrema_counterexample.png",
+        "sha256": "d0aed4c9d2b5f056991f3782b52620daa62a394ae2a9a075df4fdecfbbdd620d",
+        "crop_xyxy": [
+          0,
+          0,
+          1925,
+          1100
+        ]
+      },
+      "caption": "Объёмы левого и правого желудочков У1 на отложенных фазах и контрпример близкого размаха при ошибочной фазовой последовательности. Известная исходная фаза составляет 14% R–R; временной зазор — 140 мс. Отрезки соединяют прогнозы исключённых блоков с разными калибровками и не задают траекторию одной фиксированной модели.",
+      "word_crop": {},
+      "width_cm": 16.5,
+      "visible_height_cm": 9.428571428571429
+    }
+  ],
+  "counts": {
+    "fig": 19,
+    "tab": 17,
+    "eq": 16
+  },
+  "reference_keys": [
+    "1",
+    "2",
+    "36",
+    "16",
+    "3",
+    "4",
+    "10",
+    "11",
+    "18",
+    "20",
+    "timokhin2012",
+    "tikhomirov2021",
+    "6",
+    "7",
+    "5",
+    "9",
+    "73",
+    "75"
+  ],
+  "reference_numbers": {
+    "1": 1,
+    "2": 2,
+    "36": 3,
+    "16": 4,
+    "3": 5,
+    "4": 6,
+    "10": 7,
+    "11": 8,
+    "18": 9,
+    "20": 10,
+    "timokhin2012": 11,
+    "tikhomirov2021": 12,
+    "6": 13,
+    "7": 14,
+    "5": 15,
+    "9": 16,
+    "73": 17,
+    "75": 18
+  },
+  "cross_references": [
+    [
+      "tab",
+      "monitoring_methods_basis",
+      1
+    ],
+    [
+      "fig",
+      "materials_sequence",
+      1
+    ],
+    [
+      "tab",
+      "materials_subjects",
+      2
+    ],
+    [
+      "fig",
+      "ct_segmentation",
+      2
+    ],
+    [
+      "fig",
+      "ct_model_preparation",
+      3
+    ],
+    [
+      "fig",
+      "materials_electrodes",
+      4
+    ],
+    [
+      "fig",
+      "photo_lateral_detail",
+      5
+    ],
+    [
+      "fig",
+      "photo_tt_wide",
+      6
+    ],
+    [
+      "tab",
+      "materials_channels",
+      3
+    ],
+    [
+      "fig",
+      "photo_belt",
+      7
+    ],
+    [
+      "fig",
+      "models_layered_geometry",
+      8
+    ],
+    [
+      "eq",
+      "m_halfspace",
+      4
+    ],
+    [
+      "fig",
+      "models_ct_fem_preparation",
+      9
+    ],
+    [
+      "fig",
+      "processing_cycles",
+      10
+    ],
+    [
+      "fig",
+      "models_anatomy_contacts",
+      11
+    ],
+    [
+      "fig",
+      "models_geometry_comparison",
+      12
+    ],
+    [
+      "fig",
+      "models_step_quadrature",
+      13
+    ],
+    [
+      "fig",
+      "models_electrical_factors",
+      14
+    ],
+    [
+      "fig",
+      "models_finite_compensation",
+      15
+    ],
+    [
+      "eq",
+      "m_layered",
+      5
+    ],
+    [
+      "tab",
+      "tissue_lateral_baseline",
+      4
+    ],
+    [
+      "fig",
+      "tissue_eit_baseline",
+      16
+    ],
+    [
+      "fig",
+      "tissue_pulse_projection",
+      17
+    ],
+    [
+      "fig",
+      "tissue_geometry_mixing",
+      18
+    ],
+    [
+      "tab",
+      "cardiac_anatomical_transfer",
+      5
+    ],
+    [
+      "tab",
+      "cardiac_electrical_errors",
+      6
+    ],
+    [
+      "eq",
+      "cardiac_function_definitions",
+      1
+    ],
+    [
+      "fig",
+      "cardiac_phase_reversal",
+      19
+    ],
+    [
+      "tab",
+      "am_static_forms",
+      7
+    ],
+    [
+      "tab",
+      "am_volume_quadrature",
+      8
+    ],
+    [
+      "tab",
+      "am_y_step",
+      9
+    ],
+    [
+      "tab",
+      "am_own_materials",
+      10
+    ],
+    [
+      "tab",
+      "am_finite_inverse",
+      11
+    ],
+    [
+      "tab",
+      "am_finite_compensation",
+      12
+    ],
+    [
+      "tab",
+      "am_volume_transfer",
+      13
+    ],
+    [
+      "tab",
+      "am_pulse_projection",
+      14
+    ],
+    [
+      "tab",
+      "am_false_correction",
+      15
+    ],
+    [
+      "tab",
+      "am_omission_errors",
+      16
+    ],
+    [
+      "tab",
+      "am_isolated_limits",
+      17
+    ]
+  ],
+  "labels": [
+    {
+      "kind": "fig",
+      "key": "materials_sequence",
+      "number": 1
+    },
+    {
+      "kind": "fig",
+      "key": "ct_segmentation",
+      "number": 2
+    },
+    {
+      "kind": "fig",
+      "key": "ct_model_preparation",
+      "number": 3
+    },
+    {
+      "kind": "fig",
+      "key": "materials_electrodes",
+      "number": 4
+    },
+    {
+      "kind": "fig",
+      "key": "photo_lateral_detail",
+      "number": 5
+    },
+    {
+      "kind": "fig",
+      "key": "photo_tt_wide",
+      "number": 6
+    },
+    {
+      "kind": "fig",
+      "key": "photo_belt",
+      "number": 7
+    },
+    {
+      "kind": "fig",
+      "key": "models_layered_geometry",
+      "number": 8
+    },
+    {
+      "kind": "fig",
+      "key": "models_ct_fem_preparation",
+      "number": 9
+    },
+    {
+      "kind": "fig",
+      "key": "processing_cycles",
+      "number": 10
+    },
+    {
+      "kind": "fig",
+      "key": "models_anatomy_contacts",
+      "number": 11
+    },
+    {
+      "kind": "fig",
+      "key": "models_geometry_comparison",
+      "number": 12
+    },
+    {
+      "kind": "fig",
+      "key": "models_step_quadrature",
+      "number": 13
+    },
+    {
+      "kind": "fig",
+      "key": "models_electrical_factors",
+      "number": 14
+    },
+    {
+      "kind": "fig",
+      "key": "models_finite_compensation",
+      "number": 15
+    },
+    {
+      "kind": "fig",
+      "key": "tissue_eit_baseline",
+      "number": 16
+    },
+    {
+      "kind": "fig",
+      "key": "tissue_pulse_projection",
+      "number": 17
+    },
+    {
+      "kind": "fig",
+      "key": "tissue_geometry_mixing",
+      "number": 18
+    },
+    {
+      "kind": "fig",
+      "key": "cardiac_phase_reversal",
+      "number": 19
+    },
+    {
+      "kind": "tab",
+      "key": "monitoring_methods_basis",
+      "number": 1
+    },
+    {
+      "kind": "tab",
+      "key": "materials_subjects",
+      "number": 2
+    },
+    {
+      "kind": "tab",
+      "key": "materials_channels",
+      "number": 3
+    },
+    {
+      "kind": "tab",
+      "key": "tissue_lateral_baseline",
+      "number": 4
+    },
+    {
+      "kind": "tab",
+      "key": "cardiac_anatomical_transfer",
+      "number": 5
+    },
+    {
+      "kind": "tab",
+      "key": "cardiac_electrical_errors",
+      "number": 6
+    },
+    {
+      "kind": "tab",
+      "key": "am_static_forms",
+      "number": 7
+    },
+    {
+      "kind": "tab",
+      "key": "am_volume_quadrature",
+      "number": 8
+    },
+    {
+      "kind": "tab",
+      "key": "am_y_step",
+      "number": 9
+    },
+    {
+      "kind": "tab",
+      "key": "am_own_materials",
+      "number": 10
+    },
+    {
+      "kind": "tab",
+      "key": "am_finite_inverse",
+      "number": 11
+    },
+    {
+      "kind": "tab",
+      "key": "am_finite_compensation",
+      "number": 12
+    },
+    {
+      "kind": "tab",
+      "key": "am_volume_transfer",
+      "number": 13
+    },
+    {
+      "kind": "tab",
+      "key": "am_pulse_projection",
+      "number": 14
+    },
+    {
+      "kind": "tab",
+      "key": "am_false_correction",
+      "number": 15
+    },
+    {
+      "kind": "tab",
+      "key": "am_omission_errors",
+      "number": 16
+    },
+    {
+      "kind": "tab",
+      "key": "am_isolated_limits",
+      "number": 17
+    },
+    {
+      "kind": "eq",
+      "key": "cardiac_function_definitions",
+      "number": 1
+    },
+    {
+      "kind": "eq",
+      "key": "m_transfer",
+      "number": 2
+    },
+    {
+      "kind": "eq",
+      "key": "m_field",
+      "number": 3
+    },
+    {
+      "kind": "eq",
+      "key": "m_halfspace",
+      "number": 4
+    },
+    {
+      "kind": "eq",
+      "key": "m_layered",
+      "number": 5
+    },
+    {
+      "kind": "eq",
+      "key": "m_cem",
+      "number": 6
+    },
+    {
+      "kind": "eq",
+      "key": "m_weak",
+      "number": 7
+    },
+    {
+      "kind": "eq",
+      "key": "m_heart_motion",
+      "number": 8
+    },
+    {
+      "kind": "eq",
+      "key": "m_sensitivity",
+      "number": 9
+    },
+    {
+      "kind": "eq",
+      "key": "processing_bei_components",
+      "number": 10
+    },
+    {
+      "kind": "eq",
+      "key": "processing_bei_normalization",
+      "number": 11
+    },
+    {
+      "kind": "eq",
+      "key": "processing_eit_residual",
+      "number": 12
+    },
+    {
+      "kind": "eq",
+      "key": "processing_eit_pulse",
+      "number": 13
+    },
+    {
+      "kind": "eq",
+      "key": "processing_local_inverse",
+      "number": 14
+    },
+    {
+      "kind": "eq",
+      "key": "observed_window_range",
+      "number": 15
+    },
+    {
+      "kind": "eq",
+      "key": "am_volume_derivative",
+      "number": 16
+    }
+  ],
+  "output": "J:\\NIX\\WRK\\Code\\Kalmykov_PhD\\Colab Notebooks\\Отчёт_ГПХ_РНЦХ\\report\\revision_20261029_author_review\\deliverables\\Отчёт_ГПХ_РНЦХ_20261029_научная_редакция.docx",
+  "output_sha256": "725d8230579edd4fbdf978c3269c87a13916bb228a669ef875e10182941c666d",
+  "rendered_pages": 101,
+  "main_pages": 79
+}

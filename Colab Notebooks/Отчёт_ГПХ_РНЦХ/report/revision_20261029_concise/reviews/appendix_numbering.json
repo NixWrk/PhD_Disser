@@ -1,0 +1,70 @@
+{
+  "mapping": {
+    "01": [
+      "Б",
+      "Научные основания и патентные ограничения"
+    ],
+    "02": [
+      "В",
+      "Дополнительные условия постановки"
+    ],
+    "03": [
+      "Г",
+      "Геометрические проверки анатомии"
+    ],
+    "04": [
+      "Д",
+      "Подробности экспериментальных протоколов и обработки"
+    ],
+    "05": [
+      "Е",
+      "Дополнительные результаты физических моделей"
+    ],
+    "06": [
+      "Ж",
+      "Проверки сердечной динамики и камерного перехода"
+    ],
+    "07": [
+      "З",
+      "Условия численной и экспериментальной проверки"
+    ]
+  },
+  "changed": [
+    {
+      "file": "supplement/01_foundations.md",
+      "before_sha256": "6f5de538a052a944b874fc30584a8463dd810afd4768ff77a769569c50969640",
+      "after_sha256": "12576af8a44082033d28c1e9639ce3c2e2d82cbbaecc17b4416ac85ba5f6b613"
+    },
+    {
+      "file": "supplement/02_method.md",
+      "before_sha256": "07f3053a241a1635bc6eae391d02101fa6653f40105ab17d9941dac21b18597f",
+      "after_sha256": "5403dbfd213189898c74ffb22bfaa534b5c5eb42bc1dd2fdd1c751baef34677f"
+    },
+    {
+      "file": "supplement/03_anatomy.md",
+      "before_sha256": "f4aa21f9a60443c5aed5e74e11ce8b1203284691163089353830f45628b680db",
+      "after_sha256": "30f252e5c6807d2626179907720c6b22960871166f65f760d7e29ec69698b9bb"
+    },
+    {
+      "file": "supplement/04_experiments.md",
+      "before_sha256": "e64e5560c5b9b704eeb8b5d7d99a9fe3d594b1195ce6f6121fec4aeca2c34139",
+      "after_sha256": "c96bbd762b57938ec1badf9a30445c5214dff9f4aebbe7ef1d88a93f813bcf6c"
+    },
+    {
+      "file": "supplement/05_signal_models.md",
+      "before_sha256": "2eeeb8801d398766a81bb0ce21cacc6bef611feeb31212ad58861c520f58beb2",
+      "after_sha256": "80c353c68002bb6ffabaf0f96ca69c9ab7dc3eca9cab405fcab5ef162eef30ad"
+    },
+    {
+      "file": "supplement/06_stroke_volume.md",
+      "before_sha256": "d5ed4679840d8c7f3c835993baaaa080eb584b54aea55947240bea8971aeaaa7",
+      "after_sha256": "56c0531a635356d30fb3560343811b86e298e9867c76f7f8c4c2255670ee406a"
+    },
+    {
+      "file": "supplement/07_validation.md",
+      "before_sha256": "460dc50731240b11fc7964a863ae873223b5a22ac8cbde95de5a3315363bccfe",
+      "after_sha256": "84408d4cc240bd4abc460d836e6e4147e1df86116f0db31d0cb4a34fa98ff1d1"
+    }
+  ],
+  "scope": "Headings, object prefixes and terminology only; no scientific quantities changed."
+}

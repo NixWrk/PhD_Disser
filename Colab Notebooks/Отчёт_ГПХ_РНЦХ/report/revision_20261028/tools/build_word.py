@@ -8,6 +8,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import re
 import shutil
 import subprocess
@@ -24,6 +25,10 @@ ROOT = Path(__file__).resolve().parents[1]
 REPO = ROOT.parents[3]
 W = 'http://schemas.openxmlformats.org/wordprocessingml/2006/main'
 M = 'http://schemas.openxmlformats.org/officeDocument/2006/math'
+CACHED_FIGURES = {}
+UNAVAILABLE_REFERENCES = []
+ALLOW_UNAVAILABLE_REFERENCES = False
+LINK_BASE = ROOT
 CHAPTERS = [
     '01_literature.md', '02_alternatives.md', '03_patents.md',
     '04_problem.md', '05_experiments.md', '06_anatomy.md',
@@ -124,18 +129,23 @@ def prepare_source(path: Path, assets: list, bibliography: list) -> str:
     def image_link(match):
         alt, target = match.group(1), unquote(match.group(2).strip('<>'))
         source = (path.parent / target).resolve()
+        origin = source.relative_to(REPO).as_posix() if source.is_relative_to(REPO) else source.name
+        cache_used = False
         if not source.is_file():
-            raise FileNotFoundError(f'Missing figure in {path.name}: {target}')
+            cached = CACHED_FIGURES.get(origin)
+            if not cached:
+                raise FileNotFoundError(f'Missing figure in {path.name}: {target}')
+            source = ROOT / cached['file']
+            if not source.is_file() or sha(source) != cached['sha256']:
+                raise ValueError(f'Unverified cached figure: {target}')
+            cache_used = True
         name = sha(source)[:12] + source.suffix.lower()
         dest = ROOT / 'figures' / name
         if not dest.exists():
             shutil.copy2(source, dest)
-        try:
-            origin = source.relative_to(REPO).as_posix()
-        except ValueError:
-            origin = source.name
         assets.append({'chapter': path.name, 'file': 'figures/' + name,
-                       'source': origin, 'sha256': sha(source), 'description': alt})
+                       'source': origin, 'sha256': sha(source), 'description': alt,
+                       'verified_previous_build_cache': cache_used})
         return f'![{alt}](figures/{name})'
 
     text = re.sub(r'!\[([^\]]*)\]\(([^)]+)\)', image_link, text)
@@ -146,13 +156,18 @@ def prepare_source(path: Path, assets: list, bibliography: list) -> str:
             return match.group(0)
         source = (path.parent / unquote(target.strip('<>').split('#')[0])).resolve()
         if not source.exists():
-            raise FileNotFoundError(f'Missing reference in {path.name}: {target}')
+            if not ALLOW_UNAVAILABLE_REFERENCES:
+                raise FileNotFoundError(f'Missing reference in {path.name}: {target}')
+            UNAVAILABLE_REFERENCES.append({'chapter': path.name, 'label': label, 'target': target,
+                                           'status': 'not_in_current_editorial_delivery'})
+            return label + ' (материал не приложен)'
         try:
             relative = source.relative_to(REPO).as_posix()
         except ValueError:
             # Private absolute roots must not enter the reader document.
             return label
-        return f'[{label}](<workspace/{relative}>)'
+        relative = Path(os.path.relpath(source, LINK_BASE)).as_posix()
+        return f'[{label}](<{relative}>)'
 
     text = re.sub(r'(?<!!)\[([^\]]+)\]\(([^)]+)\)', ordinary_link, text)
     refs = re.sub(r'(?<!!)\[([^\]]+)\]\(([^)]+)\)', ordinary_link, refs)
@@ -160,15 +175,21 @@ def prepare_source(path: Path, assets: list, bibliography: list) -> str:
                         if re.match(r'^(?:- |\d+\. )', x.strip()))
     def reflow_math(match):
         body = match.group(1).strip()
-        needs_split = len(body) >= 240 or (len(body) >= 180 and body.count(r'\qquad') >= 2)
-        if not needs_split or r'\qquad' not in body or r'\begin' in body:
+        # Explicit page-review decisions: break between complete equalities.
+        reviewed_breaks = {'5.4', '8.1', '8.5', '8.14', '8.21', '9.1',
+                           '9.8', '9.9', '9.11', '9.14', '10.1', '10.2',
+                           '10.3', '10.19', '11.5'}
+        force_split = bool(set(re.findall(r'\\tag\{([^}]+)\}', body)) & reviewed_breaks)
+        needs_split = force_split or len(body) >= 240 or (len(body) >= 180 and body.count(r'\qquad') >= 2)
+        separator = r'\\q{1,2}uad' if force_split else r'\\qquad'
+        if not needs_split or not re.search(separator, body) or r'\begin' in body:
             return match.group(0)
         tags = re.findall(r'\\tag\{[^}]+\}', body)
         body = re.sub(r'\\tag\{[^}]+\}', '', body).strip()
         # Split only complete clauses, outside braces and paired delimiters.
         depth = left = 0
         cuts = []
-        for token in re.finditer(r'\\left|\\right|\\qquad|(?<!\\)[{}]', body):
+        for token in re.finditer(r'\\left|\\right|' + separator + r'|(?<!\\)[{}]', body):
             t = token.group()
             if t == '{': depth += 1
             elif t == '}': depth -= 1
@@ -214,10 +235,10 @@ def finish_docx(path: Path):
         elif text in ['Содержание', 'Реферат']:
             p.style = doc.styles['TOC Heading']
             p.paragraph_format.page_break_before = True
-        elif text.startswith('Рисунок '):
+        elif re.match(r'^Рисунок\s+\d+\.\d+\s+[—–-]', text):
             p.style = doc.styles['Caption']
             p.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
-        elif text.startswith('Таблица '):
+        elif re.match(r'^Таблица\s+[\dА-ЯA-Z]+\.\d+\s+[—–-]', text):
             p.style = doc.styles['Caption']
             p.paragraph_format.keep_with_next = True
         if p._p.xpath('.//w:drawing'):
@@ -228,12 +249,30 @@ def finish_docx(path: Path):
             p.paragraph_format.first_line_indent = Cm(0)
             p.paragraph_format.space_before = p.paragraph_format.space_after = Pt(6)
             p.paragraph_format.line_spacing = 1.1
+        following = p._p.getnext()
+        if following is not None and next(following.iter(qn('m:oMathPara')), None) is not None and (text.endswith(':') or re.search(r'(?:вид|как|выражением|формулами|записи|равенством)\s*\.?$', text)):
+            p.paragraph_format.keep_with_next = True
     for shape in doc.inline_shapes:
         scale = min(Cm(16.3) / shape.width, Cm(18) / shape.height, 1)
         shape.width, shape.height = int(shape.width * scale), int(shape.height * scale)
     for table in doc.tables:
         table.autofit = False
         table.style = 'Table Grid'
+        properties = table._tbl.tblPr
+        borders = OxmlElement('w:tblBorders')
+        for edge in ['top', 'left', 'bottom', 'right', 'insideH', 'insideV']:
+            border = OxmlElement('w:' + edge)
+            for key, value in [('val', 'single'), ('sz', '4'), ('color', 'B7B7B7')]:
+                border.set(qn('w:' + key), value)
+            borders.append(border)
+        properties.append(borders)
+        margins = OxmlElement('w:tblCellMar')
+        for edge in ['top', 'left', 'bottom', 'right']:
+            margin = OxmlElement('w:' + edge)
+            margin.set(qn('w:w'), '70')
+            margin.set(qn('w:type'), 'dxa')
+            margins.append(margin)
+        properties.append(margins)
         n = len(table.columns)
         # Length weighting improves text-heavy columns without crushing numbers.
         weights = []
@@ -241,9 +280,13 @@ def finish_docx(path: Path):
             lengths = [len(row.cells[c].text) for row in table.rows]
             weights.append(max(8, min(80, sum(lengths) / len(lengths))) ** 0.5)
         widths = [16.5 * x / sum(weights) for x in weights]
+        if n == 4 and table.cell(0, 0).text.strip() == 'Том':
+            # Keep archive identifiers readable without splitting a word mid-letter.
+            widths = [3.7, 2.8, 2.8, 7.2]
         for col, width in zip(table.columns, widths):
             col.width = Cm(width)
         for ri, row in enumerate(table.rows):
+            row._tr.get_or_add_trPr().append(OxmlElement('w:cantSplit'))
             if ri == 0:
                 row._tr.get_or_add_trPr().append(OxmlElement('w:tblHeader'))
             for ci, cell in enumerate(row.cells):
@@ -262,7 +305,7 @@ def finish_docx(path: Path):
                     pf.first_line_indent = Cm(0)
                     pf.line_spacing = 1.0
                     pf.space_before = pf.space_after = Pt(3)
-                    pf.keep_with_next = False
+                    pf.keep_with_next = ri == 0
                     pf.alignment = WD_ALIGN_PARAGRAPH.LEFT
                     for run in p.runs:
                         run.font.name, run.font.size = 'Times New Roman', Pt(11)
@@ -278,6 +321,7 @@ def finish_docx(path: Path):
         ('Разработка методики определения функций сердца по электроимпедансным измерениям', 'Title'),
         ('Индивидуальная анатомия и динамика сердца', 'Subtitle'),
         ('Научная редакция по состоянию на 28 октября 2026 года', 'Subtitle'),
+        ('Дополненная редакция для рецензирования', 'Subtitle'),
         ('Этап разработки и проверки методики', 'Subtitle'),
     ]
     first = doc.element.body[0]
@@ -299,11 +343,21 @@ def finish_docx(path: Path):
 
 
 def main():
+    global ALLOW_UNAVAILABLE_REFERENCES, LINK_BASE
     ap = argparse.ArgumentParser()
     ap.add_argument('--output', type=Path, required=True)
     ap.add_argument('--pandoc', default='pandoc')
     ap.add_argument('--partial', action='store_true')
+    ap.add_argument('--annotate-unavailable-references', action='store_true',
+                    help='Explicitly mark historical references absent from this delivery; record them in the manifest.')
+    ap.add_argument('--figure-cache-manifest', type=Path,
+                    help='Previous build receipt, used only after matching each figure SHA-256.')
     args = ap.parse_args()
+    LINK_BASE = args.output.resolve().parent
+    ALLOW_UNAVAILABLE_REFERENCES = args.annotate_unavailable_references
+    if args.figure_cache_manifest:
+        cache = json.loads(args.figure_cache_manifest.read_text(encoding='utf-8-sig'))
+        CACHED_FIGURES.update({row['source']: row for row in cache['figures']})
     args.output.parent.mkdir(parents=True, exist_ok=True)
     assets, bibliography, parts, source_manifest, citation_sets = [], [], [], [], []
     paths = [ROOT / 'front_matter.md'] + [ROOT / 'chapters' / n for n in CHAPTERS] + [ROOT / 'conclusion.md']
@@ -396,7 +450,7 @@ def main():
     command = [args.pandoc, str(source), '-f', 'markdown+tex_math_dollars-implicit_figures',
                '--resource-path', str(ROOT), '--reference-doc', str(ref),
                '-o', str(args.output)]
-    result = subprocess.run(command, capture_output=True, text=True, encoding='utf-8')
+    result = subprocess.run(command, capture_output=True, text=True, encoding='utf-8', errors='replace')
     (args.output.parent / 'pandoc.log').write_text(result.stderr, encoding='utf-8')
     if result.returncode:
         raise RuntimeError(result.stderr)
@@ -404,7 +458,11 @@ def main():
         raise RuntimeError('Pandoc reported unsupported math or missing resources; inspect pandoc.log')
     finish_docx(args.output)
     receipt = {'sources': source_manifest, 'figures': assets, 'bibliography_entries': len(references),
-               'document_sha256_before_fields': sha(args.output), 'partial_build': args.partial}
+               'document_sha256_before_fields': sha(args.output), 'partial_build': args.partial,
+               'unavailable_references': UNAVAILABLE_REFERENCES,
+               'unavailable_reference_policy': 'annotate' if ALLOW_UNAVAILABLE_REFERENCES else 'strict',
+               'local_links_relative_to_docx_directory': True,
+               'figure_cache_manifest': args.figure_cache_manifest.name if args.figure_cache_manifest else None}
     (ROOT / 'build_manifest.json').write_text(json.dumps(receipt, ensure_ascii=False, indent=2), encoding='utf-8')
     print(json.dumps({'output': str(args.output), 'sources': len(source_manifest),
                       'figures': len(assets), 'references': len(references)}, ensure_ascii=False))

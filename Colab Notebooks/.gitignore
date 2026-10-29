@@ -77,3 +77,7 @@ archive/private/**/.ipynb_checkpoints/
 # Isolated notebook replay data and local work pointers
 .notebook-runs/
 audits/**/*.local.txt
+
+# Authored report supplements approved for versioning; primary medical data stay excluded.
+!Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/deliverables/Материалы_научной_редакции_20261029.zip
+!Отчёт_ГПХ_РНЦХ/report/revision_20261029_local_edits/deliverables/Дополнение_к_материалам_20261029_точечная_правка.zip

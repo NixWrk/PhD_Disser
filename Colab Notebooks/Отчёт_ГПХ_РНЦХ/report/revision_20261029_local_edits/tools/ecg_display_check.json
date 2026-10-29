@@ -1,0 +1,77 @@
+{
+  "old_asset": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/figures/V07_cycle_processing.png",
+  "new_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_local_edits/figures/V07_cycle_processing_display_minus1.png",
+  "display_multiplier": -1,
+  "applied_to": [
+    "ECG displayed y",
+    "QRS marker displayed y"
+  ],
+  "source": {
+    "path": "Colab Notebooks/scorpion_v2/33.40_Ник_и_Ярослав_эксперимент_и_модели_Scorpion_22_10_2026.html",
+    "sha256": "c6631301ee3c9c02835033d99621b71f6347153982291f7cd3bef4acec3e5878",
+    "divs": [
+      "ac851e3b-16f9-45ab-9d87-99633c31f5b4",
+      "c69a194f-331e-41a1-87b8-a77d4f9e101b"
+    ],
+    "trace_indices": {
+      "ECG": [
+        3,
+        1
+      ],
+      "QRS": [
+        3,
+        2
+      ],
+      "TT": [
+        4,
+        0
+      ],
+      "lateral": [
+        3,
+        0
+      ]
+    }
+  },
+  "width": 3060,
+  "height": 1700,
+  "sha256": "ee799366f43af51372e0d7a044c79364866fc698fbfcdc30faa4ed7607e06d94",
+  "checks": {
+    "baseline_pixels_equal": true,
+    "pulse_panel_pixels_equal": true,
+    "pulse_panel_xywh": {
+      "left": 230,
+      "top": 920,
+      "width": 2630,
+      "height": 440
+    },
+    "all_x_unchanged": true,
+    "all_non_ecg_traces_unchanged": true,
+    "ECG_and_QRS_y_exactly_negated": true,
+    "source_file_unchanged": true
+  },
+  "QRS_time_s": [
+    0,
+    0.972,
+    1.93,
+    2.862,
+    3.718
+  ],
+  "QRS_original_mV": [
+    -0.2567102349089519,
+    -0.2478504343589781,
+    -0.2589627543647611,
+    -0.22955121649908194,
+    -0.253920172676549
+  ],
+  "QRS_display_mV": [
+    0.2567102349089519,
+    0.2478504343589781,
+    0.2589627543647611,
+    0.22955121649908194,
+    0.253920172676549
+  ],
+  "source_plot_code": {
+    "path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/tools/render_visuals.cjs",
+    "sha256": "0828a46bd4d81977f7294b0c58be2900eab99c86f7c1622be98bd292f455cc29"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "changes": [
+    {
+      "file": "chapters/06_stroke_volume.md",
+      "before_sha256": "d96213867eff2a90396a18e97688e2252316551388aacb2e0bb559f549da4ae7",
+      "after_sha256": "15a25193eac8b80a4fe244cc730e2bb791abde28b29a3adf5e12680e3e5fd91d",
+      "reason": "Scale/translation formula retained in3.3; duplicate image retained in5.3; chapter6 equations and figure references renumbered without scientific value changes."
+    },
+    {
+      "file": "chapters/07_validation.md",
+      "before_sha256": "92add6bb54f65d4eeb258fecb59ecd64267f3022b6b9cfc1a21bc0f191c13a88",
+      "after_sha256": "eb6cd86d56d3c919595af1d55c6725172d734e026cd4202e498cb8bc4f5cee33",
+      "reason": "Same covariance formula and its definitions retained in6.6; chapter7 keeps applicability limitation and cross-reference."
+    },
+    {
+      "file": "chapters/03_anatomy.md",
+      "before_sha256": "b2bbeaf861a2ce22b7f9c57c77fa478e50e93fcac788e76a864f453025c8e0a9",
+      "after_sha256": "6113e57afe3f993ed79882e9bf51c3a411bdf5497c0e74ebd3d0e2a0a918f35d",
+      "reason": "Removed repeated general physics/SV caveats already preserved in2,5,6; retained all anatomical limitations and explicit appendix reference."
+    }
+  ],
+  "scientific_results_removed": false,
+  "duplicates_relocated": true
+}

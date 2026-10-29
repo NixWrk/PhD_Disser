@@ -1,0 +1,96 @@
+{
+  "scope": "Observed visual QA fixes; main typography unchanged. Bibliography item spacing 5→4pt, font and line spacing unchanged. All numerical observations retained.",
+  "changes": [
+    {
+      "file": "conclusion.md",
+      "old": " Положительные требования договора к конечной точности УО и комплектности всей электронной поставки не подтверждаются одним наличием отчёта; их фактический статус указан в матрице соответствия.",
+      "new": "",
+      "before_sha256": "cca5d2c6b9949f1f996ce5f41eafbee41a23d3d113f9df1767f83eaf345b81fd",
+      "after_sha256": "396ad5ede25095cd44bb1fe5ff17f4ccbbf3fb2e2da308070e2600b951900c1e"
+    },
+    {
+      "file": "chapters/04_experiments.md",
+      "old": "$(-L/2,-L/4,L/4,L/2)$",
+      "new": "$(-\\frac{L}{2},-\\frac{L}{4},\\frac{L}{4},\\frac{L}{2})$",
+      "before_sha256": "a1af2edefcbc4f734347624c4da3996609ba6a0f4e68665674748ae4bcfc5ecd",
+      "after_sha256": "43d2b7777285574b404a13723d671544edf867cc79d29f92b13d1b5b34873dfa"
+    },
+    {
+      "file": "chapters/06_stroke_volume.md",
+      "old": "\\widehat V_v(t)=V_v^*+\\Delta\\mathcal M_v(\\widehat{\\mathbf g}(t),\\phi(t);\\mathbf g^*,\\phi^*,\\mathbf d_{CT},\\boldsymbol\\beta_v)+b_{v,\\mathrm{sess}},\n\\qquad SV_v=V_v(t_{ED,v})-V_v(t_{ES,v}).",
+      "new": "\\begin{aligned}\n\\widehat V_v(t)&=V_v^*+\\Delta\\mathcal M_v(\\widehat{\\mathbf g}(t),\\phi(t);\\mathbf g^*,\\phi^*,\\mathbf d_{CT},\\boldsymbol\\beta_v)+b_{v,\\mathrm{sess}},\\\\\nSV_v&=V_v(t_{ED,v})-V_v(t_{ES,v}).\n\\end{aligned}",
+      "before_sha256": "4451517a32e25f2c060fd0398a06fd1c5350c743f8cf1882e1f868df284480e9",
+      "after_sha256": "5b512948c7f4e8d59f035aabdd482818ee0aa57c9e7b4593ab3bae3ab05c9fad"
+    },
+    {
+      "file": "supplement/04_experiments.md",
+      "old": "C_{cd}=\\frac{\\sum_{k,j}(e_{ckj}-\\bar e_c)(e_{dkj}-\\bar e_d)}{KP-1},\\qquad\nC_y=D^{-1}CD^{-1},\\quad D=\\operatorname{diag}(Z_{01},Z_{02}).",
+      "new": "\\begin{aligned}\nC_{cd}&=\\frac{\\sum_{k,j}(e_{ckj}-\\bar e_c)(e_{dkj}-\\bar e_d)}{KP-1},\\\\\nC_y&=D^{-1}CD^{-1},\\qquad D=\\operatorname{diag}(Z_{01},Z_{02}).\n\\end{aligned}",
+      "before_sha256": "c96bbd762b57938ec1badf9a30445c5214dff9f4aebbe7ef1d88a93f813bcf6c",
+      "after_sha256": "99e960880a7af957d7cfc62cf04cd2d94475d14e1ea0f0f96bb680e46637e972"
+    },
+    {
+      "file": "supplement/01_foundations.md",
+      "old": "приближение $-\\Delta\\sigma/\\sigma_0^2$ требует $|\\Delta\\sigma|\\ll\\sigma_0$",
+      "new": "приближение $-\\Delta\\sigma/\\sigma_0^2$ допустимо при малом относительном изменении проводимости",
+      "before_sha256": "12576af8a44082033d28c1e9639ce3c2e2d82cbbaecc17b4416ac85ba5f6b613",
+      "after_sha256": "73689abdac3f54908e60854f0741275df7a456bf3b286139c1b02f6dac15a66d"
+    },
+    {
+      "file": "supplement/05_signal_models.md",
+      "old": "| Прекардиальное отведение №2, Ом | $\\Delta Z$ ТТРКГ, мОм | $\\Delta Z$ прекардиального отведения, мОм |",
+      "new": "| Прекард. №2, Ом | $\\Delta Z$ ТТРКГ, мОм | $\\Delta Z$ прекард. №2, мОм |",
+      "before_sha256": "451d5d92e5e6ee1d5082a0fab02995b745ce4b1e47591b5cf935d4f173fd040f",
+      "after_sha256": "071e61009dec8df12b16035042bfa7cf44d753df8cfad4efc46406cb647e9176"
+    },
+    {
+      "file": "supplement/05_signal_models.md",
+      "old": "| Геометрия и условия | Запись | RMS $\\Delta V$, мл, относительная задача | $E_{\\mathrm{rel}}$ на исключённых парах, прежняя → относительная, % | Вольтовый остаток относительного решения, % | Отсчёты вне объёмных проб, % |",
+      "new": "| Геометрия и условия | Запись | RMS $\\Delta V$, мл | $E_{\\mathrm{rel}}$, прежняя → отн., % | Вольтовый остаток, % | Отсчёты вне проб, % |",
+      "before_sha256": "071e61009dec8df12b16035042bfa7cf44d753df8cfad4efc46406cb647e9176",
+      "after_sha256": "a97069dc78cf14edfe3b0ef0c590872a0e3983ad369aa8a578e220e2f09f3c54"
+    },
+    {
+      "file": "supplement/05_signal_models.md",
+      "old": "Общая метрика: $E_{\\mathrm{rel}}=",
+      "new": "В таблице Е.6 стрелка сопоставляет прежнюю и относительную постановки на исключённых парах. RMS, вольтовый остаток и доля отсчётов вне объёмных проб относятся к относительному решению.\n\nОбщая метрика: $E_{\\mathrm{rel}}=",
+      "before_sha256": "a97069dc78cf14edfe3b0ef0c590872a0e3983ad369aa8a578e220e2f09f3c54",
+      "after_sha256": "6c511ed10e9242207938e6730c8383415756a151c1658aaf86764c35e3b4815b"
+    },
+    {
+      "file": "supplement/06_stroke_volume.md",
+      "old": "| Опора, обратная форма | Обусловленность нормированных столбцов | Остаточная норма объёмного направления, % | Макс. ошибка объёма, мл | Проба максимума, мм | Невязка этой пробы, % | Выходы за границы либо неположительное ρ, из 8 |",
+      "new": "| Опора, обратная форма | $\\kappa$ столбцов | Остаток V, % | Макс. ошибка объёма, мл | Проба максимума, мм | Невязка пробы, % | Нарушения, из 8 |",
+      "before_sha256": "56c0531a635356d30fb3560343811b86e298e9867c76f7f8c4c2255670ee406a",
+      "after_sha256": "3415d3c86a8fe6246d3d496923a63c19fcf1ae24999de5da3b7fdecda94cd518"
+    },
+    {
+      "file": "supplement/06_stroke_volume.md",
+      "old": "Флаги означают выход объёма за ±5%",
+      "new": "$\\kappa$ — число обусловленности матрицы с нормированными столбцами; остаток V — остаточная норма объёмного направления, %. Нарушения означают выход объёма за ±5%",
+      "before_sha256": "3415d3c86a8fe6246d3d496923a63c19fcf1ae24999de5da3b7fdecda94cd518",
+      "after_sha256": "ebcd377cd1f796274a69ceb38a21e464b0dc1df8c231d035193119c8812fba16"
+    },
+    {
+      "file": "supplement/08_archive.md",
+      "old": "[segment_ct_to_stl.py]",
+      "new": "[Скрипт КТ → STL]",
+      "before_sha256": "baca1788eec0f90162428b5b03be712882f31b4c2012cbd0a1fdf5e7b5081f71",
+      "after_sha256": "783f195a4f030f4d9a5149f41232201f6179d6a26e34508a9f09645d1b19cb0e"
+    },
+    {
+      "file": "supplement/08_archive.md",
+      "old": "[prepare_ct_fem.py]",
+      "new": "[Скрипт подготовки]",
+      "before_sha256": "783f195a4f030f4d9a5149f41232201f6179d6a26e34508a9f09645d1b19cb0e",
+      "after_sha256": "80a7f996ef54e05eab9b0f29358184c8595e5207e465e3210b48917e1e4d7593"
+    },
+    {
+      "file": "tools/build_word.py",
+      "old": "            p.paragraph_format.space_after = Pt(5)",
+      "new": "            p.paragraph_format.space_after = Pt(4)",
+      "before_sha256": "92e766bf2be36b35631fb9026fa2da86173f9d716262514f602317aae61e9451",
+      "after_sha256": "5b25c0deb0830a69cc44d34e02554c28cd4229e84e9a432c97fff14bd20f3782"
+    }
+  ]
+}

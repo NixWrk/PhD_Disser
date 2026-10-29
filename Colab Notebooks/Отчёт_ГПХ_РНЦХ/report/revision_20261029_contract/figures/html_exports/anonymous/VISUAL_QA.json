@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-29",
+  "method": "All five rerendered PNGs opened with view_image. The unchanged contour PNG was visually inspected in the preceding extraction task; byte identity checked again. No image edits.",
+  "images": [
+    {
+      "filename": "03_g_ct_contour_regularization.png",
+      "sha256": "0f0ec1604a8c99d7185e106faa38f61ea826c3f5ccdeab335429c8e46f2b79e3",
+      "status": "visually_checked",
+      "note": "No internal participant names in the original contour image; byte-identical copy."
+    },
+    {
+      "filename": "04_tt_ecg_four_cycles.png",
+      "sha256": "49d63989a17daec8128509157b885f01336c21c021a01605a1d13fd42100a276",
+      "status": "visually_checked",
+      "note": "Only participant codes Г/Н/Я in panel titles; complete axes, legends, scales and negative results preserved."
+    },
+    {
+      "filename": "05_tissue_identifiability_singular_values.png",
+      "sha256": "4cea2f4a2687eef6080f7035be1f53210986c242db58097047ecdac81ea0637e",
+      "status": "visually_checked",
+      "note": "Only participant codes Г/Н/Я in panel titles; complete axes, legends, scales and negative results preserved."
+    },
+    {
+      "filename": "06_measured_pulse_vs_volume_probe.png",
+      "sha256": "9f8be5955230de00c8c726e203758f0f9cc801f16d85f3bc2a1f1dad47668f29",
+      "status": "visually_checked",
+      "note": "Only participant codes Г/Н/Я in panel titles; complete axes, legends, scales and negative results preserved."
+    },
+    {
+      "filename": "07_ct_whole_heart_and_chambers.png",
+      "sha256": "4e5f441d733318595b13511ff90b2cadb16bd9ebac05a18423c31104529e120b",
+      "status": "visually_checked",
+      "note": "Only participant codes Г/Н/Я in panel titles; complete axes, legends, scales and negative results preserved."
+    },
+    {
+      "filename": "08_respiratory_contrast_observation_model.png",
+      "sha256": "5491d23b069022273e55c97f2052442a72e6d0e2f26f9e8d0ea7703e3871431b",
+      "status": "visually_checked",
+      "note": "Only participant codes Г/Н/Я in panel titles; complete axes, legends, scales and negative results preserved."
+    }
+  ]
+}

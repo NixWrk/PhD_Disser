@@ -1,0 +1,95 @@
+{
+  "prior_files_changed": [],
+  "formulas": [
+    {
+      "old": "01_literature.md",
+      "new": "01_literature.md",
+      "old_display_formulas": 11,
+      "new_display_formulas": 11,
+      "missing_or_changed": []
+    },
+    {
+      "old": "02_alternatives.md",
+      "new": "02_alternatives.md",
+      "old_display_formulas": 2,
+      "new_display_formulas": 2,
+      "missing_or_changed": []
+    },
+    {
+      "old": "03_patents.md",
+      "new": "03_patents.md",
+      "old_display_formulas": 4,
+      "new_display_formulas": 4,
+      "missing_or_changed": []
+    },
+    {
+      "old": "04_problem.md",
+      "new": "04_problem.md",
+      "old_display_formulas": 12,
+      "new_display_formulas": 12,
+      "missing_or_changed": []
+    },
+    {
+      "old": "05_experiments.md",
+      "new": "07_experiments.md",
+      "old_display_formulas": 8,
+      "new_display_formulas": 8,
+      "missing_or_changed": []
+    },
+    {
+      "old": "06_anatomy.md",
+      "new": "05_anatomy.md",
+      "old_display_formulas": 20,
+      "new_display_formulas": 20,
+      "missing_or_changed": []
+    },
+    {
+      "old": "07_forward.md",
+      "new": "06_forward.md",
+      "old_display_formulas": 26,
+      "new_display_formulas": 26,
+      "missing_or_changed": []
+    },
+    {
+      "old": "08_tissue.md",
+      "new": "08_tissue.md",
+      "old_display_formulas": 26,
+      "new_display_formulas": 26,
+      "missing_or_changed": []
+    },
+    {
+      "old": "09_heart_dynamics.md",
+      "new": "09_heart_dynamics.md",
+      "old_display_formulas": 25,
+      "new_display_formulas": 25,
+      "missing_or_changed": []
+    },
+    {
+      "old": "10_chambers.md",
+      "new": "10_chambers.md",
+      "old_display_formulas": 22,
+      "new_display_formulas": 22,
+      "missing_or_changed": []
+    },
+    {
+      "old": "11_validation.md",
+      "new": "11_validation.md",
+      "old_display_formulas": 5,
+      "new_display_formulas": 5,
+      "missing_or_changed": []
+    },
+    {
+      "old": "12_discussion.md",
+      "new": "12_discussion.md",
+      "old_display_formulas": 6,
+      "new_display_formulas": 6,
+      "missing_or_changed": []
+    }
+  ],
+  "requirements": 41,
+  "missing_requirements": [],
+  "prior_figure_positions": 24,
+  "new_figure_positions": 30,
+  "missing_prior_figure_positions": {},
+  "scope": "Deterministic preservation checks; changed prose and figure interpretation require semantic review."
+}

@@ -1,0 +1,1197 @@
+{
+  "schema": "bounded-scientific-companion/1",
+  "edition": "20261029_author_review",
+  "scope": "Ограниченные сопроводительные материалы научной редакции; не полный договорный архив.",
+  "base_repository_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review",
+  "source_build_manifest_sha256": "8885b93b09c85f5533e461ee68fb11d63ca4a1d3944c31755213e73b4ee3ab52",
+  "source_report_sha256": "1eb55c63561985c191657a19e28e52cf90837340f2d5ecfaf70adee2fa0aa5ad",
+  "figure_mode": "with_figures",
+  "formatting_mode": "section_only",
+  "u2_record_scope": "001–011",
+  "u2_observation_table_scope": "002–011; lateral only",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 8412,
+      "sha256": "92c31d79a3cf198a968fb6858d2a263cb907a954b6342a3781d4a699e84cded7",
+      "kind": "readme",
+      "sources": []
+    },
+    {
+      "path": "figures/V01_materials_sequence.png",
+      "bytes": 155532,
+      "sha256": "499361439fd9173c9cd3e8d83a1ae2ad5c1b7f96601c75ca866493ad5ea3883e",
+      "kind": "edition_figure",
+      "sources": [
+        "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/figures/V01_materials_sequence.png"
+      ]
+    },
+    {
+      "path": "figures/V02_measurement_setup.png",
+      "bytes": 225313,
+      "sha256": "2ee8548e3c4b80158ccb18ff9d2b3799e9eed93a599cdc48eb79331009b20c2b",
+      "kind": "edition_figure",
+      "sources": [
+        "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/figures/V02_measurement_setup.png"
+      ]
+    },
+    {
+      "path": "figures/V03_ct_segmentation.png",
+      "bytes": 479507,
+      "sha256": "54cb9cc0fc28e2cf708f47190d70ff9dd0443d4d7bceb38ce0fcc2e63609ab71",
+      "kind": "edition_figure",
+      "sources": [
+        "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/figures/V03_ct_segmentation.png"
+      ]
+    },
+    {
+      "path": "figures/V04_anatomical_model.png",
+      "bytes": 558306,
+      "sha256": "dfaf500992b1b88c39df24db5f0db5a78e25b4eeb75dba67ca661d023c59cc9f",
+      "kind": "edition_figure",
+      "sources": [
+        "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/figures/V04_anatomical_model.png"
+      ]
+    },
+    {
+      "path": "figures/V04_anatomical_surfaces.png",
+      "bytes": 317666,
+      "sha256": "077d0b469ca871df5060cb2130bac98e398fe518e86d375a134e191f7b8da005",
+      "kind": "edition_figure",
+      "sources": [
+        "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/figures/V04_anatomical_surfaces.png"
+      ]
+    },
+    {
+      "path": "figures/V04_fem_surface_contacts.png",
+      "bytes": 232911,
+      "sha256": "8587664e44dd2e2332a49937b46fa86b0a62b1c2ea35ba0591f17335357058ef",
+      "kind": "edition_figure",
+      "sources": [
+        "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/figures/V04_fem_surface_contacts.png"
+      ]
+    },
+    {
+      "path": "figures/V07_cycle_processing.png",
+      "bytes": 495262,
+      "sha256": "5f1861db863c2a0103f06a43170ac17d5b4303733bee7ec51e5bc6c355d18662",
+      "kind": "edition_figure",
+      "sources": [
+        "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/figures/V07_cycle_processing.png"
+      ]
+    },
+    {
+      "path": "figures/V09_layered_model.png",
+      "bytes": 96924,
+      "sha256": "260826431fd0de8489b461a6089f77ea32e7ee5951126323a00881bedb48122d",
+      "kind": "edition_figure",
+      "sources": [
+        "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/figures/V09_layered_model.png"
+      ]
+    },
+    {
+      "path": "figures/V13_geometry_controls.png",
+      "bytes": 281335,
+      "sha256": "74a840699745a500611caed343338242601117238fe09dcf0241b97b41377d5f",
+      "kind": "edition_figure",
+      "sources": [
+        "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/figures/V13_geometry_controls.png"
+      ]
+    },
+    {
+      "path": "figures/V13_models_step_quadrature.png",
+      "bytes": 278740,
+      "sha256": "ea7904c450ca33ca0e7dc6ccaa9055ac1375d059d7bb859bb46a7c82be08ec3c",
+      "kind": "edition_figure",
+      "sources": [
+        "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/figures/V13_models_step_quadrature.png"
+      ]
+    },
+    {
+      "path": "figures/V14_eit_baseline_residual.png",
+      "bytes": 237170,
+      "sha256": "e06ea9b6558dea0b309b9133c0667e517f481cafd9d5d65f3c804e38e89fd294",
+      "kind": "edition_figure",
+      "sources": [
+        "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/figures/V14_eit_baseline_residual.png"
+      ]
+    },
+    {
+      "path": "figures/V15_tissue_contributions.png",
+      "bytes": 504402,
+      "sha256": "4659c59a8b03bc370c931fd473d2a63321608d99968d3f9087bd03453b5b3b8c",
+      "kind": "edition_figure",
+      "sources": [
+        "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/figures/V15_tissue_contributions.png"
+      ]
+    },
+    {
+      "path": "figures/V16_geometry_tissue_mixing.png",
+      "bytes": 277742,
+      "sha256": "4af36cf17afec3c917ed16c0e780e9ace0d255ea3a1d2b0bdebe4a17684d9230",
+      "kind": "edition_figure",
+      "sources": [
+        "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/figures/V16_geometry_tissue_mixing.png"
+      ]
+    },
+    {
+      "path": "figures/V17_models_electrical_factors.png",
+      "bytes": 175387,
+      "sha256": "66b56a644ff15fa1fc0a2cb2cb26d08ab1e3af423550f49e0475dca00df2a4d8",
+      "kind": "edition_figure",
+      "sources": [
+        "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/figures/V17_models_electrical_factors.png"
+      ]
+    },
+    {
+      "path": "figures/V19_volume_rho_compensation.png",
+      "bytes": 199246,
+      "sha256": "3dd5115dcf5aee8fad80980a73b62cf984599854469176a038b5f7a4432451c1",
+      "kind": "edition_figure",
+      "sources": [
+        "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/figures/V19_volume_rho_compensation.png"
+      ]
+    },
+    {
+      "path": "figures/V22_ventricular_phase_reversal.png",
+      "bytes": 207366,
+      "sha256": "12bf1deff2ab8778610e9ebbd809ed5e7f39fba8b3032fdb8c2391adab71fd47",
+      "kind": "edition_figure",
+      "sources": [
+        "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/figures/V22_ventricular_phase_reversal.png"
+      ]
+    },
+    {
+      "path": "figures/index.json",
+      "bytes": 18970,
+      "sha256": "8cdbecbf279297825600cfb256e00498e12cdc54e4dca0da93c36f263b335f2d",
+      "kind": "figure_index",
+      "sources": []
+    },
+    {
+      "path": "materials/02/ct_surface_preparation.md",
+      "bytes": 4257,
+      "sha256": "1fc13c30f3feca8531db7ce32b52cca2ad40c26b7925d4e6b20b4cdf7dc18f8e",
+      "kind": "annotated_protocol_extract",
+      "sources": [
+        {
+          "source_path": "docs/CT_FEM_TOTALSEGMENTATOR_VERIFICATION_20261026.md",
+          "source_sha256": "d17f3bbd6af3939c27ff8f18cae47cbbca480cfe8815ad49106ac1770c59b196",
+          "start_line": 12,
+          "end_line": 49,
+          "source_fragment_sha256": "440d7bdf70162488216e8dabdfb84972213e38beba2b5cd342209718a3753e1f",
+          "output_fragment_sha256": "440d7bdf70162488216e8dabdfb84972213e38beba2b5cd342209718a3753e1f",
+          "transformation": "verbatim",
+          "text_normalization": "UTF-8 decoded; BOM removed if present; CRLF to LF before fragment hashing",
+          "verification_status": "extracted"
+        }
+      ]
+    },
+    {
+      "path": "materials/02/electrode_protocol.md",
+      "bytes": 12546,
+      "sha256": "4aeec0981bc190f671d16b68cb4b150d77da20e7d21c2015432ebb25d02ddb00",
+      "kind": "annotated_protocol_extract",
+      "sources": [
+        {
+          "source_path": "Experiments/scorpion_v2_georg/PROTOCOL.md",
+          "source_sha256": "7211d32c903a590e75ea2736deec05c51c4b07cddb9e29926f0734c905fb6868",
+          "start_line": 5,
+          "end_line": 8,
+          "source_fragment_sha256": "3d6f8d9af748746ac768292c98b94c9991a8f2f2b558cc41d626b554ce8ede9c",
+          "output_fragment_sha256": "3d6f8d9af748746ac768292c98b94c9991a8f2f2b558cc41d626b554ce8ede9c",
+          "transformation": "verbatim",
+          "text_normalization": "UTF-8 decoded; BOM removed if present; CRLF to LF before fragment hashing",
+          "verification_status": "extracted"
+        },
+        {
+          "source_path": "Experiments/scorpion_v2_georg/PROTOCOL.md",
+          "source_sha256": "7211d32c903a590e75ea2736deec05c51c4b07cddb9e29926f0734c905fb6868",
+          "start_line": 155,
+          "end_line": 198,
+          "source_fragment_sha256": "5b9b74d404517a8ec9e70e51c29a9c674c7911b3dcf902b59723b5ec481b4db2",
+          "output_fragment_sha256": "5b9b74d404517a8ec9e70e51c29a9c674c7911b3dcf902b59723b5ec481b4db2",
+          "transformation": "verbatim",
+          "text_normalization": "UTF-8 decoded; BOM removed if present; CRLF to LF before fragment hashing",
+          "verification_status": "extracted"
+        },
+        {
+          "source_path": "Experiments/scorpion_v2_georg/PROTOCOL.md",
+          "source_sha256": "7211d32c903a590e75ea2736deec05c51c4b07cddb9e29926f0734c905fb6868",
+          "start_line": 200,
+          "end_line": 251,
+          "source_fragment_sha256": "f83fc01859136b7c717f21e9d38ab4ecf986b4cdc3262610efcc480727758388",
+          "output_fragment_sha256": "acfa771890747c697e0ea73434e2ce5a1b1d663b08beb24d8b40bcdabff00655",
+          "transformation": "scoped_selection",
+          "text_normalization": "UTF-8 decoded; BOM removed if present; CRLF to LF before fragment hashing",
+          "verification_status": "extracted"
+        }
+      ]
+    },
+    {
+      "path": "materials/02/paired_recording_protocol.md",
+      "bytes": 6010,
+      "sha256": "167fdd88da2cb017e7f3a47fe131fc93e29e7721f47f2a0bc1ee683dc27a73be",
+      "kind": "annotated_protocol_extract",
+      "sources": [
+        {
+          "source_path": "Experiments/scorpion_20261022/PROTOCOL.md",
+          "source_sha256": "30f8bd8f19e5f7c74ead1894059d1a30abc5e532270b4bb0677306ad0f497346",
+          "start_line": 1,
+          "end_line": 42,
+          "source_fragment_sha256": "824cedae82845fc393a9dbf16ded122b405d99b9f407638de751e60d77675660",
+          "output_fragment_sha256": "34cad4776261fe296f6ad6b91413bdab779d5a8ae755cb5764c378fd88cbbcc4",
+          "transformation": "scoped_selection",
+          "text_normalization": "UTF-8 decoded; BOM removed if present; CRLF to LF before fragment hashing",
+          "verification_status": "extracted"
+        }
+      ]
+    },
+    {
+      "path": "materials/02/source_mode_clarification.json",
+      "bytes": 539,
+      "sha256": "ef37fe2822026334657a2e730f9e569ff3930290d50f4fcb27274a0b4a2ba8ae",
+      "kind": "selected_protocol_metadata",
+      "sources": [
+        "Colab Notebooks/scorpion_v2/_assets/fem_smart_20261026.summary.json#/author_overlay"
+      ]
+    },
+    {
+      "path": "materials/02/time_scale.md",
+      "bytes": 3249,
+      "sha256": "9cc9bcdc268e59d95ba91bad6843f34590c0931d632602b0a2077738b63cccef",
+      "kind": "annotated_protocol_extract",
+      "sources": [
+        {
+          "source_path": "Colab Notebooks/scorpion_v2/10.20_Настройки_и_бинарные_потоки_Scorpion_v2.md",
+          "source_sha256": "eef89b7148a0a9ba6a78b1deeaded264d4ccc02ae60cc7324954ecfd461106f5",
+          "start_line": 39,
+          "end_line": 58,
+          "source_fragment_sha256": "2b2dd03dcb0631e262045293b73b13073678837f4ecf84f5d7b352658b189182",
+          "output_fragment_sha256": "dfa013dcd50034aa1060e46c2cf727ea9f1cb904251a58aa86e60037b9a81f0f",
+          "transformation": "scoped_selection",
+          "text_normalization": "UTF-8 decoded; BOM removed if present; CRLF to LF before fragment hashing",
+          "verification_status": "extracted"
+        }
+      ]
+    },
+    {
+      "path": "materials/repository_references.json",
+      "bytes": 959,
+      "sha256": "ecdb3e58198dee035f9aa981c8aff01606158fa1db322a755d7c59edfa49b6fe",
+      "kind": "exact_document_references",
+      "sources": []
+    },
+    {
+      "path": "programs/README.md",
+      "bytes": 1079,
+      "sha256": "7be35feb4b867cf3d3c92cb343a2157d256a22542bf64138ebe802fe4bde1acb",
+      "kind": "readme",
+      "sources": []
+    },
+    {
+      "path": "programs/references.json",
+      "bytes": 8815,
+      "sha256": "87a3fdc7a311296697476d17db71ad0df1cd2fd9d2658bc4b3d7a0e05644b339",
+      "kind": "exact_program_references",
+      "sources": []
+    },
+    {
+      "path": "provenance/extractions.json",
+      "bytes": 22110,
+      "sha256": "504f03c3b4b8fac7fedc6cc7cd975883f7886db03d7b60dce55c5bf845ca7307",
+      "kind": "extraction_locators",
+      "sources": []
+    },
+    {
+      "path": "provenance/source_index.json",
+      "bytes": 12351,
+      "sha256": "0eded230440aa091a48fe9568b2e150416b83389715493b7150d6015c7c08e7e",
+      "kind": "source_hash_register",
+      "sources": []
+    },
+    {
+      "path": "provenance/uncovered_dependencies.json",
+      "bytes": 4351,
+      "sha256": "34ef53e9341955a280e8ecbde0f754120ed37047f9413126a4436413aee9cc91",
+      "kind": "dependency_register",
+      "sources": []
+    },
+    {
+      "path": "tables/ct_processed/README.md",
+      "bytes": 1641,
+      "sha256": "a8ebd013615f13c8821725ba2010411107fb3f5c6b781b4d9f68a651eeb49c26",
+      "kind": "processed_table_context",
+      "sources": []
+    },
+    {
+      "path": "tables/ct_processed/chamber_volume_changes_measured_cycles.csv",
+      "bytes": 25720,
+      "sha256": "1e15195d016ded00b93c195e00328403400b6a6159e4f72f851ea73a009bf8bf",
+      "kind": "processed_ct_table_subset",
+      "sources": [
+        {
+          "source_path": "Colab Notebooks/cardiac_4d_segmentation/heart_rr_analysis/chamber_volume_changes_measured_cycles.csv",
+          "source_sha256": "55846db9dfb21b7fca0c4a992572da99e80060e29b0362eb0676f989a512df6f",
+          "source_csv_rows_including_header": [
+            50,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67,
+            68,
+            69,
+            70,
+            71,
+            72,
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            84,
+            85,
+            86,
+            87,
+            88,
+            89,
+            90,
+            91,
+            92,
+            93,
+            94,
+            95,
+            96,
+            97,
+            98,
+            99,
+            100,
+            101,
+            102,
+            103,
+            104,
+            105,
+            106,
+            107,
+            108,
+            109,
+            110,
+            111,
+            112,
+            113,
+            114,
+            115,
+            116,
+            117,
+            118,
+            119,
+            120,
+            121,
+            122,
+            123,
+            124,
+            125,
+            126,
+            127,
+            128,
+            129,
+            130,
+            131,
+            132,
+            133,
+            134,
+            135,
+            136,
+            137,
+            138,
+            139,
+            140,
+            141,
+            142,
+            143,
+            144,
+            145,
+            146,
+            147,
+            148,
+            149,
+            150,
+            151,
+            152,
+            153,
+            154,
+            155,
+            156,
+            157
+          ],
+          "transformation": "filter subjects nix/georg; relabel subject to У1/У2; numeric strings unchanged",
+          "verification_status": "extracted"
+        }
+      ]
+    },
+    {
+      "path": "tables/ct_processed/chamber_volumes_by_rr.csv",
+      "bytes": 8788,
+      "sha256": "ce17567764dd74f77e15f6e2e2b48a9d09e19872f3e6f6d4d09056668cc0b4aa",
+      "kind": "processed_ct_table_subset",
+      "sources": [
+        {
+          "source_path": "Colab Notebooks/cardiac_4d_segmentation/heart_rr_analysis/chamber_volumes_by_rr.csv",
+          "source_sha256": "9e310417257a93c2af6d7c2fd8767f1dfc2fd570be7c01aaa5ca5a2262b3ebd8",
+          "source_csv_rows_including_header": [
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40
+          ],
+          "transformation": "filter subjects nix/georg; relabel subject to У1/У2; numeric strings unchanged",
+          "verification_status": "extracted"
+        }
+      ]
+    },
+    {
+      "path": "tables/index.json",
+      "bytes": 15050,
+      "sha256": "000a0b6109b0c3b31d3407753205ed7547eeea791055aebdd0b0ea29c794afaa",
+      "kind": "table_index",
+      "sources": []
+    },
+    {
+      "path": "tables/lateral_u2/README.md",
+      "bytes": 6598,
+      "sha256": "e64551892d7fbbc2dbf53f51182ec1a35329f74532bfb68b023b7275e0d3540f",
+      "kind": "observation_table_context",
+      "sources": [
+        {
+          "source_path": "Colab Notebooks/scorpion_v2/33.31_Численная_сходимость_и_совместный_подбор_Георгия_Scorpion_v2.md",
+          "source_sha256": "590d6b41d6005d9b0bdffa34a4a287a1cefcf32460604f2dbc9f83caa1365076",
+          "start_line": 23,
+          "end_line": 23,
+          "source_fragment_sha256": "7438fc20f97c1fa06eb76909bddaebc0984e8a3aa4b180f628b4b79bd78b2e88",
+          "output_fragment_sha256": "7438fc20f97c1fa06eb76909bddaebc0984e8a3aa4b180f628b4b79bd78b2e88",
+          "transformation": "verbatim",
+          "text_normalization": "UTF-8 decoded; BOM removed if present; CRLF to LF before fragment hashing",
+          "verification_status": "extracted"
+        }
+      ]
+    },
+    {
+      "path": "tables/lateral_u2/observed_levels_002_011.csv",
+      "bytes": 3238,
+      "sha256": "834f8bb11c0d7a080d0d1f9ffdeb86f3c4be1e42df469bd99e3dcf52da996023",
+      "kind": "processed_observations_extract",
+      "sources": [
+        {
+          "source_path": "Colab Notebooks/scorpion_v2/33.31_Численная_сходимость_и_совместный_подбор_Георгия_Scorpion_v2.md",
+          "source_sha256": "590d6b41d6005d9b0bdffa34a4a287a1cefcf32460604f2dbc9f83caa1365076",
+          "start_line": 23,
+          "end_line": 23,
+          "source_fragment_sha256": "7438fc20f97c1fa06eb76909bddaebc0984e8a3aa4b180f628b4b79bd78b2e88",
+          "output_fragment_sha256": "7438fc20f97c1fa06eb76909bddaebc0984e8a3aa4b180f628b4b79bd78b2e88",
+          "transformation": "verbatim",
+          "text_normalization": "UTF-8 decoded; BOM removed if present; CRLF to LF before fragment hashing",
+          "verification_status": "extracted"
+        }
+      ]
+    },
+    {
+      "path": "tables/processed_index.json",
+      "bytes": 2778,
+      "sha256": "5a8190d86393b3e712d82a8b65e7742f20c1c1d59716630399ab156b7f403ffd",
+      "kind": "processed_table_index",
+      "sources": []
+    },
+    {
+      "path": "tables/report/04_tissue_lateral_baseline.csv",
+      "bytes": 484,
+      "sha256": "097ab8a7d1552d80f38d6bcc570cb5c729707a46c14a1bad7cfaf2e54b1078af",
+      "kind": "report_table_transcription",
+      "sources": [
+        {
+          "source_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/report_for_word.md",
+          "source_sha256": "1eb55c63561985c191657a19e28e52cf90837340f2d5ecfaf70adee2fa0aa5ad",
+          "start_line": 738,
+          "end_line": 748,
+          "source_fragment_sha256": "890061696b42a16df3b7f5a146d54a430775562f73bf4fd187add4384170cd46",
+          "output_fragment_sha256": "890061696b42a16df3b7f5a146d54a430775562f73bf4fd187add4384170cd46",
+          "transformation": "verbatim",
+          "text_normalization": "UTF-8 decoded; BOM removed if present; CRLF to LF before fragment hashing",
+          "verification_status": "extracted"
+        }
+      ],
+      "note": "Строковые ячейки; численные значения не пересчитывались. Источник — отчёт, не первичный CSV."
+    },
+    {
+      "path": "tables/report/04_tissue_lateral_baseline.md",
+      "bytes": 5163,
+      "sha256": "d17900024a11112a86a14c1b7887ff87b9dc334f1aa10205551d415ec91e9fa3",
+      "kind": "report_table_with_context",
+      "sources": [
+        {
+          "source_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/report_for_word.md",
+          "source_sha256": "1eb55c63561985c191657a19e28e52cf90837340f2d5ecfaf70adee2fa0aa5ad",
+          "start_line": 732,
+          "end_line": 751,
+          "source_fragment_sha256": "54529deb292bb9b03d8d1999cdb8232648947881df11b6ccb0d04d66f7e7b299",
+          "output_fragment_sha256": "54529deb292bb9b03d8d1999cdb8232648947881df11b6ccb0d04d66f7e7b299",
+          "transformation": "verbatim",
+          "text_normalization": "UTF-8 decoded; BOM removed if present; CRLF to LF before fragment hashing",
+          "verification_status": "extracted"
+        }
+      ]
+    },
+    {
+      "path": "tables/report/05_cardiac_anatomical_transfer.csv",
+      "bytes": 473,
+      "sha256": "29384a795b13ec2acc25857756d3864f20d8a0f935347dd0c4270a86c8febe66",
+      "kind": "report_table_transcription",
+      "sources": [
+        {
+          "source_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/report_for_word.md",
+          "source_sha256": "1eb55c63561985c191657a19e28e52cf90837340f2d5ecfaf70adee2fa0aa5ad",
+          "start_line": 857,
+          "end_line": 865,
+          "source_fragment_sha256": "6cce1f0f17feec364f6b98945d39a3d5c74821c30c5182865cfe6b5f49332a73",
+          "output_fragment_sha256": "6cce1f0f17feec364f6b98945d39a3d5c74821c30c5182865cfe6b5f49332a73",
+          "transformation": "verbatim",
+          "text_normalization": "UTF-8 decoded; BOM removed if present; CRLF to LF before fragment hashing",
+          "verification_status": "extracted"
+        }
+      ],
+      "note": "Строковые ячейки; численные значения не пересчитывались. Источник — отчёт, не первичный CSV."
+    },
+    {
+      "path": "tables/report/05_cardiac_anatomical_transfer.md",
+      "bytes": 6820,
+      "sha256": "57eef573ee0d3d1a45bb0dc12b047a65a3b6a726e40fe480bdfc759e49d7d90b",
+      "kind": "report_table_with_context",
+      "sources": [
+        {
+          "source_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/report_for_word.md",
+          "source_sha256": "1eb55c63561985c191657a19e28e52cf90837340f2d5ecfaf70adee2fa0aa5ad",
+          "start_line": 851,
+          "end_line": 872,
+          "source_fragment_sha256": "d006b27a9ccfa274cdb90a5d60feca364d0b62f53e4ab60912f06bc05a988f64",
+          "output_fragment_sha256": "d006b27a9ccfa274cdb90a5d60feca364d0b62f53e4ab60912f06bc05a988f64",
+          "transformation": "verbatim",
+          "text_normalization": "UTF-8 decoded; BOM removed if present; CRLF to LF before fragment hashing",
+          "verification_status": "extracted"
+        }
+      ]
+    },
+    {
+      "path": "tables/report/06_cardiac_electrical_errors.csv",
+      "bytes": 368,
+      "sha256": "724f1762f566f077a2c87748b5dd28c00c58d50efc209c0f549f3e6013ff93d3",
+      "kind": "report_table_transcription",
+      "sources": [
+        {
+          "source_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/report_for_word.md",
+          "source_sha256": "1eb55c63561985c191657a19e28e52cf90837340f2d5ecfaf70adee2fa0aa5ad",
+          "start_line": 884,
+          "end_line": 892,
+          "source_fragment_sha256": "9947308458c8336d6c4a4da3f2e6fb690247f4e165eb181d72c2917f445b1a1a",
+          "output_fragment_sha256": "9947308458c8336d6c4a4da3f2e6fb690247f4e165eb181d72c2917f445b1a1a",
+          "transformation": "verbatim",
+          "text_normalization": "UTF-8 decoded; BOM removed if present; CRLF to LF before fragment hashing",
+          "verification_status": "extracted"
+        }
+      ],
+      "note": "Строковые ячейки; численные значения не пересчитывались. Источник — отчёт, не первичный CSV."
+    },
+    {
+      "path": "tables/report/06_cardiac_electrical_errors.md",
+      "bytes": 5978,
+      "sha256": "4a39ba3f9b0b4c89d3bdde74169f22a55b6919ba0031a72373631f28799f61cf",
+      "kind": "report_table_with_context",
+      "sources": [
+        {
+          "source_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/report_for_word.md",
+          "source_sha256": "1eb55c63561985c191657a19e28e52cf90837340f2d5ecfaf70adee2fa0aa5ad",
+          "start_line": 874,
+          "end_line": 897,
+          "source_fragment_sha256": "27380e45521935611504d463ce67618414a2471fabb16b972f2b25f426078304",
+          "output_fragment_sha256": "27380e45521935611504d463ce67618414a2471fabb16b972f2b25f426078304",
+          "transformation": "verbatim",
+          "text_normalization": "UTF-8 decoded; BOM removed if present; CRLF to LF before fragment hashing",
+          "verification_status": "extracted"
+        }
+      ]
+    },
+    {
+      "path": "tables/report/07_am_static_forms.csv",
+      "bytes": 787,
+      "sha256": "9c208264f1a140777ebaf92424671dafa4624cd71a0543c85a439122ecdd7c50",
+      "kind": "report_table_transcription",
+      "sources": [
+        {
+          "source_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/report_for_word.md",
+          "source_sha256": "1eb55c63561985c191657a19e28e52cf90837340f2d5ecfaf70adee2fa0aa5ad",
+          "start_line": 1037,
+          "end_line": 1048,
+          "source_fragment_sha256": "dc02152f039037dd53846feaba09efe1ea674eba29b10e42c52fcb6a24319df4",
+          "output_fragment_sha256": "dc02152f039037dd53846feaba09efe1ea674eba29b10e42c52fcb6a24319df4",
+          "transformation": "verbatim",
+          "text_normalization": "UTF-8 decoded; BOM removed if present; CRLF to LF before fragment hashing",
+          "verification_status": "extracted"
+        }
+      ],
+      "note": "Строковые ячейки; численные значения не пересчитывались. Источник — отчёт, не первичный CSV."
+    },
+    {
+      "path": "tables/report/07_am_static_forms.md",
+      "bytes": 9860,
+      "sha256": "e74a4599304c50fcf5fd42fc26076c228854de48af7c3f8c79f236fc29b30069",
+      "kind": "report_table_with_context",
+      "sources": [
+        {
+          "source_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/report_for_word.md",
+          "source_sha256": "1eb55c63561985c191657a19e28e52cf90837340f2d5ecfaf70adee2fa0aa5ad",
+          "start_line": 1033,
+          "end_line": 1067,
+          "source_fragment_sha256": "a392233efc7118ecf334347e7894552f405ecb9bd37a4885f0714b4fdd685170",
+          "output_fragment_sha256": "a392233efc7118ecf334347e7894552f405ecb9bd37a4885f0714b4fdd685170",
+          "transformation": "verbatim",
+          "text_normalization": "UTF-8 decoded; BOM removed if present; CRLF to LF before fragment hashing",
+          "verification_status": "extracted"
+        }
+      ]
+    },
+    {
+      "path": "tables/report/08_am_volume_quadrature.csv",
+      "bytes": 402,
+      "sha256": "09caeab0eb2428d344cb52910836082e80cac9b77bd5cdf0b1a5f96e0ddad56c",
+      "kind": "report_table_transcription",
+      "sources": [
+        {
+          "source_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/report_for_word.md",
+          "source_sha256": "1eb55c63561985c191657a19e28e52cf90837340f2d5ecfaf70adee2fa0aa5ad",
+          "start_line": 1085,
+          "end_line": 1095,
+          "source_fragment_sha256": "223196be0e2c41d50a925092f7cb95247d635f8c5d06ff18280a5582d66e8830",
+          "output_fragment_sha256": "223196be0e2c41d50a925092f7cb95247d635f8c5d06ff18280a5582d66e8830",
+          "transformation": "verbatim",
+          "text_normalization": "UTF-8 decoded; BOM removed if present; CRLF to LF before fragment hashing",
+          "verification_status": "extracted"
+        }
+      ],
+      "note": "Строковые ячейки; численные значения не пересчитывались. Источник — отчёт, не первичный CSV."
+    },
+    {
+      "path": "tables/report/08_am_volume_quadrature.md",
+      "bytes": 5576,
+      "sha256": "1ce3177359860ef7b1112c6ad890820fa3e7dea7986ddef92bb9ec33e69d5120",
+      "kind": "report_table_with_context",
+      "sources": [
+        {
+          "source_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/report_for_word.md",
+          "source_sha256": "1eb55c63561985c191657a19e28e52cf90837340f2d5ecfaf70adee2fa0aa5ad",
+          "start_line": 1069,
+          "end_line": 1109,
+          "source_fragment_sha256": "16d65e285adb2bfc007dc44dff100fc2c97e8b1fdebb92bc071b72d6102f1e83",
+          "output_fragment_sha256": "16d65e285adb2bfc007dc44dff100fc2c97e8b1fdebb92bc071b72d6102f1e83",
+          "transformation": "verbatim",
+          "text_normalization": "UTF-8 decoded; BOM removed if present; CRLF to LF before fragment hashing",
+          "verification_status": "extracted"
+        }
+      ]
+    },
+    {
+      "path": "tables/report/09_am_y_step.csv",
+      "bytes": 271,
+      "sha256": "8c5d37ed2921fe25c9d835620888a570306470661c35ce3b95a817d1f97e613b",
+      "kind": "report_table_transcription",
+      "sources": [
+        {
+          "source_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/report_for_word.md",
+          "source_sha256": "1eb55c63561985c191657a19e28e52cf90837340f2d5ecfaf70adee2fa0aa5ad",
+          "start_line": 1098,
+          "end_line": 1106,
+          "source_fragment_sha256": "e3fee2cdb1b7575cd2160581b136e5234d67d0ceffcae88a771e45fb96c852d4",
+          "output_fragment_sha256": "e3fee2cdb1b7575cd2160581b136e5234d67d0ceffcae88a771e45fb96c852d4",
+          "transformation": "verbatim",
+          "text_normalization": "UTF-8 decoded; BOM removed if present; CRLF to LF before fragment hashing",
+          "verification_status": "extracted"
+        }
+      ],
+      "note": "Строковые ячейки; численные значения не пересчитывались. Источник — отчёт, не первичный CSV."
+    },
+    {
+      "path": "tables/report/09_am_y_step.md",
+      "bytes": 5579,
+      "sha256": "4813b3d93e76360699158f1e99542b9b65439144e632b09dc1aa18e1f980c368",
+      "kind": "report_table_with_context",
+      "sources": [
+        {
+          "source_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/report_for_word.md",
+          "source_sha256": "1eb55c63561985c191657a19e28e52cf90837340f2d5ecfaf70adee2fa0aa5ad",
+          "start_line": 1069,
+          "end_line": 1109,
+          "source_fragment_sha256": "16d65e285adb2bfc007dc44dff100fc2c97e8b1fdebb92bc071b72d6102f1e83",
+          "output_fragment_sha256": "16d65e285adb2bfc007dc44dff100fc2c97e8b1fdebb92bc071b72d6102f1e83",
+          "transformation": "verbatim",
+          "text_normalization": "UTF-8 decoded; BOM removed if present; CRLF to LF before fragment hashing",
+          "verification_status": "extracted"
+        }
+      ]
+    },
+    {
+      "path": "tables/report/10_am_own_materials.csv",
+      "bytes": 299,
+      "sha256": "9105ed9ebd31904bc276ba00f3108bae49f9a4ebc668f15b6381436e6f252d84",
+      "kind": "report_table_transcription",
+      "sources": [
+        {
+          "source_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/report_for_word.md",
+          "source_sha256": "1eb55c63561985c191657a19e28e52cf90837340f2d5ecfaf70adee2fa0aa5ad",
+          "start_line": 1117,
+          "end_line": 1124,
+          "source_fragment_sha256": "245c4440336339eba357e821555b759241690ce8f0cd6d8f89dfad5ca319ffd1",
+          "output_fragment_sha256": "245c4440336339eba357e821555b759241690ce8f0cd6d8f89dfad5ca319ffd1",
+          "transformation": "verbatim",
+          "text_normalization": "UTF-8 decoded; BOM removed if present; CRLF to LF before fragment hashing",
+          "verification_status": "extracted"
+        }
+      ],
+      "note": "Строковые ячейки; численные значения не пересчитывались. Источник — отчёт, не первичный CSV."
+    },
+    {
+      "path": "tables/report/10_am_own_materials.md",
+      "bytes": 4402,
+      "sha256": "926df4beeec5e33a1619b91e7251f18903515ce66f410085a01eefb456b0a43b",
+      "kind": "report_table_with_context",
+      "sources": [
+        {
+          "source_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/report_for_word.md",
+          "source_sha256": "1eb55c63561985c191657a19e28e52cf90837340f2d5ecfaf70adee2fa0aa5ad",
+          "start_line": 1111,
+          "end_line": 1129,
+          "source_fragment_sha256": "58fd18605aebdc71285cbff329bdaa887e7ff7376fa061e45aad81670f83f3d3",
+          "output_fragment_sha256": "58fd18605aebdc71285cbff329bdaa887e7ff7376fa061e45aad81670f83f3d3",
+          "transformation": "verbatim",
+          "text_normalization": "UTF-8 decoded; BOM removed if present; CRLF to LF before fragment hashing",
+          "verification_status": "extracted"
+        }
+      ]
+    },
+    {
+      "path": "tables/report/11_am_finite_inverse.csv",
+      "bytes": 327,
+      "sha256": "9e3ebebb0759213655078c67a4a5fe1d904df5d9fe1e884864ec2193acc50000",
+      "kind": "report_table_transcription",
+      "sources": [
+        {
+          "source_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/report_for_word.md",
+          "source_sha256": "1eb55c63561985c191657a19e28e52cf90837340f2d5ecfaf70adee2fa0aa5ad",
+          "start_line": 1135,
+          "end_line": 1145,
+          "source_fragment_sha256": "17fb5b807665d88eaec03d7ea0fa7092101d96a99f5a5b8a25d58ea85e049aaf",
+          "output_fragment_sha256": "17fb5b807665d88eaec03d7ea0fa7092101d96a99f5a5b8a25d58ea85e049aaf",
+          "transformation": "verbatim",
+          "text_normalization": "UTF-8 decoded; BOM removed if present; CRLF to LF before fragment hashing",
+          "verification_status": "extracted"
+        }
+      ],
+      "note": "Строковые ячейки; численные значения не пересчитывались. Источник — отчёт, не первичный CSV."
+    },
+    {
+      "path": "tables/report/11_am_finite_inverse.md",
+      "bytes": 8542,
+      "sha256": "253ceb827bd02536778955abe14681031f76ee0845fec5c5f2732b55d5ef2be4",
+      "kind": "report_table_with_context",
+      "sources": [
+        {
+          "source_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/report_for_word.md",
+          "source_sha256": "1eb55c63561985c191657a19e28e52cf90837340f2d5ecfaf70adee2fa0aa5ad",
+          "start_line": 1131,
+          "end_line": 1182,
+          "source_fragment_sha256": "732399b436a62143ead5b37a7fc9fbe3cf7074a4af10fe5d129b55e464c5ae87",
+          "output_fragment_sha256": "732399b436a62143ead5b37a7fc9fbe3cf7074a4af10fe5d129b55e464c5ae87",
+          "transformation": "verbatim",
+          "text_normalization": "UTF-8 decoded; BOM removed if present; CRLF to LF before fragment hashing",
+          "verification_status": "extracted"
+        }
+      ]
+    },
+    {
+      "path": "tables/report/12_am_finite_compensation.csv",
+      "bytes": 561,
+      "sha256": "8cdd7efeebdc48499df50e55298f061bf5271ba2b59579f744a44e699a9aff9f",
+      "kind": "report_table_transcription",
+      "sources": [
+        {
+          "source_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/report_for_word.md",
+          "source_sha256": "1eb55c63561985c191657a19e28e52cf90837340f2d5ecfaf70adee2fa0aa5ad",
+          "start_line": 1156,
+          "end_line": 1166,
+          "source_fragment_sha256": "95cfd8b22f6617bb77df4e15d47e54c5c37f95420b871e5853bacdfeeeb07246",
+          "output_fragment_sha256": "95cfd8b22f6617bb77df4e15d47e54c5c37f95420b871e5853bacdfeeeb07246",
+          "transformation": "verbatim",
+          "text_normalization": "UTF-8 decoded; BOM removed if present; CRLF to LF before fragment hashing",
+          "verification_status": "extracted"
+        }
+      ],
+      "note": "Строковые ячейки; численные значения не пересчитывались. Источник — отчёт, не первичный CSV."
+    },
+    {
+      "path": "tables/report/12_am_finite_compensation.md",
+      "bytes": 8561,
+      "sha256": "989e2add0fd45f34ead7f99e8b17125665610ac2f80f28684f1a86e562fb2feb",
+      "kind": "report_table_with_context",
+      "sources": [
+        {
+          "source_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/report_for_word.md",
+          "source_sha256": "1eb55c63561985c191657a19e28e52cf90837340f2d5ecfaf70adee2fa0aa5ad",
+          "start_line": 1131,
+          "end_line": 1182,
+          "source_fragment_sha256": "732399b436a62143ead5b37a7fc9fbe3cf7074a4af10fe5d129b55e464c5ae87",
+          "output_fragment_sha256": "732399b436a62143ead5b37a7fc9fbe3cf7074a4af10fe5d129b55e464c5ae87",
+          "transformation": "verbatim",
+          "text_normalization": "UTF-8 decoded; BOM removed if present; CRLF to LF before fragment hashing",
+          "verification_status": "extracted"
+        }
+      ]
+    },
+    {
+      "path": "tables/report/13_am_volume_transfer.csv",
+      "bytes": 278,
+      "sha256": "e23dadc59ac7af88f8626d5ebf348a3ac16183a8b0ffb521500adbaf96952763",
+      "kind": "report_table_transcription",
+      "sources": [
+        {
+          "source_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/report_for_word.md",
+          "source_sha256": "1eb55c63561985c191657a19e28e52cf90837340f2d5ecfaf70adee2fa0aa5ad",
+          "start_line": 1169,
+          "end_line": 1179,
+          "source_fragment_sha256": "e341c26b2293689de2830bf4a9100c4c52f84b5581a1c1ef27eeedf80f8d76aa",
+          "output_fragment_sha256": "e341c26b2293689de2830bf4a9100c4c52f84b5581a1c1ef27eeedf80f8d76aa",
+          "transformation": "verbatim",
+          "text_normalization": "UTF-8 decoded; BOM removed if present; CRLF to LF before fragment hashing",
+          "verification_status": "extracted"
+        }
+      ],
+      "note": "Строковые ячейки; численные значения не пересчитывались. Источник — отчёт, не первичный CSV."
+    },
+    {
+      "path": "tables/report/13_am_volume_transfer.md",
+      "bytes": 8530,
+      "sha256": "e372ccca006f6f34b483ea8ade82af3adf4f1179b822ef89f4bb136c727c8d8f",
+      "kind": "report_table_with_context",
+      "sources": [
+        {
+          "source_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/report_for_word.md",
+          "source_sha256": "1eb55c63561985c191657a19e28e52cf90837340f2d5ecfaf70adee2fa0aa5ad",
+          "start_line": 1131,
+          "end_line": 1182,
+          "source_fragment_sha256": "732399b436a62143ead5b37a7fc9fbe3cf7074a4af10fe5d129b55e464c5ae87",
+          "output_fragment_sha256": "732399b436a62143ead5b37a7fc9fbe3cf7074a4af10fe5d129b55e464c5ae87",
+          "transformation": "verbatim",
+          "text_normalization": "UTF-8 decoded; BOM removed if present; CRLF to LF before fragment hashing",
+          "verification_status": "extracted"
+        }
+      ]
+    },
+    {
+      "path": "tables/report/14_am_pulse_projection.csv",
+      "bytes": 407,
+      "sha256": "709d7182d3d2f48bcca3d3f939f0010cc7e36b4dcd93696c0863977f2a56bfa2",
+      "kind": "report_table_transcription",
+      "sources": [
+        {
+          "source_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/report_for_word.md",
+          "source_sha256": "1eb55c63561985c191657a19e28e52cf90837340f2d5ecfaf70adee2fa0aa5ad",
+          "start_line": 1202,
+          "end_line": 1210,
+          "source_fragment_sha256": "3f33ea97b0e557f1c4abdca0a438b4a145e3732c35be3b8d4999606444374d0b",
+          "output_fragment_sha256": "3f33ea97b0e557f1c4abdca0a438b4a145e3732c35be3b8d4999606444374d0b",
+          "transformation": "verbatim",
+          "text_normalization": "UTF-8 decoded; BOM removed if present; CRLF to LF before fragment hashing",
+          "verification_status": "extracted"
+        }
+      ],
+      "note": "Строковые ячейки; численные значения не пересчитывались. Источник — отчёт, не первичный CSV."
+    },
+    {
+      "path": "tables/report/14_am_pulse_projection.md",
+      "bytes": 6367,
+      "sha256": "5cfdeedb7852cea37beedb5c42d875807c27722d51d8a00f710b73e0f5b910cb",
+      "kind": "report_table_with_context",
+      "sources": [
+        {
+          "source_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/report_for_word.md",
+          "source_sha256": "1eb55c63561985c191657a19e28e52cf90837340f2d5ecfaf70adee2fa0aa5ad",
+          "start_line": 1200,
+          "end_line": 1232,
+          "source_fragment_sha256": "803431c8bfd18331d0bfd3b8b357bc572a2c722dba6ac7f8e283a7990264d1ba",
+          "output_fragment_sha256": "803431c8bfd18331d0bfd3b8b357bc572a2c722dba6ac7f8e283a7990264d1ba",
+          "transformation": "verbatim",
+          "text_normalization": "UTF-8 decoded; BOM removed if present; CRLF to LF before fragment hashing",
+          "verification_status": "extracted"
+        }
+      ]
+    },
+    {
+      "path": "tables/report/15_am_false_correction.csv",
+      "bytes": 426,
+      "sha256": "a06368842cebb4439f3e1dcdd823c42b6fb80a0bf8b459ad5255a8f2ec8e32bc",
+      "kind": "report_table_transcription",
+      "sources": [
+        {
+          "source_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/report_for_word.md",
+          "source_sha256": "1eb55c63561985c191657a19e28e52cf90837340f2d5ecfaf70adee2fa0aa5ad",
+          "start_line": 1217,
+          "end_line": 1227,
+          "source_fragment_sha256": "d6f8887aea46dba2e5934bad245207f30e97ac65e53f974550f4dde83e6150c7",
+          "output_fragment_sha256": "d6f8887aea46dba2e5934bad245207f30e97ac65e53f974550f4dde83e6150c7",
+          "transformation": "verbatim",
+          "text_normalization": "UTF-8 decoded; BOM removed if present; CRLF to LF before fragment hashing",
+          "verification_status": "extracted"
+        }
+      ],
+      "note": "Строковые ячейки; численные значения не пересчитывались. Источник — отчёт, не первичный CSV."
+    },
+    {
+      "path": "tables/report/15_am_false_correction.md",
+      "bytes": 6429,
+      "sha256": "e1e91d6b5479b3023b5192dc1ad16562e39487e56af6a183c63fb20f71c5750a",
+      "kind": "report_table_with_context",
+      "sources": [
+        {
+          "source_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/report_for_word.md",
+          "source_sha256": "1eb55c63561985c191657a19e28e52cf90837340f2d5ecfaf70adee2fa0aa5ad",
+          "start_line": 1200,
+          "end_line": 1232,
+          "source_fragment_sha256": "803431c8bfd18331d0bfd3b8b357bc572a2c722dba6ac7f8e283a7990264d1ba",
+          "output_fragment_sha256": "803431c8bfd18331d0bfd3b8b357bc572a2c722dba6ac7f8e283a7990264d1ba",
+          "transformation": "verbatim",
+          "text_normalization": "UTF-8 decoded; BOM removed if present; CRLF to LF before fragment hashing",
+          "verification_status": "extracted"
+        }
+      ]
+    },
+    {
+      "path": "tables/report/16_am_omission_errors.csv",
+      "bytes": 463,
+      "sha256": "f24fc15fba8743bc988c54f8736f6d77e22f6665476eed0344eb3a913ece8df6",
+      "kind": "report_table_transcription",
+      "sources": [
+        {
+          "source_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/report_for_word.md",
+          "source_sha256": "1eb55c63561985c191657a19e28e52cf90837340f2d5ecfaf70adee2fa0aa5ad",
+          "start_line": 1238,
+          "end_line": 1248,
+          "source_fragment_sha256": "a9bf8a18c695ce92fa41bf2ef0277314ad85eadecc825bd53e2e2772affa9cd7",
+          "output_fragment_sha256": "a9bf8a18c695ce92fa41bf2ef0277314ad85eadecc825bd53e2e2772affa9cd7",
+          "transformation": "verbatim",
+          "text_normalization": "UTF-8 decoded; BOM removed if present; CRLF to LF before fragment hashing",
+          "verification_status": "extracted"
+        }
+      ],
+      "note": "Строковые ячейки; численные значения не пересчитывались. Источник — отчёт, не первичный CSV."
+    },
+    {
+      "path": "tables/report/16_am_omission_errors.md",
+      "bytes": 5071,
+      "sha256": "b61cf403a8c3dcd6090f34af1dc4c754be10e26fe0d89da5b18cbcd30c950609",
+      "kind": "report_table_with_context",
+      "sources": [
+        {
+          "source_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/report_for_word.md",
+          "source_sha256": "1eb55c63561985c191657a19e28e52cf90837340f2d5ecfaf70adee2fa0aa5ad",
+          "start_line": 1234,
+          "end_line": 1266,
+          "source_fragment_sha256": "6787e473588c0791ba5f9e69b8031dfcfc052c2e41f667655f918b6918719afa",
+          "output_fragment_sha256": "6787e473588c0791ba5f9e69b8031dfcfc052c2e41f667655f918b6918719afa",
+          "transformation": "verbatim",
+          "text_normalization": "UTF-8 decoded; BOM removed if present; CRLF to LF before fragment hashing",
+          "verification_status": "extracted"
+        }
+      ]
+    },
+    {
+      "path": "tables/report/17_am_isolated_limits.csv",
+      "bytes": 543,
+      "sha256": "4ec072bb18f39c5c564908c027dde89c731b5c1bea15166da4c870125c311a2d",
+      "kind": "report_table_transcription",
+      "sources": [
+        {
+          "source_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/report_for_word.md",
+          "source_sha256": "1eb55c63561985c191657a19e28e52cf90837340f2d5ecfaf70adee2fa0aa5ad",
+          "start_line": 1251,
+          "end_line": 1261,
+          "source_fragment_sha256": "82954e1251936e9b6c75891e03f828ddff4f9c564511cb9788c2ab781f631411",
+          "output_fragment_sha256": "82954e1251936e9b6c75891e03f828ddff4f9c564511cb9788c2ab781f631411",
+          "transformation": "verbatim",
+          "text_normalization": "UTF-8 decoded; BOM removed if present; CRLF to LF before fragment hashing",
+          "verification_status": "extracted"
+        }
+      ],
+      "note": "Строковые ячейки; численные значения не пересчитывались. Источник — отчёт, не первичный CSV."
+    },
+    {
+      "path": "tables/report/17_am_isolated_limits.md",
+      "bytes": 5100,
+      "sha256": "f106a130a0d80e38b96a52ac2da729f3a8c2ef7d3cb8d21608d35d0e2f6d383b",
+      "kind": "report_table_with_context",
+      "sources": [
+        {
+          "source_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/report_for_word.md",
+          "source_sha256": "1eb55c63561985c191657a19e28e52cf90837340f2d5ecfaf70adee2fa0aa5ad",
+          "start_line": 1234,
+          "end_line": 1266,
+          "source_fragment_sha256": "6787e473588c0791ba5f9e69b8031dfcfc052c2e41f667655f918b6918719afa",
+          "output_fragment_sha256": "6787e473588c0791ba5f9e69b8031dfcfc052c2e41f667655f918b6918719afa",
+          "transformation": "verbatim",
+          "text_normalization": "UTF-8 decoded; BOM removed if present; CRLF to LF before fragment hashing",
+          "verification_status": "extracted"
+        }
+      ]
+    }
+  ],
+  "counts": {
+    "payload_files": 64,
+    "scientific_figures": 16,
+    "omitted_preparation_photos": 3,
+    "report_tables": 14,
+    "lateral_observation_rows": 24
+  },
+  "processed_ct_tables": {
+    "files": 2,
+    "phase_rows": 27,
+    "chamber_change_rows": 108,
+    "scope": "У1/У2 only; historical extra participant omitted"
+  },
+  "figure_hash_mismatches_with_word_build": [],
+  "uncovered_dependencies": [
+    {
+      "repository_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/execution_20261026/",
+      "purpose": "Пакет обработки исходных сигналов",
+      "status": "missing_local_checkout",
+      "verification": "existence_only",
+      "substitute": "Извлечение таблицы отчёта не заменяет первичный расчётный файл."
+    },
+    {
+      "repository_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/pulmovista_check_20261028/PATIENT_RESULT.md",
+      "purpose": "Индивидуальный поясной отчёт",
+      "status": "missing_local_checkout",
+      "verification": "existence_only",
+      "substitute": "Извлечение таблицы отчёта не заменяет первичный расчётный файл."
+    },
+    {
+      "repository_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/pulmovista_check_20261028/local/patient_v3/tissue_parameters_conditional.csv",
+      "purpose": "Условные тканевые параметры",
+      "status": "missing_local_checkout",
+      "verification": "existence_only",
+      "substitute": "Извлечение таблицы отчёта не заменяет первичный расчётный файл."
+    },
+    {
+      "repository_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/pulmovista_check_20261028/local/patient_v3/tt_transfer_operator.csv",
+      "purpose": "Оператор переноса в ТТРКГ",
+      "status": "missing_local_checkout",
+      "verification": "existence_only",
+      "substitute": "Извлечение таблицы отчёта не заменяет первичный расчётный файл."
+    },
+    {
+      "repository_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/pulmovista_check_20261028/local/patient_v3/band_projection_summary.csv",
+      "purpose": "Пульсовые проекции",
+      "status": "missing_local_checkout",
+      "verification": "existence_only",
+      "substitute": "Извлечение таблицы отчёта не заменяет первичный расчётный файл."
+    },
+    {
+      "repository_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/pulmovista_check_20261028/local/composition_pulse_v1/common_metric_comparison.csv",
+      "purpose": "Сравнение нормировок",
+      "status": "missing_local_checkout",
+      "verification": "existence_only",
+      "substitute": "Извлечение таблицы отчёта не заменяет первичный расчётный файл."
+    },
+    {
+      "repository_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/pulmovista_check_20261028/local/shape_electrical_comparison_v1/target_chain_effective_geometry.csv",
+      "purpose": "Диагностика геометрического смешения",
+      "status": "missing_local_checkout",
+      "verification": "existence_only",
+      "substitute": "Извлечение таблицы отчёта не заменяет первичный расчётный файл."
+    },
+    {
+      "repository_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/results/montage_sensitivity_v1/tables/derivatives.csv",
+      "purpose": "Первичные таблицы монтажной серии",
+      "status": "missing_local_checkout",
+      "verification": "existence_only",
+      "substitute": "Извлечение таблицы отчёта не заменяет первичный расчётный файл."
+    },
+    {
+      "purpose": "DICOM, нативные маски, внешние STL и полные физиологические ряды",
+      "status": "excluded_by_scope",
+      "verification": "not_accessed",
+      "note": "Внешний диск недоступен по условию задания. Сетевые копии и зеркало не использовались."
+    },
+    {
+      "purpose": "Поясной внешний решатель",
+      "status": "external_reference_not_verified_here",
+      "url": "https://github.com/ILoveBTSM/CompartmentPipeline",
+      "recorded_commit": "a382dbf8fd5f23bba9e69fcf8c6169a1627bc102",
+      "source": "AGENTS.md, PulmoVista как источник тканевых поправок",
+      "note": "Коммит указан по локальной инструкции; внешний checkout не читался и не загружался."
+    }
+  ],
+  "integrity_convention": "files excludes archive_manifest.json and CHECKSUMS.sha256 to avoid self-reference; CHECKSUMS includes the internal manifest. The external manifest also hashes the complete ZIP.",
+  "scientific_recalculation_performed": false,
+  "validation_scope": "Проверены структура ZIP, CRC, хэши, состав и точность извлечения. Это не научная или физиологическая валидация результатов.",
+  "archive": {
+    "name": "Материалы_научной_редакции_20261029.zip",
+    "bytes": 4468481,
+    "sha256": "23dfd66d7801204c247c51f923fa01ba78bcdbc0c8fefd9856bc7178cc43d1ed"
+  },
+  "internal_manifest_sha256": "463ebd6cfc9fdbac3b2dea00851fbb4635d051210350faea5ea046e382255809",
+  "checksums_sha256": "748d046d0d425bf84741e48c657973f15eca14c56663ccb4d99ced60b7179152",
+  "validation": {
+    "zip_test": "passed",
+    "member_hashes": "passed",
+    "checksums": "passed",
+    "member_count": 66,
+    "scope_allowlist": "passed",
+    "primary_medical_arrays_included": false
+  }
+}

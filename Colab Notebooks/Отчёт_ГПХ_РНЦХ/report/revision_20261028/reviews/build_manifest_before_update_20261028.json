@@ -1,0 +1,216 @@
+{
+  "sources": [
+    {
+      "file": "front_matter.md",
+      "sha256": "66f51c98d8c667a26d1a65ef72694cd2742ce98713022360c84e727049de050e"
+    },
+    {
+      "file": "chapters/01_literature.md",
+      "sha256": "8193e9aa743158ec5c97002fb8166c2349946ae4c728cbd541fc59d6c9414393"
+    },
+    {
+      "file": "chapters/02_alternatives.md",
+      "sha256": "9012e9b57b5725b1b98b2947e5df74989628e75d246d94d9af373292f8c17a3b"
+    },
+    {
+      "file": "chapters/03_patents.md",
+      "sha256": "f03c6408246348b9807f8015c7a064107a4b2ddb2e46a97e22c0123f4857d2d1"
+    },
+    {
+      "file": "chapters/04_problem.md",
+      "sha256": "26c79fcdfeaebdde1c685cb8d818f44fb766f84a4369b65b7462be96ca170dee"
+    },
+    {
+      "file": "chapters/05_experiments.md",
+      "sha256": "cc58eb25fdb41cccee1305cc99b3073b4d8ece0d6dc50ed26121a40810084b32"
+    },
+    {
+      "file": "chapters/06_anatomy.md",
+      "sha256": "d5a0971ef09f7d552f824680e13df11905fb4d76de02b86e16f4b19d0ba7b70a"
+    },
+    {
+      "file": "chapters/07_forward.md",
+      "sha256": "f691b60b8b62826fdc5273d7b555ff6f7b3e85ca325b30fa6bb2bf8ea43d49b6"
+    },
+    {
+      "file": "chapters/08_tissue.md",
+      "sha256": "cb6b7da02175870de3dadb53f6153806bdaec2d363e2e183a7a34bb83694867a"
+    },
+    {
+      "file": "chapters/09_heart_dynamics.md",
+      "sha256": "2eb1ce73ba1a99a3fc8917bc0da06217ec5aeac29cfeccc77cd74cf07dc340f3"
+    },
+    {
+      "file": "chapters/10_chambers.md",
+      "sha256": "b5f9fe810daa8d49d525fe0234f0977d053ec0da9a4b82223c30e45c02e1ff9f"
+    },
+    {
+      "file": "chapters/11_validation.md",
+      "sha256": "3c1a4f8454974ace1205f0aed05d8ad1c391a7e97219e648e1460794ea6f9217"
+    },
+    {
+      "file": "chapters/12_discussion.md",
+      "sha256": "1bfd83afa3f69177cf2874151579d80152aefc777b1b30535349003a66502232"
+    },
+    {
+      "file": "conclusion.md",
+      "sha256": "41f18def9ad3e8784a4f858a6375e06087fc12935798355f814fd29b8d4540f7"
+    },
+    {
+      "file": "appendices.md",
+      "sha256": "21ec3b6935dfaad1f0e3a70d4b850801d2103988815b0f57071dd76f9bd9d202"
+    }
+  ],
+  "figures": [
+    {
+      "chapter": "04_problem.md",
+      "file": "figures/36893a49eaf9.png",
+      "source": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/figures/method/01_method_sequence.png",
+      "sha256": "36893a49eaf93410423df02ad587affe4078d41b834a8ae4ccc70a6fb35652ce",
+      "description": "Проектируемая последовательность анатомических, электрических и камерных преобразований"
+    },
+    {
+      "chapter": "05_experiments.md",
+      "file": "figures/9410feec4a04.png",
+      "source": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261028/figures/reader/05_01_selected_blocks_preview.png",
+      "sha256": "9410feec4a04d3f0d9d3be9f40cbd48ecb2062e91144f7e3d57d0561b4a9bea6",
+      "description": "Два блока ЭКГ и импедансных сигналов участника Г"
+    },
+    {
+      "chapter": "05_experiments.md",
+      "file": "figures/6c0acdc9c3cc.png",
+      "source": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261028/figures/reader/05_02_ct_belt_section.png",
+      "sha256": "6c0acdc9c3cc6ab66c3a659ad2fe11e0c047bebb13b20c0d641476d1a20d5ca8",
+      "description": "Сечение тканевых масок Н и расчётные центры пояса ЭИТ"
+    },
+    {
+      "chapter": "06_anatomy.md",
+      "file": "figures/dfaf500992b1.png",
+      "source": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/pulmovista_check_20261028/local/belt_current_view/belt_current_3d.png",
+      "sha256": "dfaf500992b1b88c39df24db5f0db5a78e25b4eeb75dba67ca661d023c59cc9f",
+      "description": "Анатомическая расчётная сцена с сердцем, лёгкими и поясом ЭИТ"
+    },
+    {
+      "chapter": "06_anatomy.md",
+      "file": "figures/3da3bfa3b141.png",
+      "source": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261028/figures/reader/06_02_phase09_overview.png",
+      "sha256": "3da3bfa3b1416fa01f9f6f518216ff45a5635d690242dcbfc14bb176b34484ae",
+      "description": "КТ-сечения и автоматические камерные контуры"
+    },
+    {
+      "chapter": "06_anatomy.md",
+      "file": "figures/27676a97e7a0.png",
+      "source": "Colab Notebooks/cardiac_4d_segmentation/results/nik_whole_heart_20261028/exploratory/full_geometry_v1/summary/final/cycle_0_dynamics_1.png",
+      "sha256": "27676a97e7a072f1c3f607ba791e35755d7de50538d0ef6023ef2bcd1d283a41",
+      "description": "Фазовые показатели индивидуальной формы и сфер"
+    },
+    {
+      "chapter": "06_anatomy.md",
+      "file": "figures/ebd34193e582.png",
+      "source": "Colab Notebooks/cardiac_4d_segmentation/results/nik_whole_heart_20261028/exploratory/full_geometry_v1/summary/final/cycle_0_dynamics_3.png",
+      "sha256": "ebd34193e58277f394da9341f35415f4fd9b5107acdd6f72fdeb9edd2d3cdbe4",
+      "description": "Объём, перемещение и перекрытие для группы эллипсоидов"
+    },
+    {
+      "chapter": "06_anatomy.md",
+      "file": "figures/3bfc7639d8d7.png",
+      "source": "Colab Notebooks/cardiac_4d_segmentation/results/nik_whole_heart_20261028/exploratory/full_geometry_v1/summary/final/cycle_0_trajectory_3.png",
+      "sha256": "3bfc7639d8d7b199776bc0c5afc390f5bdc703c1f968a0761b9275172b0baae9",
+      "description": "Траектории центров эллипсоидных аппроксимаций"
+    },
+    {
+      "chapter": "06_anatomy.md",
+      "file": "figures/e0161a0db073.png",
+      "source": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261028/figures/reader/06_06_center_displacement.png",
+      "sha256": "e0161a0db073b69fad3e971b3c90ae0c97f9bb38aa9b6a31019468ef0fe7761c",
+      "description": "Смещения центроидов фазовых масок"
+    },
+    {
+      "chapter": "07_forward.md",
+      "file": "figures/dfaf500992b1.png",
+      "source": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/pulmovista_check_20261028/local/belt_current_view/belt_current_3d.png",
+      "sha256": "dfaf500992b1b88c39df24db5f0db5a78e25b4eeb75dba67ca661d023c59cc9f",
+      "description": "Расчётный пояс ЭИТ и анатомические поверхности"
+    },
+    {
+      "chapter": "07_forward.md",
+      "file": "figures/5690647835d6.png",
+      "source": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261028/figures/reader/07_02_electrical_approximation.png",
+      "sha256": "5690647835d6aa62a584a4df468b7bb56f97bbd93ed9167ad3346be0a1cd3d61",
+      "description": "Сравнение электрических приращений сердечных форм"
+    },
+    {
+      "chapter": "07_forward.md",
+      "file": "figures/d7a6dfb6f426.png",
+      "source": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261028/figures/reader/07_03_measurement_residuals.png",
+      "sha256": "d7a6dfb6f4264667bfaa9bb0a5e7dae3c726c251be5b4ff0569e72955cd2b6f0",
+      "description": "Напряжения ЭИТ, остатки и взаимность"
+    },
+    {
+      "chapter": "08_tissue.md",
+      "file": "figures/f1a30147ff07.png",
+      "source": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261028/figures/reader/08_01_baseline_fit.png",
+      "sha256": "f1a30147ff078e65eebae98ccd78d75e49645bab0f61b9036f221a15c69b541a",
+      "description": "Базовые напряжения и остатки индивидуальной подгонки"
+    },
+    {
+      "chapter": "08_tissue.md",
+      "file": "figures/ee60fc3b2861.png",
+      "source": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/pulmovista_check_20261028/local/patient_v3/conditional_band_projection.png",
+      "sha256": "ee60fc3b2861f022960a34108c2ca1b666c0df786fa69080a3d2eb9c1cde0518",
+      "description": "Условные тканевые вклады диагностической полосы"
+    },
+    {
+      "chapter": "08_tissue.md",
+      "file": "figures/4af36cf17afe.png",
+      "source": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261028/figures/reader_motion/09_5_02_target_chain_volume_sensitivity.png",
+      "sha256": "4af36cf17afec3c917ed16c0e780e9ace0d255ea3a1d2b0bdebe4a17684d9230",
+      "description": "Влияние ложной тканевой поправки на объёмную чувствительность"
+    },
+    {
+      "chapter": "09_heart_dynamics.md",
+      "file": "figures/f8d466a2130b.png",
+      "source": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261028/figures/reader_motion/09_1_paired_motion_effect.png",
+      "sha256": "f8d466a2130b649537ccdd0102625028c2073ff2b2df287f05f4dc3a3f091aa8",
+      "description": "Парное сравнение фиксированного центра и референсного переноса"
+    },
+    {
+      "chapter": "09_heart_dynamics.md",
+      "file": "figures/3cc03cbb636a.png",
+      "source": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261028/figures/reader_motion/09_2_motion_volume_law.png",
+      "sha256": "3cc03cbb636a7535932f5f6086c17de5146d815f64199055bfbe50babd061405",
+      "description": "Координатные остатки линейного закона движения"
+    },
+    {
+      "chapter": "09_heart_dynamics.md",
+      "file": "figures/102732f8e556.png",
+      "source": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261028/figures/reader_motion/09_3_tt_motion_sensitivity.png",
+      "sha256": "102732f8e556a0c853e153e269e7c4bd21c89ffd652d68c2aeec5297c19397a7",
+      "description": "Чувствительность ТТРКГ к осевым сдвигам и изменение объёмного коэффициента"
+    },
+    {
+      "chapter": "09_heart_dynamics.md",
+      "file": "figures/90d0ce0e2841.png",
+      "source": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261028/figures/reader_motion/09_4_03_finite_probe_volume_errors.png",
+      "sha256": "90d0ce0e28412d2cb9aabee7f93f6e66c172c908ccf39b700214510ec85e12d1",
+      "description": "Ошибки объёма на конечных вычислительных пробах"
+    },
+    {
+      "chapter": "09_heart_dynamics.md",
+      "file": "figures/4af36cf17afe.png",
+      "source": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261028/figures/reader_motion/09_5_02_target_chain_volume_sensitivity.png",
+      "sha256": "4af36cf17afec3c917ed16c0e780e9ace0d255ea3a1d2b0bdebe4a17684d9230",
+      "description": "Объёмная чувствительность до и после ложной тканевой поправки"
+    },
+    {
+      "chapter": "10_chambers.md",
+      "file": "figures/7d562bdb0da8.png",
+      "source": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261028/figures/reader_chamber/10_01_guarded_chambers.png",
+      "sha256": "7d562bdb0da80fb39a320a5c6ecf116fda8691e2ebdfe693be595abd5b1635c1",
+      "description": "Камерные объёмы Н: КТ и предсказания на отложенных фазах"
+    }
+  ],
+  "bibliography_entries": 104,
+  "document_sha256_before_fields": "8c91b67c18d3e314d00a2961aead11914c1b0c1dd1c8c65907e2f040b1575be2",
+  "partial_build": false
+}

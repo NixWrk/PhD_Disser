@@ -1,0 +1,741 @@
+{
+  "sources": [
+    {
+      "file": "front_matter.md",
+      "sha256": "75554c1a7494dff9eac0c925864d464ccf7e1081f23cab91cb5f761f0b4a2842"
+    },
+    {
+      "file": "chapters/01_literature.md",
+      "sha256": "35901834c28eb2efee37ccabcdf61dd50437280871163fb31018395b750d2f2c"
+    },
+    {
+      "file": "chapters/02_alternatives.md",
+      "sha256": "6a128153b33d4f21cd20edce5aa46a4ece9779726aeec5b221d5a51096da44c8"
+    },
+    {
+      "file": "chapters/03_patents.md",
+      "sha256": "c8f07ad519a58fd9e2cc06152b794fbdf358d0ded1ddc63b2ef672f719dfdf6e"
+    },
+    {
+      "file": "chapters/04_problem.md",
+      "sha256": "7c65d664973407fda30e915c54815c83b2f519224a4f7c1b5655d6efe1dbf8cd"
+    },
+    {
+      "file": "chapters/05_anatomy.md",
+      "sha256": "936417dcd3faa7c7dc5955dfff9500374c3b2ed0f5951a01f7c88449a91a2849"
+    },
+    {
+      "file": "chapters/06_forward.md",
+      "sha256": "6a33fccefd112cdc8defa2930fd1ff4fcfcfc042eed4da2b2661064e6f97a4a5"
+    },
+    {
+      "file": "chapters/07_experiments.md",
+      "sha256": "89a93cbf3b7452ebacc29e07c204897eef4e6b13cc0614455709a9966241154e"
+    },
+    {
+      "file": "chapters/08_tissue.md",
+      "sha256": "ffd54336c29803ef5816c3bdbab5ca42e95467559524c146b45453eed1557962"
+    },
+    {
+      "file": "chapters/09_heart_dynamics.md",
+      "sha256": "1c335be2cfbbb4bf408537bf2af6943853b818d1f894e799296760801573579b"
+    },
+    {
+      "file": "chapters/10_chambers.md",
+      "sha256": "0c995bc2a02bf56b37c6502f4e26b24e3cbb557dac35418702a077a521fb5981"
+    },
+    {
+      "file": "chapters/11_validation.md",
+      "sha256": "0b72cdb323ad42853cf84ca7e875d4d7ae27795c64858cc4178f291f56dc1fcc"
+    },
+    {
+      "file": "chapters/12_discussion.md",
+      "sha256": "26df9a79b0823cad99c086ce50c3b8b06d1f6a627ce63b8f7c6268db92ea8e7b"
+    },
+    {
+      "file": "conclusion.md",
+      "sha256": "1adbaeced9d35bbf6ec651901be9bd59570c035b87a085920c99158068f4d1bf"
+    },
+    {
+      "file": "appendices.md",
+      "sha256": "33e2b7710d409fb4e53b3fad468db0360279a62f8b6e41ac7d6d2d55ccfaa1e7"
+    }
+  ],
+  "figures": [
+    {
+      "chapter": "04_problem.md",
+      "file": "figures/36893a49eaf9.png",
+      "source": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/figures/method/01_method_sequence.png",
+      "sha256": "36893a49eaf93410423df02ad587affe4078d41b834a8ae4ccc70a6fb35652ce",
+      "description": "Проектируемая последовательность анатомических, электрических и камерных преобразований",
+      "verified_previous_build_cache": false
+    },
+    {
+      "chapter": "05_anatomy.md",
+      "file": "figures/dfaf500992b1.png",
+      "source": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/pulmovista_check_20261028/local/belt_current_view/belt_current_3d.png",
+      "sha256": "dfaf500992b1b88c39df24db5f0db5a78e25b4eeb75dba67ca661d023c59cc9f",
+      "description": "Анатомическая расчётная сцена с сердцем, лёгкими и поясом ЭИТ",
+      "verified_previous_build_cache": true
+    },
+    {
+      "chapter": "05_anatomy.md",
+      "file": "figures/3da3bfa3b141.png",
+      "source": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_contract/figures/reader/06_02_phase09_overview.png",
+      "sha256": "3da3bfa3b1416fa01f9f6f518216ff45a5635d690242dcbfc14bb176b34484ae",
+      "description": "КТ-сечения и автоматические камерные контуры",
+      "verified_previous_build_cache": false
+    },
+    {
+      "chapter": "05_anatomy.md",
+      "file": "figures/0f0ec1604a8c.png",
+      "source": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_contract/figures/html_exports/03_g_ct_contour_regularization.png",
+      "sha256": "0f0ec1604a8c99d7185e106faa38f61ea826c3f5ccdeab335429c8e46f2b79e3",
+      "description": "Контроль изменения наружного КТ-контура при подготовке геометрии",
+      "verified_previous_build_cache": false
+    },
+    {
+      "chapter": "05_anatomy.md",
+      "file": "figures/27676a97e7a0.png",
+      "source": "Colab Notebooks/cardiac_4d_segmentation/results/nik_whole_heart_20261028/exploratory/full_geometry_v1/summary/final/cycle_0_dynamics_1.png",
+      "sha256": "27676a97e7a072f1c3f607ba791e35755d7de50538d0ef6023ef2bcd1d283a41",
+      "description": "Фазовые показатели индивидуальной формы и сфер",
+      "verified_previous_build_cache": true
+    },
+    {
+      "chapter": "05_anatomy.md",
+      "file": "figures/ebd34193e582.png",
+      "source": "Colab Notebooks/cardiac_4d_segmentation/results/nik_whole_heart_20261028/exploratory/full_geometry_v1/summary/final/cycle_0_dynamics_3.png",
+      "sha256": "ebd34193e58277f394da9341f35415f4fd9b5107acdd6f72fdeb9edd2d3cdbe4",
+      "description": "Объём, перемещение и перекрытие для группы эллипсоидов",
+      "verified_previous_build_cache": true
+    },
+    {
+      "chapter": "05_anatomy.md",
+      "file": "figures/3bfc7639d8d7.png",
+      "source": "Colab Notebooks/cardiac_4d_segmentation/results/nik_whole_heart_20261028/exploratory/full_geometry_v1/summary/final/cycle_0_trajectory_3.png",
+      "sha256": "3bfc7639d8d7b199776bc0c5afc390f5bdc703c1f968a0761b9275172b0baae9",
+      "description": "Траектории центров эллипсоидных аппроксимаций",
+      "verified_previous_build_cache": true
+    },
+    {
+      "chapter": "05_anatomy.md",
+      "file": "figures/e0161a0db073.png",
+      "source": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_contract/figures/reader/06_06_center_displacement.png",
+      "sha256": "e0161a0db073b69fad3e971b3c90ae0c97f9bb38aa9b6a31019468ef0fe7761c",
+      "description": "Смещения центроидов фазовых масок",
+      "verified_previous_build_cache": false
+    },
+    {
+      "chapter": "06_forward.md",
+      "file": "figures/dfaf500992b1.png",
+      "source": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/pulmovista_check_20261028/local/belt_current_view/belt_current_3d.png",
+      "sha256": "dfaf500992b1b88c39df24db5f0db5a78e25b4eeb75dba67ca661d023c59cc9f",
+      "description": "Расчётный пояс ЭИТ и анатомические поверхности",
+      "verified_previous_build_cache": true
+    },
+    {
+      "chapter": "06_forward.md",
+      "file": "figures/5690647835d6.png",
+      "source": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_contract/figures/reader/07_02_electrical_approximation.png",
+      "sha256": "5690647835d6aa62a584a4df468b7bb56f97bbd93ed9167ad3346be0a1cd3d61",
+      "description": "Сравнение электрических приращений сердечных форм",
+      "verified_previous_build_cache": false
+    },
+    {
+      "chapter": "06_forward.md",
+      "file": "figures/d7a6dfb6f426.png",
+      "source": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_contract/figures/reader/07_03_measurement_residuals.png",
+      "sha256": "d7a6dfb6f4264667bfaa9bb0a5e7dae3c726c251be5b4ff0569e72955cd2b6f0",
+      "description": "Напряжения ЭИТ, остатки и взаимность",
+      "verified_previous_build_cache": false
+    },
+    {
+      "chapter": "06_forward.md",
+      "file": "figures/05fa16e5f79d.png",
+      "source": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_contract/figures/reader_montage/ch07_04_volume_step_quadrature.png",
+      "sha256": "05fa16e5f79dd48296b4fb44a31fec9be91263c55dac65ab6c75ccc8667dd55a",
+      "description": "Объёмная чувствительность трёх форм при уточнении шага и квадратуры",
+      "verified_previous_build_cache": false
+    },
+    {
+      "chapter": "07_experiments.md",
+      "file": "figures/9410feec4a04.png",
+      "source": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_contract/figures/reader/05_01_selected_blocks_preview.png",
+      "sha256": "9410feec4a04d3f0d9d3be9f40cbd48ecb2062e91144f7e3d57d0561b4a9bea6",
+      "description": "Два блока ЭКГ и импедансных сигналов участника Г",
+      "verified_previous_build_cache": false
+    },
+    {
+      "chapter": "07_experiments.md",
+      "file": "figures/49d63989a17d.png",
+      "source": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_contract/figures/html_exports/anonymous/04_tt_ecg_four_cycles.png",
+      "sha256": "49d63989a17daec8128509157b885f01336c21c021a01605a1d13fd42100a276",
+      "description": "ТТРКГ и ЭКГ трёх участников на четырёх последовательных интервалах",
+      "verified_previous_build_cache": false
+    },
+    {
+      "chapter": "07_experiments.md",
+      "file": "figures/6c0acdc9c3cc.png",
+      "source": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_contract/figures/reader/05_02_ct_belt_section.png",
+      "sha256": "6c0acdc9c3cc6ab66c3a659ad2fe11e0c047bebb13b20c0d641476d1a20d5ca8",
+      "description": "Сечение тканевых масок Н и расчётные центры пояса ЭИТ",
+      "verified_previous_build_cache": false
+    },
+    {
+      "chapter": "08_tissue.md",
+      "file": "figures/4cea2f4a2687.png",
+      "source": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_contract/figures/html_exports/anonymous/05_tissue_identifiability_singular_values.png",
+      "sha256": "4cea2f4a2687eef6080f7035be1f53210986c242db58097047ecdac81ea0637e",
+      "description": "Локальная различимость четырёх сопротивлений по расчётным наборам отведений",
+      "verified_previous_build_cache": false
+    },
+    {
+      "chapter": "08_tissue.md",
+      "file": "figures/5491d23b0690.png",
+      "source": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_contract/figures/html_exports/anonymous/08_respiratory_contrast_observation_model.png",
+      "sha256": "5491d23b069022273e55c97f2052442a72e6d0e2f26f9e8d0ea7703e3871431b",
+      "description": "Наблюдаемый дыхательный контраст и модельный вклад лёгкого",
+      "verified_previous_build_cache": false
+    },
+    {
+      "chapter": "08_tissue.md",
+      "file": "figures/f1a30147ff07.png",
+      "source": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_contract/figures/reader/08_01_baseline_fit.png",
+      "sha256": "f1a30147ff078e65eebae98ccd78d75e49645bab0f61b9036f221a15c69b541a",
+      "description": "Базовые напряжения и остатки индивидуальной подгонки",
+      "verified_previous_build_cache": false
+    },
+    {
+      "chapter": "08_tissue.md",
+      "file": "figures/ee60fc3b2861.png",
+      "source": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/pulmovista_check_20261028/local/patient_v3/conditional_band_projection.png",
+      "sha256": "ee60fc3b2861f022960a34108c2ca1b666c0df786fa69080a3d2eb9c1cde0518",
+      "description": "Условные тканевые вклады диагностической полосы",
+      "verified_previous_build_cache": true
+    },
+    {
+      "chapter": "08_tissue.md",
+      "file": "figures/4af36cf17afe.png",
+      "source": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_contract/figures/reader_motion/09_5_02_target_chain_volume_sensitivity.png",
+      "sha256": "4af36cf17afec3c917ed16c0e780e9ace0d255ea3a1d2b0bdebe4a17684d9230",
+      "description": "Влияние ложной тканевой поправки на объёмную чувствительность",
+      "verified_previous_build_cache": false
+    },
+    {
+      "chapter": "08_tissue.md",
+      "file": "figures/521811eaca2a.png",
+      "source": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_contract/figures/reader_montage/ch08_04_isolated_volume_errors.png",
+      "sha256": "521811eaca2a30ec3a9ee0222a2ca1fbc5630e6b1362d7a47cf8e1568ddd24e0",
+      "description": "Условные эквивалентные ошибки объёма при одном неучтённом вкладе",
+      "verified_previous_build_cache": false
+    },
+    {
+      "chapter": "09_heart_dynamics.md",
+      "file": "figures/f8d466a2130b.png",
+      "source": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_contract/figures/reader_motion/09_1_paired_motion_effect.png",
+      "sha256": "f8d466a2130b649537ccdd0102625028c2073ff2b2df287f05f4dc3a3f091aa8",
+      "description": "Парное сравнение фиксированного центра и референсного переноса",
+      "verified_previous_build_cache": false
+    },
+    {
+      "chapter": "09_heart_dynamics.md",
+      "file": "figures/3cc03cbb636a.png",
+      "source": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_contract/figures/reader_motion/09_2_motion_volume_law.png",
+      "sha256": "3cc03cbb636a7535932f5f6086c17de5146d815f64199055bfbe50babd061405",
+      "description": "Координатные остатки линейного закона движения",
+      "verified_previous_build_cache": false
+    },
+    {
+      "chapter": "09_heart_dynamics.md",
+      "file": "figures/102732f8e556.png",
+      "source": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_contract/figures/reader_motion/09_3_tt_motion_sensitivity.png",
+      "sha256": "102732f8e556a0c853e153e269e7c4bd21c89ffd652d68c2aeec5297c19397a7",
+      "description": "Чувствительность ТТРКГ к осевым сдвигам и изменение объёмного коэффициента",
+      "verified_previous_build_cache": false
+    },
+    {
+      "chapter": "09_heart_dynamics.md",
+      "file": "figures/90d0ce0e2841.png",
+      "source": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_contract/figures/reader_motion/09_4_03_finite_probe_volume_errors.png",
+      "sha256": "90d0ce0e28412d2cb9aabee7f93f6e66c172c908ccf39b700214510ec85e12d1",
+      "description": "Ошибки объёма на конечных вычислительных пробах",
+      "verified_previous_build_cache": false
+    },
+    {
+      "chapter": "09_heart_dynamics.md",
+      "file": "figures/4af36cf17afe.png",
+      "source": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_contract/figures/reader_motion/09_5_02_target_chain_volume_sensitivity.png",
+      "sha256": "4af36cf17afec3c917ed16c0e780e9ace0d255ea3a1d2b0bdebe4a17684d9230",
+      "description": "Объёмная чувствительность до и после ложной тканевой поправки",
+      "verified_previous_build_cache": false
+    },
+    {
+      "chapter": "09_heart_dynamics.md",
+      "file": "figures/514cdc68f3f4.png",
+      "source": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_contract/figures/reader_montage/ch09_06_finite_compensation.png",
+      "sha256": "514cdc68f3f4e039047a39cac94800356785a2346d06498202f1dbe056f6aacb",
+      "description": "Конечные отклики объёмных проб после компенсации сопротивлением сердца",
+      "verified_previous_build_cache": false
+    },
+    {
+      "chapter": "09_heart_dynamics.md",
+      "file": "figures/9f8be5955230.png",
+      "source": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_contract/figures/html_exports/anonymous/06_measured_pulse_vs_volume_probe.png",
+      "sha256": "9f8be5955230de00c8c726e203758f0f9cc801f16d85f3bc2a1f1dad47668f29",
+      "description": "Измеренный пульс и объёмная проба однородной модели",
+      "verified_previous_build_cache": false
+    },
+    {
+      "chapter": "10_chambers.md",
+      "file": "figures/4e5f441d7333.png",
+      "source": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_contract/figures/html_exports/anonymous/07_ct_whole_heart_and_chambers.png",
+      "sha256": "4e5f441d733318595b13511ff90b2cadb16bd9ebac05a18423c31104529e120b",
+      "description": "Различие изменений объёма целого сердца и отдельных камер",
+      "verified_previous_build_cache": false
+    },
+    {
+      "chapter": "10_chambers.md",
+      "file": "figures/7d562bdb0da8.png",
+      "source": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_contract/figures/reader_chamber/10_01_guarded_chambers.png",
+      "sha256": "7d562bdb0da80fb39a320a5c6ecf116fda8691e2ebdfe693be595abd5b1635c1",
+      "description": "Камерные объёмы Н: КТ и предсказания на отложенных фазах",
+      "verified_previous_build_cache": false
+    }
+  ],
+  "bibliography_entries": 114,
+  "document_sha256_before_fields": "e8b1e1fbb8d4390d9344aa9b60028db72f769b4e15d88430226887a01ba5915d",
+  "partial_build": false,
+  "unavailable_references": [
+    {
+      "chapter": "05_anatomy.md",
+      "label": "Паспорт проверенного КТ-референса",
+      "target": "../../../execution_20261026/ct/ct_reference.json",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "05_anatomy.md",
+      "label": "историческое геометрическое сравнение",
+      "target": "../../../../cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/comparison_02/geometry_comparison.jsonl",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "05_anatomy.md",
+      "label": "Пофазные результаты полного сравнения Н",
+      "target": "../../../../cardiac_4d_segmentation/results/nik_whole_heart_20261028/exploratory/full_geometry_v1/summary/final/phase_metrics.csv",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "05_anatomy.md",
+      "label": "Паспорт статической STL и её аппроксимаций",
+      "target": "../../../pulmovista_check_20261028/local/stl_approximation/provenance.json",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "05_anatomy.md",
+      "label": "Учёт крови внутри целой маски и остаточного объёма",
+      "target": "../../../pulmovista_check_20261028/local/heart_composition_check/composition_check.local.json",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "05_anatomy.md",
+      "label": "Парные сравнения с переносом и фиксированным центром",
+      "target": "../../../../cardiac_4d_segmentation/results/nik_whole_heart_20261028/exploratory/full_geometry_v1/motion_geometry_v1/motion_effect_stats.csv",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "05_anatomy.md",
+      "label": "Изменение результатов при уточнении численных настроек",
+      "target": "../../../../cardiac_4d_segmentation/results/nik_whole_heart_20261028/exploratory/full_geometry_v1/refinement_comparison/summary.csv",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "05_anatomy.md",
+      "label": "Проверка выбора единственной опоры",
+      "target": "../../../../cardiac_4d_segmentation/results/nik_whole_heart_20261028/exploratory/full_geometry_v1/anchor_sensitivity_v2/anchor_summary.csv",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "05_anatomy.md",
+      "label": "Протокол двумерных контурных сравнений",
+      "target": "../../../../cardiac_4d_segmentation/results/nik_whole_heart_20261028/exploratory/full_geometry_v1/contour_control/README.md",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "05_anatomy.md",
+      "label": "Ошибки линейного закона связи перемещения с объёмом",
+      "target": "../../../../cardiac_4d_segmentation/results/nik_whole_heart_20261028/exploratory/full_geometry_v1/motion_law_v1/anchor_error_summary.csv",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "05_anatomy.md",
+      "label": "Паспорт электрического сравнения трёх форм",
+      "target": "../../../pulmovista_check_20261028/local/shape_electrical_study_v1.local.json",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "05_anatomy.md",
+      "label": "итоговый протокол анализа",
+      "target": "../../../pulmovista_check_20261028/local/shape_electrical_comparison_v1/analysis.local.json",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "07_experiments.md",
+      "label": "инвентаризация файлов",
+      "target": "../../../../../Experiments/scorpion_v2_georg/metadata/inventory.local.json",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "07_experiments.md",
+      "label": "инвентаризация файлов",
+      "target": "../../../../../Experiments/scorpion_20261022/metadata/inventory.local.json",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "07_experiments.md",
+      "label": "Спецификация извлечения циклов",
+      "target": "../../../execution_20261026/signals/extraction_spec.json",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "07_experiments.md",
+      "label": "численные результаты и статусы",
+      "target": "../../../execution_20261026/signals/signal_readiness.json",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "07_experiments.md",
+      "label": "сохранённые программные проверки",
+      "target": "../../../execution_20261026/signals/verification.json",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "07_experiments.md",
+      "label": "Техническая проверка ЭИТ от 28.10.2026",
+      "target": "../../../pulmovista_check_20261028/README.md",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "07_experiments.md",
+      "label": "числовой протокол чтения",
+      "target": "../../../pulmovista_check_20261028/local/runtime_check.local.json",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "07_experiments.md",
+      "label": "сверка с каноническим архивом",
+      "target": "../../../pulmovista_check_20261028/local/mirror_check.local.json",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "07_experiments.md",
+      "label": "Аудит КТ-референса",
+      "target": "../../../execution_20261026/ct/ct_reference.json",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "07_experiments.md",
+      "label": "пофазные объёмы",
+      "target": "../../../execution_20261026/ct/phase_volumes.csv",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "07_experiments.md",
+      "label": "отдельное восстановление повреждённых производных",
+      "target": "../../../execution_20261026/ct/recovery_manifest.json",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "07_experiments.md",
+      "label": "проверка доступных источников динамической КТ Я",
+      "target": "../../../execution_20261026/single_phase/ct_timing/yaroslav_source_audit/README.md",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "07_experiments.md",
+      "label": "Индивидуальный расчёт ЭИТ и условный перенос в ТТРКГ",
+      "target": "../../../pulmovista_check_20261028/PATIENT_RESULT.md",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "08_tissue.md",
+      "label": "Сохранённые численные профили двуслойной модели Н и Я",
+      "target": "../../../../../Experiments/scorpion_20261022/derived/exploratory/session_3340/two_layer.local.json",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "08_tissue.md",
+      "label": "Карта интеграции и происхождения",
+      "target": "../../../ИНТЕГРАЦИЯ_PULMOVISTA.md",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "08_tissue.md",
+      "label": "Техническая проверка компартментной ЭИТ",
+      "target": "../../../pulmovista_check_20261028/README.md",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "08_tissue.md",
+      "label": "Индивидуальный расчёт Н",
+      "target": "../../../pulmovista_check_20261028/PATIENT_RESULT.md",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "08_tissue.md",
+      "label": "Условные тканевые параметры",
+      "target": "../../../pulmovista_check_20261028/local/patient_v3/tissue_parameters_conditional.csv",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "08_tissue.md",
+      "label": "оператор ТТРКГ",
+      "target": "../../../pulmovista_check_20261028/local/patient_v3/ttrkg_operator.csv",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "08_tissue.md",
+      "label": "пульсовые проекции",
+      "target": "../../../pulmovista_check_20261028/local/patient_v3/plateau_contributions.csv",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "08_tissue.md",
+      "label": "Законы состава и относительная пульсовая реконструкция",
+      "target": "../../../pulmovista_check_20261028/local/composition_pulse_v1/README.md",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "08_tissue.md",
+      "label": "сравнение в общей метрике",
+      "target": "../../../pulmovista_check_20261028/local/composition_pulse_v1/common_metric_comparison.csv",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "08_tissue.md",
+      "label": "Электрическая проверка геометрических изменений",
+      "target": "../../../pulmovista_check_20261028/local/motion_electrical_analysis_v1/analysis.local.json",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "08_tissue.md",
+      "label": "Коэффициенты целевой последовательности после тканевой инверсии",
+      "target": "../../../pulmovista_check_20261028/local/shape_electrical_comparison_v1/target_chain_effective_geometry.csv",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "10_chambers.md",
+      "label": "Фазовый набор анатомических объёмов и условия его использования",
+      "target": "../../../execution_20261026/single_phase/ct_dataset/INTERFACE.md",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "10_chambers.md",
+      "label": "Проверка переноса камерных и геометрических зависимостей",
+      "target": "../../../execution_20261026/single_phase/transfer_validation/README.md",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "10_chambers.md",
+      "label": "Временной анализ камерных объёмов",
+      "target": "../../../execution_20261026/single_phase/ct_timing/README.md",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "10_chambers.md",
+      "label": "проверка электрических временных ориентиров",
+      "target": "../../../execution_20261026/single_phase/ecg_timing_audit/AUDIT.md",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "10_chambers.md",
+      "label": "Протокол индивидуального камерного сравнения",
+      "target": "../../../execution_20261026/single_phase/nix_only/exploratory/PROTOCOL.md",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "10_chambers.md",
+      "label": "результаты",
+      "target": "../../../execution_20261026/single_phase/nix_only/exploratory/results.json",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "10_chambers.md",
+      "label": "проверка направлений",
+      "target": "../../../execution_20261026/single_phase/nix_only/electrical_branches/README.md",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "10_chambers.md",
+      "label": "Камерный закон с объёмом целого сердца и фазой",
+      "target": "../../../pulmovista_check_20261028/local/chamber_law/README.md",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "10_chambers.md",
+      "label": "Пространственное сопоставление камер и закона состава",
+      "target": "../../../pulmovista_check_20261028/local/chamber_composition_audit_v1/README.md",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "10_chambers.md",
+      "label": "Межиндивидуальный перенос электрических зависимостей",
+      "target": "../../../execution_20261026/single_phase/empirical_relation/RESULTS.md",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "10_chambers.md",
+      "label": "сравнение волны с её интегралом",
+      "target": "../../../execution_20261026/single_phase/empirical_extensions/results.json",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "11_validation.md",
+      "label": "синтетический численный контроль",
+      "target": "../../../pulmovista_check_20261028/local/corrected_software/solver_check.local.json",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "11_validation.md",
+      "label": "проверка производной остатка",
+      "target": "../../../pulmovista_check_20261028/local/corrected_software/residual_derivative_check.local.json",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "11_validation.md",
+      "label": "квадратура и шаг объёмной пробы",
+      "target": "../../../pulmovista_check_20261028/local/stl_electrical_comparison/summary.local.json",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "11_validation.md",
+      "label": "условная и свободная тканевые оценки",
+      "target": "../../../pulmovista_check_20261028/local/patient_v3/refine_check.local.json",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "11_validation.md",
+      "label": "диагностика четырёх плато",
+      "target": "../../../pulmovista_check_20261028/local/patient_v3/plateau_diagnostics.local.json",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "11_validation.md",
+      "label": "статус камерной прямой задачи Г",
+      "target": "../../../execution_20261026/fem/fem_status.json",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "11_validation.md",
+      "label": "паспорт 54 состояний и анализа",
+      "target": "../../../pulmovista_check_20261028/local/shape_electrical_comparison_v1/analysis.local.json",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "11_validation.md",
+      "label": "диагностическая инверсия конечных проб",
+      "target": "../../../pulmovista_check_20261028/local/shape_electrical_comparison_v1/cross_inversion.csv",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "11_validation.md",
+      "label": "ложная тканевая поправка",
+      "target": "../../../pulmovista_check_20261028/local/shape_electrical_comparison_v1/geometry_to_tissue_leakage.csv",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "11_validation.md",
+      "label": "фазовые показатели аппроксимаций",
+      "target": "../../../../cardiac_4d_segmentation/results/nik_whole_heart_20261028/exploratory/full_geometry_v1/summary/final/phase_metrics.csv",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "11_validation.md",
+      "label": "ошибки закона движения по опорам",
+      "target": "../../../../cardiac_4d_segmentation/results/nik_whole_heart_20261028/exploratory/full_geometry_v1/motion_law_v1/anchor_error_summary.csv",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "11_validation.md",
+      "label": "результаты разбиений",
+      "target": "../../../execution_20261026/single_phase/transfer_validation/results.json",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "11_validation.md",
+      "label": "протокол",
+      "target": "../../../execution_20261026/single_phase/nix_only/exploratory/PROTOCOL.md",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "11_validation.md",
+      "label": "метрики ошибок",
+      "target": "../../../execution_20261026/single_phase/nix_only/exploratory/metrics.csv",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "11_validation.md",
+      "label": "объёмные диапазоны и положения экстремумов",
+      "target": "../../../execution_20261026/single_phase/nix_only/exploratory/window_indices.csv",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "11_validation.md",
+      "label": "полные результаты, разбиения и межцикловая изменчивость",
+      "target": "../../../execution_20261026/single_phase/nix_only/exploratory/results.json",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "11_validation.md",
+      "label": "общая метрика сохранённых результатов",
+      "target": "../../../pulmovista_check_20261028/local/composition_pulse_v1/common_metric_comparison.csv",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "11_validation.md",
+      "label": "условия исключения измерений и ограничения",
+      "target": "../../../pulmovista_check_20261028/local/composition_pulse_v1/README.md",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "12_discussion.md",
+      "label": "Индивидуальная проверка поясной ЭИТ и тканевой проекции в ТТРКГ",
+      "target": "../../../pulmovista_check_20261028/PATIENT_RESULT.md",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "12_discussion.md",
+      "label": "Сопоставление относительной пульсовой инверсии и законов состава",
+      "target": "../../../pulmovista_check_20261028/local/composition_pulse_v1/README.md",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "12_discussion.md",
+      "label": "Проверка переноса геометрических зависимостей между участниками",
+      "target": "../../../execution_20261026/single_phase/transfer_validation/README.md",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "12_discussion.md",
+      "label": "Протокол индивидуального сравнения камерных зависимостей",
+      "target": "../../../execution_20261026/single_phase/nix_only/exploratory/PROTOCOL.md",
+      "status": "not_in_current_editorial_delivery"
+    },
+    {
+      "chapter": "12_discussion.md",
+      "label": "сохранённые результаты",
+      "target": "../../../execution_20261026/single_phase/nix_only/exploratory/results.json",
+      "status": "not_in_current_editorial_delivery"
+    }
+  ],
+  "unavailable_reference_policy": "annotate",
+  "local_links_relative_to_docx_directory": true,
+  "figure_cache_manifest": "source_build_manifest_20261028.json",
+  "post_native_word_corrections": [
+    {
+      "before": "Цвета и обозначения соответствуют рисунку 5.3.",
+      "after": "Цвета и обозначения соответствуют рисунку 5.5.",
+      "reason": "Figure renumbering reference identified by full-page visual review; one digit changed in the existing OOXML paragraph."
+    }
+  ]
+}

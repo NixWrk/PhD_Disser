@@ -1,0 +1,37 @@
+{
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "ultra",
+  "main_editor": "Overall structure, chapter2, chapter7, scientific/contract integration and Word build",
+  "agents": [
+    {
+      "key": "01",
+      "title": "Литература и патенты",
+      "agent_id": "01a1849c-2be1-70b1-aedf-2dc8d85b7572",
+      "nickname": "Gibbs"
+    },
+    {
+      "key": "03",
+      "title": "КТ и анатомические модели",
+      "agent_id": "01a1849c-2db6-7761-bfac-a8d647179e34",
+      "nickname": "Parfit"
+    },
+    {
+      "key": "04",
+      "title": "Эксперимент и обработка",
+      "agent_id": "01a1849c-3088-7340-9bec-6f07e3f428bf",
+      "nickname": "Ptolemy"
+    },
+    {
+      "key": "05",
+      "title": "Физические модели и ткани",
+      "agent_id": "01a1849c-32b5-73e0-9a3b-881ddee21df5",
+      "nickname": "Euclid"
+    },
+    {
+      "key": "06",
+      "title": "Сердечная динамика и УО",
+      "agent_id": "01a1849c-354f-77a1-841f-a18121cd0398",
+      "nickname": "Franklin"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "created_utc": "2026-10-28T22:00:13.229210+00:00",
+  "document": "Отчёт_ГПХ_РНЦХ_20261029_УО_договор_для_рецензирования.docx",
+  "document_sha256": "6ea3dca0c99053600ea6dde0cdf740b4152cadb3eefb2c193f12107678ed7170",
+  "qa_pdf": "output/gph_report_20261029/render_handoff/report.pdf",
+  "qa_pdf_sha256": "ad4cf6d8cf1e4949befb296dbc45bfc8cd5833f8d9bec8b2b01297f2971ca5d3",
+  "pages": 308,
+  "chapters": 12,
+  "contract_requirements": 41,
+  "figures": 30,
+  "retained_prior_figure_positions": 24,
+  "additional_html_figures": 6,
+  "tables": 66,
+  "numbered_equations": 167,
+  "native_math_objects": 1251,
+  "bibliography_entries": 114,
+  "track_changes_enabled": true,
+  "existing_revisions": 0,
+  "old_document_unchanged": true,
+  "old_document_sha256": "64bb37e36f439f5b7ad0a4ef24e1f29a0b38d785e2f6b6ea9c0ee088ef01ea4c",
+  "source_hashes_match_build": true,
+  "visual_reviews": [
+    "reviews/visual_final_1_77.md",
+    "reviews/visual_final_78_154.md",
+    "reviews/visual_final_155_231.md",
+    "reviews/visual_final_232_308.md"
+  ],
+  "review_scope": "All final pages inspected; layout checks do not constitute independent scientific validation.",
+  "language_review": "reviews/language_manual_review.md; heuristic findings retained, not reported as an automated pass",
+  "unavailable_historical_references": 70,
+  "verified_cached_figure_references": 6,
+  "limits": [
+    "Stroke volume is the primary development objective, not a claimed independently validated endpoint.",
+    "Ejection fraction is a supplementary research direction.",
+    "Full medical/segmentation/STL/data archives and a presentation are not newly assembled or verified by this editorial delivery.",
+    "No new physiological measurements, FEM runs or clinical validation were performed."
+  ]
+}

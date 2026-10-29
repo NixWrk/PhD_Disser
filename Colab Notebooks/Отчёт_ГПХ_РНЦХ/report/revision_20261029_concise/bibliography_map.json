@@ -1,0 +1,230 @@
+{
+  "chapters": [
+    {
+      "source": "front_matter.md",
+      "local_to_global": {}
+    },
+    {
+      "source": "chapters/01_foundations.md",
+      "local_to_global": {}
+    },
+    {
+      "source": "chapters/02_method.md",
+      "local_to_global": {}
+    },
+    {
+      "source": "chapters/03_anatomy.md",
+      "local_to_global": {
+        "1": 27,
+        "2": 28,
+        "3": 29,
+        "4": 30,
+        "5": 31,
+        "6": 32,
+        "7": 33,
+        "8": 34
+      }
+    },
+    {
+      "source": "chapters/04_experiments.md",
+      "local_to_global": {
+        "1": 35,
+        "2": 36,
+        "3": 37,
+        "4": 38,
+        "5": 39,
+        "6": 40
+      }
+    },
+    {
+      "source": "chapters/05_signal_models.md",
+      "local_to_global": {
+        "1": 41,
+        "2": 42,
+        "3": 43,
+        "4": 44,
+        "5": 45,
+        "6": 46,
+        "7": 47,
+        "8": 48,
+        "9": 49,
+        "10": 50
+      }
+    },
+    {
+      "source": "chapters/06_stroke_volume.md",
+      "local_to_global": {
+        "1": 51,
+        "2": 52,
+        "3": 53,
+        "4": 54,
+        "5": 55,
+        "6": 40,
+        "7": 1
+      }
+    },
+    {
+      "source": "chapters/07_validation.md",
+      "local_to_global": {
+        "1": 56,
+        "2": 57,
+        "3": 58,
+        "4": 59
+      }
+    },
+    {
+      "source": "conclusion.md",
+      "local_to_global": {}
+    },
+    {
+      "source": "supplement/01_foundations.md",
+      "local_to_global": {}
+    },
+    {
+      "source": "supplement/02_method.md",
+      "local_to_global": {}
+    },
+    {
+      "source": "supplement/03_anatomy.md",
+      "local_to_global": {
+        "1": 83,
+        "2": 84,
+        "3": 85,
+        "4": 86,
+        "5": 87,
+        "6": 88,
+        "7": 33
+      }
+    },
+    {
+      "source": "supplement/04_experiments.md",
+      "local_to_global": {}
+    },
+    {
+      "source": "supplement/05_signal_models.md",
+      "local_to_global": {}
+    },
+    {
+      "source": "supplement/06_stroke_volume.md",
+      "local_to_global": {
+        "1": 89,
+        "2": 90,
+        "3": 91,
+        "4": 92
+      }
+    },
+    {
+      "source": "supplement/07_validation.md",
+      "local_to_global": {
+        "1": 93,
+        "2": 94,
+        "3": 95,
+        "4": 96,
+        "5": 97
+      }
+    },
+    {
+      "source": "supplement/08_archive.md",
+      "local_to_global": {}
+    }
+  ],
+  "references": [
+    "1. Lang R. M., Badano L. P., Mor-Avi V., Afilalo J., Armstrong A., Ernande L., Flachskampf F. A., Foster E., Goldstein S. A., Kuznetsova T., Lancellotti P., Muraru D., Picard M. H., Rietzschel E. R., Rudski L., Spencer K. T., Tsang W., Voigt J.-U. *Recommendations for Cardiac Chamber Quantification by Echocardiography in Adults: An Update from the American Society of Echocardiography and the European Association of Cardiovascular Imaging*. Journal of the American Society of Echocardiography. 2015;28(1):1–39.e14. [DOI: 10.1016/j.echo.2014.10.003](https://doi.org/10.1016/j.echo.2014.10.003).",
+    "2. Sherwood A., Allen M. T., Fahrenberg J., Kelsey R. M., Lovallo W. R., van Doornen L. J. P. *Methodological Guidelines for Impedance Cardiography*. Psychophysiology. 1990;27(1):1–23. [DOI: 10.1111/j.1469-8986.1990.tb02171.x](https://doi.org/10.1111/j.1469-8986.1990.tb02171.x).",
+    "3. Bernstein D. P., Lemmens H. J. M. *Stroke volume equation for impedance cardiography*. Medical & Biological Engineering & Computing. 2005;43(4):443–450. [DOI: 10.1007/BF02344724](https://doi.org/10.1007/BF02344724).",
+    "4. Gabriel C., Peyman A., Grant E. H. *Electrical conductivity of tissue at frequencies below 1 MHz*. Physics in Medicine and Biology. 2009;54(16):4863–4878. [DOI: 10.1088/0031-9155/54/16/002](https://doi.org/10.1088/0031-9155/54/16/002).",
+    "5. Carlsson M., Ugander M., Heiberg E., Arheden H. *The quantitative relationship between longitudinal and radial function in left, right, and total heart pumping in humans*. American Journal of Physiology–Heart and Circulatory Physiology. 2007;293(1):H636–H644. [DOI: 10.1152/ajpheart.01376.2006](https://doi.org/10.1152/ajpheart.01376.2006).",
+    "6. Proença M., Braun F., Rapin M., Solà J., Adler A., Grychtol B., Bohm S. H., Lemay M., Thiran J.-P. *Influence of heart motion on cardiac output estimation by means of electrical impedance tomography: a case study*. Physiological Measurement. 2015;36(6):1075–1091. [DOI: 10.1088/0967-3334/36/6/1075](https://doi.org/10.1088/0967-3334/36/6/1075).",
+    "7. Braun F., Proença M., Adler A., Riedel T., Thiran J.-P., Solà J. *Accuracy and reliability of noninvasive stroke volume monitoring via ECG-gated 3D electrical impedance tomography in healthy volunteers*. PLOS ONE. 2018;13(1):e0191870. [DOI: 10.1371/journal.pone.0191870](https://doi.org/10.1371/journal.pone.0191870).",
+    "8. Braun F., Proença M., Wendler A., Solà J., Lemay M., Thiran J.-P., Weiler N., Frerichs I., Becher T. *Noninvasive measurement of stroke volume changes in critically ill patients by means of electrical impedance tomography*. Journal of Clinical Monitoring and Computing. 2020;34(5):903–911; опубликовано онлайн 17.10.2019. [DOI: 10.1007/s10877-019-00402-z](https://doi.org/10.1007/s10877-019-00402-z).",
+    "9. Greiwe G., Saad R., Hapfelmeier A., Neumann N., Tariparast P., Saugel B. et al. *Electrical cardiometry for non-invasive cardiac output monitoring: a method comparison study in patients after coronary artery bypass graft surgery*. Journal of Clinical Monitoring and Computing. 2025;39(2):371–376; опубликовано онлайн 11.12.2024. [DOI: 10.1007/s10877-024-01246-y](https://doi.org/10.1007/s10877-024-01246-y).",
+    "10. Sanders M., Servaas S., Slagt C. *Accuracy and precision of non-invasive cardiac output monitoring by electrical cardiometry: a systematic review and meta-analysis*. Journal of Clinical Monitoring and Computing. 2020;34(3):433–460; опубликовано онлайн 07.06.2019. [DOI: 10.1007/s10877-019-00330-y](https://doi.org/10.1007/s10877-019-00330-y).",
+    "11. Bowling L. S., Sageman W. S., O’Connor S. M., Cole R., Amundson D. E. *Lack of agreement between measurement of ejection fraction by impedance cardiography versus radionuclide ventriculography*. Critical Care Medicine. 1993;21(10):1523–1527. [DOI: 10.1097/00003246-199310000-00021](https://doi.org/10.1097/00003246-199310000-00021).",
+    "12. Kramer C. M., Barkhausen J., Bucciarelli-Ducci C., Flamm S. D., Kim R. J., Nagel E. Standardized cardiovascular magnetic resonance imaging (CMR) protocols: 2020 update. *Journal of Cardiovascular Magnetic Resonance*. 2020;22:17. [DOI: 10.1186/s12968-020-00607-1](https://doi.org/10.1186/s12968-020-00607-1).",
+    "13. Greupner J. et al. Head-to-head comparison of left ventricular function assessment with 64-row computed tomography, biplane left cineventriculography, and both 2- and 3-dimensional transthoracic echocardiography: comparison with magnetic resonance imaging as the reference standard. *Journal of the American College of Cardiology*. 2012;59(21):1897–1907. [DOI: 10.1016/j.jacc.2012.01.046](https://doi.org/10.1016/j.jacc.2012.01.046).",
+    "14. Pellikka P. A. et al. Variability in Ejection Fraction Measured By Echocardiography, Gated Single-Photon Emission Computed Tomography, and Cardiac Magnetic Resonance in Patients With Coronary Artery Disease and Left Ventricular Dysfunction. *JAMA Network Open*. 2018;1(4):e181456. [DOI: 10.1001/jamanetworkopen.2018.1456](https://doi.org/10.1001/jamanetworkopen.2018.1456).",
+    "15. Getinge. PiCCO. Официальное описание технологии; разделы Methodology, Arterial pulse contour analysis, Transpulmonary thermodilution. [Страница производителя](https://www.getinge.com/no/products/picco/). Дата обращения: 28.10.2026.",
+    "16. Edwards Lifesciences. ClearSight system. Официальное описание пальцевой манжеты, объёмного зажима и Physiocal. [Страница производителя](https://www.edwards.com/ca-en/healthcare-professionals/products-services/hemodynamic-monitoring/clearsight-system). Дата обращения: 28.10.2026.",
+    "17. Osypka Medical. Electrical Cardiometry. Официальное описание метода и расположения датчиков. [Страница производителя](https://www.osypkamed.com/technology/noninvasive-hemodynamics/electrical-cardiometry/). Дата обращения: 28.10.2026.",
+    "18. PhysioFlow. SM-ICG Technology. [Описание производителя](https://www.physioflow.com/sm_icg_technology.php). Дата обращения: 28.10.2026.",
+    "19. Manatec Biomedical. PhysioFlow Enduro Model PF07. 510(k) Summary, K103283; 26 October 2010. [Документ FDA](https://www.accessdata.fda.gov/cdrh_docs/pdf10/K103283.pdf).",
+    "20. Baxter. Starling Monitor User Guide. B-UG-01 Rev. 3; May 2021; software 5.6 or later. [Официальное руководство](https://emeamedicationdelivery.baxter.com/sites/g/files/ebysai3906/files/2022-12/B-UG-EN_Rev_3_Baxter_Starling_Monitor_User_Guide.pdf).",
+    "21. Dräger. Instructions for use. PulmoVista 500 SW 1.3n. Electrical impedance tomograph. 9511001, Edition 1, 2020-04. [Официальная инструкция](https://www.draeger.com/Content/Documents/Products/pulmovista-ifu-9511001-en.pdf).",
+    "22. **P01.** Arad (Abboud) S., Mahajna M., Horman K.; Ramot at Tel-Aviv University Ltd. *Parametric electric impedance tomography of the chest*. US20150297099A1, 22.10.2015. [Формула и описание](https://patents.google.com/patent/US20150297099A1/en). Связанные публикации: WO2014054045A1; EP2903512A1/A4.",
+    "23. **P02a–c.** Arad (Abboud) S.; Tel Aviv University Future Technology Development LP. *Apparatus and method for estimating stroke volume of the heart using bio-impedance techniques*. [US8131354B2](https://patents.google.com/patent/US8131354B2/en), 06.03.2012; [US8694089B2](https://patents.google.com/patent/US8694089B2/en), 08.04.2014; [US8868175B2](https://patents.google.com/patent/US8868175B2/en), 21.10.2014.",
+    "24. **P03a–b.** Konings M. K.; Hemologic B.V. *Method for determining the stroke volume of a heart, method for determining the electrode positions therefor, and sheet shaped device therefor*. US10278598B2, 07.05.2019, [оригинал](https://patentimages.storage.googleapis.com/0e/93/85/c14cab1dea781b/US10278598.pdf); EP2385788B1, 06.08.2014, [оригинал](https://patentimages.storage.googleapis.com/88/a4/2e/9489a6dfd4136a/EP2385788B1.pdf). Исходная публикация корпуса: US20120059593A1, 08.03.2012.",
+    "25. **P07.** Цветков А. А., Николаев Д. В. *Способ оценки величины сердечного выброса*. RU2415641C1, 10.04.2011, бюл. № 10. [Оригинальная публикация](https://patentimages.storage.googleapis.com/e7/78/e6/852c057a4530f2/RU2415641C1.pdf).",
+    "26. **P14.** Щукин С. И., Тихомиров А. Н., Брико А. Н., Кобелев А. В. *Способ определения гемодинамических параметров на основе многоканальной электроимпедансной компьютерной кардиографии*. RU2778992C1, 29.08.2022, бюл. № 25. [Оригинальная публикация](https://patentimages.storage.googleapis.com/5b/36/f5/e6fd88bfc69cad/RU2778992C1.pdf).",
+    "27. Канонический реестр статических STL. Решение автора от 26.10.2026; TotalSegmentator 2.18.0, паспорта Н, Г, Я и контрольные суммы. [Реестр](<../../../../../configs/scorpion_canonical_stl.json>).",
+    "28. Единый стандарт подготовки индивидуальной КТ-модели. Редакция от 26.10.2026. Разделы «Исходные данные и координаты», «Обязательный начальный этап», «Наружный контур и цилиндрические руки», «Сетка и тканевые доли». [Стандарт](<../../../../../docs/CT_FEM_PREPARATION_STANDARD.md>).",
+    "29. Паспорт проверенного КТ-референса, 26.10.2026; историческое геометрическое сравнение, 14.09.2026. Паспорт (материал не приложен), пофазный реестр (материал не приложен).",
+    "30. Собственные расчёты проекта. Паспорт статической STL Н и её аппроксимаций, 28.10.2026. Происхождение (материал не приложен).",
+    "31. Собственные расчёты проекта. Учёт крови внутри целой маски и остаточного объёма Н, 28.10.2026. Результат (материал не приложен).",
+    "32. Собственные расчёты проекта. Пофазные результаты полного геометрического сравнения Н, 28.10.2026. Показатели (материал не приложен).",
+    "33. Сохранённый HTML-отчёт экспериментально-расчётной серии. Раздел «Изменение КТ-контура в общей подготовке», таблица 42, рисунок подготовки геометрии 1; исходное изображение 0 при счёте от нуля. [Отчёт](<../../../../scorpion_v2/33.30_Сгущение_у_всех_контактов_и_продолжение_подбора_Георгия_Scorpion_v2.html>).",
+    "34. Собственные расчёты проекта. Камерная прямая задача Г и технические проверки модели Н, срез от 28.10.2026. Условия и численные локаторы сохранены в [расширенной главе о прямой модели, §§6.6–6.8](<../../revision_20261029_contract/chapters/06_forward.md>) и [её рецензии](<../../revision_20261029_contract/reviews/07_review.md>).",
+    "35. [Материалы и экспериментальная методика: замороженная расширенная редакция от 29.10.2026, §7.1–7.10](<../../revision_20261029_contract/chapters/07_experiments.md>). Источник редакционного переноса результатов; первичные записи заново не проверялись.",
+    "36. [Протокол исследования участника Г 05.10.2026, с уточнениями до 14.10.2026](<../../../../../Experiments/scorpion_v2_georg/PROTOCOL.md>); инвентаризация (материал не приложен). Внутренние материалы исследования.",
+    "37. [Протокол сессии Н и Я 22.10.2026](<../../../../../Experiments/scorpion_20261022/PROTOCOL.md>); инвентаризация (материал не приложен). Внутренние материалы исследования.",
+    "38. Спецификация извлечения циклов (материал не приложен), численные результаты и статусы (материал не приложен), сохранённые программные проверки (материал не приложен). Срез обработки от 26.10.2026, цитируемый по расширенной редакции.",
+    "39. Техническая проверка ЭИТ от 28.10.2026 (материал не приложен); числовой протокол чтения (материал не приложен); сверка с каноническим архивом (материал не приложен). Цитируются по расширенной редакции.",
+    "40. [Сохранённый HTML-отчёт экспериментально-расчётной серии](<../../../../scorpion_v2/33.44_Измеренный_пульс_ТТРКГ_объёмная_чувствительность_и_камеры_КТ.html>), изображение 0. Существующий рисунок ТТРКГ и ЭКГ трёх участников, без пересчёта.",
+    "41. Dardé J., Staboulis S. *Electrode modelling: The effect of contact impedance*. arXiv:1312.4202v2, 2015. Использован §2: CEM и вариационная форма. [Полный текст](https://arxiv.org/pdf/1312.4202).",
+    "42. Adler A. и разработчики EIDORS. *system_mat_fields*. Документация и исходный код объёмной и контактной частей FEM; в исходной редакции отчёта просмотрен исходник с идентификатором 6481 от 26.12.2022. [Официальная документация](https://eidors3d.sourceforge.net/doc/eidors/solvers/forward/system_mat_fields.html).",
+    "43. Naydenova E., Cavendish S., Wilson A. J. *Measurement and modelling the sensitivity of tetrapolar transfer impedance measurements*. Medical Engineering & Physics. 2016. Vol. 38, no. 10. P. 1090–1099. DOI: [10.1016/j.medengphy.2016.07.005](https://doi.org/10.1016/j.medengphy.2016.07.005). Для общего утверждения об отрицательной чувствительности в исходном отчёте проверена [авторская аннотация](https://pubmed.ncbi.nlm.nih.gov/27475783/); численные границы статьи не переносились.",
+    "44. Материалы текущей электроимпедансной серии, 2026. Профили двуслойной модели Н и Я (материал не приложен); [пространственный подбор Г](<../../../../scorpion_v2/33.31_Численная_сходимость_и_совместный_подбор_Георгия_Scorpion_v2.md>), таблицы 17, 18, 24. Локальные результаты разработки; индивидуальные свойства не подтверждены.",
+    "45. CompartmentPipeline / CompartmentReconstruction. Версия предоставленного программного источника `a382dbf8fd5f23bba9e69fcf8c6169a1627bc102` с локальным исправлением производной относительного остатка. Карта интеграции (материал не приложен); техническая проверка (материал не приложен); индивидуальный расчёт Н (материал не приложен), 28.10.2026.",
+    "46. Индивидуальные расчёты Н, 28.10.2026: условные параметры (материал не приложен), оператор ТТРКГ (материал не приложен), пульсовые проекции (материал не приложен); нормировки и законы состава (материал не приложен), общая метрика (материал не приложен).",
+    "47. Вычислительная проверка смешения геометрии и свойств, 28.10.2026: электрические изменения (материал не приложен), остаточные коэффициенты (материал не приложен); [описание форм и различимости](<../../chapters/17_shape_electrical_identifiability.md>), §§17.4–17.6, 17.10–17.12.",
+    "48. Дополнительная условная FEM-серия одной КТ, 28.10.2026: [состав и ограничения](<../../results/montage_sensitivity_v1/README.md>), [манифест](<../../results/montage_sensitivity_v1/manifest.json>), [таблицы](<../../results/montage_sensitivity_v1/tables.md>), [производные](<../../results/montage_sensitivity_v1/tables/derivatives.csv>), [уточнение квадратуры](<../../results/montage_sensitivity_v1/tables/volume_refinement.csv>), [контроль материальной производной](<../../results/montage_sensitivity_v1/tables/rho_checks.csv>), [изолированные ошибки](<../../results/montage_sensitivity_v1/tables/omission_units.csv>), [ограничения](<../../results/montage_sensitivity_v1/tables/exclusion_error_budgets.csv>).",
+    "49. Сохранённый [HTML-отчёт индивидуальной КТ/FEM-проверки трёх участников](<../../../../scorpion_v2/33.43_Индивидуальная_КТ_FEM_проверка_трёх_участников_Scorpion.html>), 2026: изображения 2 и 1 при нумерации от нуля; рисунки 5.1–5.2 настоящей главы.",
+    "50. Замороженные редакционные основания: [прямые модели](<../../revision_20261029_contract/chapters/06_forward.md>), [тканевые параметры](<../../revision_20261029_contract/chapters/08_tissue.md>). Точные фрагменты, хэши и карта переноса находятся в [реестре главы](<../reviews/05_ledger.json>); переработка не является повторной проверкой первичных экспериментов.",
+    "51. Собственные результаты. [Условия однофазной методики](<../../../ПЛАН_ОДНОФАЗНАЯ_КТ_УО_ФВ.md>), 26–28.10.2026; [постановка обратной задачи](<../../chapters/07_inverse_single_phase.md>).",
+    "52. Собственные результаты. [Электрическое сравнение форм и различимость параметров](<../../chapters/17_shape_electrical_identifiability.md>), 28.10.2026; [объёмная STL-методика и собственные эффективные параметры](<../../chapters/14_stl_volume_method.md>).",
+    "53. Собственные результаты. [Серия проверки чувствительности и различимости](<../../results/montage_sensitivity_v1/README.md>), 28.10.2026; [сводные таблицы](<../../results/montage_sensitivity_v1/tables.md>); [электрические пробы движения](<../../chapters/16_single_ct_motion.md>). Расчётные результаты одного участника.",
+    "54. Собственные результаты. Фазовый набор анатомических объёмов (материал не приложен); перенос камерных зависимостей (материал не приложен), 26.10.2026; временной анализ (материал не приложен).",
+    "55. Собственные результаты. Индивидуальное камерное сравнение: протокол (материал не приложен) и результаты (материал не приложен); камерный закон с объёмом и фазой (материал не приложен), 28.10.2026; межиндивидуальный электрический перенос (материал не приложен).",
+    "56. Проверки электрического решателя и производной остатка, 28.10.2026: численный контроль (материал не приложен), проверка производной (материал не приложен). Исторические результаты; доступность исходных файлов ограничена.",
+    "57. Монтажная конечно-элементная серия, 28.10.2026: [условия и состав](<../../results/montage_sensitivity_v1/README.md>), [манифест](<../../results/montage_sensitivity_v1/manifest.json>), [сводные таблицы](<../../results/montage_sensitivity_v1/tables.md>). Численные состояния одной индивидуальной анатомии не являются независимыми экспериментами.",
+    "58. Проверка камерного преобразования с исключением участника: результаты разбиений (материал не приложен), 26.10.2026. Динамические геометрические признаки известны из КТ.",
+    "59. Индивидуальная межсессионная проверка Н: метрики ошибок (материал не приложен), размахи и положения экстремумов (материал не приложен), разбиения и межцикловая изменчивость (материал не приложен), 26.10.2026.",
+    "60. Carlsson M., Ugander M., Mosén H., Buhre T., Arheden H. *Atrioventricular plane displacement is the major contributor to left ventricular pumping in healthy adults, athletes, and patients with dilated cardiomyopathy*. American Journal of Physiology–Heart and Circulatory Physiology. 2007;292(3):H1452–H1459. [DOI: 10.1152/ajpheart.01148.2006](https://doi.org/10.1152/ajpheart.01148.2006).",
+    "61. Lumens J., Delhaas T., Kirn B., Arts T. *Three-Wall Segment (TriSeg) Model Describing Mechanics and Hemodynamics of Ventricular Interaction*. Annals of Biomedical Engineering. 2009;37(11):2234–2255. [DOI: 10.1007/s10439-009-9774-2](https://doi.org/10.1007/s10439-009-9774-2).",
+    "62. Critchley L. A. H., Critchley J. A. J. H. *A Meta-Analysis of Studies Using Bias and Precision Statistics to Compare Cardiac Output Measurement Techniques*. Journal of Clinical Monitoring and Computing. 1999;15(2):85–91. [DOI: 10.1023/A:1009982611386](https://doi.org/10.1023/A:1009982611386).",
+    "63. Zoremba N., Bickenbach J., Krauss B., Rossaint R., Kuhlen R., Schälte G. *Comparison of electrical velocimetry and thermodilution techniques for the measurement of cardiac output*. Acta Anaesthesiologica Scandinavica. 2007;51(10):1314–1319. [DOI: 10.1111/j.1399-6576.2007.01445.x](https://doi.org/10.1111/j.1399-6576.2007.01445.x).",
+    "64. Cox P. B. W., den Ouden A. M., Theunissen M., Montenij L. J., Kessels A. G. H., Lancé M. D. et al. *Accuracy, Precision, and Trending Ability of Electrical Cardiometry Cardiac Index versus Continuous Pulmonary Artery Thermodilution Method: A Prospective, Observational Study*. BioMed Research International. 2017;2017:2635151. [DOI: 10.1155/2017/2635151](https://doi.org/10.1155/2017/2635151).",
+    "65. Wang D.-J., Lee I.-S., Chou A.-H., Chen C.-Y., Ting P.-C., Teng Y.-H. et al. *Non-invasive cardiac output measurement with electrical velocimetry in patients undergoing liver transplantation: comparison of an invasive method with pulmonary thermodilution*. BMC Anesthesiology. 2018;18:138. [DOI: 10.1186/s12871-018-0600-y](https://doi.org/10.1186/s12871-018-0600-y).",
+    "66. Van der Meer N. J. M., Oomen M. W. N., Vonk Noordegraaf A., Pijpers R. J., Plaizier M. A. B. D., de Vries P. M. J. M. *Does impedance cardiography reliably estimate left ventricular ejection fraction?* Journal of Clinical Monitoring. 1996;12(1):5–9. [DOI: 10.1007/BF02025304](https://doi.org/10.1007/BF02025304).",
+    "67. Thompson B., Drazner M. H., Dries D. L., Yancy C. W. *Systolic Time Ratio by Impedance Cardiography to Distinguish Preserved vs Impaired Left Ventricular Systolic Function in Heart Failure*. Congestive Heart Failure. 2008;14(5):261–265. [DOI: 10.1111/j.1751-7133.2008.00001.x](https://doi.org/10.1111/j.1751-7133.2008.00001.x).",
+    "68. PhysioFlow. PhysioFlow Enduro Service Manual. V4.1; 10 June 2021. Appendix C: Performance Specifications. [Официальный PDF](https://www.physioflow.com/download/free/userManual/PhysioFlow_Enduro_service_manual_en_2025-06-24.pdf).",
+    "69. PhysioFlow. Instructions for attaching leads. V6.1; 7 May 2020. [Официальный PDF](https://www.physioflow.com/download/free/userManual/Instructions_for_attaching_leads_en_2025-06-24.pdf).",
+    "70. PhysioFlow. Software. Перечень выпусков, включая 2.8.12 от 27 February 2026. [Страница загрузок](https://www.physioflow.com/software.php). Дата обращения: 28.10.2026.",
+    "71. Kemps H. M. et al. Evaluation of two methods for continuous cardiac output assessment during exercise in chronic heart failure patients. *Journal of Applied Physiology*. 2008;105(6):1822–1829. [DOI: 10.1152/japplphysiol.90430.2008](https://doi.org/10.1152/japplphysiol.90430.2008).",
+    "72. Gavelli F., Beurton A., Teboul J.-L., De Vita N., Azzolina D., Shi R., Pavot A., Monnet X. Bioreactance reliably detects preload responsiveness by the end-expiratory occlusion test when averaging and refresh times are shortened. *Annals of Intensive Care*. 2021;11:133. [DOI: 10.1186/s13613-021-00920-7](https://doi.org/10.1186/s13613-021-00920-7).",
+    "73. Jang G. Y. et al. Noninvasive, simultaneous, and continuous measurements of stroke volume and tidal volume using EIT: feasibility study of animal experiments. *Scientific Reports*. 2020;10:11242. [DOI: 10.1038/s41598-020-68139-3](https://doi.org/10.1038/s41598-020-68139-3).",
+    "74. **P04.** Skrabal F., Fortin J.; CNSystems Medizintechnik GmbH. *Impedance-based measuring method for hemodynamic parameters*. US7783345B2, 24.08.2010. [Формула и описание](https://patents.google.com/patent/US7783345B2/en). Исходная публикация корпуса: US20050177062A1, 11.08.2005.",
+    "75. **P05.** Reining International Ltd. *Impedance cardiograph apparatus and method*. US5505209A, 09.04.1996. [Публикация](https://patents.google.com/patent/US5505209A/en).",
+    "76. **P06.** CardioDynamics International Corp. *Method and apparatus for hemodynamic assessment including fiducial point detection*. US6561986B2, 13.05.2003. [Публикация](https://patents.google.com/patent/US6561986B2/en).",
+    "77. **P08.** Попов А. Ю.; АО «Медитек». *Способ диагностики и контроля лечения сердечных патологий*. RU2790406C1, 20.02.2023. [Публикация](https://patents.google.com/patent/RU2790406C1/en); [оригинал](https://patentimages.storage.googleapis.com/d7/b9/a8/b89fb4fd2eef88/RU2790406C1.pdf).",
+    "78. **P09.** Swisstom AG. *Electrical impedance tomography system*. US10952634B2, 23.03.2021. [Публикация](https://patents.google.com/patent/US10952634B2/en).",
+    "79. **P10.** Drägerwerk AG & Co. KGaA. *Device and process for electrical impedance tomography (EIT) with identification of a heart region*. US20200138335A1, 07.05.2020. [Публикация](https://patents.google.com/patent/US20200138335A1/en).",
+    "80. **P11.** Drägerwerk AG & Co. KGaA. *Device and method for processing tomographic data*. US9384549B2, 05.07.2016. [Публикация](https://patents.google.com/patent/US9384549B2/en).",
+    "81. **P12.** Cardioinsight Technologies Inc. *Three-dimensional electrical impedance tomographic imaging*. US20260102074A1, 16.04.2026. [Формула и описание](https://patents.google.com/patent/US20260102074A1/en).",
+    "82. **P13.** Davydov D., Reyes Del Paso G.; Universidad de Jaén. *Wearable device, system, and method for monitoring homeostatic state*. WO2024003008A1, 04.01.2024. [Формула и описание](https://patents.google.com/patent/WO2024003008A1/en).",
+    "83. Замороженная расширенная редакция отчёта, 29.10.2026. [Глава «Анатомическая модель», §§5.2–5.9](<../../revision_20261029_contract/chapters/05_anatomy.md>), [глава о прямой модели, §§6.6–6.8](<../../revision_20261029_contract/chapters/06_forward.md>). Это редакционные источники сохранённых результатов, не повторный первичный эксперимент.",
+    "84. Собственные расчёты проекта, 28.10.2026. Паспорт статических аппроксимаций (материал не приложен), [рецензия с численными локаторами и объёмом выборок](<../../revision_20261029_contract/reviews/06_review.md>).",
+    "85. Реестр методов аппроксимации сердца. [Определения способов](<../../../../40.15_Реестр_методов_аппроксимации_сердца.md>).",
+    "86. Собственные расчёты проекта, 28.10.2026. Фазовые показатели (материал не приложен), численное уточнение (материал не приложен), единственная опора (материал не приложен), контурная проверка (материал не приложен).",
+    "87. Собственные расчёты проекта, 28.10.2026. Парное сравнение переноса (материал не приложен), проверка закона движения (материал не приложен).",
+    "88. Собственные расчёты проекта, 28.10.2026. Паспорт электрического сравнения (материал не приложен), итоговый анализ (материал не приложен).",
+    "89. Собственные результаты. [Аппроксимации целого сердца](<../../chapters/15_4d_whole_heart_approximation.md>) и [движение при одной КТ](<../../chapters/16_single_ct_motion.md>), 28.10.2026: парные сравнения и прогноз положения.",
+    "90. Собственные результаты. Пространственное сопоставление камер и закона состава (материал не приложен), 28.10.2026: 12 фаз, постоянный остаток, постоянная доля, калибруемый наклон.",
+    "91. Собственные результаты. Проверка электрических временных ориентиров (материал не приложен); проверка направлений (материал не приложен); сравнение волны с интегралом (материал не приложен).",
+    "92. Robinson S., Ring L., Oxborough D., Harkness A., Bennett S., Rana B., Sutaria N., Lo Giudice F., Shun-Shin M., Paton M., Duncan R., Willis J., Colebourn C., Bassindale G., Gatenby K., Belham M., Cole G., Augustine D., Smiseth O. A. *The assessment of left ventricular diastolic function: guidance and recommendations from the British Society of Echocardiography*. Echo Research and Practice. 2024;11:16. [DOI: 10.1186/s44156-024-00051-2](https://doi.org/10.1186/s44156-024-00051-2). Определения фаз ЛЖ и функции ЛП; не валидация электрического метода.",
+    "93. Численные проверки, 28.10.2026: решатель (материал не приложен), производная остатка (материал не приложен), квадратура и объёмный шаг (материал не приложен), камерная FEM-проверка Г (материал не приложен). Исторические результаты с ограниченной доступностью исходных файлов.",
+    "94. Монтажная серия, 28.10.2026: [манифест](<../../results/montage_sensitivity_v1/manifest.json>), [таблицы результатов](<../../results/montage_sensitivity_v1/tables.md>).",
+    "95. Геометрическая проверка камерного преобразования: результаты (материал не приложен), 26.10.2026.",
+    "96. Индивидуальная проверка Н: протокол (материал не приложен), полные результаты (материал не приложен), 26.10.2026.",
+    "97. Диагностическая пульсовая реконструкция, 28.10.2026: сопоставление в общей метрике (материал не приложен), условия проверки (материал не приложен)."
+  ]
+}

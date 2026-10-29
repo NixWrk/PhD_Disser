@@ -1,7 +1,8 @@
 param(
     [Parameter(Mandatory=$true)][string]$InputDocx,
     [Parameter(Mandatory=$true)][string]$OutputPdf,
-    [switch]$UpdateAndSave
+    [switch]$UpdateAndSave,
+    [switch]$EnableTrackChanges
 )
 $ErrorActionPreference = 'Stop'
 $sourceFile = (Resolve-Path -LiteralPath $InputDocx).Path
@@ -16,6 +17,7 @@ try {
     $wordApplication = New-Object -ComObject Word.Application
     $wordApplication.Visible = $false
     $wordApplication.DisplayAlerts = 0
+    $wordApplication.AutomationSecurity = 3
     $wordApplication.Options.UpdateLinksAtOpen = $false
     $wordDocument = $wordApplication.Documents.Open($sourceFile, $false, (-not $UpdateAndSave.IsPresent))
     if ($UpdateAndSave) {
@@ -44,11 +46,12 @@ try {
         }
         $wordDocument.Repaginate()
         foreach ($toc in $wordDocument.TablesOfContents) { $toc.UpdatePageNumbers() }
+        if ($EnableTrackChanges) { $wordDocument.TrackRevisions = $true }
         $wordDocument.Save()
     }
     $pages = $wordDocument.ComputeStatistics(2)
     $wordDocument.ExportAsFixedFormat($pdfFile, 17)
-    [PSCustomObject]@{pages=$pages; pdf=$pdfFile; updated_docx=$UpdateAndSave.IsPresent} | ConvertTo-Json
+    [PSCustomObject]@{pages=$pages; pdf=$pdfFile; updated_docx=$UpdateAndSave.IsPresent; track_changes=$wordDocument.TrackRevisions; revisions=$wordDocument.Revisions.Count} | ConvertTo-Json
 }
 finally {
     if ($null -ne $wordDocument) { $wordDocument.Close(0) }

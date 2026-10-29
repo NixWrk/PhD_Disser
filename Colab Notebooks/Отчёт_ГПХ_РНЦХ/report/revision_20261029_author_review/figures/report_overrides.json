@@ -1,0 +1,56 @@
+[
+  {
+    "id": "P01",
+    "aliases": [
+      "photo_belt"
+    ],
+    "path": "figures/photos/photo01.png",
+    "word_crop": {
+      "top": 0.17,
+      "bottom": 0.26,
+      "left": 0.1,
+      "right": 0.1
+    },
+    "caption": "Пояс ЭИТ и референсный электрод на этапе подготовки к регистрации. Поза во время измерения описана в §2.1.",
+    "source": {
+      "type": "author photograph",
+      "original": "C:/Users/9838~1/AppData/Local/Temp/codex-clipboard-6364ac9f-8b23-471a-a2bb-47d6cb6dbb91.png"
+    }
+  },
+  {
+    "id": "P03",
+    "aliases": [
+      "photo_lateral_detail"
+    ],
+    "path": "figures/photos/photo03.png",
+    "word_crop": {
+      "left": 0.28,
+      "right": 0.06,
+      "top": 0.2,
+      "bottom": 0.1
+    },
+    "caption": "Расположение четырёх контактов боковой тетраполярной сборки на грудной клетке. Фотография этапа подготовки к регистрации; номинальный размер сборки по снимку не определяется.",
+    "source": {
+      "type": "author photograph",
+      "original": "C:/Users/9838~1/AppData/Local/Temp/codex-clipboard-35279ec2-6975-4d2b-8290-16f39a12484e.png"
+    }
+  },
+  {
+    "id": "P07",
+    "aliases": [
+      "photo_tt_wide"
+    ],
+    "path": "figures/photos/photo07.png",
+    "word_crop": {
+      "top": 0.37,
+      "bottom": 0.24,
+      "left": 0.12,
+      "right": 0.11
+    },
+    "caption": "Расположение электродов отведения «рука–рука» и боковой сборки до регистрации. Поза во время измерения описана в §2.1.",
+    "source": {
+      "type": "author photograph",
+      "original": "C:/Users/9838~1/AppData/Local/Temp/codex-clipboard-8b2568a5-6326-4aeb-853a-5b59369888f2.png"
+    }
+  }
+]

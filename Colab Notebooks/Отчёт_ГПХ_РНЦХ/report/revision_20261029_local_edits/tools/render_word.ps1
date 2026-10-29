@@ -1,0 +1,62 @@
+﻿param(
+    [Parameter(Mandatory=$true)][string]$InputDocx,
+    [Parameter(Mandatory=$true)][string]$OutputPdf,
+    [switch]$UpdateAndSave,
+    [switch]$EnableTrackChanges
+)
+$ErrorActionPreference = 'Stop'
+$sourceFile = (Resolve-Path -LiteralPath $InputDocx).Path
+$pdfFile = [IO.Path]::GetFullPath($OutputPdf)
+$pdfParent = [IO.Path]::GetDirectoryName($pdfFile)
+if (-not (Test-Path -LiteralPath $pdfParent)) {
+    New-Item -ItemType Directory -Path $pdfParent -Force | Out-Null
+}
+$wordApplication = $null
+$wordDocument = $null
+try {
+    $wordApplication = New-Object -ComObject Word.Application
+    $wordApplication.Visible = $false
+    $wordApplication.DisplayAlerts = 0
+    $wordApplication.AutomationSecurity = 3
+    $wordApplication.Options.UpdateLinksAtOpen = $false
+    $wordDocument = $wordApplication.Documents.Open($sourceFile, $false, (-not $UpdateAndSave.IsPresent))
+    if ($UpdateAndSave) {
+        $wordDocument.TrackRevisions = $false
+        $null = $wordDocument.Fields.Update()
+        $wordDocument.Repaginate()
+        foreach ($toc in $wordDocument.TablesOfContents) {
+            $toc.Update()
+            $toc.Range.Font.Name = 'Times New Roman'
+            $toc.Range.Font.Size = 12
+            $toc.Range.ParagraphFormat.LineSpacingRule = 0
+            $toc.Range.ParagraphFormat.SpaceBefore = 0
+            $toc.Range.ParagraphFormat.SpaceAfter = 3
+            $toc.Range.ParagraphFormat.Alignment = 0
+            $toc.Range.ParagraphFormat.FirstLineIndent = 0
+            $toc.Range.ParagraphFormat.LeftIndent = 0
+            $toc.Range.ParagraphFormat.RightIndent = 0
+            foreach ($paragraph in $toc.Range.Paragraphs) {
+                if ($paragraph.Range.Text.Trim().Length -eq 0) {
+                    $paragraph.Range.Font.Size = 1
+                    $paragraph.Format.SpaceBefore = 0
+                    $paragraph.Format.SpaceAfter = 0
+                    $paragraph.Format.LineSpacingRule = 4
+                    $paragraph.Format.LineSpacing = 1
+                }
+            }
+        }
+        $wordDocument.Repaginate()
+        foreach ($toc in $wordDocument.TablesOfContents) { $toc.UpdatePageNumbers() }
+        if ($EnableTrackChanges) { $wordDocument.TrackRevisions = $true }
+        $wordDocument.Save()
+    }
+    $pages = $wordDocument.ComputeStatistics(2)
+    $wordDocument.ExportAsFixedFormat($pdfFile, 17)
+    [PSCustomObject]@{pages=$pages; pdf=$pdfFile; updated_docx=$UpdateAndSave.IsPresent; track_changes=$wordDocument.TrackRevisions; revisions=$wordDocument.Revisions.Count} | ConvertTo-Json
+}
+finally {
+    if ($null -ne $wordDocument) { $wordDocument.Close(0) }
+    if ($null -ne $wordApplication) { $wordApplication.Quit(0) }
+    if ($null -ne $wordDocument) { [Runtime.InteropServices.Marshal]::ReleaseComObject($wordDocument) | Out-Null }
+    if ($null -ne $wordApplication) { [Runtime.InteropServices.Marshal]::ReleaseComObject($wordApplication) | Out-Null }
+}

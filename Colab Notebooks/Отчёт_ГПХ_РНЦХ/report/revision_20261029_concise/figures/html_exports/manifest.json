@@ -1,0 +1,400 @@
+{
+  "schema_version": 1,
+  "editorial_date": "2026-10-29",
+  "task": "Additional illustrations for the contract-aligned report; УО is primary, ФВ supplementary",
+  "figure_mode": "with_figures",
+  "formatting_mode": "section_only",
+  "sources": {
+    "html_3340": {
+      "path": "Colab Notebooks/scorpion_v2/33.40_Ник_и_Ярослав_эксперимент_и_модели_Scorpion_22_10_2026.html",
+      "sha256": "c6631301ee3c9c02835033d99621b71f6347153982291f7cd3bef4acec3e5878",
+      "scope": "Индивидуальные КТ-входы участников октябрьской серии Scorpion 2026. Раздел сопоставления со старой серией МГТУ не экспортируется."
+    },
+    "html_3330": {
+      "path": "Colab Notebooks/scorpion_v2/33.30_Сгущение_у_всех_контактов_и_продолжение_подбора_Георгия_Scorpion_v2.html",
+      "sha256": "def1623a7bbadeca16e2c0a9a8dfc5e4ae191d58c39ad762abc71f90641bb0d7",
+      "scope": "Диагностика подготовки индивидуального КТ-контура Георга в ветке Scorpion; электрические результаты старых граничных условий не экспортируются."
+    },
+    "html_3343": {
+      "path": "Colab Notebooks/scorpion_v2/33.43_Индивидуальная_КТ_FEM_проверка_трёх_участников_Scorpion.html",
+      "sha256": "99e2e84297bbc8f759396c271f18cf24e41ab3cadd95d1efcd8b3d112bbde577",
+      "scope": "Сохранённые индивидуальные КТ/FEM-проверки трёх участников октябрьской серии Scorpion 2026."
+    },
+    "html_3344": {
+      "path": "Colab Notebooks/scorpion_v2/33.44_Измеренный_пульс_ТТРКГ_объёмная_чувствительность_и_камеры_КТ.html",
+      "sha256": "f4ed38e229cbc51b94d3e9741241880618e9e072bcda7f2001a8f9510b1fe96c",
+      "scope": "Пульсовые сигналы реокардиомонитора октябрьской серии Scorpion 2026 и отдельно полученный КТ-референс; синхронность между КТ и сигналами не предполагается."
+    }
+  },
+  "figures": [
+    {
+      "id": "html_ct_tissue_masks_n",
+      "filename": "01_n_ct_tissue_masks.png",
+      "source_id": "html_3340",
+      "image_index_zero_based": 0,
+      "source_figure": "Рисунок 23. Ник. КТ-сечение и кандидатные тканевые маски.",
+      "title": "Индивидуальная КТ и кандидатные тканевые маски участника Н",
+      "recommended_chapter_before_renumbering": "06_anatomy.md",
+      "recommended_topic": "Происхождение анатомических входов и отделение автоматической сегментации от ручной",
+      "caption": "Индивидуальное КТ-сечение участника Н и кандидатные тканевые маски. Сечение выбрано по центру объёма автоматической маски сердца. Это иллюстрация анатомических входов для модели; она не является результатом ручной сегментации автора и не подтверждает анатомическую точность автоматических границ. Маски требуют экспертной оценки; положение электродов на этом изображении не задано.",
+      "status": "Сохранённый результат автоматической обработки индивидуальной КТ; анатомическая валидность не установлена.",
+      "limitations": [
+        "Не подменяет ручную сегментацию Inobitec.",
+        "КТ получена на глубоком вдохе; изображение не является дыхательной парой вдох–выдох."
+      ],
+      "integration_priority": "primary",
+      "source_path": "Colab Notebooks/scorpion_v2/33.40_Ник_и_Ярослав_эксперимент_и_модели_Scorpion_22_10_2026.html",
+      "source_html_sha256": "c6631301ee3c9c02835033d99621b71f6347153982291f7cd3bef4acec3e5878",
+      "source_scope": "Индивидуальные КТ-входы участников октябрьской серии Scorpion 2026. Раздел сопоставления со старой серией МГТУ не экспортируется.",
+      "locator": {
+        "html_img_index_zero_based": 0,
+        "html_line": 14530,
+        "figure_caption": "Рисунок 23. Ник. КТ-сечение и кандидатные тканевые маски."
+      },
+      "export_method": "Base64 decode of the existing HTML img[data:image/png]; byte-for-byte extraction; no image processing or recalculation",
+      "output_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_contract/figures/html_exports/01_n_ct_tissue_masks.png",
+      "embedded_png_sha256": "b848fc7adc0b3bdadb5e1819e9ed441eedb9bfba531b547dd85b63c211c5abc2",
+      "output_sha256": "b848fc7adc0b3bdadb5e1819e9ed441eedb9bfba531b547dd85b63c211c5abc2",
+      "rgba_pixel_sha256": "fc2d3de00e4ba9e34a9c888988a01ec21af555af7edd54f094abc4061aabcd31",
+      "dimensions_px": [
+        1864,
+        1765
+      ],
+      "scientific_claim_disposition": "keep_with_boundary",
+      "duplicate_check": "No identical RGBA pixels among all images embedded in the frozen previous DOCX or available previous chapter references",
+      "publication_blocker": "Original includes internal participant name; no approved anonymous rerender available",
+      "visual_review": {
+        "filename": "01_n_ct_tissue_masks.png",
+        "sha256": "b848fc7adc0b3bdadb5e1819e9ed441eedb9bfba531b547dd85b63c211c5abc2",
+        "status": "visually_checked",
+        "note": "Четыре панели КТ/масок; оси RAS, шкалы в мм, легенда сердца и предупреждение о кандидатных масках видны. Обрезанных надписей нет."
+      }
+    },
+    {
+      "id": "html_candidate_lateral_montage_n",
+      "filename": "02_n_candidate_lateral_montage.png",
+      "source_id": "html_3340",
+      "image_index_zero_based": 2,
+      "source_figure": "Рисунок 25. Ник. Кандидатная боковая область на индивидуальной КТ.",
+      "title": "Кандидатная локализация боковой сборки участника Н",
+      "recommended_chapter_before_renumbering": "05_experiments.md",
+      "recommended_topic": "Различие фактического монтажа и его геометрической реконструкции",
+      "caption": "Кандидатная боковая область на индивидуальной КТ участника Н: жёлтая точка и зелёная область показывают геометрическую гипотезу центра. Пример A–M–N–B имеет длину 140 мм по кожной кривой. Это сохранённый диагностический вариант локализации, а не измеренное положение электродов во время записи. Способ задания расстояний не подтверждает фактическую геометрию сборки; отказ проверки диагностического контура сохранён.",
+      "status": "Геометрическое допущение; положение не подтверждено экспериментальным протоколом.",
+      "limitations": [
+        "Не фотография установки и не доказательство совпадения с физическим монтажом.",
+        "Не выдавать этот исходный кандидат за окончательное положение всех последующих FEM-расчётов.",
+        "Контур в показанном диагностическом варианте не прошёл все проверки подготовки."
+      ],
+      "integration_priority": "primary",
+      "source_path": "Colab Notebooks/scorpion_v2/33.40_Ник_и_Ярослав_эксперимент_и_модели_Scorpion_22_10_2026.html",
+      "source_html_sha256": "c6631301ee3c9c02835033d99621b71f6347153982291f7cd3bef4acec3e5878",
+      "source_scope": "Индивидуальные КТ-входы участников октябрьской серии Scorpion 2026. Раздел сопоставления со старой серией МГТУ не экспортируется.",
+      "locator": {
+        "html_img_index_zero_based": 2,
+        "html_line": 14632,
+        "figure_caption": "Рисунок 25. Ник. Кандидатная боковая область на индивидуальной КТ."
+      },
+      "export_method": "Base64 decode of the existing HTML img[data:image/png]; byte-for-byte extraction; no image processing or recalculation",
+      "output_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_contract/figures/html_exports/02_n_candidate_lateral_montage.png",
+      "embedded_png_sha256": "7d4308d08c87392acddd52990ac670438996f52558378f100e8a49e61497f94a",
+      "output_sha256": "7d4308d08c87392acddd52990ac670438996f52558378f100e8a49e61497f94a",
+      "rgba_pixel_sha256": "7cabb0842a19c462a52287f49bf84455b0e402148553be3e2782e927fc8065d5",
+      "dimensions_px": [
+        2625,
+        960
+      ],
+      "scientific_claim_disposition": "keep_with_boundary",
+      "duplicate_check": "No identical RGBA pixels among all images embedded in the frozen previous DOCX or available previous chapter references",
+      "publication_blocker": "Original includes internal participant name; no approved anonymous rerender available",
+      "visual_review": {
+        "filename": "02_n_candidate_lateral_montage.png",
+        "sha256": "7d4308d08c87392acddd52990ac670438996f52558378f100e8a49e61497f94a",
+        "status": "visually_checked",
+        "note": "КТ, продольный пример A–M–N–B и боковая проекция показаны полностью; присутствуют L=140 мм и предупреждение о неподтверждённом монтаже. Широкий рисунок: при интеграции проверить читаемость мелких исходных подписей."
+      }
+    },
+    {
+      "id": "html_ct_surface_regularization_g",
+      "filename": "03_g_ct_contour_regularization.png",
+      "source_id": "html_3330",
+      "image_index_zero_based": 0,
+      "source_figure": "Рисунок подготовки геометрии 1. Локальные сечения КТ.",
+      "title": "Контроль изменения наружного КТ-контура при подготовке геометрии",
+      "recommended_chapter_before_renumbering": "06_anatomy.md",
+      "recommended_topic": "Подготовка наружной поверхности и отрицательные результаты геометрического контроля",
+      "caption": "Локальные КТ-сечения участника Г до и после одного замыкания наружного контура. Синим показан исходный контур, оранжевым — исправленный, красными крестами — точки локальной пробы вершин. Верхний ряд соответствует проверке до → после, нижний — после → до. Координаты заданы в LPS, мм; индексы отсчитываются от нуля. Контуры сечений построены на уровне 0,5, а проверяемые поверхности — на уровне 0,49. Анатомическая приемлемость коррекции не установлена; проверка исходного допуска 1,25 мм дала отрицательный результат.",
+      "status": "Численная диагностика геометрии; отрицательный результат исходной проверки допуска сохранён.",
+      "limitations": [
+        "Три ближайших воксельных сечения могут не проходить точно через трёхмерную точку проверки.",
+        "Локальные и выборочные максимумы не являются глобальным расстоянием Хаусдорфа.",
+        "Диагностика не меняла замороженную FEM-геометрию."
+      ],
+      "integration_priority": "primary",
+      "source_path": "Colab Notebooks/scorpion_v2/33.30_Сгущение_у_всех_контактов_и_продолжение_подбора_Георгия_Scorpion_v2.html",
+      "source_html_sha256": "def1623a7bbadeca16e2c0a9a8dfc5e4ae191d58c39ad762abc71f90641bb0d7",
+      "source_scope": "Диагностика подготовки индивидуального КТ-контура Георга в ветке Scorpion; электрические результаты старых граничных условий не экспортируются.",
+      "locator": {
+        "html_img_index_zero_based": 0,
+        "html_line": 12684,
+        "figure_caption": "Рисунок подготовки геометрии 1. Локальные сечения КТ."
+      },
+      "export_method": "Base64 decode of the existing HTML img[data:image/png]; byte-for-byte extraction; no image processing or recalculation",
+      "output_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_contract/figures/html_exports/03_g_ct_contour_regularization.png",
+      "embedded_png_sha256": "0f0ec1604a8c99d7185e106faa38f61ea826c3f5ccdeab335429c8e46f2b79e3",
+      "output_sha256": "0f0ec1604a8c99d7185e106faa38f61ea826c3f5ccdeab335429c8e46f2b79e3",
+      "rgba_pixel_sha256": "a5abcd98da11f13db5268b4fd26690ae4c510497bac67f20dc95102e0c4d04f2",
+      "dimensions_px": [
+        1950,
+        1200
+      ],
+      "scientific_claim_disposition": "keep_with_boundary",
+      "duplicate_check": "No identical RGBA pixels among all images embedded in the frozen previous DOCX or available previous chapter references",
+      "publication_variant": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_contract/figures/html_exports/anonymous/03_g_ct_contour_regularization.png",
+      "visual_review": {
+        "filename": "03_g_ct_contour_regularization.png",
+        "sha256": "0f0ec1604a8c99d7185e106faa38f61ea826c3f5ccdeab335429c8e46f2b79e3",
+        "status": "visually_checked",
+        "note": "Шесть сечений, исходные/исправленные контуры, точки проверки и отрицательный допуск отражены в подписи. Координаты, индексы и исходные численные значения читаемы."
+      }
+    },
+    {
+      "id": "html_recorded_tt_ecg_three_subjects",
+      "filename": "04_tt_ecg_four_cycles.png",
+      "source_id": "html_3344",
+      "image_index_zero_based": 0,
+      "source_figure": "Рисунок 1. ТТРКГ и ЭКГ на четырёх последовательных интервалах.",
+      "title": "ТТРКГ и ЭКГ трёх участников на четырёх последовательных интервалах",
+      "recommended_chapter_before_renumbering": "05_experiments.md",
+      "recommended_topic": "Пример результатов обработки реальных сигналов",
+      "caption": "ТТРКГ 2×2 и ЭКГ трёх участников на четырёх последовательных кандидатных циклах отдельных записей реокардиомонитора, отнесённых к глубокому вдоху. Вертикальные линии обозначают существующие кандидатные QRS; начало шкалы совпадает с первым из них. Импедансный пульс показан в мОм после обработки в полосе 0,7–12 Гц, ЭКГ — в мВ после подавления 50, 100 и 150 Гц и ограничения полосой 0,5–40 Гц. Знак и амплитуда сохранены; подбор усиления, задержки и амплитудная нормировка не выполнялись. QRS не принимается автоматически за механическое начало изгнания.",
+      "status": "Результат обработки экспериментальных сигналов; разметка QRS кандидатная.",
+      "limitations": [
+        "Три панели относятся к разным участникам и записям, а не к общей синхронной сессии.",
+        "Тканевые пульсовые вклады из ТТРКГ на этом этапе не вычтены.",
+        "Внутриучастковая вариабельность не является оценкой межсессионной воспроизводимости."
+      ],
+      "integration_priority": "primary",
+      "source_path": "Colab Notebooks/scorpion_v2/33.44_Измеренный_пульс_ТТРКГ_объёмная_чувствительность_и_камеры_КТ.html",
+      "source_html_sha256": "f4ed38e229cbc51b94d3e9741241880618e9e072bcda7f2001a8f9510b1fe96c",
+      "source_scope": "Пульсовые сигналы реокардиомонитора октябрьской серии Scorpion 2026 и отдельно полученный КТ-референс; синхронность между КТ и сигналами не предполагается.",
+      "locator": {
+        "html_img_index_zero_based": 0,
+        "html_line": 7857,
+        "figure_caption": "Рисунок 1. ТТРКГ и ЭКГ на четырёх последовательных интервалах."
+      },
+      "export_method": "Base64 decode of the existing HTML img[data:image/png]; byte-for-byte extraction; no image processing or recalculation",
+      "output_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_contract/figures/html_exports/04_tt_ecg_four_cycles.png",
+      "embedded_png_sha256": "21859a13a658485f565b071602a19044d5b6a4e150e744a3464dd193b5917011",
+      "output_sha256": "21859a13a658485f565b071602a19044d5b6a4e150e744a3464dd193b5917011",
+      "rgba_pixel_sha256": "56de785b487ed28ec0dd8d6b08ba7dc863db186f26342bffaa85fb39af88c20e",
+      "dimensions_px": [
+        1508,
+        772
+      ],
+      "scientific_claim_disposition": "keep_with_boundary",
+      "duplicate_check": "No identical RGBA pixels among all images embedded in the frozen previous DOCX or available previous chapter references",
+      "publication_variant": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_contract/figures/html_exports/anonymous/04_tt_ecg_four_cycles.png",
+      "visual_review": {
+        "filename": "04_tt_ecg_four_cycles.png",
+        "sha256": "21859a13a658485f565b071602a19044d5b6a4e150e744a3464dd193b5917011",
+        "status": "visually_checked",
+        "note": "Три участника, ТТРКГ 2×2 и ЭКГ; оси мОм/мВ/с, знаки сигналов, QRS и разные длительности сохранены. Надписи не перекрыты."
+      }
+    },
+    {
+      "id": "html_tissue_identifiability_singular_values",
+      "filename": "05_tissue_identifiability_singular_values.png",
+      "source_id": "html_3343",
+      "image_index_zero_based": 2,
+      "source_figure": "Рисунок 3. Сингулярные числа безразмерной E на вдохе, логарифмическая шкала.",
+      "title": "Локальная различимость четырёх сопротивлений по расчётным наборам отведений",
+      "recommended_chapter_before_renumbering": "08_tissue.md",
+      "recommended_topic": "Идентифицируемость тканевых параметров и границы объединения отведений",
+      "caption": "Сингулярные числа безразмерной матрицы E на вдохе в индивидуальных КТ/FEM-моделях, логарифмическая шкала. Сплошные линии соответствуют боковым отведениям, ТТРКГ и совместному набору; пунктирные уровни — спектральной норме разности E при q = 4096 и q = 1024 для соответствующего набора. Слабейшее совместное направление у всех трёх участников преимущественно связано с эффективным сопротивлением всего сердца. Раздельная практическая оценка четырёх сопротивлений не установлена.",
+      "status": "Результат локальной математической модели; практическая идентифицируемость не подтверждена.",
+      "limitations": [
+        "Разность правил интегрирования — наблюдаемый численный контроль, а не строгая граница ошибки.",
+        "Шум и неопределённость положения электродов в этом сравнении численно не оценены.",
+        "Объединение боковых отведений с ТТРКГ не является сравнением точности с поясом PulmoVista."
+      ],
+      "integration_priority": "primary",
+      "source_path": "Colab Notebooks/scorpion_v2/33.43_Индивидуальная_КТ_FEM_проверка_трёх_участников_Scorpion.html",
+      "source_html_sha256": "99e2e84297bbc8f759396c271f18cf24e41ab3cadd95d1efcd8b3d112bbde577",
+      "source_scope": "Сохранённые индивидуальные КТ/FEM-проверки трёх участников октябрьской серии Scorpion 2026.",
+      "locator": {
+        "html_img_index_zero_based": 2,
+        "html_line": 8153,
+        "figure_caption": "Рисунок 3. Сингулярные числа безразмерной E на вдохе, логарифмическая шкала."
+      },
+      "export_method": "Base64 decode of the existing HTML img[data:image/png]; byte-for-byte extraction; no image processing or recalculation",
+      "output_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_contract/figures/html_exports/05_tissue_identifiability_singular_values.png",
+      "embedded_png_sha256": "39c2a57154400f4fb81494e837125b3d4ba556d015e80937f8d020e06a6f1fdb",
+      "output_sha256": "39c2a57154400f4fb81494e837125b3d4ba556d015e80937f8d020e06a6f1fdb",
+      "rgba_pixel_sha256": "b0097621580067341d03ca81f2b58b7ec8aecc89faf4f8f003534d6b19880286",
+      "dimensions_px": [
+        1813,
+        589
+      ],
+      "scientific_claim_disposition": "keep_with_boundary",
+      "duplicate_check": "No identical RGBA pixels among all images embedded in the frozen previous DOCX or available previous chapter references",
+      "publication_variant": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_contract/figures/html_exports/anonymous/05_tissue_identifiability_singular_values.png",
+      "visual_review": {
+        "filename": "05_tissue_identifiability_singular_values.png",
+        "sha256": "39c2a57154400f4fb81494e837125b3d4ba556d015e80937f8d020e06a6f1fdb",
+        "status": "visually_checked",
+        "note": "Три панели сингулярного спектра; логарифмические шкалы, легенды и уровни численного изменения видны. Линии не скрывают оси."
+      }
+    },
+    {
+      "id": "html_negative_pulse_volume_test",
+      "filename": "06_measured_pulse_vs_volume_probe.png",
+      "source_id": "html_3344",
+      "image_index_zero_based": 2,
+      "source_figure": "Рисунок 3. Столбцы — размах каждого измеренного цикла; горизонтальные линии — размах ответа в диапазоне 0,95–1,05V₀.",
+      "title": "Измеренный пульс и объёмная проба однородной модели",
+      "recommended_chapter_before_renumbering": "09_heart_dynamics.md",
+      "recommended_topic": "Отрицательная проверка простого преобразования импеданса в объём",
+      "caption": "Сопоставление размаха каждого измеренного цикла ТТРКГ (столбцы) с размахом модельного ответа при изменении объёма в диапазоне 0,95–1,05V₀ (горизонтальные линии). Обе исследованные материальные постановки дают меньший размах во всех двенадцати интервалах. Это отрицательный результат ограниченной однородной модели с фиксированным центром и фоном. Он не доказывает отсутствие сердечного вклада; пульсовые вклады других тканей здесь ещё не вычтены. Экстраполяцию за проверенный объёмный диапазон нельзя называть восстановленным УО.",
+      "status": "Отрицательный результат сопоставления эксперимента с ограниченным модельным сценарием.",
+      "limitations": [
+        "Объёмная проба относится ко всему эквивалентному сердцу, а не непосредственно к объёму крови ЛЖ.",
+        "Свойства однородного сердца являются сценариями, а не установленными тканевыми параметрами.",
+        "Не обосновывает исключение сферы из дальнейшего исследования при других эффективных свойствах и законах изменения."
+      ],
+      "integration_priority": "primary",
+      "source_path": "Colab Notebooks/scorpion_v2/33.44_Измеренный_пульс_ТТРКГ_объёмная_чувствительность_и_камеры_КТ.html",
+      "source_html_sha256": "f4ed38e229cbc51b94d3e9741241880618e9e072bcda7f2001a8f9510b1fe96c",
+      "source_scope": "Пульсовые сигналы реокардиомонитора октябрьской серии Scorpion 2026 и отдельно полученный КТ-референс; синхронность между КТ и сигналами не предполагается.",
+      "locator": {
+        "html_img_index_zero_based": 2,
+        "html_line": 8239,
+        "figure_caption": "Рисунок 3. Столбцы — размах каждого измеренного цикла; горизонтальные линии — размах ответа в диапазоне 0,95–1,05V₀."
+      },
+      "export_method": "Base64 decode of the existing HTML img[data:image/png]; byte-for-byte extraction; no image processing or recalculation",
+      "output_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_contract/figures/html_exports/06_measured_pulse_vs_volume_probe.png",
+      "embedded_png_sha256": "51435d2b3b88a14cf45088191fe76f5c401443147959eb915f01c359c28e39c6",
+      "output_sha256": "51435d2b3b88a14cf45088191fe76f5c401443147959eb915f01c359c28e39c6",
+      "rgba_pixel_sha256": "9d4ffcdb29840f4be4360841519bfae1a3873d518f13c296f57eb4d9d39796e3",
+      "dimensions_px": [
+        1508,
+        528
+      ],
+      "scientific_claim_disposition": "keep_with_boundary",
+      "duplicate_check": "No identical RGBA pixels among all images embedded in the frozen previous DOCX or available previous chapter references",
+      "publication_variant": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_contract/figures/html_exports/anonymous/06_measured_pulse_vs_volume_probe.png",
+      "visual_review": {
+        "filename": "06_measured_pulse_vs_volume_probe.png",
+        "sha256": "51435d2b3b88a14cf45088191fe76f5c401443147959eb915f01c359c28e39c6",
+        "status": "visually_checked",
+        "note": "12 измеренных размахов и две модельные горизонтальные линии различимы; диапазон 0,95–1,05V₀ и материальные профили сохранены. Отрицательный результат не скрыт."
+      }
+    },
+    {
+      "id": "html_ct_whole_heart_and_chambers",
+      "filename": "07_ct_whole_heart_and_chambers.png",
+      "source_id": "html_3344",
+      "image_index_zero_based": 3,
+      "source_figure": "Рисунок 4. Наблюдаемые изменения объёмов автоматических масок от первой доступной фазы каждого интервала.",
+      "title": "Различие изменений объёма целого сердца и отдельных камер",
+      "recommended_chapter_before_renumbering": "10_chambers.md",
+      "recommended_topic": "Необходимость обоснования перехода от эквивалентного сердца к УО желудочка",
+      "caption": "Изменения объёмов автоматических масок целого сердца и камер относительно первой доступной фазы каждого отдельного интервала R–R. У четырёх панелей разные референсные фазы; линии соединяют только доступные точки и не замыкают цикл. Изменение объёма целого сердца не тождественно изменению одной камеры. Начальные точки не приняты за конец диастолы, а наблюдаемые размахи не объявляются УО. Вклад анатомической неопределённости автоматических масок отдельно не оценён.",
+      "status": "Наблюдение по автоматическим КТ-маскам; проверенного перехода от целого сердца к УО ЛЖ нет.",
+      "limitations": [
+        "КТ служит отдельным референсом разработки, не синхронным измерением с октябрьскими сигналами.",
+        "Фазовые объёмы не разрешены как известные входы операционного восстановления из одной статической КТ.",
+        "Малое число зависимых фаз не обеспечивает независимой проверки физиологической точности."
+      ],
+      "integration_priority": "reserve",
+      "source_path": "Colab Notebooks/scorpion_v2/33.44_Измеренный_пульс_ТТРКГ_объёмная_чувствительность_и_камеры_КТ.html",
+      "source_html_sha256": "f4ed38e229cbc51b94d3e9741241880618e9e072bcda7f2001a8f9510b1fe96c",
+      "source_scope": "Пульсовые сигналы реокардиомонитора октябрьской серии Scorpion 2026 и отдельно полученный КТ-референс; синхронность между КТ и сигналами не предполагается.",
+      "locator": {
+        "html_img_index_zero_based": 3,
+        "html_line": 8299,
+        "figure_caption": "Рисунок 4. Наблюдаемые изменения объёмов автоматических масок от первой доступной фазы каждого интервала."
+      },
+      "export_method": "Base64 decode of the existing HTML img[data:image/png]; byte-for-byte extraction; no image processing or recalculation",
+      "output_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_contract/figures/html_exports/07_ct_whole_heart_and_chambers.png",
+      "embedded_png_sha256": "55bc6666dad50bdbb5ec7f1aa7b3957e60da8485cc529c3dafbc813fd3d25846",
+      "output_sha256": "55bc6666dad50bdbb5ec7f1aa7b3957e60da8485cc529c3dafbc813fd3d25846",
+      "rgba_pixel_sha256": "9cc189bb6bb706df69768c1d8b639c2fc5281f3820ffd1482ebf065cb75a1235",
+      "dimensions_px": [
+        1508,
+        933
+      ],
+      "scientific_claim_disposition": "keep_with_boundary",
+      "duplicate_check": "No identical RGBA pixels among all images embedded in the frozen previous DOCX or available previous chapter references",
+      "publication_variant": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_contract/figures/html_exports/anonymous/07_ct_whole_heart_and_chambers.png",
+      "visual_review": {
+        "filename": "07_ct_whole_heart_and_chambers.png",
+        "sha256": "55bc6666dad50bdbb5ec7f1aa7b3957e60da8485cc529c3dafbc813fd3d25846",
+        "status": "visually_checked",
+        "note": "Четыре раздельных неполных R–R, оси времени в мс и объёмных различий в мл; линии не замыкают циклы. Легенда присутствует."
+      }
+    },
+    {
+      "id": "html_negative_respiratory_contrast",
+      "filename": "08_respiratory_contrast_observation_model.png",
+      "source_id": "html_3343",
+      "image_index_zero_based": 1,
+      "source_figure": "Рисунок 2. Парные дыхательные разности: наблюдение и модельный lung-only контраст own_drive при временном разделении.",
+      "title": "Наблюдаемый дыхательный контраст и модельный вклад лёгкого",
+      "recommended_chapter_before_renumbering": "08_tissue.md",
+      "recommended_topic": "Раздельная проверка абсолютных уровней и дыхательных различий",
+      "caption": "Парные дыхательные разности в эксперименте и индивидуальной модели при временном разделении отведений: синим показана медиана наблюдаемых парных разностей, оранжевым — модельный контраст при изменении только лёгочного компартмента. Категории обозначают базу боковой сборки в миллиметрах и вариант ТТРКГ. Расхождение величины, а для части боковых монтажей участника Г и знака, сохраняется. Изменение геометрии грудной клетки в этом сценарии не рассчитывалось; такое сопоставление не подтверждает индивидуальную точность тканевой модели.",
+      "status": "Экспериментальное наблюдение и ограниченный модельный сценарий с отрицательным результатом согласования.",
+      "limitations": [
+        "Дыхательная разметка ретроспективная; монтажи регистрировались последовательно.",
+        "Межсессионная неопределённость не оценена.",
+        "Изменение только лёгкого не подменяет полную модель всех дыхательных вкладов."
+      ],
+      "integration_priority": "reserve",
+      "source_path": "Colab Notebooks/scorpion_v2/33.43_Индивидуальная_КТ_FEM_проверка_трёх_участников_Scorpion.html",
+      "source_html_sha256": "99e2e84297bbc8f759396c271f18cf24e41ab3cadd95d1efcd8b3d112bbde577",
+      "source_scope": "Сохранённые индивидуальные КТ/FEM-проверки трёх участников октябрьской серии Scorpion 2026.",
+      "locator": {
+        "html_img_index_zero_based": 1,
+        "html_line": 8095,
+        "figure_caption": "Рисунок 2. Парные дыхательные разности: наблюдение и модельный lung-only контраст own_drive при временном разделении."
+      },
+      "export_method": "Base64 decode of the existing HTML img[data:image/png]; byte-for-byte extraction; no image processing or recalculation",
+      "output_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_contract/figures/html_exports/08_respiratory_contrast_observation_model.png",
+      "embedded_png_sha256": "f59ee8986292f2f4fa836aba66d6dd9de7758d0551047111e58777b7b3eaebd0",
+      "output_sha256": "f59ee8986292f2f4fa836aba66d6dd9de7758d0551047111e58777b7b3eaebd0",
+      "rgba_pixel_sha256": "a0f1e3705b3a5b9ba7c89d9a2c331c445e6b49451d3a1b0ccdd322bed1a7e2d2",
+      "dimensions_px": [
+        1813,
+        973
+      ],
+      "scientific_claim_disposition": "keep_with_boundary",
+      "duplicate_check": "No identical RGBA pixels among all images embedded in the frozen previous DOCX or available previous chapter references",
+      "publication_variant": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_contract/figures/html_exports/anonymous/08_respiratory_contrast_observation_model.png",
+      "visual_review": {
+        "filename": "08_respiratory_contrast_observation_model.png",
+        "sha256": "f59ee8986292f2f4fa836aba66d6dd9de7758d0551047111e58777b7b3eaebd0",
+        "status": "visually_checked",
+        "note": "Шесть панелей с экспериментом/моделью; сохранены знаки, Ом, базы в мм и варианты монтажа. Отличия знаков у Георга видны."
+      }
+    }
+  ],
+  "source_boundary": "Fixed local HTML research corpus; no network, new physical calculation, new signal processing, or transfer of raw medical data",
+  "previous_report_unique_pixel_images_checked": 22,
+  "previous_docx_source": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261028/deliverables/Отчёт_ГПХ_РНЦХ_20261028_для_рецензирования.docx",
+  "previous_docx_sha256": "64bb37e36f439f5b7ad0a4ef24e1f29a0b38d785e2f6b6ea9c0ee088ef01ea4c",
+  "previous_docx_embedded_images_checked": 22,
+  "previous_report_missing_image_paths": [
+    "Colab Notebooks\\cardiac_4d_segmentation\\results\\nik_whole_heart_20261028\\exploratory\\full_geometry_v1\\summary\\final\\cycle_0_dynamics_1.png",
+    "Colab Notebooks\\cardiac_4d_segmentation\\results\\nik_whole_heart_20261028\\exploratory\\full_geometry_v1\\summary\\final\\cycle_0_dynamics_3.png",
+    "Colab Notebooks\\cardiac_4d_segmentation\\results\\nik_whole_heart_20261028\\exploratory\\full_geometry_v1\\summary\\final\\cycle_0_trajectory_3.png",
+    "Colab Notebooks\\Отчёт_ГПХ_РНЦХ\\pulmovista_check_20261028\\local\\belt_current_view\\belt_current_3d.png",
+    "Colab Notebooks\\Отчёт_ГПХ_РНЦХ\\pulmovista_check_20261028\\local\\patient_v3\\conditional_band_projection.png"
+  ],
+  "chapter_numbering": "Recommendations use old filenames; report integration and final numbering are outside this exporter",
+  "recommended_primary_count": 6,
+  "reserve_count": 2,
+  "inventory_note": "Targeted rg --files --hidden --no-ignore inventory found 28 HTML paths in scorpion_v2 and cardiac_4d_segmentation/results; additional generated files concerned historical cardiac checks. The local pulmovista_check_20261028 folder is unavailable in this checkout. No Git LFS pointer was treated as a rendered HTML.",
+  "integration_instruction": "Use anonymous/manifest.json and anonymous/CAPTIONS.md for publication; original extracted PNGs contain internal participant names except figure 03.",
+  "visual_qa_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_contract/figures/html_exports/VISUAL_QA.json"
+}

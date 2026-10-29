@@ -1,0 +1,392 @@
+{
+  "schema": "targeted_embedded_figure_sources_v1",
+  "figures": [
+    12,
+    14,
+    19
+  ],
+  "passes": 1,
+  "scope": "one inventory/content pass over repository HTML/HTM/IPYNB/JSON, excluding environments/caches/audit/own revision; one pass over companion archive HTML/HTM/IPYNB/JSON/CSV entries",
+  "repo_files_examined": 1306,
+  "repo_bytes_examined": 4738560282,
+  "archive": {
+    "path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/deliverables/Материалы_научной_редакции_20261029.zip",
+    "sha256": "23dfd66d7801204c247c51f923fa01ba78bcdbc0c8fefd9856bc7178cc43d1ed",
+    "entries_examined": [
+      {
+        "name": "archive_manifest.json",
+        "bytes": 54334
+      },
+      {
+        "name": "figures/index.json",
+        "bytes": 18970
+      },
+      {
+        "name": "materials/02/source_mode_clarification.json",
+        "bytes": 539
+      },
+      {
+        "name": "materials/repository_references.json",
+        "bytes": 959
+      },
+      {
+        "name": "programs/references.json",
+        "bytes": 8815
+      },
+      {
+        "name": "provenance/extractions.json",
+        "bytes": 22110
+      },
+      {
+        "name": "provenance/source_index.json",
+        "bytes": 12351
+      },
+      {
+        "name": "provenance/uncovered_dependencies.json",
+        "bytes": 4351
+      },
+      {
+        "name": "tables/ct_processed/chamber_volume_changes_measured_cycles.csv",
+        "bytes": 25720
+      },
+      {
+        "name": "tables/ct_processed/chamber_volumes_by_rr.csv",
+        "bytes": 8788
+      },
+      {
+        "name": "tables/index.json",
+        "bytes": 15050
+      },
+      {
+        "name": "tables/lateral_u2/observed_levels_002_011.csv",
+        "bytes": 3238
+      },
+      {
+        "name": "tables/processed_index.json",
+        "bytes": 2778
+      },
+      {
+        "name": "tables/report/04_tissue_lateral_baseline.csv",
+        "bytes": 484
+      },
+      {
+        "name": "tables/report/05_cardiac_anatomical_transfer.csv",
+        "bytes": 473
+      },
+      {
+        "name": "tables/report/06_cardiac_electrical_errors.csv",
+        "bytes": 368
+      },
+      {
+        "name": "tables/report/07_am_static_forms.csv",
+        "bytes": 787
+      },
+      {
+        "name": "tables/report/08_am_volume_quadrature.csv",
+        "bytes": 402
+      },
+      {
+        "name": "tables/report/09_am_y_step.csv",
+        "bytes": 271
+      },
+      {
+        "name": "tables/report/10_am_own_materials.csv",
+        "bytes": 299
+      },
+      {
+        "name": "tables/report/11_am_finite_inverse.csv",
+        "bytes": 327
+      },
+      {
+        "name": "tables/report/12_am_finite_compensation.csv",
+        "bytes": 561
+      },
+      {
+        "name": "tables/report/13_am_volume_transfer.csv",
+        "bytes": 278
+      },
+      {
+        "name": "tables/report/14_am_pulse_projection.csv",
+        "bytes": 407
+      },
+      {
+        "name": "tables/report/15_am_false_correction.csv",
+        "bytes": 426
+      },
+      {
+        "name": "tables/report/16_am_omission_errors.csv",
+        "bytes": 463
+      },
+      {
+        "name": "tables/report/17_am_isolated_limits.csv",
+        "bytes": 543
+      }
+    ]
+  },
+  "candidates": [
+    {
+      "path": "MATLAB_TRKG4_real_subjects/docs/HEART_SPHERE_CODE_AUDIT_20260914.json",
+      "sha256": "c5d66a1ce717718dc20e1eb22b6224cff78b7752d626a153354d2b81932e01ac",
+      "bytes": 5397,
+      "hits": {
+        "14": [
+          "shape_comparison"
+        ]
+      },
+      "numeric_payloads": [],
+      "plotly_candidates": [],
+      "raster_embedded": false,
+      "classification": "text_code_reference_or_raster_only"
+    },
+    {
+      "path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_contract/structure_check.json",
+      "sha256": "bc107acaedd10b52eeabb216c6925e828b70c90caef9da922ebd8a9b95331f58",
+      "bytes": 15136,
+      "hits": {
+        "12": [
+          "cycle_0_dynamics_1"
+        ],
+        "14": [
+          "stl_electrical_comparison"
+        ]
+      },
+      "numeric_payloads": [],
+      "plotly_candidates": [],
+      "raster_embedded": false,
+      "classification": "text_code_reference_or_raster_only"
+    },
+    {
+      "path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_contract/reviews/source_build_manifest_20261028.json",
+      "sha256": "ac656952d3f8528b59d9ceee44df2e2d37ee54baf95663ec99da6b449ff70de0",
+      "bytes": 35060,
+      "hits": {
+        "12": [
+          "cycle_0_dynamics_1"
+        ],
+        "14": [
+          "stl_electrical_comparison"
+        ]
+      },
+      "numeric_payloads": [],
+      "plotly_candidates": [],
+      "raster_embedded": false,
+      "classification": "text_code_reference_or_raster_only"
+    },
+    {
+      "path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_contract/reviews/figure_edits.json",
+      "sha256": "b315744d4aaa216b4f00aac224d7d8ad51f4baeed3b57ec2485cda93b103b74f",
+      "bytes": 28032,
+      "hits": {
+        "14": [
+          "Одинаковое ΔV;",
+          "stl_electrical_comparison"
+        ]
+      },
+      "numeric_payloads": [],
+      "plotly_candidates": [],
+      "raster_embedded": false,
+      "classification": "text_code_reference_or_raster_only"
+    },
+    {
+      "path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_contract/reviews/chamber_figure_edit.json",
+      "sha256": "cf51a80ba01a11cc919043f70e2a054e7195d7f3b394877b44fca036d5c10e2b",
+      "bytes": 4078,
+      "hits": {
+        "19": [
+          "RR0_guarded_blocks",
+          "guarded_chamber_predictions"
+        ]
+      },
+      "numeric_payloads": [],
+      "plotly_candidates": [],
+      "raster_embedded": false,
+      "classification": "text_code_reference_or_raster_only"
+    },
+    {
+      "path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_contract/reviews/build_manifest_before_update_20261028.json",
+      "sha256": "f52007d36c454dba1786ae206da84f09b8823287832d84dd194a23404791d428",
+      "bytes": 11423,
+      "hits": {
+        "12": [
+          "cycle_0_dynamics_1"
+        ]
+      },
+      "numeric_payloads": [],
+      "plotly_candidates": [],
+      "raster_embedded": false,
+      "classification": "text_code_reference_or_raster_only"
+    },
+    {
+      "path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_contract/figures/html_exports/manifest.json",
+      "sha256": "d98654899ddcbeb2d621a5d92f93d61571e89d6ca8993a72138783e29ab7ff4c",
+      "bytes": 42175,
+      "hits": {
+        "12": [
+          "cycle_0_dynamics_1"
+        ]
+      },
+      "numeric_payloads": [],
+      "plotly_candidates": [],
+      "raster_embedded": true,
+      "classification": "text_code_reference_or_raster_only"
+    },
+    {
+      "path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_contract/build_manifest.json",
+      "sha256": "6617fe7b62bd99ee551f835f555b0c18a69fecf69195c1ec75d93d830d552e42",
+      "bytes": 38803,
+      "hits": {
+        "12": [
+          "cycle_0_dynamics_1"
+        ],
+        "14": [
+          "stl_electrical_comparison"
+        ]
+      },
+      "numeric_payloads": [],
+      "plotly_candidates": [],
+      "raster_embedded": false,
+      "classification": "text_code_reference_or_raster_only"
+    },
+    {
+      "path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_concise/reviews/source_build_manifest.json",
+      "sha256": "6617fe7b62bd99ee551f835f555b0c18a69fecf69195c1ec75d93d830d552e42",
+      "bytes": 38803,
+      "hits": {
+        "12": [
+          "cycle_0_dynamics_1"
+        ],
+        "14": [
+          "stl_electrical_comparison"
+        ]
+      },
+      "numeric_payloads": [],
+      "plotly_candidates": [],
+      "raster_embedded": false,
+      "classification": "text_code_reference_or_raster_only"
+    },
+    {
+      "path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_concise/reviews/03_ledger.json",
+      "sha256": "fce29df6e61ad90658faaa906161dc12eeda6737ad41a8ac0e7bd18847707dd8",
+      "bytes": 140348,
+      "hits": {
+        "12": [
+          "cycle_0_dynamics_1"
+        ]
+      },
+      "numeric_payloads": [],
+      "plotly_candidates": [],
+      "raster_embedded": false,
+      "classification": "text_code_reference_or_raster_only"
+    },
+    {
+      "path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_concise/figures/html_exports/manifest.json",
+      "sha256": "d98654899ddcbeb2d621a5d92f93d61571e89d6ca8993a72138783e29ab7ff4c",
+      "bytes": 42175,
+      "hits": {
+        "12": [
+          "cycle_0_dynamics_1"
+        ]
+      },
+      "numeric_payloads": [],
+      "plotly_candidates": [],
+      "raster_embedded": true,
+      "classification": "text_code_reference_or_raster_only"
+    },
+    {
+      "path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_concise/build_manifest.json",
+      "sha256": "ca642dabcee34a63988a2cab3b7e4bee06c168fbda6d24652c0ec1dad29e7305",
+      "bytes": 30588,
+      "hits": {
+        "14": [
+          "stl_electrical_comparison"
+        ]
+      },
+      "numeric_payloads": [],
+      "plotly_candidates": [],
+      "raster_embedded": false,
+      "classification": "text_code_reference_or_raster_only"
+    },
+    {
+      "path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261028/structure_check.json",
+      "sha256": "0edc26c512c9a4bb553381e3bc08add2254c28208576d3a85d92909ff2288057",
+      "bytes": 15136,
+      "hits": {
+        "12": [
+          "cycle_0_dynamics_1"
+        ],
+        "14": [
+          "stl_electrical_comparison"
+        ]
+      },
+      "numeric_payloads": [],
+      "plotly_candidates": [],
+      "raster_embedded": false,
+      "classification": "text_code_reference_or_raster_only"
+    },
+    {
+      "path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261028/reviews/figure_edits.json",
+      "sha256": "b315744d4aaa216b4f00aac224d7d8ad51f4baeed3b57ec2485cda93b103b74f",
+      "bytes": 28032,
+      "hits": {
+        "14": [
+          "Одинаковое ΔV;",
+          "stl_electrical_comparison"
+        ]
+      },
+      "numeric_payloads": [],
+      "plotly_candidates": [],
+      "raster_embedded": false,
+      "classification": "text_code_reference_or_raster_only"
+    },
+    {
+      "path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261028/reviews/chamber_figure_edit.json",
+      "sha256": "cf51a80ba01a11cc919043f70e2a054e7195d7f3b394877b44fca036d5c10e2b",
+      "bytes": 4078,
+      "hits": {
+        "19": [
+          "RR0_guarded_blocks",
+          "guarded_chamber_predictions"
+        ]
+      },
+      "numeric_payloads": [],
+      "plotly_candidates": [],
+      "raster_embedded": false,
+      "classification": "text_code_reference_or_raster_only"
+    },
+    {
+      "path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261028/reviews/build_manifest_before_update_20261028.json",
+      "sha256": "f52007d36c454dba1786ae206da84f09b8823287832d84dd194a23404791d428",
+      "bytes": 11423,
+      "hits": {
+        "12": [
+          "cycle_0_dynamics_1"
+        ]
+      },
+      "numeric_payloads": [],
+      "plotly_candidates": [],
+      "raster_embedded": false,
+      "classification": "text_code_reference_or_raster_only"
+    },
+    {
+      "path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261028/build_manifest.json",
+      "sha256": "ac656952d3f8528b59d9ceee44df2e2d37ee54baf95663ec99da6b449ff70de0",
+      "bytes": 35060,
+      "hits": {
+        "12": [
+          "cycle_0_dynamics_1"
+        ],
+        "14": [
+          "stl_electrical_comparison"
+        ]
+      },
+      "numeric_payloads": [],
+      "plotly_candidates": [],
+      "raster_embedded": false,
+      "classification": "text_code_reference_or_raster_only"
+    }
+  ],
+  "potential_saved_data_files": 0,
+  "conclusion": "no_target_saved_numeric_payload_found",
+  "no_png_digitization": true,
+  "no_execution_of_notebooks_or_HTML": true
+}

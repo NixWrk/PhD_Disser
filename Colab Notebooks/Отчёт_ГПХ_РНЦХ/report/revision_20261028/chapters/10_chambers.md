@@ -386,11 +386,13 @@ $$
 Для всей цепочки можно объединить неопределённые входы в вектор $\mathbf p$: параметры КТ-опоры и её фазы, тканевые поправки, геометрию электродов, восстановленное движение, коэффициенты камерного закона и временные задержки. При существовании совместной ковариации $\Sigma_p$ локальное распространение имеет вид
 
 $$
+\begin{gathered}
 \begin{pmatrix}\varepsilon_D\\\varepsilon_S\end{pmatrix}
-\approx G\,\delta\mathbf p+\boldsymbol\eta,\qquad
+\approx G\,\delta\mathbf p+\boldsymbol\eta,\\
 \Sigma_{DS}\approx G\Sigma_pG^{\mathsf T}+\Sigma_\eta+
 G\operatorname{Cov}(\delta\mathbf p,\boldsymbol\eta)+
 \operatorname{Cov}(\boldsymbol\eta,\delta\mathbf p)G^{\mathsf T}.
+\end{gathered}
 \tag{10.21}
 $$
 

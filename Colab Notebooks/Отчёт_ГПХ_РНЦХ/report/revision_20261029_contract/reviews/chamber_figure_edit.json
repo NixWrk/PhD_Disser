@@ -1,0 +1,94 @@
+{
+  "figure_number": "10.1",
+  "participant_reader_label": "Н",
+  "purpose": "Редакционная отрисовка сохранённых предсказаний; новая подгонка не выполнялась",
+  "evaluation": "RR0_guarded_blocks",
+  "phase_percent": [
+    14,
+    23,
+    33,
+    43,
+    53,
+    62,
+    72,
+    82,
+    92
+  ],
+  "n_heldout_phases": 8,
+  "n_anchor_phases": 1,
+  "n_calibrations": 4,
+  "inputs": {
+    "predictions": {
+      "path_from_project": "execution_20261026/single_phase/nix_only/exploratory/predictions.csv",
+      "sha256": "b1d7523363ead75d52156b3808f102477ae30f8fda4b5feb385144f6ecab13b2"
+    },
+    "ct_volumes": {
+      "path_from_project": "execution_20261026/single_phase/ct_dataset/dataset.json",
+      "sha256": "e10c7c8378a2ec572f5a0d8b6652655f94fe6b1c40f285e5d61ea8b4b4b2c6e6"
+    },
+    "window_indices": {
+      "path_from_project": "execution_20261026/single_phase/nix_only/exploratory/window_indices.csv",
+      "sha256": "a879960e8128c9bad8edf73cdf21696e29c6fd35954e1cc1ab76d9413eba8c65"
+    },
+    "original_figure": {
+      "path_from_project": "execution_20261026/single_phase/nix_only/exploratory/guarded_chamber_predictions.png",
+      "sha256": "51d22beaf45fa063cb83727aeac70b3d52d8ff3e0fd6ec1fe71cd8281022ba31"
+    },
+    "original_plot_code": {
+      "path_from_project": "execution_20261026/single_phase/nix_only/exploratory/evaluate_nix.py",
+      "sha256": "35a3c85926aff7d97766091f0dab9b702a6411965f3aa7ff3491412f970f2feb"
+    }
+  },
+  "script": {
+    "path_from_revision": "tools/prepare_reader_chamber_figure.py",
+    "sha256": "fc6bbb90d6e1f42bb808ea8844a98ce3b39168f44eb80f7a7c50aca8f3d095f9"
+  },
+  "output": {
+    "path_from_revision": "figures/reader_chamber/10_01_guarded_chambers.png",
+    "sha256": "7d562bdb0da80fb39a320a5c6ecf116fda8691e2ebdfe693be595abd5b1635c1",
+    "width_cm": 16.3,
+    "height_cm": 16.3,
+    "dpi": 300,
+    "minimum_text_pt_at_16_3_cm": 8.5,
+    "pixel_dimensions": [
+      1925,
+      1925
+    ],
+    "embedded_dpi": [
+      299.9994,
+      299.9994
+    ]
+  },
+  "changes": [
+    "Обозначение участника Н",
+    "Русские легенды и названия четырёх камер",
+    "Явная индивидуальная КТ-калибровка фазовой формулы",
+    "Общие фазовые отсчёты; собственные объёмные шкалы камер",
+    "Выделены расчётный максимум и КТ-минимум ЛЖ на 43%",
+    "Неполное окно и составная последовательность объяснены в подписи главы"
+  ],
+  "checks": {
+    "saved_values_unchanged": true,
+    "source_files_unchanged": true,
+    "LV_extrema_match_saved_table": true,
+    "no_fitting_or_new_scientific_model": true
+  },
+  "visual_review": {
+    "status": "passed",
+    "date": "2026-10-28",
+    "checked": "Готовый PNG открыт и визуально проверен: четыре панели, русские подписи, Н, общая легенда, читаемые оси, выделенные экстремумы ЛЖ; обрезаний и наложений подписей не обнаружено.",
+    "print_basis": "Холст 16,3 × 16,3 см при 300 dpi; минимальный шрифт 8,5 пт без изменения ширины при обрезке.",
+    "word_render_performed_by_this_author": false
+  },
+  "chapter_integration": {
+    "section": "10.6",
+    "figure_number": "10.1",
+    "caption_includes": [
+      "неполное окно 14–92%",
+      "четыре разные калибровки",
+      "опора 14% и исключение из зазора",
+      "ошибочные экстремумы ЛЖ"
+    ],
+    "equation_10_14": "Косинусное слагаемое перенесено на отдельную строку aligned с сохранением +w_v по замечанию автора после отрисовки Word."
+  }
+}

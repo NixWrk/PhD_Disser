@@ -1,0 +1,99 @@
+{
+  "mode": "manuscript_revision",
+  "figure_mode": "with_figures",
+  "formatting_mode": "section_only",
+  "formatting_basis": "Existing editable report; unchanged 14pt scientific layout. Shorten content, not typography.",
+  "source_version": "revision_20261029_contract, delivered308pages; no user revisions or comments found",
+  "sources": [
+    {
+      "source_id": "S01",
+      "file": "revision_20261029_contract/front_matter.md",
+      "sha256": "75554c1a7494dff9eac0c925864d464ccf7e1081f23cab91cb5f761f0b4a2842"
+    },
+    {
+      "source_id": "S02",
+      "file": "revision_20261029_contract/conclusion.md",
+      "sha256": "1adbaeced9d35bbf6ec651901be9bd59570c035b87a085920c99158068f4d1bf"
+    },
+    {
+      "source_id": "S03",
+      "file": "revision_20261029_contract/appendices.md",
+      "sha256": "33e2b7710d409fb4e53b3fad468db0360279a62f8b6e41ac7d6d2d55ccfaa1e7"
+    },
+    {
+      "source_id": "S04",
+      "file": "revision_20261029_contract/contract_matrix.md",
+      "sha256": "7da175c527ff0dc9dfe15a4d0da61fa0a3250983ede5f33a113852d495822003"
+    },
+    {
+      "source_id": "S05",
+      "file": "revision_20261029_contract/build_manifest.json",
+      "sha256": "6617fe7b62bd99ee551f835f555b0c18a69fecf69195c1ec75d93d830d552e42"
+    },
+    {
+      "source_id": "S06",
+      "file": "revision_20261029_contract/chapters/01_literature.md",
+      "sha256": "35901834c28eb2efee37ccabcdf61dd50437280871163fb31018395b750d2f2c"
+    },
+    {
+      "source_id": "S07",
+      "file": "revision_20261029_contract/chapters/02_alternatives.md",
+      "sha256": "6a128153b33d4f21cd20edce5aa46a4ece9779726aeec5b221d5a51096da44c8"
+    },
+    {
+      "source_id": "S08",
+      "file": "revision_20261029_contract/chapters/03_patents.md",
+      "sha256": "c8f07ad519a58fd9e2cc06152b794fbdf358d0ded1ddc63b2ef672f719dfdf6e"
+    },
+    {
+      "source_id": "S09",
+      "file": "revision_20261029_contract/chapters/04_problem.md",
+      "sha256": "7c65d664973407fda30e915c54815c83b2f519224a4f7c1b5655d6efe1dbf8cd"
+    },
+    {
+      "source_id": "S10",
+      "file": "revision_20261029_contract/chapters/05_anatomy.md",
+      "sha256": "936417dcd3faa7c7dc5955dfff9500374c3b2ed0f5951a01f7c88449a91a2849"
+    },
+    {
+      "source_id": "S11",
+      "file": "revision_20261029_contract/chapters/06_forward.md",
+      "sha256": "6a33fccefd112cdc8defa2930fd1ff4fcfcfc042eed4da2b2661064e6f97a4a5"
+    },
+    {
+      "source_id": "S12",
+      "file": "revision_20261029_contract/chapters/07_experiments.md",
+      "sha256": "89a93cbf3b7452ebacc29e07c204897eef4e6b13cc0614455709a9966241154e"
+    },
+    {
+      "source_id": "S13",
+      "file": "revision_20261029_contract/chapters/08_tissue.md",
+      "sha256": "ffd54336c29803ef5816c3bdbab5ca42e95467559524c146b45453eed1557962"
+    },
+    {
+      "source_id": "S14",
+      "file": "revision_20261029_contract/chapters/09_heart_dynamics.md",
+      "sha256": "1c335be2cfbbb4bf408537bf2af6943853b818d1f894e799296760801573579b"
+    },
+    {
+      "source_id": "S15",
+      "file": "revision_20261029_contract/chapters/10_chambers.md",
+      "sha256": "0c995bc2a02bf56b37c6502f4e26b24e3cbb557dac35418702a077a521fb5981"
+    },
+    {
+      "source_id": "S16",
+      "file": "revision_20261029_contract/chapters/11_validation.md",
+      "sha256": "0b72cdb323ad42853cf84ca7e875d4d7ae27795c64858cc4178f291f56dc1fcc"
+    },
+    {
+      "source_id": "S17",
+      "file": "revision_20261029_contract/chapters/12_discussion.md",
+      "sha256": "26df9a79b0823cad99c086ce50c3b8b06d1f6a627ce63b8f7c6268db92ea8e7b"
+    },
+    {
+      "source_id": "S18",
+      "file": "revision_20261029_contract/deliverables/Отчёт_ГПХ_РНЦХ_20261029_УО_договор_для_рецензирования.docx",
+      "sha256": "6ea3dca0c99053600ea6dde0cdf740b4152cadb3eefb2c193f12107678ed7170"
+    }
+  ]
+}

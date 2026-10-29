@@ -1,0 +1,30 @@
+{
+  "scope": "Remove duplicated formulae 6.1/6.2/6.4 and repeated numbers already in chapter 5; retain unique counterexamples; clarify terminology and table constants. Provenance paragraph moved to appendix И.",
+  "changes": [
+    {
+      "file": "chapters/06_stroke_volume.md",
+      "before_sha256": "15a25193eac8b80a4fe244cc730e2bb791abde28b29a3adf5e12680e3e5fd91d",
+      "after_sha256": "4451517a32e25f2c060fd0398a06fd1c5350c743f8cf1882e1f868df284480e9"
+    },
+    {
+      "file": "chapters/07_validation.md",
+      "before_sha256": "eb6cd86d56d3c919595af1d55c6725172d734e026cd4202e498cb8bc4f5cee33",
+      "after_sha256": "0a16d558a58403b39b902b7e503abb7c9157e6db9dd117fd4dd3e7949d4e68e8"
+    },
+    {
+      "file": "front_matter.md",
+      "before_sha256": "d5694a03cb1c289d12549f6da9696975ee097e3fa4bf1d62d31feede536a4b83",
+      "after_sha256": "a65897b436896fdc7b214e37b90cd4a3e7cfdc89752253e3c89bb9b132922c25"
+    },
+    {
+      "file": "chapters/02_method.md",
+      "before_sha256": "b07da6ca3bfd98c1191bf2bbd77dfd078acb3743f00272bd92c904df680a3525",
+      "after_sha256": "4e5565c7e9f58684407e1439ef368894445503ffa4b392fa7e1cb71df88715a2"
+    },
+    {
+      "file": "chapters/04_experiments.md",
+      "before_sha256": "4b4b40508144acdee2f5016c0e87349cff6d8f3faac69719cdb206dec37479ab",
+      "after_sha256": "a1af2edefcbc4f734347624c4da3996609ba6a0f4e68665674748ae4bcfc5ecd"
+    }
+  ]
+}

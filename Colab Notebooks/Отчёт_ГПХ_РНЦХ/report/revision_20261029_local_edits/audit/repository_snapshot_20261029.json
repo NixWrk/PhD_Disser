@@ -1,0 +1,49 @@
+{
+  "recorded_at_utc": "2026-10-29T09:37:36.471971+00:00",
+  "operation": "Repository checkpoint only; no Word rebuild or scientific recalculation",
+  "files": [
+    {
+      "path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/deliverables/Отчёт_ГПХ_РНЦХ_20261029_научная_редакция.docx",
+      "size": 9199927,
+      "sha256": "725d8230579edd4fbdf978c3269c87a13916bb228a669ef875e10182941c666d"
+    },
+    {
+      "path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/deliverables/Материалы_научной_редакции_20261029.zip",
+      "size": 4468481,
+      "sha256": "23dfd66d7801204c247c51f923fa01ba78bcdbc0c8fefd9856bc7178cc43d1ed"
+    },
+    {
+      "path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_local_edits/deliverables/Отчёт_ГПХ_РНЦХ_20261029_точечная_правка.docx",
+      "size": 9317163,
+      "sha256": "2264073e374ab544315a0803a07669a4b320ed545c6af8f611a5494c8070ec17"
+    },
+    {
+      "path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_local_edits/deliverables/Дополнение_к_материалам_20261029_точечная_правка.zip",
+      "size": 1148667,
+      "sha256": "ac0909316a360d1b8e5f13d93e5044bcbe83e755df663393babf3a0914cb19f6"
+    },
+    {
+      "path": "docs/standards/GOST_7_32_2017_highlighted.pdf",
+      "size": 584609,
+      "sha256": "75273fc0c8134fdadc7760bd1338b93397471428e23e8a2fb544f8e0f8fbd1b6"
+    }
+  ],
+  "previous_docx_audit": {
+    "path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_local_edits/audit/final_checks.json",
+    "sha256": "d069a8129c94ea9d4e1861b2dce09845baa96cf9794ad1f53e30ef56bf877ae5",
+    "matches_current_file": false
+  },
+  "current_docx_read_only_xml_check": {
+    "media_count": 19,
+    "revisions": 0,
+    "track_changes": true
+  },
+  "visual_review_for_current_hash": false,
+  "hash_mismatch_explanation": "Cause not established. Preserve actual file and historical audit separately; do not assert identical contents from equal size.",
+  "excluded_local_materials": [
+    "original photograph copies",
+    "rendered page caches",
+    "machine-specific settings",
+    "primary medical data outside report deliverables"
+  ]
+}

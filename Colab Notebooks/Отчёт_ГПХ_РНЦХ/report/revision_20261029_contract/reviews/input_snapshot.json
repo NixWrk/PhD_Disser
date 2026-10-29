@@ -1,0 +1,94 @@
+{
+  "date": "2026-10-29",
+  "mode": "manuscript_revision",
+  "figure_mode": "with_figures",
+  "formatting_mode": "section_only",
+  "formatting_basis": "Сохранено оформление существующего научного отчёта Word",
+  "sources": [
+    {
+      "source_id": "01_literature.md",
+      "file": "revision_20261028/chapters/01_literature.md",
+      "sha256": "ae7dbb12ff4739225a47bcb000e5ddc05d574f08dcac36ab48c22a33a8c8739a"
+    },
+    {
+      "source_id": "02_alternatives.md",
+      "file": "revision_20261028/chapters/02_alternatives.md",
+      "sha256": "ad77804ca412e0c35bee847571ab11364e01bafc8db0fc9d0be3008214df9e21"
+    },
+    {
+      "source_id": "03_patents.md",
+      "file": "revision_20261028/chapters/03_patents.md",
+      "sha256": "102b7f8541082a15dd10f1be73130dc02433a2175ba8e14b3c1d16f982a0b42a"
+    },
+    {
+      "source_id": "04_problem.md",
+      "file": "revision_20261028/chapters/04_problem.md",
+      "sha256": "26c79fcdfeaebdde1c685cb8d818f44fb766f84a4369b65b7462be96ca170dee"
+    },
+    {
+      "source_id": "05_experiments.md",
+      "file": "revision_20261028/chapters/05_experiments.md",
+      "sha256": "785dc8fa24aa553e999fac6fde8f997296020f692e9e901b1ccc063af2e86cac"
+    },
+    {
+      "source_id": "06_anatomy.md",
+      "file": "revision_20261028/chapters/06_anatomy.md",
+      "sha256": "e09ed3ca075adaec85495e85fce4b11a09fb0d422a0634e117d808b0bcd7ed81"
+    },
+    {
+      "source_id": "07_forward.md",
+      "file": "revision_20261028/chapters/07_forward.md",
+      "sha256": "cd6b1a78061312e85b4f2d4ef4bd5522425690a9d2cb55bf2b66cc918d6ffdcd"
+    },
+    {
+      "source_id": "08_tissue.md",
+      "file": "revision_20261028/chapters/08_tissue.md",
+      "sha256": "6402d7d861528b4103183cf2c44c1f496063c2446ee27a4ed5589e7c3c831630"
+    },
+    {
+      "source_id": "09_heart_dynamics.md",
+      "file": "revision_20261028/chapters/09_heart_dynamics.md",
+      "sha256": "eb8f265a63c2d8dba8e533d490964917d26cf33536d3722de86c61c184ef78de"
+    },
+    {
+      "source_id": "10_chambers.md",
+      "file": "revision_20261028/chapters/10_chambers.md",
+      "sha256": "fb16fa5e2c2259bf0e0e12f85396f5c83c4fca1326d1268734945ae70d6418eb"
+    },
+    {
+      "source_id": "11_validation.md",
+      "file": "revision_20261028/chapters/11_validation.md",
+      "sha256": "f309af01d5cca63181f9395ec74c0394c7776337555855c68643acfbee7162b0"
+    },
+    {
+      "source_id": "12_discussion.md",
+      "file": "revision_20261028/chapters/12_discussion.md",
+      "sha256": "952c194aa5e185602140de1928fbec5f332b8ffff81a9c6b5a7777190e84b020"
+    },
+    {
+      "source_id": "front_matter.md",
+      "file": "revision_20261028/front_matter.md",
+      "sha256": "af7d20bdf76eb9917bbf0cb3255f3b208c8253c94008787ba148d46656cdcb05"
+    },
+    {
+      "source_id": "conclusion.md",
+      "file": "revision_20261028/conclusion.md",
+      "sha256": "9a8d357b4a1aa8e7c236bfdfe3ea89cdfd8a8b55af9c37ea59b6c84b926e2e6a"
+    },
+    {
+      "source_id": "appendices.md",
+      "file": "revision_20261028/appendices.md",
+      "sha256": "0b30cce7846ba034074d0fbccc4d3402fd5798b023e42d5397a3509720bd7702"
+    },
+    {
+      "source_id": "build_manifest.json",
+      "file": "revision_20261028/build_manifest.json",
+      "sha256": "ac656952d3f8528b59d9ceee44df2e2d37ee54baf95663ec99da6b449ff70de0"
+    },
+    {
+      "source_id": "prior_review_docx",
+      "file": "revision_20261028/deliverables/Отчёт_ГПХ_РНЦХ_20261028_для_рецензирования.docx",
+      "sha256": "64bb37e36f439f5b7ad0a4ef24e1f29a0b38d785e2f6b6ea9c0ee088ef01ea4c"
+    }
+  ]
+}

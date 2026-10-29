@@ -2,30 +2,30 @@
   "chapters": [
     {
       "file": "01_literature.md",
-      "bytes": 77757,
+      "bytes": 77759,
       "words": 5615,
       "equations": 11,
       "figures": 0,
       "tables": 1,
-      "sha256": "8193e9aa743158ec5c97002fb8166c2349946ae4c728cbd541fc59d6c9414393"
+      "sha256": "ae7dbb12ff4739225a47bcb000e5ddc05d574f08dcac36ab48c22a33a8c8739a"
     },
     {
       "file": "02_alternatives.md",
-      "bytes": 40040,
+      "bytes": 39903,
       "words": 2801,
       "equations": 2,
       "figures": 0,
       "tables": 2,
-      "sha256": "9012e9b57b5725b1b98b2947e5df74989628e75d246d94d9af373292f8c17a3b"
+      "sha256": "ad77804ca412e0c35bee847571ab11364e01bafc8db0fc9d0be3008214df9e21"
     },
     {
       "file": "03_patents.md",
-      "bytes": 43010,
+      "bytes": 42851,
       "words": 2976,
       "equations": 4,
       "figures": 0,
       "tables": 1,
-      "sha256": "f03c6408246348b9807f8015c7a064107a4b2ddb2e46a97e22c0123f4857d2d1"
+      "sha256": "102b7f8541082a15dd10f1be73130dc02433a2175ba8e14b3c1d16f982a0b42a"
     },
     {
       "file": "04_problem.md",
@@ -38,77 +38,391 @@
     },
     {
       "file": "05_experiments.md",
-      "bytes": 54590,
-      "words": 4086,
+      "bytes": 54559,
+      "words": 4103,
       "equations": 8,
       "figures": 2,
       "tables": 5,
-      "sha256": "cc58eb25fdb41cccee1305cc99b3073b4d8ece0d6dc50ed26121a40810084b32"
+      "sha256": "785dc8fa24aa553e999fac6fde8f997296020f692e9e901b1ccc063af2e86cac"
     },
     {
       "file": "06_anatomy.md",
-      "bytes": 52045,
-      "words": 4010,
+      "bytes": 52100,
+      "words": 4046,
       "equations": 20,
       "figures": 6,
       "tables": 7,
-      "sha256": "d5a0971ef09f7d552f824680e13df11905fb4d76de02b86e16f4b19d0ba7b70a"
+      "sha256": "e09ed3ca075adaec85495e85fce4b11a09fb0d422a0634e117d808b0bcd7ed81"
     },
     {
       "file": "07_forward.md",
-      "bytes": 59557,
-      "words": 4357,
-      "equations": 25,
-      "figures": 3,
-      "tables": 5,
-      "sha256": "f691b60b8b62826fdc5273d7b555ff6f7b3e85ca325b30fa6bb2bf8ea43d49b6"
+      "bytes": 72077,
+      "words": 5383,
+      "equations": 26,
+      "figures": 4,
+      "tables": 6,
+      "sha256": "cd6b1a78061312e85b4f2d4ef4bd5522425690a9d2cb55bf2b66cc918d6ffdcd"
     },
     {
       "file": "08_tissue.md",
-      "bytes": 61241,
-      "words": 4424,
-      "equations": 25,
-      "figures": 3,
-      "tables": 6,
-      "sha256": "cb6b7da02175870de3dadb53f6153806bdaec2d363e2e183a7a34bb83694867a"
+      "bytes": 75299,
+      "words": 5621,
+      "equations": 26,
+      "figures": 4,
+      "tables": 8,
+      "sha256": "6402d7d861528b4103183cf2c44c1f496063c2446ee27a4ed5589e7c3c831630"
     },
     {
       "file": "09_heart_dynamics.md",
-      "bytes": 57027,
-      "words": 4486,
-      "equations": 19,
-      "figures": 5,
-      "tables": 7,
-      "sha256": "2eb1ce73ba1a99a3fc8917bc0da06217ec5aeac29cfeccc77cd74cf07dc340f3"
+      "bytes": 86438,
+      "words": 6964,
+      "equations": 25,
+      "figures": 6,
+      "tables": 12,
+      "sha256": "eb8f265a63c2d8dba8e533d490964917d26cf33536d3722de86c61c184ef78de"
     },
     {
       "file": "10_chambers.md",
-      "bytes": 67269,
-      "words": 5114,
+      "bytes": 67297,
+      "words": 5116,
       "equations": 22,
       "figures": 1,
       "tables": 6,
-      "sha256": "b5f9fe810daa8d49d525fe0234f0977d053ec0da9a4b82223c30e45c02e1ff9f"
+      "sha256": "fb16fa5e2c2259bf0e0e12f85396f5c83c4fca1326d1268734945ae70d6418eb"
     },
     {
       "file": "11_validation.md",
-      "bytes": 64049,
-      "words": 4560,
+      "bytes": 86110,
+      "words": 6099,
       "equations": 5,
       "figures": 0,
-      "tables": 4,
-      "sha256": "3c1a4f8454974ace1205f0aed05d8ad1c391a7e97219e648e1460794ea6f9217"
+      "tables": 5,
+      "sha256": "f309af01d5cca63181f9395ec74c0394c7776337555855c68643acfbee7162b0"
     },
     {
       "file": "12_discussion.md",
-      "bytes": 51693,
-      "words": 3524,
+      "bytes": 68777,
+      "words": 4769,
       "equations": 6,
       "figures": 0,
-      "tables": 1,
-      "sha256": "1bfd83afa3f69177cf2874151579d80152aefc777b1b30535349003a66502232"
+      "tables": 2,
+      "sha256": "952c194aa5e185602140de1928fbec5f332b8ffff81a9c6b5a7777190e84b020"
     }
   ],
   "errors": [],
+  "unavailable_historical_references": [
+    {
+      "chapter": "05_experiments.md",
+      "target": "../../../../../Experiments/scorpion_v2_georg/metadata/inventory.local.json"
+    },
+    {
+      "chapter": "05_experiments.md",
+      "target": "../../../../../Experiments/scorpion_20261022/metadata/inventory.local.json"
+    },
+    {
+      "chapter": "05_experiments.md",
+      "target": "../../../execution_20261026/signals/extraction_spec.json"
+    },
+    {
+      "chapter": "05_experiments.md",
+      "target": "../../../execution_20261026/signals/signal_readiness.json"
+    },
+    {
+      "chapter": "05_experiments.md",
+      "target": "../../../execution_20261026/signals/verification.json"
+    },
+    {
+      "chapter": "05_experiments.md",
+      "target": "../../../pulmovista_check_20261028/README.md"
+    },
+    {
+      "chapter": "05_experiments.md",
+      "target": "../../../pulmovista_check_20261028/local/runtime_check.local.json"
+    },
+    {
+      "chapter": "05_experiments.md",
+      "target": "../../../pulmovista_check_20261028/local/mirror_check.local.json"
+    },
+    {
+      "chapter": "05_experiments.md",
+      "target": "../../../execution_20261026/ct/ct_reference.json"
+    },
+    {
+      "chapter": "05_experiments.md",
+      "target": "../../../execution_20261026/ct/phase_volumes.csv"
+    },
+    {
+      "chapter": "05_experiments.md",
+      "target": "../../../execution_20261026/ct/recovery_manifest.json"
+    },
+    {
+      "chapter": "05_experiments.md",
+      "target": "../../../execution_20261026/single_phase/ct_timing/yaroslav_source_audit/README.md"
+    },
+    {
+      "chapter": "05_experiments.md",
+      "target": "../../../pulmovista_check_20261028/PATIENT_RESULT.md"
+    },
+    {
+      "chapter": "06_anatomy.md",
+      "target": "../../../execution_20261026/ct/ct_reference.json"
+    },
+    {
+      "chapter": "06_anatomy.md",
+      "target": "../../../../cardiac_4d_segmentation/results/reduced_heart_geometry_20260914/exploratory/comparison_02/geometry_comparison.jsonl"
+    },
+    {
+      "chapter": "06_anatomy.md",
+      "target": "../../../../cardiac_4d_segmentation/results/nik_whole_heart_20261028/exploratory/full_geometry_v1/summary/final/phase_metrics.csv"
+    },
+    {
+      "chapter": "06_anatomy.md",
+      "target": "../../../pulmovista_check_20261028/local/stl_approximation/provenance.json"
+    },
+    {
+      "chapter": "06_anatomy.md",
+      "target": "../../../pulmovista_check_20261028/local/heart_composition_check/composition_check.local.json"
+    },
+    {
+      "chapter": "06_anatomy.md",
+      "target": "../../../../cardiac_4d_segmentation/results/nik_whole_heart_20261028/exploratory/full_geometry_v1/motion_geometry_v1/motion_effect_stats.csv"
+    },
+    {
+      "chapter": "06_anatomy.md",
+      "target": "../../../../cardiac_4d_segmentation/results/nik_whole_heart_20261028/exploratory/full_geometry_v1/refinement_comparison/summary.csv"
+    },
+    {
+      "chapter": "06_anatomy.md",
+      "target": "../../../../cardiac_4d_segmentation/results/nik_whole_heart_20261028/exploratory/full_geometry_v1/anchor_sensitivity_v2/anchor_summary.csv"
+    },
+    {
+      "chapter": "06_anatomy.md",
+      "target": "../../../../cardiac_4d_segmentation/results/nik_whole_heart_20261028/exploratory/full_geometry_v1/contour_control/README.md"
+    },
+    {
+      "chapter": "06_anatomy.md",
+      "target": "../../../../cardiac_4d_segmentation/results/nik_whole_heart_20261028/exploratory/full_geometry_v1/motion_law_v1/anchor_error_summary.csv"
+    },
+    {
+      "chapter": "06_anatomy.md",
+      "target": "../../../pulmovista_check_20261028/local/shape_electrical_study_v1.local.json"
+    },
+    {
+      "chapter": "06_anatomy.md",
+      "target": "../../../pulmovista_check_20261028/local/shape_electrical_comparison_v1/analysis.local.json"
+    },
+    {
+      "chapter": "08_tissue.md",
+      "target": "../../../../../Experiments/scorpion_20261022/derived/exploratory/session_3340/two_layer.local.json"
+    },
+    {
+      "chapter": "08_tissue.md",
+      "target": "../../../ИНТЕГРАЦИЯ_PULMOVISTA.md"
+    },
+    {
+      "chapter": "08_tissue.md",
+      "target": "../../../pulmovista_check_20261028/README.md"
+    },
+    {
+      "chapter": "08_tissue.md",
+      "target": "../../../pulmovista_check_20261028/PATIENT_RESULT.md"
+    },
+    {
+      "chapter": "08_tissue.md",
+      "target": "../../../pulmovista_check_20261028/local/patient_v3/tissue_parameters_conditional.csv"
+    },
+    {
+      "chapter": "08_tissue.md",
+      "target": "../../../pulmovista_check_20261028/local/patient_v3/ttrkg_operator.csv"
+    },
+    {
+      "chapter": "08_tissue.md",
+      "target": "../../../pulmovista_check_20261028/local/patient_v3/plateau_contributions.csv"
+    },
+    {
+      "chapter": "08_tissue.md",
+      "target": "../../../pulmovista_check_20261028/local/composition_pulse_v1/README.md"
+    },
+    {
+      "chapter": "08_tissue.md",
+      "target": "../../../pulmovista_check_20261028/local/composition_pulse_v1/common_metric_comparison.csv"
+    },
+    {
+      "chapter": "08_tissue.md",
+      "target": "../../../pulmovista_check_20261028/local/motion_electrical_analysis_v1/analysis.local.json"
+    },
+    {
+      "chapter": "08_tissue.md",
+      "target": "../../../pulmovista_check_20261028/local/shape_electrical_comparison_v1/target_chain_effective_geometry.csv"
+    },
+    {
+      "chapter": "10_chambers.md",
+      "target": "../../../execution_20261026/single_phase/ct_dataset/INTERFACE.md"
+    },
+    {
+      "chapter": "10_chambers.md",
+      "target": "../../../execution_20261026/single_phase/transfer_validation/README.md"
+    },
+    {
+      "chapter": "10_chambers.md",
+      "target": "../../../execution_20261026/single_phase/ct_timing/README.md"
+    },
+    {
+      "chapter": "10_chambers.md",
+      "target": "../../../execution_20261026/single_phase/ecg_timing_audit/AUDIT.md"
+    },
+    {
+      "chapter": "10_chambers.md",
+      "target": "../../../execution_20261026/single_phase/nix_only/exploratory/PROTOCOL.md"
+    },
+    {
+      "chapter": "10_chambers.md",
+      "target": "../../../execution_20261026/single_phase/nix_only/exploratory/results.json"
+    },
+    {
+      "chapter": "10_chambers.md",
+      "target": "../../../execution_20261026/single_phase/nix_only/electrical_branches/README.md"
+    },
+    {
+      "chapter": "10_chambers.md",
+      "target": "../../../pulmovista_check_20261028/local/chamber_law/README.md"
+    },
+    {
+      "chapter": "10_chambers.md",
+      "target": "../../../pulmovista_check_20261028/local/chamber_composition_audit_v1/README.md"
+    },
+    {
+      "chapter": "10_chambers.md",
+      "target": "../../../execution_20261026/single_phase/empirical_relation/RESULTS.md"
+    },
+    {
+      "chapter": "10_chambers.md",
+      "target": "../../../execution_20261026/single_phase/empirical_extensions/results.json"
+    },
+    {
+      "chapter": "11_validation.md",
+      "target": "../../../pulmovista_check_20261028/local/corrected_software/solver_check.local.json"
+    },
+    {
+      "chapter": "11_validation.md",
+      "target": "../../../pulmovista_check_20261028/local/corrected_software/residual_derivative_check.local.json"
+    },
+    {
+      "chapter": "11_validation.md",
+      "target": "../../../pulmovista_check_20261028/local/stl_electrical_comparison/summary.local.json"
+    },
+    {
+      "chapter": "11_validation.md",
+      "target": "../../../pulmovista_check_20261028/local/patient_v3/refine_check.local.json"
+    },
+    {
+      "chapter": "11_validation.md",
+      "target": "../../../pulmovista_check_20261028/local/patient_v3/plateau_diagnostics.local.json"
+    },
+    {
+      "chapter": "11_validation.md",
+      "target": "../../../execution_20261026/fem/fem_status.json"
+    },
+    {
+      "chapter": "11_validation.md",
+      "target": "../../../pulmovista_check_20261028/local/shape_electrical_comparison_v1/analysis.local.json"
+    },
+    {
+      "chapter": "11_validation.md",
+      "target": "../../../pulmovista_check_20261028/local/shape_electrical_comparison_v1/cross_inversion.csv"
+    },
+    {
+      "chapter": "11_validation.md",
+      "target": "../../../pulmovista_check_20261028/local/shape_electrical_comparison_v1/geometry_to_tissue_leakage.csv"
+    },
+    {
+      "chapter": "11_validation.md",
+      "target": "../../../../cardiac_4d_segmentation/results/nik_whole_heart_20261028/exploratory/full_geometry_v1/summary/final/phase_metrics.csv"
+    },
+    {
+      "chapter": "11_validation.md",
+      "target": "../../../../cardiac_4d_segmentation/results/nik_whole_heart_20261028/exploratory/full_geometry_v1/motion_law_v1/anchor_error_summary.csv"
+    },
+    {
+      "chapter": "11_validation.md",
+      "target": "../../../execution_20261026/single_phase/transfer_validation/results.json"
+    },
+    {
+      "chapter": "11_validation.md",
+      "target": "../../../execution_20261026/single_phase/nix_only/exploratory/PROTOCOL.md"
+    },
+    {
+      "chapter": "11_validation.md",
+      "target": "../../../execution_20261026/single_phase/nix_only/exploratory/metrics.csv"
+    },
+    {
+      "chapter": "11_validation.md",
+      "target": "../../../execution_20261026/single_phase/nix_only/exploratory/window_indices.csv"
+    },
+    {
+      "chapter": "11_validation.md",
+      "target": "../../../execution_20261026/single_phase/nix_only/exploratory/results.json"
+    },
+    {
+      "chapter": "11_validation.md",
+      "target": "../../../pulmovista_check_20261028/local/composition_pulse_v1/common_metric_comparison.csv"
+    },
+    {
+      "chapter": "11_validation.md",
+      "target": "../../../pulmovista_check_20261028/local/composition_pulse_v1/README.md"
+    },
+    {
+      "chapter": "12_discussion.md",
+      "target": "../../../pulmovista_check_20261028/PATIENT_RESULT.md"
+    },
+    {
+      "chapter": "12_discussion.md",
+      "target": "../../../pulmovista_check_20261028/local/composition_pulse_v1/README.md"
+    },
+    {
+      "chapter": "12_discussion.md",
+      "target": "../../../execution_20261026/single_phase/transfer_validation/README.md"
+    },
+    {
+      "chapter": "12_discussion.md",
+      "target": "../../../execution_20261026/single_phase/nix_only/exploratory/PROTOCOL.md"
+    },
+    {
+      "chapter": "12_discussion.md",
+      "target": "../../../execution_20261026/single_phase/nix_only/exploratory/results.json"
+    }
+  ],
+  "verified_cached_figures": [
+    {
+      "chapter": "06_anatomy.md",
+      "target": "../../../pulmovista_check_20261028/local/belt_current_view/belt_current_3d.png",
+      "cache": "figures/dfaf500992b1.png"
+    },
+    {
+      "chapter": "06_anatomy.md",
+      "target": "../../../../cardiac_4d_segmentation/results/nik_whole_heart_20261028/exploratory/full_geometry_v1/summary/final/cycle_0_dynamics_1.png",
+      "cache": "figures/27676a97e7a0.png"
+    },
+    {
+      "chapter": "06_anatomy.md",
+      "target": "../../../../cardiac_4d_segmentation/results/nik_whole_heart_20261028/exploratory/full_geometry_v1/summary/final/cycle_0_dynamics_3.png",
+      "cache": "figures/ebd34193e582.png"
+    },
+    {
+      "chapter": "06_anatomy.md",
+      "target": "../../../../cardiac_4d_segmentation/results/nik_whole_heart_20261028/exploratory/full_geometry_v1/summary/final/cycle_0_trajectory_3.png",
+      "cache": "figures/3bfc7639d8d7.png"
+    },
+    {
+      "chapter": "07_forward.md",
+      "target": "../../../pulmovista_check_20261028/local/belt_current_view/belt_current_3d.png",
+      "cache": "figures/dfaf500992b1.png"
+    },
+    {
+      "chapter": "08_tissue.md",
+      "target": "../../../pulmovista_check_20261028/local/patient_v3/conditional_band_projection.png",
+      "cache": "figures/ee60fc3b2861.png"
+    }
+  ],
   "scope": "Структура, формулы по номерам, локальные ссылки и отсутствие заглушек; не научная валидация"
 }

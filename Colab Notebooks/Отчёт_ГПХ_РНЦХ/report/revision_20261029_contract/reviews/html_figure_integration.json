@@ -1,0 +1,118 @@
+{
+  "integrated": [
+    {
+      "id": "html_ct_tissue_masks_n",
+      "file": "01_n_ct_tissue_masks.png",
+      "chapter_before_permutation": "06_anatomy.md",
+      "temporary_label": "6.91",
+      "source_id": "html_3340",
+      "source_sha256": "c6631301ee3c9c02835033d99621b71f6347153982291f7cd3bef4acec3e5878",
+      "output_sha256": "b848fc7adc0b3bdadb5e1819e9ed441eedb9bfba531b547dd85b63c211c5abc2",
+      "label_before_chapter_permutation": "6.1"
+    },
+    {
+      "id": "html_candidate_lateral_montage_n",
+      "file": "02_n_candidate_lateral_montage.png",
+      "chapter_before_permutation": "05_experiments.md",
+      "temporary_label": "5.92",
+      "source_id": "html_3340",
+      "source_sha256": "c6631301ee3c9c02835033d99621b71f6347153982291f7cd3bef4acec3e5878",
+      "output_sha256": "7d4308d08c87392acddd52990ac670438996f52558378f100e8a49e61497f94a",
+      "label_before_chapter_permutation": "5.1"
+    },
+    {
+      "id": "html_ct_surface_regularization_g",
+      "file": "03_g_ct_contour_regularization.png",
+      "chapter_before_permutation": "06_anatomy.md",
+      "temporary_label": "6.93",
+      "source_id": "html_3330",
+      "source_sha256": "def1623a7bbadeca16e2c0a9a8dfc5e4ae191d58c39ad762abc71f90641bb0d7",
+      "output_sha256": "0f0ec1604a8c99d7185e106faa38f61ea826c3f5ccdeab335429c8e46f2b79e3",
+      "label_before_chapter_permutation": "6.4"
+    },
+    {
+      "id": "html_recorded_tt_ecg_three_subjects",
+      "file": "04_tt_ecg_four_cycles.png",
+      "chapter_before_permutation": "05_experiments.md",
+      "temporary_label": "5.94",
+      "source_id": "html_3344",
+      "source_sha256": "f4ed38e229cbc51b94d3e9741241880618e9e072bcda7f2001a8f9510b1fe96c",
+      "output_sha256": "21859a13a658485f565b071602a19044d5b6a4e150e744a3464dd193b5917011",
+      "label_before_chapter_permutation": "5.3"
+    },
+    {
+      "id": "html_tissue_identifiability_singular_values",
+      "file": "05_tissue_identifiability_singular_values.png",
+      "chapter_before_permutation": "08_tissue.md",
+      "temporary_label": "8.95",
+      "source_id": "html_3343",
+      "source_sha256": "99e2e84297bbc8f759396c271f18cf24e41ab3cadd95d1efcd8b3d112bbde577",
+      "output_sha256": "39c2a57154400f4fb81494e837125b3d4ba556d015e80937f8d020e06a6f1fdb",
+      "label_before_chapter_permutation": "8.1"
+    },
+    {
+      "id": "html_negative_pulse_volume_test",
+      "file": "06_measured_pulse_vs_volume_probe.png",
+      "chapter_before_permutation": "09_heart_dynamics.md",
+      "temporary_label": "9.96",
+      "source_id": "html_3344",
+      "source_sha256": "f4ed38e229cbc51b94d3e9741241880618e9e072bcda7f2001a8f9510b1fe96c",
+      "output_sha256": "51435d2b3b88a14cf45088191fe76f5c401443147959eb915f01c359c28e39c6",
+      "label_before_chapter_permutation": "9.7"
+    },
+    {
+      "id": "html_ct_whole_heart_and_chambers",
+      "file": "07_ct_whole_heart_and_chambers.png",
+      "chapter_before_permutation": "10_chambers.md",
+      "temporary_label": "10.97",
+      "source_id": "html_3344",
+      "source_sha256": "f4ed38e229cbc51b94d3e9741241880618e9e072bcda7f2001a8f9510b1fe96c",
+      "output_sha256": "55bc6666dad50bdbb5ec7f1aa7b3957e60da8485cc529c3dafbc813fd3d25846",
+      "label_before_chapter_permutation": "10.1"
+    },
+    {
+      "id": "html_negative_respiratory_contrast",
+      "file": "08_respiratory_contrast_observation_model.png",
+      "chapter_before_permutation": "08_tissue.md",
+      "temporary_label": "8.98",
+      "source_id": "html_3343",
+      "source_sha256": "99e2e84297bbc8f759396c271f18cf24e41ab3cadd95d1efcd8b3d112bbde577",
+      "output_sha256": "f59ee8986292f2f4fa836aba66d6dd9de7758d0551047111e58777b7b3eaebd0",
+      "label_before_chapter_permutation": "8.2"
+    }
+  ],
+  "figure_number_mapping_before_chapter_permutation": {
+    "4.1": "4.1",
+    "5.92": "5.1",
+    "5.1": "5.2",
+    "5.94": "5.3",
+    "5.2": "5.4",
+    "6.91": "6.1",
+    "6.1": "6.2",
+    "6.2": "6.3",
+    "6.93": "6.4",
+    "6.3": "6.5",
+    "6.4": "6.6",
+    "6.5": "6.7",
+    "6.6": "6.8",
+    "7.1": "7.1",
+    "7.2": "7.2",
+    "7.3": "7.3",
+    "7.4": "7.4",
+    "8.95": "8.1",
+    "8.98": "8.2",
+    "8.1": "8.3",
+    "8.2": "8.4",
+    "8.3": "8.5",
+    "8.4": "8.6",
+    "9.1": "9.1",
+    "9.2": "9.2",
+    "9.3": "9.3",
+    "9.4": "9.4",
+    "9.5": "9.5",
+    "9.6": "9.6",
+    "9.96": "9.7",
+    "10.97": "10.1",
+    "10.1": "10.2"
+  }
+}

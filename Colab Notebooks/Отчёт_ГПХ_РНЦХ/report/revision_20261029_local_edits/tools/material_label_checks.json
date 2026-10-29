@@ -1,0 +1,299 @@
+{
+  "figures": [
+    {
+      "old_asset": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/figures/V13_models_step_quadrature.png",
+      "new_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_local_edits/figures/V13_models_step_quadrature_compartment_labels.png",
+      "sha256": "3b8e975a99cf0db20e0d25f4362e59eca5df175bf63728281cb566c2552cecfa",
+      "dimensions_px": [
+        2160,
+        1500
+      ],
+      "source_code": {
+        "path": "MATLAB_TRKG4_real_subjects/tools/heart_montage_figures.py",
+        "sha256": "81d9213e24962162ad2c4077991d59bc12acade2ddc1411894cd14f772c7a24c",
+        "lines": [
+          62,
+          91
+        ]
+      },
+      "source_values_unchanged": true,
+      "scientific_artists_and_limits_equal_before_after": true,
+      "scientific_scene_sha256": "5d1bdad56c2858eacb6d2e6243336ac315ce5398a0c62268abaa1400e4d07f40",
+      "vref_ml": 578.720801285428,
+      "matplotlib": "3.10.9",
+      "raster_panels_copied": false,
+      "panel_pixel_checks": [
+        {
+          "source_box": [
+            173,
+            205,
+            1074,
+            556
+          ],
+          "target_box": [
+            173,
+            122,
+            1074,
+            473
+          ],
+          "baseline_pixels_equal": true,
+          "new_plot_interior_pixels_equal_frozen": true
+        },
+        {
+          "source_box": [
+            1229,
+            205,
+            2131,
+            556
+          ],
+          "target_box": [
+            1229,
+            122,
+            2131,
+            473
+          ],
+          "baseline_pixels_equal": true,
+          "new_plot_interior_pixels_equal_frozen": true
+        },
+        {
+          "source_box": [
+            173,
+            706,
+            1074,
+            1057
+          ],
+          "target_box": [
+            173,
+            533,
+            1074,
+            884
+          ],
+          "baseline_pixels_equal": true,
+          "new_plot_interior_pixels_equal_frozen": true
+        },
+        {
+          "source_box": [
+            1229,
+            706,
+            2131,
+            1057
+          ],
+          "target_box": [
+            1229,
+            533,
+            2131,
+            884
+          ],
+          "baseline_pixels_equal": true,
+          "new_plot_interior_pixels_equal_frozen": true
+        },
+        {
+          "source_box": [
+            173,
+            1206,
+            1074,
+            1557
+          ],
+          "target_box": [
+            173,
+            942,
+            1074,
+            1293
+          ],
+          "baseline_pixels_equal": true,
+          "new_plot_interior_pixels_equal_frozen": true
+        },
+        {
+          "source_box": [
+            1229,
+            1206,
+            2131,
+            1557
+          ],
+          "target_box": [
+            1229,
+            942,
+            2131,
+            1293
+          ],
+          "baseline_pixels_equal": true,
+          "new_plot_interior_pixels_equal_frozen": true
+        }
+      ],
+      "volume_probe_axis": {
+        "label": "Объёмная проба |ΔV| / V₀, %",
+        "nominal_signed_percent_in_CSV": [
+          -5.0,
+          -2.5,
+          -1.0,
+          1.0,
+          2.5,
+          5.0
+        ],
+        "unchanged_display_x_formula": "100 * (minus_step + plus_step) / (2 * V0)",
+        "definition": "|ΔV| denotes the mean magnitude of the paired actual volume probes; nominal probes are ±1/±2.5/±5%. Actual x values are not rounded or snapped to nominal ticks."
+      }
+    },
+    {
+      "old_asset": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/figures/V19_volume_rho_compensation.png",
+      "new_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_local_edits/figures/V19_volume_rho_compensation_compartment_labels.png",
+      "sha256": "9467966a5c2ab947258bd1a609c2d24d5768794c91debbab8b6efe124b4b701e",
+      "dimensions_px": [
+        2460,
+        1710
+      ],
+      "source_code": {
+        "path": "MATLAB_TRKG4_real_subjects/tools/heart_montage_figures.py",
+        "sha256": "81d9213e24962162ad2c4077991d59bc12acade2ddc1411894cd14f772c7a24c",
+        "lines": [
+          117,
+          138
+        ]
+      },
+      "source_values_unchanged": true,
+      "scientific_artists_and_limits_equal_before_after": true,
+      "scientific_scene_sha256": "bf7a14099c92d273ee10f1b14130e80033c8a9f076a32f623f51e7a00396a0a1",
+      "vref_ml": 578.720801285428,
+      "matplotlib": "3.10.9",
+      "raster_panels_copied": false,
+      "panel_pixel_checks": [
+        {
+          "source_box": [
+            157,
+            293,
+            1162,
+            662
+          ],
+          "target_box": [
+            227,
+            203,
+            1232,
+            572
+          ],
+          "baseline_pixels_equal": true,
+          "new_plot_interior_pixels_equal_frozen": true
+        },
+        {
+          "source_box": [
+            1306,
+            293,
+            2311,
+            662
+          ],
+          "target_box": [
+            1433,
+            203,
+            2438,
+            572
+          ],
+          "baseline_pixels_equal": true,
+          "new_plot_interior_pixels_equal_frozen": true
+        },
+        {
+          "source_box": [
+            157,
+            776,
+            1162,
+            1145
+          ],
+          "target_box": [
+            227,
+            692,
+            1232,
+            1061
+          ],
+          "baseline_pixels_equal": true,
+          "new_plot_interior_pixels_equal_frozen": true
+        },
+        {
+          "source_box": [
+            1306,
+            776,
+            2311,
+            1145
+          ],
+          "target_box": [
+            1433,
+            692,
+            2438,
+            1061
+          ],
+          "baseline_pixels_equal": true,
+          "new_plot_interior_pixels_equal_frozen": true
+        },
+        {
+          "source_box": [
+            157,
+            1259,
+            1162,
+            1629
+          ],
+          "target_box": [
+            227,
+            1180,
+            1232,
+            1550
+          ],
+          "baseline_pixels_equal": true,
+          "new_plot_interior_pixels_equal_frozen": true
+        },
+        {
+          "source_box": [
+            1306,
+            1259,
+            2311,
+            1629
+          ],
+          "target_box": [
+            1433,
+            1180,
+            2438,
+            1550
+          ],
+          "baseline_pixels_equal": true,
+          "new_plot_interior_pixels_equal_frozen": true
+        }
+      ]
+    }
+  ],
+  "inputs": [
+    {
+      "path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/results/montage_sensitivity_v1/manifest.json",
+      "sha256": "fb438ea96d87b66bc973a7e91d148daed4749a27fff5c1a279c0ccd6d5e3cce5"
+    },
+    {
+      "path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/results/montage_sensitivity_v1/tables/derivatives.csv",
+      "sha256": "25cdc8d8d7f12940638cb7baddf7bbbd7f2cd1fc17cd2671fbff9e42673a240e"
+    },
+    {
+      "path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/results/montage_sensitivity_v1/tables/volume_refinement.csv",
+      "sha256": "6e939050d12ba90834a5da4f84ca8662012fbb91cb3e2cfdd1d4cdff6fbe37bb"
+    },
+    {
+      "path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/results/montage_sensitivity_v1/tables/finite_compensation_initial.csv",
+      "sha256": "4a652c8cf9c944e812daeb0769d8d78647e64c1a3a6a18fa15237e30acd2941e"
+    },
+    {
+      "path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/results/montage_sensitivity_v1/tables/finite_compensation_newton.csv",
+      "sha256": "9aecb67d8d4712c4d876f676a485130273c9e0cb4b9afedfc985efe1201fe961"
+    },
+    {
+      "path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/results/montage_sensitivity_v1/tables/electrical_states.csv",
+      "sha256": "f3bc2a7ab357f5a7b28be4d86a8ec30687d083fc073f9bb033331d4cb00e06bc"
+    },
+    {
+      "path": "MATLAB_TRKG4_real_subjects/tools/heart_montage_figures.py",
+      "sha256": "81d9213e24962162ad2c4077991d59bc12acade2ddc1411894cd14f772c7a24c"
+    },
+    {
+      "path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261028/figures/reader_montage/ch07_04_volume_step_quadrature.png",
+      "sha256": "05fa16e5f79dd48296b4fb44a31fec9be91263c55dac65ab6c75ccc8667dd55a"
+    },
+    {
+      "path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261028/figures/reader_montage/ch09_06_finite_compensation.png",
+      "sha256": "514cdc68f3f4e039047a39cac94800356785a2346d06498202f1dbe056f6aacb"
+    }
+  ],
+  "all_input_hashes_unchanged": true,
+  "public_result_hashes_verified": true
+}

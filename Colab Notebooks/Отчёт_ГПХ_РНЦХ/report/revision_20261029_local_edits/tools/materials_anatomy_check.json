@@ -1,0 +1,45 @@
+{
+  "old_asset": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/figures/V01_materials_sequence.png",
+  "new_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_local_edits/figures/V01_materials_sequence_ct_anatomy.png",
+  "new_svg_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_local_edits/figures/V01_materials_sequence_ct_anatomy.svg",
+  "sha256": "c649fe6fbb09ddc3e5978de715883f2d4dde3ad0e3d817a962bcd664e210ef72",
+  "svg_sha256": "0300bfe07dfb6d23e7db251cd0cb7c1b07d2414f239e2a87b8bd36620ab2f9a0",
+  "dimensions_px": [
+    2200,
+    1203
+  ],
+  "source_svg": {
+    "path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/figures/V01_materials_sequence.svg",
+    "sha256": "952dc36ee55f85fb804ad3099bef2a3869ae654d4a1bb25d1eadaefc0d35b0fd"
+  },
+  "source_png_sha256": "499361439fd9173c9cd3e8d83a1ae2ad5c1b7f96601c75ca866493ad5ea3883e",
+  "source_code": {
+    "path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/tools/render_visuals.cjs",
+    "line": 28
+  },
+  "text_change": {
+    "before": "Анатомическая опора",
+    "after": "Индивидуальная анатомия по КТ"
+  },
+  "checks": {
+    "original_SVG_reproduces_base_PNG_pixels": true,
+    "exactly_one_text_substitution": true,
+    "SVG_attributes_and_other_elements_unchanged": true,
+    "pixels_outside_target_text_row_equal": true,
+    "dimensions_equal": true,
+    "no_raster_patching": true
+  },
+  "changed_pixel_count": 25765,
+  "changed_pixel_bbox_xyxy": [
+    372,
+    996,
+    1829,
+    1044
+  ],
+  "allowed_text_row_xyxy": [
+    0,
+    968,
+    2200,
+    1051
+  ]
+}

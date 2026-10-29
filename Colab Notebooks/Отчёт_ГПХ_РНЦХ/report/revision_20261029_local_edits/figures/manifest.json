@@ -1,0 +1,489 @@
+[
+  {
+    "id": "materials_sequence",
+    "path": "J:\\NIX\\WRK\\Code\\Kalmykov_PhD\\Colab Notebooks\\Отчёт_ГПХ_РНЦХ\\report\\revision_20261029_local_edits\\figures\\V01_materials_sequence_ct_anatomy.png",
+    "caption": "Схема получения исследовательских данных: индивидуальная КТ и сегментация, запись импеданса и ЭКГ, отдельные поясные измерения ЭИТ. Разные регистрации сохраняют собственные временные шкалы.",
+    "source": {
+      "protocol": "AUTHOR_CONFIRMATIONS.md",
+      "blocks": [
+        "p0669–p0672",
+        "p0720–p0728"
+      ],
+      "latest_local_edit": {
+        "new_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_local_edits/figures/V01_materials_sequence_ct_anatomy.png",
+        "figure_number": 1,
+        "key": "materials_sequence",
+        "caption_text": "Схема получения исследовательских данных: индивидуальная КТ и сегментация, запись импеданса и ЭКГ, отдельные поясные измерения ЭИТ. Разные регистрации сохраняют собственные временные шкалы.",
+        "source_asset_sha256": "499361439fd9173c9cd3e8d83a1ae2ad5c1b7f96601c75ca866493ad5ea3883e",
+        "new_sha256": "c649fe6fbb09ddc3e5978de715883f2d4dde3ad0e3d817a962bcd664e210ef72",
+        "dimensions_px": [
+          2200,
+          1203
+        ],
+        "word_width_cm": 16.5,
+        "word_visible_height_cm": 9.022499999999999,
+        "basis": "По прямому уточнению автора неоднозначная фраза «Анатомическая опора» заменена на «Индивидуальная анатомия по КТ» в одном text-элементе исходного SVG (render_visuals.cjs:28). Все атрибуты и остальные элементы SVG неизменны; PNG заново отрисован из SVG. Исходный SVG воспроизвёл базовый PNG попиксельно, вне целевой строки пиксели новой схемы совпали.",
+        "display_multiplier": null,
+        "reproduction_check": "tools/materials_anatomy_check.json",
+        "new_svg_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_local_edits/figures/V01_materials_sequence_ct_anatomy.svg"
+      }
+    },
+    "word_crop": {}
+  },
+  {
+    "id": "ct_segmentation",
+    "path": "J:\\NIX\\WRK\\Code\\Kalmykov_PhD\\Colab Notebooks\\Отчёт_ГПХ_РНЦХ\\report\\revision_20261029_author_review\\figures\\V03_ct_segmentation.png",
+    "caption": "КТ У1 и автоматические тканевые маски на аксиальном сечении вблизи центроида сердечной области. Показаны исходное сечение, лёгкие, жир и кости; розовый контур соответствует автоматической маске целого сердца. Координаты RAS приведены в миллиметрах.",
+    "source": {
+      "html": "Colab Notebooks/scorpion_v2/33.40_Ник_и_Ярослав_эксперимент_и_модели_Scorpion_22_10_2026.html",
+      "locator": {
+        "html_img_index_zero_based": 0,
+        "html_line": 14530,
+        "figure_caption": "Рисунок 23. Ник. КТ-сечение и кандидатные тканевые маски."
+      },
+      "sha256": "c6631301ee3c9c02835033d99621b71f6347153982291f7cd3bef4acec3e5878"
+    },
+    "word_crop": {},
+    "aliases": [
+      "V03"
+    ]
+  },
+  {
+    "id": "ct_model_preparation",
+    "path": "J:\\NIX\\WRK\\Code\\Kalmykov_PhD\\Colab Notebooks\\Отчёт_ГПХ_РНЦХ\\report\\revision_20261029_author_review\\figures\\V04_anatomical_surfaces.png",
+    "caption": "Пример пространственного представления сегментированной анатомии из сохранённой модели C01: поверхности лёгких, сердца и костей. Показаны только сохранённые тканевые поверхности; тело, модельные руки и электродные контакты исключены из отображения.",
+    "source": {
+      "html": "Colab Notebooks/20.10_КТ_FEM_локализация_боковых_матриц_МГТУ.html",
+      "sha256": "95d7228d198b802360e752e5b2624ee91b89d6fe367a64b76a683869791fb4b2",
+      "div": "9970d5eb-f06a-4043-af74-8784fe289314",
+      "trace_indices": [
+        1,
+        2,
+        3
+      ]
+    },
+    "word_crop": {}
+  },
+  {
+    "id": "materials_electrodes",
+    "path": "J:\\NIX\\WRK\\Code\\Kalmykov_PhD\\Colab Notebooks\\Отчёт_ГПХ_РНЦХ\\report\\revision_20261029_author_review\\figures\\V02_measurement_setup.png",
+    "caption": "Схема проведения исследований и измерительных конфигураций. Все процедуры выполняли лёжа на спине с вытянутыми за голову, не сцепленными руками. В исследовании участвовали три мужчины 25–30 лет: У1 и У3 — нормостеники, У2 — гиперстеник. Боковая сборка имеет токовые A, B и измерительные M, N контакты; варианты ТТРКГ различаются группировкой контактов на руках. Пояс ЭИТ располагали циркулярно вокруг грудной клетки приблизительно на уровне сосков либо непосредственно ниже этого уровня.",
+    "source": {
+      "protocol": "AUTHOR_CONFIRMATIONS.md",
+      "document_blocks": [
+        "p0730–p0777"
+      ],
+      "html": "H40 §1; H43 §2"
+    },
+    "word_crop": {}
+  },
+  {
+    "id": "photo_lateral_detail",
+    "path": "J:\\NIX\\WRK\\Code\\Kalmykov_PhD\\Colab Notebooks\\Отчёт_ГПХ_РНЦХ\\report\\revision_20261029_author_review\\figures\\photos\\photo03.png",
+    "caption": "Расположение четырёх контактов боковой тетраполярной сборки на грудной клетке. Фотография этапа подготовки к регистрации; номинальный размер сборки по снимку не определяется.",
+    "source": {
+      "type": "author photograph",
+      "original": "C:/Users/9838~1/AppData/Local/Temp/codex-clipboard-35279ec2-6975-4d2b-8290-16f39a12484e.png"
+    },
+    "word_crop": {
+      "left": 0.28,
+      "right": 0.06,
+      "top": 0.2,
+      "bottom": 0.1
+    }
+  },
+  {
+    "id": "photo_tt_wide",
+    "path": "J:\\NIX\\WRK\\Code\\Kalmykov_PhD\\Colab Notebooks\\Отчёт_ГПХ_РНЦХ\\report\\revision_20261029_author_review\\figures\\photos\\photo07.png",
+    "caption": "Расположение электродов отведения «рука–рука» и боковой сборки до регистрации. Поза во время измерения описана в §2.1.",
+    "source": {
+      "type": "author photograph",
+      "original": "C:/Users/9838~1/AppData/Local/Temp/codex-clipboard-8b2568a5-6326-4aeb-853a-5b59369888f2.png"
+    },
+    "word_crop": {
+      "top": 0.37,
+      "bottom": 0.24,
+      "left": 0.12,
+      "right": 0.11
+    }
+  },
+  {
+    "id": "photo_belt",
+    "path": "J:\\NIX\\WRK\\Code\\Kalmykov_PhD\\Colab Notebooks\\Отчёт_ГПХ_РНЦХ\\report\\revision_20261029_author_review\\figures\\photos\\photo01.png",
+    "caption": "Пояс ЭИТ и референсный электрод на этапе подготовки к регистрации. Поза во время измерения описана в §2.1.",
+    "source": {
+      "type": "author photograph",
+      "original": "C:/Users/9838~1/AppData/Local/Temp/codex-clipboard-6364ac9f-8b23-471a-a2bb-47d6cb6dbb91.png"
+    },
+    "word_crop": {
+      "top": 0.17,
+      "bottom": 0.26,
+      "left": 0.1,
+      "right": 0.1
+    }
+  },
+  {
+    "id": "models_layered_geometry",
+    "path": "J:\\NIX\\WRK\\Code\\Kalmykov_PhD\\Colab Notebooks\\Отчёт_ГПХ_РНЦХ\\report\\revision_20261029_author_review\\figures\\V09_layered_model.png",
+    "caption": "Схема однородного полупространства и двухслойной модели при одинаковом тетраполярном монтаже A–M–N–B. Внешняя токовая база равна L, внутренняя измерительная — L/2; наружный слой задаётся эффективными h и ρ₁, внутреннее полупространство — ρ₂. Контакты имеют конечные площадки.",
+    "source": {
+      "document_blocks": [
+        "p0730–p0732",
+        "p1572–p1583"
+      ],
+      "html": "Colab Notebooks/scorpion_v2/33.40_Ник_и_Ярослав_эксперимент_и_модели_Scorpion_22_10_2026.html",
+      "cell": "928c4f63"
+    },
+    "word_crop": {}
+  },
+  {
+    "id": "models_ct_fem_preparation",
+    "path": "J:\\NIX\\WRK\\Code\\Kalmykov_PhD\\Colab Notebooks\\Отчёт_ГПХ_РНЦХ\\report\\revision_20261029_author_review\\figures\\V04_fem_surface_contacts.png",
+    "caption": "Сохранённая расчётная поверхность У2 с центрами боковых контактов и группами ТТРКГ. Искусственные продолжения рук являются элементами модели и отличаются от подтверждённой позы регистрации с руками за головой. Показана внешняя поверхность; контактные площадки и внутренние тетраэдры этой сценой не разрешены.",
+    "source": {
+      "html": "Colab Notebooks/scorpion_v2/20.20_Индивидуальная_КТ_FEM_модель_Георгия_Scorpion_v2.html",
+      "div": "cad8863c-e390-45c2-a755-b48c103bdd7e",
+      "trace_indices": [
+        0,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "sha256": "af3b4942357145a6ed8a743790c9333de3ccb43884e5080ba22e1771c121ead7"
+    },
+    "word_crop": {}
+  },
+  {
+    "id": "processing_cycles",
+    "path": "J:\\NIX\\WRK\\Code\\Kalmykov_PhD\\Colab Notebooks\\Отчёт_ГПХ_РНЦХ\\report\\revision_20261029_local_edits\\figures\\V07_cycle_processing_display_minus1.png",
+    "caption": "Четыре сохранённых кандидатных цикла обычной записи 001 У1: ЭКГ с QRS-кандидатами и пульсовые сигналы одновременно подключённых ТТРКГ 2×2 и боковой сборки 140 мм. Время отсчитано от первого QRS-кандидата, импеданс показан в мОм после полосы 0,7–12 Гц. ЭКГ и ординаты меток QRS показаны с множителем −1 только при отображении; времена QRS-кандидатов сохранены.",
+    "source": {
+      "original": {
+        "html": "Colab Notebooks/scorpion_v2/33.40_Ник_и_Ярослав_эксперимент_и_модели_Scorpion_22_10_2026.html",
+        "figures": [
+          4,
+          5
+        ],
+        "divs": [
+          "ac851e3b-16f9-45ab-9d87-99633c31f5b4",
+          "c69a194f-331e-41a1-87b8-a77d4f9e101b"
+        ],
+        "trace_indices": [
+          [
+            1,
+            2,
+            0
+          ],
+          [
+            0
+          ]
+        ],
+        "scope": "ordinary TT 2x2 and lateral 140 mm; same stored time grid"
+      },
+      "local_edit": {
+        "new_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_local_edits/figures/V07_cycle_processing_display_minus1.png",
+        "figure_number": 10,
+        "key": "processing_cycles",
+        "caption_text": "Четыре сохранённых кандидатных цикла обычной записи 001 У1: ЭКГ с QRS-кандидатами и пульсовые сигналы одновременно подключённых ТТРКГ 2×2 и боковой сборки 140 мм. Время отсчитано от первого QRS-кандидата, импеданс показан в мОм после полосы 0,7–12 Гц. ЭКГ и ординаты меток QRS показаны с множителем −1 только при отображении; времена QRS-кандидатов сохранены.",
+        "source_asset_sha256": "5f1861db863c2a0103f06a43170ac17d5b4303733bee7ec51e5bc6c355d18662",
+        "new_sha256": "ee799366f43af51372e0d7a044c79364866fc698fbfcdc30faa4ed7607e06d94",
+        "dimensions_px": [
+          3060,
+          1700
+        ],
+        "word_width_cm": 16.5,
+        "word_visible_height_cm": 9.166666666666666,
+        "basis": "В сохранённой HTML-сцене 4 ординаты ЭКГ и всех пяти QRS-маркеров отрицательны в точках QRS; render_visuals.cjs:100–105 переносит их в верхнюю панель без смены знака. По прямому указанию автора применён display multiplier −1 к y ЭКГ и y маркеров; все x и оба импедансных ряда неизменны. Это соглашение отображения, а не установленная физическая полярность отведения.",
+        "display_multiplier": -1,
+        "reproduction_check": "tools/ecg_display_check.json"
+      },
+      "latest_local_edit": {
+        "new_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_local_edits/figures/V07_cycle_processing_display_minus1.png",
+        "figure_number": 10,
+        "key": "processing_cycles",
+        "caption_text": "Четыре сохранённых кандидатных цикла обычной записи 001 У1: ЭКГ с QRS-кандидатами и пульсовые сигналы одновременно подключённых ТТРКГ 2×2 и боковой сборки 140 мм. Время отсчитано от первого QRS-кандидата, импеданс показан в мОм после полосы 0,7–12 Гц. ЭКГ и ординаты меток QRS показаны с множителем −1 только при отображении; времена QRS-кандидатов сохранены.",
+        "source_asset_sha256": "5f1861db863c2a0103f06a43170ac17d5b4303733bee7ec51e5bc6c355d18662",
+        "new_sha256": "ee799366f43af51372e0d7a044c79364866fc698fbfcdc30faa4ed7607e06d94",
+        "dimensions_px": [
+          3060,
+          1700
+        ],
+        "word_width_cm": 16.5,
+        "word_visible_height_cm": 9.166666666666666,
+        "basis": "В сохранённой HTML-сцене 4 ординаты ЭКГ и всех пяти QRS-маркеров отрицательны в точках QRS; render_visuals.cjs:100–105 переносит их в верхнюю панель без смены знака. По прямому указанию автора применён display multiplier −1 к y ЭКГ и y маркеров; все x и оба импедансных ряда неизменны. Это соглашение отображения, а не установленная физическая полярность отведения.",
+        "display_multiplier": -1,
+        "reproduction_check": "tools/ecg_display_check.json"
+      }
+    },
+    "word_crop": {}
+  },
+  {
+    "id": "models_anatomy_contacts",
+    "path": "J:\\NIX\\WRK\\Code\\Kalmykov_PhD\\Colab Notebooks\\Отчёт_ГПХ_РНЦХ\\report\\revision_20261029_author_review\\figures\\V04_anatomical_model.png",
+    "caption": "Расчётная область У1: поверхности сердца, лёгких и тела с искусственным продолжением рук и площадками пояса ЭИТ. Продолжения рук и алгоритмическое положение пояса являются элементами модели; они не воспроизводят измеренную позу с руками за головой.",
+    "source": {
+      "cached_png": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261028/figures/dfaf500992b1.png",
+      "document_figure": "6.1 / 7.1"
+    },
+    "word_crop": {}
+  },
+  {
+    "id": "models_geometry_comparison",
+    "path": "J:\\NIX\\WRK\\Code\\Kalmykov_PhD\\Colab Notebooks\\Отчёт_ГПХ_РНЦХ\\report\\revision_20261029_author_review\\figures\\V13_geometry_controls.png",
+    "caption": "Геометрическое сравнение форм У1 на первом доступном R–R: объём, изменение объёма относительно исходного состояния, ошибка перемещения и коэффициент Dice. T0 — исходная маска, I1–I3 — индивидуальные преобразования, G1/G2/G3a — сферические варианты; линии соединяют доступные фазовые оценки. Под исходным состоянием (на графике — «опора») понимается первая доступная фаза данного R–R-интервала.",
+    "source": {
+      "original": {
+        "document": "author_snapshot.docx",
+        "figure": "6.3",
+        "cached_png": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261028/figures/27676a97e7a0.png",
+        "sha256": "27676a97e7a072f1c3f607ba791e35755d7de50538d0ef6023ef2bcd1d283a41"
+      },
+      "local_edit": {
+        "old_asset": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/figures/V13_geometry_controls.png",
+        "figure_number": 12,
+        "key": "models_geometry_comparison",
+        "new_path": null,
+        "status": "not_rendered_missing_saved_arrays",
+        "caption_text": "Геометрическое сравнение форм У1 на первом доступном R–R: объём, изменение объёма относительно исходного состояния, ошибка перемещения и коэффициент Dice. T0 — исходная маска, I1–I3 — индивидуальные преобразования, G1/G2/G3a — сферические варианты; линии соединяют доступные фазовые оценки.",
+        "proposed_label_changes": [
+          [
+            "Изменение объёма от опоры R–R",
+            "Изменение объёма от исходного состояния"
+          ],
+          [
+            "Ошибка перемещения от опоры",
+            "Ошибка перемещения от исходного состояния"
+          ]
+        ],
+        "source_code_locator": "Colab Notebooks/cardiac_4d_segmentation/summarize_nik_whole_heart_geometry.py:667–691",
+        "missing_inputs": "Нормализованные rows из summary.local.json, записываемого run() этого скрипта: первый R–R, T0/I1/I2/I3/G1/G2/G3a; volume_ml, anchor_volume_change_ml, anchor_displacement_error_mm, dice, optimization_acceptable, phase_id; список исходных фаз groups/manifest.phases.",
+        "basis": "Код явно строит приращения и ошибку перемещения относительно первой доступной фазы данного R–R. Исходная нормализованная таблица этого прогона не найдена; проверен код и сохранённый PNG.",
+        "source_asset_sha256": "74a840699745a500611caed343338242601117238fe09dcf0241b97b41377d5f"
+      }
+    },
+    "word_crop": {}
+  },
+  {
+    "id": "models_step_quadrature",
+    "path": "J:\\NIX\\WRK\\Code\\Kalmykov_PhD\\Colab Notebooks\\Отчёт_ГПХ_РНЦХ\\report\\revision_20261029_local_edits\\figures\\V13_models_step_quadrature_compartment_labels.png",
+    "caption": "Объёмная чувствительность STL, G1 и L1 при изменении объёмного шага и числа квадратурных точек на одной сетке. Столбцы соответствуют двум наборам электрических параметров тканей: слева для сердечного компартмента задано $\\rho_H$ = 4 Ом·м, справа используются условные параметры подгонки STL. Здесь $\\rho_H$ — эффективное удельное сопротивление сердечного компартмента. Цвет соответствует трём альтернативным монтажам. Горизонтальная шкала общая для всех панелей; q обозначает число квадратурных точек. На горизонтальной оси |ΔV| — полусумма модулей фактических отрицательной и положительной объёмных проб, V₀ — исходный номинальный объём STL; номинальные пробы составляют ±1; ±2,5 и ±5% от V₀.",
+    "source": {
+      "original": {
+        "cached_png": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261028/figures/reader_montage/ch07_04_volume_step_quadrature.png",
+        "sha256": "05fa16e5f79dd48296b4fb44a31fec9be91263c55dac65ab6c75ccc8667dd55a"
+      },
+      "local_edit": {
+        "new_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_local_edits/figures/V13_models_step_quadrature_compartment_labels.png",
+        "figure_number": 13,
+        "key": "models_step_quadrature",
+        "caption_text": "Объёмная чувствительность STL, G1 и L1 при изменении объёмного шага и числа квадратурных точек на одной сетке. Столбцы соответствуют двум наборам опорных параметров тканей: слева для сердечного компартмента задано ρ_H = 4 Ом·м, справа используются условные параметры подгонки STL. Здесь ρ_H — эффективное удельное сопротивление сердечного компартмента. Цвет соответствует трём альтернативным монтажам. Горизонтальная шкала общая для всех панелей; q обозначает число квадратурных точек.",
+        "source_asset_sha256": "ea7904c450ca33ca0e7dc6ccaa9055ac1375d059d7bb859bb46a7c82be08ec3c",
+        "new_sha256": "df8ce1c52c632d45d445fd46c3eb261e146d7b1dfbfcf27889f9cf30eef3e377",
+        "dimensions_px": [
+          2160,
+          1500
+        ],
+        "word_width_cm": 16.5,
+        "word_visible_height_cm": 11.458333333333334,
+        "basis": "heart_montage_figures.py и полные CSV из report/results/montage_sensitivity_v1 задают те же кривые/столбцы для diagnostic4 и commonSTLfit. В diagnostic4 параметр сердечного компартмента rho_heart_ohm_m равен 4 Ом·м; это условный параметр модели. Надпись «ρ сердца» уточнена до ρ_H; полное определение «сердечный компартмент, ρ_H = 4 Ом·м» дано в подписи. «Условные ρ из подгонки STL» заменено на «опорные ρ из подгонки STL»; условность сохранена в подписи.",
+        "display_multiplier": null,
+        "reproduction_check": "tools/material_label_checks.json"
+      },
+      "latest_local_edit": {
+        "new_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_local_edits/figures/V13_models_step_quadrature_compartment_labels.png",
+        "figure_number": 13,
+        "key": "models_step_quadrature",
+        "caption_text": "Объёмная чувствительность STL, G1 и L1 при изменении объёмного шага и числа квадратурных точек на одной сетке. Столбцы соответствуют двум наборам опорных параметров тканей: слева для сердечного компартмента задано ρ_H = 4 Ом·м, справа используются условные параметры подгонки STL. Здесь ρ_H — эффективное удельное сопротивление сердечного компартмента. Цвет соответствует трём альтернативным монтажам. Горизонтальная шкала общая для всех панелей; q обозначает число квадратурных точек. На горизонтальной оси |ΔV| — полусумма модулей фактических отрицательной и положительной объёмных проб, V₀ — исходный номинальный объём STL; номинальные пробы составляют ±1; ±2,5 и ±5% от V₀.",
+        "source_asset_sha256": "ea7904c450ca33ca0e7dc6ccaa9055ac1375d059d7bb859bb46a7c82be08ec3c",
+        "new_sha256": "3b8e975a99cf0db20e0d25f4362e59eca5df175bf63728281cb566c2552cecfa",
+        "dimensions_px": [
+          2160,
+          1500
+        ],
+        "word_width_cm": 16.5,
+        "word_visible_height_cm": 11.458333333333334,
+        "basis": "heart_montage_figures.py и полные CSV из report/results/montage_sensitivity_v1 задают те же кривые/столбцы для diagnostic4 и commonSTLfit. В diagnostic4 параметр сердечного компартмента rho_heart_ohm_m равен 4 Ом·м; это условный параметр модели. Надпись «ρ сердца» уточнена до ρ_H; полное определение «сердечный компартмент, ρ_H = 4 Ом·м» дано в подписи. «Условные ρ из подгонки STL» заменено на «опорные ρ из подгонки STL»; условность сохранена в подписи. Подпись горизонтальной оси заменена на «Объёмная проба |ΔV| / V₀, %». CSV подтверждает номинальные ±1/±2,5/±5%; фактические x сохранены как полусумма модулей парных проб, без округления к делениям.",
+        "display_multiplier": null,
+        "reproduction_check": "tools/material_label_checks.json",
+        "axis_label_change": {
+          "label": "Объёмная проба |ΔV| / V₀, %",
+          "nominal_signed_percent_in_CSV": [
+            -5.0,
+            -2.5,
+            -1.0,
+            1.0,
+            2.5,
+            5.0
+          ],
+          "unchanged_display_x_formula": "100 * (minus_step + plus_step) / (2 * V0)",
+          "definition": "|ΔV| denotes the mean magnitude of the paired actual volume probes; nominal probes are ±1/±2.5/±5%. Actual x values are not rounded or snapped to nominal ticks."
+        }
+      }
+    },
+    "word_crop": {}
+  },
+  {
+    "id": "models_electrical_factors",
+    "path": "J:\\NIX\\WRK\\Code\\Kalmykov_PhD\\Colab Notebooks\\Отчёт_ГПХ_РНЦХ\\report\\revision_20261029_author_review\\figures\\V17_models_electrical_factors.png",
+    "caption": "Приращения ТТРКГ при одинаковых объёмных пробах разных форм сердца и отдельные сценарии эффективного удельного сопротивления сердечного компартмента. Слева — объёмные пробы при одинаковом ρ; справа — сохранённые значения объёмной чувствительности для трёх сценариев ρ одной исходной STL и одного монтажа. Точки сценариев не задают непрерывного физиологического закона. В левой панели для сердечного компартмента задано $\\rho_H$ = 4 Ом·м; $\\rho_H$ — его эффективное удельное сопротивление.",
+    "source": {
+      "original": {
+        "cached_png": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261028/figures/reader/07_02_electrical_approximation.png",
+        "sha256": "5690647835d6aa62a584a4df468b7bb56f97bbd93ed9167ad3346be0a1cd3d61"
+      },
+      "local_edit": {
+        "old_asset": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/figures/V17_models_electrical_factors.png",
+        "figure_number": 14,
+        "key": "models_electrical_factors",
+        "new_path": null,
+        "status": "not_rendered_missing_saved_arrays",
+        "caption_text": "Приращения ТТРКГ при одинаковых объёмных пробах разных форм сердца и отдельные сценарии эффективного сердечного сопротивления. Слева — объёмные пробы при одинаковом ρ; справа — сохранённые значения объёмной чувствительности для трёх сценариев ρ одной исходной STL и одного монтажа. Точки сценариев не задают непрерывного физиологического закона. В левой панели для сердечного компартмента задано ρ_H = 4 Ом·м; ρ_H — его эффективное удельное сопротивление.",
+        "proposed_label_changes": [
+          [
+            "Одинаковое ΔV; ρ сердца = 4 Ом·м",
+            "Одинаковое ΔV; ρ_H = 4 Ом·м"
+          ],
+          [
+            "Заданное ρ целого сердца, Ом·м",
+            "ρ_H сердечного компартмента, Ом·м"
+          ]
+        ],
+        "source_code_locator": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261028/tools/prepare_reader_figures.py:347–372",
+        "missing_inputs": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/pulmovista_check_20261028/local/stl_electrical_comparison/summary.local.json: shape_comparison, reference_volume_probe_ml, heart_material_scenarios.",
+        "basis": "Для левой панели сохранены отдельные пробы семи форм, для правой — три отдельные точки STL. Нужная сводка отсутствует. Публичная серия трёх форм STL/G1/L1 не заменяет эти семь форм и три сценарные точки.",
+        "source_asset_sha256": "66b56a644ff15fa1fc0a2cb2cb26d08ab1e3af423550f49e0475dca00df2a4d8"
+      }
+    },
+    "word_crop": {}
+  },
+  {
+    "id": "models_finite_compensation",
+    "path": "J:\\NIX\\WRK\\Code\\Kalmykov_PhD\\Colab Notebooks\\Отчёт_ГПХ_РНЦХ\\report\\revision_20261029_local_edits\\figures\\V19_volume_rho_compensation_compartment_labels.png",
+    "caption": "Конечная компенсация объёмных проб ±1% изменением эффективного удельного сопротивления сердечного компартмента У1. Контур — чистая объёмная проба, заполнение — линейно выбранная компенсация, крест — результат одного уточнения Ньютона. Параметры подобраны по исходному монтажу и проверены в двух альтернативных. Столбцы соответствуют двум наборам электрических параметров тканей: слева для сердечного компартмента задано $\\rho_H$ = 4 Ом·м, справа используются условные параметры подгонки STL. Здесь $\\rho_H$ — эффективное удельное сопротивление сердечного компартмента.",
+    "source": {
+      "original": {
+        "document": "author_snapshot.docx",
+        "figure": "9.6",
+        "cached_png": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261028/figures/reader_montage/ch09_06_finite_compensation.png",
+        "sha256": "514cdc68f3f4e039047a39cac94800356785a2346d06498202f1dbe056f6aacb"
+      },
+      "local_edit": {
+        "new_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_local_edits/figures/V19_volume_rho_compensation_compartment_labels.png",
+        "figure_number": 15,
+        "key": "models_finite_compensation",
+        "caption_text": "Конечная компенсация объёмных проб ±1% изменением эффективного сопротивления сердца У1. Контур — чистая объёмная проба, заполнение — линейно выбранная компенсация, крест — результат одного уточнения Ньютона. Параметры подобраны по исходному монтажу и проверены в двух альтернативных. Столбцы соответствуют двум наборам опорных параметров тканей: слева для сердечного компартмента задано ρ_H = 4 Ом·м, справа используются условные параметры подгонки STL. Здесь ρ_H — эффективное удельное сопротивление сердечного компартмента.",
+        "source_asset_sha256": "3dd5115dcf5aee8fad80980a73b62cf984599854469176a038b5f7a4432451c1",
+        "new_sha256": "29d7835e49b1c625f68bc9b44127ddc015d3317bc8802ae24bd7b7f02a4c69ff",
+        "dimensions_px": [
+          2460,
+          1710
+        ],
+        "word_width_cm": 16.5,
+        "word_visible_height_cm": 11.46951219512195,
+        "basis": "heart_montage_figures.py и полные CSV из report/results/montage_sensitivity_v1 задают те же кривые/столбцы для diagnostic4 и commonSTLfit. В diagnostic4 параметр сердечного компартмента rho_heart_ohm_m равен 4 Ом·м; это условный параметр модели. Надпись «ρ сердца» уточнена до ρ_H; полное определение «сердечный компартмент, ρ_H = 4 Ом·м» дано в подписи. «Условные ρ из подгонки STL» заменено на «опорные ρ из подгонки STL»; условность сохранена в подписи.",
+        "display_multiplier": null,
+        "reproduction_check": "tools/material_label_checks.json"
+      },
+      "latest_local_edit": {
+        "new_path": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_local_edits/figures/V19_volume_rho_compensation_compartment_labels.png",
+        "figure_number": 15,
+        "key": "models_finite_compensation",
+        "caption_text": "Конечная компенсация объёмных проб ±1% изменением эффективного удельного сопротивления сердечного компартмента У1. Контур — чистая объёмная проба, заполнение — линейно выбранная компенсация, крест — результат одного уточнения Ньютона. Параметры подобраны по исходному монтажу и проверены в двух альтернативных. Столбцы соответствуют двум наборам опорных параметров тканей: слева для сердечного компартмента задано ρ_H = 4 Ом·м, справа используются условные параметры подгонки STL. Здесь ρ_H — эффективное удельное сопротивление сердечного компартмента.",
+        "source_asset_sha256": "3dd5115dcf5aee8fad80980a73b62cf984599854469176a038b5f7a4432451c1",
+        "new_sha256": "9467966a5c2ab947258bd1a609c2d24d5768794c91debbab8b6efe124b4b701e",
+        "dimensions_px": [
+          2460,
+          1710
+        ],
+        "word_width_cm": 16.5,
+        "word_visible_height_cm": 11.46951219512195,
+        "basis": "heart_montage_figures.py и полные CSV из report/results/montage_sensitivity_v1 задают те же кривые/столбцы для diagnostic4 и commonSTLfit. В diagnostic4 параметр сердечного компартмента rho_heart_ohm_m равен 4 Ом·м; это условный параметр модели. Надпись «ρ сердца» уточнена до ρ_H; полное определение «сердечный компартмент, ρ_H = 4 Ом·м» дано в подписи. «Условные ρ из подгонки STL» заменено на «опорные ρ из подгонки STL»; условность сохранена в подписи.",
+        "display_multiplier": null,
+        "reproduction_check": "tools/material_label_checks.json",
+        "title_label_change": {
+          "before": "изменением ρ сердца",
+          "after": "изменением ρ_H"
+        },
+        "caption_change": {
+          "before": "эффективного сопротивления сердца",
+          "after": "эффективного удельного сопротивления сердечного компартмента"
+        }
+      }
+    },
+    "word_crop": {}
+  },
+  {
+    "id": "tissue_eit_baseline",
+    "path": "J:\\NIX\\WRK\\Code\\Kalmykov_PhD\\Colab Notebooks\\Отчёт_ГПХ_РНЦХ\\report\\revision_20261029_author_review\\figures\\V14_eit_baseline_residual.png",
+    "caption": "Исправленная базовая инверсия ЭИТ У1, запись 02, опорный участок 36–44 с. Синий — измеренный вектор в принятой шкале читателя, оранжевый — FEM-прогноз; снизу — знаковый остаток в мВ по 208 измерительным строкам. Вольтовая невязка составляет 32,4365%.",
+    "source": {
+      "document": "author_snapshot.docx",
+      "figure": "8.1",
+      "cached_png": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261028/figures/reader/08_01_baseline_fit.png",
+      "sha256": "f1a30147ff078e65eebae98ccd78d75e49645bab0f61b9036f221a15c69b541a"
+    },
+    "word_crop": {}
+  },
+  {
+    "id": "tissue_pulse_projection",
+    "path": "J:\\NIX\\WRK\\Code\\Kalmykov_PhD\\Colab Notebooks\\Отчёт_ГПХ_РНЦХ\\report\\revision_20261029_author_review\\figures\\V15_tissue_contributions.png",
+    "caption": "Условные вклады мягкотканного фона, единого лёгочного компартмента и сердечной области в отведение «рука–рука» У1 на четырёх кандидатных плато. Время — внутри соответствующей записи ЭИТ, вклад — в мОм; полоса 0,7–3 Гц, частота модели 79,505 кГц.",
+    "source": {
+      "document": "author_snapshot.docx",
+      "figure": "8.2",
+      "cached_png": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261028/figures/ee60fc3b2861.png",
+      "sha256": "ee60fc3b2861f022960a34108c2ca1b666c0df786fa69080a3d2eb9c1cde0518"
+    },
+    "word_crop": {}
+  },
+  {
+    "id": "tissue_geometry_mixing",
+    "path": "J:\\NIX\\WRK\\Code\\Kalmykov_PhD\\Colab Notebooks\\Отчёт_ГПХ_РНЦХ\\report\\revision_20261029_author_review\\figures\\V16_geometry_tissue_mixing.png",
+    "caption": "Объёмный коэффициент ТТРКГ до и после тканевой инверсии геометрического сигнала. Серый — исходный коэффициент, зелёный — остаток при S2, оранжевый — при S3; S2 освобождает фон и лёгкое, S3 дополнительно сердце. Истинные изменения тканевых сопротивлений равны нулю.",
+    "source": {
+      "document": "author_snapshot.docx",
+      "figure": "8.3 / 9.5",
+      "cached_png": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261028/figures/reader_motion/09_5_02_target_chain_volume_sensitivity.png",
+      "sha256": "4af36cf17afec3c917ed16c0e780e9ace0d255ea3a1d2b0bdebe4a17684d9230"
+    },
+    "word_crop": {}
+  },
+  {
+    "id": "cardiac_phase_reversal",
+    "path": "J:\\NIX\\WRK\\Code\\Kalmykov_PhD\\Colab Notebooks\\Отчёт_ГПХ_РНЦХ\\report\\revision_20261029_author_review\\figures\\V22_ventricular_phase_reversal.png",
+    "caption": "Объёмы левого и правого желудочков У1 на отложенных фазах и контрпример близкого размаха при ошибочной фазовой последовательности. Известная исходная фаза составляет 14% R–R; временной зазор — 140 мс. Отрезки соединяют прогнозы исключённых блоков с разными калибровками и не задают траекторию одной фиксированной модели. Обозначение «опора» на графике относится к этой исходной КТ-фазе.",
+    "source": {
+      "original": {
+        "cached_png": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/figures/V22_wrong_extrema_counterexample.png",
+        "sha256": "d0aed4c9d2b5f056991f3782b52620daa62a394ae2a9a075df4fdecfbbdd620d",
+        "crop_xyxy": [
+          0,
+          0,
+          1925,
+          1100
+        ]
+      },
+      "local_edit": {
+        "old_asset": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_author_review/figures/V22_ventricular_phase_reversal.png",
+        "figure_number": 19,
+        "key": "cardiac_phase_reversal",
+        "new_path": null,
+        "status": "not_rendered_missing_saved_arrays",
+        "caption_text": "Объёмы левого и правого желудочков У1 на отложенных фазах и контрпример близкого размаха при ошибочной фазовой последовательности. Известная исходная фаза составляет 14% R–R; временной зазор — 140 мс. Отрезки соединяют прогнозы исключённых блоков с разными калибровками и не задают траекторию одной фиксированной модели.",
+        "proposed_label_changes": [
+          [
+            "Одна опора: 14%; временной зазор: 140 мс",
+            "Исходная фаза: 14%; временной зазор: 140 мс"
+          ]
+        ],
+        "source_code_locator": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261028/tools/prepare_reader_chamber_figure.py:50–132",
+        "missing_inputs": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/execution_20261026/single_phase/nix_only/exploratory/predictions.csv; single_phase/ct_dataset/dataset.json; single_phase/nix_only/exploratory/window_indices.csv.",
+        "basis": "Код и provenance chamber_figure_edit.json фиксируют одну известную фазу 14% R–R и восемь отложенных фаз. Таблицы предсказаний и КТ для этого графика отсутствуют; доступных PNG недостаточно для воспроизведения.",
+        "source_asset_sha256": "12bf1deff2ab8778610e9ebbd809ed5e7f39fba8b3032fdb8c2391adab71fd47"
+      }
+    },
+    "word_crop": {}
+  }
+]

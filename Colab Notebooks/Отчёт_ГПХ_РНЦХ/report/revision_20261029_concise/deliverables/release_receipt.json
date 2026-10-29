@@ -1,0 +1,16 @@
+{
+  "status": "accepted",
+  "main_pages": 60,
+  "total_pages": 125,
+  "word_sha256": "dd986024f6f0ae2c3e9e844ec790a4f296fde906de1e44d0ae926edc62b8ddce",
+  "pdf_sha256": "60519e56147a435f1c6b6e31a65552e876c9ec497460dc1362760e872973d73b",
+  "old_report_preserved": true,
+  "requirements": 41,
+  "figures": 14,
+  "main_display_equations": 21,
+  "native_math_objects": 372,
+  "track_changes_enabled": true,
+  "existing_revisions": 0,
+  "visual_review": "reviews/visual_release_acceptance.md",
+  "scientific_scope": "Editorial revision of fixed supplied evidence; no new primary validation or claim of fully achieved stroke-volume accuracy."
+}

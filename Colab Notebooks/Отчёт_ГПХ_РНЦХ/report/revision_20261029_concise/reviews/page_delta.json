@@ -1,0 +1,432 @@
+{
+  "comparison": "Exact RGB pixel equality of full page body; only bottom 100px footer excluded. Changed bodies require visual review.",
+  "old_pdf_sha256": "8f6e190fdd8a0fce4bce68873ff42ae4f9ebdbaf88c041e485bccee7b50fca29",
+  "new_pdf_sha256": "e802f42b5f808ddeb3a16a98b791e11028169c1e7a307ba627680f957930db27",
+  "body_matches": [
+    {
+      "new_page": 1,
+      "reviewed_old_page": 1,
+      "body_sha256": "80576b23c219e6401d95d2fe239bd4effaf0778747957e98e3a245b18a3b1d72"
+    },
+    {
+      "new_page": 2,
+      "reviewed_old_page": 2,
+      "body_sha256": "a1e9558803105444201d0b4c2233730caa27058e7940598f532963f32f115216"
+    },
+    {
+      "new_page": 3,
+      "reviewed_old_page": 3,
+      "body_sha256": "a3f0c5c28a93e60800a7aea6d117c6b649df5cbcef4ce2737ad521696c1039a6"
+    },
+    {
+      "new_page": 6,
+      "reviewed_old_page": 6,
+      "body_sha256": "f0e52e12a8f880de30358019d419cea12010396fc3651aee578fa95540b55d28"
+    },
+    {
+      "new_page": 7,
+      "reviewed_old_page": 7,
+      "body_sha256": "8688878a53eb672803576feba15cfd73df0e2422e3cc55521f14d6b400e588ab"
+    },
+    {
+      "new_page": 8,
+      "reviewed_old_page": 8,
+      "body_sha256": "7081733bae20a5cecf465c43db8ffb876d2603565b4ffe7f2b27e8ef9b80a412"
+    },
+    {
+      "new_page": 9,
+      "reviewed_old_page": 9,
+      "body_sha256": "8804610ad8cfae66baa7966b93b36bb6fd7f174e83b3c6f579ca12af22f37ee1"
+    },
+    {
+      "new_page": 10,
+      "reviewed_old_page": 10,
+      "body_sha256": "777f6f4e9c0acbb86536af576de8af92c122cbd2dddcdf29331d5dbf5a68d7f5"
+    },
+    {
+      "new_page": 11,
+      "reviewed_old_page": 11,
+      "body_sha256": "4bc3dc3b16cb504660e5ef95c57f6cd28216995e07810c8c39c2b30fdbd610c9"
+    },
+    {
+      "new_page": 12,
+      "reviewed_old_page": 12,
+      "body_sha256": "7838e9fce1f14e0e4101d17ae75b7197b8dec5b944a279fee2cac19427b3d6f3"
+    },
+    {
+      "new_page": 13,
+      "reviewed_old_page": 13,
+      "body_sha256": "fbc81ff067e75b2f0aac18f0176f9f6ae7b69e476af387f45e541015112f05ce"
+    },
+    {
+      "new_page": 14,
+      "reviewed_old_page": 14,
+      "body_sha256": "e21f3e2146e11c60d9eeb20824a3b3256f11097de8b771668dd195e857e09dee"
+    },
+    {
+      "new_page": 15,
+      "reviewed_old_page": 15,
+      "body_sha256": "3c7bd7a37df0161aa8fef5e3b7a04d8dc7d7be92819732d844e43fc53fe3881f"
+    },
+    {
+      "new_page": 16,
+      "reviewed_old_page": 16,
+      "body_sha256": "df289f60334cf6b7fdba6dba9dd63b37fb264c4ba6e01c3104e1fd371505bc70"
+    },
+    {
+      "new_page": 17,
+      "reviewed_old_page": 17,
+      "body_sha256": "d7366c60a0c1783ac8504a758ed70fd702fd8ad0e0f9c6753949f37ce6d99ab5"
+    },
+    {
+      "new_page": 18,
+      "reviewed_old_page": 18,
+      "body_sha256": "9403d2c001f79bfacc51fee30f2852dac75864391ac0560adf219e0c09513163"
+    },
+    {
+      "new_page": 19,
+      "reviewed_old_page": 19,
+      "body_sha256": "978381cb70a5fe1d43921248d6d5b53198f817440edc7fd6338a7326f75a3974"
+    },
+    {
+      "new_page": 20,
+      "reviewed_old_page": 20,
+      "body_sha256": "65c450249c2cfc2154dd7a3f30031d1f8c3c9b99a0969884334efa22cf9ceee0"
+    },
+    {
+      "new_page": 21,
+      "reviewed_old_page": 21,
+      "body_sha256": "400526e76d50f139bb96cbaff3eedad106014c638e939517d3ebd85175df5d4b"
+    },
+    {
+      "new_page": 22,
+      "reviewed_old_page": 22,
+      "body_sha256": "40f6c9b7d4c1ffebb9d3722c94c61bc408fb124ee5895747e27f936a36c6f639"
+    },
+    {
+      "new_page": 23,
+      "reviewed_old_page": 23,
+      "body_sha256": "d2f3c1bf310d9cccf2538bf8374efd57c1c3e66441b6bf51771a117c7cae2ce0"
+    },
+    {
+      "new_page": 24,
+      "reviewed_old_page": 24,
+      "body_sha256": "818f1e0df96b48727b46509ceba66db411847294421e46e4e222934d495b7d3e"
+    },
+    {
+      "new_page": 25,
+      "reviewed_old_page": 25,
+      "body_sha256": "0db1cad64e9a9d05dd899b9bc19af29af7fd981a5f27ce9267db79722e6d9641"
+    },
+    {
+      "new_page": 26,
+      "reviewed_old_page": 26,
+      "body_sha256": "da3365bc3b61ac84739124d03d135d520131192d59720ef3797993cf1d0069d0"
+    },
+    {
+      "new_page": 27,
+      "reviewed_old_page": 27,
+      "body_sha256": "0a15bf5d5c5d7c0a5c31bca14df4f6e87435ffa3967d33d5f68e92987d975c91"
+    },
+    {
+      "new_page": 28,
+      "reviewed_old_page": 28,
+      "body_sha256": "4e1fd0acaa8c7287edef18b895480c7120a23cc65affe582562a8858ab1c9079"
+    },
+    {
+      "new_page": 29,
+      "reviewed_old_page": 29,
+      "body_sha256": "a1371fb65056eb9c4b2144fd058ab736d49e9b4e9ed5bb149cbb30afab3e98af"
+    },
+    {
+      "new_page": 30,
+      "reviewed_old_page": 30,
+      "body_sha256": "fb4c9e212f213d5faea7223f435023dc7e6c3fcc7f89124f2b62939d2cafedd6"
+    },
+    {
+      "new_page": 31,
+      "reviewed_old_page": 31,
+      "body_sha256": "e434c7ac3c6a439fb2d5227c2bbe9b28daff5922fb4e9e639f8ff1b062921eca"
+    },
+    {
+      "new_page": 36,
+      "reviewed_old_page": 36,
+      "body_sha256": "30502f317c27ffba999d4456c97ad0f8618b3d6033cfeff7574508ce1231b957"
+    },
+    {
+      "new_page": 37,
+      "reviewed_old_page": 37,
+      "body_sha256": "ede4f6a2fb219343938b4e7a12b587790224275363be2288622eaf692028f7ed"
+    },
+    {
+      "new_page": 38,
+      "reviewed_old_page": 38,
+      "body_sha256": "057882a477b63ce46d7162282954a4f452f35af683f9832dc7c49144fb1fcb33"
+    },
+    {
+      "new_page": 39,
+      "reviewed_old_page": 39,
+      "body_sha256": "91b23c81cf850f158e8d78c11a31fd935258125eb6bba4b82895ccb1ec4e675f"
+    },
+    {
+      "new_page": 40,
+      "reviewed_old_page": 40,
+      "body_sha256": "7e8354ae68a5ece01fb79de0f6896b260ffa542c6b0c3d3bb87ab0211cbe6abd"
+    },
+    {
+      "new_page": 41,
+      "reviewed_old_page": 41,
+      "body_sha256": "63e96f136faee388c4e44f8ea78fecc3e886f2c85ad48a303f43d4701dbed773"
+    },
+    {
+      "new_page": 42,
+      "reviewed_old_page": 42,
+      "body_sha256": "4ca6b835af19732dbb26e45599a3f46a39aeeedf28b9d0a239c9a0b09c1245fb"
+    },
+    {
+      "new_page": 43,
+      "reviewed_old_page": 43,
+      "body_sha256": "b6515eae2abd62ac2a364cde1a5fc2e92a4e582e11dbd3d0238ba5c892b367f4"
+    },
+    {
+      "new_page": 44,
+      "reviewed_old_page": 44,
+      "body_sha256": "f6c5275fea419a9b1d77a5dc7bcf33d6445e598093e0cc636f435c902627759f"
+    },
+    {
+      "new_page": 45,
+      "reviewed_old_page": 45,
+      "body_sha256": "d567a7b97b9d31a3b16e1fda0cbc449db9e2194997648bc4f1799c2a1f7c0f4e"
+    },
+    {
+      "new_page": 46,
+      "reviewed_old_page": 46,
+      "body_sha256": "669be0fe21e2b516bde11655e6b18f9464c068511a417326258c6dc7d7ea73d1"
+    },
+    {
+      "new_page": 47,
+      "reviewed_old_page": 47,
+      "body_sha256": "ad34d5bf27f77e5d69bfd67602f1b47e732ffbeffabc02ed2ec79bd22e22d7c0"
+    },
+    {
+      "new_page": 48,
+      "reviewed_old_page": 48,
+      "body_sha256": "257bfad9bf9b1af59070f6fde39f427116ab8e864377d9928ccad348996db0f0"
+    },
+    {
+      "new_page": 49,
+      "reviewed_old_page": 49,
+      "body_sha256": "3c7cb74aedcf2f3da9fc8e487d3a68945af3145a6c3b8172ee2942c46f37a384"
+    },
+    {
+      "new_page": 50,
+      "reviewed_old_page": 50,
+      "body_sha256": "dafc039425d93e302bfc2b9324d6f507e19660ef16cd79444d720a77ec2b8892"
+    },
+    {
+      "new_page": 51,
+      "reviewed_old_page": 51,
+      "body_sha256": "1e8c6d3bca04f5b2018dbdc349308d6d3500c2211fc7fa0d17477dd48548a376"
+    },
+    {
+      "new_page": 52,
+      "reviewed_old_page": 52,
+      "body_sha256": "679e013dc598ac823b14b97609bb9698f5042751e05f037b345660abd0512e01"
+    },
+    {
+      "new_page": 53,
+      "reviewed_old_page": 53,
+      "body_sha256": "1bcf8d4759953f9c95d330cc60a74b05f0e0be285f2a78916db8f035b32b3eb7"
+    },
+    {
+      "new_page": 54,
+      "reviewed_old_page": 54,
+      "body_sha256": "3a7a98e244f9761217cab228525a2faeb3260e6da2b845ccdedc0df444a79a80"
+    },
+    {
+      "new_page": 55,
+      "reviewed_old_page": 55,
+      "body_sha256": "db1f12816dd56b87165a9fef9d02c0abefa4f2e49b1e31d07b937a097ffb2b83"
+    },
+    {
+      "new_page": 57,
+      "reviewed_old_page": 57,
+      "body_sha256": "5965fa04253dad4d3b179dd35a2c2876ce5f7f8a6f1519c0e98430289dcf7e1d"
+    },
+    {
+      "new_page": 58,
+      "reviewed_old_page": 58,
+      "body_sha256": "5f71b5777f2b562dc31372de7dd13851890a20e57c446e8f4be2f4f12bbd0933"
+    },
+    {
+      "new_page": 59,
+      "reviewed_old_page": 59,
+      "body_sha256": "45d12dcf8b912eca70f207cc70485d1fe28dc59e4c51d6f759f5d32b495333af"
+    },
+    {
+      "new_page": 60,
+      "reviewed_old_page": 60,
+      "body_sha256": "e46200439b58ef1eb2eb7a7c319a707516a06f5f02d32ce43009f3e1b6f9a188"
+    },
+    {
+      "new_page": 64,
+      "reviewed_old_page": 64,
+      "body_sha256": "41e31ab792e98e8abe6ec0abc34ff92fe1cfe99c83a56f1960f1f471646c7b4f"
+    },
+    {
+      "new_page": 65,
+      "reviewed_old_page": 65,
+      "body_sha256": "1e1d4ed16c4dd2507b0fc79b97cf602ff8c184f893cbfb89a372e1414991ff47"
+    },
+    {
+      "new_page": 75,
+      "reviewed_old_page": 77,
+      "body_sha256": "7a54882e27d91a0cfc4c9131e19de44b9d498fefd49fc45efb267e0af1744d6e"
+    },
+    {
+      "new_page": 77,
+      "reviewed_old_page": 79,
+      "body_sha256": "8493aeff928d66a6e1f5ecbdee9a13ae29eafae4357501f31db75d7d21609d32"
+    },
+    {
+      "new_page": 81,
+      "reviewed_old_page": 83,
+      "body_sha256": "d52c894616a87a1f257a7a47fda6be64331d84fd752ee70009bde9183a91a7d6"
+    },
+    {
+      "new_page": 84,
+      "reviewed_old_page": 86,
+      "body_sha256": "61403361559c0bf0a8e3f2c7f771f7ffb5bc5cf64f33d5905a7f438faee2ffb3"
+    },
+    {
+      "new_page": 85,
+      "reviewed_old_page": 87,
+      "body_sha256": "1c34bb10f5acd8474659a5c52b980bf4e81406611df07e5d170f2591591f9f46"
+    },
+    {
+      "new_page": 86,
+      "reviewed_old_page": 88,
+      "body_sha256": "9b4c4f0125829655dfaaa2ee4d9b367c2566451a56a68867190f10cc3da29679"
+    },
+    {
+      "new_page": 87,
+      "reviewed_old_page": 89,
+      "body_sha256": "93154920a5c325e944600dfc7aa811e5ffe74b3bf1fc98be01fb017eba4b70ea"
+    },
+    {
+      "new_page": 92,
+      "reviewed_old_page": 94,
+      "body_sha256": "d660c92bfcf3367839ad760dcc04e663a88da8eb87734a56552aba8bf5c0eed5"
+    },
+    {
+      "new_page": 93,
+      "reviewed_old_page": 95,
+      "body_sha256": "65c289b744924ed40664d7caafc2731be7717d4a68ba8d1291ab42d6d011cc7e"
+    },
+    {
+      "new_page": 94,
+      "reviewed_old_page": 96,
+      "body_sha256": "1243a3d1b9789c9685b1baaf285487d3f801408e2ed33fb8ac57f0b9a6b4d15b"
+    },
+    {
+      "new_page": 95,
+      "reviewed_old_page": 97,
+      "body_sha256": "2dfb94f9ea8be2e81b4ba98fffdae854687671ba9a4509f479f89ebe6f5f4e7e"
+    },
+    {
+      "new_page": 96,
+      "reviewed_old_page": 98,
+      "body_sha256": "7833a17fdb4bd946a32fc94358be71588eaad95ec5f9ea57ad4cc61a1d24e71c"
+    },
+    {
+      "new_page": 98,
+      "reviewed_old_page": 100,
+      "body_sha256": "99e4ddd90eac2eec5a66933709524236cd4cbbd8284d3f22bee29b5bad17509e"
+    },
+    {
+      "new_page": 99,
+      "reviewed_old_page": 101,
+      "body_sha256": "485e32ec4026e33aeafd00fbd8025b632ba10c48e5edcc7807c2023add2ef156"
+    },
+    {
+      "new_page": 100,
+      "reviewed_old_page": 102,
+      "body_sha256": "aa6da8ba7ec136f5ce60eecf6b6a2dbb2421c88333c5bdf30be3ce6d1f6ed8d8"
+    },
+    {
+      "new_page": 101,
+      "reviewed_old_page": 103,
+      "body_sha256": "8b081de3ded31c0480729d46f3073c263a58f9f2e51c80ce3c22b95082db35fe"
+    },
+    {
+      "new_page": 112,
+      "reviewed_old_page": 114,
+      "body_sha256": "d1b0511a7330c810c1167ad8898965ae9acb5db71b77402d9ba526ae6aa4d944"
+    },
+    {
+      "new_page": 117,
+      "reviewed_old_page": 119,
+      "body_sha256": "819905c24bffc284371d079e0a6298e2dfe0e97c298d4962abef73ca9969ed0c"
+    },
+    {
+      "new_page": 118,
+      "reviewed_old_page": 120,
+      "body_sha256": "a21a404f3cda8264849853474f522de141619e41475fceb9ee52939d93fc98d1"
+    }
+  ],
+  "pages_requiring_visual_review": [
+    4,
+    5,
+    32,
+    33,
+    34,
+    35,
+    56,
+    61,
+    62,
+    63,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    76,
+    78,
+    79,
+    80,
+    82,
+    83,
+    88,
+    89,
+    90,
+    91,
+    97,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111,
+    113,
+    114,
+    115,
+    116,
+    119,
+    120,
+    121,
+    122,
+    123,
+    124,
+    125
+  ],
+  "matching_pages_full_text_equal_after_removing_footer_number": false,
+  "matching_pages_text_equal_after_whitespace_normalization": true
+}

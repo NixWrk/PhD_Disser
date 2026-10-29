@@ -7,6 +7,9 @@
 *.bat text eol=crlf
 *.cmd text eol=crlf
 
+# Report checkpoints include byte-based source/asset manifests; preserve their bytes.
+"Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029*/**" -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
 # Бинарные форматы: ни нормализации, ни попыток показать diff
 *.png binary
 *.jpg binary

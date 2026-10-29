@@ -1,0 +1,185 @@
+{
+  "scope": "Editorial provenance, contract coverage and document structure. No new primary-data validation; visual inspection is separate.",
+  "errors": [],
+  "word_file": "J:\\NIX\\WRK\\Code\\Kalmykov_PhD\\Colab Notebooks\\Отчёт_ГПХ_РНЦХ\\report\\revision_20261029_concise\\deliverables\\Отчёт_ГПХ_РНЦХ_20261029_сокращённый_для_рецензирования.docx",
+  "word_sha256": "dd986024f6f0ae2c3e9e844ec790a4f296fde906de1e44d0ae926edc62b8ddce",
+  "pdf_sha256": "60519e56147a435f1c6b6e31a65552e876c9ec497460dc1362760e872973d73b",
+  "preserved_originals": [
+    {
+      "file": "revision_20261029_contract/front_matter.md",
+      "unchanged": true
+    },
+    {
+      "file": "revision_20261029_contract/conclusion.md",
+      "unchanged": true
+    },
+    {
+      "file": "revision_20261029_contract/appendices.md",
+      "unchanged": true
+    },
+    {
+      "file": "revision_20261029_contract/contract_matrix.md",
+      "unchanged": true
+    },
+    {
+      "file": "revision_20261029_contract/build_manifest.json",
+      "unchanged": true
+    },
+    {
+      "file": "revision_20261029_contract/chapters/01_literature.md",
+      "unchanged": true
+    },
+    {
+      "file": "revision_20261029_contract/chapters/02_alternatives.md",
+      "unchanged": true
+    },
+    {
+      "file": "revision_20261029_contract/chapters/03_patents.md",
+      "unchanged": true
+    },
+    {
+      "file": "revision_20261029_contract/chapters/04_problem.md",
+      "unchanged": true
+    },
+    {
+      "file": "revision_20261029_contract/chapters/05_anatomy.md",
+      "unchanged": true
+    },
+    {
+      "file": "revision_20261029_contract/chapters/06_forward.md",
+      "unchanged": true
+    },
+    {
+      "file": "revision_20261029_contract/chapters/07_experiments.md",
+      "unchanged": true
+    },
+    {
+      "file": "revision_20261029_contract/chapters/08_tissue.md",
+      "unchanged": true
+    },
+    {
+      "file": "revision_20261029_contract/chapters/09_heart_dynamics.md",
+      "unchanged": true
+    },
+    {
+      "file": "revision_20261029_contract/chapters/10_chambers.md",
+      "unchanged": true
+    },
+    {
+      "file": "revision_20261029_contract/chapters/11_validation.md",
+      "unchanged": true
+    },
+    {
+      "file": "revision_20261029_contract/chapters/12_discussion.md",
+      "unchanged": true
+    },
+    {
+      "file": "revision_20261029_contract/deliverables/Отчёт_ГПХ_РНЦХ_20261029_УО_договор_для_рецензирования.docx",
+      "unchanged": true
+    }
+  ],
+  "literal_contract_requirements": 41,
+  "contract_text_unchanged": true,
+  "total_pages": 125,
+  "main_body_pages": 60,
+  "page_boundaries": {
+    "Введение": 7,
+    "Список использованных источников": 67,
+    "Приложение А": 74,
+    "Приложение Б": 81,
+    "Приложение И": 123
+  },
+  "selected_figures": 14,
+  "all_figures_match_prior_manifest": true,
+  "main_display_equations": 21,
+  "total_equation_labels": 0,
+  "native_math_objects": 372,
+  "tables": 44,
+  "track_changes_enabled": true,
+  "existing_revisions": 0,
+  "bibliography_entries": 97,
+  "unavailable_source_references_annotated": 70,
+  "claim_ledger_entries": {
+    "01_ledger.json": 62,
+    "02_ledger.json": 34,
+    "03_ledger.json": 75,
+    "04_ledger.json": 60,
+    "05_ledger.json": 844,
+    "06_ledger.json": 115,
+    "07_ledger.json": 48
+  },
+  "final_source_hashes": [
+    {
+      "file": "front_matter.md",
+      "sha256": "0fd9daf3c562d209c64262f4b85bb380ca6c1ec3f4daff2a65efea65608662f3"
+    },
+    {
+      "file": "chapters/01_foundations.md",
+      "sha256": "49e894db78feeb747c96132b7c67af725b45c563c46b6ceaf45d2c9bc6755a47"
+    },
+    {
+      "file": "chapters/02_method.md",
+      "sha256": "98ab2db568c49e9d464a076e4ac8c2fb2e7477eb2f7b44a4c9683c745f3b8a9d"
+    },
+    {
+      "file": "chapters/03_anatomy.md",
+      "sha256": "0771bb75402a9d7c8240797565a69efc5743346c593ef80ffc2125b171433083"
+    },
+    {
+      "file": "chapters/04_experiments.md",
+      "sha256": "afc3b87868e4a86b2fc76528c2e4a786fd4f3282d51df5944b7b407d4670b935"
+    },
+    {
+      "file": "chapters/05_signal_models.md",
+      "sha256": "6a0389547e064ec2601f8ea238eda70b480b07f1485d0915f6e024489e4acb42"
+    },
+    {
+      "file": "chapters/06_stroke_volume.md",
+      "sha256": "e67231bef0c06b273fca63060f313d51875896fff78293f6ace13ad164c3c758"
+    },
+    {
+      "file": "chapters/07_validation.md",
+      "sha256": "4fe700d28b4755ccd45edaa7e34c84b2a18828043f44d178550de842b251e18b"
+    },
+    {
+      "file": "conclusion.md",
+      "sha256": "ce0600162bf860f75163f2bcc955c547b8a9c479a1ccc54534ab90dc3d5ec348"
+    },
+    {
+      "file": "supplement/01_foundations.md",
+      "sha256": "1c742876722b30d6382b4f2baf14e5250a9db79c1876b2c5f459f127cbd681a7"
+    },
+    {
+      "file": "supplement/02_method.md",
+      "sha256": "bc74e9a2006445889c5af9bb9a1df85dc4c9a1bc9114ea1afb34f9b2ad0869b1"
+    },
+    {
+      "file": "supplement/03_anatomy.md",
+      "sha256": "25d71bc4813496f3ae30add40a7637c0cd79fb243e4ea0176597c2923a3249dc"
+    },
+    {
+      "file": "supplement/04_experiments.md",
+      "sha256": "bd41fbffdde6190df49d79924fbc60bc30280c96bc48c796911152a2c01aae83"
+    },
+    {
+      "file": "supplement/05_signal_models.md",
+      "sha256": "d659bc45a920c446ca572da179542b04772443ba7f28bf91d38d3e7d10df2a13"
+    },
+    {
+      "file": "supplement/06_stroke_volume.md",
+      "sha256": "6106c6d34ff2d59ad577e7c8bb75e10cff187ec8294ef532936ec95609212e0e"
+    },
+    {
+      "file": "supplement/07_validation.md",
+      "sha256": "231bf2d430bd273ce838de941f7b901a038d0617784967523c77364e8d8db888"
+    },
+    {
+      "file": "supplement/08_archive.md",
+      "sha256": "5df10eff45496701fb5fb6a611c77987b4d3a2e3724e434d449e399d9b4436dd"
+    },
+    {
+      "file": "appendices.md",
+      "sha256": "b7645e7bbcb631b40f0f2af20b7acb72003ad264445cf4403a7f276d56618cb7"
+    }
+  ]
+}
