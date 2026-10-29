@@ -1,0 +1,1780 @@
+{
+  "schema_version": "1.0",
+  "prepared_on": "2026-10-29",
+  "source": {
+    "source_id": "gost_7_32_2017_supplied_onenote_2018",
+    "title": "ГОСТ 7.32-2017. Предоставленный экземпляр с выделениями",
+    "local_ref": "GOST_7_32_2017_highlighted.pdf",
+    "relative_path_base": "directory_of_this_json",
+    "representation": "pdf",
+    "original_basename": "ГОСТ_7_32_2017_Отчёт_по_НИР_с_выделением.pdf",
+    "size_bytes": 584609,
+    "sha256": "75273fc0c8134fdadc7760bd1338b93397471428e23e8a2fb544f8e0f8fbd1b6",
+    "pdf_page_count": 33,
+    "pdf_metadata": {
+      "/Producer": "Microsoft® OneNote® 2016",
+      "/Creator": "Microsoft® OneNote® 2016",
+      "/CreationDate": "D:20180909130051+03'00'",
+      "/ModDate": "D:20180909130051+03'00'"
+    },
+    "highlight_author": null,
+    "highlight_author_verified": false,
+    "pagination": {
+      "pdf_page_indexing": "one_based",
+      "visible_footer_pattern": "For Staff Page N",
+      "standard_printed_pages_present": false,
+      "limitation": "Номера печатного официального издания в предоставленном PDF отсутствуют. Поле printed_page_in_supplied_copy обозначает видимый номер листа OneNote, а не страницу официального издания."
+    }
+  },
+  "version_check": {
+    "checked_on": "2026-10-29",
+    "rules_extracted_from": "provided_pdf_only",
+    "official_status": "Действует",
+    "official_card": "https://protect.gost.ru/gost/details/7d280e43-7036-4a69-8e6e-d15867028343",
+    "correction_facsimiles": {
+      "url": "https://files.stroyinf.ru/Data/655/65555.pdf",
+      "pdf_pages": [
+        4,
+        5,
+        6
+      ],
+      "scope": "Только сверка содержания поправок; не замена предоставленного источника правил."
+    },
+    "corrections": [
+      {
+        "publication": "ИУС 2-2019",
+        "official_card": "https://protect.gost.ru/gost/changesdetails/9b2fa476-b921-443a-b00b-4f6e5e07b723",
+        "facsimile_pdf_page": 4,
+        "affected_locations": [
+          "Приложение Б. Список исполнителей",
+          "Приложение В. Примеры 1 и 2"
+        ],
+        "status_in_supplied_pdf": "partly_matching_not_confirmed_as_incorporated",
+        "observations": [
+          {
+            "pdf_pages": [
+              27
+            ],
+            "fact": "Слово «Исполнители» уже написано верно; наличие совпадения не доказывает внесение поправки."
+          },
+          {
+            "pdf_pages": [
+              28,
+              29
+            ],
+            "fact": "В каждом примере первая строка сведений об объёме и первая строка ключевых слов имеют x = 99.024 pt. Исправленный образец разграничивает абзацный отступ сведений и отсутствие отступа у ключевых слов."
+          }
+        ]
+      },
+      {
+        "publication": "ИУС 3-2020",
+        "official_card": "https://protect.gost.ru/gost/changesdetails/27e7dd44-495b-4625-bc4d-ce24bfe6ffc7",
+        "facsimile_pdf_page": 5,
+        "affected_locations": [
+          "Предисловие. Таблица согласования"
+        ],
+        "status_in_supplied_pdf": "not_incorporated",
+        "observations": [
+          {
+            "pdf_pages": [
+              2
+            ],
+            "fact": "Отсутствует добавленная поправкой строка «Армения / AM / Минэкономики Республики Армения»."
+          }
+        ]
+      },
+      {
+        "publication": "ИУС 1-2022",
+        "official_card": "https://protect.gost.ru/gost/changesdetails/775a0bc1-a1db-4292-9440-485af1ef885a",
+        "facsimile_pdf_page": 6,
+        "affected_locations": [
+          "Предисловие. Таблица согласования"
+        ],
+        "status_in_supplied_pdf": "not_incorporated",
+        "observations": [
+          {
+            "pdf_pages": [
+              2
+            ],
+            "fact": "Отсутствует добавленная поправкой строка «Азербайджан / AZ / Азстандарт»."
+          }
+        ]
+      }
+    ],
+    "current_consolidated_edition_claimed": false,
+    "mandatory_elements_crosscheck": {
+      "source": "https://files.stroyinf.ru/Data/655/65555.pdf#page=9",
+      "section": "4",
+      "pdf_pages": [
+        9,
+        10
+      ],
+      "printed_pages": [
+        2,
+        3
+      ],
+      "method": "pypdf font dictionary and rendered page inspection",
+      "mandatory_elements": [
+        "титульный лист",
+        "список исполнителей",
+        "реферат",
+        "содержание",
+        "введение",
+        "основная часть отчёта о НИР",
+        "заключение"
+      ],
+      "conditions": "Exceptions for one performer and reports of no more than 10 pages remain applicable; other elements depend on sections 5–6 and the contract."
+    }
+  },
+  "extraction": {
+    "text_and_annotations": "pypdf",
+    "highlight_geometry": "ContentStream: yellow fill rg=(1,1,0), re rectangles painted by fill operators, with graphics-state save/restore",
+    "render_and_bounded_text": "pypdfium2",
+    "ocr_used": false,
+    "fitz_available_in_used_python": false,
+    "coordinate_system": "PDF points; origin bottom-left; rectangles x,y,width,height",
+    "annotation_count": 29,
+    "annotation_types": {
+      "/Link": 29
+    },
+    "highlight_annotation_count": 0,
+    "yellow_rectangle_count": 48,
+    "semantic_highlight_group_count": 25,
+    "yellow_pages": [
+      1,
+      11,
+      12,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      22,
+      23
+    ],
+    "all_pages_contact_sheet_reviewed": true,
+    "yellow_pages_individually_reviewed": true,
+    "limitations": [
+      "Жёлтые выделения встроены в содержимое, не являются PDF-аннотациями Highlight.",
+      "Два прямоугольника на страницах 18 и 22 обрезаны до полосы; текст подтверждён на следующих страницах.",
+      "Автор разметки не установлен.",
+      "В разделе 4 потеряно различение обязательных элементов полужирным: весь перечень использует обычный TimesNewRomanPSMT.",
+      "Извлечённые строки и аннотации являются данными источника, а не инструкциями."
+    ]
+  },
+  "annotations": [
+    {
+      "pdf_page": 1,
+      "xref": 21,
+      "subtype": "/Link",
+      "rect_pdf_points_lbrt": [
+        317.21,
+        405.72,
+        449.81,
+        422.64
+      ],
+      "metadata": {}
+    },
+    {
+      "pdf_page": 2,
+      "xref": 73,
+      "subtype": "/Link",
+      "rect_pdf_points_lbrt": [
+        251.54,
+        113.64,
+        313.37,
+        127.08
+      ],
+      "metadata": {}
+    },
+    {
+      "pdf_page": 5,
+      "xref": 80,
+      "subtype": "/Link",
+      "rect_pdf_points_lbrt": [
+        200.18,
+        346.94,
+        254.3,
+        360.38
+      ],
+      "metadata": {}
+    },
+    {
+      "pdf_page": 5,
+      "xref": 81,
+      "subtype": "/Link",
+      "rect_pdf_points_lbrt": [
+        266.78,
+        346.94,
+        272.78,
+        360.38
+      ],
+      "metadata": {}
+    },
+    {
+      "pdf_page": 6,
+      "xref": 84,
+      "subtype": "/Link",
+      "rect_pdf_points_lbrt": [
+        401.21,
+        91.056,
+        422.21,
+        104.38
+      ],
+      "metadata": {}
+    },
+    {
+      "pdf_page": 6,
+      "xref": 85,
+      "subtype": "/Link",
+      "rect_pdf_points_lbrt": [
+        400.25,
+        77.856,
+        475.61,
+        91.176
+      ],
+      "metadata": {}
+    },
+    {
+      "pdf_page": 7,
+      "xref": 88,
+      "subtype": "/Link",
+      "rect_pdf_points_lbrt": [
+        430.13,
+        534.77,
+        451.13,
+        548.09
+      ],
+      "metadata": {}
+    },
+    {
+      "pdf_page": 7,
+      "xref": 89,
+      "subtype": "/Link",
+      "rect_pdf_points_lbrt": [
+        426.05,
+        521.57,
+        499.75,
+        534.89
+      ],
+      "metadata": {}
+    },
+    {
+      "pdf_page": 8,
+      "xref": 92,
+      "subtype": "/Link",
+      "rect_pdf_points_lbrt": [
+        508.51,
+        691.75,
+        529.51,
+        705.07
+      ],
+      "metadata": {}
+    },
+    {
+      "pdf_page": 8,
+      "xref": 93,
+      "subtype": "/Link",
+      "rect_pdf_points_lbrt": [
+        447.41,
+        666.38,
+        522.07,
+        679.7
+      ],
+      "metadata": {}
+    },
+    {
+      "pdf_page": 8,
+      "xref": 94,
+      "subtype": "/Link",
+      "rect_pdf_points_lbrt": [
+        381.05,
+        235.42,
+        402.05,
+        248.74
+      ],
+      "metadata": {}
+    },
+    {
+      "pdf_page": 8,
+      "xref": 95,
+      "subtype": "/Link",
+      "rect_pdf_points_lbrt": [
+        442.13,
+        91.68,
+        463.25,
+        105.0
+      ],
+      "metadata": {}
+    },
+    {
+      "pdf_page": 9,
+      "xref": 98,
+      "subtype": "/Link",
+      "rect_pdf_points_lbrt": [
+        509.35,
+        549.34,
+        530.35,
+        562.66
+      ],
+      "metadata": {}
+    },
+    {
+      "pdf_page": 10,
+      "xref": 101,
+      "subtype": "/Link",
+      "rect_pdf_points_lbrt": [
+        311.33,
+        261.89,
+        332.33,
+        275.23
+      ],
+      "metadata": {}
+    },
+    {
+      "pdf_page": 11,
+      "xref": 104,
+      "subtype": "/Link",
+      "rect_pdf_points_lbrt": [
+        360.89,
+        448.18,
+        381.89,
+        461.5
+      ],
+      "metadata": {}
+    },
+    {
+      "pdf_page": 17,
+      "xref": 117,
+      "subtype": "/Link",
+      "rect_pdf_points_lbrt": [
+        163.7,
+        602.57,
+        239.06,
+        615.89
+      ],
+      "metadata": {}
+    },
+    {
+      "pdf_page": 21,
+      "xref": 132,
+      "subtype": "/Link",
+      "rect_pdf_points_lbrt": [
+        107.66,
+        403.54,
+        181.34,
+        416.86
+      ],
+      "metadata": {}
+    },
+    {
+      "pdf_page": 21,
+      "xref": 133,
+      "subtype": "/Link",
+      "rect_pdf_points_lbrt": [
+        344.45,
+        243.84,
+        418.01,
+        257.28
+      ],
+      "metadata": {}
+    },
+    {
+      "pdf_page": 21,
+      "xref": 134,
+      "subtype": "/Link",
+      "rect_pdf_points_lbrt": [
+        399.89,
+        73.608,
+        432.89,
+        86.928
+      ],
+      "metadata": {}
+    },
+    {
+      "pdf_page": 22,
+      "xref": 137,
+      "subtype": "/Link",
+      "rect_pdf_points_lbrt": [
+        337.61,
+        308.45,
+        411.65,
+        321.77
+      ],
+      "metadata": {}
+    },
+    {
+      "pdf_page": 31,
+      "xref": 165,
+      "subtype": "/Link",
+      "rect_pdf_points_lbrt": [
+        251.3,
+        691.75,
+        518.71,
+        705.07
+      ],
+      "metadata": {}
+    },
+    {
+      "pdf_page": 31,
+      "xref": 166,
+      "subtype": "/Link",
+      "rect_pdf_points_lbrt": [
+        99.024,
+        626.57,
+        343.13,
+        640.01
+      ],
+      "metadata": {}
+    },
+    {
+      "pdf_page": 31,
+      "xref": 167,
+      "subtype": "/Link",
+      "rect_pdf_points_lbrt": [
+        99.024,
+        355.2,
+        354.77,
+        368.64
+      ],
+      "metadata": {}
+    },
+    {
+      "pdf_page": 32,
+      "xref": 170,
+      "subtype": "/Link",
+      "rect_pdf_points_lbrt": [
+        293.81,
+        89.664,
+        467.33,
+        102.98
+      ],
+      "metadata": {}
+    },
+    {
+      "pdf_page": 32,
+      "xref": 171,
+      "subtype": "/Link",
+      "rect_pdf_points_lbrt": [
+        191.66,
+        37.776,
+        489.19,
+        51.096
+      ],
+      "metadata": {}
+    },
+    {
+      "pdf_page": 33,
+      "xref": 174,
+      "subtype": "/Link",
+      "rect_pdf_points_lbrt": [
+        191.66,
+        756.91,
+        489.19,
+        770.26
+      ],
+      "metadata": {}
+    },
+    {
+      "pdf_page": 33,
+      "xref": 175,
+      "subtype": "/Link",
+      "rect_pdf_points_lbrt": [
+        227.3,
+        718.25,
+        416.33,
+        731.57
+      ],
+      "metadata": {}
+    },
+    {
+      "pdf_page": 33,
+      "xref": 176,
+      "subtype": "/Link",
+      "rect_pdf_points_lbrt": [
+        425.09,
+        574.54,
+        479.81,
+        587.86
+      ],
+      "metadata": {}
+    },
+    {
+      "pdf_page": 33,
+      "xref": 177,
+      "subtype": "/Link",
+      "rect_pdf_points_lbrt": [
+        99.024,
+        509.4,
+        392.57,
+        522.86
+      ],
+      "metadata": {}
+    }
+  ],
+  "highlights": [
+    {
+      "highlight_id": "H01",
+      "source_id": "gost_7_32_2017_supplied_onenote_2018",
+      "standard_clause": "Титульные сведения стандарта",
+      "pdf_pages": [
+        1
+      ],
+      "standard_printed_page": null,
+      "exact_short_quote_normalized_linebreaks": "2018-07-01",
+      "meaning": "Указанная дата введения, не дата актуальности экземпляра.",
+      "author": null,
+      "attribution": "выделения в предоставленном экземпляре",
+      "regions": [
+        {
+          "region_id": "P01-R01",
+          "pdf_page": 1,
+          "pdf_page_label": "1",
+          "visible_footer": "For Staff Page 1",
+          "printed_page_in_supplied_copy": 1,
+          "standard_printed_page": null,
+          "rect_pdf_points_xywh": [
+            484.1,
+            47.304,
+            24.12,
+            13.32
+          ],
+          "text_from_bounded_extraction": "2018",
+          "visible_text": "2018",
+          "clipped_to_thin_strip": false,
+          "visual_check": "verified_on_render"
+        },
+        {
+          "region_id": "P01-R02",
+          "pdf_page": 1,
+          "pdf_page_label": "1",
+          "visible_footer": "For Staff Page 1",
+          "printed_page_in_supplied_copy": 1,
+          "standard_printed_page": null,
+          "rect_pdf_points_xywh": [
+            508.1,
+            47.304,
+            4.08,
+            13.32
+          ],
+          "text_from_bounded_extraction": "-",
+          "visible_text": "-",
+          "clipped_to_thin_strip": false,
+          "visual_check": "verified_on_render"
+        },
+        {
+          "region_id": "P01-R03",
+          "pdf_page": 1,
+          "pdf_page_label": "1",
+          "visible_footer": "For Staff Page 1",
+          "printed_page_in_supplied_copy": 1,
+          "standard_printed_page": null,
+          "rect_pdf_points_xywh": [
+            512.06,
+            47.304,
+            12.12,
+            13.32
+          ],
+          "text_from_bounded_extraction": "07",
+          "visible_text": "07",
+          "clipped_to_thin_strip": false,
+          "visual_check": "verified_on_render"
+        },
+        {
+          "region_id": "P01-R04",
+          "pdf_page": 1,
+          "pdf_page_label": "1",
+          "visible_footer": "For Staff Page 1",
+          "printed_page_in_supplied_copy": 1,
+          "standard_printed_page": null,
+          "rect_pdf_points_xywh": [
+            524.06,
+            47.304,
+            4.08,
+            13.32
+          ],
+          "text_from_bounded_extraction": "-",
+          "visible_text": "-",
+          "clipped_to_thin_strip": false,
+          "visual_check": "verified_on_render"
+        },
+        {
+          "region_id": "P01-R05",
+          "pdf_page": 1,
+          "pdf_page_label": "1",
+          "visible_footer": "For Staff Page 1",
+          "printed_page_in_supplied_copy": 1,
+          "standard_printed_page": null,
+          "rect_pdf_points_xywh": [
+            528.02,
+            47.304,
+            12.0,
+            13.32
+          ],
+          "text_from_bounded_extraction": "01",
+          "visible_text": "01",
+          "clipped_to_thin_strip": false,
+          "visual_check": "verified_on_render"
+        }
+      ]
+    },
+    {
+      "highlight_id": "H02",
+      "source_id": "gost_7_32_2017_supplied_onenote_2018",
+      "standard_clause": "6.1.1",
+      "pdf_pages": [
+        11
+      ],
+      "standard_printed_page": null,
+      "exact_short_quote_normalized_linebreaks": "Полужирный шрифт применяют только для заголовков разделов и подразделов, заголовков структурных элементов.",
+      "meaning": "Ограничение применения полужирного.",
+      "author": null,
+      "attribution": "выделения в предоставленном экземпляре",
+      "regions": [
+        {
+          "region_id": "P11-R01",
+          "pdf_page": 11,
+          "pdf_page_label": "11",
+          "visible_footer": "For Staff Page 11",
+          "printed_page_in_supplied_copy": 11,
+          "standard_printed_page": null,
+          "rect_pdf_points_xywh": [
+            353.21,
+            211.32,
+            170.06,
+            13.32
+          ],
+          "text_from_bounded_extraction": "Полужирный шрифт применяют",
+          "visible_text": "Полужирный шрифт применяют",
+          "clipped_to_thin_strip": false,
+          "visual_check": "verified_on_render"
+        },
+        {
+          "region_id": "P11-R02",
+          "pdf_page": 11,
+          "pdf_page_label": "11",
+          "visible_footer": "For Staff Page 11",
+          "printed_page_in_supplied_copy": 11,
+          "standard_printed_page": null,
+          "rect_pdf_points_xywh": [
+            99.024,
+            198.0,
+            428.69,
+            13.32
+          ],
+          "text_from_bounded_extraction": "только для заголовков разделов и подразделов, заголовков структурных элементов.",
+          "visible_text": "только для заголовков разделов и подразделов, заголовков структурных элементов.",
+          "clipped_to_thin_strip": false,
+          "visual_check": "verified_on_render"
+        }
+      ]
+    },
+    {
+      "highlight_id": "H03",
+      "source_id": "gost_7_32_2017_supplied_onenote_2018",
+      "standard_clause": "6.1.1",
+      "pdf_pages": [
+        11
+      ],
+      "standard_printed_page": null,
+      "exact_short_quote_normalized_linebreaks": "Разрешается для написания определенных терминов, формул, теорем применять шрифты разной гарнитуры.",
+      "meaning": "Разрешение специальных гарнитур.",
+      "author": null,
+      "attribution": "выделения в предоставленном экземпляре",
+      "regions": [
+        {
+          "region_id": "P11-R03",
+          "pdf_page": 11,
+          "pdf_page_label": "11",
+          "visible_footer": "For Staff Page 11",
+          "printed_page_in_supplied_copy": 11,
+          "standard_printed_page": null,
+          "rect_pdf_points_xywh": [
+            159.38,
+            106.32,
+            359.45,
+            13.32
+          ],
+          "text_from_bounded_extraction": "Разрешается для написания определенных терминов, формул, теорем",
+          "visible_text": "Разрешается для написания определенных терминов, формул, теорем",
+          "clipped_to_thin_strip": false,
+          "visual_check": "verified_on_render"
+        },
+        {
+          "region_id": "P11-R04",
+          "pdf_page": 11,
+          "pdf_page_label": "11",
+          "visible_footer": "For Staff Page 11",
+          "printed_page_in_supplied_copy": 11,
+          "standard_printed_page": null,
+          "rect_pdf_points_xywh": [
+            99.024,
+            93.0,
+            198.38,
+            13.32
+          ],
+          "text_from_bounded_extraction": "применять шрифты разной гарнитуры.",
+          "visible_text": "применять шрифты разной гарнитуры.",
+          "clipped_to_thin_strip": false,
+          "visual_check": "verified_on_render"
+        }
+      ]
+    },
+    {
+      "highlight_id": "H04",
+      "source_id": "gost_7_32_2017_supplied_onenote_2018",
+      "standard_clause": "6.2.3",
+      "pdf_pages": [
+        12
+      ],
+      "standard_printed_page": null,
+      "exact_short_quote_normalized_linebreaks": "с абзацного отступа",
+      "meaning": "Начало заголовков разделов и подразделов.",
+      "author": null,
+      "attribution": "выделения в предоставленном экземпляре",
+      "regions": [
+        {
+          "region_id": "P12-R01",
+          "pdf_page": 12,
+          "pdf_page_label": "12",
+          "visible_footer": "For Staff Page 12",
+          "printed_page_in_supplied_copy": 12,
+          "standard_printed_page": null,
+          "rect_pdf_points_xywh": [
+            516.31,
+            227.74,
+            8.4,
+            13.32
+          ],
+          "text_from_bounded_extraction": "с",
+          "visible_text": "с",
+          "clipped_to_thin_strip": false,
+          "visual_check": "verified_on_render"
+        },
+        {
+          "region_id": "P12-R02",
+          "pdf_page": 12,
+          "pdf_page_label": "12",
+          "visible_footer": "For Staff Page 12",
+          "printed_page_in_supplied_copy": 12,
+          "standard_printed_page": null,
+          "rect_pdf_points_xywh": [
+            99.024,
+            214.54,
+            93.6,
+            13.2
+          ],
+          "text_from_bounded_extraction": "абзацного отступа",
+          "visible_text": "абзацного отступа",
+          "clipped_to_thin_strip": false,
+          "visual_check": "verified_on_render"
+        }
+      ]
+    },
+    {
+      "highlight_id": "H05",
+      "source_id": "gost_7_32_2017_supplied_onenote_2018",
+      "standard_clause": "6.2.3",
+      "pdf_pages": [
+        12
+      ],
+      "standard_printed_page": null,
+      "exact_short_quote_normalized_linebreaks": "без точки в конце",
+      "meaning": "Конечная точка заголовка не ставится.",
+      "author": null,
+      "attribution": "выделения в предоставленном экземпляре",
+      "regions": [
+        {
+          "region_id": "P12-R03",
+          "pdf_page": 12,
+          "pdf_page_label": "12",
+          "visible_footer": "For Staff Page 12",
+          "printed_page_in_supplied_copy": 12,
+          "standard_printed_page": null,
+          "rect_pdf_points_xywh": [
+            351.77,
+            201.22,
+            90.6,
+            13.32
+          ],
+          "text_from_bounded_extraction": "без точки в конце",
+          "visible_text": "без точки в конце",
+          "clipped_to_thin_strip": false,
+          "visual_check": "verified_on_render"
+        }
+      ]
+    },
+    {
+      "highlight_id": "H06",
+      "source_id": "gost_7_32_2017_supplied_onenote_2018",
+      "standard_clause": "6.4.6",
+      "pdf_pages": [
+        14
+      ],
+      "standard_printed_page": null,
+      "exact_short_quote_normalized_linebreaks": "При наличии конкретного числа перечислений допускается перед каждым элементом перечисления ставить арабские цифры, после которых ставится скобка.",
+      "meaning": "Допускаемая нумерация перечисления с условием.",
+      "author": null,
+      "attribution": "выделения в предоставленном экземпляре",
+      "regions": [
+        {
+          "region_id": "P14-R01",
+          "pdf_page": 14,
+          "pdf_page_label": "14",
+          "visible_footer": "For Staff Page 14",
+          "printed_page_in_supplied_copy": 14,
+          "standard_printed_page": null,
+          "rect_pdf_points_xywh": [
+            99.024,
+            741.94,
+            443.21,
+            13.32
+          ],
+          "text_from_bounded_extraction": "При наличии конкретного числа перечислений допускается перед каждым элементом",
+          "visible_text": "При наличии конкретного числа перечислений допускается перед каждым элементом",
+          "clipped_to_thin_strip": false,
+          "visual_check": "verified_on_render"
+        },
+        {
+          "region_id": "P14-R02",
+          "pdf_page": 14,
+          "pdf_page_label": "14",
+          "visible_footer": "For Staff Page 14",
+          "printed_page_in_supplied_copy": 14,
+          "standard_printed_page": null,
+          "rect_pdf_points_xywh": [
+            99.024,
+            728.74,
+            367.46,
+            13.2
+          ],
+          "text_from_bounded_extraction": "перечисления ставить арабские цифры, после которых ставится скобка.",
+          "visible_text": "перечисления ставить арабские цифры, после которых ставится скобка.",
+          "clipped_to_thin_strip": false,
+          "visual_check": "verified_on_render"
+        }
+      ]
+    },
+    {
+      "highlight_id": "H07",
+      "source_id": "gost_7_32_2017_supplied_onenote_2018",
+      "standard_clause": "6.5.1",
+      "pdf_pages": [
+        15
+      ],
+      "standard_printed_page": null,
+      "exact_short_quote_normalized_linebreaks": "писать слово \"рисунок\"",
+      "meaning": "В текстовой ссылке нужны слово и номер.",
+      "author": null,
+      "attribution": "выделения в предоставленном экземпляре",
+      "regions": [
+        {
+          "region_id": "P15-R01",
+          "pdf_page": 15,
+          "pdf_page_label": "15",
+          "visible_footer": "For Staff Page 15",
+          "printed_page_in_supplied_copy": 15,
+          "standard_printed_page": null,
+          "rect_pdf_points_xywh": [
+            370.61,
+            491.81,
+            120.74,
+            13.32
+          ],
+          "text_from_bounded_extraction": "писать слово \"рисунок\"",
+          "visible_text": "писать слово \"рисунок\"",
+          "clipped_to_thin_strip": false,
+          "visual_check": "verified_on_render"
+        }
+      ]
+    },
+    {
+      "highlight_id": "H08",
+      "source_id": "gost_7_32_2017_supplied_onenote_2018",
+      "standard_clause": "6.5.6",
+      "pdf_pages": [
+        15
+      ],
+      "standard_printed_page": null,
+      "exact_short_quote_normalized_linebreaks": "Допускается нумеровать иллюстрации в пределах раздела отчета",
+      "meaning": "Допуск нумерации рисунков по разделам.",
+      "author": null,
+      "attribution": "выделения в предоставленном экземпляре",
+      "regions": [
+        {
+          "region_id": "P15-R02",
+          "pdf_page": 15,
+          "pdf_page_label": "15",
+          "visible_footer": "For Staff Page 15",
+          "printed_page_in_supplied_copy": 15,
+          "standard_printed_page": null,
+          "rect_pdf_points_xywh": [
+            126.02,
+            223.92,
+            334.34,
+            13.32
+          ],
+          "text_from_bounded_extraction": "Допускается нумеровать иллюстрации в пределах раздела отчета",
+          "visible_text": "Допускается нумеровать иллюстрации в пределах раздела отчета",
+          "clipped_to_thin_strip": false,
+          "visual_check": "verified_on_render"
+        }
+      ]
+    },
+    {
+      "highlight_id": "H09",
+      "source_id": "gost_7_32_2017_supplied_onenote_2018",
+      "standard_clause": "6.5.6",
+      "pdf_pages": [
+        15
+      ],
+      "standard_printed_page": null,
+      "exact_short_quote_normalized_linebreaks": "Рисунок 2.1",
+      "meaning": "Пример такой нумерации.",
+      "author": null,
+      "attribution": "выделения в предоставленном экземпляре",
+      "regions": [
+        {
+          "region_id": "P15-R03",
+          "pdf_page": 15,
+          "pdf_page_label": "15",
+          "visible_footer": "For Staff Page 15",
+          "printed_page_in_supplied_copy": 15,
+          "standard_printed_page": null,
+          "rect_pdf_points_xywh": [
+            209.54,
+            197.4,
+            60.84,
+            13.32
+          ],
+          "text_from_bounded_extraction": "Рисунок 2.1",
+          "visible_text": "Рисунок 2.1",
+          "clipped_to_thin_strip": false,
+          "visual_check": "verified_on_render"
+        }
+      ]
+    },
+    {
+      "highlight_id": "H10",
+      "source_id": "gost_7_32_2017_supplied_onenote_2018",
+      "standard_clause": "6.5.7",
+      "pdf_pages": [
+        15
+      ],
+      "standard_printed_page": null,
+      "exact_short_quote_normalized_linebreaks": "в центре под рисунком",
+      "meaning": "Положение подписи.",
+      "author": null,
+      "attribution": "выделения в предоставленном экземпляре",
+      "regions": [
+        {
+          "region_id": "P15-R04",
+          "pdf_page": 15,
+          "pdf_page_label": "15",
+          "visible_footer": "For Staff Page 15",
+          "printed_page_in_supplied_copy": 15,
+          "standard_printed_page": null,
+          "rect_pdf_points_xywh": [
+            464.09,
+            145.51,
+            68.064,
+            13.32
+          ],
+          "text_from_bounded_extraction": "в центре под",
+          "visible_text": "в центре под",
+          "clipped_to_thin_strip": false,
+          "visual_check": "verified_on_render"
+        },
+        {
+          "region_id": "P15-R05",
+          "pdf_page": 15,
+          "pdf_page_label": "15",
+          "visible_footer": "For Staff Page 15",
+          "printed_page_in_supplied_copy": 15,
+          "standard_printed_page": null,
+          "rect_pdf_points_xywh": [
+            99.024,
+            132.19,
+            49.44,
+            13.32
+          ],
+          "text_from_bounded_extraction": "рисунком",
+          "visible_text": "рисунком",
+          "clipped_to_thin_strip": false,
+          "visual_check": "verified_on_render"
+        }
+      ]
+    },
+    {
+      "highlight_id": "H11",
+      "source_id": "gost_7_32_2017_supplied_onenote_2018",
+      "standard_clause": "6.5.7",
+      "pdf_pages": [
+        15
+      ],
+      "standard_printed_page": null,
+      "exact_short_quote_normalized_linebreaks": "Рисунок 2 - Оформление таблицы",
+      "meaning": "Пример подписи; название примера не меняет объект правила.",
+      "author": null,
+      "attribution": "выделения в предоставленном экземпляре",
+      "regions": [
+        {
+          "region_id": "P15-R06",
+          "pdf_page": 15,
+          "pdf_page_label": "15",
+          "visible_footer": "For Staff Page 15",
+          "printed_page_in_supplied_copy": 15,
+          "standard_printed_page": null,
+          "rect_pdf_points_xywh": [
+            149.06,
+            114.62,
+            54.72,
+            13.32
+          ],
+          "text_from_bounded_extraction": "Рисунок 2",
+          "visible_text": "Рисунок 2",
+          "clipped_to_thin_strip": false,
+          "visual_check": "verified_on_render"
+        },
+        {
+          "region_id": "P15-R07",
+          "pdf_page": 15,
+          "pdf_page_label": "15",
+          "visible_footer": "For Staff Page 15",
+          "printed_page_in_supplied_copy": 15,
+          "standard_printed_page": null,
+          "rect_pdf_points_xywh": [
+            203.66,
+            114.62,
+            4.08,
+            13.32
+          ],
+          "text_from_bounded_extraction": "-",
+          "visible_text": "-",
+          "clipped_to_thin_strip": false,
+          "visual_check": "verified_on_render"
+        },
+        {
+          "region_id": "P15-R08",
+          "pdf_page": 15,
+          "pdf_page_label": "15",
+          "visible_footer": "For Staff Page 15",
+          "printed_page_in_supplied_copy": 15,
+          "standard_printed_page": null,
+          "rect_pdf_points_xywh": [
+            207.62,
+            114.62,
+            3.24,
+            13.32
+          ],
+          "text_from_bounded_extraction": "",
+          "visible_text": "",
+          "clipped_to_thin_strip": false,
+          "visual_check": "verified_on_render"
+        },
+        {
+          "region_id": "P15-R09",
+          "pdf_page": 15,
+          "pdf_page_label": "15",
+          "visible_footer": "For Staff Page 15",
+          "printed_page_in_supplied_copy": 15,
+          "standard_printed_page": null,
+          "rect_pdf_points_xywh": [
+            210.74,
+            114.62,
+            112.34,
+            13.32
+          ],
+          "text_from_bounded_extraction": "Оформление таблицы",
+          "visible_text": "Оформление таблицы",
+          "clipped_to_thin_strip": false,
+          "visual_check": "verified_on_render"
+        }
+      ]
+    },
+    {
+      "highlight_id": "H12",
+      "source_id": "gost_7_32_2017_supplied_onenote_2018",
+      "standard_clause": "6.5.8",
+      "pdf_pages": [
+        15
+      ],
+      "standard_printed_page": null,
+      "exact_short_quote_normalized_linebreaks": "через один межстрочный интервал.",
+      "meaning": "Относится к многострочному наименованию рисунка.",
+      "author": null,
+      "attribution": "выделения в предоставленном экземпляре",
+      "regions": [
+        {
+          "region_id": "P15-R10",
+          "pdf_page": 15,
+          "pdf_page_label": "15",
+          "visible_footer": "For Staff Page 15",
+          "printed_page_in_supplied_copy": 15,
+          "standard_printed_page": null,
+          "rect_pdf_points_xywh": [
+            159.98,
+            71.856,
+            181.7,
+            13.2
+          ],
+          "text_from_bounded_extraction": "через один межстрочный интервал.",
+          "visible_text": "через один межстрочный интервал.",
+          "clipped_to_thin_strip": false,
+          "visual_check": "verified_on_render"
+        }
+      ]
+    },
+    {
+      "highlight_id": "H13",
+      "source_id": "gost_7_32_2017_supplied_onenote_2018",
+      "standard_clause": "6.6.2",
+      "pdf_pages": [
+        16
+      ],
+      "standard_printed_page": null,
+      "exact_short_quote_normalized_linebreaks": "На все таблицы в отчете должны быть ссылки. При ссылке следует печатать слово \"таблица\" с указанием ее номера.",
+      "meaning": "Ссылки на каждую таблицу.",
+      "author": null,
+      "attribution": "выделения в предоставленном экземпляре",
+      "regions": [
+        {
+          "region_id": "P16-R01",
+          "pdf_page": 16,
+          "pdf_page_label": "16",
+          "visible_footer": "For Staff Page 16",
+          "printed_page_in_supplied_copy": 16,
+          "standard_printed_page": null,
+          "rect_pdf_points_xywh": [
+            99.024,
+            626.4,
+            427.25,
+            13.32
+          ],
+          "text_from_bounded_extraction": "На все таблицы в отчете должны быть ссылки. При ссылке следует печатать слово",
+          "visible_text": "На все таблицы в отчете должны быть ссылки. При ссылке следует печатать слово",
+          "clipped_to_thin_strip": false,
+          "visual_check": "verified_on_render"
+        },
+        {
+          "region_id": "P16-R02",
+          "pdf_page": 16,
+          "pdf_page_label": "16",
+          "visible_footer": "For Staff Page 16",
+          "printed_page_in_supplied_copy": 16,
+          "standard_printed_page": null,
+          "rect_pdf_points_xywh": [
+            99.024,
+            613.18,
+            171.36,
+            13.224
+          ],
+          "text_from_bounded_extraction": "\"таблица\" с указанием ее номера.",
+          "visible_text": "\"таблица\" с указанием ее номера.",
+          "clipped_to_thin_strip": false,
+          "visual_check": "verified_on_render"
+        }
+      ]
+    },
+    {
+      "highlight_id": "H14",
+      "source_id": "gost_7_32_2017_supplied_onenote_2018",
+      "standard_clause": "6.6.3",
+      "pdf_pages": [
+        16
+      ],
+      "standard_printed_page": null,
+      "exact_short_quote_normalized_linebreaks": "над таблицей слева, без абзацного отступа",
+      "meaning": "Положение наименования таблицы.",
+      "author": null,
+      "attribution": "выделения в предоставленном экземпляре",
+      "regions": [
+        {
+          "region_id": "P16-R03",
+          "pdf_page": 16,
+          "pdf_page_label": "16",
+          "visible_footer": "For Staff Page 16",
+          "printed_page_in_supplied_copy": 16,
+          "standard_printed_page": null,
+          "rect_pdf_points_xywh": [
+            366.53,
+            574.61,
+            123.98,
+            13.2
+          ],
+          "text_from_bounded_extraction": "над таблицей слева, без",
+          "visible_text": "над таблицей слева, без",
+          "clipped_to_thin_strip": false,
+          "visual_check": "verified_on_render"
+        },
+        {
+          "region_id": "P16-R04",
+          "pdf_page": 16,
+          "pdf_page_label": "16",
+          "visible_footer": "For Staff Page 16",
+          "printed_page_in_supplied_copy": 16,
+          "standard_printed_page": null,
+          "rect_pdf_points_xywh": [
+            99.024,
+            561.29,
+            93.6,
+            13.32
+          ],
+          "text_from_bounded_extraction": "абзацного отступа",
+          "visible_text": "абзацного отступа",
+          "clipped_to_thin_strip": false,
+          "visual_check": "verified_on_render"
+        }
+      ]
+    },
+    {
+      "highlight_id": "H15",
+      "source_id": "gost_7_32_2017_supplied_onenote_2018",
+      "standard_clause": "6.6.3",
+      "pdf_pages": [
+        16
+      ],
+      "standard_printed_page": null,
+      "exact_short_quote_normalized_linebreaks": "Номер таблицы - Наименование таблицы",
+      "meaning": "Часть шаблона подписи после слова «Таблица».",
+      "author": null,
+      "attribution": "выделения в предоставленном экземпляре",
+      "regions": [
+        {
+          "region_id": "P16-R05",
+          "pdf_page": 16,
+          "pdf_page_label": "16",
+          "visible_footer": "For Staff Page 16",
+          "printed_page_in_supplied_copy": 16,
+          "standard_printed_page": null,
+          "rect_pdf_points_xywh": [
+            362.93,
+            561.29,
+            83.28,
+            13.32
+          ],
+          "text_from_bounded_extraction": "Номер таблицы",
+          "visible_text": "Номер таблицы",
+          "clipped_to_thin_strip": false,
+          "visual_check": "verified_on_render"
+        },
+        {
+          "region_id": "P16-R06",
+          "pdf_page": 16,
+          "pdf_page_label": "16",
+          "visible_footer": "For Staff Page 16",
+          "printed_page_in_supplied_copy": 16,
+          "standard_printed_page": null,
+          "rect_pdf_points_xywh": [
+            446.09,
+            561.29,
+            4.08,
+            13.32
+          ],
+          "text_from_bounded_extraction": "-",
+          "visible_text": "-",
+          "clipped_to_thin_strip": false,
+          "visual_check": "verified_on_render"
+        },
+        {
+          "region_id": "P16-R07",
+          "pdf_page": 16,
+          "pdf_page_label": "16",
+          "visible_footer": "For Staff Page 16",
+          "printed_page_in_supplied_copy": 16,
+          "standard_printed_page": null,
+          "rect_pdf_points_xywh": [
+            450.05,
+            561.29,
+            3.12,
+            13.32
+          ],
+          "text_from_bounded_extraction": "",
+          "visible_text": "",
+          "clipped_to_thin_strip": false,
+          "visual_check": "verified_on_render"
+        },
+        {
+          "region_id": "P16-R08",
+          "pdf_page": 16,
+          "pdf_page_label": "16",
+          "visible_footer": "For Staff Page 16",
+          "printed_page_in_supplied_copy": 16,
+          "standard_printed_page": null,
+          "rect_pdf_points_xywh": [
+            453.05,
+            561.29,
+            78.144,
+            13.32
+          ],
+          "text_from_bounded_extraction": "Наименование",
+          "visible_text": "Наименование",
+          "clipped_to_thin_strip": false,
+          "visual_check": "verified_on_render"
+        },
+        {
+          "region_id": "P16-R09",
+          "pdf_page": 16,
+          "pdf_page_label": "16",
+          "visible_footer": "For Staff Page 16",
+          "printed_page_in_supplied_copy": 16,
+          "standard_printed_page": null,
+          "rect_pdf_points_xywh": [
+            99.024,
+            547.97,
+            43.8,
+            13.32
+          ],
+          "text_from_bounded_extraction": "таблицы",
+          "visible_text": "таблицы",
+          "clipped_to_thin_strip": false,
+          "visual_check": "verified_on_render"
+        }
+      ]
+    },
+    {
+      "highlight_id": "H16",
+      "source_id": "gost_7_32_2017_supplied_onenote_2018",
+      "standard_clause": "6.6.4",
+      "pdf_pages": [
+        17
+      ],
+      "standard_printed_page": null,
+      "exact_short_quote_normalized_linebreaks": "Допускается нумеровать таблицы в пределах раздела",
+      "meaning": "В полном предложении сохранено условие большого объёма отчёта.",
+      "author": null,
+      "attribution": "выделения в предоставленном экземпляре",
+      "regions": [
+        {
+          "region_id": "P17-R01",
+          "pdf_page": 17,
+          "pdf_page_label": "17",
+          "visible_footer": "For Staff Page 17",
+          "printed_page_in_supplied_copy": 17,
+          "standard_printed_page": null,
+          "rect_pdf_points_xywh": [
+            99.024,
+            577.25,
+            273.14,
+            13.32
+          ],
+          "text_from_bounded_extraction": "Допускается нумеровать таблицы в пределах раздела",
+          "visible_text": "Допускается нумеровать таблицы в пределах раздела",
+          "clipped_to_thin_strip": false,
+          "visual_check": "verified_on_render"
+        }
+      ]
+    },
+    {
+      "highlight_id": "H17",
+      "source_id": "gost_7_32_2017_supplied_onenote_2018",
+      "standard_clause": "6.6.4",
+      "pdf_pages": [
+        17
+      ],
+      "standard_printed_page": null,
+      "exact_short_quote_normalized_linebreaks": "Таблица 2.3",
+      "meaning": "Пример нумерации таблицы по разделу.",
+      "author": null,
+      "attribution": "выделения в предоставленном экземпляре",
+      "regions": [
+        {
+          "region_id": "P17-R02",
+          "pdf_page": 17,
+          "pdf_page_label": "17",
+          "visible_footer": "For Staff Page 17",
+          "printed_page_in_supplied_copy": 17,
+          "standard_printed_page": null,
+          "rect_pdf_points_xywh": [
+            259.22,
+            550.73,
+            60.984,
+            13.32
+          ],
+          "text_from_bounded_extraction": "Таблица 2.3",
+          "visible_text": "Таблица 2.3",
+          "clipped_to_thin_strip": false,
+          "visual_check": "verified_on_render"
+        }
+      ]
+    },
+    {
+      "highlight_id": "H18",
+      "source_id": "gost_7_32_2017_supplied_onenote_2018",
+      "standard_clause": "6.8.3",
+      "pdf_pages": [
+        18
+      ],
+      "standard_printed_page": null,
+      "exact_short_quote_normalized_linebreaks": "посередине строки",
+      "meaning": "Положение формулы, не её номера.",
+      "author": null,
+      "attribution": "выделения в предоставленном экземпляре",
+      "regions": [
+        {
+          "region_id": "P18-R01",
+          "pdf_page": 18,
+          "pdf_page_label": "18",
+          "visible_footer": "For Staff Page 18",
+          "printed_page_in_supplied_copy": 18,
+          "standard_printed_page": null,
+          "rect_pdf_points_xywh": [
+            329.69,
+            283.01,
+            96.72,
+            13.344
+          ],
+          "text_from_bounded_extraction": "посередине строки",
+          "visible_text": "посередине строки",
+          "clipped_to_thin_strip": false,
+          "visual_check": "verified_on_render"
+        }
+      ]
+    },
+    {
+      "highlight_id": "H19",
+      "source_id": "gost_7_32_2017_supplied_onenote_2018",
+      "standard_clause": "6.8.5",
+      "pdf_pages": [
+        18,
+        19
+      ],
+      "standard_printed_page": null,
+      "exact_short_quote_normalized_linebreaks": "Допускается нумерация формул в пределах раздела",
+      "meaning": "Разрешённый вариант вместо сквозной нумерации.",
+      "author": null,
+      "attribution": "выделения в предоставленном экземпляре",
+      "regions": [
+        {
+          "region_id": "P18-R02",
+          "pdf_page": 18,
+          "pdf_page_label": "18",
+          "visible_footer": "For Staff Page 18",
+          "printed_page_in_supplied_copy": 18,
+          "standard_printed_page": null,
+          "rect_pdf_points_xywh": [
+            99.024,
+            30.576,
+            264.98,
+            13.32
+          ],
+          "text_from_bounded_extraction": "Допускается нумерация формул в пределах раздела",
+          "visible_text": null,
+          "clipped_to_thin_strip": true,
+          "visual_check": "verified_on_render",
+          "limitation": "Жёлтая заливка видна как тонкая полоса; извлечённая строка не видна здесь целиком. Читаемый повтор находится на следующей PDF-странице."
+        },
+        {
+          "region_id": "P19-R01",
+          "pdf_page": 19,
+          "pdf_page_label": "19",
+          "visible_footer": "For Staff Page 19",
+          "printed_page_in_supplied_copy": 19,
+          "standard_printed_page": null,
+          "rect_pdf_points_xywh": [
+            99.024,
+            743.54,
+            264.98,
+            13.32
+          ],
+          "text_from_bounded_extraction": "Допускается нумерация формул в пределах раздела",
+          "visible_text": "Допускается нумерация формул в пределах раздела",
+          "clipped_to_thin_strip": false,
+          "visual_check": "verified_on_render"
+        }
+      ]
+    },
+    {
+      "highlight_id": "H20",
+      "source_id": "gost_7_32_2017_supplied_onenote_2018",
+      "standard_clause": "6.9.1",
+      "pdf_pages": [
+        19
+      ],
+      "standard_printed_page": null,
+      "exact_short_quote_normalized_linebreaks": "арабскими цифрами в квадратных скобках",
+      "meaning": "Форма номера ссылки на источник.",
+      "author": null,
+      "attribution": "выделения в предоставленном экземпляре",
+      "regions": [
+        {
+          "region_id": "P19-R02",
+          "pdf_page": 19,
+          "pdf_page_label": "19",
+          "visible_footer": "For Staff Page 19",
+          "printed_page_in_supplied_copy": 19,
+          "standard_printed_page": null,
+          "rect_pdf_points_xywh": [
+            453.65,
+            623.83,
+            57.504,
+            13.32
+          ],
+          "text_from_bounded_extraction": "арабскими",
+          "visible_text": "арабскими",
+          "clipped_to_thin_strip": false,
+          "visual_check": "verified_on_render"
+        },
+        {
+          "region_id": "P19-R03",
+          "pdf_page": 19,
+          "pdf_page_label": "19",
+          "visible_footer": "For Staff Page 19",
+          "printed_page_in_supplied_copy": 19,
+          "standard_printed_page": null,
+          "rect_pdf_points_xywh": [
+            99.024,
+            610.51,
+            161.28,
+            13.32
+          ],
+          "text_from_bounded_extraction": "цифрами в квадратных скобках",
+          "visible_text": "цифрами в квадратных скобках",
+          "clipped_to_thin_strip": false,
+          "visual_check": "verified_on_render"
+        }
+      ]
+    },
+    {
+      "highlight_id": "H21",
+      "source_id": "gost_7_32_2017_supplied_onenote_2018",
+      "standard_clause": "6.13",
+      "pdf_pages": [
+        22
+      ],
+      "standard_printed_page": null,
+      "exact_short_quote_normalized_linebreaks": "выровненный влево",
+      "meaning": "Выравнивание абзаца содержания.",
+      "author": null,
+      "attribution": "выделения в предоставленном экземпляре",
+      "regions": [
+        {
+          "region_id": "P22-R01",
+          "pdf_page": 22,
+          "pdf_page_label": "22",
+          "visible_footer": "For Staff Page 22",
+          "printed_page_in_supplied_copy": 22,
+          "standard_printed_page": null,
+          "rect_pdf_points_xywh": [
+            419.21,
+            716.86,
+            102.14,
+            13.32
+          ],
+          "text_from_bounded_extraction": "выровненный влево",
+          "visible_text": "выровненный влево",
+          "clipped_to_thin_strip": false,
+          "visual_check": "verified_on_render"
+        }
+      ]
+    },
+    {
+      "highlight_id": "H22",
+      "source_id": "gost_7_32_2017_supplied_onenote_2018",
+      "standard_clause": "6.13",
+      "pdf_pages": [
+        22
+      ],
+      "standard_printed_page": null,
+      "exact_short_quote_normalized_linebreaks": "выровненными по правому краю",
+      "meaning": "Выравнивание номеров страниц содержания.",
+      "author": null,
+      "attribution": "выделения в предоставленном экземпляре",
+      "regions": [
+        {
+          "region_id": "P22-R02",
+          "pdf_page": 22,
+          "pdf_page_label": "22",
+          "visible_footer": "For Staff Page 22",
+          "printed_page_in_supplied_copy": 22,
+          "standard_printed_page": null,
+          "rect_pdf_points_xywh": [
+            243.26,
+            703.63,
+            168.74,
+            13.224
+          ],
+          "text_from_bounded_extraction": "выровненными по правому краю",
+          "visible_text": "выровненными по правому краю",
+          "clipped_to_thin_strip": false,
+          "visual_check": "verified_on_render"
+        }
+      ]
+    },
+    {
+      "highlight_id": "H23",
+      "source_id": "gost_7_32_2017_supplied_onenote_2018",
+      "standard_clause": "6.13",
+      "pdf_pages": [
+        22
+      ],
+      "standard_printed_page": null,
+      "exact_short_quote_normalized_linebreaks": "отточия",
+      "meaning": "Соединение записи содержания с номером страницы.",
+      "author": null,
+      "attribution": "выделения в предоставленном экземпляре",
+      "regions": [
+        {
+          "region_id": "P22-R03",
+          "pdf_page": 22,
+          "pdf_page_label": "22",
+          "visible_footer": "For Staff Page 22",
+          "printed_page_in_supplied_copy": 22,
+          "standard_printed_page": null,
+          "rect_pdf_points_xywh": [
+            471.53,
+            690.31,
+            40.704,
+            13.32
+          ],
+          "text_from_bounded_extraction": "отточия",
+          "visible_text": "отточия",
+          "clipped_to_thin_strip": false,
+          "visual_check": "verified_on_render"
+        }
+      ]
+    },
+    {
+      "highlight_id": "H24",
+      "source_id": "gost_7_32_2017_supplied_onenote_2018",
+      "standard_clause": "6.14",
+      "pdf_pages": [
+        22
+      ],
+      "standard_printed_page": null,
+      "exact_short_quote_normalized_linebreaks": "Допустимо оформление перечня терминов и определений в виде таблицы, состоящей из двух колонок: термин, определение.",
+      "meaning": "Разрешённый вариант перечня терминов.",
+      "author": null,
+      "attribution": "выделения в предоставленном экземпляре",
+      "regions": [
+        {
+          "region_id": "P22-R04",
+          "pdf_page": 22,
+          "pdf_page_label": "22",
+          "visible_footer": "For Staff Page 22",
+          "printed_page_in_supplied_copy": 22,
+          "standard_printed_page": null,
+          "rect_pdf_points_xywh": [
+            99.024,
+            571.82,
+            442.13,
+            13.32
+          ],
+          "text_from_bounded_extraction": "Допустимо оформление перечня терминов и определений в виде таблицы, состоящей",
+          "visible_text": "Допустимо оформление перечня терминов и определений в виде таблицы, состоящей",
+          "clipped_to_thin_strip": false,
+          "visual_check": "verified_on_render"
+        },
+        {
+          "region_id": "P22-R05",
+          "pdf_page": 22,
+          "pdf_page_label": "22",
+          "visible_footer": "For Staff Page 22",
+          "printed_page_in_supplied_copy": 22,
+          "standard_printed_page": null,
+          "rect_pdf_points_xywh": [
+            99.024,
+            558.62,
+            200.18,
+            13.2
+          ],
+          "text_from_bounded_extraction": "из двух колонок: термин, определение.",
+          "visible_text": "из двух колонок: термин, определение.",
+          "clipped_to_thin_strip": false,
+          "visual_check": "verified_on_render"
+        }
+      ]
+    },
+    {
+      "highlight_id": "H25",
+      "source_id": "gost_7_32_2017_supplied_onenote_2018",
+      "standard_clause": "6.17.4",
+      "pdf_pages": [
+        22,
+        23
+      ],
+      "standard_printed_page": null,
+      "exact_short_quote_normalized_linebreaks": "Приложения обозначают прописными буквами кириллического алфавита, начиная с А, за исключением букв Ё, З, Й, О, Ч, Ъ, Ы, Ь",
+      "meaning": "Основная схема буквенных обозначений и исключения.",
+      "author": null,
+      "attribution": "выделения в предоставленном экземпляре",
+      "regions": [
+        {
+          "region_id": "P22-R06",
+          "pdf_page": 22,
+          "pdf_page_label": "22",
+          "visible_footer": "For Staff Page 22",
+          "printed_page_in_supplied_copy": 22,
+          "standard_printed_page": null,
+          "rect_pdf_points_xywh": [
+            132.02,
+            24.864,
+            384.05,
+            13.32
+          ],
+          "text_from_bounded_extraction": "Приложения обозначают прописными буквами кириллического алфавита,",
+          "visible_text": null,
+          "clipped_to_thin_strip": true,
+          "visual_check": "verified_on_render",
+          "limitation": "Жёлтая заливка видна как тонкая полоса; извлечённая строка не видна здесь целиком. Читаемый повтор находится на следующей PDF-странице."
+        },
+        {
+          "region_id": "P23-R01",
+          "pdf_page": 23,
+          "pdf_page_label": "23",
+          "visible_footer": "For Staff Page 23",
+          "printed_page_in_supplied_copy": 23,
+          "standard_printed_page": null,
+          "rect_pdf_points_xywh": [
+            132.02,
+            743.54,
+            384.05,
+            13.32
+          ],
+          "text_from_bounded_extraction": "Приложения обозначают прописными буквами кириллического алфавита,",
+          "visible_text": "Приложения обозначают прописными буквами кириллического алфавита,",
+          "clipped_to_thin_strip": false,
+          "visual_check": "verified_on_render",
+          "extraction_note": "Удалена захваченная на границе прямоугольника буква соседней строки; фрагмент сверен с рендером."
+        },
+        {
+          "region_id": "P23-R02",
+          "pdf_page": 23,
+          "pdf_page_label": "23",
+          "visible_footer": "For Staff Page 23",
+          "printed_page_in_supplied_copy": 23,
+          "standard_printed_page": null,
+          "rect_pdf_points_xywh": [
+            99.024,
+            730.34,
+            286.22,
+            13.2
+          ],
+          "text_from_bounded_extraction": "начиная с А, за исключением букв Ё, З, Й, О, Ч, Ъ, Ы, Ь",
+          "visible_text": "начиная с А, за исключением букв Ё, З, Й, О, Ч, Ъ, Ы, Ь",
+          "clipped_to_thin_strip": false,
+          "visual_check": "verified_on_render"
+        }
+      ]
+    }
+  ],
+  "docx_comparison": {
+    "relative_path_from_repo_root": "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029_local_edits/deliverables/Отчёт_ГПХ_РНЦХ_20261029_точечная_правка.docx",
+    "sha256": "2264073e374ab544315a0803a07669a4b320ed545c6af8f611a5494c8070ec17",
+    "size_bytes": 9317163,
+    "method": "Read-only XML inspection, including paragraph style inheritance and direct overrides.",
+    "full_audit": false,
+    "document_modified": false,
+    "details_ref": "../GOST_REPORT_REQUIREMENTS.md",
+    "confirmed_differences": [
+      "Регистр и выравнивание структурных заголовков",
+      "Нулевой отступ первой строки заголовков разделов и подразделов",
+      "Выравнивание 19 подписей рисунков по ширине вместо центра",
+      "Порядок компонентов реферата и оформление ключевых слов; нет начальной строки общего объёма",
+      "Нет относительного отступа подразделов в содержании",
+      "Обозначение и заголовок приложения объединены в одну строку",
+      "Иное наименование структурного элемента списка источников"
+    ]
+  }
+}
