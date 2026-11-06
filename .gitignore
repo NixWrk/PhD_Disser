@@ -68,6 +68,8 @@ Thumbs.db
 /Experiments/*/annotations/
 /Experiments/*/derived/
 /Experiments/**/*.local.*
+# Private uniform-rho input plans, FEM results and per-run MATLAB preferences.
+/MATLAB_TRKG4_real_subjects/output/exploratory/scorpion_apparent_*/
 # Original Scorpion v2 upload; retained unchanged alongside the extracted copy.
 /Георг_05_10_26.zip
 
