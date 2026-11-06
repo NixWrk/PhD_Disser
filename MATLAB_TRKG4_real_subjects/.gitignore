@@ -46,3 +46,5 @@ output/exploratory/georg_quality_rebuild_*/
 output/exploratory/georg_contact_continuation_*/
 output/exploratory/georg_confirmed_arm_continuation_*/
 output/exploratory/georg_model_audit_*/
+# Include source snapshots and MATLAB preferences in the private run boundary.
+output/exploratory/scorpion_apparent_*/
