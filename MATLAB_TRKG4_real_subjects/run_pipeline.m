@@ -13,6 +13,10 @@ addpath(fullfile(project_root, 'src'));
 addpath(fullfile(project_root, 'vendor_stl_eidors'));
 
 profile_index=find(cellfun(@(x)(ischar(x)||isstring(x)) && strcmpi(string(x),"Profile"),varargin),1);
+if ~isempty(profile_index) && profile_index<numel(varargin) && strcmpi(string(varargin{profile_index+1}),"bmstu_apparent_resistivity")
+    args=varargin;args(profile_index:profile_index+1)=[];
+    report=run_bmstu_apparent_resistivity(args{:});return;
+end
 if ~isempty(profile_index) && profile_index<numel(varargin) && strcmpi(string(varargin{profile_index+1}),"scorpion_apparent_resistivity")
     args=varargin;args(profile_index:profile_index+1)=[];
     report=run_scorpion_apparent_resistivity(args{:});return;
