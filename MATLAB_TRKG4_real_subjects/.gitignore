@@ -49,3 +49,4 @@ output/exploratory/georg_model_audit_*/
 # Include source snapshots and MATLAB preferences in the private run boundary.
 output/exploratory/scorpion_apparent_*/
 output/exploratory/bmstu_apparent_*/
+output/exploratory/bmstu_pulse_*/

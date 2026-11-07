@@ -9,6 +9,10 @@ for middle=[1.5,3]
     a=trkg4_uniform_rho_fit(sparse(K0),C,target);
     assert(abs(a.rho_apparent_ohm_m-expected)<1e-8);
     assert(abs(a.predicted_Z_ohm-target)<1e-8);
+    pulse=trkg4_uniform_pulse_check(sparse(K0),C,a,.04);
+    assert(pulse.passed&&pulse.max_linearity_error_relative_to_max_pulse<1e-8);
+    assert(abs(pulse.adjoint_dZ_drho_per_m-middle)<1e-9);
+    assert(abs(pulse.checked_delta_rho_ohm_m-.04/middle)<1e-9);
 end
 rejected=false;
 try,trkg4_uniform_rho_fit(sparse(K0),C,-1);catch,rejected=true;end

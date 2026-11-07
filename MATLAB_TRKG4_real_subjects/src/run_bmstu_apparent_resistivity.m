@@ -1,6 +1,6 @@
 function report=run_bmstu_apparent_resistivity(varargin)
 % BMSTU BASE2, own CT, four finite pads and one homogeneous rho per record.
-p=inputParser;addParameter(p,'InputFile','');addParameter(p,'OutputDir','');
+p=inputParser;addParameter(p,'InputFile','');addParameter(p,'OutputDir','');addParameter(p,'PulsePlan','');
 parse(p,varargin{:});a=p.Results;g=jsondecode(fileread(a.InputFile));
 assert(strcmp(g.schema,'bmstu_uniform_rho_geometry_v1')&&g.mesh_QC.passed);
 assert(g.four_lateral_contacts_only&&~g.TTRKG_channel_excitation_or_passive_pads_modelled);
@@ -79,6 +79,42 @@ identity=struct('geometry_plan_sha256',trkg4_file_sha256(a.InputFile),'mesh_sha2
     'patch_kernel_sha256',trkg4_file_sha256(which('electrode_faces_by_area')),...
     'contact_kernel_sha256',trkg4_file_sha256(which('trkg4_cem_contact_matrix')));
 answers=struct([]);clock=tic;
+if ~isempty(a.PulsePlan)
+    pulse=jsondecode(fileread(a.PulsePlan));assert(strcmp(pulse.schema,'bmstu_uniform_pulse_v1'));
+    ps=pulse.subjects(strcmp({pulse.subjects.subject_alias},g.subject_alias));assert(isscalar(ps));
+    assert(strcmp(trkg4_file_sha256(ps.baseline_path),ps.baseline_sha256));
+    old=jsondecode(fileread(ps.baseline_path));assert(strcmp(old.identity.mesh_sha256,g.mesh_sha256));
+    assert(strcmp(old.identity.fit_sha256,identity.fit_sha256));
+    assert(strcmp(old.identity.response_kernel_sha256,identity.response_kernel_sha256));
+    assert(strcmp(old.identity.contact_kernel_sha256,identity.contact_kernel_sha256));
+    assert(strcmp(old.identity.patch_kernel_sha256,identity.patch_kernel_sha256));
+    assert(isequal(old.placement,g.placement)&&old.z_contact_ohm_m2==g.z_contact_ohm_m2);
+    assert(numel(ps.records)==numel(g.observations)&&numel(old.answers)==numel(g.observations));
+    for oi=1:numel(g.observations)
+        o=g.observations(oi);ci=find([g.contacts.size_mm]==o.size_mm);assert(isscalar(ci));
+        pr=ps.records(strcmp({ps.records.record_id},o.record_id));assert(isscalar(pr));
+        b=old.answers(strcmp({old.answers.record_id},o.record_id));assert(isscalar(b));
+        assert(strcmp(pr.source_sha256,o.source_sha256)&&pr.size_mm==o.size_mm);
+        assert(b.observed_Z_ohm==o.Z_ohm&&b.rho_apparent_ohm_m==pr.rho0_ohm_m);
+        assert(b.dZ_dlogrho_ohm==pr.dZ_dlogrho_ohm);
+        assert(strcmp(trkg4_file_sha256(o.source_path),o.source_sha256));
+        assert(strcmp(trkg4_file_sha256(o.annotation_path),o.annotation_sha256));
+        assert(strcmp(trkg4_file_sha256(pr.ecg_path),pr.ecg_sha256));
+        fprintf('BMSTU pulse %s max|delta Z|=%.9g Ohm\n',o.record_id,pr.max_abs_delta_Z_ohm);
+        answer=trkg4_uniform_pulse_check(K0,C{ci},b,pr.max_abs_delta_Z_ohm);
+        answer.record_id=o.record_id;answer.size_mm=o.size_mm;answer.subject_alias=g.subject_alias;
+        answers=append(answers,answer);write_json(fullfile(out,[o.record_id '.local.json']),answer);
+        assert(answer.passed,'Pulse linearisation failed: retain checks and use nonlinear inversion');
+    end
+    report=struct('schema','bmstu_uniform_pulse_checks_v1','subject_alias',g.subject_alias,...
+        'identity',identity,'pulse_plan_path',char(a.PulsePlan),'pulse_plan_sha256',trkg4_file_sha256(a.PulsePlan),...
+        'baseline_sha256',ps.baseline_sha256,'answers',answers,'contact_qc',contact_rows,...
+        'check_kernel_sha256',trkg4_file_sha256(which('trkg4_uniform_pulse_check')),...
+        'global_mesh_convergence_proven',false,'elapsed_solve_seconds',toc(clock),...
+        'status','exploratory_hypothesis_not_validated');
+    write_json(fullfile(out,'pulse_checks.local.json'),report);
+    fprintf('BMSTU PULSE COMPLETE %s %d records\n',g.subject_alias,numel(answers));return;
+end
 for oi=1:numel(g.observations)
     o=g.observations(oi);ci=find([g.contacts.size_mm]==o.size_mm);assert(isscalar(ci));
     assert(strcmp(trkg4_file_sha256(o.source_path),o.source_sha256));

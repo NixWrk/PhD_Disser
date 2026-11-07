@@ -198,7 +198,7 @@ def make_geometry(observations,alias,out,*,target_edge_mm=0,refinement_levels=2)
     return out/'geometry.local.json'
 
 
-def run(geometry,out,matlab):
+def run(geometry,out,matlab,*,pulse_plan=None):
     """Единая точка MATLAB; настройки и планы нового запуска сохраняются отдельно."""
     geometry=Path(geometry).resolve();out=Path(out).resolve();d=read(geometry)
     prepared=Path(d['parent_mesh']).parents[1]/'electrical/prepared_materials.mat'
@@ -212,7 +212,8 @@ def run(geometry,out,matlab):
     inputfile=targets[2];write_new(inputfile,d);targets[3].mkdir();targets[4].mkdir()
     env=os.environ.copy();env.update(MATLAB_PREFDIR=str(targets[3]),TEMP=str(targets[4]),TMP=str(targets[4]))
     quote=lambda p:str(p).replace("'","''")
-    script=f"cd('{quote(ROOT/'MATLAB_TRKG4_real_subjects')}');run_pipeline('Profile','bmstu_apparent_resistivity','InputFile','{quote(inputfile)}','OutputDir','{quote(out)}');"
+    extra=f",'PulsePlan','{quote(Path(pulse_plan).resolve())}'" if pulse_plan else ''
+    script=f"cd('{quote(ROOT/'MATLAB_TRKG4_real_subjects')}');run_pipeline('Profile','bmstu_apparent_resistivity','InputFile','{quote(inputfile)}','OutputDir','{quote(out)}'{extra});"
     with targets[1].open('x',encoding='utf-8') as f:
         process=subprocess.run([str(matlab),'-batch',script],env=env,stdout=f,stderr=subprocess.STDOUT,
             creationflags=getattr(subprocess,'CREATE_NO_WINDOW',0))
@@ -228,7 +229,8 @@ if __name__=='__main__':
     p1.add_argument('--refinement-levels',type=int,default=2)
     p1=s.add_parser('run');p1.add_argument('--geometry',type=Path,required=True)
     p1.add_argument('--out',type=Path,required=True);p1.add_argument('--matlab',type=Path,required=True)
+    p1.add_argument('--pulse-plan',type=Path,help='Check the local pulse range at the saved baseline; do not refit BASE2')
     a=p.parse_args()
     if a.command=='data':print(collect(a.data_root,a.derived_root,a.model_root,a.out),flush=True)
     elif a.command=='geometry':print(make_geometry(a.observations,a.subject,a.out,target_edge_mm=a.target_edge_mm,refinement_levels=a.refinement_levels),flush=True)
-    else:run(a.geometry,a.out,a.matlab)
+    else:run(a.geometry,a.out,a.matlab,pulse_plan=a.pulse_plan)
