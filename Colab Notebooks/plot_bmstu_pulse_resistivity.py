@@ -20,6 +20,12 @@ def ru(x,n=3):
     return f'{x:.{n}f}'.replace('.',',')
 
 
+def scientific_ru(x):
+    exponent=int(np.floor(np.log10(abs(x)))) if x else 0
+    superscript=str(exponent).translate(str.maketrans('-0123456789','⁻⁰¹²³⁴⁵⁶⁷⁸⁹'))
+    return f'{ru(x/10**exponent,2)} × 10{superscript}'
+
+
 def csv_file(path,rows):
     with path.open('x',encoding='utf-8-sig',newline='') as stream:
         writer=csv.DictWriter(stream,fieldnames=list(rows[0]));writer.writeheader();writer.writerows(rows)
@@ -112,9 +118,9 @@ def build(pulse_path,check_paths,out):
             capsize=4,label='Медиана размахов; квартили 25–75 %',zorder=3)
         flagged=[r for r in selected if r['n_candidate_ecg_flags'] and r['without_ecg_flags_delta_rho_ohm_m']!='']
         if flagged:
-            ax.scatter([r['size_mm']+1.2 for r in flagged],
+            ax.scatter([r['size_mm'] for r in flagged],
                 [r['without_ecg_flags_delta_rho_ohm_m']*1000 for r in flagged],
-                marker='s',s=48,facecolors='white',edgecolors='#b91c1c',zorder=4,
+                marker='s',s=48,facecolors='none',edgecolors='#b91c1c',zorder=4,
                 label='Без циклов с кандидатной меткой ЭКГ')
         for i,(xx,yy) in enumerate(zip(x,y)):
             ax.annotate(ru(yy,2),(xx,high[i]),xytext=(0,8),textcoords='offset points',
@@ -187,8 +193,8 @@ def report(rows,v):
         'Использованы принятые дыхательные интервалы и R-метки. Полные циклы взяты '+
         'из 12.01 по сохранённому предварительному решению автора для 33.03: '+
         'циклы с экстремальными плато исключаются; кандидатные метки ЭКГ остаются '+
-        'в основном наборе и проверяются отдельным сравнением. QC 12.01 остаётся '+
-        'непринятым окончательно.','',
+        'в основном наборе и проверяются отдельным сравнением. Результат технической '+
+        'проверки 12.01 сохраняет статус кандидата.','',
         'Каждый цикл интерполирован на 200 точек интервала R–R без включения следующего '+
         'R-зубца. Вычтена постоянная медиана; дополнительная фильтрация и удаление '+
         'наклонного тренда не выполнялись. Формы независимо воспроизведены по 33.03.','',
@@ -203,7 +209,7 @@ def report(rows,v):
     for r in rows:
         lines.append(f"| {NAMES[r['subject_alias']]} | {r['size_mm']} | {r['n_cycles']} | {r['n_candidate_ecg_flags']} | {ru(r['delta_rho_median_ohm_m']*1000)} | {ru(r['delta_rho_q25_ohm_m']*1000)}–{ru(r['delta_rho_q75_ohm_m']*1000)} |")
     lines+=['',f"Всего 19 независимых записей и {v['cycles']} полных циклов. "+
-        'У Ника 100 мм исключены как копия 90 мм. В принятых для вдоха циклах '+
+        'У Ника 100 мм исключены как копия 90 мм. В отобранных для вдоха циклах '+
         '12.01 не отмечает перекрытия экстремальных плато. Это не снимает остальные ограничения сигнала.','']
     for alias in NAMES:
         selected=[r for r in rows if r['subject_alias']==alias]
@@ -220,9 +226,9 @@ def report(rows,v):
     lines+=['## Численные проверки и ограничения','',
         f"Прямая CEM-проверка выполнена для всех 19 записей в двух точках, "+
         'ограничивающих линейно оценённый диапазон пульсового ρ. '+
-        f"Максимальное расхождение линейного и прямого отклика — {v['max_linearity_error_relative_to_max_pulse']*100:.6g} % "+
+        f"Максимальное расхождение линейного и прямого отклика — {scientific_ru(v['max_linearity_error_relative_to_max_pulse']*100)} % "+
         'наибольшего |δZ|; допустимое значение — 0,1 %. '+
-        f"Максимальное расхождение центральной разности и сопряжённой производной — {v['max_finite_difference_relative_error']*100:.6g} % "+
+        f"Максимальное расхождение центральной разности и сопряжённой производной — {scientific_ru(v['max_finite_difference_relative_error']*100)} % "+
         '(допуск 0,01 %). Численные критерии выполнены; они не подтверждают физическую точность.','',
         f"Наибольшее изменение медианного размаха при исключении кандидатных меток ЭКГ: "+
         f"{NAMES[worst['subject_alias']]}, {worst['size_mm']} мм, {ru(worst['without_ecg_flags_difference_percent'],2)} %. "+
