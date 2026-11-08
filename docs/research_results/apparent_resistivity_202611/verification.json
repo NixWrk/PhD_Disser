@@ -1,0 +1,30 @@
+{
+  "schema": "apparent_resistivity_aggregate_202611_v1",
+  "result_status": "exploratory_hypothesis_not_validated",
+  "data_rows": 34,
+  "series": {
+    "BMSTU": {
+      "records": 19,
+      "cycles": 344,
+      "max_abs_baseline_residual_ohm": 1.86990844781576e-05,
+      "max_linearity_error_relative": 4.963580592597436e-07,
+      "max_derivative_error_relative": 2.475486482467204e-10,
+      "weak_qrs_records": 0
+    },
+    "Scorpion": {
+      "records": 15,
+      "cycles": 147,
+      "max_abs_baseline_residual_ohm": 4.60942592894753e-06,
+      "max_linearity_error_relative": 2.3214464889009584e-06,
+      "max_derivative_error_relative": 4.659261421124938e-09,
+      "weak_qrs_records": 4
+    }
+  },
+  "pulse_source_artifact_hashes_verified": true,
+  "baseline_impedance_and_rho_match_pulse_tables": true,
+  "summary_sha256": "7b4e922d22765cf83b273e0f32bd875f20ae6fb18f92be1d860c0c0c5524ab76",
+  "figures_sha256": {
+    "baseline.svg": "6f50167d1b893cbd868ed8f46181d8157c994d2a636ea6f6f15258542d7e63b1",
+    "pulse.svg": "0be5fbca5c73559dc6364fc0e8f43c86a4848b8371fac8b4620e355f4359a62a"
+  }
+}
