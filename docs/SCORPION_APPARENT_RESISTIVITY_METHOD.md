@@ -6,6 +6,8 @@
 пяти материалам присваивается одно неизвестное удельное сопротивление.
 Размер L — номинальная токовая база A–B; потенциальная база M–N равна L/2.
 
+[Пульсовой пересчёт на тех же индивидуальных моделях](SCORPION_PULSE_RESISTIVITY_METHOD.md).
+
 ## Данные и выбор записей
 
 Подготовщик [scorpion_apparent_resistivity.py](../MATLAB_TRKG4_real_subjects/tools/scorpion_apparent_resistivity.py)

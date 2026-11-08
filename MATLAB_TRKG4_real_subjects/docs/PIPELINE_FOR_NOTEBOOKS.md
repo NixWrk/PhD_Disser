@@ -1,5 +1,15 @@
 # Единый MATLAB/Python-pipeline для notebook-отчётов
 
+## Пульсовое кажущееся ρ по «Скорпиону» — 08.11.2026
+
+`tools/scorpion_pulse_resistivity.py` сопоставляет боковые циклы BEI с 15
+базовыми решениями на собственных однородных КТ-моделях. Профиль
+`scorpion_apparent_resistivity` с `PulsePlan` проверяет линейный пересчёт
+двумя прямыми решениями с прежними электродами каждой записи.
+Генератор `../Colab Notebooks/scorpion_v2/plot_scorpion_pulse_resistivity.py`
+показывает полный пульсовой размах и знаковые циклы с учётом статуса разметки.
+[Описание расчёта](../../docs/SCORPION_PULSE_RESISTIVITY_METHOD.md).
+
 ## Пульсовое Δρкаж МГТУ — 07.11.2026
 
 Для Георгия и Ника подготовщик `tools/bmstu_pulse_resistivity.py`

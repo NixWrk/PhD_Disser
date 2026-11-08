@@ -95,15 +95,19 @@ def prepare(model_root,out):
     return target
 
 
-def run(plan,out,matlab):
+def run(plan,out,matlab,*,pulse_plan=None):
     plan=Path(plan).resolve();out=Path(out).resolve()
     if out.exists():raise FileExistsError('Use a fresh FEM output directory')
     def quote(p):return str(p).replace("'","''")
-    script=f"cd('{quote(ROOT/'MATLAB_TRKG4_real_subjects')}');run_pipeline('Profile','scorpion_apparent_resistivity','InputFile','{quote(plan)}','OutputDir','{quote(out)}');"
+    pulse_arg=f",'PulsePlan','{quote(Path(pulse_plan).resolve())}'" if pulse_plan else ''
+    script=f"cd('{quote(ROOT/'MATLAB_TRKG4_real_subjects')}');run_pipeline('Profile','scorpion_apparent_resistivity','InputFile','{quote(plan)}','OutputDir','{quote(out)}'{pulse_arg});"
     log=out.parent/(out.name+'.matlab.log')
     if log.exists():raise FileExistsError('Use a fresh launch log')
     preferences=out.parent/(out.name+'.matlab_preferences');preferences.mkdir(exist_ok=False)
     environment=os.environ.copy();environment['MATLAB_PREFDIR']=str(preferences)
+    if pulse_plan:
+        temporary=out.parent/(out.name+'.matlab_temp');temporary.mkdir(exist_ok=False)
+        environment.update(TEMP=str(temporary),TMP=str(temporary))
     with log.open('x',encoding='utf-8') as f:
         result=subprocess.run([str(matlab),'-batch',script],stdout=f,stderr=subprocess.STDOUT,
             env=environment,creationflags=getattr(subprocess,'CREATE_NO_WINDOW',0))
@@ -114,9 +118,10 @@ def main():
     p=argparse.ArgumentParser(description=__doc__);sub=p.add_subparsers(dest='command',required=True)
     a=sub.add_parser('prepare');a.add_argument('--model-root',type=Path,required=True);a.add_argument('--out',type=Path,required=True)
     a=sub.add_parser('run');a.add_argument('--plan',type=Path,required=True);a.add_argument('--out',type=Path,required=True);a.add_argument('--matlab',type=Path,required=True)
+    a.add_argument('--pulse-plan',type=Path)
     a=p.parse_args()
     if a.command=='prepare':print(prepare(a.model_root,a.out),flush=True)
-    elif a.command=='run':run(a.plan,a.out,a.matlab)
+    elif a.command=='run':run(a.plan,a.out,a.matlab,pulse_plan=a.pulse_plan)
 
 
 if __name__=='__main__':main()

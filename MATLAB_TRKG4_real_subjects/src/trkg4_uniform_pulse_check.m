@@ -1,10 +1,11 @@
-function result=trkg4_uniform_pulse_check(K0,C,baseline,max_delta_Z)
+function result=trkg4_uniform_pulse_check(K0,C,baseline,max_delta_Z,P)
 % Direct CEM checks at both ends of the observed centred pulse range.
 % Geometry and finite contact impedance are fixed at their baseline values.
 rho=baseline.rho_apparent_ohm_m;s=baseline.dZ_dlogrho_ohm;
 assert(isfinite(max_delta_Z)&&max_delta_Z>0&&isfinite(s)&&s>0);
 dr=rho*max_delta_Z/s;assert(dr>0&&dr<rho);
-P=[1,0;0,1;0,-1;-1,0];z=zeros(2,1);points=struct([]);
+if nargin<5,P=[1,0;0,1;0,-1;-1,0];end
+z=zeros(2,1);points=struct([]);
 for j=1:2
     shift=(2*j-3)*dr;r=rho+shift;
     [T,J,qc]=trkg4_lateral_cem_response(K0/r,C,{K0},r,P,1,1);

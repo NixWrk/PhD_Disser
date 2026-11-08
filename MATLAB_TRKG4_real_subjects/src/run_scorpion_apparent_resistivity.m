@@ -1,10 +1,20 @@
 function report=run_scorpion_apparent_resistivity(varargin)
 % Uniform-rho inversion on each participant's own prepared CT/CEM operator.
 % Contact impedance stays fixed: Z(rho) is NOT assumed exactly rho*Z(1).
-p=inputParser;addParameter(p,'InputFile','');addParameter(p,'OutputDir','');
+p=inputParser;addParameter(p,'InputFile','');addParameter(p,'OutputDir','');addParameter(p,'PulsePlan','');
 parse(p,varargin{:});a=p.Results;
 plan=jsondecode(fileread(a.InputFile));
 assert(strcmp(plan.schema,'scorpion_uniform_rho_input_v1'));
+pulse_mode=~isempty(a.PulsePlan);
+if pulse_mode
+    pulse=jsondecode(fileread(a.PulsePlan));assert(strcmp(pulse.schema,'scorpion_uniform_pulse_v1'));
+    assert(strcmp(pulse.input_sha256,trkg4_file_sha256(a.InputFile)));
+    assert(strcmp(pulse.baseline_sha256,trkg4_file_sha256(pulse.baseline_path)));
+    baseline=jsondecode(fileread(pulse.baseline_path));
+    assert(strcmp(baseline.input_sha256,pulse.input_sha256));
+    assert(strcmp(baseline.response_kernel_sha256,trkg4_file_sha256(which('trkg4_lateral_cem_response'))));
+    assert(numel(pulse.records)==numel(baseline.answers));
+end
 out=char(a.OutputDir);assert(~isfolder(out),'Use a fresh FEM output directory');mkdir(out);
 maxNumCompThreads(6);clock=tic;answers=struct([]);checks=struct([]);
 for index=1:numel(plan.subjects)
@@ -37,6 +47,21 @@ for index=1:numel(plan.subjects)
         groups={s.ports.id};ports=zeros(numel(groups),2);
         [found,ix]=ismember({'A','B','M','N'},groups);assert(all(found));
         ports(ix(1:2),1)=[1;-1];ports(ix(3:4),2)=[1;-1];
+        if pulse_mode
+            entry=pulse.records(strcmp({pulse.records.record_id},o.record_id));assert(isscalar(entry));
+            b=baseline.answers(strcmp({baseline.answers.record_id},o.record_id));assert(isscalar(b));
+            assert(strcmp(b.subject_alias,subject.subject_alias)&&strcmp(b.case_id,o.case_id));
+            assert(strcmp(entry.source_sha256,o.source_sha256)&&strcmp(entry.case_id,o.case_id));
+            assert(b.observed_Z_ohm==o.Z_ohm&&b.rho_apparent_ohm_m==entry.rho0_ohm_m);
+            assert(b.dZ_dlogrho_ohm==entry.dZ_dlogrho_ohm);
+            fprintf('SCORPION PULSE %s max|delta Z|=%.8g Ohm\n',o.record_id,entry.max_abs_delta_Z_ohm);
+            answer=trkg4_uniform_pulse_check(bulk,s.grouped_contact_matrix_SI,b,entry.max_abs_delta_Z_ohm,ports);
+            answer.record_id=o.record_id;answer.subject_alias=subject.subject_alias;answer.case_id=o.case_id;
+            answers=append(answers,answer);
+            write_json(fullfile(out,[o.record_id '.local.json']),answer);
+            assert(answer.passed,'Pulse linearisation failed: use nonlinear inversion');
+            continue;
+        end
         fprintf('UNIFORM_RHO %s %s unit response\n',subject.subject_alias,o.record_id);
         [T,~,unit_qc]=trkg4_lateral_cem_response(bulk,s.grouped_contact_matrix_SI,{bulk},1,ports,[],1);
         zunit=T(2,1);assert(zunit>0&&o.Z_ohm>0);
@@ -82,6 +107,14 @@ report=struct('schema','scorpion_uniform_rho_results_v1','answers',{answers},'su
     'elapsed_seconds',toc(clock),'matlab_version',version,'frequency_hz',100000,...
     'excitation','lateral_own_drive','quantitative_result_accepted',false,...
     'status','exploratory_hypothesis_not_validated');
+if pulse_mode
+    report.schema='scorpion_uniform_pulse_checks_v1';
+    report.pulse_plan_sha256=trkg4_file_sha256(a.PulsePlan);
+    report.baseline_sha256=pulse.baseline_sha256;
+    report.pulse_check_kernel_sha256=trkg4_file_sha256(which('trkg4_uniform_pulse_check'));
+    write_json(fullfile(out,'pulse_checks.local.json'),report);
+    fprintf('SCORPION PULSE COMPLETE %d observations, %.1f seconds\n',numel(answers),toc(clock));return;
+end
 write_json(fullfile(out,'results.local.json'),report);
 fprintf('UNIFORM_RHO COMPLETE %d observations, %.1f seconds\n',numel(answers),toc(clock));
 end
