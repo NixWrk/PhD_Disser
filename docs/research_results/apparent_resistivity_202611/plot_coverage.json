@@ -1,0 +1,270 @@
+{
+  "schema": "apparent_resistivity_plot_coverage_v1",
+  "source": "summary.csv",
+  "source_sha256": "7b4e922d22765cf83b273e0f32bd875f20ae6fb18f92be1d860c0c0c5524ab76",
+  "records": 34,
+  "participant_groups": 5,
+  "participant_labels": {
+    "P01": "Георгий",
+    "P02": "Ник",
+    "P03": "Ярослав"
+  },
+  "participant_label_sources": [
+    "../../SCORPION_PULSE_RESISTIVITY_METHOD.md",
+    "../../../Colab Notebooks/scorpion_v2/plot_apparent_resistivity.py",
+    "../../../Colab Notebooks/plot_bmstu_apparent_resistivity.py"
+  ],
+  "individual_plots": [
+    {
+      "series": "Scorpion",
+      "participant_code": "P01",
+      "metric": "baseline",
+      "csv_rows": [
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27
+      ],
+      "points": 7,
+      "weak_qrs_markers": 0,
+      "files": [
+        "figures/scorpion_p01_baseline.png",
+        "figures/scorpion_p01_baseline.svg"
+      ]
+    },
+    {
+      "series": "Scorpion",
+      "participant_code": "P01",
+      "metric": "pulse",
+      "csv_rows": [
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27
+      ],
+      "points": 7,
+      "weak_qrs_markers": 1,
+      "files": [
+        "figures/scorpion_p01_pulse.png",
+        "figures/scorpion_p01_pulse.svg"
+      ]
+    },
+    {
+      "series": "Scorpion",
+      "participant_code": "P02",
+      "metric": "baseline",
+      "csv_rows": [
+        28,
+        29,
+        30,
+        31
+      ],
+      "points": 4,
+      "weak_qrs_markers": 0,
+      "files": [
+        "figures/scorpion_p02_baseline.png",
+        "figures/scorpion_p02_baseline.svg"
+      ]
+    },
+    {
+      "series": "Scorpion",
+      "participant_code": "P02",
+      "metric": "pulse",
+      "csv_rows": [
+        28,
+        29,
+        30,
+        31
+      ],
+      "points": 4,
+      "weak_qrs_markers": 2,
+      "files": [
+        "figures/scorpion_p02_pulse.png",
+        "figures/scorpion_p02_pulse.svg"
+      ]
+    },
+    {
+      "series": "Scorpion",
+      "participant_code": "P03",
+      "metric": "baseline",
+      "csv_rows": [
+        32,
+        33,
+        34,
+        35
+      ],
+      "points": 4,
+      "weak_qrs_markers": 0,
+      "files": [
+        "figures/scorpion_p03_baseline.png",
+        "figures/scorpion_p03_baseline.svg"
+      ]
+    },
+    {
+      "series": "Scorpion",
+      "participant_code": "P03",
+      "metric": "pulse",
+      "csv_rows": [
+        32,
+        33,
+        34,
+        35
+      ],
+      "points": 4,
+      "weak_qrs_markers": 1,
+      "files": [
+        "figures/scorpion_p03_pulse.png",
+        "figures/scorpion_p03_pulse.svg"
+      ]
+    },
+    {
+      "series": "BMSTU",
+      "participant_code": "P01",
+      "metric": "baseline",
+      "csv_rows": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "points": 10,
+      "weak_qrs_markers": 0,
+      "files": [
+        "figures/bmstu_p01_baseline.png",
+        "figures/bmstu_p01_baseline.svg"
+      ]
+    },
+    {
+      "series": "BMSTU",
+      "participant_code": "P01",
+      "metric": "pulse",
+      "csv_rows": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "points": 10,
+      "weak_qrs_markers": 0,
+      "files": [
+        "figures/bmstu_p01_pulse.png",
+        "figures/bmstu_p01_pulse.svg"
+      ]
+    },
+    {
+      "series": "BMSTU",
+      "participant_code": "P02",
+      "metric": "baseline",
+      "csv_rows": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "points": 9,
+      "weak_qrs_markers": 0,
+      "files": [
+        "figures/bmstu_p02_baseline.png",
+        "figures/bmstu_p02_baseline.svg"
+      ]
+    },
+    {
+      "series": "BMSTU",
+      "participant_code": "P02",
+      "metric": "pulse",
+      "csv_rows": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "points": 9,
+      "weak_qrs_markers": 0,
+      "files": [
+        "figures/bmstu_p02_pulse.png",
+        "figures/bmstu_p02_pulse.svg"
+      ]
+    }
+  ],
+  "image_files": 28,
+  "images_sha256": {
+    "figures/scorpion_p01_baseline.png": "d1e3e093c761894cd7002d909affa7b71b99d6ede4976ba57d182686b407765d",
+    "figures/scorpion_p01_baseline.svg": "20dda5378bb16db4019c3f6f734a93a5017eaa68e20e1e40c023805b06a044a8",
+    "figures/scorpion_p01_pulse.png": "f865dc301bdca077068b89f7242d1e7ecd75bc2dd6ea0edad2b87894f4d6aa1f",
+    "figures/scorpion_p01_pulse.svg": "b4b102e1b175f68a0772714cbbd5f666ce4e653e3e28a32a4cf78b0764263e7e",
+    "figures/scorpion_p02_baseline.png": "644e426e42e9283bf51bff4b1d4cba3e6c30b65d2e5691ffb345e4ea9b7b68cb",
+    "figures/scorpion_p02_baseline.svg": "6478de5140dd9e1e465ff637f361d692deabbc4724918ac228842d7878de9beb",
+    "figures/scorpion_p02_pulse.png": "61340bea9eac34833c6b76e12defeb4aca18ab367d4e0d6d1b74390cf9f9f178",
+    "figures/scorpion_p02_pulse.svg": "67911ae6f769496712dbcfd8cd324671fd5d6a028380f7da0d84cc6dde50149e",
+    "figures/scorpion_p03_baseline.png": "1804b1e3b374c3dd62c1a1d5d7c8cbae0461496b3d812f69e2f5058584a3f979",
+    "figures/scorpion_p03_baseline.svg": "9c14f1e7a6d16a30560a7e7365c5f249727edb28daa6fb0cd42a6bf2e0dc79b9",
+    "figures/scorpion_p03_pulse.png": "4225194c15ceab5465058bf4dccbf89ac380363b3c0a095f2d7368c4387f3f18",
+    "figures/scorpion_p03_pulse.svg": "45337e878f39ec5a785ad2206479a4f0075ab97a677e4a27fbb5f412cbf473cf",
+    "figures/bmstu_p01_baseline.png": "dfffaf0ca9dc1cc418c7e19ddbad5b3c949e17bcb8bf3db6b82226a6ea73beee",
+    "figures/bmstu_p01_baseline.svg": "26f3e2b3ccc5091a988a1872b334bdd573bef457afd21d176b7a1310c41d8a75",
+    "figures/bmstu_p01_pulse.png": "0764b3eb9cbfb8859f6e6c0a9e8be0c95572fbdf8a458a50bdf5fc41f16baa1a",
+    "figures/bmstu_p01_pulse.svg": "d05af5a632e096b322b666cffb3b116ce4ad7eac4adf7c49c709440791cf04d5",
+    "figures/bmstu_p02_baseline.png": "afd0dcdb39bdeb21d1b8af49c8dd99835acdb8ff43c11e3611a138b24988361c",
+    "figures/bmstu_p02_baseline.svg": "04704ab00fce2361c44cc32a522af3898dc4343fdffeb294f254d448f89bbc82",
+    "figures/bmstu_p02_pulse.png": "7a6a0eecd6c854ebec326c5166d0fd6c75c0abda1210c6a1b6bf7a4e411606d8",
+    "figures/bmstu_p02_pulse.svg": "34c2d1242ce7fe700acfb3e0f1c8e8a15f58723902e26c5b0c1b8dbedec3b0c8",
+    "figures/scorpion_baseline_all_participants.png": "2dbe823f3e38ccbb7030bd75763b0eb0caff925432d4ca4a214b6273af4d8ce9",
+    "figures/scorpion_baseline_all_participants.svg": "dc6b7746e7783591daf2afb74152b4a835b71d83a9cab053b8abd21204c52861",
+    "figures/scorpion_pulse_all_participants.png": "13cadd69fc1ab692714416ec628929779a450988a70503e332cbdc568b5e82c6",
+    "figures/scorpion_pulse_all_participants.svg": "3391d3bfbc2d8f0c3f58e3fa530cc389581347b7a2680ed5f0b693ec2fbb4413",
+    "figures/bmstu_baseline_all_participants.png": "a8736307f78a1de059fce82f9f2c00e415dbaf984938e94d8e3545b6a3e729f4",
+    "figures/bmstu_baseline_all_participants.svg": "ad294b454d241b765f07b943675e572774add35315890c4cf575b54c2ee2670f",
+    "figures/bmstu_pulse_all_participants.png": "cb6989d3b419dea70376fd094269c6dbcb686b53a28a41350a2386e2857145e9",
+    "figures/bmstu_pulse_all_participants.svg": "9803588401fcdfdaefec71b41888d09197a99682b01d4df8ecb3ce047342f7dd"
+  },
+  "png_bundle": {
+    "path": "plots_png.zip",
+    "sha256": "589e4a8613afbede73bf774f6815195001c61dd6b25e7bdb204d746072a34d5c",
+    "files": {
+      "Скорпион_Георгий_ро_кажущееся.png": "figures/scorpion_p01_baseline.png",
+      "Скорпион_Георгий_дельта_ро_пульсовое.png": "figures/scorpion_p01_pulse.png",
+      "Скорпион_Ник_ро_кажущееся.png": "figures/scorpion_p02_baseline.png",
+      "Скорпион_Ник_дельта_ро_пульсовое.png": "figures/scorpion_p02_pulse.png",
+      "Скорпион_Ярослав_ро_кажущееся.png": "figures/scorpion_p03_baseline.png",
+      "Скорпион_Ярослав_дельта_ро_пульсовое.png": "figures/scorpion_p03_pulse.png",
+      "МГТУ_Георгий_ро_кажущееся.png": "figures/bmstu_p01_baseline.png",
+      "МГТУ_Георгий_дельта_ро_пульсовое.png": "figures/bmstu_p01_pulse.png",
+      "МГТУ_Ник_ро_кажущееся.png": "figures/bmstu_p02_baseline.png",
+      "МГТУ_Ник_дельта_ро_пульсовое.png": "figures/bmstu_p02_pulse.png",
+      "Скорпион_все_испытуемые_ро_кажущееся.png": "figures/scorpion_baseline_all_participants.png",
+      "Скорпион_все_испытуемые_дельта_ро_пульсовое.png": "figures/scorpion_pulse_all_participants.png",
+      "МГТУ_все_испытуемые_ро_кажущееся.png": "figures/bmstu_baseline_all_participants.png",
+      "МГТУ_все_испытуемые_дельта_ро_пульсовое.png": "figures/bmstu_pulse_all_participants.png"
+    }
+  },
+  "html_sha256": "de38f29cce30c74f6568a3adad1176c91ba965fa280090f551637d27c87a5f4c",
+  "interpretation": "Redraw of saved aggregates only; no new signal processing, FEM or physiological validation."
+}
