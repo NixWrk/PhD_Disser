@@ -1,0 +1,13 @@
+﻿series,participant,model,excluded_records,training_records_per_fit,parameters,full_FEM_heldout_RMSE_ohm,fewer_training_records_than_parameters,numerically_refined_fits,independent_initializations,independent_subject_validation
+BMSTU,U1,merged,9,8,2,14.272545566806642,False,0,True,False
+BMSTU,U1,separate,9,8,3,9.408755315914057,False,4,True,False
+BMSTU,U1,five,9,8,5,9.065421227991367,False,3,True,False
+BMSTU,U2,merged,10,9,2,21.774774402073483,False,0,True,False
+BMSTU,U2,separate,10,9,3,18.22163547493961,False,1,True,False
+BMSTU,U2,five,10,9,5,19.700028094977814,False,10,True,False
+Scorpion,U1,merged,3,2,2,6.5786021507507915,False,0,True,False
+Scorpion,U1,separate,3,2,3,,True,0,True,False
+Scorpion,U1,five,3,2,5,,True,0,True,False
+Scorpion,U2,merged,5,4,2,24.073887413274555,False,1,True,False
+Scorpion,U2,separate,5,4,3,24.760260246825382,False,5,True,False
+Scorpion,U2,five,5,4,5,,True,0,True,False

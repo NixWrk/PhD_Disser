@@ -1,0 +1,9 @@
+subject,placement,rays_total,rays_reaching_lung,median_mm,min_mm,max_mm,iqr_mm,median_radius_5.0,median_radius_15.0
+nik,bmstu_lateral,57,57,56.5,28.5,76.0,24.5,56.0,56.5
+nik,scorpion_lateral,57,57,41.0,22.0,72.0,23.0,40.5,40.5
+nik,back_right,141,141,36.5,33.5,50.5,5.5,36.0,36.5
+nik,back_left,141,141,35.5,30.5,47.0,8.0,35.5,35.5
+georg,bmstu_lateral,57,57,72.5,45.5,100.5,27.0,72.5,72.0
+georg,scorpion_lateral,57,57,72.5,45.5,100.5,27.0,72.5,72.0
+georg,back_right,141,141,49.0,45.5,56.0,2.0,49.0,49.0
+georg,back_left,141,141,45.0,43.5,51.5,2.0,45.5,45.0
