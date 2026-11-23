@@ -1,0 +1,9 @@
+participant,size_mm,mixed_seated_minus_lying_ch1_ohm,bilateral_seated_minus_lying_ch1_ohm,seated_mixed_minus_bilateral_ch1_ohm,mixed_seated_minus_lying_ch2_ohm,bilateral_seated_minus_lying_ch2_ohm,seated_mixed_minus_bilateral_ch2_ohm,bilateral_seated_synchronous_ch1_minus_ch2_ohm,bilateral_lying_synchronous_ch1_minus_ch2_ohm
+U1,60,9.6237,,-1.80276,1.61627,,-22.74689,2.72327,
+U1,100,4.20752,,1.8416,2.10102,,4.54803,-1.61697,
+U1,140,3.13108,,0.28676,6.565815,,21.74657,-2.3197,
+U1,200,1.65355,,0.49473,-4.003105,,14.93043,-1.48526,
+U2,60,14.24994,,-1.373005,-2.96726,,-45.11079,-4.829335,
+U2,100,-2.4098,-0.24016,0.99481,-2.036875,2.4437,-18.967925,-5.131185,-2.44879
+U2,140,-4.5519,,-5.48113,-1.987835,,-3.64876,2.82428,
+U2,200,1.09993,,-0.57439,-2.78569,,-5.895255,-9.71356,
