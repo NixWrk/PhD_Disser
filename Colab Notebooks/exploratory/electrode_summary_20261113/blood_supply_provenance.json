@@ -1,0 +1,25 @@
+{
+  "date": "2026-11-13",
+  "source_name": "Вставленный текст.txt",
+  "original_source_sha256": "988198e63a4c90b826f05f669ea70c05c75baa24ae250a794463d244c4b8cbce",
+  "source_role": "User-provided GPT text, not an independently verified review",
+  "unique_links": 43,
+  "verified_studies": 2,
+  "calculation_parameters_changed": false,
+  "new_FEM_calculations": false,
+  "hash_basis": "Working-tree bytes before Git line-ending normalization",
+  "files": [
+    {
+      "path": "КРОВОТОК_КРОВЕНАПОЛНЕНИЕ_И_ЖИР.md",
+      "sha256": "11928e6a0dda6b8cf23061434cb706c0aaab657b7992421b2348b22bf276b742"
+    },
+    {
+      "path": "SOURCE_GPT_BLOOD_SUPPLY.md",
+      "sha256": "8caf830711e98014cab6c1ebbbcf406fc321a771a76c7e2115398e703fbfd4b8"
+    },
+    {
+      "path": "blood_supply_sources.csv",
+      "sha256": "f6c86922d102be268b4c968fdaf4e7fdbedd01e55a14cf9428e19843c5960b2e"
+    }
+  ]
+}

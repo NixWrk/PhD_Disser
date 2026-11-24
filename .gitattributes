@@ -10,6 +10,16 @@
 # Report checkpoints include byte-based source/asset manifests; preserve their bytes.
 "Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261029*/**" -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 
+# November calculations and reviewed reports record SHA-256 of the original files.
+"Colab Notebooks/Отчёт_ГПХ_РНЦХ/calculation_20261109_*/**" -text whitespace=cr-at-eol
+"Colab Notebooks/Отчёт_ГПХ_РНЦХ/methodology_sv_20261109/**" -text whitespace=cr-at-eol
+"Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/*review_20261109*/**" -text whitespace=cr-at-eol
+"Colab Notebooks/Отчёт_ГПХ_РНЦХ/report/revision_20261109*/**" -text whitespace=cr-at-eol
+
+# These generated FEM entry points verify the bytes used for the calculation.
+MATLAB_TRKG4_real_subjects/output/exploratory/back_measurement_20261123/small_arrays/fields/tissue_fields_run.m -text whitespace=cr-at-eol
+MATLAB_TRKG4_real_subjects/output/exploratory/back_measurement_20261123/inspiration_rho/model_families/fem/generated/solve_families.m -text whitespace=cr-at-eol
+
 # Бинарные форматы: ни нормализации, ни попыток показать diff
 *.png binary
 *.jpg binary
